@@ -41,13 +41,14 @@ public final class UTDDonor extends javax.swing.JDialog {
     private final DefaultTableModel tabModeMedis,tabModeNonMedis,tabModeTranfusi;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps,ps2,pstranfusi;
+    private PreparedStatement ps,ps2,pstranfusi,pscekmedis,psceknonmedis;
     private ResultSet rs,rs2,rstranfusi;
     private Connection koneksi=koneksiDB.condb();
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private int jml=0,i=0,row=0,index=0,pilih=0;
     private String[] kodebarang,namabarang,jumlah,satuan,stokasal,hbeli,total;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
+    private String aktifkan="";
     
     /** Creates new form DlgPenyakit
      * @param parent
@@ -278,6 +279,11 @@ public final class UTDDonor extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        ppTampilkanBHPMedis = new javax.swing.JMenuItem();
+        ppTampilkanBHPPenunjang = new javax.swing.JMenuItem();
+        ppTampilkanBHPPenunjangDanMedis = new javax.swing.JMenuItem();
+        ppUbah = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         TabRawat = new javax.swing.JTabbedPane();
         internalFrame2 = new widget.InternalFrame();
@@ -376,6 +382,56 @@ public final class UTDDonor extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
+
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        ppTampilkanBHPMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanBHPMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppTampilkanBHPMedis.setForeground(new java.awt.Color(102, 51, 0));
+        ppTampilkanBHPMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppTampilkanBHPMedis.setText("Tampilkan Penggunaan BHP Medis");
+        ppTampilkanBHPMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppTampilkanBHPMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppTampilkanBHPMedis.setIconTextGap(8);
+        ppTampilkanBHPMedis.setName("ppTampilkanBHPMedis"); // NOI18N
+        ppTampilkanBHPMedis.setPreferredSize(new java.awt.Dimension(280, 25));
+        jPopupMenu1.add(ppTampilkanBHPMedis);
+
+        ppTampilkanBHPPenunjang.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanBHPPenunjang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppTampilkanBHPPenunjang.setForeground(new java.awt.Color(102, 51, 0));
+        ppTampilkanBHPPenunjang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppTampilkanBHPPenunjang.setText("Tampilkan Penggunaan BHP Non Medis");
+        ppTampilkanBHPPenunjang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppTampilkanBHPPenunjang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppTampilkanBHPPenunjang.setIconTextGap(8);
+        ppTampilkanBHPPenunjang.setName("ppTampilkanBHPPenunjang"); // NOI18N
+        ppTampilkanBHPPenunjang.setPreferredSize(new java.awt.Dimension(280, 25));
+        jPopupMenu1.add(ppTampilkanBHPPenunjang);
+
+        ppTampilkanBHPPenunjangDanMedis.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanBHPPenunjangDanMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppTampilkanBHPPenunjangDanMedis.setForeground(new java.awt.Color(102, 51, 0));
+        ppTampilkanBHPPenunjangDanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppTampilkanBHPPenunjangDanMedis.setText("Tampilkan Penggunaan BHP Medis & Non Medis");
+        ppTampilkanBHPPenunjangDanMedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppTampilkanBHPPenunjangDanMedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppTampilkanBHPPenunjangDanMedis.setIconTextGap(8);
+        ppTampilkanBHPPenunjangDanMedis.setName("ppTampilkanBHPPenunjangDanMedis"); // NOI18N
+        ppTampilkanBHPPenunjangDanMedis.setPreferredSize(new java.awt.Dimension(280, 25));
+        jPopupMenu1.add(ppTampilkanBHPPenunjangDanMedis);
+
+        ppUbah.setBackground(new java.awt.Color(255, 255, 255));
+        ppUbah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppUbah.setForeground(new java.awt.Color(102, 51, 0));
+        ppUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppUbah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppUbah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppUbah.setIconTextGap(8);
+        ppUbah.setLabel("Tampilkan Untuk Diubah");
+        ppUbah.setName("ppUbah"); // NOI18N
+        ppUbah.setPreferredSize(new java.awt.Dimension(280, 25));
+        jPopupMenu1.add(ppUbah);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -624,7 +680,7 @@ public final class UTDDonor extends javax.swing.JDialog {
         panelisi4.add(label32);
         label32.setBounds(230, 12, 57, 23);
 
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2016" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-12-2016" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1040,11 +1096,13 @@ public final class UTDDonor extends javax.swing.JDialog {
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbTranfusiDarah.setAutoCreateRowSorter(true);
         tbTranfusiDarah.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbTranfusiDarah.setComponentPopupMenu(jPopupMenu1);
         tbTranfusiDarah.setName("tbTranfusiDarah"); // NOI18N
         tbTranfusiDarah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1212,7 +1270,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         TanggalCari1.setEditable(false);
         TanggalCari1.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2016" }));
+        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-12-2016" }));
         TanggalCari1.setDisplayFormat("dd-MM-yyyy");
         TanggalCari1.setName("TanggalCari1"); // NOI18N
         TanggalCari1.setOpaque(false);
@@ -1227,7 +1285,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         TanggalCari2.setEditable(false);
         TanggalCari2.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2016" }));
+        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-12-2016" }));
         TanggalCari2.setDisplayFormat("dd-MM-yyyy");
         TanggalCari2.setName("TanggalCari2"); // NOI18N
         TanggalCari2.setOpaque(false);
@@ -1567,6 +1625,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        aktifkan="";
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -1600,6 +1659,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
+        aktifkan="";
         tampil();
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -1837,6 +1897,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label17;
@@ -1858,6 +1919,10 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
     private widget.panelisi panelisi5;
     private widget.panelisi panelisi6;
     private widget.panelisi panelisi7;
+    private javax.swing.JMenuItem ppTampilkanBHPMedis;
+    private javax.swing.JMenuItem ppTampilkanBHPPenunjang;
+    private javax.swing.JMenuItem ppTampilkanBHPPenunjangDanMedis;
+    private javax.swing.JMenuItem ppUbah;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbMedis;
     private widget.Table tbNonMedis;
@@ -1910,6 +1975,9 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                         rstranfusi.getString("hiv"),rstranfusi.getString("spilis"),Sequel.cariIsi("select nama from petugas where nip=?",rstranfusi.getString("petugas_u_saring")),
                         rstranfusi.getString("hasil_cross_match"),Sequel.cariIsi("select nama from petugas where nip=?",rstranfusi.getString("petugas_cross"))
                     });
+                    if(aktifkan.equals("medis")){
+                        pscekmedis=koneksi
+                    }
                 }                
             } catch (Exception e) {
                 System.out.println(e);
