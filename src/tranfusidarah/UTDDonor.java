@@ -175,6 +175,8 @@ public final class UTDDonor extends javax.swing.JDialog {
                 column.setPreferredWidth(30);
             }else if(i==14){
                 column.setPreferredWidth(90);
+            }else if(i==15){
+                column.setPreferredWidth(150);
             }
         }
         tbTranfusiDarah.setDefaultRenderer(Object.class, new WarnaTable());
