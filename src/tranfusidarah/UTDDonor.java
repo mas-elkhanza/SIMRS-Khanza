@@ -16,7 +16,6 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -25,10 +24,8 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -176,6 +173,20 @@ public final class UTDDonor extends javax.swing.JDialog {
             }else if(i==14){
                 column.setPreferredWidth(90);
             }else if(i==15){
+                column.setPreferredWidth(150);
+            }else if(i==16){
+                column.setPreferredWidth(45);
+            }else if(i==17){
+                column.setPreferredWidth(45);
+            }else if(i==18){
+                column.setPreferredWidth(45);
+            }else if(i==19){
+                column.setPreferredWidth(45);
+            }else if(i==20){
+                column.setPreferredWidth(150);
+            }else if(i==21){
+                column.setPreferredWidth(67);
+            }else if(i==22){
                 column.setPreferredWidth(150);
             }
         }
@@ -1895,9 +1906,9 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                         rstranfusi.getString("alamat"),rstranfusi.getString("golongan_darah"),rstranfusi.getString("resus"),
                         rstranfusi.getString("tensi"),rstranfusi.getString("no_bag"),rstranfusi.getString("no_selang"),
                         rstranfusi.getString("jenis_bag"),rstranfusi.getString("jenis_donor"),rstranfusi.getString("tempat_aftap"),
-                        rstranfusi.getString("petugas_aftap"),rstranfusi.getString("hbsag"),rstranfusi.getString("hcv"),
-                        rstranfusi.getString("hiv"),rstranfusi.getString("spilis"),rstranfusi.getString("petugas_u_saring"),
-                        rstranfusi.getString("hasil_cross_match"),rstranfusi.getString("petugas_cross")
+                        Sequel.cariIsi("select nama from petugas where nip=?",rstranfusi.getString("petugas_aftap")),rstranfusi.getString("hbsag"),rstranfusi.getString("hcv"),
+                        rstranfusi.getString("hiv"),rstranfusi.getString("spilis"),Sequel.cariIsi("select nama from petugas where nip=?",rstranfusi.getString("petugas_u_saring")),
+                        rstranfusi.getString("hasil_cross_match"),Sequel.cariIsi("select nama from petugas where nip=?",rstranfusi.getString("petugas_cross"))
                     });
                 }                
             } catch (Exception e) {
@@ -2065,7 +2076,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
         KodePetugasCross.setText("");
         NamaPetugasCross.setText("");
         NomorDonor.requestFocus();        
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_donor,signed)),0) from utd_donor where tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"").substring(0,7)+"%'",dateformat.format(Tanggal.getDate()).substring(0,7)+"/UTD",4,NomorDonor); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_donor,4),signed)),0) from utd_donor where tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"").substring(0,7)+"%'",dateformat.format(Tanggal.getDate()).substring(0,7)+"/UTD",4,NomorDonor); 
     }
 
     private void getData() {

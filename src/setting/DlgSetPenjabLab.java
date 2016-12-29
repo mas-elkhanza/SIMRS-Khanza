@@ -694,9 +694,11 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
             kddokter.setText(Sequel.cariIsi("select kd_dokterlab from set_pjlab"));
             kddokter2.setText(Sequel.cariIsi("select kd_dokterrad from set_pjlab"));
             kddokter3.setText(Sequel.cariIsi("select kd_dokterhemodialisa from set_pjlab"));
+            kddokter4.setText(Sequel.cariIsi("select kd_dokterutd from set_pjlab"));
             TDokter.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter.getText()));
             TDokter2.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter2.getText()));
             TDokter3.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter3.getText()));
+            TDokter4.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddokter4.getText()));
         }
     }
 
