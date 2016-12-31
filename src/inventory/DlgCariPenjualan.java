@@ -313,7 +313,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         ppCetakNota.setBackground(new java.awt.Color(242, 242, 242));
         ppCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppCetakNota.setForeground(new java.awt.Color(102, 51, 0));
+        ppCetakNota.setForeground(new java.awt.Color(60, 80, 50));
         ppCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppCetakNota.setText("Cetak Ulang Nota");
         ppCetakNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -330,7 +330,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(242, 242, 242));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(102, 51, 0));
+        ppHapus.setForeground(new java.awt.Color(60, 80, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Penjualan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -347,7 +347,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         ppVerif.setBackground(new java.awt.Color(242, 242, 242));
         ppVerif.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerif.setForeground(new java.awt.Color(102, 51, 0));
+        ppVerif.setForeground(new java.awt.Color(60, 80, 50));
         ppVerif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerif.setText("Verifikasi");
         ppVerif.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

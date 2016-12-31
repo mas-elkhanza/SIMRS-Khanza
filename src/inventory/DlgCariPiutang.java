@@ -323,7 +323,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
 
         ppCetakNota.setBackground(new java.awt.Color(255, 255, 255));
         ppCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppCetakNota.setForeground(new java.awt.Color(102, 51, 0));
+        ppCetakNota.setForeground(new java.awt.Color(60, 80, 50));
         ppCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppCetakNota.setText("Cetak Ulang Nota");
         ppCetakNota.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -341,7 +341,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
 
         ppUbah.setBackground(new java.awt.Color(255, 255, 255));
         ppUbah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUbah.setForeground(new java.awt.Color(102, 51, 0));
+        ppUbah.setForeground(new java.awt.Color(60, 80, 50));
         ppUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUbah.setText("Ubah Piutang");
         ppUbah.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -359,7 +359,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(102, 51, 0));
+        ppHapus.setForeground(new java.awt.Color(60, 80, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Piutang");
         ppHapus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -377,7 +377,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
 
         MnDetailCicilan.setBackground(new java.awt.Color(255, 255, 255));
         MnDetailCicilan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnDetailCicilan.setForeground(new java.awt.Color(102, 51, 0));
+        MnDetailCicilan.setForeground(new java.awt.Color(60, 80, 50));
         MnDetailCicilan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDetailCicilan.setText("Bayar Piutang");
         MnDetailCicilan.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
