@@ -16,6 +16,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -25,6 +26,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -1820,9 +1823,13 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
-                        }                    
+                        }                             
+                        emptTeks();
+                        TabRawat.setSelectedIndex(1);                        
+                        JOptionPane.showMessageDialog(null,"Proses ganti selesai..");
                 }
                 Sequel.AutoComitTrue();
+                tampil();
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf,Pilih pada nomor donor...!!!!");
             }
@@ -1839,35 +1846,50 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(! TCari.getText().trim().equals("")){
-            BtnCariActionPerformed(evt);
-        }
-        /*if(tabMode.getRowCount()==0){
+        if(tabModeTranfusi.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());
-            param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptPaketOperasi.jrxml","report","::[ Data Paket Operasi ]::",
-                "select paket_operasi.kode_paket, paket_operasi.nm_perawatan,(paket_operasi.operator1+paket_operasi.operator2+paket_operasi.operator3+"+
-                "paket_operasi.asisten_operator1+paket_operasi.asisten_operator2+paket_operasi.instrumen+"+
-                "paket_operasi.dokter_anak+paket_operasi.perawaat_resusitas+"+
-                "paket_operasi.alat+paket_operasi.dokter_anestesi+paket_operasi.asisten_anestesi+"+
-                "paket_operasi.bidan+paket_operasi.bidan2+paket_operasi.bidan3+paket_operasi.perawat_luar+"+
-                "paket_operasi.sewa_ok+paket_operasi.akomodasi+paket_operasi.bagian_rs+"+
-                "paket_operasi.omloop+paket_operasi.omloop2+paket_operasi.omloop3+"+
-                "paket_operasi.sarpras+paket_operasi.dokter_pjanak+paket_operasi.dokter_umum) as jumlah "+
-                "from paket_operasi inner join penjab on penjab.kd_pj=paket_operasi.kd_pj "+
-                "where paket_operasi.status='1' and paket_operasi.kode_paket like '%"+TCari.getText()+"%' or "+
-                "paket_operasi.status='1' and paket_operasi.nm_perawatan like '%"+TCari.getText()+"%' or "+
-                "paket_operasi.status='1' and penjab.png_jawab like '%"+TCari.getText()+"%' order by paket_operasi.kode_paket ",param);
-        }*/
+            TCari.requestFocus();
+        }else if(tabModeTranfusi.getRowCount()!=0){
+            Sequel.queryu("truncate table temporary");
+            jml=tabModeTranfusi.getRowCount();
+            for(i=0;i<jml;i++){  
+                Sequel.menyimpan("temporary","'0','"+
+                                tabModeTranfusi.getValueAt(i,0).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,1).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,2).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,3).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,4).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,5).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,6).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,7).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,8).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,9).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,10).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,11).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,12).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,13).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,14).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,15).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,16).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,17).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,18).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,19).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,20).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,21).toString()+"','"+
+                                tabModeTranfusi.getValueAt(i,22).toString()+"','','','','','','','','','','','','','',''","Transaksi Pembelian"); 
+            }           
+            
+            Map<String, Object> param = new HashMap<>();    
+                param.put("namars",var.getnamars());
+                param.put("alamatrs",var.getalamatrs());
+                param.put("kotars",var.getkabupatenrs());
+                param.put("propinsirs",var.getpropinsirs());
+                param.put("kontakrs",var.getkontakrs());
+                param.put("emailrs",var.getemailrs());   
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            Valid.MyReport("rptDonorDarah.jrxml","report","::[ Data Donor Darah ]::",
+                "select * from temporary order by no asc",param);
+        }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
@@ -2496,7 +2518,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                             rs.beforeFirst();
                             while(rs.next()){
                                 tabModeTranfusi.addRow(new String[]{
-                                    "","","","","","","  "+rs.getString("nama_brng")+" ("+rs.getString("jml")+" "+rs.getString("kode_sat")+" X "+Valid.SetAngka(rs.getDouble("harga"))+") = "+Valid.SetAngka(rs.getDouble("total")),"","","","","","","","","","","","","","","",""
+                                    "","","","","","",rs.getString("nama_brng")+" ("+rs.getString("jml")+" "+rs.getString("kode_sat")+" X "+Valid.SetAngka(rs.getDouble("harga"))+") = "+Valid.SetAngka(rs.getDouble("total")),"","","","","","","","","","","","","","","",""
                                 });
                             }
                         } catch (Exception e) {
@@ -2522,7 +2544,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                             rs2.beforeFirst();
                             while(rs2.next()){
                                 tabModeTranfusi.addRow(new String[]{
-                                    "","","","","","","  "+rs2.getString("nama_brng")+" ("+rs2.getString("jml")+" "+rs2.getString("kode_sat")+" X "+Valid.SetAngka(rs2.getDouble("harga"))+") = "+Valid.SetAngka(rs2.getDouble("total")),"","","","","","","","","","","","","","","",""
+                                    "","","","","","",rs2.getString("nama_brng")+" ("+rs2.getString("jml")+" "+rs2.getString("kode_sat")+" X "+Valid.SetAngka(rs2.getDouble("harga"))+") = "+Valid.SetAngka(rs2.getDouble("total")),"","","","","","","","","","","","","","","",""
                                 });
                             }
                         } catch (Exception e) {
@@ -2548,7 +2570,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                             rs.beforeFirst();
                             while(rs.next()){
                                 tabModeTranfusi.addRow(new String[]{
-                                    "","","","","","","  "+rs.getString("nama_brng")+" ("+rs.getString("jml")+" "+rs.getString("kode_sat")+" X "+Valid.SetAngka(rs.getDouble("harga"))+") = "+Valid.SetAngka(rs.getDouble("total")),"","","","","","","","","","","","","","","",""
+                                    "","","","","","",rs.getString("nama_brng")+" ("+rs.getString("jml")+" "+rs.getString("kode_sat")+" X "+Valid.SetAngka(rs.getDouble("harga"))+") = "+Valid.SetAngka(rs.getDouble("total")),"","","","","","","","","","","","","","","",""
                                 });
                             }
                         } catch (Exception e) {
@@ -2574,7 +2596,7 @@ private void NamaPendonorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
                             rs2.beforeFirst();
                             while(rs2.next()){
                                 tabModeTranfusi.addRow(new String[]{
-                                    "","","","","","","  "+rs2.getString("nama_brng")+" ("+rs2.getString("jml")+" "+rs2.getString("kode_sat")+" X "+Valid.SetAngka(rs2.getDouble("harga"))+") = "+Valid.SetAngka(rs2.getDouble("total")),"","","","","","","","","","","","","","","",""
+                                    "","","","","","",rs2.getString("nama_brng")+" ("+rs2.getString("jml")+" "+rs2.getString("kode_sat")+" X "+Valid.SetAngka(rs2.getDouble("harga"))+") = "+Valid.SetAngka(rs2.getDouble("total")),"","","","","","","","","","","","","","","",""
                                 });
                             }
                         } catch (Exception e) {
