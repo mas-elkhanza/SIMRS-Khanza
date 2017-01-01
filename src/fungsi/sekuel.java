@@ -58,6 +58,7 @@ public final class sekuel {
     private double angka2=0;
     private String dicari="";
     private Date tanggal=new Date();
+    private boolean bool=false;
     private DecimalFormat df2 = new DecimalFormat("####");
     public sekuel(){
         super();
@@ -407,7 +408,31 @@ public final class sekuel {
         }    
     }
     
-
+    public boolean mengedittf(String table,String acuan_field,String update,int i,String[] a){
+        bool=true;
+        try {
+            ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
+            try{
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                } 
+                ps.executeUpdate();       
+                bool=true;
+             }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal Mengedit. Periksa kembali data...!!!!");
+                bool=false;
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }   
+        return bool;
+    }
+    
     public void mengedit(String table,String acuan_field,String update,JTextField AlmGb){
         try {
             ps = connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
