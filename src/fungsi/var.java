@@ -49,7 +49,7 @@ public final class var {
             sirkulasi_obat2=false,edit_registrasi=false,bpjs_referensi_diagnosa=false,bpjs_referensi_poli=false,industrifarmasi=false,harian_js=false,bulanan_js=false,
             harian_paket_bhp=false,bulanan_paket_bhp=false,piutang_pasien2=false,bpjs_referensi_faskes=false,bpjs_sep=false,pengambilan_utd=false,tarif_utd=false,
             pengambilan_utd2=false,utd_medis_rusak=false,pengambilan_penunjang_utd=false,pengambilan_penunjang_utd2=false,utd_penunjang_rusak=false,
-            suplier_penunjang=false,utd_donor=false,bpjs_monitoring_klaim=false;
+            suplier_penunjang=false,utd_donor=false,bpjs_monitoring_klaim=false,utd_pemusnahan_donor=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -268,6 +268,7 @@ public final class var {
                         var.suplier_penunjang=true;
                         var.utd_donor=true;
                         var.bpjs_monitoring_klaim=true;
+                        var.utd_pemusnahan_donor=true;
                     }else if(rs.getRow()>=1){
                         var.kode="Admin Utama";
                         var.penyakit=true;
@@ -467,6 +468,7 @@ public final class var {
                         var.suplier_penunjang=true;
                         var.utd_donor=true;
                         var.bpjs_monitoring_klaim=true;
+                        var.utd_pemusnahan_donor=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -668,6 +670,7 @@ public final class var {
                         var.suplier_penunjang=rs2.getBoolean("suplier_penunjang");
                         var.utd_donor=rs2.getBoolean("utd_donor");
                         var.bpjs_monitoring_klaim=rs2.getBoolean("bpjs_monitoring_klaim");
+                        var.utd_pemusnahan_donor=rs2.getBoolean("utd_pemusnahan_donor");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -867,6 +870,7 @@ public final class var {
                         var.suplier_penunjang=false;
                         var.utd_donor=false;
                         var.bpjs_monitoring_klaim=false;
+                        var.utd_pemusnahan_donor=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1108,4 +1112,5 @@ public final class var {
     public static boolean getsuplier_penunjang(){return var.suplier_penunjang;}  
     public static boolean getutd_donor(){return var.utd_donor;}  
     public static boolean getbpjs_monitoring_klaim(){return var.bpjs_monitoring_klaim;}  
+    public static boolean getutd_pemusnahan_donor(){return var.utd_pemusnahan_donor;}  
 }
