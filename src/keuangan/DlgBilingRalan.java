@@ -24,6 +24,9 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import keuangan.DlgLhtBiaya;
+import keuangan.DlgLhtPiutang;
+import keuangan.Jurnal;
 import simrskhanza.DlgCariDokter;
 import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaRadiologi;
@@ -1458,7 +1461,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         panelGlass1.add(jLabel4);
 
         DTPTgl.setForeground(new java.awt.Color(100, 100, 100));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-10-2016 15:38:10" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2016 11:33:18" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1757,7 +1760,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
 
         DTPTempo.setEditable(false);
         DTPTempo.setForeground(new java.awt.Color(100, 100, 100));
-        DTPTempo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-10-2016" }));
+        DTPTempo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2016" }));
         DTPTempo.setDisplayFormat("dd-MM-yyyy");
         DTPTempo.setName("DTPTempo"); // NOI18N
         DTPTempo.setOpaque(false);
@@ -2641,12 +2644,26 @@ private void BtnBatal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 }//GEN-LAST:event_BtnBatal1KeyPressed
 
 private void MnTambahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTambahanActionPerformed
-    norawat.setText(TNoRw.getText());
-    tampilTambahan(norawat.getText());
-    WindowTambahanBiaya.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-    WindowTambahanBiaya.setLocationRelativeTo(internalFrame1);
-    WindowTambahanBiaya.setAlwaysOnTop(false);
-    WindowTambahanBiaya.setVisible(true);
+    if(var.getkode().equals("Admin Utama")){
+        norawat.setText(TNoRw.getText());
+        tampilTambahan(norawat.getText());
+        WindowTambahanBiaya.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        WindowTambahanBiaya.setLocationRelativeTo(internalFrame1);
+        WindowTambahanBiaya.setAlwaysOnTop(false);
+        WindowTambahanBiaya.setVisible(true);
+    }else{
+        if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
+        }else{ 
+            norawat.setText(TNoRw.getText());
+            tampilTambahan(norawat.getText());
+            WindowTambahanBiaya.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            WindowTambahanBiaya.setLocationRelativeTo(internalFrame1);
+            WindowTambahanBiaya.setAlwaysOnTop(false);
+            WindowTambahanBiaya.setVisible(true);             
+        }
+    }
+        
 }//GEN-LAST:event_MnTambahanActionPerformed
 
 private void norawatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norawatKeyPressed
@@ -2776,28 +2793,59 @@ private void BtnKeluarPotonganActionPerformed(java.awt.event.ActionEvent evt) {/
 }//GEN-LAST:event_BtnKeluarPotonganActionPerformed
 
 private void MnPotonganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPotonganActionPerformed
-   norawatpotongan.setText(TNoRw.getText());
-    tampilPotongan(norawatpotongan.getText());
-    WindowPotonganBiaya.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-    WindowPotonganBiaya.setLocationRelativeTo(internalFrame1);
-    WindowPotonganBiaya.setAlwaysOnTop(false);
-    WindowPotonganBiaya.setVisible(true);
+    if(var.getkode().equals("Admin Utama")){
+        norawatpotongan.setText(TNoRw.getText());
+        tampilPotongan(norawatpotongan.getText());
+        WindowPotonganBiaya.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        WindowPotonganBiaya.setLocationRelativeTo(internalFrame1);
+        WindowPotonganBiaya.setAlwaysOnTop(false);
+        WindowPotonganBiaya.setVisible(true);
+    }else{
+        if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+        }else{ 
+            norawatpotongan.setText(TNoRw.getText());
+            tampilPotongan(norawatpotongan.getText());
+            WindowPotonganBiaya.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            WindowPotonganBiaya.setLocationRelativeTo(internalFrame1);
+            WindowPotonganBiaya.setAlwaysOnTop(false);
+            WindowPotonganBiaya.setVisible(true);                
+        }
+    }        
 }//GEN-LAST:event_MnPotonganActionPerformed
 
 private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPeriksaLabActionPerformed
-       if(TPasien.getText().trim().equals("")){
+        if(TPasien.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
-        }else{           
-            DlgPeriksaLaboratorium periksalab=new DlgPeriksaLaboratorium(null,false);
-            periksalab.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-            periksalab.setLocationRelativeTo(internalFrame1);
-            periksalab.emptTeks();
-            periksalab.setNoRm(TNoRw.getText());  
-            periksalab.tampiltarif();
-            periksalab.tampil();
-            periksalab.isCek();
-            periksalab.setAlwaysOnTop(false);
-            periksalab.setVisible(true);
+        }else{      
+           if(var.getkode().equals("Admin Utama")){
+                DlgPeriksaLaboratorium periksalab=new DlgPeriksaLaboratorium(null,false);
+                periksalab.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                periksalab.setLocationRelativeTo(internalFrame1);
+                periksalab.emptTeks();
+                periksalab.setNoRm(TNoRw.getText());  
+                periksalab.tampiltarif();
+                periksalab.tampil();
+                periksalab.isCek();
+                periksalab.setAlwaysOnTop(false);
+                periksalab.setVisible(true);
+           }else{
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                }else{ 
+                    DlgPeriksaLaboratorium periksalab=new DlgPeriksaLaboratorium(null,false);
+                    periksalab.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                    periksalab.setLocationRelativeTo(internalFrame1);
+                    periksalab.emptTeks();
+                    periksalab.setNoRm(TNoRw.getText());  
+                    periksalab.tampiltarif();
+                    periksalab.tampil();
+                    periksalab.isCek();
+                    periksalab.setAlwaysOnTop(false);
+                    periksalab.setVisible(true);
+                }
+            }
+                
         }
 }//GEN-LAST:event_MnPeriksaLabActionPerformed
 
@@ -3145,15 +3193,32 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, Pasien belum dipilih...!!!");
             TNoRw.requestFocus();
         }else{
-            dlgobt.emptTeksobat();
-            dlgobt.isCek();
-            dlgobt.setNoRm(TNoRw.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
-                    Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
-            dlgobt.tampilobat();
-            dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-            dlgobt.setLocationRelativeTo(internalFrame1);
-            dlgobt.setAlwaysOnTop(false);
-            dlgobt.setVisible(true);            
+            if(var.getkode().equals("Admin Utama")){
+                dlgobt.emptTeksobat();
+                dlgobt.isCek();
+                dlgobt.setNoRm(TNoRw.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
+                        Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
+                dlgobt.tampilobat();
+                dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                dlgobt.setLocationRelativeTo(internalFrame1);
+                dlgobt.setAlwaysOnTop(false);
+                dlgobt.setVisible(true);            
+            }else{
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                }else{ 
+                    dlgobt.emptTeksobat();
+                    dlgobt.isCek();
+                    dlgobt.setNoRm(TNoRw.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat=?",TNoRw.getText()),
+                            Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat=?",TNoRw.getText()));
+                    dlgobt.tampilobat();
+                    dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                    dlgobt.setLocationRelativeTo(internalFrame1);
+                    dlgobt.setAlwaysOnTop(false);
+                    dlgobt.setVisible(true);  
+                }
+            }
+                
         }
     }//GEN-LAST:event_MnInputObatActionPerformed
 
@@ -3162,16 +3227,33 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, Pasien belum dipilih...!!!");
             TNoRw.requestFocus();
         }else{
-            var.setform("DlgBilingRalan");
-            kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
-            nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-            dlgrwjl.perawatan.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-            dlgrwjl.perawatan.isCek();
-            dlgrwjl.perawatan.tampil();
-            dlgrwjl.perawatan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-            dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
-            dlgrwjl.perawatan.setAlwaysOnTop(false);
-            dlgrwjl.perawatan.setVisible(true);
+            if(var.getkode().equals("Admin Utama")){
+                var.setform("DlgBilingRalan");
+                kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
+                nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
+                dlgrwjl.perawatan.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
+                dlgrwjl.perawatan.isCek();
+                dlgrwjl.perawatan.tampil();
+                dlgrwjl.perawatan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
+                dlgrwjl.perawatan.setAlwaysOnTop(false);
+                dlgrwjl.perawatan.setVisible(true);
+            }else{
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                }else{ 
+                    var.setform("DlgBilingRalan");
+                    kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
+                    nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
+                    dlgrwjl.perawatan.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
+                    dlgrwjl.perawatan.isCek();
+                    dlgrwjl.perawatan.tampil();
+                    dlgrwjl.perawatan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                    dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
+                    dlgrwjl.perawatan.setAlwaysOnTop(false);
+                    dlgrwjl.perawatan.setVisible(true);                            
+                }
+            }                
         }                            
     }//GEN-LAST:event_MnInputTindakanActionPerformed
 
@@ -3195,16 +3277,32 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private void MnPeriksaRadiologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPeriksaRadiologiActionPerformed
         if(TPasien.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
-        }else{           
-            DlgPeriksaRadiologi periksalab=new DlgPeriksaRadiologi(null,false);
-            periksalab.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-            periksalab.setLocationRelativeTo(internalFrame1);
-            periksalab.emptTeks();
-            periksalab.setNoRm(TNoRw.getText());  
-            periksalab.tampil();
-            periksalab.isCek();
-            periksalab.setAlwaysOnTop(false);
-            periksalab.setVisible(true);
+        }else{   
+            if(var.getkode().equals("Admin Utama")){
+                DlgPeriksaRadiologi periksalab=new DlgPeriksaRadiologi(null,false);
+                periksalab.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                periksalab.setLocationRelativeTo(internalFrame1);
+                periksalab.emptTeks();
+                periksalab.setNoRm(TNoRw.getText());  
+                periksalab.tampil();
+                periksalab.isCek();
+                periksalab.setAlwaysOnTop(false);
+                periksalab.setVisible(true);
+            }else{
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
+                }else{ 
+                    DlgPeriksaRadiologi periksalab=new DlgPeriksaRadiologi(null,false);
+                    periksalab.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                    periksalab.setLocationRelativeTo(internalFrame1);
+                    periksalab.emptTeks();
+                    periksalab.setNoRm(TNoRw.getText());  
+                    periksalab.tampil();
+                    periksalab.isCek();
+                    periksalab.setAlwaysOnTop(false);
+                    periksalab.setVisible(true);                            
+                }
+            }   
         }
     }//GEN-LAST:event_MnPeriksaRadiologiActionPerformed
 

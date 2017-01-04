@@ -35,6 +35,9 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import keuangan.DlgLhtBiaya;
+import keuangan.DlgLhtPiutang;
+import keuangan.Jurnal;
 import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaRadiologi;
 import simrskhanza.DlgDeposit;
@@ -1966,7 +1969,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         panelGlass1.add(jLabel4);
 
         DTPTgl.setForeground(new java.awt.Color(100, 100, 100));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2016 22:57:36" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2016 11:33:23" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -2087,7 +2090,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
 
         DTPTempo.setEditable(false);
         DTPTempo.setForeground(new java.awt.Color(100, 100, 100));
-        DTPTempo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2016" }));
+        DTPTempo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-12-2016" }));
         DTPTempo.setDisplayFormat("dd-MM-yyyy");
         DTPTempo.setName("DTPTempo"); // NOI18N
         DTPTempo.setOpaque(false);

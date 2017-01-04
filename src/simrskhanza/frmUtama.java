@@ -202,6 +202,8 @@ import simrskhanza.DlgAbout;
 import simrskhanza.DlgAbout;
 import simrskhanza.DlgAbout;
 import simrskhanza.DlgAbout;
+import simrskhanza.DlgAbout;
+import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaLab;
@@ -220,6 +222,8 @@ import simrskhanza.DlgCariPeriksaRadiologi;
 import simrskhanza.DlgCariPeriksaRadiologi;
 import simrskhanza.DlgCariPeriksaRadiologi;
 import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariTagihanOperasi;
 import simrskhanza.DlgCariTagihanOperasi;
 import simrskhanza.DlgCariTagihanOperasi;
 import simrskhanza.DlgCariTagihanOperasi;
@@ -238,6 +242,8 @@ import simrskhanza.DlgDeposit;
 import simrskhanza.DlgDeposit;
 import simrskhanza.DlgDeposit;
 import simrskhanza.DlgDeposit;
+import simrskhanza.DlgDeposit;
+import simrskhanza.DlgDpjp;
 import simrskhanza.DlgDpjp;
 import simrskhanza.DlgDpjp;
 import simrskhanza.DlgDpjp;
@@ -256,6 +262,8 @@ import simrskhanza.DlgIGD;
 import simrskhanza.DlgIGD;
 import simrskhanza.DlgIGD;
 import simrskhanza.DlgIGD;
+import simrskhanza.DlgIGD;
+import simrskhanza.DlgIKBBayi;
 import simrskhanza.DlgIKBBayi;
 import simrskhanza.DlgIKBBayi;
 import simrskhanza.DlgIKBBayi;
@@ -274,15 +282,9 @@ import simrskhanza.DlgJadwal;
 import simrskhanza.DlgJadwal;
 import simrskhanza.DlgJadwal;
 import simrskhanza.DlgJadwal;
+import simrskhanza.DlgJadwal;
 import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgKasirRalan;
+import simrskhanza.DlgObatPenyakit;
 import simrskhanza.DlgObatPenyakit;
 import simrskhanza.DlgObatPenyakit;
 import simrskhanza.DlgObatPenyakit;
@@ -301,6 +303,8 @@ import simrskhanza.DlgPasienMati;
 import simrskhanza.DlgPasienMati;
 import simrskhanza.DlgPasienMati;
 import simrskhanza.DlgPasienMati;
+import simrskhanza.DlgPasienMati;
+import simrskhanza.DlgPemberianDiet;
 import simrskhanza.DlgPemberianDiet;
 import simrskhanza.DlgPemberianDiet;
 import simrskhanza.DlgPemberianDiet;
@@ -319,6 +323,8 @@ import simrskhanza.DlgPenelusuranLogin;
 import simrskhanza.DlgPenelusuranLogin;
 import simrskhanza.DlgPenelusuranLogin;
 import simrskhanza.DlgPenelusuranLogin;
+import simrskhanza.DlgPenelusuranLogin;
+import simrskhanza.DlgPenggajian;
 import simrskhanza.DlgPenggajian;
 import simrskhanza.DlgPenggajian;
 import simrskhanza.DlgPenggajian;
@@ -337,6 +343,8 @@ import simrskhanza.DlgResepObat;
 import simrskhanza.DlgResepObat;
 import simrskhanza.DlgResepObat;
 import simrskhanza.DlgResepObat;
+import simrskhanza.DlgResepObat;
+import simrskhanza.DlgResepPulang;
 import simrskhanza.DlgResepPulang;
 import simrskhanza.DlgResepPulang;
 import simrskhanza.DlgResepPulang;
@@ -355,6 +363,8 @@ import simrskhanza.DlgResumePerawatan;
 import simrskhanza.DlgResumePerawatan;
 import simrskhanza.DlgResumePerawatan;
 import simrskhanza.DlgResumePerawatan;
+import simrskhanza.DlgResumePerawatan;
+import simrskhanza.DlgRetensi;
 import simrskhanza.DlgRetensi;
 import simrskhanza.DlgRetensi;
 import simrskhanza.DlgRetensi;
@@ -373,6 +383,7 @@ import simrskhanza.DlgRujuk;
 import simrskhanza.DlgRujuk;
 import simrskhanza.DlgRujuk;
 import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujuk;
 import simrskhanza.DlgRunTeks;
 import simrskhanza.DlgRunTeks;
 import simrskhanza.DlgRunTeks;
@@ -382,6 +393,8 @@ import simrskhanza.DlgRunTeks;
 import simrskhanza.DlgRunTeks;
 import simrskhanza.DlgRunTeks;
 import simrskhanza.DlgRunTeks;
+import simrskhanza.DlgRunTeks;
+import simrskhanza.DlgSirkulasiBerkas;
 import simrskhanza.DlgSirkulasiBerkas;
 import simrskhanza.DlgSirkulasiBerkas;
 import simrskhanza.DlgSirkulasiBerkas;
@@ -394,6 +407,7 @@ import simrskhanza.DlgSirkulasiBerkas;
 import smsui.frmSmsView;
 import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDMedisRusak;
+import tranfusidarah.UTDCekalDarah;
 import tranfusidarah.UTDPenunjangRusak;
 import viabarcode.DlgBarcodeRalan;
 import viabarcode.DlgBarcodeRanap;
@@ -694,6 +708,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnSuplierIPSRS = new widget.ButtonBig();
         btnUTDDonorDarah = new widget.ButtonBig();
         btnMonitoringKlaim = new widget.ButtonBig();
+        btnUTDCekalDarah = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
@@ -3495,7 +3510,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnSuplierIPSRS);
 
         btnUTDDonorDarah.setForeground(new java.awt.Color(40, 70, 50));
-        btnUTDDonorDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001585_blood_drop.png"))); // NOI18N
+        btnUTDDonorDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001706_heart_beat.png"))); // NOI18N
         btnUTDDonorDarah.setText("Donor Darah");
         btnUTDDonorDarah.setIconTextGap(0);
         btnUTDDonorDarah.setName("btnUTDDonorDarah"); // NOI18N
@@ -3520,6 +3535,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnMonitoringKlaim);
 
+        btnUTDCekalDarah.setForeground(new java.awt.Color(40, 70, 50));
+        btnUTDCekalDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
+        btnUTDCekalDarah.setText("Pencekalan Darah");
+        btnUTDCekalDarah.setIconTextGap(0);
+        btnUTDCekalDarah.setName("btnUTDCekalDarah"); // NOI18N
+        btnUTDCekalDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDCekalDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDCekalDarahActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnUTDCekalDarah);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3528,7 +3556,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16/12/2016" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/01/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7308,6 +7336,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnMonitoringKlaimActionPerformed
 
+    private void btnUTDCekalDarahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUTDCekalDarahActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        UTDCekalDarah form=new UTDCekalDarah(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnUTDCekalDarahActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7545,6 +7585,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnToolLab;
     private widget.ButtonBig btnToolRad;
     private widget.ButtonBig btnTracker;
+    private widget.ButtonBig btnUTDCekalDarah;
     private widget.ButtonBig btnUTDDonorDarah;
     private widget.ButtonBig btnUTDMedisRusak;
     private widget.ButtonBig btnUTDPenunjangRusak;
@@ -8489,6 +8530,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getutd_donor()==true){
                 Panelmenu.add(btnUTDDonorDarah); 
+                jmlmenu++;
+            } 
+            
+            if(var.getutd_cekal_darah()==true){
+                Panelmenu.add(btnUTDCekalDarah); 
                 jmlmenu++;
             } 
         }else if(cmbMenu.getSelectedIndex()==13){   
