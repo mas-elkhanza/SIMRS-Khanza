@@ -35,36 +35,48 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode Supplier","Nama Supplier","Alamat Supplier","Kota","No.Telp"};
+        Object[] row={"Kode","Nama Komponen","Lama(Hari)","Jasa Sarana","Paket BHP","KSO","Manajemen","Total","Pembatalan"};
         tabMode=new DefaultTableModel(null,row){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            Class[] types = new Class[]{
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
+                java.lang.Double.class
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
         };
         tbDokter.setModel(tabMode);
 
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(70);
             }else if(i==1){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(180);
             }else if(i==2){
-                column.setPreferredWidth(300);
-            }else if(i==3){
-                column.setPreferredWidth(200);
-            }else if(i==4){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(60);
+            }else{
+                column.setPreferredWidth(80);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Kd.setDocument(new batasInput((byte)5).getKata(Kd));
-        Nm.setDocument(new batasInput((byte)50).getKata(Nm));      
-        Alamat.setDocument(new batasInput((byte)50).getKata(Alamat));  
-        Kota.setDocument(new batasInput((byte)20).getKata(Kota));    
-        Telp.setDocument(new batasInput((byte)13).getOnlyAngka(Telp)); 
+        Kode.setDocument(new batasInput((byte)5).getKata(Kode));
+        Nama.setDocument(new batasInput((byte)70).getKata(Nama));      
+        Lama.setDocument(new batasInput((byte)5).getOnlyAngka(Lama));  
+        JasaSarana.setDocument(new batasInput((byte)10).getOnlyAngka(JasaSarana));  
+        PaketBHP.setDocument(new batasInput((byte)10).getOnlyAngka(PaketBHP));  
+        KSO.setDocument(new batasInput((byte)10).getOnlyAngka(KSO));  
+        Manajemen.setDocument(new batasInput((byte)10).getOnlyAngka(Manajemen));  
+        Total.setDocument(new batasInput((byte)10).getOnlyAngka(Total));  
+        Pembatalan.setDocument(new batasInput((byte)10).getOnlyAngka(Pembatalan));        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -114,24 +126,24 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         PanelInput = new javax.swing.JPanel();
         FormInput = new widget.PanelBiasa();
         label12 = new widget.Label();
-        Kd = new widget.TextBox();
-        Nm = new widget.TextBox();
+        Kode = new widget.TextBox();
+        Nama = new widget.TextBox();
         label18 = new widget.Label();
         label26 = new widget.Label();
-        Telp = new widget.TextBox();
+        Manajemen = new widget.TextBox();
         label31 = new widget.Label();
-        Alamat = new widget.TextBox();
+        Lama = new widget.TextBox();
         label29 = new widget.Label();
-        Kota = new widget.TextBox();
+        KSO = new widget.TextBox();
         label19 = new widget.Label();
         label32 = new widget.Label();
-        Alamat1 = new widget.TextBox();
-        Alamat2 = new widget.TextBox();
+        JasaSarana = new widget.TextBox();
+        PaketBHP = new widget.TextBox();
         label33 = new widget.Label();
         label27 = new widget.Label();
-        Telp1 = new widget.TextBox();
+        Total = new widget.TextBox();
         label20 = new widget.Label();
-        Nm1 = new widget.TextBox();
+        Pembatalan = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         Popup.setName("Popup"); // NOI18N
@@ -425,7 +437,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(660, 190));
+        FormInput.setPreferredSize(new java.awt.Dimension(660, 160));
         FormInput.setLayout(null);
 
         label12.setText("Kode :");
@@ -434,25 +446,25 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         FormInput.add(label12);
         label12.setBounds(0, 12, 105, 23);
 
-        Kd.setName("Kd"); // NOI18N
-        Kd.setPreferredSize(new java.awt.Dimension(207, 23));
-        Kd.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kode.setName("Kode"); // NOI18N
+        Kode.setPreferredSize(new java.awt.Dimension(207, 23));
+        Kode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdKeyPressed(evt);
+                KodeKeyPressed(evt);
             }
         });
-        FormInput.add(Kd);
-        Kd.setBounds(108, 12, 100, 23);
+        FormInput.add(Kode);
+        Kode.setBounds(108, 12, 100, 23);
 
-        Nm.setName("Nm"); // NOI18N
-        Nm.setPreferredSize(new java.awt.Dimension(207, 23));
-        Nm.addKeyListener(new java.awt.event.KeyAdapter() {
+        Nama.setName("Nama"); // NOI18N
+        Nama.setPreferredSize(new java.awt.Dimension(207, 23));
+        Nama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NmKeyPressed(evt);
+                NamaKeyPressed(evt);
             }
         });
-        FormInput.add(Nm);
-        Nm.setBounds(108, 42, 500, 23);
+        FormInput.add(Nama);
+        Nama.setBounds(108, 42, 500, 23);
 
         label18.setText("Nama Komponen :");
         label18.setName("label18"); // NOI18N
@@ -460,31 +472,22 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         FormInput.add(label18);
         label18.setBounds(0, 42, 105, 23);
 
-        label26.setText("Manajemen :");
+        label26.setText("Manajemen : Rp");
         label26.setName("label26"); // NOI18N
         label26.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label26);
         label26.setBounds(70, 123, 100, 23);
 
-        Telp.setName("Telp"); // NOI18N
-        Telp.setPreferredSize(new java.awt.Dimension(207, 23));
-        Telp.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                TelpMouseMoved(evt);
-            }
-        });
-        Telp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                TelpMouseExited(evt);
-            }
-        });
-        Telp.addKeyListener(new java.awt.event.KeyAdapter() {
+        Manajemen.setText("0");
+        Manajemen.setName("Manajemen"); // NOI18N
+        Manajemen.setPreferredSize(new java.awt.Dimension(207, 23));
+        Manajemen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TelpKeyPressed(evt);
+                ManajemenKeyPressed(evt);
             }
         });
-        FormInput.add(Telp);
-        Telp.setBounds(173, 123, 100, 23);
+        FormInput.add(Manajemen);
+        Manajemen.setBounds(173, 123, 95, 23);
 
         label31.setText("Lama(Hari) :");
         label31.setName("label31"); // NOI18N
@@ -492,31 +495,32 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         FormInput.add(label31);
         label31.setBounds(220, 12, 95, 23);
 
-        Alamat.setName("Alamat"); // NOI18N
-        Alamat.setPreferredSize(new java.awt.Dimension(207, 23));
-        Alamat.addKeyListener(new java.awt.event.KeyAdapter() {
+        Lama.setName("Lama"); // NOI18N
+        Lama.setPreferredSize(new java.awt.Dimension(207, 23));
+        Lama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AlamatKeyPressed(evt);
+                LamaKeyPressed(evt);
             }
         });
-        FormInput.add(Alamat);
-        Alamat.setBounds(320, 12, 90, 23);
+        FormInput.add(Lama);
+        Lama.setBounds(320, 12, 45, 23);
 
-        label29.setText("KSO :");
+        label29.setText("KSO : Rp");
         label29.setName("label29"); // NOI18N
         label29.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label29);
-        label29.setBounds(444, 93, 60, 23);
+        label29.setBounds(450, 93, 60, 23);
 
-        Kota.setName("Kota"); // NOI18N
-        Kota.setPreferredSize(new java.awt.Dimension(207, 23));
-        Kota.addKeyListener(new java.awt.event.KeyAdapter() {
+        KSO.setText("0");
+        KSO.setName("KSO"); // NOI18N
+        KSO.setPreferredSize(new java.awt.Dimension(207, 23));
+        KSO.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KotaKeyPressed(evt);
+                KSOKeyPressed(evt);
             }
         });
-        FormInput.add(Kota);
-        Kota.setBounds(508, 93, 100, 23);
+        FormInput.add(KSO);
+        KSO.setBounds(513, 93, 95, 23);
 
         label19.setText("Biaya Pengolahan :");
         label19.setName("label19"); // NOI18N
@@ -524,79 +528,73 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         FormInput.add(label19);
         label19.setBounds(0, 72, 105, 23);
 
-        label32.setText("Jasa Sarana :");
+        label32.setText("Jasa Sarana : Rp");
         label32.setName("label32"); // NOI18N
         label32.setPreferredSize(new java.awt.Dimension(75, 23));
         FormInput.add(label32);
         label32.setBounds(70, 93, 100, 23);
 
-        Alamat1.setName("Alamat1"); // NOI18N
-        Alamat1.setPreferredSize(new java.awt.Dimension(207, 23));
-        Alamat1.addKeyListener(new java.awt.event.KeyAdapter() {
+        JasaSarana.setText("0");
+        JasaSarana.setName("JasaSarana"); // NOI18N
+        JasaSarana.setPreferredSize(new java.awt.Dimension(207, 23));
+        JasaSarana.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Alamat1KeyPressed(evt);
+                JasaSaranaKeyPressed(evt);
             }
         });
-        FormInput.add(Alamat1);
-        Alamat1.setBounds(173, 93, 100, 23);
+        FormInput.add(JasaSarana);
+        JasaSarana.setBounds(173, 93, 95, 23);
 
-        Alamat2.setName("Alamat2"); // NOI18N
-        Alamat2.setPreferredSize(new java.awt.Dimension(207, 23));
-        Alamat2.addKeyListener(new java.awt.event.KeyAdapter() {
+        PaketBHP.setText("0");
+        PaketBHP.setName("PaketBHP"); // NOI18N
+        PaketBHP.setPreferredSize(new java.awt.Dimension(207, 23));
+        PaketBHP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Alamat2KeyPressed(evt);
+                PaketBHPKeyPressed(evt);
             }
         });
-        FormInput.add(Alamat2);
-        Alamat2.setBounds(353, 93, 100, 23);
+        FormInput.add(PaketBHP);
+        PaketBHP.setBounds(358, 93, 95, 23);
 
-        label33.setText("Paket BHP :");
+        label33.setText("Paket BHP : Rp");
         label33.setName("label33"); // NOI18N
         label33.setPreferredSize(new java.awt.Dimension(75, 23));
         FormInput.add(label33);
-        label33.setBounds(270, 93, 80, 23);
+        label33.setBounds(275, 93, 80, 23);
 
-        label27.setText("Total :");
+        label27.setText("Total : Rp");
         label27.setName("label27"); // NOI18N
         label27.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label27);
-        label27.setBounds(270, 123, 80, 23);
+        label27.setBounds(275, 123, 80, 23);
 
-        Telp1.setName("Telp1"); // NOI18N
-        Telp1.setPreferredSize(new java.awt.Dimension(207, 23));
-        Telp1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                Telp1MouseMoved(evt);
-            }
-        });
-        Telp1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                Telp1MouseExited(evt);
-            }
-        });
-        Telp1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Total.setText("0");
+        Total.setName("Total"); // NOI18N
+        Total.setPreferredSize(new java.awt.Dimension(207, 23));
+        Total.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Telp1KeyPressed(evt);
+                TotalKeyPressed(evt);
             }
         });
-        FormInput.add(Telp1);
-        Telp1.setBounds(353, 123, 100, 23);
+        FormInput.add(Total);
+        Total.setBounds(358, 123, 95, 23);
 
-        label20.setText("Biaya Pembatalan :");
+        label20.setText("Biaya Pembatalan : Rp");
         label20.setName("label20"); // NOI18N
         label20.setPreferredSize(new java.awt.Dimension(75, 23));
         FormInput.add(label20);
-        label20.setBounds(0, 153, 105, 23);
+        label20.setBounds(380, 12, 130, 23);
 
-        Nm1.setName("Nm1"); // NOI18N
-        Nm1.setPreferredSize(new java.awt.Dimension(207, 23));
-        Nm1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Pembatalan.setText("0");
+        Pembatalan.setName("Pembatalan"); // NOI18N
+        Pembatalan.setPreferredSize(new java.awt.Dimension(207, 23));
+        Pembatalan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Nm1KeyPressed(evt);
+                PembatalanKeyPressed(evt);
             }
         });
-        FormInput.add(Nm1);
-        Nm1.setBounds(108, 153, 100, 23);
+        FormInput.add(Pembatalan);
+        Pembatalan.setBounds(513, 12, 95, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -672,16 +670,16 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbDokterKeyPressed
 
-    private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyPressed
-       Valid.pindah(evt,Kd,Alamat);
-}//GEN-LAST:event_NmKeyPressed
+    private void NamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaKeyPressed
+       Valid.pindah(evt,Lama,JasaSarana);
+}//GEN-LAST:event_NamaKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Nm.getText().trim().equals("")){
+        if(Nama.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,Kd,"ipsrssuplier","kode_suplier");
+            Valid.hapusTable(tabMode,Kode,"utd_komponen_darah","kode");
             tampil();
             emptTeks();
         }
@@ -696,23 +694,34 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(Kd.getText().trim().equals("")){
-            Valid.textKosong(Kd,"Kode Supplier");
-        }else if(Nm.getText().trim().equals("")){
-            Valid.textKosong(Nm,"Nama Supplier");
-        }else if(Alamat.getText().trim().equals("")){
-            Valid.textKosong(Alamat,"Alamat Supplier");
-        }else if(Telp.getText().trim().equals("")){
-            Valid.textKosong(Telp,"No.Telp");
-        }else if(Kota.getText().trim().equals("")){
-            Valid.textKosong(Kota,"Kota");
+        if(Kode.getText().trim().equals("")){
+            Valid.textKosong(Kode,"Kode");
+        }else if(Nama.getText().trim().equals("")){
+            Valid.textKosong(Nama,"Nama");
+        }else if(Lama.getText().trim().equals("")){
+            Valid.textKosong(Lama,"Lama");
+        }else if(Manajemen.getText().trim().equals("")){
+            Valid.textKosong(Manajemen,"Manajemen");
+        }else if(KSO.getText().trim().equals("")){
+            Valid.textKosong(KSO,"KSO");
+        }else if(PaketBHP.getText().trim().equals("")){
+            Valid.textKosong(PaketBHP,"Paket BHP");
+        }else if(JasaSarana.getText().trim().equals("")){
+            Valid.textKosong(JasaSarana,"Jasa Sarana");
+        }else if(Total.getText().trim().equals("")){
+            Valid.textKosong(Total,"Total");
+        }else if(Pembatalan.getText().trim().equals("")){
+            Valid.textKosong(Pembatalan,"Pembatalan");
         }else{
-            Valid.editTable(tabMode,"ipsrssuplier","kode_suplier","?","kode_suplier=?,nama_suplier=?,alamat=?,kota=?,no_telp=?",6,new String[]{
-                Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()
-            });
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
-
+            if(Sequel.mengedittf("utd_komponen_darah","kode=?","kode=?,nama=?,lama=?,jasa_sarana=?,"+
+                   "paket_bhp=?,kso=?,manajemen=?,total=?,pembatalan=?",10,new String[]{
+                Kode.getText(),Nama.getText(),Lama.getText(),JasaSarana.getText(),PaketBHP.getText(),
+                KSO.getText(),Manajemen.getText(),Total.getText(),Pembatalan.getText(),
+                tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString()
+              })==true){
+                emptTeks();
+                tampil();
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -725,25 +734,12 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
-        if(tabMode.getRowCount()==0){
+        
+        if(tabMode.getRowCount()==0){            
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            String sql="";
-            if(TCari.getText().equals("")){
-                sql="select ipsrssuplier.kode_suplier, ipsrssuplier.nama_suplier, "+
-                    " ipsrssuplier.alamat,ipsrssuplier.kota, ipsrssuplier.no_telp from ipsrssuplier order by ipsrssuplier.kode_suplier";
-            }else if(!TCari.getText().equals("")){
-                sql="select ipsrssuplier.kode_suplier, ipsrssuplier.nama_suplier, "+
-                    " ipsrssuplier.alamat,ipsrssuplier.kota, ipsrssuplier.no_telp from ipsrssuplier "+
-                    " where ipsrssuplier.kode_suplier like '%"+TCari.getText().trim()+"%' or "+
-                    " ipsrssuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or "+
-                    " ipsrssuplier.alamat like '%"+TCari.getText().trim()+"%' or "+
-                    " ipsrssuplier.kota like '%"+TCari.getText().trim()+"%' or "+
-                    " ipsrssuplier.no_telp like '%"+TCari.getText().trim()+"%' order by ipsrssuplier.kode_suplier";
-            } 
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>(); 
                 param.put("namars",var.getnamars());
                 param.put("alamatrs",var.getalamatrs());
@@ -752,9 +748,10 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptSuplier.jrxml","report","::[ Data Suplier ]::",sql,param);            
-        }
-        this.setCursor(Cursor.getDefaultCursor());
+            Valid.MyReport("rptKomponenDarah.jrxml","report","::[ Data Komponen Darah ]::",
+                    "select * from utd_komponen_darah where kode like '%"+TCari.getText().trim()+"%' or nama like '%"+TCari.getText().trim()+"%' order by nama",param);            
+            this.setCursor(Cursor.getDefaultCursor());
+        }        
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -789,22 +786,32 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(Kd.getText().trim().equals("")){
-            Valid.textKosong(Kd,"Kode Supplier");
-        }else if(Nm.getText().trim().equals("")){
-            Valid.textKosong(Nm,"Nama Supplier");
-        }else if(Alamat.getText().trim().equals("")){
-            Valid.textKosong(Alamat,"Alamat Supplier");
-        }else if(Telp.getText().trim().equals("")){
-            Valid.textKosong(Telp,"No.Telp");
-        }else if(Kota.getText().trim().equals("")){
-            Valid.textKosong(Kota,"Kota");
+        if(Kode.getText().trim().equals("")){
+            Valid.textKosong(Kode,"Kode");
+        }else if(Nama.getText().trim().equals("")){
+            Valid.textKosong(Nama,"Nama");
+        }else if(Lama.getText().trim().equals("")){
+            Valid.textKosong(Lama,"Lama");
+        }else if(Manajemen.getText().trim().equals("")){
+            Valid.textKosong(Manajemen,"Manajemen");
+        }else if(KSO.getText().trim().equals("")){
+            Valid.textKosong(KSO,"KSO");
+        }else if(PaketBHP.getText().trim().equals("")){
+            Valid.textKosong(PaketBHP,"Paket BHP");
+        }else if(JasaSarana.getText().trim().equals("")){
+            Valid.textKosong(JasaSarana,"Jasa Sarana");
+        }else if(Total.getText().trim().equals("")){
+            Valid.textKosong(Total,"Total");
+        }else if(Pembatalan.getText().trim().equals("")){
+            Valid.textKosong(Pembatalan,"Pembatalan");
         }else{
-            Sequel.menyimpan("ipsrssuplier","?,?,?,?,?","Kode Supplier",5,new String[]{
-                Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText()        
-            });
-            tampil();
-            emptTeks();
+            if(Sequel.menyimpantf("utd_komponen_darah","?,?,?,?,?,?,?,?,?","Kode",9,new String[]{
+                Kode.getText(),Nama.getText(),Lama.getText(),JasaSarana.getText(),PaketBHP.getText(),
+                KSO.getText(),Manajemen.getText(),Total.getText(),Pembatalan.getText()
+              })==true){
+                emptTeks();
+                tampil();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -812,7 +819,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Telp,BtnBatal);
+            Valid.pindah(evt,Pembatalan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -828,38 +835,42 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         }else{Valid.pindah(evt, BtnSimpan, BtnHapus);}
 }//GEN-LAST:event_BtnBatalKeyPressed
 
-    private void TelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelpKeyPressed
-         Valid.pindah(evt,Kota,BtnSimpan);
-    }//GEN-LAST:event_TelpKeyPressed
+    private void ManajemenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ManajemenKeyPressed
+          if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            isjml();
+        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            isjml();
+            Pembatalan.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            isjml();
+            KSO.requestFocus();
+        }
+    }//GEN-LAST:event_ManajemenKeyPressed
 
-private void AlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatKeyPressed
-        Valid.pindah(evt,Nm,Kota);
-}//GEN-LAST:event_AlamatKeyPressed
+private void LamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LamaKeyPressed
+        Valid.pindah(evt,Kode,Nama);
+}//GEN-LAST:event_LamaKeyPressed
 /*
 private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKeyPressed
     Valid.pindah(evt,BtnCari,Nm);
 }//GEN-LAST:event_TKdKeyPressed
 */
 
-    private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKeyPressed
-        Valid.pindah(evt,Telp,Nm,TCari);
-    }//GEN-LAST:event_KdKeyPressed
+    private void KodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeKeyPressed
+        Valid.pindah(evt,Pembatalan,Lama,TCari);
+    }//GEN-LAST:event_KodeKeyPressed
 
-    private void TelpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TelpMouseExited
-        if(Telp.getText().equals("")){
-            Telp.setText("0");
+    private void KSOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KSOKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            isjml();
+        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            isjml();
+            Manajemen.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            isjml();
+            PaketBHP.requestFocus();
         }
-    }//GEN-LAST:event_TelpMouseExited
-
-    private void TelpMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TelpMouseMoved
-        if(Telp.getText().equals("0")||Telp.getText().equals("0.0")){
-            Telp.setText("");
-        }
-    }//GEN-LAST:event_TelpMouseMoved
-
-    private void KotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KotaKeyPressed
-        Valid.pindah(evt,Alamat,Telp);
-    }//GEN-LAST:event_KotaKeyPressed
+    }//GEN-LAST:event_KSOKeyPressed
 
 private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
   isForm();                
@@ -869,29 +880,37 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
-    private void Alamat1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alamat1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Alamat1KeyPressed
+    private void JasaSaranaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JasaSaranaKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            isjml();
+        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            isjml();
+            PaketBHP.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            isjml();
+            Nama.requestFocus();
+        }
+    }//GEN-LAST:event_JasaSaranaKeyPressed
 
-    private void Alamat2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Alamat2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Alamat2KeyPressed
+    private void PaketBHPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PaketBHPKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            isjml();
+        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            isjml();
+            KSO.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            isjml();
+            JasaSarana.requestFocus();
+        }
+    }//GEN-LAST:event_PaketBHPKeyPressed
 
-    private void Telp1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Telp1MouseMoved
+    private void TotalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Telp1MouseMoved
+    }//GEN-LAST:event_TotalKeyPressed
 
-    private void Telp1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Telp1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Telp1MouseExited
-
-    private void Telp1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Telp1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Telp1KeyPressed
-
-    private void Nm1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Nm1KeyPressed
+    private void PembatalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PembatalanKeyPressed
+       Valid.pindah(evt,Manajemen,BtnSimpan);
+    }//GEN-LAST:event_PembatalanKeyPressed
 
     /**
     * @param args the command line arguments
@@ -910,9 +929,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox Alamat;
-    private widget.TextBox Alamat1;
-    private widget.TextBox Alamat2;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -923,16 +939,19 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox Kd;
-    private widget.TextBox Kota;
+    private widget.TextBox JasaSarana;
+    private widget.TextBox KSO;
+    private widget.TextBox Kode;
     private widget.Label LCount;
-    private widget.TextBox Nm;
-    private widget.TextBox Nm1;
+    private widget.TextBox Lama;
+    private widget.TextBox Manajemen;
+    private widget.TextBox Nama;
+    private widget.TextBox PaketBHP;
     private javax.swing.JPanel PanelInput;
+    private widget.TextBox Pembatalan;
     private javax.swing.JPopupMenu Popup;
     private widget.TextBox TCari;
-    private widget.TextBox Telp;
-    private widget.TextBox Telp1;
+    private widget.TextBox Total;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel2;
     private widget.Label label10;
@@ -959,26 +978,18 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select ipsrssuplier.kode_suplier, ipsrssuplier.nama_suplier, "+
-                    " ipsrssuplier.alamat,ipsrssuplier.kota, ipsrssuplier.no_telp from ipsrssuplier "+
-                    " where ipsrssuplier.kode_suplier like ? or "+
-                    " ipsrssuplier.nama_suplier like ? or "+
-                    " ipsrssuplier.alamat like ? or "+
-                    " ipsrssuplier.kota like ? or "+
-                    " ipsrssuplier.no_telp like ? order by ipsrssuplier.kode_suplier");
+            ps=koneksi.prepareStatement(
+                "select * from utd_komponen_darah where kode like ? or nama like ? order by nama");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1),
-                                   rs.getString(2),
-                                   rs.getString(3),
-                                   rs.getString(4),
-                                   rs.getString(5)});
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),
+                        rs.getDouble(4),rs.getDouble(5),rs.getDouble(6),
+                        rs.getDouble(7),rs.getDouble(8),rs.getDouble(9)
+                    });
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -997,23 +1008,30 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
 
     public void emptTeks() {
-        Kd.setText("");
-        Nm.setText("");
-        Alamat.setText("");
-        Kota.setText("");
-        Telp.setText("0");
+        Kode.setText("");
+        Nama.setText("");
+        Lama.setText("0");
+        JasaSarana.setText("0");
+        PaketBHP.setText("0");
+        KSO.setText("0");
+        Manajemen.setText("0");
+        Total.setText("0");
+        Pembatalan.setText("0");
         
-        Kd.requestFocus();
-        Valid.autoNomer("ipsrssuplier","S",4,Kd);
+        Kode.requestFocus();
     }
 
     private void getData() {
         if(tbDokter.getSelectedRow()!= -1){
-            Kd.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            Nm.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),1).toString());
-            Alamat.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),2).toString());
-            Kota.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString());
-            Telp.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
+            Kode.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+            Nama.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),1).toString());
+            Lama.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),2).toString());
+            JasaSarana.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString());
+            PaketBHP.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
+            KSO.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),5).toString());
+            Manajemen.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString());
+            Total.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString());
+            Pembatalan.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),8).toString());
         }
     }
 
@@ -1035,7 +1053,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,128));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,180));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1045,5 +1063,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             ChkInput.setVisible(true);
         }
     }    
+
+    private void isjml() {
+        if((! JasaSarana.getText().equals(""))&&(! PaketBHP.getText().equals(""))&&(! KSO.getText().equals(""))&&(! Manajemen.getText().equals(""))){
+            Total.setText(Valid.SetAngka2(Double.parseDouble(JasaSarana.getText().trim())+Double.parseDouble(PaketBHP.getText().trim())+Double.parseDouble(KSO.getText().trim())+Double.parseDouble(Manajemen.getText().trim())));
+        }
+    }
  
 }
