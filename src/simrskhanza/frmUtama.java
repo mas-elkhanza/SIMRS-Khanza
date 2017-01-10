@@ -408,6 +408,7 @@ import smsui.frmSmsView;
 import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDMedisRusak;
 import tranfusidarah.UTDCekalDarah;
+import tranfusidarah.UTDKomponenDarah;
 import tranfusidarah.UTDPenunjangRusak;
 import viabarcode.DlgBarcodeRalan;
 import viabarcode.DlgBarcodeRanap;
@@ -709,6 +710,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnUTDDonorDarah = new widget.ButtonBig();
         btnMonitoringKlaim = new widget.ButtonBig();
         btnUTDCekalDarah = new widget.ButtonBig();
+        btnUTDKomponenDarah = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
@@ -3548,6 +3550,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUTDCekalDarah);
 
+        btnUTDKomponenDarah.setForeground(new java.awt.Color(40, 70, 50));
+        btnUTDKomponenDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001686_injection_blood.png"))); // NOI18N
+        btnUTDKomponenDarah.setText("Komponen Darah");
+        btnUTDKomponenDarah.setIconTextGap(0);
+        btnUTDKomponenDarah.setName("btnUTDKomponenDarah"); // NOI18N
+        btnUTDKomponenDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDKomponenDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDKomponenDarahActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnUTDKomponenDarah);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3556,7 +3571,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/01/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/01/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7348,6 +7363,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnUTDCekalDarahActionPerformed
 
+    private void btnUTDKomponenDarahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUTDKomponenDarahActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        UTDKomponenDarah form=new UTDKomponenDarah(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnUTDKomponenDarahActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7587,6 +7614,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnTracker;
     private widget.ButtonBig btnUTDCekalDarah;
     private widget.ButtonBig btnUTDDonorDarah;
+    private widget.ButtonBig btnUTDKomponenDarah;
     private widget.ButtonBig btnUTDMedisRusak;
     private widget.ButtonBig btnUTDPenunjangRusak;
     private widget.ButtonBig btnUser;
@@ -8525,6 +8553,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getutd_penunjang_rusak()==true){
                 Panelmenu.add(btnUTDPenunjangRusak); 
+                jmlmenu++;
+            } 
+            
+            if(var.getutd_komponen_darah()==true){
+                Panelmenu.add(btnUTDKomponenDarah); 
                 jmlmenu++;
             } 
             
