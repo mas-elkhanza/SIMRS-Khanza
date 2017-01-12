@@ -64,7 +64,7 @@ public final class validasi {
     private PreparedStatement ps;
     private ResultSet rs;
     private final Calendar now = Calendar.getInstance();
-    private final int year=(now.get(Calendar.YEAR)+1);
+    private final int year=(now.get(Calendar.YEAR));
     
     public validasi(){super();};
 
