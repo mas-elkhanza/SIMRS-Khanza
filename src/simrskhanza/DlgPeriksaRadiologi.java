@@ -105,8 +105,8 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(75);
             }else {
-               // column.setMinWidth(0);
-                //column.setMaxWidth(0);
+               column.setMinWidth(0);
+               column.setMaxWidth(0);
             }
         }
         tbPemeriksaan.setDefaultRenderer(Object.class, new WarnaTable());
