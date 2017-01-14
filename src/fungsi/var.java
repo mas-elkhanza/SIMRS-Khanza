@@ -49,7 +49,8 @@ public final class var {
             sirkulasi_obat2=false,edit_registrasi=false,bpjs_referensi_diagnosa=false,bpjs_referensi_poli=false,industrifarmasi=false,harian_js=false,bulanan_js=false,
             harian_paket_bhp=false,bulanan_paket_bhp=false,piutang_pasien2=false,bpjs_referensi_faskes=false,bpjs_sep=false,pengambilan_utd=false,tarif_utd=false,
             pengambilan_utd2=false,utd_medis_rusak=false,pengambilan_penunjang_utd=false,pengambilan_penunjang_utd2=false,utd_penunjang_rusak=false,
-            suplier_penunjang=false,utd_donor=false,bpjs_monitoring_klaim=false,utd_cekal_darah=false,utd_komponen_darah=false,utd_stok_darah=false;
+            suplier_penunjang=false,utd_donor=false,bpjs_monitoring_klaim=false,utd_cekal_darah=false,utd_komponen_darah=false,utd_stok_darah=false,
+            utd_pemisahan_darah=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -271,6 +272,7 @@ public final class var {
                         var.utd_cekal_darah=true;
                         var.utd_komponen_darah=true;
                         var.utd_stok_darah=true;
+                        var.utd_pemisahan_darah=true;
                     }else if(rs.getRow()>=1){
                         var.kode="Admin Utama";
                         var.penyakit=true;
@@ -473,6 +475,7 @@ public final class var {
                         var.utd_cekal_darah=true;
                         var.utd_komponen_darah=true;
                         var.utd_stok_darah=true;
+                        var.utd_pemisahan_darah=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -677,6 +680,7 @@ public final class var {
                         var.utd_cekal_darah=rs2.getBoolean("utd_cekal_darah");
                         var.utd_komponen_darah=rs2.getBoolean("utd_komponen_darah");
                         var.utd_stok_darah=rs2.getBoolean("utd_stok_darah");
+                        var.utd_pemisahan_darah=rs2.getBoolean("utd_pemisahan_darah");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -879,6 +883,7 @@ public final class var {
                         var.utd_cekal_darah=false;
                         var.utd_komponen_darah=false;
                         var.utd_stok_darah=false;
+                        var.utd_pemisahan_darah=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1123,4 +1128,5 @@ public final class var {
     public static boolean getutd_cekal_darah(){return var.utd_cekal_darah;}  
     public static boolean getutd_komponen_darah(){return var.utd_komponen_darah;}  
     public static boolean getutd_stok_darah(){return var.utd_stok_darah;}  
+    public static boolean getutd_pemisahan_darah(){return var.utd_pemisahan_darah;}  
 }

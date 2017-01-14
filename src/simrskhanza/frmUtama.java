@@ -524,6 +524,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnUTDCekalDarah = new widget.ButtonBig();
         btnUTDKomponenDarah = new widget.ButtonBig();
         btnUTDStokDarah = new widget.ButtonBig();
+        btnUTDPemisahanDarah = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
@@ -3389,6 +3390,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUTDStokDarah);
 
+        btnUTDPemisahanDarah.setForeground(new java.awt.Color(40, 70, 50));
+        btnUTDPemisahanDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
+        btnUTDPemisahanDarah.setText("Pemisahan Darah");
+        btnUTDPemisahanDarah.setIconTextGap(0);
+        btnUTDPemisahanDarah.setName("btnUTDPemisahanDarah"); // NOI18N
+        btnUTDPemisahanDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDPemisahanDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDPemisahanDarahActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnUTDPemisahanDarah);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3397,7 +3411,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10/01/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/01/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7213,6 +7227,10 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnUTDStokDarahActionPerformed
 
+    private void btnUTDPemisahanDarahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUTDPemisahanDarahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUTDPemisahanDarahActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7454,6 +7472,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnUTDDonorDarah;
     private widget.ButtonBig btnUTDKomponenDarah;
     private widget.ButtonBig btnUTDMedisRusak;
+    private widget.ButtonBig btnUTDPemisahanDarah;
     private widget.ButtonBig btnUTDPenunjangRusak;
     private widget.ButtonBig btnUTDStokDarah;
     private widget.ButtonBig btnUser;
@@ -8407,6 +8426,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getutd_cekal_darah()==true){
                 Panelmenu.add(btnUTDCekalDarah); 
+                jmlmenu++;
+            } 
+            
+            if(var.getutd_pemisahan_darah()==true){
+                Panelmenu.add(btnUTDPemisahanDarah); 
                 jmlmenu++;
             } 
             
