@@ -1059,6 +1059,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             } 
         }
         
+        kodebarang=null;
+        namabarang=null;
+        satuan=null;
+        hbeli=null;
+        total=null;
+        jumlah=null;
+        stokasal=null;
+        
         kodebarang=new String[jml];
         namabarang=new String[jml];
         satuan=new String[jml];

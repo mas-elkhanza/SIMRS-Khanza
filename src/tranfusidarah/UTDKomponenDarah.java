@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class UTDKomponenDarah extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
+    private final DefaultTableModel tabModeKomponen;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -35,8 +35,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode","Nama Komponen","Lama(Hari)","Jasa Sarana","Paket BHP","KSO","Manajemen","Total","Pembatalan"};
-        tabMode=new DefaultTableModel(null,row){
+        tabModeKomponen=new DefaultTableModel(null,new String[]{"Kode","Nama Komponen","Lama(Hari)","Jasa Sarana","Paket BHP","KSO","Manajemen","Total","Pembatalan"}){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
             Class[] types = new Class[]{
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
@@ -49,13 +48,13 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
                 return types[columnIndex];
             }
         };
-        tbDokter.setModel(tabMode);
+        tbKomponen.setModel(tabModeKomponen);
 
-        tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
-        tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbKomponen.setPreferredScrollableViewportSize(new Dimension(800,800));
+        tbKomponen.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 9; i++) {
-            TableColumn column = tbDokter.getColumnModel().getColumn(i);
+            TableColumn column = tbKomponen.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
             }else if(i==1){
@@ -66,7 +65,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        tbKomponen.setDefaultRenderer(Object.class, new WarnaTable());
 
         Kode.setDocument(new batasInput((byte)5).getKata(Kode));
         Nama.setDocument(new batasInput((byte)70).getKata(Nama));      
@@ -122,7 +121,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         scrollPane1 = new widget.ScrollPane();
-        tbDokter = new widget.Table();
+        tbKomponen = new widget.Table();
         PanelInput = new javax.swing.JPanel();
         FormInput = new widget.PanelBiasa();
         label12 = new widget.Label();
@@ -403,8 +402,8 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
-        tbDokter.setAutoCreateRowSorter(true);
-        tbDokter.setModel(new javax.swing.table.DefaultTableModel(
+        tbKomponen.setAutoCreateRowSorter(true);
+        tbKomponen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -415,20 +414,20 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbDokter.setComponentPopupMenu(Popup);
-        tbDokter.setName("tbDokter"); // NOI18N
-        tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbKomponen.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKomponen.setComponentPopupMenu(Popup);
+        tbKomponen.setName("tbKomponen"); // NOI18N
+        tbKomponen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbDokterMouseClicked(evt);
+                tbKomponenMouseClicked(evt);
             }
         });
-        tbDokter.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbKomponen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbDokterKeyPressed(evt);
+                tbKomponenKeyPressed(evt);
             }
         });
-        scrollPane1.setViewportView(tbDokter);
+        scrollPane1.setViewportView(tbKomponen);
 
         internalFrame1.add(scrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -634,7 +633,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            tbDokter.requestFocus();
+            tbKomponen.requestFocus();
         }
 }//GEN-LAST:event_TCariKeyPressed
 
@@ -650,17 +649,17 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_BtnCariKeyPressed
 
-    private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDokterMouseClicked
-        if(tabMode.getRowCount()!=0){
+    private void tbKomponenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKomponenMouseClicked
+        if(tabModeKomponen.getRowCount()!=0){
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
             }
         }
-}//GEN-LAST:event_tbDokterMouseClicked
+}//GEN-LAST:event_tbKomponenMouseClicked
 
-    private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDokterKeyPressed
-        if(tabMode.getRowCount()!=0){
+    private void tbKomponenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKomponenKeyPressed
+        if(tabModeKomponen.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
                     getData();
@@ -668,7 +667,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
                 }
             }
         }
-}//GEN-LAST:event_tbDokterKeyPressed
+}//GEN-LAST:event_tbKomponenKeyPressed
 
     private void NamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaKeyPressed
        Valid.pindah(evt,Lama,JasaSarana);
@@ -677,9 +676,9 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(Nama.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
-            tbDokter.requestFocus();
+            tbKomponen.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,Kode,"utd_komponen_darah","kode");
+            Valid.hapusTable(tabModeKomponen,Kode,"utd_komponen_darah","kode");
             tampil();
             emptTeks();
         }
@@ -717,7 +716,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
                    "paket_bhp=?,kso=?,manajemen=?,total=?,pembatalan=?",10,new String[]{
                 Kode.getText(),Nama.getText(),Lama.getText(),JasaSarana.getText(),PaketBHP.getText(),
                 KSO.getText(),Manajemen.getText(),Total.getText(),Pembatalan.getText(),
-                tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString()
+                tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),0).toString()
               })==true){
                 emptTeks();
                 tampil();
@@ -735,10 +734,10 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         
-        if(tabMode.getRowCount()==0){            
+        if(tabModeKomponen.getRowCount()==0){            
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
+        }else if(tabModeKomponen.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>(); 
                 param.put("namars",var.getnamars());
@@ -972,11 +971,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JMenuItem ppGanti;
     private javax.swing.JMenuItem ppHapus;
     private widget.ScrollPane scrollPane1;
-    private widget.Table tbDokter;
+    private widget.Table tbKomponen;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        Valid.tabelKosong(tabMode);
+        Valid.tabelKosong(tabModeKomponen);
         try{
             ps=koneksi.prepareStatement(
                 "select * from utd_komponen_darah where kode like ? or nama like ? order by nama");
@@ -985,7 +984,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{
+                    tabModeKomponen.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),
                         rs.getDouble(4),rs.getDouble(5),rs.getDouble(6),
                         rs.getDouble(7),rs.getDouble(8),rs.getDouble(9)
@@ -1004,7 +1003,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        LCount.setText(""+tabMode.getRowCount());
+        LCount.setText(""+tabModeKomponen.getRowCount());
     }
 
     public void emptTeks() {
@@ -1022,21 +1021,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
 
     private void getData() {
-        if(tbDokter.getSelectedRow()!= -1){
-            Kode.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            Nama.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),1).toString());
-            Lama.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),2).toString());
-            JasaSarana.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString());
-            PaketBHP.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
-            KSO.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),5).toString());
-            Manajemen.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString());
-            Total.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString());
-            Pembatalan.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),8).toString());
+        if(tbKomponen.getSelectedRow()!= -1){
+            Kode.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),0).toString());
+            Nama.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),1).toString());
+            Lama.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),2).toString());
+            JasaSarana.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),3).toString());
+            PaketBHP.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),4).toString());
+            KSO.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),5).toString());
+            Manajemen.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),6).toString());
+            Total.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),7).toString());
+            Pembatalan.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),8).toString());
         }
     }
 
     public JTable getTable(){
-        return tbDokter;
+        return tbKomponen;
     }
     
     public void isCek(){
