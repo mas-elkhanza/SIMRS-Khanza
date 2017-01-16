@@ -110,6 +110,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
                     NamaKomponen.setText(komponen.getTable().getValueAt(komponen.getTable().getSelectedRow(),1).toString());
                     KodeKomponen.requestFocus();
                     cal = Calendar.getInstance();
+                    cal.setTime(Aftap.getDate());
                     cal.add( Calendar.DATE,Integer.parseInt(komponen.getTable().getValueAt(komponen.getTable().getSelectedRow(),2).toString()));
                     sdf = new SimpleDateFormat("yyyy-MM-dd");
                     Valid.SetTgl(Kadaluarsa,sdf.format(cal.getTime()));

@@ -13,6 +13,8 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -30,6 +32,8 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
     private PreparedStatement psdonor,pskomponen,ps,ps2;
     private ResultSet rs,rs2;
     private int i,index=0,row=0,jml=0;
+    private Calendar cal;
+    private SimpleDateFormat sdf;
     private boolean[] pilih; 
     private String[] kodebarang,namabarang,jumlah,satuan,stokasal,hbeli,total;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
@@ -124,13 +128,13 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,row){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}            
         };
-        tbDokter.setModel(tabMode);
+        tbPemisahan.setModel(tabMode);
 
-        tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
-        tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbPemisahan.setPreferredScrollableViewportSize(new Dimension(800,800));
+        tbPemisahan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 12; i++) {
-            TableColumn column = tbDokter.getColumnModel().getColumn(i);
+            TableColumn column = tbPemisahan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
             }else if(i==1){
@@ -157,7 +161,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        tbPemisahan.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeKomponen=new DefaultTableModel(null,new String[]{"P","Kode","Nama Komponen","Lama(Hari)"}){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
@@ -251,6 +255,12 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
                 @Override
                 public void changedUpdate(DocumentEvent e) {tampilKomponen();}
             });
+            
+            TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+            TCariMedis.setDocument(new batasInput((byte)100).getKata(TCariMedis));
+            TCariNonMedis.setDocument(new batasInput((byte)100).getKata(TCariNonMedis));
+            Komponen.setDocument(new batasInput((byte)100).getKata(Komponen));
+            KodePetugas.setDocument(new batasInput((byte)20).getKata(KodePetugas));
         }
 
     }
@@ -302,6 +312,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         tbKomponen = new widget.Table();
         btnTambahKomponen = new widget.Button();
         Komponen = new widget.TextBox();
+        BtnAllKomponen = new widget.Button();
         panelisi3 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -310,9 +321,9 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         panelisi2 = new widget.panelisi();
         jLabel20 = new widget.Label();
-        TanggalCari2 = new widget.Tanggal();
-        jLabel21 = new widget.Label();
         TanggalCari1 = new widget.Tanggal();
+        jLabel21 = new widget.Label();
+        TanggalCari2 = new widget.Tanggal();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -324,7 +335,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         LCount = new widget.Label();
         BtnKeluar = new widget.Button();
         scrollPane1 = new widget.ScrollPane();
-        tbDokter = new widget.Table();
+        tbPemisahan = new widget.Table();
 
         Popup.setName("Popup"); // NOI18N
 
@@ -400,11 +411,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
                 BtnCari2ActionPerformed(evt);
             }
         });
-        BtnCari2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCari2KeyPressed(evt);
-            }
-        });
         panelisi6.add(BtnCari2);
 
         BtnAll1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
@@ -415,11 +421,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         BtnAll1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAll1ActionPerformed(evt);
-            }
-        });
-        BtnAll1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAll1KeyPressed(evt);
             }
         });
         panelisi6.add(BtnAll1);
@@ -484,11 +485,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
                 BtnCari3ActionPerformed(evt);
             }
         });
-        BtnCari3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCari3KeyPressed(evt);
-            }
-        });
         panelisi7.add(BtnCari3);
 
         BtnAll2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
@@ -499,11 +495,6 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         BtnAll2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAll2ActionPerformed(evt);
-            }
-        });
-        BtnAll2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAll2KeyPressed(evt);
             }
         });
         panelisi7.add(BtnAll2);
@@ -544,6 +535,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         panelisi4.add(label34);
         label34.setBounds(0, 12, 75, 23);
 
+        NomorDonor.setEditable(false);
         NomorDonor.setHighlighter(null);
         NomorDonor.setName("NomorDonor"); // NOI18N
         NomorDonor.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -561,7 +553,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         label32.setBounds(220, 12, 57, 23);
 
         Tanggal.setEditable(false);
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-01-2017" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2017" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -640,7 +632,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
             }
         });
         panelisi4.add(BtnCariKomponen);
-        BtnCariKomponen.setBounds(449, 72, 28, 23);
+        BtnCariKomponen.setBounds(418, 72, 28, 23);
 
         Scroll3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll3.setName("Scroll3"); // NOI18N
@@ -678,7 +670,20 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
             }
         });
         panelisi4.add(Komponen);
-        Komponen.setBounds(78, 72, 368, 23);
+        Komponen.setBounds(78, 72, 337, 23);
+
+        BtnAllKomponen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAllKomponen.setMnemonic('2');
+        BtnAllKomponen.setToolTipText("Alt+2");
+        BtnAllKomponen.setName("BtnAllKomponen"); // NOI18N
+        BtnAllKomponen.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAllKomponen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllKomponenActionPerformed(evt);
+            }
+        });
+        panelisi4.add(BtnAllKomponen);
+        BtnAllKomponen.setBounds(449, 72, 28, 23);
 
         internalFrame2.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -710,6 +715,11 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         BtnBatal.setToolTipText("Alt+B");
         BtnBatal.setName("BtnBatal"); // NOI18N
         BtnBatal.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBatalActionPerformed(evt);
+            }
+        });
         panelisi3.add(BtnBatal);
 
         BtnTutup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -757,14 +767,14 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         jLabel20.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi2.add(jLabel20);
 
-        TanggalCari2.setEditable(false);
-        TanggalCari2.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-01-2017" }));
-        TanggalCari2.setDisplayFormat("dd-MM-yyyy");
-        TanggalCari2.setName("TanggalCari2"); // NOI18N
-        TanggalCari2.setOpaque(false);
-        TanggalCari2.setPreferredSize(new java.awt.Dimension(95, 23));
-        panelisi2.add(TanggalCari2);
+        TanggalCari1.setEditable(false);
+        TanggalCari1.setForeground(new java.awt.Color(50, 70, 50));
+        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2017" }));
+        TanggalCari1.setDisplayFormat("dd-MM-yyyy");
+        TanggalCari1.setName("TanggalCari1"); // NOI18N
+        TanggalCari1.setOpaque(false);
+        TanggalCari1.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelisi2.add(TanggalCari1);
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("s.d");
@@ -772,14 +782,14 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         jLabel21.setPreferredSize(new java.awt.Dimension(24, 23));
         panelisi2.add(jLabel21);
 
-        TanggalCari1.setEditable(false);
-        TanggalCari1.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-01-2017" }));
-        TanggalCari1.setDisplayFormat("dd-MM-yyyy");
-        TanggalCari1.setName("TanggalCari1"); // NOI18N
-        TanggalCari1.setOpaque(false);
-        TanggalCari1.setPreferredSize(new java.awt.Dimension(95, 23));
-        panelisi2.add(TanggalCari1);
+        TanggalCari2.setEditable(false);
+        TanggalCari2.setForeground(new java.awt.Color(50, 70, 50));
+        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2017" }));
+        TanggalCari2.setDisplayFormat("dd-MM-yyyy");
+        TanggalCari2.setName("TanggalCari2"); // NOI18N
+        TanggalCari2.setOpaque(false);
+        TanggalCari2.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelisi2.add(TanggalCari2);
 
         label9.setText("Key Word :");
         label9.setName("label9"); // NOI18N
@@ -909,8 +919,8 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
-        tbDokter.setAutoCreateRowSorter(true);
-        tbDokter.setModel(new javax.swing.table.DefaultTableModel(
+        tbPemisahan.setAutoCreateRowSorter(true);
+        tbPemisahan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -921,20 +931,20 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbDokter.setComponentPopupMenu(Popup);
-        tbDokter.setName("tbDokter"); // NOI18N
-        tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbPemisahan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPemisahan.setComponentPopupMenu(Popup);
+        tbPemisahan.setName("tbPemisahan"); // NOI18N
+        tbPemisahan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbDokterMouseClicked(evt);
+                tbPemisahanMouseClicked(evt);
             }
         });
-        tbDokter.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbPemisahan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbDokterKeyPressed(evt);
+                tbPemisahanKeyPressed(evt);
             }
         });
-        scrollPane1.setViewportView(tbDokter);
+        scrollPane1.setViewportView(tbPemisahan);
 
         internalFrame1.add(scrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -951,7 +961,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            tbDokter.requestFocus();
+            tbPemisahan.requestFocus();
         }
 }//GEN-LAST:event_TCariKeyPressed
 
@@ -967,16 +977,16 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_BtnCariKeyPressed
 
-    private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDokterMouseClicked
+    private void tbPemisahanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPemisahanMouseClicked
         if(tabMode.getRowCount()!=0){
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
             }
         }
-}//GEN-LAST:event_tbDokterMouseClicked
+}//GEN-LAST:event_tbPemisahanMouseClicked
 
-    private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDokterKeyPressed
+    private void tbPemisahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPemisahanKeyPressed
         if(tabMode.getRowCount()!=0){
             if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
                 try {
@@ -985,7 +995,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
                 }
             }
         }
-}//GEN-LAST:event_tbDokterKeyPressed
+}//GEN-LAST:event_tbPemisahanKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
 
@@ -1047,14 +1057,15 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
-        }else if(tbDokter.getSelectedRow()<= -1){
+        }else if(tbPemisahan.getSelectedRow()<= -1){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data darah yang madu dipisahkan komponennya..!!");
         }else{
-            if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("")){
-                NomorDonor.setText(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+            if(!tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
+                NomorDonor.setText(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
                 DlgInput.setSize(internalFrame1.getWidth()-40, internalFrame1.getHeight()-40);
                 DlgInput.setLocationRelativeTo(internalFrame1);
                 DlgInput.setVisible(true);
+                emptTeks();
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf,Pilih pada nomor donor...!!!!");
             } 
@@ -1095,18 +1106,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         tampilMedis();
     }//GEN-LAST:event_BtnCari2ActionPerformed
 
-    private void BtnCari2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCari2KeyPressed
-
     private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
         TCariMedis.setText("");
         tampilMedis();
     }//GEN-LAST:event_BtnAll1ActionPerformed
-
-    private void BtnAll1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAll1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAll1KeyPressed
 
     private void tbMedisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMedisMouseClicked
 
@@ -1146,18 +1149,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         tampilNonMedis();
     }//GEN-LAST:event_BtnCari3ActionPerformed
 
-    private void BtnCari3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCari3KeyPressed
-
     private void BtnAll2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll2ActionPerformed
         TCariNonMedis.setText("");
         tampilNonMedis();
     }//GEN-LAST:event_BtnAll2ActionPerformed
-
-    private void BtnAll2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAll2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAll2KeyPressed
 
     private void tbNonMedisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNonMedisMouseClicked
         // TODO add your handling code here:
@@ -1242,7 +1237,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_tbKomponenKeyPressed
 
     private void btnTambahKomponenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahKomponenActionPerformed
-        
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        UTDKomponenDarah form=new UTDKomponenDarah(null,true);
+        form.isCek();
+        form.setSize(internalFrame2.getWidth(), internalFrame2.getHeight());
+        form.setLocationRelativeTo(internalFrame2);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnTambahKomponenActionPerformed
 
     private void KomponenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KomponenKeyPressed
@@ -1272,8 +1273,53 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        // TODO add your handling code here:
+        jml=0;
+        for(i=0;i<tbKomponen.getRowCount();i++){
+            if(tbKomponen.getValueAt(i,0).toString().equals("true")){
+                jml++;
+            }
+        }
+        if(NomorDonor.getText().trim().equals("")){
+            Valid.textKosong(NomorDonor,"Nomor Donor");
+        }else if(KodePetugas.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
+            Valid.textKosong(KodePetugas,"Petugas");
+        }else if(jml==0){
+            Valid.textKosong(Komponen,"Data Komponen Darah");
+        }else{            
+            if(Sequel.menyimpantf("utd_pemisahan_komponen","?,?,?,?","Nomor Donor",4,new String[]{
+                NomorDonor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Dinas.getSelectedItem().toString(),KodePetugas.getText()
+            })==true){
+                for(i=0;i<row;i++){
+                    if(tbKomponen.getValueAt(i,0).toString().equals("true")){
+                        cal = Calendar.getInstance();
+                        cal.setTime(Tanggal.getDate());
+                        cal.add( Calendar.DATE,Integer.parseInt(tbKomponen.getValueAt(i,2).toString()));
+                        sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        if(Sequel.menyimpantf2("utd_detail_pemisahan_komponen","?,?,?,?","No.Kantong",4,new String[]{
+                            NomorDonor.getText(),tbKomponen.getValueAt(i,1).toString()+NomorDonor.getText(),
+                            tbKomponen.getValueAt(i,1).toString(),sdf.format(cal.getTime())
+                        })==true){
+                            Sequel.menyimpan("utd_stok_darah","?,?,?,?,?,?,?,?","Kode",8,new String[]{
+                                tbKomponen.getValueAt(i,1).toString()+NomorDonor.getText(),
+                                tbKomponen.getValueAt(i,1).toString(),tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),7).toString(),
+                                tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),8).toString(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
+                                sdf.format(cal.getTime()),"Produksi Sendiri","Ada"
+                            });
+                        }
+                    } 
+                }
+            }
+        }
     }//GEN-LAST:event_BtnSimpanActionPerformed
+
+    private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
+        emptTeks();
+    }//GEN-LAST:event_BtnBatalActionPerformed
+
+    private void BtnAllKomponenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllKomponenActionPerformed
+        Komponen.setText("");
+        tampilKomponen();
+    }//GEN-LAST:event_BtnAllKomponenActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1295,6 +1341,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnAll;
     private widget.Button BtnAll1;
     private widget.Button BtnAll2;
+    private widget.Button BtnAllKomponen;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
     private widget.Button BtnCari2;
@@ -1349,10 +1396,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.panelisi panelisi7;
     private javax.swing.JMenuItem ppGanti;
     private widget.ScrollPane scrollPane1;
-    private widget.Table tbDokter;
     private widget.Table tbKomponen;
     private widget.Table tbMedis;
     private widget.Table tbNonMedis;
+    private widget.Table tbPemisahan;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
@@ -1415,23 +1462,39 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
 
     public void emptTeks() {
+        KodePetugas.setText("");
+        NamaPetugas.setText("");
+        Komponen.setText("");
+        TCariMedis.setText("");
+        TCariNonMedis.setText("");
+        Tanggal.requestFocus();
+        for(index=0;index<tbMedis.getRowCount();index++){   
+            tbMedis.setValueAt(null,index,0);        
+        }
         
+        for(index=0;index<tbNonMedis.getRowCount();index++){   
+            tbNonMedis.setValueAt(null,index,0);        
+        }
+        
+        for(index=0;index<tbKomponen.getRowCount();index++){   
+            tbKomponen.setValueAt(false,index,0);        
+        }
     }
 
     private void getData() {
-        if(tbDokter.getSelectedRow()!= -1){
+        if(tbPemisahan.getSelectedRow()!= -1){
             
         }
     }
 
     public JTable getTable(){
-        return tbDokter;
+        return tbPemisahan;
     }
     
     public void isCek(){
         BtnTambah.setEnabled(var.getutd_pemisahan_darah());
         BtnPrint.setEnabled(var.getutd_pemisahan_darah());
-        
+        btnTambahKomponen.setEnabled(var.getutd_komponen_darah());
         ppGanti.setEnabled(var.getutd_pemisahan_darah());
     }
     
