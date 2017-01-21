@@ -67,8 +67,8 @@ public class DlgJurnal extends javax.swing.JDialog {
         NoBukti.setDocument(new batasInput((byte)20).getKata(NoBukti));
         Ktg.setDocument(new batasInput((byte)100).getKata(Ktg));
         kdrek.setDocument(new batasInput((byte)15).getKata(kdrek));
-        debet.setDocument(new batasInput((byte)15).getOnlyAngka(debet));
-        kredit.setDocument(new batasInput((byte)15).getOnlyAngka(kredit));     
+        debet.setDocument(new batasInput((byte)15).getKata(debet));
+        kredit.setDocument(new batasInput((byte)15).getKata(kredit));     
         
         rekening.addWindowListener(new WindowListener() {
             @Override

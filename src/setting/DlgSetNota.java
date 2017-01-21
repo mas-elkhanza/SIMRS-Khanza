@@ -32,7 +32,7 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public class DlgSetNota extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabMode2;
+    private final DefaultTableModel tabMode,tabMode2,tabMode3;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -86,8 +86,26 @@ public class DlgSetNota extends javax.swing.JDialog {
                 column.setPreferredWidth(250);
             }
         }
-
         tbAdmin2.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabMode3=new DefaultTableModel(null,new Object[]{"Parameter","Nilai"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+
+        tbAdmin3.setModel(tabMode3);
+        tbAdmin3.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbAdmin3.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 2; i++) {
+            TableColumn column = tbAdmin3.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(250);
+            }else{
+                column.setPreferredWidth(250);
+            }
+        }
+
+        tbAdmin3.setDefaultRenderer(Object.class, new WarnaTable());
 
         NotaRalan.setDocument(new batasInput((byte)11).getKata(NotaRalan));
         KwitansiRalan.setDocument(new batasInput((byte)11).getKata(KwitansiRalan));
@@ -98,11 +116,15 @@ public class DlgSetNota extends javax.swing.JDialog {
         NotaLab.setDocument(new batasInput((byte)11).getKata(NotaLab));        
         NamaService.setDocument(new batasInput((byte)100).getKata(NamaService));
         BesarBiaya.setDocument(new batasInput((byte)5).getKata(BesarBiaya));
+        NamaService1.setDocument(new batasInput((byte)100).getKata(NamaService));
+        BesarBiaya1.setDocument(new batasInput((byte)5).getKata(BesarBiaya));
         
         ChkInput.setSelected(false);
         isForm();
         ChkInput2.setSelected(false);
         isForm2();
+        ChkInput3.setSelected(false);
+        isForm3();
         
     }
 
@@ -203,6 +225,33 @@ public class DlgSetNota extends javax.swing.JDialog {
         chkRetur = new widget.CekBox();
         chkPotongan = new widget.CekBox();
         jLabel35 = new widget.Label();
+        internalFrame4 = new widget.InternalFrame();
+        Scroll2 = new widget.ScrollPane();
+        tbAdmin3 = new widget.Table();
+        PanelInput3 = new javax.swing.JPanel();
+        ChkInput3 = new widget.CekBox();
+        FormInput3 = new widget.panelisi();
+        jLabel32 = new widget.Label();
+        NamaService1 = new widget.TextBox();
+        jLabel36 = new widget.Label();
+        BesarBiaya1 = new widget.TextBox();
+        jLabel37 = new widget.Label();
+        chkLaborat1 = new widget.CekBox();
+        chkRadiologi1 = new widget.CekBox();
+        chkOperasi1 = new widget.CekBox();
+        chkObat1 = new widget.CekBox();
+        chkRanapDokter1 = new widget.CekBox();
+        chkRanapParamedis1 = new widget.CekBox();
+        chkRalanDokter1 = new widget.CekBox();
+        chkRalanParamedis1 = new widget.CekBox();
+        chkTambahan1 = new widget.CekBox();
+        chkKamar1 = new widget.CekBox();
+        chkRegistrasi1 = new widget.CekBox();
+        chkHarian1 = new widget.CekBox();
+        chkResepPulang1 = new widget.CekBox();
+        chkRetur1 = new widget.CekBox();
+        chkPotongan1 = new widget.CekBox();
+        jLabel38 = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1068,7 +1117,314 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         internalFrame3.add(PanelInput2, java.awt.BorderLayout.PAGE_START);
 
-        TabSetting.addTab(".: Biaya Service Rawat Inap  ", internalFrame3);
+        TabSetting.addTab(".: Biaya Service Rawat Inap Non Piutang ", internalFrame3);
+
+        internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame4.setBorder(null);
+        internalFrame4.setName("internalFrame4"); // NOI18N
+        internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll2.setName("Scroll2"); // NOI18N
+        Scroll2.setOpaque(true);
+
+        tbAdmin3.setAutoCreateRowSorter(true);
+        tbAdmin3.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbAdmin3.setName("tbAdmin3"); // NOI18N
+        tbAdmin3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbAdmin3MouseClicked(evt);
+            }
+        });
+        tbAdmin3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbAdmin3KeyPressed(evt);
+            }
+        });
+        Scroll2.setViewportView(tbAdmin3);
+
+        internalFrame4.add(Scroll2, java.awt.BorderLayout.CENTER);
+
+        PanelInput3.setName("PanelInput3"); // NOI18N
+        PanelInput3.setOpaque(false);
+        PanelInput3.setLayout(new java.awt.BorderLayout(1, 1));
+
+        ChkInput3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput3.setMnemonic('I');
+        ChkInput3.setText(".: Input Data");
+        ChkInput3.setToolTipText("Alt+I");
+        ChkInput3.setBorderPainted(true);
+        ChkInput3.setBorderPaintedFlat(true);
+        ChkInput3.setFocusable(false);
+        ChkInput3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ChkInput3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkInput3.setName("ChkInput3"); // NOI18N
+        ChkInput3.setPreferredSize(new java.awt.Dimension(192, 20));
+        ChkInput3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkInput3ActionPerformed(evt);
+            }
+        });
+        PanelInput3.add(ChkInput3, java.awt.BorderLayout.PAGE_END);
+
+        FormInput3.setName("FormInput3"); // NOI18N
+        FormInput3.setPreferredSize(new java.awt.Dimension(44, 165));
+        FormInput3.setLayout(null);
+
+        jLabel32.setText("Nama Service/Administrasi :");
+        jLabel32.setName("jLabel32"); // NOI18N
+        FormInput3.add(jLabel32);
+        jLabel32.setBounds(0, 12, 150, 23);
+
+        NamaService1.setHighlighter(null);
+        NamaService1.setName("NamaService1"); // NOI18N
+        NamaService1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NamaService1ActionPerformed(evt);
+            }
+        });
+        NamaService1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NamaService1KeyPressed(evt);
+            }
+        });
+        FormInput3.add(NamaService1);
+        NamaService1.setBounds(152, 12, 370, 23);
+
+        jLabel36.setText("Besar Biaya :");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput3.add(jLabel36);
+        jLabel36.setBounds(0, 42, 150, 23);
+
+        BesarBiaya1.setHighlighter(null);
+        BesarBiaya1.setName("BesarBiaya1"); // NOI18N
+        BesarBiaya1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BesarBiaya1ActionPerformed(evt);
+            }
+        });
+        BesarBiaya1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BesarBiaya1KeyPressed(evt);
+            }
+        });
+        FormInput3.add(BesarBiaya1);
+        BesarBiaya1.setBounds(152, 42, 40, 23);
+
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel37.setText(")");
+        jLabel37.setName("jLabel37"); // NOI18N
+        FormInput3.add(jLabel37);
+        jLabel37.setBounds(530, 132, 35, 23);
+
+        chkLaborat1.setSelected(true);
+        chkLaborat1.setText("Laboratorium +");
+        chkLaborat1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkLaborat1.setName("chkLaborat1"); // NOI18N
+        chkLaborat1.setOpaque(false);
+        chkLaborat1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLaborat1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkLaborat1);
+        chkLaborat1.setBounds(225, 42, 101, 23);
+
+        chkRadiologi1.setSelected(true);
+        chkRadiologi1.setText("Radiologi +");
+        chkRadiologi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRadiologi1.setName("chkRadiologi1"); // NOI18N
+        chkRadiologi1.setOpaque(false);
+        chkRadiologi1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRadiologi1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkRadiologi1);
+        chkRadiologi1.setBounds(320, 42, 80, 23);
+
+        chkOperasi1.setSelected(true);
+        chkOperasi1.setText("Operasi +");
+        chkOperasi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkOperasi1.setName("chkOperasi1"); // NOI18N
+        chkOperasi1.setOpaque(false);
+        chkOperasi1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkOperasi1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkOperasi1);
+        chkOperasi1.setBounds(395, 42, 74, 23);
+
+        chkObat1.setSelected(true);
+        chkObat1.setText("Obat +");
+        chkObat1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkObat1.setName("chkObat1"); // NOI18N
+        chkObat1.setOpaque(false);
+        chkObat1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkObat1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkObat1);
+        chkObat1.setBounds(464, 42, 74, 23);
+
+        chkRanapDokter1.setSelected(true);
+        chkRanapDokter1.setText("Ranap Dokter +");
+        chkRanapDokter1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRanapDokter1.setName("chkRanapDokter1"); // NOI18N
+        chkRanapDokter1.setOpaque(false);
+        chkRanapDokter1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRanapDokter1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkRanapDokter1);
+        chkRanapDokter1.setBounds(225, 72, 105, 23);
+
+        chkRanapParamedis1.setSelected(true);
+        chkRanapParamedis1.setText("Ranap Paramedis +");
+        chkRanapParamedis1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRanapParamedis1.setName("chkRanapParamedis1"); // NOI18N
+        chkRanapParamedis1.setOpaque(false);
+        chkRanapParamedis1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRanapParamedis1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkRanapParamedis1);
+        chkRanapParamedis1.setBounds(323, 72, 120, 23);
+
+        chkRalanDokter1.setSelected(true);
+        chkRalanDokter1.setText("Ralan Dokter +");
+        chkRalanDokter1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRalanDokter1.setName("chkRalanDokter1"); // NOI18N
+        chkRalanDokter1.setOpaque(false);
+        chkRalanDokter1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRalanDokter1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkRalanDokter1);
+        chkRalanDokter1.setBounds(438, 72, 99, 23);
+
+        chkRalanParamedis1.setSelected(true);
+        chkRalanParamedis1.setText("Ralan Paramedis +");
+        chkRalanParamedis1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRalanParamedis1.setName("chkRalanParamedis1"); // NOI18N
+        chkRalanParamedis1.setOpaque(false);
+        chkRalanParamedis1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRalanParamedis1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkRalanParamedis1);
+        chkRalanParamedis1.setBounds(225, 102, 118, 23);
+
+        chkTambahan1.setSelected(true);
+        chkTambahan1.setText("Tambahan +");
+        chkTambahan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkTambahan1.setName("chkTambahan1"); // NOI18N
+        chkTambahan1.setOpaque(false);
+        chkTambahan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkTambahan1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkTambahan1);
+        chkTambahan1.setBounds(336, 102, 87, 23);
+
+        chkKamar1.setSelected(true);
+        chkKamar1.setText("Kamar +");
+        chkKamar1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkKamar1.setName("chkKamar1"); // NOI18N
+        chkKamar1.setOpaque(false);
+        chkKamar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkKamar1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkKamar1);
+        chkKamar1.setBounds(418, 102, 67, 23);
+
+        chkRegistrasi1.setSelected(true);
+        chkRegistrasi1.setText("Registrasi +");
+        chkRegistrasi1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRegistrasi1.setName("chkRegistrasi1"); // NOI18N
+        chkRegistrasi1.setOpaque(false);
+        chkRegistrasi1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRegistrasi1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkRegistrasi1);
+        chkRegistrasi1.setBounds(480, 102, 90, 23);
+
+        chkHarian1.setSelected(true);
+        chkHarian1.setText("Harian +");
+        chkHarian1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkHarian1.setName("chkHarian1"); // NOI18N
+        chkHarian1.setOpaque(false);
+        chkHarian1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkHarian1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkHarian1);
+        chkHarian1.setBounds(225, 132, 69, 23);
+
+        chkResepPulang1.setSelected(true);
+        chkResepPulang1.setText("Resep Pulang -");
+        chkResepPulang1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkResepPulang1.setName("chkResepPulang1"); // NOI18N
+        chkResepPulang1.setOpaque(false);
+        chkResepPulang1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkResepPulang1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkResepPulang1);
+        chkResepPulang1.setBounds(288, 132, 100, 23);
+
+        chkRetur1.setSelected(true);
+        chkRetur1.setText("Retur Obat -");
+        chkRetur1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkRetur1.setName("chkRetur1"); // NOI18N
+        chkRetur1.setOpaque(false);
+        chkRetur1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRetur1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkRetur1);
+        chkRetur1.setBounds(381, 132, 87, 23);
+
+        chkPotongan1.setSelected(true);
+        chkPotongan1.setText("Potongan");
+        chkPotongan1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkPotongan1.setName("chkPotongan1"); // NOI18N
+        chkPotongan1.setOpaque(false);
+        chkPotongan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPotongan1ActionPerformed(evt);
+            }
+        });
+        FormInput3.add(chkPotongan1);
+        chkPotongan1.setBounds(463, 132, 78, 23);
+
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel38.setText("% X  (");
+        jLabel38.setName("jLabel38"); // NOI18N
+        FormInput3.add(jLabel38);
+        jLabel38.setBounds(194, 42, 35, 23);
+
+        PanelInput3.add(FormInput3, java.awt.BorderLayout.CENTER);
+
+        internalFrame4.add(PanelInput3, java.awt.BorderLayout.PAGE_START);
+
+        TabSetting.addTab(".: Biaya Service Rawat Inap Piutang ", internalFrame4);
 
         internalFrame1.add(TabSetting, java.awt.BorderLayout.CENTER);
 
@@ -1160,6 +1516,68 @@ public class DlgSetNota extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu Set Biaya Service Rawat Inap...!!!!");
                 NamaService.requestFocus();
             }
+        }else if(TabSetting.getSelectedIndex()==2){
+            if(NamaService1.getText().trim().equals("")){
+                Valid.textKosong(NamaService1,"Nama Service");
+            }else if(BesarBiaya1.getText().trim().equals("")){
+                Valid.textKosong(NamaService1,"Nama Service");
+            }else if((chkLaborat1.isSelected()==false)&&(chkRadiologi1.isSelected()==false)&&
+                    (chkOperasi1.isSelected()==false)&&(chkObat1.isSelected()==false)&&
+                    (chkRanapDokter1.isSelected()==false)&&(chkRanapParamedis1.isSelected()==false)&&
+                    (chkRalanDokter1.isSelected()==false)&&(chkRalanParamedis1.isSelected()==false)&&
+                    (chkTambahan1.isSelected()==false)&&(chkPotongan1.isSelected()==false)&&
+                    (chkKamar1.isSelected()==false)&&(chkRegistrasi1.isSelected()==false)&&
+                    (chkHarian1.isSelected()==false)&&(chkRetur1.isSelected()==false)&&
+                    (chkResepPulang1.isSelected()==false)){
+                JOptionPane.showMessageDialog(null,"Maaf, Minimal harus ada 1 pilihan biaya yang dipakai ...!!!!");
+                chkLaborat.requestFocus();
+            }else if(tabMode3.getRowCount()==0){
+                laborat="No";radiologi="No";operasi="No";obat="No";
+                ranap_dokter="No";ranap_paramedis="No";ralan_dokter="No";
+                ralan_paramedis="No";tambahan="No";potongan="No";
+                kamar="No";registrasi="No";harian="No";retur_Obat="No";resep_Pulang="No";
+                if(chkLaborat1.isSelected()==true){
+		    laborat="Yes";
+                }if(chkRadiologi1.isSelected()==true){
+                    radiologi="Yes";
+                }if(chkOperasi1.isSelected()==true){
+                    operasi="Yes";
+                }if(chkObat1.isSelected()==true){
+                    obat="Yes";
+                }if(chkRanapDokter1.isSelected()==true){
+                    ranap_dokter="Yes";
+                }if(chkRanapParamedis1.isSelected()==true){
+                    ranap_paramedis="Yes";
+                }if(chkRalanDokter1.isSelected()==true){
+                    ralan_dokter="Yes";
+                }if(chkRalanParamedis1.isSelected()==true){
+                    ralan_paramedis="Yes";
+                }if(chkTambahan1.isSelected()==true){
+                    tambahan="Yes";
+                }if(chkPotongan1.isSelected()==true){
+                    potongan="Yes";
+                }if(chkKamar1.isSelected()==true){
+                    kamar="Yes";
+                }if(chkRegistrasi1.isSelected()==true){
+                    registrasi="Yes";
+                }if(chkHarian1.isSelected()==true){
+                    harian="Yes";
+                }if(chkRetur1.isSelected()==true){
+                    retur_Obat="Yes";
+                }if(chkResepPulang1.isSelected()==true){
+                    resep_Pulang="Yes";
+                }
+                if(Sequel.menyimpantf("set_service_ranap_piutang","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
+                    NamaService1.getText(),BesarBiaya1.getText(),laborat,radiologi,operasi,obat,ranap_dokter,ranap_paramedis,
+                    ralan_dokter,ralan_paramedis,tambahan,potongan,kamar,registrasi,harian,retur_Obat,resep_Pulang
+                })==true){
+                    tampil3();
+                    emptTeks3();
+                }
+            }else if(tabMode3.getRowCount()>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu Set Biaya Service Rawat Inap...!!!!");
+                NamaService.requestFocus();
+            }
         }
             
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1181,6 +1599,10 @@ public class DlgSetNota extends javax.swing.JDialog {
             ChkInput2.setSelected(true);
             isForm2(); 
             emptTeks2();
+        }else if(TabSetting.getSelectedIndex()==2){
+            ChkInput3.setSelected(true);
+            isForm3(); 
+            emptTeks3();
         }
         
 }//GEN-LAST:event_BtnBatalActionPerformed
@@ -1213,6 +1635,17 @@ public class DlgSetNota extends javax.swing.JDialog {
                 Sequel.queryu("delete from set_service_ranap");
                 tampil2();
                 emptTeks2();
+            }
+        }else if(TabSetting.getSelectedIndex()==2){
+            if(tabMode3.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+                NamaService1.requestFocus();
+            }else if(NamaService1.getText().trim().equals("")){
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+            }else if(!NamaService1.getText().trim().equals("")){
+                Sequel.queryu("delete from set_service_ranap_piutang");
+                tampil3();
+                emptTeks3();
             }
         }
             
@@ -1380,6 +1813,66 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     emptTeks2();
                 }
             }
+        }else if(TabSetting.getSelectedIndex()==2){
+            if(NamaService1.getText().trim().equals("")){
+                Valid.textKosong(NamaService1,"Nama Service");
+            }else if(BesarBiaya1.getText().trim().equals("")){
+                Valid.textKosong(NamaService1,"Nama Service");
+            }else if((chkLaborat1.isSelected()==false)&&(chkRadiologi1.isSelected()==false)&&
+                    (chkOperasi1.isSelected()==false)&&(chkObat1.isSelected()==false)&&
+                    (chkRanapDokter1.isSelected()==false)&&(chkRanapParamedis1.isSelected()==false)&&
+                    (chkRalanDokter1.isSelected()==false)&&(chkRalanParamedis1.isSelected()==false)&&
+                    (chkTambahan1.isSelected()==false)&&(chkPotongan1.isSelected()==false)&&
+                    (chkKamar1.isSelected()==false)&&(chkRegistrasi1.isSelected()==false)&&
+                    (chkHarian1.isSelected()==false)&&(chkRetur1.isSelected()==false)&&
+                    (chkResepPulang1.isSelected()==false)){
+                JOptionPane.showMessageDialog(null,"Maaf, Minimal harus ada 1 pilihan biaya yang dipakai ...!!!!");
+                chkLaborat.requestFocus();
+            }else{
+                laborat="No";radiologi="No";operasi="No";obat="No";
+                ranap_dokter="No";ranap_paramedis="No";ralan_dokter="No";
+                ralan_paramedis="No";tambahan="No";potongan="No";
+                kamar="No";registrasi="No";harian="No";retur_Obat="No";resep_Pulang="No";
+                if(chkLaborat1.isSelected()==true){
+		    laborat="Yes";
+                }if(chkRadiologi1.isSelected()==true){
+                    radiologi="Yes";
+                }if(chkOperasi1.isSelected()==true){
+                    operasi="Yes";
+                }if(chkObat1.isSelected()==true){
+                    obat="Yes";
+                }if(chkRanapDokter1.isSelected()==true){
+                    ranap_dokter="Yes";
+                }if(chkRanapParamedis1.isSelected()==true){
+                    ranap_paramedis="Yes";
+                }if(chkRalanDokter1.isSelected()==true){
+                    ralan_dokter="Yes";
+                }if(chkRalanParamedis1.isSelected()==true){
+                    ralan_paramedis="Yes";
+                }if(chkTambahan1.isSelected()==true){
+                    tambahan="Yes";
+                }if(chkPotongan1.isSelected()==true){
+                    potongan="Yes";
+                }if(chkKamar1.isSelected()==true){
+                    kamar="Yes";
+                }if(chkRegistrasi1.isSelected()==true){
+                    registrasi="Yes";
+                }if(chkHarian1.isSelected()==true){
+                    harian="Yes";
+                }if(chkRetur1.isSelected()==true){
+                    retur_Obat="Yes";
+                }if(chkResepPulang1.isSelected()==true){
+                    resep_Pulang="Yes";
+                }
+                Sequel.queryu("delete from set_service_ranap_piutang");
+                if(Sequel.menyimpantf("set_service_ranap_piutang","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
+                    NamaService1.getText(),BesarBiaya1.getText(),laborat,radiologi,operasi,obat,ranap_dokter,ranap_paramedis,
+                    ralan_dokter,ralan_paramedis,tambahan,potongan,kamar,registrasi,harian,retur_Obat,resep_Pulang
+                })==true){
+                    tampil3();
+                    emptTeks3();
+                }
+            }
         }
             
     }//GEN-LAST:event_BtnEditActionPerformed
@@ -1445,6 +1938,8 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             tampil();
         }else if(TabSetting.getSelectedIndex()==1){
             tampil2();
+        }else if(TabSetting.getSelectedIndex()==2){
+            tampil3();
         }
     }//GEN-LAST:event_TabSettingMouseClicked
 
@@ -1548,6 +2043,106 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }//GEN-LAST:event_tbAdmin2KeyPressed
 
+    private void tbAdmin3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAdmin3MouseClicked
+        if(tabMode3.getRowCount()!=0){
+            try {
+                getData3();
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+    }//GEN-LAST:event_tbAdmin3MouseClicked
+
+    private void tbAdmin3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbAdmin3KeyPressed
+        if(tabMode3.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData3();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbAdmin3KeyPressed
+
+    private void ChkInput3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInput3ActionPerformed
+        isForm3();
+    }//GEN-LAST:event_ChkInput3ActionPerformed
+
+    private void NamaService1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaService1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NamaService1ActionPerformed
+
+    private void NamaService1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaService1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NamaService1KeyPressed
+
+    private void BesarBiaya1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BesarBiaya1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BesarBiaya1ActionPerformed
+
+    private void BesarBiaya1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BesarBiaya1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BesarBiaya1KeyPressed
+
+    private void chkLaborat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLaborat1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkLaborat1ActionPerformed
+
+    private void chkRadiologi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRadiologi1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkRadiologi1ActionPerformed
+
+    private void chkOperasi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOperasi1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkOperasi1ActionPerformed
+
+    private void chkObat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkObat1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkObat1ActionPerformed
+
+    private void chkRanapDokter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRanapDokter1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkRanapDokter1ActionPerformed
+
+    private void chkRanapParamedis1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRanapParamedis1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkRanapParamedis1ActionPerformed
+
+    private void chkRalanDokter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRalanDokter1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkRalanDokter1ActionPerformed
+
+    private void chkRalanParamedis1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRalanParamedis1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkRalanParamedis1ActionPerformed
+
+    private void chkTambahan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTambahan1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkTambahan1ActionPerformed
+
+    private void chkKamar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkKamar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkKamar1ActionPerformed
+
+    private void chkRegistrasi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRegistrasi1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkRegistrasi1ActionPerformed
+
+    private void chkHarian1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHarian1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkHarian1ActionPerformed
+
+    private void chkResepPulang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkResepPulang1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkResepPulang1ActionPerformed
+
+    private void chkRetur1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRetur1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkRetur1ActionPerformed
+
+    private void chkPotongan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPotongan1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkPotongan1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1566,6 +2161,7 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox BesarBiaya;
+    private widget.TextBox BesarBiaya1;
     private widget.Button BtnBatal;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
@@ -1573,11 +2169,14 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkInput2;
+    private widget.CekBox ChkInput3;
     private widget.panelisi FormInput;
     private widget.panelisi FormInput2;
+    private widget.panelisi FormInput3;
     private widget.TextBox KwitansiRalan;
     private widget.TextBox KwitansiRanap;
     private widget.TextBox NamaService;
+    private widget.TextBox NamaService1;
     private widget.TextBox Nota1Ranap;
     private widget.TextBox Nota2Ranap;
     private widget.TextBox NotaApotek;
@@ -1585,24 +2184,41 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.TextBox NotaRalan;
     private javax.swing.JPanel PanelInput;
     private javax.swing.JPanel PanelInput2;
+    private javax.swing.JPanel PanelInput3;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
+    private widget.ScrollPane Scroll2;
     private javax.swing.JTabbedPane TabSetting;
     private widget.CekBox chkHarian;
+    private widget.CekBox chkHarian1;
     private widget.CekBox chkKamar;
+    private widget.CekBox chkKamar1;
     private widget.CekBox chkLaborat;
+    private widget.CekBox chkLaborat1;
     private widget.CekBox chkObat;
+    private widget.CekBox chkObat1;
     private widget.CekBox chkOperasi;
+    private widget.CekBox chkOperasi1;
     private widget.CekBox chkPotongan;
+    private widget.CekBox chkPotongan1;
     private widget.CekBox chkRadiologi;
+    private widget.CekBox chkRadiologi1;
     private widget.CekBox chkRalanDokter;
+    private widget.CekBox chkRalanDokter1;
     private widget.CekBox chkRalanParamedis;
+    private widget.CekBox chkRalanParamedis1;
     private widget.CekBox chkRanapDokter;
+    private widget.CekBox chkRanapDokter1;
     private widget.CekBox chkRanapParamedis;
+    private widget.CekBox chkRanapParamedis1;
     private widget.CekBox chkRegistrasi;
+    private widget.CekBox chkRegistrasi1;
     private widget.CekBox chkResepPulang;
+    private widget.CekBox chkResepPulang1;
     private widget.CekBox chkRetur;
+    private widget.CekBox chkRetur1;
     private widget.CekBox chkTambahan;
+    private widget.CekBox chkTambahan1;
     private widget.ComboBox cmbYesAdministrasiRanap;
     private widget.ComboBox cmbYesCentangDokterRalan;
     private widget.ComboBox cmbYesCentangDokterRanap;
@@ -1619,6 +2235,7 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
+    private widget.InternalFrame internalFrame4;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
@@ -1641,9 +2258,13 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Label jLabel29;
     private widget.Label jLabel30;
     private widget.Label jLabel31;
+    private widget.Label jLabel32;
     private widget.Label jLabel33;
     private widget.Label jLabel34;
     private widget.Label jLabel35;
+    private widget.Label jLabel36;
+    private widget.Label jLabel37;
+    private widget.Label jLabel38;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -1653,6 +2274,7 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.panelisi panelGlass5;
     private widget.Table tbAdmin;
     private widget.Table tbAdmin2;
+    private widget.Table tbAdmin3;
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
@@ -1723,6 +2345,47 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     tabMode2.addRow(new Object[]{"    Harian",rs.getString(15)});
                     tabMode2.addRow(new Object[]{"    Retur Obat",rs.getString(16)});
                     tabMode2.addRow(new Object[]{"    Resep Pulang",rs.getString(17)});
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    public void tampil3() {
+        Valid.tabelKosong(tabMode3);
+        try{    
+            ps=koneksi.prepareStatement("select * from set_service_ranap_piutang ");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode3.addRow(new Object[]{" Nama Service/Administrasi",rs.getString(1)});
+                    tabMode3.addRow(new Object[]{" Besar Biaya(%)",rs.getString(2)});
+                    tabMode3.addRow(new Object[]{" Biaya Diambil Dari :",""});
+                    tabMode3.addRow(new Object[]{"    Laborat",rs.getString(3)});
+                    tabMode3.addRow(new Object[]{"    Radiologi",rs.getString(4)});
+                    tabMode3.addRow(new Object[]{"    Operasi",rs.getString(5)});
+                    tabMode3.addRow(new Object[]{"    Obat",rs.getString(6)});
+                    tabMode3.addRow(new Object[]{"    Ranap Dokter",rs.getString(7)});
+                    tabMode3.addRow(new Object[]{"    Ranap Paramedis",rs.getString(8)});
+                    tabMode3.addRow(new Object[]{"    Ralan Dokter",rs.getString(9)});
+                    tabMode3.addRow(new Object[]{"    Ralan Paramedis",rs.getString(10)});
+                    tabMode3.addRow(new Object[]{"    Tambahan",rs.getString(11)});
+                    tabMode3.addRow(new Object[]{"    Potongan",rs.getString(12)});
+                    tabMode3.addRow(new Object[]{"    Kamar",rs.getString(13)});
+                    tabMode3.addRow(new Object[]{"    Registrasi",rs.getString(14)});
+                    tabMode3.addRow(new Object[]{"    Harian",rs.getString(15)});
+                    tabMode3.addRow(new Object[]{"    Retur Obat",rs.getString(16)});
+                    tabMode3.addRow(new Object[]{"    Resep Pulang",rs.getString(17)});
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -1847,6 +2510,89 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         }
     }
+    
+    private void getData3() {
+        int row=tbAdmin3.getSelectedRow();
+        if(row!= -1){
+            NamaService1.setText(tbAdmin3.getValueAt(0,1).toString());            
+            BesarBiaya1.setText(tbAdmin3.getValueAt(1,1).toString());    
+            if(tbAdmin3.getValueAt(3,1).toString().equals("Yes")){
+                chkLaborat1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(3,1).toString().equals("No")){
+                chkLaborat1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(4,1).toString().equals("Yes")){
+                chkRadiologi1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(4,1).toString().equals("No")){
+                chkRadiologi1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(5,1).toString().equals("Yes")){
+                chkOperasi1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(5,1).toString().equals("No")){
+                chkOperasi1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(6,1).toString().equals("Yes")){
+                chkObat1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(6,1).toString().equals("No")){
+                chkObat1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(7,1).toString().equals("Yes")){
+                chkRanapDokter1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(7,1).toString().equals("No")){
+                chkRanapDokter1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(8,1).toString().equals("Yes")){
+                chkRanapParamedis1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(8,1).toString().equals("No")){
+                chkRanapParamedis1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(9,1).toString().equals("Yes")){
+                chkRalanDokter1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(9,1).toString().equals("No")){
+                chkRalanDokter1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(10,1).toString().equals("Yes")){
+                chkRalanParamedis1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(10,1).toString().equals("No")){
+                chkRalanParamedis1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(11,1).toString().equals("Yes")){
+                chkTambahan1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(11,1).toString().equals("No")){
+                chkTambahan1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(12,1).toString().equals("Yes")){
+                chkPotongan1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(12,1).toString().equals("No")){
+                chkPotongan1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(13,1).toString().equals("Yes")){
+                chkKamar1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(13,1).toString().equals("No")){
+                chkKamar1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(14,1).toString().equals("Yes")){
+                chkRegistrasi1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(14,11).toString().equals("No")){
+                chkRegistrasi1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(15,1).toString().equals("Yes")){
+                chkHarian1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(15,1).toString().equals("No")){
+                chkHarian1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(16,1).toString().equals("Yes")){
+                chkRetur1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(16,1).toString().equals("No")){
+                chkRetur1.setSelected(false);
+            }
+            if(tbAdmin3.getValueAt(17,1).toString().equals("Yes")){
+                chkResepPulang1.setSelected(true);
+            }else if(tbAdmin3.getValueAt(17,1).toString().equals("No")){
+                chkResepPulang1.setSelected(false);
+            }
+        }
+    }
 
     public void emptTeks() {
         NotaRalan.setText("");
@@ -1892,6 +2638,26 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         chkResepPulang.setSelected(false);
     }
     
+    public void emptTeks3() {
+        NamaService1.setText("");
+        BesarBiaya1.setText("");
+        chkLaborat1.setSelected(false);
+        chkRadiologi1.setSelected(false);
+        chkOperasi1.setSelected(false);
+        chkObat1.setSelected(false);
+        chkRanapDokter1.setSelected(false);
+        chkRanapParamedis1.setSelected(false);
+        chkRalanDokter1.setSelected(false);
+        chkRalanParamedis1.setSelected(false);
+        chkTambahan1.setSelected(false);
+        chkPotongan1.setSelected(false);
+        chkKamar1.setSelected(false);
+        chkRegistrasi1.setSelected(false);
+        chkHarian1.setSelected(false);
+        chkRetur1.setSelected(false);
+        chkResepPulang1.setSelected(false);
+    }
+    
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
@@ -1917,6 +2683,20 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             PanelInput2.setPreferredSize(new Dimension(WIDTH,20));
             FormInput2.setVisible(false);      
             ChkInput2.setVisible(true);
+        }
+    }
+    
+    private void isForm3(){
+        if(ChkInput3.isSelected()==true){
+            ChkInput3.setVisible(false);
+            PanelInput3.setPreferredSize(new Dimension(WIDTH,187));
+            FormInput3.setVisible(true);      
+            ChkInput3.setVisible(true);
+        }else if(ChkInput3.isSelected()==false){           
+            ChkInput3.setVisible(false);            
+            PanelInput3.setPreferredSize(new Dimension(WIDTH,20));
+            FormInput3.setVisible(false);      
+            ChkInput3.setVisible(true);
         }
     }
 }

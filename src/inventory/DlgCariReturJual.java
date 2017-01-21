@@ -807,8 +807,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                   "select kode_brng,jml_retur from detreturjual where no_retur_jual='"+rscariretur.getString(1) +"' ");
              ResultSet rsdetailretur=psdetailretur.executeQuery();
              while(rsdetailretur.next()){
-                 Sequel.menyimpan("gudangbarang","'"+rsdetailretur.getString("kode_brng") +"','"+rscariretur.getString("kd_bangsal") +"','"+rsdetailretur.getString("jml_retur") +"'", 
-                                        "stok=stok+'"+rsdetailretur.getString("jml_retur") +"'","kode_brng='"+rsdetailretur.getString("kode_brng")+"' and kd_bangsal='"+rscariretur.getString("kd_bangsal") +"'");
+                 Sequel.menyimpan("gudangbarang","'"+rsdetailretur.getString("kode_brng") +"','"+rscariretur.getString("kd_bangsal") +"','-"+rsdetailretur.getString("jml_retur") +"'", 
+                                        "stok=stok-'"+rsdetailretur.getString("jml_retur") +"'","kode_brng='"+rsdetailretur.getString("kode_brng")+"' and kd_bangsal='"+rscariretur.getString("kd_bangsal") +"'");
              }
             
              Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Retur_Dari_pembeli from set_akun")+"','RETUR PENJUALAN','0','"+Sequel.cariIsi("select sum(subtotal) from detreturjual where no_retur_jual='"+rscariretur.getString("no_retur_jual")+"'")+"'","Rekening");    

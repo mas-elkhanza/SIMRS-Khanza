@@ -2878,6 +2878,7 @@ private void DTPTempoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_DTPTempoKeyPressed
 
 private void chkPiutangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPiutangActionPerformed
+  isRawat();
   if(chkPiutang.isSelected()==true){
       jLabel5.setText("Uang Muka : Rp.");
       jLabel6.setText("Sisa Piutang : Rp.");
@@ -5151,7 +5152,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                 }
                 if(i==0){ 
-                    psservice=koneksi.prepareStatement("select * from set_service_ranap");                
+                    if(chkPiutang.isSelected()==false){
+                        psservice=koneksi.prepareStatement("select * from set_service_ranap");
+                    }else if(chkPiutang.isSelected()==true){
+                        psservice=koneksi.prepareStatement("select * from set_service_ranap_piutang");
+                    }
+                                        
                     try {
                         laboratserv=0;radiologiserv=0;operasiserv=0;obatserv=0;
                         ranap_dokterserv=0;ranap_paramedisserv=0;ralan_dokterserv=0;
