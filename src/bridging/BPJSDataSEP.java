@@ -2092,9 +2092,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         NoRujukan.requestFocus();
     }
     
-    public void setNoRm(String norwt, Date tgl1,String status) {
+    public void setNoRm(String norwt, Date tgl1,String status,String kdpoli,String namapoli) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
+        KdPoli.setText(kdpoli);
+        NmPoli.setText(namapoli);
         JenisPelayanan.setSelectedItem(status);
         JenisPelayananItemStateChanged(null);
         isRawat();            

@@ -1344,7 +1344,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     
     public void isCek(){
         BtnPrint.setEnabled(var.getpengadaan_obat());
-        ppHapus.setEnabled(var.getpengadaan_obat());
+        if(var.getkode().equals("Admin Utama")){
+            ppHapus.setEnabled(true);
+        }else{
+            ppHapus.setEnabled(false);
+        }  
     }
     
 }

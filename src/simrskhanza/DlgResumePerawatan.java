@@ -39,8 +39,8 @@ import javax.swing.text.html.StyleSheet;
  * @author perpustakaan
  */
 public final class DlgResumePerawatan extends javax.swing.JDialog {
-    private Connection koneksi=koneksiDB.condb();
-    private sekuel Sequel=new sekuel();
+    private final Connection koneksi=koneksiDB.condb();
+    private final sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private ResultSet rs,rs2,rs3,rs4,rshal;
     private String sql;
@@ -411,7 +411,7 @@ private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bt
         sql="select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and "+
-                   "pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis like '%"+KdRw.getText()+"%' order by pasien.no_rkm_medis desc ";
+                   "pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+KdRw.getText()+"' order by pasien.no_rkm_medis desc ";
         
         try{
             StringBuilder htmlContent = new StringBuilder();
@@ -1703,8 +1703,9 @@ private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bt
         Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=? ",TPasien,KdRw.getText());
     }
 
-    public  void setNoRm(String norm) {
+    public void setNoRm(String norm,String nama) {
         KdRw.setText(norm);
+        TPasien.setText(nama);
     }
 
 }

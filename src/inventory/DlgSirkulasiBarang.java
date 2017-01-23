@@ -42,7 +42,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
                    ttltotalpesan=0,totalpesan=0,jumlahpesan=0,
                    ttltotalpiutang=0,totalpiutang=0,jumlahpiutang=0,ttltotalretbeli=0,totalretbeli=0,jumlahretbeli=0,
                    ttltotalretjual=0,totalretjual=0,jumlahretjual=0,ttltotalretpiut=0,totalretpiut=0,jumlahretpiut=0,
-                   jumlahpasin=0,totalpasien=0,ttltotalpasien=0,stok=0;
+                   jumlahpasin=0,totalpasien=0,ttltotalpasien=0,stok=0,aset=0,ttlaset=0;
     private DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,ps7,ps8,psstok,ps9;
     private ResultSet rs,rs2,rs3,rs4,rs5,rs6,rs7,rs8,rsstok,rs9;
@@ -138,7 +138,9 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
                         "databarang.nama_brng like ? and databarang.nama_brng like ? or "+
                         "databarang.nama_brng like ? and kodesatuan.satuan like ? "+
                         " order by databarang.kode_brng");
-            psstok=koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=?");
+            psstok=koneksi.prepareStatement("select sum(stok),(sum(stok)*h_beli) as aset "+
+                        "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                        "where gudangbarang.kode_brng=?");
             ps2=koneksi.prepareStatement("select sum(detailbeli.jumlah), sum(detailbeli.subtotal) "+
                         " from pembelian inner join detailbeli "+
                         " on pembelian.no_faktur=detailbeli.no_faktur "+
@@ -763,7 +765,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
        try{   
             ttltotaljual=0;ttltotalbeli=0;ttltotalpesan=0;
             ttltotalpiutang=0;ttltotalretbeli=0;ttltotalretjual=0;
-            ttltotalretpiut=0;ttltotalpasien=0;
+            ttltotalretpiut=0;ttltotalpasien=0;ttlaset=0;
             ps.setString(1,"%"+nmbar.getText()+"%");
             ps.setString(2,"%"+TCari.getText().trim()+"%");
             ps.setString(3,"%"+nmbar.getText()+"%");
@@ -775,12 +777,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 totaljual=0;jumlahjual=0;totalbeli=0;jumlahbeli=0;totalpiutang=0;jumlahpiutang=0;
                 totalpesan=0;jumlahpesan=0;
                 totalretbeli=0;jumlahretbeli=0;totalretjual=0;jumlahretjual=0;totalretpiut=0;jumlahretpiut=0;
-                jumlahpasin=0;stok=0;
+                jumlahpasin=0;stok=0;aset=0;
                 
                 psstok.setString(1,rs.getString(1));
                 rsstok=psstok.executeQuery();
                 if(rsstok.next()){
                     stok=rsstok.getDouble(1);
+                    aset=rsstok.getDouble(2);
                 }
                 
                 //pembelian                
@@ -859,10 +862,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     totalpasien=rs8.getDouble(2);
                 }
                 
-                if((jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||
+                if((aset>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||
                         (jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),
-                               rs.getString(3),stok,
+                               rs.getString(3),Valid.SetAngka(stok)+" ("+Valid.SetAngka(aset)+")",
                                Valid.SetAngka(jumlahbeli)+" ("+Valid.SetAngka(totalbeli)+")",
                                Valid.SetAngka(jumlahpesan)+" ("+Valid.SetAngka(totalpesan)+")",
                                Valid.SetAngka(jumlahjual)+" ("+Valid.SetAngka(totaljual)+")",
@@ -877,6 +880,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ttltotalbeli=ttltotalbeli+totalbeli;
                 ttltotalpesan=ttltotalpesan+totalpesan;
                 ttltotaljual=ttltotaljual+totaljual;
+                ttlaset=ttlaset+aset;
                 ttltotalpasien=ttltotalpasien+totalpasien;
                 ttltotalpiutang=ttltotalpiutang+totalpiutang;
                 ttltotalretbeli=ttltotalretbeli+totalretbeli;
@@ -884,7 +888,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ttltotalretpiut=ttltotalretpiut+totalretpiut;
             }   
             tabMode.addRow(new Object[]{"","","","","","","","","","","",""}); 
-            tabMode.addRow(new Object[]{"<>>","Total :","","",
+            tabMode.addRow(new Object[]{"<>>","Total :","",Valid.SetAngka(ttlaset),
                                Valid.SetAngka(ttltotalbeli),Valid.SetAngka(ttltotalpesan),
                                Valid.SetAngka(ttltotaljual),Valid.SetAngka(ttltotalpasien),
                                Valid.SetAngka(ttltotalpiutang),Valid.SetAngka(ttltotalretbeli),

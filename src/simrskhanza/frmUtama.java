@@ -1421,7 +1421,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnResume.setForeground(new java.awt.Color(40, 70, 50));
         btnResume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
-        btnResume.setText("Resume Pasien");
+        btnResume.setText("Riwayat Perawatan");
         btnResume.setIconTextGap(0);
         btnResume.setName("btnResume"); // NOI18N
         btnResume.setPreferredSize(new java.awt.Dimension(200, 90));

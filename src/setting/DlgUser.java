@@ -71,7 +71,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[G]Rekap Parkir Bulanan","[A]Informasi Kamar","[H]Harian Tindakan Poli","[H]Obat Per Poli","[H]Obat Per Kamar",
                     "[H]Obat Per Dokter Ralan","[H]Obat Per Dokter Ranap","[H]Harian Dokter","[H]Bulanan Dokter","[H]Harian Paramedis",
                     "[H]Bulanan Paramedis","[H]Pembayaran Ralan","[H]Pembayaran Ranap","[H]Rekap Pembayaran Ralan","[H]Rekap Pembayaran Ranap",
-                    "[H]Tagihan Masuk","[H]Tambahan Biaya","[H]Potongan Biaya","[A]Resep Obat","[L]Resume Pasien","[I]Frekuensi Penyakit Ralan","[I]Frekuensi Penyakit Ranap",
+                    "[H]Tagihan Masuk","[H]Tambahan Biaya","[H]Potongan Biaya","[A]Resep Obat","[L]Riwayat Perawatan","[I]Frekuensi Penyakit Ralan","[I]Frekuensi Penyakit Ranap",
                     "[J]Kamar","[J]Tarif Ralan","[J]Tarif Ranap","[J]Tarif Lab","[J]Tarif Radiologi","[J]Tarif Operasi","[J]Akun Rekening","[J]Rekening Tahun",
                     "[J]Posting Jurnal","[J]Buku Besar","[J]Cash Flow","[J]Keuangan","[J]Pengeluaran Harian","[N]Set P.J. Unit Penunjang","[N]Set Oto Lokasi","[N]Set Kamar Inap",
                     "[N]Set Embalase & Tuslah","[N]Tracer Login","[N]Display Antrian","[N]Set Harga Obat","[N]Set Penggunaan Tarif","[N]Set Oto Ralan","[N]Biaya Harian Kamar",

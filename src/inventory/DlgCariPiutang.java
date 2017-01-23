@@ -1263,7 +1263,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         MnDetailCicilan.setEnabled(var.getbayar_piutang());
         BtnPrint.setEnabled(var.getpiutang_obat());
         ppCetakNota.setEnabled(var.getpiutang_obat());
-        ppHapus.setEnabled(var.getpiutang_obat());
+        if(var.getkode().equals("Admin Utama")){
+            ppHapus.setEnabled(true);
+        }else{
+            ppHapus.setEnabled(false);
+        }  
         ppUbah.setEnabled(var.getpiutang_obat());
     }
  
