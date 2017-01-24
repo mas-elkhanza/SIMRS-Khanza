@@ -152,6 +152,7 @@ import keuangan.DlgRBObatPercaraBayar;
 import keuangan.DlgRBObatPoli;
 import keuangan.DlgRBPaketBHP;
 import keuangan.DlgRBTindakanDokter;
+import keuangan.DlgRBTindakanKamar;
 import keuangan.DlgRBTindakanPoli;
 import keuangan.DlgRHJS;
 import keuangan.DlgRHJmDokter;
@@ -504,6 +505,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnUTDKomponenDarah = new widget.ButtonBig();
         btnUTDStokDarah = new widget.ButtonBig();
         btnUTDPemisahanDarah = new widget.ButtonBig();
+        btnHarianKamar = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
@@ -3382,6 +3384,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUTDPemisahanDarah);
 
+        btnHarianKamar.setForeground(new java.awt.Color(40, 70, 50));
+        btnHarianKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
+        btnHarianKamar.setText("Harian Tindakan Kamar");
+        btnHarianKamar.setIconTextGap(0);
+        btnHarianKamar.setName("btnHarianKamar"); // NOI18N
+        btnHarianKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHarianKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHarianKamarActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnHarianKamar);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3390,7 +3405,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/01/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/01/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7229,6 +7244,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         setToolbar();
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnHarianKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHarianKamarActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRBTindakanKamar rbpoli=new DlgRBTindakanKamar(this,false);
+        rbpoli.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        rbpoli.setLocationRelativeTo(PanelUtama);
+        rbpoli.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnHarianKamarActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7311,6 +7337,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnDokter;
     private widget.ButtonBig btnFrekuensiRalan;
     private widget.ButtonBig btnFrekuensiRanap;
+    private widget.ButtonBig btnHarianKamar;
     private widget.ButtonBig btnICD;
     private widget.ButtonBig btnICD9;
     private widget.ButtonBig btnIGD;
@@ -7941,6 +7968,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnTagihanPoli); 
                 jmlmenu++;
             }   
+            
+            if(var.getharian_kamar()==true){
+                Panelmenu.add(btnHarianKamar); 
+                jmlmenu++;
+            }  
             
             if(var.getharian_tindakan_dokter()==true){
                 Panelmenu.add(btnTagihanDokter); 
