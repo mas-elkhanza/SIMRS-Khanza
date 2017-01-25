@@ -22,7 +22,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import simrskhanza.DlgCariBangsal;
-import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgPenanggungJawab;
 
 public class DlgRBTindakanKamar extends javax.swing.JDialog {
@@ -32,7 +31,7 @@ public class DlgRBTindakanKamar extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private Jurnal jur=new Jurnal();
     private PreparedStatement psbangsal,pspasien,psobat,psobatlangsung,psperiksalab,psdetailperiksalab,
-            psoperasi,psranapdr,psranapdrpr,psranappr;
+            psoperasi,psranapdr,psranapdrpr,psranappr,pstambahan,pspotongan,psregistrasi,psradiologi;
     private ResultSet rsbangsal,rspasien,rs; 
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
@@ -40,8 +39,8 @@ public class DlgRBTindakanKamar extends javax.swing.JDialog {
     private int i=0,a=0;
     private double obat=0,obatlangsung=0,laborat=0,operasi=0,radiologi=0,jm=0,jm2=0,jm3=0,ttlbiaya=0,detailobat=0,detailobatlangsung=0,ttlobat=0,ttlobatlangsung=0,ttllaborat=0,ttljm=0,
             detaillaborat=0,ttldetaillaborat=0,tambahan,potongan,detailtambahan,detailpotongan,registrasi=0,detailregistrasi,ttlpotongan=0,ttltambahan=0,
-            ttloperasi=0,ttlregistrasi=0,detailradiologi=0,ttlradiologi=0;
-    private String carabayar="",pilihancarabayar="";
+            ttlregistrasi=0,detailradiologi=0,ttlradiologi=0;
+    private String pilihancarabayar="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -215,7 +214,7 @@ public class DlgRBTindakanKamar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Pemasukan Per Bangsal/Kamar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Per Bangsal/Kamar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -428,7 +427,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(r,7).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(r,8).toString().replaceAll("'","`")+"','"+
                                 tabMode.getValueAt(r,9).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,10).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Pemasukan Perbangsal Dokter"); 
+                                tabMode.getValueAt(r,10).toString().replaceAll("'","`")+"','"+
+                                tabMode.getValueAt(r,11).toString().replaceAll("'","`")+"','"+
+                                tabMode.getValueAt(r,12).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Pemasukan Perbangsal Dokter"); 
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>();
@@ -439,7 +440,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRBTindakanPoli.jrxml","report","[ Rekap Pemasukan Tindakan Dokter ]",
+            Valid.MyReport("rptRBTindakanKamar.jrxml","report","[ Rekap Harian Per Bangsal/Kamar ]",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -598,7 +599,6 @@ private void ppTampilkanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent
                 ttlregistrasi=0;
                 ttltambahan=0;
                 ttlradiologi=0;
-                ttloperasi=0;
                 while(rsbangsal.next()){
                     tabMode.addRow(new Object[]{i+". ",rsbangsal.getString(2),"","","","","","","","","","",""});
                     a=1;
@@ -617,7 +617,7 @@ private void ppTampilkanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent
                         rspasien=pspasien.executeQuery();
                         while(rspasien.next()){
                             obat=0;
-                            psobat=koneksi.prepareStatement("select sum(total) from detail_pemberian_obat where no_rawat=? group by no_rawat");
+                            psobat=koneksi.prepareStatement("select sum(total) from detail_pemberian_obat where no_rawat=?");
                             try {
                                 psobat.setString(1,rspasien.getString("no_rawat"));
                                 rs=psobat.executeQuery();
@@ -755,6 +755,7 @@ private void ppTampilkanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent
                                     psranappr.close();
                                 }
                             }
+                            
                             operasi=0;
                             psoperasi=koneksi.prepareStatement("select sum(biayaoperator1+biayaoperator2+biayaoperator3+"+
                                 "biayaasisten_operator1+biayaasisten_operator2+biayainstrumen+"+
@@ -767,7 +768,7 @@ private void ppTampilkanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent
                                 rs=psoperasi.executeQuery();
                                 if(rs.next()){
                                    operasi=rs.getDouble(1);
-                                   ttloperasi=ttloperasi+rs.getDouble(1);
+                                   ttljm=ttljm+rs.getDouble(1);
                                 }
                             } catch (Exception e) {
                                 System.out.println("Notif Jm : "+e);
@@ -779,11 +780,95 @@ private void ppTampilkanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent
                                     psoperasi.close();
                                 }
                             }
+                            
+                            tambahan=0;
+                            pstambahan=koneksi.prepareStatement("select sum(besar_biaya) from tambahan_biaya where no_rawat=?");
+                            try {
+                                pstambahan.setString(1,rspasien.getString("no_rawat"));
+                                rs=pstambahan.executeQuery();
+                                if(rs.next()){
+                                   tambahan=rs.getDouble(1);
+                                   ttltambahan=ttltambahan+rs.getDouble(1);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif Jm : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(pstambahan!=null){
+                                    pstambahan.close();
+                                }
+                            }
+                            
+                            potongan=0;
+                            pspotongan=koneksi.prepareStatement("select sum(besar_pengurangan) from pengurangan_biaya where no_rawat=?");
+                            try {
+                                pspotongan.setString(1,rspasien.getString("no_rawat"));
+                                rs=pspotongan.executeQuery();
+                                if(rs.next()){
+                                   potongan=rs.getDouble(1);
+                                   ttlpotongan=ttlpotongan+rs.getDouble(1);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif Jm : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(pspotongan!=null){
+                                    pspotongan.close();
+                                }
+                            }
+                            
+                            registrasi=0;
+                            psregistrasi=koneksi.prepareStatement("select sum(biaya_reg) from reg_periksa where no_rawat=?");
+                            try {
+                                psregistrasi.setString(1,rspasien.getString("no_rawat"));
+                                rs=psregistrasi.executeQuery();
+                                if(rs.next()){
+                                   registrasi=rs.getDouble(1);
+                                   ttlregistrasi=ttlregistrasi+rs.getDouble(1);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif Jm : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(psregistrasi!=null){
+                                    psregistrasi.close();
+                                }
+                            }
+                            
+                            radiologi=0;
+                            psradiologi=koneksi.prepareStatement("select sum(biaya) from periksa_radiologi where no_rawat=?");
+                            try {
+                                psradiologi.setString(1,rspasien.getString("no_rawat"));
+                                rs=psradiologi.executeQuery();
+                                if(rs.next()){
+                                   radiologi=rs.getDouble(1);
+                                   ttlradiologi=ttlradiologi+rs.getDouble(1);
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif Jm : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(psradiologi!=null){
+                                    psradiologi.close();
+                                }
+                            }
+                            ttlbiaya=ttlbiaya+obat+obatlangsung+laborat+detaillaborat+jm+jm2+jm3+operasi+tambahan-potongan+registrasi+radiologi;
                             tabMode.addRow(new Object[]{
                                 "",a+". "+rspasien.getString("kd_kamar")+" "+rspasien.getString("nm_pasien"),
                                 rspasien.getString("tgl_masuk"),rspasien.getString("tgl_keluar"),
                                 rspasien.getString("png_jawab"),Valid.SetAngka(obat+obatlangsung),
-                                Valid.SetAngka(laborat+detaillaborat),Valid.SetAngka(jm+jm2+jm3+operasi),"","","","",""
+                                Valid.SetAngka(laborat+detaillaborat),Valid.SetAngka(jm+jm2+jm3+operasi),
+                                Valid.SetAngka(tambahan),Valid.SetAngka(potongan),Valid.SetAngka(registrasi),
+                                Valid.SetAngka(radiologi),Valid.SetAngka(obat+obatlangsung+laborat+
+                                        detaillaborat+jm+jm2+jm3+operasi+tambahan-potongan+registrasi+radiologi)
                             });
                             a++;
                         }
@@ -799,9 +884,11 @@ private void ppTampilkanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent
                     }
                     i++;
                 }
+                
                 tabMode.addRow(new Object[]{
                     ">>","Total :","","","",Valid.SetAngka(ttlobat+ttlobatlangsung),
-                    Valid.SetAngka(ttllaborat+ttldetaillaborat),Valid.SetAngka(ttljm),Valid.SetAngka(ttltambahan),Valid.SetAngka(ttlpotongan),Valid.SetAngka(ttlregistrasi),Valid.SetAngka(ttlradiologi),Valid.SetAngka(ttlbiaya)
+                    Valid.SetAngka(ttllaborat+ttldetaillaborat),Valid.SetAngka(ttljm),Valid.SetAngka(ttltambahan),
+                    Valid.SetAngka(ttlpotongan),Valid.SetAngka(ttlregistrasi),Valid.SetAngka(ttlradiologi),Valid.SetAngka(ttlbiaya)
                 }); 
            } catch (Exception e) {
                System.out.println("Notif Bangsal : "+e);

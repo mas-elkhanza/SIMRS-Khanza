@@ -59,16 +59,16 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
-		<band splitType="Stretch"/>
+		<band/>
 	</background>
 	<title>
-		<band height="84" splitType="Stretch">
+		<band height="84">
 			<staticText>
 				<reportElement x="1" y="52" width="554" height="23"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 				</textElement>
-				<text><![CDATA[REKAP PEMASUKAN TINDAKAN DOKTER PER POLI]]></text>
+				<text><![CDATA[Rekap Harian Dokter Per Poli (Non Operasi & VK)]]></text>
 			</staticText>
 			<image scaleImage="FillFrame" onErrorType="Blank">
 				<reportElement x="0" y="2" width="48" height="45"/>
@@ -111,10 +111,10 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band splitType="Stretch"/>
+		<band/>
 	</pageHeader>
 	<columnHeader>
-		<band height="13" splitType="Stretch">
+		<band height="13">
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="25" height="12" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
@@ -207,7 +207,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="11" splitType="Stretch">
+		<band height="11">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="25" height="10"/>
 				<textElement lineSpacing="Single">
@@ -288,10 +288,10 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band splitType="Stretch"/>
+		<band/>
 	</columnFooter>
 	<pageFooter>
-		<band height="15" splitType="Stretch">
+		<band height="15">
 			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
 				<reportElement key="textField" x="483" y="2" width="36" height="10" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>

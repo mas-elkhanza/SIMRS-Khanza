@@ -161,6 +161,7 @@ import keuangan.DlgRHPaketBHP;
 import keuangan.DlgRekapPerShift;
 import keuangan.DlgRekening;
 import keuangan.DlgRekeningTahun;
+import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
 import laporan.DlgICD9;
 import laporan.DlgKunjunganRalan;
@@ -194,6 +195,50 @@ import setting.DlgSetHargaObatRalan;
 import setting.DlgSetHargaObatRanap;
 import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
+import simrskhanza.DlgAbout;
+import simrskhanza.DlgAbout;
+import simrskhanza.DlgCariPeriksaLab;
+import simrskhanza.DlgCariPeriksaLab;
+import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariTagihanOperasi;
+import simrskhanza.DlgCariTagihanOperasi;
+import simrskhanza.DlgDeposit;
+import simrskhanza.DlgDeposit;
+import simrskhanza.DlgDpjp;
+import simrskhanza.DlgDpjp;
+import simrskhanza.DlgIGD;
+import simrskhanza.DlgIGD;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgJadwal;
+import simrskhanza.DlgJadwal;
+import simrskhanza.DlgKasirRalan;
+import simrskhanza.DlgKasirRalan;
+import simrskhanza.DlgObatPenyakit;
+import simrskhanza.DlgObatPenyakit;
+import simrskhanza.DlgPasienMati;
+import simrskhanza.DlgPasienMati;
+import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPenelusuranLogin;
+import simrskhanza.DlgPenelusuranLogin;
+import simrskhanza.DlgPenggajian;
+import simrskhanza.DlgPenggajian;
+import simrskhanza.DlgResepObat;
+import simrskhanza.DlgResepObat;
+import simrskhanza.DlgResepPulang;
+import simrskhanza.DlgResepPulang;
+import simrskhanza.DlgResumePerawatan;
+import simrskhanza.DlgResumePerawatan;
+import simrskhanza.DlgRetensi;
+import simrskhanza.DlgRetensi;
+import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRunTeks;
+import simrskhanza.DlgRunTeks;
+import simrskhanza.DlgSirkulasiBerkas;
+import simrskhanza.DlgSirkulasiBerkas;
 import smsui.frmSmsView;
 import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDMedisRusak;
@@ -506,6 +551,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnUTDStokDarah = new widget.ButtonBig();
         btnUTDPemisahanDarah = new widget.ButtonBig();
         btnHarianKamar = new widget.ButtonBig();
+        btnRincianPiutangPasien = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
@@ -1787,7 +1833,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnTagihanPoli.setForeground(new java.awt.Color(40, 70, 50));
         btnTagihanPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
-        btnTagihanPoli.setText("Harian Tindakan Poli");
+        btnTagihanPoli.setText("Harian Dokter Poli");
         btnTagihanPoli.setIconTextGap(0);
         btnTagihanPoli.setName("btnTagihanPoli"); // NOI18N
         btnTagihanPoli.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3386,7 +3432,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnHarianKamar.setForeground(new java.awt.Color(40, 70, 50));
         btnHarianKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
-        btnHarianKamar.setText("Harian Tindakan Kamar");
+        btnHarianKamar.setText("Harian Kamar");
         btnHarianKamar.setIconTextGap(0);
         btnHarianKamar.setName("btnHarianKamar"); // NOI18N
         btnHarianKamar.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3397,6 +3443,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnHarianKamar);
 
+        btnRincianPiutangPasien.setForeground(new java.awt.Color(40, 70, 50));
+        btnRincianPiutangPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
+        btnRincianPiutangPasien.setText("Rincian Piutang Pasien");
+        btnRincianPiutangPasien.setIconTextGap(0);
+        btnRincianPiutangPasien.setName("btnRincianPiutangPasien"); // NOI18N
+        btnRincianPiutangPasien.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRincianPiutangPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRincianPiutangPasienActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRincianPiutangPasien);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3405,7 +3464,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/01/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/01/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7255,6 +7314,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnHarianKamarActionPerformed
 
+    private void btnRincianPiutangPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRincianPiutangPasienActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRincianPiutangPasien billing=new DlgRincianPiutangPasien(this,false);
+        billing.tampil();
+        billing.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        billing.setLocationRelativeTo(PanelUtama);
+        billing.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRincianPiutangPasienActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7435,6 +7506,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnReturJual;
     private widget.ButtonBig btnReturPasien;
     private widget.ButtonBig btnReturPiutang;
+    private widget.ButtonBig btnRincianPiutangPasien;
     private widget.ButtonBig btnRl32;
     private widget.ButtonBig btnRl33;
     private widget.ButtonBig btnRl34;
@@ -8298,6 +8370,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getpiutang_pasien()==true){
                Panelmenu.add(btnLihatPiutang); 
+               jmlmenu++;
+            }
+            
+            if(var.getrincian_piutang_pasien()==true){
+               Panelmenu.add(btnRincianPiutangPasien); 
                jmlmenu++;
             }
             
