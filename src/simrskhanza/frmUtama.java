@@ -77,6 +77,7 @@ import inventory.DlgPengambilanUTD;
 import inventory.DlgPenjualan;
 import inventory.DlgPiutang;
 import inventory.DlgProyeksiBeriObat;
+import inventory.DlgProyeksiBeriObat2;
 import inventory.DlgProyeksiJual;
 import inventory.DlgReturBeli;
 import inventory.DlgReturJual;
@@ -552,6 +553,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnUTDPemisahanDarah = new widget.ButtonBig();
         btnHarianKamar = new widget.ButtonBig();
         btnRincianPiutangPasien = new widget.ButtonBig();
+        btnKeuntunganObat2 = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
@@ -1156,7 +1158,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnSetupHarga);
 
         btnSuplier.setForeground(new java.awt.Color(40, 70, 50));
-        btnSuplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/user3.png"))); // NOI18N
+        btnSuplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357959_truck.png"))); // NOI18N
         btnSuplier.setText("Suplier Obat/Alkes/BHP");
         btnSuplier.setIconTextGap(0);
         btnSuplier.setName("btnSuplier"); // NOI18N
@@ -1416,7 +1418,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnReturPiutang);
 
         btnAnalisaKamar.setForeground(new java.awt.Color(40, 70, 50));
-        btnAnalisaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Home.png"))); // NOI18N
+        btnAnalisaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357890_hospital.png"))); // NOI18N
         btnAnalisaKamar.setText("Informasi Kamar");
         btnAnalisaKamar.setIconTextGap(0);
         btnAnalisaKamar.setName("btnAnalisaKamar"); // NOI18N
@@ -3456,6 +3458,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRincianPiutangPasien);
 
+        btnKeuntunganObat2.setForeground(new java.awt.Color(40, 70, 50));
+        btnKeuntunganObat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
+        btnKeuntunganObat2.setText("Keuntungan Beri Obat 2");
+        btnKeuntunganObat2.setIconTextGap(0);
+        btnKeuntunganObat2.setName("btnKeuntunganObat2"); // NOI18N
+        btnKeuntunganObat2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKeuntunganObat2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeuntunganObat2ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnKeuntunganObat2);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3464,7 +3479,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/01/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/01/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7326,6 +7341,19 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRincianPiutangPasienActionPerformed
 
+    private void btnKeuntunganObat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeuntunganObat2ActionPerformed
+        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgProyeksiBeriObat2 projul=new DlgProyeksiBeriObat2(this,false);
+        projul.isCek();
+        projul.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        projul.setLocationRelativeTo(PanelUtama);
+        projul.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnKeuntunganObat2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7429,6 +7457,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnKategoriInventaris;
     private widget.ButtonBig btnKeterlambatanPresensi;
     private widget.ButtonBig btnKeuntungan;
+    private widget.ButtonBig btnKeuntunganObat2;
     private widget.ButtonBig btnKeuntunganObatRanap;
     private widget.ButtonBig btnKonversi;
     private widget.ButtonBig btnKunjunganRalan;
@@ -7906,6 +7935,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getkeuntungan_beri_obat()==true){
                 Panelmenu.add(btnKeuntunganObatRanap);
+                jmlmenu++;
+            }
+            
+            if(var.getkeuntungan_beri_obat_nonpiutang()==true){
+                Panelmenu.add(btnKeuntunganObat2);
                 jmlmenu++;
             }
             

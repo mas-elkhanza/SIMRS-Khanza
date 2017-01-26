@@ -161,6 +161,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                         TNmOb.setText(dlgobt.getTable().getValueAt(dlgobt.getTable().getSelectedRow(),3).toString());   
                         TSatuan.setText(dlgobt.getTable().getValueAt(dlgobt.getTable().getSelectedRow(),4).toString());    
                         TBiayaObat.setText(dlgobt.getTable().getValueAt(dlgobt.getTable().getSelectedRow(),6).toString());   
+                        THBeli.setText(dlgobt.getTable().getValueAt(dlgobt.getTable().getSelectedRow(),12).toString());   
                     } 
                     TKdOb.requestFocus();
                 }
@@ -203,6 +204,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                         TNmOb.setText(dlgobtjalan.getTable().getValueAt(dlgobtjalan.getTable().getSelectedRow(),3).toString());   
                         TSatuan.setText(dlgobtjalan.getTable().getValueAt(dlgobtjalan.getTable().getSelectedRow(),4).toString());    
                         TBiayaObat.setText(dlgobtjalan.getTable().getValueAt(dlgobtjalan.getTable().getSelectedRow(),6).toString());   
+                        THBeli.setText(dlgobtjalan.getTable().getValueAt(dlgobtjalan.getTable().getSelectedRow(),13).toString());   
                     } 
                     TKdOb.requestFocus();
                 }
@@ -331,6 +333,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         Popup2 = new javax.swing.JPopupMenu();
         ppResepObat = new javax.swing.JMenuItem();
+        THBeli = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbPemberianObat = new widget.Table();
@@ -408,6 +411,10 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             }
         });
         Popup2.add(ppResepObat);
+
+        THBeli.setText("0");
+        THBeli.setHighlighter(null);
+        THBeli.setName("THBeli"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -597,7 +604,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2016" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2016" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -611,7 +618,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2016" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2016" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -751,7 +758,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2016" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2016" }));
         DTPBeri.setDisplayFormat("dd-MM-yyyy");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -1116,6 +1123,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                             cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
                             TNoRw.getText()+"','"+
                             TKdOb.getText()+"','"+
+                            THBeli.getText()+"','"+
                             TBiayaObat.getText()+"','"+
                             TJumlah.getText()+"','"+
                             TEmbalase.getText()+"','"+
@@ -1148,6 +1156,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         TEmbalase.setText("0");
         TTuslah.setText("0");
         TBiayaObat.setText("0");
+        THBeli.setText("0");
         TNoRw.requestFocus();
         DTPBeri.setDate(new Date());
         TNoRw.requestFocus();
@@ -1565,6 +1574,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.TextBox TCari;
     private widget.TextBox TCariPasien;
     private widget.TextBox TEmbalase;
+    private widget.TextBox THBeli;
     private widget.TextBox TJumlah;
     private widget.TextBox TKdOb;
     private widget.TextBox TNmOb;

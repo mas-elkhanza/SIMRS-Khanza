@@ -1585,6 +1585,20 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }            
         }
         
+        kodebarang=null;
+        namabarang=null;
+        satuan=null;
+        satuanbeli=null;
+        kadaluwarsa=null;
+        nobatch=null;
+        harga=null;
+        jumlah=null;
+        subtotal=null;
+        diskon=null;
+        besardiskon=null;
+        jmltotal=null;
+        jmlstok=null;
+        
         kodebarang=new String[jml];
         namabarang=new String[jml];
         satuan=new String[jml];

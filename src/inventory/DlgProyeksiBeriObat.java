@@ -54,29 +54,29 @@ public class DlgProyeksiBeriObat extends javax.swing.JDialog {
         for (int i = 0; i < 12; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==1){
                 column.setPreferredWidth(100);
             }else if(i==2){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(220);
             }else if(i==3){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==4){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==5){
                 column.setPreferredWidth(60);
             }else if(i==6){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==7){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==8){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==9){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==10){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==11){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());         
@@ -408,8 +408,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         "kodesatuan.satuan,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.jml, "+
                         "(detail_pemberian_obat.biaya_obat*detail_pemberian_obat.jml) as subtotal,"+
                         "(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah) as tambahan,detail_pemberian_obat.total, "+
-                        "databarang.h_beli,(databarang.h_beli * detail_pemberian_obat.jml) as total_asal, "+
-                        "(detail_pemberian_obat.total-(databarang.h_beli * detail_pemberian_obat.jml)) as keuntungan "+
+                        "detail_pemberian_obat.h_beli,(detail_pemberian_obat.h_beli * detail_pemberian_obat.jml) as total_asal, "+
+                        "(detail_pemberian_obat.total-(detail_pemberian_obat.h_beli * detail_pemberian_obat.jml)) as keuntungan "+
                         "from detail_pemberian_obat inner join databarang inner join kodesatuan "+
                         "on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
                         "and databarang.kode_sat=kodesatuan.kode_sat "+
@@ -563,8 +563,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         "kodesatuan.satuan,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.jml, "+
                         "(detail_pemberian_obat.biaya_obat*detail_pemberian_obat.jml) as subtotal,"+
                         "(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)as tambahan,detail_pemberian_obat.total, "+
-                        "databarang.h_beli,(databarang.h_beli * detail_pemberian_obat.jml) as total_asal, "+
-                        "(detail_pemberian_obat.total-(databarang.h_beli * detail_pemberian_obat.jml)) as keuntungan "+
+                        "detail_pemberian_obat.h_beli,(detail_pemberian_obat.h_beli * detail_pemberian_obat.jml) as total_asal, "+
+                        "(detail_pemberian_obat.total-(detail_pemberian_obat.h_beli * detail_pemberian_obat.jml)) as keuntungan "+
                         "from detail_pemberian_obat inner join databarang inner join kodesatuan "+
                         "on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
                         "and databarang.kode_sat=kodesatuan.kode_sat "+
