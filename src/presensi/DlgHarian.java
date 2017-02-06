@@ -161,13 +161,13 @@ public final class DlgHarian extends javax.swing.JDialog {
                 "rekap_presensi.jam_pulang, rekap_presensi.status, rekap_presensi.keterlambatan, rekap_presensi.durasi, "+
                 "rekap_presensi.keterangan from pegawai inner join rekap_presensi inner join departemen "+
                 "on pegawai.departemen=departemen.dep_id and pegawai.id=rekap_presensi.id where "+
-                " pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nik like ? and rekap_presensi.jam_datang like ?  "+
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nama like ? and  rekap_presensi.jam_datang like ?  "+                   
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.shift like ? and  rekap_presensi.jam_datang like ?  "+
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.status like ? and  rekap_presensi.jam_datang like ?  "+
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.keterlambatan like ? and  rekap_presensi.jam_datang like ?  "+
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.jam_datang like ? and  rekap_presensi.jam_datang like ? "+
-                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.jam_pulang like ? and  rekap_presensi.jam_datang like ?  order by pegawai.nama ");
+                " pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nik like ? and rekap_presensi.jam_datang between ? and ?  "+
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nama like ? and  rekap_presensi.jam_datang between ? and ?  "+                   
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.shift like ? and  rekap_presensi.jam_datang between ? and ?  "+
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.status like ? and  rekap_presensi.jam_datang between ? and ?  "+
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.keterlambatan like ? and  rekap_presensi.jam_datang between ? and ?  "+
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.jam_datang like ? and  rekap_presensi.jam_datang between ? and ? "+
+                "or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and rekap_presensi.jam_pulang like ? and  rekap_presensi.jam_datang between ? and ?  order by pegawai.nama ");
             psketerlambatan=koneksi.prepareStatement("select * from set_keterlambatan");
             rsketerlambatan=psketerlambatan.executeQuery();
             if(rsketerlambatan.next()){
@@ -230,6 +230,8 @@ public final class DlgHarian extends javax.swing.JDialog {
         panelGlass7 = new widget.panelisi();
         label11 = new widget.Label();
         tglCari = new widget.Tanggal();
+        label13 = new widget.Label();
+        tglCari2 = new widget.Tanggal();
         label12 = new widget.Label();
         Departemen = new widget.ComboBox();
         jLabel6 = new widget.Label();
@@ -504,13 +506,24 @@ public final class DlgHarian extends javax.swing.JDialog {
 
         label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(60, 23));
+        label11.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass7.add(label11);
 
         tglCari.setDisplayFormat("dd-MM-yyyy");
         tglCari.setName("tglCari"); // NOI18N
-        tglCari.setPreferredSize(new java.awt.Dimension(105, 23));
+        tglCari.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass7.add(tglCari);
+
+        label13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label13.setText("s.d.");
+        label13.setName("label13"); // NOI18N
+        label13.setPreferredSize(new java.awt.Dimension(25, 23));
+        panelGlass7.add(label13);
+
+        tglCari2.setDisplayFormat("dd-MM-yyyy");
+        tglCari2.setName("tglCari2"); // NOI18N
+        tglCari2.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelGlass7.add(tglCari2);
 
         label12.setText("Departemen :");
         label12.setName("label12"); // NOI18N
@@ -528,7 +541,7 @@ public final class DlgHarian extends javax.swing.JDialog {
         panelGlass7.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(233, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(180, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -567,7 +580,7 @@ public final class DlgHarian extends javax.swing.JDialog {
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
+        LCount.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass5.add(LCount);
 
         BtnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
@@ -900,7 +913,7 @@ public final class DlgHarian extends javax.swing.JDialog {
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                String say=" rekap_presensi.jam_datang like '%"+Valid.SetTgl(tglCari.getSelectedItem()+"")+"%'  ";
+                String say=" rekap_presensi.jam_datang between '"+Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59' ";
                 try{
                       pilih = (String)JOptionPane.showInputDialog(null,"Urutkan berdasakan","Laporan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"NIP","Nama","Shift","Jam Datang","Jam Pulang","Status","Keterlambatan","Durasi","Catatan"},"NIP");
                       switch (pilih) {
@@ -1158,6 +1171,7 @@ public final class DlgHarian extends javax.swing.JDialog {
     private widget.TextBox jampulang;
     private widget.Label label11;
     private widget.Label label12;
+    private widget.Label label13;
     private widget.Label label2;
     private widget.Label label23;
     private widget.Label label24;
@@ -1168,6 +1182,7 @@ public final class DlgHarian extends javax.swing.JDialog {
     private widget.panelisi panelGlass7;
     private widget.Table tbBangsal;
     private widget.Tanggal tglCari;
+    private widget.Tanggal tglCari2;
     private widget.Tanggal tglMasuk;
     private widget.Tanggal tglPulang;
     // End of variables declaration//GEN-END:variables
@@ -1177,25 +1192,32 @@ public final class DlgHarian extends javax.swing.JDialog {
         try{    
             ps.setString(1,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
             ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+Valid.SetTgl(tglCari.getSelectedItem()+"")+"%");
-            ps.setString(4,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(5,"%"+TCari.getText().trim()+"%");
-            ps.setString(6,"%"+Valid.SetTgl(tglCari.getSelectedItem()+"")+"%");
-            ps.setString(7,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(8,"%"+TCari.getText().trim()+"%");
-            ps.setString(9,"%"+Valid.SetTgl(tglCari.getSelectedItem()+"")+"%");
-            ps.setString(10,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(11,"%"+TCari.getText().trim()+"%");
-            ps.setString(12,"%"+Valid.SetTgl(tglCari.getSelectedItem()+"")+"%");
+            ps.setString(3,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(4,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(5,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+            ps.setString(6,"%"+TCari.getText().trim()+"%");
+            ps.setString(7,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(8,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(9,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+            ps.setString(10,"%"+TCari.getText().trim()+"%");
+            ps.setString(11,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(12,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
             ps.setString(13,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
             ps.setString(14,"%"+TCari.getText().trim()+"%");
-            ps.setString(15,"%"+Valid.SetTgl(tglCari.getSelectedItem()+"")+"%");
-            ps.setString(16,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(17,"%"+TCari.getText().trim()+"%");
-            ps.setString(18,"%"+Valid.SetTgl(tglCari.getSelectedItem()+"")+"%");
-            ps.setString(19,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-            ps.setString(20,"%"+TCari.getText().trim()+"%");
-            ps.setString(21,"%"+Valid.SetTgl(tglCari.getSelectedItem()+"")+"%");
+            ps.setString(15,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(16,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(17,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+            ps.setString(18,"%"+TCari.getText().trim()+"%");
+            ps.setString(19,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(20,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(21,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+            ps.setString(22,"%"+TCari.getText().trim()+"%");
+            ps.setString(23,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(24,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
+            ps.setString(25,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
+            ps.setString(26,"%"+TCari.getText().trim()+"%");
+            ps.setString(27,Valid.SetTgl(tglCari.getSelectedItem()+"")+" 00:00:00");
+            ps.setString(28,Valid.SetTgl(tglCari2.getSelectedItem()+"")+" 23:59:59");
             rs=ps.executeQuery();
             rs.last();
             

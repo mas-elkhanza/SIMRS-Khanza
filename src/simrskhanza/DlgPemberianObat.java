@@ -1424,6 +1424,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
                             TNoRw.getText()+"','"+
                             TKdOb.getText()+"','"+
+                            THBeli.getText()+"','"+
                             TBiayaObat.getText()+"','"+
                             TJumlah.getText()+"','"+
                             TEmbalase.getText()+"','"+
