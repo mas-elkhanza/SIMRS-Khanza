@@ -162,6 +162,7 @@ import keuangan.DlgRHPaketBHP;
 import keuangan.DlgRekapPerShift;
 import keuangan.DlgRekening;
 import keuangan.DlgRekeningTahun;
+import keuangan.DlgReklasifikasiRalan;
 import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
 import laporan.DlgICD9;
@@ -554,6 +555,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnHarianKamar = new widget.ButtonBig();
         btnRincianPiutangPasien = new widget.ButtonBig();
         btnKeuntunganObat2 = new widget.ButtonBig();
+        btnReklasifikasiRalan = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
@@ -3470,6 +3472,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnKeuntunganObat2);
+
+        btnReklasifikasiRalan.setForeground(new java.awt.Color(40, 70, 50));
+        btnReklasifikasiRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
+        btnReklasifikasiRalan.setText("Reklasifikasi Ralan");
+        btnReklasifikasiRalan.setIconTextGap(0);
+        btnReklasifikasiRalan.setName("btnReklasifikasiRalan"); // NOI18N
+        btnReklasifikasiRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReklasifikasiRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReklasifikasiRalanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnReklasifikasiRalan);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -7354,6 +7369,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnKeuntunganObat2ActionPerformed
 
+    private void btnReklasifikasiRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReklasifikasiRalanActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgReklasifikasiRalan billing=new DlgReklasifikasiRalan(this,false);
+        billing.tampil();
+        billing.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        billing.setLocationRelativeTo(PanelUtama);
+        billing.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnReklasifikasiRalanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7527,6 +7554,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRekapPresensi2;
     private widget.ButtonBig btnRekening;
     private widget.ButtonBig btnRekeningTahun;
+    private widget.ButtonBig btnReklasifikasiRalan;
     private widget.ButtonBig btnResepObat;
     private widget.ButtonBig btnResepPulang;
     private widget.ButtonBig btnResume;
@@ -8194,7 +8222,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnRanapMasuk);
                 jmlmenu++;
             }
-                    
+                   
+            if(var.getreklasifikasi_ralan()==true){
+                Panelmenu.add(btnReklasifikasiRalan);
+                jmlmenu++;
+            }
+            
             if(var.getrekap_pembayaran_ralan()==true){
                 Panelmenu.add(btnTagihanRalanPerhari);
                 jmlmenu++;
