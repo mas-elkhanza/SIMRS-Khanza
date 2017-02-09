@@ -87,7 +87,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[H]Harian J.S.","[H]Bulanan J.S.","[H]Harian BHP Medis/Paket Obat","[H]Bulanan BHP Medis/Paket Obat","[J]Piutang Belum Lunas","[K]Referensi Faskes",
                     "[K]Data Bridging SEP","[D]Pengambilan BHP UTD","[J]Tarif UTD","[M]Pengambilan BHP Medis","[M]BHP Medis Rusak","[E]Pengambilan UTD","[M]Pengambilan BHP Non Medis",
                     "[M]BHP Non Medis Rusak","[E]Suplier Non Medis","[M]Donor Darah","[K]Monitoring Verifikasi Klaim","[M]Cekal Darah","[M]Komponen Darah","[M]Stok Darah","[M]Pemisahan Darah",
-                    "[H]Harian Kamar","[J]Rincian Piutang Pasien","[D]Keuntungan Beri Obat, Alkes & BHP 2","[K]Reklasifikasi Ralan"
+                    "[H]Harian Kamar","[J]Rincian Piutang Pasien","[D]Keuntungan Beri Obat, Alkes & BHP 2","[K]Reklasifikasi Ralan","[K]Reklasifikasi Ranap"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -166,7 +166,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 204; i++) {
+        for (i = 0; i < 205; i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(170);
@@ -607,7 +607,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -854,7 +854,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "harian_kamar='"+tbUser.getValueAt(i,200).toString()+"',"+
                     "rincian_piutang_pasien='"+tbUser.getValueAt(i,201).toString()+"',"+
                     "keuntungan_beri_obat_nonpiutang='"+tbUser.getValueAt(i,202).toString()+"',"+
-                    "reklasifikasi_ralan='"+tbUser.getValueAt(i,203).toString()+"'");
+                    "reklasifikasi_ralan='"+tbUser.getValueAt(i,203).toString()+"',"+
+                    "reklasifikasi_ranap='"+tbUser.getValueAt(i,204).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1101,8 +1102,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "harian_paket_bhp,bulanan_paket_bhp,piutang_pasien2,bpjs_referensi_faskes,bpjs_sep,pengambilan_utd,tarif_utd, "+
                         "pengambilan_utd2,utd_medis_rusak,pengambilan_penunjang_utd,pengambilan_penunjang_utd2,utd_penunjang_rusak,"+
                         "suplier_penunjang,utd_donor,bpjs_monitoring_klaim,utd_cekal_darah,utd_komponen_darah,utd_stok_darah, "+
-                        "utd_pemisahan_darah,harian_kamar,rincian_piutang_pasien,keuntungan_beri_obat_nonpiutang,reklasifikasi_ralan "+
-                        "from user order by AES_DECRYPT(id_user,'nur')");
+                        "utd_pemisahan_darah,harian_kamar,rincian_piutang_pasien,keuntungan_beri_obat_nonpiutang,reklasifikasi_ralan, "+
+                        "reklasifikasi_ranap from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1316,7 +1317,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("harian_kamar"),
                                            rs.getBoolean("rincian_piutang_pasien"),
                                            rs.getBoolean("keuntungan_beri_obat_nonpiutang"),
-                                           rs.getBoolean("reklasifikasi_ralan")
+                                           rs.getBoolean("reklasifikasi_ralan"),
+                                           rs.getBoolean("reklasifikasi_ranap")
                             });
                         }   
                     } catch (Exception e) {
@@ -1522,7 +1524,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("harian_kamar"),
                                            rs.getBoolean("rincian_piutang_pasien"),
                                            rs.getBoolean("keuntungan_beri_obat_nonpiutang"),
-                                           rs.getBoolean("reklasifikasi_ralan")
+                                           rs.getBoolean("reklasifikasi_ralan"),
+                                           rs.getBoolean("reklasifikasi_ranap")
                             });
                     }                                             
                  }

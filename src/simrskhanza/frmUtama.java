@@ -162,7 +162,8 @@ import keuangan.DlgRHPaketBHP;
 import keuangan.DlgRekapPerShift;
 import keuangan.DlgRekening;
 import keuangan.DlgRekeningTahun;
-import keuangan.DlgReklasifikasiRalan;
+import bridging.ReklasifikasiRalan;
+import bridging.ReklasifikasiRanap;
 import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
 import laporan.DlgICD9;
@@ -556,6 +557,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnRincianPiutangPasien = new widget.ButtonBig();
         btnKeuntunganObat2 = new widget.ButtonBig();
         btnReklasifikasiRalan = new widget.ButtonBig();
+        btnReklasifikasiRanap = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
@@ -3485,6 +3487,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnReklasifikasiRalan);
+
+        btnReklasifikasiRanap.setForeground(new java.awt.Color(40, 70, 50));
+        btnReklasifikasiRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
+        btnReklasifikasiRanap.setText("Reklasifikasi Ranap");
+        btnReklasifikasiRanap.setIconTextGap(0);
+        btnReklasifikasiRanap.setName("btnReklasifikasiRanap"); // NOI18N
+        btnReklasifikasiRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnReklasifikasiRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReklasifikasiRanapActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnReklasifikasiRanap);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -7372,7 +7387,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private void btnReklasifikasiRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReklasifikasiRalanActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgReklasifikasiRalan billing=new DlgReklasifikasiRalan(this,false);
+        ReklasifikasiRalan billing=new ReklasifikasiRalan(this,false);
         billing.tampil();
         billing.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         billing.setLocationRelativeTo(PanelUtama);
@@ -7380,6 +7395,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnReklasifikasiRalanActionPerformed
+
+    private void btnReklasifikasiRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReklasifikasiRanapActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        ReklasifikasiRanap billing=new ReklasifikasiRanap(this,false);
+        billing.tampil();
+        billing.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        billing.setLocationRelativeTo(PanelUtama);
+        billing.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnReklasifikasiRanapActionPerformed
 
     /**
     * @param args the command line arguments
@@ -7555,6 +7582,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRekening;
     private widget.ButtonBig btnRekeningTahun;
     private widget.ButtonBig btnReklasifikasiRalan;
+    private widget.ButtonBig btnReklasifikasiRanap;
     private widget.ButtonBig btnResepObat;
     private widget.ButtonBig btnResepPulang;
     private widget.ButtonBig btnResume;
@@ -8529,6 +8557,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getreklasifikasi_ralan()==true){
                 Panelmenu.add(btnReklasifikasiRalan);
+                jmlmenu++;
+            }
+            
+            if(var.getreklasifikasi_ranap()==true){
+                Panelmenu.add(btnReklasifikasiRanap);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==11){ 
