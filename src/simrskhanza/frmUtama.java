@@ -850,7 +850,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         cmbMenu.setBackground(new java.awt.Color(247, 252, 247));
         cmbMenu.setForeground(new java.awt.Color(40, 70, 50));
-        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset & Inventaris Barang Rumah Sakit", "[G] Parkir Rumah Sakit", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal Rumah Sakit", "[J] Tarif Pelayanan & Keuangan Rumah Sakit", "[K] Bridging BPJS Kesehatan", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Pengaturan Program Aplikasi HMS" }));
+        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset & Inventaris Barang Rumah Sakit", "[G] Parkir Rumah Sakit", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal Rumah Sakit", "[J] Tarif Pelayanan & Keuangan Rumah Sakit", "[K] Bridging SEP, PCare, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Pengaturan Program Aplikasi HMS" }));
         cmbMenu.setName("cmbMenu"); // NOI18N
         cmbMenu.setOpaque(false);
         cmbMenu.setPreferredSize(new java.awt.Dimension(470, 23));
@@ -2942,7 +2942,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnCekBPJSNik.setForeground(new java.awt.Color(40, 70, 50));
         btnCekBPJSNik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/family.png"))); // NOI18N
-        btnCekBPJSNik.setText("Cek NIK");
+        btnCekBPJSNik.setText("Cek NIK BPJS");
         btnCekBPJSNik.setIconTextGap(0);
         btnCekBPJSNik.setName("btnCekBPJSNik"); // NOI18N
         btnCekBPJSNik.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -2955,7 +2955,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnCekBPJSKartu.setForeground(new java.awt.Color(40, 70, 50));
         btnCekBPJSKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/administrator.png"))); // NOI18N
-        btnCekBPJSKartu.setText("Cek No.Kartu");
+        btnCekBPJSKartu.setText("Cek No.Kartu BPJS");
         btnCekBPJSKartu.setIconTextGap(0);
         btnCekBPJSKartu.setName("btnCekBPJSKartu"); // NOI18N
         btnCekBPJSKartu.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -2968,7 +2968,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnCekBPJSRiwayat.setForeground(new java.awt.Color(40, 70, 50));
         btnCekBPJSRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor 3.png"))); // NOI18N
-        btnCekBPJSRiwayat.setText("Riwayat Peserta");
+        btnCekBPJSRiwayat.setText("Riwayat Peserta BPJS");
         btnCekBPJSRiwayat.setIconTextGap(0);
         btnCekBPJSRiwayat.setName("btnCekBPJSRiwayat"); // NOI18N
         btnCekBPJSRiwayat.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3033,7 +3033,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnCekBPJSNomorRujukan.setForeground(new java.awt.Color(40, 70, 50));
         btnCekBPJSNomorRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        btnCekBPJSNomorRujukan.setText("Cek Nomor Rujukan");
+        btnCekBPJSNomorRujukan.setText("Cek Nomor Rujukan BPJS");
         btnCekBPJSNomorRujukan.setIconTextGap(0);
         btnCekBPJSNomorRujukan.setName("btnCekBPJSNomorRujukan"); // NOI18N
         btnCekBPJSNomorRujukan.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3124,7 +3124,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnCekBPJSDiagnosa.setForeground(new java.awt.Color(40, 70, 50));
         btnCekBPJSDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
-        btnCekBPJSDiagnosa.setText("Referensi Diagnosa");
+        btnCekBPJSDiagnosa.setText("Referensi Diagnosa BPJS");
         btnCekBPJSDiagnosa.setIconTextGap(0);
         btnCekBPJSDiagnosa.setName("btnCekBPJSDiagnosa"); // NOI18N
         btnCekBPJSDiagnosa.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3137,7 +3137,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnCekBPJSPoli.setForeground(new java.awt.Color(40, 70, 50));
         btnCekBPJSPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logout.png"))); // NOI18N
-        btnCekBPJSPoli.setText("Referensi Poli");
+        btnCekBPJSPoli.setText("Referensi Poli BPJS");
         btnCekBPJSPoli.setIconTextGap(0);
         btnCekBPJSPoli.setName("btnCekBPJSPoli"); // NOI18N
         btnCekBPJSPoli.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3228,7 +3228,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnCekBPJSFaskes.setForeground(new java.awt.Color(40, 70, 50));
         btnCekBPJSFaskes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
-        btnCekBPJSFaskes.setText("Referensi Faskes");
+        btnCekBPJSFaskes.setText("Referensi Faskes BPJS");
         btnCekBPJSFaskes.setIconTextGap(0);
         btnCekBPJSFaskes.setName("btnCekBPJSFaskes"); // NOI18N
         btnCekBPJSFaskes.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3371,7 +3371,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnMonitoringKlaim.setForeground(new java.awt.Color(40, 70, 50));
         btnMonitoringKlaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
-        btnMonitoringKlaim.setText("Monitoring Verifikasi Klaim");
+        btnMonitoringKlaim.setText("Monitoring Verifikasi Klaim BPJS");
         btnMonitoringKlaim.setIconTextGap(0);
         btnMonitoringKlaim.setName("btnMonitoringKlaim"); // NOI18N
         btnMonitoringKlaim.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3494,7 +3494,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/01/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/02/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8222,11 +8222,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnRanapMasuk);
                 jmlmenu++;
             }
-                   
-            if(var.getreklasifikasi_ralan()==true){
-                Panelmenu.add(btnReklasifikasiRalan);
-                jmlmenu++;
-            }
             
             if(var.getrekap_pembayaran_ralan()==true){
                 Panelmenu.add(btnTagihanRalanPerhari);
@@ -8526,8 +8521,14 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnBPJSSEP);
                 jmlmenu++;
             }
+            
             if(var.getbpjs_monitoring_klaim()==true){
                 Panelmenu.add(btnMonitoringKlaim);
+                jmlmenu++;
+            }
+            
+            if(var.getreklasifikasi_ralan()==true){
+                Panelmenu.add(btnReklasifikasiRalan);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==11){ 

@@ -468,12 +468,16 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRM.getText());
             }
         });
-        
-        if(diagnosa_akhir.equals("Yes")){
-            diagnosaakhir.setEditable(true); 
-        }else{
+        try {
+            if(diagnosa_akhir.equals("Yes")){
+                diagnosaakhir.setEditable(true); 
+            }else{
+                diagnosaakhir.setEditable(false); 
+            }
+        } catch (Exception e) {
             diagnosaakhir.setEditable(false); 
         }
+            
     }
 
     /** This method is called from within the constructor to

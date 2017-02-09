@@ -558,7 +558,7 @@
                         <StringItem index="7" value="[H] Olah Data Tagihan Rawat Inap &amp; Rawat Jalan"/>
                         <StringItem index="8" value="[I] Olah Data Penyakit, Laporan DKK, Laporal RL &amp; Laporan Internal Rumah Sakit"/>
                         <StringItem index="9" value="[J] Tarif Pelayanan &amp; Keuangan Rumah Sakit"/>
-                        <StringItem index="10" value="[K] Bridging BPJS Kesehatan"/>
+                        <StringItem index="10" value="[K] Bridging SEP, PCare, Kemenkes &amp; Pihak Ke 3"/>
                         <StringItem index="11" value="[L] Olah Data Pasien"/>
                         <StringItem index="12" value="[M] Unit Pelayanan Tranfusi Darah"/>
                         <StringItem index="13" value="[N] Pengaturan Program Aplikasi HMS"/>
@@ -3644,7 +3644,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/family.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Cek NIK"/>
+                        <Property name="text" type="java.lang.String" value="Cek NIK BPJS"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSNik" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3663,7 +3663,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/administrator.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Cek No.Kartu"/>
+                        <Property name="text" type="java.lang.String" value="Cek No.Kartu BPJS"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSKartu" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3682,7 +3682,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/doctor 3.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Riwayat Peserta"/>
+                        <Property name="text" type="java.lang.String" value="Riwayat Peserta BPJS"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSRiwayat" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3777,7 +3777,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/checklist.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Cek Nomor Rujukan"/>
+                        <Property name="text" type="java.lang.String" value="Cek Nomor Rujukan BPJS"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSNomorRujukan" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3910,7 +3910,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/Gnome-X-Office-Address-Book-48.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Referensi Diagnosa"/>
+                        <Property name="text" type="java.lang.String" value="Referensi Diagnosa BPJS"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSDiagnosa" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3929,7 +3929,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/logout.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Referensi Poli"/>
+                        <Property name="text" type="java.lang.String" value="Referensi Poli BPJS"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSPoli" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -4062,7 +4062,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/industry.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Referensi Faskes"/>
+                        <Property name="text" type="java.lang.String" value="Referensi Faskes BPJS"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSFaskes" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -4271,7 +4271,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1360486845_23.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Monitoring Verifikasi Klaim"/>
+                        <Property name="text" type="java.lang.String" value="Monitoring Verifikasi Klaim BPJS"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnMonitoringKlaim" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

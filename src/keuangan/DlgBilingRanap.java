@@ -368,7 +368,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         tbUbahLama.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        TBayar.setDocument(new batasInput((byte)17).getOnlyAngka(TBayar));
+        TBayar.setDocument(new batasInput((byte)17).getKata(TBayar));
         
         TBayar.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
             @Override
@@ -2516,7 +2516,7 @@ private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         isRawat();
                                     }else{
                                         try{
-                                            if(Double.parseDouble(tbBilling.getValueAt(tbBilling.getSelectedRow(),6).toString())>0){
+                                            if(Double.parseDouble(tbBilling.getValueAt(tbBilling.getSelectedRow(),6).toString())!=0){
                                                 Sequel.queryu2("delete from temporary_tambahan_potongan where no_rawat=? and nama_tambahan=? and status=?",3,new String[]{
                                                     TNoRw.getText(),tbBilling.getValueAt(tbBilling.getSelectedRow(),2).toString(),tbBilling.getValueAt(tbBilling.getSelectedRow(),8).toString()
                                                 });
