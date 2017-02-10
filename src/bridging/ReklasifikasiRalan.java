@@ -645,7 +645,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
         }else{
             DlgBilingRalan billing=new DlgBilingRalan(null,false);
-            billing.TNoRw.setText(Sequel.cariIsi("select no_rawat from nota_jalan where no_nota=?",TKd.getText()));
+            billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
             billing.isRawat();
             billing.isCek();
             if(Sequel.cariInteger("select count(no_rawat) from piutang_pasien where no_rawat=?",billing.TNoRw.getText())>0){
@@ -707,7 +707,6 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "nota_jalan.tanggal,nota_jalan.jam,pasien.jk,pasien.tgl_lahir from reg_periksa inner join penjab inner join nota_jalan inner join pasien "+
                         "on reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.no_rawat=nota_jalan.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "where reg_periksa.status_lanjut='Ralan' and "+
-                        "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
                         "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? order by reg_periksa.kd_dokter,reg_periksa.tgl_registrasi");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
@@ -838,6 +837,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             pspenyakit.close();
                         }
                     }
+                    
+                    p1="";p2="";p3="";p4="";p5="";p6="";p7="";p8="";p9="";
+                    p10="";p11="";p12="";p13="";p14="";p15="";p16="";p17="";
+                    p18="";p19="";p20="";p21="";p22="";p23="";p24="";p25="";
+                    p26="";p27="";p28="";p29="";p30="";
                     
                     psprosedur=koneksi.prepareStatement(
                             "select kode,prioritas from prosedur_pasien where "+
@@ -1014,14 +1018,14 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+"+
                                 "operasi.biaya_omloop3+operasi.biayasarpras) from operasi where kategori='-' and no_rawat=?",rs.getString("no_rawat"));
                         
-
                         tabMode.addRow(new Object[]{
                             rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("png_jawab"),rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),
                             rs.getString("tanggal")+" "+rs.getString("jam"),"1",rs.getString("jk"),rs.getString("tgl_lahir"),
                             "RJ","Reguler",status,du,ds1,ds2,ds3,ds4,ds5,ds6,ds7,ds8,ds9,ds10,ds11,ds12,ds13,ds14,ds15,ds16,
                             ds17,ds18,ds19,ds20,ds21,ds22,ds23,ds24,ds25,ds26,ds27,ds28,ds29,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,
                             p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29,p30,
-                            Sequel.cariIsi("select diagawal from bridging_sep where no_rawat=?",rs.getString("no_rawat")),Valid.SetAngka(all),
+                            Sequel.cariIsi("select diagawal from bridging_sep where no_rawat=?",rs.getString("no_rawat")),
+                            Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Dokter_paramedis+Ralan_Paramedis+Tambahan+Potongan+Registrasi),
                             Valid.SetAngka(kebidanan),Valid.SetAngka(operasi2),Valid.SetAngka(Ralan_Dokter+Ralan_Dokter_paramedis),
                             0,Valid.SetAngka(Ralan_Paramedis),Valid.SetAngka(Tambahan+Registrasi),0,Valid.SetAngka(Laborat),
                             0,Valid.SetAngka(Radiologi),0,0,0,Valid.SetAngka(Obat),0,0,0,Valid.SetAngka(Potongan)
