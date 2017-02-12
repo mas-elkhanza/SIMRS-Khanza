@@ -198,50 +198,6 @@ import setting.DlgSetHargaObatRalan;
 import setting.DlgSetHargaObatRanap;
 import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
-import simrskhanza.DlgAbout;
-import simrskhanza.DlgAbout;
-import simrskhanza.DlgCariPeriksaLab;
-import simrskhanza.DlgCariPeriksaLab;
-import simrskhanza.DlgCariPeriksaRadiologi;
-import simrskhanza.DlgCariPeriksaRadiologi;
-import simrskhanza.DlgCariTagihanOperasi;
-import simrskhanza.DlgCariTagihanOperasi;
-import simrskhanza.DlgDeposit;
-import simrskhanza.DlgDeposit;
-import simrskhanza.DlgDpjp;
-import simrskhanza.DlgDpjp;
-import simrskhanza.DlgIGD;
-import simrskhanza.DlgIGD;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgJadwal;
-import simrskhanza.DlgJadwal;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgObatPenyakit;
-import simrskhanza.DlgObatPenyakit;
-import simrskhanza.DlgPasienMati;
-import simrskhanza.DlgPasienMati;
-import simrskhanza.DlgPemberianDiet;
-import simrskhanza.DlgPemberianDiet;
-import simrskhanza.DlgPenelusuranLogin;
-import simrskhanza.DlgPenelusuranLogin;
-import simrskhanza.DlgPenggajian;
-import simrskhanza.DlgPenggajian;
-import simrskhanza.DlgResepObat;
-import simrskhanza.DlgResepObat;
-import simrskhanza.DlgResepPulang;
-import simrskhanza.DlgResepPulang;
-import simrskhanza.DlgResumePerawatan;
-import simrskhanza.DlgResumePerawatan;
-import simrskhanza.DlgRetensi;
-import simrskhanza.DlgRetensi;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRunTeks;
-import simrskhanza.DlgRunTeks;
-import simrskhanza.DlgSirkulasiBerkas;
-import simrskhanza.DlgSirkulasiBerkas;
 import smsui.frmSmsView;
 import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDMedisRusak;
@@ -558,6 +514,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnKeuntunganObat2 = new widget.ButtonBig();
         btnReklasifikasiRalan = new widget.ButtonBig();
         btnReklasifikasiRanap = new widget.ButtonBig();
+        btnUTDPenyerahanDarah = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
@@ -3501,6 +3458,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnReklasifikasiRanap);
 
+        btnUTDPenyerahanDarah.setForeground(new java.awt.Color(40, 70, 50));
+        btnUTDPenyerahanDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/health.png"))); // NOI18N
+        btnUTDPenyerahanDarah.setText("Penyerahan Darah");
+        btnUTDPenyerahanDarah.setIconTextGap(0);
+        btnUTDPenyerahanDarah.setName("btnUTDPenyerahanDarah"); // NOI18N
+        btnUTDPenyerahanDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnUTDPenyerahanDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUTDPenyerahanDarahActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnUTDPenyerahanDarah);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3509,7 +3479,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/02/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/02/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7408,6 +7378,10 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnReklasifikasiRanapActionPerformed
 
+    private void btnUTDPenyerahanDarahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUTDPenyerahanDarahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUTDPenyerahanDarahActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7656,6 +7630,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnUTDMedisRusak;
     private widget.ButtonBig btnUTDPemisahanDarah;
     private widget.ButtonBig btnUTDPenunjangRusak;
+    private widget.ButtonBig btnUTDPenyerahanDarah;
     private widget.ButtonBig btnUTDStokDarah;
     private widget.ButtonBig btnUser;
     private widget.ButtonBig btnVakum;
@@ -8644,6 +8619,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getutd_stok_darah()==true){
                 Panelmenu.add(btnUTDStokDarah); 
+                jmlmenu++;
+            } 
+            
+            if(var.getutd_penyerahan_darah()==true){
+                Panelmenu.add(btnUTDPenyerahanDarah); 
                 jmlmenu++;
             } 
         }else if(cmbMenu.getSelectedIndex()==13){   
