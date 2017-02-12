@@ -684,7 +684,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         }else if(ranapvvip.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         }else if(! ranapvvip.getText().trim().equals("")){
-            Sequel.queryu("delete from setpenjualan");
+            Sequel.queryu("delete from setpenjualan where kdjns='"+kdjns.getText()+"'");
             tampil();
             emptTeks();
         }
@@ -801,7 +801,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         }else if(kdjns.getText().trim().equals("")||nmjns.getText().trim().equals("")){
             Valid.textKosong(kdjns,"Jenis Barang");
         }else{
-            Sequel.queryu("delete from setpenjualan");
+            Sequel.queryu("delete from setpenjualan where kdjns='"+kdjns.getText()+"'");
             Sequel.menyimpan("setpenjualan","'"+ralan.getText()+"','"+ranapk1.getText()+"','"+
                     ranapk2.getText()+"','"+ranapk3.getText()+"','"+ranaputama.getText()+"','"+
                     ranapvip.getText()+"','"+ranapvvip.getText()+"','"+beliluar.getText()+"','"+

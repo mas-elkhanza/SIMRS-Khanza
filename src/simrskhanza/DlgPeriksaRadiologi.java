@@ -105,8 +105,8 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(75);
             }else {
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+               column.setMinWidth(0);
+               column.setMaxWidth(0);
             }
         }
         tbPemeriksaan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -555,7 +555,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
 
         Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-10-2016" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2017" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -691,6 +691,11 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         TCariPeriksa.setToolTipText("Alt+C");
         TCariPeriksa.setName("TCariPeriksa"); // NOI18N
         TCariPeriksa.setPreferredSize(new java.awt.Dimension(160, 23));
+        TCariPeriksa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TCariPeriksaActionPerformed(evt);
+            }
+        });
         TCariPeriksa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariPeriksaKeyPressed(evt);
@@ -1399,6 +1404,10 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
+    private void TCariPeriksaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TCariPeriksaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TCariPeriksaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1505,8 +1514,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             tarif_tindakan_dokter=null;
             tarif_tindakan_dokter=new double[jml];
             tarif_tindakan_petugas=null;
-            tarif_tindakan_dokter=new double[jml];
-
+            tarif_tindakan_petugas=new double[jml];
+            
             index=0; 
             for(i=0;i<tbPemeriksaan.getRowCount();i++){
                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
@@ -1524,9 +1533,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             }
 
             Valid.tabelKosong(tabMode);
-            for(i=0;i<jml;i++){
+            for(i=0;i<jml;i++){                
                 tabMode.addRow(new Object[] {pilih[i],kode[i],nama[i],total[i],bagian_rs[i],bhp[i],tarif_perujuk[i],tarif_tindakan_dokter[i],tarif_tindakan_petugas[i]});
-            }       
+            }    
         
             pspemeriksaan=koneksi.prepareStatement(
                     "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
@@ -1564,7 +1573,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8)});
                 }
             } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
+                System.out.println("Notifikasi 1 : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -1577,7 +1586,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 }
             }
         }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+            System.out.println("Notifikasi 2 : "+e);
         }
     }
     

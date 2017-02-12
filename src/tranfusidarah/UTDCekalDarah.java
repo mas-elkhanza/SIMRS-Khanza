@@ -631,6 +631,9 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
                 NoDonor.getText(),Valid.SetTgl(TanggalCekal.getSelectedItem()+""),Dinas.getSelectedItem().toString(),
                 KodePetugas.getText(),Keterangan.getText()
             })==true){
+                Sequel.mengedit("utd_donor","no_donor=?","status=?",2,new String[]{
+                    "Cekal",NoDonor.getText()
+                });
                 tampil();
                 emptTeks();
             }                
@@ -659,6 +662,9 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         Valid.hapusTable(tabMode,NoDonor,"utd_cekal_darah","no_donor");
+        Sequel.mengedit("utd_donor","no_donor=?","status=?",2,new String[]{
+            "Aman",NoDonor.getText()
+        });
         tampil();
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed

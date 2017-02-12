@@ -307,7 +307,7 @@ public class DlgRBTindakanDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Pemasukan Per Dokter Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Dokter Rawat Jalan (Non Operasi & VK) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -531,7 +531,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRBTindakanDr.jrxml","report","[ Rekap Pemasukan Tindakan Dokter ]",
+            Valid.MyReport("rptRBTindakanDr.jrxml","report","[ Rekap Harian Dokter Rawat Jalan ]",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
         }
         this.setCursor(Cursor.getDefaultCursor());

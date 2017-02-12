@@ -163,22 +163,27 @@ public final class sekuel {
     }
     
     public boolean menyimpantf2(String table,String value,String sama,int i,String[] a){
+        bool=false;
         try{ 
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");
-            for(angka=1;angka<=i;angka++){
-                ps.setString(angka,a[angka-1]);
-            }            
-            ps.executeUpdate();
-            
-            if(ps != null){
-                ps.close();
+            try {
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                }            
+                ps.executeUpdate();
+                bool=true;
+            } catch (Exception e) {
+                bool=false;
+                System.out.println("Notifikasi : "+e);  
+            } finally{
+                if(ps != null){
+                    ps.close();
+                }
             }
-            
-            return true;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);  
-            return false;
         }
+        return bool;
     }
     
     public void menyimpan(String table,String value,int i,String[] a){

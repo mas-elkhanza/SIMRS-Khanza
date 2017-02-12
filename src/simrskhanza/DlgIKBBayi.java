@@ -181,7 +181,6 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         ppGrafikproseslahirlaki = new javax.swing.JMenuItem();
         ppGrafikproseslahirwn = new javax.swing.JMenuItem();
         MnKartu = new javax.swing.JMenuItem();
-        MnResumePasien = new javax.swing.JMenuItem();
         MnInformasiBayi = new javax.swing.JMenuItem();
         Kd2 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -597,20 +596,6 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             }
         });
         Popup.add(MnKartu);
-
-        MnResumePasien.setBackground(new java.awt.Color(255, 255, 255));
-        MnResumePasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnResumePasien.setForeground(new java.awt.Color(50, 70, 40));
-        MnResumePasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnResumePasien.setText("Resume Perawatan Pasien");
-        MnResumePasien.setName("MnResumePasien"); // NOI18N
-        MnResumePasien.setPreferredSize(new java.awt.Dimension(250, 28));
-        MnResumePasien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnResumePasienActionPerformed(evt);
-            }
-        });
-        Popup.add(MnResumePasien);
 
         MnInformasiBayi.setBackground(new java.awt.Color(255, 255, 255));
         MnInformasiBayi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1842,24 +1827,6 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
 }//GEN-LAST:event_MnKartuActionPerformed
 
-private void MnResumePasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnResumePasienActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-            NoRm.requestFocus();
-        }else if(NmBayi.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
-            tbDokter.requestFocus();
-        }else{
-            DlgResumePerawatan resume=new DlgResumePerawatan(null,false);
-            resume.setNoRm(NoRm.getText()); 
-            resume.isPasien();
-            resume.tampil();
-            resume.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-            resume.setLocationRelativeTo(internalFrame1);
-            resume.setVisible(true);
-        }
-}//GEN-LAST:event_MnResumePasienActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
     }//GEN-LAST:event_formWindowOpened
@@ -1932,7 +1899,6 @@ private void MnResumePasienActionPerformed(java.awt.event.ActionEvent evt) {//GE
     private widget.TextBox LingkarKepala;
     private javax.swing.JMenuItem MnInformasiBayi;
     private javax.swing.JMenuItem MnKartu;
-    private javax.swing.JMenuItem MnResumePasien;
     private widget.TextBox NmAyah;
     private widget.TextBox NmBayi;
     private widget.TextBox Nmibu;

@@ -170,7 +170,7 @@ public class DlgBarang extends javax.swing.JDialog {
 
         Kd.setDocument(new batasInput((byte) 15).getKata(Kd));
         Nm.setDocument(new batasInput((byte) 80).getKata(Nm));
-        kdsat.setDocument(new batasInput((byte) 3).getKata(kdsat));
+        kdsat.setDocument(new batasInput((byte) 4).getKata(kdsat));
         Letak.setDocument(new batasInput((byte) 50).getKata(Letak));
         beli.setDocument(new batasInput((byte) 15).getOnlyAngka(beli));
         ralan.setDocument(new batasInput((byte) 15).getOnlyAngka(ralan));

@@ -88,7 +88,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
 
         kode_brng.setDocument(new batasInput((byte)15).getKata(kode_brng));
         nama_brng.setDocument(new batasInput((byte)80).getKata(nama_brng));
-        kode_sat.setDocument(new batasInput((byte)3).getKata(kode_sat));
+        kode_sat.setDocument(new batasInput((byte)4).getKata(kode_sat));
         stok.setDocument(new batasInput((byte)10).getKata(stok));
         harga.setDocument(new batasInput((byte)10).getOnlyAngka(harga));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));

@@ -2,7 +2,7 @@
 
     $db_hostname    ="localhost";
     $db_username    ="root";
-    $db_password    ="akusayangsamakamu";
+    $db_password    ="leona16";
     $db_name        ="sik";
 
     function host(){
