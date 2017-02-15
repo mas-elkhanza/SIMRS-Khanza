@@ -318,6 +318,9 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
         });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Paket Tindakan Operasi/VK ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
@@ -526,10 +529,10 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
+        FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
         FormInput.setPreferredSize(new java.awt.Dimension(100, 257));
         FormInput.setLayout(null);
@@ -1690,6 +1693,27 @@ private void TOmloop1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         restore.setLocationRelativeTo(internalFrame1);
         restore.setVisible(true);
     }//GEN-LAST:event_MnRestoreActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        if(FormInput.getHeight()<350){   
+            Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,350));
+            if(FormInput.getWidth()<740){
+                Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
+                FormInput.setPreferredSize(new Dimension(740,350));
+            }else{
+                Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
+            }
+        }else{
+            Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);            
+            if(FormInput.getWidth()<740){
+                Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
+                FormInput.setPreferredSize(new Dimension(740,FormInput.WIDTH));
+            }else{
+                Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
+            }
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
     * @param args the command line arguments
