@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="421" orientation="Landscape" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="namars" class="java.lang.String"/>
@@ -17,8 +17,7 @@
                        pasien_bayi.nama_ayah,pasien_bayi.umur_ayah,pasien.alamat, 
                        pasien_bayi.berat_badan,pasien_bayi.panjang_badan, pasien_bayi.lingkar_kepala, 
                        pasien_bayi.proses_lahir,pasien_bayi.anakke, pasien_bayi.keterangan from pasien 
-                       inner join pasien_bayi on pasien.no_rkm_medis=pasien_bayi.no_rkm_medis 
-                       ]]>
+                       inner join pasien_bayi on pasien.no_rkm_medis=pasien_bayi.no_rkm_medis]]>
 	</queryString>
 	<field name="no_rkm_medis" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
