@@ -199,26 +199,46 @@ import setting.DlgSetHargaObatRanap;
 import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
 import simrskhanza.DlgAbout;
+import simrskhanza.DlgAbout;
+import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariTagihanOperasi;
 import simrskhanza.DlgCariTagihanOperasi;
 import simrskhanza.DlgDeposit;
+import simrskhanza.DlgDeposit;
+import simrskhanza.DlgDpjp;
 import simrskhanza.DlgDpjp;
 import simrskhanza.DlgIGD;
+import simrskhanza.DlgIGD;
+import simrskhanza.DlgIKBBayi;
 import simrskhanza.DlgIKBBayi;
 import simrskhanza.DlgJadwal;
+import simrskhanza.DlgJadwal;
+import simrskhanza.DlgKasirRalan;
 import simrskhanza.DlgKasirRalan;
 import simrskhanza.DlgObatPenyakit;
+import simrskhanza.DlgObatPenyakit;
+import simrskhanza.DlgPasienMati;
 import simrskhanza.DlgPasienMati;
 import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPenelusuranLogin;
 import simrskhanza.DlgPenelusuranLogin;
 import simrskhanza.DlgPenggajian;
+import simrskhanza.DlgPenggajian;
+import simrskhanza.DlgResepObat;
 import simrskhanza.DlgResepObat;
 import simrskhanza.DlgResepPulang;
-import simrskhanza.DlgResumePerawatan;
+import simrskhanza.DlgResepPulang;
+import simrskhanza.DlgRetensi;
 import simrskhanza.DlgRetensi;
 import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujuk;
 import simrskhanza.DlgRunTeks;
+import simrskhanza.DlgRunTeks;
+import simrskhanza.DlgSirkulasiBerkas;
 import simrskhanza.DlgSirkulasiBerkas;
 import smsui.frmSmsView;
 import tranfusidarah.UTDDonor;
@@ -3502,7 +3522,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/02/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/02/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -5775,10 +5795,24 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }            
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
-        }          
+        }
+        
         penggajian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         penggajian.setLocationRelativeTo(PanelUtama);
         penggajian.setVisible(true);
+        
+        
+        /*try {
+            if(var.getpegawai_admin()==true){
+                Valid.panggilUrl("penggajian/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");
+            }else if(var.getpegawai_user()==true){
+                Valid.panggilUrl("penggajian/login.php?act=login&usere=paijo&passwordte=mumet");                
+            }            
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }  */
+                
+        
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPenggajianActionPerformed
@@ -6955,10 +6989,19 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 retensi.loadURL("http://" +prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
-        }          
+        }
+        
         retensi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         retensi.setLocationRelativeTo(PanelUtama);
-        retensi.setVisible(true);
+        retensi.setVisible(true);        
+        
+        
+        /*try {
+            Valid.panggilUrl("medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                       
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }  */
+        
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRetensiRMActionPerformed

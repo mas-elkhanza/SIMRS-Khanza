@@ -4651,6 +4651,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         BtnHapus.setEnabled(var.getpasien());
         BtnEdit.setEnabled(var.getpasien());
         BtnPrint.setEnabled(var.getpasien());
+        ppRiwayat.setEnabled(var.getresume_pasien());
         asalform=var.getform();
     }
 
