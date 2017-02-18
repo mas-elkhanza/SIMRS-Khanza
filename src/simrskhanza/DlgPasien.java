@@ -63,10 +63,17 @@ public class DlgPasien extends javax.swing.JDialog {
     public  DlgKabupaten kab=new DlgKabupaten(null,false);
     public  DlgKecamatan kec=new DlgKecamatan(null,false);
     public  DlgKelurahan kel=new DlgKelurahan(null,false);
-    private int pilih=0,z=0,j=0;
+    private int pilih=0,z=0,j=0,p_no_ktp=0,p_tmp_lahir=0,p_nm_ibu=0,p_alamat=0,
+            p_pekerjaan=0,p_no_tlp=0,p_umur=0,p_namakeluarga=0,p_no_peserta=0,
+            p_kelurahan=0,p_kecamatan=0,p_kabupaten=0,p_pekerjaanpj=0,
+            p_alamatpj=0,p_kelurahanpj=0,p_kecamatanpj=0,p_kabupatenpj=0;
     private double jumlah=0,x=0,i=0;
-    private String klg="SAUDARA",say="",pengurutan="",asalform="",bulan="",tahun="",awalantahun="",awalanbulan="",posisitahun="";
-    private PreparedStatement ps,ps2,pscariwilayah,pssetalamat;
+    private String klg="SAUDARA",say="",pengurutan="",asalform="",bulan="",tahun="",awalantahun="",awalanbulan="",posisitahun="",
+            no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",
+            umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",
+            kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",
+            kabupatenpj="";
+    private PreparedStatement ps,ps2,pscariwilayah,pssetalamat,pskelengkapan;
     private ResultSet rs;
     private BPJSCekNIK cekViaBPJS=new BPJSCekNIK();
     private BPJSCekNoKartu cekViaBPJSKartu=new BPJSCekNoKartu();
@@ -77,8 +84,6 @@ public class DlgPasien extends javax.swing.JDialog {
     public DlgPasien(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(8,1);
-        setSize(885,674);
 
         Object[] row={"P","No.R.M","Nama Pasien","No.SIM/KTP","J.K.","Tmp.Lahir","Tgl.Lahir","Nama Ibu","Alamat",
                       "G.D.","Pekerjaan","Stts.Nikah","Agama","Tgl.Daftar","No.Telp/HP","Umur","Pendidikan",
@@ -362,6 +367,56 @@ public class DlgPasien extends javax.swing.JDialog {
                 }
                 if(pssetalamat!=null){
                     pssetalamat.close();
+                }
+            }
+            
+            pskelengkapan=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
+            try {
+                rs=pskelengkapan.executeQuery();
+                while(rs.next()){
+                    no_ktp=rs.getString("no_ktp");
+                    p_no_ktp=rs.getInt("p_no_ktp");
+                    tmp_lahir=rs.getString("tmp_lahir");
+                    p_tmp_lahir=rs.getInt("p_tmp_lahir");
+                    nm_ibu=rs.getString("nm_ibu");
+                    p_nm_ibu=rs.getInt("p_nm_ibu");
+                    alamat=rs.getString("alamat");
+                    p_alamat=rs.getInt("p_alamat");
+                    pekerjaan=rs.getString("pekerjaan");
+                    p_pekerjaan=rs.getInt("p_pekerjaan");
+                    no_tlp=rs.getString("no_tlp");
+                    p_no_tlp=rs.getInt("p_no_tlp");
+                    umur=rs.getString("umur");
+                    p_umur=rs.getInt("p_umur");
+                    namakeluarga=rs.getString("namakeluarga");
+                    p_namakeluarga=rs.getInt("p_namakeluarga");
+                    no_peserta=rs.getString("no_peserta");
+                    p_no_peserta=rs.getInt("p_no_peserta");
+                    kelurahan=rs.getString("kelurahan");
+                    p_kelurahan=rs.getInt("p_kelurahan");
+                    kecamatan=rs.getString("kecamatan");
+                    p_kecamatan=rs.getInt("p_kecamatan");
+                    kabupaten=rs.getString("kabupaten");
+                    p_kabupaten=rs.getInt("p_kabupaten");
+                    pekerjaanpj=rs.getString("pekerjaanpj");
+                    p_pekerjaanpj=rs.getInt("p_pekerjaanpj");
+                    alamatpj=rs.getString("alamatpj");
+                    p_alamatpj=rs.getInt("p_alamatpj");
+                    kelurahanpj=rs.getString("kelurahanpj");
+                    p_kelurahanpj=rs.getInt("p_kelurahanpj");
+                    kecamatanpj=rs.getString("kecamatanpj");
+                    p_kecamatanpj=rs.getInt("p_kecamatanpj");
+                    kabupatenpj=rs.getString("kabupatenpj");
+                    p_kabupatenpj=rs.getInt("p_kabupatenpj");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(pskelengkapan!=null){
+                    pskelengkapan.close();
                 }
             }
         } catch (Exception e) {
@@ -2256,22 +2311,40 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Valid.textKosong(TNm,"nama pasien");
         }else if(nmpnj.getText().trim().equals("")||Kdpnj.getText().trim().equals("")){
             Valid.textKosong(Kdpnj,"Asuransi/Askes/Png.Jawab");
-        }else if(Alamat.getText().trim().equals("")){
-            Valid.textKosong(Alamat,"Alamat");
-        }else if(Kelurahan.getText().trim().equals("")){
-            Valid.textKosong(Kelurahan,"Kelurahan");
-        }else if(Kecamatan.getText().trim().equals("")){
-            Valid.textKosong(Kecamatan,"Kecamatan");
-        }else if(Kabupaten.getText().trim().equals("")){
-            Valid.textKosong(Kabupaten,"Kabupaten");
-        }else if(AlamatPj.getText().trim().equals("")){
-            Valid.textKosong(AlamatPj,"Alamat");
-        }else if(KelurahanPj.getText().trim().equals("")){
-            Valid.textKosong(KelurahanPj,"Kelurahan");
-        }else if(KecamatanPj.getText().trim().equals("")){
-            Valid.textKosong(KecamatanPj,"Kecamatan");
-        }else if(KabupatenPj.getText().trim().equals("")){
-            Valid.textKosong(KabupatenPj,"Kabupaten");
+        }else if(no_ktp.equals("Yes")&&(TKtp.getText().trim().length()<p_no_ktp)){
+            Valid.textKosong(TKtp,"No.KTP/SIM minimal "+p_no_ktp+" karakter dan ");            
+        }else if(tmp_lahir.equals("Yes")&&(TTmp.getText().trim().length()<p_tmp_lahir)){
+            Valid.textKosong(TTmp,"Tempat Lahir minimal "+p_tmp_lahir+" karakter dan ");            
+        }else if(nm_ibu.equals("Yes")&&(NmIbu.getText().trim().length()<p_nm_ibu)){
+            Valid.textKosong(NmIbu,"Nama Ibu minimal "+p_nm_ibu+" karakter dan ");            
+        }else if(alamat.equals("Yes")&&(Alamat.getText().trim().length()<p_alamat)){
+            Valid.textKosong(Alamat,"Alamat Pasien minimal "+p_alamat+" karakter dan ");            
+        }else if(pekerjaan.equals("Yes")&&(Pekerjaan.getText().trim().length()<p_pekerjaan)){
+            Valid.textKosong(Pekerjaan,"Pekerjaan Pasien minimal "+p_pekerjaan+" karakter dan ");            
+        }else if(no_tlp.equals("Yes")&&(TTlp.getText().trim().length()<p_no_tlp)){
+            Valid.textKosong(TTlp,"Telp Pasien minimal "+p_no_tlp+" karakter dan ");            
+        }else if(umur.equals("Yes")&&(TUmur.getText().trim().length()<p_umur)){
+            Valid.textKosong(TUmur,"Umur Pasien minimal "+p_umur+" karakter dan ");            
+        }else if(namakeluarga.equals("Yes")&&(Saudara.getText().trim().length()<p_namakeluarga)){
+            Valid.textKosong(Saudara,"Penanggung Jawab Pasien minimal "+p_namakeluarga+" karakter dan ");            
+        }else if(no_peserta.equals("Yes")&&(TNoPeserta.getText().trim().length()<p_no_peserta)){
+            Valid.textKosong(TNoPeserta,"No.Peserta Pasien minimal "+p_no_peserta+" karakter dan ");            
+        }else if(kelurahan.equals("Yes")&&(Kelurahan.getText().trim().length()<p_kelurahan)){
+            Valid.textKosong(Kelurahan,"Kelurahan minimal "+p_kelurahan+" karakter dan ");            
+        }else if(kecamatan.equals("Yes")&&(Kecamatan.getText().trim().length()<p_kecamatan)){
+            Valid.textKosong(Kecamatan,"Kecamatan minimal "+p_kecamatan+" karakter dan ");            
+        }else if(kabupaten.equals("Yes")&&(Kabupaten.getText().trim().length()<p_kabupaten)){
+            Valid.textKosong(Kabupaten,"Kabupaten minimal "+p_kabupaten+" karakter dan ");            
+        }else if(pekerjaanpj.equals("Yes")&&(PekerjaanPj.getText().trim().length()<p_pekerjaanpj)){
+            Valid.textKosong(PekerjaanPj,"Pekerjaan P.J. minimal "+p_pekerjaanpj+" karakter dan ");            
+        }else if(alamatpj.equals("Yes")&&(AlamatPj.getText().trim().length()<p_alamatpj)){
+            Valid.textKosong(AlamatPj,"Alamat P.J. minimal "+p_alamatpj+" karakter dan ");            
+        }else if(kelurahanpj.equals("Yes")&&(KelurahanPj.getText().trim().length()<p_kelurahanpj)){
+            Valid.textKosong(KelurahanPj,"Kelurahan P.J. minimal "+p_kelurahanpj+" karakter dan ");            
+        }else if(kecamatanpj.equals("Yes")&&(KecamatanPj.getText().trim().length()<p_kecamatanpj)){
+            Valid.textKosong(KecamatanPj,"Kecamatan P.J. minimal "+p_kecamatanpj+" karakter dan ");            
+        }else if(kabupatenpj.equals("Yes")&&(KabupatenPj.getText().trim().length()<p_kabupatenpj)){
+            Valid.textKosong(KabupatenPj,"Kabupaten P.J. minimal "+p_kabupatenpj+" karakter dan ");            
         }else{
             if(R1.isSelected()==true){
                 klg="AYAH";
@@ -2463,22 +2536,40 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TNm,"nama pasien");
         }else if(nmpnj.getText().trim().equals("")||Kdpnj.getText().trim().equals("")){
             Valid.textKosong(Kdpnj,"Asuransi/Askes/Png.Jawab");
-        }else if(Alamat.getText().trim().equals("")){
-            Valid.textKosong(Alamat,"Alamat");
-        }else if(Kelurahan.getText().trim().equals("")){
-            Valid.textKosong(Kelurahan,"Kelurahan");
-        }else if(Kecamatan.getText().trim().equals("")){
-            Valid.textKosong(Kecamatan,"Kecamatan");
-        }else if(Kabupaten.getText().trim().equals("")){
-            Valid.textKosong(Kabupaten,"Kabupaten");
-        }else if(AlamatPj.getText().trim().equals("")){
-            Valid.textKosong(AlamatPj,"Alamat");
-        }else if(KelurahanPj.getText().trim().equals("")){
-            Valid.textKosong(KelurahanPj,"Kelurahan");
-        }else if(KecamatanPj.getText().trim().equals("")){
-            Valid.textKosong(KecamatanPj,"Kecamatan");
-        }else if(KabupatenPj.getText().trim().equals("")){
-            Valid.textKosong(KabupatenPj,"Kabupaten");
+        }else if(no_ktp.equals("Yes")&&(TKtp.getText().trim().length()<p_no_ktp)){
+            Valid.textKosong(TKtp,"No.KTP/SIM minimal "+p_no_ktp+" karakter dan ");            
+        }else if(tmp_lahir.equals("Yes")&&(TTmp.getText().trim().length()<p_tmp_lahir)){
+            Valid.textKosong(TTmp,"Tempat Lahir minimal "+p_tmp_lahir+" karakter dan ");            
+        }else if(nm_ibu.equals("Yes")&&(NmIbu.getText().trim().length()<p_nm_ibu)){
+            Valid.textKosong(NmIbu,"Nama Ibu minimal "+p_nm_ibu+" karakter dan ");            
+        }else if(alamat.equals("Yes")&&(Alamat.getText().trim().length()<p_alamat)){
+            Valid.textKosong(Alamat,"Alamat Pasien minimal "+p_alamat+" karakter dan ");            
+        }else if(pekerjaan.equals("Yes")&&(Pekerjaan.getText().trim().length()<p_pekerjaan)){
+            Valid.textKosong(Pekerjaan,"Pekerjaan Pasien minimal "+p_pekerjaan+" karakter dan ");            
+        }else if(no_tlp.equals("Yes")&&(TTlp.getText().trim().length()<p_no_tlp)){
+            Valid.textKosong(TTlp,"Telp Pasien minimal "+p_no_tlp+" karakter dan ");            
+        }else if(umur.equals("Yes")&&(TUmur.getText().trim().length()<p_umur)){
+            Valid.textKosong(TUmur,"Umur Pasien minimal "+p_umur+" karakter dan ");            
+        }else if(namakeluarga.equals("Yes")&&(Saudara.getText().trim().length()<p_namakeluarga)){
+            Valid.textKosong(Saudara,"Penanggung Jawab Pasien minimal "+p_namakeluarga+" karakter dan ");            
+        }else if(no_peserta.equals("Yes")&&(TNoPeserta.getText().trim().length()<p_no_peserta)){
+            Valid.textKosong(TNoPeserta,"No.Peserta Pasien minimal "+p_no_peserta+" karakter dan ");            
+        }else if(kelurahan.equals("Yes")&&(Kelurahan.getText().trim().length()<p_kelurahan)){
+            Valid.textKosong(Kelurahan,"Kelurahan minimal "+p_kelurahan+" karakter dan ");            
+        }else if(kecamatan.equals("Yes")&&(Kecamatan.getText().trim().length()<p_kecamatan)){
+            Valid.textKosong(Kecamatan,"Kecamatan minimal "+p_kecamatan+" karakter dan ");            
+        }else if(kabupaten.equals("Yes")&&(Kabupaten.getText().trim().length()<p_kabupaten)){
+            Valid.textKosong(Kabupaten,"Kabupaten minimal "+p_kabupaten+" karakter dan ");            
+        }else if(pekerjaanpj.equals("Yes")&&(PekerjaanPj.getText().trim().length()<p_pekerjaanpj)){
+            Valid.textKosong(PekerjaanPj,"Pekerjaan P.J. minimal "+p_pekerjaanpj+" karakter dan ");            
+        }else if(alamatpj.equals("Yes")&&(AlamatPj.getText().trim().length()<p_alamatpj)){
+            Valid.textKosong(AlamatPj,"Alamat P.J. minimal "+p_alamatpj+" karakter dan ");            
+        }else if(kelurahanpj.equals("Yes")&&(KelurahanPj.getText().trim().length()<p_kelurahanpj)){
+            Valid.textKosong(KelurahanPj,"Kelurahan P.J. minimal "+p_kelurahanpj+" karakter dan ");            
+        }else if(kecamatanpj.equals("Yes")&&(KecamatanPj.getText().trim().length()<p_kecamatanpj)){
+            Valid.textKosong(KecamatanPj,"Kecamatan P.J. minimal "+p_kecamatanpj+" karakter dan ");            
+        }else if(kabupatenpj.equals("Yes")&&(KabupatenPj.getText().trim().length()<p_kabupatenpj)){
+            Valid.textKosong(KabupatenPj,"Kabupaten P.J. minimal "+p_kabupatenpj+" karakter dan ");            
         }else{
             if(R1.isSelected()==true){
                 klg="AYAH";
