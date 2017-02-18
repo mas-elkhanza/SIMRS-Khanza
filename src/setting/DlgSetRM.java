@@ -124,7 +124,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         for (int i = 0; i < 2; i++) {
             TableColumn column = tbKelengkapan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(360);
+                column.setPreferredWidth(420);
             }else{
                 column.setPreferredWidth(50);
             }
@@ -875,7 +875,7 @@ public class DlgSetRM extends javax.swing.JDialog {
         FormInput.add(jLabel21);
         jLabel21.setBounds(190, 100, 130, 23);
 
-        jLabel40.setText("Nama Keluarga :");
+        jLabel40.setText("Nama Png.Jawab :");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
         jLabel40.setBounds(190, 130, 130, 23);
@@ -903,10 +903,10 @@ public class DlgSetRM extends javax.swing.JDialog {
         FormInput.add(PanjangNamaKeluarga);
         PanjangNamaKeluarga.setBounds(323, 160, 55, 23);
 
-        jLabel22.setText("Minimal Nama Keluarga :");
+        jLabel22.setText("Minimal Nama Png.Jawab :");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(190, 160, 130, 23);
+        jLabel22.setBounds(180, 160, 140, 23);
 
         jLabel41.setText("No.Peserta :");
         jLabel41.setName("jLabel41"); // NOI18N
@@ -1266,7 +1266,7 @@ public class DlgSetRM extends javax.swing.JDialog {
             }else if(PanjangUmur.getText().trim().equals("")){
                 Valid.textKosong(PanjangUmur,"Panjang Umur");
             }else if(PanjangNamaKeluarga.getText().trim().equals("")){
-                Valid.textKosong(PanjangNamaKeluarga,"Panjang Nama Keluarga/Saudara");
+                Valid.textKosong(PanjangNamaKeluarga,"Panjang Nama Penanggung Jawab");
             }else if(PanjangNoPeserta.getText().trim().equals("")){
                 Valid.textKosong(PanjangNoPeserta,"Panjang No Peserta");
             }else if(PanjangKelurahan.getText().trim().equals("")){
@@ -1936,8 +1936,8 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
                     tabMode4.addRow(new Object[]{" Minimal Panjang No.Telp",rs.getString(12)});
                     tabMode4.addRow(new Object[]{" Kelengkapan Data Umur Pasien",rs.getString(13)});
                     tabMode4.addRow(new Object[]{" Minimal Panjang Umur Pasien",rs.getString(14)});
-                    tabMode4.addRow(new Object[]{" Kelengkapan Data Nama Keluarga/Saudara",rs.getString(15)});
-                    tabMode4.addRow(new Object[]{" Minimal Panjang Nama Keluarga/Saudara",rs.getString(16)});
+                    tabMode4.addRow(new Object[]{" Kelengkapan Data Nama Penanggung Jawab Pasien",rs.getString(15)});
+                    tabMode4.addRow(new Object[]{" Minimal Panjang Nama Penanggung Jawab Pasien",rs.getString(16)});
                     tabMode4.addRow(new Object[]{" Kelengkapan Data No.Peserta",rs.getString(17)});
                     tabMode4.addRow(new Object[]{" Minimal Panjang No.Peserta",rs.getString(18)});
                     tabMode4.addRow(new Object[]{" Kelengkapan Data Kelurahan",rs.getString(19)});

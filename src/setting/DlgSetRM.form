@@ -1194,7 +1194,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel40">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nama Keluarga :"/>
+                            <Property name="text" type="java.lang.String" value="Nama Png.Jawab :"/>
                             <Property name="name" type="java.lang.String" value="jLabel40" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1245,12 +1245,12 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel22">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Minimal Nama Keluarga :"/>
+                            <Property name="text" type="java.lang.String" value="Minimal Nama Png.Jawab :"/>
                             <Property name="name" type="java.lang.String" value="jLabel22" noResource="true"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="190" y="160" width="130" height="23"/>
+                              <AbsoluteConstraints x="180" y="160" width="140" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
