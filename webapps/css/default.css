@@ -284,6 +284,16 @@ color: #65795b;
 	padding: 4px 2px 4px 10px;
 }
 
+.head4 td{
+	color:#FFFFFF;
+	font: 25px  tahoma;
+	background: #EE00EE;
+	border-bottom: 1px solid #BB00BB;
+        border-right: 1px solid #BB00BB;
+	border-top: 1px solid #BB00BB;
+	letter-spacing: 1px;
+	padding: 4px 2px 4px 10px;
+}
 
 .isi td{
 	border-right: 1px solid #f2f7ed;
@@ -351,6 +361,18 @@ color: #65795b;
 	color:#65795b;
 	font: 9px Tahoma;
 }
+
+.isi7 td{
+	border-right: 1px solid #CC00CC;
+	border-bottom: 1px solid #CC00CC;
+	background: #fff5ff;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:10px;
+	color:#65795b;
+	font: 25px  tahoma;
+}
+
 
 .button {
 	margin-left: 10px;

@@ -612,6 +612,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnSudahPulang2 = new javax.swing.JMenuItem();
         MnSudahPulang5 = new javax.swing.JMenuItem();
         MnRekapHadir1 = new javax.swing.JMenuItem();
+        MnInfoBed = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         MnAnjungan = new javax.swing.JMenuItem();
         MnRekapHadir3 = new javax.swing.JMenuItem();
@@ -3522,7 +3523,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/02/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/02/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -4254,6 +4255,20 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         jMenu6.add(MnRekapHadir1);
+
+        MnInfoBed.setBackground(new java.awt.Color(255, 255, 255));
+        MnInfoBed.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnInfoBed.setForeground(new java.awt.Color(153, 0, 51));
+        MnInfoBed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
+        MnInfoBed.setText("Info Bed");
+        MnInfoBed.setName("MnInfoBed"); // NOI18N
+        MnInfoBed.setPreferredSize(new java.awt.Dimension(200, 40));
+        MnInfoBed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnInfoBedActionPerformed(evt);
+            }
+        });
+        jMenu6.add(MnInfoBed);
 
         MenuBar.add(jMenu6);
 
@@ -7456,6 +7471,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnUTDPenyerahanDarahActionPerformed
 
+    private void MnInfoBedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnInfoBedActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Valid.panggilUrl("bed.php");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnInfoBedActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7487,6 +7508,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private javax.swing.JMenuItem MnBelumDatang;
     private javax.swing.JMenuItem MnBelumDatang1;
     private javax.swing.JMenuItem MnGantiPassword;
+    private javax.swing.JMenuItem MnInfoBed;
     private javax.swing.JMenuItem MnLogin;
     private javax.swing.JMenuItem MnRekapBulanan;
     private javax.swing.JMenuItem MnRekapBulanan1;

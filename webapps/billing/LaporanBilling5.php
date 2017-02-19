@@ -64,7 +64,7 @@
                                     <tr valign='top'>
                                        <td><font color='333333' size='3'  face='Tahoma'>Uang Sebanyak</font></td>
                                        <td><font color='333333' size='3'  face='Tahoma'>:</font></td>
-                                       <td><font color='333333' size='3'  face='Tahoma'>".Terbilang(str_replace(".","",str_replace(",","",getOne("select temp7 from temporary_bayar_ralan where temp1='BAYAR'"))))." rupiah</font></td>
+                                       <td><font color='333333' size='3'  face='Tahoma'>".Terbilang(str_replace("</b>","",str_replace("<b>","",str_replace(".","",str_replace(",","",getOne("select temp7 from temporary_bayar_ralan where temp1='TOTAL BAYAR'"))))))." rupiah</font></td>
                                     </tr>
                                     <tr valign='top'>
                                        <td><font color='333333' size='3'  face='Tahoma'>Untuk Pembayaran</font></td>
@@ -91,7 +91,7 @@
                                     <tr>
                                        <td align='right'><font color='333333' size='3'  face='Tahoma'>Terbilang</font></td>
                                        <td><font color='333333' size='3'  face='Tahoma'></font></td>
-                                       <td><font color='333333' size='3'  face='Tahoma'>Rp. ".getOne("select temp7 from temporary_bayar_ralan where temp1='BAYAR'")."</font></td>
+                                       <td><font color='333333' size='3'  face='Tahoma'>Rp. ".getOne("select temp7 from temporary_bayar_ralan where temp1='TOTAL BAYAR'")."</font></td>
                                     </tr>
 
                                     <tr>

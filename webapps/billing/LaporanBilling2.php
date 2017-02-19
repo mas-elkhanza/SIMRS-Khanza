@@ -53,12 +53,12 @@
             </tr>
             ";  $z=1;
                 while($inapdrpasien = mysql_fetch_array($hasil)) {
-                   if($z<=7){
+                   if($z<=6){
                       echo "<tr class='isi12' padding='0'>
                                 <td padding='0' width='18%'><font color='111111' size='1'  face='Tahoma'>".str_replace("  ","&nbsp;&nbsp;",$inapdrpasien[0])."</td> 
                                 <td padding='0' width='40%' colspan='6'><font color='111111' size='1'  face='Tahoma'>$inapdrpasien[1]</td>              
                              </tr>";  
-                   }else if($z>7){
+                   }else if($z>6){
 					 if(empty($inapdrpasien[6])&&empty($inapdrpasien[0])){
 						 echo "<tr class='isi12' padding='0'>
                                 <td padding='0' width='18%'><font color='111111' size='1'  face='Tahoma'>".str_replace("   ","&nbsp;&nbsp;",$inapdrpasien[0])."</td> 
