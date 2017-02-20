@@ -51,7 +51,7 @@ public final class var {
             pengambilan_utd2=false,utd_medis_rusak=false,pengambilan_penunjang_utd=false,pengambilan_penunjang_utd2=false,utd_penunjang_rusak=false,
             suplier_penunjang=false,utd_donor=false,bpjs_monitoring_klaim=false,utd_cekal_darah=false,utd_komponen_darah=false,utd_stok_darah=false,
             utd_pemisahan_darah=false,harian_kamar=false,rincian_piutang_pasien=false,keuntungan_beri_obat_nonpiutang=false,reklasifikasi_ralan=false,
-            reklasifikasi_ranap=false,utd_penyerahan_darah=false;
+            reklasifikasi_ranap=false,utd_penyerahan_darah=false,hutang_obat=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -280,6 +280,7 @@ public final class var {
                         var.reklasifikasi_ralan=true;
                         var.reklasifikasi_ranap=true;
                         var.utd_penyerahan_darah=true;
+                        var.hutang_obat=true;
                     }else if(rs.getRow()>=1){
                         var.kode="Admin Utama";
                         var.penyakit=true;
@@ -489,6 +490,7 @@ public final class var {
                         var.reklasifikasi_ralan=true;
                         var.reklasifikasi_ranap=true;
                         var.utd_penyerahan_darah=true;
+                        var.hutang_obat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -700,6 +702,7 @@ public final class var {
                         var.reklasifikasi_ralan=rs2.getBoolean("reklasifikasi_ralan");
                         var.reklasifikasi_ranap=rs2.getBoolean("reklasifikasi_ranap");
                         var.utd_penyerahan_darah=rs2.getBoolean("utd_penyerahan_darah");
+                        var.hutang_obat=rs2.getBoolean("hutang_obat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -909,6 +912,7 @@ public final class var {
                         var.reklasifikasi_ralan=false;
                         var.reklasifikasi_ranap=false;
                         var.utd_penyerahan_darah=false;
+                        var.hutang_obat=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1160,4 +1164,5 @@ public final class var {
     public static boolean getreklasifikasi_ralan(){return var.reklasifikasi_ralan;}  
     public static boolean getreklasifikasi_ranap(){return var.reklasifikasi_ranap;}  
     public static boolean getutd_penyerahan_darah(){return var.utd_penyerahan_darah;}  
+    public static boolean gethutang_obat(){return var.hutang_obat;}  
 }

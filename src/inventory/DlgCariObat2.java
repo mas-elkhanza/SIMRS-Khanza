@@ -12,7 +12,7 @@
 
 package inventory;
 
-import fungsi.WarnaTable;
+import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -54,6 +54,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,industri;
     private DlgBarang barang=new DlgBarang(null,false);
     private String bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
+    private WarnaTable2 warna=new WarnaTable2();
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -118,7 +119,8 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
                 column.setMaxWidth(0);
             }         
         }
-        tbObat.setDefaultRenderer(Object.class, new WarnaTable());
+        warna.kolom=1;
+        tbObat.setDefaultRenderer(Object.class,warna);
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));               
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
