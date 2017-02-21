@@ -1,7 +1,8 @@
 package inventory;
 
 
-import fungsi.WarnaTable;
+
+import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -42,6 +43,7 @@ public class DlgPembelian extends javax.swing.JDialog {
     private int jml=0,i=0,row=0,index=0;
     private String[] kodebarang,namabarang,satuan,satuanbeli,kadaluwarsa,nobatch;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal,jmlstok;
+    private WarnaTable2 warna=new WarnaTable2();
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -109,7 +111,8 @@ public class DlgPembelian extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        warna.kolom=0;
+        tbDokter.setDefaultRenderer(Object.class,warna);
 
         NoFaktur.setDocument(new batasInput((byte)20).getKata(NoFaktur));
         kdsup.setDocument(new batasInput((byte)5).getKata(kdsup));

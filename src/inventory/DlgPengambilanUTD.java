@@ -1,7 +1,7 @@
 package inventory;
 
 
-import fungsi.WarnaTable;
+import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -36,6 +36,7 @@ public class DlgPengambilanUTD extends javax.swing.JDialog {
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private double stok_asal,stok_tujuan,subtotal,y;
     private Jurnal jur=new Jurnal();
+    private WarnaTable2 warna=new WarnaTable2();
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -79,7 +80,8 @@ public class DlgPengambilanUTD extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        warna.kolom=0;
+        tbDokter.setDefaultRenderer(Object.class,warna);
 
         kddari.setDocument(new batasInput((byte)10).getKata(kddari));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));

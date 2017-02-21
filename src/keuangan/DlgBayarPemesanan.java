@@ -647,7 +647,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
                     });    
                     jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BAYAR PELUNASAN HUTANG OBAT/BHP/ALKES NO.FAKTUR "+no_faktur.getText());
                     if(sisahutang==Double.parseDouble(besar_bayar.getText())){
-                        Sequel.mengedit("pemesanan","no_faktur=?","status='Sudan Dibayar'",1,new String[]{no_faktur.getText()});
+                        Sequel.mengedit("pemesanan","no_faktur=?","status='Sudah Dibayar'",1,new String[]{no_faktur.getText()});
                     }else{
                         Sequel.mengedit("pemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
                     }

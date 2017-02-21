@@ -1,5 +1,5 @@
 package inventory;
-import fungsi.WarnaTable;
+import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -41,6 +41,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private ResultSet rs,rsstok;
     private String[] kodebarang,namabarang,kategori,satuan;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,totaljual,tambahan,stok;
+    private WarnaTable2 warna=new WarnaTable2();
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -61,7 +62,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
             }
             
             Class[] types = new Class[] {
-                java.lang.Double.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
                 java.lang.Double.class,java.lang.Double.class
             };
@@ -103,7 +104,8 @@ public class DlgPenjualan extends javax.swing.JDialog {
                 column.setPreferredWidth(40);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        warna.kolom=0;
+        tbDokter.setDefaultRenderer(Object.class,warna);
 
         NoNota.setDocument(new batasInput((byte)20).getKata(NoNota));
         kdmem.setDocument(new batasInput((byte)15).getKata(kdmem));
@@ -849,7 +851,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
             }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
                 try {
                     if(tbDokter.getSelectedColumn()==0){
-                        tbDokter.setValueAt(null, tbDokter.getSelectedRow(),0);
+                        tbDokter.setValueAt("", tbDokter.getSelectedRow(),0);
                     }else if(tbDokter.getSelectedColumn()==5){
                         tbDokter.setValueAt("", tbDokter.getSelectedRow(),5);
                     }else if(tbDokter.getSelectedColumn()==7){
@@ -991,7 +993,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             } catch (Exception e) {
                             }
 
-                            tabMode.setValueAt(null,r,0);
+                            tabMode.setValueAt("",r,0);
                             tabMode.setValueAt(0,r,6);
                             tabMode.setValueAt(0,r,7);
                             tabMode.setValueAt(0,r,8);  
@@ -1167,7 +1169,7 @@ private void TglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglKe
 private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
             int row2=tabMode.getRowCount();
             for(int r=0;r<row2;r++){ 
-                tabMode.setValueAt(null,r,0);
+                tabMode.setValueAt("",r,0);
                 tabMode.setValueAt(0,r,6);
                 tabMode.setValueAt(0,r,7);
                 tabMode.setValueAt(0,r,8);
@@ -1403,7 +1405,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 rs=ps.executeQuery();
                 if(Jenisjual.getSelectedItem().equals("Karyawan")){
                     while(rs.next()){                              
-                        tabMode.addRow(new Object[]{null,rs.getString("kode_brng"),
+                        tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),
                                        rs.getString("nama_brng"),
                                        rs.getString("nama"),
                                        rs.getString("kode_sat"),
@@ -1411,7 +1413,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     } 
                 }else if(Jenisjual.getSelectedItem().equals("Jual Bebas")){
                     while(rs.next()){                              
-                        tabMode.addRow(new Object[]{null,rs.getString("kode_brng"),
+                        tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),
                                        rs.getString("nama_brng"),
                                        rs.getString("nama"),
                                        rs.getString("kode_sat"),
@@ -1419,7 +1421,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     } 
                 }else if(Jenisjual.getSelectedItem().equals("Beli Luar")){
                     while(rs.next()){                              
-                        tabMode.addRow(new Object[]{null,rs.getString("kode_brng"),
+                        tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),
                                        rs.getString("nama_brng"),
                                        rs.getString("nama"),
                                        rs.getString("kode_sat"),
@@ -1427,7 +1429,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     } 
                 }else if(Jenisjual.getSelectedItem().equals("Rawat Jalan")){
                     while(rs.next()){                              
-                        tabMode.addRow(new Object[]{null,rs.getString("kode_brng"),
+                        tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),
                                        rs.getString("nama_brng"),
                                        rs.getString("nama"),
                                        rs.getString("kode_sat"),
@@ -1435,7 +1437,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     } 
                 }else if(Jenisjual.getSelectedItem().equals("Kelas 1")){
                     while(rs.next()){                              
-                        tabMode.addRow(new Object[]{null,rs.getString("kode_brng"),
+                        tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),
                                        rs.getString("nama_brng"),
                                        rs.getString("nama"),
                                        rs.getString("kode_sat"),
@@ -1443,7 +1445,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     } 
                 }else if(Jenisjual.getSelectedItem().equals("Kelas 2")){
                     while(rs.next()){                              
-                        tabMode.addRow(new Object[]{null,rs.getString("kode_brng"),
+                        tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),
                                        rs.getString("nama_brng"),
                                        rs.getString("nama"),
                                        rs.getString("kode_sat"),
@@ -1451,7 +1453,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     } 
                 }else if(Jenisjual.getSelectedItem().equals("Kelas 3")){
                     while(rs.next()){                              
-                        tabMode.addRow(new Object[]{null,rs.getString("kode_brng"),
+                        tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),
                                        rs.getString("nama_brng"),
                                        rs.getString("nama"),
                                        rs.getString("kode_sat"),
@@ -1459,7 +1461,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     } 
                 }else if(Jenisjual.getSelectedItem().equals("Utama/BPJS")){
                     while(rs.next()){                              
-                        tabMode.addRow(new Object[]{null,rs.getString("kode_brng"),
+                        tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),
                                        rs.getString("nama_brng"),
                                        rs.getString("nama"),
                                        rs.getString("kode_sat"),
@@ -1467,7 +1469,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     } 
                 }else if(Jenisjual.getSelectedItem().equals("VIP")){
                     while(rs.next()){                              
-                        tabMode.addRow(new Object[]{null,rs.getString("kode_brng"),
+                        tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),
                                        rs.getString("nama_brng"),
                                        rs.getString("nama"),
                                        rs.getString("kode_sat"),
@@ -1475,7 +1477,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     } 
                 }else if(Jenisjual.getSelectedItem().equals("VVIP")){
                     while(rs.next()){                              
-                        tabMode.addRow(new Object[]{null,rs.getString("kode_brng"),
+                        tabMode.addRow(new Object[]{"",rs.getString("kode_brng"),
                                        rs.getString("nama_brng"),
                                        rs.getString("nama"),
                                        rs.getString("kode_sat"),
@@ -1538,7 +1540,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }
                             if(stokbarang<y){
                                 JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
-                                tbDokter.setValueAt(null,row,0);
+                                tbDokter.setValueAt("",row,0);
                             }
                         } catch (Exception e) {
                             tbDokter.setValueAt(0,row,11);
