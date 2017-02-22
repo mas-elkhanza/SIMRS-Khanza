@@ -11,7 +11,7 @@
  */
 
 package inventory;
-import fungsi.WarnaTable;
+import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -44,6 +44,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private PreparedStatement pstampil,psstok;
     private ResultSet rstampil,rsstok;
+    private WarnaTable2 warna=new WarnaTable2();
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -76,22 +77,23 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
         for (i = 0; i < 7; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(70);
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(270);
             }else if(i==3){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(170);
             }else if(i==4){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==5){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(60);
             }else if(i==6){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(60);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        warna.kolom=0;
+        tbDokter.setDefaultRenderer(Object.class,warna);
 
         kdgudang.setDocument(new batasInput((byte)5).getKata(kdgudang));
         catatan.setDocument(new batasInput((byte)60).getKata(catatan));  
