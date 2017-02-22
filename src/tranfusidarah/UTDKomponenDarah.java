@@ -1025,12 +1025,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Kode.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),0).toString());
             Nama.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),1).toString());
             Lama.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),2).toString());
-            JasaSarana.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),3).toString());
-            PaketBHP.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),4).toString());
-            KSO.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),5).toString());
-            Manajemen.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),6).toString());
-            Total.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),7).toString());
-            Pembatalan.setText(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),8).toString());
+            JasaSarana.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),3).toString())));
+            PaketBHP.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),4).toString())));
+            KSO.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),5).toString())));
+            Manajemen.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),6).toString())));
+            Total.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),7).toString())));
+            Pembatalan.setText(""+Math.round(Double.parseDouble(tabModeKomponen.getValueAt(tbKomponen.getSelectedRow(),8).toString())));
         }
     }
 

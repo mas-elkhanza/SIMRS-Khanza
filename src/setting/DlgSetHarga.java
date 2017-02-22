@@ -935,27 +935,27 @@ public class DlgSetHarga extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         for (int i = 0; i < tbAdmin.getRowCount(); i++) { 
             if(tbAdmin.getValueAt(i,10).toString().equals("-")){
-                Sequel.queryu2("update databarang set ralan=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,0).toString()+"/100))),"+
-                    "kelas1=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,1).toString()+"/100))),"+
-                    "kelas2=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,2).toString()+"/100))),"+
-                    "kelas3=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,3).toString()+"/100))),"+
-                    "utama=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,4).toString()+"/100))),"+
-                    "vip=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,5).toString()+"/100))),"+
-                    "vvip=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,6).toString()+"/100))),"+
-                    "beliluar=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,7).toString()+"/100))),"+
-                    "jualbebas=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,8).toString()+"/100))),"+
-                    "karyawan=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,9).toString()+"/100)))");
+                Sequel.queryu2("update databarang set ralan=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,0).toString()+"/100))),"+
+                    "kelas1=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,1).toString()+"/100))),"+
+                    "kelas2=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,2).toString()+"/100))),"+
+                    "kelas3=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,3).toString()+"/100))),"+
+                    "utama=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,4).toString()+"/100))),"+
+                    "vip=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,5).toString()+"/100))),"+
+                    "vvip=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,6).toString()+"/100))),"+
+                    "beliluar=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,7).toString()+"/100))),"+
+                    "jualbebas=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,8).toString()+"/100))),"+
+                    "karyawan=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,9).toString()+"/100)))");
             }else{
-                Sequel.queryu2("update databarang set ralan=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,0).toString()+"/100))),"+
-                    "kelas1=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,1).toString()+"/100))),"+
-                    "kelas2=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,2).toString()+"/100))),"+
-                    "kelas3=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,3).toString()+"/100))),"+
-                    "utama=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,4).toString()+"/100))),"+
-                    "vip=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,5).toString()+"/100))),"+
-                    "vvip=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,6).toString()+"/100))),"+
-                    "beliluar=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,7).toString()+"/100))),"+
-                    "jualbebas=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,8).toString()+"/100))),"+
-                    "karyawan=(h_beli+(h_beli*("+tbAdmin.getValueAt(i,9).toString()+"/100))) where "+
+                Sequel.queryu2("update databarang set ralan=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,0).toString()+"/100))),"+
+                    "kelas1=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,1).toString()+"/100))),"+
+                    "kelas2=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,2).toString()+"/100))),"+
+                    "kelas3=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,3).toString()+"/100))),"+
+                    "utama=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,4).toString()+"/100))),"+
+                    "vip=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,5).toString()+"/100))),"+
+                    "vvip=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,6).toString()+"/100))),"+
+                    "beliluar=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,7).toString()+"/100))),"+
+                    "jualbebas=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,8).toString()+"/100))),"+
+                    "karyawan=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,9).toString()+"/100))) where "+
                     "kdjns='"+tbAdmin.getValueAt(i,10).toString()+"'");
             }                
         }            

@@ -88,24 +88,24 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         for (int i = 0; i < 11; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(22);
             }else if(i==1){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==2){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==3){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==4){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==5){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(75);
             }else if(i==6){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==10){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else{
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }
         }
         warna.kolom=9;
@@ -628,6 +628,9 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         if(tabMode.getRowCount()!=0){
             if(evt.getClickCount()==1){
                 if(tbBangsal.getSelectedColumn()==0){
+                    if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),9).toString().equals("")){
+                        tbBangsal.setValueAt(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),10).toString(), tbBangsal.getSelectedRow(),9);
+                    }
                     if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("true")){
                         tbBangsal.setValueAt(
                             (Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),10).toString())-
@@ -652,6 +655,10 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
                             ,tbBangsal.getSelectedRow(),8);
                 }else if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("false")){
                     tbBangsal.setValueAt(Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),10).toString()),tbBangsal.getSelectedRow(),8);
+                }
+            }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
+                if(tbBangsal.getSelectedColumn()==9){
+                   tbBangsal.setValueAt("", tbBangsal.getSelectedRow(),9); 
                 }
             }
         }
