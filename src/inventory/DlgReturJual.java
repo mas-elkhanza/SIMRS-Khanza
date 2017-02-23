@@ -5,8 +5,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
-import inventory.DlgCariReturJual;
-import inventory.DlgKonversi;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;

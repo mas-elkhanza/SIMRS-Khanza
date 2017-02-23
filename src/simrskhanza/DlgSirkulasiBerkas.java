@@ -494,7 +494,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
 
         Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-01-2016" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-10-2016" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -808,7 +808,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
 
         TglPinjam1.setEditable(false);
         TglPinjam1.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-01-2016" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-10-2016" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -833,7 +833,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
 
         TglPinjam2.setEditable(false);
         TglPinjam2.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-01-2016" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-10-2016" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);

@@ -33,7 +33,6 @@ import javax.swing.JOptionPane;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import simrskhanza.DlgPasien;
 
 /**
  *

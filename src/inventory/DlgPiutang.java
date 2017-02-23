@@ -987,7 +987,7 @@ public class DlgPiutang extends javax.swing.JDialog {
         panelisi3.add(BtnPtg);
         BtnPtg.setBounds(774, 40, 28, 23);
 
-        label18.setText("Notifikasi :");
+        label18.setText("Catatan :");
         label18.setName("label18"); // NOI18N
         label18.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label18);

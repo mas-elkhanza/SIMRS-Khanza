@@ -28,6 +28,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private riwayatobat Trackobat=new riwayatobat();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
@@ -953,7 +954,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         for(i=0;i<row;i++){  
                             try {
                                 if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
-                                   Sequel.menyimpan("detailjual","'"+NoNota.getText()+"','"+
+                                   if(Sequel.menyimpantf("detailjual","'"+NoNota.getText()+"','"+
                                            tabMode.getValueAt(i,1).toString()+"','"+
                                            tabMode.getValueAt(i,4).toString()+"','"+
                                            tabMode.getValueAt(i,5).toString()+"','"+
@@ -963,10 +964,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                            tabMode.getValueAt(i,7).toString()+"','"+
                                            tabMode.getValueAt(i,8).toString()+"','"+
                                            tabMode.getValueAt(i,9).toString()+"','"+
-                                           tabMode.getValueAt(i,10).toString()+"'","Transaksi Penjualan"); 
-                                   if(verifikasi_penjualan_di_kasir.equals("No")){
-                                        Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
-                                            "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");   
+                                           tabMode.getValueAt(i,10).toString()+"'","Transaksi Penjualan")==true){
+                                        if(verifikasi_penjualan_di_kasir.equals("No")){
+                                            Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Penjualan",var.getkode(),kdgudang.getText(),"Simpan");
+                                            Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
+                                                 "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");   
+                                        }                                       
                                    }                                    
                                 }
                             } catch (Exception e) {

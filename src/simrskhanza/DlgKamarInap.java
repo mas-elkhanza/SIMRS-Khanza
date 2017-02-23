@@ -47,12 +47,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgBilingRanap;
 import keuangan.DlgLhtPiutang;
-import simrskhanza.DlgDpjp;
-import simrskhanza.DlgPemberianDiet;
-import simrskhanza.DlgResepObat;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRujukMasuk;
-import simrskhanza.DlgTagihanOperasi;
 
 /**
  *

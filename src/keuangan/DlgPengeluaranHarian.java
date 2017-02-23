@@ -10,6 +10,7 @@
  */
 
 package keuangan;
+import simrskhanza.DlgCariPetugas;
 import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;

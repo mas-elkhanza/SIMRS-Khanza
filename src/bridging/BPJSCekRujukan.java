@@ -307,10 +307,7 @@ public final class BPJSCekRujukan extends javax.swing.JDialog {
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
-                
-            //System.out.println("X-Signature :"+api.getHmac());
-            //System.out.println("X-Timestamp :"+String.valueOf(api.GetUTCdatetimeAsString()));
-            //System.out.println("X-Cons-ID :"+prop.getProperty("CONSIDAPIBPJS"));
+            
 	    HttpEntity requestEntity = new HttpEntity(headers);
 	    RestTemplate rest = new RestTemplate();	
             
