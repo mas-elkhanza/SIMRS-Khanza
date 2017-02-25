@@ -1185,8 +1185,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
                         "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
                         "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
-                        "nmpolitujuan like '%darurat%'")>=2){
-                    JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan 2x pembuatan SEP di jenis pelayanan yang sama..!!");
+                        "nmpolitujuan like '%darurat%'")>=3){
+                    JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
                     TCari.requestFocus();
                 }else{
                     insertSEP();

@@ -28,6 +28,7 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private riwayatobat Trackobat=new riwayatobat();
     private PreparedStatement ps,psstok;
     private ResultSet rs,rsstok;
     private int jml=0,i=0,row=0,index=0,pilihan=0;
@@ -63,15 +64,15 @@ public class DlgMutasiBarang extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(50);
             }else if(i==1){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(95);
             }else if(i==2){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(330);
             }else if(i==3){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(75);
             }else if(i==4){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(75);
             }else if(i==5){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(75);
             }
         }
         warna.kolom=0;
@@ -499,13 +500,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 Sequel.AutoComitFalse();
                 for(i=0;i<tbDokter.getRowCount();i++){  
                         try {
-                            if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>=0){
-                                Sequel.menyimpan("mutasibarang","'"+tbDokter.getValueAt(i,1).toString()+"','"+tbDokter.getValueAt(i,0).toString()+"','"+kddari.getText()+"',"+
-                                        "'"+kdke.getText()+"','"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"','"+Keterangan.getText()+"'","Mutasi Antar bangsal"); 
-                                Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,1).toString()+"','"+kddari.getText()+"','-"+tbDokter.getValueAt(i,0).toString()+"'", 
-                                                "stok=stok-"+tbDokter.getValueAt(i,0).toString()+"","kode_brng='"+tbDokter.getValueAt(i,1).toString()+"' and kd_bangsal='"+kddari.getText()+"'");
-                                Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,1).toString()+"','"+kdke.getText()+"','"+tbDokter.getValueAt(i,0).toString()+"'", 
-                                                "stok=stok+"+tbDokter.getValueAt(i,0).toString()+"","kode_brng='"+tbDokter.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdke.getText()+"'");
+                            if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
+                                if(Sequel.menyimpantf("mutasibarang","'"+tbDokter.getValueAt(i,1).toString()+"','"+Valid.SetAngka(tbDokter.getValueAt(i,0).toString())+"','"+kddari.getText()+"',"+
+                                        "'"+kdke.getText()+"','"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"','"+Keterangan.getText()+"'","Mutasi Antar bangsal")==true){
+                                    Trackobat.catatRiwayat(tbDokter.getValueAt(i,1).toString(),0,Valid.SetAngka(tbDokter.getValueAt(i,0).toString()),"Mutasi",var.getkode(),kddari.getText(),"Simpan");
+                                    Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,1).toString()+"','"+kddari.getText()+"','-"+tbDokter.getValueAt(i,0).toString()+"'", 
+                                                    "stok=stok-"+tbDokter.getValueAt(i,0).toString()+"","kode_brng='"+tbDokter.getValueAt(i,1).toString()+"' and kd_bangsal='"+kddari.getText()+"'");
+                                    Trackobat.catatRiwayat(tbDokter.getValueAt(i,1).toString(),Valid.SetAngka(tbDokter.getValueAt(i,0).toString()),0,"Mutasi",var.getkode(),kdke.getText(),"Simpan");
+                                    Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,1).toString()+"','"+kdke.getText()+"','"+tbDokter.getValueAt(i,0).toString()+"'", 
+                                                    "stok=stok+"+tbDokter.getValueAt(i,0).toString()+"","kode_brng='"+tbDokter.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdke.getText()+"'");
+                                }                                     
                             }
                         } catch (Exception e) {
                             System.out.println(e);
@@ -513,7 +517,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }  
                 Sequel.AutoComitTrue();
                 for(index=0;index<tbDokter.getRowCount();index++){   
-                    tbDokter.setValueAt(null,index,0);        
+                    tbDokter.setValueAt("",index,0);        
                 }
                 tampil();
             }
@@ -791,6 +795,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             } 
         }
         
+        kodebarang=null;
+        namabarang=null;
+        satuan=null;
+        jumlah=null;
+        stokasal=null;
+        stoktujuan=null;
         kodebarang=new String[jml];
         namabarang=new String[jml];
         satuan=new String[jml];
@@ -800,7 +810,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         index=0;        
         for(i=0;i<row;i++){
             try {
-                if(Double.parseDouble(tbDokter.getValueAt(i,0).toString())>0){
+                if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
                     jumlah[index]=tbDokter.getValueAt(i,0).toString();
                     kodebarang[index]=tbDokter.getValueAt(i,1).toString();
                     namabarang[index]=tbDokter.getValueAt(i,2).toString();
@@ -821,7 +831,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             ps.setString(2,"%"+TCari.getText().trim()+"%");
             rs=ps.executeQuery();
             while(rs.next()){                
-                tabMode.addRow(new Object[]{null,rs.getString(1),rs.getString(2),rs.getString(3),0,0});
+                tabMode.addRow(new Object[]{"",rs.getString(1),rs.getString(2),rs.getString(3),0,0});
             }                 
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);

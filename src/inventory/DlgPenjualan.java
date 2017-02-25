@@ -1011,7 +1011,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ppn=0;     
                         LTotal.setText("0");
                         Bayar.setText("0");
-                }
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Nota sudah ada sebelumnya...!!");
+                } 
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed

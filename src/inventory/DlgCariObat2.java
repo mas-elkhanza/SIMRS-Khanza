@@ -45,6 +45,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private riwayatobat Trackobat=new riwayatobat();
     private PreparedStatement psobat,psobatsimpan,psinsertgudangbarang,psupdategudangbarang,pscarikapasitas,psobatasuransi,psstok;
     private ResultSet rsobat,carikapasitas,rsstok;
     private double x=0,y=0,embalase,kenaikan,tuslah,stokbarang;

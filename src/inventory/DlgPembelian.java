@@ -33,6 +33,7 @@ public class DlgPembelian extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
+    private riwayatobat Trackobat=new riwayatobat();
     private PreparedStatement ps,pskonversi;
     private ResultSet rs,rskonversi;
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
@@ -808,79 +809,47 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (reply == JOptionPane.YES_OPTION) {
                 try {
                     Sequel.AutoComitFalse();
-                    Sequel.menyimpan("pembelian","?,?,?,?,?,?,?,?,?,?,?",11,new String[]{
-                        NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),
-                        ""+sbttl,""+ttldisk,""+ttl,""+ppn,""+(ttl+ppn),kdgudang.getText(),
-                        Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())
-                    });
-                    jml=tbDokter.getRowCount();
-                    for(i=0;i<jml;i++){  
-                        try {
-                            if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                if(Sequel.menyimpantf2("detailbeli","?,?,?,?,?,?,?,?,?,?","Transaksi Pembelian",10,new String[]{
-                                       NoFaktur.getText(),
-                                       tbDokter.getValueAt(i,2).toString(),
-                                       tbDokter.getValueAt(i,1).toString(),
-                                       tbDokter.getValueAt(i,0).toString(),
-                                       tbDokter.getValueAt(i,7).toString(),
-                                       tbDokter.getValueAt(i,8).toString(),
-                                       tbDokter.getValueAt(i,9).toString(),
-                                       tbDokter.getValueAt(i,10).toString(),
-                                       tbDokter.getValueAt(i,11).toString(),
-                                       tbDokter.getValueAt(i,13).toString()
-                                })==true){
-                                    Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','"+tbDokter.getValueAt(i,12).toString()+"'", 
-                                               "stok=stok+'"+tbDokter.getValueAt(i,12).toString()+"'","kode_brng='"+tbDokter.getValueAt(i,2).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
-                                }                                    
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notifikasi : "+e);
-                        }                
-                    } 
-                    
-                    Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengadaan_Obat from set_akun"),"PEMBELIAN",""+(ttl+ppn),"0"});
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),"KAS KELUAR","0",""+(ttl+ppn)}); 
-                    jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),"U","PEMBELIAN DI "+nmgudang.getText().toUpperCase());
+                    if(Sequel.menyimpantf2("pembelian","?,?,?,?,?,?,?,?,?,?,?","No.Faktur",11,new String[]{
+                            NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),
+                            ""+sbttl,""+ttldisk,""+ttl,""+ppn,""+(ttl+ppn),kdgudang.getText(),
+                            Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())
+                        })==true){
+                        jml=tbDokter.getRowCount();
+                        for(i=0;i<jml;i++){  
+                            try {
+                                if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
+                                    if(Sequel.menyimpantf2("detailbeli","?,?,?,?,?,?,?,?,?,?,?","Transaksi Pembelian",11,new String[]{
+                                           NoFaktur.getText(),
+                                           tbDokter.getValueAt(i,2).toString(),
+                                           tbDokter.getValueAt(i,1).toString(),
+                                           tbDokter.getValueAt(i,0).toString(),
+                                           tbDokter.getValueAt(i,7).toString(),
+                                           tbDokter.getValueAt(i,8).toString(),
+                                           tbDokter.getValueAt(i,9).toString(),
+                                           tbDokter.getValueAt(i,10).toString(),
+                                           tbDokter.getValueAt(i,11).toString(),
+                                           tbDokter.getValueAt(i,13).toString(),
+                                           tbDokter.getValueAt(i,12).toString()
+                                    })==true){
+                                        Trackobat.catatRiwayat(tbDokter.getValueAt(i,2).toString(),Valid.SetAngka(tbDokter.getValueAt(i,12).toString()),0,"Pengadaan",var.getkode(),kdgudang.getText(),"Simpan");
+                                        Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','"+tbDokter.getValueAt(i,12).toString()+"'", 
+                                                   "stok=stok+'"+tbDokter.getValueAt(i,12).toString()+"'","kode_brng='"+tbDokter.getValueAt(i,2).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                                    }                                    
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            }                
+                        }
+                        Sequel.queryu("delete from tampjurnal");
+                        Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengadaan_Obat from set_akun"),"PEMBELIAN",""+(ttl+ppn),"0"});
+                        Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),"KAS KELUAR","0",""+(ttl+ppn)}); 
+                        jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),"U","PEMBELIAN DI "+nmgudang.getText().toUpperCase());
+                    }else{
+                        JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Faktur sudah ada sebelumnya...!!");
+                    }                         
                     Sequel.AutoComitTrue();
                 } catch (Exception ex) {
-                    System.out.println(ex);
-                    int konfirm = JOptionPane.showConfirmDialog(rootPane,"No.Nota sudah ada sebelumnya,\napa data mau ditambahkan ke pembelian di No.Nota tersebut..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                    if (konfirm == JOptionPane.YES_OPTION) {
-                        try {
-                            Sequel.AutoComitFalse();
-                            jml=tbDokter.getRowCount();
-                            for(i=0;i<jml;i++){  
-                                try {
-                                    if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                        if(Sequel.menyimpantf("detailbeli","?,?,?,?,?,?,?,?,?","Transaksi Pembelian",9,new String[]{
-                                            NoFaktur.getText(),
-                                            tbDokter.getValueAt(i,2).toString(),
-                                            tbDokter.getValueAt(i,1).toString(),
-                                            tbDokter.getValueAt(i,0).toString(),
-                                            tbDokter.getValueAt(i,7).toString(),
-                                            tbDokter.getValueAt(i,8).toString(),
-                                            tbDokter.getValueAt(i,9).toString(),
-                                            tbDokter.getValueAt(i,10).toString(),
-                                            tbDokter.getValueAt(i,11).toString()
-                                        })==true){
-                                            Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','"+tbDokter.getValueAt(i,12).toString()+"'", 
-                                                    "stok=stok+'"+tbDokter.getValueAt(i,12).toString()+"'","kode_brng='"+tbDokter.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
-                                        }                                            
-                                    } 
-                                } catch (Exception e) {
-                                }               
-                            } 
-                            
-                            Sequel.queryu("delete from tampjurnal");
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengadaan_Obat from set_akun"),"PEMBELIAN",""+(ttl+ppn),"0"});
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),"KAS KELUAR","0",""+(ttl+ppn)});  
-                            jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),"U","PEMBELIAN DI "+nmgudang.getText().toUpperCase());
-                            Sequel.AutoComitTrue();
-                        } catch (Exception ex1) {
-                            System.out.println(ex1);
-                        }
-                    }
+                    System.out.println(ex);                    
                 }                
                 jml=tbDokter.getRowCount();
                 for(i=0;i<jml;i++){ 

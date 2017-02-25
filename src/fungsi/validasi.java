@@ -903,6 +903,15 @@ public final class validasi {
         return s;
     }
     
+    public String SetTgl3(String original){
+        s = "";
+        try {
+            s=original.substring(8,10)+"-"+original.substring(5,7)+"-"+original.substring(0,4);
+        }catch (Exception e) {
+        }   
+        return s;
+    }
+    
     public void SetTgl(JDateTimePicker dtp,String tgl){            
         try {
            Date dtpa = new SimpleDateFormat("yyyy-MM-dd").parse(tgl);
