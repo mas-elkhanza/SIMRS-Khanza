@@ -45,6 +45,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
     private PreparedStatement pstampil,psstok;
     private ResultSet rstampil,rsstok;
     private WarnaTable2 warna=new WarnaTable2();
+    private riwayatobat Trackobat=new riwayatobat();
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -77,11 +78,11 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
         for (i = 0; i < 7; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(60);
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){
-                column.setPreferredWidth(270);
+                column.setPreferredWidth(280);
             }else if(i==3){
                 column.setPreferredWidth(170);
             }else if(i==4){
@@ -142,7 +143,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
                 " databarang.status='1' and databarang.nama_brng like ? or "+
                 " databarang.status='1' and databarang.kode_sat like ? or "+
                 " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
-            psstok=koneksiDB.condb().prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
+            psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
         }catch(SQLException e){
             System.out.println(e);
         }
@@ -484,12 +485,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (i == JOptionPane.YES_OPTION) {
                 for(i=0;i<tbDokter.getRowCount();i++){  
                    if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                        Sequel.menyimpan("stok_obat_pasien","?,?,?,?,?","Stok Obat Pasien",5,new String[]{
+                        if(Sequel.menyimpantf("stok_obat_pasien","?,?,?,?,?","Stok Obat Pasien",5,new String[]{
                             Valid.SetTgl(Tgl.getSelectedItem()+""),norawat.getText(),tabMode.getValueAt(i,1).toString(),
                             tabMode.getValueAt(i,0).toString(),kdgudang.getText()
-                        });
-                        Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
-                                        "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                        })==true){
+                            Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Pasien Ranap",var.getkode(),kdgudang.getText(),"Simpan");
+                            Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
+                                            "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                        }                            
                    }
                 }   
                 for(index=0;index<tbDokter.getRowCount();index++){   

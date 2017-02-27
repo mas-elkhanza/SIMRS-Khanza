@@ -1704,7 +1704,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(statuspasien.equals("ranap")){
             BtnObat2.setEnabled(true);
             BtnObat3.setEnabled(false);
+            if(Sequel.cariInteger("select count(no_rawat) from stok_obat_pasien where no_rawat=? ",norwt)>0){
+                btnObat1.setEnabled(false);
+            }else{
+                btnObat1.setEnabled(true);
+            }
         }else if(statuspasien.equals("ralan")){
+            btnObat1.setEnabled(true);
             BtnObat2.setEnabled(false);
             BtnObat3.setEnabled(true);
         }

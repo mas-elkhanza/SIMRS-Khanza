@@ -199,28 +199,6 @@ import setting.DlgSetHargaObatRalan;
 import setting.DlgSetHargaObatRanap;
 import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
-import simrskhanza.DlgAbout;
-import simrskhanza.DlgCariPeriksaLab;
-import simrskhanza.DlgCariPeriksaRadiologi;
-import simrskhanza.DlgCariTagihanOperasi;
-import simrskhanza.DlgDeposit;
-import simrskhanza.DlgDpjp;
-import simrskhanza.DlgIGD;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgJadwal;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgObatPenyakit;
-import simrskhanza.DlgPasienMati;
-import simrskhanza.DlgPemberianDiet;
-import simrskhanza.DlgPenelusuranLogin;
-import simrskhanza.DlgPenggajian;
-import simrskhanza.DlgResepObat;
-import simrskhanza.DlgResepPulang;
-import simrskhanza.DlgResumePerawatan;
-import simrskhanza.DlgRetensi;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRunTeks;
-import simrskhanza.DlgSirkulasiBerkas;
 import smsui.frmSmsView;
 import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDMedisRusak;
@@ -249,7 +227,7 @@ public class frmUtama extends javax.swing.JFrame {
     private static frmUtama myInstance;
     private PreparedStatement ps;
     private ResultSet rs;
-    private final Properties prop = new Properties(); 
+    private final Properties prop = new Properties();     
     private int jmlmenu=0;
     /** Creates new form frmUtama */
     private frmUtama() {
@@ -277,13 +255,11 @@ public class frmUtama extends javax.swing.JFrame {
         
         lblTgl.setText(tanggal.getSelectedItem().toString());
         try {
-            ps=koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,email,logo from setting");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }         
-        
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+        } catch (Exception e) {
+            System.out.println("Notif Setting : "+e);
+        }
             
- 
     }
     
     public static frmUtama getInstance() {
@@ -4557,8 +4533,10 @@ private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             retensi.CloseScane();
         }
         isTutup();
-        try{
-            com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.6f);
+        try{            
+            if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.6f);
+            }                
         }catch(Exception e){
             
         }
@@ -5797,7 +5775,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             if(var.getpegawai_admin()==true){
                 penggajian.loadURL("http://" +prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");
             }else if(var.getpegawai_user()==true){
@@ -6995,8 +6972,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                retensi.loadURL("http://" +prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            retensi.loadURL("http://" +prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -8887,24 +8863,36 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     
     public void isWall(){
         try{            
-            rs=ps.executeQuery();
-            while(rs.next()){
-                jLabel8.setText(rs.getString(1));
-                this.setTitle("SIM "+rs.getString("nama_instansi"));
-                jLabel11.setText(rs.getString(2) +", "+rs.getString(3) +", "+rs.getString(4) +" ");
-                var.setnamars(rs.getString("nama_instansi"));
-                var.setalamatrs(rs.getString("alamat_instansi"));
-                var.setkabupatenrs(rs.getString("kabupaten"));
-                var.setpropinsirs(rs.getString("propinsi"));
-                var.setkontakrs(rs.getString("kontak"));
-                var.setemailrs(rs.getString("email"));
-                
-                if(rs.getString(5).equals("Yes")){
-                    Blob blob = rs.getBlob(6);
-                    PanelWall.setBackgroundImage(new javax.swing.ImageIcon(blob.getBytes(1, (int) (blob.length()))));
-                    repaint();
+            ps=koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,email,logo from setting");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    jLabel8.setText(rs.getString(1));
+                    this.setTitle("SIM "+rs.getString("nama_instansi"));
+                    jLabel11.setText(rs.getString(2) +", "+rs.getString(3) +", "+rs.getString(4) +" ");
+                    var.setnamars(rs.getString("nama_instansi"));
+                    var.setalamatrs(rs.getString("alamat_instansi"));
+                    var.setkabupatenrs(rs.getString("kabupaten"));
+                    var.setpropinsirs(rs.getString("propinsi"));
+                    var.setkontakrs(rs.getString("kontak"));
+                    var.setemailrs(rs.getString("email"));
+
+                    if(rs.getString(5).equals("Yes")){
+                        Blob blob = rs.getBlob(6);
+                        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(blob.getBytes(1, (int) (blob.length()))));
+                        repaint();
+                    }
+                }  
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
                 }
-            }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                 
         }catch(Exception e){
             System.out.println("Notifikasi : Silahkan Set Aplikasi "+e);
         }
