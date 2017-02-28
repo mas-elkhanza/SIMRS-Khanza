@@ -202,6 +202,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         panelisi5 = new widget.panelisi();
         BtnAntri1 = new widget.Button();
         BtnBatal1 = new widget.Button();
+        BtnBatal4 = new widget.Button();
         jPanel3 = new javax.swing.JPanel();
         panelisi3 = new widget.panelisi();
         BtnSeek3 = new widget.Button();
@@ -213,6 +214,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         panelisi6 = new widget.panelisi();
         BtnAntri2 = new widget.Button();
         BtnBatal2 = new widget.Button();
+        BtnBatal5 = new widget.Button();
         jPanel4 = new javax.swing.JPanel();
         panelisi4 = new widget.panelisi();
         BtnSeek4 = new widget.Button();
@@ -224,6 +226,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         panelisi7 = new widget.panelisi();
         BtnAntri3 = new widget.Button();
         BtnBatal3 = new widget.Button();
+        BtnBatal6 = new widget.Button();
 
         DlgDisplay.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         DlgDisplay.setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
@@ -683,7 +686,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         BtnAntri1.setToolTipText("Alt+7");
         BtnAntri1.setIconTextGap(3);
         BtnAntri1.setName("BtnAntri1"); // NOI18N
-        BtnAntri1.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnAntri1.setPreferredSize(new java.awt.Dimension(90, 30));
         BtnAntri1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAntri1ActionPerformed(evt);
@@ -697,13 +700,27 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         BtnBatal1.setToolTipText("Alt+8");
         BtnBatal1.setIconTextGap(3);
         BtnBatal1.setName("BtnBatal1"); // NOI18N
-        BtnBatal1.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal1.setPreferredSize(new java.awt.Dimension(90, 30));
         BtnBatal1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBatal1ActionPerformed(evt);
             }
         });
         panelisi5.add(BtnBatal1);
+
+        BtnBatal4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
+        BtnBatal4.setMnemonic('8');
+        BtnBatal4.setText("Ulang");
+        BtnBatal4.setToolTipText("Alt+8");
+        BtnBatal4.setIconTextGap(3);
+        BtnBatal4.setName("BtnUlang1"); // NOI18N
+        BtnBatal4.setPreferredSize(new java.awt.Dimension(90, 30));
+        BtnBatal4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBatal4ActionPerformed(evt);
+            }
+        });
+        panelisi5.add(BtnBatal4);
 
         jPanel2.add(panelisi5, java.awt.BorderLayout.PAGE_END);
 
@@ -782,7 +799,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         BtnAntri2.setToolTipText("Alt+9");
         BtnAntri2.setIconTextGap(3);
         BtnAntri2.setName("BtnAntri2"); // NOI18N
-        BtnAntri2.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnAntri2.setPreferredSize(new java.awt.Dimension(90, 30));
         BtnAntri2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAntri2ActionPerformed(evt);
@@ -796,13 +813,27 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         BtnBatal2.setToolTipText("Alt+A");
         BtnBatal2.setIconTextGap(3);
         BtnBatal2.setName("BtnBatal2"); // NOI18N
-        BtnBatal2.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal2.setPreferredSize(new java.awt.Dimension(90, 30));
         BtnBatal2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBatal2ActionPerformed(evt);
             }
         });
         panelisi6.add(BtnBatal2);
+
+        BtnBatal5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
+        BtnBatal5.setMnemonic('8');
+        BtnBatal5.setText("Ulang");
+        BtnBatal5.setToolTipText("Alt+8");
+        BtnBatal5.setIconTextGap(3);
+        BtnBatal5.setName("BtnBatal5"); // NOI18N
+        BtnBatal5.setPreferredSize(new java.awt.Dimension(90, 30));
+        BtnBatal5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBatal5ActionPerformed(evt);
+            }
+        });
+        panelisi6.add(BtnBatal5);
 
         jPanel3.add(panelisi6, java.awt.BorderLayout.PAGE_END);
 
@@ -881,7 +912,7 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         BtnAntri3.setToolTipText("Alt+B");
         BtnAntri3.setIconTextGap(3);
         BtnAntri3.setName("BtnAntri3"); // NOI18N
-        BtnAntri3.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnAntri3.setPreferredSize(new java.awt.Dimension(90, 30));
         BtnAntri3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAntri3ActionPerformed(evt);
@@ -895,13 +926,27 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
         BtnBatal3.setToolTipText("Alt+C");
         BtnBatal3.setIconTextGap(3);
         BtnBatal3.setName("BtnBatal3"); // NOI18N
-        BtnBatal3.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal3.setPreferredSize(new java.awt.Dimension(90, 30));
         BtnBatal3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBatal3ActionPerformed(evt);
             }
         });
         panelisi7.add(BtnBatal3);
+
+        BtnBatal6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
+        BtnBatal6.setMnemonic('8');
+        BtnBatal6.setText("Ulang");
+        BtnBatal6.setToolTipText("Alt+8");
+        BtnBatal6.setIconTextGap(3);
+        BtnBatal6.setName("BtnBatal6"); // NOI18N
+        BtnBatal6.setPreferredSize(new java.awt.Dimension(90, 30));
+        BtnBatal6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBatal6ActionPerformed(evt);
+            }
+        });
+        panelisi7.add(BtnBatal6);
 
         jPanel4.add(panelisi7, java.awt.BorderLayout.PAGE_END);
 
@@ -1228,6 +1273,48 @@ private void BtnBatal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         tampil3();
     }//GEN-LAST:event_formWindowOpened
 
+    private void BtnBatal4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatal4ActionPerformed
+        if(!labelantri1.getText().equals("")){
+            try {
+                BackgroundMusic bm = new BackgroundMusic("./suara/nomor-urut.mp3");
+                bm.start();
+                Thread.sleep(2000);
+                bm.stop();
+            } catch (InterruptedException ex) {
+                System.out.println(ex);
+            } 
+            panggil(Integer.parseInt(labelantri1.getText()));
+        }            
+    }//GEN-LAST:event_BtnBatal4ActionPerformed
+
+    private void BtnBatal5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatal5ActionPerformed
+        if(!labelantri2.getText().equals("")){
+            try {
+                BackgroundMusic bm = new BackgroundMusic("./suara/nomor-urut.mp3");
+                bm.start();
+                Thread.sleep(2000);
+                bm.stop();
+            } catch (InterruptedException ex) {
+                System.out.println(ex);
+            } 
+            panggil(Integer.parseInt(labelantri2.getText()));
+        }
+    }//GEN-LAST:event_BtnBatal5ActionPerformed
+
+    private void BtnBatal6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatal6ActionPerformed
+        if(!labelantri3.getText().equals("")){
+            try {
+                BackgroundMusic bm = new BackgroundMusic("./suara/nomor-urut.mp3");
+                bm.start();
+                Thread.sleep(2000);
+                bm.stop();
+            } catch (InterruptedException ex) {
+                System.out.println(ex);
+            } 
+            panggil(Integer.parseInt(labelantri3.getText()));
+        }
+    }//GEN-LAST:event_BtnBatal6ActionPerformed
+
 
 
     /**
@@ -1256,6 +1343,9 @@ private void BtnBatal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.Button BtnBatal1;
     private widget.Button BtnBatal2;
     private widget.Button BtnBatal3;
+    private widget.Button BtnBatal4;
+    private widget.Button BtnBatal5;
+    private widget.Button BtnBatal6;
     private widget.Button BtnDisplay;
     private widget.Button BtnKeluar;
     private widget.Button BtnSeek2;
