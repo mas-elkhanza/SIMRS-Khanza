@@ -13,6 +13,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -34,7 +35,10 @@ public class DlgReturJual extends javax.swing.JDialog {
     private DlgCariReturJual form=new DlgCariReturJual(null,false);    
     private DlgPasien member=new DlgPasien(null,false);
     private double ttlretur=0;
+    private PreparedStatement ps;
+    private ResultSet rs;
     private Connection koneksi=koneksiDB.condb();
+    private riwayatobat Trackobat=new riwayatobat();
     private String formvalid="";
 
     /** Creates new form DlgProgramStudi
@@ -68,13 +72,13 @@ public class DlgReturJual extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(250);
             }else if(i==3){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(60);
             }else if(i==4){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(100);
             }else if(i==5){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(60);
             }else if(i==6){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(100);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1010,59 +1014,41 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                try {
-                    koneksi.createStatement().execute(
-                        "insert into returjual values('"+NoRetur.getText()+"','"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"','"+Kdptg.getText()+"','"+kdmem.getText()+"','"+kdgudang.getText()+"')");
-                    ResultSet rs=koneksi.prepareStatement(
-                                "select nota_jual, kode_brng, satuan, jml_jual, h_jual, jml_retur, h_retur,  subtotal from tampreturjual").executeQuery();
-                    while(rs.next()){
-                        if(Sequel.menyimpantf("detreturjual","?,?,?,?,?,?,?,?,?","data barang sama",9,new String[]{
-                            NoRetur.getText(),rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
-                            rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
-                        })==true){
-                            Sequel.menyimpan("gudangbarang","'"+rs.getString(2)+"','"+kdgudang.getText()+"','"+rs.getString(6)+"'", 
-                                       "stok=stok+'"+rs.getString(6)+"'","kode_brng='"+rs.getString(2)+"' and kd_bangsal='"+kdgudang.getText()+"'");
-                        }                                
-                    }                    
-                    
-                    System.out.println(var.getform());
-                    if(!formvalid.equals("No")){
-                        Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Retur_Dari_pembeli from set_akun")+"','RETUR PENJUALAN','"+ttlretur+"','0'","Rekening");    
-                        Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Kontra_Retur_Dari_Pembeli from set_akun")+"','KAS DI TANGAN','0','"+ttlretur+"'","Rekening"); 
-                        jur.simpanJurnal(NoRetur.getText(),Valid.SetTgl(TglRetur.getSelectedItem()+""),"U","RETUR PENJUALAN DI "+nmgudang.getText().toUpperCase());
-                    }
-                    
-                    BtnBatalActionPerformed(evt);                
-                } catch (Exception ex) {
-                    System.out.println(ex);
-                    int konfirm = JOptionPane.showConfirmDialog(rootPane,"No.Faktur sudah ada sebelumnya,\napa data mau ditambahkan ke No.Retur tersebut..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                    if (konfirm == JOptionPane.YES_OPTION) {
+                if(Sequel.menyimpantf("returjual","'"+NoRetur.getText()+"','"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"','"+Kdptg.getText()+"','"+kdmem.getText()+"','"+kdgudang.getText()+"'","data")==true){
+                    try {
+                        ps=koneksi.prepareStatement("select nota_jual, kode_brng, satuan, jml_jual, h_jual, jml_retur, h_retur,  subtotal from tampreturjual");
                         try {
-                            //Sequel.queryu2("delete from returjual where no_retur_jual=?",1,new String[]{NoRetur.getText()});
-                            //koneksi.createStatement().execute(
-                            //    "insert into returjual values('"+NoRetur.getText()+"','"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"','"+Kdptg.getText()+"','"+kdmem.getText()+"','"+kdgudang.getText()+"')");
-                            ResultSet rs=koneksi.prepareStatement(
-                                "select nota_jual, kode_brng, satuan, jml_jual, h_jual, jml_retur, h_retur,  subtotal from tampreturjual").executeQuery();
+                            rs=ps.executeQuery();
                             while(rs.next()){
                                 if(Sequel.menyimpantf("detreturjual","?,?,?,?,?,?,?,?,?","data barang sama",9,new String[]{
                                     NoRetur.getText(),rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                                     rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
                                 })==true){
+                                    Trackobat.catatRiwayat(rs.getString(2),rs.getDouble(6),0,"Retur Jual",var.getkode(),kdgudang.getText(),"Simpan");
                                     Sequel.menyimpan("gudangbarang","'"+rs.getString(2)+"','"+kdgudang.getText()+"','"+rs.getString(6)+"'", 
-                                                "stok=stok+'"+rs.getString(6)+"'","kode_brng='"+rs.getString(2)+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                                               "stok=stok+'"+rs.getString(6)+"'","kode_brng='"+rs.getString(2)+"' and kd_bangsal='"+kdgudang.getText()+"'");
                                 }                                
-                            }
+                            }                    
 
                             if(!formvalid.equals("No")){
                                 Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Retur_Dari_pembeli from set_akun")+"','RETUR PENJUALAN','"+ttlretur+"','0'","Rekening");    
                                 Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Kontra_Retur_Dari_Pembeli from set_akun")+"','KAS DI TANGAN','0','"+ttlretur+"'","Rekening"); 
                                 jur.simpanJurnal(NoRetur.getText(),Valid.SetTgl(TglRetur.getSelectedItem()+""),"U","RETUR PENJUALAN DI "+nmgudang.getText().toUpperCase());
-                            }                                
+                            }
 
-                            BtnBatalActionPerformed(evt);  
-                        }catch (SQLException exc) {
-                            System.out.println(exc);
-                        }                        
+                            BtnBatalActionPerformed(evt);                       
+                        } catch (Exception e) {
+                            System.out.println("Notif Tampil Temp : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }                            
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi Tampil : "+e);
                     }
                 }
             }
@@ -1402,29 +1388,32 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        String sql="select  nota_jual, kode_brng, nama_brng, satuan, h_jual, jml_jual, h_retur, jml_retur, subtotal from  tampreturjual ";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
-       Valid.tabelKosong(tabMode);
-        try{
-            java.sql.Statement stat=koneksi.createStatement();
-            ResultSet rs=stat.executeQuery(sql);
-            ttlretur=0;
-            while(rs.next()){
-                String[] data={rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               Valid.SetAngka(rs.getDouble(7)),
-                               rs.getString(8),
-                               Valid.SetAngka(rs.getDouble(9))};
-                ttlretur=ttlretur+rs.getDouble(9);
-                tabMode.addRow(data);
-            }                 
-            LTotal.setText(Valid.SetAngka(ttlretur));
-        }catch(SQLException e){
+        Valid.tabelKosong(tabMode);
+         try{
+             ps=koneksi.prepareStatement("select  nota_jual, kode_brng, nama_brng, satuan, h_jual, jml_jual, h_retur, jml_retur, subtotal from  tampreturjual ");
+             try {
+                rs=ps.executeQuery();
+                ttlretur=0;
+                while(rs.next()){
+                    ttlretur=ttlretur+rs.getDouble(9);
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),Valid.SetAngka(rs.getDouble(7)),
+                        rs.getString(8),Valid.SetAngka(rs.getDouble(9))
+                    });
+                }                 
+                LTotal.setText(Valid.SetAngka(ttlretur));
+             } catch (Exception e) {
+                 System.out.println("Notifikasi : "+e);
+             } finally{
+                 if(rs!=null){
+                     rs.close();
+                 }
+                 if(ps!=null){
+                     ps.close();
+                 }
+             }                
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         
