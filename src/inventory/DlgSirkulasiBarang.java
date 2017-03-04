@@ -851,16 +851,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     } catch (Exception e) {
                         System.out.println("Notifikasi Piutang : "+e);
                     } finally{
-                        if(rs!=null){
-                            rs.close();
+                        if(rs4!=null){
+                            rs4.close();
                         }
-                        if(ps!=null){
-                            ps.close();
+                        if(ps4!=null){
+                            ps4.close();
                         }
                     }
 
                     //returbeli
-                    ps5=koneksi.prepareStatement("select sum(detreturbeli.jml_retur), sum(detreturbeli.total) "+
+                    ps5=koneksi.prepareStatement("select sum(detreturbeli.jml_retur2), sum(detreturbeli.total) "+
                         " from returbeli inner join detreturbeli "+
                         " on returbeli.no_retur_beli=detreturbeli.no_retur_beli "+
                         " where detreturbeli.kode_brng=? and "+

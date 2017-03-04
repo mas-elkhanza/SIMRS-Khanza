@@ -31,11 +31,15 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
+    private riwayatobat Trackobat=new riwayatobat();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     public DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public DlgBarang barang=new DlgBarang(null,false);
     private double ttlretur=0,subtotal=0;
     private Connection koneksi=koneksiDB.condb();
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;
+    private String tanggal="",noret="",ptg="",sat="",bar="",nonot="";  
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -52,7 +56,7 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
                     "Barang",
                     "Satuan",
                     "Harga Retur(Rp)",
-                    "Jml.Retur",
+                    "Jml",
                     "SubTotal(Rp)"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -65,25 +69,25 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
         for (int i = 0; i < 10; i++) {
             TableColumn column = tbRetur.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==2){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==3){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==4){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==5){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(220);
             }else if(i==6){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(60);
             }else if(i==7){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(100);
             }else if(i==8){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(35);
             }else if(i==9){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(100);
             }
         }
         tbRetur.setDefaultRenderer(Object.class, new WarnaTable());
@@ -242,7 +246,7 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(60, 80, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -797,24 +801,46 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
       Valid.textKosong(TCari,"No.Faktur");
   }else{
      try {
-         PreparedStatement pscariretur=koneksi.prepareStatement(
-                 "select no_retur_piutang, kd_bangsal from returpiutang where no_retur_piutang='"+tbRetur.getValueAt(tbRetur.getSelectedRow(),0).toString()+"'");
-         ResultSet rscariretur=pscariretur.executeQuery();
-         while(rscariretur.next()){
-             PreparedStatement psdetailretur=koneksi.prepareStatement(
-                  "select kode_brng,jml_retur from detreturpiutang where no_retur_piutang='"+rscariretur.getString(1) +"' ");
-             ResultSet rsdetailretur=psdetailretur.executeQuery();
-             while(rsdetailretur.next()){
-                 Sequel.menyimpan("gudangbarang","'"+rsdetailretur.getString("kode_brng") +"','"+rscariretur.getString("kd_bangsal") +"','"+rsdetailretur.getString("jml_retur") +"'", 
-                                        "stok=stok+'"+rsdetailretur.getString("jml_retur") +"'","kode_brng='"+rsdetailretur.getString("kode_brng")+"' and kd_bangsal='"+rscariretur.getString("kd_bangsal") +"'");
+         ps=koneksi.prepareStatement("select no_retur_piutang, kd_bangsal from returpiutang where no_retur_piutang=?");
+         try {
+            ps.setString(1,tbRetur.getValueAt(tbRetur.getSelectedRow(),0).toString());
+            rs=ps.executeQuery();
+            if(rs.next()){
+                ps2=koneksi.prepareStatement("select kode_brng,jml_retur from detreturpiutang where no_retur_piutang=? ");
+                try {
+                    ps2.setString(1,rs.getString(1));
+                    rs2=ps2.executeQuery();
+                    while(rs2.next()){
+                        Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jml_retur"),"Retur Piutang",var.getkode(),rs.getString("kd_bangsal"),"Hapus");
+                        Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jml_retur") +"'", 
+                                               "stok=stok-'"+rs2.getString("jml_retur") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif rs2 : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                    if(ps2!=null){
+                        ps2.close();
+                    }
+                }
+                Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Retur_Piutang_Obat from set_akun")+"','RETUR PIUTANG','0','"+Sequel.cariIsi("select sum(subtotal) from detreturpiutang where no_retur_piutang='"+rs.getString("no_retur_piutang")+"'")+"'","Rekening");    
+                Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Kontra_Retur_Piutang_Obat from set_akun")+"','KAS DI TANGAN','"+Sequel.cariIsi("select sum(subtotal) from detreturpiutang where no_retur_piutang='"+rs.getString("no_retur_piutang")+"'")+"','0'","Rekening"); 
+                jur.simpanJurnal(rs.getString(1),Sequel.cariIsi("select current_date()"),"U","BATAL RETUR PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase());
+            }          
+            Sequel.queryu("delete from returpiutang where no_retur_piutang='"+tbRetur.getValueAt(tbRetur.getSelectedRow(),0).toString()+"'");
+            tampil();
+         } catch (Exception e) {
+             System.out.println("Notif Retur Piutang : "+e);
+         } finally{
+             if(rs!=null){
+                 rs.close();
              }
-            
-             Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Retur_Piutang_Obat from set_akun")+"','RETUR PIUTANG','0','"+Sequel.cariIsi("select sum(subtotal) from detreturpiutang where no_retur_piutang='"+rscariretur.getString("no_retur_piutang")+"'")+"'","Rekening");    
-             Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Kontra_Retur_Piutang_Obat from set_akun")+"','KAS DI TANGAN','"+Sequel.cariIsi("select sum(subtotal) from detreturpiutang where no_retur_piutang='"+rscariretur.getString("no_retur_piutang")+"'")+"','0'","Rekening"); 
-             jur.simpanJurnal(rscariretur.getString(1),Sequel.cariIsi("select current_date()"),"U","BATAL RETUR PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rscariretur.getString("kd_bangsal")+"'").toUpperCase());
-         }          
-         Sequel.queryu("delete from returpiutang where no_retur_piutang='"+tbRetur.getValueAt(tbRetur.getSelectedRow(),0).toString()+"'");
-         tampil();
+             if(ps!=null){
+                 ps.close();
+             }
+         }
      } catch (SQLException ex) {
          System.out.println(ex);
      }      
@@ -883,8 +909,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        String tanggal=" returpiutang.tgl_retur between '"+Valid.SetTgl(TglRetur1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglRetur2.getSelectedItem()+"")+"' ";
-        String noret="",ptg="",sat="",bar="";     
+        tanggal=" returpiutang.tgl_retur between '"+Valid.SetTgl(TglRetur1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglRetur2.getSelectedItem()+"")+"' ";
+        noret="";ptg="";sat="";bar="";     
         if(!NoRetur.getText().equals("")){
             noret=" and returpiutang.no_retur_piutang='"+NoNota.getText()+"' ";
         } 
@@ -897,7 +923,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(!nmbar.getText().equals("")){
             bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
         }
-        String sql="select returpiutang.no_retur_piutang,returpiutang.tgl_retur, "+
+        Valid.tabelKosong(tabMode);
+        try{
+            ps=koneksi.prepareStatement("select returpiutang.no_retur_piutang,returpiutang.tgl_retur, "+
                     "returpiutang.nip,petugas.nama,pasien.no_rkm_medis,pasien.nm_pasien,bangsal.nm_bangsal "+
                     " from returpiutang inner join petugas inner join pasien inner join bangsal "+
                     " inner join detreturpiutang inner join databarang inner join kodesatuan "+
@@ -918,61 +946,74 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     tanggal+noret+ptg+sat+bar+" and detreturpiutang.nota_piutang like '%"+TCari.getText()+"%' or "+
                     tanggal+noret+ptg+sat+bar+" and kodesatuan.satuan like '%"+TCari.getText()+"%' or "+
                     tanggal+noret+ptg+sat+bar+" and detreturpiutang.kode_sat like '%"+TCari.getText()+"%' "+
-                    " group by returpiutang.no_retur_piutang order by returpiutang.tgl_retur,returpiutang.no_retur_piutang ";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
-       Valid.tabelKosong(tabMode);
-        try{
-            java.sql.Statement stat=koneksi.createStatement();
-            java.sql.Statement stat2=koneksi.createStatement();
-            ResultSet rs=stat.executeQuery(sql);
-            ttlretur=0;
-            while(rs.next()){
-                String[] data={rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3)+", "+rs.getString(4),
-                               rs.getString(5)+", "+rs.getString(6),
-                               "Retur Piutang :","di "+rs.getString(7),"","","",""};
-                tabMode.addRow(data);
-                String sat="",bar="",nonot="";
-                if(!nmsat.getText().equals("")){
-                    sat=" and kodesatuan.satuan='"+nmsat.getText()+"' ";
-                }    
-                if(!nmbar.getText().equals("")){
-                    bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
+                    " group by returpiutang.no_retur_piutang order by returpiutang.tgl_retur,returpiutang.no_retur_piutang ");
+            try {
+                ttlretur=0;
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3)+", "+rs.getString(4),
+                        rs.getString(5)+", "+rs.getString(6),"Retur Piutang :","di "+rs.getString(7),"","","",""
+                    });
+                    sat="";bar="";nonot="";
+                    if(!nmsat.getText().equals("")){
+                        sat=" and kodesatuan.satuan='"+nmsat.getText()+"' ";
+                    }    
+                    if(!nmbar.getText().equals("")){
+                        bar=" and databarang.nama_brng='"+nmbar.getText()+"' ";
+                    }
+                    if(!NoNota.getText().equals("")){
+                        nonot=" and detreturpiutang.nota_piutang='"+NoNota.getText()+"' ";
+                    }
+                    ps2=koneksi.prepareStatement("select detreturpiutang.nota_piutang,detreturpiutang.kode_brng,databarang.nama_brng, "+
+                            "detreturpiutang.kode_sat,kodesatuan.satuan,detreturpiutang.h_retur,detreturpiutang.jml_retur, "+
+                            "detreturpiutang.subtotal from detreturpiutang inner join databarang inner join kodesatuan "+
+                            " on detreturpiutang.kode_brng=databarang.kode_brng "+
+                            " and detreturpiutang.kode_sat=kodesatuan.kode_sat where "+
+                            " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturpiutang.kode_brng like '%"+TCari.getText()+"%' or "+
+                            " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
+                            " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturpiutang.nota_piutang like '%"+TCari.getText()+"%' or "+
+                            " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturpiutang.kode_sat like '%"+TCari.getText()+"%' or "+
+                            " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturpiutang.nota_piutang like '%"+TCari.getText()+"%' or "+
+                            " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and kodesatuan.satuan like '%"+TCari.getText()+"%' order by detreturpiutang.kode_brng  ");
+                    try {
+                        rs2=ps2.executeQuery();
+                        subtotal=0;
+                        int no=1;
+                        while(rs2.next()){
+                            ttlretur=ttlretur+rs2.getDouble(8);
+                            subtotal=subtotal+rs2.getDouble(8);
+                            tabMode.addRow(new Object[]{
+                                "","","","",no+". "+rs2.getString(1),rs2.getString(2)+", "+rs2.getString(3),
+                                rs2.getString(4)+", "+rs2.getString(5),
+                                Valid.SetAngka(rs2.getDouble(6)),rs2.getString(7),Valid.SetAngka(rs2.getDouble(8))
+                            });
+                            no++;
+                        }
+                        tabMode.addRow(new Object[]{"Total Retur :","","","","","","","","",Valid.SetAngka(subtotal)});                
+                    } catch (Exception e) {
+                        System.out.println("Notif Detail Retur "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                }                 
+                LTotal.setText(Valid.SetAngka(ttlretur));
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
                 }
-                if(!NoNota.getText().equals("")){
-                    nonot=" and detreturpiutang.nota_piutang='"+NoNota.getText()+"' ";
+                if(ps!=null){
+                    ps.close();
                 }
-                ResultSet rs2=stat2.executeQuery("select detreturpiutang.nota_piutang,detreturpiutang.kode_brng,databarang.nama_brng, "+
-                        "detreturpiutang.kode_sat,kodesatuan.satuan,detreturpiutang.h_retur,detreturpiutang.jml_retur, "+
-                        "detreturpiutang.subtotal from detreturpiutang inner join databarang inner join kodesatuan "+
-                        " on detreturpiutang.kode_brng=databarang.kode_brng "+
-                        " and detreturpiutang.kode_sat=kodesatuan.kode_sat where "+
-                        " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturpiutang.kode_brng like '%"+TCari.getText()+"%' or "+
-                        " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                        " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturpiutang.nota_piutang like '%"+TCari.getText()+"%' or "+
-                        " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturpiutang.kode_sat like '%"+TCari.getText()+"%' or "+
-                        " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and detreturpiutang.nota_piutang like '%"+TCari.getText()+"%' or "+
-                        " detreturpiutang.no_retur_piutang='"+rs.getString(1)+"' "+sat+bar+nonot+" and kodesatuan.satuan like '%"+TCari.getText()+"%' order by detreturpiutang.kode_brng  ");
-                subtotal=0;
-                int no=1;
-                while(rs2.next()){
-                    ttlretur=ttlretur+rs2.getDouble(8);
-                    subtotal=subtotal+rs2.getDouble(8);
-                    String[] data2={"","","","",no+". "+rs2.getString(1),rs2.getString(2)+", "+rs2.getString(3),
-                                    rs2.getString(4)+", "+rs2.getString(5),
-                                    Valid.SetAngka(rs2.getDouble(6)),rs2.getString(7),Valid.SetAngka(rs2.getDouble(8))};
-                    tabMode.addRow(data2);
-                    no++;
-                }
-                String[] data3={"Total Retur :","","","","","","","","",Valid.SetAngka(subtotal)};
-                tabMode.addRow(data3);                
-            }                 
-            LTotal.setText(Valid.SetAngka(ttlretur));
-        }catch(SQLException e){
+            } 
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         

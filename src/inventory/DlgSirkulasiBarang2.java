@@ -151,7 +151,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
                         " on piutang.nota_piutang=detailpiutang.nota_piutang "+
                         " where detailpiutang.kode_brng=? and "+
                         " piutang.tgl_piutang between ? and ? ");
-            ps5=koneksi.prepareStatement("select sum(detreturbeli.jml_retur) "+
+            ps5=koneksi.prepareStatement("select sum(detreturbeli.jml_retur2) "+
                         " from returbeli inner join detreturbeli "+
                         " on returbeli.no_retur_beli=detreturbeli.no_retur_beli "+
                         " where detreturbeli.kode_brng=? and "+
