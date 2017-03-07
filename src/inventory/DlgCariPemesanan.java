@@ -31,6 +31,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     public  DlgSuplier suplier=new DlgSuplier(null,false);
@@ -279,7 +280,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         
         try {
             pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, kd_bangsal,tgl_faktur,status from pemesanan where no_faktur=?");
-            psdetailpesan=koneksi.prepareStatement("select kode_brng,jumlah from detailpesan where no_faktur=? ");
+            psdetailpesan=koneksi.prepareStatement("select kode_brng,jumlah2 from detailpesan where no_faktur=? ");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -1017,8 +1018,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
              psdetailpesan.setString(1,rs.getString(1));
              rs2=psdetailpesan.executeQuery();
              while(rs2.next()){
-                 Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jumlah") +"'", 
-                                        "stok=stok-'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
+                 Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah2"),"Pemesanan",var.getkode(),rs.getString("kd_bangsal"),"Hapus");
+                 Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jumlah2") +"'", 
+                                        "stok=stok-'"+rs2.getString("jumlah2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
              }
              Sequel.queryu("delete from tampjurnal");
              Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{

@@ -11,12 +11,13 @@
 
 package simrskhanza;
 
-import fungsi.WarnaTable;
+import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
+import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -45,6 +46,8 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
+    private riwayatobat Trackobat=new riwayatobat();
+    private WarnaTable2 warna=new WarnaTable2();
     private String bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
     /** Creates new form DlgPenyakit
      * @param parent
@@ -70,7 +73,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
                 "Keterangan",
                 "Kategori Penyakit",
                 "Ciri-ciri Umum",
-                "Referensi"};
+                "Referensi","H.Beli"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                     boolean a = false;
@@ -84,7 +87,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 16; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -116,9 +119,13 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
                 column.setPreferredWidth(170);
             }else if(i==14){
                 column.setPreferredWidth(170);
+            }else if(i==15){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
+        warna.kolom=4;
+        tbKamar.setDefaultRenderer(Object.class,warna);
         TNoRw.setDocument(new batasInput((byte)20).getKata(TNoRw));        
         
         penyakit.addWindowListener(new WindowListener() {
@@ -406,7 +413,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015-11-16" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2016-10-27" }));
         DTPBeri.setDisplayFormat("yyyy-MM-dd");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -609,22 +616,20 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 Sequel.AutoComitFalse();
                 for(int r=0;r<row;r++){ 
                     if(Valid.SetAngka(tabMode.getValueAt(r,4).toString())>0){
-                        try {
-                            koneksi.prepareStatement("insert into detail_pemberian_obat values('"+DTPBeri.getSelectedItem()+"','"+
+                        if(Sequel.menyimpantf("detail_pemberian_obat","'"+DTPBeri.getSelectedItem()+"','"+
                                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
                                     TNoRw.getText()+"','"+
                                     tabMode.getValueAt(r,0).toString()+"','"+
+                                    Valid.SetAngka(tabMode.getValueAt(r,15).toString())+"','"+
                                     Valid.SetAngka(tabMode.getValueAt(r,3).toString())+"','"+
                                     Valid.SetAngka(tabMode.getValueAt(r,4).toString())+"','"+
                                     Valid.SetAngka(tabMode.getValueAt(r,5).toString())+"','"+
                                     Valid.SetAngka(tabMode.getValueAt(r,6).toString())+"','"+
-                                    Valid.SetAngka(tabMode.getValueAt(r,7).toString())+"')").execute();
+                                    Valid.SetAngka(tabMode.getValueAt(r,7).toString())+"'","data")==true){
+                            Trackobat.catatRiwayat(tabMode.getValueAt(r,0).toString(),0,Valid.SetAngka(tabMode.getValueAt(r,4).toString()),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
                             Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(r,0).toString()+"','"+bangsal+"','-"+tabMode.getValueAt(r,4).toString()+"'", 
                                             "stok=stok-'"+tabMode.getValueAt(r,4).toString()+"'","kode_brng='"+tabMode.getValueAt(r,0).toString()+"' and kd_bangsal='"+bangsal+"'");
-                        } catch (Exception e) {
-                            System.out.println("Gagal menyimpan obat karena : "+e);
-                            JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Kemungkinan ada data yang sama dimasukkan sebelumnya...!");
-                        }
+                        }                        
                     }                           
                 }                
                 Sequel.AutoComitTrue();
@@ -688,7 +693,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void tampil() {
         String sql="select obat_penyakit.kd_penyakit,nm_penyakit,ciri_ciri,penyakit.keterangan, "+
-                   "nm_kategori,ciri_umum,obat_penyakit.kode_brng,nama_brng,jenis.nama,ralan,referensi "+
+                   "nm_kategori,ciri_umum,obat_penyakit.kode_brng,nama_brng,jenis.nama,ralan,referensi,databarang.h_beli "+
                    "from obat_penyakit inner join penyakit inner join kategori_penyakit inner join databarang inner join jenis "+
                    "on penyakit.kd_ktg=kategori_penyakit.kd_ktg and databarang.kdjns=jenis.kdjns and "+
                    "obat_penyakit.kd_penyakit=penyakit.kd_penyakit and obat_penyakit.kode_brng=databarang.kode_brng "+
@@ -709,14 +714,15 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 String[] data={rs.getString(7),
                                rs.getString(8),
                                rs.getString(9),
-                               rs.getString(10),"0","0","0","0",
+                               rs.getString(10),"","0","0","0",
                                rs.getString(1),
                                rs.getString(2),
                                rs.getString(3),
                                rs.getString(4),
                                rs.getString(5),
                                rs.getString(6),
-                               rs.getString(11)};
+                               rs.getString(11),
+                               rs.getString("h_beli")};
                 tabMode.addRow(data);
             }
             

@@ -35,6 +35,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
+    private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     public  DlgPasien member=new DlgPasien(null,false);
@@ -64,10 +65,10 @@ public class DlgCariPiutang extends javax.swing.JDialog {
                     "Barang",
                     "Satuan",
                     "Harga(Rp)",
-                    "Jumlah",
+                    "Jml",
                     "Subtotal(Rp)",
                     "Diskon(%)",
-                    "Besar Diskon(Rp)",
+                    "Diskon(Rp)",
                     "Total(Rp)"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -100,19 +101,19 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             }else if(i==9){
                 column.setPreferredWidth(200);
             }else if(i==10){
-                column.setPreferredWidth(100);
-            }else if(i==11){
-                column.setPreferredWidth(100);
-            }else if(i==12){
                 column.setPreferredWidth(70);
+            }else if(i==11){
+                column.setPreferredWidth(90);
+            }else if(i==12){
+                column.setPreferredWidth(40);
             }else if(i==13){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==14){
                 column.setPreferredWidth(80);
             }else if(i==15){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==16){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -278,7 +279,6 @@ public class DlgCariPiutang extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         ppCetakNota = new javax.swing.JMenuItem();
-        ppUbah = new javax.swing.JMenuItem();
         ppHapus = new javax.swing.JMenuItem();
         MnDetailCicilan = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
@@ -338,24 +338,6 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppCetakNota);
-
-        ppUbah.setBackground(new java.awt.Color(255, 255, 255));
-        ppUbah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUbah.setForeground(new java.awt.Color(60, 80, 50));
-        ppUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppUbah.setText("Ubah Piutang");
-        ppUbah.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        ppUbah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppUbah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppUbah.setIconTextGap(5);
-        ppUbah.setName("ppUbah"); // NOI18N
-        ppUbah.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppUbah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppUbahActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppUbah);
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -985,24 +967,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppCetakNotaActionPerformed
 
-private void ppUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppUbahActionPerformed
-        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-            Valid.textKosong(TCari,"No.Nota");
-        }else if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-            kdbar.requestFocus();
-        }else {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgUbahPiutang form=new DlgUbahPiutang(null,false);     
-            form.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            form.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
-            form.setLocationRelativeTo(internalFrame1);
-            form.setVisible(true);
-            this.setCursor(Cursor.getDefaultCursor());
-        }
-    
-}//GEN-LAST:event_ppUbahActionPerformed
-
 private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
   if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
       Valid.textKosong(TCari,"No.Faktur");
@@ -1016,6 +980,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                   "select kode_brng,jumlah from detailpiutang where nota_piutang='"+rscaripiutang.getString(1) +"' ");
              ResultSet rsdetailpiutang=psdetailpiutang.executeQuery();
              while(rsdetailpiutang.next()){
+                 Trackobat.catatRiwayat(rsdetailpiutang.getString("kode_brng"),rsdetailpiutang.getDouble("jumlah"),0,"Piutang",var.getkode(),rscaripiutang.getString("kd_bangsal"),"Hapus");
                  Sequel.menyimpan("gudangbarang","'"+rsdetailpiutang.getString("kode_brng") +"','"+rscaripiutang.getString("kd_bangsal") +"','"+rsdetailpiutang.getString("jumlah") +"'", 
                                         "stok=stok+'"+rsdetailpiutang.getString("jumlah") +"'","kode_brng='"+rsdetailpiutang.getString("kode_brng")+"' and kd_bangsal='"+rscaripiutang.getString("kd_bangsal") +"'");
              }
@@ -1113,7 +1078,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.panelisi panelisi4;
     private javax.swing.JMenuItem ppCetakNota;
     private javax.swing.JMenuItem ppHapus;
-    private javax.swing.JMenuItem ppUbah;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
@@ -1268,7 +1232,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else{
             ppHapus.setEnabled(false);
         }  
-        ppUbah.setEnabled(var.getpiutang_obat());
     }
  
 }

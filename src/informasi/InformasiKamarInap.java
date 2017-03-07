@@ -1,4 +1,5 @@
 package informasi;
+import simrskhanza.DlgCariBangsal;
 import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;

@@ -11,6 +11,7 @@
 
 package tranfusidarah;
 
+import simrskhanza.DlgCariPetugas;
 import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;

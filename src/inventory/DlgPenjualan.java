@@ -28,6 +28,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private riwayatobat Trackobat=new riwayatobat();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
@@ -79,29 +80,29 @@ public class DlgPenjualan extends javax.swing.JDialog {
         for (i = 0; i < 12; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(42);
             }else if(i==1){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==2){
-                column.setPreferredWidth(210);
+                column.setPreferredWidth(190);
             }else if(i==3){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==4){
-                column.setPreferredWidth(70);
-            }else if(i==5){
-                column.setPreferredWidth(85);
-            }else if(i==6){
-                column.setPreferredWidth(85);
-            }else if(i==7){
                 column.setPreferredWidth(50);
-            }else if(i==8){
-                column.setPreferredWidth(85);
-            }else if(i==9){
-                column.setPreferredWidth(85);
-            }else if(i==10){
-                column.setPreferredWidth(100);
-            }else if(i==11){
+            }else if(i==5){
+                column.setPreferredWidth(80);
+            }else if(i==6){
+                column.setPreferredWidth(80);
+            }else if(i==7){
                 column.setPreferredWidth(40);
+            }else if(i==8){
+                column.setPreferredWidth(80);
+            }else if(i==9){
+                column.setPreferredWidth(80);
+            }else if(i==10){
+                column.setPreferredWidth(85);
+            }else if(i==11){
+                column.setPreferredWidth(35);
             }
         }
         warna.kolom=0;
@@ -953,7 +954,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         for(i=0;i<row;i++){  
                             try {
                                 if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
-                                   Sequel.menyimpan("detailjual","'"+NoNota.getText()+"','"+
+                                   if(Sequel.menyimpantf("detailjual","'"+NoNota.getText()+"','"+
                                            tabMode.getValueAt(i,1).toString()+"','"+
                                            tabMode.getValueAt(i,4).toString()+"','"+
                                            tabMode.getValueAt(i,5).toString()+"','"+
@@ -963,10 +964,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                            tabMode.getValueAt(i,7).toString()+"','"+
                                            tabMode.getValueAt(i,8).toString()+"','"+
                                            tabMode.getValueAt(i,9).toString()+"','"+
-                                           tabMode.getValueAt(i,10).toString()+"'","Transaksi Penjualan"); 
-                                   if(verifikasi_penjualan_di_kasir.equals("No")){
-                                        Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
-                                            "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");   
+                                           tabMode.getValueAt(i,10).toString()+"'","Transaksi Penjualan")==true){
+                                        if(verifikasi_penjualan_di_kasir.equals("No")){
+                                            Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Penjualan",var.getkode(),kdgudang.getText(),"Simpan");
+                                            Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
+                                                 "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");   
+                                        }                                       
                                    }                                    
                                 }
                             } catch (Exception e) {
@@ -1008,7 +1011,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ppn=0;     
                         LTotal.setText("0");
                         Bayar.setText("0");
-                }
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Nota sudah ada sebelumnya...!!");
+                } 
             }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed

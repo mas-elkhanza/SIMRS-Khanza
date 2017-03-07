@@ -383,7 +383,6 @@ public class DlgSetNota extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbAdmin.setAutoCreateRowSorter(true);
         tbAdmin.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbAdmin.setName("tbAdmin"); // NOI18N
         tbAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -820,7 +819,6 @@ public class DlgSetNota extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbAdmin2.setAutoCreateRowSorter(true);
         tbAdmin2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbAdmin2.setName("tbAdmin2"); // NOI18N
         tbAdmin2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1127,7 +1125,6 @@ public class DlgSetNota extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbAdmin3.setAutoCreateRowSorter(true);
         tbAdmin3.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbAdmin3.setName("tbAdmin3"); // NOI18N
         tbAdmin3.addMouseListener(new java.awt.event.MouseAdapter() {

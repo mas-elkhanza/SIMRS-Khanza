@@ -120,7 +120,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="32" green="46" red="32" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nama Aplikasi : Khanza SIMKES 2016"/>
+                <Property name="text" type="java.lang.String" value="Nama Aplikasi : Khanza SIMKES 2017"/>
                 <Property name="name" type="java.lang.String" value="jLabel7" noResource="true"/>
               </Properties>
               <Constraints>

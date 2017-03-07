@@ -24,7 +24,7 @@ public class BPJSCekNoKartu {
     public String nik="",nama="",pekerjaan="",tgl_lahir="",jk="",umur="",kdJenisPeserta="",
                 kdKelas="",nmKelas="",noMr="",pisa="",kdCabang="",kdProvider="",nmCabang="",
                 nmProvider="",keterangan="",kode="",tglCetakKartu="",tglTAT="",tglTMT="",
-                umurSaatPelayanan="";
+                umurSaatPelayanan="",informasi="";
     private final Properties prop = new Properties();
     
     public BPJSCekNoKartu(){
@@ -51,6 +51,7 @@ public class BPJSCekNoKartu {
             JsonNode nameNode = root.path("metadata");
             //System.out.println("code : "+nameNode.path("code").asText());
             //System.out.println("message : "+nameNode.path("message").asText());
+            informasi=nameNode.path("message").asText();
             if(nameNode.path("message").asText().equals("OK")){
                 JsonNode response = root.path("response");
                 nik=response.path("peserta").path("nik").asText();

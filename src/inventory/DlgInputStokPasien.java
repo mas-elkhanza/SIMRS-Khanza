@@ -11,7 +11,7 @@
  */
 
 package inventory;
-import fungsi.WarnaTable;
+import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -44,6 +44,8 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
     private Jurnal jur=new Jurnal();
     private PreparedStatement pstampil,psstok;
     private ResultSet rstampil,rsstok;
+    private WarnaTable2 warna=new WarnaTable2();
+    private riwayatobat Trackobat=new riwayatobat();
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -80,18 +82,19 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(280);
             }else if(i==3){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(170);
             }else if(i==4){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==5){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(60);
             }else if(i==6){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(60);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        warna.kolom=0;
+        tbDokter.setDefaultRenderer(Object.class,warna);
 
         kdgudang.setDocument(new batasInput((byte)5).getKata(kdgudang));
         catatan.setDocument(new batasInput((byte)60).getKata(catatan));  
@@ -140,7 +143,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
                 " databarang.status='1' and databarang.nama_brng like ? or "+
                 " databarang.status='1' and databarang.kode_sat like ? or "+
                 " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
-            psstok=koneksiDB.condb().prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
+            psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
         }catch(SQLException e){
             System.out.println(e);
         }
@@ -482,12 +485,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (i == JOptionPane.YES_OPTION) {
                 for(i=0;i<tbDokter.getRowCount();i++){  
                    if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                        Sequel.menyimpan("stok_obat_pasien","?,?,?,?,?","Stok Obat Pasien",5,new String[]{
+                        if(Sequel.menyimpantf("stok_obat_pasien","?,?,?,?,?","Stok Obat Pasien",5,new String[]{
                             Valid.SetTgl(Tgl.getSelectedItem()+""),norawat.getText(),tabMode.getValueAt(i,1).toString(),
                             tabMode.getValueAt(i,0).toString(),kdgudang.getText()
-                        });
-                        Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
-                                        "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                        })==true){
+                            Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Pasien Ranap",var.getkode(),kdgudang.getText(),"Simpan");
+                            Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
+                                            "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                        }                            
                    }
                 }   
                 for(index=0;index<tbDokter.getRowCount();index++){   

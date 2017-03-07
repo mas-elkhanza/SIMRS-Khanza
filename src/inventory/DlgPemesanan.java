@@ -31,6 +31,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
+    private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,pskonversi;
     private ResultSet rs,rskonversi;
@@ -80,29 +81,29 @@ public class DlgPemesanan extends javax.swing.JDialog {
         for (i = 0; i < 14; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(50);                
+                column.setPreferredWidth(42);
             }else if(i==1){
                 column.setPreferredWidth(65);
             }else if(i==2){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==3){
-                column.setPreferredWidth(240);
+                column.setPreferredWidth(190);
             }else if(i==4){
                 column.setPreferredWidth(50);
             }else if(i==5){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(22);
             }else if(i==6){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(75);
             }else if(i==7){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==8){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(85);
             }else if(i==9){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             }else if(i==10){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==11){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(85);
             }else if(i==12){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -844,7 +845,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         for(i=0;i<jml;i++){  
                             try {
                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                    if(Sequel.menyimpantf2("detailpesan","?,?,?,?,?,?,?,?,?,?","Transaksi Pemesanan",10,new String[]{
+                                    if(Sequel.menyimpantf2("detailpesan","?,?,?,?,?,?,?,?,?,?,?","Transaksi Pemesanan",11,new String[]{
                                            NoFaktur.getText(),
                                            tbDokter.getValueAt(i,2).toString(),
                                            tbDokter.getValueAt(i,1).toString(),
@@ -854,8 +855,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                            tbDokter.getValueAt(i,9).toString(),
                                            tbDokter.getValueAt(i,10).toString(),
                                            tbDokter.getValueAt(i,11).toString(),
-                                           tbDokter.getValueAt(i,13).toString()
+                                           tbDokter.getValueAt(i,13).toString(),
+                                           tbDokter.getValueAt(i,12).toString()
                                     })==true){
+                                        Trackobat.catatRiwayat(tbDokter.getValueAt(i,2).toString(),Valid.SetAngka(tbDokter.getValueAt(i,12).toString()),0,"Pemesanan",var.getkode(),kdgudang.getText(),"Simpan");
                                         Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','"+tbDokter.getValueAt(i,12).toString()+"'", 
                                                    "stok=stok+'"+tbDokter.getValueAt(i,12).toString()+"'","kode_brng='"+tbDokter.getValueAt(i,2).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
                                     }                                        
@@ -881,7 +884,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                         getData();
                     }else{
-                        JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Nota sudah ada sebelumnya...!!");
+                        JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Faktur sudah ada sebelumnya...!!");
                     }                        
                     Sequel.AutoComitTrue();
                     Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,6),signed)),0) from pemesanan ","PB",6,NoFaktur); 

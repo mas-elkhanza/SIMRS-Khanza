@@ -6,6 +6,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -30,6 +31,7 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,pskonversi,pscaripesan,psdetailpesan,ps2;
     private ResultSet rs,rskonversi,rs2;
+    private riwayatobat Trackobat=new riwayatobat();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgCariSatuan satuanbarang=new DlgCariSatuan(null,false);
     private double saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,tagihan=0,jmlkonversi=0,hargappn=0;
@@ -149,13 +151,13 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
                 " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
             ps2=koneksi.prepareStatement("select detailpesan.kode_brng,databarang.nama_brng,ifnull(date_format(databarang.expire,'%d-%m-%Y'),'00-00-0000') as expire, "+
                         "detailpesan.kode_sat,kodesatuan.satuan,detailpesan.jumlah,detailpesan.h_pesan, "+
-                        "detailpesan.subtotal,detailpesan.dis,detailpesan.besardis,detailpesan.total,detailpesan.no_batch "+
-                        "from detailpesan inner join databarang inner join kodesatuan inner join jenis "+
+                        "detailpesan.subtotal,detailpesan.dis,detailpesan.besardis,detailpesan.total,detailpesan.no_batch, "+
+                        "databarang.kode_sat as satbar from detailpesan inner join databarang inner join kodesatuan inner join jenis "+
                         " on detailpesan.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
                         " and detailpesan.kode_sat=kodesatuan.kode_sat where detailpesan.no_faktur=? ");
             pskonversi=koneksi.prepareStatement("select nilai,nilai_konversi from konver_sat where kode_sat=? and sat_konversi=?");
             pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, kd_bangsal,tgl_faktur,status from pemesanan where no_faktur=?");
-            psdetailpesan=koneksi.prepareStatement("select kode_brng,jumlah from detailpesan where no_faktur=? ");
+            psdetailpesan=koneksi.prepareStatement("select kode_brng,jumlah2 from detailpesan where no_faktur=? ");
         }catch(Exception e){
             System.out.println(e);
         }
@@ -670,8 +672,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             psdetailpesan.setString(1,rs.getString(1));
                             rs2=psdetailpesan.executeQuery();
                             while(rs2.next()){
-                                Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jumlah") +"'", 
-                                                       "stok=stok-'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
+                                Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah2"),"Pemesanan",var.getkode(),rs.getString("kd_bangsal") ,"Hapus");
+                                Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jumlah2") +"'", 
+                                                       "stok=stok-'"+rs2.getString("jumlah2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
                             }
                             Sequel.queryu("delete from tampjurnal");
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
@@ -695,7 +698,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         for(i=0;i<jml;i++){  
                             try {
                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                    Sequel.menyimpan("detailpesan","?,?,?,?,?,?,?,?,?,?","Transaksi Pemesanan",10,new String[]{
+                                    if(Sequel.menyimpantf2("detailpesan","?,?,?,?,?,?,?,?,?,?,?","Transaksi Pemesanan",11,new String[]{
                                            NoFaktur.getText(),
                                            tbDokter.getValueAt(i,2).toString(),
                                            tbDokter.getValueAt(i,1).toString(),
@@ -705,10 +708,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                            tbDokter.getValueAt(i,9).toString(),
                                            tbDokter.getValueAt(i,10).toString(),
                                            tbDokter.getValueAt(i,11).toString(),
-                                           tbDokter.getValueAt(i,13).toString()
-                                    });
-                                    Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','"+tbDokter.getValueAt(i,12).toString()+"'", 
-                                               "stok=stok+'"+tbDokter.getValueAt(i,12).toString()+"'","kode_brng='"+tbDokter.getValueAt(i,2).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                                           tbDokter.getValueAt(i,13).toString(),
+                                           tbDokter.getValueAt(i,12).toString()
+                                    })==true){
+                                        Trackobat.catatRiwayat(tbDokter.getValueAt(i,2).toString(),Valid.SetAngka(tbDokter.getValueAt(i,12).toString()),0,"Pemesanan",var.getkode(),kdgudang.getText(),"Simpan");
+                                        Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','"+tbDokter.getValueAt(i,12).toString()+"'", 
+                                                   "stok=stok+'"+tbDokter.getValueAt(i,12).toString()+"'","kode_brng='"+tbDokter.getValueAt(i,2).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                                    }
+                                        
                                 }
                             } catch (Exception e) {
                             }                
@@ -1391,7 +1398,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 satuanbeli[index]=rs.getString("kode_sat");
                 kodebarang[index]=rs.getString("kode_brng");
                 namabarang[index]=rs.getString("nama_brng");
-                satuan[index]=rs.getString("kode_sat");
+                satuan[index]=rs.getString("satbar");
                 kadaluwarsa[index]=rs.getString("expire");
                 harga[index]=rs.getDouble("h_pesan");
                 subtotal[index]=rs.getDouble("subtotal");

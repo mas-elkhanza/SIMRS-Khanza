@@ -10,6 +10,9 @@
  */
 
 package informasi;
+import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgCariBangsal;
+import simrskhanza.DlgKtgPerawatan;
 import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;

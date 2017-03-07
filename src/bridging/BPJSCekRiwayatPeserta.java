@@ -427,7 +427,7 @@ public final class BPJSCekRiwayatPeserta extends javax.swing.JDialog {
                     i=1;
                     for(JsonNode list:response.path("list")){
                         tabMode.addRow(new Object[]{
-                            "",i+". Biaya Tagihan",": Rp. "+Valid.SetAngka(Double.parseDouble(list.path("biayaTagihan").asText())),""
+                            "",i+". Biaya Tagihan",": Rp. "+list.path("biayaTagihan").asText(),""
                         });
                         tabMode.addRow(new Object[]{
                             "","     Diagnosa",":",""

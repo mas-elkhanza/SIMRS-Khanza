@@ -39,6 +39,7 @@ public class DlgCariPembelian extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
+    private riwayatobat Trackobat=new riwayatobat();
    
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -333,7 +334,7 @@ public class DlgCariPembelian extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(60, 80, 50));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -972,13 +973,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             pscaribeli.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
             rs=pscaribeli.executeQuery();
             while(rs.next()){
-                psdetailbeli=koneksi.prepareStatement("select kode_brng,jumlah from detailbeli where no_faktur=? ");
+                psdetailbeli=koneksi.prepareStatement("select kode_brng,jumlah2 from detailbeli where no_faktur=? ");
                 try {            
                     psdetailbeli.setString(1,rs.getString(1));
                     rs2=psdetailbeli.executeQuery();
                     while(rs2.next()){
-                        Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jumlah") +"'", 
-                                               "stok=stok-'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
+                        Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah2"),"Pengadaan",var.getkode(),rs.getString("kd_bangsal"),"Hapus");
+                        Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jumlah2") +"'", 
+                                               "stok=stok-'"+rs2.getString("jumlah2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
                     }
                 } catch (Exception e) {
                     System.out.println(e);

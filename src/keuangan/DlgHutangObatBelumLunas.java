@@ -88,24 +88,24 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         for (int i = 0; i < 11; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(22);
             }else if(i==1){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==2){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }else if(i==3){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==4){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==5){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(75);
             }else if(i==6){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==10){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else{
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }
         }
         warna.kolom=9;
@@ -201,8 +201,6 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
     private void initComponents() {
 
         TKd = new widget.TextBox();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnDetailPiutang = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -240,22 +238,6 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         TKd.setName("TKd"); // NOI18N
         TKd.setSelectionColor(new java.awt.Color(255, 255, 255));
 
-        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
-
-        MnDetailPiutang.setBackground(new java.awt.Color(255, 255, 255));
-        MnDetailPiutang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnDetailPiutang.setForeground(java.awt.Color.darkGray);
-        MnDetailPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnDetailPiutang.setText("Detail Piutang");
-        MnDetailPiutang.setName("MnDetailPiutang"); // NOI18N
-        MnDetailPiutang.setPreferredSize(new java.awt.Dimension(250, 28));
-        MnDetailPiutang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnDetailPiutangActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(MnDetailPiutang);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -269,12 +251,10 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbBangsal.setComponentPopupMenu(jPopupMenu1);
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -648,6 +628,9 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         if(tabMode.getRowCount()!=0){
             if(evt.getClickCount()==1){
                 if(tbBangsal.getSelectedColumn()==0){
+                    if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),9).toString().equals("")){
+                        tbBangsal.setValueAt(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),10).toString(), tbBangsal.getSelectedRow(),9);
+                    }
                     if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("true")){
                         tbBangsal.setValueAt(
                             (Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),10).toString())-
@@ -672,6 +655,10 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
                             ,tbBangsal.getSelectedRow(),8);
                 }else if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("false")){
                     tbBangsal.setValueAt(Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),10).toString()),tbBangsal.getSelectedRow(),8);
+                }
+            }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
+                if(tbBangsal.getSelectedColumn()==9){
+                   tbBangsal.setValueAt("", tbBangsal.getSelectedRow(),9); 
                 }
             }
         }
@@ -698,22 +685,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             Valid.pindah(evt, TKd, BtnAll);
         }
 }//GEN-LAST:event_BtnCariKeyPressed
-
-private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDetailPiutangActionPerformed
-     if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-            TCari.requestFocus();
-        }else{
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    DlgBilingPiutang rincianpiutang=new DlgBilingPiutang(null,false);
-                    rincianpiutang.isRawat(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString(),Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),6).toString()));                    
-                    rincianpiutang.setSize(this.getWidth()-40,this.getHeight()-40);
-                    rincianpiutang.setLocationRelativeTo(this);
-                    rincianpiutang.setAlwaysOnTop(false);
-                    rincianpiutang.setVisible(true);
-                    this.setCursor(Cursor.getDefaultCursor());                     
-        } 
-}//GEN-LAST:event_MnDetailPiutangActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         no_bukti.requestFocus();
@@ -859,7 +830,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Button BtnPrint;
     private widget.Button BtnSeek2;
     private javax.swing.JLabel LCount;
-    private javax.swing.JMenuItem MnDetailPiutang;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
@@ -867,7 +837,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private javax.swing.JLabel jLabel10;
     private widget.Label jLabel12;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdsup;
     private widget.TextBox keterangan;
     private widget.Label label16;

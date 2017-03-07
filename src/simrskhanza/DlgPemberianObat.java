@@ -38,6 +38,7 @@ import inventory.DlgCariKonversi;
 import inventory.DlgCariObat;
 import inventory.DlgCariObat2;
 import inventory.DlgCariObat3;
+import inventory.riwayatobat;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -59,6 +60,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     public  DlgCariObat dlgobtjalan=new DlgCariObat(null,false);
     public  DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
     public  DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);
+    private riwayatobat Trackobat=new riwayatobat();
     public  DlgCariObatPenyakit dlgobtpny=new DlgCariObatPenyakit(null,false);
     private DlgCariKonversi carikonversi=new DlgCariKonversi(null,false);
     private DlgPasien pasien=new DlgPasien(null,false);
@@ -604,7 +606,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2016" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-02-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -618,7 +620,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2016" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-02-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -758,7 +760,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2016" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-02-2017" }));
         DTPBeri.setDisplayFormat("dd-MM-yyyy");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -1118,25 +1120,20 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         }else if(TTuslah.getText().trim().equals("")){
             Valid.textKosong(TEmbalase,"Tuslah");
         }else{          
-            try {
-                koneksi.prepareStatement("insert into detail_pemberian_obat values('"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
+            if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
                             cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
-                            TNoRw.getText()+"','"+
-                            TKdOb.getText()+"','"+
-                            THBeli.getText()+"','"+
-                            TBiayaObat.getText()+"','"+
-                            TJumlah.getText()+"','"+
-                            TEmbalase.getText()+"','"+
-                            TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"))").execute();
-                //Sequel.mengedit("databarang","kode_brng='"+TKdOb.getText()+"'","stok=stok-"+TJumlah.getText()+"");
-                Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','-"+TJumlah.getText()+"'", 
+                            TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
+                            TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+")","data")==true){                    
+                if(btnObat1.isEnabled()==true){
+                    Trackobat.catatRiwayat(TKdOb.getText(),0,Valid.SetAngka(TJumlah.getText()),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
+                    Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','-"+TJumlah.getText()+"'", 
                                         "stok=stok-'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Kemungkinan ada data yang sama dimasukkan sebelumnya...!");
+                }   
+                tampilPO();
+                BtnBatalActionPerformed(evt);
             }
             
-            tampilPO();
-            BtnBatalActionPerformed(evt);
+            
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1198,12 +1195,12 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                                  "' and tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' and jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");
                     Sequel.queryu("delete from aturan_pakai where no_rawat='"+TNoRw.getText()+"' and kode_brng='"+TKdOb.getText()+
                                  "' and tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' and jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");
-                    Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','"+TJumlah.getText()+"'", 
-                                            "stok=stok+'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");
-                    Sequel.menyimpan("trackersql","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','delete from detail_pemberian_obat where no_rawat="+TNoRw.getText()+
-                                        " and kode_brng="+TKdOb.getText()+" and tgl_perawatan="+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+
-                                        " and jam="+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','dihapus oleh "+var.getkode()+"',"+
-                                        "'Pemberian Obat','Hapus'");
+                    if(btnObat1.isEnabled()==true){
+                        Trackobat.catatRiwayat(TKdOb.getText(),Valid.SetAngka(TJumlah.getText()),0,"Pemberian Obat",var.getkode(),bangsal,"Hapus");
+                        Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','"+TJumlah.getText()+"'", 
+                                                "stok=stok+'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");                    
+                    }
+                        
                     Sequel.AutoComitTrue();
                     tampilPO();
                 }else{
@@ -1216,12 +1213,11 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                                      "' and tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' and jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");
                         Sequel.queryu("delete from aturan_pakai where no_rawat='"+TNoRw.getText()+"' and kode_brng='"+TKdOb.getText()+
                                      "' and tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' and jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");
-                        Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','"+TJumlah.getText()+"'", 
-                                                "stok=stok+'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");
-                        Sequel.menyimpan("trackersql","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','delete from detail_pemberian_obat where no_rawat="+TNoRw.getText()+
-                                            " and kode_brng="+TKdOb.getText()+" and tgl_perawatan="+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+
-                                            " and jam="+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','dihapus oleh "+var.getkode()+"',"+
-                                            "'Pemberian Obat','Hapus'");
+                        if(btnObat1.isEnabled()==true){
+                            Trackobat.catatRiwayat(TKdOb.getText(),Valid.SetAngka(TJumlah.getText()),0,"Pemberian Obat",var.getkode(),bangsal,"Hapus");
+                            Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','"+TJumlah.getText()+"'", 
+                                                    "stok=stok+'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");                    
+                        }
                         Sequel.AutoComitTrue();
                         tampilPO();
                         BtnBatalActionPerformed(evt);
@@ -1418,19 +1414,24 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                               "' and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString().substring(0,2)+
                               ":"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString().substring(3,5)+
                               ":"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString().substring(6,8)+"'");                
-                Sequel.menyimpan("gudangbarang","'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"','"+bangsal+"','"+TJumlah.getText()+"'", 
-                                        "stok=stok+'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'","kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' and kd_bangsal='"+bangsal+"'");
-                koneksi.prepareStatement("insert into detail_pemberian_obat values('"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
+                if(btnObat1.isEnabled()==true){
+                        Trackobat.catatRiwayat(TKdOb.getText(),Valid.SetAngka(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()),0,"Pemberian Obat",var.getkode(),bangsal,"Hapus");
+                        Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'", 
+                                                "stok=stok+'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");                    
+                }
+                if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
                             cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
-                            TNoRw.getText()+"','"+
-                            TKdOb.getText()+"','"+
-                            THBeli.getText()+"','"+
-                            TBiayaObat.getText()+"','"+
-                            TJumlah.getText()+"','"+
-                            TEmbalase.getText()+"','"+
-                            TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"))").execute();                
-                Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','-"+TJumlah.getText()+"'", 
-                                        "stok=stok-'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");
+                            TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
+                            TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+")","data")==true){
+                    if(btnObat1.isEnabled()==true){
+                        Trackobat.catatRiwayat(TKdOb.getText(),0,Valid.SetAngka(TJumlah.getText()),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
+                        Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','-"+TJumlah.getText()+"'", 
+                                                "stok=stok-'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");
+                    }
+                        
+                    tampilPO();
+                    BtnBatalActionPerformed(evt);
+                }
                 Sequel.AutoComitTrue();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Kemungkinan ada data yang sama dimasukkan sebelumnya...!");
@@ -1704,7 +1705,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(statuspasien.equals("ranap")){
             BtnObat2.setEnabled(true);
             BtnObat3.setEnabled(false);
+            if(Sequel.cariInteger("select count(no_rawat) from stok_obat_pasien where no_rawat=? ",norwt)>0){
+                btnObat1.setEnabled(false);
+            }else{
+                btnObat1.setEnabled(true);
+            }
         }else if(statuspasien.equals("ralan")){
+            btnObat1.setEnabled(true);
             BtnObat2.setEnabled(false);
             BtnObat3.setEnabled(true);
         }

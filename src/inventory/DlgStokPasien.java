@@ -41,6 +41,7 @@ import javax.swing.table.TableColumn;
 public final class DlgStokPasien extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
+    private riwayatobat Trackobat=new riwayatobat();
     private validasi Valid=new validasi();  
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement pstampil;
@@ -54,7 +55,10 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"Tanggal Beri","No.Rawat","Pasien","Barang","Jumlah","Asal Stok"};
+        Object[] row={
+            "Tanggal Beri","No.Rawat","Pasien","Barang","Jumlah",
+            "Asal Stok","Kode Barang","Kode Bangsal"
+        };
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -63,7 +67,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 8; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -77,6 +81,9 @@ public final class DlgStokPasien extends javax.swing.JDialog {
                 column.setPreferredWidth(50);
             }else if(i==5){
                 column.setPreferredWidth(200);
+            }else{
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -91,21 +98,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
                 @Override
                 public void changedUpdate(DocumentEvent e) {tampil();}
             });
-        }           
-        try {
-            pstampil=koneksi.prepareStatement("select stok_obat_pasien.tanggal, stok_obat_pasien.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien),"+
-                  " concat(stok_obat_pasien.kode_brng,' ',databarang.nama_brng), stok_obat_pasien.jumlah, concat(stok_obat_pasien.kd_bangsal,' ',bangsal.nm_bangsal) "+
-                  "from stok_obat_pasien inner join reg_periksa inner join pasien inner join databarang inner join bangsal "+
-                  "on stok_obat_pasien.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                  "and stok_obat_pasien.kode_brng=databarang.kode_brng and stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal "+
-                  "where stok_obat_pasien.tanggal between ? and ? and stok_obat_pasien.no_rawat like ? or "+
-                  "stok_obat_pasien.tanggal between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                  "stok_obat_pasien.tanggal between ? and ? and pasien.nm_pasien like ? or "+
-                  "stok_obat_pasien.tanggal between ? and ? and databarang.nama_brng like ? or "+
-                  "stok_obat_pasien.tanggal between ? and ? and bangsal.nm_bangsal like ? order by stok_obat_pasien.tanggal");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }        
+        }       
     } 
 
 
@@ -197,7 +190,7 @@ public final class DlgStokPasien extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemberian Stok Obat, Alkes & BHP Medis Pasien Di Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(60,80,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemberian Stok Obat, Alkes & BHP Medis Pasien Di Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -375,11 +368,21 @@ public final class DlgStokPasien extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Sequel.queryu("delete from stok_obat_pasien where tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' "+
-                      "and no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' "+
-                      "and kode_brng='"+Sequel.cariIsi("select kode_brng from databarang where concat(kode_brng,' ',nama_brng)=?",tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString())+"' "+
-                      "and kd_bangsal='"+Sequel.cariIsi("select kd_bangsal from bangsal where concat(kd_bangsal,' ',nm_bangsal)=?",tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString())+"'");
-        BtnCariActionPerformed(evt);
+        if(Sequel.cariInteger(
+                "select count(kode_brng) from detail_pemberian_obat where "+
+                "kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString()+"' and "+
+                "no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"'")>0){
+            JOptionPane.showMessageDialog(null,"Maaf, data Obat/Alkes/BHP sudah digunakan dalam pemberian obat.\nSilahkan hapus data Obat/Alkes/BHP yang ada dalam pemberian obat terlebih dahulu..!!!");
+        }else{
+            Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()),0,"Stok Pasien Ranap",var.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString(),"Hapus");
+            Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString()+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()+"'", 
+                                            "stok=stok+'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString()+"'","kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString()+"' and kd_bangsal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"'");
+            Sequel.queryu("delete from stok_obat_pasien where tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()+"' "+
+                          "and no_rawat='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()+"' "+
+                          "and kode_brng='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString()+"' "+
+                          "and kd_bangsal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"'");
+            BtnCariActionPerformed(evt);
+        }            
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -528,32 +531,52 @@ public final class DlgStokPasien extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{            
-            pstampil.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-            pstampil.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-            pstampil.setString(3,"%"+TCari.getText().trim()+"%");
-            pstampil.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-            pstampil.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-            pstampil.setString(6,"%"+TCari.getText().trim()+"%");
-            pstampil.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-            pstampil.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-            pstampil.setString(9,"%"+TCari.getText().trim()+"%");
-            pstampil.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-            pstampil.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-            pstampil.setString(12,"%"+TCari.getText().trim()+"%");
-            pstampil.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-            pstampil.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-            pstampil.setString(15,"%"+TCari.getText().trim()+"%");
-            rstampil=pstampil.executeQuery();
-            while(rstampil.next()){                
-                String[] data={rstampil.getString(1),
-                               rstampil.getString(2),
-                               rstampil.getString(3),
-                               rstampil.getString(4),
-                               rstampil.getString(5),
-                               rstampil.getString(6)};
-                tabMode.addRow(data);
+            try {
+            pstampil=koneksi.prepareStatement("select stok_obat_pasien.tanggal, stok_obat_pasien.no_rawat,concat(reg_periksa.no_rkm_medis,' ',pasien.nm_pasien),"+
+                        " concat(stok_obat_pasien.kode_brng,' ',databarang.nama_brng), stok_obat_pasien.jumlah, concat(stok_obat_pasien.kd_bangsal,' ',bangsal.nm_bangsal), "+
+                        "stok_obat_pasien.kode_brng,stok_obat_pasien.kd_bangsal from stok_obat_pasien inner join reg_periksa inner join pasien inner join databarang inner join bangsal "+
+                        "on stok_obat_pasien.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "and stok_obat_pasien.kode_brng=databarang.kode_brng and stok_obat_pasien.kd_bangsal=bangsal.kd_bangsal "+
+                        "where stok_obat_pasien.tanggal between ? and ? and stok_obat_pasien.no_rawat like ? or "+
+                        "stok_obat_pasien.tanggal between ? and ? and reg_periksa.no_rkm_medis like ? or "+
+                        "stok_obat_pasien.tanggal between ? and ? and pasien.nm_pasien like ? or "+
+                        "stok_obat_pasien.tanggal between ? and ? and databarang.nama_brng like ? or "+
+                        "stok_obat_pasien.tanggal between ? and ? and bangsal.nm_bangsal like ? order by stok_obat_pasien.tanggal");
+                pstampil.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                pstampil.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                pstampil.setString(3,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                pstampil.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                pstampil.setString(6,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                pstampil.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                pstampil.setString(9,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                pstampil.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                pstampil.setString(12,"%"+TCari.getText().trim()+"%");
+                pstampil.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                pstampil.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                pstampil.setString(15,"%"+TCari.getText().trim()+"%");
+                rstampil=pstampil.executeQuery();
+                while(rstampil.next()){                
+                    tabMode.addRow(new Object[]{
+                        rstampil.getString(1),rstampil.getString(2),
+                        rstampil.getString(3),rstampil.getString(4),
+                        rstampil.getString(5),rstampil.getString(6),
+                        rstampil.getString(7),rstampil.getString(8)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }finally{
+                if(rstampil!=null){
+                    rstampil.close();
+                }
+                if(pstampil!=null){
+                    pstampil.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());

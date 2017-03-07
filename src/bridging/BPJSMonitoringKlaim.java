@@ -527,7 +527,7 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         panelisi3.add(jLabel14);
         jLabel14.setBounds(0, 70, 90, 23);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "00 Klaim Baru", "10 Klaim Terima_CBG", "21 Klaim Layak", "22 Klaim Tidak Layak", "23 Klaim Pending", "30 TerVerifikasi", "40 Proses Cabang" }));
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "00 Klaim Baru", "10 Klaim Terima CBG", "21 Klaim Layak", "22 Klaim Tidak Layak", "23 Klaim Pending", "30 TerVerifikasi", "40 Proses Cabang" }));
         Status.setName("Status"); // NOI18N
         Status.setOpaque(false);
         Status.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -924,7 +924,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ps.setString(63,"%"+NmPoli.getText()+"%");
                 ps.setString(64,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
-                while(rs.next()){
+                while(rs.next()){                    
                     try {
                         prop.loadFromXML(new FileInputStream("setting/database.xml"));
                         URL = prop.getProperty("URLAPIBPJS")+"/sep/integrated/Kunjungan/sep/"+rs.getString(1);	
@@ -937,6 +937,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         HttpEntity requestEntity = new HttpEntity(headers);
                         RestTemplate rest = new RestTemplate();	
 
+                        //System.out.println("Notifikasi : "+rs.getString(1));
                         //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
                         ObjectMapper mapper = new ObjectMapper();
                         JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -944,8 +945,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         //System.out.println("code : "+nameNode.path("code").asText());
                         //System.out.println("message : "+nameNode.path("message").asText());
                         if(nameNode.path("message").asText().equals("OK")){
-                            //"Kode INACBG","Severity","Status SEP","Tagihan","Gruper","Tarif RS"
-                            Valid.tabelKosong(tabMode);
+                            //"Kode INACBG","Severity","Status SEP","Tagihan","Gruper","Tarif RS"                            
                             JsonNode response = root.path("response");
                             if(response.path("list").isArray()){
                                 for(JsonNode list:response.path("list")){                                    
@@ -996,7 +996,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         if(e.toString().contains("UnknownHostException")){
                             JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
                         }
-                    }                    
+                    }               
                 }
                 tabMode.addRow(new Object[]{
                     "Total",":","","","","","","","","","","","","","","","","","","","","","","","","","","","",

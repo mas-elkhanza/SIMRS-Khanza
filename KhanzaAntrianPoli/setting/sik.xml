@@ -1,0 +1,12 @@
+<?xml version="1.0"?><!-- iReport connections -->
+<iReportConnectionSet>
+	<iReportConnection name="sik" connectionClass="com.jaspersoft.ireport.designer.connection.JDBCConnection">
+		<connectionParameter name="ServerAddress"><![CDATA[localhost]]></connectionParameter>
+		<connectionParameter name="SavePassword"><![CDATA[true]]></connectionParameter>
+		<connectionParameter name="Url"><![CDATA[jdbc:mysql://localhost/sik?zeroDateTimeBehavior=convertToNull]]></connectionParameter>
+		<connectionParameter name="JDBCDriver"><![CDATA[com.mysql.jdbc.Driver]]></connectionParameter>
+		<connectionParameter name="Database"><![CDATA[sik]]></connectionParameter>
+		<connectionParameter name="Password"><![CDATA[]]></connectionParameter>
+		<connectionParameter name="Username"><![CDATA[root]]></connectionParameter>
+	</iReportConnection>
+</iReportConnectionSet>

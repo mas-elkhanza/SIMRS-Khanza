@@ -1229,9 +1229,8 @@ public class DlgBarang extends javax.swing.JDialog {
         FormInput.add(karyawan);
         karyawan.setBounds(660, 132, 110, 23);
 
-        DTPExpired.setEditable(false);
         DTPExpired.setForeground(new java.awt.Color(50, 70, 50));
-        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-09-2016" }));
+        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-02-2017" }));
         DTPExpired.setDisplayFormat("dd-MM-yyyy");
         DTPExpired.setName("DTPExpired"); // NOI18N
         DTPExpired.setOpaque(false);

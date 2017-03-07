@@ -44,6 +44,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi(); 
     private Connection koneksi=koneksiDB.condb(); 
+    private riwayatobat Trackobat=new riwayatobat();
     ResultSet rs;
     /** Creates new form DlgPenyakit
      * @param parent
@@ -60,7 +61,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
                       "",
                       "Barang",
                       "",
-                      "Jml.Barang",
+                      "Jml",
                       "Tanggal Mutasi",
                       "Keterangan"};
         tabMode=new DefaultTableModel(null,row){
@@ -74,23 +75,23 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         for (int i = 0; i < 9; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(70);
             }else if(i==1){
-                column.setPreferredWidth(230);
+                column.setPreferredWidth(180);
             }else if(i==2){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(70);
             }else if(i==3){
-                column.setPreferredWidth(230);
+                column.setPreferredWidth(180);
             }else if(i==4){
                 column.setPreferredWidth(90);
             }else if(i==5){
-                column.setPreferredWidth(230);
+                column.setPreferredWidth(190);
             }else if(i==6){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(40);
             }else if(i==7){
                 column.setPreferredWidth(90);
             }else if(i==8){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(150);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -556,8 +557,10 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
         Sequel.AutoComitFalse();
         Valid.hapusTable(tabMode,kdbarang,"mutasibarang","kd_bangsaldari='"+kddari.getText()+
                         "' and kd_bangsalke='"+kdke.getText()+"' and tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' and kode_brng");
+        Trackobat.catatRiwayat(kdbarang.getText(),Valid.SetAngka(jumlah.getText()),0,"Mutasi",var.getkode(),kddari.getText(),"Hapus");
         Sequel.menyimpan("gudangbarang","'"+kdbarang.getText()+"','"+kddari.getText()+"','"+jumlah.getText()+"'", 
                             "stok=stok+"+jumlah.getText()+"","kode_brng='"+kdbarang.getText()+"' and kd_bangsal='"+kddari.getText()+"'");
+        Trackobat.catatRiwayat(kdbarang.getText(),0,Valid.SetAngka(jumlah.getText()),"Mutasi",var.getkode(),kdke.getText(),"Hapus");
         Sequel.menyimpan("gudangbarang","'"+kdbarang.getText()+"','"+kdke.getText()+"','-"+jumlah.getText()+"'", 
                             "stok=stok-"+jumlah.getText()+"","kode_brng='"+kdbarang.getText()+"' and kd_bangsal='"+kdke.getText()+"'");
         BtnCariActionPerformed(evt);
