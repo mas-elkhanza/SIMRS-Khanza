@@ -46,6 +46,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
     private PreparedStatement ps;
     private double total=0;
     private Jurnal jur=new Jurnal();
+    private riwayatobat Trackobat=new riwayatobat();
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -72,18 +73,18 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(200);
             }else if(i==2){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(35);
             }else if(i==3){
                 column.setPreferredWidth(80);
             }else if(i==4){
                 column.setPreferredWidth(90);
             }else if(i==5){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(140);
             }else if(i==6){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==7){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(120);
             }else if(i==8){
                 column.setPreferredWidth(140);
             }
@@ -346,6 +347,7 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
                           "and kd_bangsal_dr='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"' "+
                           "and tanggal='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"' "+
                           "and jml='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"'");
+            Trackobat.catatRiwayat(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),Valid.SetAngka(tbKamar.getValueAt(tbKamar.getSelectedRow(),2).toString()),0,"Pengambilan Medis",var.getkode(),tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString(),"Hapus");
             Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),0)+"',"+
                              "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6)+"',"+
                              "'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),2)+"'", 

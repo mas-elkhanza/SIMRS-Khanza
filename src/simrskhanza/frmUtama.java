@@ -164,6 +164,7 @@ import keuangan.DlgRekening;
 import keuangan.DlgRekeningTahun;
 import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
+import inventory.DlgRiwayatBarangMedis;
 import keuangan.DlgHutangObatBelumLunas;
 import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
@@ -199,6 +200,50 @@ import setting.DlgSetHargaObatRalan;
 import setting.DlgSetHargaObatRanap;
 import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
+import simrskhanza.DlgAbout;
+import simrskhanza.DlgAbout;
+import simrskhanza.DlgCariPeriksaLab;
+import simrskhanza.DlgCariPeriksaLab;
+import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariTagihanOperasi;
+import simrskhanza.DlgCariTagihanOperasi;
+import simrskhanza.DlgDeposit;
+import simrskhanza.DlgDeposit;
+import simrskhanza.DlgDpjp;
+import simrskhanza.DlgDpjp;
+import simrskhanza.DlgIGD;
+import simrskhanza.DlgIGD;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgJadwal;
+import simrskhanza.DlgJadwal;
+import simrskhanza.DlgKasirRalan;
+import simrskhanza.DlgKasirRalan;
+import simrskhanza.DlgObatPenyakit;
+import simrskhanza.DlgObatPenyakit;
+import simrskhanza.DlgPasienMati;
+import simrskhanza.DlgPasienMati;
+import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPenelusuranLogin;
+import simrskhanza.DlgPenelusuranLogin;
+import simrskhanza.DlgPenggajian;
+import simrskhanza.DlgPenggajian;
+import simrskhanza.DlgResepObat;
+import simrskhanza.DlgResepObat;
+import simrskhanza.DlgResepPulang;
+import simrskhanza.DlgResepPulang;
+import simrskhanza.DlgResumePerawatan;
+import simrskhanza.DlgResumePerawatan;
+import simrskhanza.DlgRetensi;
+import simrskhanza.DlgRetensi;
+import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRunTeks;
+import simrskhanza.DlgRunTeks;
+import simrskhanza.DlgSirkulasiBerkas;
+import simrskhanza.DlgSirkulasiBerkas;
 import smsui.frmSmsView;
 import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDMedisRusak;
@@ -516,6 +561,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnReklasifikasiRanap = new widget.ButtonBig();
         btnUTDPenyerahanDarah = new widget.ButtonBig();
         btnHutangObat = new widget.ButtonBig();
+        btnRiwayatBarangMedis = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
@@ -1017,7 +1063,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnResepObat);
 
         btnRujukPasien.setForeground(new java.awt.Color(40, 70, 50));
-        btnRujukPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reports.png"))); // NOI18N
+        btnRujukPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
         btnRujukPasien.setText("Rujukan Keluar");
         btnRujukPasien.setIconTextGap(0);
         btnRujukPasien.setName("btnRujukPasien"); // NOI18N
@@ -3486,6 +3532,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnHutangObat);
 
+        btnRiwayatBarangMedis.setForeground(new java.awt.Color(40, 70, 50));
+        btnRiwayatBarangMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/gnome-searchtool.png"))); // NOI18N
+        btnRiwayatBarangMedis.setText("Riwayat Obat, Alkes & BHP");
+        btnRiwayatBarangMedis.setIconTextGap(0);
+        btnRiwayatBarangMedis.setName("btnRiwayatBarangMedis"); // NOI18N
+        btnRiwayatBarangMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatBarangMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatBarangMedisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRiwayatBarangMedis);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3494,7 +3553,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/02/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/03/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7460,6 +7519,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnHutangObatActionPerformed
 
+    private void btnRiwayatBarangMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatBarangMedisActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRiwayatBarangMedis sirkulasi=new DlgRiwayatBarangMedis(this,false);
+        sirkulasi.isCek();
+        sirkulasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        sirkulasi.setLocationRelativeTo(PanelUtama);
+        sirkulasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRiwayatBarangMedisActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7646,6 +7717,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnReturPasien;
     private widget.ButtonBig btnReturPiutang;
     private widget.ButtonBig btnRincianPiutangPasien;
+    private widget.ButtonBig btnRiwayatBarangMedis;
     private widget.ButtonBig btnRl32;
     private widget.ButtonBig btnRl33;
     private widget.ButtonBig btnRl34;
@@ -8061,6 +8133,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getsirkulasi_obat2()==true){
                 Panelmenu.add(btnSirkulasi2);
+                jmlmenu++;
+            }
+            
+            if(var.getriwayat_obat_alkes_bhp()==true){
+                Panelmenu.add(btnRiwayatBarangMedis);
                 jmlmenu++;
             }
             

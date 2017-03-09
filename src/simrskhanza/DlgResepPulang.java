@@ -16,6 +16,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
+import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -48,6 +49,8 @@ public final class DlgResepPulang extends javax.swing.JDialog {
     private ResultSet rs;
     public DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
     private double total=0,jumlahtotal=0;
+    private riwayatobat Trackobat=new riwayatobat();
+    private String bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -615,11 +618,15 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         }else if(Total.getText().trim().equals("")){
             Valid.textKosong(Jml,"Total");
         }else{
-            Sequel.menyimpan("resep_pulang","?,?,?,?,?,?","No.Rawat dan Obat",6,new String[]{
-                TNoRw.getText(),KdBarang.getText(),Jml.getText(),HrgaObat.getText(),Total.getText(),Dosis.getText()
-            });
-            tampil();
-            BtnBatalActionPerformed(evt);
+            if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?","No.Rawat dan Obat",6,new String[]{
+                    TNoRw.getText(),KdBarang.getText(),Jml.getText(),HrgaObat.getText(),Total.getText(),Dosis.getText()
+                })==true){
+                Trackobat.catatRiwayat(KdBarang.getText(),0,Valid.SetAngka(Jml.getText()),"Resep Pulang",var.getkode(),bangsal,"Simpan");
+                Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+bangsal+"','-"+Jml.getText()+"'", 
+                                 "stok=stok-'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+bangsal+"'");                               
+                tampil();
+                BtnBatalActionPerformed(evt);
+            }                
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -660,6 +667,9 @@ public final class DlgResepPulang extends javax.swing.JDialog {
            Sequel.queryu2("delete from resep_pulang where no_rawat=? and kode_brng=?",2,new String[]{
                TNoRw.getText(),KdBarang.getText()
            });
+           Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(Jml.getText()),0,"Resep Pulang",var.getkode(),bangsal,"Hapus");
+           Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+bangsal+"','"+Jml.getText()+"'", 
+                            "stok=stok+'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+bangsal+"'");                               
            tampil();
         }
 
@@ -847,7 +857,37 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_DosisKeyPressed
 
     private void JenisjualItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JenisjualItemStateChanged
-        
+        try {
+                    rs=koneksi.prepareStatement(
+                                 "select nama_brng,kode_sat,h_beli,karyawan,jualbebas,beliluar,ralan,kelas1,kelas2,kelas3,utama,vip,vvip "+
+                                 "from databarang where kode_brng='"+KdBarang.getText()+"'").executeQuery();
+                    if(rs.next()){
+                        if(Jenisjual.getSelectedItem().equals("Jual Bebas")){
+                           HrgaObat.setText(rs.getString("jualbebas")); 
+                        }else if(Jenisjual.getSelectedItem().equals("Karyawan")){
+                           HrgaObat.setText(rs.getString("karyawan")); 
+                        }else if(Jenisjual.getSelectedItem().equals("Beli Luar")){
+                           HrgaObat.setText(rs.getString("beliluar")); 
+                        }else if(Jenisjual.getSelectedItem().equals("Rawat Jalan")){
+                           HrgaObat.setText(rs.getString("ralan")); 
+                        }else if(Jenisjual.getSelectedItem().equals("Kelas 1")){
+                            HrgaObat.setText(rs.getString("kelas1")); 
+                        }else if(Jenisjual.getSelectedItem().equals("Kelas 2")){
+                            HrgaObat.setText(rs.getString("kelas2")); 
+                        }else if(Jenisjual.getSelectedItem().equals("Kelas 3")){
+                            HrgaObat.setText(rs.getString("kelas3")); 
+                        }else if(Jenisjual.getSelectedItem().equals("Utama")){
+                            HrgaObat.setText(rs.getString("utama")); 
+                        }else if(Jenisjual.getSelectedItem().equals("VIP")){
+                            HrgaObat.setText(rs.getString("vip")); 
+                        }else if(Jenisjual.getSelectedItem().equals("VVIP")){
+                            HrgaObat.setText(rs.getString("vvip")); 
+                        }
+                        isHitung();
+                    }                    
+                } catch (Exception ex) {
+                    System.out.println("Catatan barang : "+ex);
+                }
     }//GEN-LAST:event_JenisjualItemStateChanged
 
     private void JenisjualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisjualKeyPressed
