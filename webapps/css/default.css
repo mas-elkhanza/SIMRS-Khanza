@@ -295,6 +295,16 @@ color: #65795b;
 	padding: 4px 2px 4px 10px;
 }
 
+.head5 td{
+	color:#FFFFFF;
+	background: #FF0000;
+	border-bottom: 0px solid #BB00BB;
+        border-right: 0px solid #BB00BB;
+	border-top: 0px solid #BB00BB;
+	padding: 0px 0px 0px 0px;
+	height: 10px;
+}
+
 .isi td{
 	border-right: 1px solid #f2f7ed;
 	border-bottom: 1px solid #f2f7ed;

@@ -56,7 +56,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,row){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==5)||(colIndex==7)||(colIndex==8)||(colIndex==9)) {
+                if ((colIndex==0)||(colIndex==7)||(colIndex==8)||(colIndex==9)) {
                     a=true;
                 }
                 return a;

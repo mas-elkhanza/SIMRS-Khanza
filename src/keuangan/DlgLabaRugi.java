@@ -390,7 +390,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             while(rs.next()){
                 saldoawal=Sequel.cariIsiAngka("select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
                          "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
-                debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
+                debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
                          "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                          "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                          "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
