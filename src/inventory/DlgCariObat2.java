@@ -94,27 +94,27 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(45);
             }else if(i==2){
                 column.setPreferredWidth(70);
             }else if(i==3){
                 column.setPreferredWidth(200);
             }else if(i==4){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==5){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==7){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==8){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(55);
             }else if(i==9){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(55);
             }else if(i==10){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(35);
             }else if(i==11){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(110);
             }else if(i==12){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);

@@ -17,7 +17,7 @@
         $petugas    =$_GET['petugas'];
         $kasir      =$_GET['kasir'];
 
-        $_sql = "select temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc";   
+        $_sql = "select * from temporary where temp4='Pemeriksaan' order by no asc";   
         $hasil=bukaquery($_sql);
         
         if(mysql_num_rows($hasil)!=0) { 
@@ -89,21 +89,28 @@
                      "; 
                         $z=1;
                         while($item = mysql_fetch_array($hasil)) {
-                           if(($item[0]<>"Total Biaya Pemeriksaan Lab")&&($item[0]<>"Total Biaya Pemeriksaan Radiologi")){
-                              echo "<tr class='isi'>
-                                        <td><font color='000000' size='1'  face='Tahoma'>&nbsp;$z</font></td>
-                                        <td><font color='000000' size='1'  face='Tahoma'>&nbsp;$item[0]</font></td>
-                                        <td><font color='000000' size='1'  face='Tahoma'>&nbsp;".formatDuit($item[1])."</font></td>
-                                    </tr>";  
-                           }else if(($item[0]=="Total Biaya Pemeriksaan Lab")||($item[0]=="Total Biaya Pemeriksaan Radiologi")){
-                               echo "<tr>
-                                        <td><font color='000000' size='1'  face='Tahoma'></font></td>
-                                        <td><font color='000000' size='1'  face='Tahoma'><b>&nbsp;$item[0]<b></font></td>
-                                        <td><font color='000000' size='1'  face='Tahoma'><b>&nbsp;".formatDuit($item[1])."<b></font></td>
-                                    </tr>";  
-                           }
-                           $z++;                                   
+                             echo "<tr class='isi'>
+                                       <td><font color='000000' size='1'  face='Tahoma'>&nbsp;$z</font></td>
+                                       <td><font color='000000' size='1'  face='Tahoma'>&nbsp;$item[2]</font></td>
+                                       <td><font color='000000' size='1'  face='Tahoma'>&nbsp;".formatDuit($item[3])."</font></td>
+                                   </tr>";  
+                             $_sql2 = "select * from temporary where temp4='Detail Pemeriksaan' and temp1='$item[1]' order by no asc";   
+							 $hasil2=bukaquery($_sql2);
+							 while($item2=mysql_fetch_array($hasil2)){
+								 $z++;
+								 echo "<tr class='isi'>
+                                       <td><font color='000000' size='1'  face='Tahoma'>&nbsp;$z</font></td>
+                                       <td><font color='000000' size='1'  face='Tahoma'>&nbsp;$item2[2]</font></td>
+                                       <td><font color='000000' size='1'  face='Tahoma'>&nbsp;".formatDuit($item2[3])."</font></td>
+                                   </tr>";  
+							 }							 
+                             $z++;                                   
                         } 
+                        echo "<tr>
+                                  <td><font color='000000' size='1'  face='Tahoma'>&nbsp;</font></td>
+                                  <td><font color='000000' size='1'  face='Tahoma'>&nbsp;<b>Total Biaya Pemeriksaan Lab</b></font></td>
+                                  <td><font color='000000' size='1'  face='Tahoma'>&nbsp;<b>".formatDuit(getOne("select temp3 from temporary where temp2='Total Biaya Pemeriksaan Lab'"))."</b></font></td>
+                             </tr>"; 
             
             echo "
                   </table>

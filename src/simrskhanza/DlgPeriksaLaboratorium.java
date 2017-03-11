@@ -1288,17 +1288,27 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             Pemeriksaan.requestFocus();
         }else {
-            Sequel.queryu("delete from temporary");
+            Sequel.queryu("truncate table temporary");
             ttl=0;
             for(i=0;i<tbTarif.getRowCount();i++){
-                item=0;
-                if(tbTarif.getValueAt(i,0).toString().equals("true")){
-                    item=Double.parseDouble(tbTarif.getValueAt(i,3).toString())+Sequel.cariIsiAngka("select sum(biaya_item) from template_laboratorium where kd_jenis_prw=?",tbTarif.getValueAt(i,1).toString());
-                    ttl=ttl+item;                    
-                    Sequel.menyimpan("temporary","'0','"+tbTarif.getValueAt(i,2).toString()+"','"+item+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
+                if(tbTarif.getValueAt(i,0).toString().equals("true")){                                       
+                    item=Double.parseDouble(tbTarif.getValueAt(i,3).toString());
+                    ttl=ttl+item;  
+                    Sequel.menyimpan("temporary","'0','"+tbTarif.getValueAt(i,1).toString()+"','"+tbTarif.getValueAt(i,2).toString()+"','"+tbTarif.getValueAt(i,3).toString()+"','Pemeriksaan','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
                 }                
             }
-            Sequel.menyimpan("temporary","'0','Total Biaya Pemeriksaan Lab','"+ttl+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
+            for(i=0;i<tbPemeriksaan.getRowCount();i++){
+                if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){                                       
+                    try {
+                        item=Double.parseDouble(tbPemeriksaan.getValueAt(i,7).toString());
+                    } catch (Exception e) {
+                        item=0;
+                    }                    
+                    ttl=ttl+item;  
+                    Sequel.menyimpan("temporary","'0','"+Sequel.cariIsi("select kd_jenis_prw from template_laboratorium where id_template=?",tbPemeriksaan.getValueAt(i,6).toString())+"','"+tbPemeriksaan.getValueAt(i,1).toString()+"','"+item+"','Detail Pemeriksaan','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
+                }                
+            }
+            Sequel.menyimpan("temporary","'0','','Total Biaya Pemeriksaan Lab','"+ttl+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
             Valid.panggilUrl("billing/LaporanBiayaLab.php?norm="+TNoRM.getText()+"&pasien="+TPasien.getText().replaceAll(" ","_")+"&tanggal="+Tanggal.getSelectedItem()+"&jam="+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem()+"&pjlab="+NmDokterPj.getText().replaceAll(" ","_")+"&petugas="+NmPtg.getText().replaceAll(" ","_")+"&kasir="+Sequel.cariIsi("select nama from pegawai where nik=?",var.getkode()));
         }
         this.setCursor(Cursor.getDefaultCursor());
