@@ -201,48 +201,26 @@ import setting.DlgSetHargaObatRanap;
 import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
 import simrskhanza.DlgAbout;
-import simrskhanza.DlgAbout;
-import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaRadiologi;
-import simrskhanza.DlgCariPeriksaRadiologi;
-import simrskhanza.DlgCariTagihanOperasi;
 import simrskhanza.DlgCariTagihanOperasi;
 import simrskhanza.DlgDeposit;
-import simrskhanza.DlgDeposit;
-import simrskhanza.DlgDpjp;
 import simrskhanza.DlgDpjp;
 import simrskhanza.DlgIGD;
-import simrskhanza.DlgIGD;
-import simrskhanza.DlgIKBBayi;
 import simrskhanza.DlgIKBBayi;
 import simrskhanza.DlgJadwal;
-import simrskhanza.DlgJadwal;
-import simrskhanza.DlgKasirRalan;
 import simrskhanza.DlgKasirRalan;
 import simrskhanza.DlgObatPenyakit;
-import simrskhanza.DlgObatPenyakit;
-import simrskhanza.DlgPasienMati;
 import simrskhanza.DlgPasienMati;
 import simrskhanza.DlgPemberianDiet;
-import simrskhanza.DlgPemberianDiet;
-import simrskhanza.DlgPenelusuranLogin;
 import simrskhanza.DlgPenelusuranLogin;
 import simrskhanza.DlgPenggajian;
-import simrskhanza.DlgPenggajian;
-import simrskhanza.DlgResepObat;
 import simrskhanza.DlgResepObat;
 import simrskhanza.DlgResepPulang;
-import simrskhanza.DlgResepPulang;
-import simrskhanza.DlgResumePerawatan;
 import simrskhanza.DlgResumePerawatan;
 import simrskhanza.DlgRetensi;
-import simrskhanza.DlgRetensi;
-import simrskhanza.DlgRujuk;
 import simrskhanza.DlgRujuk;
 import simrskhanza.DlgRunTeks;
-import simrskhanza.DlgRunTeks;
-import simrskhanza.DlgSirkulasiBerkas;
 import simrskhanza.DlgSirkulasiBerkas;
 import smsui.frmSmsView;
 import tranfusidarah.UTDDonor;
@@ -304,6 +282,8 @@ public class frmUtama extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Notif Setting : "+e);
         }
+        
+        FlayMenu.setVisible(false);
             
     }
     
@@ -563,6 +543,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnHutangObat = new widget.ButtonBig();
         btnRiwayatBarangMedis = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
+        btnDataPenjualan = new widget.ButtonBig();
+        btnInputPenjualan = new widget.ButtonBig();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
         jSeparator4 = new javax.swing.JSeparator();
@@ -594,6 +576,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelJudul = new usu.widget.glass.PanelGlass();
         jLabel11 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        FlayMenu = new usu.widget.glass.PanelGlass();
         MenuBar = new widget.MenuBar();
         jMenu1 = new javax.swing.JMenu();
         MnLogin = new javax.swing.JMenuItem();
@@ -3553,10 +3536,34 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/03/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13/03/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
+
+        btnDataPenjualan.setForeground(new java.awt.Color(40, 70, 50));
+        btnDataPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357971_desktop_computer.png"))); // NOI18N
+        btnDataPenjualan.setText("Data Penjualan Obat & BHP");
+        btnDataPenjualan.setIconTextGap(0);
+        btnDataPenjualan.setName("btnDataPenjualan"); // NOI18N
+        btnDataPenjualan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataPenjualan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataPenjualanActionPerformed(evt);
+            }
+        });
+
+        btnInputPenjualan.setForeground(new java.awt.Color(40, 70, 50));
+        btnInputPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
+        btnInputPenjualan.setText("Input Penjualan Obat & BHP");
+        btnInputPenjualan.setIconTextGap(0);
+        btnInputPenjualan.setName("btnInputPenjualan"); // NOI18N
+        btnInputPenjualan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInputPenjualan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInputPenjualanActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("::[ Khanza Hospital Management System 2017 ]::");
@@ -3956,7 +3963,7 @@ public class frmUtama extends javax.swing.JFrame {
         PanelWall.setBackground(new java.awt.Color(29, 29, 29));
         PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/wallpaper.jpg"))); // NOI18N
         PanelWall.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
-        PanelWall.setBorder(javax.swing.BorderFactory.createEmptyBorder(150, 0, 0, 0));
+        PanelWall.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 0, 0, 0));
         PanelWall.setPreferredSize(new java.awt.Dimension(200, 200));
         PanelWall.setRound(false);
         PanelWall.setWarna(new java.awt.Color(110, 110, 110));
@@ -3994,6 +4001,13 @@ public class frmUtama extends javax.swing.JFrame {
         jLabel8.setBounds(40, 0, 820, 150);
 
         PanelWall.add(panelJudul, java.awt.BorderLayout.PAGE_END);
+
+        FlayMenu.setBackground(new java.awt.Color(255, 255, 255));
+        FlayMenu.setOpaqueImage(false);
+        FlayMenu.setPreferredSize(new java.awt.Dimension(200, 110));
+        FlayMenu.setRound(false);
+        FlayMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
+        PanelWall.add(FlayMenu, java.awt.BorderLayout.PAGE_START);
 
         scrollPane1.setViewportView(PanelWall);
 
@@ -5108,7 +5122,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_btnPembelianActionPerformed
 
     private void btnPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjualanActionPerformed
-        
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgPenjualan penjualan=new DlgPenjualan(this,false);
@@ -7209,15 +7222,10 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
     private void BtnToolJualObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnToolJualObatActionPerformed
         isTutup();
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgCariPenjualan penjualan=new DlgCariPenjualan(this,false);
-        penjualan.emptTeks();
-        penjualan.isCek();
-        penjualan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        penjualan.setLocationRelativeTo(PanelUtama);
-        penjualan.setVisible(true);
-        DlgHome.dispose();
-        this.setCursor(Cursor.getDefaultCursor());
+        FlayMenu.removeAll();
+        FlayMenu.add(btnInputPenjualan);
+        FlayMenu.add(btnDataPenjualan);
+        FlayMenu.setVisible(true);       
     }//GEN-LAST:event_BtnToolJualObatActionPerformed
 
     private void PanelWallMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelWallMouseMoved
@@ -7531,6 +7539,31 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRiwayatBarangMedisActionPerformed
 
+    private void btnInputPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInputPenjualanActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPenjualan penjualan=new DlgPenjualan(this,false);
+        penjualan.isCek();
+        penjualan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        penjualan.setLocationRelativeTo(PanelUtama);
+        penjualan.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnInputPenjualanActionPerformed
+
+    private void btnDataPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataPenjualanActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgCariPenjualan penjualan=new DlgCariPenjualan(this,false);
+        penjualan.emptTeks();
+        penjualan.isCek();
+        penjualan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        penjualan.setLocationRelativeTo(PanelUtama);
+        penjualan.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnDataPenjualanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7556,6 +7589,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig BtnToolReg;
     private javax.swing.JDialog DlgHome;
     private javax.swing.JDialog DlgLogin;
+    private usu.widget.glass.PanelGlass FlayMenu;
     private widget.MenuBar MenuBar;
     private javax.swing.JMenuItem MenuKeluar;
     private javax.swing.JMenuItem MnAnjungan;
@@ -7607,6 +7641,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekBPJSRiwayat;
     private widget.ButtonBig btnClosingKasir;
     private widget.ButtonBig btnDaruratStok;
+    private widget.ButtonBig btnDataPenjualan;
     private widget.ButtonBig btnDeposit;
     private widget.ButtonBig btnDiagnosa;
     private widget.ButtonBig btnDiet;
@@ -7620,6 +7655,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnICD9;
     private widget.ButtonBig btnIGD;
     private widget.ButtonBig btnIndustriFarmasi;
+    private widget.ButtonBig btnInputPenjualan;
     private widget.ButtonBig btnInventaris;
     private widget.ButtonBig btnJMDetailDokter;
     private widget.ButtonBig btnJadwalPegawai;
@@ -7838,7 +7874,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.Tanggal tanggal;
     // End of variables declaration//GEN-END:variables
     
-    public void isTampil(){
+    public void isTampil(){        
         Panelmenu.removeAll();
         if(cmbMenu.getSelectedIndex()==0){
             jmlmenu=0;     
@@ -8976,6 +9012,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }
 
     private void isTutup() {
+        FlayMenu.setVisible(false);
         var.setform("frmUtama");
         Window[] wins = Window.getWindows();
         for (Window win : wins) {

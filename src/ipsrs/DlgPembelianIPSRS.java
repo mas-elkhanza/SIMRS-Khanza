@@ -1,7 +1,7 @@
 package ipsrs;
 
 
-import fungsi.WarnaTable;
+import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -35,9 +35,10 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
     private ResultSet rs;
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgCariPembelianIpsrs form=new DlgCariPembelianIpsrs(null,false);
-    private double saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0;
+    private double saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0;
     private int jml=0,i=0,row=0,index=0;
     private String[] kodebarang,namabarang,satuan,harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
+    private WarnaTable2 warna=new WarnaTable2();
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -46,7 +47,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] judul={"Jml","Kode Barang","Nama Barang","Satuan","Hrg.Beli(Rp)","Subtotal Beli(Rp)","Diskon(%)","Diskon(Rp)","Ttl.Beli"};
+        Object[] judul={"Jml","Kode Barang","Nama Barang","Satuan","Hrg.Beli(Rp)","Subtotal Beli(Rp)","Disk(%)","Diskon(Rp)","Ttl.Beli"};
         tabMode=new DefaultTableModel(null,judul){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -64,26 +65,27 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         for (i = 0; i < 9; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(45);
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){
-                column.setPreferredWidth(240);
+                column.setPreferredWidth(190);
             }else if(i==3){
                 column.setPreferredWidth(50);
             }else if(i==4){
                 column.setPreferredWidth(90);
             }else if(i==5){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             }else if(i==7){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(75);
             }else if(i==8){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(95);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        warna.kolom=0;
+        tbDokter.setDefaultRenderer(Object.class,warna);
 
         NoFaktur.setDocument(new batasInput((byte)15).getKata(NoFaktur));
         kdsup.setDocument(new batasInput((byte)5).getKata(kdsup));
@@ -224,8 +226,14 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         label12 = new widget.Label();
         LPotongan = new widget.Label();
         label19 = new widget.Label();
-        LTagiha = new widget.Label();
+        LTotal = new widget.Label();
         BtnTambah = new widget.Button();
+        label17 = new widget.Label();
+        tppn = new widget.TextBox();
+        label21 = new widget.Label();
+        LPpn = new widget.Label();
+        label20 = new widget.Label();
+        LTagiha = new widget.Label();
         panelisi3 = new widget.panelisi();
         label15 = new widget.Label();
         NoFaktur = new widget.TextBox();
@@ -311,7 +319,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         internalFrame1.add(scrollPane1, java.awt.BorderLayout.CENTER);
 
         panelisi1.setName("panelisi1"); // NOI18N
-        panelisi1.setPreferredSize(new java.awt.Dimension(100, 87));
+        panelisi1.setPreferredSize(new java.awt.Dimension(100, 107));
         panelisi1.setLayout(null);
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
@@ -330,13 +338,13 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnSimpan);
-        BtnSimpan.setBounds(10, 42, 92, 36);
+        BtnSimpan.setBounds(10, 62, 100, 30);
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(75, 23));
         panelisi1.add(label10);
-        label10.setBounds(110, 46, 75, 23);
+        label10.setBounds(110, 65, 75, 23);
 
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(150, 23));
@@ -346,7 +354,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
             }
         });
         panelisi1.add(TCari);
-        TCari.setBounds(190, 46, 290, 23);
+        TCari.setBounds(190, 65, 290, 23);
 
         BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari1.setMnemonic('1');
@@ -364,21 +372,22 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnCari1);
-        BtnCari1.setBounds(482, 46, 28, 23);
+        BtnCari1.setBounds(482, 65, 28, 23);
 
+        label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label9.setText("Potongan :");
         label9.setName("label9"); // NOI18N
         label9.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label9);
-        label9.setBounds(266, 0, 60, 30);
+        label9.setBounds(130, 0, 120, 30);
 
         LSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LSubtotal.setText("0");
-        LSubtotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        LSubtotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LSubtotal.setName("LSubtotal"); // NOI18N
         LSubtotal.setPreferredSize(new java.awt.Dimension(110, 30));
         panelisi1.add(LSubtotal);
-        LSubtotal.setBounds(64, 0, 170, 30);
+        LSubtotal.setBounds(10, 20, 120, 30);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnCari.setMnemonic('C');
@@ -397,7 +406,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnCari);
-        BtnCari.setBounds(560, 42, 100, 30);
+        BtnCari.setBounds(560, 62, 100, 30);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -416,35 +425,37 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnKeluar);
-        BtnKeluar.setBounds(670, 42, 100, 30);
+        BtnKeluar.setBounds(670, 62, 100, 30);
 
+        label12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label12.setText("Subtotal :");
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label12);
-        label12.setBounds(0, 0, 60, 30);
+        label12.setBounds(10, 0, 120, 30);
 
         LPotongan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LPotongan.setText("0");
-        LPotongan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        LPotongan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LPotongan.setName("LPotongan"); // NOI18N
         LPotongan.setPreferredSize(new java.awt.Dimension(110, 30));
         panelisi1.add(LPotongan);
-        LPotongan.setBounds(330, 0, 170, 30);
+        LPotongan.setBounds(130, 20, 120, 30);
 
+        label19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label19.setText("Total Beli :");
         label19.setName("label19"); // NOI18N
         label19.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label19);
-        label19.setBounds(536, 0, 60, 30);
+        label19.setBounds(250, 0, 120, 30);
 
-        LTagiha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTagiha.setText("0");
-        LTagiha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        LTagiha.setName("LTagiha"); // NOI18N
-        LTagiha.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LTagiha);
-        LTagiha.setBounds(600, 0, 170, 30);
+        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal.setText("0");
+        LTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LTotal.setName("LTotal"); // NOI18N
+        LTotal.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelisi1.add(LTotal);
+        LTotal.setBounds(250, 20, 120, 30);
 
         BtnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambah.setMnemonic('3');
@@ -457,7 +468,56 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnTambah);
-        BtnTambah.setBounds(510, 46, 28, 23);
+        BtnTambah.setBounds(510, 65, 28, 23);
+
+        label17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label17.setText("PPN :");
+        label17.setName("label17"); // NOI18N
+        label17.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label17);
+        label17.setBounds(370, 0, 90, 30);
+
+        tppn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tppn.setName("tppn"); // NOI18N
+        tppn.setPreferredSize(new java.awt.Dimension(80, 23));
+        tppn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tppnKeyPressed(evt);
+            }
+        });
+        panelisi1.add(tppn);
+        tppn.setBounds(370, 26, 60, 23);
+
+        label21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label21.setText("%");
+        label21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        label21.setName("label21"); // NOI18N
+        label21.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi1.add(label21);
+        label21.setBounds(433, 26, 40, 23);
+
+        LPpn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LPpn.setText("0");
+        LPpn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LPpn.setName("LPpn"); // NOI18N
+        LPpn.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelisi1.add(LPpn);
+        LPpn.setBounds(470, 20, 120, 30);
+
+        label20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label20.setText("Jumlah Tagihan :");
+        label20.setName("label20"); // NOI18N
+        label20.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label20);
+        label20.setBounds(590, 0, 130, 30);
+
+        LTagiha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTagiha.setText("0");
+        LTagiha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LTagiha.setName("LTagiha"); // NOI18N
+        LTagiha.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelisi1.add(LTagiha);
+        LTagiha.setBounds(590, 20, 120, 30);
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
@@ -628,12 +688,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                try {
-                    Sequel.AutoComitFalse();
-                    Sequel.menyimpan("ipsrspembelian","?,?,?,?,?,?,?,?",8,new String[]{
+                Sequel.AutoComitFalse();
+                if(Sequel.menyimpantf("ipsrspembelian","?,?,?,?,?,?,?,?,?,?","data",10,new String[]{
                         NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),""+sbttl,""+ttldisk,""+ttl,
-                        Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())
-                    });
+                        ""+ppn,""+(ttl+ppn),Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())
+                })==true){
                     jml=tbDokter.getRowCount();
                     for(i=0;i<jml;i++){  
                          if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
@@ -647,52 +706,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 });
                          }                
                     } 
-                    
+
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun"),"PEMBELIAN",""+(ttl),"0"});
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),"KAS KELUAR","0",""+(ttl)}); 
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun"),"PEMBELIAN",""+(ttl+ppn),"0"});
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),"KAS KELUAR","0",""+(ttl+ppn)}); 
                     jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),"U","Pembelian Barang Non Medis dan Penunjang(Lab & Rad) ");
-                    Sequel.AutoComitTrue();
-                } catch (Exception ex) {
-                    System.out.println(ex);
-                    int konfirm = JOptionPane.showConfirmDialog(rootPane,"No.Nota sudah ada sebelumnya,\napa data mau ditambahkan ke pembelian di No.Nota tersebut..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                    if (konfirm == JOptionPane.YES_OPTION) {
-                        try {
-                            Sequel.AutoComitFalse();
-                            jml=tbDokter.getRowCount();
-                            for(i=0;i<jml;i++){  
-                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                        Sequel.menyimpan("ipsrsdetailbeli","?,?,?,?,?,?,?,?,?","Transaksi Pembelian",9,new String[]{
-                                            NoFaktur.getText(),tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,3).toString(),
-                                            tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,4).toString(),tbDokter.getValueAt(i,5).toString(),
-                                            tbDokter.getValueAt(i,6).toString(),tbDokter.getValueAt(i,7).toString(),tbDokter.getValueAt(i,8).toString()
-                                        });
-                                        Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok+?",2,new String[]{
-                                            tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,1).toString()
-                                        });
-                                 }                
-                            }                             
-                            
-                            Sequel.queryu("delete from tampjurnal");
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun"),"PEMBELIAN",""+(ttl),"0"});
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),"KAS KELUAR","0",""+(ttl)}); 
-                            jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),"U","Pembelian Barang Non Medis dan Penunjang (Lab & Rad)");
-                            Sequel.AutoComitTrue();
-                        } catch (Exception ex1) {
-                            System.out.println(ex1);
-                        }
+                    jml=tbDokter.getRowCount();
+                    for(i=0;i<jml;i++){ 
+                        tbDokter.setValueAt("",i,0);
+                        tbDokter.setValueAt("0",i,5);
+                        tbDokter.setValueAt("0",i,6);
+                        tbDokter.setValueAt("0",i,7);
+                        tbDokter.setValueAt("0",i,8);
                     }
-                }                
-                jml=tbDokter.getRowCount();
-                for(i=0;i<jml;i++){ 
-                    tbDokter.setValueAt("",i,0);
-                    tbDokter.setValueAt("0",i,5);
-                    tbDokter.setValueAt("0",i,6);
-                    tbDokter.setValueAt("0",i,7);
-                    tbDokter.setValueAt("0",i,8);
-                }
-                getData();
-        
+                    getData();
+                }                        
+                Sequel.AutoComitTrue();        
                 Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,6),signed)),0) from ipsrspembelian ","PB",6,NoFaktur); 
             }
         }        
@@ -875,6 +904,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnTambahActionPerformed
 
+    private void tppnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tppnKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            getData();
+        }
+    }//GEN-LAST:event_tppnKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -900,8 +935,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.ComboBox CmbAkun;
     private widget.TextBox Kd2;
     private widget.Label LPotongan;
+    private widget.Label LPpn;
     private widget.Label LSubtotal;
     private widget.Label LTagiha;
+    private widget.Label LTotal;
     private widget.TextBox NoFaktur;
     private javax.swing.JPopupMenu Popup;
     private widget.TextBox TCari;
@@ -918,7 +955,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.Label label13;
     private widget.Label label15;
     private widget.Label label16;
+    private widget.Label label17;
     private widget.Label label19;
+    private widget.Label label20;
+    private widget.Label label21;
     private widget.Label label9;
     private widget.TextBox nmptg;
     private widget.TextBox nmsup;
@@ -927,6 +967,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private javax.swing.JMenuItem ppBersihkan;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
+    private widget.TextBox tppn;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
@@ -1007,7 +1048,13 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 LSubtotal.setText(Valid.SetAngka(sbttl));
                 LPotongan.setText(Valid.SetAngka(ttldisk));
                 ttl=sbttl-ttldisk;
-                LTagiha.setText(Valid.SetAngka(ttl));
+                LTotal.setText(Valid.SetAngka(ttl));
+                ppn=0;
+                if(!tppn.getText().equals("")){
+                    ppn=(Double.parseDouble(tppn.getText())/100) *(ttl);
+                    LPpn.setText(Valid.SetAngka(ppn));
+                    LTagiha.setText(Valid.SetAngka(ttl+ppn));
+                }
         }
     }
    
@@ -1015,6 +1062,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void isCek(){
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,6),signed)),0) from ipsrspembelian ","PI",6,NoFaktur); 
         TCari.requestFocus();
+        tppn.setText("10");
         if(var.getjml2()>=1){
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
