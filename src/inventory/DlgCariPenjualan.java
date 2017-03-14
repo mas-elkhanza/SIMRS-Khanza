@@ -56,7 +56,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         initComponents();
 
         Object[] row={"No.Nota","Tanggal","Petugas","Pasien","Keterangan","Jns.Jual","PPN","Barang","Satuan",
-                    "Harga(Rp)","Jumlah","Subtotal(Rp)","Ptg(%)","Potongan(Rp)","Tambahan(Rp)","Total(Rp)"};
+                    "Harga(Rp)","Jml","Subtotal(Rp)","Ptg(%)","Potongan(Rp)","Tambahan(Rp)","Total(Rp)"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -70,35 +70,35 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==2){
                 column.setPreferredWidth(100);
             }else if(i==3){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(150);
             }else if(i==4){
                 column.setPreferredWidth(100);
             }else if(i==5){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(75);
             }else if(i==6){
-                column.setPreferredWidth(100);
-            }else if(i==7){
-                column.setPreferredWidth(200);
-            }else if(i==8){
-                column.setPreferredWidth(50);
-            }else if(i==9){
-                column.setPreferredWidth(100);
-            }else if(i==10){
                 column.setPreferredWidth(70);
-            }else if(i==11){
-                column.setPreferredWidth(100);
-            }else if(i==12){
+            }else if(i==7){
+                column.setPreferredWidth(180);
+            }else if(i==8){
                 column.setPreferredWidth(60);
+            }else if(i==9){
+                column.setPreferredWidth(80);
+            }else if(i==10){
+                column.setPreferredWidth(28);
+            }else if(i==11){
+                column.setPreferredWidth(80);
+            }else if(i==12){
+                column.setPreferredWidth(44);
             }else if(i==13){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(80);
             }else if(i==14){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(80);
             }else if(i==15){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(90);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());

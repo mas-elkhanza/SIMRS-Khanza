@@ -65,9 +65,9 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(200);
             }else if(i==3){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(130);
             }else if(i==4){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(100);
             }else if(i==5){
                 column.setPreferredWidth(150);
             }else if(i==6){
@@ -973,7 +973,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             TCari.requestFocus();
         }else {
             DlgUbahPeriksaLab ubah=new DlgUbahPeriksaLab(null,false);
-            ubah.setSize(this.getWidth(),this.getHeight());
+            ubah.setSize(this.getWidth()-40,this.getHeight()-40);
             ubah.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),
                     tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString(), 
                     tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
