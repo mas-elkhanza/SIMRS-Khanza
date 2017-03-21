@@ -51,7 +51,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Kontra_Stok_Keluar_Ipsrs,Uang_Muka_Ralan,Piutang_Pasien_Ralan,Uang_Muka_Ranap,
             Piutang_Pasien_Ranap,Bayar_Piutang_Pasien,Service_Ranap,Pengambilan_Utd,
             Kontra_Pengambilan_Utd,Pengambilan_Penunjang_Utd,Kontra_Pengambilan_Penunjang_Utd,
-            Operasi_Ralan;
+            Operasi_Ralan,Penyerahan_Darah;
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
 
     /** Creates new form DlgJadwal
@@ -77,11 +77,11 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){
-                column.setPreferredWidth(380);
+                column.setPreferredWidth(280);
             }else if(i==3){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(40);
             }else if(i==4){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(40);
             }
         }
 
@@ -272,6 +272,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(43,1).toString();
         Kontra_Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(44,1).toString();
         Operasi_Ralan=tbPengaturan.getValueAt(45,1).toString();
+        Penyerahan_Darah=tbPengaturan.getValueAt(46,1).toString();
         
         if(Tindakan_Ralan.equals("")||Laborat_Ralan.equals("")||Radiologi_Ralan.equals("")||Obat_Ralan.equals("")||
             Registrasi_Ralan.equals("")||Tambahan_Ralan.equals("")||Potongan_Ralan.equals("")||Uang_Muka_Ralan.equals("")||
@@ -285,12 +286,12 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Stok_Keluar_Ipsrs.equals("")||Kontra_Stok_Keluar_Ipsrs.equals("")||Bayar_Piutang_Pasien.equals("")||
             Kontra_Retur_Ke_Suplayer.equals("")||Kontra_Retur_Dari_Pembeli.equals("")||Service_Ranap.equals("")||
             Pengambilan_Utd.equals("")||Kontra_Pengambilan_Utd.equals("")||Pengambilan_Penunjang_Utd.equals("")||
-            Kontra_Pengambilan_Penunjang_Utd.equals("")||Operasi_Ralan.equals("")){
+            Kontra_Pengambilan_Penunjang_Utd.equals("")||Operasi_Ralan.equals("")||Penyerahan_Darah.equals("")){
                 JOptionPane.showMessageDialog(null,"Silahkan lengkapi seluruh data Akun...!!!!");
                 tbPengaturan.requestFocus();
         }else{
             Sequel.queryu("delete from set_akun");
-            Sequel.menyimpan("set_akun","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",46,new String[]{
+            Sequel.menyimpan("set_akun","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",47,new String[]{
                 Tindakan_Ralan,Laborat_Ralan,Radiologi_Ralan,Obat_Ralan,Registrasi_Ralan,Tambahan_Ralan,
                 Potongan_Ralan,Uang_Muka_Ralan,Piutang_Pasien_Ralan,Tindakan_Ranap,Laborat_Ranap,Radiologi_Ranap,
                 Obat_Ranap,Registrasi_Ranap,Tambahan_Ranap,Potongan_Ranap,Retur_Obat_Ranap,Resep_Pulang_Ranap,
@@ -299,7 +300,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Kontra_Piutang_Obat,Retur_Ke_Suplayer,Kontra_Retur_Ke_Suplayer,Retur_Dari_pembeli,
                 Kontra_Retur_Dari_Pembeli,Retur_Piutang_Obat,Kontra_Retur_Piutang_Obat,Pengadaan_Ipsrs,
                 Stok_Keluar_Ipsrs,Kontra_Stok_Keluar_Ipsrs,Bayar_Piutang_Pasien,Service_Ranap,Pengambilan_Utd,
-                Kontra_Pengambilan_Utd,Pengambilan_Penunjang_Utd,Kontra_Pengambilan_Penunjang_Utd,Operasi_Ralan
+                Kontra_Pengambilan_Utd,Pengambilan_Penunjang_Utd,Kontra_Pengambilan_Penunjang_Utd,Operasi_Ralan,
+                Penyerahan_Darah
             });
             JOptionPane.showMessageDialog(null,"Proses selesai...!!!!");
         }
@@ -421,6 +423,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Pengambilan_Penunjang_Utd=rs.getString("Pengambilan_Penunjang_Utd");
                     Kontra_Pengambilan_Penunjang_Utd=rs.getString("Kontra_Pengambilan_Penunjang_Utd");
                     Operasi_Ralan=rs.getString("Operasi_Ralan");
+                    Penyerahan_Darah=rs.getString("Penyerahan_Darah");
                 }else{
                     Tindakan_Ralan="";
                     Laborat_Ralan="";
@@ -468,6 +471,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Pengambilan_Penunjang_Utd="";
                     Kontra_Pengambilan_Penunjang_Utd="";
                     Operasi_Ralan="";
+                    Penyerahan_Darah="";
                 }                 
             } catch (Exception e) {
                 System.out.println(e);
@@ -709,6 +713,11 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Operasi_Ralan),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Operasi_Ralan),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Operasi_Ralan)
+            });
+            tabMode.addRow(new Object[]{" Akun Pendapatan Penjualan Darah pada menu Penyerahan Darah",Penyerahan_Darah,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Penyerahan_Darah),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Penyerahan_Darah),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Penyerahan_Darah)
             });
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
