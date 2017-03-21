@@ -966,35 +966,37 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
   }else{
      try {
          pscarijual=koneksi.prepareStatement(
-                 "select nota_jual, kd_bangsal from penjualan where nota_jual=?");
+                 "select nota_jual, kd_bangsal,status from penjualan where nota_jual=?");
          try {
             pscarijual.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
             rs=pscarijual.executeQuery();
             if(rs.next()){
-                psdetailjual=koneksi.prepareStatement(
-                     "select kode_brng,jumlah from detailjual where nota_jual=? ");
-                try {
-                    psdetailjual.setString(1,rs.getString(1));                
-                    rs2=psdetailjual.executeQuery();
-                    while(rs2.next()){
-                        Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Penjualan",var.getkode(),rs.getString("kd_bangsal"),"Hapus");
-                        Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal")+"','"+rs2.getString("jumlah") +"'", 
-                                               "stok=stok+'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
+                if(rs.getString("status").equals("Sudah Dibayar")){
+                    psdetailjual=koneksi.prepareStatement(
+                         "select kode_brng,jumlah from detailjual where nota_jual=? ");
+                    try {
+                        psdetailjual.setString(1,rs.getString(1));                
+                        rs2=psdetailjual.executeQuery();
+                        while(rs2.next()){
+                            Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Penjualan",var.getkode(),rs.getString("kd_bangsal"),"Hapus");
+                            Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal")+"','"+rs2.getString("jumlah") +"'", 
+                                                   "stok=stok+'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(psdetailjual!=null){
+                            psdetailjual.close();
+                        }
                     }
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                } finally{
-                    if(rs2!=null){
-                        rs2.close();
-                    }
-                    if(psdetailjual!=null){
-                        psdetailjual.close();
-                    }
-                }
-                Sequel.queryu("delete from tampjurnal");
-                Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Penjualan_Obat from set_akun")+"','PENJUALAN','"+Sequel.cariIsi("select sum(total) from detailjual where nota_jual='"+rs.getString("nota_jual")+"'")+"','0'","Rekening");    
-                Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select kd_rek from penjualan where nota_jual=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())+"','KAS DI TANGAN','0','"+Sequel.cariIsi("select sum(total) from detailjual where nota_jual='"+rs.getString("nota_jual")+"'")+"'","Rekening"); 
-                jur.simpanJurnal(rs.getString("nota_jual"),Sequel.cariIsi("select current_date()"),"U","BATAL PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase());
+                    Sequel.queryu("delete from tampjurnal");
+                    Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Penjualan_Obat from set_akun")+"','PENJUALAN','"+Sequel.cariIsi("select sum(total) from detailjual where nota_jual='"+rs.getString("nota_jual")+"'")+"','0'","Rekening");    
+                    Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select kd_rek from penjualan where nota_jual=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())+"','KAS DI TANGAN','0','"+Sequel.cariIsi("select sum(total) from detailjual where nota_jual='"+rs.getString("nota_jual")+"'")+"'","Rekening"); 
+                    jur.simpanJurnal(rs.getString("nota_jual"),Sequel.cariIsi("select current_date()"),"U","BATAL PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase());
+                }                    
             }          
             Sequel.queryu("delete from penjualan where nota_jual='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"'");
             Sequel.queryu("delete from tagihan_sadewa where no_nota='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"'");
