@@ -959,7 +959,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             +"&petugas="+rs.getString("nama").replaceAll(" ","_")+"&kasir="+Sequel.cariIsi("select nama from pegawai where nik=?",var.getkode()));
                 }  
                 Sequel.AutoComitTrue();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
             }            
         }
