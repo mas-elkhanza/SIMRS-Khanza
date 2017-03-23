@@ -56,7 +56,7 @@ public final class BPJSCekRujukan extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"","","",""};
+        Object[] row={"",""};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -66,16 +66,12 @@ public final class BPJSCekRujukan extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 2; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(150);
-            }else if(i==1){
-                column.setPreferredWidth(150);
-            }else if(i==2){
                 column.setPreferredWidth(200);
-            }else if(i==3){
-                column.setPreferredWidth(250);
+            }else if(i==1){
+                column.setPreferredWidth(360);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -134,7 +130,7 @@ public final class BPJSCekRujukan extends javax.swing.JDialog {
         panelGlass6.add(jLabel16);
 
         NoRujukan.setName("NoRujukan"); // NOI18N
-        NoRujukan.setPreferredSize(new java.awt.Dimension(250, 23));
+        NoRujukan.setPreferredSize(new java.awt.Dimension(200, 23));
         NoRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoRujukanKeyPressed(evt);
@@ -323,62 +319,134 @@ public final class BPJSCekRujukan extends javax.swing.JDialog {
                 Valid.tabelKosong(tabMode);
                 JsonNode response = root.path("response").path("item");
                 tabMode.addRow(new Object[]{
-                    "Catatan",": "+response.path("catatan").asText(),"",""
+                    "Catatan",": "+response.path("catatan").asText()
                 });                 
                 tabMode.addRow(new Object[]{
-                    "Diagnosa :"," ","",""
+                    "Diagnosa",":"
                 });               
                 tabMode.addRow(new Object[]{
-                    "    Kode Diagnosa",": "+response.path("diagnosa").path("kdDiag").asText(),"",""
+                    "     Kode Diagnosa",": "+response.path("diagnosa").path("kdDiag").asText()
                 });               
                 tabMode.addRow(new Object[]{
-                    "    Nama Diagnosa",": "+response.path("diagnosa").path("nmDiag").asText(),"",""
+                    "     Nama Diagnosa",": "+response.path("diagnosa").path("nmDiag").asText()
                 }); 
                 tabMode.addRow(new Object[]{
-                    "Keluhan",": "+response.path("keluhan").asText(),"",""
+                    "Keluhan",": "+response.path("keluhan").asText()
                 });     
                 tabMode.addRow(new Object[]{
-                    "No.Kunjungan",": "+response.path("noKunjungan").asText(),"",""
+                    "No.Kunjungan",": "+response.path("noKunjungan").asText()
                 });     
                 tabMode.addRow(new Object[]{
-                    "Pemeriksaan Fisik Lain",": "+response.path("pemFisikLain").asText(),"",""
+                    "Pemeriksaan Fisik Lain",": "+response.path("pemFisikLain").asText()
                 });     
                 tabMode.addRow(new Object[]{
-                    "Peserta : ","","",""
+                    "Peserta",":"
                 });  
                 tabMode.addRow(new Object[]{
-                    "    Informasi :","","",""
+                    "     Informasi",":"
                 });  
                 tabMode.addRow(new Object[]{
-                    "","Dinsos",":"+response.path("peserta").path("informasi").path("dinsos").asText(),""
+                    "           Dinsos",": "+response.path("peserta").path("informasi").path("dinsos").asText()
                 });  
                 tabMode.addRow(new Object[]{
-                    "","Iuran",":"+response.path("peserta").path("informasi").path("iuran").asText(),""
+                    "           Iuran",": "+response.path("peserta").path("informasi").path("iuran").asText()
                 }); 
                 tabMode.addRow(new Object[]{
-                    "","No.SKTM",":"+response.path("peserta").path("informasi").path("noSKTM").asText(),""
+                    "           No.SKTM",": "+response.path("peserta").path("informasi").path("noSKTM").asText()
                 }); 
                 tabMode.addRow(new Object[]{
-                    "","Prolanis PRB",":"+response.path("peserta").path("informasi").path("prolanisPRB").asText(),""
+                    "           Prolanis PRB",": "+response.path("peserta").path("informasi").path("prolanisPRB").asText()
                 }); 
                 tabMode.addRow(new Object[]{
-                    "","Jenis Peserta",":",""
+                    "     Jenis Peserta",":"
                 });  
                 tabMode.addRow(new Object[]{
-                    "","","Kode Jenis Peserta",":"+response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText()
+                    "           Kode Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText()
                 });  
                 tabMode.addRow(new Object[]{
-                    "","","Nama Jenis Peserta",":"+response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText()
+                    "           Nama Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText()
                 }); 
                 tabMode.addRow(new Object[]{
-                    "","Kelas Tanggungan",":",""
+                    "     Kelas Tanggungan",":"
                 });  
                 tabMode.addRow(new Object[]{
-                    "","","Kode Kelas",":"+response.path("peserta").path("kelasTanggungan").path("kdKelas").asText()
+                    "           Kode Kelas",": "+response.path("peserta").path("kelasTanggungan").path("kdKelas").asText()
                 });  
                 tabMode.addRow(new Object[]{
-                    "","","Nama Kelas",":"+response.path("peserta").path("kelasTanggungan").path("nmKelas").asText()
+                    "           Nama Kelas",": "+response.path("peserta").path("kelasTanggungan").path("nmKelas").asText()
                 });  
+                tabMode.addRow(new Object[]{
+                    "     Nama",": "+response.path("peserta").path("nama").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "     NIK",": "+response.path("peserta").path("nik").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "     No.Kartu",": "+response.path("peserta").path("noKartu").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "     No.Rekam Medis",": "+response.path("peserta").path("noMr").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "     Pisa",": "+response.path("peserta").path("pisa").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "     Provider Umum",":"
+                });  
+                tabMode.addRow(new Object[]{
+                    "           Kode Cabang",": "+response.path("peserta").path("provUmum").path("kdCabang").asText()
+                });  
+                tabMode.addRow(new Object[]{
+                    "           Nama Cabang",": "+response.path("peserta").path("provUmum").path("nmCabang").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "           Kode Provider",": "+response.path("peserta").path("provUmum").path("kdProvider").asText()
+                });  
+                tabMode.addRow(new Object[]{
+                    "           Nama Provider",": "+response.path("peserta").path("provUmum").path("nmProvider").asText()
+                }); 
+                if(response.path("peserta").path("sex").asText().equals("L")){
+                    tabMode.addRow(new Object[]{
+                        "     Jenis Kelamin",": Laki-Laki"
+                    });
+                }else if(response.path("peserta").path("sex").asText().equals("P")){
+                    tabMode.addRow(new Object[]{
+                        "     Jenis Kelamin",": Perempuan"
+                    });
+                }
+                tabMode.addRow(new Object[]{
+                    "     Status Peserta",":"
+                });  
+                tabMode.addRow(new Object[]{
+                    "           Keterangan",": "+response.path("peserta").path("statusPeserta").path("keterangan").asText()
+                });  
+                tabMode.addRow(new Object[]{
+                    "           Kode",": "+response.path("peserta").path("statusPeserta").path("kode").asText()
+                });   
+                tabMode.addRow(new Object[]{
+                    "     Tanggal Cetak Kartu",": "+response.path("peserta").path("tglCetakKartu").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "     Tanggal Lahir",": "+response.path("peserta").path("tglLahir").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "     Tanggal TAT",": "+response.path("peserta").path("tglTAT").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "     Tanggal TMT",": "+response.path("peserta").path("tglTMT").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "     Umur",": "+response.path("peserta").path("umur").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Poli Rujukan",""
+                });
+                tabMode.addRow(new Object[]{
+                    "     Kode Poli",": "+response.path("poliRujukan").path("kdPoli").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "     Nama Poli",": "+response.path("poliRujukan").path("nmPoli").asText()
+                }); 
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }   
