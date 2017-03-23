@@ -18,7 +18,7 @@ import bridging.BPJSCekReferensiFaskes;
 import bridging.BPJSCekReferensiPenyakit;
 import bridging.BPJSCekReferensiPoli;
 import bridging.BPJSCekRiwayatPeserta;
-import bridging.BPJSCekRujukan;
+import bridging.BPJSCekNoRujukanPCare;
 import bridging.BPJSDataSEP;
 import bridging.BPJSMonitoringKlaim;
 import informasi.InformasiAnalisaKamin;
@@ -200,50 +200,6 @@ import setting.DlgSetHargaObatRalan;
 import setting.DlgSetHargaObatRanap;
 import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
-import simrskhanza.DlgAbout;
-import simrskhanza.DlgAbout;
-import simrskhanza.DlgCariPeriksaLab;
-import simrskhanza.DlgCariPeriksaLab;
-import simrskhanza.DlgCariPeriksaRadiologi;
-import simrskhanza.DlgCariPeriksaRadiologi;
-import simrskhanza.DlgCariTagihanOperasi;
-import simrskhanza.DlgCariTagihanOperasi;
-import simrskhanza.DlgDeposit;
-import simrskhanza.DlgDeposit;
-import simrskhanza.DlgDpjp;
-import simrskhanza.DlgDpjp;
-import simrskhanza.DlgIGD;
-import simrskhanza.DlgIGD;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgJadwal;
-import simrskhanza.DlgJadwal;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgObatPenyakit;
-import simrskhanza.DlgObatPenyakit;
-import simrskhanza.DlgPasienMati;
-import simrskhanza.DlgPasienMati;
-import simrskhanza.DlgPemberianDiet;
-import simrskhanza.DlgPemberianDiet;
-import simrskhanza.DlgPenelusuranLogin;
-import simrskhanza.DlgPenelusuranLogin;
-import simrskhanza.DlgPenggajian;
-import simrskhanza.DlgPenggajian;
-import simrskhanza.DlgResepObat;
-import simrskhanza.DlgResepObat;
-import simrskhanza.DlgResepPulang;
-import simrskhanza.DlgResepPulang;
-import simrskhanza.DlgResumePerawatan;
-import simrskhanza.DlgResumePerawatan;
-import simrskhanza.DlgRetensi;
-import simrskhanza.DlgRetensi;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRunTeks;
-import simrskhanza.DlgRunTeks;
-import simrskhanza.DlgSirkulasiBerkas;
-import simrskhanza.DlgSirkulasiBerkas;
 import smsui.frmSmsView;
 import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDMedisRusak;
@@ -525,7 +481,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnObatPerCaraBayar = new widget.ButtonBig();
         btnKunjunganRanap = new widget.ButtonBig();
         btnPaymentPoint = new widget.ButtonBig();
-        btnCekBPJSNomorRujukan = new widget.ButtonBig();
+        btnCekBPJSNomorRujukanPCare = new widget.ButtonBig();
         btnICD9 = new widget.ButtonBig();
         btnDaruratStok = new widget.ButtonBig();
         btnRetensiRM = new widget.ButtonBig();
@@ -3043,18 +2999,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPaymentPoint);
 
-        btnCekBPJSNomorRujukan.setForeground(new java.awt.Color(40, 70, 50));
-        btnCekBPJSNomorRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
-        btnCekBPJSNomorRujukan.setText("Cek Nomor Rujukan BPJS");
-        btnCekBPJSNomorRujukan.setIconTextGap(0);
-        btnCekBPJSNomorRujukan.setName("btnCekBPJSNomorRujukan"); // NOI18N
-        btnCekBPJSNomorRujukan.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnCekBPJSNomorRujukan.addActionListener(new java.awt.event.ActionListener() {
+        btnCekBPJSNomorRujukanPCare.setForeground(new java.awt.Color(40, 70, 50));
+        btnCekBPJSNomorRujukanPCare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnCekBPJSNomorRujukanPCare.setText("Cek No.Rujukan PCare");
+        btnCekBPJSNomorRujukanPCare.setIconTextGap(0);
+        btnCekBPJSNomorRujukanPCare.setName("btnCekBPJSNomorRujukanPCare"); // NOI18N
+        btnCekBPJSNomorRujukanPCare.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSNomorRujukanPCare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCekBPJSNomorRujukanActionPerformed(evt);
+                btnCekBPJSNomorRujukanPCareActionPerformed(evt);
             }
         });
-        Panelmenu.add(btnCekBPJSNomorRujukan);
+        Panelmenu.add(btnCekBPJSNomorRujukanPCare);
 
         btnICD9.setForeground(new java.awt.Color(40, 70, 50));
         btnICD9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
@@ -3558,7 +3514,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13/03/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/03/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7028,16 +6984,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         } 
     }//GEN-LAST:event_MnRekapHadir4ActionPerformed
 
-    private void btnCekBPJSNomorRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekBPJSNomorRujukanActionPerformed
+    private void btnCekBPJSNomorRujukanPCareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekBPJSNomorRujukanPCareActionPerformed
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BPJSCekRujukan form=new BPJSCekRujukan(this,false);
+        BPJSCekNoRujukanPCare form=new BPJSCekNoRujukanPCare(this,false);
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_btnCekBPJSNomorRujukanActionPerformed
+    }//GEN-LAST:event_btnCekBPJSNomorRujukanPCareActionPerformed
 
     private void btnICD9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnICD9ActionPerformed
         isTutup();
@@ -7658,7 +7614,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekBPJSFaskes;
     private widget.ButtonBig btnCekBPJSKartu;
     private widget.ButtonBig btnCekBPJSNik;
-    private widget.ButtonBig btnCekBPJSNomorRujukan;
+    private widget.ButtonBig btnCekBPJSNomorRujukanPCare;
     private widget.ButtonBig btnCekBPJSPoli;
     private widget.ButtonBig btnCekBPJSRiwayat;
     private widget.ButtonBig btnClosingKasir;
@@ -8721,7 +8677,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }
             
             if(var.getbpjs_cek_nomor_rujukan()==true){
-                Panelmenu.add(btnCekBPJSNomorRujukan);
+                Panelmenu.add(btnCekBPJSNomorRujukanPCare);
                 jmlmenu++;
             }
             

@@ -82,7 +82,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[H]Fee Visit Dokter","[H]Fee Bacaan EKG","[H]Fee Rujukan Rontgen","[H]Fee Rujukan Ranap","[H]Fee Periksa Ralan","[J]Akun Bayar","[J]Bayar Pesan Obat",
                     "[H]Obat Per Dokter Peresep","[E]Jenis Non Medis","[J]Pemasukkan Lain-Lain","[J]Pengaturan Rekening","[N]Closing Kasir","[N]Set Keterlambatan Presensi",
                     "[N]Set Harga Kamar","[N]Rekap Per Shift","[K]Cek NIK","[K]Cek No.Kartu","[K]Riwayat Peserta","[H]Obat Per Cara Bayar","[I]Kunjungan Ranap",
-                    "[J]Bayar Piutang","[H]Payment Point","[K]Cek No.Rujukan","[I]ICD 9","[D]Darurat Stok","[L]Retensi Data R.M.","[C]Temporary Presensi",
+                    "[J]Bayar Piutang","[H]Payment Point","[K]Cek No.Rujukan Pcare","[I]ICD 9","[D]Darurat Stok","[L]Retensi Data R.M.","[C]Temporary Presensi",
                     "[J]Jurnal Harian","[D]Sirkulasi Obat, Alkes & BHP 2","[A]Edit Registrasi","[K]Referensi Diagnosa","[K]Referensi Poli","[D]Industri Farmasi",
                     "[H]Harian J.S.","[H]Bulanan J.S.","[H]Harian BHP Medis/Paket Obat","[H]Bulanan BHP Medis/Paket Obat","[J]Piutang Belum Lunas","[K]Referensi Faskes",
                     "[K]Data Bridging SEP","[D]Pengambilan BHP UTD","[J]Tarif UTD","[M]Pengambilan BHP Medis","[M]BHP Medis Rusak","[E]Pengambilan UTD","[M]Pengambilan BHP Non Medis",
