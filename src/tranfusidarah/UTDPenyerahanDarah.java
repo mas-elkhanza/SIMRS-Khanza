@@ -45,6 +45,7 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
     private double[] harga,biaya;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private WarnaTable2 warna=new WarnaTable2();
+    private UTDCariPenyerahanDarah carijual=new UTDCariPenyerahanDarah(null,false);
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -1136,7 +1137,13 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
 }//GEN-LAST:event_tbDarahKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        carijual.emptTeks();      
+        carijual.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        carijual.setLocationRelativeTo(internalFrame1);
+        carijual.setAlwaysOnTop(false);
+        carijual.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed

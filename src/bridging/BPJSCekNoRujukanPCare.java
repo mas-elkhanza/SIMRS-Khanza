@@ -75,7 +75,8 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-              
+        ChkCari.setSelected(false);
+        isForm();
     }
     
     
@@ -92,6 +93,9 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
+        PanelInput = new javax.swing.JPanel();
+        panelCari = new widget.panelisi();
+        ChkCari = new widget.CekBox();
         panelGlass6 = new widget.panelisi();
         jLabel16 = new widget.Label();
         NoRujukan = new widget.TextBox();
@@ -119,6 +123,37 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         Scroll.setViewportView(tbKamar);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
+
+        PanelInput.setName("PanelInput"); // NOI18N
+        PanelInput.setOpaque(false);
+        PanelInput.setPreferredSize(new java.awt.Dimension(200, 462));
+        PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
+
+        panelCari.setName("panelCari"); // NOI18N
+        panelCari.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 7));
+        PanelInput.add(panelCari, java.awt.BorderLayout.CENTER);
+
+        ChkCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkCari.setMnemonic('I');
+        ChkCari.setText("  .: Input Registrasi");
+        ChkCari.setToolTipText("Alt+I");
+        ChkCari.setBorderPainted(true);
+        ChkCari.setBorderPaintedFlat(true);
+        ChkCari.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ChkCari.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkCari.setIconTextGap(2);
+        ChkCari.setName("ChkCari"); // NOI18N
+        ChkCari.setPreferredSize(new java.awt.Dimension(632, 22));
+        ChkCari.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkCari.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkCari.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkCariActionPerformed(evt);
+            }
+        });
+        PanelInput.add(ChkCari, java.awt.BorderLayout.PAGE_START);
 
         panelGlass6.setName("panelGlass6"); // NOI18N
         panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
@@ -190,7 +225,9 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         });
         panelGlass6.add(BtnKeluar);
 
-        internalFrame1.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
+        PanelInput.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
+
+        internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -259,6 +296,10 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnCariKeyPressed
 
+    private void ChkCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkCariActionPerformed
+       isForm();
+    }//GEN-LAST:event_ChkCariActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -279,11 +320,14 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.CekBox ChkCari;
     private widget.TextBox NoRujukan;
+    private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
+    private widget.panelisi panelCari;
     private widget.panelisi panelGlass6;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
@@ -494,4 +538,13 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         }
     }    
  
+    private void isForm(){
+        if(ChkCari.isSelected()==true){
+            panelCari.setVisible(true);
+            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-30));
+        }else if(ChkCari.isSelected()==false){           
+            panelCari.setVisible(false);      
+            PanelInput.setPreferredSize(new Dimension(WIDTH,77));
+        }
+    }
 }

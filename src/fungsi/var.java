@@ -985,6 +985,7 @@ public final class var {
     public static boolean getpengadaan_obat(){return var.pengadaan_obat;} 
     public static boolean getpemesanan_obat(){return var.pemesanan_obat;} 
     public static boolean getpenjualan_obat(){return var.penjualan_obat;} 
+    public static void setpenjualan_obatfalse(){var.penjualan_obat=false;} 
     public static boolean getpiutang_obat(){return var.piutang_obat;} 
     public static boolean getretur_ke_suplier(){return var.retur_ke_suplier;} 
     public static boolean getretur_dari_pembeli(){return var.retur_dari_pembeli;} 
@@ -1169,7 +1170,8 @@ public final class var {
     public static boolean getkeuntungan_beri_obat_nonpiutang(){return var.keuntungan_beri_obat_nonpiutang;}  
     public static boolean getreklasifikasi_ralan(){return var.reklasifikasi_ralan;}  
     public static boolean getreklasifikasi_ranap(){return var.reklasifikasi_ranap;}  
-    public static boolean getutd_penyerahan_darah(){return var.utd_penyerahan_darah;}  
+    public static boolean getutd_penyerahan_darah(){return var.utd_penyerahan_darah;} 
+    public static void setutd_penyerahan_darahfalse(){var.utd_penyerahan_darah=false;} 
     public static boolean gethutang_obat(){return var.hutang_obat;}  
     public static boolean getriwayat_obat_alkes_bhp(){return var.riwayat_obat_alkes_bhp;}
 }

@@ -201,6 +201,7 @@ import setting.DlgSetHargaObatRanap;
 import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
 import smsui.frmSmsView;
+import tranfusidarah.UTDCariPenyerahanDarah;
 import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDMedisRusak;
 import tranfusidarah.UTDCekalDarah;
@@ -523,6 +524,7 @@ public class frmUtama extends javax.swing.JFrame {
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
+        btnDataPenyerahanDarah = new widget.ButtonBig();
         internalFrame1 = new widget.InternalFrame();
         BtnMenu = new widget.ButtonBig();
         jSeparator4 = new javax.swing.JSeparator();
@@ -3543,6 +3545,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
+        btnDataPenyerahanDarah.setForeground(new java.awt.Color(40, 70, 50));
+        btnDataPenyerahanDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kwrite.png"))); // NOI18N
+        btnDataPenyerahanDarah.setText("Data Penyerahan Darah");
+        btnDataPenyerahanDarah.setIconTextGap(0);
+        btnDataPenyerahanDarah.setName("btnDataPenyerahanDarah"); // NOI18N
+        btnDataPenyerahanDarah.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataPenyerahanDarah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataPenyerahanDarahActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("::[ Khanza Hospital Management System 2017 ]::");
         setIconImages(null);
@@ -3744,7 +3758,6 @@ public class frmUtama extends javax.swing.JFrame {
         BtnToolJualObat.setMnemonic('j');
         BtnToolJualObat.setText("Penjualan");
         BtnToolJualObat.setToolTipText("Alt+J");
-        BtnToolJualObat.setEnabled(false);
         BtnToolJualObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnToolJualObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         BtnToolJualObat.setIconTextGap(3);
@@ -4401,9 +4414,12 @@ public class frmUtama extends javax.swing.JFrame {
     private void BtnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLogActionPerformed
         try{
             com.sun.awt.AWTUtilities.setWindowOpacity(DlgLogin,0.7f);
-        }catch(Exception e){
-            
+        }catch(Exception e){            
         }
+        FlayMenu.setVisible(false);
+        var.setpenjualan_obatfalse();
+        var.setpenjualan_obatfalse();
+        var.setutd_penyerahan_darahfalse();
         
         switch (BtnLog.getText().trim()) {
             case "Log Out":
@@ -4413,7 +4429,6 @@ public class frmUtama extends javax.swing.JFrame {
                 btnToolLab.setEnabled(false);
                 btnToolRad.setEnabled(false);
                 btnToolIGD.setEnabled(false);
-                BtnToolJualObat.setEnabled(false);
                 MnGantiPassword.setEnabled(false);
                 btnToolBcdRalan.setEnabled(false);
                 btnToolBcdRanap.setEnabled(false);
@@ -4451,7 +4466,6 @@ public class frmUtama extends javax.swing.JFrame {
                     btnToolRad.setEnabled(true);
                     btnToolBcdRalan.setEnabled(true);
                     btnToolBcdRanap.setEnabled(true);
-                    BtnToolJualObat.setEnabled(true);
                     MnGantiPassword.setEnabled(false);
 
                     DlgLogin.dispose();
@@ -4469,7 +4483,6 @@ public class frmUtama extends javax.swing.JFrame {
                     btnToolRad.setEnabled(true);
                     btnToolBcdRalan.setEnabled(true);
                     btnToolBcdRanap.setEnabled(true);
-                    BtnToolJualObat.setEnabled(true);
                     MnGantiPassword.setEnabled(false);
 
                     DlgLogin.dispose();
@@ -4492,8 +4505,7 @@ public class frmUtama extends javax.swing.JFrame {
                     btnToolRad.setEnabled(var.getperiksa_radiologi());
                     btnToolIGD.setEnabled(var.getigd());                    
                     btnToolBcdRalan.setEnabled(var.getbarcoderalan());
-                    btnToolBcdRanap.setEnabled(var.getbarcoderanap());                    
-                    BtnToolJualObat.setEnabled(var.getpenjualan_obat());
+                    btnToolBcdRanap.setEnabled(var.getbarcoderanap());   
                     Sequel.menyimpan("tracker","'"+edAdmin.getText()+"',current_date(),current_time()","Login");
                 }else if((var.getjml1()==0)&&(var.getjml2()==0)){
                     JOptionPane.showMessageDialog(null,"Maaf, Gagal login. ID User atau password ada yang salah ...!");
@@ -4505,8 +4517,7 @@ public class frmUtama extends javax.swing.JFrame {
                     btnToolIGD.setEnabled(false);
                     btnToolRad.setEnabled(false);
                     btnToolBcdRalan.setEnabled(false);
-                    btnToolBcdRanap.setEnabled(false);                    
-                    BtnToolJualObat.setEnabled(false);
+                    btnToolBcdRanap.setEnabled(false);   
                     edAdmin.setText("");
                     edPwd.setText("");           
                      
@@ -7203,6 +7214,10 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         FlayMenu.removeAll();
         FlayMenu.add(btnInputPenjualan);
         FlayMenu.add(btnDataPenjualan);
+        FlayMenu.add(btnDataPenyerahanDarah);
+        btnInputPenjualan.setEnabled(var.getpenjualan_obat());
+        btnDataPenjualan.setEnabled(var.getpenjualan_obat());
+        btnDataPenyerahanDarah.setEnabled(var.getutd_penyerahan_darah());
         FlayMenu.setVisible(true);       
     }//GEN-LAST:event_BtnToolJualObatActionPerformed
 
@@ -7542,6 +7557,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnDataPenjualanActionPerformed
 
+    private void btnDataPenyerahanDarahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataPenyerahanDarahActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        UTDCariPenyerahanDarah carijual=new UTDCariPenyerahanDarah(null,false);
+        carijual.emptTeks();      
+        carijual.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        carijual.setLocationRelativeTo(internalFrame1);
+        carijual.setAlwaysOnTop(false);
+        carijual.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnDataPenyerahanDarahActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7620,6 +7646,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnClosingKasir;
     private widget.ButtonBig btnDaruratStok;
     private widget.ButtonBig btnDataPenjualan;
+    private widget.ButtonBig btnDataPenyerahanDarah;
     private widget.ButtonBig btnDeposit;
     private widget.ButtonBig btnDiagnosa;
     private widget.ButtonBig btnDiet;
