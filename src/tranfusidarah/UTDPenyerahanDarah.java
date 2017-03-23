@@ -1369,7 +1369,7 @@ private void kdptgpjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_k
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             Sequel.cariIsi("select nama from petugas where nip=?",nmptgpj,kdptgpj.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPtgCrossActionPerformed(null);
+            btnPtgPJActionPerformed(null);
         }else{
             Valid.pindah(evt,kdptgcross,nmpengambil);
         }
