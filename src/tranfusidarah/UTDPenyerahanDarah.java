@@ -39,8 +39,10 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
             "select verifikasi_penyerahan_darah_di_kasir from set_nota"),status="Belum Dibayar";
     private PreparedStatement ps,ps2,psstok,psdarah;
     private ResultSet rs,rs2,rsstok,rsdarah;
-    private String[] kodebarang,namabarang,kategori,satuan,jumlah,stokasal,hbeli,total;
-    private double[] harga;
+    private boolean[] pilihan;
+    private String[] kodebarang,namabarang,kategori,satuan,jumlah,stokasal,hbeli,total,
+            nokantung,komponen,gd,resus,aftap,kadaluarsa,asaldarah,satatus,js,bhp,kso,menejemen;
+    private double[] harga,biaya;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private WarnaTable2 warna=new WarnaTable2();
 
@@ -1153,7 +1155,108 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        
+        if(nopenyerahan.getText().trim().equals("")){
+            Valid.textKosong(nopenyerahan,"No.Penyerahan");
+        }else if(keterangan.getText().trim().equals("")){
+            Valid.textKosong(keterangan,"Keterangan");
+        }else if(CmbAkun.getSelectedItem().toString().trim().equals("")){
+            Valid.textKosong(CmbAkun,"Akun Bayar");
+        }else if(kdptgcross.getText().trim().equals("")||nmptgcross.getText().trim().equals("")){
+            Valid.textKosong(kdptgcross,"Petugas Cross");
+        }else if(kdptgpj.getText().trim().equals("")||nmptgcross.getText().trim().equals("")){
+            Valid.textKosong(kdptgpj,"Petugas P.J.");
+        }else if(nmpengambil.getText().trim().equals("")){
+            Valid.textKosong(nmpengambil,"Pengambil Darah");
+        }else if(alamatpengambil.getText().trim().equals("")){
+            Valid.textKosong(alamatpengambil,"Alamat Pengambil Darah");
+        }else if(ttl<=0){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan data penyerahan darah...!!!!");
+            TCari.requestFocus();
+        }else{
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+                if(verifikasi_penyerahan_darah_di_kasir.equals("No")){
+                    status="Sudah Dibayar";
+                }else{
+                    status="Belum Dibayar";
+                }
+                if(Sequel.menyimpantf("utd_penyerahan_darah","?,?,?,?,?,?,?,?,?,?","No.Penyerahan", 10,new String[]{
+                    nopenyerahan.getText(),Valid.SetTgl(tanggal.getSelectedItem()+""),dinas.getSelectedItem().toString(),
+                    kdptgcross.getText(),keterangan.getText(),status,Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),
+                    nmpengambil.getText(),alamatpengambil.getText(),kdptgpj.getText()
+                   })==true){
+                    Sequel.AutoComitFalse();
+                    //simpan darah
+                    for(i=0;i<tbDarah.getRowCount();i++){ 
+                        if(tbDarah.getValueAt(i,0).toString().equals("true")){
+                            if(Sequel.menyimpantf("utd_penyerahan_darah_detail","?,?,?,?,?,?,?","No.Kantung",7,new String[]{
+                                nopenyerahan.getText(),tbDarah.getValueAt(i,1).toString(),tbDarah.getValueAt(i,9).toString(),
+                                tbDarah.getValueAt(i,10).toString(),tbDarah.getValueAt(i,11).toString(),
+                                tbDarah.getValueAt(i,12).toString(),tbDarah.getValueAt(i,13).toString()
+                               })==false){
+                                tbDarah.setValueAt(false,i,0); 
+                                getData();
+                            }else{
+                                Sequel.mengedit("utd_stok_darah","no_kantong='"+tbDarah.getValueAt(i,1).toString()+"'","status='Diambil'");
+                                tbDarah.setValueAt(false,i,0); 
+                            }
+                        }
+                    }
+                    //simpan bhp medis
+                    for(i=0;i<tbMedis.getRowCount();i++){  
+                        try {
+                            if(Valid.SetAngka(tbMedis.getValueAt(i,0).toString())>0){
+                                if(Sequel.menyimpantf2("utd_penggunaan_medis_penyerahan_darah","?,?,?,?,?","BHP Medis",5,new String[]{
+                                    nopenyerahan.getText(),tbMedis.getValueAt(i,1).toString(),tbMedis.getValueAt(i,0).toString(),tbMedis.getValueAt(i,3).toString(),
+                                    Double.toString(Double.parseDouble(tbMedis.getValueAt(i,0).toString())*Double.parseDouble(tbMedis.getValueAt(i,3).toString()))
+                                  })==true){
+                                    if(verifikasi_penyerahan_darah_di_kasir.equals("No")){
+                                        Sequel.menyimpan("utd_stok_medis","'"+tbMedis.getValueAt(i,1).toString()+"','-"+tbMedis.getValueAt(i,0).toString()+"','"+tbMedis.getValueAt(i,3).toString()+"'", 
+                                            "stok=stok-"+tbMedis.getValueAt(i,0).toString()+"","kode_brng='"+tbMedis.getValueAt(i,1).toString()+"'");
+                                    }                                        
+                                    tbMedis.setValueAt("",i,0);        
+                                    tbMedis.setValueAt(0,i,4);
+                                }   
+                            }                                
+                        } catch (Exception e) {
+                        }                    
+                    }
+                    //simpan bhp non medis
+                    for(i=0;i<tbNonMedis.getRowCount();i++){  
+                        try {
+                            if(Valid.SetAngka(tbNonMedis.getValueAt(i,0).toString())>0){
+                                if(Sequel.menyimpantf2("utd_penggunaan_penunjang_penyerahan_darah","?,?,?,?,?","BHP Non Medis",5,new String[]{
+                                     nopenyerahan.getText(),tbNonMedis.getValueAt(i,1).toString(),tbNonMedis.getValueAt(i,0).toString(),tbNonMedis.getValueAt(i,3).toString(),
+                                     Double.toString(Double.parseDouble(tbNonMedis.getValueAt(i,0).toString())*Double.parseDouble(tbNonMedis.getValueAt(i,3).toString()))
+                                 })==true){
+                                    if(verifikasi_penyerahan_darah_di_kasir.equals("No")){
+                                        Sequel.menyimpan("utd_stok_penunjang","'"+tbNonMedis.getValueAt(i,1).toString()+"','-"+tbNonMedis.getValueAt(i,0).toString()+"','"+tbNonMedis.getValueAt(i,3).toString()+"'", 
+                                             "stok=stok-"+tbNonMedis.getValueAt(i,0).toString()+"","kode_brng='"+tbNonMedis.getValueAt(i,1).toString()+"'");
+                                    }                                    
+                                    tbNonMedis.setValueAt("",i,0);        
+                                    tbNonMedis.setValueAt(0,i,4);
+                                }   
+                            }                                
+                        } catch (Exception e) {
+                        }                    
+                    }
+
+                    if(verifikasi_penyerahan_darah_di_kasir.equals("No")){
+                        Sequel.queryu("delete from tampjurnal");                    
+                        Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Penyerahan_Darah from set_akun")+"','PENJUALAN DARAH UTD','0','"+ttl+"'","Rekening");    
+                        Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())+"','CARA BAYAR','"+ttl+"','0'","Rekening"); 
+                        jur.simpanJurnal(nopenyerahan.getText(),Valid.SetTgl(tanggal.getSelectedItem()+""),"U","PENJUALAN DARAH DI UTD ");                                                
+                        Sequel.menyimpan("tagihan_sadewa","'"+nopenyerahan.getText()+"','-','"+nmpengambil.getText()+"','-',concat('"+Valid.SetTgl(tanggal.getSelectedItem()+"")+
+                                "',' ',CURTIME()),'Pelunasan','"+ttl+"','"+ttl+"','Sudah'","No.Nota");
+                    }
+                    Sequel.AutoComitTrue();
+                    tampil();
+                    tampilMedis();
+                    tampilNonMedis();
+                    emptTeks();
+                }
+            }
+        }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -1276,7 +1379,7 @@ private void btnPtgCrossActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_btnPtgCrossActionPerformed
 
 private void btnPtgPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPtgPJActionPerformed
-        pilih=1;
+        pilih=2;
         petugas.emptTeks();
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
@@ -1311,7 +1414,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_ppBersihkanActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        TCari.requestFocus();
+        emptTeks();
+        keterangan.requestFocus();
         tampil();
         tampilMedis();
         tampilNonMedis();
@@ -1610,9 +1714,76 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Table tbNonMedis;
     // End of variables declaration//GEN-END:variables
 
-    private void tampil() {
-        Valid.tabelKosong(tabMode);
+    private void tampil() {        
         try {
+            jml=0;
+            for(i=0;i<tbDarah.getRowCount();i++){
+                if(tbDarah.getValueAt(i,0).toString().equals("true")){
+                    jml++;
+                }
+            }
+
+            pilihan=null;
+            nokantung=null; 
+            komponen=null;
+            gd=null;
+            resus=null;
+            aftap=null;
+            kadaluarsa=null;
+            asaldarah=null;
+            satatus=null;
+            js=null;
+            bhp=null;
+            kso=null;
+            menejemen=null;
+            biaya=null;
+            
+            pilihan=new boolean[jml];
+            nokantung=new String[jml];
+            komponen=new String[jml];
+            gd=new String[jml];
+            resus=new String[jml];
+            aftap=new String[jml];
+            kadaluarsa=new String[jml];
+            asaldarah=new String[jml];
+            satatus=new String[jml];
+            js=new String[jml];
+            bhp=new String[jml];
+            kso=new String[jml];
+            menejemen=new String[jml];
+            biaya=new double[jml];
+            
+            index=0;        
+            for(i=0;i<tbDarah.getRowCount();i++){
+                if(tbDarah.getValueAt(i,0).toString().equals("true")){
+                    pilihan[index]=true;                            
+                    nokantung[index]=tbDarah.getValueAt(i,1).toString();
+                    komponen[index]=tbDarah.getValueAt(i,2).toString();
+                    gd[index]=tbDarah.getValueAt(i,3).toString();
+                    resus[index]=tbDarah.getValueAt(i,4).toString();
+                    aftap[index]=tbDarah.getValueAt(i,5).toString();
+                    kadaluarsa[index]=tbDarah.getValueAt(i,6).toString();
+                    asaldarah[index]=tbDarah.getValueAt(i,7).toString();
+                    satatus[index]=tbDarah.getValueAt(i,8).toString();
+                    js[index]=tbDarah.getValueAt(i,9).toString();
+                    bhp[index]=tbDarah.getValueAt(i,10).toString();
+                    kso[index]=tbDarah.getValueAt(i,11).toString();
+                    menejemen[index]=tbDarah.getValueAt(i,12).toString();
+                    biaya[index]=Double.parseDouble(tbDarah.getValueAt(i,13).toString());
+                    index++;
+                }
+            } 
+            
+            Valid.tabelKosong(tabMode);
+            
+            for(i=0;i<jml;i++){
+                tabMode.addRow(new Object[] {
+                    pilihan[i],nokantung[i],komponen[i],gd[i],resus[i],
+                    aftap[i],kadaluarsa[i],asaldarah[i],satatus[i],js[i],
+                    bhp[i],kso[i],menejemen[i],biaya[i]
+                });
+            }
+            
             psdarah=koneksi.prepareStatement(
                     "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+
                     "utd_stok_darah.golongan_darah,utd_stok_darah.resus,"+
@@ -1858,25 +2029,30 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         LKembali.setText(Valid.SetAngka(bayar-tagihanppn));     
     }
     
-    public void isCek(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,6),signed)),0) from penjualan ","PJ",6,nopenyerahan); 
+    public void isCek(){        
         TCari.requestFocus();        
+        BtnSimpan.setEnabled(var.getutd_penyerahan_darah());
+        BtnTambah.setEnabled(var.getutd_stok_darah());
         if(var.getjml2()>=1){
             kdptgpj.setEditable(false);
             btnPtgPJ.setEnabled(false);
-            BtnSimpan.setEnabled(var.getutd_penyerahan_darah());
-            BtnTambah.setEnabled(var.getutd_stok_darah());
             kdptgpj.setText(var.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", nmptgpj,kdptgpj.getText());
         }      
     }
     
-    public void setPasien(String norm){
-        kdptgcross.setText(norm);
-        Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmptgcross,kdptgcross.getText());
+    private void emptTeks(){
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,6),signed)),0) from penjualan ","PJ",6,nopenyerahan); 
+        keterangan.setText("");
+        kdptgcross.setText("");
+        nmptgcross.setText("");
+        keterangan.requestFocus();
+        ttl=0;
+        besarppn=0;
+        TagihanPPn.setText("0");
+        LTotal.setText("0");
+        BesarPPN.setText("0");
+        LKembali.setText("0");
     }
-    
-    
-
  
 }

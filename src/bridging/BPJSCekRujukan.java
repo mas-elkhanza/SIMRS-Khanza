@@ -12,6 +12,8 @@
 
 package bridging;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import java.awt.Dimension;
 import javax.swing.JTable;
@@ -67,13 +69,13 @@ public final class BPJSCekRujukan extends javax.swing.JDialog {
         for (int i = 0; i < 4; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(150);
             }else if(i==1){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(150);
             }else if(i==2){
-                column.setPreferredWidth(210);
+                column.setPreferredWidth(200);
             }else if(i==3){
-                column.setPreferredWidth(360);
+                column.setPreferredWidth(250);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -300,7 +302,7 @@ public final class BPJSCekRujukan extends javax.swing.JDialog {
         BPJSApi api=new BPJSApi();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/RS/"+nomorrujukan;	
+            String URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/"+nomorrujukan;	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -312,68 +314,74 @@ public final class BPJSCekRujukan extends javax.swing.JDialog {
 	    RestTemplate rest = new RestTemplate();	
             
             System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            /*ObjectMapper mapper = new ObjectMapper();
+            ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metadata");
-            System.out.println("code : "+nameNode.path("code").asText());
-            System.out.println("message : "+nameNode.path("message").asText());
-            if(nameNode.path("message").asText().equals("Peserta Tidak Ditemukan")){
-                JOptionPane.showMessageDialog(rootPane,"Peserta Tidak Ditemukan");
-                BtnKeluar.requestFocus();
-            }else if(nameNode.path("message").asText().equals("OK")){
-                JsonNode response = root.path("response");
+            //System.out.println("code : "+nameNode.path("code").asText());
+            //System.out.println("message : "+nameNode.path("message").asText());
+            if(nameNode.path("message").asText().equals("OK")){
+                Valid.tabelKosong(tabMode);
+                JsonNode response = root.path("response").path("item");
                 tabMode.addRow(new Object[]{
-                    "Count",": "+response.path("count").asText(),"",""
-                });
+                    "Catatan",": "+response.path("catatan").asText(),"",""
+                });                 
                 tabMode.addRow(new Object[]{
-                    "Limit",": "+response.path("limit").asText(),"",""
+                    "Diagnosa :"," ","",""
+                });               
+                tabMode.addRow(new Object[]{
+                    "    Kode Diagnosa",": "+response.path("diagnosa").path("kdDiag").asText(),"",""
+                });               
+                tabMode.addRow(new Object[]{
+                    "    Nama Diagnosa",": "+response.path("diagnosa").path("nmDiag").asText(),"",""
+                }); 
+                tabMode.addRow(new Object[]{
+                    "Keluhan",": "+response.path("keluhan").asText(),"",""
+                });     
+                tabMode.addRow(new Object[]{
+                    "No.Kunjungan",": "+response.path("noKunjungan").asText(),"",""
+                });     
+                tabMode.addRow(new Object[]{
+                    "Pemeriksaan Fisik Lain",": "+response.path("pemFisikLain").asText(),"",""
+                });     
+                tabMode.addRow(new Object[]{
+                    "Peserta : ","","",""
                 });  
                 tabMode.addRow(new Object[]{
-                    "List",":","",""
-                });
-                if(response.path("list").isArray()){
-                    i=1;
-                    for(JsonNode list:response.path("list")){
-                        tabMode.addRow(new Object[]{
-                            "",i+". Biaya Tagihan",": Rp. "+Valid.SetAngka(Double.parseDouble(list.path("biayaTagihan").asText())),""
-                        });
-                        tabMode.addRow(new Object[]{
-                            "","     Diagnosa",":",""
-                        });
-                        tabMode.addRow(new Object[]{
-                            "","","  Kode Diagnosa",": "+list.path("diagnosa").path("kodeDiagnosa").asText()
-                        });
-                        tabMode.addRow(new Object[]{
-                            "","","  Nama Diagnosa",": "+list.path("diagnosa").path("namaDiagnosa").asText()
-                        });
-                        tabMode.addRow(new Object[]{
-                            "","     Jenis Pelayanan",": "+list.path("jnsPelayanan").asText(),""
-                        });
-                        tabMode.addRow(new Object[]{
-                            "","     Nomor SEP",": "+list.path("noSEP").asText(),""
-                        });
-                        tabMode.addRow(new Object[]{
-                            "","     Poli Tujuan",":",""
-                        });
-                        tabMode.addRow(new Object[]{
-                            "","","  Kode Poli",": "+list.path("poliTujuan").path("kdPoli").asText()
-                        });
-                        tabMode.addRow(new Object[]{
-                            "","","  Nama Poli",": "+list.path("poliTujuan").path("nmPoli").asText()
-                        });
-                        tabMode.addRow(new Object[]{
-                            "","     Tanggal Pulang",": "+list.path("tglPulang").asText(),""
-                        });
-                        tabMode.addRow(new Object[]{
-                            "","     Tanggal SEP",": "+list.path("tglSEP").asText(),""
-                        });
-                        i++;
-                    }
-                }
+                    "    Informasi :","","",""
+                });  
                 tabMode.addRow(new Object[]{
-                    "Start",": "+response.path("start").asText(),"",""
-                });
-            }   */
+                    "","Dinsos",":"+response.path("peserta").path("informasi").path("dinsos").asText(),""
+                });  
+                tabMode.addRow(new Object[]{
+                    "","Iuran",":"+response.path("peserta").path("informasi").path("iuran").asText(),""
+                }); 
+                tabMode.addRow(new Object[]{
+                    "","No.SKTM",":"+response.path("peserta").path("informasi").path("noSKTM").asText(),""
+                }); 
+                tabMode.addRow(new Object[]{
+                    "","Prolanis PRB",":"+response.path("peserta").path("informasi").path("prolanisPRB").asText(),""
+                }); 
+                tabMode.addRow(new Object[]{
+                    "","Jenis Peserta",":",""
+                });  
+                tabMode.addRow(new Object[]{
+                    "","","Kode Jenis Peserta",":"+response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText()
+                });  
+                tabMode.addRow(new Object[]{
+                    "","","Nama Jenis Peserta",":"+response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "","Kelas Tanggungan",":",""
+                });  
+                tabMode.addRow(new Object[]{
+                    "","","Kode Kelas",":"+response.path("peserta").path("kelasTanggungan").path("kdKelas").asText()
+                });  
+                tabMode.addRow(new Object[]{
+                    "","","Nama Kelas",":"+response.path("peserta").path("kelasTanggungan").path("nmKelas").asText()
+                });  
+            }else {
+                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+            }   
         } catch (Exception ex) {
             System.out.println("Notifikasi Peserta : "+ex);
             if(ex.toString().contains("UnknownHostException")){
