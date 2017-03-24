@@ -964,7 +964,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                if(Sequel.menyimpantf("returjual","'"+NoRetur.getText()+"','"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"','"+Kdptg.getText()+"','"+kdmem.getText()+"','"+kdgudang.getText()+"'","data")==true){
+                if(Sequel.menyimpantf2("returjual","'"+NoRetur.getText()+"','"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"','"+Kdptg.getText()+"','"+kdmem.getText()+"','"+kdgudang.getText()+"'","data")==true){
                     try {
                         ps=koneksi.prepareStatement("select nota_jual, kode_brng, satuan, jml_jual, h_jual, jml_retur, h_retur,  subtotal from tampreturjual");
                         try {
@@ -999,6 +999,45 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }                            
                     } catch (Exception e) {
                         System.out.println("Notifikasi Tampil : "+e);
+                    }
+                }else{
+                    int konfirm = JOptionPane.showConfirmDialog(rootPane,"No.Faktur sudah ada sebelumnya,\napa data mau ditambahkan ke No.Retur tersebut..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                    if (konfirm == JOptionPane.YES_OPTION) {
+                        try {
+                            ps=koneksi.prepareStatement("select nota_jual, kode_brng, satuan, jml_jual, h_jual, jml_retur, h_retur,  subtotal from tampreturjual");
+                            try {
+                                rs=ps.executeQuery();
+                                while(rs.next()){
+                                    if(Sequel.menyimpantf("detreturjual","?,?,?,?,?,?,?,?,?","data barang sama",9,new String[]{
+                                        NoRetur.getText(),rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                                        rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
+                                    })==true){
+                                        Trackobat.catatRiwayat(rs.getString(2),rs.getDouble(6),0,"Retur Jual",var.getkode(),kdgudang.getText(),"Simpan");
+                                        Sequel.menyimpan("gudangbarang","'"+rs.getString(2)+"','"+kdgudang.getText()+"','"+rs.getString(6)+"'", 
+                                                   "stok=stok+'"+rs.getString(6)+"'","kode_brng='"+rs.getString(2)+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                                    }                                
+                                }                    
+
+                                if(!formvalid.equals("No")){
+                                    Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Retur_Dari_pembeli from set_akun")+"','RETUR PENJUALAN','"+ttlretur+"','0'","Rekening");    
+                                    Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Kontra_Retur_Dari_Pembeli from set_akun")+"','KAS DI TANGAN','0','"+ttlretur+"'","Rekening"); 
+                                    jur.simpanJurnal(NoRetur.getText(),Valid.SetTgl(TglRetur.getSelectedItem()+""),"U","RETUR PENJUALAN DI "+nmgudang.getText().toUpperCase());
+                                }
+
+                                BtnBatalActionPerformed(evt);                       
+                            } catch (Exception e) {
+                                System.out.println("Notif Tampil Temp : "+e);
+                            } finally{
+                                if(rs!=null){
+                                    rs.close();
+                                }
+                                if(ps!=null){
+                                    ps.close();
+                                }
+                            }                            
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi Tampil : "+e);
+                        }
                     }
                 }
             }

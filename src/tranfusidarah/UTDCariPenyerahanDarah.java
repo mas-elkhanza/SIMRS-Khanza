@@ -810,6 +810,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
+        //"No.Penyerahan","Tanggal","Dinas","Petugas Cross","Keterangan","Status",
+            //"Pengambil Darah","Alamat Pengambil Darah","Petugas P.J."
        
         
     }
