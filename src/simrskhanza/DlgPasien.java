@@ -455,6 +455,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLaporanRM1 = new javax.swing.JMenuItem();
         MnLaporanRM2 = new javax.swing.JMenuItem();
         MnFormulirPendaftaran = new javax.swing.JMenuItem();
+        MnSCreening = new javax.swing.JMenuItem();
         MnLaporanIGD = new javax.swing.JMenuItem();
         MnLembarKeluarMasuk = new javax.swing.JMenuItem();
         MnLembarAnamNesa = new javax.swing.JMenuItem();
@@ -871,7 +872,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLaporanRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLaporanRM.setText("Lembar Rawat Jalan Model 1");
         MnLaporanRM.setName("MnLaporanRM"); // NOI18N
-        MnLaporanRM.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnLaporanRM.setPreferredSize(new java.awt.Dimension(300, 28));
         MnLaporanRM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLaporanRMActionPerformed(evt);
@@ -885,7 +886,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLaporanRM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLaporanRM1.setText("Lembar Rawat Jalan Model 2");
         MnLaporanRM1.setName("MnLaporanRM1"); // NOI18N
-        MnLaporanRM1.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnLaporanRM1.setPreferredSize(new java.awt.Dimension(300, 28));
         MnLaporanRM1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLaporanRM1ActionPerformed(evt);
@@ -899,7 +900,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLaporanRM2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLaporanRM2.setText("Lembar Rawat Jalan Model 3");
         MnLaporanRM2.setName("MnLaporanRM2"); // NOI18N
-        MnLaporanRM2.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnLaporanRM2.setPreferredSize(new java.awt.Dimension(300, 28));
         MnLaporanRM2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLaporanRM2ActionPerformed(evt);
@@ -913,7 +914,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnFormulirPendaftaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnFormulirPendaftaran.setText("Formulir Pendaftaran Pasien");
         MnFormulirPendaftaran.setName("MnFormulirPendaftaran"); // NOI18N
-        MnFormulirPendaftaran.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnFormulirPendaftaran.setPreferredSize(new java.awt.Dimension(300, 28));
         MnFormulirPendaftaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnFormulirPendaftaranActionPerformed(evt);
@@ -921,13 +922,27 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         jMenu1.add(MnFormulirPendaftaran);
 
+        MnSCreening.setBackground(new java.awt.Color(255, 255, 255));
+        MnSCreening.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSCreening.setForeground(new java.awt.Color(60, 80, 50));
+        MnSCreening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSCreening.setText("Lembar Screening Awal Pasien Rawat Jalan");
+        MnSCreening.setName("MnSCreening"); // NOI18N
+        MnSCreening.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnSCreening.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSCreeningActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MnSCreening);
+
         MnLaporanIGD.setBackground(new java.awt.Color(255, 255, 255));
         MnLaporanIGD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLaporanIGD.setForeground(new java.awt.Color(60, 80, 50));
         MnLaporanIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLaporanIGD.setText("Laporan IGD");
         MnLaporanIGD.setName("MnLaporanIGD"); // NOI18N
-        MnLaporanIGD.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnLaporanIGD.setPreferredSize(new java.awt.Dimension(300, 28));
         MnLaporanIGD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLaporanIGDActionPerformed(evt);
@@ -941,7 +956,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarKeluarMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarKeluarMasuk.setText("Lembar Masuk Keluar");
         MnLembarKeluarMasuk.setName("MnLembarKeluarMasuk"); // NOI18N
-        MnLembarKeluarMasuk.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnLembarKeluarMasuk.setPreferredSize(new java.awt.Dimension(300, 28));
         MnLembarKeluarMasuk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLembarKeluarMasukActionPerformed(evt);
@@ -955,7 +970,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarAnamNesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarAnamNesa.setText("Lembar Anamnesa");
         MnLembarAnamNesa.setName("MnLembarAnamNesa"); // NOI18N
-        MnLembarAnamNesa.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnLembarAnamNesa.setPreferredSize(new java.awt.Dimension(300, 28));
         MnLembarAnamNesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLembarAnamNesaActionPerformed(evt);
@@ -969,7 +984,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarGrafik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarGrafik.setText("Lembar Grafik");
         MnLembarGrafik.setName("MnLembarGrafik"); // NOI18N
-        MnLembarGrafik.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnLembarGrafik.setPreferredSize(new java.awt.Dimension(300, 28));
         MnLembarGrafik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLembarGrafikActionPerformed(evt);
@@ -983,7 +998,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarCatatanPerkembangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarCatatanPerkembangan.setText("Lembar Catatan Perkembangan");
         MnLembarCatatanPerkembangan.setName("MnLembarCatatanPerkembangan"); // NOI18N
-        MnLembarCatatanPerkembangan.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnLembarCatatanPerkembangan.setPreferredSize(new java.awt.Dimension(300, 28));
         MnLembarCatatanPerkembangan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLembarCatatanPerkembanganActionPerformed(evt);
@@ -997,7 +1012,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarCatatanKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarCatatanKeperawatan.setText("Lembar Catatan Keperawatan");
         MnLembarCatatanKeperawatan.setName("MnLembarCatatanKeperawatan"); // NOI18N
-        MnLembarCatatanKeperawatan.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnLembarCatatanKeperawatan.setPreferredSize(new java.awt.Dimension(300, 28));
         MnLembarCatatanKeperawatan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLembarCatatanKeperawatanActionPerformed(evt);
@@ -1011,7 +1026,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLaporanAnestesia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLaporanAnestesia.setText("Lembar Laporan Anastesia");
         MnLaporanAnestesia.setName("MnLaporanAnestesia"); // NOI18N
-        MnLaporanAnestesia.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnLaporanAnestesia.setPreferredSize(new java.awt.Dimension(300, 28));
         MnLaporanAnestesia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLaporanAnestesiaActionPerformed(evt);
@@ -1025,7 +1040,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnPengantarHemodalisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPengantarHemodalisa.setText("Pengantar Hemodialisa");
         MnPengantarHemodalisa.setName("MnPengantarHemodalisa"); // NOI18N
-        MnPengantarHemodalisa.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnPengantarHemodalisa.setPreferredSize(new java.awt.Dimension(300, 28));
         MnPengantarHemodalisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPengantarHemodalisaActionPerformed(evt);
@@ -4219,6 +4234,35 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }
     }//GEN-LAST:event_MnFormulirPendaftaranActionPerformed
 
+    private void MnSCreeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSCreeningActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
+            TNo.requestFocus();
+        }else if(TNm.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPasien.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();                 
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            Valid.MyReport("rptRM8.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                   "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
+                   "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
+                   "inner join kelurahan inner join kecamatan inner join kabupaten "+
+                   "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnSCreeningActionPerformed
+
     /**
      * @data args the command line arguments
      */
@@ -4342,6 +4386,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private javax.swing.JMenuItem MnLembarGrafik;
     private javax.swing.JMenuItem MnLembarKeluarMasuk;
     private javax.swing.JMenuItem MnPengantarHemodalisa;
+    private javax.swing.JMenuItem MnSCreening;
     private javax.swing.JMenuItem MnViaBPJSNik;
     private javax.swing.JMenuItem MnViaBPJSNoKartu;
     private widget.TextBox NmIbu;
