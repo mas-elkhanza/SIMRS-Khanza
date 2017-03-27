@@ -70,7 +70,10 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
 
-        Object[] row={"P","Pemeriksaan","Hasil","Satuan","Nilai Rujukan","Keterangan","","","","","","","","",""};
+        Object[] row={
+            "P","Pemeriksaan","Hasil","Satuan","Nilai Rujukan",
+            "Keterangan","","","","",
+            "","","","",""};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                     boolean a = false;
@@ -880,7 +883,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                                     pssimpanperiksa.setString(15,KodePj.getText());
                                     pssimpanperiksa.executeUpdate();                           
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi : "+e);
+                                    System.out.println("Notifikasi 1 : "+e);
                                 } finally{
                                     if(pssimpanperiksa!=null){
                                         pssimpanperiksa.close();
@@ -925,7 +928,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                                         }
                                     }                            
                                 } catch (Exception e) {
-                                    System.out.println("Notifikasi : "+e);
+                                    System.out.println("Notifikasi 2 : "+e);
                                 } finally{
                                     if(rscari!=null){
                                         rscari.close();
@@ -975,7 +978,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                                         pssimpanperiksa.setString(15,KodePj.getText());
                                         pssimpanperiksa.executeUpdate();                           
                                     } catch (Exception e) {
-                                        System.out.println("Notifikasi : "+e);
+                                        System.out.println("Notifikasi 1 : "+e);
                                     } finally{
                                         if(pssimpanperiksa!=null){
                                             pssimpanperiksa.close();
@@ -992,7 +995,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                                         rscari=pscariperawatan.executeQuery();
                                         if(rscari.next()){      
                                             psdetailpriksa=koneksi.prepareStatement(
-                                                "insert into detail_periksa_lab values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                                "insert into detail_periksa_lab values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                                             try {
                                                 psdetailpriksa.setString(1,TNoRw.getText());
                                                 psdetailpriksa.setString(2,rscari.getString(1));
@@ -1020,7 +1023,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                                             }
                                         }                            
                                     } catch (Exception e) {
-                                        System.out.println("Notifikasi : "+e);
+                                        System.out.println("Notifikasi 2 : "+e);
                                     } finally{
                                         if(rscari!=null){
                                             rscari.close();
@@ -1468,7 +1471,8 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             pstampil.setString(1,tbTarif.getValueAt(i,1).toString());
                             rstampil=pstampil.executeQuery();
                             while(rstampil.next()){
-                                tabMode.addRow(new Object[]{false,"   "+rstampil.getString("Pemeriksaan"),"",
+                                tabMode.addRow(new Object[]{
+                                    false,"   "+rstampil.getString("Pemeriksaan"),"",
                                          rstampil.getString("satuan"),
                                          rstampil.getString("nilai_rujukan_ld"),"",
                                          rstampil.getString("id_template"),
