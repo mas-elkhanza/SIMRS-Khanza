@@ -434,6 +434,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu1 = new javax.swing.JMenuItem();
         MnKartu2 = new javax.swing.JMenuItem();
         MnKartu3 = new javax.swing.JMenuItem();
+        MnKartu4 = new javax.swing.JMenuItem();
         Barcode = new javax.swing.JMenu();
         MnBarcodeRM = new javax.swing.JMenuItem();
         MnBarcodeRM1 = new javax.swing.JMenuItem();
@@ -638,6 +639,20 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         KartuPasien.add(MnKartu3);
+
+        MnKartu4.setBackground(new java.awt.Color(255, 255, 255));
+        MnKartu4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKartu4.setForeground(new java.awt.Color(60, 80, 50));
+        MnKartu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKartu4.setText("Kartu Pasien 4");
+        MnKartu4.setName("MnKartu4"); // NOI18N
+        MnKartu4.setPreferredSize(new java.awt.Dimension(200, 25));
+        MnKartu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKartu4ActionPerformed(evt);
+            }
+        });
+        KartuPasien.add(MnKartu4);
 
         jPopupMenu1.add(KartuPasien);
 
@@ -4307,6 +4322,25 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }
     }//GEN-LAST:event_MnCopyResepActionPerformed
 
+    private void MnKartu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKartu4ActionPerformed
+               if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
+            TNo.requestFocus();
+        }else if(TNm.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPasien.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Valid.MyReport("rptKartuBerobat6.jrxml","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                   "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
+                   "on pasien.kd_kel=kelurahan.kd_kel "+
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnKartu4ActionPerformed
+
     /**
      * @data args the command line arguments
      */
@@ -4419,6 +4453,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private javax.swing.JMenuItem MnKartu1;
     private javax.swing.JMenuItem MnKartu2;
     private javax.swing.JMenuItem MnKartu3;
+    private javax.swing.JMenuItem MnKartu4;
     private javax.swing.JMenuItem MnKartuStatus;
     private javax.swing.JMenuItem MnLaporanAnestesia;
     private javax.swing.JMenuItem MnLaporanIGD;
