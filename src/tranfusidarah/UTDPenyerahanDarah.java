@@ -18,6 +18,7 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -32,6 +33,7 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
+    private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private double ttl=0,y=0,stokbarang=0,bayar=0,total2=0,ppn=0,besarppn=0,tagihanppn=0;;
     private int jml=0,i=0,index=0,row=0,pilih=0;
@@ -2049,7 +2051,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
     
     private void emptTeks(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,6),signed)),0) from penjualan ","PJ",6,nopenyerahan); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_penyerahan,5),signed)),0) from utd_penyerahan_darah where tanggal like '%"+Valid.SetTgl(tanggal.getSelectedItem()+"").substring(0,7)+"%'",dateformat.format(tanggal.getDate()).substring(0,7)+"/PD",5,nopenyerahan); 
         keterangan.setText("");
         kdptgcross.setText("");
         nmptgcross.setText("");
