@@ -63,29 +63,29 @@
 	<detail>
 		<band height="190">
 			<textField>
-				<reportElement x="1" y="118" width="254" height="14" forecolor="#002800"/>
+				<reportElement x="11" y="123" width="225" height="13" forecolor="#002800"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
-					<font fontName="Tahoma" size="11" isBold="true"/>
+					<font fontName="Tahoma" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="164" y="163" width="90" height="17" forecolor="#002800"/>
+				<reportElement x="144" y="163" width="90" height="17" forecolor="#002800"/>
 				<textElement textAlignment="Right" lineSpacing="Single">
 					<font fontName="Tahoma" size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="0" y="160" width="100" height="25"/>
+				<reportElement x="10" y="160" width="100" height="25"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barHeight="60">
 					<jr:codeExpression><![CDATA[$F{no_rkm_medis}]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<textField>
-				<reportElement x="1" y="133" width="254" height="25" forecolor="#002800"/>
+				<reportElement x="11" y="137" width="225" height="22" forecolor="#002800"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
-					<font fontName="Tahoma" size="8" isBold="false"/>
+					<font fontName="Tahoma" size="6" isBold="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{alamat}]]></textFieldExpression>
 			</textField>
