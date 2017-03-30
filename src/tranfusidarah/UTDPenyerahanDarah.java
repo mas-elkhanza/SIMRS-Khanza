@@ -2053,8 +2053,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private void emptTeks(){
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_penyerahan,5),signed)),0) from utd_penyerahan_darah where tanggal like '%"+Valid.SetTgl(tanggal.getSelectedItem()+"").substring(0,7)+"%'",dateformat.format(tanggal.getDate()).substring(0,7)+"/PD",5,nopenyerahan); 
         keterangan.setText("");
-        kdptgcross.setText("");
-        nmptgcross.setText("");
+        nmpengambil.setText("");
+        alamatpengambil.setText("");
         keterangan.requestFocus();
         ttl=0;
         besarppn=0;
