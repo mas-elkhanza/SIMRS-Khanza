@@ -229,7 +229,7 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbRalan">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value=""/>
                         <Property name="name" type="java.lang.String" value="tbRalan" noResource="true"/>
                       </Properties>
                     </Component>
@@ -276,7 +276,7 @@
                     <Component class="widget.Table" name="tbRanap">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value=""/>
                         <Property name="name" type="java.lang.String" value="tbRanap" noResource="true"/>
                       </Properties>
                     </Component>
@@ -323,7 +323,7 @@
                     <Component class="widget.Table" name="tbPemasukan">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value=""/>
                         <Property name="name" type="java.lang.String" value="tbPemasukan" noResource="true"/>
                       </Properties>
                       <Events>
@@ -374,7 +374,7 @@
                     <Component class="widget.Table" name="tbPengeluaran">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="toolTipText" type="java.lang.String" value=""/>
                         <Property name="name" type="java.lang.String" value="tbPengeluaran" noResource="true"/>
                       </Properties>
                       <Events>

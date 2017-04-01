@@ -113,6 +113,8 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
                 if(dokter.getTable().getSelectedRow()!= -1){
                     kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
                     nmdokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                    kelas=false;
+                    ranapgabung=false;
                     prosesCari();
                 }   
                 kddokter.requestFocus();
@@ -202,7 +204,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppTampilkanSeleksi.setBackground(new java.awt.Color(242, 242, 242));
+        ppTampilkanSeleksi.setBackground(new java.awt.Color(255, 255, 255));
         ppTampilkanSeleksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanSeleksi.setForeground(java.awt.Color.darkGray);
         ppTampilkanSeleksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -211,7 +213,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         ppTampilkanSeleksi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppTampilkanSeleksi.setIconTextGap(5);
         ppTampilkanSeleksi.setName("ppTampilkanSeleksi"); // NOI18N
-        ppTampilkanSeleksi.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppTampilkanSeleksi.setPreferredSize(new java.awt.Dimension(360, 25));
         ppTampilkanSeleksi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppTampilkanSeleksiBtnPrintActionPerformed(evt);
@@ -219,16 +221,16 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppTampilkanSeleksi);
 
-        ppTampilkanRanapGabung.setBackground(new java.awt.Color(242, 242, 242));
+        ppTampilkanRanapGabung.setBackground(new java.awt.Color(255, 255, 255));
         ppTampilkanRanapGabung.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTampilkanRanapGabung.setForeground(java.awt.Color.darkGray);
         ppTampilkanRanapGabung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppTampilkanRanapGabung.setText("Tampilkan Per Ranap Gabung");
+        ppTampilkanRanapGabung.setText("Tampilkan Per Ranap Gabung (Ibu Harus Ada Tindakan Ranap)");
         ppTampilkanRanapGabung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppTampilkanRanapGabung.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppTampilkanRanapGabung.setIconTextGap(5);
         ppTampilkanRanapGabung.setName("ppTampilkanRanapGabung"); // NOI18N
-        ppTampilkanRanapGabung.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppTampilkanRanapGabung.setPreferredSize(new java.awt.Dimension(360, 25));
         ppTampilkanRanapGabung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppTampilkanRanapGabungBtnPrintActionPerformed(evt);
@@ -264,7 +266,7 @@ public class DlgDetailJMDokter extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter.setToolTipText("");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
@@ -662,6 +664,8 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_BtnSeek2KeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
+        kelas=false;
+        ranapgabung=false;
         prosesCari();
 }//GEN-LAST:event_BtnCariActionPerformed
 

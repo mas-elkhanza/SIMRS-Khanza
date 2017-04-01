@@ -323,7 +323,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbRalan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbRalan.setToolTipText("");
         tbRalan.setName("tbRalan"); // NOI18N
         Scroll.setViewportView(tbRalan);
 
@@ -340,7 +340,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         Scroll2.setOpaque(true);
 
         tbRanap.setAutoCreateRowSorter(true);
-        tbRanap.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbRanap.setToolTipText("");
         tbRanap.setName("tbRanap"); // NOI18N
         Scroll2.setViewportView(tbRanap);
 
@@ -357,7 +357,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         Scroll3.setOpaque(true);
 
         tbPemasukan.setAutoCreateRowSorter(true);
-        tbPemasukan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPemasukan.setToolTipText("");
         tbPemasukan.setName("tbPemasukan"); // NOI18N
         tbPemasukan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -384,7 +384,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         Scroll4.setOpaque(true);
 
         tbPengeluaran.setAutoCreateRowSorter(true);
-        tbPengeluaran.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPengeluaran.setToolTipText("");
         tbPengeluaran.setName("tbPengeluaran"); // NOI18N
         tbPengeluaran.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

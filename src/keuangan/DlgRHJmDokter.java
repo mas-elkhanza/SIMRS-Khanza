@@ -224,7 +224,7 @@ public class DlgRHJmDokter extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Klik kanan untuk menampilkan per cara bayar");
+        tbDokter.setToolTipText("");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);

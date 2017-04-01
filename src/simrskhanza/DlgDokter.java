@@ -951,6 +951,7 @@ public class DlgDokter extends javax.swing.JDialog {
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         try {
             Sequel.mengedit("dokter","kd_dokter='"+TKd.getText()+"'","status='0'");
+            Sequel.mengedit("pegawai","nik='"+TKd.getText()+"'","stts_aktif='KELUAR'");
             tampil();
             emptTeks();
         } catch (Exception ex) {

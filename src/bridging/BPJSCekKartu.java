@@ -601,7 +601,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2017" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-04-2017" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -668,7 +668,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKamar.setToolTipText("");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
 
@@ -841,7 +841,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
 
         DTPDaftar.setEditable(false);
         DTPDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2017" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-04-2017" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -1264,7 +1264,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         jLabel23.setBounds(430, 55, 100, 23);
 
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2017 17:41:14" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-04-2017 12:31:14" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -1284,7 +1284,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         jLabel30.setBounds(430, 25, 100, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2017 17:41:14" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-04-2017 12:31:14" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -2636,7 +2636,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                    "kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab, pasien.gol_darah, "+
                    "pasien.pekerjaan,pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,"+
                    "pasien.no_tlp,pasien.umur,pasien.pnd, pasien.keluarga, pasien.namakeluarga,"+
-                   "penjab.png_jawab,pasien.no_peserta,pasien.pekerjaan,pasien.alamatpj,"+
+                   "penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,pasien.alamatpj,"+
                    "pasien.kelurahanpj,pasien.kecamatanpj,pasien.kabupatenpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
@@ -2647,6 +2647,46 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     rs=ps.executeQuery();
                     if(rs.next()){
                         statuspasien="lama";                        
+                        TNo.setText(rs.getString("no_rkm_medis"));
+                        TNm.setText(rs.getString("nm_pasien"));
+                        CMbGd.setSelectedItem(rs.getString("gol_darah"));
+                        TTmp.setText(rs.getString("tmp_lahir"));
+                        cmbAgama.setSelectedItem(rs.getString("agama"));
+                        CmbStts.setSelectedItem(rs.getString("stts_nikah"));
+                        Alamat.setText(rs.getString("alamat"));
+                        AlamatPj.setText(rs.getString("alamatpj"));
+                        Pekerjaan.setText(rs.getString("pekerjaan"));
+                        PekerjaanPj.setText(rs.getString("pekerjaanpj"));
+                        TTlp.setText(rs.getString("no_tlp"));
+                        Saudara.setText(rs.getString("namakeluarga"));     
+                        NmIbu.setText(rs.getString("nm_ibu"));
+                        Kelurahan.setText(rs.getString("nm_kel"));      
+                        Kecamatan.setText(rs.getString("nm_kec"));      
+                        Kabupaten.setText(rs.getString("nm_kab")); 
+                        KelurahanPj.setText(rs.getString("kelurahanpj"));      
+                        KecamatanPj.setText(rs.getString("kecamatanpj"));      
+                        KabupatenPj.setText(rs.getString("kabupatenpj")); 
+                        switch (rs.getString("namakeluarga")) {
+                            case "AYAH":
+                                R1.setSelected(true);
+                                break;
+                            case "IBU":
+                                R2.setSelected(true);
+                                break;
+                            case "ISTRI":
+                                R3.setSelected(true);
+                                break;
+                            case "SUAMI":  
+                                R4.setSelected(true);
+                                break;
+                            case "SAUDARA":
+                                R5.setSelected(true);
+                                break;
+                            case "ANAK":
+                                R6.setSelected(true);
+                                break;
+
+                        } 
                     }else{
                         statuspasien="baru";
                         autoNomor();
