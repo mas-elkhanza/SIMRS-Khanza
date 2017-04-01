@@ -697,6 +697,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
 
         FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         FormKelengkapanPasien.setName("FormKelengkapanPasien"); // NOI18N
+        FormKelengkapanPasien.setOpaque(false);
         FormKelengkapanPasien.setPreferredSize(new java.awt.Dimension(1000, 245));
         FormKelengkapanPasien.setLayout(null);
 
@@ -1243,6 +1244,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
 
         FormKelengkapanSEP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), "::[ Kelengkapan Data SEP, Registrasi & Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         FormKelengkapanSEP.setName("FormKelengkapanSEP"); // NOI18N
+        FormKelengkapanSEP.setOpaque(false);
         FormKelengkapanSEP.setPreferredSize(new java.awt.Dimension(1000, 187));
         FormKelengkapanSEP.setLayout(null);
 
@@ -1264,7 +1266,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         jLabel23.setBounds(430, 55, 100, 23);
 
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-04-2017 12:31:14" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-04-2017 19:42:24" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -1284,7 +1286,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         jLabel30.setBounds(430, 25, 100, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-04-2017 12:31:14" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-04-2017 19:42:24" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -2199,6 +2201,9 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         if(ChkRM.isSelected()==true){
             TNo.setEditable(false);
             TNo.setBackground(new Color(245,250,240));
+            if(statuspasien.equals("baru")){
+                autoNomor();
+            }
         }else if(ChkRM.isSelected()==false){
             TNo.setEditable(true);
             TNo.setBackground(new Color(250,255,245));
@@ -2716,9 +2721,36 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     private void isForm(){
         if(ChkCari.isSelected()==true){
             panelCari.setVisible(true);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,510));
-            FormKelengkapanPasien.setPreferredSize(new Dimension(internalFrame1.getWidth()-14,245));
-            FormKelengkapanSEP.setPreferredSize(new Dimension(internalFrame1.getWidth()-14,184));
+            FormInput.setPreferredSize(new Dimension(955,430));
+            if(internalFrame1.getHeight()>530){
+                PanelInput.setPreferredSize(new Dimension(WIDTH,510));
+                scrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+                if(internalFrame1.getWidth()<960){
+                    scrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+                    scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+                    FormKelengkapanPasien.setPreferredSize(new Dimension(952,245));
+                    FormKelengkapanSEP.setPreferredSize(new Dimension(952,184));
+                }else{
+                    scrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+                    scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                    FormKelengkapanPasien.setPreferredSize(new Dimension(internalFrame1.getWidth()-14,245));
+                    FormKelengkapanSEP.setPreferredSize(new Dimension(internalFrame1.getWidth()-14,184));
+                }
+            }else{
+                scrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-20));
+                if(internalFrame1.getWidth()<960){
+                    scrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+                    scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+                    FormKelengkapanPasien.setPreferredSize(new Dimension(952,245));
+                    FormKelengkapanSEP.setPreferredSize(new Dimension(952,184));
+                }else{
+                    scrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+                    scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+                    FormKelengkapanPasien.setPreferredSize(new Dimension(internalFrame1.getWidth()-32,245));
+                    FormKelengkapanSEP.setPreferredSize(new Dimension(internalFrame1.getWidth()-32,184));
+                }
+            }
             isNumber();
             BtnSimpan.setVisible(true);
         }else if(ChkCari.isSelected()==false){           
