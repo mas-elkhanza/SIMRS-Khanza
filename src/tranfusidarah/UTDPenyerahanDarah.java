@@ -1285,13 +1285,20 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNotaActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(nopenyerahan.getText().trim().equals("")){
-            Valid.textKosong(nopenyerahan,"No.Nota");
-        }else if(nmptgcross.getText().trim().equals("")||kdptgcross.getText().trim().equals("")){
-            Valid.textKosong(kdptgcross,"Pasien");
-        }else if(nmptgpj.getText().trim().equals("")||nmptgpj.getText().trim().equals("")){
-            Valid.textKosong(kdptgpj,"Petugas");
+            Valid.textKosong(nopenyerahan,"No.Penyerahan");
+        }else if(keterangan.getText().trim().equals("")){
+            Valid.textKosong(keterangan,"Keterangan");
+        }else if(CmbAkun.getSelectedItem().toString().trim().equals("")){
+            Valid.textKosong(CmbAkun,"Akun Bayar");
+        }else if(kdptgcross.getText().trim().equals("")||nmptgcross.getText().trim().equals("")){
+            Valid.textKosong(kdptgcross,"Petugas Cross");
+        }else if(kdptgpj.getText().trim().equals("")||nmptgcross.getText().trim().equals("")){
+            Valid.textKosong(kdptgpj,"Petugas P.J.");
+        }else if(nmpengambil.getText().trim().equals("")){
+            Valid.textKosong(nmpengambil,"Pengambil Darah");
+        }else if(alamatpengambil.getText().trim().equals("")){
+            Valid.textKosong(alamatpengambil,"Alamat Pengambil Darah");
         }else if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             tbDarah.requestFocus();
@@ -1299,30 +1306,27 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan penjualan...!!!!");
             tbDarah.requestFocus();
         }else {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
             Sequel.AutoComitFalse();
             Sequel.queryu("delete from temporary");
             row=tabMode.getRowCount();
             for(i=0;i<row;i++){  
                 try {
-                    if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
+                    if(tbDarah.getValueAt(i,0).toString().equals("true")){
                            Sequel.menyimpan("temporary","'0','"+
-                                   tabMode.getValueAt(i,0).toString()+"','"+
                                    tabMode.getValueAt(i,1).toString()+"','"+
                                    tabMode.getValueAt(i,2).toString()+"','"+
                                    tabMode.getValueAt(i,3).toString()+"','"+
                                    tabMode.getValueAt(i,4).toString()+"','"+
-                                   tabMode.getValueAt(i,5).toString()+"','"+
-                                   tabMode.getValueAt(i,6).toString()+"','"+
-                                   tabMode.getValueAt(i,8).toString()+"','"+
-                                   tabMode.getValueAt(i,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan"); 
+                                   tabMode.getValueAt(i,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan Darah"); 
                     }
                 } catch (Exception e) {
                 }                
             }
             Sequel.AutoComitTrue();
-            Valid.panggilUrl("billing/NotaApotek.php?nonota="+nopenyerahan.getText()+"&besarppn="+besarppn+"&bayar="+Bayar.getText()+"&tanggal="+Valid.SetTgl(tanggal.getSelectedItem()+"")+"&catatan="+keterangan.getText().replaceAll(" ","_")+"&petugas="+nmptgpj.getText().replaceAll(" ","_")+"&pasien="+nmptgcross.getText().replaceAll(" ","_")+"&norm="+kdptgcross.getText().replaceAll(" ","_"));
+            Valid.panggilUrl("billing/NotaDarah.php?nopenyerahan="+nopenyerahan.getText()+"&besarppn="+besarppn+"&bayar="+Bayar.getText()+"&tanggal="+Valid.SetTgl(tanggal.getSelectedItem()+"")+"&catatan="+keterangan.getText().replaceAll(" ","_")+"&petugaspj="+nmptgpj.getText().replaceAll(" ","_")+"&pasien="+nmpengambil.getText().replaceAll(" ","_"));
+            this.setCursor(Cursor.getDefaultCursor());
         }
-        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnNotaActionPerformed
 
     private void BtnNotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnNotaKeyPressed

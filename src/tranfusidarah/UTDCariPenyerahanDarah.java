@@ -1375,7 +1375,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     });
                     //data darah
                     tabMode.addRow(new Object[]{
-                        "","","No.","No.Kantung","Komponen","G.D. & Resus","Asal Darah","Aftap & Kadaluarsa","Biaya"
+                        "","","No.","No.Kantung","Komponen","G.D. & Rhesus","Asal Darah","Aftap & Kadaluarsa","Biaya"
                     });
                     psdarah=koneksi.prepareStatement(
                         "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+

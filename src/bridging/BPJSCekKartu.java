@@ -19,25 +19,38 @@ import javax.swing.table.TableColumn;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.batasInput;
+import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+import keuangan.DlgKamar;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
+import simrskhanza.DlgCariDokter;
+import simrskhanza.DlgKabupaten;
+import simrskhanza.DlgKecamatan;
+import simrskhanza.DlgKelurahan;
 import simrskhanza.DlgPasien;
+import simrskhanza.DlgPenanggungJawab;
 
 /**
  *
@@ -46,9 +59,25 @@ import simrskhanza.DlgPasien;
 public final class BPJSCekKartu extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private final Properties prop = new Properties();
-    private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
+    private validasi Valid=new validasi();
+    private Connection koneksi=koneksiDB.condb();
     private DlgPasien pasien=new DlgPasien(null,false);
+    private BPJSCekReferensiFaskes faskes=new BPJSCekReferensiFaskes(null,false);
+    private BPJSCekReferensiPenyakit penyakit=new BPJSCekReferensiPenyakit(null,false);
+    private BPJSCekReferensiPoli poli=new BPJSCekReferensiPoli(null,false);
+    private DlgKabupaten kab=new DlgKabupaten(null,false);
+    private DlgKecamatan kec=new DlgKecamatan(null,false);
+    private DlgKelurahan kel=new DlgKelurahan(null,false);
+    private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private DlgKamar kamar=new DlgKamar(null,false);
+    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
+    private int pilih=0;
+    private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
+    private String statuspasien="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="";
+    private PreparedStatement ps;
+    private ResultSet rs;
+    
 
     /** Creates new form DlgKamar
      * @param parent
@@ -124,9 +153,304 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });       
     
+        faskes.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(faskes.getTable().getSelectedRow()!= -1){                   
+                    KdPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),3).toString());
+                    NmPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),4).toString());
+                }  
+                KdPpkRujukan.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        faskes.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    faskes.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });  
+        
+        penyakit.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(penyakit.getTable().getSelectedRow()!= -1){                   
+                    KdPenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
+                    NmPenyakit.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),2).toString());
+                }  
+                KdPenyakit.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        penyakit.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    penyakit.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });  
+        
+        poli.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(poli.getTable().getSelectedRow()!= -1){                   
+                    KdPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                    NmPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),2).toString());
+                    isNumber();
+                    KdPoli.requestFocus();
+                }                  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        poli.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    poli.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });  
+        
+        penjab.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(penjab.getTable().getSelectedRow()!= -1){
+                    Kdpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),1).toString());
+                    nmpnj.setText(penjab.getTable().getValueAt(penjab.getTable().getSelectedRow(),2).toString());
+                    Kdpnj.requestFocus();
+                }                  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        penjab.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    penjab.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        kab.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kab.getTable().getSelectedRow()!= -1){
+                    if(pilih==1){                    
+                        Kabupaten.setText(kab.getTable().getValueAt(kab.getTable().getSelectedRow(),0).toString());
+                        Kabupaten.requestFocus();
+                    }else if(pilih==2){                    
+                        KabupatenPj.setText(kab.getTable().getValueAt(kab.getTable().getSelectedRow(),0).toString());
+                        KabupatenPj.requestFocus();
+                    }
+                }       
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kec.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kec.getTable().getSelectedRow()!= -1){
+                    if(pilih==1){                    
+                        Kecamatan.setText(kec.getTable().getValueAt(kec.getTable().getSelectedRow(),0).toString());
+                        Kecamatan.requestFocus();
+                    }else if(pilih==2){                    
+                        KecamatanPj.setText(kec.getTable().getValueAt(kec.getTable().getSelectedRow(),0).toString());
+                        KecamatanPj.requestFocus();
+                    }
+                }  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kel.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kel.getTable().getSelectedRow()!= -1){
+                    if(pilih==1){                    
+                        Kelurahan.setText(kel.getTable().getValueAt(kel.getTable().getSelectedRow(),0).toString());
+                        Kelurahan.requestFocus();
+                    }else if(pilih==2){                    
+                        KelurahanPj.setText(kel.getTable().getValueAt(kel.getTable().getSelectedRow(),0).toString());
+                        KelurahanPj.requestFocus();
+                    }
+                }   
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        dokter.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {;}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(dokter.getTable().getSelectedRow()!= -1){    
+                    kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                    TDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                    isNumber();
+                }      
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kamar.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(kamar.getTable().getSelectedRow()!= -1){   
+                    KdPoli.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),1).toString());  
+                    NmPoli.setText(kamar.getTable().getValueAt(kamar.getTable().getSelectedRow(),2).toString());  
+                    KdPoli.requestFocus();
+                }  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        kamar.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    kamar.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
         ChkCari.setSelected(false);
         isForm();
         NoKartu.setDocument(new batasInput((int)80).getKata(NoKartu));
+        try{
+            KdPPK.setText(Sequel.cariIsi("select kode_ppk from setting"));
+            NmPPK.setText(Sequel.cariIsi("select nama_ppk from setting"));            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        pengurutan=Sequel.cariIsi("select urutan from set_urut_no_rkm_medis");
+        tahun=Sequel.cariIsi("select tahun from set_urut_no_rkm_medis");
+        bulan=Sequel.cariIsi("select bulan from set_urut_no_rkm_medis");
+        posisitahun=Sequel.cariIsi("select posisi_tahun_bulan from set_urut_no_rkm_medis");
     }
     
     
@@ -140,6 +464,13 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        TNm = new widget.TextBox();
+        CmbJk = new widget.ComboBox();
+        DTPLahir = new widget.Tanggal();
+        TUmur = new widget.TextBox();
+        TNoPeserta = new widget.TextBox();
+        TKtp = new widget.TextBox();
+        NoRm = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -251,12 +582,79 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         BtnSimpan = new widget.Button();
         BtnKeluar = new widget.Button();
 
+        TNm.setHighlighter(null);
+        TNm.setName("TNm"); // NOI18N
+        TNm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TNmKeyPressed(evt);
+            }
+        });
+
+        CmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LAKI-LAKI", "PEREMPUAN" }));
+        CmbJk.setName("CmbJk"); // NOI18N
+        CmbJk.setOpaque(false);
+        CmbJk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJkKeyPressed(evt);
+            }
+        });
+
+        DTPLahir.setEditable(false);
+        DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2017" }));
+        DTPLahir.setDisplayFormat("dd-MM-yyyy");
+        DTPLahir.setName("DTPLahir"); // NOI18N
+        DTPLahir.setOpaque(false);
+        DTPLahir.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                DTPLahirItemStateChanged(evt);
+            }
+        });
+        DTPLahir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DTPLahirKeyPressed(evt);
+            }
+        });
+
+        TUmur.setName("TUmur"); // NOI18N
+        TUmur.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TUmurKeyPressed(evt);
+            }
+        });
+
+        TNoPeserta.setHighlighter(null);
+        TNoPeserta.setName("TNoPeserta"); // NOI18N
+        TNoPeserta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TNoPesertaKeyPressed(evt);
+            }
+        });
+
+        TKtp.setName("TKtp"); // NOI18N
+        TKtp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TKtpKeyPressed(evt);
+            }
+        });
+
+        NoRm.setHighlighter(null);
+        NoRm.setName("NoRm"); // NOI18N
+        NoRm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoRmKeyPressed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
         setIconImages(null);
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
@@ -282,7 +680,6 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         PanelInput.setPreferredSize(new java.awt.Dimension(200, 517));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
-        panelCari.setBorder(null);
         panelCari.setName("panelCari"); // NOI18N
         panelCari.setPreferredSize(new java.awt.Dimension(44, 44));
         panelCari.setLayout(new java.awt.BorderLayout());
@@ -296,7 +693,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
         FormInput.setPreferredSize(new java.awt.Dimension(560, 168));
-        FormInput.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
+        FormInput.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         FormKelengkapanPasien.setName("FormKelengkapanPasien"); // NOI18N
@@ -867,7 +1264,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         jLabel23.setBounds(430, 55, 100, 23);
 
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2017 06:55:52" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2017 17:41:14" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -887,7 +1284,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         jLabel30.setBounds(430, 25, 100, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2017 06:55:52" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2017 17:41:14" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -1385,6 +1782,10 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(ChkCari.isSelected()==true){
+            ChkCari.setSelected(false);
+            isForm();
+        }            
         tampil(NoKartu.getText());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
@@ -1398,28 +1799,17 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void ChkCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkCariActionPerformed
-        isForm();
+        if(tabMode.getRowCount()==0){
+            ChkCari.setSelected(false);
+            isForm();
+            JOptionPane.showMessageDialog(null,"Maaf, data peserta BPJS masih kosong. Silahkan lakukan pencarian berdasar No.Kartu...!!!!");
+        }else{
+            isForm();
+        }            
     }//GEN-LAST:event_ChkCariActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if(FormInput.getHeight()<500){   
-            scrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-            FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,500));
-            if(FormInput.getWidth()<530){
-                scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                FormInput.setPreferredSize(new Dimension(530,500));
-            }else{
-                scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
-            }
-        }else{
-            scrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);            
-            if(FormInput.getWidth()<530){
-                scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                FormInput.setPreferredSize(new Dimension(530,FormInput.WIDTH));
-            }else{
-                scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
-            }
-        }
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void TTmpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTmpKeyPressed
@@ -1505,28 +1895,27 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_SaudaraKeyPressed
 
     private void KdpnjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdpnjKeyPressed
-       /* if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",nmpnj,Kdpnj.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPenjabActionPerformed(null);
         }else{
             Valid.pindah(evt,CmbStts,TNoPeserta);
-        }*/
+        }
     }//GEN-LAST:event_KdpnjKeyPressed
 
     private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjabActionPerformed
-       /* var.setform("DlgPasien");
-        penjab.isCek();
+       penjab.isCek();
         penjab.onCari();
         penjab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         penjab.setLocationRelativeTo(internalFrame1);
-        penjab.setVisible(true);*/
+        penjab.setVisible(true);
     }//GEN-LAST:event_BtnPenjabActionPerformed
 
     private void KelurahanMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KelurahanMouseMoved
-        /*if(Kelurahan.getText().equals("KELURAHAN")){
+        if(Kelurahan.getText().equals("KELURAHAN")){
             Kelurahan.setText("");
-        }*/
+        }
     }//GEN-LAST:event_KelurahanMouseMoved
 
     private void KelurahanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KelurahanMouseExited
@@ -1626,27 +2015,24 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_KabupatenKeyPressed
 
     private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanActionPerformed
-       /* var.setform("DlgPasien");
-        pilih=1;
+       pilih=1;
         kel.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kel.setLocationRelativeTo(internalFrame1);
-        kel.setVisible(true);*/
+        kel.setVisible(true);
     }//GEN-LAST:event_BtnKelurahanActionPerformed
 
     private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanActionPerformed
-        /*var.setform("DlgPasien");
         pilih=1;
         kec.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kec.setLocationRelativeTo(internalFrame1);
-        kec.setVisible(true);*/
+        kec.setVisible(true);
     }//GEN-LAST:event_BtnKecamatanActionPerformed
 
     private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenActionPerformed
-       /* var.setform("DlgPasien");
-        pilih=1;
+       pilih=1;
         kab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kab.setLocationRelativeTo(internalFrame1);
-        kab.setVisible(true);*/
+        kab.setVisible(true);
     }//GEN-LAST:event_BtnKabupatenActionPerformed
 
     private void NmIbuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmIbuKeyPressed
@@ -1724,11 +2110,10 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_KecamatanPjKeyPressed
 
     private void BtnKecamatanPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanPjActionPerformed
-        /*var.setform("DlgPasien");
-        pilih=3;
+       pilih=2;
         kec.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kec.setLocationRelativeTo(internalFrame1);
-        kec.setVisible(true);     */  
+        kec.setVisible(true);     
     }//GEN-LAST:event_BtnKecamatanPjActionPerformed
 
     private void KabupatenPjMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KabupatenPjMouseMoved
@@ -1763,19 +2148,17 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_KabupatenPjKeyPressed
 
     private void BtnKabupatenPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenPjActionPerformed
-       /* var.setform("DlgPasien");
-        pilih=3;
+       pilih=2;
         kab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kab.setLocationRelativeTo(internalFrame1);
-        kab.setVisible(true);*/
+        kab.setVisible(true);
     }//GEN-LAST:event_BtnKabupatenPjActionPerformed
 
     private void BtnKelurahanPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanPjActionPerformed
-        /*var.setform("DlgPasien");
-        pilih=3;
+        pilih=2;
         kel.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kel.setLocationRelativeTo(internalFrame1);
-        kel.setVisible(true);*/
+        kel.setVisible(true);
     }//GEN-LAST:event_BtnKelurahanPjActionPerformed
 
     private void KelurahanPjMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KelurahanPjMouseMoved
@@ -1813,13 +2196,13 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_KelurahanPjKeyPressed
 
     private void ChkRMItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkRMItemStateChanged
-        /*if(ChkRM.isSelected()==true){
+        if(ChkRM.isSelected()==true){
             TNo.setEditable(false);
             TNo.setBackground(new Color(245,250,240));
         }else if(ChkRM.isSelected()==false){
             TNo.setEditable(true);
             TNo.setBackground(new Color(250,255,245));
-        }*/
+        }
     }//GEN-LAST:event_ChkRMItemStateChanged
 
     private void TanggalSEPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalSEPKeyPressed
@@ -1835,9 +2218,9 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_NoRujukanKeyPressed
 
     private void btnPPKRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPKRujukanActionPerformed
-        //faskes.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
-        //faskes.setLocationRelativeTo(internalFrame1);
-        //faskes.setVisible(true);
+        faskes.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        faskes.setLocationRelativeTo(internalFrame1);
+        faskes.setVisible(true);
     }//GEN-LAST:event_btnPPKRujukanActionPerformed
 
     private void btnPPKRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPPKRujukanKeyPressed
@@ -1845,9 +2228,9 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPPKRujukanKeyPressed
 
     private void btnDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaActionPerformed
-        //penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
-        //penyakit.setLocationRelativeTo(internalFrame1);
-        //penyakit.setVisible(true);
+        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setLocationRelativeTo(internalFrame1);
+        penyakit.setVisible(true);
     }//GEN-LAST:event_btnDiagnosaActionPerformed
 
     private void btnDiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDiagnosaKeyPressed
@@ -1855,9 +2238,19 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDiagnosaKeyPressed
 
     private void btnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliActionPerformed
-        //poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
-        //poli.setLocationRelativeTo(internalFrame1);
-        //poli.setVisible(true);
+        if(JenisPelayanan.getSelectedIndex()==0){
+            kamar.load();
+            kamar.isCek();
+            kamar.emptTeks();
+            kamar.tampil();
+            kamar.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            kamar.setLocationRelativeTo(internalFrame1);
+            kamar.setVisible(true);
+        }else{
+            poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            poli.setLocationRelativeTo(internalFrame1);
+            poli.setVisible(true);
+        }            
     }//GEN-LAST:event_btnPoliActionPerformed
 
     private void btnPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliKeyPressed
@@ -1869,23 +2262,13 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_CatatanKeyPressed
 
     private void JenisPelayananItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JenisPelayananItemStateChanged
-        if(JenisPelayanan.getSelectedIndex()==0){
-            KdPoli.setText("");
-            NmPoli.setText("");
-            Kelas.setVisible(true);
-            LabelKelas.setVisible(true);
-            LabelPoli.setVisible(false);
-            KdPoli.setVisible(false);
-            NmPoli.setVisible(false);
-            btnPoli.setVisible(false);
-        }else if(JenisPelayanan.getSelectedIndex()==1){
-            Kelas.setVisible(false);
-            LabelKelas.setVisible(false);
-            LabelPoli.setVisible(true);
-            KdPoli.setVisible(true);
-            NmPoli.setVisible(true);
-            btnPoli.setVisible(true);
+        if(JenisPelayanan.getSelectedIndex()==1){
+            LabelPoli.setText("Poli Tujuan");
+        }else if(JenisPelayanan.getSelectedIndex()==0){
+            LabelPoli.setText("Kamar Tujuan");
         }
+        KdPoli.setText("");
+        NmPoli.setText("");
     }//GEN-LAST:event_JenisPelayananItemStateChanged
 
     private void JenisPelayananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisPelayananKeyPressed
@@ -1920,13 +2303,11 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_kddokterKeyPressed
 
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
-        /*pilihan=1;
-        var.setform("DlgReg");
-        dokter.isCek();
+        dokter.isCek();        
         dokter.TCari.requestFocus();
         dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         dokter.setLocationRelativeTo(internalFrame1);
-        dokter.setVisible(true);*/
+        dokter.setVisible(true);
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
@@ -1937,6 +2318,50 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         
 
     }//GEN-LAST:event_BtnSimpanKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        emptTeks();
+        BtnSimpan.setVisible(false);        
+    }//GEN-LAST:event_formWindowOpened
+
+    private void TNmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNmKeyPressed
+        
+    }//GEN-LAST:event_TNmKeyPressed
+
+    private void CmbJkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJkKeyPressed
+        Valid.pindah(evt,TNm,CMbGd);
+    }//GEN-LAST:event_CmbJkKeyPressed
+
+    private void DTPLahirItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPLahirItemStateChanged
+
+    }//GEN-LAST:event_DTPLahirItemStateChanged
+
+    private void DTPLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPLahirKeyPressed
+       
+    }//GEN-LAST:event_DTPLahirKeyPressed
+
+    private void TUmurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TUmurKeyPressed
+       
+    }//GEN-LAST:event_TUmurKeyPressed
+
+    private void TNoPesertaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoPesertaKeyPressed
+        Valid.pindah(evt,Kdpnj,TTlp);
+    }//GEN-LAST:event_TNoPesertaKeyPressed
+
+    private void TKtpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKtpKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(Alamat.getText().equals("ALAMAT")){
+                Alamat.setText("");
+            }
+            Alamat.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            Pekerjaan.requestFocus();
+        }
+    }//GEN-LAST:event_TKtpKeyPressed
+
+    private void NoRmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRmKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoRmKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1974,8 +2399,10 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     private widget.TextBox Catatan;
     private widget.CekBox ChkCari;
     private widget.CekBox ChkRM;
+    private widget.ComboBox CmbJk;
     private widget.ComboBox CmbStts;
     private widget.Tanggal DTPDaftar;
+    private widget.Tanggal DTPLahir;
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormKelengkapanPasien;
     private widget.PanelBiasa FormKelengkapanSEP;
@@ -2002,6 +2429,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     private widget.TextBox NmPoli;
     private widget.TextBox NmPpkRujukan;
     private widget.TextBox NoKartu;
+    private widget.TextBox NoRm;
     private widget.TextBox NoRujukan;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Pekerjaan;
@@ -2015,11 +2443,15 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     private widget.TextBox Saudara;
     private widget.ScrollPane Scroll;
     private widget.TextBox TDokter;
+    private widget.TextBox TKtp;
+    private widget.TextBox TNm;
     private widget.TextBox TNo;
+    private widget.TextBox TNoPeserta;
     private widget.TextBox TNoReg;
     private widget.TextBox TNoRw;
     private widget.TextBox TTlp;
     private widget.TextBox TTmp;
+    private widget.TextBox TUmur;
     private widget.Tanggal TanggalRujuk;
     private widget.Tanggal TanggalSEP;
     private widget.Button btnDiagnosa;
@@ -2070,6 +2502,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     public void tampil(String nomorpeserta) {
         BPJSApi api=new BPJSApi();
         try {
+            statuspasien="";
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/Peserta/Peserta/"+nomorpeserta;	
 
@@ -2096,27 +2529,39 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "","  Kode Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText()
                 });
+                Kdpnj.setText(response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText());
                 tabMode.addRow(new Object[]{
                     "","  Nama Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText()
                 });
+                nmpnj.setText(response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText());
                 tabMode.addRow(new Object[]{
                     "Kelas Tanggungan",":",""
                 });
                 tabMode.addRow(new Object[]{
                     "","  Kode Kelas",": "+response.path("peserta").path("kelasTanggungan").path("kdKelas").asText()
                 });
+                if(response.path("peserta").path("kelasTanggungan").path("kdKelas").asText().equals("1")){
+                    Kelas.setSelectedIndex(0);
+                }else if(response.path("peserta").path("kelasTanggungan").path("kdKelas").asText().equals("2")){
+                    Kelas.setSelectedIndex(1);
+                }else if(response.path("peserta").path("kelasTanggungan").path("kdKelas").asText().equals("3")){
+                    Kelas.setSelectedIndex(2);
+                }
                 tabMode.addRow(new Object[]{
                     "","  Nama Kelas",": "+response.path("peserta").path("kelasTanggungan").path("nmKelas").asText()
                 });
                 tabMode.addRow(new Object[]{
                     "Nama",": "+response.path("peserta").path("nama").asText(),""
                 });
+                TNm.setText(response.path("peserta").path("nama").asText());
                 tabMode.addRow(new Object[]{
                     "NIK",": "+response.path("peserta").path("nik").asText(),""
                 });
+                TKtp.setText(response.path("peserta").path("nik").asText());
                 tabMode.addRow(new Object[]{
                     "Nomor Kartu",": "+response.path("peserta").path("noKartu").asText(),""
                 });
+                TNoPeserta.setText(response.path("peserta").path("noKartu").asText());
                 tabMode.addRow(new Object[]{
                     "Nomor MR",": "+response.path("peserta").path("noMr").asText(),""
                 });
@@ -2131,16 +2576,28 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 });
                 tabMode.addRow(new Object[]{
                     "","  Kode Provider",": "+response.path("peserta").path("provUmum").path("kdProvider").asText()
-                });
+                });                
+                KdPpkRujukan.setText(response.path("peserta").path("provUmum").path("kdProvider").asText());
                 tabMode.addRow(new Object[]{
                     "","  Nama Cabang",": "+response.path("peserta").path("provUmum").path("nmCabang").asText()
                 });
+                Kabupaten.setText(response.path("peserta").path("provUmum").path("nmCabang").asText());
+                KabupatenPj.setText(response.path("peserta").path("provUmum").path("nmCabang").asText());
                 tabMode.addRow(new Object[]{
                     "","  Nama Provider",": "+response.path("peserta").path("provUmum").path("nmProvider").asText()
                 });
+                NmPpkRujukan.setText(response.path("peserta").path("provUmum").path("nmProvider").asText());
                 tabMode.addRow(new Object[]{
                     "Jenis Kelamin",": "+response.path("peserta").path("sex").asText().replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"),""
                 });
+                switch (response.path("peserta").path("sex").asText()) {
+                    case "L":
+                        CmbJk.setSelectedItem("LAKI-LAKI");
+                        break;
+                    case "P":
+                        CmbJk.setSelectedItem("PEREMPUAN");
+                        break;
+                }
                 tabMode.addRow(new Object[]{
                     "Status Peserta",":",""
                 });
@@ -2156,6 +2613,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "Tanggal Lahir",": "+response.path("peserta").path("tglLahir").asText(),""
                 });
+                Valid.SetTgl(DTPLahir,response.path("peserta").path("tglLahir").asText());
                 tabMode.addRow(new Object[]{
                     "Tanggal TAT",": "+response.path("peserta").path("tglTAT").asText(),""
                 });
@@ -2171,7 +2629,40 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "","  Umur Sekarang",": "+response.path("peserta").path("umur").path("umurSekarang").asText()
                 });
+                TUmur.setText(response.path("peserta").path("umur").path("umurSekarang").asText());
+                ps=koneksi.prepareStatement(
+                   "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                   "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, pasien.alamat,"+
+                   "kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab, pasien.gol_darah, "+
+                   "pasien.pekerjaan,pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,"+
+                   "pasien.no_tlp,pasien.umur,pasien.pnd, pasien.keluarga, pasien.namakeluarga,"+
+                   "penjab.png_jawab,pasien.no_peserta,pasien.pekerjaan,pasien.alamatpj,"+
+                   "pasien.kelurahanpj,pasien.kecamatanpj,pasien.kabupatenpj from pasien "+
+                   "inner join kelurahan inner join kecamatan inner join kabupaten "+
+                   "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
+                   "where pasien.no_peserta=?");
+                try {
+                    ps.setString(1,response.path("peserta").path("noKartu").asText());
+                    rs=ps.executeQuery();
+                    if(rs.next()){
+                        statuspasien="lama";                        
+                    }else{
+                        statuspasien="baru";
+                        autoNomor();
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif Cari Pasien : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
             }else {
+                emptTeks();
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }   
         } catch (Exception ex) {
@@ -2185,13 +2676,124 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     private void isForm(){
         if(ChkCari.isSelected()==true){
             panelCari.setVisible(true);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,517));
-            FormKelengkapanPasien.setPreferredSize(new Dimension(internalFrame1.getWidth()-7,245));
-            FormKelengkapanSEP.setPreferredSize(new Dimension(internalFrame1.getWidth()-7,184));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,510));
+            FormKelengkapanPasien.setPreferredSize(new Dimension(internalFrame1.getWidth()-14,245));
+            FormKelengkapanSEP.setPreferredSize(new Dimension(internalFrame1.getWidth()-14,184));
+            isNumber();
+            BtnSimpan.setVisible(true);
         }else if(ChkCari.isSelected()==false){           
             panelCari.setVisible(false);      
             PanelInput.setPreferredSize(new Dimension(WIDTH,77));
+            BtnSimpan.setVisible(false);
         }
     }
+    
+    public void emptTeks() {
+        TNo.setText("");
+        TNm.setText("");
+        CmbJk.setSelectedIndex(0);
+        CMbGd.setSelectedIndex(0);
+        TTmp.setText("");
+        cmbAgama.setSelectedIndex(0);
+        CmbStts.setSelectedIndex(0);
+        Alamat.setText("ALAMAT");
+        AlamatPj.setText("ALAMAT");
+        TKtp.setText("");
+        TNoPeserta.setText("");
+        Pekerjaan.setText("");
+        PekerjaanPj.setText("");
+        TTlp.setText("");
+        TUmur.setText("");
+        Saudara.setText("");     
+        NmIbu.setText("");
+        Kelurahan.setText("KELURAHAN");      
+        Kecamatan.setText("KECAMATAN");      
+        Kabupaten.setText("KABUPATEN"); 
+        KelurahanPj.setText("KELURAHAN");      
+        KecamatanPj.setText("KECAMATAN");      
+        KabupatenPj.setText("KABUPATEN"); 
+        R5.setSelected(true);
+        DTPLahir.setDate(new Date());
+        DTPDaftar.setDate(new Date());
+        TNoReg.setText("");
+        TNoRw.setText("");
+        Kdpnj.setText("");
+        nmpnj.setText("");
+        TanggalSEP.setDate(new Date());
+        TanggalRujuk.setDate(new Date());
+        NoRujukan.setText("");
+        KdPpkRujukan.setText("");
+        NmPpkRujukan.setText("");
+        JenisPelayanan.setSelectedIndex(0);
+        Catatan.setText("");
+        KdPenyakit.setText("");
+        NmPenyakit.setText("");
+        KdPoli.setText("");
+        NmPoli.setText("");
+        Kelas.setSelectedIndex(0);
+        LakaLantas.setSelectedIndex(1);
+        LokasiLaka.setText("");
+        JenisPelayanan.setSelectedIndex(1);
+        JenisPelayananItemStateChanged(null);
+        statuspasien="";
+           
+        TNo.requestFocus();
+    }
+    
+    private void isNumber(){     
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"'","",3,TNoReg); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0) from reg_periksa where tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"' ",dateformat.format(TanggalSEP.getDate())+"/",6,TNoRw);                              
+    }
  
+    private void autoNomor() {        
+        if(ChkRM.isSelected()==true){
+            if(tahun.equals("Yes")){
+                awalantahun=DTPDaftar.getSelectedItem().toString().substring(8,10);
+            }else{
+                awalantahun="";
+            }
+
+            if(bulan.equals("Yes")){
+                awalanbulan=DTPDaftar.getSelectedItem().toString().substring(3,5);
+            }else{
+                awalanbulan="";
+            }
+
+            if(posisitahun.equals("Depan")){
+                switch (pengurutan) {
+                    case "Straight":
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                    case "Terminal":
+                        Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),5,2),SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                    case "Middle":
+                        Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2),SUBSTRING(RIGHT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                }
+            }else if(posisitahun.equals("Belakang")){
+                switch (pengurutan) {
+                    case "Straight":
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(LEFT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                    case "Terminal":
+                        Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),5,2),SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                    case "Middle":
+                        Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2),SUBSTRING(LEFT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                        break;
+                }            
+            }
+
+            if(posisitahun.equals("Depan")){
+                TNo.setText(awalantahun+awalanbulan+NoRm.getText());
+            }else if(posisitahun.equals("Belakang")){
+                if(!(awalanbulan+awalantahun).equals("")){
+                    TNo.setText(NoRm.getText()+"-"+awalanbulan+awalantahun);
+                }else{
+                    TNo.setText(NoRm.getText());
+                }            
+            }
+        }
+    }
 }

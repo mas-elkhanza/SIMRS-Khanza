@@ -85,7 +85,7 @@
 			<textField>
 				<reportElement x="11" y="137" width="225" height="22" forecolor="#002800"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
-					<font fontName="Tahoma" size="6" isBold="false"/>
+					<font fontName="Tahoma" size="7" isBold="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{alamat}]]></textFieldExpression>
 			</textField>

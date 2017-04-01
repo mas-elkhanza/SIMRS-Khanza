@@ -89,7 +89,7 @@
 					<td align='center'>
 					     <font size='6' color='red' face='Tahoma'>
 					      <b>";
-					       $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kd_bangsal='".$data['kd_bangsal']."'"));
+					       $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."'"));
 					       echo $data2[0];
 					echo "</b>
 					      </font>
@@ -97,7 +97,7 @@
 					<td align='center'>
 					     <font color='#DDDD00' size='6'  face='Tahoma'>
 					      <b>";
-						   $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kd_bangsal='".$data['kd_bangsal']."' and status='ISI'"));
+						   $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='ISI'"));
 						   echo $data2[0];
 					echo "</b>
 					      </font>
@@ -105,7 +105,7 @@
 					<td align='center'>
 					      <font color='gren' size='6'  face='Tahoma'>
 					      <b>";
-						   $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kd_bangsal='".$data['kd_bangsal']."' and status='KOSONG'"));
+						   $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='KOSONG'"));
 						   echo $data2[0];
 					echo "</b>
 					     </font>
