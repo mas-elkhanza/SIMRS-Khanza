@@ -86,7 +86,7 @@ public class DlgDpjp extends javax.swing.JDialog {
         for (i = 0; i < 7; i++) {
             TableColumn column = tbPasien.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){
@@ -127,7 +127,7 @@ public class DlgDpjp extends javax.swing.JDialog {
         for (i= 0; i < 3; i++) {
             TableColumn column = tbDiagnosa.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){

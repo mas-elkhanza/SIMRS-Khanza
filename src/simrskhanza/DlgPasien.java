@@ -113,7 +113,7 @@ public class DlgPasien extends javax.swing.JDialog {
         for (z = 0; z < 24; z++) {
             TableColumn column = tbPasien.getColumnModel().getColumn(z);
             if(z==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(z==1){
                 column.setPreferredWidth(85);
             }else if(z==2){

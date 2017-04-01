@@ -79,7 +79,7 @@ public class DlgClosingKasir extends javax.swing.JDialog {
         for (int i = 0; i < 4; i++) {
             TableColumn column = tbJadwal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else{
                 column.setPreferredWidth(150);
             }

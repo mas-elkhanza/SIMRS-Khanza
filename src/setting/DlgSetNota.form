@@ -567,7 +567,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel15">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Lebar Nota Apotek :"/>
+                            <Property name="text" type="java.lang.String" value="Lebar Nota Apotek &amp; UTD :"/>
                             <Property name="name" type="java.lang.String" value="jLabel15" noResource="true"/>
                           </Properties>
                           <AccessibilityProperties>

@@ -87,7 +87,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         for (i = 0; i < 15; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(180);
             }else if(i==2){

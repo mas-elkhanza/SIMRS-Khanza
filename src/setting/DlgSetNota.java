@@ -557,7 +557,7 @@ public class DlgSetNota extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(222, 132, 60, 23);
 
-        jLabel15.setText("Lebar Nota Apotek :");
+        jLabel15.setText("Lebar Nota Apotek & UTD :");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
         jLabel15.setBounds(0, 162, 165, 23);
@@ -2313,7 +2313,7 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     tabMode.addRow(new Object[]{" Lebar Nota 1 Rawat Inap",rs.getString(3)});
                     tabMode.addRow(new Object[]{" Lebar Nota 2 Rawat Inap",rs.getString(4)});
                     tabMode.addRow(new Object[]{" Lebar Kwitansi Rawat Inap",rs.getString(5)});
-                    tabMode.addRow(new Object[]{" Lebar Nota Apotek",rs.getString(6)});
+                    tabMode.addRow(new Object[]{" Lebar Nota Apotek & UTD",rs.getString(6)});
                     tabMode.addRow(new Object[]{" Lebar Nota Lab & Radiologi",rs.getString(7)});
                     tabMode.addRow(new Object[]{" Cetak Nota/Kwitansi Saat Menyimpan di Billing Rawat Jalan",rs.getString(8)});
                     tabMode.addRow(new Object[]{" Cetak Nota/Kwitansi Saat Menyimpan di Billing Rawat Inap",rs.getString(9)});

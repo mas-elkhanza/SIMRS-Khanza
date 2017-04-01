@@ -889,7 +889,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             kdkomponen.requestFocus();
         }else {
-            Valid.panggilUrl("billing/NotaApotek2.php?nonota="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());          
+            Valid.panggilUrl("billing/NotaDarah2.php?nopenyerahan="+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());          
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppCetakNotaActionPerformed

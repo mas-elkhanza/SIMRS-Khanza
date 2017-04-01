@@ -86,7 +86,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         for (i = 0; i < 8; i++) {
             TableColumn column = tbDiagnosaPasien.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){
@@ -130,7 +130,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         for (i= 0; i < 7; i++) {
             TableColumn column = tbDiagnosa.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(50);
             }else if(i==2){
@@ -172,7 +172,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         for (i = 0; i < 4; i++) {
             TableColumn column = tbProsedur.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(50);
             }else if(i==2){
@@ -208,7 +208,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         for (i = 0; i < 8; i++) {
             TableColumn column = tbTindakanPasien.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){

@@ -1189,10 +1189,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }else{
                     status="Belum Dibayar";
                 }
-                if(Sequel.menyimpantf("utd_penyerahan_darah","?,?,?,?,?,?,?,?,?,?","No.Penyerahan", 10,new String[]{
+                if(Sequel.menyimpantf("utd_penyerahan_darah","?,?,?,?,?,?,?,?,?,?,?","No.Penyerahan", 11,new String[]{
                     nopenyerahan.getText(),Valid.SetTgl(tanggal.getSelectedItem()+""),dinas.getSelectedItem().toString(),
                     kdptgcross.getText(),keterangan.getText(),status,Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),
-                    nmpengambil.getText(),alamatpengambil.getText(),kdptgpj.getText()
+                    nmpengambil.getText(),alamatpengambil.getText(),kdptgpj.getText(),""+besarppn
                    })==true){
                     Sequel.AutoComitFalse();
                     //simpan darah

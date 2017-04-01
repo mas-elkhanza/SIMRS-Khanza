@@ -86,7 +86,7 @@ public final class DlgRestoreTarifRanap extends javax.swing.JDialog {
         for (i = 0; i < 13; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){
