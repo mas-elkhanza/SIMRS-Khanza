@@ -2784,7 +2784,7 @@ public final class DlgReg extends javax.swing.JDialog {
 }//GEN-LAST:event_THbngnKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-       if(TNoReg.getText().trim().equals("")){
+        if(TNoReg.getText().trim().equals("")){
             Valid.textKosong(TNoReg,"No.Regristrasi");
         }else if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"No.Rawat");

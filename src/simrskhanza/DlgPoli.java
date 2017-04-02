@@ -96,7 +96,7 @@ public final class DlgPoli extends javax.swing.JDialog {
         Kd.setDocument(new batasInput((byte)5).getKata(Kd));
         By.setDocument(new batasInput((byte)13).getOnlyAngka(By));
         ByLm.setDocument(new batasInput((byte)13).getOnlyAngka(ByLm));
-        Nm.setDocument(new batasInput((byte)30).getKata(Nm));
+        Nm.setDocument(new batasInput((byte)50).getKata(Nm));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));        
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
