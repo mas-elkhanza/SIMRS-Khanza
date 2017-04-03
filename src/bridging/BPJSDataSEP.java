@@ -1579,8 +1579,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     }//GEN-LAST:event_TNoRM2KeyPressed
 
     private void ppSEPBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSEPBtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         if(tbObat.getSelectedRow()!= -1){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -1607,11 +1607,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         "if(bridging_sep.lakalantas='1','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),bridging_sep.lokasilaka,bridging_sep.user, "+
                         "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu from bridging_sep where no_sep='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
             }                
+            this.setCursor(Cursor.getDefaultCursor());
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dicetak...!!!!");
             BtnBatal.requestFocus();
-        }
-        this.setCursor(Cursor.getDefaultCursor());
+        }        
     }//GEN-LAST:event_ppSEPBtnPrintActionPerformed
 
     private void ppPulangBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPulangBtnPrintActionPerformed

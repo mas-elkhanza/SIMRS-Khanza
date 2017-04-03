@@ -1941,6 +1941,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
 
     private void ChkCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkCariActionPerformed
         if(tabMode.getRowCount()==0){
+            nosep="";
             ChkCari.setSelected(false);
             isForm();
             JOptionPane.showMessageDialog(null,"Maaf, data peserta BPJS masih kosong. Silahkan lakukan pencarian berdasar No.Kartu...!!!!");
@@ -2566,7 +2567,6 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             Sequel.queryu3("insert into kecamatan values(?,?)",2,new String[]{"0",Kecamatan.getText().replaceAll("KECAMATAN","-")});
             Sequel.queryu3("insert into kabupaten values(?,?)",2,new String[]{"0",Kabupaten.getText().replaceAll("KABUPATEN","-")});
             
-            nosep="";
             jmlhari=0;
             biaya=0;
             if(hariawal.equals("Yes")){
@@ -2683,8 +2683,19 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         if(!nosep.equals("")){
             DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,true);
             pilihan.tampil();
-            pilihan.setNoRm(TNoRw.getText(),TNo.getText(), nosep);
+            if(JenisPelayanan.getSelectedIndex()==1){
+                pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
+                        TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(), 
+                        Saudara.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),"ranap");
+            }else{
+                pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
+                        TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(), 
+                        Saudara.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),"ralan");
+            }
+
             pilihan.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null,"Data SEP belum tersimpan, berkas tidak bisa dicetak...!");
         }
     }//GEN-LAST:event_MnDocumentActionPerformed
 
@@ -2833,6 +2844,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     public void tampil(String nomorpeserta) {
         BPJSApi api=new BPJSApi();
         try {
+            nosep="";
             statuspasien="";
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/Peserta/Peserta/"+nomorpeserta;	
@@ -3331,7 +3343,16 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     if(!nosep.equals("")){
                         DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,true);
                         pilihan.tampil();
-                        pilihan.setNoRm(TNoRw.getText(),TNo.getText(), nosep);
+                        if(JenisPelayanan.getSelectedIndex()==1){
+                            pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
+                                    TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(), 
+                                    Saudara.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),"ranap");
+                        }else{
+                            pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
+                                    TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(), 
+                                    Saudara.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),"ralan");
+                        }
+                            
                         pilihan.setVisible(true);
                     }
                 }                     
