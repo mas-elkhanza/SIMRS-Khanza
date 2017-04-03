@@ -14,13 +14,16 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select * from bangsal where kd_bangsal like $P{parameter} 
-or nm_bangsal like $P{parameter} order by kd_bangsal]]>
+		<![CDATA[select * from bangsal where status='1' and kd_bangsal like $P{parameter} 
+or status='1' and nm_bangsal like $P{parameter} order by kd_bangsal]]>
 	</queryString>
 	<field name="kd_bangsal" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_bangsal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>

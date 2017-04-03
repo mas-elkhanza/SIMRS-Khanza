@@ -80,7 +80,7 @@
          </tr>
 
 	<?php  
-		$_sql="Select * From bangsal where kd_bangsal in(select kd_bangsal from kamar)" ;  
+		$_sql="Select * From bangsal where status='1' and kd_bangsal in(select kd_bangsal from kamar)" ;  
 		$hasil=bukaquery($_sql);
 
 		while ($data = mysql_fetch_array ($hasil)){

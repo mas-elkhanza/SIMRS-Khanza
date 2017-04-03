@@ -101,7 +101,7 @@ public class InformasiAnalisaKamin extends javax.swing.JDialog {
         });
         
         try {
-            ps=koneksi.prepareStatement("select kd_bangsal,nm_bangsal from bangsal where kd_bangsal in (select kd_bangsal from kamar group by kd_bangsal) and kd_bangsal like ? order by nm_bangsal");
+            ps=koneksi.prepareStatement("select kd_bangsal,nm_bangsal from bangsal where status='1' and kd_bangsal in (select kd_bangsal from kamar group by kd_bangsal) and kd_bangsal like ? order by nm_bangsal");
             ps2=koneksi.prepareStatement("select kd_kamar,trf_kamar,kelas from kamar where kamar.statusdata='1' and kd_bangsal=? and status='ISI'");
             ps3=koneksi.prepareStatement("select kd_kamar,trf_kamar from kamar where kamar.statusdata='1' and kd_bangsal=? and status='KOSONG'");   
         } catch (SQLException e) {

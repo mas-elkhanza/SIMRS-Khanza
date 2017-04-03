@@ -791,21 +791,21 @@ public final class DlgKamar extends javax.swing.JDialog {
             if((TCari.getText().trim().equals(""))&&(panelCari.isVisible()==false)){
                 Valid.MyReport("rptKamar.jrxml","report","::[ Data Nomor Kamar ]::",
                         "select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
-                               "kamar.kelas,trf_kamar,status "+
+                               "kamar.kelas,trf_kamar,kamar.status "+
                                "from bangsal,kamar "+
                                "where kamar.statusdata='1' and kamar.kd_bangsal=bangsal.kd_bangsal "+
                                "order by kd_kamar",param);
             }else if((! TCari.getText().trim().equals(""))&&(panelCari.isVisible()==false)){
                 String sql="kamar.statusdata='1' and kamar.kd_bangsal=bangsal.kd_bangsal ";
                 Valid.MyReport("rptKamar.jrxml","report","::[ Data Nomor Kamar ]::","select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
-                               "kamar.kelas,trf_kamar,status "+
+                               "kamar.kelas,trf_kamar,kamar.status "+
                                "from bangsal,kamar where  "+
                                sql+"and kd_kamar like '%"+TCari.getText().trim()+"%' or "+
                                sql+"and kamar.kd_bangsal like '%"+TCari.getText().trim()+"%' or "+
                                sql+"and bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
                                sql+"and kamar.kelas like '%"+TCari.getText().trim()+"%' or "+
                                sql+"and trf_kamar like '%"+TCari.getText().trim()+"%' or "+
-                               sql+"and status like '%"+TCari.getText().trim()+"%' "+
+                               sql+"and kamar.status like '%"+TCari.getText().trim()+"%' "+
                                "order by kd_kamar ",param);
             }else if((TCari.getText().trim().equals(""))&&(panelCari.isVisible()==true)&&(CmbCrIsi.getItemCount()>0)){
                 String key="and kamar.statusdata='1'";
@@ -817,10 +817,10 @@ public final class DlgKamar extends javax.swing.JDialog {
                      key="and kamar.statusdata='1' and bangsal.nm_bangsal like '%"+BangsalCari.getText().trim()+"%' "+
                          "and status like '%"+CmbCrIsi.getSelectedItem().toString().trim()+"%' ";
                 }else if((BangsalCari.getText().equals(""))&&(! CmbCrIsi.getSelectedItem().toString().equals(" "))){
-                     key="and kamar.statusdata='1' and status like '%"+CmbCrIsi.getSelectedItem().toString().trim()+"%' ";
+                     key="and kamar.statusdata='1' and kamar.status like '%"+CmbCrIsi.getSelectedItem().toString().trim()+"%' ";
                 }     
                 Valid.MyReport("rptKamar.jrxml","report","::[ Data Nomor Kamar ]::","select kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
-                               "kamar.kelas,trf_kamar,status "+
+                               "kamar.kelas,trf_kamar,kamar.status "+
                                "from bangsal,kamar "+
                                "where kamar.kd_bangsal=bangsal.kd_bangsal "+key+
                                " order by kd_kamar",param);
@@ -1064,12 +1064,12 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
             ps=koneksi.prepareStatement("select kamar.kd_kamar,kamar.kd_bangsal,bangsal.nm_bangsal, "+
                        "kamar.kelas,kamar.trf_kamar,kamar.status from bangsal inner join kamar "+
                        "on kamar.kd_bangsal=bangsal.kd_bangsal where "+
-                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and status like ? and kamar.kd_kamar like ? or "+
-                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and status like ? and kamar.kd_bangsal like ? or "+
-                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and status like ? and bangsal.nm_bangsal like ? or "+
-                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and status like ? and kamar.kelas like ? or "+
-                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and status like ? and kamar.trf_kamar like ? or "+
-                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and status like ? and kamar.status like ? "+
+                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and kamar.status like ? and kamar.kd_kamar like ? or "+
+                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and kamar.status like ? and kamar.kd_bangsal like ? or "+
+                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and kamar.status like ? and bangsal.nm_bangsal like ? or "+
+                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and kamar.status like ? and kamar.kelas like ? or "+
+                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and kamar.status like ? and kamar.trf_kamar like ? or "+
+                       "kamar.statusdata='1' and bangsal.nm_bangsal like ? and kamar.status like ? and kamar.status like ? "+
                        "order by bangsal.nm_bangsal");
             try {                
                 ps.setString(1,"%"+BangsalCari.getText().trim()+"%");
@@ -1100,7 +1100,7 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
                                    rs.getString(6)});
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println("Notif Kamar : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
