@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="268" pageHeight="210" orientation="Landscape" columnWidth="258" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.9965000000000006"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
@@ -70,7 +70,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="144" y="163" width="90" height="17" forecolor="#002800"/>
+				<reportElement x="144" y="165" width="90" height="17" forecolor="#002800"/>
 				<textElement textAlignment="Right" lineSpacing="Single">
 					<font fontName="Tahoma" size="14" isBold="true"/>
 				</textElement>
@@ -83,11 +83,18 @@
 				</jr:barbecue>
 			</componentElement>
 			<textField>
-				<reportElement x="11" y="137" width="225" height="22" forecolor="#002800"/>
+				<reportElement x="11" y="136" width="225" height="22" forecolor="#002800"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{alamat}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="144" y="157" width="90" height="9" forecolor="#002800"/>
+				<textElement textAlignment="Right" lineSpacing="Single">
+					<font fontName="Tahoma" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

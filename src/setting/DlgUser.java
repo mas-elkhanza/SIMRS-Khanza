@@ -88,7 +88,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Data Bridging SEP","[D]Pengambilan BHP UTD","[J]Tarif UTD","[M]Pengambilan BHP Medis","[M]BHP Medis Rusak","[E]Pengambilan UTD","[M]Pengambilan BHP Non Medis",
                     "[M]BHP Non Medis Rusak","[E]Suplier Non Medis","[M]Donor Darah","[K]Monitoring Verifikasi Klaim","[M]Cekal Darah","[M]Komponen Darah","[M]Stok Darah","[M]Pemisahan Darah",
                     "[H]Harian Kamar","[J]Rincian Piutang Pasien","[D]Keuntungan Beri Obat, Alkes & BHP 2","[K]Reklasifikasi Ralan","[K]Reklasifikasi Ranap","[M]Penyerahan Darah",
-                    "[J]Hutang Obat & BHP","[D]Riwayat Obat, Alkes & BHP"
+                    "[J]Hutang Obat & BHP","[D]Riwayat Obat, Alkes & BHP","[I]Sensus Harian Poli"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -155,7 +155,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
-                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -168,7 +168,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 208; i++) {
+        for (i = 0; i < 209; i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(170);
@@ -609,7 +609,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -860,7 +860,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "reklasifikasi_ranap='"+tbUser.getValueAt(i,204).toString()+"',"+
                     "utd_penyerahan_darah='"+tbUser.getValueAt(i,205).toString()+"',"+
                     "hutang_obat='"+tbUser.getValueAt(i,206).toString()+"',"+
-                    "riwayat_obat_alkes_bhp='"+tbUser.getValueAt(i,207).toString()+"'");
+                    "riwayat_obat_alkes_bhp='"+tbUser.getValueAt(i,207).toString()+"',"+
+                    "sensus_harian_poli='"+tbUser.getValueAt(i,208).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1108,7 +1109,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "pengambilan_utd2,utd_medis_rusak,pengambilan_penunjang_utd,pengambilan_penunjang_utd2,utd_penunjang_rusak,"+
                         "suplier_penunjang,utd_donor,bpjs_monitoring_klaim,utd_cekal_darah,utd_komponen_darah,utd_stok_darah, "+
                         "utd_pemisahan_darah,harian_kamar,rincian_piutang_pasien,keuntungan_beri_obat_nonpiutang,reklasifikasi_ralan, "+
-                        "reklasifikasi_ranap,utd_penyerahan_darah,hutang_obat,riwayat_obat_alkes_bhp from user order by AES_DECRYPT(id_user,'nur')");
+                        "reklasifikasi_ranap,utd_penyerahan_darah,hutang_obat,riwayat_obat_alkes_bhp,sensus_harian_poli from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1326,7 +1327,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("reklasifikasi_ranap"),
                                            rs.getBoolean("utd_penyerahan_darah"),
                                            rs.getBoolean("hutang_obat"),
-                                           rs.getBoolean("riwayat_obat_alkes_bhp")
+                                           rs.getBoolean("riwayat_obat_alkes_bhp"),
+                                           rs.getBoolean("sensus_harian_poli")
                             });
                         }   
                     } catch (Exception e) {
@@ -1536,7 +1538,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("reklasifikasi_ranap"),
                                            rs.getBoolean("utd_penyerahan_darah"),
                                            rs.getBoolean("hutang_obat"),
-                                           rs.getBoolean("riwayat_obat_alkes_bhp")
+                                           rs.getBoolean("riwayat_obat_alkes_bhp"),
+                                           rs.getBoolean("sensus_harian_poli")
                             });
                     }                                             
                  }

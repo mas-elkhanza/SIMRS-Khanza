@@ -102,7 +102,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
     }
     
     DlgPasien pasien=new DlgPasien(null,false);
-    private String[] hlm;
     int y=0,w=0,urut;
 
     /** This method is called from within the constructor to

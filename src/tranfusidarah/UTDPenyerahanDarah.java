@@ -37,8 +37,7 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private double ttl=0,y=0,stokbarang=0,bayar=0,total2=0,ppn=0,besarppn=0,tagihanppn=0;;
     private int jml=0,i=0,index=0,row=0,pilih=0;
-    private String verifikasi_penyerahan_darah_di_kasir=Sequel.cariIsi(
-            "select verifikasi_penyerahan_darah_di_kasir from set_nota"),status="Belum Dibayar";
+    private String verifikasi_penyerahan_darah_di_kasir="",status="Belum Dibayar";
     private PreparedStatement ps,ps2,psstok,psdarah;
     private ResultSet rs,rs2,rsstok,rsdarah;
     private boolean[] pilihan;
@@ -244,10 +243,15 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
         });
         
         Valid.loadCombo(CmbAkun,"nama_bayar","akun_bayar");
-        try {
+        try {            
             PPN.setText(Sequel.cariIsi("select ppn from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()));
         } catch (Exception e) {
             PPN.setText("0");
+        }
+        try {
+            verifikasi_penyerahan_darah_di_kasir=Sequel.cariIsi("select verifikasi_penyerahan_darah_di_kasir from set_nota");
+        } catch (Exception e) {
+            verifikasi_penyerahan_darah_di_kasir="No";
         }
         
     }

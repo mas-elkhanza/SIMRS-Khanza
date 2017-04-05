@@ -48,10 +48,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
         initComponents();
         this.setLocation(10,2);
         setSize(656,250);
-
-        Object[] row={"Kode Kamar",
-                    "Nama Kamar"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new String[]{"Kode Kamar","Nama Kamar"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -64,7 +61,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(150);
             }else if(i==1){
-                column.setPreferredWidth(400);
+                column.setPreferredWidth(500);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());

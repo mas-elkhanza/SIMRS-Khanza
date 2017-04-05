@@ -178,6 +178,7 @@ import laporan.DlgRl34;
 import laporan.DlgRl36;
 import laporan.DlgRl37;
 import laporan.DlgRl38;
+import laporan.DlgSensusHarianPoli;
 import parkir.DlgParkirBarcode;
 import parkir.DlgParkirJenis;
 import parkir.DlgParkirMasuk;
@@ -609,6 +610,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnUTDPenyerahanDarah = new widget.ButtonBig();
         btnHutangObat = new widget.ButtonBig();
         btnRiwayatBarangMedis = new widget.ButtonBig();
+        btnSensusHarianPoli = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3597,6 +3599,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRiwayatBarangMedis);
 
+        btnSensusHarianPoli.setForeground(new java.awt.Color(40, 70, 50));
+        btnSensusHarianPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
+        btnSensusHarianPoli.setText("Sensus Harian Poli");
+        btnSensusHarianPoli.setIconTextGap(0);
+        btnSensusHarianPoli.setName("btnSensusHarianPoli"); // NOI18N
+        btnSensusHarianPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSensusHarianPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSensusHarianPoliActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSensusHarianPoli);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3605,7 +3620,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31/03/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/04/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7678,6 +7693,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnInfoBed1ActionPerformed
 
+    private void btnSensusHarianPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSensusHarianPoliActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSensusHarianPoli aplikasi=new DlgSensusHarianPoli(this,false);
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSensusHarianPoliActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7881,6 +7908,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRujukPasien;
     private widget.ButtonBig btnSMS;
     private widget.ButtonBig btnSatuan;
+    private widget.ButtonBig btnSensusHarianPoli;
     private widget.ButtonBig btnSetBiayaHarian;
     private widget.ButtonBig btnSetBiayaMasukSekali;
     private widget.ButtonBig btnSetHargaKamar;
@@ -8638,6 +8666,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getkunjungan_ranap()==true){  
                 Panelmenu.add(btnKunjunganRanap); 
+                jmlmenu++;
+            }
+            
+            if(var.getsensus_harian_poli()==true){  
+                Panelmenu.add(btnSensusHarianPoli);  
                 jmlmenu++;
             }
             
