@@ -56,8 +56,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private ResultSet rstanggal,rspoli,rsreg;
     private int i=0;
-    private StringBuilder htmlContent = new StringBuilder();
-    private String lama="",baru="";
+    private String lama="",baru="",rujukandari="",alamatrujukandari="",dirujukke="",namapeyakit="",kodepenyakit="";
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -145,7 +144,8 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
                 ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#3c5032;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"
+                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -194,9 +194,6 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -423,7 +420,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             
-            File g = new File("file.css");            
+            File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
                     ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
@@ -436,7 +433,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
             File f = new File("sensuspoli.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));
             bw.write(LoadHTML.getText().replaceAll(
-                    "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                    "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
@@ -478,11 +475,6 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
     }//GEN-LAST:event_formWindowOpened
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        tampil();
-
-    }//GEN-LAST:event_formWindowActivated
 
     private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
@@ -562,6 +554,10 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        kdpoli.setText("");
+        nmpoli.setText("");
+        kdpenjab.setText("");
+        nmpenjab.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -620,6 +616,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     public void tampil(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
+            StringBuilder htmlContent = new StringBuilder();
             pstanggal=koneksi.prepareStatement("select tgl_registrasi,DATE_FORMAT(tgl_registrasi,'%d-%m-%Y') as tanggal from reg_periksa where tgl_registrasi between ? and ? group by tgl_registrasi order by tgl_registrasi ");
             try {
                 pstanggal.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
@@ -636,80 +633,101 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                         rspoli=pspoli.executeQuery();
                         while(rspoli.next()){
                             htmlContent.append(
-                                    "<tr class='isi2'>"+
-                                        "<td valign='top' colspan='2'>Poliklinik</td><td valign='top' colspan='11'>: "+rspoli.getString("nm_poli")+"</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi2'>"+
-                                        "<td valign='top' colspan='2'>Tanggal</td><td valign='top' colspan='11'>: "+rstanggal.getString("tanggal")+"</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi3'>"+
-                                        "<td valign='top' align='center' width='3%' rowspan='2'>No.</td>"+
-                                        "<td valign='top' align='center' width='6%' rowspan='2'>No.RM</td>"+
-                                        "<td valign='top' align='center' width='13%' rowspan='2'>Nama Pasien</td>"+
-                                        "<td valign='top' align='center' width='13%' rowspan='2'>Alamat</td>"+
-                                        "<td valign='top' align='center' width='3%' rowspan='2'>L/P</td>"+
-                                        "<td valign='top' align='center' width='3%' rowspan='2'>Umur</td>"+
-                                        "<td valign='top' align='center' width='10%' colspan='2'>Kasus</td>"+
-                                        "<td valign='top' align='center' width='10%' rowspan='2'>Cara Pembayaran</td>"+
-                                        "<td valign='top' align='center' width='10%' rowspan='2'>Asal Rujukan &<br>Alamatnya</td>"+
-                                        "<td valign='top' align='center' width='14%' rowspan='2'>Golongan Penyakit/<br>Sebab Penyakit</td>"+
-                                        "<td valign='top' align='center' width='5%' rowspan='2'>Kode ICD X</td>"+
-                                        "<td valign='top' align='center' width='10%' rowspan='2'>Dirujuk Ke</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi3'>"+                                        
-                                        "<td valign='top' align='center' width='5%'>Lama</td>"+
-                                        "<td valign='top' align='center' width='5%'>Baru</td>"+
-                                    "</tr>" 
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>&nbsp;</td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                "</tr>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' colspan='2'>Poliklinik</td><td valign='top' colspan='11'>: "+rspoli.getString("nm_poli")+"</td>"+
+                                "</tr>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' colspan='2'>Tanggal</td><td valign='top' colspan='11'>: "+rstanggal.getString("tanggal")+"</td>"+
+                                "</tr>"+
+                                "<tr class='isi3'>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='3%' rowspan='2'>No.</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='6%' rowspan='2'>No.RM</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='13%' rowspan='2'>Nama Pasien</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='13%' rowspan='2'>Alamat</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='3%' rowspan='2'>L/P</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='3%' rowspan='2'>Umur</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='6%' colspan='2'>Kasus</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='10%' rowspan='2'>Cara Pembayaran</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='14%' rowspan='2'>Asal Rujukan &<br>Alamatnya</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='14%' rowspan='2'>Golongan Penyakit/<br>Sebab Penyakit</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='5%' rowspan='2'>Kode ICD X</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='10%' rowspan='2'>Dirujuk Ke</td>"+
+                                "</tr>"+
+                                "<tr class='isi3'>"+                                        
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='3%'>Lama</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='3%'>Baru</td>"+
+                                "</tr>" 
                             );
                             psreg=koneksi.prepareStatement(
                                     "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.alamat,pasien.jk,pasien.umur,"+
-                                    "reg_periksa.stts_daftar,penjab.png_jawab from reg_periksa inner join pasien inner join penjab "+
+                                    "reg_periksa.stts_daftar,penjab.png_jawab,reg_periksa.no_rawat from reg_periksa inner join pasien inner join penjab "+
                                     "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj where "+
-                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and reg_periksa.no_rkm_medis like ? or "+
-                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and pasien.nm_pasien like ? or "+
-                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and pasien.alamat like ? or "+
-                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and reg_periksa.stts_daftar like ? or "+
-                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? order by reg_periksa.no_reg ");
+                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and reg_periksa.no_rkm_medis like ? or "+
+                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and pasien.nm_pasien like ? or "+
+                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and pasien.alamat like ? or "+
+                                    "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and reg_periksa.stts_daftar like ? order by reg_periksa.no_reg ");
                             try {
                                 i=1;
                                 psreg.setString(1,rstanggal.getString("tgl_registrasi"));
                                 psreg.setString(2,rspoli.getString("kd_poli"));
-                                psreg.setString(3,"%"+TCari.getText().trim()+"%");
-                                psreg.setString(4,rstanggal.getString("tgl_registrasi"));
-                                psreg.setString(5,rspoli.getString("kd_poli"));
-                                psreg.setString(6,"%"+TCari.getText().trim()+"%");
-                                psreg.setString(7,rstanggal.getString("tgl_registrasi"));
-                                psreg.setString(8,rspoli.getString("kd_poli"));
-                                psreg.setString(9,"%"+TCari.getText().trim()+"%");
-                                psreg.setString(10,rstanggal.getString("tgl_registrasi"));
-                                psreg.setString(11,rspoli.getString("kd_poli"));
+                                psreg.setString(3,"%"+nmpenjab.getText().trim()+"%");
+                                psreg.setString(4,"%"+TCari.getText().trim()+"%");
+                                psreg.setString(5,rstanggal.getString("tgl_registrasi"));
+                                psreg.setString(6,rspoli.getString("kd_poli"));
+                                psreg.setString(7,"%"+nmpenjab.getText().trim()+"%");
+                                psreg.setString(8,"%"+TCari.getText().trim()+"%");
+                                psreg.setString(9,rstanggal.getString("tgl_registrasi"));
+                                psreg.setString(10,rspoli.getString("kd_poli"));
+                                psreg.setString(11,"%"+nmpenjab.getText().trim()+"%");
                                 psreg.setString(12,"%"+TCari.getText().trim()+"%");
                                 psreg.setString(13,rstanggal.getString("tgl_registrasi"));
                                 psreg.setString(14,rspoli.getString("kd_poli"));
-                                psreg.setString(15,"%"+TCari.getText().trim()+"%");
+                                psreg.setString(15,"%"+nmpenjab.getText().trim()+"%");
+                                psreg.setString(16,"%"+TCari.getText().trim()+"%");
                                 rsreg=psreg.executeQuery();
                                 while(rsreg.next()){
                                     lama="";baru="";
+                                    dirujukke=Sequel.cariIsi("select rujuk_ke from rujuk where no_rawat=?",rsreg.getString("no_rawat"));
+                                    rujukandari=Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rsreg.getString("no_rawat"));
+                                    alamatrujukandari=Sequel.cariIsi("select alamat from rujuk_masuk where no_rawat=?",rsreg.getString("no_rawat"));
+                                    namapeyakit=Sequel.cariIsi("select penyakit.nm_penyakit from diagnosa_pasien inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit where diagnosa_pasien.status='Ralan' and diagnosa_pasien.prioritas='1' and diagnosa_pasien.no_rawat=?",rsreg.getString("no_rawat"));
+                                    kodepenyakit=Sequel.cariIsi("select kd_penyakit from diagnosa_pasien where status='Ralan' and prioritas='1' and no_rawat=?",rsreg.getString("no_rawat"));
                                     if(rsreg.getString("stts_daftar").equals("Baru")){
-                                        baru="Baru";
+                                        baru="V";
                                     }else if(rsreg.getString("stts_daftar").equals("Lama")){
-                                        lama="Lama";
+                                        lama="V";
                                     }
+                                    
                                     htmlContent.append(
                                         "<tr class='isi3'>"+
-                                            "<td valign='top' align='center' width='3%'>"+i+"</td>"+
-                                            "<td valign='top' align='center' width='6%'>"+rsreg.getString("no_rkm_medis")+"</td>"+
-                                            "<td valign='top' align='center' width='13%'>"+rsreg.getString("nm_pasien")+"</td>"+
-                                            "<td valign='top' align='center' width='13%'>"+rsreg.getString("alamat")+"</td>"+
-                                            "<td valign='top' align='center' width='3%'>"+rsreg.getString("jk")+"</td>"+
-                                            "<td valign='top' align='center' width='3%'>"+rsreg.getString("umur")+"</td>"+
-                                            "<td valign='top' align='center' width='5%'>"+lama+"</td>"+
-                                            "<td valign='top' align='center' width='5%'>"+baru+"</td>"+
-                                            "<td valign='top' align='center' width='10%'>"+rsreg.getString("png_jawab")+"</td>"+
-                                            "<td valign='top' align='center' width='10%'>Asal Rujukan &<br>Alamatnya</td>"+
-                                            "<td valign='top' align='center' width='14%'>Golongan Penyakit/<br>Sebab Penyakit</td>"+
-                                            "<td valign='top' align='center' width='5%'>Kode ICD X</td>"+
-                                            "<td valign='top' align='center' width='10%'>Dirujuk Ke</td>"+
+                                            "<td valign='top' align='center'>"+i+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("alamat")+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("jk")+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("umur")+"</td>"+
+                                            "<td valign='top' align='center'>"+lama+"</td>"+
+                                            "<td valign='top' align='center'>"+baru+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top'>"+rujukandari+" "+alamatrujukandari+"</td>"+
+                                            "<td valign='top'>"+namapeyakit+"</td>"+
+                                            "<td valign='top' align='center'>"+kodepenyakit+"</td>"+
+                                            "<td valign='top'>"+dirujukke+"</td>"+
                                         "</tr>"
                                     );        
                                     i++;
@@ -726,36 +744,20 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                             }
                             htmlContent.append(
                                 "<tr class='isi4'>"+
-                                    "<td valign='top' align='center' width='3%'>&nbsp</td>"+
-                                    "<td valign='top' align='center' width='6%'></td>"+
-                                    "<td valign='top' align='center' width='13%'></td>"+
-                                    "<td valign='top' align='center' width='13%'></td>"+
-                                    "<td valign='top' align='center' width='3%'></td>"+
-                                    "<td valign='top' align='center' width='3%'></td>"+
-                                    "<td valign='top' align='center' width='5%'></td>"+
-                                    "<td valign='top' align='center' width='5%'></td>"+
-                                    "<td valign='top' align='center' width='10%'></td>"+
-                                    "<td valign='top' align='center' width='10%'></td>"+
-                                    "<td valign='top' align='center' width='14%'></td>"+
-                                    "<td valign='top' align='center' width='5%'></td>"+
-                                    "<td valign='top' align='center' width='10%'></td>"+
-                                "</tr>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='center' width='3%'>&nbsp;</td>"+
-                                    "<td valign='top' align='center' width='6%'></td>"+
-                                    "<td valign='top' align='center' width='13%'></td>"+
-                                    "<td valign='top' align='center' width='13%'></td>"+
-                                    "<td valign='top' align='center' width='3%'></td>"+
-                                    "<td valign='top' align='center' width='3%'></td>"+
-                                    "<td valign='top' align='center' width='5%'></td>"+
-                                    "<td valign='top' align='center' width='5%'></td>"+
-                                    "<td valign='top' align='center' width='10%'></td>"+
-                                    "<td valign='top' align='center' width='10%'></td>"+
-                                    "<td valign='top' align='center' width='14%'></td>"+
-                                    "<td valign='top' align='center' width='5%'></td>"+
-                                    "<td valign='top' align='center' width='10%'></td>"+
+                                    "<td valign='top' align='center'>&nbsp;</td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
                                 "</tr>"
-                                    
                             );    
                             
                         }
