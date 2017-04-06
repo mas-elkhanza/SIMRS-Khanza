@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="935" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="2.8531167061100122"/>
-	<property name="ireport.x" value="56"/>
-	<property name="ireport.y" value="132"/>
+	<property name="ireport.zoom" value="2.143588810000009"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="164"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -283,14 +283,14 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				<textElement textAlignment="Left" lineSpacing="Single">
 					<font fontName="Tahoma"/>
 				</textElement>
-				<text><![CDATA[Umur]]></text>
+				<text><![CDATA[Umur & Tgl. Lahir]]></text>
 			</staticText>
-			<textField>
-				<reportElement mode="Opaque" x="141" y="131" width="287" height="13"/>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement mode="Opaque" x="215" y="131" width="213" height="13"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{umur}]]></textFieldExpression>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Opaque" x="141" y="147" width="287" height="13"/>
@@ -368,6 +368,13 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement mode="Opaque" x="141" y="131" width="74" height="13"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{umur}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 </jasperReport>

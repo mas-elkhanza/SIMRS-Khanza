@@ -670,6 +670,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnSudahPulang5 = new javax.swing.JMenuItem();
         MnRekapHadir1 = new javax.swing.JMenuItem();
         MnInfoBed = new javax.swing.JMenuItem();
+        MnInfoBed2 = new javax.swing.JMenuItem();
         MnInfoBed1 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         MnAnjungan = new javax.swing.JMenuItem();
@@ -3620,7 +3621,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/04/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/04/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -4399,7 +4400,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnInfoBed.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnInfoBed.setForeground(new java.awt.Color(153, 0, 51));
         MnInfoBed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
-        MnInfoBed.setText("Dashboard Info Bed");
+        MnInfoBed.setText("Dashboard Info Bed 1");
         MnInfoBed.setName("MnInfoBed"); // NOI18N
         MnInfoBed.setPreferredSize(new java.awt.Dimension(200, 40));
         MnInfoBed.addActionListener(new java.awt.event.ActionListener() {
@@ -4408,6 +4409,20 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         jMenu6.add(MnInfoBed);
+
+        MnInfoBed2.setBackground(new java.awt.Color(255, 255, 255));
+        MnInfoBed2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnInfoBed2.setForeground(new java.awt.Color(153, 0, 51));
+        MnInfoBed2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
+        MnInfoBed2.setText("Dashboard Info Bed 2");
+        MnInfoBed2.setName("MnInfoBed2"); // NOI18N
+        MnInfoBed2.setPreferredSize(new java.awt.Dimension(200, 40));
+        MnInfoBed2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnInfoBed2ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(MnInfoBed2);
 
         MnInfoBed1.setBackground(new java.awt.Color(255, 255, 255));
         MnInfoBed1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7705,6 +7720,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSensusHarianPoliActionPerformed
 
+    private void MnInfoBed2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnInfoBed2ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Valid.panggilUrl("bed2.php");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnInfoBed2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7739,6 +7760,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private javax.swing.JMenuItem MnGantiPassword;
     private javax.swing.JMenuItem MnInfoBed;
     private javax.swing.JMenuItem MnInfoBed1;
+    private javax.swing.JMenuItem MnInfoBed2;
     private javax.swing.JMenuItem MnLogin;
     private javax.swing.JMenuItem MnRekapBulanan;
     private javax.swing.JMenuItem MnRekapBulanan1;
