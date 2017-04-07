@@ -611,6 +611,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnHutangObat = new widget.ButtonBig();
         btnRiwayatBarangMedis = new widget.ButtonBig();
         btnSensusHarianPoli = new widget.ButtonBig();
+        btnRl4a = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3613,6 +3614,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSensusHarianPoli);
 
+        btnRl4a.setForeground(new java.awt.Color(40, 70, 50));
+        btnRl4a.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
+        btnRl4a.setText("RL 4A Morbiditas Ranap");
+        btnRl4a.setIconTextGap(0);
+        btnRl4a.setName("btnRl4a"); // NOI18N
+        btnRl4a.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl4a.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl4aActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRl4a);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3621,7 +3635,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/04/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/04/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7726,6 +7740,10 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnInfoBed2ActionPerformed
 
+    private void btnRl4aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRl4aActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRl4aActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7925,6 +7943,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRl36;
     private widget.ButtonBig btnRl37;
     private widget.ButtonBig btnRl38;
+    private widget.ButtonBig btnRl4a;
     private widget.ButtonBig btnRuangInventaris;
     private widget.ButtonBig btnRujukMasuk;
     private widget.ButtonBig btnRujukPasien;
@@ -8723,6 +8742,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getrl38()==true){  
                 Panelmenu.add(btnRl38);  
+                jmlmenu++;
+            }
+            
+            if(var.getrl4a()==true){  
+                Panelmenu.add(btnRl4a);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   

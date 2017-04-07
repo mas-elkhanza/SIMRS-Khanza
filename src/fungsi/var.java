@@ -51,7 +51,7 @@ public final class var {
             pengambilan_utd2=false,utd_medis_rusak=false,pengambilan_penunjang_utd=false,pengambilan_penunjang_utd2=false,utd_penunjang_rusak=false,
             suplier_penunjang=false,utd_donor=false,bpjs_monitoring_klaim=false,utd_cekal_darah=false,utd_komponen_darah=false,utd_stok_darah=false,
             utd_pemisahan_darah=false,harian_kamar=false,rincian_piutang_pasien=false,keuntungan_beri_obat_nonpiutang=false,reklasifikasi_ralan=false,
-            reklasifikasi_ranap=false,utd_penyerahan_darah=false,hutang_obat=false,riwayat_obat_alkes_bhp=false,sensus_harian_poli=false;
+            reklasifikasi_ranap=false,utd_penyerahan_darah=false,hutang_obat=false,riwayat_obat_alkes_bhp=false,sensus_harian_poli=false,rl4a=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -283,6 +283,7 @@ public final class var {
                         var.hutang_obat=true;
                         var.riwayat_obat_alkes_bhp=true;
                         var.sensus_harian_poli=true;
+                        var.rl4a=true;
                     }else if(rs.getRow()>=1){
                         var.kode="Admin Utama";
                         var.penyakit=true;
@@ -495,6 +496,7 @@ public final class var {
                         var.hutang_obat=true;
                         var.riwayat_obat_alkes_bhp=true;
                         var.sensus_harian_poli=true;
+                        var.rl4a=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -709,6 +711,7 @@ public final class var {
                         var.hutang_obat=rs2.getBoolean("hutang_obat");
                         var.riwayat_obat_alkes_bhp=rs2.getBoolean("riwayat_obat_alkes_bhp");
                         var.sensus_harian_poli=rs2.getBoolean("sensus_harian_poli");
+                        var.rl4a=rs2.getBoolean("rl4a");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -921,6 +924,7 @@ public final class var {
                         var.hutang_obat=false;
                         var.riwayat_obat_alkes_bhp=false;
                         var.sensus_harian_poli=false;
+                        var.rl4a=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1179,4 +1183,5 @@ public final class var {
     public static boolean gethutang_obat(){return var.hutang_obat;}  
     public static boolean getriwayat_obat_alkes_bhp(){return var.riwayat_obat_alkes_bhp;}
     public static boolean getsensus_harian_poli(){return var.sensus_harian_poli;}
+    public static boolean getrl4a(){return var.rl4a;}
 }
