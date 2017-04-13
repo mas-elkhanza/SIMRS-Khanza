@@ -705,7 +705,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             rsralandokterdrpr.beforeFirst();               
                             while(rsralandokterdrpr.next()){
                                 tabMode.addRow(new Object[]{
-                                    "","","     "+rsralandokterdrpr.getString("nm_perawatan")+" ("+rsralandokter.getString("kd_jenis_prw")+")",
+                                    "","","     "+rsralandokterdrpr.getString("nm_perawatan")+" ("+rsralandokterdrpr.getString("kd_jenis_prw")+")",
                                     rsralandokterdrpr.getString("jml"),Valid.SetAngka(rsralandokterdrpr.getDouble("total"))
                                 });     
                                 jm=jm+rsralandokterdrpr.getDouble("total");
