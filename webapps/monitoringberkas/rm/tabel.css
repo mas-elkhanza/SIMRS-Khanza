@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+
+<!--untuk tabel-->
+p, td, th {
+    font: 12 Arial, Helvetica, sans-serif;
+}
+.datatable {
+    border: 1px solid #D6DDE6;
+    border-collapse: collapse;
+}
+.datatable td {
+    border: 1px solid #D6DDE6;
+    padding: 4px;
+}
+.datatable th {
+    border: 1px solid #828282;
+    background-color: #BCBCBC;
+    font-weight: bold;
+    text-align: left;
+    padding-left: 4px;
+	padding-right: 0px;
+	text-align:center;
+}
+.datatable caption {
+    font: bold 12px Arial, Helvetica, sans-serif;
+    color: #33517A;
+    text-align: left;
+    padding-top: 3px;
+    padding-bottom: 8px;
+}
+.datatable tr.altrow {
+    background-color: #DFE7F2;
+    color: #000000;
+}

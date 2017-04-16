@@ -1,6 +1,8 @@
 <?php
+ //fitur update kamar aplicare ini adalah penyempurnaan dari kontribusi Mas Tirta dari RSUK Ciracas Jakarta Timur
  session_start();
  require_once('conf/conf.php');
+ require_once('updateaplicare.php');
  header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
  header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); 
  header("Cache-Control: no-store, no-cache, must-revalidate"); 
@@ -14,7 +16,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="css/default.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="conf/validator.js"></script>
-    <meta http-equiv="refresh" content="5"/>
+    <meta http-equiv="refresh" content="20"/>
     <title>Informasi Ketersediaan Kamar</title>
     <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
     <script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
@@ -112,6 +114,7 @@
 					</td>
 				</tr> ";
 		}
+		updateAplicare();
 	?>
 	</table>
 	<table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>

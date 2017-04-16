@@ -1,0 +1,156 @@
+/** Dokumen CSS **/
+body{
+	margin: 5;
+	padding: 0;
+	background-color: #fafafa;
+	font-size: 14;
+	font-family: arial;
+
+}
+
+#header{
+	background-color: #0000FF;
+	margin: 0;
+	padding: 10px;		
+}
+
+#header h{
+	font-family: arial;
+	color: white;
+}
+
+#body{
+	clear: both;
+	display: flex;
+}
+
+#body #sidebar{
+	float: left;
+	width: 20%;
+	background-color: #E6E6FA;
+
+}
+
+#ket {
+	margin: 0;
+	background-color: #ADD8E6;
+}
+
+#ket h{
+	color: darkblue;
+}
+
+#body #kontent{
+	margin: 20px;
+	float: left;
+	width: 80%;
+	background-color:white;
+}
+
+#body #kontent1{
+	clear: both;
+	width: 100%;
+	background-color:white;
+}
+
+#body #kontent2{
+	clear: both;
+	float: center;
+	width: 100%;
+	background-color:white;
+}
+
+#footer{
+	clear: both;
+	background-color: #0000FF;
+	text-align: center;
+}
+
+#footer p{
+	font-style: italic;
+	font-family: arial;
+	color: white;
+	padding: 5px;
+}
+
+#headerrajal {
+	background-color: #0000FF;
+}
+
+/** p_rajal **/
+#kontent {
+	margin-top: 80px;
+	float: right;
+	background-color: white;
+	width: 100%;
+}
+
+#kontent h{
+	font-size: 12px;
+}
+
+#kontent l{
+	font-size: 12px;
+}
+
+#rajal2{
+	background-color: #00BFFF;
+	float: center;
+	width: 90%;
+	margin-top: 15%;
+	margin-left: 5%;
+	padding: 10px;
+}
+/** end p_rajal **/
+
+/** start p_gigi **/
+#kontentg {
+	margin-top: 55px;
+	
+}
+
+#kontentg h{
+	font-size: 12px;
+}
+
+#kontentg l{
+	font-size: 12px;
+}
+
+#footer2{
+	background-color: #00BFFF;
+	float: center;
+	width: 100%;
+	margin-top: 10%;
+	margin-left: 5%;
+	padding: 10px;
+}
+/** end p_gigi */
+
+/** start p_igd */
+#kontenti {
+	margin-top: 100px;
+	margin-left:150px;
+}
+
+#footer3 {
+	background-color: #00BFFF;
+	float: center;
+	width: 90%;
+	margin-top: 3%;
+	margin-left: 5%;
+	padding: 10px;
+}
+
+#kontenti h{
+	font-size: 26px;
+}
+
+#kontenti l{
+	font-size: 12px;
+}
+
+#kontenti ll{
+	font-size: 10px;
+}
+/* end p_igd */

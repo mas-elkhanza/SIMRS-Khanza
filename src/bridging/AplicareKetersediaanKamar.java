@@ -967,19 +967,16 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 String sql="jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori ";
-                Valid.MyReport("rptJnsPrw.jrxml","report","::[ Data Jenis Perawatan ]::","select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.material,jns_perawatan_inap.bhp,jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr  "+
-                   "from jns_perawatan_inap inner join kategori_perawatan inner join penjab inner join bangsal  "+
-                   "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori "+
-                   "and bangsal.kd_bangsal=jns_perawatan_inap.kd_bangsal "+
-                   "and penjab.kd_pj=jns_perawatan_inap.kd_pj where "+
-                    "jns_perawatan_inap.status='1' and jns_perawatan_inap.kd_jenis_prw like '%"+TCari.getText().trim()+"%' or "+
-                    " jns_perawatan_inap.status='1' and jns_perawatan_inap.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
-                    " jns_perawatan_inap.status='1' and kategori_perawatan.nm_kategori like '%"+TCari.getText().trim()+"%' or "+
-                    " jns_perawatan_inap.status='1' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
-                    " jns_perawatan_inap.status='1' and bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%'  "+
-                    "order by jns_perawatan_inap.kd_jenis_prw ",param);            
+                Valid.MyReport("rptKamarAplicare.jrxml","report","::[ Data Ketersediaan Kamar Aplicare]::",
+                   "select aplicare_ketersediaan_kamar.kode_kelas_aplicare,aplicare_ketersediaan_kamar.kd_bangsal,"+
+                   "bangsal.nm_bangsal,aplicare_ketersediaan_kamar.kelas,aplicare_ketersediaan_kamar.kapasitas,"+
+                   "aplicare_ketersediaan_kamar.tersedia,aplicare_ketersediaan_kamar.tersediapria,"+
+                   "aplicare_ketersediaan_kamar.tersediawanita,aplicare_ketersediaan_kamar.tersediapriawanita "+
+                   "from aplicare_ketersediaan_kamar inner join bangsal on aplicare_ketersediaan_kamar.kd_bangsal=bangsal.kd_bangsal where "+
+                   "aplicare_ketersediaan_kamar.kode_kelas_aplicare like '%"+TCari.getText().trim()+"%' or "+
+                   "aplicare_ketersediaan_kamar.kd_bangsal like '%"+TCari.getText().trim()+"%' or "+
+                   "bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
+                   "aplicare_ketersediaan_kamar.kelas like '%"+TCari.getText().trim()+"%' order by aplicare_ketersediaan_kamar.kode_kelas_aplicare",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
