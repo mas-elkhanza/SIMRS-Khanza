@@ -12,6 +12,8 @@
 
 package simrskhanza;
 
+import bridging.AplicareCekReferensiKamar;
+import bridging.AplicareKetersediaanKamar;
 import bridging.BPJSCekKartu;
 import bridging.BPJSCekNik2;
 import bridging.BPJSCekReferensiFaskes;
@@ -613,6 +615,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnRiwayatBarangMedis = new widget.ButtonBig();
         btnSensusHarianPoli = new widget.ButtonBig();
         btnRl4a = new widget.ButtonBig();
+        btnAplicareReferensiKamar = new widget.ButtonBig();
+        btnAplicareKetersediaanKamar = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -914,7 +918,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         cmbMenu.setBackground(new java.awt.Color(247, 252, 247));
         cmbMenu.setForeground(new java.awt.Color(40, 70, 50));
-        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset & Inventaris Barang Rumah Sakit", "[G] Parkir Rumah Sakit", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal Rumah Sakit", "[J] Tarif Pelayanan & Keuangan Rumah Sakit", "[K] Bridging SEP, PCare, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Pengaturan Program Aplikasi HMS" }));
+        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset & Inventaris Barang Rumah Sakit", "[G] Parkir Rumah Sakit", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal Rumah Sakit", "[J] Tarif Pelayanan & Keuangan Rumah Sakit", "[K] Bridging SEP, Aplicare, PCare, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Pengaturan Program Aplikasi HMS" }));
         cmbMenu.setName("cmbMenu"); // NOI18N
         cmbMenu.setOpaque(false);
         cmbMenu.setPreferredSize(new java.awt.Dimension(470, 23));
@@ -3628,6 +3632,32 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl4a);
 
+        btnAplicareReferensiKamar.setForeground(new java.awt.Color(40, 70, 50));
+        btnAplicareReferensiKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
+        btnAplicareReferensiKamar.setText("Referensi Kamar Aplicare");
+        btnAplicareReferensiKamar.setIconTextGap(0);
+        btnAplicareReferensiKamar.setName("btnAplicareReferensiKamar"); // NOI18N
+        btnAplicareReferensiKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAplicareReferensiKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicareReferensiKamarActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnAplicareReferensiKamar);
+
+        btnAplicareKetersediaanKamar.setForeground(new java.awt.Color(40, 70, 50));
+        btnAplicareKetersediaanKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
+        btnAplicareKetersediaanKamar.setText("Ketersediaan Kamar Aplicare");
+        btnAplicareKetersediaanKamar.setIconTextGap(0);
+        btnAplicareKetersediaanKamar.setName("btnAplicareKetersediaanKamar"); // NOI18N
+        btnAplicareKetersediaanKamar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAplicareKetersediaanKamar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicareKetersediaanKamarActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnAplicareKetersediaanKamar);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3636,7 +3666,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/04/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/04/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7752,6 +7782,28 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRl4aActionPerformed
 
+    private void btnAplicareReferensiKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicareReferensiKamarActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        AplicareCekReferensiKamar form=new AplicareCekReferensiKamar(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnAplicareReferensiKamarActionPerformed
+
+    private void btnAplicareKetersediaanKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicareKetersediaanKamarActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        AplicareKetersediaanKamar form=new AplicareKetersediaanKamar(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnAplicareKetersediaanKamarActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7811,6 +7863,8 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private javax.swing.JDialog WindowInput;
     private widget.ButtonBig btnAdmin;
     private widget.ButtonBig btnAnalisaKamar;
+    private widget.ButtonBig btnAplicareKetersediaanKamar;
+    private widget.ButtonBig btnAplicareReferensiKamar;
     private widget.ButtonBig btnBPJSSEP;
     private widget.ButtonBig btnBarangInventaris;
     private widget.ButtonBig btnBarangIpsrs;
@@ -8940,6 +8994,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnReklasifikasiRanap);
                 jmlmenu++;
             }
+            
+            if(var.getaplicare_referensi_kamar()==true){
+                Panelmenu.add(btnAplicareReferensiKamar);
+                jmlmenu++;
+            }
+            
+            if(var.getaplicare_ketersediaan_kamar()==true){
+                Panelmenu.add(btnAplicareKetersediaanKamar);
+                jmlmenu++;
+            }            
         }else if(cmbMenu.getSelectedIndex()==11){ 
             jmlmenu=0;
             if(var.getpasien()==true){

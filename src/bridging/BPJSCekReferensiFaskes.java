@@ -59,8 +59,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"","","","",""};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode Cabang","Nama Cabang","Kode Provider","Nama Provider"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -72,7 +71,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
         for (int i = 0; i < 5; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(40);
             }else if(i==1){
                 column.setPreferredWidth(100);
             }else if(i==2){
@@ -339,17 +338,6 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
                 JsonNode response = root.path("response");
-                tabMode.addRow(new Object[]{
-                    "Start : "+response.path("start").asText(),
-                    "Count : "+response.path("count").asText(),
-                    "Limit : "+response.path("limit").asText(),"",""
-                }); 
-                tabMode.addRow(new Object[]{
-                    "","","","",""
-                });
-                tabMode.addRow(new Object[]{
-                    "No.","Kode Cabang","Nama Cabang","Kode Provider","Nama Provider"
-                });
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

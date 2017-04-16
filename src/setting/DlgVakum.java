@@ -14,7 +14,6 @@ package setting;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import java.sql.Connection;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -75,6 +74,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD33 = new usu.widget.ButtonGlass();
         BtnICD90 = new usu.widget.ButtonGlass();
         BtnICD80 = new usu.widget.ButtonGlass();
+        BtnICD110 = new usu.widget.ButtonGlass();
         BtnICD9 = new usu.widget.ButtonGlass();
         BtnICD71 = new usu.widget.ButtonGlass();
         BtnICD42 = new usu.widget.ButtonGlass();
@@ -681,6 +681,23 @@ public class DlgVakum extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnICD80);
+
+        BtnICD110.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD110.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD110.setText("Kamar Aplicare");
+        BtnICD110.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD110.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD110.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD110.setName("BtnICD110"); // NOI18N
+        BtnICD110.setRoundRect(true);
+        BtnICD110.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD110ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD110);
 
         BtnICD9.setBackground(new java.awt.Color(195, 205, 185));
         BtnICD9.setForeground(new java.awt.Color(153, 0, 51));
@@ -2605,6 +2622,10 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Riwayat Obat, Alkes & BHP","lain","riwayat_barang_medis"); 
     }//GEN-LAST:event_BtnICD109ActionPerformed
 
+    private void BtnICD110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD110ActionPerformed
+        hapus("Ketersediaan Kamar Aplicare","lain","aplicare_ketersediaan_kamar");
+    }//GEN-LAST:event_BtnICD110ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2636,6 +2657,7 @@ public class DlgVakum extends javax.swing.JDialog {
     private usu.widget.ButtonGlass BtnICD108;
     private usu.widget.ButtonGlass BtnICD109;
     private usu.widget.ButtonGlass BtnICD11;
+    private usu.widget.ButtonGlass BtnICD110;
     private usu.widget.ButtonGlass BtnICD12;
     private usu.widget.ButtonGlass BtnICD13;
     private usu.widget.ButtonGlass BtnICD14;

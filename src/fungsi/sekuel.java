@@ -775,6 +775,7 @@ public final class sekuel {
                     dicari="";
                 }   
             }catch(Exception e){
+                dicari="";
                 System.out.println("Notifikasi : "+e);
             }finally{
                 if(rs != null){
