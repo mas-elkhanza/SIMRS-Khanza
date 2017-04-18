@@ -573,7 +573,7 @@ public final class sekuel {
                 } 
                 ps.executeUpdate(); 
              }catch(Exception e){
-                //System.out.println("Notifikasi : "+e);
+                System.out.println("Notifikasi : "+e);
              }finally{
                 if(ps != null){
                     ps.close();

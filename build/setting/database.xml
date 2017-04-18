@@ -3,7 +3,7 @@
 <properties>
     <comment>KhanzaHMS</comment>
     <entry key="HOST">localhost</entry>
-    <entry key="DATABASE">sikpelita</entry>
+    <entry key="DATABASE">sik</entry>
     <entry key="PORT">3306</entry>
     <entry key="USER">root</entry>
     <entry key="PAS">akusayangsamakamu</entry>
@@ -11,10 +11,12 @@
     <entry key="HYBRIDWEB">webapps</entry>
     <entry key="ANTRIAN">sender</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
-    <entry key="URLAPIBPJS">http://dvlp.bpjs-kesehatan.go.id:8081/devWsLokalRest</entry>
+    <entry key="URLAPIBPJS">http://25.15.131.53/WsLokalRest</entry>
+    <entry key="SECRETKEYAPIBPJS">7cS168C09A</entry>
+    <entry key="CONSIDAPIBPJS">29459</entry>
     <entry key="URLAPIAPLICARE">http://dvlp.bpjs-kesehatan.go.id:9080/aplicaresws</entry>
-    <entry key="SECRETKEYAPIBPJS">0jV7F82FC8</entry>
-    <entry key="CONSIDAPIBPJS">27223</entry>
     <entry key="SECRETKEYAPIAPLICARE">1112</entry>
     <entry key="CONSIDAPIAPLICARE">1000</entry>
+    <entry key="URLAPIEKLAIM">http://192.168.0.202/E-Klaim/ws.php</entry>
+    <entry key="SECRETKEYAPIEKLAIM">17267ef3f9613662a57857130a9aafa8aa9921ded07577fcc70beae8abb65806</entry>
 </properties>
