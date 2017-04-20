@@ -61,6 +61,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD17 = new usu.widget.ButtonGlass();
         BtnICD25 = new usu.widget.ButtonGlass();
         BtnICD104 = new usu.widget.ButtonGlass();
+        BtnICD111 = new usu.widget.ButtonGlass();
         BtnICD35 = new usu.widget.ButtonGlass();
         BtnICD76 = new usu.widget.ButtonGlass();
         BtnICD2 = new usu.widget.ButtonGlass();
@@ -460,6 +461,23 @@ public class DlgVakum extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnICD104);
+
+        BtnICD111.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD111.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD111.setText("INACBG Klaim Baru");
+        BtnICD111.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD111.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD111.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD111.setName("BtnICD111"); // NOI18N
+        BtnICD111.setRoundRect(true);
+        BtnICD111.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD111ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD111);
 
         BtnICD35.setBackground(new java.awt.Color(195, 205, 185));
         BtnICD35.setForeground(new java.awt.Color(153, 0, 51));
@@ -2626,6 +2644,10 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Ketersediaan Kamar Aplicare","lain","aplicare_ketersediaan_kamar");
     }//GEN-LAST:event_BtnICD110ActionPerformed
 
+    private void BtnICD111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD111ActionPerformed
+        hapus("INACBG Klaim Baru","lain","inacbg_klaim_baru");
+    }//GEN-LAST:event_BtnICD111ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2658,6 +2680,7 @@ public class DlgVakum extends javax.swing.JDialog {
     private usu.widget.ButtonGlass BtnICD109;
     private usu.widget.ButtonGlass BtnICD11;
     private usu.widget.ButtonGlass BtnICD110;
+    private usu.widget.ButtonGlass BtnICD111;
     private usu.widget.ButtonGlass BtnICD12;
     private usu.widget.ButtonGlass BtnICD13;
     private usu.widget.ButtonGlass BtnICD14;
