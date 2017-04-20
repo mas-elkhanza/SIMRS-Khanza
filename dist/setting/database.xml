@@ -17,6 +17,4 @@
     <entry key="URLAPIAPLICARE">http://dvlp.bpjs-kesehatan.go.id:9080/aplicaresws</entry>
     <entry key="SECRETKEYAPIAPLICARE">1112</entry>
     <entry key="CONSIDAPIAPLICARE">1000</entry>
-    <entry key="URLAPIEKLAIM">http://192.168.0.202/E-Klaim/ws.php</entry>
-    <entry key="SECRETKEYAPIEKLAIM">17267ef3f9613662a57857130a9aafa8aa9921ded07577fcc70beae8abb65806</entry>
 </properties>

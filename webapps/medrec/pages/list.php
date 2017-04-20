@@ -9,7 +9,7 @@
    if ($bln_leng==1){
     	$bulan="0".$baris[1];
    }else{
-		$bulan=$baris[1];
+	$bulan=$baris[1];
    }
 ?>
 

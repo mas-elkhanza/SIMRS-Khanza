@@ -65,7 +65,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private int i=0;
     private final Properties prop = new Properties();
     private BPJSApi api=new BPJSApi();
-    private EKlaimDemo eklaim=new EKlaimDemo();
     private BPJSCekReferensiFaskes faskes=new BPJSCekReferensiFaskes(null,false);
     private BPJSCekReferensiPenyakit penyakit=new BPJSCekReferensiPenyakit(null,false);
     private BPJSCekReferensiPoli poli=new BPJSCekReferensiPoli(null,false);
@@ -314,7 +313,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         ppPulang = new javax.swing.JMenuItem();
         ppMapping = new javax.swing.JMenuItem();
         ppDetailSEPPeserta = new javax.swing.JMenuItem();
-        ppKirimEklaim = new javax.swing.JMenuItem();
         WindowUpdatePulang = new javax.swing.JDialog();
         internalFrame5 = new widget.InternalFrame();
         BtnCloseIn4 = new widget.Button();
@@ -470,23 +468,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         });
         Popup.add(ppDetailSEPPeserta);
 
-        ppKirimEklaim.setBackground(new java.awt.Color(242, 242, 242));
-        ppKirimEklaim.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppKirimEklaim.setForeground(new java.awt.Color(102, 51, 0));
-        ppKirimEklaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppKirimEklaim.setText("Kirim ke Eklaim");
-        ppKirimEklaim.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppKirimEklaim.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppKirimEklaim.setIconTextGap(8);
-        ppKirimEklaim.setName("ppKirimEklaim"); // NOI18N
-        ppKirimEklaim.setPreferredSize(new java.awt.Dimension(200, 25));
-        ppKirimEklaim.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppKirimEklaimBtnPrintActionPerformed(evt);
-            }
-        });
-        Popup.add(ppKirimEklaim);
-
         WindowUpdatePulang.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WindowUpdatePulang.setName("WindowUpdatePulang"); // NOI18N
         WindowUpdatePulang.setUndecorated(true);
@@ -529,7 +510,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         jLabel26.setBounds(6, 32, 100, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2017 09:51:50" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2017 14:42:45" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -863,7 +844,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         jLabel20.setBounds(382, 102, 85, 23);
 
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2017 09:51:49" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2017 14:42:43" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -883,7 +864,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         jLabel22.setBounds(0, 102, 90, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2017 09:51:49" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2017 14:42:44" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -1818,55 +1799,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_JenisPelayananItemStateChanged
 
-    private void ppKirimEklaimBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppKirimEklaimBtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-        if(tbObat.getSelectedRow()!= -1){
-            try {
-                if(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString().equals("LAKI-LAKI")){
-                    jkel="1";
-                }else{
-                    jkel="2";
-                }
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(eklaim.postURL(eklaim.ReqNewClaim(
-                    tbObat.getValueAt(tbObat.getSelectedRow(),24).toString(), 
-                    tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(), 
-                    tbObat.getValueAt(tbObat.getSelectedRow(),2).toString(), 
-                    tbObat.getValueAt(tbObat.getSelectedRow(),3).toString(), 
-                    tbObat.getValueAt(tbObat.getSelectedRow(),21).toString(),jkel))
-                );
-                JsonNode nameNode = root.path("metadata");
-                System.out.println("code : "+nameNode.path("code").asText());
-                System.out.println("message : "+nameNode.path("message").asText());
-                if(nameNode.path("message").asText().equals("OK")){                    
-                    JsonNode response = root.path("response");
-                    Sequel.menyimpan("inacbg_klaim_baru","?,?,?,?",4,new String[]{
-                        tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
-                        response.path("patient_id").asText(),
-                        response.path("admission_id").asText(),
-                        response.path("hospital_admission_id").asText()
-                    });
-                }else if(nameNode.path("message").asText().equals("Duplikasi nomor SEP")){
-                    JsonNode response = root.path("duplicate");
-                    if(response.isArray()){
-                        duplikat="";
-                        for(JsonNode list:response){
-                            duplikat=duplikat+" Nama Pasien : "+response.path("nama_pasien").asText()+" No.RM : "+response.path("nomor_rm").asText()+" Tgl.Lahir : "+response.path("tgl_masuk").asText()+",";
-                        }
-                    }
-                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText()+". "+duplikat);
-                }else{
-                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
-                }
-            }catch (Exception ex) {
-                System.out.println("Notifikasi Bridging : "+ex);
-                if(ex.toString().contains("UnknownHostException")){
-                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
-                }
-            }
-        }            
-    }//GEN-LAST:event_ppKirimEklaimBtnPrintActionPerformed
-
     /**
     * @param args the command line arguments
     */
@@ -1962,7 +1894,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppDetailSEPPeserta;
-    private javax.swing.JMenuItem ppKirimEklaim;
     private javax.swing.JMenuItem ppMapping;
     private javax.swing.JMenuItem ppPulang;
     private javax.swing.JMenuItem ppSEP;
