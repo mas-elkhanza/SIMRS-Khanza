@@ -52,7 +52,7 @@ public final class var {
             suplier_penunjang=false,utd_donor=false,bpjs_monitoring_klaim=false,utd_cekal_darah=false,utd_komponen_darah=false,utd_stok_darah=false,
             utd_pemisahan_darah=false,harian_kamar=false,rincian_piutang_pasien=false,keuntungan_beri_obat_nonpiutang=false,reklasifikasi_ralan=false,
             reklasifikasi_ranap=false,utd_penyerahan_darah=false,hutang_obat=false,riwayat_obat_alkes_bhp=false,sensus_harian_poli=false,rl4a=false,
-            aplicare_referensi_kamar=false,aplicare_ketersediaan_kamar=false,inacbg_klaim_baru_otomatis=false,inacbg_klaim_baru_manual=false;
+            aplicare_referensi_kamar=false,aplicare_ketersediaan_kamar=false,inacbg_klaim_baru_otomatis=false,inacbg_klaim_baru_manual=false,inacbg_coder_nik=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -289,6 +289,7 @@ public final class var {
                         var.aplicare_ketersediaan_kamar=true;
                         var.inacbg_klaim_baru_otomatis=true;
                         var.inacbg_klaim_baru_manual=true;
+                        var.inacbg_coder_nik=true;
                     }else if(rs.getRow()>=1){
                         var.kode="Admin Utama";
                         var.penyakit=true;
@@ -506,6 +507,7 @@ public final class var {
                         var.aplicare_ketersediaan_kamar=true;
                         var.inacbg_klaim_baru_otomatis=true;
                         var.inacbg_klaim_baru_manual=true;
+                        var.inacbg_coder_nik=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -725,6 +727,7 @@ public final class var {
                         var.aplicare_ketersediaan_kamar=rs2.getBoolean("aplicare_ketersediaan_kamar");
                         var.inacbg_klaim_baru_otomatis=rs2.getBoolean("inacbg_klaim_baru_otomatis");
                         var.inacbg_klaim_baru_manual=rs2.getBoolean("inacbg_klaim_baru_manual");
+                        var.inacbg_coder_nik=rs2.getBoolean("inacbg_coder_nik");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -942,6 +945,7 @@ public final class var {
                         var.aplicare_ketersediaan_kamar=false;
                         var.inacbg_klaim_baru_otomatis=false;
                         var.inacbg_klaim_baru_manual=false;
+                        var.inacbg_coder_nik=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1205,4 +1209,5 @@ public final class var {
     public static boolean getaplicare_ketersediaan_kamar(){return var.aplicare_ketersediaan_kamar;}
     public static boolean getinacbg_klaim_baru_otomatis(){return var.inacbg_klaim_baru_otomatis;}
     public static boolean getinacbg_klaim_baru_manual(){return var.inacbg_klaim_baru_manual;}
+    public static boolean getinacbg_coder_nik(){return var.inacbg_coder_nik;}
 }

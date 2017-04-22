@@ -23,6 +23,8 @@ import bridging.BPJSCekRiwayatPeserta;
 import bridging.BPJSCekNoRujukanPCare;
 import bridging.BPJSDataSEP;
 import bridging.BPJSMonitoringKlaim;
+import bridging.INACBGCariCoderNIK;
+import bridging.INACBGCoderNIK;
 import bridging.INACBGHybrid;
 import informasi.InformasiAnalisaKamin;
 import laporan.DlgDkkSurveilansRalan;
@@ -167,6 +169,9 @@ import keuangan.DlgRekeningTahun;
 import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
 import inventory.DlgRiwayatBarangMedis;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import keuangan.DlgHutangObatBelumLunas;
 import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
@@ -230,12 +235,14 @@ public class frmUtama extends javax.swing.JFrame {
     private final DlgAbout About=new DlgAbout(this,false);   
     private final DlgPenggajian penggajian=new DlgPenggajian(this,false); 
     private final DlgRetensi retensi=new DlgRetensi(this,false); 
-    private final INACBGHybrid inacbgklaimotomatis=new INACBGHybrid(this,false);
+    private final INACBGHybrid inacbgklaim=new INACBGHybrid(this,false);
+    private final INACBGCariCoderNIK cariNIK=new INACBGCariCoderNIK(this,false);
     private static frmUtama myInstance;
     private PreparedStatement ps;
     private ResultSet rs;
     private final Properties prop = new Properties();     
     private int jmlmenu=0;
+    private String coder_nik="",pilihpage="",judulform="";
     /** Creates new form frmUtama */
     private frmUtama() {
         super();
@@ -259,6 +266,35 @@ public class frmUtama extends javax.swing.JFrame {
         WindowInput.setVisible(false);
         WindowInput.setLocationRelativeTo(null);
 
+        cariNIK.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    if(cariNIK.getTable().getSelectedRow()!= -1){                   
+                        coder_nik=cariNIK.getTable().getValueAt(cariNIK.getTable().getSelectedRow(),2).toString();
+                        System.out.println("Coder NIK : "+coder_nik);
+                        isTutup();
+                        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        try {
+                            inacbgklaim.loadURL("http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page="+pilihpage+"&codernik="+coder_nik);                    
+                        } catch (Exception ex) {
+                            System.out.println("Notifikasi : "+ex);
+                        }
+
+                        inacbgklaim.setJudul(judulform);
+                        inacbgklaim.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+                        inacbgklaim.setLocationRelativeTo(PanelUtama);                    
+                        inacbgklaim.setVisible(true);        
+                        DlgHome.dispose();
+                        setCursor(Cursor.getDefaultCursor());
+                    }                         
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         
         lblTgl.setText(tanggal.getSelectedItem().toString());
         try {
@@ -532,6 +568,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnAplicareKetersediaanKamar = new widget.ButtonBig();
         btnInaCBGKlaimBaruOtomatis = new widget.ButtonBig();
         btnInaCBGKlaimBaruManual = new widget.ButtonBig();
+        btnInaCBGCoderNIK = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -833,7 +870,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         cmbMenu.setBackground(new java.awt.Color(247, 252, 247));
         cmbMenu.setForeground(new java.awt.Color(40, 70, 50));
-        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset & Inventaris Barang Rumah Sakit", "[G] Parkir Rumah Sakit", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal Rumah Sakit", "[J] Tarif Pelayanan & Keuangan Rumah Sakit", "[K] Bridging SEP, Aplicare, PCare, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Pengaturan Program Aplikasi HMS" }));
+        cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset & Inventaris Barang Rumah Sakit", "[G] Parkir Rumah Sakit", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal Rumah Sakit", "[J] Tarif Pelayanan & Keuangan Rumah Sakit", "[K] Bridging SEP, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Pengaturan Program Aplikasi HMS" }));
         cmbMenu.setName("cmbMenu"); // NOI18N
         cmbMenu.setOpaque(false);
         cmbMenu.setPreferredSize(new java.awt.Dimension(470, 23));
@@ -3599,6 +3636,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnInaCBGKlaimBaruManual);
 
+        btnInaCBGCoderNIK.setForeground(new java.awt.Color(40, 70, 50));
+        btnInaCBGCoderNIK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002113_guard.png"))); // NOI18N
+        btnInaCBGCoderNIK.setText("Coder NIK INACBG");
+        btnInaCBGCoderNIK.setIconTextGap(0);
+        btnInaCBGCoderNIK.setName("btnInaCBGCoderNIK"); // NOI18N
+        btnInaCBGCoderNIK.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnInaCBGCoderNIK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInaCBGCoderNIKActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnInaCBGCoderNIK);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3607,7 +3657,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/04/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21/04/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7746,54 +7796,85 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_btnAplicareKetersediaanKamarActionPerformed
 
     private void btnInaCBGKlaimBaruOtomatisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInaCBGKlaimBaruOtomatisActionPerformed
-        isTutup();
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        try {
-            inacbgklaimotomatis.loadURL("http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruOtomatis");                    
-        } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
+        if(var.getkode().equals("Admin Utama")){
+            pilihpage="KlaimBaruOtomatis";
+            judulform="::[ Otomatisasi Klaim Pasien Baru Dari Data SEP Ke INACBG ]::";
+            isTutup();
+            DlgHome.dispose();
+            cariNIK.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+            cariNIK.setLocationRelativeTo(PanelUtama);
+            cariNIK.setVisible(true);
+        }else{
+            coder_nik=Sequel.cariIsi("select no_ik from inacbg_coder_nik where nik=?",var.getkode());
+            if(!coder_nik.equals("")){
+                isTutup();
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                try {
+                    inacbgklaim.loadURL("http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruOtomatis&codernik="+coder_nik);                    
+                } catch (Exception ex) {
+                    System.out.println("Notifikasi : "+ex);
+                }
+
+                inacbgklaim.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+                inacbgklaim.setLocationRelativeTo(PanelUtama);
+                inacbgklaim.setJudul("::[ Otomatisasi Klaim Pasien Baru Dari Data SEP Ke INACBG ]::");
+                inacbgklaim.setVisible(true);        
+                DlgHome.dispose();
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{
+                isTutup();
+                DlgHome.dispose();
+                JOptionPane.showMessageDialog(null,"Coder NIK tidak ditemukan, silahkan hubungi Admin Utama..!!");
+            }            
         }
-        
-        inacbgklaimotomatis.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        inacbgklaimotomatis.setLocationRelativeTo(PanelUtama);
-        inacbgklaimotomatis.setJudul("::[ Otomatisasi Klaim Pasien Baru Dari Data SEP Ke INACBG ]::");
-        inacbgklaimotomatis.setVisible(true);        
-        
-        
-        /*try {
-            Valid.panggilUrl("medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                       
-        } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
-        }  */
-        
-        DlgHome.dispose();
-        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnInaCBGKlaimBaruOtomatisActionPerformed
 
     private void btnInaCBGKlaimBaruManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInaCBGKlaimBaruManualActionPerformed
+        if(var.getkode().equals("Admin Utama")){
+            pilihpage="KlaimBaruManual";
+            judulform="::[ Klaim Manual Pasien Baru Dari Data SEP Ke INACBG ]::";
+            isTutup();
+            DlgHome.dispose();
+            cariNIK.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+            cariNIK.setLocationRelativeTo(PanelUtama);
+            cariNIK.setVisible(true);
+        }else{
+            coder_nik=Sequel.cariIsi("select no_ik from inacbg_coder_nik where nik=?",var.getkode());
+            if(!coder_nik.equals("")){
+                isTutup();
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                try {
+                    inacbgklaim.loadURL("http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruManual&codernik="+coder_nik);                    
+                } catch (Exception ex) {
+                    System.out.println("Notifikasi : "+ex);
+                }
+
+                inacbgklaim.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+                inacbgklaim.setLocationRelativeTo(PanelUtama);
+                inacbgklaim.setJudul("::[ Klaim Manual Pasien Baru Dari Data SEP Ke INACBG ]::");
+                inacbgklaim.setVisible(true);        
+                DlgHome.dispose();
+                this.setCursor(Cursor.getDefaultCursor());
+            }else{
+                isTutup();
+                DlgHome.dispose();
+                JOptionPane.showMessageDialog(null,"Coder NIK tidak ditemukan, silahkan hubungi Admin Utama..!!");
+            }            
+        }
+    }//GEN-LAST:event_btnInaCBGKlaimBaruManualActionPerformed
+
+    private void btnInaCBGCoderNIKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInaCBGCoderNIKActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        try {
-            inacbgklaimotomatis.loadURL("http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruManual");                    
-        } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
-        }
-        
-        inacbgklaimotomatis.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        inacbgklaimotomatis.setLocationRelativeTo(PanelUtama);
-        inacbgklaimotomatis.setJudul("::[ Klaim Manual Pasien Baru Dari Data SEP Ke INACBG ]::");
-        inacbgklaimotomatis.setVisible(true);        
-        
-        
-        /*try {
-            Valid.panggilUrl("medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                       
-        } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
-        }  */
-        
+        INACBGCoderNIK inacbg=new INACBGCoderNIK(this,false);
+        inacbg.emptTeks();
+        inacbg.isCek();
+        inacbg.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        inacbg.setLocationRelativeTo(PanelUtama);
+        inacbg.setVisible(true);
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_btnInaCBGKlaimBaruManualActionPerformed
+    }//GEN-LAST:event_btnInaCBGCoderNIKActionPerformed
 
     /**
     * @param args the command line arguments
@@ -7890,6 +7971,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnICD;
     private widget.ButtonBig btnICD9;
     private widget.ButtonBig btnIGD;
+    private widget.ButtonBig btnInaCBGCoderNIK;
     private widget.ButtonBig btnInaCBGKlaimBaruManual;
     private widget.ButtonBig btnInaCBGKlaimBaruOtomatis;
     private widget.ButtonBig btnIndustriFarmasi;
@@ -8997,6 +9079,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnAplicareKetersediaanKamar);
                 jmlmenu++;
             }    
+            
+            if(var.getinacbg_coder_nik()==true){
+                Panelmenu.add(btnInaCBGCoderNIK);
+                jmlmenu++;
+            }
             
             if(var.getinacbg_klaim_baru_otomatis()==true){
                 Panelmenu.add(btnInaCBGKlaimBaruOtomatis);

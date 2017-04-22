@@ -558,7 +558,7 @@
                         <StringItem index="7" value="[H] Olah Data Tagihan Rawat Inap &amp; Rawat Jalan"/>
                         <StringItem index="8" value="[I] Olah Data Penyakit, Laporan DKK, Laporal RL &amp; Laporan Internal Rumah Sakit"/>
                         <StringItem index="9" value="[J] Tarif Pelayanan &amp; Keuangan Rumah Sakit"/>
-                        <StringItem index="10" value="[K] Bridging SEP, Aplicare, PCare, Kemenkes &amp; Pihak Ke 3"/>
+                        <StringItem index="10" value="[K] Bridging SEP, Aplicare, PCare, INACBG, Kemenkes &amp; Pihak Ke 3"/>
                         <StringItem index="11" value="[L] Olah Data Pasien"/>
                         <StringItem index="12" value="[M] Unit Pelayanan Tranfusi Darah"/>
                         <StringItem index="13" value="[N] Pengaturan Program Aplikasi HMS"/>
@@ -4624,6 +4624,25 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInaCBGKlaimBaruManualActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="widget.ButtonBig" name="btnInaCBGCoderNIK">
+                      <Properties>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="32" green="46" red="28" type="rgb"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1481002113_guard.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Coder NIK INACBG"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnInaCBGCoderNIK" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInaCBGCoderNIKActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -4640,7 +4659,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="20/04/2017"/>
+            <StringItem index="0" value="22/04/2017"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>

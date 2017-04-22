@@ -8,7 +8,9 @@
                 $tanggalawal    =isset($_GET['tanggalawal'])?$_GET['tanggalawal']:NULL;
                 $tahunakhir     =isset($_GET['tahunakhir'])?$_GET['tahunakhir']:NULL;
                 $bulanakhir     =isset($_GET['bulanakhir'])?$_GET['bulanakhir']:NULL;
-                $tanggalakhir   =isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL;                
+                $tanggalakhir   =isset($_GET['tanggalakhir'])?$_GET['tanggalakhir']:NULL;     
+                $codernik       =isset($_GET['codernik'])?$_GET['codernik']:NULL;
+                echo "<input type=hidden name=codernik  value=$codernik>";           
         ?>
     <div style="width: 100%; height: 90%; overflow: auto;">
     <?php
@@ -20,6 +22,7 @@
                 $tahunakhir     =trim($_POST['tahunakhir']);
                 $bulanakhir     =trim($_POST['bulanakhir']);
                 $tanggalakhir   =trim($_POST['tanggalakhir']);
+                $codernik       =trim($_POST['codernik']);
         }
         $_sql = "select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,
                 bridging_sep.tglsep,bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,
@@ -90,7 +93,7 @@
                         <td width='13%'><div align='center'>Status Data</div></td>
                     </tr>
                    </table>";
-        }        
+        }   
         
         $BtnKeluar=isset($_POST['BtnKeluar'])?$_POST['BtnKeluar']:NULL;
         if (isset($BtnKeluar)) {
@@ -162,6 +165,6 @@
     </div>
 </div>
 <?php 
-   echo "<meta http-equiv='refresh' content='30;URL=?act=KlaimBaruOtomatis&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir'>";
+   echo "<meta http-equiv='refresh' content='30;URL=?act=KlaimBaruOtomatis&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>";
 ?>
 
