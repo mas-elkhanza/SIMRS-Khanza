@@ -4,10 +4,11 @@
             if(($_GET['usere']=="admin")&&($_GET['passwordte']=="akusayangsamakamu")) {
                 session_start();
                 $_SESSION['ses_admin']="admin";
+                $codernik=$_GET['codernik'];
                 if(($_GET['page']=="KlaimBaruOtomatis")){
-                    $url = "index.php?act=KlaimBaruOtomatis";	
+                    $url = "index.php?act=KlaimBaruOtomatis&codernik=".$codernik;	
                 }else if(($_GET['page']=="KlaimBaruManual")){
-                    $url = "index.php?act=KlaimBaruManual";	
+                    $url = "index.php?act=KlaimBaruManual&codernik=".$codernik;	
                 }                		
             }else{
                     session_start();
