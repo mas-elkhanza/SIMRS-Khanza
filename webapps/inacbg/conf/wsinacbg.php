@@ -7,7 +7,7 @@
     }
 
     function getUrlWS() {
-        $UrlWS = "http://192.168.0.202/E-Klaim/ws.php";
+        $UrlWS = "http://25.18.49.7/E-Klaim/ws.php";
         return $UrlWS;
     }
 
@@ -78,6 +78,7 @@
             echo " Patient ID : ".$msg['response']['patient_id'].", Admission ID : ".$msg['response']['admission_id'].", Hospitad Admission ID : ".$msg['response']['hospital_admission_id']."";
             InsertData("inacbg_klaim_baru","'".$nomor_sep."','".$msg['response']['patient_id']."','".$msg['response']['admission_id']."','".$msg['response']['hospital_admission_id']."'");
         }
+        return $msg['metadata']['message'];
     }
     
     function UpdateDataPasien($nomor_rmlama,$nomor_kartu,$nomor_rm,$nama_pasien,$tgl_lahir,$gender){	
@@ -339,7 +340,6 @@
     
     function Request($request){
         $json = mc_encrypt ($request, getKey());  
-        //echo $json;
         $header = array("Content-Type: application/x-www-form-urlencoded");        
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, getUrlWS());

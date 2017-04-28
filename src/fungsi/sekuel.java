@@ -83,6 +83,23 @@ public final class sekuel {
         }            
     }
     
+    public void menyimpan2(String table,String value,String sama){
+        try {
+            ps=connect.prepareStatement("insert into "+table+" values("+value+")");
+            try{                  
+                ps.executeUpdate();
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);    
+            }finally{
+                if(ps != null){
+                    ps.close();
+                }                
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e); 
+        }            
+    }
+    
     public boolean menyimpantf(String table,String value,String sama){
         try {
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");

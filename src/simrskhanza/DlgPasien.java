@@ -5194,54 +5194,56 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         isForm();
     }
 
-    private void autoNomor() {        
-        if(ChkRM.isSelected()==true){
-            if(tahun.equals("Yes")){
-                awalantahun=DTPDaftar.getSelectedItem().toString().substring(8,10);
-            }else{
-                awalantahun="";
-            }
-
-            if(bulan.equals("Yes")){
-                awalanbulan=DTPDaftar.getSelectedItem().toString().substring(3,5);
-            }else{
-                awalanbulan="";
-            }
-
-            if(posisitahun.equals("Depan")){
-                switch (pengurutan) {
-                    case "Straight":
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
-                        break;
-                    case "Terminal":
-                        Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),5,2),SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
-                        break;
-                    case "Middle":
-                        Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2),SUBSTRING(RIGHT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
-                        break;
-                }
-            }else if(posisitahun.equals("Belakang")){
-                switch (pengurutan) {
-                    case "Straight":
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(LEFT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
-                        break;
-                    case "Terminal":
-                        Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),5,2),SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
-                        break;
-                    case "Middle":
-                        Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2),SUBSTRING(LEFT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
-                        break;
-                }            
-            }
-
-            if(posisitahun.equals("Depan")){
-                TNo.setText(awalantahun+awalanbulan+NoRm.getText());
-            }else if(posisitahun.equals("Belakang")){
-                if(!(awalanbulan+awalantahun).equals("")){
-                    TNo.setText(NoRm.getText()+"-"+awalanbulan+awalantahun);
+    private void autoNomor() {  
+        if(Kd2.getText().equals("")){
+            if(ChkRM.isSelected()==true){
+                if(tahun.equals("Yes")){
+                    awalantahun=DTPDaftar.getSelectedItem().toString().substring(8,10);
                 }else{
-                    TNo.setText(NoRm.getText());
-                }            
+                    awalantahun="";
+                }
+
+                if(bulan.equals("Yes")){
+                    awalanbulan=DTPDaftar.getSelectedItem().toString().substring(3,5);
+                }else{
+                    awalanbulan="";
+                }
+
+                if(posisitahun.equals("Depan")){
+                    switch (pengurutan) {
+                        case "Straight":
+                            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            break;
+                        case "Terminal":
+                            Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),5,2),SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            break;
+                        case "Middle":
+                            Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(no_rkm_medis,6),3,2),SUBSTRING(RIGHT(no_rkm_medis,6),1,2),SUBSTRING(RIGHT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            break;
+                    }
+                }else if(posisitahun.equals("Belakang")){
+                    switch (pengurutan) {
+                        case "Straight":
+                            Valid.autoNomer3("select ifnull(MAX(CONVERT(LEFT(no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            break;
+                        case "Terminal":
+                            Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),5,2),SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            break;
+                        case "Middle":
+                            Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(no_rkm_medis,6),3,2),SUBSTRING(LEFT(no_rkm_medis,6),1,2),SUBSTRING(LEFT(no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                            break;
+                    }            
+                }
+
+                if(posisitahun.equals("Depan")){
+                    TNo.setText(awalantahun+awalanbulan+NoRm.getText());
+                }else if(posisitahun.equals("Belakang")){
+                    if(!(awalanbulan+awalantahun).equals("")){
+                        TNo.setText(NoRm.getText()+"-"+awalanbulan+awalantahun);
+                    }else{
+                        TNo.setText(NoRm.getText());
+                    }            
+                }
             }
         }
     }

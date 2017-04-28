@@ -84,8 +84,8 @@
         
         $BtnKeluar=isset($_POST['BtnKeluar'])?$_POST['BtnKeluar']:NULL;
         if (isset($BtnKeluar)) {
-			echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=Keluar'>";
-		}
+            echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=Keluar'>";
+	}
 
     ?>
     </div>
