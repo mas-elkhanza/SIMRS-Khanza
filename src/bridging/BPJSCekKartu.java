@@ -2814,7 +2814,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 Kdpnj.setText(response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText());
                 tabMode.addRow(new Object[]{
                     "","  Nama Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText()
-                });
+                });                
                 nmpnj.setText(response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText());
                 tabMode.addRow(new Object[]{
                     "Kelas Tanggungan",":",""
@@ -2910,6 +2910,21 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 });
                 tabMode.addRow(new Object[]{
                     "","  Umur Sekarang",": "+response.path("peserta").path("umur").path("umurSekarang").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "Informasi",":",""
+                });
+                tabMode.addRow(new Object[]{
+                    "","  Dinsos",": "+response.path("peserta").path("informasi").path("dinsos").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","  Iuran",": "+response.path("peserta").path("informasi").path("iuran").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","  No.SKTM",": "+response.path("peserta").path("informasi").path("noSKTM").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "","  Prolanis PRB",": "+response.path("peserta").path("informasi").path("prolanisPRB").asText()
                 });
                 TUmur.setText(response.path("peserta").path("umur").path("umurSekarang").asText());
                 ps=koneksi.prepareStatement(
@@ -3235,7 +3250,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
                     NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
                     LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),var.getkode(), 
-                    TNo.getText(),TNm.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),nmpnj.getText(),CmbJk.getSelectedItem().toString().substring(0,1),NoKartu.getText(),"0000-00-00 00:00:00"
+                    TNo.getText(),TNm.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),nmpnj.getText(),CmbJk.getSelectedItem().toString(),NoKartu.getText(),"0000-00-00 00:00:00"
                 })==true){
                     if(JenisPelayanan.getSelectedIndex()==1){
                         try {
@@ -3314,9 +3329,9 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     kddokter.getText(),TNo.getText(),kdpoli.getText(),Saudara.getText(),AlamatPj.getText()+", "+KelurahanPj.getText()+", "+KecamatanPj.getText()+", "+KabupatenPj.getText(),
                     klg,TBiaya.getText(),"Belum","Lama","Ralan",Kdpnj.getText()
                 })==true){
-                    Sequel.menyimpan("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0'","No.Rujuk");             
-                    Sequel.menyimpan("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
-                    Sequel.menyimpan("diagnosa_pasien","?,?,?,?","Penyakit",4,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1"});
+                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0'","No.Rujuk");             
+                    Sequel.menyimpan2("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
+                    Sequel.menyimpan2("diagnosa_pasien","?,?,?,?","Penyakit",4,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1"});
                     insertSEP();
             }
         }else if(JenisPelayanan.getSelectedIndex()==0){
@@ -3327,9 +3342,9 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     kddokter.getText(),TNo.getText(),"IGDK",Saudara.getText(),AlamatPj.getText()+", "+KelurahanPj.getText()+", "+KecamatanPj.getText()+", "+KabupatenPj.getText(),
                     klg,Sequel.cariIsi("select registrasilama from poliklinik where kd_poli='IGDK'"),"Belum","Lama","Ralan",Kdpnj.getText()
                 })==true){
-                    Sequel.menyimpan("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0'","No.Rujuk");                                     
-                    Sequel.menyimpan("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
-                    Sequel.menyimpan("diagnosa_pasien","?,?,?,?","Penyakit",4,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1"});                            
+                    Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0'","No.Rujuk");                                     
+                    Sequel.menyimpan2("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
+                    Sequel.menyimpan2("diagnosa_pasien","?,?,?,?","Penyakit",4,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1"});                            
                     if(Sequel.menyimpantf2("kamar_inap","'"+TNoRw.getText()+"','"+kdpoli.getText()+"','"+TBiaya.getText()+"','"+
                             KdPenyakit.getText()+"','-','"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"','"+
                             TanggalSEP.getSelectedItem().toString().substring(11,19)+"','0000-00-00',"+

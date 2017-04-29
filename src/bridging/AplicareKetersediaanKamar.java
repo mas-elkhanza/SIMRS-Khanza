@@ -772,8 +772,8 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
                 ObjectMapper mapper = new ObjectMapper();
                 JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 JsonNode nameNode = root.path("metadata");
-                //System.out.println("code : "+nameNode.path("code").asText());
-                //System.out.println("message : "+nameNode.path("message").asText());
+                System.out.println("code : "+nameNode.path("code").asText());
+                System.out.println("message : "+nameNode.path("message").asText());
                 JsonNode response = root.path("response");
                 if(nameNode.path("message").asText().equals("Data berhasil disimpan.")){
                     if(Sequel.menyimpantf("aplicare_ketersediaan_kamar","?,?,?,?,?,?,?,?","Data",8,new String[]{

@@ -65,9 +65,9 @@ public class INACBGCariCoderNIK extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(120);
             }else if(i==1){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(350);
             }else if(i==2){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(200);
             }
         }
 
@@ -140,7 +140,7 @@ public class INACBGCariCoderNIK extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(250, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(300, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);

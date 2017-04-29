@@ -2352,7 +2352,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             rs.getString("nama_industri")
                         });
                     }
-                } catch (SQLException e) {
+                } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
                 }finally{
                     if(rs != null){

@@ -535,7 +535,7 @@ public class DlgInputStok extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgStokOpname opname=new DlgStokOpname(null,false);
+        DlgStokOpname opname=new DlgStokOpname(null,true);
         opname.isCek(); 
         opname.emptTeks();
         opname.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());

@@ -12,11 +12,13 @@
                 $action         =isset($_GET['action'])?$_GET['action']:NULL;
                 $no_sep         =isset($_GET['no_sep'])?$_GET['no_sep']:NULL;
                 $codernik       =isset($_GET['codernik'])?$_GET['codernik']:NULL;
-                echo "<input type=hidden name=codernik  value=$codernik>";
+                $keyword        =isset($_GET['keyword'])?$_GET['keyword']:NULL;
+                echo "<input type=hidden name=codernik  value=$codernik><input type=hidden name=keyword value=$keyword>";
         ?>
     <div style="width: 100%; height: 90%; overflow: auto;">
     <?php
-        $BtnCari=isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
+        $BtnCari  =isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
+        $keyword  =isset($_POST['keyword'])?trim($_POST['keyword']):NULL;
         if (isset($BtnCari)) {      
                 $tahunawal      =trim($_POST['tahunawal']);
                 $bulanawal      =trim($_POST['bulanawal']);
@@ -24,7 +26,7 @@
                 $tahunakhir     =trim($_POST['tahunakhir']);
                 $bulanakhir     =trim($_POST['bulanakhir']);
                 $tanggalakhir   =trim($_POST['tanggalakhir']);
-                $codernik       =trim($_POST['codernik']);
+                $codernik       =trim($_POST['codernik']);                
         }
         $_sql = "select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,
                 bridging_sep.tglsep,bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,
@@ -33,8 +35,13 @@
                 bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,
                 if(bridging_sep.klsrawat='1','1. Kelas 1',if(bridging_sep.klsrawat='2','2. Kelas 2','3. Kelas 3')) as kelas,
                 if(bridging_sep.lakalantas='1','1. Kasus Kecelakaan','2. Bukan Kasus Kecelakaan') as lakalantas,bridging_sep.lokasilaka,bridging_sep.user, 
-                bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.tglpulang  
-                from bridging_sep where bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' order by bridging_sep.tglsep";
+                bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.tglpulang from bridging_sep where 
+                bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and bridging_sep.no_sep like '%".$keyword."%' or
+                bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and bridging_sep.nomr like '%".$keyword."%' or
+                bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and bridging_sep.nama_pasien like '%".$keyword."%' or
+                bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and bridging_sep.no_rawat like '%".$keyword."%' or
+                bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and bridging_sep.no_kartu like '%".$keyword."%' 
+                order by bridging_sep.tglsep";
         $hasil=bukaquery($_sql);
         $jumlah=mysql_num_rows($hasil);
         if(mysql_num_rows($hasil)!=0) {
@@ -52,7 +59,7 @@
                         <td width='13%'><div align='center'>Status Data</div></td>
                     </tr>";
                     while($baris = mysql_fetch_array($hasil)) {
-                        $status="<a href='?act=KlaimBaruManual&action=Kirim&no_sep=".$baris["no_sep"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik' >[Kirim]</a>";
+                        $status="<a href='?act=KlaimBaruManual&action=Kirim&no_sep=".$baris["no_sep"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>[Kirim]</a>";
                         if(getOne("select count(no_sep) from inacbg_klaim_baru where no_sep='".$baris["no_sep"]."'")>0){
                             $status="Terkirim INACBG";
                         }
@@ -88,7 +95,7 @@
         }         
         
         if($action=="Kirim") {
-            $_sql   = "select no_kartu,no_sep,nomr,nama_pasien,tanggal_lahir,jkel from bridging_sep where no_sep='".$no_sep."'";
+            $_sql   = "select no_kartu,no_sep,nomr,nama_pasien,tanggal_lahir,jkel,tglsep,if(tglpulang='0000-00-00 00:00:00',now(),tglpulang) as tglpulang,jnspelayanan,klsrawat,no_rawat from bridging_sep where no_sep='".$no_sep."'";
             $hasil  = bukaquery($_sql);
             $baris  = mysql_fetch_array($hasil);
             $gender = "";
@@ -97,7 +104,9 @@
             }else{
                 $gender="2";
             }
-            BuatKlaimBaru($baris["no_kartu"],$baris["no_sep"],$baris["nomr"],$baris["nama_pasien"],$baris["tanggal_lahir"]." 00:00:00", $gender);            
+            if(BuatKlaimBaru($baris["no_kartu"],$baris["no_sep"],$baris["nomr"],$baris["nama_pasien"],$baris["tanggal_lahir"]." 00:00:00", $gender)=="Ok"){
+                UpdateDataKlaim($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"],$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","","","","","","","","","","0", getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), getOne("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),"","","","",$codernik);
+            }   
             echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>";
         }
         
@@ -110,7 +119,7 @@
     </div>
             <table width="100%" align="center" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr class="head3">					
-                    <td width="490px">
+                    <td width="690px">
                         Periode : 
                         <select name="tanggalawal" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
                              <?php
@@ -136,7 +145,7 @@
                                 loadThnnow();
                              ?>
                         </select>
-                        &nbsp;&nbsp;s.d.&nbsp;&nbsp;                        
+                        &nbsp;s.d.&nbsp;
                         <select name="tanggalakhir" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
                              <?php
                                 if(!$tanggalakhir==""){
@@ -161,9 +170,11 @@
                                 loadThnnow();
                              ?>
                         </select>
+                        &nbsp;
+                        Keyword : <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="25" maxlength="250" autofocus />
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;" />
                     </td>
-                    <td width="140px" >Record : <?php echo $jumlah; ?> </td>
+                    <td width="120px" >Record : <?php echo $jumlah; ?> </td>
                     <td><input name=BtnKeluar type=submit class="button" value="&nbsp;&nbsp;&nbsp;Keluar&nbsp;&nbsp;&nbsp;" /> </td>
                 </tr>
             </table>

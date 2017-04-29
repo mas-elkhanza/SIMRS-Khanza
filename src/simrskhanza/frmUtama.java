@@ -274,7 +274,6 @@ public class frmUtama extends javax.swing.JFrame {
                 if(e.getKeyCode()==KeyEvent.VK_SPACE){
                     if(cariNIK.getTable().getSelectedRow()!= -1){                   
                         coder_nik=cariNIK.getTable().getValueAt(cariNIK.getTable().getSelectedRow(),2).toString();
-                        System.out.println("Coder NIK : "+coder_nik);
                         isTutup();
                         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         try {
