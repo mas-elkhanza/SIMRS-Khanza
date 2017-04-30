@@ -2,13 +2,18 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "17267ef3f9613662a57857130a9aafa8aa9921ded07577fcc70beae8abb65806";   
+       $keyRS = "e97003f13b60f64dbeecf76f9f296a0f301810dc9441630b2417cf1999b98f04";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://25.18.49.7/E-Klaim/ws.php";
+        $UrlWS = "http://192.168.0.219/E-Klaim/ws.php";
         return $UrlWS;
+    }
+    
+    function getKelasRS() {
+        $kelasRS = "DS";
+        return $kelasRS;
     }
 
     function mc_encrypt($data, $strkey) {
@@ -75,8 +80,8 @@
                     }';
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
-            echo " Patient ID : ".$msg['response']['patient_id'].", Admission ID : ".$msg['response']['admission_id'].", Hospitad Admission ID : ".$msg['response']['hospital_admission_id']."";
-            InsertData("inacbg_klaim_baru","'".$nomor_sep."','".$msg['response']['patient_id']."','".$msg['response']['admission_id']."','".$msg['response']['hospital_admission_id']."'");
+            //echo " Patient ID : ".$msg['response']['patient_id'].", Admission ID : ".$msg['response']['admission_id'].", Hospitad Admission ID : ".$msg['response']['hospital_admission_id']."";
+            InsertData2("inacbg_klaim_baru","'".$nomor_sep."','".$msg['response']['patient_id']."','".$msg['response']['admission_id']."','".$msg['response']['hospital_admission_id']."'");
         }
         return $msg['metadata']['message'];
     }
@@ -152,8 +157,11 @@
                             "coder_nik": "'.$coder_nik.'"
                         }
                    }';
+        //echo "Data : ".$request;
         $msg= Request($request);
-        echo $msg['metadata']['message']."";
+        if($msg['metadata']['message']=="Ok"){
+            GroupingStage1($nomor_sep,$coder_nik);
+        }
     }
     
     function UpdateDataProsedur($nomor_sep,$procedure,$coder_nik){	
@@ -186,7 +194,7 @@
         echo $msg['metadata']['message']."";
     }
     
-     function GroupingStage1($nomor_sep){	
+     function GroupingStage1($nomor_sep,$coder_nik){	
         $request ='{
                         "metadata": {
                             "method":"grouper",
@@ -197,7 +205,11 @@
                         }
                    }';
         $msg= Request($request);
-        echo $msg['metadata']['message']."";
+        if($msg['metadata']['message']=="Ok"){
+            Hapus2("inacbg_grouping_stage1", "no_sep='".$nomor_sep."'");
+            InsertData2("inacbg_grouping_stage1","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".$msg['response']['cbg']['tariff']."'");
+            FinalisasiKlaim($nomor_sep,$coder_nik);
+        }
     }
     
     function GroupingStage2($nomor_sep,$special_cmg){	
@@ -215,18 +227,20 @@
         echo $msg['metadata']['message']."";
     }
     
-    function FinalisasiKlaim($nomor_sep,$special_cmg){	
+    function FinalisasiKlaim($nomor_sep,$coder_nik){	
         $request ='{
                         "metadata": {
                             "method":"claim_final"
                         },
                         "data": {
                             "nomor_sep":"'.$nomor_sep.'",
-                            "coder_nik": "'.$special_cmg.'"
+                            "coder_nik": "'.$coder_nik.'"
                         }
                    }';
         $msg= Request($request);
-        echo $msg['metadata']['message']."";
+        if($msg['metadata']['message']=="Ok"){
+            KirimKlaimIndividualKeDC($nomor_sep);
+        }
     }
     
     function EditUlangKlaim($nomor_sep){	
@@ -239,7 +253,7 @@
                         }
                    }';
         $msg= Request($request);
-        echo $msg['metadata']['message']."";
+        //echo $msg['metadata']['message']."";
     }
     
     function KirimKlaimPeriodeKeDC($start_dt,$stop_dt,$jenis_rawat){	
@@ -267,7 +281,7 @@
                         }
                    }';
         $msg= Request($request);
-        echo $msg['metadata']['message']."";
+        //echo $msg['metadata']['message']."";
     }
     
     function MenarikDataKlaimPeriode($start_dt,$stop_dt,$jenis_rawat){	
