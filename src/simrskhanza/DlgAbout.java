@@ -187,7 +187,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(50, 70, 50));
-        jLabel20.setText("Phone : 08562675039     Pengembang : Windiarto Nugroho, Dewi Ekawati");
+        jLabel20.setText("Phone : 08562675039     Pengembang : Windiarto Nugroho, Dewi Ekawati, ASKI dll");
         jLabel20.setName("jLabel20"); // NOI18N
         panelGlass4.add(jLabel20);
         jLabel20.setBounds(12, 10, 420, 14);

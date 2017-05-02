@@ -2,9 +2,9 @@
  include '../conf/conf.php';
 ?>
 <html>
-    <isi>
+    <head>
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
-    </isi>
+    </head>
     <body>
 
     <?php

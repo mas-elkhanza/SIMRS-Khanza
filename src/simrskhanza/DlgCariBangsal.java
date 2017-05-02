@@ -48,10 +48,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
         initComponents();
         this.setLocation(10,2);
         setSize(656,250);
-
-        Object[] row={"Kode Kamar",
-                    "Nama Kamar"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new String[]{"Kode Kamar","Nama Kamar"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -64,7 +61,7 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(150);
             }else if(i==1){
-                column.setPreferredWidth(400);
+                column.setPreferredWidth(500);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -80,14 +77,6 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil();}
             });
         } 
-        
-        try {
-            ps=koneksi.prepareStatement("select kd_bangsal, nm_bangsal "+
-                " from bangsal where  kd_bangsal like ? or "+
-                " nm_bangsal like ?  order by nm_bangsal");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
     }
     private DlgBangsal bangsal=new DlgBangsal(null,false);
 
@@ -358,13 +347,24 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{            
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2) });
-            }
+        try{   
+            ps=koneksi.prepareStatement("select kd_bangsal, nm_bangsal "+
+                " from bangsal where status='1' and kd_bangsal like ? or "+
+                " status='1' and nm_bangsal like ?  order by nm_bangsal");
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2) });
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+            }                
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }

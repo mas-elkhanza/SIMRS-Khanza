@@ -85,7 +85,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         for (i = 0; i < 11; i++) {
             TableColumn column = tbRawatDr.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(105);
             }else if(i==2){
@@ -138,7 +138,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         for (i = 0; i < 11; i++) {
             TableColumn column = tbRawatPr.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(105);
             }else if(i==2){
@@ -194,7 +194,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         for (i = 0; i < 13; i++) {
             TableColumn column = tbRawatDrPr.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(105);
             }else if(i==2){
@@ -253,7 +253,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         for (i = 0; i < 16; i++) {
             TableColumn column = tbPemeriksaan.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(105);
             }else if(i==2){

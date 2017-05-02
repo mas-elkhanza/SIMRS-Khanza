@@ -31,6 +31,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import restore.DlgRestoreBangsal;
 
 /**
  *
@@ -83,11 +84,11 @@ public final class DlgBangsal extends javax.swing.JDialog {
         for (i = 0; i < 3; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(120);
             }else if(i==2){
-                column.setPreferredWidth(450);
+                column.setPreferredWidth(480);
             }
         }
 
@@ -107,12 +108,7 @@ public final class DlgBangsal extends javax.swing.JDialog {
             });
         } 
         TKd.requestFocus();
-        try {
-            ps=koneksi.prepareStatement("select * from bangsal where kd_bangsal like ? "+
-                "or nm_bangsal like ? order by kd_bangsal");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        
     }
     
     /** This method is called from within the constructor to
@@ -124,6 +120,8 @@ public final class DlgBangsal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        MnRestore = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -148,6 +146,24 @@ public final class DlgBangsal extends javax.swing.JDialog {
         TNm = new widget.TextBox();
         jLabel4 = new widget.Label();
 
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        MnRestore.setBackground(new java.awt.Color(255, 255, 255));
+        MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRestore.setForeground(new java.awt.Color(60, 80, 50));
+        MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnRestore.setText("Data Sampah");
+        MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnRestore.setName("MnRestore"); // NOI18N
+        MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
+        MnRestore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRestoreActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnRestore);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
         setIconImages(null);
@@ -164,11 +180,13 @@ public final class DlgBangsal extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbBangsal.setAutoCreateRowSorter(true);
         tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbBangsal.setComponentPopupMenu(jPopupMenu1);
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -427,7 +445,7 @@ public final class DlgBangsal extends javax.swing.JDialog {
         }else if(TNm.getText().trim().equals("")){
             Valid.textKosong(TNm,"nama bangsal");
         }else{
-            if(Sequel.menyimpantf("bangsal","?,?","Kode Kamar",2,new String[]{TKd.getText(),TNm.getText()})==true){
+            if(Sequel.menyimpantf("bangsal","?,?,?","Kode Kamar",3,new String[]{TKd.getText(),TNm.getText(),"1"})==true){
                 tampil();
                 emptTeks();
             }else{
@@ -457,7 +475,7 @@ public final class DlgBangsal extends javax.swing.JDialog {
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         for(i=0;i<tbBangsal.getRowCount();i++){ 
             if(tbBangsal.getValueAt(i,0).toString().equals("true")){
-                Sequel.meghapus("bangsal","kd_bangsal",tbBangsal.getValueAt(i,1).toString());
+                Sequel.mengedit("bangsal","kd_bangsal='"+tbBangsal.getValueAt(i,1).toString()+"'","status='0'");
             }
         } 
         tampil();
@@ -603,6 +621,13 @@ public final class DlgBangsal extends javax.swing.JDialog {
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
+    private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
+        DlgRestoreBangsal restore=new DlgRestoreBangsal(null,true);
+        restore.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        restore.setLocationRelativeTo(internalFrame1);
+        restore.setVisible(true);
+    }//GEN-LAST:event_MnRestoreActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -629,6 +654,7 @@ public final class DlgBangsal extends javax.swing.JDialog {
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.Label LCount;
+    private javax.swing.JMenuItem MnRestore;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
@@ -639,6 +665,7 @@ public final class DlgBangsal extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
@@ -648,13 +675,27 @@ public final class DlgBangsal extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{false,rs.getString(1),
-                               rs.getString(2)});
+            ps=koneksi.prepareStatement("select * from bangsal where status='1' and kd_bangsal like ? "+
+                    "or status='1' and nm_bangsal like ? order by kd_bangsal");
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{false,rs.getString(1),
+                                   rs.getString(2)});
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Bangsal : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
+                
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }

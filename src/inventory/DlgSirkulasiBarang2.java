@@ -11,6 +11,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
+import inventory.DlgBarang;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -39,10 +40,10 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
     private double jumlahjual=0,jumlahbeli=0,jumlahpesan=0,jumlahpiutang=0,
-                   jumlahretbeli=0,jumlahretjual=0,jumlahretpiut=0,jumlahpasin=0,stok=0;
+                   jumlahretbeli=0,jumlahretjual=0,jumlahretpiut=0,jumlahpasin=0,stok=0,stokawal=0;
     private DlgBarang barang=new DlgBarang(null,false);
-    private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,ps7,ps8,psstok,ps9;
-    private ResultSet rs,rs2,rs3,rs4,rs5,rs6,rs7,rs8,rsstok,rs9;
+    private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,ps7,ps8,psstok,ps9,psopname;
+    private ResultSet rs,rs2;
 
     /** 
      * @param parent
@@ -51,8 +52,8 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode Barang","Nama Barang","Satuan","Stok","Pengadaan","Pemesanan","Penjualan",
-                      "Ke Pasien","Piutang Jual","Retur Beli","Retur Jual","Retur Piutang"};
+        Object[] row={"Kode Barang","Nama Barang","Satuan","Stok Awal","Pengadaan","Pemesanan","Penjualan",
+                      "Ke Pasien","Piutang Jual","Retur Beli","Retur Jual","Retur Piutang","Stok Akhir"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -61,14 +62,12 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 13; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
             }else if(i==1){
-                column.setPreferredWidth(250);
-            }else if(i==2){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(200);
             }else{
                 column.setPreferredWidth(80);
             }
@@ -136,6 +135,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
                         "databarang.nama_brng like ? and kodesatuan.satuan like ? "+
                         " order by databarang.kode_brng");
             psstok=koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=?");
+            psopname=koneksi.prepareStatement("select opname.real from opname where kode_brng=? and tanggal=?");
             ps2=koneksi.prepareStatement("select sum(detailbeli.jumlah2) "+
                         " from pembelian inner join detailbeli "+
                         " on pembelian.no_faktur=detailbeli.no_faktur "+
@@ -353,7 +353,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter.setToolTipText("<html>Stok Awal mengambil data dari Stok Opname pada tanggal pencarian di tanggal pertama.\n<br>Jika Stok Opname pada tanggal tersebut tidak ditemukan maka Stok Awal dihitung dari\n<br>Stok Akhir ditambah dan dikurangi dengan transaksi yang telah terjadi.</html>");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
@@ -527,7 +527,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
@@ -549,7 +548,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,8).toString()+"','"+
                                 tabMode.getValueAt(i,9).toString()+"','"+
                                 tabMode.getValueAt(i,10).toString()+"','"+
-                                tabMode.getValueAt(i,11).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Sirkulasi Barang Keluar Masuk"); 
+                                tabMode.getValueAt(i,11).toString()+"','"+
+                                tabMode.getValueAt(i,12).toString()+"','','','','','','','','','','','','','','','','','','','','','','','',''","Sirkulasi Barang Keluar Masuk"); 
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>(); 
@@ -560,10 +560,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptSirkulasi.jrxml","report","::[ Transaksi Pembelian Barang ]::",
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Valid.MyReport("rptSirkulasi2.jrxml","report","::[ Sirkulasi Barang ]::",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+            this.setCursor(Cursor.getDefaultCursor());
         }
-        this.setCursor(Cursor.getDefaultCursor());
+        
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -757,7 +759,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void prosesCari() {
        Valid.tabelKosong(tabMode);      
        try{   
-
             ps.setString(1,"%"+nmbar.getText()+"%");
             ps.setString(2,"%"+TCari.getText().trim()+"%");
             ps.setString(3,"%"+nmbar.getText()+"%");
@@ -768,14 +769,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             while(rs.next()){
                 jumlahjual=0;jumlahbeli=0;jumlahpiutang=0;
                 jumlahpesan=0;jumlahretbeli=0;jumlahretjual=0;jumlahretpiut=0;
-                jumlahpasin=0;stok=0;
+                jumlahpasin=0;stok=0;stokawal=0;
                 
                 psstok.setString(1,rs.getString(1));
-                rsstok=psstok.executeQuery();
-                if(rsstok.next()){
-                    stok=rsstok.getDouble(1);
-                }
-                
+                rs2=psstok.executeQuery();
+                if(rs2.next()){
+                    stok=rs2.getDouble(1);
+                }                
                 //pembelian                
                 ps2.setString(1,rs.getString(1));
                 ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
@@ -788,66 +788,76 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ps9.setString(1,rs.getString(1));
                 ps9.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps9.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs9=ps9.executeQuery();
-                if(rs9.next()){                    
-                    jumlahpesan=rs9.getDouble(1);
+                rs2=ps9.executeQuery();
+                if(rs2.next()){                    
+                    jumlahpesan=rs2.getDouble(1);
                 }
                 //penjualan
                 ps3.setString(1,rs.getString(1));
                 ps3.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps3.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs3=ps3.executeQuery();
-                if(rs3.next()){                    
-                    jumlahjual=rs3.getDouble(1);
+                rs2=ps3.executeQuery();
+                if(rs2.next()){                    
+                    jumlahjual=rs2.getDouble(1);
                 }
                 
                 //piutang  
                 ps4.setString(1,rs.getString(1));
                 ps4.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps4.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs4=ps4.executeQuery();
-                if(rs4.next()){                    
-                    jumlahpiutang=rs4.getDouble(1);
+                rs2=ps4.executeQuery();
+                if(rs2.next()){                    
+                    jumlahpiutang=rs2.getDouble(1);
                 }
                 
                 //returbeli
                 ps5.setString(1,rs.getString(1));
                 ps5.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps5.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs5=ps5.executeQuery();
-                if(rs5.next()){                    
-                    jumlahretbeli=rs5.getDouble(1);
+                rs2=ps5.executeQuery();
+                if(rs2.next()){                    
+                    jumlahretbeli=rs2.getDouble(1);
                 }
                 
                 //returjual
                 ps6.setString(1,rs.getString(1));
                 ps6.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps6.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs6=ps6.executeQuery();
-                if(rs6.next()){                    
-                    jumlahretjual=rs6.getDouble(1);
+                rs2=ps6.executeQuery();
+                if(rs2.next()){                    
+                    jumlahretjual=rs2.getDouble(1);
                 }                
                 
                 ps7.setString(1,rs.getString(1));
                 ps7.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps7.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs7=ps7.executeQuery();
-                if(rs7.next()){                    
-                    jumlahretpiut=rs7.getDouble(1);
+                rs2=ps7.executeQuery();
+                if(rs2.next()){                    
+                    jumlahretpiut=rs2.getDouble(1);
                 }
                 
                 ps8.setString(1,rs.getString(1));
                 ps8.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps8.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs8=ps8.executeQuery();
-                if(rs8.next()){                    
-                    jumlahpasin=rs8.getDouble(1);
+                rs2=ps8.executeQuery();
+                if(rs2.next()){                    
+                    jumlahpasin=rs2.getDouble(1);
+                }
+                
+                psopname.setString(1,rs.getString(1));
+                psopname.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                rs2=psopname.executeQuery();
+                if(rs2.next()){
+                    stokawal=rs2.getDouble(1);
                 }
                 
                 if((jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||
                         (jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(stok>0)){
+                    if(stokawal<=0){
+                        stokawal=stok-jumlahbeli-jumlahpesan+jumlahjual+jumlahpasin+jumlahpiutang+jumlahretbeli-jumlahretjual-jumlahretpiut;
+                    }
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),
-                               rs.getString(3),stok,
+                               rs.getString(3),Valid.SetAngka(stokawal),
                                Valid.SetAngka(jumlahbeli),
                                Valid.SetAngka(jumlahpesan),
                                Valid.SetAngka(jumlahjual),
@@ -855,7 +865,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                Valid.SetAngka(jumlahpiutang),
                                Valid.SetAngka(jumlahretbeli),
                                Valid.SetAngka(jumlahretjual),
-                               Valid.SetAngka(jumlahretpiut)
+                               Valid.SetAngka(jumlahretpiut),
+                               Valid.SetAngka(stok)
                               }); 
                 }
                     
@@ -867,7 +878,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-         BtnPrint.setEnabled(var.getsirkulasi_obat());
+         BtnPrint.setEnabled(var.getsirkulasi_obat2());
     }
     
 }

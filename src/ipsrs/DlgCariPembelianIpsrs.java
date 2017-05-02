@@ -66,25 +66,25 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(110);
             }else if(i==3){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(180);
             }else if(i==5){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(70);
             }else if(i==6){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(27);
             }else if(i==7){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==8){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==9){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==10){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==11){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -237,8 +237,8 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
         try {
             ps=koneksi.prepareStatement("select ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur, "+
                     "ipsrspembelian.kode_suplier,ipsrssuplier.nama_suplier, "+
-                    "ipsrspembelian.nip,petugas.nama,ipsrspembelian.subtotal,ipsrspembelian.potongan,ipsrspembelian.total "+
-                    " from ipsrspembelian inner join ipsrssuplier inner join petugas inner join kodesatuan  "+
+                    "ipsrspembelian.nip,petugas.nama,ipsrspembelian.subtotal,ipsrspembelian.potongan,ipsrspembelian.total, "+
+                    "ipsrspembelian.ppn,ipsrspembelian.tagihan from ipsrspembelian inner join ipsrssuplier inner join petugas inner join kodesatuan  "+
                     " inner join ipsrsdetailbeli inner join ipsrsbarang "+
                     " on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
                     " and ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
@@ -1111,7 +1111,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     Valid.SetAngka(rs2.getDouble(8)),Valid.SetAngka(rs2.getDouble(9)),Valid.SetAngka(rs2.getDouble(10))});
                     no++;
                 }
-                tabMode.addRow(new Object[]{"","","","","Total ","","","",Valid.SetAngka(rs.getDouble("subtotal")),"",Valid.SetAngka(rs.getDouble("potongan")),Valid.SetAngka(rs.getDouble("total"))});
+                tabMode.addRow(new Object[]{"","","","","","Total",":","",Valid.SetAngka(rs.getDouble("subtotal")),"",Valid.SetAngka(rs.getDouble("potongan")),Valid.SetAngka(rs.getDouble("total"))});
+                tabMode.addRow(new Object[]{"","","","","","PPN",":","","","","",Valid.SetAngka(rs.getDouble("ppn"))});
+                tabMode.addRow(new Object[]{"","","","","","Tagihan",":","","","","",Valid.SetAngka(rs.getDouble("tagihan"))});
                 tagihan=tagihan+rs.getDouble("total");
             }                
             LTotal.setText(Valid.SetAngka(tagihan));

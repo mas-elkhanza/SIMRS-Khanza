@@ -102,7 +102,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
     }
     
     DlgPasien pasien=new DlgPasien(null,false);
-    private String[] hlm;
     int y=0,w=0,urut;
 
     /** This method is called from within the constructor to
@@ -119,11 +118,13 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         Scroll = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
         panelGlass5 = new widget.panelisi();
+        label11 = new widget.Label();
+        Tgl1 = new widget.Tanggal();
+        label18 = new widget.Label();
+        Tgl2 = new widget.Tanggal();
+        label19 = new widget.Label();
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
-        jLabel14 = new widget.Label();
-        cmbHlm = new widget.ComboBox();
-        label18 = new widget.Label();
         BtnKeluar = new widget.Button();
         panelisi4 = new widget.panelisi();
         label17 = new widget.Label();
@@ -157,6 +158,44 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
         panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
+        label11.setText("Tgl.Rawat :");
+        label11.setName("label11"); // NOI18N
+        label11.setPreferredSize(new java.awt.Dimension(65, 23));
+        panelGlass5.add(label11);
+
+        Tgl1.setEditable(false);
+        Tgl1.setDisplayFormat("dd-MM-yyyy");
+        Tgl1.setName("Tgl1"); // NOI18N
+        Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
+        Tgl1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Tgl1KeyPressed(evt);
+            }
+        });
+        panelGlass5.add(Tgl1);
+
+        label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label18.setText("s.d.");
+        label18.setName("label18"); // NOI18N
+        label18.setPreferredSize(new java.awt.Dimension(30, 23));
+        panelGlass5.add(label18);
+
+        Tgl2.setEditable(false);
+        Tgl2.setDisplayFormat("dd-MM-yyyy");
+        Tgl2.setName("Tgl2"); // NOI18N
+        Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
+        Tgl2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Tgl2KeyPressed(evt);
+            }
+        });
+        panelGlass5.add(Tgl2);
+
+        label19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label19.setName("label19"); // NOI18N
+        label19.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass5.add(label19);
+
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
         BtnPrint.setText("Cetak");
@@ -188,20 +227,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         panelGlass5.add(BtnAll);
 
-        jLabel14.setText("Halaman :");
-        jLabel14.setName("jLabel14"); // NOI18N
-        jLabel14.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelGlass5.add(jLabel14);
-
-        cmbHlm.setName("cmbHlm"); // NOI18N
-        cmbHlm.setOpaque(false);
-        cmbHlm.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelGlass5.add(cmbHlm);
-
-        label18.setName("label18"); // NOI18N
-        label18.setPreferredSize(new java.awt.Dimension(110, 23));
-        panelGlass5.add(label18);
-
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
         BtnKeluar.setText("Keluar");
@@ -232,7 +257,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         panelisi4.add(label17);
 
         KdRw.setName("KdRw"); // NOI18N
-        KdRw.setPreferredSize(new java.awt.Dimension(110, 23));
+        KdRw.setPreferredSize(new java.awt.Dimension(120, 23));
         KdRw.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KdRwKeyPressed(evt);
@@ -242,7 +267,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
 
         TPasien.setEditable(false);
         TPasien.setName("TPasien"); // NOI18N
-        TPasien.setPreferredSize(new java.awt.Dimension(350, 23));
+        TPasien.setPreferredSize(new java.awt.Dimension(390, 23));
         panelisi4.add(TPasien);
 
         BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -370,6 +395,14 @@ private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bt
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
+    private void Tgl1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tgl1KeyPressed
+        Valid.pindah(evt, BtnKeluar, Tgl2);
+    }//GEN-LAST:event_Tgl1KeyPressed
+
+    private void Tgl2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tgl2KeyPressed
+        Valid.pindah(evt, Tgl1,KdRw);
+    }//GEN-LAST:event_Tgl2KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -397,30 +430,26 @@ private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bt
     private widget.ScrollPane Scroll;
     private widget.TextBox TKd;
     private widget.TextBox TPasien;
-    private widget.ComboBox cmbHlm;
+    private widget.Tanggal Tgl1;
+    private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel14;
+    private widget.Label label11;
     private widget.Label label17;
     private widget.Label label18;
+    private widget.Label label19;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelisi4;
     // End of variables declaration//GEN-END:variables
 
     public void tampil(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        sql="select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
-                   "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
-                   "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and "+
-                   "pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+KdRw.getText()+"' order by pasien.no_rkm_medis desc ";
-        
         try{
             StringBuilder htmlContent = new StringBuilder();
             try {
-                String awal="0";
-                if(cmbHlm.getItemCount()>0){
-                    awal=hlm[Integer.parseInt(cmbHlm.getSelectedItem().toString())];
-                }
-                rs=koneksi.prepareStatement(sql+" LIMIT "+awal+",100").executeQuery();
+                rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
+                   "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
+                   "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and "+
+                   "pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+KdRw.getText()+"' order by pasien.no_rkm_medis desc ").executeQuery();
                 y=1;
                 while(rs.next()){   
                     htmlContent.append(
@@ -502,8 +531,11 @@ private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bt
                                "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                                "reg_periksa.kd_dokter,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.p_jawab,reg_periksa.almt_pj,"+
                                "reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.status_lanjut,penjab.png_jawab "+
-                               "from reg_periksa inner join dokter inner join poliklinik inner join penjab on reg_periksa.kd_dokter=dokter.kd_dokter "+
-                               "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"'").executeQuery();
+                               "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
+                               "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
+                               "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
+                               "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
+                               "reg_periksa.tgl_registrasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'").executeQuery();
                         urut=1;
                         while(rs2.next()){      
                             htmlContent.append(
@@ -1668,29 +1700,7 @@ private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bt
                     rs.close();
                 }
             }
-                
-            try {
-                cmbHlm.removeAllItems();
-                rshal=koneksi.prepareStatement(sql).executeQuery();
-                rshal.last();
-                double jumlah=rshal.getRow();
-                double x=jumlah/99;
-                double i=Math.ceil(x);
-                int z=(int) i;
-
-                hlm=new String[z+1];
-                for(int j=1;j<=i;j++){
-                     int mulai=((j-1)*99+j)-1;
-                     hlm[j]=Integer.toString(mulai);
-                     cmbHlm.addItem(j);
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rshal!=null){
-                    rshal.close();
-                }
-            }
+            
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

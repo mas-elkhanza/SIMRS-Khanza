@@ -83,6 +83,23 @@ public final class sekuel {
         }            
     }
     
+    public void menyimpan2(String table,String value,String sama){
+        try {
+            ps=connect.prepareStatement("insert into "+table+" values("+value+")");
+            try{                  
+                ps.executeUpdate();
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);    
+            }finally{
+                if(ps != null){
+                    ps.close();
+                }                
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e); 
+        }            
+    }
+    
     public boolean menyimpantf(String table,String value,String sama){
         try {
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");
@@ -94,6 +111,20 @@ public final class sekuel {
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e); 
             JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Kemungkinan ada "+sama+" yang sama dimasukkan sebelumnya...!");
+            return false;
+        }            
+    }
+    
+    public boolean menyimpantf2(String table,String value,String sama){
+        try {
+            ps=connect.prepareStatement("insert into "+table+" values("+value+")");
+            ps.executeUpdate();
+            if(ps != null){
+                ps.close();
+            }  
+            return true;           
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e); 
             return false;
         }            
     }
@@ -559,7 +590,7 @@ public final class sekuel {
                 } 
                 ps.executeUpdate(); 
              }catch(Exception e){
-                //System.out.println("Notifikasi : "+e);
+                System.out.println("Notifikasi : "+e);
              }finally{
                 if(ps != null){
                     ps.close();
@@ -761,6 +792,7 @@ public final class sekuel {
                     dicari="";
                 }   
             }catch(Exception e){
+                dicari="";
                 System.out.println("Notifikasi : "+e);
             }finally{
                 if(rs != null){
@@ -818,6 +850,7 @@ public final class sekuel {
                     dicari="";
                 }   
             }catch(Exception e){
+                dicari="";
                 System.out.println("Notifikasi : "+e);
             }finally{
                 if(rs != null ){

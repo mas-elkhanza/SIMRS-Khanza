@@ -95,7 +95,7 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
          for (i = 0; i < 12; i++) {
             TableColumn column = tbObatPenyakit.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){

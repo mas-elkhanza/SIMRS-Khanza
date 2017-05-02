@@ -49,7 +49,7 @@ public class DlgCariPembelian extends javax.swing.JDialog {
         initComponents();
 
         Object[] row={"Tgl.Beli","No.Faktur","Suplier","Petugas","Barang",
-                    "Satuan","Jml.Beli","Harga Beli(Rp)","SubTotal(Rp)",
+                    "Satuan","Jml","Harga Beli(Rp)","SubTotal(Rp)",
                     "Disk(%)","Bsr.Disk(Rp)","Total(Rp)"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -62,29 +62,29 @@ public class DlgCariPembelian extends javax.swing.JDialog {
         for (int i = 0; i < 12; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(110);
             }else if(i==3){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(180);
             }else if(i==5){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(70);
             }else if(i==6){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(27);
             }else if(i==7){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==8){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==9){
                 column.setPreferredWidth(50);
             }else if(i==10){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==11){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1118,7 +1118,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         try{     
             ps=koneksi.prepareStatement("select pembelian.tgl_beli,pembelian.no_faktur, "+
                     "pembelian.kode_suplier,datasuplier.nama_suplier, "+
-                    "pembelian.nip,petugas.nama,bangsal.nm_bangsal "+
+                    "pembelian.nip,petugas.nama,bangsal.nm_bangsal,pembelian.total1,"+
+                    "pembelian.potongan,pembelian.total2,pembelian.ppn,pembelian.tagihan "+
                     " from pembelian inner join datasuplier inner join petugas inner join bangsal  "+
                     " inner join detailbeli inner join databarang inner join kodesatuan inner join jenis "+
                     " inner join industrifarmasi on detailbeli.kode_brng=databarang.kode_brng "+
@@ -1309,9 +1310,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                             Valid.SetAngka(rs2.getDouble(8)),Valid.SetAngka(rs2.getDouble(9)),Valid.SetAngka(rs2.getDouble(10))});
                             no++;
                         }
-                        tabMode.addRow(new Object[]{"","","","","","","","","","Total",":",Valid.SetAngka(Sequel.cariIsiAngka("select total2 from pembelian where no_faktur=?",rs.getString(2)))});
-                        tabMode.addRow(new Object[]{"","","","","","","","","","PPN",":",Valid.SetAngka(Sequel.cariIsiAngka("select ppn from pembelian where no_faktur=?",rs.getString(2)))});
-                        tabMode.addRow(new Object[]{"","","","","","","","","","Tagihan",":",Valid.SetAngka(Sequel.cariIsiAngka("select tagihan from pembelian where no_faktur=?",rs.getString(2)))});
+                        tabMode.addRow(new Object[]{"","","","","","Total",":","",Valid.SetAngka(rs.getDouble("total1")),"",Valid.SetAngka(rs.getDouble("potongan")),Valid.SetAngka(rs.getDouble("total2"))});
+                        tabMode.addRow(new Object[]{"","","","","","PPN",":","","","","",Valid.SetAngka(rs.getDouble("ppn"))});
+                        tabMode.addRow(new Object[]{"","","","","","Tagihan",":","","","","",Valid.SetAngka(rs.getDouble("tagihan"))});
                         tagihan=tagihan+Sequel.cariIsiAngka("select tagihan from pembelian where no_faktur=?",rs.getString(2));
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);

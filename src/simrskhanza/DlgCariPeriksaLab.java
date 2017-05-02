@@ -65,9 +65,9 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(200);
             }else if(i==3){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(130);
             }else if(i==4){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(100);
             }else if(i==5){
                 column.setPreferredWidth(150);
             }else if(i==6){
@@ -173,7 +173,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
                     "and periksa_lab.jam=?");
             ps3=koneksi.prepareStatement(
                     "select template_laboratorium.Pemeriksaan, detail_periksa_lab.nilai,template_laboratorium.satuan,detail_periksa_lab.nilai_rujukan,detail_periksa_lab.biaya_item,"+
-                    "detail_periksa_lab.keterangan from detail_periksa_lab inner join template_laboratorium on detail_periksa_lab.id_template=template_laboratorium.id_template "+
+                    "detail_periksa_lab.keterangan,detail_periksa_lab.kd_jenis_prw from detail_periksa_lab inner join template_laboratorium on detail_periksa_lab.id_template=template_laboratorium.id_template "+
                     "where detail_periksa_lab.no_rawat=? and detail_periksa_lab.kd_jenis_prw=? and detail_periksa_lab.tgl_periksa=? and detail_periksa_lab.jam=?");
             ps4=koneksi.prepareStatement(
                     "select periksa_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,petugas.nama,DATE_FORMAT(periksa_lab.tgl_periksa,'%d-%m-%Y') as tgl_periksa,periksa_lab.jam,"+
@@ -941,7 +941,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 ps4.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
                 ps4.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
                 rs=ps4.executeQuery();
-                while(rs.next()){
+                if(rs.next()){
                     Sequel.queryu("delete from temporary");
                     ps2.setString(1,rs.getString("no_rawat"));
                     ps2.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
@@ -949,17 +949,27 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     rs2=ps2.executeQuery();
                     ttl=0;
                     while(rs2.next()){
-                        item=rs2.getDouble("biaya")+Sequel.cariIsiAngka("select sum(biaya_item) from template_laboratorium where kd_jenis_prw=?",rs2.getString("kd_jenis_prw"));
+                        item=rs2.getDouble("biaya");//Sequel.cariIsiAngka("select sum(biaya_item) from template_laboratorium where kd_jenis_prw=?",rs2.getString("kd_jenis_prw"));
                         ttl=ttl+item;                    
-                        Sequel.menyimpan("temporary","'0','"+rs2.getString("nm_perawatan")+"','"+item+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
+                        Sequel.menyimpan("temporary","'0','"+rs2.getString("kd_jenis_prw")+"','"+rs2.getString("nm_perawatan")+"','"+item+"','Pemeriksaan','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");                        
+                        ps3.setString(1,rs.getString("no_rawat"));
+                        ps3.setString(2,rs2.getString("kd_jenis_prw"));
+                        ps3.setString(3,Valid.SetTgl(rs.getString("tgl_periksa")));
+                        ps3.setString(4,rs.getString("jam"));
+                        rs3=ps3.executeQuery();
+                        while(rs3.next()){
+                            item=rs3.getDouble("biaya_item");
+                            ttl=ttl+item; 
+                            Sequel.menyimpan("temporary","'0','"+rs3.getString("kd_jenis_prw")+"','   "+rs3.getString("Pemeriksaan")+"','"+item+"','Detail Pemeriksaan','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");                        
+                        }
                     }                       
-                    Sequel.menyimpan("temporary","'0','Total Biaya Pemeriksaan Lab','"+ttl+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
+                    Sequel.menyimpan("temporary","'0','','Total Biaya Pemeriksaan Lab','"+ttl+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Biaya Lab");
                     Valid.panggilUrl("billing/LaporanBiayaLab.php?norm="+rs.getString("no_rkm_medis")+"&pasien="+rs.getString("nm_pasien").replaceAll(" ","_")
                             +"&tanggal="+rs.getString("tgl_periksa")+"&jam="+rs.getString("jam")+"&pjlab="+rs.getString("nm_dokter").replaceAll(" ","_")
                             +"&petugas="+rs.getString("nama").replaceAll(" ","_")+"&kasir="+Sequel.cariIsi("select nama from pegawai where nik=?",var.getkode()));
                 }  
                 Sequel.AutoComitTrue();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
             }            
         }
@@ -973,7 +983,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             TCari.requestFocus();
         }else {
             DlgUbahPeriksaLab ubah=new DlgUbahPeriksaLab(null,false);
-            ubah.setSize(this.getWidth(),this.getHeight());
+            ubah.setSize(this.getWidth()-40,this.getHeight()-40);
             ubah.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),
                     tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString(), 
                     tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());

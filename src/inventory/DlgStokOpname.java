@@ -70,27 +70,27 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         for (int i = 0; i < 11; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==1){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(160);
             }else if(i==2){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(50);
             }else if(i==3){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(80);
             }else if(i==4){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(35);
             }else if(i==5){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(35);
             }else if(i==6){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(40);
             }else if(i==7){
-                column.setPreferredWidth(150);
-            }else if(i==9){
                 column.setPreferredWidth(100);
+            }else if(i==9){
+                column.setPreferredWidth(120);
             }else if(i==8){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(90);
             }else if(i==10){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(160);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());

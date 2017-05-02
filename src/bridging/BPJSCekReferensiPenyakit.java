@@ -58,9 +58,7 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
 
         this.setLocation(10,2);
         setSize(628,674);
-
-        Object[] row={"","",""};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode ICD X","Nama Penyakit"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -72,11 +70,11 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
         for (int i = 0; i < 3; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(40);
             }else if(i==1){
                 column.setPreferredWidth(140);
             }else if(i==2){
-                column.setPreferredWidth(450);
+                column.setPreferredWidth(470);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -338,17 +336,6 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
                 JsonNode response = root.path("response");
-                tabMode.addRow(new Object[]{
-                    "Start : "+response.path("start").asText(),
-                    "Count : "+response.path("count").asText(),
-                    "Limit : "+response.path("limit").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "","",""
-                });
-                tabMode.addRow(new Object[]{
-                    "No.","Kode Diagnosa","Nama Diagnosa"
-                });
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){

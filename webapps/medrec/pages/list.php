@@ -9,7 +9,7 @@
    if ($bln_leng==1){
     	$bulan="0".$baris[1];
    }else{
-		$bulan=$baris[1];
+	$bulan=$baris[1];
    }
 ?>
 
@@ -84,8 +84,8 @@
         
         $BtnKeluar=isset($_POST['BtnKeluar'])?$_POST['BtnKeluar']:NULL;
         if (isset($BtnKeluar)) {
-			echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=Keluar'>";
-		}
+            echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=Keluar'>";
+	}
 
     ?>
     </div>

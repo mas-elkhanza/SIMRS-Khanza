@@ -332,7 +332,8 @@ private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"stts='Belum'");
             if(jawab==JOptionPane.YES_OPTION){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                if(status.equals("Ralan")){                    
+                if(status.equals("Ralan")){  
+                    Sequel.queryu2("delete from piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
                     Sequel.queryu2("delete from tampjurnal");                    
                     Sequel.menyimpan("tampjurnal","'"+Piutang_Pasien_Ralan+"','PIUTANG PASIEN RAWAT JALAN','0','"+(ttlLaborat+ttlRadiologi+ttlObat+ttlRalan_Dokter+ttlRalan_Dokter_Param+ttlRalan_Paramedis+ttlTambahan+ttlPotongan+ttlRegistrasi+ttlOperasi)+"'","Rekening");    
                     if((-1*ttlPotongan)>0){

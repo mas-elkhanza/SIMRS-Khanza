@@ -255,13 +255,12 @@ color: #65795b;
 
 .head td{
 	color:#65795b;
-	font: 25px  tahoma;
+	font: 11px  tahoma;
 	background: #f8fdf3;
 	border-bottom: 1px solid #f2f7ed;
-        border-right: 1px solid #f2f7ed;
-	border-top: 1px solid #f2f7ed;
+        border-right: 1px solid #777777;
 	letter-spacing: 1px;
-	padding: 4px 2px 4px 10px;
+	padding: 2px 2px 2px 2px;
 }
 
 .head3 td{
@@ -279,7 +278,7 @@ color: #65795b;
 	font: 11px  tahoma;
 	background: #f8fdf3;
 	border-bottom: 1px solid #f2f7ed;
-        border-right: 1px solid #f2f7ed;
+        border-right: 1px solid #f0f5eb;
 	letter-spacing: 1px;
 	padding: 4px 2px 4px 10px;
 }

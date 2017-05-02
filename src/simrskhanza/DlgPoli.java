@@ -80,7 +80,7 @@ public final class DlgPoli extends javax.swing.JDialog {
         for (i = 0; i < 5; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){
@@ -96,7 +96,7 @@ public final class DlgPoli extends javax.swing.JDialog {
         Kd.setDocument(new batasInput((byte)5).getKata(Kd));
         By.setDocument(new batasInput((byte)13).getOnlyAngka(By));
         ByLm.setDocument(new batasInput((byte)13).getOnlyAngka(ByLm));
-        Nm.setDocument(new batasInput((byte)30).getKata(Nm));
+        Nm.setDocument(new batasInput((byte)50).getKata(Nm));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));        
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){

@@ -86,7 +86,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         for (z = 0; z < 8; z++) {
             TableColumn column = tbPenyakit.getColumnModel().getColumn(z);
             if(z==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(z==1){
                 column.setPreferredWidth(70);
             }else if(z==2){

@@ -4309,8 +4309,8 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         MnCariPeriksaLab.setEnabled(var.getperiksa_lab());
         MnPeriksaRadiologi.setEnabled(var.getperiksa_radiologi());
         MnCariRadiologi.setEnabled(var.getperiksa_radiologi());
-        MnPenjualan.setEnabled(var.getpenjualan_obat());
-        MnHapusTagihan.setEnabled(var.getbilling_ralan());
+        MnPenjualan.setEnabled(var.getpenjualan_obat());        
+        MnHapusTagihan.setEnabled(var.getbilling_ralan());  
         MnPoli.setEnabled(var.getbilling_ralan());
         MnDokter.setEnabled(var.getbilling_ralan());
         MnPenjab.setEnabled(var.getbilling_ralan());

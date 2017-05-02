@@ -80,7 +80,7 @@ public final class DlgRestoreDokter extends javax.swing.JDialog {
         for (int i = 0; i < 14; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(100);
             }else if(i==2){
@@ -302,6 +302,7 @@ public final class DlgRestoreDokter extends javax.swing.JDialog {
         for(i=0;i<tbObat.getRowCount();i++){ 
             if(tbObat.getValueAt(i,0).toString().equals("true")){
                 Sequel.mengedit("dokter","kd_dokter='"+tbObat.getValueAt(i,1).toString()+"'","status='1'");
+                Sequel.mengedit("pegawai","nik='"+tbObat.getValueAt(i,1).toString()+"'","stts_aktif='AKTIF'");
             }
         }        
         BtnCariActionPerformed(evt);

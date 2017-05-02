@@ -11,7 +11,10 @@
     <entry key="HYBRIDWEB">webapps</entry>
     <entry key="ANTRIAN">sender</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
-    <entry key="URLAPIBPJS">http://dvlp.bpjs-kesehatan.go.id:8081/devWSLokalRest</entry>
-    <entry key="SECRETKEYAPIBPJS">6kG72E841F</entry>
-    <entry key="CONSIDAPIBPJS">29242</entry>
+    <entry key="URLAPIBPJS">http://25.15.131.53/WsLokalRest</entry>
+    <entry key="SECRETKEYAPIBPJS">7cS168C09A</entry>
+    <entry key="CONSIDAPIBPJS">29459</entry>
+    <entry key="URLAPIAPLICARE">http://dvlp.bpjs-kesehatan.go.id:9080/aplicaresws</entry>
+    <entry key="SECRETKEYAPIAPLICARE">1112</entry>
+    <entry key="CONSIDAPIAPLICARE">1000</entry>
 </properties>

@@ -120,7 +120,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         NmAyah.setDocument(new batasInput((byte)50).getKata(NmAyah));
         UmurAyah.setDocument(new batasInput((byte)8).getKata(UmurAyah));
         Proses.setDocument(new batasInput((byte)20).getKata(Proses));
-        Berat.setDocument(new batasInput((byte)10).getKata(Berat));
+        Berat.setDocument(new batasInput((byte)10).getOnlyAngka(Berat));
         Panjang.setDocument(new batasInput((byte)10).getKata(Panjang));
         LingkarKepala.setDocument(new batasInput((byte)10).getKata(LingkarKepala));
         keterangan.setDocument(new batasInput((byte)50).getKata(keterangan));
@@ -1045,7 +1045,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         FormInput.add(JKel);
         JKel.setBounds(89, 132, 100, 23);
 
-        label23.setText("Berat Bayi :");
+        label23.setText("Berat Bayi(gram) :");
         label23.setName("label23"); // NOI18N
         label23.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label23);
