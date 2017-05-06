@@ -280,17 +280,17 @@ color: #65795b;
 	font: 11px  tahoma;
 	background: #f8fdf3;
 	border-bottom: 1px solid #f2f7ed;
-        border-right: 1px solid #f2f7ed;
+        border-right: 1px solid #777777;
 	letter-spacing: 1px;
-	padding: 4px 2px 4px 10px;
+	padding: 2px 2px 2px 2px;
 }
 
 .isi td{
 	border-right: 1px solid #f2f7ed;
 	border-bottom: 1px solid #f2f7ed;
 	background: #fafff5;
-	padding-top:3px;
-	padding-bottom:3px;
+	padding-top:4px;
+	padding-bottom:4px;
 	padding-left:2px;
 	color:#65795b;
 	font: 11px  tahoma;

@@ -259,9 +259,9 @@ color: #65795b;
 	background: #f8fdf3;
 	border-bottom: 1px solid #f2f7ed;
         border-right: 1px solid #f2f7ed;
-	border-top: 1px solid #f2f7ed;
+        border-top: 1px solid #f2f7ed;
 	letter-spacing: 1px;
-	padding: 4px 2px 4px 10px;
+	padding: 4px 2px 4px 2px;
 }
 
 
@@ -269,8 +269,8 @@ color: #65795b;
 	border-right: 1px solid #f2f7ed;
 	border-bottom: 1px solid #f2f7ed;
 	background: #fafff5;
-	padding-top:3px;
-	padding-bottom:3px;
+	padding-top:4px;
+	padding-bottom:4px;
 	padding-left:2px;
 	color:#65795b;
 	font: 11px  tahoma;
