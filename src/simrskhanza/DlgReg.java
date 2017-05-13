@@ -38,6 +38,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,6 +47,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -73,13 +75,16 @@ public final class DlgReg extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     public  DlgPasien pasien=new DlgPasien(null,false);
     public  DlgCariDokter dokter=new DlgCariDokter(null,false);
+    public  DlgCariDokter2 dokter2=new DlgCariDokter2(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
+    private DlgCariPoli2 poli2=new DlgCariPoli2(null,false);
     public  DlgRujukMasuk rujukmasuk=new DlgRujukMasuk(null,false);
     private PreparedStatement ps,ps2,ps3,pscaripiutang;
+    private Properties prop = new Properties();
     private ResultSet rs;
     private int pilihan=0,i=0;
     private Date cal=new Date();
-    private String alamatperujuk="-";
+    private String alamatperujuk="-",aktifjadwal="";
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
 
     /** Creates new form DlgReg
@@ -264,6 +269,41 @@ public final class DlgReg extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
                 
+        dokter2.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {;}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(var.getform().equals("DlgReg")){
+                    if(dokter2.getTable().getSelectedRow()!= -1){                    
+                        if(pilihan==1){
+                            kddokter.setText(dokter2.getTable().getValueAt(dokter2.getTable().getSelectedRow(),0).toString());
+                            TDokter.setText(dokter2.getTable().getValueAt(dokter2.getTable().getSelectedRow(),1).toString());
+                            isNumber();
+                            kddokter.requestFocus();
+                        }else if(pilihan==2){
+                            CrDokter.setText(dokter2.getTable().getValueAt(dokter2.getTable().getSelectedRow(),1).toString());
+                            CrDokter.requestFocus();
+                            tampil();
+                        }else if(pilihan==3){
+                            CrDokter3.setText(dokter2.getTable().getValueAt(dokter2.getTable().getSelectedRow(),1).toString());
+                            CrDokter3.requestFocus();
+                        }
+                    }                
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
         poli.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -307,6 +347,49 @@ public final class DlgReg extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });        
                 
+        poli2.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(var.getform().equals("DlgReg")){
+                    if(poli2.getTable().getSelectedRow()!= -1){                    
+                        if(pilihan==1){
+                            kdpoli.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),0).toString());
+                            TPoli.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),1).toString());
+                            switch (TStatus.getText()) {
+                                case "Baru":
+                                    TBiaya.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),2).toString());
+                                    break;
+                                case "Lama":
+                                    TBiaya.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),3).toString());
+                                    break;
+                                default :
+                                    TBiaya.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),2).toString());
+                                    break;
+                            }
+                            isNumber();                            
+                            kdpoli.requestFocus();
+                        }else if(pilihan==2){
+                            CrPoli.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),1).toString());
+                            CrPoli.requestFocus();
+                            tampil();
+                        }
+                    }                
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });       
+        
         pasien.kab.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -443,6 +526,13 @@ public final class DlgReg extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            aktifjadwal=prop.getProperty("JADWALDOKTERDIREGISTRASI");
+        } catch (Exception ex) {
+            aktifjadwal="";
+        }
         
         ChkInput.setSelected(false);
         isForm(); 
@@ -3210,11 +3300,29 @@ private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
         pilihan=1;
         var.setform("DlgReg");
-        dokter.isCek();        
-        dokter.TCari.requestFocus();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
-        dokter.setLocationRelativeTo(internalFrame1);
-        dokter.setVisible(true);
+        if(aktifjadwal.equals("aktif")){
+            if(var.getkode().equals("Admin Utama")){
+                dokter.isCek();        
+                dokter.TCari.requestFocus();
+                dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                dokter.setLocationRelativeTo(internalFrame1);
+                dokter.setVisible(true);
+            }else{
+                dokter2.setPoli(TPoli.getText());
+                dokter2.isCek();     
+                dokter2.tampil();
+                dokter2.TCari.requestFocus();
+                dokter2.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                dokter2.setLocationRelativeTo(internalFrame1);
+                dokter2.setVisible(true);
+            }                
+        }else{
+            dokter.isCek();        
+            dokter.TCari.requestFocus();
+            dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            dokter.setLocationRelativeTo(internalFrame1);
+            dokter.setVisible(true);
+        }
 }//GEN-LAST:event_BtnDokterActionPerformed
 
 private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyPressed
@@ -3230,10 +3338,27 @@ private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kd
 private void BtnUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUnitActionPerformed
         var.setform("DlgReg");
         pilihan=1;
-        poli.isCek();        
-        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
-        poli.setLocationRelativeTo(internalFrame1);
-        poli.setVisible(true);
+        
+        if(aktifjadwal.equals("aktif")){
+            if(var.getkode().equals("Admin Utama")){
+                poli.isCek();        
+                poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                poli.setLocationRelativeTo(internalFrame1);
+                poli.setVisible(true);
+            }else{
+                poli2.setDokter(TDokter.getText());
+                poli2.isCek();     
+                poli2.tampil(); 
+                poli2.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                poli2.setLocationRelativeTo(internalFrame1);
+                poli2.setVisible(true);
+            }                
+        }else{
+            poli.isCek();        
+            poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            poli.setLocationRelativeTo(internalFrame1);
+            poli.setVisible(true);
+        }
 }//GEN-LAST:event_BtnUnitActionPerformed
 
 private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed

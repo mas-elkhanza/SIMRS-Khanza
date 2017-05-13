@@ -30,6 +30,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,6 +42,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -57,6 +62,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private final Properties prop = new Properties();
 
     public  DlgKamar kamar=new DlgKamar(null,false);
     public  DlgReg reg=new DlgReg(null,false);
@@ -73,7 +79,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private int i,sudah=0,row=0;
     private double lama=Sequel.cariIsiAngka("select lamajam from set_jam_minimal");
-    private String dokterranap="",diagnosa_akhir=Sequel.cariIsi("select diagnosaakhir from set_jam_minimal");
+    private String dokterranap="",diagnosa_akhir=Sequel.cariIsi("select diagnosaakhir from set_jam_minimal"),namakamar="";
 
     /** Creates new form DlgKamarInap
      * @param parent
@@ -6061,6 +6067,28 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     }
     
     public void isCek(){
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            namakamar=prop.getProperty("KAMARAKTIFRANAP");
+        } catch (Exception ex) {
+            namakamar="";
+        }
+        
+        if(!namakamar.equals("")){
+            if(var.getkode().equals("Admin Utama")){
+                BangsalCari.setText("");
+                btnBangsalCari.setEnabled(true);
+                BangsalCari.setEditable(true);
+            }else{
+                BangsalCari.setText(namakamar);
+                btnBangsalCari.setEnabled(false);
+                BangsalCari.setEditable(false);
+            }                
+        }else{
+            btnBangsalCari.setEnabled(true);
+            BangsalCari.setEditable(true);
+        }
+        
         BtnSimpan.setEnabled(var.getkamar_inap());
         BtnSimpanpindah.setEnabled(var.getkamar_inap());
         BtnHapus.setEnabled(var.getkamar_inap());
