@@ -6181,7 +6181,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         DlgHome.dispose();
-        InformasiKamar belum=new InformasiKamar(this,false);
+        InformasiKamar belum=new InformasiKamar(this,true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -6192,7 +6192,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         DlgHome.dispose();
-        InformasiKamarInap belum=new InformasiKamarInap(this,false);
+        InformasiKamarInap belum=new InformasiKamarInap(this,true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -6202,7 +6202,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private void MnRekapHadir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapHadir1ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgHome.dispose();
-        InformasiJadwal belum=new InformasiJadwal(this,false);
+        InformasiJadwal belum=new InformasiJadwal(this,true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -6213,7 +6213,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         DlgHome.dispose();
-        InformasiTarifRalan belum=new InformasiTarifRalan(this,false);
+        InformasiTarifRalan belum=new InformasiTarifRalan(this,true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -6224,7 +6224,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         DlgHome.dispose();
-        InformasiTarifLab belum=new InformasiTarifLab(this,false);
+        InformasiTarifLab belum=new InformasiTarifLab(this,true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -6235,7 +6235,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
         DlgHome.dispose();
-        InformasiTarifOperasi belum=new InformasiTarifOperasi(this,false);
+        InformasiTarifOperasi belum=new InformasiTarifOperasi(this,true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -6245,7 +6245,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private void MnSudahPulang5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSudahPulang5ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgHome.dispose();
-        InformasiTarifRanap belum=new InformasiTarifRanap(this,false);
+        InformasiTarifRanap belum=new InformasiTarifRanap(this,true);
         belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         belum.setLocationRelativeTo(PanelUtama);
         belum.setVisible(true);
@@ -6849,7 +6849,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private void MnRekapBulanan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapBulanan2ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         DlgHome.dispose();
-        InformasiAnalisaKamin analisakamin=new InformasiAnalisaKamin(this,false);
+        InformasiAnalisaKamin analisakamin=new InformasiAnalisaKamin(this,true);
         analisakamin.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         analisakamin.setLocationRelativeTo(PanelUtama);
         analisakamin.setVisible(true);
