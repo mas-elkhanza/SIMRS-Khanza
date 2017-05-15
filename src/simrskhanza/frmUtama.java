@@ -235,6 +235,7 @@ public class frmUtama extends javax.swing.JFrame {
     private final DlgAbout About=new DlgAbout(this,false);   
     private final DlgPenggajian penggajian=new DlgPenggajian(this,false); 
     private final DlgRetensi retensi=new DlgRetensi(this,false); 
+    private final DlgHybrid Hybrid=new DlgHybrid(this,false); 
     private final INACBGHybrid inacbgklaim=new INACBGHybrid(this,false);
     private final INACBGCariCoderNIK cariNIK=new INACBGCariCoderNIK(this,false);
     private static frmUtama myInstance;
@@ -568,6 +569,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnInaCBGKlaimBaruOtomatis = new widget.ButtonBig();
         btnInaCBGKlaimBaruManual = new widget.ButtonBig();
         btnInaCBGCoderNIK = new widget.ButtonBig();
+        btnMutasiBerkas = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3648,6 +3650,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnInaCBGCoderNIK);
 
+        btnMutasiBerkas.setForeground(new java.awt.Color(40, 70, 50));
+        btnMutasiBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
+        btnMutasiBerkas.setText("Mutasi Berkas RM");
+        btnMutasiBerkas.setIconTextGap(0);
+        btnMutasiBerkas.setName("btnMutasiBerkas"); // NOI18N
+        btnMutasiBerkas.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMutasiBerkas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMutasiBerkasActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnMutasiBerkas);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3656,7 +3671,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21/04/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/05/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7877,6 +7892,23 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnInaCBGCoderNIKActionPerformed
 
+    private void btnMutasiBerkasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMutasiBerkasActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Hybrid.setJudul("::[ Mutasi Berkas Rekam Medis ]::","mmonitoringberkas/pages");
+        try {
+            Hybrid.loadURL("http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"monitoringberkas/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+
+        Hybrid.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        Hybrid.setLocationRelativeTo(PanelUtama);        
+        Hybrid.setVisible(true);        
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnMutasiBerkasActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8005,6 +8037,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnMerkInventaris;
     private widget.ButtonBig btnMonitoringKlaim;
     private widget.ButtonBig btnMutasiBarang;
+    private widget.ButtonBig btnMutasiBerkas;
     private widget.ButtonBig btnObat;
     private widget.ButtonBig btnObatPasienPeresep;
     private widget.ButtonBig btnObatPasienRalan;
@@ -9130,7 +9163,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             if(var.getretensi_rm()==true){
                 Panelmenu.add(btnRetensiRM);
                 jmlmenu++;
+            }
+            
+            if(var.getmutasi_berkas()==true){
+                Panelmenu.add(btnMutasiBerkas);
+                jmlmenu++;
             } 
+
         }else if(cmbMenu.getSelectedIndex()==12){  
             jmlmenu=0;
             if(var.getpengambilan_utd2()==true){

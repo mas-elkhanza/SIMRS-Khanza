@@ -545,7 +545,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRawat+"' ",param);
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRm+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
         if(tbData.getValueAt(22,0).toString().equals("true")){
@@ -925,80 +925,91 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                 "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRm+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
-        if(tbData.getValueAt(41,0).toString().equals("true")){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());  
-            param.put("tanggal",TanggalDaftar);    
-            param.put("kamar",NamaPoli);    
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM4.jrxml","report","::[ Gelang Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
-                   "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
-                   "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
-                   "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
-                   "inner join kelurahan inner join kecamatan inner join kabupaten "+
-                   "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRm+"' ",param);
-            this.setCursor(Cursor.getDefaultCursor());
+        try {
+            if(tbData.getValueAt(41,0).toString().equals("true")){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                Map<String, Object> param = new HashMap<>();                 
+                param.put("namars",var.getnamars());
+                param.put("alamatrs",var.getalamatrs());
+                param.put("kotars",var.getkabupatenrs());
+                param.put("propinsirs",var.getpropinsirs());
+                param.put("kontakrs",var.getkontakrs());
+                param.put("emailrs",var.getemailrs());  
+                param.put("tanggal",TanggalDaftar);    
+                param.put("kamar",NamaPoli);    
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReport("rptBarcodeRM4.jrxml","report","::[ Gelang Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                       "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
+                       "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                       "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
+                       "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
+                       "inner join kelurahan inner join kecamatan inner join kabupaten "+
+                       "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
+                       "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRm+"' ",param);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        } catch (Exception e) {
         }
-        if(tbData.getValueAt(42,0).toString().equals("true")){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("emailrs",var.getemailrs());  
-            param.put("tanggal",TanggalDaftar);    
-            param.put("kamar",NamaPoli);    
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptBarcodeRM5.jrxml","report","::[ Gelang Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
-                   "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
-                   "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
-                   "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
-                   "inner join kelurahan inner join kecamatan inner join kabupaten "+
-                   "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
-                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRm+"' ",param);
-            this.setCursor(Cursor.getDefaultCursor());
+            
+        try {
+            if(tbData.getValueAt(42,0).toString().equals("true")){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                Map<String, Object> param = new HashMap<>();                 
+                param.put("namars",var.getnamars());
+                param.put("alamatrs",var.getalamatrs());
+                param.put("kotars",var.getkabupatenrs());
+                param.put("propinsirs",var.getpropinsirs());
+                param.put("kontakrs",var.getkontakrs());
+                param.put("emailrs",var.getemailrs());  
+                param.put("tanggal",TanggalDaftar);    
+                param.put("kamar",NamaPoli);    
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReport("rptBarcodeRM5.jrxml","report","::[ Gelang Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                       "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
+                       "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                       "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
+                       "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
+                       "inner join kelurahan inner join kecamatan inner join kabupaten "+
+                       "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
+                       "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+NoRm+"' ",param);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        } catch (Exception e) {
         }
-        if(tbData.getValueAt(43,0).toString().equals("true")){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars",var.getnamars());
-            param.put("alamatrs",var.getalamatrs());
-            param.put("kotars",var.getkabupatenrs());
-            param.put("propinsirs",var.getpropinsirs());
-            param.put("kontakrs",var.getkontakrs());
-            param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
-            if(JenisPelayanan.equals("ranap")){
-                Valid.MyReport("rptBridgingSEP.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='1','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),bridging_sep.lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu from bridging_sep where no_sep='"+NoSEP+"'",param);
-            }else{
-                Valid.MyReport("rptBridgingSEP2.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
-                        "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
-                        "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
-                        "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
-                        "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
-                        "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
-                        "if(bridging_sep.lakalantas='1','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),bridging_sep.lokasilaka,bridging_sep.user, "+
-                        "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu from bridging_sep where no_sep='"+NoSEP+"'",param);
-            }                
-            this.setCursor(Cursor.getDefaultCursor());
-        }        
+            
+        try {
+            if(tbData.getValueAt(43,0).toString().equals("true")){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
+                Map<String, Object> param = new HashMap<>();
+                param.put("namars",var.getnamars());
+                param.put("alamatrs",var.getalamatrs());
+                param.put("kotars",var.getkabupatenrs());
+                param.put("propinsirs",var.getpropinsirs());
+                param.put("kontakrs",var.getkontakrs());
+                param.put("logo",Sequel.cariGambar("select bpjs from gambar")); 
+                if(JenisPelayanan.equals("ranap")){
+                    Valid.MyReport("rptBridgingSEP.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
+                            "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
+                            "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
+                            "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
+                            "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
+                            "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
+                            "if(bridging_sep.lakalantas='1','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),bridging_sep.lokasilaka,bridging_sep.user, "+
+                            "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu from bridging_sep where no_sep='"+NoSEP+"'",param);
+                }else{
+                    Valid.MyReport("rptBridgingSEP2.jrxml","report","::[ Cetak SEP ]::","select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,"+
+                            "bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,"+
+                            "bridging_sep.nmppkrujukan,bridging_sep.kdppkpelayanan,bridging_sep.nmppkpelayanan,"+
+                            "if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan'),bridging_sep.catatan,bridging_sep.diagawal,"+
+                            "bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,"+
+                            "if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3')),"+
+                            "if(bridging_sep.lakalantas='1','Kasus Kecelakaan','Bukan Kasus Kecelakaan'),bridging_sep.lokasilaka,bridging_sep.user, "+
+                            "bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu from bridging_sep where no_sep='"+NoSEP+"'",param);
+                }                
+                this.setCursor(Cursor.getDefaultCursor());
+            }    
+        } catch (Exception e) {
+        }                
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     /**
@@ -1073,6 +1084,56 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
             TabMode.addRow(new Object[]{false,"Gelang Pasien Ranap 1"});//41,0
             TabMode.addRow(new Object[]{false,"Gelang Pasien Ranap 2"});//42,0
             TabMode.addRow(new Object[]{false,"Lembar SEP"});//43,0
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        
+    }
+    
+    public void tampil2() {
+        try{         
+            Valid.tabelKosong(TabMode);
+            TabMode.addRow(new Object[]{false,"Kartu Pasien 1"});//0,0
+            TabMode.addRow(new Object[]{false,"Kartu Pasien 2"});//1,0
+            TabMode.addRow(new Object[]{false,"Kartu Pasien 3"});//2,0
+            TabMode.addRow(new Object[]{false,"Kartu Pasien 4"});//3,0
+            TabMode.addRow(new Object[]{false,"Label Rekam Medis 1"});//4,0
+            TabMode.addRow(new Object[]{false,"Label Rekam Medis 2"});//5,0
+            TabMode.addRow(new Object[]{false,"Label Rekam Medis 3"});//6,0
+            TabMode.addRow(new Object[]{false,"Label Rekam Medis 4"});//7,0
+            TabMode.addRow(new Object[]{false,"Label Rekam Medis 5"});//8,0
+            TabMode.addRow(new Object[]{false,"Label Rekam Medis 6"});//9,0
+            TabMode.addRow(new Object[]{false,"Label Rekam Medis 7"});//10,0
+            TabMode.addRow(new Object[]{false,"Identitas Pasien 1"});//11,0
+            TabMode.addRow(new Object[]{false,"Identitas Pasien 2"});//12,0
+            TabMode.addRow(new Object[]{false,"Kartu Indeks Pasien"});//13,0
+            TabMode.addRow(new Object[]{false,"Lembar Rawat Jalan Model 1"});//14,0
+            TabMode.addRow(new Object[]{false,"Lembar Rawat Jalan Model 2"});//15,0
+            TabMode.addRow(new Object[]{false,"Lembar Rawat Jalan Model 3"});//16,0
+            TabMode.addRow(new Object[]{false,"Formulir Pendaftaran Pasien"});//17,0
+            TabMode.addRow(new Object[]{false,"Lembar Screening Awal Pasien Masuk Rawat Jalan"});//18,0
+            TabMode.addRow(new Object[]{false,"Formulir Penempelan Copy Resep"});//19,0
+            TabMode.addRow(new Object[]{false,"Bukti Register"});//20,0
+            TabMode.addRow(new Object[]{false,"Persetujuan Medis"});//21,0
+            TabMode.addRow(new Object[]{false,"Surat Jaminan & Bukti Pelayanan Ralan"});//22,0
+            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kanan"});//23,0
+            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kiri"});//24,0
+            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kanan+Tracker"});//25,0
+            TabMode.addRow(new Object[]{false,"Chekc List Kelengkapan Pendaftaran Kiri+Tracker"});//26,0
+            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kanan"});//27,0
+            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kiri"});//28,0
+            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kanan 2"});//29,0
+            TabMode.addRow(new Object[]{false,"Lembar Periksa Pasien Kiri 2"});//30,0
+            TabMode.addRow(new Object[]{false,"Label Tracker 1"});//31,0
+            TabMode.addRow(new Object[]{false,"Label Tracker 2"});//32,0
+            TabMode.addRow(new Object[]{false,"Label Tracker 3"});//33,0
+            TabMode.addRow(new Object[]{false,"Label Tracker 4"});//34,0
+            TabMode.addRow(new Object[]{false,"Barcode Perawatan"});//35,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 1"});//36,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 2"});//37,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 3"});//38,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 4"});//39,0
+            TabMode.addRow(new Object[]{false,"Gelang Pasien Ralan 5"});//40,0
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
