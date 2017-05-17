@@ -84,7 +84,8 @@ public final class DlgReg extends javax.swing.JDialog {
     private ResultSet rs;
     private int pilihan=0,i=0;
     private Date cal=new Date();
-    private String alamatperujuk="-",aktifjadwal="";
+    private String alamatperujuk="-",aktifjadwal="",
+            validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi");
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
 
     /** Creates new form DlgReg
@@ -201,10 +202,20 @@ public final class DlgReg extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(var.getform().equals("DlgReg")){
-                    if(pasien.getTable().getSelectedRow()!= -1){                   
-                        TNoRM.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
-                        isPas();
-                        isNumber();
+                    if(pasien.getTable().getSelectedRow()!= -1){     
+                        if(validasiregistrasi.equals("Yes")){
+                            if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis=? and (stts='Sudah' or stts='Belum') ",pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString())>0){
+                                JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak kasir.. !!");
+                            }else{
+                                TNoRM.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
+                                isPas();
+                                isNumber();                               
+                            } 
+                        }else{
+                            TNoRM.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
+                            isPas();
+                            isNumber();
+                        }                            
                     }  
                     TNoRM.requestFocus();
                 }

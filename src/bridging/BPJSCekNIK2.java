@@ -2514,8 +2514,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             "where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis=?",TNo.getText())>0){
                 JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
                 NoRujukan.requestFocus();
-        }else if(NoKartu.getText().trim().equals("")){
-            Valid.textKosong(NoKartu, "Nomor Kartu");
         }else if(NoRujukan.getText().trim().equals("")){
             Valid.textKosong(NoRujukan, "Nomor Rujukan");
         }else if(KdPpkRujukan.getText().trim().equals("")||NmPpkRujukan.getText().trim().equals("")){
@@ -3214,7 +3212,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                              "{" +
                                 "\"t_sep\":" +
                                    "{" +
-                                    "\"noKartu\":\""+NoKartu.getText()+"\"," +
+                                    "\"noKartu\":\""+TNoPeserta.getText()+"\"," +
                                     "\"tglSep\":\""+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19)+"\"," +
                                     "\"tglRujukan\":\""+Valid.SetTgl(TanggalRujuk.getSelectedItem()+"")+" "+TanggalRujuk.getSelectedItem().toString().substring(11,19)+"\"," +
                                     "\"noRujukan\":\""+NoRujukan.getText()+"\"," +

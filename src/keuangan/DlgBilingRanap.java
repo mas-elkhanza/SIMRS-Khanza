@@ -2727,7 +2727,7 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
             Sequel.AutoComitFalse();
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"billing","no_rawat");  
             Valid.hapusTable(tabModeRwJlDr,TNoRw,"tagihan_sadewa","no_nota");  
-            Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"stts='Belum'");
+            Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"stts='Sudah'");
             uangmuka=0;sisapiutang=0;
             if(!TBayar.getText().trim().equals("")){
                uangmuka=Double.parseDouble(TBayar.getText());
