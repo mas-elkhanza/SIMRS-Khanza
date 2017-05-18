@@ -44,11 +44,11 @@ public class DlgLabaRugi extends javax.swing.JDialog {
         for (int i = 0; i < 3; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(125);
             }else if(i==1){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(470);
             }else if(i==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(140);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());       
@@ -347,8 +347,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     saldoakhir=(saldoawal+debkret)*(-1);
                 }*/
                 pendapatan=pendapatan+saldoakhir;
-                tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(2),"     "+df2.format(saldoakhir)});  
-                i++;
+                if(!(saldoakhir==0)){
+                    tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
+                    i++;
+                }                    
             }  
             tabMode.addRow(new Object[]{"","Total Pendapatan ",df2.format(pendapatan)});  
             tabMode.addRow(data);
@@ -372,8 +374,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     saldoakhir=(saldoawal+debkret)*(-1);
                 }*/
                 biaya=biaya+saldoakhir;
-                tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(2),"     "+df2.format(saldoakhir)});  
-                i++;
+                if(!(saldoakhir==0)){
+                    tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
+                    i++;
+                }                    
             } 
             tabMode.addRow(new Object[]{"","Total Biaya-Biaya ",df2.format(biaya)}); 
             tabMode.addRow(data);
@@ -399,8 +403,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     saldoakhir=(saldoawal+debkret)*(-1);
                 }*/
                 modal=modal+saldoakhir;
-                tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(2),"     "+df2.format(saldoakhir)});  
-                i++;
+                if(!(saldoakhir==0)){
+                    tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
+                    i++;
+                }                    
             }  
             tabMode.addRow(new Object[]{"","Total Modal ",df2.format(modal)}); 
             tabMode.addRow(data);
@@ -427,8 +433,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     saldoakhir=(saldoawal+debkret)*(-1);
                 }*/
                 aktiva=aktiva+saldoakhir;
-                tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(2),"     "+df2.format(saldoakhir)});  
-                i++;
+                if(!(saldoakhir==0)){
+                    tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
+                    i++;
+                }                    
             }  
             tabMode.addRow(new Object[]{"","Total Aktiva ",df2.format(aktiva)}); 
             tabMode.addRow(data); 
@@ -451,8 +459,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     saldoakhir=(saldoawal+debkret)*(-1);
                 }*/
                 pasiva=pasiva+saldoakhir;
-                tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(2),"     "+df2.format(saldoakhir)});  
-                i++;
+                if(!(saldoakhir==0)){
+                    tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
+                    i++;
+                }                    
             }  
             tabMode.addRow(new Object[]{"","Total Pasiva : Pasiva + Modal Akhir",df2.format(pasiva+modal+(pendapatan-biaya))}); 
             tabMode.addRow(data);         

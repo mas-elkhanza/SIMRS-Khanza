@@ -45,9 +45,9 @@ public class DlgCashflow extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(100);
             }else if(i==1){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(440);
             }else if(i==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(150);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());       
@@ -346,8 +346,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }*/;
                 
                 kasawal=kasawal+debkred;
-                tabMode.addRow(new Object[]{"",i+". "+rs.getString(2),df2.format(debkred)});  
-                i++;
+                if(!(debkred==0)){
+                    tabMode.addRow(new Object[]{"",i+". "+rs.getString(1)+" "+rs.getString(2),df2.format(debkred)});  
+                    i++;
+                }                    
             }
             
             /*rs=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, sum(rekeningtahun.saldo_awal) "+
@@ -395,7 +397,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }*/
                 
                 penerimaan=penerimaan+debkred;
-                tabMode.addRow(new Object[]{"",i+". "+rs.getString(2),df2.format(debkred)});  
+                tabMode.addRow(new Object[]{"",i+". "+rs.getString(1)+" "+rs.getString(2),df2.format(debkred)});  
                 i++;
             } 
             /*
@@ -449,7 +451,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }*/
                 
                 pengeluaran=pengeluaran+debkred;                
-                tabMode.addRow(new Object[]{"",i+". "+rs.getString(2),df2.format(debkred)});  
+                tabMode.addRow(new Object[]{"",i+". "+rs.getString(1)+" "+rs.getString(2),df2.format(debkred)});  
                 i++;
             } 
             
