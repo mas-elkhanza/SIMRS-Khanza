@@ -708,25 +708,17 @@ public class DlgJadwal extends javax.swing.JDialog {
         }else if(TPoli.getText().trim().equals("")){
             Valid.textKosong(KdPoli,"Poliklinik");
         }else{
-            try{
-                java.sql.Statement stat=koneksi.createStatement();
-                ResultSet rs=stat.executeQuery("select * from jadwal where kd_dokter='"+kddokter.getText()+"' and hari_kerja='"+cmbHari.getSelectedItem()+"'");
-                rs.last();
-                if(rs.getRow()==0){
-                    JOptionPane.showMessageDialog(null,"Maaf, gagal mengedit. Data jadwal dengan dokter dan hari tersebut tidak ditemukan...!");
-                }else if(rs.getRow()>=1){
-                    Sequel.queryu("update jadwal set jam_mulai='"+cmbJam1.getSelectedItem()+":"+cmbMnt1.getSelectedItem()+":"+cmbDtk1.getSelectedItem()+"',"+
-                            "jam_selesai='"+cmbJam2.getSelectedItem()+":"+cmbMnt2.getSelectedItem()+":"+cmbDtk2.getSelectedItem()+"',"+
-                            "kd_poli='"+KdPoli.getText()+"' "+
-                            "where kd_dokter='"+kddokter+"' and "+
-                            "hari_kerja='"+cmbHari.getSelectedItem()+"'");
-                    if(tabMode.getRowCount()!=0){tampil();}
-                    emptTeks();
-                }
-                kddokter.requestFocus();
-            }catch(SQLException e){
-                System.out.println("Notifikasi : "+e);
-            }
+            if(tbJadwal.getSelectedRow()!= -1){
+                Sequel.queryu("update jadwal set jam_mulai='"+cmbJam1.getSelectedItem()+":"+cmbMnt1.getSelectedItem()+":"+cmbDtk1.getSelectedItem()+"',"+
+                        "jam_selesai='"+cmbJam2.getSelectedItem()+":"+cmbMnt2.getSelectedItem()+":"+cmbDtk2.getSelectedItem()+"',"+
+                        "kd_poli='"+KdPoli.getText()+"',kd_dokter='"+kddokter.getText()+"',hari_kerja='"+cmbHari.getSelectedItem()+"' where "+
+                        "kd_dokter='"+tbJadwal.getValueAt(tbJadwal.getSelectedRow(),1).toString()+"' "+
+                        "and hari_kerja='"+tbJadwal.getValueAt(tbJadwal.getSelectedRow(),3).toString()+"' "+
+                        "and jam_mulai='"+tbJadwal.getValueAt(tbJadwal.getSelectedRow(),4).toString()+"' "+
+                        "and jam_selesai='"+tbJadwal.getValueAt(tbJadwal.getSelectedRow(),5).toString()+"'");
+                if(tabMode.getRowCount()!=0){tampil();}
+                emptTeks();
+            }  
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 

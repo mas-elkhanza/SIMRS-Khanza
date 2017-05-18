@@ -49,7 +49,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
     private String pilihtable="",kd_pj="",kd_poli="",poli_ralan="Yes",cara_bayar_ralan="Yes";
     private boolean[] pilih; 
     private String[] kode,nama,kategori;
-    private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat;
+    private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
     private int jml=0,i=0,index=0;
     public  DlgJnsPerawatanRalan perawatan=new DlgJnsPerawatanRalan(null,false);
     public  DlgCariDokter dokter=new DlgCariDokter(null,false);
@@ -66,7 +66,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"P","Kode","Nama Perawatan","Kategori Perawatan","Tarif/Biaya","Bagian RS","BHP","JM Dokter","JM Perawat"};
+        Object[] row={"P","Kode","Nama Perawatan","Kategori Perawatan","Tarif/Biaya","Bagian RS","BHP","JM Dokter","JM Perawat","KSO","Menejemen"};
         TabModeTindakan=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -78,7 +78,8 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class,  
                 java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.Double.class,java.lang.Double.class
              };
              /*Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -91,16 +92,16 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
         tbTindakan.setModel(TabModeTindakan);
         tbTindakan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbTindakan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 11; i++) {
             TableColumn column = tbTindakan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){
-                column.setPreferredWidth(400);
+                column.setPreferredWidth(310);
             }else if(i==3){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(110);
             }else if(i==5){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -113,8 +114,14 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
             }else if(i==8){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
+            }else if(i==9){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==10){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else{
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(90);
             }
         }
         tbTindakan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -702,7 +709,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                 try {                                    
                                     switch (pilihtable) {
                                         case "rawat_jl_dr":
-                                            pssimpandokter=koneksi.prepareStatement("insert into rawat_jl_dr values(?,?,?,?,?,?,?)");
+                                            pssimpandokter=koneksi.prepareStatement("insert into rawat_jl_dr values(?,?,?,?,?,?,?,?,?)");
                                             try {
                                                 pssimpandokter.setString(1,TNoRw.getText());
                                                 pssimpandokter.setString(2,tbTindakan.getValueAt(i,1).toString());
@@ -710,7 +717,9 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                                 pssimpandokter.setString(4,tbTindakan.getValueAt(i,5).toString());
                                                 pssimpandokter.setString(5,tbTindakan.getValueAt(i,6).toString());
                                                 pssimpandokter.setString(6,tbTindakan.getValueAt(i,7).toString());
-                                                pssimpandokter.setString(7,tbTindakan.getValueAt(i,4).toString());
+                                                pssimpandokter.setString(7,tbTindakan.getValueAt(i,9).toString());
+                                                pssimpandokter.setString(8,tbTindakan.getValueAt(i,10).toString());
+                                                pssimpandokter.setString(9,tbTindakan.getValueAt(i,4).toString());
                                                 pssimpandokter.executeUpdate();
                                             } catch (Exception e) {
                                                 System.out.println("Notifikasi : "+e);
@@ -721,15 +730,17 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                             }
                                             break;
                                         case "rawat_jl_pr":
-                                            pssimpanperawat=koneksi.prepareStatement("insert into rawat_jl_pr values(?,?,?,?,?,?,?)");
+                                            pssimpanperawat=koneksi.prepareStatement("insert into rawat_jl_pr values(?,?,?,?,?,?,?,?,?)");
                                             try {
                                                 pssimpanperawat.setString(1,TNoRw.getText());
                                                 pssimpanperawat.setString(2,tbTindakan.getValueAt(i,1).toString());
                                                 pssimpanperawat.setString(3,kddokter.getText());
                                                 pssimpanperawat.setString(4,tbTindakan.getValueAt(i,5).toString());  
                                                 pssimpanperawat.setString(5,tbTindakan.getValueAt(i,6).toString());  
-                                                pssimpanperawat.setString(6,tbTindakan.getValueAt(i,8).toString());  
-                                                pssimpanperawat.setString(7,tbTindakan.getValueAt(i,4).toString());  
+                                                pssimpanperawat.setString(6,tbTindakan.getValueAt(i,8).toString());
+                                                pssimpanperawat.setString(7,tbTindakan.getValueAt(i,9).toString());
+                                                pssimpanperawat.setString(8,tbTindakan.getValueAt(i,10).toString());  
+                                                pssimpanperawat.setString(9,tbTindakan.getValueAt(i,4).toString());  
                                                 pssimpanperawat.executeUpdate();
                                             } catch (Exception e) {
                                                 System.out.println("Notifikasi : "+e);
@@ -743,7 +754,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                             if(Nip2.getText().trim().equals("")||NmPetugas2.getText().trim().equals("")){
                                                 Valid.textKosong(TCariTindakan,"Data Petugas");
                                             }else{
-                                                pssimpandokterperawat=koneksi.prepareStatement("insert into rawat_jl_drpr values(?,?,?,?,?,?,?,?,?)");
+                                                pssimpandokterperawat=koneksi.prepareStatement("insert into rawat_jl_drpr values(?,?,?,?,?,?,?,?,?,?,?)");
                                                 try {
                                                     pssimpandokterperawat.setString(1,TNoRw.getText());
                                                     pssimpandokterperawat.setString(2,tbTindakan.getValueAt(i,1).toString());
@@ -753,7 +764,9 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                                     pssimpandokterperawat.setString(6,tbTindakan.getValueAt(i,6).toString()); 
                                                     pssimpandokterperawat.setString(7,tbTindakan.getValueAt(i,7).toString()); 
                                                     pssimpandokterperawat.setString(8,tbTindakan.getValueAt(i,8).toString()); 
-                                                    pssimpandokterperawat.setString(9,tbTindakan.getValueAt(i,4).toString()); 
+                                                    pssimpandokterperawat.setString(9,tbTindakan.getValueAt(i,9).toString()); 
+                                                    pssimpandokterperawat.setString(10,tbTindakan.getValueAt(i,10).toString()); 
+                                                    pssimpandokterperawat.setString(11,tbTindakan.getValueAt(i,4).toString()); 
                                                     pssimpandokterperawat.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -1017,6 +1030,10 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             jmdokter=new double[jml];
             jmperawat=null;
             jmperawat=new double[jml];
+            kso=null;
+            kso=new double[jml];
+            menejemen=null;
+            menejemen=new double[jml];
 
             index=0;        
             for(i=0;i<tbTindakan.getRowCount();i++){
@@ -1029,7 +1046,9 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     bagianrs[index]=Double.parseDouble(tbTindakan.getValueAt(i,5).toString());
                     bhp[index]=Double.parseDouble(tbTindakan.getValueAt(i,6).toString());
                     jmdokter[index]=Double.parseDouble(tbTindakan.getValueAt(i,7).toString());
-                    jmperawat[index]=Double.parseDouble(tbTindakan.getValueAt(i,8).toString());                    
+                    jmperawat[index]=Double.parseDouble(tbTindakan.getValueAt(i,8).toString());  
+                    kso[index]=Double.parseDouble(tbTindakan.getValueAt(i,9).toString());
+                    menejemen[index]=Double.parseDouble(tbTindakan.getValueAt(i,10).toString());  
                     index++;
                 }
             }       
@@ -1038,34 +1057,34 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
             for(i=0;i<jml;i++){
                 TabModeTindakan.addRow(new Object[] {
-                    pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i]
+                    pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i]
                 });
             }
             
             pstindakan=koneksi.prepareStatement("select jns_perawatan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan.total_byrdr,jns_perawatan.total_byrpr,jns_perawatan.total_byrdrpr,jns_perawatan.bhp,jns_perawatan.material,"+
-                   "jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr from jns_perawatan inner join kategori_perawatan "+
+                   "jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr,jns_perawatan.kso,jns_perawatan.menejemen from jns_perawatan inner join kategori_perawatan "+
                    "on jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan.status='1' and (jns_perawatan.kd_pj=? or jns_perawatan.kd_pj='-') and (jns_perawatan.kd_poli=? or jns_perawatan.kd_poli='-') and jns_perawatan.kd_jenis_prw like ? or "+
                     "jns_perawatan.status='1' and (jns_perawatan.kd_pj=? or jns_perawatan.kd_pj='-') and (jns_perawatan.kd_poli=? or jns_perawatan.kd_poli='-') and jns_perawatan.nm_perawatan like ? or "+
                     "jns_perawatan.status='1' and (jns_perawatan.kd_pj=? or jns_perawatan.kd_pj='-') and (jns_perawatan.kd_poli=? or jns_perawatan.kd_poli='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan.nm_perawatan "); 
             pstindakan2=koneksi.prepareStatement("select jns_perawatan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan.total_byrdr,jns_perawatan.total_byrpr,jns_perawatan.total_byrdrpr,jns_perawatan.bhp,jns_perawatan.material,"+
-                   "jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr from jns_perawatan inner join kategori_perawatan "+
+                   "jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr,jns_perawatan.kso,jns_perawatan.menejemen from jns_perawatan inner join kategori_perawatan "+
                    "on jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan.status='1' and (jns_perawatan.kd_pj=? or jns_perawatan.kd_pj='-') and jns_perawatan.kd_jenis_prw like ? or "+
                     "jns_perawatan.status='1' and (jns_perawatan.kd_pj=? or jns_perawatan.kd_pj='-') and jns_perawatan.nm_perawatan like ? or "+
                     "jns_perawatan.status='1' and (jns_perawatan.kd_pj=? or jns_perawatan.kd_pj='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan.nm_perawatan ");        
             pstindakan3=koneksi.prepareStatement("select jns_perawatan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan.total_byrdr,jns_perawatan.total_byrpr,jns_perawatan.total_byrdrpr,jns_perawatan.bhp,jns_perawatan.material,"+
-                   "jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr from jns_perawatan inner join kategori_perawatan "+
+                   "jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr,jns_perawatan.kso,jns_perawatan.menejemen from jns_perawatan inner join kategori_perawatan "+
                    "on jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan.status='1' and (jns_perawatan.kd_poli=? or jns_perawatan.kd_poli='-') and jns_perawatan.kd_jenis_prw like ? or "+
                     "jns_perawatan.status='1' and (jns_perawatan.kd_poli=? or jns_perawatan.kd_poli='-') and jns_perawatan.nm_perawatan like ? or "+
                     "jns_perawatan.status='1' and (jns_perawatan.kd_poli=? or jns_perawatan.kd_poli='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan.nm_perawatan ");     
             pstindakan4=koneksi.prepareStatement("select jns_perawatan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan.total_byrdr,jns_perawatan.total_byrpr,jns_perawatan.total_byrdrpr,jns_perawatan.bhp,jns_perawatan.material,"+
-                   "jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr from jns_perawatan inner join kategori_perawatan "+
+                   "jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr,jns_perawatan.kso,jns_perawatan.menejemen from jns_perawatan inner join kategori_perawatan "+
                    "on jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan.status='1' and jns_perawatan.kd_jenis_prw like ? or "+
                     "jns_perawatan.status='1' and jns_perawatan.nm_perawatan like ? or "+
@@ -1113,7 +1132,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getString(3),
                                     rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("material"),
                                     rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),
-                                    rstindakan.getDouble("tarif_tindakanpr")
+                                    rstindakan.getDouble("tarif_tindakanpr"),rstindakan.getDouble("kso"),
+                                    rstindakan.getDouble("menejemen")
                                 });
                             }                        
                         }   
@@ -1125,7 +1145,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getString(3),
                                     rstindakan.getDouble("total_byrpr"),rstindakan.getDouble("material"),
                                     rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),
-                                    rstindakan.getDouble("tarif_tindakanpr")
+                                    rstindakan.getDouble("tarif_tindakanpr"),rstindakan.getDouble("kso"),
+                                    rstindakan.getDouble("menejemen")
                                 });
                             }                            
                         }   
@@ -1137,7 +1158,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getString(3),
                                     rstindakan.getDouble("total_byrdrpr"),rstindakan.getDouble("material"),
                                     rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),
-                                    rstindakan.getDouble("tarif_tindakanpr")
+                                    rstindakan.getDouble("tarif_tindakanpr"),rstindakan.getDouble("kso"),
+                                    rstindakan.getDouble("menejemen")
                                 });
                             }                        
                         }   

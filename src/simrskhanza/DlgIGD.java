@@ -74,7 +74,8 @@ public final class DlgIGD extends javax.swing.JDialog {
     private Date cal=new Date();
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private double biaya=0;
-    private String alamatperujuk="-";
+    private String alamatperujuk="-",
+            validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi");
 
     /** Creates new form DlgReg
      * @param parent
@@ -190,8 +191,19 @@ public final class DlgIGD extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(var.getform().equals("DlgIGD")){
                     if(pasien.getTable().getSelectedRow()!= -1){                   
-                        TNoRM.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
-                        isPas();
+                        if(validasiregistrasi.equals("Yes")){
+                            if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis=? and (stts='Sudah' or stts='Belum') ",pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString())>0){
+                                JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak kasir.. !!");
+                            }else{
+                                TNoRM.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
+                                isPas();
+                                isNumber();                               
+                            } 
+                        }else{
+                            TNoRM.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
+                            isPas();
+                            isNumber();
+                        }                
                     }  
                     TNoRM.requestFocus();
                 }
