@@ -170,8 +170,6 @@ import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
 import inventory.DlgRiwayatBarangMedis;
 import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import keuangan.DlgHutangObatBelumLunas;
 import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
@@ -238,6 +236,8 @@ public class frmUtama extends javax.swing.JFrame {
     private final DlgHybrid Hybrid=new DlgHybrid(this,false); 
     private final INACBGHybrid inacbgklaim=new INACBGHybrid(this,false);
     private final INACBGCariCoderNIK cariNIK=new INACBGCariCoderNIK(this,false);
+    private final InformasiKamarInap informasikamar=new InformasiKamarInap(this,false);
+    private final InformasiAnalisaKamin analisakamin=new InformasiAnalisaKamin(this,false);
     private static frmUtama myInstance;
     private PreparedStatement ps;
     private ResultSet rs;
@@ -6206,11 +6206,10 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private void MnRekapBulanan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapBulanan1ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         
-        DlgHome.dispose();
-        InformasiKamarInap belum=new InformasiKamarInap(this,true);
-        belum.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
-        belum.setLocationRelativeTo(PanelUtama);
-        belum.setVisible(true);
+        DlgHome.dispose();        
+        informasikamar.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        informasikamar.setLocationRelativeTo(PanelUtama);
+        informasikamar.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnRekapBulanan1ActionPerformed
 
@@ -6863,8 +6862,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
     private void MnRekapBulanan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRekapBulanan2ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-        DlgHome.dispose();
-        InformasiAnalisaKamin analisakamin=new InformasiAnalisaKamin(this,true);
+        DlgHome.dispose();        
         analisakamin.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         analisakamin.setLocationRelativeTo(PanelUtama);
         analisakamin.setVisible(true);

@@ -288,6 +288,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnRekapHarianPoli = new javax.swing.JMenuItem();
         MnRekapHarianObat = new javax.swing.JMenuItem();
         MnStatus = new javax.swing.JMenu();
+        ppBerkas = new javax.swing.JMenuItem();
         MnSudah = new javax.swing.JMenuItem();
         MnBelum = new javax.swing.JMenuItem();
         MnBayar = new javax.swing.JMenuItem();
@@ -330,7 +331,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusStokObatRanap = new javax.swing.JMenuItem();
         MnHapusSemua = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
-        ppBerkas = new javax.swing.JMenuItem();
         TNoRw = new widget.TextBox();
         WindowObatBhp = new javax.swing.JDialog();
         internalFrame2 = new widget.InternalFrame();
@@ -772,11 +772,27 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnStatus.setName("MnStatus"); // NOI18N
         MnStatus.setPreferredSize(new java.awt.Dimension(250, 28));
 
+        ppBerkas.setBackground(new java.awt.Color(255, 255, 255));
+        ppBerkas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBerkas.setForeground(new java.awt.Color(60, 80, 50));
+        ppBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBerkas.setText("Berkas R.M. Diterima");
+        ppBerkas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBerkas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBerkas.setName("ppBerkas"); // NOI18N
+        ppBerkas.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppBerkas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBerkasBtnPrintActionPerformed(evt);
+            }
+        });
+        MnStatus.add(ppBerkas);
+
         MnSudah.setBackground(new java.awt.Color(255, 255, 255));
         MnSudah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSudah.setForeground(new java.awt.Color(60, 80, 50));
         MnSudah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSudah.setText("Set Sudah Periksa");
+        MnSudah.setText("Sudah Periksa");
         MnSudah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnSudah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnSudah.setName("MnSudah"); // NOI18N
@@ -792,7 +808,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnBelum.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBelum.setForeground(new java.awt.Color(60, 80, 50));
         MnBelum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnBelum.setText("Set Belum Periksa");
+        MnBelum.setText("Belum Periksa");
         MnBelum.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnBelum.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBelum.setName("MnBelum"); // NOI18N
@@ -808,7 +824,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBayar.setForeground(new java.awt.Color(60, 80, 50));
         MnBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnBayar.setText("Set Sudah Bayar");
+        MnBayar.setText("Sudah Bayar");
         MnBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBayar.setName("MnBayar"); // NOI18N
@@ -824,7 +840,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnBatal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnBatal.setForeground(new java.awt.Color(60, 80, 50));
         MnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnBatal.setText("Set Batal Periksa");
+        MnBatal.setText("Batal Periksa");
         MnBatal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnBatal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBatal.setName("MnBatal"); // NOI18N
@@ -1431,22 +1447,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppRiwayat);
 
-        ppBerkas.setBackground(new java.awt.Color(255, 255, 255));
-        ppBerkas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBerkas.setForeground(new java.awt.Color(60, 80, 50));
-        ppBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppBerkas.setText("Berkas R.M. Diterima");
-        ppBerkas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppBerkas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppBerkas.setName("ppBerkas"); // NOI18N
-        ppBerkas.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppBerkas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppBerkasBtnPrintActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppBerkas);
-
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
         TNoRw.setSelectionColor(new java.awt.Color(255, 255, 255));
@@ -1962,7 +1962,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel15);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-05-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1981,7 +1981,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel17);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-05-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1998,7 +1998,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel12.setPreferredSize(new java.awt.Dimension(140, 23));
         panelGlass8.add(jLabel12);
 
-        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah", "Belum", "Bayar", "Batal" }));
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Berkas Diterima", "Sudah", "Belum", "Bayar", "Batal" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
         cmbStatus.setOpaque(false);
         cmbStatus.setPreferredSize(new java.awt.Dimension(308, 23));
@@ -3350,6 +3350,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             tbKasirRalan.requestFocus();
         }else{
             Sequel.menyimpan("mutasi_berkas","'"+TNoRw.getText()+"','Sudah Diterima',now(),now(),'0000-00-00 00:00:00','0000-00-00 00:00:00'","status='Sudah Diterima',diterima=now()","no_rawat='"+TNoRw.getText()+"'");
+            Valid.editTable(tabModekasir,"reg_periksa","no_rawat",TNoRw,"stts='Berkas Diterima'");
+            if(tabModekasir.getRowCount()!=0){tampilkasir();}
         }
     }//GEN-LAST:event_ppBerkasBtnPrintActionPerformed
 
