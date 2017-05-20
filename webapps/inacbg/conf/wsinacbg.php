@@ -12,7 +12,7 @@
     }
     
     function getKelasRS() {
-        $kelasRS = "DS";
+        $kelasRS = "BS";
         return $kelasRS;
     }
 
