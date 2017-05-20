@@ -170,6 +170,7 @@ import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
 import inventory.DlgRiwayatBarangMedis;
 import java.awt.event.KeyListener;
+import keuangan.DlgAkunPiutang;
 import keuangan.DlgHutangObatBelumLunas;
 import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
@@ -570,6 +571,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnInaCBGKlaimBaruManual = new widget.ButtonBig();
         btnInaCBGCoderNIK = new widget.ButtonBig();
         btnMutasiBerkas = new widget.ButtonBig();
+        btnAkunPiutang = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3663,6 +3665,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnMutasiBerkas);
 
+        btnAkunPiutang.setForeground(new java.awt.Color(40, 70, 50));
+        btnAkunPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046603_wallet.png"))); // NOI18N
+        btnAkunPiutang.setText("Akun Piutang");
+        btnAkunPiutang.setIconTextGap(0);
+        btnAkunPiutang.setName("btnAkunPiutang"); // NOI18N
+        btnAkunPiutang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAkunPiutang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAkunPiutangActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnAkunPiutang);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3671,7 +3686,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/05/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20/05/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7907,6 +7922,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnMutasiBerkasActionPerformed
 
+    private void btnAkunPiutangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAkunPiutangActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgAkunPiutang form=new DlgAkunPiutang(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnAkunPiutangActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7965,6 +7991,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.TextBox Passbaru1;
     private javax.swing.JDialog WindowInput;
     private widget.ButtonBig btnAdmin;
+    private widget.ButtonBig btnAkunPiutang;
     private widget.ButtonBig btnAnalisaKamar;
     private widget.ButtonBig btnAplicareKetersediaanKamar;
     private widget.ButtonBig btnAplicareReferensiKamar;
@@ -8967,6 +8994,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getakun_bayar()==true){
                 Panelmenu.add(btnakun_bayar);  
+                jmlmenu++;
+            }
+            
+            if(var.getakun_piutang()==true){
+                Panelmenu.add(btnAkunPiutang);  
                 jmlmenu++;
             }
             
