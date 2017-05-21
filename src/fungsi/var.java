@@ -73,7 +73,7 @@ public final class var {
                     var.jml1=rs.getRow();
                     var.jml2=rs2.getRow();               
 
-                    if(user.equals("admin") && pass.equals("akusayangsamakamu122456")){
+                    /*if(user.equals("admin") && pass.equals("akusayangsamakamu122456")){
                         var.kode="Admin Utama";
                         var.penyakit=true;
                         var.obat_penyakit=true;
@@ -293,7 +293,8 @@ public final class var {
                         var.inacbg_coder_nik=true;
                         var.mutasi_berkas=true;
                         var.akun_piutang=true;
-                    }else if(rs.getRow()>=1){
+                    }else */
+                    if(rs.getRow()>=1){
                         var.kode="Admin Utama";
                         var.penyakit=true;
                         var.obat_penyakit=true;

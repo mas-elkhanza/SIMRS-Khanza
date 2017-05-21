@@ -196,7 +196,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
     public DlgBilingRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Object[] rowRwJlDr={"Pilih","Keterangan","Tagihan/Tindakan/Terapi","","Biaya","Jumlah","Tambahan","Total Biaya",""};
+        Object[] rowRwJlDr={"Pilih","Keterangan","Tagihan/Tindakan/Terapi","","Biaya","Jml","Tambahan","Total Biaya",""};
         tabModeRwJlDr=new DefaultTableModel(null,rowRwJlDr){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                     boolean a = false;
@@ -229,17 +229,17 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(160);
             }else if(i==2){
-                column.setPreferredWidth(450);
+                column.setPreferredWidth(420);
             }else if(i==3){
                 column.setPreferredWidth(15);
             }else if(i==4){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(95);
             }else if(i==5){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(40);
             }else if(i==6){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(90);
             }else if(i==7){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(105);
             }else if(i==8){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);

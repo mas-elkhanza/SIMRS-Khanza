@@ -4654,7 +4654,7 @@ public class frmUtama extends javax.swing.JFrame {
         }else {
             try {                               
                 var.setData(edAdmin.getText(),edPwd.getText());        
-                if(edAdmin.getText().equals("admin") && edPwd.getText().equals("akusayangsamakamu122456")){       
+                /*if(edAdmin.getText().equals("admin") && edPwd.getText().equals("akusayangsamakamu122456")){       
                     BtnMenu.setEnabled(true);             
                     BtnToolReg.setEnabled(true);
                     BtnToolKamnap.setEnabled(true);
@@ -4671,7 +4671,8 @@ public class frmUtama extends javax.swing.JFrame {
                     MnLogin.setText("Log Out");
                     lblStts.setText("Admin : ");
                     lblUser.setText("Admin Utama");
-                }else if(var.getjml1()>=1){    
+                }else */
+                if(var.getjml1()>=1){    
                     BtnMenu.setEnabled(true);
                     BtnToolReg.setEnabled(true);
                     BtnToolKamnap.setEnabled(true);
