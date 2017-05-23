@@ -50,7 +50,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
     private boolean[] pagi,siang,sore,malam; 
     private boolean pg=false,sg=false,sr=false,mlm=false;
     private String[] kode,nama,kategori;
-    private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat;
+    private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
     private int jml=0,i=0,index=0;
     public  DlgCariDokter dokter=new DlgCariDokter(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
@@ -64,7 +64,8 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Pagi","Siang","Sore","Malam","Kode","Nama Perawatan","Kategori Perawatan","Tarif/Biaya","Bagian RS","BHP","JM Dokter","JM Perawat"};
+        Object[] row={"Pagi","Siang","Sore","Malam","Kode","Nama Perawatan","Kategori Perawatan",
+                      "Tarif/Biaya","Bagian RS","BHP","JM Dokter","JM Perawat","KSO","Menejemen"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -76,7 +77,8 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
              Class[] types = new Class[] {
                 java.lang.Boolean.class,java.lang.Boolean.class,java.lang.Boolean.class,java.lang.Boolean.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,java.lang.Double.class,
-                java.lang.Double.class, java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+                java.lang.Double.class, java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.Double.class,java.lang.Double.class
              };
              /*Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
@@ -90,7 +92,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (i = 0; i < 12; i++) {
+        for (i = 0; i < 14; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(40);
@@ -739,7 +741,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 pg=true;
                                             }
                                             if(tbKamar.getValueAt(i,0).toString().equals("true")&&(pg==false)){
-                                                psinputrawatdr=koneksi.prepareStatement("insert into rawat_inap_dr values(?,?,?,?,?,?,?,?,?)");
+                                                psinputrawatdr=koneksi.prepareStatement("insert into rawat_inap_dr values(?,?,?,?,?,?,?,?,?,?,?)");
                                                 try {                                                
                                                     psinputrawatdr.setString(1,TNoRw.getText());
                                                     psinputrawatdr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -749,7 +751,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatdr.setString(6,tbKamar.getValueAt(i,8).toString());
                                                     psinputrawatdr.setString(7,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatdr.setString(8,tbKamar.getValueAt(i,10).toString());
-                                                    psinputrawatdr.setString(9,tbKamar.getValueAt(i,7).toString());
+                                                    psinputrawatdr.setString(9,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatdr.setString(10,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatdr.setString(11,tbKamar.getValueAt(i,7).toString());
                                                     psinputrawatdr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -786,7 +790,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 sg=true;
                                             }
                                             if(tbKamar.getValueAt(i,1).toString().equals("true")&&(sg==false)){
-                                                psinputrawatdr=koneksi.prepareStatement("insert into rawat_inap_dr values(?,?,?,?,?,?,?,?,?)");
+                                                psinputrawatdr=koneksi.prepareStatement("insert into rawat_inap_dr values(?,?,?,?,?,?,?,?,?,?,?)");
                                                 try {
                                                     psinputrawatdr.setString(1,TNoRw.getText());
                                                     psinputrawatdr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -796,7 +800,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatdr.setString(6,tbKamar.getValueAt(i,8).toString());
                                                     psinputrawatdr.setString(7,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatdr.setString(8,tbKamar.getValueAt(i,10).toString());
-                                                    psinputrawatdr.setString(9,tbKamar.getValueAt(i,7).toString());
+                                                    psinputrawatdr.setString(9,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatdr.setString(10,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatdr.setString(11,tbKamar.getValueAt(i,7).toString());
                                                     psinputrawatdr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -833,7 +839,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 sr=true;
                                             }
                                             if(tbKamar.getValueAt(i,2).toString().equals("true")&&(sr==false)){
-                                                psinputrawatdr=koneksi.prepareStatement("insert into rawat_inap_dr values(?,?,?,?,?,?,?,?,?)");
+                                                psinputrawatdr=koneksi.prepareStatement("insert into rawat_inap_dr values(?,?,?,?,?,?,?,?,?,?,?)");
                                                 try {
                                                     psinputrawatdr.setString(1,TNoRw.getText());
                                                     psinputrawatdr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -843,7 +849,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatdr.setString(6,tbKamar.getValueAt(i,8).toString());
                                                     psinputrawatdr.setString(7,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatdr.setString(8,tbKamar.getValueAt(i,10).toString());
-                                                    psinputrawatdr.setString(9,tbKamar.getValueAt(i,7).toString());
+                                                    psinputrawatdr.setString(9,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatdr.setString(10,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatdr.setString(11,tbKamar.getValueAt(i,7).toString());
                                                     psinputrawatdr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -880,7 +888,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 mlm=true;
                                             }
                                             if(tbKamar.getValueAt(i,3).toString().equals("true")&&(mlm==false)){
-                                                psinputrawatdr=koneksi.prepareStatement("insert into rawat_inap_dr values(?,?,?,?,?,?,?,?,?)");
+                                                psinputrawatdr=koneksi.prepareStatement("insert into rawat_inap_dr values(?,?,?,?,?,?,?,?,?,?,?)");
                                                 try {
                                                     psinputrawatdr.setString(1,TNoRw.getText());
                                                     psinputrawatdr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -890,7 +898,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatdr.setString(6,tbKamar.getValueAt(i,8).toString());
                                                     psinputrawatdr.setString(7,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatdr.setString(8,tbKamar.getValueAt(i,10).toString());
-                                                    psinputrawatdr.setString(9,tbKamar.getValueAt(i,7).toString());
+                                                    psinputrawatdr.setString(9,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatdr.setString(10,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatdr.setString(11,tbKamar.getValueAt(i,7).toString());
                                                     psinputrawatdr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notfikasi : "+e);
@@ -941,7 +951,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 pg=true;
                                             }
                                             if(tbKamar.getValueAt(i,0).toString().equals("true")&&(pg==false)){
-                                                psinputrawatpr=koneksi.prepareStatement("insert into rawat_inap_pr values(?,?,?,?,?,?,?,?,?)");
+                                                psinputrawatpr=koneksi.prepareStatement("insert into rawat_inap_pr values(?,?,?,?,?,?,?,?,?,?,?)");
                                                 try {
                                                     psinputrawatpr.setString(1,TNoRw.getText());
                                                     psinputrawatpr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -951,7 +961,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatpr.setString(6,tbKamar.getValueAt(i,8).toString());
                                                     psinputrawatpr.setString(7,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatpr.setString(8,tbKamar.getValueAt(i,11).toString());
-                                                    psinputrawatpr.setString(9,tbKamar.getValueAt(i,7).toString());
+                                                    psinputrawatpr.setString(9,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatpr.setString(10,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatpr.setString(11,tbKamar.getValueAt(i,7).toString());
                                                     psinputrawatpr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -988,7 +1000,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 sg=true;
                                             }
                                             if(tbKamar.getValueAt(i,1).toString().equals("true")&&(sg==false)){
-                                                psinputrawatpr=koneksi.prepareStatement("insert into rawat_inap_pr values(?,?,?,?,?,?,?,?,?)");
+                                                psinputrawatpr=koneksi.prepareStatement("insert into rawat_inap_pr values(?,?,?,?,?,?,?,?,?,?,?)");
                                                 try {
                                                     psinputrawatpr.setString(1,TNoRw.getText());
                                                     psinputrawatpr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -998,7 +1010,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatpr.setString(6,tbKamar.getValueAt(i,8).toString());
                                                     psinputrawatpr.setString(7,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatpr.setString(8,tbKamar.getValueAt(i,11).toString());
-                                                    psinputrawatpr.setString(9,tbKamar.getValueAt(i,7).toString());
+                                                    psinputrawatpr.setString(9,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatpr.setString(10,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatpr.setString(11,tbKamar.getValueAt(i,7).toString());
                                                     psinputrawatpr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -1035,7 +1049,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 sr=true;
                                             }
                                             if(tbKamar.getValueAt(i,2).toString().equals("true")&&(sr==false)){
-                                                psinputrawatpr=koneksi.prepareStatement("insert into rawat_inap_pr values(?,?,?,?,?,?,?,?,?)");
+                                                psinputrawatpr=koneksi.prepareStatement("insert into rawat_inap_pr values(?,?,?,?,?,?,?,?,?,?,?)");
                                                 try {
                                                     psinputrawatpr.setString(1,TNoRw.getText());
                                                     psinputrawatpr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -1045,7 +1059,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatpr.setString(6,tbKamar.getValueAt(i,8).toString());
                                                     psinputrawatpr.setString(7,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatpr.setString(8,tbKamar.getValueAt(i,11).toString());
-                                                    psinputrawatpr.setString(9,tbKamar.getValueAt(i,7).toString()); 
+                                                    psinputrawatpr.setString(9,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatpr.setString(10,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatpr.setString(11,tbKamar.getValueAt(i,7).toString()); 
                                                     psinputrawatpr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -1082,7 +1098,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 mlm=true;
                                             }
                                             if(tbKamar.getValueAt(i,3).toString().equals("true")&&(mlm==false)){
-                                                psinputrawatpr=koneksi.prepareStatement("insert into rawat_inap_pr values(?,?,?,?,?,?,?,?,?)");
+                                                psinputrawatpr=koneksi.prepareStatement("insert into rawat_inap_pr values(?,?,?,?,?,?,?,?,?,?,?)");
                                                 try {
                                                     psinputrawatpr.setString(1,TNoRw.getText());
                                                     psinputrawatpr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -1092,7 +1108,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatpr.setString(6,tbKamar.getValueAt(i,8).toString());
                                                     psinputrawatpr.setString(7,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatpr.setString(8,tbKamar.getValueAt(i,11).toString());
-                                                    psinputrawatpr.setString(9,tbKamar.getValueAt(i,7).toString());
+                                                    psinputrawatpr.setString(9,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatpr.setString(10,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatpr.setString(11,tbKamar.getValueAt(i,7).toString());
                                                     psinputrawatpr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -1144,7 +1162,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 pg=true;
                                             }
                                             if(tbKamar.getValueAt(i,0).toString().equals("true")&&(pg==false)){
-                                                psinputrawatdrpr=koneksi.prepareStatement("insert into rawat_inap_drpr values(?,?,?,?,?,?,?,?,?,?,?)");             
+                                                psinputrawatdrpr=koneksi.prepareStatement("insert into rawat_inap_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?)");             
                                                 try {                                                
                                                     psinputrawatdrpr.setString(1,TNoRw.getText());
                                                     psinputrawatdrpr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -1156,7 +1174,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatdrpr.setString(8,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatdrpr.setString(9,tbKamar.getValueAt(i,10).toString());
                                                     psinputrawatdrpr.setString(10,tbKamar.getValueAt(i,11).toString());
-                                                    psinputrawatdrpr.setString(11,tbKamar.getValueAt(i,7).toString());
+                                                    psinputrawatdrpr.setString(11,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatdrpr.setString(12,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatdrpr.setString(13,tbKamar.getValueAt(i,7).toString());
                                                     psinputrawatdrpr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -1193,7 +1213,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 sg=true;
                                             }
                                             if(tbKamar.getValueAt(i,1).toString().equals("true")&&(sg==false)){
-                                                psinputrawatdrpr=koneksi.prepareStatement("insert into rawat_inap_drpr values(?,?,?,?,?,?,?,?,?,?,?)");         
+                                                psinputrawatdrpr=koneksi.prepareStatement("insert into rawat_inap_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?)");         
                                                 try {
                                                     psinputrawatdrpr.setString(1,TNoRw.getText());
                                                     psinputrawatdrpr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -1205,7 +1225,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatdrpr.setString(8,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatdrpr.setString(9,tbKamar.getValueAt(i,10).toString());
                                                     psinputrawatdrpr.setString(10,tbKamar.getValueAt(i,11).toString());
-                                                    psinputrawatdrpr.setString(11,tbKamar.getValueAt(i,7).toString());
+                                                    psinputrawatdrpr.setString(11,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatdrpr.setString(12,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatdrpr.setString(13,tbKamar.getValueAt(i,7).toString());
                                                     psinputrawatdrpr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -1242,7 +1264,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 sr=true;
                                             }
                                             if(tbKamar.getValueAt(i,2).toString().equals("true")&&(sr==false)){
-                                                psinputrawatdrpr=koneksi.prepareStatement("insert into rawat_inap_drpr values(?,?,?,?,?,?,?,?,?,?,?)");             
+                                                psinputrawatdrpr=koneksi.prepareStatement("insert into rawat_inap_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?)");             
                                                 try {
                                                     psinputrawatdrpr.setString(1,TNoRw.getText());
                                                     psinputrawatdrpr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -1254,7 +1276,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatdrpr.setString(8,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatdrpr.setString(9,tbKamar.getValueAt(i,10).toString());
                                                     psinputrawatdrpr.setString(10,tbKamar.getValueAt(i,11).toString());
-                                                    psinputrawatdrpr.setString(11,tbKamar.getValueAt(i,7).toString());
+                                                    psinputrawatdrpr.setString(11,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatdrpr.setString(12,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatdrpr.setString(13,tbKamar.getValueAt(i,7).toString());
                                                     psinputrawatdrpr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -1291,7 +1315,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 mlm=true;
                                             }
                                             if(tbKamar.getValueAt(i,3).toString().equals("true")&&(mlm==false)){
-                                                psinputrawatdrpr=koneksi.prepareStatement("insert into rawat_inap_drpr values(?,?,?,?,?,?,?,?,?,?,?)");             
+                                                psinputrawatdrpr=koneksi.prepareStatement("insert into rawat_inap_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?)");             
                                                 try {
                                                     psinputrawatdrpr.setString(1,TNoRw.getText());
                                                     psinputrawatdrpr.setString(2,tbKamar.getValueAt(i,4).toString());
@@ -1303,7 +1327,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psinputrawatdrpr.setString(8,tbKamar.getValueAt(i,9).toString());
                                                     psinputrawatdrpr.setString(9,tbKamar.getValueAt(i,10).toString());
                                                     psinputrawatdrpr.setString(10,tbKamar.getValueAt(i,11).toString());
-                                                    psinputrawatdrpr.setString(11,tbKamar.getValueAt(i,7).toString());
+                                                    psinputrawatdrpr.setString(11,tbKamar.getValueAt(i,12).toString());
+                                                    psinputrawatdrpr.setString(12,tbKamar.getValueAt(i,13).toString());
+                                                    psinputrawatdrpr.setString(13,tbKamar.getValueAt(i,7).toString());
                                                     psinputrawatdrpr.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi : "+e);
@@ -1606,6 +1632,10 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             jmdokter=new double[jml];
             jmperawat=null;
             jmperawat=new double[jml];
+            kso=null;
+            kso=new double[jml];
+            menejemen=null;
+            menejemen=new double[jml];
             
             index=0;        
             for(i=0;i<tbKamar.getRowCount();i++){
@@ -1622,6 +1652,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         bhp[index]=Double.parseDouble(tbKamar.getValueAt(i,9).toString());
                         jmdokter[index]=Double.parseDouble(tbKamar.getValueAt(i,10).toString());
                         jmperawat[index]=Double.parseDouble(tbKamar.getValueAt(i,11).toString()); 
+                        kso[index]=Double.parseDouble(tbKamar.getValueAt(i,12).toString()); 
+                        menejemen[index]=Double.parseDouble(tbKamar.getValueAt(i,13).toString()); 
                         index++;
                     }
             }                  
@@ -1629,32 +1661,32 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Valid.tabelKosong(tabMode);
 
             for(i=0;i<jml;i++){
-                tabMode.addRow(new Object[] {pagi[i],siang[i],sore[i],malam[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i]});
+                tabMode.addRow(new Object[] {pagi[i],siang[i],sore[i],malam[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i]});
             }
             
             pscari=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari2=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari3=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari4=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan_inap.status='1' and jns_perawatan_inap.kd_jenis_prw like ? or "+
@@ -1881,7 +1913,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             pg,sg,sr,mlm,rs.getString(1),rs.getString(2),rs.getString(3),
                                             rs.getDouble("total_byrdr"),rs.getDouble("material"),
                                             rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),
-                                            rs.getDouble("tarif_tindakanpr")
+                                            rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
+                                            rs.getDouble("menejemen")
                                         });
                                     }            
                                 break;
@@ -1891,7 +1924,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             pg,sg,sr,mlm,rs.getString(1),rs.getString(2),rs.getString(3),
                                             rs.getDouble("total_byrpr"),rs.getDouble("material"),
                                             rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),
-                                            rs.getDouble("tarif_tindakanpr")
+                                            rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
+                                            rs.getDouble("menejemen")
                                         });
                                     }            
                                 break;
@@ -1901,7 +1935,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             pg,sg,sr,mlm,rs.getString(1),rs.getString(2),rs.getString(3),
                                             rs.getDouble("total_byrdrpr"),rs.getDouble("material"),
                                             rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),
-                                            rs.getDouble("tarif_tindakanpr")
+                                            rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
+                                            rs.getDouble("menejemen")
                                         });
                                     }                                                    
                                 break;
@@ -1937,28 +1972,28 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         try{ 
             Valid.tabelKosong(tabMode);
             pscari=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari2=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari3=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari4=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan_inap.kd_jenis_prw like ? or "+
@@ -2177,7 +2212,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             pg,sg,sr,mlm,rs.getString(1),rs.getString(2),rs.getString(3),
                                             rs.getDouble("total_byrdr"),rs.getDouble("material"),
                                             rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),
-                                            rs.getDouble("tarif_tindakanpr")
+                                            rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
+                                            rs.getDouble("menejemen")
                                         });
                                     }  
                                 break;
@@ -2187,7 +2223,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             pg,sg,sr,mlm,rs.getString(1),rs.getString(2),rs.getString(3),
                                             rs.getDouble("total_byrpr"),rs.getDouble("material"),
                                             rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),
-                                            rs.getDouble("tarif_tindakanpr")
+                                            rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
+                                            rs.getDouble("menejemen")
                                         });
                                     }            
                                 break;
@@ -2197,7 +2234,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             pg,sg,sr,mlm,rs.getString(1),rs.getString(2),rs.getString(3),
                                             rs.getDouble("total_byrdrpr"),rs.getDouble("material"),
                                             rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),
-                                            rs.getDouble("tarif_tindakanpr")
+                                            rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
+                                            rs.getDouble("menejemen")
                                         });
                                     }                                                   
                                 break;
