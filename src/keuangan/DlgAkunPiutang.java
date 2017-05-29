@@ -152,7 +152,7 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(var.getform().equals("DlgAkunBayar")){
+                if(var.getform().equals("DlgAkunPiutang")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         rekening.dispose();
                     }

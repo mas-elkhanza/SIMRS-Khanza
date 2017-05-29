@@ -2159,6 +2159,7 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Bayar Piutang Pasien","lain","bayar_piutang");
         hapus("DPJP Ranap","lain","dpjp_ranap");
         hapus("Nota Rawat Jalan","lain","nota_jalan");
+        hapus("Detail Piutang Pasien","lain","detail_piutang_pasien");
         hapus("Nota Rawat Inap","lain","nota_inap");
         hapus("Registrasi","Rawat Jalan,\nKamar Inap, Diagnosa Pasien, Tagihan Masuk, Pemberian Obat, Resep Obat, Rujukan Masuk,\n"+
                 "Rujukan Keluar, Stok Obat Pasien, Diagnosa Pasien, Resep Pulang, Potongan Biaya, Tambahan Biaya,\nDPJP Ranap, Diet Pasien","reg_periksa");
@@ -2240,6 +2241,7 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD21ActionPerformed
 
     private void BtnICD22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD22ActionPerformed
+        hapus("Detail Piutang Pasien","lain","detail_piutang_pasien");
         hapus("Piutang Pasien","lain","piutang_pasien");
         hapus("Bayar Piutang Pasien","lain","bayar_piutang");
     }//GEN-LAST:event_BtnICD22ActionPerformed
@@ -2576,6 +2578,9 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD88ActionPerformed
 
     private void BtnICD89ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD89ActionPerformed
+        hapus("Nota Rawat Jalan","lain","nota_jalan");
+        hapus("Detail Nota Rawat Jalan","lain","detail_nota_jalan");
+        hapus("Nota Rawat Inap","lain","nota_inap");
         hapus("Tagihan Masuk","lain","billing");
         hapus("Tagihan Masuk","lain","tagihan_sadewa");
     }//GEN-LAST:event_BtnICD89ActionPerformed

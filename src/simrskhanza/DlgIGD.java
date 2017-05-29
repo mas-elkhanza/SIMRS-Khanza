@@ -2956,8 +2956,6 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }else{                                
                                 DlgBilingRalan dlgbil=new DlgBilingRalan(null,false);
                                 dlgbil.TNoRw.setText(TNoRw.getText());  
-                                dlgbil.TBayar.setText("0");
-                                dlgbil.TKembali.setText("0");  
                                 dlgbil.isRawat(); 
                                 dlgbil.isKembali();
                                 dlgbil.isRawat();
@@ -2969,8 +2967,6 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }else{                            
                             DlgBilingRalan dlgbil=new DlgBilingRalan(null,false);
                             dlgbil.TNoRw.setText(TNoRw.getText());  
-                            dlgbil.TBayar.setText("0");
-                            dlgbil.TKembali.setText("0");  
                             dlgbil.isRawat(); 
                             dlgbil.isKembali();
                             dlgbil.isRawat();

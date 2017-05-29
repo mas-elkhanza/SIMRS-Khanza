@@ -3517,8 +3517,6 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                     DlgBilingRalan dlgbil=new DlgBilingRalan(null,false);
                                     dlgbil.TNoRw.setText(TNoRw.getText());  
-                                    dlgbil.TBayar.setText("0");
-                                    dlgbil.TKembali.setText("0");  
                                     dlgbil.isRawat(); 
                                     dlgbil.isKembali();
                                     dlgbil.isRawat();
@@ -3531,9 +3529,7 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }else{ 
                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                 DlgBilingRalan dlgbil=new DlgBilingRalan(null,false);
-                                dlgbil.TNoRw.setText(TNoRw.getText());  
-                                dlgbil.TBayar.setText("0");
-                                dlgbil.TKembali.setText("0");  
+                                dlgbil.TNoRw.setText(TNoRw.getText()); 
                                 dlgbil.isRawat(); 
                                 dlgbil.isKembali();
                                 dlgbil.isRawat();

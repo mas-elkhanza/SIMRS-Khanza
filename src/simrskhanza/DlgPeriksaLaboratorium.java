@@ -1039,7 +1039,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                             isReset();
                         } catch (Exception e) {
                             System.out.println(e);
-                        }                
+                        }                  
                     }                
                 }
             }

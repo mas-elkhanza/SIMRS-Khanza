@@ -1228,11 +1228,12 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         Sequel.AutoComitFalse();
                         for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                             if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-                                Sequel.menyimpan("periksa_radiologi","?,?,?,?,?,?,?,?,?,?,?,?,?", "Pemeriksaan",13,new String[]{
+                                Sequel.menyimpan("periksa_radiologi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Pemeriksaan",15,new String[]{
                                     TNoRw.getText(),KdPtg.getText(),tbPemeriksaan.getValueAt(i,1).toString(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                                     CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),KodePerujuk.getText(),
                                     tbPemeriksaan.getValueAt(i,4).toString(),tbPemeriksaan.getValueAt(i,5).toString(),tbPemeriksaan.getValueAt(i,6).toString(),
-                                    tbPemeriksaan.getValueAt(i,7).toString(),tbPemeriksaan.getValueAt(i,8).toString(),tbPemeriksaan.getValueAt(i,3).toString(),
+                                    tbPemeriksaan.getValueAt(i,7).toString(),tbPemeriksaan.getValueAt(i,8).toString(),tbPemeriksaan.getValueAt(i,9).toString(),
+                                    tbPemeriksaan.getValueAt(i,10).toString(),tbPemeriksaan.getValueAt(i,3).toString(),
                                     KodePj.getText()
                                 });
                             }                    
