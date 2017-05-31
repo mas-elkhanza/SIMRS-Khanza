@@ -869,7 +869,7 @@ public final class validasi {
             }else if (os.contains("mac")) {
                 rt.exec( "open " + "http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
             }else if (os.contains("nix") || os.contains("nux")) {
-                String[] browsers = {"x-www-browser","epiphany", "firefox", "mozilla", "konqueror","chrome","chromium","netscape","opera","links","lynx","midori"};
+                String[] browsers = {"x-www-browser","epiphany","firefox","mozilla","konqueror","chrome","chromium","netscape","opera","links","lynx","midori"};
                 // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
                 StringBuilder cmd = new StringBuilder();
                 for(i=0; i<browsers.length; i++) cmd.append(i==0  ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(prop.getProperty("HOST")).append("/").append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append( "\" ");

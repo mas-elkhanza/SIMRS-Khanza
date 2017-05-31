@@ -344,12 +344,12 @@ public final class var {
                         var.keuntungan_beri_obat=true;
                         var.sirkulasi_obat=true;
                         var.ipsrs_barang=true;
+                        var.ipsrs_jenis_barang=true;
                         var.ipsrs_pengadaan_barang=true;
                         var.ipsrs_stok_keluar=true;
                         var.ipsrs_rekap_pengadaan=true;
                         var.ipsrs_rekap_stok_keluar=true;
                         var.ipsrs_pengeluaran_harian=true;
-                        var.ipsrs_jenis_barang=true;
                         var.inventaris_jenis=true;
                         var.inventaris_kategori=true;
                         var.inventaris_merk=true;
@@ -412,7 +412,7 @@ public final class var {
                         var.billing_ralan=true;
                         var.billing_ranap=true;
                         var.jm_ranap_dokter=true;
-                        var.igd=true;                    
+                        var.igd=true;
                         var.barcoderalan=true;
                         var.barcoderanap=true;
                         var.set_harga_obat_ralan=true;
@@ -437,7 +437,7 @@ public final class var {
                         var.sms=true;
                         var.sidikjari=true;
                         var.jam_masuk=true;
-                        var.jadwal_pegawai=true;                    
+                        var.jadwal_pegawai=true;
                         var.parkir_barcode=true;
                         var.set_nota=true;
                         var.dpjp_ranap=true;
@@ -1024,7 +1024,7 @@ public final class var {
     public static boolean getpengadaan_obat(){return var.pengadaan_obat;} 
     public static boolean getpemesanan_obat(){return var.pemesanan_obat;} 
     public static boolean getpenjualan_obat(){return var.penjualan_obat;} 
-    public static void setpenjualan_obatfalse(){var.penjualan_obat=false;} 
+    public static void setpenjualan_obatfalse(){var.penjualan_obat=false;}
     public static boolean getpiutang_obat(){return var.piutang_obat;} 
     public static boolean getretur_ke_suplier(){return var.retur_ke_suplier;} 
     public static boolean getretur_dari_pembeli(){return var.retur_dari_pembeli;} 
