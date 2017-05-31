@@ -107,7 +107,7 @@
     function HapusDataPasien($nomor_rm,$coder_nik){	
         $request ='{
                         "metadata": {
-                            "method": "delete_patient",
+                            "method": "delete_patient"
                         },
                         "data": {
                             "nomor_rm": "'.$nomor_rm.'",

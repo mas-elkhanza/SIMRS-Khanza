@@ -524,6 +524,27 @@ public final class sekuel {
         }
     }
     
+    public boolean queryutf(String qry){
+        try {
+            ps=connect.prepareStatement(qry);
+            try{                            
+                ps.executeUpdate(); 
+                bool=true;
+             }catch(Exception e){
+                bool=false;
+                System.out.println("Notifikasi : "+e);
+                JOptionPane.showMessageDialog(null,"Maaf, Query tidak bisa dijalankan...!!!!");                
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+        return bool;
+    }
+    
     public void queryu(String qry,String parameter){
         try {
             ps=connect.prepareStatement(qry);
