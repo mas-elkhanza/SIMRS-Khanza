@@ -3062,7 +3062,7 @@ public final class DlgReg extends javax.swing.JDialog {
                     Sequel.menyimpan("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0'","No.Rujuk");
                 }
                 if(OTOMATISTRACER.equals("yes")){
-                    
+                    ctk();
                 }
                 tampil();
                 emptTeks();                
@@ -3075,6 +3075,9 @@ public final class DlgReg extends javax.swing.JDialog {
                     if(!AsalRujukan.getText().equals("")){
                         Sequel.menyimpan("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0'","No.Rujuk");
                     }
+                    if(OTOMATISTRACER.equals("yes")){
+                        ctk();
+                    }
                     tampil();
                     emptTeks();                
                 }else{
@@ -3085,6 +3088,9 @@ public final class DlgReg extends javax.swing.JDialog {
                             TStatus.getText(),"Ralan",kdpnj.getText()})==true){
                         if(!AsalRujukan.getText().equals("")){
                             Sequel.menyimpan("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0'","No.Rujuk");
+                        }
+                        if(OTOMATISTRACER.equals("yes")){
+                            ctk();
                         }
                         tampil();
                         emptTeks();                
@@ -3097,6 +3103,9 @@ public final class DlgReg extends javax.swing.JDialog {
                             if(!AsalRujukan.getText().equals("")){
                                 Sequel.menyimpan("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0'","No.Rujuk");
                             }
+                            if(OTOMATISTRACER.equals("yes")){
+                                ctk();
+                            }
                             tampil();
                             emptTeks();                
                         }else{
@@ -3107,6 +3116,9 @@ public final class DlgReg extends javax.swing.JDialog {
                                     TStatus.getText(),"Ralan",kdpnj.getText()})==true){
                                 if(!AsalRujukan.getText().equals("")){
                                     Sequel.menyimpan("rujuk_masuk","'"+TNoRw.getText()+"','"+AsalRujukan.getText()+"','"+alamatperujuk+"','-','0'","No.Rujuk");
+                                }
+                                if(OTOMATISTRACER.equals("yes")){
+                                    ctk();
                                 }
                                 tampil();
                                 emptTeks();                

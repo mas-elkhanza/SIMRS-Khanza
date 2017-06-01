@@ -172,6 +172,8 @@ import inventory.DlgRiwayatBarangMedis;
 import java.awt.event.KeyListener;
 import keuangan.DlgAkunPiutang;
 import keuangan.DlgHutangObatBelumLunas;
+import keuangan.DlgRBKSO;
+import keuangan.DlgRHKSO;
 import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
 import laporan.DlgICD9;
@@ -572,6 +574,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnInaCBGCoderNIK = new widget.ButtonBig();
         btnMutasiBerkas = new widget.ButtonBig();
         btnAkunPiutang = new widget.ButtonBig();
+        btnRHKSO = new widget.ButtonBig();
+        btnRBKSO = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3678,6 +3682,32 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnAkunPiutang);
 
+        btnRHKSO.setForeground(new java.awt.Color(40, 70, 50));
+        btnRHKSO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnRHKSO.setText("Harian KSO");
+        btnRHKSO.setIconTextGap(0);
+        btnRHKSO.setName("btnRHKSO"); // NOI18N
+        btnRHKSO.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRHKSO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRHKSOActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRHKSO);
+
+        btnRBKSO.setForeground(new java.awt.Color(40, 70, 50));
+        btnRBKSO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnRBKSO.setText("Bulanan KSO");
+        btnRBKSO.setIconTextGap(0);
+        btnRBKSO.setName("btnRBKSO"); // NOI18N
+        btnRBKSO.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRBKSO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRBKSOActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRBKSO);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3686,7 +3716,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20/05/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01/06/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7934,6 +7964,30 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnAkunPiutangActionPerformed
 
+    private void btnRHKSOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRHKSOActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRHKSO rhkso=new DlgRHKSO(this,false);
+        rhkso.isCek();
+        rhkso.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        rhkso.setLocationRelativeTo(PanelUtama);
+        rhkso.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRHKSOActionPerformed
+
+    private void btnRBKSOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRBKSOActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRBKSO rbkso=new DlgRBKSO(this,false);
+        rbkso.isCek();
+        rbkso.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        rbkso.setLocationRelativeTo(PanelUtama);
+        rbkso.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRBKSOActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8101,11 +8155,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnProdusenInventaris;
     private widget.ButtonBig btnRBDokter;
     private widget.ButtonBig btnRBJasaSarana;
+    private widget.ButtonBig btnRBKSO;
     private widget.ButtonBig btnRBPaketBHP;
     private widget.ButtonBig btnRBParamedis;
     private widget.ButtonBig btnRBiayaIpsrs;
     private widget.ButtonBig btnRHDOkter;
     private widget.ButtonBig btnRHJasaSarana;
+    private widget.ButtonBig btnRHKSO;
     private widget.ButtonBig btnRHKeluarIpsrs;
     private widget.ButtonBig btnRHMasukIpsrs;
     private widget.ButtonBig btnRHPaketBHP;
@@ -8753,6 +8809,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getbulanan_js()==true){
                 Panelmenu.add(btnRBJasaSarana);  
+                jmlmenu++;
+            }
+            
+            if(var.getharian_kso()==true){
+                Panelmenu.add(btnRHKSO);  
+                jmlmenu++;
+            }
+            
+            if(var.getbulanan_kso()==true){
+                Panelmenu.add(btnRBKSO);  
                 jmlmenu++;
             }
             
