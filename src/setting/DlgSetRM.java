@@ -32,11 +32,11 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public class DlgSetRM extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4;
+    private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps,ps2,ps3,ps4;
+    private PreparedStatement ps,ps2,ps3,ps4,ps5;
     private ResultSet rs;
 
     /** Creates new form DlgAdmin
@@ -51,8 +51,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         };
 
         tbNoRM.setModel(tabMode);
-        //tampilnorm();
-        //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbNoRM.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbNoRM.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -70,8 +68,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         };
 
         tbNoUrut.setModel(tabMode2);
-        //tampilnorm();
-        //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbNoUrut.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbNoUrut.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -95,8 +91,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         };
 
         tbAlamat.setModel(tabMode3);
-        //tampilnorm();
-        //tbJabatan.setDefaultRenderer(Object.class, new WarnaTable(Scroll.getBackground(),Color.GREEN));
         tbAlamat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAlamat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -131,6 +125,23 @@ public class DlgSetRM extends javax.swing.JDialog {
         }
 
         tbKelengkapan.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabMode5=new DefaultTableModel(null,new Object[]{"No.Rekam Medis Terakhir Digunakan"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+
+        tbValidasiRegistrasi.setModel(tabMode5);
+        tbValidasiRegistrasi.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbValidasiRegistrasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 1; i++) {
+            TableColumn column = tbValidasiRegistrasi.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(350);
+            }
+        }
+
+        tbValidasiRegistrasi.setDefaultRenderer(Object.class, new WarnaTable());
         
         norm.setDocument(new batasInput((byte)10).getKata(norm));
         PanjangKTP.setDocument(new batasInput((byte)3).getOnlyAngka(PanjangKTP));
@@ -271,6 +282,12 @@ public class DlgSetRM extends javax.swing.JDialog {
         YesNoKabupatenPJ = new widget.ComboBox();
         jLabel31 = new widget.Label();
         PanjangKabupatenPJ = new widget.TextBox();
+        internalFrame6 = new widget.InternalFrame();
+        Scroll5 = new widget.ScrollPane();
+        tbValidasiRegistrasi = new widget.Table();
+        panelGlass10 = new widget.panelisi();
+        jLabel12 = new widget.Label();
+        ValidasiRegistrasi = new widget.ComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1211,6 +1228,56 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         TabRawat.addTab(".: Pengaturan Kelengkapan Data  ", internalFrame5);
 
+        internalFrame6.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame6.setBorder(null);
+        internalFrame6.setName("internalFrame6"); // NOI18N
+        internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll5.setName("Scroll5"); // NOI18N
+        Scroll5.setOpaque(true);
+
+        tbValidasiRegistrasi.setAutoCreateRowSorter(true);
+        tbValidasiRegistrasi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbValidasiRegistrasi.setName("tbValidasiRegistrasi"); // NOI18N
+        tbValidasiRegistrasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbValidasiRegistrasiMouseClicked(evt);
+            }
+        });
+        tbValidasiRegistrasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbValidasiRegistrasiKeyPressed(evt);
+            }
+        });
+        Scroll5.setViewportView(tbValidasiRegistrasi);
+
+        internalFrame6.add(Scroll5, java.awt.BorderLayout.CENTER);
+
+        panelGlass10.setName("panelGlass10"); // NOI18N
+        panelGlass10.setPreferredSize(new java.awt.Dimension(44, 47));
+        panelGlass10.setLayout(null);
+
+        jLabel12.setText("Wajib closing kasir terlebih dahulu untuk perawatan sebelumnya :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        panelGlass10.add(jLabel12);
+        jLabel12.setBounds(0, 12, 325, 23);
+
+        ValidasiRegistrasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
+        ValidasiRegistrasi.setName("ValidasiRegistrasi"); // NOI18N
+        ValidasiRegistrasi.setOpaque(false);
+        ValidasiRegistrasi.setPreferredSize(new java.awt.Dimension(55, 28));
+        ValidasiRegistrasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ValidasiRegistrasiKeyPressed(evt);
+            }
+        });
+        panelGlass10.add(ValidasiRegistrasi);
+        ValidasiRegistrasi.setBounds(328, 12, 60, 23);
+
+        internalFrame6.add(panelGlass10, java.awt.BorderLayout.PAGE_START);
+
+        TabRawat.addTab(".: Pengaturan Registrasi ", internalFrame6);
+
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -1304,6 +1371,16 @@ public class DlgSetRM extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu pengaturan ...!!!!");
                 norm.requestFocus();
             }
+        }else if(TabRawat.getSelectedIndex()==4){
+            if(tabMode5.getRowCount()==0){
+                Sequel.menyimpan("set_validasi_registrasi",
+                        "'"+ValidasiRegistrasi.getSelectedItem().toString()+"'","Pengaturan Validasi Registrasi"
+                );
+                tampilvalidasiregistrasi();
+            }else if(tabMode5.getRowCount()>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu pengaturan ...!!!!");
+                cmburut.requestFocus();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1319,6 +1396,8 @@ public class DlgSetRM extends javax.swing.JDialog {
                 Valid.pindah(evt,Kabupaten,BtnHapus);
             }else if(TabRawat.getSelectedIndex()==3){
                 Valid.pindah(evt,PanjangKabupatenPJ,BtnHapus);
+            }else if(TabRawat.getSelectedIndex()==4){
+                Valid.pindah(evt,ValidasiRegistrasi,BtnHapus);
             }            
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
@@ -1337,6 +1416,9 @@ public class DlgSetRM extends javax.swing.JDialog {
         }else if(TabRawat.getSelectedIndex()==3){
             Sequel.queryu("delete from set_kelengkapan_data_pasien");
             tampilkelengkapan();
+        }else if(TabRawat.getSelectedIndex()==4){
+            Sequel.queryu("delete from set_validasi_registrasi");
+            tampilvalidasiregistrasi();
         }
         
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -1398,6 +1480,8 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
             tampilalamat();
         }else if(TabRawat.getSelectedIndex()==3){
             tampilkelengkapan();
+        }else if(TabRawat.getSelectedIndex()==4){
+            tampilvalidasiregistrasi();
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -1410,6 +1494,8 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
            tampilalamat();
         }else if(TabRawat.getSelectedIndex()==3){
            tampilkelengkapan();
+        }else if(TabRawat.getSelectedIndex()==4){
+            tampilvalidasiregistrasi();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -1629,6 +1715,30 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
         Valid.pindah(evt, YesNoKabupatenPJ,BtnSimpan);
     }//GEN-LAST:event_PanjangKabupatenPJKeyPressed
 
+    private void tbValidasiRegistrasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbValidasiRegistrasiMouseClicked
+        if(tabMode5.getRowCount()!=0){
+            try {
+                getDataValidasiRegistrasi();
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+    }//GEN-LAST:event_tbValidasiRegistrasiMouseClicked
+
+    private void tbValidasiRegistrasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbValidasiRegistrasiKeyPressed
+        if(tabMode5.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getDataValidasiRegistrasi();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbValidasiRegistrasiKeyPressed
+
+    private void ValidasiRegistrasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ValidasiRegistrasiKeyPressed
+        Valid.pindah(evt, BtnKeluar,BtnSimpan);
+    }//GEN-LAST:event_ValidasiRegistrasiKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1676,7 +1786,9 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
+    private widget.ScrollPane Scroll5;
     private javax.swing.JTabbedPane TabRawat;
+    private widget.ComboBox ValidasiRegistrasi;
     private widget.ComboBox YesNoAlamat;
     private widget.ComboBox YesNoAlamatPJ;
     private widget.ComboBox YesNoKTP;
@@ -1703,8 +1815,10 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
     private widget.InternalFrame internalFrame5;
+    private widget.InternalFrame internalFrame6;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
+    private widget.Label jLabel12;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
@@ -1746,6 +1860,7 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private widget.TextBox norm;
+    private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
@@ -1754,6 +1869,7 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.Table tbKelengkapan;
     private widget.Table tbNoRM;
     private widget.Table tbNoUrut;
+    private widget.Table tbValidasiRegistrasi;
     // End of variables declaration//GEN-END:variables
 
     private void tampilnorm() {
@@ -2009,6 +2125,37 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
             PanjangKecamatanPJ.setText(tbKelengkapan.getValueAt(31,1).toString()); 
             YesNoKabupatenPJ.setSelectedItem(tbKelengkapan.getValueAt(32,1).toString());            
             PanjangKabupatenPJ.setText(tbKelengkapan.getValueAt(33,1).toString()); 
+        }
+    }
+    
+    private void tampilvalidasiregistrasi() {
+        Valid.tabelKosong(tabMode5);
+        try{   
+            ps5=koneksi.prepareStatement("select * from set_validasi_registrasi ");
+            try {
+                rs=ps5.executeQuery();
+                while(rs.next()){
+                    tabMode5.addRow(new Object[]{rs.getString(1)});
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps5!=null){
+                    ps5.close();
+                }
+            }
+        }catch(SQLException e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+
+    private void getDataValidasiRegistrasi() {
+        int row=tbValidasiRegistrasi.getSelectedRow();
+        if(row!= -1){
+            ValidasiRegistrasi.setSelectedItem(tbValidasiRegistrasi.getValueAt(row,0).toString());
         }
     }
     

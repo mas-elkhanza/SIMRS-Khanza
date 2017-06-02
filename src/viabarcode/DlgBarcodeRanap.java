@@ -48,7 +48,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
     private String[] kode,nama,kategori;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat;
     private String kd_pj="",kd_bangsal="",ruang_ranap="Yes", cara_bayar_ranap="Yes",kd_dokter,lokasistok="";   
-    private double[] jumlah,harga,stok,eb,tsl,beli;
+    private double[] jumlah,harga,stok,eb,tsl,beli,kso,menejemen;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis;
     private String kelas="";
     private double embalase=0,tuslah=0,kenaikan=0;
@@ -65,7 +65,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         initComponents();
         this.setLocation(10,2);
         setSize(656,250);
-        Object[] row={"P","Kode","Nama Perawatan","Kategori Perawatan","Tarif/Biaya","Bagian RS","BHP","JM Dokter","JM Perawat"};
+        Object[] row={"P","Kode","Nama Perawatan","Kategori Perawatan","Tarif/Biaya","Bagian RS","BHP","JM Dokter","JM Perawat","KSO","Menejemen"};
         TabModeTindakan=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -77,7 +77,8 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class,  
                 java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.Double.class,java.lang.Double.class
              };
              
              @Override
@@ -89,7 +90,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         tbTindakan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbTindakan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 11; i++) {
             TableColumn column = tbTindakan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -506,11 +507,12 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
             Sequel.AutoComitFalse();
             for(i=0;i<tbTindakan.getRowCount();i++){ 
                 if(tbTindakan.getValueAt(i,0).toString().equals("true")){
-                    Sequel.menyimpan("rawat_inap_dr","?,?,?,?,?,?,?,?,?", "Tindakan",9,new String[]{
+                    Sequel.menyimpan("rawat_inap_dr","?,?,?,?,?,?,?,?,?,?,?", "Tindakan",11,new String[]{
                         NoRawat.getText(),tbTindakan.getValueAt(i,1).toString(),kd_dokter,
                         Sequel.cariIsi("select current_date()"),Sequel.cariIsi("select current_time()"),
                         tbTindakan.getValueAt(i,5).toString(),tbTindakan.getValueAt(i,6).toString(),
-                        tbTindakan.getValueAt(i,7).toString(),tbTindakan.getValueAt(i,4).toString()
+                        tbTindakan.getValueAt(i,7).toString(),tbTindakan.getValueAt(i,9).toString(),
+                        tbTindakan.getValueAt(i,10).toString(),tbTindakan.getValueAt(i,4).toString()
                     });
                 }                    
             }
@@ -779,6 +781,10 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
             jmdokter=new double[jml];
             jmperawat=null;
             jmperawat=new double[jml];
+            kso=null;
+            kso=new double[jml];
+            menejemen=null;
+            menejemen=new double[jml];
 
             index=0;        
             for(i=0;i<tbTindakan.getRowCount();i++){
@@ -792,6 +798,8 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                     bhp[index]=Double.parseDouble(tbTindakan.getValueAt(i,6).toString());
                     jmdokter[index]=Double.parseDouble(tbTindakan.getValueAt(i,7).toString());
                     jmperawat[index]=Double.parseDouble(tbTindakan.getValueAt(i,8).toString());    
+                    kso[index]=Double.parseDouble(tbTindakan.getValueAt(i,9).toString());    
+                    menejemen[index]=Double.parseDouble(tbTindakan.getValueAt(i,10).toString());    
                     index++;
                 }
             }       
@@ -800,32 +808,32 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
 
             for(i=0;i<jml;i++){
                 TabModeTindakan.addRow(new Object[] {
-                    pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i]
+                    pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i]
                 });
             }
             pscari=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari2=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari3=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari4=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material," +
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
                    "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where jns_perawatan_inap.status='1' and jns_perawatan_inap.kd_jenis_prw like ? or "+
@@ -872,7 +880,8 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                             false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getString(3),
                                     rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("material"),
                                     rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),
-                                    rstindakan.getDouble("tarif_tindakanpr")
+                                    rstindakan.getDouble("tarif_tindakanpr"),rstindakan.getDouble("kso"),
+                                    rstindakan.getDouble("menejemen")
                         });
                     }   
                 }

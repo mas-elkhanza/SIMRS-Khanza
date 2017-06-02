@@ -6,7 +6,7 @@
     <entry key="DATABASE">sik</entry>
     <entry key="PORT">3306</entry>
     <entry key="USER">root</entry>
-    <entry key="PAS">akusayangsamakamu</entry>
+    <entry key="PAS"></entry>
     <entry key="CARICEPAT">nonaktif</entry>
     <entry key="HYBRIDWEB">webapps</entry>
     <entry key="ANTRIAN">sender</entry>
@@ -17,4 +17,10 @@
     <entry key="URLAPIAPLICARE">http://dvlp.bpjs-kesehatan.go.id:9080/aplicaresws</entry>
     <entry key="SECRETKEYAPIAPLICARE">1112</entry>
     <entry key="CONSIDAPIAPLICARE">1000</entry>
+    <entry key="KAMARAKTIFRANAP"></entry>
+    <entry key="DOKTERAKTIFKASIRRALAN"></entry>
+    <entry key="POLIAKTIFKASIRRALAN"></entry>
+    <entry key="JADWALDOKTERDIREGISTRASI">aktif</entry>    
+    <entry key="IPPRINTERTRACER">10.50.150.57/label2</entry>
+    <entry key="OTOMATISTRACER">no</entry>
 </properties>

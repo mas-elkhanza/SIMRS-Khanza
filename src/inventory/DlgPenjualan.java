@@ -851,16 +851,24 @@ public class DlgPenjualan extends javax.swing.JDialog {
                 }
             }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
                 try {
-                    if(tbDokter.getSelectedColumn()==0){
-                        tbDokter.setValueAt("", tbDokter.getSelectedRow(),0);
-                    }else if(tbDokter.getSelectedColumn()==5){
-                        tbDokter.setValueAt("", tbDokter.getSelectedRow(),5);
-                    }else if(tbDokter.getSelectedColumn()==7){
-                        tbDokter.setValueAt("", tbDokter.getSelectedRow(),7);
-                    }else if(tbDokter.getSelectedColumn()==8){
-                        tbDokter.setValueAt("", tbDokter.getSelectedRow(),8);
-                    }else if(tbDokter.getSelectedColumn()==9){
-                        tbDokter.setValueAt("", tbDokter.getSelectedRow(),9);
+                    switch (tbDokter.getSelectedColumn()) {
+                        case 0:
+                            tbDokter.setValueAt("", tbDokter.getSelectedRow(),0);
+                            break;
+                        case 5:
+                            tbDokter.setValueAt("", tbDokter.getSelectedRow(),5);
+                            break;
+                        case 7:
+                            tbDokter.setValueAt("", tbDokter.getSelectedRow(),7);
+                            break;
+                        case 8:
+                            tbDokter.setValueAt("", tbDokter.getSelectedRow(),8);
+                            break;
+                        case 9:
+                            tbDokter.setValueAt("", tbDokter.getSelectedRow(),9);
+                            break;
+                        default:
+                            break;
                     }
                 } catch (Exception e) {
                 } 
@@ -869,26 +877,29 @@ public class DlgPenjualan extends javax.swing.JDialog {
                 TCari.requestFocus();
             }else if(evt.getKeyCode()==KeyEvent.VK_BACK_SPACE){
                 try {
-                    if(tbDokter.getSelectedColumn()==0){
-                        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0,0")){
-                            tbDokter.setValueAt("", tbDokter.getSelectedRow(),0);
-                        }
-                    }else if(tbDokter.getSelectedColumn()==5){
-                        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString().equals("0,0")){
-                            tbDokter.setValueAt("", tbDokter.getSelectedRow(),5);
-                        }
-                    }else if(tbDokter.getSelectedColumn()==7){
-                        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0,0")){
-                            tbDokter.setValueAt("", tbDokter.getSelectedRow(),7);
-                        }
-                    }else if(tbDokter.getSelectedColumn()==8){
-                        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().equals("0,0")){
-                            tbDokter.setValueAt("", tbDokter.getSelectedRow(),8);
-                        }
-                    }else if(tbDokter.getSelectedColumn()==9){
-                        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0,0")){
-                            tbDokter.setValueAt("", tbDokter.getSelectedRow(),9);
-                        }
+                    switch (tbDokter.getSelectedColumn()) {
+                        case 0:
+                            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0,0")){
+                                tbDokter.setValueAt("", tbDokter.getSelectedRow(),0);
+                            }   break;
+                        case 5:
+                            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString().equals("0,0")){
+                                tbDokter.setValueAt("", tbDokter.getSelectedRow(),5);
+                            }   break;
+                        case 7:
+                            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0,0")){
+                                tbDokter.setValueAt("", tbDokter.getSelectedRow(),7);
+                            }   break;
+                        case 8:
+                            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().equals("0,0")){
+                                tbDokter.setValueAt("", tbDokter.getSelectedRow(),8);
+                            }   break;
+                        case 9:
+                            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0,0")){
+                                tbDokter.setValueAt("", tbDokter.getSelectedRow(),9);
+                            }   break;
+                        default:
+                            break;
                     }
                 } catch (Exception e) {
                 }       
@@ -1109,30 +1120,44 @@ private void NoNotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_No
 }//GEN-LAST:event_NoNotaKeyPressed
 
 private void kdmemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdmemKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());         
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());
-            Tgl.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());
-            catatan.requestFocus();   
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnMemActionPerformed(null);
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_PAGE_DOWN:
+                Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());
+                break;
+            case KeyEvent.VK_PAGE_UP:
+                Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());
+                Tgl.requestFocus();
+                break;
+            case KeyEvent.VK_ENTER:
+                Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", nmmem,kdmem.getText());
+                catatan.requestFocus();
+                break;
+            case KeyEvent.VK_UP:
+                BtnMemActionPerformed(null);
+                break;
+            default:
+                break;
         }
 }//GEN-LAST:event_kdmemKeyPressed
 
 private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());          
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
-            Jenisjual.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
-            TCari.requestFocus();  
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnPtgActionPerformed(null);
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_PAGE_DOWN:
+                Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
+                break;
+            case KeyEvent.VK_PAGE_UP:
+                Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
+                Jenisjual.requestFocus();
+                break;
+            case KeyEvent.VK_ENTER:
+                Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
+                TCari.requestFocus();
+                break;
+            case KeyEvent.VK_UP:
+                BtnPtgActionPerformed(null);
+                break;
+            default:
+                break;
         }
 }//GEN-LAST:event_kdptgKeyPressed
 
@@ -1186,20 +1211,27 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_ppBersihkanActionPerformed
 
 private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdgudangKeyPressed
-    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
-        tampil();
-    }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
-        tampil();
-        kdptg.requestFocus();
-    }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
-        tampil();
-        BtnSimpan.requestFocus();
-    }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-        BtnGudangActionPerformed(null);
-    }
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_PAGE_DOWN:
+                Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+                tampil();
+                break;
+            case KeyEvent.VK_PAGE_UP:
+                Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+                tampil();
+                kdptg.requestFocus();
+                break;
+            case KeyEvent.VK_ENTER:
+                Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());
+                tampil();
+                BtnSimpan.requestFocus();
+                break;
+            case KeyEvent.VK_UP:
+                BtnGudangActionPerformed(null);
+                break;
+            default:
+                break;
+        }
 }//GEN-LAST:event_kdgudangKeyPressed
 
 private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGudangActionPerformed

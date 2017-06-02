@@ -56,7 +56,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
     private ResultSet rs,rsset_tarif,rssetpj;
     private boolean[] pilih; 
     private String[] kode,nama,kodebarang,namabarang,satuan;
-    private double[] jumlah,total,bagian_rs,bhp,tarif_perujuk,tarif_tindakan_dokter,tarif_tindakan_petugas;
+    private double[] jumlah,total,bagian_rs,bhp,tarif_perujuk,tarif_tindakan_dokter,tarif_tindakan_petugas,kso,menejemen;
     private int jml=0,i=0,index=0;
     private String cara_bayar_radiologi="Yes",pilihan="",pemeriksaan="",kamar,namakamar;
     private double ttl=0,item=0;
@@ -69,7 +69,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        Object[] row={"P","Kode Periksa","Nama Pemeriksaan","Tarif","Bagian RS","BHP","Tarif Perujuk","Tarif Dokter","Tarif Petugas"};
+        Object[] row={"P","Kode Periksa","Nama Pemeriksaan","Tarif","Bagian RS","BHP","Tarif Perujuk","Tarif Dokter","Tarif Petugas","Kso","Menejemen"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -81,7 +81,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
-                java.lang.Double.class
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -94,7 +94,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         tbPemeriksaan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPemeriksaan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for(i = 0; i < 9; i++) {
+        for(i = 0; i < 11; i++) {
             TableColumn column = tbPemeriksaan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -105,8 +105,8 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(75);
             }else {
-               column.setMinWidth(0);
-               column.setMaxWidth(0);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbPemeriksaan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1183,11 +1183,12 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     Sequel.AutoComitFalse();
                     for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                         if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-                            Sequel.menyimpan("periksa_radiologi","?,?,?,?,?,?,?,?,?,?,?,?,?", "Pemeriksaan",13,new String[]{
+                            Sequel.menyimpan("periksa_radiologi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Pemeriksaan",15,new String[]{
                                 TNoRw.getText(),KdPtg.getText(),tbPemeriksaan.getValueAt(i,1).toString(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                                 CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),KodePerujuk.getText(),
                                 tbPemeriksaan.getValueAt(i,4).toString(),tbPemeriksaan.getValueAt(i,5).toString(),tbPemeriksaan.getValueAt(i,6).toString(),
-                                tbPemeriksaan.getValueAt(i,7).toString(),tbPemeriksaan.getValueAt(i,8).toString(),tbPemeriksaan.getValueAt(i,3).toString(),
+                                tbPemeriksaan.getValueAt(i,7).toString(),tbPemeriksaan.getValueAt(i,8).toString(),tbPemeriksaan.getValueAt(i,9).toString(),
+                                tbPemeriksaan.getValueAt(i,10).toString(),tbPemeriksaan.getValueAt(i,3).toString(),
                                 KodePj.getText()
                             });
                         }                    
@@ -1227,11 +1228,12 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         Sequel.AutoComitFalse();
                         for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                             if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-                                Sequel.menyimpan("periksa_radiologi","?,?,?,?,?,?,?,?,?,?,?,?,?", "Pemeriksaan",13,new String[]{
+                                Sequel.menyimpan("periksa_radiologi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Pemeriksaan",15,new String[]{
                                     TNoRw.getText(),KdPtg.getText(),tbPemeriksaan.getValueAt(i,1).toString(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                                     CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),KodePerujuk.getText(),
                                     tbPemeriksaan.getValueAt(i,4).toString(),tbPemeriksaan.getValueAt(i,5).toString(),tbPemeriksaan.getValueAt(i,6).toString(),
-                                    tbPemeriksaan.getValueAt(i,7).toString(),tbPemeriksaan.getValueAt(i,8).toString(),tbPemeriksaan.getValueAt(i,3).toString(),
+                                    tbPemeriksaan.getValueAt(i,7).toString(),tbPemeriksaan.getValueAt(i,8).toString(),tbPemeriksaan.getValueAt(i,9).toString(),
+                                    tbPemeriksaan.getValueAt(i,10).toString(),tbPemeriksaan.getValueAt(i,3).toString(),
                                     KodePj.getText()
                                 });
                             }                    
@@ -1515,6 +1517,10 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             tarif_tindakan_dokter=new double[jml];
             tarif_tindakan_petugas=null;
             tarif_tindakan_petugas=new double[jml];
+            kso=null;
+            kso=new double[jml];
+            menejemen=null;
+            menejemen=new double[jml];
             
             index=0; 
             for(i=0;i<tbPemeriksaan.getRowCount();i++){
@@ -1528,19 +1534,22 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     tarif_perujuk[index]=Double.parseDouble(tbPemeriksaan.getValueAt(i,6).toString());
                     tarif_tindakan_dokter[index]=Double.parseDouble(tbPemeriksaan.getValueAt(i,7).toString());
                     tarif_tindakan_petugas[index]=Double.parseDouble(tbPemeriksaan.getValueAt(i,8).toString());
+                    kso[index]=Double.parseDouble(tbPemeriksaan.getValueAt(i,9).toString());
+                    menejemen[index]=Double.parseDouble(tbPemeriksaan.getValueAt(i,10).toString());
                     index++;
                 }
             }
 
             Valid.tabelKosong(tabMode);
             for(i=0;i<jml;i++){                
-                tabMode.addRow(new Object[] {pilih[i],kode[i],nama[i],total[i],bagian_rs[i],bhp[i],tarif_perujuk[i],tarif_tindakan_dokter[i],tarif_tindakan_petugas[i]});
+                tabMode.addRow(new Object[] {pilih[i],kode[i],nama[i],total[i],bagian_rs[i],bhp[i],tarif_perujuk[i],tarif_tindakan_dokter[i],tarif_tindakan_petugas[i],kso[i],menejemen[i]});
             }    
         
             pspemeriksaan=koneksi.prepareStatement(
                     "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
                     "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
-                    "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,penjab.png_jawab "+
+                    "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,"+
+                    "jns_perawatan_radiologi.kso,jns_perawatan_radiologi.menejemen,penjab.png_jawab "+
                     "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where "+
                     " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kd_pj=? or jns_perawatan_radiologi.kd_pj='-') and jns_perawatan_radiologi.kd_jenis_prw like ? or "+
                     " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kd_pj=? or jns_perawatan_radiologi.kd_pj='-') and jns_perawatan_radiologi.nm_perawatan like ? "+
@@ -1548,7 +1557,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             pspemeriksaan2=koneksi.prepareStatement(
                     "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
                     "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
-                    "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,penjab.png_jawab "+
+                    "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,"+
+                    "jns_perawatan_radiologi.kso,jns_perawatan_radiologi.menejemen,penjab.png_jawab "+
                     "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where "+
                     " jns_perawatan_radiologi.status='1' and jns_perawatan_radiologi.kd_jenis_prw like ? or "+
                     " jns_perawatan_radiologi.status='1' and jns_perawatan_radiologi.nm_perawatan like ?  "+
@@ -1570,7 +1580,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 }
             
                 while(rs.next()){                
-                    tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8)});
+                    tabMode.addRow(new Object[]{false,rs.getString(1),rs.getString(2),rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8),rs.getDouble(9),rs.getDouble(10)});
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);

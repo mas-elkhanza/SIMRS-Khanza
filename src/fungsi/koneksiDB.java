@@ -40,7 +40,13 @@ public final class koneksiDB {
                         "  sampai 400 turunan. Anak pertamanya cacat tidak punya kaki sampai 300 \n" +
                         "  turunan. Susah cari jodoh sampai umur 50 tahun sampai 200 turunan.\n" +
                         "  Ya Alloh maafkan kami karena telah berdoa buruk, semua ini kami lakukan\n" +
-                        "  karena kami tidak pernah rela karya kami dibajak tanpa ijin.\n\n");
+                        "  karena kami tidak pernah rela karya kami dibajak tanpa ijin.\n\n"+
+                        "#    ____  ___  __  __  ____   ____    _  __ _                              \n" +
+                        "#   / ___||_ _||  \\/  ||  _ \\ / ___|  | |/ /| |__    __ _  _ __   ____ __ _ \n" +
+                        "#   \\___ \\ | | | |\\/| || |_) |\\___ \\  | ' / | '_ \\  / _` || '_ \\ |_  // _` |\n" +
+                        "#    ___) || | | |  | ||  _ <  ___) | | . \\ | | | || (_| || | | | / /| (_| |\n" +
+                        "#   |____/|___||_|  |_||_| \\_\\|____/  |_|\\_\\|_| |_| \\__,_||_| |_|/___|\\__,_|\n" +
+                        "#                                                                           ");
             }catch(Exception e){
                 JOptionPane.showMessageDialog(null,"Koneksi Putus : "+e);
             }

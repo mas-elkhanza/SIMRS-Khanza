@@ -679,7 +679,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
                     Keterangan.getText(),NoRawat.getText(),koderekening
                 });
                 
-                if(Sisa.getText().equals("0")){
+                if(Double.parseDouble(Sisa.getText())<=1){
                     Sequel.mengedit("piutang_pasien","no_rawat='"+NoRawat.getText()+"'","status='Lunas'");
                 }                            
                 Sequel.queryu("delete from tampjurnal");                    
@@ -1060,9 +1060,9 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang.sisapiutang),0) FROM piutang where piutang.no_rkm_medis=?",Kdmem.getText())
                         - 
                         Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rkm_medis=?",Kdmem.getText());
-            Sisa.setText(Valid.SetAngka(sisapiutang));
+            Sisa.setText(Valid.SetAngka(Math.round(sisapiutang)));
             if(!Cicilan.getText().equals("")){                           
-                    Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
+                    Sisa.setText(Valid.SetAngka(Math.round(sisapiutang-Double.parseDouble(Cicilan.getText()))));                           
             }
     }
 

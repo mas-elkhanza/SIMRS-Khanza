@@ -70,6 +70,8 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
                       "BHP/Paket Obat",
                       "J.Medis Dr",
                       "J.Medis Pr",
+                      "KSO",
+                      "Menejemen",
                       "Ttl Biaya Dr",
                       "Ttl Biaya Pr",
                       "Ttl Biaya Dr & Pr",
@@ -86,8 +88,8 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
-                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class,
-                java.lang.Object.class
+                java.lang.Double.class, java.lang.Double.class,java.lang.Double.class,java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Object.class,java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -100,14 +102,14 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 13; i++) {
+        for (i = 0; i < 15; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(80);
             }else if(i==2){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(200);
             }else{
                 column.setPreferredWidth(85);
             }
@@ -124,6 +126,8 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
         TJmlDr.setDocument(new batasInput((int)20).getOnlyAngka(TJmlDr));
         TJmlPr.setDocument(new batasInput((int)20).getOnlyAngka(TJmlPr));
         TJmlDrPr.setDocument(new batasInput((int)20).getOnlyAngka(TJmlPr));
+        KSO.setDocument(new batasInput((int)20).getOnlyAngka(KSO));
+        Menejemen.setDocument(new batasInput((int)20).getOnlyAngka(Menejemen));
         kdpnj.setDocument(new batasInput((int)3).getKata(kdpnj));
         KdKamar.setDocument(new batasInput((int)5).getKata(KdKamar));
 
@@ -303,6 +307,10 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
         TJmlDrPr = new widget.TextBox();
         jLabel15 = new widget.Label();
         BhpMedis = new widget.TextBox();
+        jLabel17 = new widget.Label();
+        Menejemen = new widget.TextBox();
+        KSO = new widget.TextBox();
+        jLabel16 = new widget.Label();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -546,6 +554,7 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 248));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
@@ -621,7 +630,7 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
         jLabel10.setText("Total Biaya Dokter : Rp.");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(4, 162, 155, 23);
+        jLabel10.setBounds(4, 192, 155, 23);
 
         TJmlDr.setText("0");
         TJmlDr.setHighlighter(null);
@@ -632,12 +641,12 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(TJmlDr);
-        TJmlDr.setBounds(162, 162, 200, 23);
+        TJmlDr.setBounds(162, 192, 200, 23);
 
         jLabel11.setText("Total Biaya Pr : Rp.");
         jLabel11.setName("jLabel11"); // NOI18N
         FormInput.add(jLabel11);
-        jLabel11.setBounds(381, 132, 141, 23);
+        jLabel11.setBounds(381, 162, 141, 23);
 
         TJmlPr.setText("0");
         TJmlPr.setHighlighter(null);
@@ -648,7 +657,7 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(TJmlPr);
-        TJmlPr.setBounds(525, 132, 200, 23);
+        TJmlPr.setBounds(525, 162, 200, 23);
 
         NmKtg.setEditable(false);
         NmKtg.setHighlighter(null);
@@ -687,17 +696,17 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTndDr);
-        TTndDr.setBounds(162, 132, 200, 23);
+        TTndDr.setBounds(162, 162, 200, 23);
 
         jLabel12.setText("Jasa Medis Dokter : Rp.");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(4, 132, 155, 23);
+        jLabel12.setBounds(4, 162, 155, 23);
 
         jLabel13.setText("Jasa Medis Pr : Rp.");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(381, 102, 141, 23);
+        jLabel13.setBounds(381, 132, 141, 23);
 
         TTndPr.setText("0");
         TTndPr.setHighlighter(null);
@@ -708,7 +717,7 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTndPr);
-        TTndPr.setBounds(525, 102, 200, 23);
+        TTndPr.setBounds(525, 132, 200, 23);
 
         jLabel19.setText("Kamar :");
         jLabel19.setName("jLabel19"); // NOI18N
@@ -777,7 +786,7 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
         jLabel14.setText("Total Biaya Dokter & Pr : Rp.");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(372, 162, 150, 23);
+        jLabel14.setBounds(372, 192, 150, 23);
 
         TJmlDrPr.setText("0");
         TJmlDrPr.setToolTipText("Tekan ENTER untuk lanjut ke field berikutnya, tekan PAGE UP untuk ke field sebelumnya, hanya bisa angka");
@@ -789,7 +798,7 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(TJmlDrPr);
-        TJmlDrPr.setBounds(525, 162, 200, 23);
+        TJmlDrPr.setBounds(525, 192, 200, 23);
 
         jLabel15.setText("BHP Medis/Paket Obat : Rp.");
         jLabel15.setName("jLabel15"); // NOI18N
@@ -807,6 +816,40 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
         });
         FormInput.add(BhpMedis);
         BhpMedis.setBounds(162, 102, 200, 23);
+
+        jLabel17.setText("Menejemen : Rp.");
+        jLabel17.setName("jLabel17"); // NOI18N
+        FormInput.add(jLabel17);
+        jLabel17.setBounds(412, 102, 110, 23);
+
+        Menejemen.setText("0");
+        Menejemen.setToolTipText("Tekan ENTER untuk lanjut ke field berikutnya, tekan PAGE UP untuk ke field sebelumnya, hanya bisa angka");
+        Menejemen.setHighlighter(null);
+        Menejemen.setName("Menejemen"); // NOI18N
+        Menejemen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MenejemenKeyPressed(evt);
+            }
+        });
+        FormInput.add(Menejemen);
+        Menejemen.setBounds(525, 102, 200, 23);
+
+        KSO.setText("0");
+        KSO.setToolTipText("Tekan ENTER untuk lanjut ke field berikutnya, tekan PAGE UP untuk ke field sebelumnya, hanya bisa angka");
+        KSO.setHighlighter(null);
+        KSO.setName("KSO"); // NOI18N
+        KSO.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KSOKeyPressed(evt);
+            }
+        });
+        FormInput.add(KSO);
+        KSO.setBounds(162, 132, 200, 23);
+
+        jLabel16.setText("K.S.O. : Rp.");
+        jLabel16.setName("jLabel16"); // NOI18N
+        FormInput.add(jLabel16);
+        jLabel16.setBounds(4, 132, 155, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -915,7 +958,7 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
             TTndDr.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){          
             isjml();
-            BhpMedis.requestFocus();
+            KSO.requestFocus();
         }
 }//GEN-LAST:event_TTndPrKeyPressed
 
@@ -938,10 +981,14 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
             Valid.textKosong(TTndDr,"Tarif tindakan dokter");
         }else if(TTndPr.getText().trim().equals("")){
             Valid.textKosong(TTndPr,"Tarif tindakan perawat");
+        }else if(KSO.getText().trim().equals("")){
+            Valid.textKosong(KSO,"K.S.O.");
+        }else if(Menejemen.getText().trim().equals("")){
+            Valid.textKosong(Menejemen,"Menejemen");
         }else{
-            Sequel.menyimpan("jns_perawatan_inap","?,?,?,?,?,?,?,?,?,?,?,?,?","Kode Jenis",13,new String[]{
+            Sequel.menyimpan("jns_perawatan_inap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Kode Jenis",15,new String[]{
                 TKd.getText(),TNm.getText(),KdKtg.getText(),BagianRs.getText(),BhpMedis.getText(),TTndDr.getText(),
-                TTndPr.getText(),TJmlDr.getText(),TJmlPr.getText(),TJmlDrPr.getText(),kdpnj.getText(),KdKamar.getText(),"1"
+                TTndPr.getText(),KSO.getText(),Menejemen.getText(),TJmlDr.getText(),TJmlPr.getText(),TJmlDrPr.getText(),kdpnj.getText(),KdKamar.getText(),"1"
             });
             BtnCariActionPerformed(evt);
             emptTeks();
@@ -1001,11 +1048,16 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
             Valid.textKosong(TTndDr,"Tarif tindakan dokter");
         }else if(TTndPr.getText().trim().equals("")){
             Valid.textKosong(TTndPr,"Tarif tindakan perawat");
+        }else if(KSO.getText().trim().equals("")){
+            Valid.textKosong(KSO,"K.S.O.");
+        }else if(Menejemen.getText().trim().equals("")){
+            Valid.textKosong(Menejemen,"Menejemen");
         }else{
             Sequel.mengedit("jns_perawatan_inap","kd_jenis_prw=?","kd_jenis_prw=?,nm_perawatan=?,kd_kategori=?,material=?,tarif_tindakandr=?,"+
-                    "tarif_tindakanpr=?,total_byrdr=?,total_byrpr=?,kd_pj=?,kd_bangsal=?,total_byrdrpr=?,bhp=?",13,new String[]{
+                    "tarif_tindakanpr=?,total_byrdr=?,total_byrpr=?,kd_pj=?,kd_bangsal=?,total_byrdrpr=?,bhp=?,kso=?,menejemen=?",15,new String[]{
                         TKd.getText(),TNm.getText(),KdKtg.getText(),BagianRs.getText(),TTndDr.getText(),TTndPr.getText(),TJmlDr.getText(),
-                        TJmlPr.getText(),kdpnj.getText(),KdKamar.getText(),TJmlDrPr.getText(),BhpMedis.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString()                        
+                        TJmlPr.getText(),kdpnj.getText(),KdKamar.getText(),TJmlDrPr.getText(),BhpMedis.getText(),KSO.getText(),Menejemen.getText(),
+                        tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString()                        
                     });
             if(tabMode.getRowCount()!=0){BtnCariActionPerformed(evt);}
             emptTeks();
@@ -1049,7 +1101,7 @@ public final class DlgJnsPerawatanRanap extends javax.swing.JDialog {
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                 String sql="jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori ";
                 Valid.MyReport("rptJnsPrw.jrxml","report","::[ Data Jenis Perawatan ]::","select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                   "jns_perawatan_inap.material,jns_perawatan_inap.bhp,jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,"+
+                   "jns_perawatan_inap.material,jns_perawatan_inap.bhp,jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen,"+
                    "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr  "+
                    "from jns_perawatan_inap inner join kategori_perawatan inner join penjab inner join bangsal  "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori "+
@@ -1186,7 +1238,7 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             isjml();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isjml();
-            TTndPr.requestFocus();
+            Menejemen.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             isjml();
             BagianRs.requestFocus();
@@ -1199,6 +1251,30 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         restore.setLocationRelativeTo(internalFrame1);
         restore.setVisible(true);
     }//GEN-LAST:event_MnRestoreActionPerformed
+
+    private void MenejemenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MenejemenKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            isjml();
+        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            isjml();
+            KSO.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            isjml();
+            BhpMedis.requestFocus();
+        }
+    }//GEN-LAST:event_MenejemenKeyPressed
+
+    private void KSOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KSOKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            isjml();
+        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            isjml();
+            TTndPr.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            isjml();
+            Menejemen.requestFocus();
+        }
+    }//GEN-LAST:event_KSOKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1229,9 +1305,11 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox KSO;
     private widget.TextBox KdKamar;
     private widget.TextBox KdKtg;
     private widget.Label LCount;
+    private widget.TextBox Menejemen;
     private javax.swing.JMenuItem MnRestore;
     private widget.TextBox NmKamar;
     private widget.TextBox NmKtg;
@@ -1255,6 +1333,8 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel13;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
+    private widget.Label jLabel16;
+    private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
     private widget.Label jLabel3;
@@ -1277,7 +1357,7 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         try{
             ps=koneksi.prepareStatement(
                         "select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
-                       "jns_perawatan_inap.material,jns_perawatan_inap.bhp,jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,"+
+                       "jns_perawatan_inap.material,jns_perawatan_inap.bhp,jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen,"+
                        "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,penjab.png_jawab,bangsal.nm_bangsal "+
                        "from jns_perawatan_inap inner join kategori_perawatan inner join penjab inner join bangsal  "+
                        "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori "+
@@ -1300,7 +1380,8 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     tabMode.addRow(new Object[]{
                         false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getDouble(4),
                         rs.getDouble(5),rs.getDouble(6),rs.getDouble(7),rs.getDouble(8),
-                        rs.getDouble(9),rs.getDouble(10),rs.getString(11),rs.getString(12)
+                        rs.getDouble(9),rs.getDouble(10),rs.getDouble(11),rs.getDouble(12),
+                        rs.getString(13),rs.getString(14)
                     });
                 }
             } catch (SQLException e) {
@@ -1330,13 +1411,15 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         NmKtg.setText("");
         BagianRs.setText("0");
         BhpMedis.setText("0");
+        KSO.setText("0");
+        Menejemen.setText("0");
         TTndDr.setText("0");
         TTndPr.setText("0");
         TJmlDr.setText("0");
         TJmlPr.setText("0");
         TJmlDrPr.setText("0");
         //Valid.autoNomer(" jns_perawatan_inap ","JP",6,TKd);
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kd_jenis_prw,3),signed)),0) from jns_perawatan_inap  ","J",6,TKd);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kd_jenis_prw,3),signed)),0) from jns_perawatan_inap  ","RI",5,TKd);
         TKd.requestFocus();
     }
 
@@ -1350,13 +1433,15 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             BhpMedis.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString())));
             TTndDr.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),6).toString())));
             TTndPr.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),7).toString())));
-            TJmlDr.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),8).toString())));
-            TJmlPr.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),9).toString())));
-            TJmlDrPr.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),10).toString())));
+            KSO.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),8).toString())));
+            Menejemen.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),9).toString())));
+            TJmlDr.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),10).toString())));
+            TJmlPr.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),11).toString())));
+            TJmlDrPr.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),12).toString())));
             Sequel.cariIsi("select kd_pj from jns_perawatan_inap where kd_jenis_prw=?", kdpnj,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
-            nmpnj.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),11).toString());
+            nmpnj.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),13).toString());
             Sequel.cariIsi("select kd_bangsal from jns_perawatan_inap where kd_jenis_prw=?", KdKamar,tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
-            NmKamar.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),12).toString());
+            NmKamar.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString());
         }
     }
 
@@ -1367,26 +1452,32 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void isjml(){
         DecimalFormat df2 = new DecimalFormat("####");
 
-        if((! BagianRs.getText().equals(""))&&(! TTndDr.getText().equals(""))&&(! BhpMedis.getText().equals(""))){
+        if((! BagianRs.getText().equals(""))&&(! TTndDr.getText().equals(""))&&(! BhpMedis.getText().equals(""))&&(! KSO.getText().equals(""))&&(! Menejemen.getText().equals(""))){
             double x=Double.parseDouble(BagianRs.getText().trim());
             double y=Double.parseDouble(TTndDr.getText().trim());
             double z=Double.parseDouble(BhpMedis.getText().trim());
-            TJmlDr.setText(df2.format(x+y+z));
+            double p=Double.parseDouble(KSO.getText().trim());
+            double q=Double.parseDouble(Menejemen.getText().trim());
+            TJmlDr.setText(df2.format(x+y+z+p+q));
         }
 
-        if((! BagianRs.getText().equals(""))&&(! TTndPr.getText().equals(""))&&(! BhpMedis.getText().equals(""))){
+        if((! BagianRs.getText().equals(""))&&(! TTndPr.getText().equals(""))&&(! BhpMedis.getText().equals(""))&&(! KSO.getText().equals(""))&&(! Menejemen.getText().equals(""))){
             double x=Double.parseDouble(BagianRs.getText().trim());
             double y=Double.parseDouble(TTndPr.getText().trim());
             double z=Double.parseDouble(BhpMedis.getText().trim());
-            TJmlPr.setText(df2.format(x+y+z));
+            double p=Double.parseDouble(KSO.getText().trim());
+            double q=Double.parseDouble(Menejemen.getText().trim());
+            TJmlPr.setText(df2.format(x+y+z+p+q));
         }
         
-        if((! BagianRs.getText().equals(""))&&(! TTndPr.getText().equals(""))&&(! BhpMedis.getText().equals(""))&&(! TTndDr.getText().equals(""))){
+        if((! BagianRs.getText().equals(""))&&(! TTndPr.getText().equals(""))&&(! BhpMedis.getText().equals(""))&&(! TTndDr.getText().equals(""))&&(! KSO.getText().equals(""))&&(! Menejemen.getText().equals(""))){
             double x=Double.parseDouble(BagianRs.getText().trim());
             double y=Double.parseDouble(TTndPr.getText().trim());
             double z=Double.parseDouble(TTndDr.getText().trim());
             double v=Double.parseDouble(BhpMedis.getText().trim());
-            TJmlDrPr.setText(df2.format(x+y+z+v));
+            double p=Double.parseDouble(KSO.getText().trim());
+            double q=Double.parseDouble(Menejemen.getText().trim());
+            TJmlDrPr.setText(df2.format(x+y+z+v+p+q));
         }
     }
     
@@ -1397,7 +1488,7 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,218));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,249));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           

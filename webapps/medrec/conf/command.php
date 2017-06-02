@@ -60,9 +60,9 @@
             $aksi=isset($_REQUEST['act'])?$_REQUEST['act']:NULL;
 		formProtek();
 		switch ($aksi) {
-			case 'HomeAdmin'		  	: include_once('pages/kontak.php'); break;
-            case 'List'          : include_once('pages/list.php'); break;
-            case 'Detail'          : include_once('pages/detail.php'); break;
+			case 'HomeAdmin'	  	: include_once('pages/kontak.php'); break;
+                        case 'List'                     : include_once('pages/list.php'); break;
+                        case 'Detail'                   : include_once('pages/detail.php'); break;
 
                         default			        : include_once('pages/kontak.php');
 			

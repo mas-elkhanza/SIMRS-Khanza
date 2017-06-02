@@ -1159,7 +1159,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                             "and detail_periksa_lab.id_template=template_laboratorium.id_template "+
                             "where detail_periksa_lab.tgl_periksa between ? and ? "+
-                            "and periksa_lab.kd_dokter=? and reg_periksa.kd_pj like ? "+
+                            "and periksa_lab.dokter_perujuk=? and reg_periksa.kd_pj like ? "+
                             "and detail_periksa_lab.bagian_perujuk>0 order by periksa_lab.tgl_periksa,periksa_lab.jam");
                         try {
                             psdetaillab2.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));

@@ -1210,32 +1210,51 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             try{
                 if(var.getkode().equals("Admin Utama")){
                     Sequel.AutoComitFalse();
-                    Sequel.queryu("delete from detail_pemberian_obat where no_rawat='"+TNoRw.getText()+"' and kode_brng='"+TKdOb.getText()+
-                                 "' and tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' and jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");
-                    Sequel.queryu("delete from aturan_pakai where no_rawat='"+TNoRw.getText()+"' and kode_brng='"+TKdOb.getText()+
-                                 "' and tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' and jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");
-                    if(btnObat1.isEnabled()==true){
-                        Trackobat.catatRiwayat(TKdOb.getText(),Valid.SetAngka(TJumlah.getText()),0,"Pemberian Obat",var.getkode(),bangsal,"Hapus");
-                        Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','"+TJumlah.getText()+"'", 
-                                                "stok=stok+'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");                    
+                    if(Sequel.queryutf("delete from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                  "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                  "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                  "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'")==true){
+                        Sequel.queryu("delete from aturan_pakai where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                      "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                      "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                      "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                        if(btnObat1.isEnabled()==true){
+                            Trackobat.catatRiwayat(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString(),
+                                    Valid.SetAngka(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()),
+                                    0,"Pemberian Obat",var.getkode(),bangsal,"Hapus");
+                            Sequel.menyimpan("gudangbarang","'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"','"+bangsal+"',"+
+                                                    "'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'", 
+                                                    "stok=stok+'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'",
+                                                    "kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' and kd_bangsal='"+bangsal+"'");                    
+                        }
                     }
                         
                     Sequel.AutoComitTrue();
                     tampilPO();
+                    BtnBatalActionPerformed(evt);
                 }else{
                     if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                         JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                         TCari.requestFocus();
                     }else{
                         Sequel.AutoComitFalse();
-                        Sequel.queryu("delete from detail_pemberian_obat where no_rawat='"+TNoRw.getText()+"' and kode_brng='"+TKdOb.getText()+
-                                     "' and tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' and jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");
-                        Sequel.queryu("delete from aturan_pakai where no_rawat='"+TNoRw.getText()+"' and kode_brng='"+TKdOb.getText()+
-                                     "' and tgl_perawatan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' and jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");
-                        if(btnObat1.isEnabled()==true){
-                            Trackobat.catatRiwayat(TKdOb.getText(),Valid.SetAngka(TJumlah.getText()),0,"Pemberian Obat",var.getkode(),bangsal,"Hapus");
-                            Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','"+TJumlah.getText()+"'", 
-                                                    "stok=stok+'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");                    
+                        if(Sequel.queryutf("delete from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                      "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                      "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                      "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'")==true){
+                            Sequel.queryu("delete from aturan_pakai where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                          "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                          "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                          "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                            if(btnObat1.isEnabled()==true){
+                                Trackobat.catatRiwayat(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString(),
+                                        Valid.SetAngka(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()),
+                                        0,"Pemberian Obat",var.getkode(),bangsal,"Hapus");
+                                Sequel.menyimpan("gudangbarang","'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"','"+bangsal+"',"+
+                                                        "'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'", 
+                                                        "stok=stok+'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'",
+                                                        "kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' and kd_bangsal='"+bangsal+"'");                    
+                            }
                         }
                         Sequel.AutoComitTrue();
                         tampilPO();
