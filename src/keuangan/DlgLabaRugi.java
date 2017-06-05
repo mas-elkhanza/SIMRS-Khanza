@@ -347,10 +347,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     saldoakhir=(saldoawal+debkret)*(-1);
                 }*/
                 pendapatan=pendapatan+saldoakhir;
-                if(!(saldoakhir==0)){
+                //if(!(saldoakhir==0)){
                     tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
                     i++;
-                }                    
+                //}                    
             }  
             tabMode.addRow(new Object[]{"","Total Pendapatan ",df2.format(pendapatan)});  
             tabMode.addRow(data);
@@ -374,10 +374,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     saldoakhir=(saldoawal+debkret)*(-1);
                 }*/
                 biaya=biaya+saldoakhir;
-                if(!(saldoakhir==0)){
+                //if(!(saldoakhir==0)){
                     tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
                     i++;
-                }                    
+                //}                    
             } 
             tabMode.addRow(new Object[]{"","Total Biaya-Biaya ",df2.format(biaya)}); 
             tabMode.addRow(data);
@@ -403,10 +403,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     saldoakhir=(saldoawal+debkret)*(-1);
                 }*/
                 modal=modal+saldoakhir;
-                if(!(saldoakhir==0)){
+                //if(!(saldoakhir==0)){
                     tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
                     i++;
-                }                    
+                //}                    
             }  
             tabMode.addRow(new Object[]{"","Total Modal ",df2.format(modal)}); 
             tabMode.addRow(data);
@@ -433,10 +433,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     saldoakhir=(saldoawal+debkret)*(-1);
                 }*/
                 aktiva=aktiva+saldoakhir;
-                if(!(saldoakhir==0)){
+                //if(!(saldoakhir==0)){
                     tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
                     i++;
-                }                    
+                //}                    
             }  
             tabMode.addRow(new Object[]{"","Total Aktiva ",df2.format(aktiva)}); 
             tabMode.addRow(data); 
@@ -459,10 +459,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     saldoakhir=(saldoawal+debkret)*(-1);
                 }*/
                 pasiva=pasiva+saldoakhir;
-                if(!(saldoakhir==0)){
+                //if(!(saldoakhir==0)){
                     tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
                     i++;
-                }                    
+                //}                    
             }  
             tabMode.addRow(new Object[]{"","Total Pasiva : Pasiva + Modal Akhir",df2.format(pasiva+modal+(pendapatan-biaya))}); 
             tabMode.addRow(data);         

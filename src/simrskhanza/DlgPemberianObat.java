@@ -69,6 +69,8 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private String now=dateFormat.format(date),bangsal="",tgl="",pas="",sql="",status="";
     private PreparedStatement ps;
     private ResultSet rs;
+    private double embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase");
+    private double tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
 
     /** Creates new form DlgPemberianObat
      * @param parent
@@ -1028,11 +1030,17 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
     private void TJumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TJumlahKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            TEmbalase.setText(Double.toString(embalase));
+            TTuslah.setText(Double.toString(tuslah));
             isjml();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            TEmbalase.setText(Double.toString(embalase));
+            TTuslah.setText(Double.toString(tuslah));
             isjml();
             TKdOb.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            TEmbalase.setText(Double.toString(embalase));
+            TTuslah.setText(Double.toString(tuslah));
             isjml();
             TEmbalase.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -1822,7 +1830,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
     }
     
-    private void isjml(){
+    private void isjml(){        
         if((!TBiayaObat.getText().equals(""))&&(!TEmbalase.getText().equals(""))&&(!TTuslah.getText().equals(""))&&(!TJumlah.getText().equals(""))){
             TTotal.setText(Double.toString((Double.parseDouble(TBiayaObat.getText())*Double.parseDouble(TJumlah.getText()))+Double.parseDouble(TEmbalase.getText())+Double.parseDouble(TTuslah.getText())));        
         }

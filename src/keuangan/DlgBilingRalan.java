@@ -91,7 +91,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                         "inner join kelurahan inner join kecamatan inner join kabupaten on pasien.kd_kel=kelurahan.kd_kel "+
                         "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
                         "where pasien.no_rkm_medis=?",
-            sqlpsrekening="select * from set_akun",
+            sqlpsrekening="select * from set_akun_ralan",
             sqlpsdokterralan="select dokter.nm_dokter from reg_periksa "+
                             "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
                             "where no_rawat=? group by reg_periksa.kd_dokter",
@@ -3608,12 +3608,12 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
              prosesCariReg();    
              if((chkLaborat.isSelected()==true)||(chkTarifDokter.isSelected()==true)||(chkTarifPrm.isSelected()==true)||(chkRadiologi.isSelected()==true)){
                  tabModeRwJlDr.addRow(new Object[]{true,"Tindakan",":","",null,null,null,null,"Ralan Dokter"});
-             }
+             }             
              if(chkTarifDokter.isSelected()==true){prosesCariRwJlDr();prosesCariRwJlDrPr();}
              if(chkTarifPrm.isSelected()==true){prosesCariRwJlPr();}
-             prosesCariOperasi();
              if(chkLaborat.isSelected()==true){prosesCariPeriksaLab();}
-             if(chkRadiologi.isSelected()==true){prosesCariRadiologi();}             
+             if(chkRadiologi.isSelected()==true){prosesCariRadiologi();}    
+             prosesCariOperasi();
              if(chkSarpras.isSelected()==true){
                 if(detailjs>0){
                    tabModeRwJlDr.addRow(new Object[]{true,"","Jasa Sarana dan Prasarana",":",null,null,null,detailjs,"Ralan Dokter"});

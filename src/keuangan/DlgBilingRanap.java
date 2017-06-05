@@ -716,7 +716,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                                            " detail_periksa_lab.no_rawat=? "+
                                            " and detail_periksa_lab.kd_jenis_prw=? ");                                                
             
-            psrekening=koneksi.prepareStatement("select * from set_akun");
+            psrekening=koneksi.prepareStatement("select * from set_akun_ranap");
             try {
                 rsrekening=psrekening.executeQuery();
                 if(rsrekening.next()){

@@ -7,7 +7,7 @@
     }
 
     function getUrlWS() {
-        $UrlWS = "http://25.18.49.7/E-Klaim/ws.php";
+        $UrlWS = "http://192.168.0.202/E-Klaim/ws.php";
         return $UrlWS;
     }
     
