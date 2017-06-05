@@ -75,7 +75,10 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Utang_Jasa_Medik_Dokter_Radiologi_Ranap, Beban_Jasa_Medik_Petugas_Radiologi_Ranap, 
             Utang_Jasa_Medik_Petugas_Radiologi_Ranap, Beban_Kso_Radiologi_Ranap, Utang_Kso_Radiologi_Ranap, 
             HPP_Persediaan_Radiologi_Rawat_Inap, Persediaan_BHP_Radiologi_Rawat_Inap,HPP_Obat_Rawat_Inap,
-            Persediaan_Obat_Rawat_Inap,Suspen_Piutang_Obat_Ranap;
+            Persediaan_Obat_Rawat_Inap,Suspen_Piutang_Obat_Ranap,Suspen_Piutang_Operasi_Ranap, 
+            Beban_Jasa_Medik_Dokter_Operasi_Ranap, Utang_Jasa_Medik_Dokter_Operasi_Ranap, 
+            Beban_Jasa_Medik_Paramedis_Operasi_Ranap, Utang_Jasa_Medik_Paramedis_Operasi_Ranap, 
+            HPP_Obat_Operasi_Ranap, Persediaan_Obat_Kamar_Operasi_Ranap;
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
 
     /** Creates new form DlgJadwal
@@ -325,34 +328,41 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         Retur_Obat_Ranap=tbPengaturan.getValueAt(72,1).toString();
         Resep_Pulang_Ranap=tbPengaturan.getValueAt(73,1).toString();
         Kamar_Inap=tbPengaturan.getValueAt(74,1).toString();
-        Operasi_Ranap=tbPengaturan.getValueAt(75,1).toString();
-        HPP_Obat_Rawat_Inap=tbPengaturan.getValueAt(76,1).toString();
-        Persediaan_Obat_Rawat_Inap=tbPengaturan.getValueAt(77,1).toString();
-        Harian_Ranap=tbPengaturan.getValueAt(78,1).toString();
-        Uang_Muka_Ranap=tbPengaturan.getValueAt(79,1).toString();
-        Piutang_Pasien_Ranap=tbPengaturan.getValueAt(80,1).toString();
-        Pengadaan_Obat=tbPengaturan.getValueAt(81,1).toString();
-        Pemesanan_Obat=tbPengaturan.getValueAt(82,1).toString();
-        Kontra_Pemesanan_Obat=tbPengaturan.getValueAt(83,1).toString();
-        Bayar_Pemesanan_Obat=tbPengaturan.getValueAt(84,1).toString();
-        Penjualan_Obat=tbPengaturan.getValueAt(85,1).toString();
-        Piutang_Obat=tbPengaturan.getValueAt(86,1).toString();
-        Kontra_Piutang_Obat=tbPengaturan.getValueAt(87,1).toString();
-        Retur_Ke_Suplayer=tbPengaturan.getValueAt(88,1).toString();
-        Kontra_Retur_Ke_Suplayer=tbPengaturan.getValueAt(89,1).toString();
-        Retur_Dari_pembeli=tbPengaturan.getValueAt(90,1).toString();
-        Kontra_Retur_Dari_Pembeli=tbPengaturan.getValueAt(91,1).toString();
-        Retur_Piutang_Obat=tbPengaturan.getValueAt(92,1).toString();
-        Kontra_Retur_Piutang_Obat=tbPengaturan.getValueAt(93,1).toString();
-        Pengadaan_Ipsrs=tbPengaturan.getValueAt(94,1).toString();
-        Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(95,1).toString();
-        Kontra_Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(96,1).toString();
-        Bayar_Piutang_Pasien=tbPengaturan.getValueAt(97,1).toString();
-        Pengambilan_Utd=tbPengaturan.getValueAt(98,1).toString();
-        Kontra_Pengambilan_Utd=tbPengaturan.getValueAt(99,1).toString();        
-        Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(100,1).toString();
-        Kontra_Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(101,1).toString();
-        Penyerahan_Darah=tbPengaturan.getValueAt(102,1).toString();
+        Suspen_Piutang_Operasi_Ranap=tbPengaturan.getValueAt(75,1).toString();
+        Operasi_Ranap=tbPengaturan.getValueAt(76,1).toString();
+        Beban_Jasa_Medik_Dokter_Operasi_Ranap=tbPengaturan.getValueAt(77,1).toString();
+        Utang_Jasa_Medik_Dokter_Operasi_Ranap=tbPengaturan.getValueAt(78,1).toString();
+        Beban_Jasa_Medik_Paramedis_Operasi_Ranap=tbPengaturan.getValueAt(79,1).toString();
+        Utang_Jasa_Medik_Paramedis_Operasi_Ranap=tbPengaturan.getValueAt(80,1).toString();
+        HPP_Obat_Operasi_Ranap=tbPengaturan.getValueAt(81,1).toString();
+        Persediaan_Obat_Kamar_Operasi_Ranap=tbPengaturan.getValueAt(82,1).toString();        
+        HPP_Obat_Rawat_Inap=tbPengaturan.getValueAt(83,1).toString();
+        Persediaan_Obat_Rawat_Inap=tbPengaturan.getValueAt(84,1).toString();
+        Harian_Ranap=tbPengaturan.getValueAt(85,1).toString();
+        Uang_Muka_Ranap=tbPengaturan.getValueAt(86,1).toString();
+        Piutang_Pasien_Ranap=tbPengaturan.getValueAt(87,1).toString();
+        Pengadaan_Obat=tbPengaturan.getValueAt(88,1).toString();
+        Pemesanan_Obat=tbPengaturan.getValueAt(89,1).toString();
+        Kontra_Pemesanan_Obat=tbPengaturan.getValueAt(90,1).toString();
+        Bayar_Pemesanan_Obat=tbPengaturan.getValueAt(91,1).toString();
+        Penjualan_Obat=tbPengaturan.getValueAt(92,1).toString();
+        Piutang_Obat=tbPengaturan.getValueAt(93,1).toString();
+        Kontra_Piutang_Obat=tbPengaturan.getValueAt(94,1).toString();
+        Retur_Ke_Suplayer=tbPengaturan.getValueAt(95,1).toString();
+        Kontra_Retur_Ke_Suplayer=tbPengaturan.getValueAt(96,1).toString();
+        Retur_Dari_pembeli=tbPengaturan.getValueAt(97,1).toString();
+        Kontra_Retur_Dari_Pembeli=tbPengaturan.getValueAt(98,1).toString();
+        Retur_Piutang_Obat=tbPengaturan.getValueAt(99,1).toString();
+        Kontra_Retur_Piutang_Obat=tbPengaturan.getValueAt(100,1).toString();
+        Pengadaan_Ipsrs=tbPengaturan.getValueAt(101,1).toString();
+        Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(102,1).toString();
+        Kontra_Stok_Keluar_Ipsrs=tbPengaturan.getValueAt(103,1).toString();
+        Bayar_Piutang_Pasien=tbPengaturan.getValueAt(104,1).toString();
+        Pengambilan_Utd=tbPengaturan.getValueAt(105,1).toString();
+        Kontra_Pengambilan_Utd=tbPengaturan.getValueAt(106,1).toString();        
+        Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(107,1).toString();
+        Kontra_Pengambilan_Penunjang_Utd=tbPengaturan.getValueAt(108,1).toString();
+        Penyerahan_Darah=tbPengaturan.getValueAt(109,1).toString();
         
         if(Tindakan_Ralan.equals("")||Laborat_Ralan.equals("")||Radiologi_Ralan.equals("")||Obat_Ralan.equals("")||
             Registrasi_Ralan.equals("")||Tambahan_Ralan.equals("")||Potongan_Ralan.equals("")||Tindakan_Ranap.equals("")||
@@ -391,7 +401,9 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Beban_Jasa_Medik_Petugas_Radiologi_Ranap.equals("")||Utang_Jasa_Medik_Petugas_Radiologi_Ranap.equals("")||
             Beban_Kso_Radiologi_Ranap.equals("")||Utang_Kso_Radiologi_Ranap.equals("")||HPP_Persediaan_Radiologi_Rawat_Inap.equals("")||
             Persediaan_BHP_Radiologi_Rawat_Inap.equals("")||HPP_Obat_Rawat_Inap.equals("")||Persediaan_Obat_Rawat_Inap.equals("")||
-            Suspen_Piutang_Obat_Ranap.equals("")){
+            Suspen_Piutang_Obat_Ranap.equals("")||Suspen_Piutang_Operasi_Ranap.equals("")||Beban_Jasa_Medik_Dokter_Operasi_Ranap.equals("")||
+            Utang_Jasa_Medik_Dokter_Operasi_Ranap.equals("")||Beban_Jasa_Medik_Paramedis_Operasi_Ranap.equals("")||
+            Utang_Jasa_Medik_Paramedis_Operasi_Ranap.equals("")||HPP_Obat_Operasi_Ranap.equals("")||Persediaan_Obat_Kamar_Operasi_Ranap.equals("")){
                 JOptionPane.showMessageDialog(null,"Silahkan lengkapi seluruh data Akun...!!!!");
                 tbPengaturan.requestFocus();
         }else{
@@ -415,7 +427,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Potongan_Ralan
             });
             Sequel.queryu("delete from set_akun_ranap");
-            Sequel.menyimpan("set_akun_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",43,new String[]{
+            Sequel.menyimpan("set_akun_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,"
+                    + "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",50,new String[]{
                 Suspen_Piutang_Tindakan_Ranap,Tindakan_Ranap, 
                 Beban_Jasa_Medik_Dokter_Tindakan_Ranap, Utang_Jasa_Medik_Dokter_Tindakan_Ranap, 
                 Beban_Jasa_Medik_Paramedis_Tindakan_Ranap, Utang_Jasa_Medik_Paramedis_Tindakan_Ranap, 
@@ -429,7 +442,10 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Beban_Kso_Radiologi_Ranap, Utang_Kso_Radiologi_Ranap, HPP_Persediaan_Radiologi_Rawat_Inap, 
                 Persediaan_BHP_Radiologi_Rawat_Inap,Suspen_Piutang_Obat_Ranap,Obat_Ranap,HPP_Obat_Rawat_Inap,Persediaan_Obat_Rawat_Inap,
                 Registrasi_Ranap,Service_Ranap,Tambahan_Ranap,Potongan_Ranap,Retur_Obat_Ranap,Resep_Pulang_Ranap,
-                Kamar_Inap,Operasi_Ranap,Harian_Ranap,Uang_Muka_Ranap,Piutang_Pasien_Ranap
+                Kamar_Inap,Suspen_Piutang_Operasi_Ranap,Operasi_Ranap, Beban_Jasa_Medik_Dokter_Operasi_Ranap, 
+                Utang_Jasa_Medik_Dokter_Operasi_Ranap, Beban_Jasa_Medik_Paramedis_Operasi_Ranap, 
+                Utang_Jasa_Medik_Paramedis_Operasi_Ranap, HPP_Obat_Operasi_Ranap, Persediaan_Obat_Kamar_Operasi_Ranap,
+                Harian_Ranap,Uang_Muka_Ranap,Piutang_Pasien_Ranap
             });
             Sequel.queryu("delete from set_akun");
             Sequel.menyimpan("set_akun","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",22,new String[]{
@@ -614,6 +630,13 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             HPP_Obat_Rawat_Inap="";
             Persediaan_Obat_Rawat_Inap="";
             Suspen_Piutang_Obat_Ranap="";
+            Suspen_Piutang_Operasi_Ranap="";
+            Beban_Jasa_Medik_Dokter_Operasi_Ranap="";
+            Utang_Jasa_Medik_Dokter_Operasi_Ranap="";
+            Beban_Jasa_Medik_Paramedis_Operasi_Ranap="";
+            Utang_Jasa_Medik_Paramedis_Operasi_Ranap="";
+            HPP_Obat_Operasi_Ranap="";
+            Persediaan_Obat_Kamar_Operasi_Ranap="";
             
             ps=koneksi.prepareStatement("select * from set_akun_ralan");
             try {
@@ -716,6 +739,13 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     HPP_Obat_Rawat_Inap=rs.getString("HPP_Obat_Rawat_Inap");
                     Persediaan_Obat_Rawat_Inap=rs.getString("Persediaan_Obat_Rawat_Inap");
                     Suspen_Piutang_Obat_Ranap=rs.getString("Suspen_Piutang_Obat_Ranap");
+                    Suspen_Piutang_Operasi_Ranap=rs.getString("Suspen_Piutang_Operasi_Ranap");
+                    Beban_Jasa_Medik_Dokter_Operasi_Ranap=rs.getString("Beban_Jasa_Medik_Dokter_Operasi_Ranap");
+                    Utang_Jasa_Medik_Dokter_Operasi_Ranap=rs.getString("Utang_Jasa_Medik_Dokter_Operasi_Ranap");
+                    Beban_Jasa_Medik_Paramedis_Operasi_Ranap=rs.getString("Beban_Jasa_Medik_Paramedis_Operasi_Ranap");
+                    Utang_Jasa_Medik_Paramedis_Operasi_Ranap=rs.getString("Utang_Jasa_Medik_Paramedis_Operasi_Ranap");
+                    HPP_Obat_Operasi_Ranap=rs.getString("HPP_Obat_Operasi_Ranap");
+                    Persediaan_Obat_Kamar_Operasi_Ranap=rs.getString("Persediaan_Obat_Kamar_Operasi_Ranap");
                 }            
             } catch (Exception e) {
                 System.out.println(e);
@@ -1153,10 +1183,45 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Kamar_Inap),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Kamar_Inap)
             });
-            tabMode.addRow(new Object[]{" [Kredit] Akun Pendapatan Operasi pada menu Billing Rawat Inap",Operasi_Ranap,
+            tabMode.addRow(new Object[]{" [Debet] Akun Suspen Piutang Operasi Ranap",Suspen_Piutang_Operasi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Suspen_Piutang_Operasi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Suspen_Piutang_Operasi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Suspen_Piutang_Operasi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Pendapatan Operasi Rawat Inap",Operasi_Ranap,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Operasi_Ranap),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Operasi_Ranap),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Operasi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Medik Dokter Operasi Ranap",Beban_Jasa_Medik_Dokter_Operasi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Medik_Dokter_Operasi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Medik_Dokter_Operasi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Medik_Dokter_Operasi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Medik Dokter Operasi Ranap",Utang_Jasa_Medik_Dokter_Operasi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Medik_Dokter_Operasi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Medik_Dokter_Operasi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Medik_Dokter_Operasi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun Beban Jasa Medik Paramedis Operasi Ranap",Beban_Jasa_Medik_Paramedis_Operasi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Beban_Jasa_Medik_Paramedis_Operasi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Beban_Jasa_Medik_Paramedis_Operasi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Beban_Jasa_Medik_Paramedis_Operasi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Utang Jasa Medik Paramedis Operasi Ranap",Utang_Jasa_Medik_Paramedis_Operasi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Utang_Jasa_Medik_Paramedis_Operasi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Utang_Jasa_Medik_Paramedis_Operasi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Utang_Jasa_Medik_Paramedis_Operasi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Akun HPP Obat Operasi Ranap",HPP_Obat_Operasi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",HPP_Obat_Operasi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",HPP_Obat_Operasi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",HPP_Obat_Operasi_Ranap)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Persediaan Obat Kamar Operasi Ranap",Persediaan_Obat_Kamar_Operasi_Ranap,
+                Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Persediaan_Obat_Kamar_Operasi_Ranap),
+                Sequel.cariIsi("select tipe from rekening where kd_rek=?",Persediaan_Obat_Kamar_Operasi_Ranap),
+                Sequel.cariIsi("select balance from rekening where kd_rek=?",Persediaan_Obat_Kamar_Operasi_Ranap)
             });
             tabMode.addRow(new Object[]{" [Kredit] Akun Pendapatan Harian Ranap pada menu Billing Rawat Inap",Harian_Ranap,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Harian_Ranap),
