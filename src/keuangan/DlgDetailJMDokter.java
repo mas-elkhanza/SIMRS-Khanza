@@ -1954,7 +1954,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             pasien=rskamar.getString("nm_pasien");
                                         }else{
                                             psanak=koneksi.prepareStatement(
-                                                "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,pasien.umur,pasien.no_peserta, "+
+                                                "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "+
                                                 "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                                                 "from reg_periksa inner join pasien inner join ranap_gabung on "+
                                                 "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat2=?");                        
@@ -2098,7 +2098,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             pasien=rskamar.getString("nm_pasien");
                                         }else{
                                             psanak=koneksi.prepareStatement(
-                                                "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,pasien.umur,pasien.no_peserta, "+
+                                                "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "+
                                                 "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                                                 "from reg_periksa inner join pasien inner join ranap_gabung on "+
                                                 "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat2=?");                        

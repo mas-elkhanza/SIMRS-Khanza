@@ -595,7 +595,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 while(rs.next()){
                     hr0s7=0;hr8s28=0;kr1th=0;th1s4=0;th5s9=0;th10s14=0;th15s19=0;th20s44=0;th45s54=0;th55s59=0;th60s69=0;th70plus=0;laki=0;per=0;jml=0;ttl=0;meninggal=0;
                     
-                    ps2=koneksi.prepareStatement("select pasien.umur,pasien.jk,pasien.no_rkm_medis from pasien inner join reg_periksa inner join diagnosa_pasien "+
+                    ps2=koneksi.prepareStatement("select concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.jk,pasien.no_rkm_medis from pasien inner join reg_periksa inner join diagnosa_pasien "+
                                 "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=diagnosa_pasien.no_rawat where "+
                                 "diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and reg_periksa.tgl_registrasi between ? and ? and diagnosa_pasien.kd_penyakit=? "+
                                 "group by diagnosa_pasien.no_rawat");
@@ -701,7 +701,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 while(rs.next()){
                     hr0s7=0;hr8s28=0;kr1th=0;th1s4=0;th5s9=0;th10s14=0;th15s19=0;th20s44=0;th45s54=0;th55s59=0;th60s69=0;th70plus=0;laki=0;per=0;jml=0;ttl=0;meninggal=0;
                     
-                    ps4=koneksi.prepareStatement("select pasien.umur,pasien.jk,pasien.no_rkm_medis from pasien inner join reg_periksa inner join diagnosa_pasien "+
+                    ps4=koneksi.prepareStatement("select concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.jk,pasien.no_rkm_medis from pasien inner join reg_periksa inner join diagnosa_pasien "+
                                 "inner join kamar_inap on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=diagnosa_pasien.no_rawat and kamar_inap.no_rawat=reg_periksa.no_rawat where "+
                                 "diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and kamar_inap.tgl_keluar between ? and ? and diagnosa_pasien.kd_penyakit=? "+
                                 "group by diagnosa_pasien.no_rawat");

@@ -40,6 +40,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import java.sql.PreparedStatement;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.event.DocumentEvent;
@@ -143,7 +147,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }else if(z==14){
                 column.setPreferredWidth(80);
             }else if(z==15){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(90);
             }else if(z==16){
                 column.setPreferredWidth(80);
             }else if(z==17){
@@ -175,7 +179,7 @@ public class DlgPasien extends javax.swing.JDialog {
         AlamatPj.setDocument(new batasInput((int)100).getFilter(AlamatPj));
         Pekerjaan.setDocument(new batasInput((byte)15).getKata(Pekerjaan));
         PekerjaanPj.setDocument(new batasInput((byte)15).getKata(PekerjaanPj));
-        TUmur.setDocument(new batasInput((byte)5).getOnlyAngka(TUmur));
+        TUmurTh.setDocument(new batasInput((byte)5).getOnlyAngka(TUmurTh));
         Saudara.setDocument(new batasInput((byte)50).getKata(Saudara));
         Kabupaten.setDocument(new batasInput((byte)60).getFilter(Kabupaten));
         Kecamatan.setDocument(new batasInput((byte)60).getFilter(Kecamatan));
@@ -550,7 +554,6 @@ public class DlgPasien extends javax.swing.JDialog {
         DTPDaftar = new widget.Tanggal();
         jLabel22 = new widget.Label();
         jLabel17 = new widget.Label();
-        TUmur = new widget.TextBox();
         jLabel23 = new widget.Label();
         CMbPnd = new widget.ComboBox();
         Saudara = new widget.TextBox();
@@ -569,9 +572,7 @@ public class DlgPasien extends javax.swing.JDialog {
         BtnKelurahan = new widget.Button();
         BtnKecamatan = new widget.Button();
         BtnKabupaten = new widget.Button();
-        ChkLahir = new widget.CekBox();
         ChkDaftar = new widget.CekBox();
-        CmbUmur = new widget.ComboBox();
         jLabel14 = new widget.Label();
         NmIbu = new widget.TextBox();
         jLabel16 = new widget.Label();
@@ -591,6 +592,12 @@ public class DlgPasien extends javax.swing.JDialog {
         ChkRM = new widget.CekBox();
         R6 = new widget.RadioButton();
         BtnKelurahan1 = new widget.Button();
+        TUmurTh = new widget.TextBox();
+        jLabel31 = new widget.Label();
+        TUmurBl = new widget.TextBox();
+        jLabel29 = new widget.Label();
+        TUmurHr = new widget.TextBox();
+        jLabel30 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -1715,7 +1722,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTmp);
-        TTmp.setBounds(102, 102, 160, 23);
+        TTmp.setBounds(102, 102, 188, 23);
 
         CmbJk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "LAKI-LAKI", "PEREMPUAN" }));
         CmbJk.setName("CmbJk"); // NOI18N
@@ -1766,7 +1773,7 @@ public class DlgPasien extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2017" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-06-2017" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1781,7 +1788,7 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(DTPLahir);
-        DTPLahir.setBounds(265, 102, 100, 23);
+        DTPLahir.setBounds(292, 102, 100, 23);
 
         jLabel18.setText("Agama :");
         jLabel18.setName("jLabel18"); // NOI18N
@@ -1904,7 +1911,7 @@ public class DlgPasien extends javax.swing.JDialog {
 
         DTPDaftar.setEditable(false);
         DTPDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2017" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-06-2017" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -1925,15 +1932,6 @@ public class DlgPasien extends javax.swing.JDialog {
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
         jLabel17.setBounds(4, 132, 95, 23);
-
-        TUmur.setName("TUmur"); // NOI18N
-        TUmur.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TUmurKeyPressed(evt);
-            }
-        });
-        FormInput.add(TUmur);
-        TUmur.setBounds(102, 132, 55, 23);
 
         jLabel23.setText("Pendidikan :");
         jLabel23.setName("jLabel23"); // NOI18N
@@ -2135,22 +2133,6 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(BtnKabupaten);
         BtnKabupaten.setBounds(796, 192, 28, 23);
 
-        ChkLahir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(175, 180, 170)));
-        ChkLahir.setForeground(new java.awt.Color(153, 0, 51));
-        ChkLahir.setBorderPainted(true);
-        ChkLahir.setBorderPaintedFlat(true);
-        ChkLahir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        ChkLahir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ChkLahir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ChkLahir.setName("ChkLahir"); // NOI18N
-        ChkLahir.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ChkLahirItemStateChanged(evt);
-            }
-        });
-        FormInput.add(ChkLahir);
-        ChkLahir.setBounds(368, 102, 23, 23);
-
         ChkDaftar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(175, 180, 170)));
         ChkDaftar.setForeground(new java.awt.Color(153, 0, 51));
         ChkDaftar.setBorderPainted(true);
@@ -2166,17 +2148,6 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         FormInput.add(ChkDaftar);
         ChkDaftar.setBounds(850, 102, 23, 23);
-
-        CmbUmur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Hr", "Bl", "Th" }));
-        CmbUmur.setName("CmbUmur"); // NOI18N
-        CmbUmur.setOpaque(false);
-        CmbUmur.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                CmbUmurKeyPressed(evt);
-            }
-        });
-        FormInput.add(CmbUmur);
-        CmbUmur.setBounds(159, 132, 47, 23);
 
         jLabel14.setText("Nama Ibu :");
         jLabel14.setName("jLabel14"); // NOI18N
@@ -2394,6 +2365,48 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(BtnKelurahan1);
         BtnKelurahan1.setBounds(845, 132, 28, 23);
 
+        TUmurTh.setName("TUmurTh"); // NOI18N
+        TUmurTh.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TUmurThKeyPressed(evt);
+            }
+        });
+        FormInput.add(TUmurTh);
+        TUmurTh.setBounds(102, 132, 35, 23);
+
+        jLabel31.setText("Th");
+        jLabel31.setName("jLabel31"); // NOI18N
+        FormInput.add(jLabel31);
+        jLabel31.setBounds(131, 132, 20, 23);
+
+        TUmurBl.setName("TUmurBl"); // NOI18N
+        TUmurBl.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TUmurBlKeyPressed(evt);
+            }
+        });
+        FormInput.add(TUmurBl);
+        TUmurBl.setBounds(153, 132, 35, 23);
+
+        jLabel29.setText("Bl");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(178, 132, 20, 23);
+
+        TUmurHr.setName("TUmurHr"); // NOI18N
+        TUmurHr.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TUmurHrKeyPressed(evt);
+            }
+        });
+        FormInput.add(TUmurHr);
+        TUmurHr.setBounds(200, 132, 35, 23);
+
+        jLabel30.setText("Hr");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(229, 132, 20, 23);
+
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
@@ -2451,8 +2464,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Valid.textKosong(Pekerjaan,"Pekerjaan Pasien minimal "+p_pekerjaan+" karakter dan ");            
         }else if(no_tlp.equals("Yes")&&(TTlp.getText().trim().length()<p_no_tlp)){
             Valid.textKosong(TTlp,"Telp Pasien minimal "+p_no_tlp+" karakter dan ");            
-        }else if(umur.equals("Yes")&&(TUmur.getText().trim().length()<p_umur)){
-            Valid.textKosong(TUmur,"Umur Pasien minimal "+p_umur+" karakter dan ");            
+        }else if(umur.equals("Yes")&&(TUmurTh.getText().trim().length()<p_umur)){
+            Valid.textKosong(TUmurTh,"Umur Pasien minimal "+p_umur+" karakter dan ");            
         }else if(namakeluarga.equals("Yes")&&(Saudara.getText().trim().length()<p_namakeluarga)){
             Valid.textKosong(Saudara,"Penanggung Jawab Pasien minimal "+p_namakeluarga+" karakter dan ");            
         }else if(no_peserta.equals("Yes")&&(TNoPeserta.getText().trim().length()<p_no_peserta)){
@@ -2498,7 +2511,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),NmIbu.getText(),
                     Alamat.getText().replaceAll("ALAMAT",""),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
                     DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),
-                    TTlp.getText(),TUmur.getText()+" "+CmbUmur.getSelectedItem(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
+                    TTlp.getText(),TUmurTh.getText()+" Th",CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
                     Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText().replaceAll("KELURAHAN","-")),
                     Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText().replaceAll("KECAMATAN","-")),
                     Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText().replaceAll("KABUPATEN","-")),
@@ -2520,7 +2533,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         Valid.SetTgl(DTPLahir.getSelectedItem()+""),NmIbu.getText(),
                         Alamat.getText().replaceAll("ALAMAT",""),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
                         DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),
-                        TTlp.getText(),TUmur.getText()+" "+CmbUmur.getSelectedItem(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
+                        TTlp.getText(),TUmurTh.getText()+" Th",CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
                         Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText().replaceAll("KELURAHAN","-")),
                         Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText().replaceAll("KECAMATAN","-")),
                         Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText().replaceAll("KABUPATEN","-")),
@@ -2542,7 +2555,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             Valid.SetTgl(DTPLahir.getSelectedItem()+""),NmIbu.getText(),
                             Alamat.getText().replaceAll("ALAMAT",""),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
                             DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),
-                            TTlp.getText(),TUmur.getText()+" "+CmbUmur.getSelectedItem(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
+                            TTlp.getText(),TUmurTh.getText()+" Th",CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
                             Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText().replaceAll("KELURAHAN","-")),
                             Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText().replaceAll("KECAMATAN","-")),
                             Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText().replaceAll("KABUPATEN","-")),
@@ -2564,7 +2577,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 Valid.SetTgl(DTPLahir.getSelectedItem()+""),NmIbu.getText(),
                                 Alamat.getText().replaceAll("ALAMAT",""),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
                                 DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),
-                                TTlp.getText(),TUmur.getText()+" "+CmbUmur.getSelectedItem(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
+                                TTlp.getText(),TUmurTh.getText()+" Th",CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
                                 Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText().replaceAll("KELURAHAN","-")),
                                 Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText().replaceAll("KECAMATAN","-")),
                                 Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText().replaceAll("KABUPATEN","-")),
@@ -2586,7 +2599,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),NmIbu.getText(),
                                     Alamat.getText().replaceAll("ALAMAT",""),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
                                     DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),
-                                    TTlp.getText(),TUmur.getText()+" "+CmbUmur.getSelectedItem(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
+                                    TTlp.getText(),TUmurTh.getText()+" Th",CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
                                     Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText().replaceAll("KELURAHAN","-")),
                                     Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText().replaceAll("KECAMATAN","-")),
                                     Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText().replaceAll("KABUPATEN","-")),
@@ -2676,8 +2689,8 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(Pekerjaan,"Pekerjaan Pasien minimal "+p_pekerjaan+" karakter dan ");            
         }else if(no_tlp.equals("Yes")&&(TTlp.getText().trim().length()<p_no_tlp)){
             Valid.textKosong(TTlp,"Telp Pasien minimal "+p_no_tlp+" karakter dan ");            
-        }else if(umur.equals("Yes")&&(TUmur.getText().trim().length()<p_umur)){
-            Valid.textKosong(TUmur,"Umur Pasien minimal "+p_umur+" karakter dan ");            
+        }else if(umur.equals("Yes")&&(TUmurTh.getText().trim().length()<p_umur)){
+            Valid.textKosong(TUmurTh,"Umur Pasien minimal "+p_umur+" karakter dan ");            
         }else if(namakeluarga.equals("Yes")&&(Saudara.getText().trim().length()<p_namakeluarga)){
             Valid.textKosong(Saudara,"Penanggung Jawab Pasien minimal "+p_namakeluarga+" karakter dan ");            
         }else if(no_peserta.equals("Yes")&&(TNoPeserta.getText().trim().length()<p_no_peserta)){
@@ -2725,7 +2738,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             Valid.SetTgl(DTPLahir.getSelectedItem()+""),
                             Alamat.getText(),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
                             DTPDaftar.getSelectedItem().toString().substring(6,10)+"-"+DTPDaftar.getSelectedItem().toString().substring(3,5)+"-"+DTPDaftar.getSelectedItem().toString().substring(0,2),
-                            TTlp.getText(),TUmur.getText()+" "+CmbUmur.getSelectedItem(),CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
+                            TTlp.getText(),TUmurTh.getText()+" Th",CMbPnd.getSelectedItem().toString(),klg,Saudara.getText(),Kdpnj.getText(),TNoPeserta.getText(),
                             Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?",Kelurahan.getText()),
                             Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?",Kecamatan.getText()),
                             Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",Kabupaten.getText()), 
@@ -2764,7 +2777,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(!cmbHlm.getSelectedItem().toString().equals("Semua")){
                 Valid.MyReport("rptPasien.jrxml","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                         "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                        "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                        "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                         "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta from pasien "+
                         "inner join kelurahan inner join kecamatan inner join kabupaten "+
                         "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
@@ -2787,7 +2800,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }else{
                 Valid.MyReport("rptPasien.jrxml","report","::[ Data Pasien Umum ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                         "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                        "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                        "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                         "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta from pasien "+
                         "inner join kelurahan inner join kecamatan inner join kabupaten "+
                         "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
@@ -2907,22 +2920,6 @@ private void CMbGdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CMb
    Valid.pindah(evt,CmbJk,TTmp);
 }//GEN-LAST:event_CMbGdKeyPressed
 
-private void DTPLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPLahirKeyPressed
-    if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        try {
-            Sequel.cariIsi("select DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT('"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+
-                "', '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT('"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+
-                "', '00-%m-%d')) AS age", TUmur);
-            CmbUmur.setSelectedItem("Th");
-        } catch (Exception e) {
-            TUmur.setText("0");
-        }  
-        TUmur.requestFocus();
-    }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-        TTmp.requestFocus();
-    }
-}//GEN-LAST:event_DTPLahirKeyPressed
-
 private void cmbAgamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbAgamaKeyPressed
     Valid.pindah(evt,PekerjaanPj,CmbStts);
 }//GEN-LAST:event_cmbAgamaKeyPressed
@@ -2984,24 +2981,11 @@ private void DTPDaftarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
    Valid.pindah2(evt,Pekerjaan,BtnSimpan);
 }//GEN-LAST:event_DTPDaftarKeyPressed
 
-private void TUmurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TUmurKeyPressed
-   if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-       CmbUmur.requestFocus();
-       try {
-           Valid.SetTgl(DTPLahir,Sequel.cariIsi("select DATE_SUB('"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"', interval "+TUmur.getText()+" year)"));
-       } catch (Exception e) {
-           System.out.println(e);
-       }
-   }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            DTPLahir.requestFocus();
-   }
-}//GEN-LAST:event_TUmurKeyPressed
-
 private void CMbPndKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CMbPndKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_ENTER){
        NmIbu.requestFocus();
    }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            CmbUmur.requestFocus();
+       TUmurTh.requestFocus();
    }
 }//GEN-LAST:event_CMbPndKeyPressed
 
@@ -3026,7 +3010,7 @@ private void MnBarcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptKartuPasien.jrxml","report","::[ Kartu Periksa Pasien(Umum) ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab  from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
@@ -3068,7 +3052,7 @@ private void MnKartuStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptKartuPasien.jrxml","report","::[ Kartu Periksa Pasien(Umum) ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
             this.setCursor(Cursor.getDefaultCursor());
@@ -3076,7 +3060,15 @@ private void MnKartuStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 }//GEN-LAST:event_MnKartuStatusActionPerformed
 
 private void DTPLahirItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPLahirItemStateChanged
-      
+    Date lahir = DTPLahir.getDate();
+            Date kini = new Date();
+            LocalDate today =LocalDate.now();
+            LocalDate birthday = lahir.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Period p = Period.between(birthday,today);
+            long p2 =ChronoUnit.DAYS.between(birthday,today);
+            TUmurTh.setText(String.valueOf(p.getYears()));
+            TUmurBl.setText(String.valueOf(p.getMonths()));
+            TUmurHr.setText(String.valueOf(p.getDays()));
 }//GEN-LAST:event_DTPLahirItemStateChanged
 
 private void KdpnjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdpnjKeyPressed
@@ -3109,7 +3101,7 @@ private void MnKartu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Valid.MyReport("rptKartuBerobat.jrxml","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel "+
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
@@ -3142,7 +3134,7 @@ private void MnLaporanRMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptRM2.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -3161,7 +3153,7 @@ private void MnLaporanIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else{
             Valid.MyReport("rptKartuIgd.jrxml","report","::[ Laporan Rekam Medik ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel "+
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
@@ -3179,7 +3171,7 @@ private void ppKelahiranBayiActionPerformed(java.awt.event.ActionEvent evt) {//G
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             DlgIKBBayi resume=new DlgIKBBayi(null,false);
             resume.setNoRM(TNo.getText(),TNm.getText(),Saudara.getText(),Alamat.getText(),CmbJk.getSelectedItem().toString(),
-                    TUmur.getText(),DTPLahir.getDate(),DTPDaftar.getDate());
+                    TUmurTh.getText(),DTPLahir.getDate(),DTPDaftar.getDate());
             resume.tampil();
             resume.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             resume.setLocationRelativeTo(internalFrame1);
@@ -3207,7 +3199,7 @@ private void MnLembarKeluarMasukActionPerformed(java.awt.event.ActionEvent evt) 
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptLembarKeluarMasuk.jrxml","report","::[ Ringkasan Masuk Keluar ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -3227,7 +3219,7 @@ private void MnLembarAnamNesaActionPerformed(java.awt.event.ActionEvent evt) {//
         }else{
             Valid.MyReport("rptLembarAnamnesi.jrxml","report","::[ Lembar Anamnesa ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel "+
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
@@ -3244,7 +3236,7 @@ private void MnLembarGrafikActionPerformed(java.awt.event.ActionEvent evt) {//GE
         }else{
             Valid.MyReport("rptLembarGrafik.jrxml","report","::[ Lembar Grafik ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel "+
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
@@ -3261,7 +3253,7 @@ private void MnLembarCatatanPerkembanganActionPerformed(java.awt.event.ActionEve
         }else{
             Valid.MyReport("rptLembarPerkembangan.jrxml","report","::[ Lembar Catatan Perkembangan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel "+
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
@@ -3278,7 +3270,7 @@ private void MnLembarCatatanKeperawatanActionPerformed(java.awt.event.ActionEven
         }else{
             Valid.MyReport("rptLembarPerkembangan.jrxml","report","::[ Lembar Catatan Keperawatan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel "+
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
@@ -3295,7 +3287,7 @@ private void MnLaporanAnestesiaActionPerformed(java.awt.event.ActionEvent evt) {
         }else{
             Valid.MyReport("rptLaporanAnestesia.jrxml","report","::[ Lembar Catatan Keperawatan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel "+
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
@@ -3325,7 +3317,7 @@ private void MnKartu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Valid.MyReport("rptKartuBerobat2.jrxml","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel "+
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
@@ -3650,15 +3642,6 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }
 }//GEN-LAST:event_KabupatenMouseMoved
 
-    private void ChkLahirItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkLahirItemStateChanged
-        if(ChkLahir.isSelected()==true){
-            DTPLahir.setEditable(true);
-        }else if(ChkLahir.isSelected()==false){
-            DTPLahir.setEditable(false);            
-        }
-        DTPLahir.requestFocus();
-    }//GEN-LAST:event_ChkLahirItemStateChanged
-
     private void ChkDaftarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkDaftarItemStateChanged
         if(ChkDaftar.isSelected()==true){
             DTPDaftar.setEditable(true);
@@ -3687,7 +3670,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptRM1.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -3700,10 +3683,6 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
     }//GEN-LAST:event_formWindowOpened
-
-    private void CmbUmurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbUmurKeyPressed
-        Valid.pindah(evt,TUmur,CMbPnd);
-    }//GEN-LAST:event_CmbUmurKeyPressed
 
     private void NmIbuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmIbuKeyPressed
         Valid.pindah(evt,CMbPnd,Saudara);
@@ -3734,7 +3713,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptRM3.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
@@ -3924,7 +3903,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptBarcodeRM.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -3953,7 +3932,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptBarcodeRM2.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4021,7 +4000,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptBarcodeRM3.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4050,7 +4029,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptBarcodeRM9.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4093,7 +4072,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptBarcodeRM11.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4122,7 +4101,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptBarcodeRM12.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4151,7 +4130,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptBarcodeRM13.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4168,8 +4147,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         CmbJk.setSelectedItem(cekViaBPJS.jk);
         TNoPeserta.setText(cekViaBPJS.nokartu);
         Pekerjaan.setText(cekViaBPJS.pekerjaan);
-        TUmur.setText(cekViaBPJS.umur);
-        CmbUmur.setSelectedItem("Th");
+        TUmurTh.setText(cekViaBPJS.umur);
         Valid.SetTgl(DTPLahir,cekViaBPJS.tgl_lahir);
         jPopupMenu2.setVisible(false);
         this.setCursor(Cursor.getDefaultCursor());
@@ -4182,8 +4160,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         CmbJk.setSelectedItem(cekViaBPJSKartu.jk);
         TKtp.setText(cekViaBPJSKartu.nik);
         Pekerjaan.setText(cekViaBPJSKartu.pekerjaan);
-        TUmur.setText(cekViaBPJSKartu.umur);
-        CmbUmur.setSelectedItem("Th");
+        TUmurTh.setText(cekViaBPJSKartu.umur);
         Valid.SetTgl(DTPLahir,cekViaBPJSKartu.tgl_lahir);
         jPopupMenu2.setVisible(false);
         this.setCursor(Cursor.getDefaultCursor());
@@ -4218,7 +4195,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptRM4.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4266,7 +4243,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptRM5.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj,pasien.no_peserta from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4295,7 +4272,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptRM6.jrxml","report","::[ Lembar Rawat Jalan ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4324,7 +4301,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptRM7.jrxml","report","::[ Formulir Pendaftaran ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4353,7 +4330,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptRM8.jrxml","report","::[ Screening Awal ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4382,7 +4359,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptRM9.jrxml","report","::[ Copy Resep ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4403,7 +4380,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Valid.MyReport("rptKartuBerobat6.jrxml","report","::[ Kartu Periksa Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
                    "on pasien.kd_kel=kelurahan.kd_kel "+
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+TNo.getText()+"' ");
@@ -4430,7 +4407,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptLembarKeluarMasuk2.jrxml","report","::[ Ringkasan Masuk Keluar ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4459,7 +4436,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptRM10.jrxml","report","::[ Identitas Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4488,7 +4465,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptBarcodeRM15.jrxml","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, DATE_FORMAT(pasien.tgl_lahir,'%d/%m/%Y') as tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4497,6 +4474,35 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_MnBarcodeRM7ActionPerformed
+
+    private void TUmurThKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TUmurThKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TUmurThKeyPressed
+
+    private void TUmurBlKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TUmurBlKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TUmurBlKeyPressed
+
+    private void TUmurHrKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TUmurHrKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            //       CmbUmur.requestFocus();
+            try {
+                Valid.SetTgl(DTPLahir,Sequel.cariIsi("select DATE_SUB('"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"', interval "+TUmurTh.getText()+" year)"));
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            DTPLahir.requestFocus();
+        }
+    }//GEN-LAST:event_TUmurHrKeyPressed
+
+    private void DTPLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPLahirKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){            
+             TUmurTh.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+             TTmp.requestFocus();
+        }
+    }//GEN-LAST:event_DTPLahirKeyPressed
 
     /**
      * @data args the command line arguments
@@ -4570,11 +4576,9 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.TextBox Carialamat;
     private widget.CekBox ChkDaftar;
     private widget.CekBox ChkInput;
-    private widget.CekBox ChkLahir;
     private widget.CekBox ChkRM;
     private widget.ComboBox CmbJk;
     private widget.ComboBox CmbStts;
-    private widget.ComboBox CmbUmur;
     private widget.Tanggal DTPDaftar;
     private widget.Tanggal DTPLahir;
     private javax.swing.JDialog DlgDemografi;
@@ -4650,7 +4654,9 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.TextBox TNoPeserta;
     private widget.TextBox TTlp;
     private widget.TextBox TTmp;
-    private widget.TextBox TUmur;
+    private widget.TextBox TUmurBl;
+    private widget.TextBox TUmurHr;
+    private widget.TextBox TUmurTh;
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.ComboBox cmbAgama;
     private widget.ComboBox cmbHlm;
@@ -4675,7 +4681,10 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.Label jLabel26;
     private widget.Label jLabel27;
     private widget.Label jLabel28;
+    private widget.Label jLabel29;
     private widget.Label jLabel3;
+    private widget.Label jLabel30;
+    private widget.Label jLabel31;
     private widget.Label jLabel33;
     private widget.Label jLabel34;
     private widget.Label jLabel35;
@@ -4709,7 +4718,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         try{
             ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4732,7 +4741,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) like ?  and pasien.no_tlp like ?  order by pasien.no_rkm_medis desc LIMIT ? ");           
             ps2=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4882,7 +4891,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         Pekerjaan.setText("");
         PekerjaanPj.setText("");
         TTlp.setText("");
-        TUmur.setText("");
+        TUmurTh.setText("");
         Saudara.setText("");     
         NmIbu.setText("");
         Kelurahan.setText("KELURAHAN");      
@@ -4961,14 +4970,6 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 nmpnj.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),19).toString());
                 TNoPeserta.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),20).toString());
                 NmIbu.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),7).toString());
-                TUmur.setText(tbPasien.getValueAt(tbPasien.getSelectedRow(),15).toString());
-                if(tbPasien.getValueAt(tbPasien.getSelectedRow(),15).toString().contains("Th")){
-                    CmbUmur.setSelectedItem("Th");
-                }else if(tbPasien.getValueAt(tbPasien.getSelectedRow(),15).toString().contains("Bl")){
-                    CmbUmur.setSelectedItem("Bl");
-                }else if(tbPasien.getValueAt(tbPasien.getSelectedRow(),15).toString().contains("Hr")){
-                    CmbUmur.setSelectedItem("Hr");
-                }
                 CMbPnd.setSelectedItem(tbPasien.getValueAt(tbPasien.getSelectedRow(),16).toString());
                 switch (tbPasien.getValueAt(tbPasien.getSelectedRow(),17).toString()) {
                     case "AYAH":
@@ -5031,7 +5032,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         try{
             ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaan,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -5054,7 +5055,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 "or  concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) like ?  and pasien.no_tlp like ?  order by pasien.no_rkm_medis desc LIMIT ? ");           
             ps2=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaan,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+

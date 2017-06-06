@@ -603,7 +603,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode);   
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.alamat,pasien.jk,pasien.umur,pasien.tgl_daftar,"+
+                    "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.alamat,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.tgl_daftar,"+
                     "kamar_inap.kd_kamar,bangsal.nm_bangsal,reg_periksa.almt_pj "+
                     "from reg_periksa inner join pasien inner join kamar_inap inner join kamar inner join bangsal " +
                     "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
@@ -706,7 +706,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode2);   
             ps3=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.alamat,pasien.jk,pasien.umur,pasien.tgl_daftar,"+
+                    "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.alamat,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.tgl_daftar,"+
                     "kamar_inap.kd_kamar,bangsal.nm_bangsal,reg_periksa.almt_pj "+
                     "from reg_periksa inner join pasien inner join kamar_inap inner join kamar inner join bangsal " +
                     "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+

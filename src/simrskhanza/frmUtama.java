@@ -7969,7 +7969,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private void btnMutasiBerkasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMutasiBerkasActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        Hybrid.setJudul("::[ Mutasi Berkas Rekam Medis ]::","mmonitoringberkas/pages");
+        Hybrid.setJudul("::[ Mutasi Berkas Rekam Medis ]::","monitoringberkas/pages");
         try {
             Hybrid.loadURL("http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"monitoringberkas/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {

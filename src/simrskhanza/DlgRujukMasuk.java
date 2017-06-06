@@ -161,7 +161,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         try{
             pstampil=koneksi.prepareStatement(
                     "select rujuk_masuk.perujuk,rujuk_masuk.alamat,rujuk_masuk.no_rujuk,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,"+
-                    "pasien.nm_pasien,reg_periksa.almt_pj,pasien.umur,reg_periksa.tgl_registrasi,rujuk_masuk.jm_perujuk "+
+                    "pasien.nm_pasien,reg_periksa.almt_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.tgl_registrasi,rujuk_masuk.jm_perujuk "+
                     "from reg_periksa inner join pasien inner join rujuk_masuk "+
                     "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=rujuk_masuk.no_rawat where "+
                     "reg_periksa.tgl_registrasi between ? and ? and rujuk_masuk.perujuk like ? or "+
@@ -1149,7 +1149,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             Valid.MyReport("rptBalasanRujukan.jrxml","report","::[ Surat Balasan ]::",
                     "select rujuk_masuk.perujuk,rujuk_masuk.no_rujuk,reg_periksa.no_rawat,pasien.alamat,dokter.nm_dokter, "+
                     "reg_periksa.no_rkm_medis,pasien.jk,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,pasien.nm_pasien,"+
-                    "reg_periksa.almt_pj,pasien.umur,reg_periksa.tgl_registrasi,rujuk_masuk.jm_perujuk from reg_periksa "+
+                    "reg_periksa.almt_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.tgl_registrasi,rujuk_masuk.jm_perujuk from reg_periksa "+
                     "inner join pasien inner join rujuk_masuk inner join dokter  on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "and reg_periksa.no_rawat=rujuk_masuk.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+TNoRw.getText()+"'",param);            
         }
@@ -1231,7 +1231,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             Valid.MyReport("rptBalasanRujukan2.jrxml","report","::[ Surat Balasan ]::",
                     "select rujuk_masuk.perujuk,rujuk_masuk.no_rujuk,reg_periksa.no_rawat,pasien.alamat,dokter.nm_dokter, "+
                     "reg_periksa.no_rkm_medis,pasien.jk,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,pasien.nm_pasien,"+
-                    "reg_periksa.almt_pj,pasien.umur,reg_periksa.tgl_registrasi,rujuk_masuk.jm_perujuk from reg_periksa "+
+                    "reg_periksa.almt_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.tgl_registrasi,rujuk_masuk.jm_perujuk from reg_periksa "+
                     "inner join pasien inner join rujuk_masuk inner join dokter  on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "and reg_periksa.no_rawat=rujuk_masuk.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='"+TNoRw.getText()+"'",param);            
         }

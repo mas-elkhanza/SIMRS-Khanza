@@ -126,7 +126,7 @@
                                             <td bgcolor='#74DF00' valign='top'>".$baris["nm_pasien"]."<br>".$baris["almt_pj"]."<br>".$baris["jk"].", Usia ".$baris["umur"]."</td>
                                             <td bgcolor='#74DF00' valign='top'>".$baris["no_rawat"]." ".$baris["no_reg"]."<br>".$baris["tgl_registrasi"]." ".$baris["jam_reg"]."<br>Status : ".$baris["stts_daftar"]."</td>
                                             <td bgcolor='#74DF00' valign='top'>".$baris["nm_dokter"]."<br>".$baris["nm_poli"]."<br>Cara Bayar : ".$baris["png_jawab"]."</td>
-                                            <td valign='center' align='center'>>
+                                            <td valign='center' align='center'>
                                                 <a href=?act=List&keyword=".str_replace(" ","_",$keyword)."&dokter=".str_replace(" ","_",$dokter)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=Kembali&no_rawat=".$baris["no_rawat"]."&no_rm=".$baris["no_rkm_medis"].">[Kembali]</a><br>
                                                 <a href=?act=List&keyword=".str_replace(" ","_",$keyword)."&dokter=".str_replace(" ","_",$dokter)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=Permintaan&no_rawat=".$baris["no_rawat"]."&no_rm=".$baris["no_rkm_medis"].">[Permintaan]</a><br>
                                                 <a href=?act=List&keyword=".str_replace(" ","_",$keyword)."&dokter=".str_replace(" ","_",$dokter)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=TidakAda&no_rawat=".$baris["no_rawat"]."&no_rm=".$baris["no_rkm_medis"].">[Tidak Ada]</a>
@@ -432,5 +432,5 @@
     </div>
 </div>
 <?php 
-  echo "<meta http-equiv='refresh' content='7;URL=?act=List&keyword=".str_replace(" ","_",$keyword)."&dokter=".str_replace(" ","_",$dokter)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=no>";
+  echo "<meta http-equiv='refresh' content='7;URL=?act=List&keyword=".str_replace(" ","_",$keyword)."&dokter=".str_replace(" ","_",$dokter)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=no'>";
 ?>

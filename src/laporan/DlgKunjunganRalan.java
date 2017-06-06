@@ -105,7 +105,7 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                     "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg," +
                     "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,"+
-                    "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,pasien.jk,pasien.umur,pasien.tgl_daftar " +
+                    "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.tgl_daftar " +
                     "from reg_periksa inner join dokter inner join pasien inner join poliklinik " +
                     "on reg_periksa.kd_dokter=dokter.kd_dokter " +
                     "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +

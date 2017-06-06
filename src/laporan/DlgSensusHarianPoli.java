@@ -674,7 +674,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                 "</tr>" 
                             );
                             psreg=koneksi.prepareStatement(
-                                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.alamat,pasien.jk,pasien.umur,"+
+                                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.alamat,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,"+
                                     "reg_periksa.stts_daftar,penjab.png_jawab,reg_periksa.no_rawat from reg_periksa inner join pasien inner join penjab "+
                                     "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj where "+
                                     "reg_periksa.tgl_registrasi=? and reg_periksa.kd_poli=? and penjab.png_jawab like ? and reg_periksa.no_rkm_medis like ? or "+

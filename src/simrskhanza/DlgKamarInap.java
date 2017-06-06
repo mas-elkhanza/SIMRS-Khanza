@@ -3333,7 +3333,7 @@ private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
       }else if(TPasien.getText().trim().equals("")){
           try {
               psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -3386,7 +3386,7 @@ private void MnResepPulangActionPerformed(java.awt.event.ActionEvent evt) {//GEN
       }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");   
@@ -3437,7 +3437,7 @@ private void MnRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
       }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -3490,7 +3490,7 @@ private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//G
       }else if(TPasien.getText().trim().equals("")){
                 try {
                     psanak=koneksi.prepareStatement(
-                        "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                        "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                         "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                         "from reg_periksa inner join pasien inner join ranap_gabung on "+
                         "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");  
@@ -3622,7 +3622,7 @@ private void MnDietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
       }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -3687,7 +3687,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -3745,7 +3745,7 @@ private void MnOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");  
@@ -3791,7 +3791,7 @@ private void MnHapusTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt
       }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");
@@ -3831,7 +3831,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
       }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");  
@@ -3869,7 +3869,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
       }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -4196,7 +4196,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");                                
@@ -4441,7 +4441,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");                               
@@ -4488,7 +4488,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -4540,7 +4540,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -4697,7 +4697,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -4749,7 +4749,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -4807,7 +4807,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");                                
@@ -4888,7 +4888,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -5082,7 +5082,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -5152,7 +5152,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -5227,7 +5227,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -5296,7 +5296,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptBarcodeRM4.jrxml","report","::[ Gelang Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -5326,7 +5326,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -5414,7 +5414,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptBarcodeRM5.jrxml","report","::[ Gelang Pasien ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
-                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,"+
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -5461,7 +5461,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }else if(TPasien.getText().trim().equals("")){
             try {
                 psanak=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                     "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                     "from reg_periksa inner join pasien inner join ranap_gabung on "+
                     "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
@@ -5806,7 +5806,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                    rs.getString(20),
                                    rs.getString(21)});
                     psanak=koneksi.prepareStatement(
-                        "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,pasien.umur,pasien.no_peserta, "+
+                        "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                         "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
                         "from reg_periksa inner join pasien inner join ranap_gabung on "+
                         "pasien.no_rkm_medis=reg_periksa.no_rkm_medis and ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            

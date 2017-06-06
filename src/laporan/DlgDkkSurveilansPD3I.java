@@ -86,7 +86,7 @@ public final class DlgDkkSurveilansPD3I extends javax.swing.JDialog {
 
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         try {
-            ps=koneksi.prepareStatement("select reg_periksa.tgl_registrasi,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.keluarga,pasien.jk,pasien.umur,"+
+            ps=koneksi.prepareStatement("select reg_periksa.tgl_registrasi,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.keluarga,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,"+
                     "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) alamat,pasien.namakeluarga,"+
                     "diagnosa_pasien.kd_penyakit,SUBSTRING(penyakit.ciri_ciri,1,80) as ciri_ciri from diagnosa_pasien inner join reg_periksa inner join pasien inner join "+
                     "kelurahan inner join kecamatan inner join kabupaten inner join penyakit "+
