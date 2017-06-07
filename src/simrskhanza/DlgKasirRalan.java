@@ -3318,6 +3318,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             Sequel.queryu("delete from stok_obat_pasien where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from detail_nota_jalan where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from detail_piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from mutasi_berkas where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from reg_periksa where no_rawat='"+TNoRw.getText()+"'");
             Sequel.AutoComitTrue();
             tampilkasir();
