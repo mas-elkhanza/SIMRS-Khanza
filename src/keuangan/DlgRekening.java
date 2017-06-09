@@ -42,8 +42,8 @@ public final class DlgRekening extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps;
-    private ResultSet rs;
+    private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6;
+    private ResultSet rs,rs2,rs3,rs4,rs5,rs6;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -53,10 +53,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"Kode Rekening",
-                      "Nama Rekening",
-                      "Tipe",
-                      "Balance"};
+        Object[] row={"Kode Rekening","Nama Rekening","Kode Rekening","Nama Rekening","Tipe","Balance"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -65,15 +62,21 @@ public final class DlgRekening extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 6; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(110);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==1){
-                column.setPreferredWidth(400);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==2){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(110);
             }else if(i==3){
+                column.setPreferredWidth(400);
+            }else if(i==4){
+                column.setPreferredWidth(80);
+            }else if(i==5){
                 column.setPreferredWidth(80);
             }
         }
@@ -81,6 +84,8 @@ public final class DlgRekening extends javax.swing.JDialog {
         
         Kd.setDocument(new batasInput((byte)15).getKata(Kd));
         Nm.setDocument(new batasInput((byte)100).getKata(Nm));
+        KdSub.setDocument(new batasInput((byte)15).getKata(KdSub));
+        NmSub.setDocument(new batasInput((byte)100).getKata(NmSub));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -92,15 +97,7 @@ public final class DlgRekening extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil();}
             });
         }  
-        try {            
-            ps=koneksi.prepareStatement("select kd_rek, nm_rek, tipe, balance "+
-                " from rekening where kd_rek like ? or "+
-                " nm_rek like ? or "+
-                " tipe like ? or "+
-                " balance like ? order by kd_rek");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        
     }
 
 
@@ -114,6 +111,20 @@ public final class DlgRekening extends javax.swing.JDialog {
     private void initComponents() {
 
         Kd2 = new widget.TextBox();
+        WindowSubRekening = new javax.swing.JDialog();
+        internalFrame7 = new widget.InternalFrame();
+        BtnCloseIn5 = new widget.Button();
+        BtnSimpan5 = new widget.Button();
+        label35 = new widget.Label();
+        KdSub = new widget.TextBox();
+        NmSub = new widget.TextBox();
+        label38 = new widget.Label();
+        label37 = new widget.Label();
+        Tipe1 = new widget.ComboBox();
+        Balan1 = new widget.ComboBox();
+        label39 = new widget.Label();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        MnSubAkun = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -151,6 +162,130 @@ public final class DlgRekening extends javax.swing.JDialog {
             }
         });
 
+        WindowSubRekening.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowSubRekening.setModal(true);
+        WindowSubRekening.setName("WindowSubRekening"); // NOI18N
+        WindowSubRekening.setUndecorated(true);
+        WindowSubRekening.setResizable(false);
+
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Sub Akun Rekening ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame7.setName("internalFrame7"); // NOI18N
+        internalFrame7.setWarnaBawah(new java.awt.Color(240, 245, 235));
+        internalFrame7.setLayout(null);
+
+        BtnCloseIn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnCloseIn5.setMnemonic('P');
+        BtnCloseIn5.setText("Tutup");
+        BtnCloseIn5.setToolTipText("Alt+P");
+        BtnCloseIn5.setName("BtnCloseIn5"); // NOI18N
+        BtnCloseIn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCloseIn5ActionPerformed(evt);
+            }
+        });
+        internalFrame7.add(BtnCloseIn5);
+        BtnCloseIn5.setBounds(130, 87, 100, 30);
+
+        BtnSimpan5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan5.setMnemonic('S');
+        BtnSimpan5.setText("Simpan");
+        BtnSimpan5.setToolTipText("Alt+S");
+        BtnSimpan5.setName("BtnSimpan5"); // NOI18N
+        BtnSimpan5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpan5ActionPerformed(evt);
+            }
+        });
+        internalFrame7.add(BtnSimpan5);
+        BtnSimpan5.setBounds(20, 87, 100, 30);
+
+        label35.setText("Kode Rekening :");
+        label35.setName("label35"); // NOI18N
+        label35.setPreferredSize(new java.awt.Dimension(35, 23));
+        internalFrame7.add(label35);
+        label35.setBounds(0, 22, 105, 23);
+
+        KdSub.setHighlighter(null);
+        KdSub.setName("KdSub"); // NOI18N
+        KdSub.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdSubKeyPressed(evt);
+            }
+        });
+        internalFrame7.add(KdSub);
+        KdSub.setBounds(108, 22, 100, 23);
+
+        NmSub.setHighlighter(null);
+        NmSub.setName("NmSub"); // NOI18N
+        NmSub.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NmSubKeyPressed(evt);
+            }
+        });
+        internalFrame7.add(NmSub);
+        NmSub.setBounds(108, 52, 300, 23);
+
+        label38.setText("Nama Rekening :");
+        label38.setName("label38"); // NOI18N
+        label38.setPreferredSize(new java.awt.Dimension(35, 23));
+        internalFrame7.add(label38);
+        label38.setBounds(0, 52, 105, 23);
+
+        label37.setText("Tipe :");
+        label37.setName("label37"); // NOI18N
+        label37.setPreferredSize(new java.awt.Dimension(35, 23));
+        internalFrame7.add(label37);
+        label37.setBounds(407, 22, 100, 23);
+
+        Tipe1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "N (Neraca)", "R (Rugi/Laba)", "M (Perubahan Modal)" }));
+        Tipe1.setName("Tipe1"); // NOI18N
+        Tipe1.setPreferredSize(new java.awt.Dimension(45, 23));
+        Tipe1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Tipe1KeyPressed(evt);
+            }
+        });
+        internalFrame7.add(Tipe1);
+        Tipe1.setBounds(510, 22, 110, 23);
+
+        Balan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Debet", "Kredit" }));
+        Balan1.setName("Balan1"); // NOI18N
+        Balan1.setPreferredSize(new java.awt.Dimension(45, 23));
+        Balan1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Balan1KeyPressed(evt);
+            }
+        });
+        internalFrame7.add(Balan1);
+        Balan1.setBounds(510, 52, 110, 23);
+
+        label39.setText("Balance :");
+        label39.setName("label39"); // NOI18N
+        label39.setPreferredSize(new java.awt.Dimension(35, 23));
+        internalFrame7.add(label39);
+        label39.setBounds(407, 52, 100, 23);
+
+        WindowSubRekening.getContentPane().add(internalFrame7, java.awt.BorderLayout.CENTER);
+
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        MnSubAkun.setBackground(new java.awt.Color(255, 255, 255));
+        MnSubAkun.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSubAkun.setForeground(java.awt.Color.darkGray);
+        MnSubAkun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSubAkun.setText("Sub Akun Rekening");
+        MnSubAkun.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSubAkun.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSubAkun.setIconTextGap(5);
+        MnSubAkun.setName("MnSubAkun"); // NOI18N
+        MnSubAkun.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnSubAkun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSubAkunActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnSubAkun);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -163,6 +298,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbKamar.setComponentPopupMenu(jPopupMenu1);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -452,7 +588,7 @@ public final class DlgRekening extends javax.swing.JDialog {
             Sequel.menyimpan("rekening","'"+Kd.getText()+"','"+
                     Nm.getText()+"','"+
                     Tipe.getSelectedItem().toString().substring(0,1) +"','"+
-                    Balan.getSelectedItem().toString().substring(0,1)+"'","Kode Rekening");
+                    Balan.getSelectedItem().toString().substring(0,1)+"','0'","Kode Rekening");
             BtnCariActionPerformed(evt);
             emptTeks();
         }
@@ -512,6 +648,7 @@ public final class DlgRekening extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        WindowSubRekening.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -624,6 +761,61 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         Valid.pindah(evt,Tipe,Balan);
     }//GEN-LAST:event_BalanKeyPressed
 
+    private void BtnCloseIn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseIn5ActionPerformed
+        WindowSubRekening.dispose();
+    }//GEN-LAST:event_BtnCloseIn5ActionPerformed
+
+    private void BtnSimpan5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan5ActionPerformed
+        if(KdSub.getText().trim().equals("")){
+            Valid.textKosong(KdSub,"Kode Rekening");
+        }else if(NmSub.getText().trim().equals("")){
+            Valid.textKosong(NmSub,"Nama Rekening");
+        }else{
+            if(Sequel.menyimpantf("rekening","'"+KdSub.getText()+"','"+
+                    NmSub.getText()+"','"+
+                    Tipe1.getSelectedItem().toString().substring(0,1) +"','"+
+                    Balan1.getSelectedItem().toString().substring(0,1)+"','1'","Kode Rekening")==true){
+                Sequel.menyimpan("subrekening","'"+Kd.getText()+"','"+KdSub.getText()+"'");                
+                BtnCariActionPerformed(evt);
+                emptTeks2();
+            }
+        }
+    }//GEN-LAST:event_BtnSimpan5ActionPerformed
+
+    private void KdSubKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdSubKeyPressed
+        Valid.pindah(evt,BtnCloseIn5,Nm);
+    }//GEN-LAST:event_KdSubKeyPressed
+
+    private void NmSubKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmSubKeyPressed
+        Valid.pindah(evt,KdSub,Tipe1);
+    }//GEN-LAST:event_NmSubKeyPressed
+
+    private void Tipe1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tipe1KeyPressed
+        Valid.pindah(evt,NmSub,Balan1);
+    }//GEN-LAST:event_Tipe1KeyPressed
+
+    private void Balan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Balan1KeyPressed
+        Valid.pindah(evt,Tipe1,BtnSimpan5);
+    }//GEN-LAST:event_Balan1KeyPressed
+
+    private void MnSubAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSubAkunActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(Nm.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu Akun Rekening...!!!");
+            tbKamar.requestFocus();
+        }else{
+            KdSub.requestFocus();
+            KdSub.setText(Kd.getText());
+            WindowSubRekening.setSize(630,135);
+            WindowSubRekening.setLocationRelativeTo(internalFrame1);
+            WindowSubRekening.setAlwaysOnTop(false);
+            WindowSubRekening.setVisible(true);
+        }
+            
+    }//GEN-LAST:event_MnSubAkunActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -642,28 +834,42 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox Balan;
+    private widget.ComboBox Balan1;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnCloseIn5;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
+    private widget.Button BtnSimpan5;
     private widget.TextBox Kd;
     private widget.TextBox Kd2;
+    private widget.TextBox KdSub;
     private widget.Label LCount;
+    private javax.swing.JMenuItem MnSubAkun;
     private widget.TextBox Nm;
+    private widget.TextBox NmSub;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.ComboBox Tipe;
+    private widget.ComboBox Tipe1;
+    private javax.swing.JDialog WindowSubRekening;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label10;
     private widget.Label label32;
     private widget.Label label33;
     private widget.Label label34;
+    private widget.Label label35;
     private widget.Label label36;
+    private widget.Label label37;
+    private widget.Label label38;
+    private widget.Label label39;
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
@@ -674,18 +880,188 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            ps.setString(4,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4)});
+            ps=koneksi.prepareStatement("select kd_rek, nm_rek, tipe, balance "+
+                    " from rekening where level='0' and kd_rek like ? or "+
+                    " level='0' and nm_rek like ? or "+
+                    " level='0' and tipe like ? or "+
+                    " level='0' and balance like ? order by kd_rek");
+            try {            
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)
+                    });
+                    ps2=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                        " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                        " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
+                        " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
+                        " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
+                        " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,"%"+TCari.getText().trim()+"%");
+                        ps2.setString(3,rs.getString(1));
+                        ps2.setString(4,"%"+TCari.getText().trim()+"%");
+                        ps2.setString(5,rs.getString(1));
+                        ps2.setString(6,"%"+TCari.getText().trim()+"%");
+                        ps2.setString(7,rs.getString(1));
+                        ps2.setString(8,"%"+TCari.getText().trim()+"%");
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            tabMode.addRow(new Object[]{
+                                rs2.getString(1),rs2.getString(2),"   "+rs2.getString(1),"   "+rs2.getString(2),rs2.getString(3),rs2.getString(4)
+                            });         
+                            ps3=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
+                                " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
+                                " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
+                                " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                            try {
+                                ps3.setString(1,rs2.getString(1));
+                                ps3.setString(2,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(3,rs2.getString(1));
+                                ps3.setString(4,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(5,rs2.getString(1));
+                                ps3.setString(6,"%"+TCari.getText().trim()+"%");
+                                ps3.setString(7,rs2.getString(1));
+                                ps3.setString(8,"%"+TCari.getText().trim()+"%");
+                                rs3=ps3.executeQuery();
+                                while(rs3.next()){
+                                    tabMode.addRow(new Object[]{
+                                        rs3.getString(1),rs3.getString(2),"      "+rs3.getString(1),"      "+rs3.getString(2),rs3.getString(3),rs3.getString(4)
+                                    });      
+                                    ps4=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                        " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                        " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
+                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
+                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
+                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                    try {
+                                        ps4.setString(1,rs3.getString(1));
+                                        ps4.setString(2,"%"+TCari.getText().trim()+"%");
+                                        ps4.setString(3,rs3.getString(1));
+                                        ps4.setString(4,"%"+TCari.getText().trim()+"%");
+                                        ps4.setString(5,rs3.getString(1));
+                                        ps4.setString(6,"%"+TCari.getText().trim()+"%");
+                                        ps4.setString(7,rs3.getString(1));
+                                        ps4.setString(8,"%"+TCari.getText().trim()+"%");
+                                        rs4=ps4.executeQuery();
+                                        while(rs4.next()){
+                                            tabMode.addRow(new Object[]{
+                                                rs4.getString(1),rs4.getString(2),"         "+rs4.getString(1),"         "+rs4.getString(2),rs4.getString(3),rs4.getString(4)
+                                            });     
+                                            ps5=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
+                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
+                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
+                                                " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                            try {
+                                                ps5.setString(1,rs4.getString(1));
+                                                ps5.setString(2,"%"+TCari.getText().trim()+"%");
+                                                ps5.setString(3,rs4.getString(1));
+                                                ps5.setString(4,"%"+TCari.getText().trim()+"%");
+                                                ps5.setString(5,rs4.getString(1));
+                                                ps5.setString(6,"%"+TCari.getText().trim()+"%");
+                                                ps5.setString(7,rs4.getString(1));
+                                                ps5.setString(8,"%"+TCari.getText().trim()+"%");
+                                                rs5=ps5.executeQuery();
+                                                while(rs5.next()){
+                                                    tabMode.addRow(new Object[]{
+                                                        rs5.getString(1),rs5.getString(2),"            "+rs5.getString(1),"            "+rs5.getString(2),rs5.getString(3),rs5.getString(4)
+                                                    });  
+                                                    ps6=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                        " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                        " where subrekening.kd_rek=? and rekening.level='1' and rekening.kd_rek like ? or "+
+                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.nm_rek like ? or "+
+                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.tipe like ? or "+
+                                                        " subrekening.kd_rek=? and rekening.level='1' and rekening.balance like ? order by rekening.kd_rek");
+                                                    try {
+                                                        ps6.setString(1,rs5.getString(1));
+                                                        ps6.setString(2,"%"+TCari.getText().trim()+"%");
+                                                        ps6.setString(3,rs5.getString(1));
+                                                        ps6.setString(4,"%"+TCari.getText().trim()+"%");
+                                                        ps6.setString(5,rs5.getString(1));
+                                                        ps6.setString(6,"%"+TCari.getText().trim()+"%");
+                                                        ps6.setString(7,rs5.getString(1));
+                                                        ps6.setString(8,"%"+TCari.getText().trim()+"%");
+                                                        rs6=ps6.executeQuery();
+                                                        while(rs6.next()){
+                                                            tabMode.addRow(new Object[]{
+                                                                rs6.getString(1),rs6.getString(2),"               "+rs6.getString(1),"              "+rs6.getString(2),rs6.getString(3),rs6.getString(4)
+                                                            });                            
+                                                        }
+                                                    } catch (Exception e) {
+                                                        System.out.println("Notif 2 : "+e);
+                                                    } finally{
+                                                        if(rs6!=null){
+                                                            rs6.close();
+                                                        }
+                                                        if(ps6!=null){
+                                                            ps6.close();
+                                                        }
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                System.out.println("Notif 2 : "+e);
+                                            } finally{
+                                                if(rs5!=null){
+                                                    rs5.close();
+                                                }
+                                                if(ps5!=null){
+                                                    ps5.close();
+                                                }
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif 2 : "+e);
+                                    } finally{
+                                        if(rs4!=null){
+                                            rs4.close();
+                                        }
+                                        if(ps4!=null){
+                                            ps4.close();
+                                        }
+                                    }
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif 2 : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                                if(ps3!=null){
+                                    ps3.close();
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif 2 : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif 1 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
@@ -699,6 +1075,14 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         Balan.setSelectedIndex(0);
         Kd.requestFocus();        
     }
+    
+    public void emptTeks2() {
+        KdSub.setText(Kd.getText());
+        NmSub.setText("");
+        Tipe1.setSelectedIndex(0);
+        Balan1.setSelectedIndex(0);
+        KdSub.requestFocus();        
+    }
 
     private void getData() {
         int row=tbKamar.getSelectedRow();
@@ -706,7 +1090,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
             Kd.setText(tbKamar.getValueAt(row,0).toString());
             Kd2.setText(tbKamar.getValueAt(row,0).toString());
             Nm.setText(tbKamar.getValueAt(row,1).toString());
-            switch (tbKamar.getValueAt(row,2).toString()) {
+            switch (tbKamar.getValueAt(row,4).toString()) {
                 case "N":
                     Tipe.setSelectedIndex(0);
                     break;
@@ -718,7 +1102,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
                     break;
             }
             
-            switch (tbKamar.getValueAt(row,3).toString()) {
+            switch (tbKamar.getValueAt(row,5).toString()) {
                 case "D":
                     Balan.setSelectedIndex(0);
                     break;

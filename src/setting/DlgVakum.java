@@ -2565,7 +2565,8 @@ public class DlgVakum extends javax.swing.JDialog {
 
     private void BtnICD86ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD86ActionPerformed
         hapus("Akun Piutang","Jurnal Akuntansi","akun_piutang");
-        hapus("Rekening Tahun","Jurnal Akuntansi","rekeningtahun");
+        hapus("Rekening Tahun","Jurnal Akuntansi","rekeningtahun");        
+        hapus("Subrekening","Lain","subrekening");
         hapus("Akun Rekening","Rekening Tahun","rekening");
     }//GEN-LAST:event_BtnICD86ActionPerformed
 
