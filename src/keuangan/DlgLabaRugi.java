@@ -468,7 +468,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                             "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
-                    saldoakhir=saldoawal+debkret;
+                    saldoakhir=saldoawal+debkret;                    
                     pendapatan=pendapatan+saldoakhir;
                     tabMode.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir)});   
                     try {
@@ -622,7 +622,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 while(rs.next()){
                     saldoawal=Sequel.cariIsiAngka("select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
                              "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
-                    debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
+                    debkret=Sequel.cariIsiAngka(
+                             "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                              "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                              "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                              "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
@@ -640,12 +641,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs2.getString(1)+"' and rekeningtahun.thn "+
                                     "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
                             debkret=Sequel.cariIsiAngka(
-                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                    "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                                     "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                                     "detailjurnal.kd_rek='"+rs2.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                             saldoakhir=saldoawal+debkret;
-                            pendapatan=pendapatan+saldoakhir;
+                            biaya=biaya+saldoakhir;
                             tabMode.addRow(new Object[]{"","   "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)}); 
                             try {
                                 rs3=koneksi.prepareStatement(
@@ -658,12 +659,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs3.getString(1)+"' and rekeningtahun.thn "+
                                             "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
                                     debkret=Sequel.cariIsiAngka(
-                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                            "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                                             "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                                             "detailjurnal.kd_rek='"+rs3.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                     saldoakhir=saldoawal+debkret;
-                                    pendapatan=pendapatan+saldoakhir;
+                                    biaya=biaya+saldoakhir;
                                     tabMode.addRow(new Object[]{"","      "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)}); 
                                     try {
                                         rs4=koneksi.prepareStatement(
@@ -676,12 +677,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs4.getString(1)+"' and rekeningtahun.thn "+
                                                     "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
                                             debkret=Sequel.cariIsiAngka(
-                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                    "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                                                     "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                                                     "detailjurnal.kd_rek='"+rs4.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                             saldoakhir=saldoawal+debkret;
-                                            pendapatan=pendapatan+saldoakhir;
+                                            biaya=biaya+saldoakhir;
                                             tabMode.addRow(new Object[]{"","         "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)}); 
                                             try {
                                                 rs5=koneksi.prepareStatement(
@@ -694,12 +695,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                             "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs5.getString(1)+"' and rekeningtahun.thn "+
                                                             "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
                                                     debkret=Sequel.cariIsiAngka(
-                                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                            "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                                                             "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                                                             "detailjurnal.kd_rek='"+rs5.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                                     saldoakhir=saldoawal+debkret;
-                                                    pendapatan=pendapatan+saldoakhir;
+                                                    biaya=biaya+saldoakhir;
                                                     tabMode.addRow(new Object[]{"","            "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)}); 
                                                     try {
                                                         rs6=koneksi.prepareStatement(
@@ -712,12 +713,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                     "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs6.getString(1)+"' and rekeningtahun.thn "+
                                                                     "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
                                                             debkret=Sequel.cariIsiAngka(
-                                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                                    "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                                                                     "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                                                                     "detailjurnal.kd_rek='"+rs6.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                                             saldoakhir=saldoawal+debkret;
-                                                            pendapatan=pendapatan+saldoakhir;
+                                                            biaya=biaya+saldoakhir;
                                                             tabMode.addRow(new Object[]{"","               "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)}); 
                                                         }
                                                     } catch (Exception e) {
@@ -784,7 +785,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 while(rs.next()){
                     saldoawal=Sequel.cariIsiAngka("select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
                              "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
-                    debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                    debkret=Sequel.cariIsiAngka(
+                             "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
                              "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                              "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                              "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
@@ -807,7 +809,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "detailjurnal.kd_rek='"+rs2.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                             saldoakhir=saldoawal+debkret;
-                            pendapatan=pendapatan+saldoakhir;
+                            modal=modal+saldoakhir;
                             tabMode2.addRow(new Object[]{"","   "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)}); 
                             try {
                                 rs3=koneksi.prepareStatement(
@@ -825,7 +827,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             "detailjurnal.kd_rek='"+rs3.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                     saldoakhir=saldoawal+debkret;
-                                    pendapatan=pendapatan+saldoakhir;
+                                    modal=modal+saldoakhir;
                                     tabMode2.addRow(new Object[]{"","      "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)}); 
                                     try {
                                         rs4=koneksi.prepareStatement(
@@ -843,7 +845,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     "detailjurnal.kd_rek='"+rs4.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                             saldoakhir=saldoawal+debkret;
-                                            pendapatan=pendapatan+saldoakhir;
+                                            modal=modal+saldoakhir;
                                             tabMode2.addRow(new Object[]{"","         "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)}); 
                                             try {
                                                 rs5=koneksi.prepareStatement(
@@ -861,7 +863,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                             "detailjurnal.kd_rek='"+rs5.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                                     saldoakhir=saldoawal+debkret;
-                                                    pendapatan=pendapatan+saldoakhir;
+                                                    modal=modal+saldoakhir;
                                                     tabMode2.addRow(new Object[]{"","            "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)}); 
                                                     try {
                                                         rs6=koneksi.prepareStatement(
@@ -879,7 +881,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                     "detailjurnal.kd_rek='"+rs6.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                                             saldoakhir=saldoawal+debkret;
-                                                            pendapatan=pendapatan+saldoakhir;
+                                                            modal=modal+saldoakhir;
                                                             tabMode2.addRow(new Object[]{"","               "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)}); 
                                                         }
                                                     } catch (Exception e) {
@@ -947,7 +949,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     saldoawal=Sequel.cariIsiAngka(
                             "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
                             "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
-                    debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
+                    debkret=Sequel.cariIsiAngka(
+                             "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                              "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                              "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                              "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
@@ -965,12 +968,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs2.getString(1)+"' and rekeningtahun.thn "+
                                     "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
                             debkret=Sequel.cariIsiAngka(
-                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                    "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                                     "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                                     "detailjurnal.kd_rek='"+rs2.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                             saldoakhir=saldoawal+debkret;
-                            pendapatan=pendapatan+saldoakhir;
+                            aktiva=aktiva+saldoakhir;
                             tabMode3.addRow(new Object[]{"","   "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)}); 
                             try {
                                 rs3=koneksi.prepareStatement(
@@ -983,12 +986,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs3.getString(1)+"' and rekeningtahun.thn "+
                                             "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
                                     debkret=Sequel.cariIsiAngka(
-                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                            "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                                             "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                                             "detailjurnal.kd_rek='"+rs3.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                     saldoakhir=saldoawal+debkret;
-                                    pendapatan=pendapatan+saldoakhir;
+                                    aktiva=aktiva+saldoakhir;
                                     tabMode3.addRow(new Object[]{"","      "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)}); 
                                     try {
                                         rs4=koneksi.prepareStatement(
@@ -1001,12 +1004,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs4.getString(1)+"' and rekeningtahun.thn "+
                                                     "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
                                             debkret=Sequel.cariIsiAngka(
-                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                    "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                                                     "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                                                     "detailjurnal.kd_rek='"+rs4.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                             saldoakhir=saldoawal+debkret;
-                                            pendapatan=pendapatan+saldoakhir;
+                                            aktiva=aktiva+saldoakhir;
                                             tabMode3.addRow(new Object[]{"","         "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)}); 
                                             try {
                                                 rs5=koneksi.prepareStatement(
@@ -1019,12 +1022,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                             "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs5.getString(1)+"' and rekeningtahun.thn "+
                                                             "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
                                                     debkret=Sequel.cariIsiAngka(
-                                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                            "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                                                             "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                                                             "detailjurnal.kd_rek='"+rs5.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                                     saldoakhir=saldoawal+debkret;
-                                                    pendapatan=pendapatan+saldoakhir;
+                                                    aktiva=aktiva+saldoakhir;
                                                     tabMode3.addRow(new Object[]{"","            "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)}); 
                                                     try {
                                                         rs6=koneksi.prepareStatement(
@@ -1037,12 +1040,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                     "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs6.getString(1)+"' and rekeningtahun.thn "+
                                                                     "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
                                                             debkret=Sequel.cariIsiAngka(
-                                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                                    "select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
                                                                     "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                                                                     "detailjurnal.kd_rek='"+rs6.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                                             saldoakhir=saldoawal+debkret;
-                                                            pendapatan=pendapatan+saldoakhir;
+                                                            aktiva=aktiva+saldoakhir;
                                                             tabMode3.addRow(new Object[]{"","               "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)}); 
                                                         }
                                                     } catch (Exception e) {
@@ -1105,7 +1108,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 while(rs.next()){
                     saldoawal=Sequel.cariIsiAngka("select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
                              "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
-                    debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                    debkret=Sequel.cariIsiAngka(
+                             "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
                              "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
                              "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                              "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
@@ -1128,7 +1132,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "detailjurnal.kd_rek='"+rs2.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                             saldoakhir=saldoawal+debkret;
-                            pendapatan=pendapatan+saldoakhir;
+                            pasiva=pasiva+saldoakhir;
                             tabMode3.addRow(new Object[]{"","   "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)}); 
                             try {
                                 rs3=koneksi.prepareStatement(
@@ -1146,7 +1150,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             "detailjurnal.kd_rek='"+rs3.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                     saldoakhir=saldoawal+debkret;
-                                    pendapatan=pendapatan+saldoakhir;
+                                    pasiva=pasiva+saldoakhir;
                                     tabMode3.addRow(new Object[]{"","      "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)}); 
                                     try {
                                         rs4=koneksi.prepareStatement(
@@ -1164,7 +1168,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     "detailjurnal.kd_rek='"+rs4.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                             saldoakhir=saldoawal+debkret;
-                                            pendapatan=pendapatan+saldoakhir;
+                                            pasiva=pasiva+saldoakhir;
                                             tabMode3.addRow(new Object[]{"","         "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)}); 
                                             try {
                                                 rs5=koneksi.prepareStatement(
@@ -1182,7 +1186,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                             "detailjurnal.kd_rek='"+rs5.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                                     saldoakhir=saldoawal+debkret;
-                                                    pendapatan=pendapatan+saldoakhir;
+                                                    pasiva=pasiva+saldoakhir;
                                                     tabMode3.addRow(new Object[]{"","            "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)}); 
                                                     try {
                                                         rs6=koneksi.prepareStatement(
@@ -1200,7 +1204,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                                     "detailjurnal.kd_rek='"+rs6.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
                                                                     "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
                                                             saldoakhir=saldoawal+debkret;
-                                                            pendapatan=pendapatan+saldoakhir;
+                                                            pasiva=pasiva+saldoakhir;
                                                             tabMode3.addRow(new Object[]{"","               "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)}); 
                                                         }
                                                     } catch (Exception e) {
