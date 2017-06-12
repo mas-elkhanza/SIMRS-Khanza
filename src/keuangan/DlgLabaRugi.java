@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
@@ -20,10 +21,15 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class DlgLabaRugi extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
+    private final DefaultTableModel tabMode,tabMode2,tabMode3;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
+    private ResultSet rs,rs2,rs3,rs4,rs5,rs6;
+    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
+    private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
+    private double pendapatan=0,biaya=0,modal=0,aktiva=0,pasiva=0,saldoawal,debkret,saldoakhir;
+    private Connection koneksi=koneksiDB.condb();
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -31,34 +37,68 @@ public class DlgLabaRugi extends javax.swing.JDialog {
     public DlgLabaRugi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        Object[] row={"","",""};
-        tabMode=new DefaultTableModel(null,row){
+        
+        tabMode=new DefaultTableModel(null,new Object[]{"","",""}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
-        tbDokter.setModel(tabMode);
+        Table1.setModel(tabMode);
 
-        tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
-        tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        Table1.setPreferredScrollableViewportSize(new Dimension(800,800));
+        Table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (int i = 0; i < 3; i++) {
-            TableColumn column = tbDokter.getColumnModel().getColumn(i);
+            TableColumn column = Table1.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(80);
             }else if(i==1){
-                column.setPreferredWidth(470);
+                column.setPreferredWidth(650);
             }else if(i==2){
                 column.setPreferredWidth(140);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());       
+        Table1.setDefaultRenderer(Object.class, new WarnaTable());       
      
+        tabMode2=new DefaultTableModel(null,new Object[]{"","",""}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        Table2.setModel(tabMode2);
+
+        Table2.setPreferredScrollableViewportSize(new Dimension(800,800));
+        Table2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 3; i++) {
+            TableColumn column = Table2.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(80);
+            }else if(i==1){
+                column.setPreferredWidth(650);
+            }else if(i==2){
+                column.setPreferredWidth(140);
+            }
+        }
+        Table2.setDefaultRenderer(Object.class, new WarnaTable());  
+        
+        tabMode3=new DefaultTableModel(null,new Object[]{"","",""}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        Table3.setModel(tabMode3);
+
+        Table3.setPreferredScrollableViewportSize(new Dimension(800,800));
+        Table3.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 3; i++) {
+            TableColumn column = Table3.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(80);
+            }else if(i==1){
+                column.setPreferredWidth(650);
+            }else if(i==2){
+                column.setPreferredWidth(140);
+            }
+        }
+        Table3.setDefaultRenderer(Object.class, new WarnaTable());  
     }
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-    private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
-    private double pendapatan=0,biaya=0,modal=0,aktiva=0,pasiva=0,saldoawal,debkret,saldoakhir;
-    private Connection koneksi=koneksiDB.condb();
-    private ResultSet rs;
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -71,18 +111,25 @@ public class DlgLabaRugi extends javax.swing.JDialog {
 
         Kd2 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
-        scrollPane1 = new widget.ScrollPane();
-        tbDokter = new widget.Table();
-        panelisi4 = new widget.panelisi();
+        panelisi1 = new widget.panelisi();
         label11 = new widget.Label();
         Tgl1 = new widget.Tanggal();
         label18 = new widget.Label();
         Tgl2 = new widget.Tanggal();
         BtnCari = new widget.Button();
-        panelisi1 = new widget.panelisi();
+        label12 = new widget.Label();
         BtnPrint = new widget.Button();
-        label9 = new widget.Label();
         BtnKeluar = new widget.Button();
+        TabRawat = new javax.swing.JTabbedPane();
+        internalFrame2 = new widget.InternalFrame();
+        scrollPane1 = new widget.ScrollPane();
+        Table1 = new widget.Table();
+        internalFrame3 = new widget.InternalFrame();
+        scrollPane2 = new widget.ScrollPane();
+        Table2 = new widget.Table();
+        internalFrame4 = new widget.InternalFrame();
+        scrollPane3 = new widget.ScrollPane();
+        Table3 = new widget.Table();
 
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -100,52 +147,32 @@ public class DlgLabaRugi extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        scrollPane1.setName("scrollPane1"); // NOI18N
-        scrollPane1.setOpaque(true);
-
-        tbDokter.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbDokter.setName("tbDokter"); // NOI18N
-        scrollPane1.setViewportView(tbDokter);
-
-        internalFrame1.add(scrollPane1, java.awt.BorderLayout.CENTER);
-
-        panelisi4.setName("panelisi4"); // NOI18N
-        panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
-        panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelisi1.setName("panelisi1"); // NOI18N
+        panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
+        panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         label11.setText("Tanggal Transaksi :");
         label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(120, 23));
-        panelisi4.add(label11);
+        label11.setPreferredSize(new java.awt.Dimension(105, 23));
+        panelisi1.add(label11);
 
         Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
-        Tgl1.setPreferredSize(new java.awt.Dimension(110, 23));
-        panelisi4.add(Tgl1);
+        Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
+        panelisi1.add(Tgl1);
 
         label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label18.setText("s.d.");
         label18.setName("label18"); // NOI18N
         label18.setPreferredSize(new java.awt.Dimension(30, 23));
-        panelisi4.add(label18);
+        panelisi1.add(label18);
 
         Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
-        Tgl2.setPreferredSize(new java.awt.Dimension(110, 23));
-        panelisi4.add(Tgl2);
+        Tgl2.setPreferredSize(new java.awt.Dimension(100, 23));
+        panelisi1.add(Tgl2);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('1');
@@ -162,13 +189,11 @@ public class DlgLabaRugi extends javax.swing.JDialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelisi4.add(BtnCari);
+        panelisi1.add(BtnCari);
 
-        internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
-
-        panelisi1.setName("panelisi1"); // NOI18N
-        panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
-        panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        label12.setName("label12"); // NOI18N
+        label12.setPreferredSize(new java.awt.Dimension(85, 23));
+        panelisi1.add(label12);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('P');
@@ -187,10 +212,6 @@ public class DlgLabaRugi extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnPrint);
-
-        label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(215, 30));
-        panelisi1.add(label9);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -211,6 +232,100 @@ public class DlgLabaRugi extends javax.swing.JDialog {
         panelisi1.add(BtnKeluar);
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
+
+        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
+        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TabRawat.setName("TabRawat"); // NOI18N
+        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabRawatMouseClicked(evt);
+            }
+        });
+
+        internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame2.setBorder(null);
+        internalFrame2.setName("internalFrame2"); // NOI18N
+        internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
+
+        scrollPane1.setName("scrollPane1"); // NOI18N
+        scrollPane1.setOpaque(true);
+
+        Table1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        Table1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table1.setName("Table1"); // NOI18N
+        scrollPane1.setViewportView(Table1);
+
+        internalFrame2.add(scrollPane1, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab(".: Laba Rugi ", internalFrame2);
+
+        internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame3.setBorder(null);
+        internalFrame3.setName("internalFrame3"); // NOI18N
+        internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
+
+        scrollPane2.setName("scrollPane2"); // NOI18N
+        scrollPane2.setOpaque(true);
+
+        Table2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        Table2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table2.setName("Table2"); // NOI18N
+        scrollPane2.setViewportView(Table2);
+
+        internalFrame3.add(scrollPane2, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab(".: Perubahan Modal ", internalFrame3);
+
+        internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame4.setBorder(null);
+        internalFrame4.setName("internalFrame4"); // NOI18N
+        internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
+
+        scrollPane3.setName("scrollPane3"); // NOI18N
+        scrollPane3.setOpaque(true);
+
+        Table3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        Table3.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        Table3.setName("Table3"); // NOI18N
+        scrollPane3.setViewportView(Table3);
+
+        internalFrame4.add(scrollPane3, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab(".: Neraca ", internalFrame4);
+
+        internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -287,6 +402,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         prosesCari();
     }//GEN-LAST:event_formWindowOpened
 
+    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
+        
+    }//GEN-LAST:event_TabRawatMouseClicked
+
     /**
     * @param args the command line arguments
     */
@@ -308,172 +427,840 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.TextBox Kd2;
+    private javax.swing.JTabbedPane TabRawat;
+    private widget.Table Table1;
+    private widget.Table Table2;
+    private widget.Table Table3;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame2;
+    private widget.InternalFrame internalFrame3;
+    private widget.InternalFrame internalFrame4;
     private widget.Label label11;
+    private widget.Label label12;
     private widget.Label label18;
-    private widget.Label label9;
     private widget.panelisi panelisi1;
-    private widget.panelisi panelisi4;
     private widget.ScrollPane scrollPane1;
-    private widget.Table tbDokter;
+    private widget.ScrollPane scrollPane2;
+    private widget.ScrollPane scrollPane3;
     // End of variables declaration//GEN-END:variables
 
-    private void prosesCari() {
-       Valid.tabelKosong(tabMode);
-       String[] data = {"","",""};     
-       try{   
-            pendapatan=0;biaya=0;modal=0;aktiva=0;pasiva=0;
-            //pendapatan
-            tabMode.addRow(new Object[]{"A. Laba Rugi ","Pendapatan :",""});  
-            tabMode.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
-            rs=koneksi.prepareStatement(
+    
+    private void prosesCari(){
+        String[] data = {"","",""};
+        pendapatan=0;biaya=0;modal=0;aktiva=0;pasiva=0;
+        try {
+            Valid.tabelKosong(tabMode);            
+            try {
+                saldoawal=0;debkret=0;saldoakhir=0;
+                tabMode.addRow(new Object[]{"Pendapatan : ","",""});  
+                tabMode.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
+                rs=koneksi.prepareStatement(
+                    "select rekening.kd_rek, rekening.nm_rek  from rekening where "+
+                    " rekening.level='0' and rekening.tipe='R' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
+                while(rs.next()){
+                    saldoawal=Sequel.cariIsiAngka(
+                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
+                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                    debkret=Sequel.cariIsiAngka(
+                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                            "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                            "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                    saldoakhir=saldoawal+debkret;
+                    pendapatan=pendapatan+saldoakhir;
+                    tabMode.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir)});   
+                    try {
+                        rs2=koneksi.prepareStatement(
+                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                            " where subrekening.kd_rek='"+rs.getString(1)+"' and rekening.level='1' and "+
+                            "rekening.tipe='R' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
+                        while(rs2.next()){
+                            saldoawal=Sequel.cariIsiAngka(
+                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs2.getString(1)+"' and rekeningtahun.thn "+
+                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                            debkret=Sequel.cariIsiAngka(
+                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                    "detailjurnal.kd_rek='"+rs2.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                            saldoakhir=saldoawal+debkret;
+                            pendapatan=pendapatan+saldoakhir;
+                            tabMode.addRow(new Object[]{"","   "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)}); 
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                    " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                    " where subrekening.kd_rek='"+rs2.getString(1)+"' and rekening.level='1' and "+
+                                    "rekening.tipe='R' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
+                                while(rs3.next()){
+                                    saldoawal=Sequel.cariIsiAngka(
+                                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs3.getString(1)+"' and rekeningtahun.thn "+
+                                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                    debkret=Sequel.cariIsiAngka(
+                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                            "detailjurnal.kd_rek='"+rs3.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                            "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                    saldoakhir=saldoawal+debkret;
+                                    pendapatan=pendapatan+saldoakhir;
+                                    tabMode.addRow(new Object[]{"","      "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)}); 
+                                    try {
+                                        rs4=koneksi.prepareStatement(
+                                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                            " where subrekening.kd_rek='"+rs3.getString(1)+"' and rekening.level='1' and "+
+                                            "rekening.tipe='R' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
+                                        while(rs4.next()){
+                                            saldoawal=Sequel.cariIsiAngka(
+                                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs4.getString(1)+"' and rekeningtahun.thn "+
+                                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                            debkret=Sequel.cariIsiAngka(
+                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                    "detailjurnal.kd_rek='"+rs4.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                            saldoakhir=saldoawal+debkret;
+                                            pendapatan=pendapatan+saldoakhir;
+                                            tabMode.addRow(new Object[]{"","         "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)}); 
+                                            try {
+                                                rs5=koneksi.prepareStatement(
+                                                    "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                    " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                    " where subrekening.kd_rek='"+rs4.getString(1)+"' and rekening.level='1' and "+
+                                                    "rekening.tipe='R' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
+                                                while(rs5.next()){
+                                                    saldoawal=Sequel.cariIsiAngka(
+                                                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs5.getString(1)+"' and rekeningtahun.thn "+
+                                                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                                    debkret=Sequel.cariIsiAngka(
+                                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                            "detailjurnal.kd_rek='"+rs5.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                            "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                                    saldoakhir=saldoawal+debkret;
+                                                    pendapatan=pendapatan+saldoakhir;
+                                                    tabMode.addRow(new Object[]{"","            "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)}); 
+                                                    try {
+                                                        rs6=koneksi.prepareStatement(
+                                                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                            " where subrekening.kd_rek='"+rs5.getString(1)+"' and rekening.level='1' and "+
+                                                            "rekening.tipe='R' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
+                                                        while(rs6.next()){
+                                                            saldoawal=Sequel.cariIsiAngka(
+                                                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs6.getString(1)+"' and rekeningtahun.thn "+
+                                                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                                            debkret=Sequel.cariIsiAngka(
+                                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                                    "detailjurnal.kd_rek='"+rs6.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                                            saldoakhir=saldoawal+debkret;
+                                                            pendapatan=pendapatan+saldoakhir;
+                                                            tabMode.addRow(new Object[]{"","               "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)}); 
+                                                        }
+                                                    } catch (Exception e) {
+                                                        System.out.println("Notif Pendapatan 6 : "+e);
+                                                    } finally{
+                                                        if(rs6!=null){
+                                                            rs6.close();
+                                                        }
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                System.out.println("Notif Pendapatan 5 : "+e);
+                                            } finally{
+                                                if(rs5!=null){
+                                                    rs5.close();
+                                                }
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif Pendapatan 4 : "+e);
+                                    } finally{
+                                        if(rs4!=null){
+                                            rs4.close();
+                                        }
+                                    }
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif Pendapatan 3 : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif Pendapatan 2 : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                }  
+                tabMode.addRow(new Object[]{"","Total Pendapatan ",df2.format(pendapatan)});
+                tabMode.addRow(data);
+            } catch (Exception e) {
+                System.out.println("Notif Pendapatan 1 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+            }            
+                        
+            try {
+                saldoawal=0;debkret=0;saldoakhir=0;
+                tabMode.addRow(new Object[]{"Biaya-Biaya :","",""});  
+                tabMode.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
+                rs=koneksi.prepareStatement(
                     "select rekening.kd_rek, rekening.nm_rek  from rekening "+
-                    "where rekening.tipe='R' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
-            int i=1;
-            saldoawal=0;debkret=0;saldoakhir=0;
-            while(rs.next()){
-                saldoawal=Sequel.cariIsiAngka(
-                        "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
-                        "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
-                debkret=Sequel.cariIsiAngka(
-                        "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
-                        "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
-                        "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
-                        "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
-                saldoakhir=saldoawal+debkret;
-                /*if(saldoakhir<0){
-                    saldoakhir=(saldoawal+debkret)*(-1);
-                }*/
-                pendapatan=pendapatan+saldoakhir;
-                //if(!(saldoakhir==0)){
-                    tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
-                    i++;
-                //}                    
-            }  
-            tabMode.addRow(new Object[]{"","Total Pendapatan ",df2.format(pendapatan)});  
-            tabMode.addRow(data);
-            //Biaya-Biaya
-            tabMode.addRow(new Object[]{"","Biaya-Biaya :",""});  
-            tabMode.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
-            rs=koneksi.prepareStatement(
-                            "select rekening.kd_rek, rekening.nm_rek  from rekening "+
-                            "where rekening.tipe='R' and rekening.balance='D' order by rekening.kd_rek").executeQuery();
-            i=1;
-            saldoawal=0;debkret=0;saldoakhir=0;
-            while(rs.next()){
-                saldoawal=Sequel.cariIsiAngka("select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
-                         "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
-                debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
-                         "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
-                         "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
-                         "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
-                saldoakhir=saldoawal+debkret;
-                /*if(saldoakhir<0){
-                    saldoakhir=(saldoawal+debkret)*(-1);
-                }*/
-                biaya=biaya+saldoakhir;
-                //if(!(saldoakhir==0)){
-                    tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
-                    i++;
-                //}                    
-            } 
-            tabMode.addRow(new Object[]{"","Total Biaya-Biaya ",df2.format(biaya)}); 
-            tabMode.addRow(data);
-            
+                    "where rekening.level='0' and rekening.tipe='R' and rekening.balance='D' order by rekening.kd_rek").executeQuery();                
+                while(rs.next()){
+                    saldoawal=Sequel.cariIsiAngka("select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
+                             "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                    debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
+                             "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                             "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                    saldoakhir=saldoawal+debkret;
+                    biaya=biaya+saldoakhir;
+                    tabMode.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir)});    
+                    try {
+                        rs2=koneksi.prepareStatement(
+                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                            " where subrekening.kd_rek='"+rs.getString(1)+"' and rekening.level='1' and "+
+                            "rekening.tipe='R' and rekening.balance='D' order by rekening.kd_rek").executeQuery();
+                        while(rs2.next()){
+                            saldoawal=Sequel.cariIsiAngka(
+                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs2.getString(1)+"' and rekeningtahun.thn "+
+                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                            debkret=Sequel.cariIsiAngka(
+                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                    "detailjurnal.kd_rek='"+rs2.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                            saldoakhir=saldoawal+debkret;
+                            pendapatan=pendapatan+saldoakhir;
+                            tabMode.addRow(new Object[]{"","   "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)}); 
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                    " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                    " where subrekening.kd_rek='"+rs2.getString(1)+"' and rekening.level='1' and "+
+                                    "rekening.tipe='R' and rekening.balance='D' order by rekening.kd_rek").executeQuery();
+                                while(rs3.next()){
+                                    saldoawal=Sequel.cariIsiAngka(
+                                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs3.getString(1)+"' and rekeningtahun.thn "+
+                                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                    debkret=Sequel.cariIsiAngka(
+                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                            "detailjurnal.kd_rek='"+rs3.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                            "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                    saldoakhir=saldoawal+debkret;
+                                    pendapatan=pendapatan+saldoakhir;
+                                    tabMode.addRow(new Object[]{"","      "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)}); 
+                                    try {
+                                        rs4=koneksi.prepareStatement(
+                                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                            " where subrekening.kd_rek='"+rs3.getString(1)+"' and rekening.level='1' and "+
+                                            "rekening.tipe='R' and rekening.balance='D' order by rekening.kd_rek").executeQuery();
+                                        while(rs4.next()){
+                                            saldoawal=Sequel.cariIsiAngka(
+                                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs4.getString(1)+"' and rekeningtahun.thn "+
+                                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                            debkret=Sequel.cariIsiAngka(
+                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                    "detailjurnal.kd_rek='"+rs4.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                            saldoakhir=saldoawal+debkret;
+                                            pendapatan=pendapatan+saldoakhir;
+                                            tabMode.addRow(new Object[]{"","         "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)}); 
+                                            try {
+                                                rs5=koneksi.prepareStatement(
+                                                    "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                    " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                    " where subrekening.kd_rek='"+rs4.getString(1)+"' and rekening.level='1' and "+
+                                                    "rekening.tipe='R' and rekening.balance='D' order by rekening.kd_rek").executeQuery();
+                                                while(rs5.next()){
+                                                    saldoawal=Sequel.cariIsiAngka(
+                                                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs5.getString(1)+"' and rekeningtahun.thn "+
+                                                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                                    debkret=Sequel.cariIsiAngka(
+                                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                            "detailjurnal.kd_rek='"+rs5.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                            "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                                    saldoakhir=saldoawal+debkret;
+                                                    pendapatan=pendapatan+saldoakhir;
+                                                    tabMode.addRow(new Object[]{"","            "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)}); 
+                                                    try {
+                                                        rs6=koneksi.prepareStatement(
+                                                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                            " where subrekening.kd_rek='"+rs5.getString(1)+"' and rekening.level='1' and "+
+                                                            "rekening.tipe='R' and rekening.balance='D' order by rekening.kd_rek").executeQuery();
+                                                        while(rs6.next()){
+                                                            saldoawal=Sequel.cariIsiAngka(
+                                                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs6.getString(1)+"' and rekeningtahun.thn "+
+                                                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                                            debkret=Sequel.cariIsiAngka(
+                                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                                    "detailjurnal.kd_rek='"+rs6.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                                            saldoakhir=saldoawal+debkret;
+                                                            pendapatan=pendapatan+saldoakhir;
+                                                            tabMode.addRow(new Object[]{"","               "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)}); 
+                                                        }
+                                                    } catch (Exception e) {
+                                                        System.out.println("Notif Biaya 6 : "+e);
+                                                    } finally{
+                                                        if(rs6!=null){
+                                                            rs6.close();
+                                                        }
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                System.out.println("Notif Biaya 5 : "+e);
+                                            } finally{
+                                                if(rs5!=null){
+                                                    rs5.close();
+                                                }
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif Biaya 4 : "+e);
+                                    } finally{
+                                        if(rs4!=null){
+                                            rs4.close();
+                                        }
+                                    }
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif Biaya 3 : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif Biaya 2 : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                } 
+                tabMode.addRow(new Object[]{"","Total Biaya-Biaya ",df2.format(biaya)});
+                tabMode.addRow(data);
+            } catch (Exception e) {
+                System.out.println("Notif Biaya 1 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+            }                 
+                        
             tabMode.addRow(new Object[]{"","Laba Bersih : Total Pendapatan - Total Biaya-Biaya",df2.format(pendapatan-biaya)}); 
             tabMode.addRow(data);
-            //Modal Awal
-            tabMode.addRow(new Object[]{"B. Perubahan Modal ","Modal Awal :",""}); 
-            tabMode.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
-            rs=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek  from rekening "+
-                                           "where rekening.tipe='M' order by rekening.kd_rek").executeQuery();
-            i=1;
-            saldoawal=0;debkret=0;saldoakhir=0;
-            while(rs.next()){
-                saldoawal=Sequel.cariIsiAngka("select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
-                         "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
-                debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
-                         "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
-                         "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
-                         "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
-                saldoakhir=saldoawal+debkret;
-                /*if(saldoakhir<0){
-                    saldoakhir=(saldoawal+debkret)*(-1);
-                }*/
-                modal=modal+saldoakhir;
-                //if(!(saldoakhir==0)){
-                    tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
-                    i++;
-                //}                    
-            }  
-            tabMode.addRow(new Object[]{"","Total Modal ",df2.format(modal)}); 
-            tabMode.addRow(data);
-            tabMode.addRow(new Object[]{"","Modal Akhir : Laba Bersih + Total Modal",df2.format(modal+(pendapatan-biaya))}); 
-            tabMode.addRow(data);  
-            //Neraca Laba-Rugi
-            String[] data9 = {"C. Neraca ","Aktiva :",""};
-            tabMode.addRow(data9); 
-            tabMode.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
-            rs=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek  from rekening "+
-                                           "where rekening.tipe='N' and balance='D' order by rekening.kd_rek").executeQuery();
-            i=1;
-            saldoawal=0;debkret=0;saldoakhir=0;
-            while(rs.next()){
-                saldoawal=Sequel.cariIsiAngka(
-                        "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
-                        "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
-                debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
-                         "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
-                         "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
-                         "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
-                saldoakhir=saldoawal+debkret;
-                /*if(saldoakhir<0){
-                    saldoakhir=(saldoawal+debkret)*(-1);
-                }*/
-                aktiva=aktiva+saldoakhir;
-                //if(!(saldoakhir==0)){
-                    tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
-                    i++;
-                //}                    
-            }  
-            tabMode.addRow(new Object[]{"","Total Aktiva ",df2.format(aktiva)}); 
-            tabMode.addRow(data); 
-            //cari pasiva
-            tabMode.addRow(new Object[]{"","Pasiva :",""}); 
-            tabMode.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
-            rs=koneksi.prepareStatement("select rekening.kd_rek, rekening.nm_rek  from rekening "+
-                                           "where rekening.tipe='N' and balance='K' order by rekening.kd_rek").executeQuery();
-            i=1;
-            saldoawal=0;debkret=0;saldoakhir=0;
-            while(rs.next()){
-                saldoawal=Sequel.cariIsiAngka("select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
-                         "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
-                debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
-                         "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
-                         "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
-                         "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
-                saldoakhir=saldoawal+debkret;
-                /*if(saldoakhir<0){
-                    saldoakhir=(saldoawal+debkret)*(-1);
-                }*/
-                pasiva=pasiva+saldoakhir;
-                //if(!(saldoakhir==0)){
-                    tabMode.addRow(new Object[]{"","     "+i+". "+rs.getString(1)+" "+rs.getString(2),"     "+df2.format(saldoakhir)});  
-                    i++;
-                //}                    
-            }  
-            tabMode.addRow(new Object[]{"","Total Pasiva : Pasiva + Modal Akhir",df2.format(pasiva+modal+(pendapatan-biaya))}); 
-            tabMode.addRow(data);         
-        }catch(SQLException e){
+            
+            Valid.tabelKosong(tabMode2);
+            try {
+                saldoawal=0;debkret=0;saldoakhir=0;
+                tabMode2.addRow(new Object[]{"Modal Awal :","",""}); 
+                tabMode2.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
+                rs=koneksi.prepareStatement(
+                    "select rekening.kd_rek, rekening.nm_rek  from rekening "+
+                    "where rekening.level='0' and rekening.tipe='M' order by rekening.kd_rek").executeQuery();     
+                while(rs.next()){
+                    saldoawal=Sequel.cariIsiAngka("select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
+                             "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                    debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                             "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                             "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                    saldoakhir=saldoawal+debkret;
+                    modal=modal+saldoakhir;
+                    tabMode2.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir)});  
+                    try {
+                        rs2=koneksi.prepareStatement(
+                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                            " where subrekening.kd_rek='"+rs.getString(1)+"' and rekening.level='1' and "+
+                            "rekening.tipe='M' order by rekening.kd_rek").executeQuery();
+                        while(rs2.next()){
+                            saldoawal=Sequel.cariIsiAngka(
+                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs2.getString(1)+"' and rekeningtahun.thn "+
+                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                            debkret=Sequel.cariIsiAngka(
+                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                    "detailjurnal.kd_rek='"+rs2.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                            saldoakhir=saldoawal+debkret;
+                            pendapatan=pendapatan+saldoakhir;
+                            tabMode2.addRow(new Object[]{"","   "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)}); 
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                    " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                    " where subrekening.kd_rek='"+rs2.getString(1)+"' and rekening.level='1' and "+
+                                    "rekening.tipe='M' order by rekening.kd_rek").executeQuery();
+                                while(rs3.next()){
+                                    saldoawal=Sequel.cariIsiAngka(
+                                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs3.getString(1)+"' and rekeningtahun.thn "+
+                                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                    debkret=Sequel.cariIsiAngka(
+                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                            "detailjurnal.kd_rek='"+rs3.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                            "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                    saldoakhir=saldoawal+debkret;
+                                    pendapatan=pendapatan+saldoakhir;
+                                    tabMode2.addRow(new Object[]{"","      "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)}); 
+                                    try {
+                                        rs4=koneksi.prepareStatement(
+                                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                            " where subrekening.kd_rek='"+rs3.getString(1)+"' and rekening.level='1' and "+
+                                            "rekening.tipe='M' order by rekening.kd_rek").executeQuery();
+                                        while(rs4.next()){
+                                            saldoawal=Sequel.cariIsiAngka(
+                                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs4.getString(1)+"' and rekeningtahun.thn "+
+                                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                            debkret=Sequel.cariIsiAngka(
+                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                    "detailjurnal.kd_rek='"+rs4.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                            saldoakhir=saldoawal+debkret;
+                                            pendapatan=pendapatan+saldoakhir;
+                                            tabMode2.addRow(new Object[]{"","         "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)}); 
+                                            try {
+                                                rs5=koneksi.prepareStatement(
+                                                    "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                    " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                    " where subrekening.kd_rek='"+rs4.getString(1)+"' and rekening.level='1' and "+
+                                                    "rekening.tipe='M' order by rekening.kd_rek").executeQuery();
+                                                while(rs5.next()){
+                                                    saldoawal=Sequel.cariIsiAngka(
+                                                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs5.getString(1)+"' and rekeningtahun.thn "+
+                                                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                                    debkret=Sequel.cariIsiAngka(
+                                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                            "detailjurnal.kd_rek='"+rs5.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                            "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                                    saldoakhir=saldoawal+debkret;
+                                                    pendapatan=pendapatan+saldoakhir;
+                                                    tabMode2.addRow(new Object[]{"","            "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)}); 
+                                                    try {
+                                                        rs6=koneksi.prepareStatement(
+                                                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                            " where subrekening.kd_rek='"+rs5.getString(1)+"' and rekening.level='1' and "+
+                                                            "rekening.tipe='M' order by rekening.kd_rek").executeQuery();
+                                                        while(rs6.next()){
+                                                            saldoawal=Sequel.cariIsiAngka(
+                                                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs6.getString(1)+"' and rekeningtahun.thn "+
+                                                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                                            debkret=Sequel.cariIsiAngka(
+                                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                                    "detailjurnal.kd_rek='"+rs6.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                                            saldoakhir=saldoawal+debkret;
+                                                            pendapatan=pendapatan+saldoakhir;
+                                                            tabMode2.addRow(new Object[]{"","               "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)}); 
+                                                        }
+                                                    } catch (Exception e) {
+                                                        System.out.println("Notif Modal Awal 6 : "+e);
+                                                    } finally{
+                                                        if(rs6!=null){
+                                                            rs6.close();
+                                                        }
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                System.out.println("Notif Modal Awal 5 : "+e);
+                                            } finally{
+                                                if(rs5!=null){
+                                                    rs5.close();
+                                                }
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif Modal Awal 4 : "+e);
+                                    } finally{
+                                        if(rs4!=null){
+                                            rs4.close();
+                                        }
+                                    }
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif Modal Awal 3 : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif Modal Awal 2 : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                }  
+                tabMode2.addRow(new Object[]{"","Total Modal ",df2.format(modal)}); 
+                tabMode2.addRow(data);                
+            } catch (Exception e) {
+                System.out.println("Notif Modal Awal 1 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            
+            tabMode2.addRow(new Object[]{"","Modal Akhir : Laba Bersih + Total Modal",df2.format(modal+(pendapatan-biaya))}); 
+            tabMode2.addRow(data);
+            
+            Valid.tabelKosong(tabMode3);
+            try {
+                saldoawal=0;debkret=0;saldoakhir=0;
+                tabMode3.addRow(new Object[]{"Aktiva :","",""}); 
+                tabMode3.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
+                rs=koneksi.prepareStatement(
+                    "select rekening.kd_rek, rekening.nm_rek  from rekening "+
+                    "where rekening.level='0' and rekening.tipe='N' and balance='D' order by rekening.kd_rek").executeQuery();
+                while(rs.next()){
+                    saldoawal=Sequel.cariIsiAngka(
+                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
+                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                    debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.debet)-sum(detailjurnal.kredit)) "+
+                             "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                             "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                    saldoakhir=saldoawal+debkret;
+                    aktiva=aktiva+saldoakhir;
+                    tabMode3.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir)});      
+                    try {
+                        rs2=koneksi.prepareStatement(
+                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                            " where subrekening.kd_rek='"+rs.getString(1)+"' and rekening.level='1' and "+
+                            "rekening.tipe='N' and rekening.balance='D' order by rekening.kd_rek").executeQuery();
+                        while(rs2.next()){
+                            saldoawal=Sequel.cariIsiAngka(
+                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs2.getString(1)+"' and rekeningtahun.thn "+
+                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                            debkret=Sequel.cariIsiAngka(
+                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                    "detailjurnal.kd_rek='"+rs2.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                            saldoakhir=saldoawal+debkret;
+                            pendapatan=pendapatan+saldoakhir;
+                            tabMode3.addRow(new Object[]{"","   "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)}); 
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                    " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                    " where subrekening.kd_rek='"+rs2.getString(1)+"' and rekening.level='1' and "+
+                                    "rekening.tipe='N' and rekening.balance='D' order by rekening.kd_rek").executeQuery();
+                                while(rs3.next()){
+                                    saldoawal=Sequel.cariIsiAngka(
+                                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs3.getString(1)+"' and rekeningtahun.thn "+
+                                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                    debkret=Sequel.cariIsiAngka(
+                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                            "detailjurnal.kd_rek='"+rs3.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                            "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                    saldoakhir=saldoawal+debkret;
+                                    pendapatan=pendapatan+saldoakhir;
+                                    tabMode3.addRow(new Object[]{"","      "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)}); 
+                                    try {
+                                        rs4=koneksi.prepareStatement(
+                                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                            " where subrekening.kd_rek='"+rs3.getString(1)+"' and rekening.level='1' and "+
+                                            "rekening.tipe='N' and rekening.balance='D' order by rekening.kd_rek").executeQuery();
+                                        while(rs4.next()){
+                                            saldoawal=Sequel.cariIsiAngka(
+                                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs4.getString(1)+"' and rekeningtahun.thn "+
+                                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                            debkret=Sequel.cariIsiAngka(
+                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                    "detailjurnal.kd_rek='"+rs4.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                            saldoakhir=saldoawal+debkret;
+                                            pendapatan=pendapatan+saldoakhir;
+                                            tabMode3.addRow(new Object[]{"","         "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)}); 
+                                            try {
+                                                rs5=koneksi.prepareStatement(
+                                                    "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                    " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                    " where subrekening.kd_rek='"+rs4.getString(1)+"' and rekening.level='1' and "+
+                                                    "rekening.tipe='N' and rekening.balance='D' order by rekening.kd_rek").executeQuery();
+                                                while(rs5.next()){
+                                                    saldoawal=Sequel.cariIsiAngka(
+                                                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs5.getString(1)+"' and rekeningtahun.thn "+
+                                                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                                    debkret=Sequel.cariIsiAngka(
+                                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                            "detailjurnal.kd_rek='"+rs5.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                            "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                                    saldoakhir=saldoawal+debkret;
+                                                    pendapatan=pendapatan+saldoakhir;
+                                                    tabMode3.addRow(new Object[]{"","            "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)}); 
+                                                    try {
+                                                        rs6=koneksi.prepareStatement(
+                                                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                            " where subrekening.kd_rek='"+rs5.getString(1)+"' and rekening.level='1' and "+
+                                                            "rekening.tipe='N' and rekening.balance='D' order by rekening.kd_rek").executeQuery();
+                                                        while(rs6.next()){
+                                                            saldoawal=Sequel.cariIsiAngka(
+                                                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs6.getString(1)+"' and rekeningtahun.thn "+
+                                                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                                            debkret=Sequel.cariIsiAngka(
+                                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                                    "detailjurnal.kd_rek='"+rs6.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                                            saldoakhir=saldoawal+debkret;
+                                                            pendapatan=pendapatan+saldoakhir;
+                                                            tabMode3.addRow(new Object[]{"","               "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)}); 
+                                                        }
+                                                    } catch (Exception e) {
+                                                        System.out.println("Notif Aktiva 6 : "+e);
+                                                    } finally{
+                                                        if(rs6!=null){
+                                                            rs6.close();
+                                                        }
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                System.out.println("Notif Aktiva 5 : "+e);
+                                            } finally{
+                                                if(rs5!=null){
+                                                    rs5.close();
+                                                }
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif Aktiva 4 : "+e);
+                                    } finally{
+                                        if(rs4!=null){
+                                            rs4.close();
+                                        }
+                                    }
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif Aktiva 3 : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif Aktiva 2 : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                }  
+                tabMode3.addRow(new Object[]{"","Total Aktiva ",df2.format(aktiva)}); 
+                tabMode3.addRow(data); 
+            } catch (Exception e) {
+                System.out.println("Notifikasi Aktiva 1 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            
+            try {
+                saldoawal=0;debkret=0;saldoakhir=0;
+                tabMode3.addRow(new Object[]{"Pasiva :","",""}); 
+                tabMode3.addRow(new Object[]{"","Nama Rekening","Saldo Akhir"});
+                rs=koneksi.prepareStatement(
+                    "select rekening.kd_rek, rekening.nm_rek  from rekening "+
+                    "where rekening.level='0' and rekening.tipe='N' and balance='K' order by rekening.kd_rek").executeQuery();
+                while(rs.next()){
+                    saldoawal=Sequel.cariIsiAngka("select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs.getString(1)+"' and rekeningtahun.thn "+
+                             "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                    debkret=Sequel.cariIsiAngka("select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                             "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                             "detailjurnal.kd_rek='"+rs.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                             "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                    saldoakhir=saldoawal+debkret;
+                    pasiva=pasiva+saldoakhir;
+                    tabMode3.addRow(new Object[]{"",rs.getString(1)+" "+rs.getString(2),"  "+df2.format(saldoakhir)});     
+                    try {
+                        rs2=koneksi.prepareStatement(
+                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                            " where subrekening.kd_rek='"+rs.getString(1)+"' and rekening.level='1' and "+
+                            "rekening.tipe='N' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
+                        while(rs2.next()){
+                            saldoawal=Sequel.cariIsiAngka(
+                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs2.getString(1)+"' and rekeningtahun.thn "+
+                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                            debkret=Sequel.cariIsiAngka(
+                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                    "detailjurnal.kd_rek='"+rs2.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                            saldoakhir=saldoawal+debkret;
+                            pendapatan=pendapatan+saldoakhir;
+                            tabMode3.addRow(new Object[]{"","   "+rs2.getString(1)+" "+rs2.getString(2),"  "+df2.format(saldoakhir)}); 
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                    "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                    " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                    " where subrekening.kd_rek='"+rs2.getString(1)+"' and rekening.level='1' and "+
+                                    "rekening.tipe='N' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
+                                while(rs3.next()){
+                                    saldoawal=Sequel.cariIsiAngka(
+                                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs3.getString(1)+"' and rekeningtahun.thn "+
+                                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                    debkret=Sequel.cariIsiAngka(
+                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                            "detailjurnal.kd_rek='"+rs3.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                            "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                    saldoakhir=saldoawal+debkret;
+                                    pendapatan=pendapatan+saldoakhir;
+                                    tabMode3.addRow(new Object[]{"","      "+rs3.getString(1)+" "+rs3.getString(2),"  "+df2.format(saldoakhir)}); 
+                                    try {
+                                        rs4=koneksi.prepareStatement(
+                                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                            " where subrekening.kd_rek='"+rs3.getString(1)+"' and rekening.level='1' and "+
+                                            "rekening.tipe='N' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
+                                        while(rs4.next()){
+                                            saldoawal=Sequel.cariIsiAngka(
+                                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs4.getString(1)+"' and rekeningtahun.thn "+
+                                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                            debkret=Sequel.cariIsiAngka(
+                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                    "detailjurnal.kd_rek='"+rs4.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                            saldoakhir=saldoawal+debkret;
+                                            pendapatan=pendapatan+saldoakhir;
+                                            tabMode3.addRow(new Object[]{"","         "+rs4.getString(1)+" "+rs4.getString(2),"  "+df2.format(saldoakhir)}); 
+                                            try {
+                                                rs5=koneksi.prepareStatement(
+                                                    "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                    " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                    " where subrekening.kd_rek='"+rs4.getString(1)+"' and rekening.level='1' and "+
+                                                    "rekening.tipe='N' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
+                                                while(rs5.next()){
+                                                    saldoawal=Sequel.cariIsiAngka(
+                                                            "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs5.getString(1)+"' and rekeningtahun.thn "+
+                                                            "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                                    debkret=Sequel.cariIsiAngka(
+                                                            "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                            "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                            "detailjurnal.kd_rek='"+rs5.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                            "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                                    saldoakhir=saldoawal+debkret;
+                                                    pendapatan=pendapatan+saldoakhir;
+                                                    tabMode3.addRow(new Object[]{"","            "+rs5.getString(1)+" "+rs5.getString(2),"  "+df2.format(saldoakhir)}); 
+                                                    try {
+                                                        rs6=koneksi.prepareStatement(
+                                                            "select rekening.kd_rek, rekening.nm_rek, rekening.tipe, rekening.balance "+
+                                                            " from rekening inner join subrekening on rekening.kd_rek=subrekening.kd_rek2 "+
+                                                            " where subrekening.kd_rek='"+rs5.getString(1)+"' and rekening.level='1' and "+
+                                                            "rekening.tipe='N' and rekening.balance='K' order by rekening.kd_rek").executeQuery();
+                                                        while(rs6.next()){
+                                                            saldoawal=Sequel.cariIsiAngka(
+                                                                    "select sum(rekeningtahun.saldo_awal) from rekeningtahun where rekeningtahun.kd_rek='"+rs6.getString(1)+"' and rekeningtahun.thn "+
+                                                                    "between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"").substring(0,4)+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"").substring(0,4)+"'");
+                                                            debkret=Sequel.cariIsiAngka(
+                                                                    "select (sum(detailjurnal.kredit)-sum(detailjurnal.debet)) "+
+                                                                    "from jurnal inner join detailjurnal on detailjurnal.no_jurnal=jurnal.no_jurnal where "+
+                                                                    "detailjurnal.kd_rek='"+rs6.getString(1)+"' and jurnal.tgl_jurnal between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+
+                                                                    "' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'");
+                                                            saldoakhir=saldoawal+debkret;
+                                                            pendapatan=pendapatan+saldoakhir;
+                                                            tabMode3.addRow(new Object[]{"","               "+rs6.getString(1)+" "+rs6.getString(2),"  "+df2.format(saldoakhir)}); 
+                                                        }
+                                                    } catch (Exception e) {
+                                                        System.out.println("Notif Pasiva 6 : "+e);
+                                                    } finally{
+                                                        if(rs6!=null){
+                                                            rs6.close();
+                                                        }
+                                                    }
+                                                }
+                                            } catch (Exception e) {
+                                                System.out.println("Notif Pasiva 5 : "+e);
+                                            } finally{
+                                                if(rs5!=null){
+                                                    rs5.close();
+                                                }
+                                            }
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif Pasiva 4 : "+e);
+                                    } finally{
+                                        if(rs4!=null){
+                                            rs4.close();
+                                        }
+                                    }
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif Pasiva 3 : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif Pasiva 2 : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                }  
+                tabMode3.addRow(new Object[]{"","Total Pasiva : Pasiva + Modal Akhir",df2.format(pasiva+modal+(pendapatan-biaya))}); 
+                tabMode3.addRow(data);    
+            } catch (Exception e) {
+                System.out.println("Notifikasi Pasiva 1: "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            
+        } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
-        }
-        
+        }        
     }
     
+    
     public void isCek(){
-        //BtnPrint.setEnabled(var.getkeuangan());
+        BtnPrint.setEnabled(var.getkeuangan());
     }
      
      
