@@ -1294,7 +1294,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                             "\"klsRawat\":\""+Kelas.getSelectedItem().toString().substring(0,1)+"\"," +
                                             "\"lakaLantas\":\""+LakaLantas.getSelectedItem().toString().substring(0,1)+"\"," +
                                             "\"lokasiLaka\":\""+LokasiLaka.getText()+"\"," +
-                                            "\"user\":\""+var.getkode().replace(" ","")+"\"," +
+                                            "\"user\":\""+var.getkode().replace(" ","").substring(9)+"\"," +
                                             "\"noMr\":\""+TNoRM.getText()+"\"" +
                                            "}" +
                                      "}" +
@@ -1318,7 +1318,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                              NoRujukan.getText(),KdPpkRujukan.getText(), NmPpkRujukan.getText(),KdPPK.getText(), NmPPK.getText(), 
                              JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
                              NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
-                             LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),var.getkode().replace(" ",""), 
+                             LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),var.getkode().replace(" ","").substring(9), 
                              TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JenisPeserta.getText(),JK.getText(),NoKartu.getText(),
                              tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                          });
@@ -2147,7 +2147,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                     "\"klsRawat\":\""+Kelas.getSelectedItem().toString().substring(0,1)+"\"," +
                                     "\"lakaLantas\":\""+LakaLantas.getSelectedItem().toString().substring(0,1)+"\"," +
                                     "\"lokasiLaka\":\""+LokasiLaka.getText()+"\"," +
-                                    "\"user\":\""+var.getkode().replace(" ","")+"\"," +
+                                    "\"user\":\""+var.getkode().replace(" ","").substring(9)+"\"," +
                                     "\"noMr\":\""+TNoRM.getText()+"\"" +
                                    "}" +
                              "}" +
@@ -2168,7 +2168,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                      NoRujukan.getText(),KdPpkRujukan.getText(), NmPpkRujukan.getText(),KdPPK.getText(), NmPPK.getText(), 
                      JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
                      NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
-                     LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),var.getkode().replace(" ",""), 
+                     LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),var.getkode().replace(" ","").substring(9), 
                      TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JenisPeserta.getText(),JK.getText(),NoKartu.getText(),"0000-00-00 00:00:00"
                  })==true){
                      Sequel.menyimpan("rujuk_masuk","?,?,?,?,?",5,new String[]{
