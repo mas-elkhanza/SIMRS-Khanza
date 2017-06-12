@@ -69,7 +69,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private BPJSCekReferensiPenyakit penyakit=new BPJSCekReferensiPenyakit(null,false);
     private BPJSCekReferensiPoli poli=new BPJSCekReferensiPoli(null,false);
     private BPJSCekNoKartu cekViaBPJSKartu=new BPJSCekNoKartu();
-    private String no_peserta="", requestJson,URL="",jkel="",duplikat="";
+    private String no_peserta="", requestJson,URL="",jkel="",duplikat="",user="";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -294,7 +294,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             System.out.println(e);
         }
 
-        //isForm(); 
+        try {
+            user=var.getkode().replace(" ","").substring(9);
+        } catch (Exception e) {
+            user=var.getkode();
+        }
     }
 
 
@@ -1294,7 +1298,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                             "\"klsRawat\":\""+Kelas.getSelectedItem().toString().substring(0,1)+"\"," +
                                             "\"lakaLantas\":\""+LakaLantas.getSelectedItem().toString().substring(0,1)+"\"," +
                                             "\"lokasiLaka\":\""+LokasiLaka.getText()+"\"," +
-                                            "\"user\":\""+var.getkode().replace(" ","").substring(9)+"\"," +
+                                            "\"user\":\""+user+"\"," +
                                             "\"noMr\":\""+TNoRM.getText()+"\"" +
                                            "}" +
                                      "}" +
@@ -1318,7 +1322,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                              NoRujukan.getText(),KdPpkRujukan.getText(), NmPpkRujukan.getText(),KdPPK.getText(), NmPPK.getText(), 
                              JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
                              NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
-                             LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),var.getkode().replace(" ","").substring(9), 
+                             LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),user, 
                              TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JenisPeserta.getText(),JK.getText(),NoKartu.getText(),
                              tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                          });
@@ -2147,7 +2151,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                     "\"klsRawat\":\""+Kelas.getSelectedItem().toString().substring(0,1)+"\"," +
                                     "\"lakaLantas\":\""+LakaLantas.getSelectedItem().toString().substring(0,1)+"\"," +
                                     "\"lokasiLaka\":\""+LokasiLaka.getText()+"\"," +
-                                    "\"user\":\""+var.getkode().replace(" ","").substring(9)+"\"," +
+                                    "\"user\":\""+user+"\"," +
                                     "\"noMr\":\""+TNoRM.getText()+"\"" +
                                    "}" +
                              "}" +
@@ -2168,7 +2172,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                      NoRujukan.getText(),KdPpkRujukan.getText(), NmPpkRujukan.getText(),KdPPK.getText(), NmPPK.getText(), 
                      JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
                      NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
-                     LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),var.getkode().replace(" ","").substring(9), 
+                     LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),user, 
                      TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JenisPeserta.getText(),JK.getText(),NoKartu.getText(),"0000-00-00 00:00:00"
                  })==true){
                      Sequel.menyimpan("rujuk_masuk","?,?,?,?,?",5,new String[]{
