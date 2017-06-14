@@ -768,7 +768,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
           Valid.MyReport("rptSuratKematian.jrxml","report","::[ Surat Kematian ]::",
                         "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien, "+
-                        "concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
+                        "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
                         "agama,keterangan from pasien_mati,pasien "+
                         "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "+
                         "and pasien_mati.no_rkm_medis='"+TNoRM.getText()+"' ",param);
@@ -793,7 +793,7 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptAngkutJenazah.jrxml","report","::[ Surat Angkut Jenazah ]::",
                           "select tanggal,jam,pasien_mati.no_rkm_medis,pasien.nm_pasien,pasien.pekerjaan, "+
-                          "concat(year(from_days(datediff(now(), pasien.tgl_lahir))),' Th ',month(from_days(datediff(now(),pasien.tgl_lahir))),' Bl ',day(from_days(datediff(now(),pasien.tgl_lahir))),' Hr') as umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
+                          "pasien.umur,pasien.alamat,jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
                           "agama,keterangan from pasien_mati,pasien "+
                           "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis "+
                           "and pasien_mati.no_rkm_medis='"+TNoRM.getText()+"' ",param);

@@ -85,16 +85,17 @@ public final class DlgRekening extends javax.swing.JDialog {
         Kd.setDocument(new batasInput((byte)15).getKata(Kd));
         Nm.setDocument(new batasInput((byte)100).getKata(Nm));
         KdSub.setDocument(new batasInput((byte)15).getKata(KdSub));
+        KdSubInduk.setDocument(new batasInput((byte)15).getKata(KdSubInduk));
         NmSub.setDocument(new batasInput((byte)100).getKata(NmSub));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil();}
+                public void insertUpdate(DocumentEvent e) {tampil2();}
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil();}
+                public void removeUpdate(DocumentEvent e) {tampil2();}
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil();}
+                public void changedUpdate(DocumentEvent e) {tampil2();}
             });
         }  
         
@@ -125,6 +126,16 @@ public final class DlgRekening extends javax.swing.JDialog {
         label39 = new widget.Label();
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSubAkun = new javax.swing.JMenuItem();
+        MnJadikanSub = new javax.swing.JMenuItem();
+        WindowJadikanSub = new javax.swing.JDialog();
+        internalFrame8 = new widget.InternalFrame();
+        BtnCloseIn6 = new widget.Button();
+        BtnSimpan6 = new widget.Button();
+        label40 = new widget.Label();
+        KdSubInduk = new widget.TextBox();
+        NmSubInduk = new widget.TextBox();
+        label41 = new widget.Label();
+        BtnCari1 = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
@@ -273,7 +284,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         MnSubAkun.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSubAkun.setForeground(java.awt.Color.darkGray);
         MnSubAkun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSubAkun.setText("Sub Akun Rekening");
+        MnSubAkun.setText("Buat Sub Akun Rekening");
         MnSubAkun.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnSubAkun.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnSubAkun.setIconTextGap(5);
@@ -285,6 +296,103 @@ public final class DlgRekening extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnSubAkun);
+
+        MnJadikanSub.setBackground(new java.awt.Color(255, 255, 255));
+        MnJadikanSub.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnJadikanSub.setForeground(java.awt.Color.darkGray);
+        MnJadikanSub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnJadikanSub.setText("Jadikan Sub Akun Rekening");
+        MnJadikanSub.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnJadikanSub.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnJadikanSub.setIconTextGap(5);
+        MnJadikanSub.setName("MnJadikanSub"); // NOI18N
+        MnJadikanSub.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnJadikanSub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnJadikanSubActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnJadikanSub);
+
+        WindowJadikanSub.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowJadikanSub.setModal(true);
+        WindowJadikanSub.setName("WindowJadikanSub"); // NOI18N
+        WindowJadikanSub.setUndecorated(true);
+        WindowJadikanSub.setResizable(false);
+
+        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Jadikan Sub Akun ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame8.setName("internalFrame8"); // NOI18N
+        internalFrame8.setWarnaBawah(new java.awt.Color(240, 245, 235));
+        internalFrame8.setLayout(null);
+
+        BtnCloseIn6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnCloseIn6.setMnemonic('P');
+        BtnCloseIn6.setText("Tutup");
+        BtnCloseIn6.setToolTipText("Alt+P");
+        BtnCloseIn6.setName("BtnCloseIn6"); // NOI18N
+        BtnCloseIn6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCloseIn6ActionPerformed(evt);
+            }
+        });
+        internalFrame8.add(BtnCloseIn6);
+        BtnCloseIn6.setBounds(130, 87, 100, 30);
+
+        BtnSimpan6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan6.setMnemonic('S');
+        BtnSimpan6.setText("Simpan");
+        BtnSimpan6.setToolTipText("Alt+S");
+        BtnSimpan6.setName("BtnSimpan6"); // NOI18N
+        BtnSimpan6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpan6ActionPerformed(evt);
+            }
+        });
+        internalFrame8.add(BtnSimpan6);
+        BtnSimpan6.setBounds(20, 87, 100, 30);
+
+        label40.setText("Kode Rekening :");
+        label40.setName("label40"); // NOI18N
+        label40.setPreferredSize(new java.awt.Dimension(35, 23));
+        internalFrame8.add(label40);
+        label40.setBounds(0, 22, 105, 23);
+
+        KdSubInduk.setHighlighter(null);
+        KdSubInduk.setName("KdSubInduk"); // NOI18N
+        KdSubInduk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdSubIndukKeyPressed(evt);
+            }
+        });
+        internalFrame8.add(KdSubInduk);
+        KdSubInduk.setBounds(108, 22, 100, 23);
+
+        NmSubInduk.setEditable(false);
+        NmSubInduk.setHighlighter(null);
+        NmSubInduk.setName("NmSubInduk"); // NOI18N
+        internalFrame8.add(NmSubInduk);
+        NmSubInduk.setBounds(108, 52, 300, 23);
+
+        label41.setText("Nama Rekening :");
+        label41.setName("label41"); // NOI18N
+        label41.setPreferredSize(new java.awt.Dimension(35, 23));
+        internalFrame8.add(label41);
+        label41.setBounds(0, 52, 105, 23);
+
+        BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari1.setMnemonic('2');
+        BtnCari1.setToolTipText("Alt+2");
+        BtnCari1.setName("BtnCari1"); // NOI18N
+        BtnCari1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCari1ActionPerformed(evt);
+            }
+        });
+        internalFrame8.add(BtnCari1);
+        BtnCari1.setBounds(210, 22, 28, 23);
+
+        WindowJadikanSub.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -634,7 +742,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         }else{
             Valid.editTable(tabMode,"rekening","kd_rek",Kd2,"nm_rek='"+Nm.getText()+
                     "',tipe='"+Tipe.getSelectedItem().toString().substring(0,1)+"',balance='"+Balan.getSelectedItem().toString().substring(0,1)+"',kd_rek='"+Kd.getText()+"'");
-            if(tabMode.getRowCount()!=0){BtnCariActionPerformed(evt);}
+            BtnCariActionPerformed(evt);
             emptTeks();
         }
 }//GEN-LAST:event_BtnEditActionPerformed
@@ -649,6 +757,7 @@ public final class DlgRekening extends javax.swing.JDialog {
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         WindowSubRekening.dispose();
+        WindowJadikanSub.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -659,12 +768,11 @@ public final class DlgRekening extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BtnCariActionPerformed(evt);
         if(tbKamar.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
-        }else if(tbKamar.getRowCount()!=0){  
+        }else if(tbKamar.getRowCount()!=0){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -673,13 +781,29 @@ public final class DlgRekening extends javax.swing.JDialog {
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptRekening.jrxml","report","::[ Data Rekening ]::","select kd_rek, nm_rek, tipe, balance "+
-                " from rekening where kd_rek like '%"+TCari.getText().trim()+"%' or "+
-                " nm_rek like '%"+TCari.getText().trim()+"%' or "+
-                " tipe like '%"+TCari.getText().trim()+"%' or "+
-                " balance like '%"+TCari.getText().trim()+"%' order by kd_rek",param);
-        }
-        this.setCursor(Cursor.getDefaultCursor());
+            if(TCari.getText().trim().equals("")){
+                Sequel.AutoComitFalse();
+                Sequel.queryu("delete from temporary");
+                int row=tabMode.getRowCount();
+                for(int i=0;i<row;i++){  
+                    Sequel.menyimpan("temporary","'0','"+
+                                    tabMode.getValueAt(i,2).toString()+"','"+
+                                    tabMode.getValueAt(i,3).toString()+"','"+
+                                    tabMode.getValueAt(i,4).toString()+"','"+
+                                    tabMode.getValueAt(i,5).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
+                }
+                Sequel.AutoComitTrue();  
+                Valid.MyReport("rptRekening2.jrxml","report","::[ Data Rekening ]::",
+                    "select * from temporary order by no asc",param);
+            }else{
+                Valid.MyReport("rptRekening.jrxml","report","::[ Data Rekening ]::","select kd_rek, nm_rek, tipe, balance "+
+                    " from rekening where kd_rek like '%"+TCari.getText().trim()+"%' or "+
+                    " nm_rek like '%"+TCari.getText().trim()+"%' or "+
+                    " tipe like '%"+TCari.getText().trim()+"%' or "+
+                    " balance like '%"+TCari.getText().trim()+"%' order by kd_rek",param);                
+            }         
+            this.setCursor(Cursor.getDefaultCursor());
+        }        
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -701,7 +825,11 @@ public final class DlgRekening extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        if(TCari.getText().trim().equals("")){
+            tampil();
+        }else{
+            tampil2();
+        }   
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -808,13 +936,74 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         }else{
             KdSub.requestFocus();
             KdSub.setText(Kd.getText());
-            WindowSubRekening.setSize(630,135);
+            WindowSubRekening.setSize(630,130);
             WindowSubRekening.setLocationRelativeTo(internalFrame1);
             WindowSubRekening.setAlwaysOnTop(false);
             WindowSubRekening.setVisible(true);
         }
             
     }//GEN-LAST:event_MnSubAkunActionPerformed
+
+    private void MnJadikanSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnJadikanSubActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(Nm.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu Akun Rekening...!!!");
+            tbKamar.requestFocus();
+        }else{
+            KdSubInduk.requestFocus();
+            KdSubInduk.setText("");
+            NmSubInduk.setText("");
+            WindowJadikanSub.setSize(430,130);
+            WindowJadikanSub.setLocationRelativeTo(internalFrame1);
+            WindowJadikanSub.setAlwaysOnTop(false);
+            WindowJadikanSub.setVisible(true);
+        }
+    }//GEN-LAST:event_MnJadikanSubActionPerformed
+
+    private void BtnCloseIn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseIn6ActionPerformed
+        WindowJadikanSub.dispose();
+    }//GEN-LAST:event_BtnCloseIn6ActionPerformed
+
+    private void BtnSimpan6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan6ActionPerformed
+        if(KdSubInduk.getText().trim().equals("")){
+            Valid.textKosong(KdSub,"Kode Rekening");
+        }else if(NmSubInduk.getText().trim().equals("")){
+            Valid.textKosong(NmSub,"Nama Rekening");
+        }else{
+            Sequel.meghapus("subrekening","kd_rek2",Kd.getText());
+            if(Sequel.menyimpantf2("subrekening","'"+KdSubInduk.getText()+"','"+Kd.getText()+"'","Sub Rekening")==true){
+                Sequel.mengedit("rekening","kd_rek='"+Kd.getText()+"'","level='1'");                
+            }else{
+                Sequel.mengedit("rekening","kd_rek='"+Kd.getText()+"'","level='0'");
+            }         
+            WindowJadikanSub.dispose();
+            BtnCariActionPerformed(evt);
+            emptTeks2();
+            
+        }
+    }//GEN-LAST:event_BtnSimpan6ActionPerformed
+
+    private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
+        Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",NmSubInduk,KdSubInduk.getText());
+        if(NmSubInduk.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane,"Akun Rekening tidak ditemukan");
+        }
+        KdSubInduk.requestFocus();
+    }//GEN-LAST:event_BtnCari1ActionPerformed
+
+    private void KdSubIndukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdSubIndukKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            if(!KdSubInduk.getText().trim().equals("")){
+                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",NmSubInduk,KdSubInduk.getText());
+                if(NmSubInduk.getText().trim().equals("")){
+                    JOptionPane.showMessageDialog(rootPane,"Akun Rekening tidak ditemukan");
+                }
+                KdSubInduk.requestFocus();
+            } 
+        }            
+    }//GEN-LAST:event_KdSubIndukKeyPressed
 
     /**
     * @param args the command line arguments
@@ -838,27 +1027,35 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnCari1;
     private widget.Button BtnCloseIn5;
+    private widget.Button BtnCloseIn6;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.Button BtnSimpan5;
+    private widget.Button BtnSimpan6;
     private widget.TextBox Kd;
     private widget.TextBox Kd2;
     private widget.TextBox KdSub;
+    private widget.TextBox KdSubInduk;
     private widget.Label LCount;
+    private javax.swing.JMenuItem MnJadikanSub;
     private javax.swing.JMenuItem MnSubAkun;
     private widget.TextBox Nm;
     private widget.TextBox NmSub;
+    private widget.TextBox NmSubInduk;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.ComboBox Tipe;
     private widget.ComboBox Tipe1;
+    private javax.swing.JDialog WindowJadikanSub;
     private javax.swing.JDialog WindowSubRekening;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame7;
+    private widget.InternalFrame internalFrame8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label10;
@@ -870,6 +1067,8 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.Label label37;
     private widget.Label label38;
     private widget.Label label39;
+    private widget.Label label40;
+    private widget.Label label41;
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
@@ -1050,6 +1249,41 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
                             ps2.close();
                         }
                     }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif 1 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        LCount.setText(""+tabMode.getRowCount());
+    }
+    
+    public void tampil2() {
+        Valid.tabelKosong(tabMode);
+        try{
+            ps=koneksi.prepareStatement("select kd_rek, nm_rek, tipe, balance "+
+                    " from rekening where kd_rek like ? or "+
+                    " nm_rek like ? or "+
+                    " tipe like ? or "+
+                    " balance like ? order by kd_rek");
+            try {            
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)
+                    });                    
                 }
             } catch (Exception e) {
                 System.out.println("Notif 1 : "+e);
