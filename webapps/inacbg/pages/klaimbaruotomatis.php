@@ -69,7 +69,7 @@ if(empty($tahunawal)){
                     </tr>";
                     while($baris = mysql_fetch_array($hasil)) {
                         $status="";
-                        if(getOne("select count(no_sep) from inacbg_klaim_baru where no_sep='".$baris["no_sep"]."'")>0){
+                        if(getOne("select count(no_sep) from inacbg_data_terkirim where no_sep='".$baris["no_sep"]."'")>0){
                             $status="Terkirim INACBG";
                         }
                         $gender="";
@@ -114,9 +114,8 @@ if(empty($tahunawal)){
                             $discharge_status="4";
                         }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='+' and no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="4";
-                        }
-
-
+                        }                        
+                        
                         echo "<tr class='isi' title='".$baris["no_rawat"].", ".$baris["no_sep"].", ".$baris["tglsep"].", ".$baris["no_kartu"].", ".$baris["nomr"].", ".$baris["nama_pasien"]."'>
                                 <td valign='top'>".$baris["no_rawat"]."</td>
                                 <td valign='top'>".$baris["no_sep"]."</td>
@@ -127,18 +126,12 @@ if(empty($tahunawal)){
                                 <td valign='top' align='center'>".$baris["tanggal_lahir"]."</td>
                                 <td valign='top' align='center'>".$baris["jkel"]."</td>
                                 <td valign='top' align='center'>".$baris["peserta"]."</td>
-                                <td valign='top' align='center'>".$status."";
-                                if($status==""){
-                                    if(BuatKlaimBaru($baris["no_kartu"],$baris["no_sep"],$baris["nomr"],$baris["nama_pasien"],$baris["tanggal_lahir"]." 00:00:00", $gender)=="Ok"){
-                                        EditUlangKlaim($baris["no_sep"]);
-                                        UpdateDataKlaim($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"],$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","","","","","",getOne("select berat_badan from pasien_bayi where no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur,getOne("select totalpiutang from piutang_pasien where no_rawat='".$baris["no_rawat"]."'"), getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), getOne("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),getKelasRS(),"","","#",$codernik);
-                                    }
-                                }else if($status=="Terkirim INACBG"){
-                                    EditUlangKlaim($baris["no_sep"]);
-                                    UpdateDataKlaim($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"],$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","","","","","",getOne("select berat_badan from pasien_bayi where no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur,getOne("select totalpiutang from piutang_pasien where no_rawat='".$baris["no_rawat"]."'"), getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), getOne("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),getKelasRS(),"","","#",$codernik);
-                                }                                    
-                          echo "</td>
+                                <td valign='top' align='center'>".$status."</td>
                              </tr>";
+                        
+                        BuatKlaimBaru($baris["no_kartu"],$baris["no_sep"],$baris["nomr"],$baris["nama_pasien"],$baris["tanggal_lahir"]." 00:00:00", $gender);
+                        EditUlangKlaim($baris["no_sep"]);
+                        UpdateDataKlaim($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"],$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","","","","","",getOne("select berat_badan from pasien_bayi where no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur,getOne("select totalpiutang from piutang_pasien where no_rawat='".$baris["no_rawat"]."'"), getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), getOne("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),getKelasRS(),"","","#",$codernik);                       
                     }
             echo "</table>";           
         }else{
@@ -228,6 +221,6 @@ if(empty($tahunawal)){
     </div>
 </div>
 <?php 
-   echo "<meta http-equiv='refresh' content='30;URL=?act=KlaimBaruOtomatis&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>";
+   echo "<meta http-equiv='refresh' content='60;URL=?act=KlaimBaruOtomatis&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>";
 ?>
 
