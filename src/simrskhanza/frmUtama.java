@@ -26,6 +26,7 @@ import bridging.BPJSMonitoringKlaim;
 import bridging.INACBGCariCoderNIK;
 import bridging.INACBGCoderNIK;
 import bridging.INACBGHybrid;
+import bridging.InhealthCekEligibilitas;
 import informasi.InformasiAnalisaKamin;
 import laporan.DlgDkkSurveilansRalan;
 import laporan.DlgFrekuensiPenyakitRanap;
@@ -580,6 +581,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnRBKSO = new widget.ButtonBig();
         btnRHMenejemen = new widget.ButtonBig();
         btnRBMenejemen = new widget.ButtonBig();
+        btnCekEligibilitasInhealth = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3738,6 +3740,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRBMenejemen);
 
+        btnCekEligibilitasInhealth.setForeground(new java.awt.Color(40, 70, 50));
+        btnCekEligibilitasInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/receptionist.png"))); // NOI18N
+        btnCekEligibilitasInhealth.setText("Cek Eligibilitas Inhealth");
+        btnCekEligibilitasInhealth.setIconTextGap(0);
+        btnCekEligibilitasInhealth.setName("btnCekEligibilitasInhealth"); // NOI18N
+        btnCekEligibilitasInhealth.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekEligibilitasInhealth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekEligibilitasInhealthActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCekEligibilitasInhealth);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3746,7 +3761,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01/06/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/06/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8042,6 +8057,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRBMenejemenActionPerformed
 
+    private void btnCekEligibilitasInhealthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekEligibilitasInhealthActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        InhealthCekEligibilitas form=new InhealthCekEligibilitas(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCekEligibilitasInhealthActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8122,6 +8148,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekBPJSNomorRujukanPCare;
     private widget.ButtonBig btnCekBPJSPoli;
     private widget.ButtonBig btnCekBPJSRiwayat;
+    private widget.ButtonBig btnCekEligibilitasInhealth;
     private widget.ButtonBig btnClosingKasir;
     private widget.ButtonBig btnDaruratStok;
     private widget.ButtonBig btnDataPenjualan;
@@ -9276,6 +9303,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnAplicareKetersediaanKamar);
                 jmlmenu++;
             }    
+            
+            if(var.getinhealth_cek_eligibilitas()==true){
+                Panelmenu.add(btnCekEligibilitasInhealth);
+                jmlmenu++;
+            } 
             
             if(var.getinacbg_coder_nik()==true){
                 Panelmenu.add(btnInaCBGCoderNIK);

@@ -141,7 +141,7 @@ from aplicare_ketersediaan_kamar inner join bangsal on aplicare_ketersediaan_kam
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[kODE RUANG]]></text>
+				<text><![CDATA[KODE RUANG]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="117" y="0" width="138" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
