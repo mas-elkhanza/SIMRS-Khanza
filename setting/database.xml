@@ -11,7 +11,7 @@
     <entry key="HYBRIDWEB">webapps</entry>
     <entry key="ANTRIAN">sender</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
-    <entry key="URLAPIBPJS">http://192.168.1.206:8080/WsLokalRest21</entry>
+    <entry key="URLAPIBPJS">http://dvlp.bpjs-kesehatan.go.id:8081/devWslokalrest</entry>
     <entry key="SECRETKEYAPIBPJS">0qO2F4D0AF</entry>
     <entry key="CONSIDAPIBPJS">1236</entry>
     <entry key="URLAPIAPLICARE">http://dvlp.bpjs-kesehatan.go.id:8888/aplicaresws</entry>
@@ -22,6 +22,6 @@
     <entry key="POLIAKTIFKASIRRALAN"></entry>
     <entry key="JADWALDOKTERDIREGISTRASI">aktif</entry>    
     <entry key="IPPRINTERTRACER">10.50.150.57/label2</entry>
+    <entry key="URLAPIINHEALTH">http://dummy.inhealth.co.id/pelkesws2</entry>
     <entry key="TOKENINHEALTH">inh_aba40329b828c943e91f2e5c7f9f1f1b</entry>
-    <entry key="KODEPROVIDERINHEALTH">0902R010</entry>
 </properties>
