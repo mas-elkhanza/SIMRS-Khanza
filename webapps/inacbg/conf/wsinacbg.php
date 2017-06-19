@@ -7,7 +7,7 @@
     }
 
     function getUrlWS() {
-        $UrlWS = "http://25.18.49.7/E-Klaim/ws.php";
+        $UrlWS = "http://192.168.0.202/E-Klaim/ws.php";
         return $UrlWS;
     }
     
@@ -160,6 +160,8 @@
         //echo "Data : ".$request;
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
+            Hapus2("inacbg_data_terkirim", "no_sep='".$nomor_sep."'");
+            InsertData2("inacbg_data_terkirim","'".$nomor_sep."','".$coder_nik."'");
             GroupingStage1($nomor_sep,$coder_nik);
         }
     }
@@ -207,7 +209,7 @@
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
             Hapus2("inacbg_grouping_stage1", "no_sep='".$nomor_sep."'");
-            InsertData2("inacbg_grouping_stage1","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".$msg['response']['cbg']['tariff']."'");
+            InsertData2("inacbg_grouping_stage1","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','0'");
             FinalisasiKlaim($nomor_sep,$coder_nik);
         }
     }
