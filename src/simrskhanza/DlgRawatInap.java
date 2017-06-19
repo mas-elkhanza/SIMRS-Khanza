@@ -28,6 +28,7 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import keuangan.Jurnal;
 
 /**
  *
@@ -37,13 +38,18 @@ public final class DlgRawatInap extends javax.swing.JDialog {
     private final DefaultTableModel tabModeDr,tabModePr,tabModeDrPr,tabModePemeriksaan;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     public  DlgCariPerawatanRanap perawatan=new DlgCariPerawatanRanap(null,false);
     public  DlgCariPerawatanRanap2 perawatan2=new DlgCariPerawatanRanap2(null,false);
     private DlgPasien pasien=new DlgPasien(null,false);
-    private PreparedStatement ps,ps2,ps3,ps4;
-    private ResultSet rs;
+    private PreparedStatement ps,ps2,ps3,ps4,psrekening;
+    private ResultSet rs,rsrekening;
     private int i=0;
+    private String Suspen_Piutang_Tindakan_Ranap="",Tindakan_Ranap="",Beban_Jasa_Medik_Dokter_Tindakan_Ranap="",
+            Utang_Jasa_Medik_Dokter_Tindakan_Ranap="",Beban_Jasa_Medik_Paramedis_Tindakan_Ranap="",
+            Utang_Jasa_Medik_Paramedis_Tindakan_Ranap="",Beban_KSO_Tindakan_Ranap="",
+            Utang_KSO_Tindakan_Ranap="";
 
     /** Creates new form DlgRawatInap
      * @param parent
@@ -507,6 +513,33 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm(); 
         jam();
+        try {
+            psrekening=koneksi.prepareStatement("select * from set_akun_ranap");
+            try {
+                rsrekening=psrekening.executeQuery();
+                while(rsrekening.next()){
+                    Suspen_Piutang_Tindakan_Ranap=rsrekening.getString("Suspen_Piutang_Tindakan_Ranap");
+                    Tindakan_Ranap=rsrekening.getString("Tindakan_Ranap");
+                    Beban_Jasa_Medik_Dokter_Tindakan_Ranap=rsrekening.getString("Beban_Jasa_Medik_Dokter_Tindakan_Ranap");
+                    Utang_Jasa_Medik_Dokter_Tindakan_Ranap=rsrekening.getString("Utang_Jasa_Medik_Dokter_Tindakan_Ranap");
+                    Beban_Jasa_Medik_Paramedis_Tindakan_Ranap=rsrekening.getString("Beban_Jasa_Medik_Paramedis_Tindakan_Ranap");
+                    Utang_Jasa_Medik_Paramedis_Tindakan_Ranap=rsrekening.getString("Utang_Jasa_Medik_Paramedis_Tindakan_Ranap");
+                    Beban_KSO_Tindakan_Ranap=rsrekening.getString("Beban_KSO_Tindakan_Ranap");
+                    Utang_KSO_Tindakan_Ranap=rsrekening.getString("Utang_KSO_Tindakan_Ranap");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Rekening : "+e);
+            } finally{
+                if(rsrekening!=null){
+                    rsrekening.close();
+                }
+                if(psrekening!=null){
+                    psrekening.close();
+                }
+            }            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
     
@@ -1739,13 +1772,29 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 }else if(TKdPrw.getText().trim().equals("")||TNmPrw.getText().trim().equals("")){
                     Valid.textKosong(TKdPrw,"perawatan");
                 }else{
-                    Sequel.menyimpan("rawat_inap_dr","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
+                    if(Sequel.menyimpantf("rawat_inap_dr","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
                         TNoRw.getText(),TKdPrw.getText(),KdDok.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                         cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                         BagianRS.getText(),Bhp.getText(),JmDokter.getText(),KSO.getText(),Menejemen.getText(),TTnd.getText()
-                    });
-                    tampilDr();
-                    BtnBatalActionPerformed(evt);
+                    })==true){
+                        Sequel.queryu("delete from tampjurnal");    
+                        if(Valid.SetAngka(TTnd.getText())>0){
+                            Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Tindakan_Ranap+"','Suspen Piutang Tindakan Ranap','"+TTnd.getText()+"','0'","Rekening");    
+                            Sequel.menyimpan("tampjurnal","'"+Tindakan_Ranap+"','Pendapatan Tindakan Rawat Inap','0','"+TTnd.getText()+"'","Rekening");                              
+                        }
+                        if(Valid.SetAngka(JmDokter.getText())>0){
+                            Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Tindakan_Ranap+"','Beban Jasa Medik Dokter Tindakan Ranap','"+JmDokter.getText()+"','0'","Rekening");    
+                            Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Tindakan_Ranap+"','Utang Jasa Medik Dokter Tindakan Ranap','0','"+JmDokter.getText()+"'","Rekening");                              
+                        }
+                        if(Valid.SetAngka(KSO.getText())>0){
+                            Sequel.menyimpan("tampjurnal","'"+Beban_KSO_Tindakan_Ranap+"','Beban KSO Tindakan Ranap','"+KSO.getText()+"','0'","Rekening");    
+                            Sequel.menyimpan("tampjurnal","'"+Utang_KSO_Tindakan_Ranap+"','Utang KSO Tindakan Ranap','0','"+KSO.getText()+"'","Rekening");                              
+                        }
+                        jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","TINDAKAN RAWAT INAP PASIEN "+TPasien.getText());                                                
+                            
+                        tampilDr();
+                        BtnBatalActionPerformed(evt);
+                    }                        
                 }                
             }else if(TabRawat.getSelectedIndex()==1){
                 if(kdptg.getText().trim().equals("")||TPerawat.getText().trim().equals("")){

@@ -113,7 +113,7 @@
                             @$maksimal  = $baris4["maksimal"];
                             $hakcuti   = 0;
 
-                            $_sql6    = "SELECT count(id)
+                            $_sql6    = "SELECT sum(jml)
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."%' and jns='C' group by id";
                             $hasil6   = bukaquery($_sql6);

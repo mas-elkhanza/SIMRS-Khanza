@@ -53,7 +53,7 @@ public final class var {
             utd_pemisahan_darah=false,harian_kamar=false,rincian_piutang_pasien=false,keuntungan_beri_obat_nonpiutang=false,reklasifikasi_ralan=false,
             reklasifikasi_ranap=false,utd_penyerahan_darah=false,hutang_obat=false,riwayat_obat_alkes_bhp=false,sensus_harian_poli=false,rl4a=false,
             aplicare_referensi_kamar=false,aplicare_ketersediaan_kamar=false,inacbg_klaim_baru_otomatis=false,inacbg_klaim_baru_manual=false,inacbg_coder_nik=false,
-            mutasi_berkas=false,akun_piutang=false,harian_kso=false,bulanan_kso=false,harian_menejemen=false,bulanan_menejemen=false;
+            mutasi_berkas=false,akun_piutang=false,harian_kso=false,bulanan_kso=false,harian_menejemen=false,bulanan_menejemen=false,inhealth_cek_eligibilitas=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -297,6 +297,7 @@ public final class var {
                         var.bulanan_kso=true;
                         var.harian_menejemen=true;
                         var.bulanan_menejemen=true;
+                        var.inhealth_cek_eligibilitas=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -522,6 +523,7 @@ public final class var {
                         var.bulanan_kso=true;
                         var.harian_menejemen=true;
                         var.bulanan_menejemen=true;
+                        var.inhealth_cek_eligibilitas=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -748,6 +750,7 @@ public final class var {
                         var.bulanan_kso=rs2.getBoolean("bulanan_kso");                        
                         var.harian_menejemen=rs2.getBoolean("harian_menejemen");
                         var.bulanan_menejemen=rs2.getBoolean("bulanan_menejemen");
+                        var.inhealth_cek_eligibilitas=rs2.getBoolean("inhealth_cek_eligibilitas");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -972,6 +975,7 @@ public final class var {
                         var.bulanan_kso=false;                                    
                         var.harian_menejemen=false;
                         var.bulanan_menejemen=false;
+                        var.inhealth_cek_eligibilitas=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1242,4 +1246,5 @@ public final class var {
     public static boolean getbulanan_kso(){return var.bulanan_kso;}
     public static boolean getharian_menejemen(){return var.harian_menejemen;}
     public static boolean getbulanan_menejemen(){return var.bulanan_menejemen;}
+    public static boolean getinhealth_cek_eligibilitas(){return var.inhealth_cek_eligibilitas;}
 }

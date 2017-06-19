@@ -110,8 +110,6 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
 	            $id               = trim($_POST['id']);
-                    $nik              = trim($_POST['nik']);
-                    $nama             = trim($_POST['nama']);
                     $indek            = trim($_POST['indek']);
                     $pengurang        = trim($_POST['pengurang']);
                     $cuti_diambil     = trim($_POST['cuti_diambil']);

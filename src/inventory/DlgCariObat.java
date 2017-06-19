@@ -525,7 +525,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-05-2017" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-06-2017" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -935,7 +935,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     resep.setLocationRelativeTo(internalFrame1);
                     resep.emptTeks(); 
                     resep.isCek();
-                    resep.setNoRm(TNoRw.getText(),Valid.SetTgl2(Tanggal.getText()),Valid.SetTgl2(Tanggal.getText()),Jam.getText().substring(0,2),Jam.getText().substring(3,5),Jam.getText().substring(6,8));
+                    resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
                     resep.tampil();
                     resep.setVisible(true);
                 }
@@ -992,7 +992,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     resep.setLocationRelativeTo(internalFrame1);
                     resep.emptTeks(); 
                     resep.isCek();
-                    resep.setNoRm(TNoRw.getText(),Valid.SetTgl2(Tanggal.getText()),Valid.SetTgl2(Tanggal.getText()),Jam.getText().substring(0,2),Jam.getText().substring(3,5),Jam.getText().substring(6,8));
+                    resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
                     resep.tampil();
                     resep.setVisible(true);
         }
