@@ -486,7 +486,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         LokasiLaka.setDocument(new batasInput((byte)100).getKata(LokasiLaka));
         try{
             KdPPK.setText(Sequel.cariIsi("select kode_ppk from setting"));
-            NmPPK.setText(Sequel.cariIsi("select nama_ppk from setting"));            
+            NmPPK.setText(Sequel.cariIsi("select nama_instansi from setting"));            
             pskelengkapan=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
             try {
                 rs=pskelengkapan.executeQuery();
@@ -2414,9 +2414,9 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
 
     private void JenisPelayananItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JenisPelayananItemStateChanged
         if(JenisPelayanan.getSelectedIndex()==1){
-            LabelPoli.setText("Poli Tujuan");
+            LabelPoli.setText("Poli Tujuan :");
         }else if(JenisPelayanan.getSelectedIndex()==0){
-            LabelPoli.setText("Kamar Tujuan");
+            LabelPoli.setText("Kamar Tujuan :");
         }
         KdPoli.setText("");
         NmPoli.setText("");
@@ -3092,7 +3092,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         NoRujukan.setText("");
         KdPpkRujukan.setText("");
         NmPpkRujukan.setText("");
-        JenisPelayanan.setSelectedIndex(0);
         Catatan.setText("");
         KdPenyakit.setText("");
         NmPenyakit.setText("");

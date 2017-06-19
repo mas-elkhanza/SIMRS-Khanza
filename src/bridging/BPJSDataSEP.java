@@ -289,7 +289,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         
         try{
             KdPPK.setText(Sequel.cariIsi("select kode_ppk from setting"));
-            NmPPK.setText(Sequel.cariIsi("select nama_ppk from setting"));            
+            NmPPK.setText(Sequel.cariIsi("select nama_instansi from setting"));            
         }catch(Exception e){
             System.out.println(e);
         }
