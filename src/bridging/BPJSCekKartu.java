@@ -83,7 +83,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",
-            kabupatenpj="",hariawal="",requestJson,URL="",nosep="";
+            kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="";
     private PreparedStatement ps,pskelengkapan,pscariumur;
     private ResultSet rs;
     private double biaya=0;
@@ -544,6 +544,11 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         tahun=Sequel.cariIsi("select tahun from set_urut_no_rkm_medis");
         bulan=Sequel.cariIsi("select bulan from set_urut_no_rkm_medis");
         posisitahun=Sequel.cariIsi("select posisi_tahun_bulan from set_urut_no_rkm_medis");
+        try {
+            user=var.getkode().replace(" ","").substring(9);
+        } catch (Exception e) {
+            user=var.getkode();
+        }
     }
     
     
@@ -3227,7 +3232,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                                     "\"klsRawat\":\""+Kelas.getSelectedItem().toString().substring(0,1)+"\"," +
                                     "\"lakaLantas\":\""+LakaLantas.getSelectedItem().toString().substring(0,1)+"\"," +
                                     "\"lokasiLaka\":\""+LokasiLaka.getText()+"\"," +
-                                    "\"user\":\""+var.getkode().replace(" ","").substring(9)+"\"," +
+                                    "\"user\":\""+user+"\"," +
                                     "\"noMr\":\""+TNo.getText()+"\"" +
                                    "}" +
                              "}" +
@@ -3248,7 +3253,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     NoRujukan.getText(),KdPpkRujukan.getText(), NmPpkRujukan.getText(),KdPPK.getText(), NmPPK.getText(), 
                     JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
                     NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
-                    LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),var.getkode().replace(" ","").substring(9), 
+                    LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),user, 
                     TNo.getText(),TNm.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),nmpnj.getText(),CmbJk.getSelectedItem().toString(),NoKartu.getText(),"0000-00-00 00:00:00"
                 })==true){
                     if(JenisPelayanan.getSelectedIndex()==1){
