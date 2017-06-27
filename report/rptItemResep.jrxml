@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="184" pageHeight="113" columnWidth="174" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam, resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,aturan_pakai.aturan,detail_pemberian_obat.jml,
+kodesatuan.satuan from resep_obat inner join reg_periksa inner join pasien inner join aturan_pakai inner join databarang inner join detail_pemberian_obat inner join kodesatuan on resep_obat.no_rawat=reg_periksa.no_rawat  and reg_periksa.no_rkm_medis=pasien.no_rkm_medis  and databarang.kode_brng=aturan_pakai.kode_brng and detail_pemberian_obat.kode_brng=databarang.kode_brng
+and resep_obat.no_rawat=aturan_pakai.no_rawat and resep_obat.tgl_perawatan=aturan_pakai.tgl_perawatan and
+resep_obat.jam=aturan_pakai.jam
+and resep_obat.no_rawat=detail_pemberian_obat.no_rawat and resep_obat.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and
+resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode_sat]]>
+	</queryString>
+	<field name="no_resep" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_perawatan" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jam" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_rawat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_rkm_medis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nm_pasien" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_brng" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="aturan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jml" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="satuan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="103" splitType="Stretch">
+			<componentElement>
+				<reportElement x="22" y="44" width="139" height="10"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barWidth="1" barHeight="0">
+					<jr:codeExpression><![CDATA[$F{no_resep}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<line>
+				<reportElement x="1" y="0" width="172" height="1" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="26" width="172" height="1" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="3" y="35" width="169" height="9"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["No. "+$F{no_resep}+" Tgl. "+$F{tgl_perawatan}+" "+$F{jam}]]></textFieldExpression>
+			</textField>
+			<line direction="BottomUp">
+				<reportElement x="0" y="0" width="1" height="103" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="55" width="25" height="9"/>
+				<textElement textAlignment="Left" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[No. RM]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="102" width="172" height="1" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="173" y="0" width="1" height="103" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="63" width="25" height="9"/>
+				<textElement textAlignment="Left" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="26" y="17" width="147" height="9"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{kontakrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="9" width="147" height="9"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="1" width="147" height="9"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="1" y="1" width="25" height="25"/>
+				<imageExpression class="java.io.InputStream"><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="3" y="27" width="169" height="9"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[INSTALASI FARMASI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="55" width="4" height="9"/>
+				<textElement textAlignment="Left" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="63" width="4" height="9"/>
+				<textElement textAlignment="Left" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="31" y="55" width="52" height="9"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="31" y="63" width="141" height="9"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nm_pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="83" y="55" width="89" height="9"/>
+				<textElement textAlignment="Right" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_rawat}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="71" width="171" height="1" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="3" y="82" width="169" height="20"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{aturan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="72" width="132" height="9"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nama_brng}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="72" width="38" height="9"/>
+				<textElement textAlignment="Right" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{jml}+" "+$F{satuan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
