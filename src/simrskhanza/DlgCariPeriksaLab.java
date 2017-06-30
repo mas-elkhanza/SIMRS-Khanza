@@ -844,73 +844,73 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             try{
                 status="";
                 ttljmdokter=0;ttljmpetugas=0;ttlkso=0;ttlpendapatan=0;ttlbhp=0;
+                ttljmdokter=Sequel.cariIsiAngka("select sum(tarif_perujuk)+sum(tarif_tindakan_dokter) from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
+                          "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
+                          "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                ttljmpetugas=Sequel.cariIsiAngka("select sum(tarif_tindakan_petugas) from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
+                          "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
+                          "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                ttlkso=Sequel.cariIsiAngka("select sum(kso) from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
+                          "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
+                          "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                ttlbhp=Sequel.cariIsiAngka("select sum(bhp) from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
+                          "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
+                          "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                ttlpendapatan=Sequel.cariIsiAngka("select sum(biaya) from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
+                          "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
+                          "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                ttljmdokter=ttljmdokter+Sequel.cariIsiAngka("select sum(bagian_perujuk)+sum(bagian_dokter) from detail_periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
+                          "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
+                          "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                ttljmpetugas=ttljmpetugas+Sequel.cariIsiAngka("select sum(bagian_laborat) from detail_periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
+                          "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
+                          "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                ttlkso=ttlkso+Sequel.cariIsiAngka("select sum(kso) from detail_periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
+                          "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
+                          "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                ttlbhp=ttlbhp+Sequel.cariIsiAngka("select sum(bhp) from detail_periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
+                          "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
+                          "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                ttlpendapatan=ttlpendapatan+Sequel.cariIsiAngka("select sum(biaya_item) from detail_periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
+                          "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
+                          "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                status=Sequel.cariIsi("select status from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
+                              "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
+                              "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                
                 if(Sequel.queryutf("delete from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
                               "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                              "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'")==true){
-                    ttljmdokter=Sequel.cariIsiAngka("select sum(tarif_perujuk)+sum(tarif_tindakan_dokter) from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
-                              "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                              "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
-                    ttljmpetugas=Sequel.cariIsiAngka("select sum(tarif_tindakan_petugas) from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
-                              "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                              "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
-                    ttlkso=Sequel.cariIsiAngka("select sum(kso) from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
-                              "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                              "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
-                    ttlbhp=Sequel.cariIsiAngka("select sum(bhp) from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
-                              "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                              "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
-                    ttlpendapatan=Sequel.cariIsiAngka("select sum(biaya) from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
-                              "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                              "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
+                              "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'")==true){                    
                     if(Sequel.queryutf("delete from detail_periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
                                   "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
                                   "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'")==true){
-                        ttljmdokter=ttljmdokter+Sequel.cariIsiAngka("select sum(bagian_perujuk)+sum(bagian_dokter) from detail_periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
-                                  "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                                  "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
-                        ttljmpetugas=ttljmpetugas+Sequel.cariIsiAngka("select sum(bagian_laborat) from detail_periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
-                                  "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                                  "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
-                        ttlkso=ttlkso+Sequel.cariIsiAngka("select sum(kso) from detail_periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
-                                  "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                                  "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
-                        ttlbhp=ttlbhp+Sequel.cariIsiAngka("select sum(bhp) from detail_periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
-                                  "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                                  "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
-                        ttlpendapatan=ttlpendapatan+Sequel.cariIsiAngka("select sum(biaya_item) from detail_periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
-                                  "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                                  "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
-                    }
-                    status=Sequel.cariIsi("select status from periksa_lab where no_rawat='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0) +
-                              "' and tgl_periksa='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),3) +
-                              "' and jam='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),4) +"'");
-                    if(status.equals("Ranap")){
-                        Sequel.queryu("delete from tampjurnal");    
-                        if(ttlpendapatan>0){
-                            Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Laborat_Ranap+"','Suspen Piutang Laborat Ranap','0','"+ttlpendapatan+"'","Rekening");    
-                            Sequel.menyimpan("tampjurnal","'"+Laborat_Ranap+"','Pendapatan Laborat Rawat Inap','"+ttlpendapatan+"','0'","Rekening");                              
+                        if(status.equals("Ranap")){
+                            Sequel.queryu("delete from tampjurnal");    
+                            if(ttlpendapatan>0){
+                                Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Laborat_Ranap+"','Suspen Piutang Laborat Ranap','0','"+ttlpendapatan+"'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Laborat_Ranap+"','Pendapatan Laborat Rawat Inap','"+ttlpendapatan+"','0'","Rekening");                              
+                            }
+                            if(ttljmdokter>0){
+                                Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Laborat_Ranap+"','Beban Jasa Medik Dokter Laborat Ranap','0','"+ttljmdokter+"'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Laborat_Ranap+"','Utang Jasa Medik Dokter Laborat Ranap','"+ttljmdokter+"','0'","Rekening");                              
+                            }
+                            if(ttljmpetugas>0){
+                                Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Petugas_Laborat_Ranap+"','Beban Jasa Medik Petugas Laborat Ranap','0','"+ttljmpetugas+"'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Petugas_Laborat_Ranap+"','Utang Jasa Medik Petugas Laborat Ranap','"+ttljmpetugas+"','0'","Rekening");                              
+                            }
+                            if(ttlbhp>0){
+                                Sequel.menyimpan("tampjurnal","'"+HPP_Persediaan_Laborat_Rawat_inap+"','HPP Persediaan Laborat Rawat Inap','0','"+ttlbhp+"'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Persediaan_BHP_Laborat_Rawat_Inap+"','Persediaan BHP Laborat Rawat Inap','"+ttlbhp+"','0'","Rekening");                              
+                            }
+                            if(ttlkso>0){
+                                Sequel.menyimpan("tampjurnal","'"+Beban_Kso_Laborat_Ranap+"','Beban KSO Laborat Ranap','0','"+ttlkso+"'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Utang_Kso_Laborat_Ranap+"','Utang KSO Laborat Ranap','"+ttlkso+"','0'","Rekening");                              
+                            }
+                            jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PEMERIKSAAN LABORAT RAWAT INAP PASIEN OLEH "+var.getkode());  
                         }
-                        if(ttljmdokter>0){
-                            Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Dokter_Laborat_Ranap+"','Beban Jasa Medik Dokter Laborat Ranap','0','"+ttljmdokter+"'","Rekening");    
-                            Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Dokter_Laborat_Ranap+"','Utang Jasa Medik Dokter Laborat Ranap','"+ttljmdokter+"','0'","Rekening");                              
-                        }
-                        if(ttljmpetugas>0){
-                            Sequel.menyimpan("tampjurnal","'"+Beban_Jasa_Medik_Petugas_Laborat_Ranap+"','Beban Jasa Medik Petugas Laborat Ranap','0','"+ttljmpetugas+"'","Rekening");    
-                            Sequel.menyimpan("tampjurnal","'"+Utang_Jasa_Medik_Petugas_Laborat_Ranap+"','Utang Jasa Medik Petugas Laborat Ranap','"+ttljmpetugas+"','0'","Rekening");                              
-                        }
-                        if(ttlbhp>0){
-                            Sequel.menyimpan("tampjurnal","'"+HPP_Persediaan_Laborat_Rawat_inap+"','HPP Persediaan Laborat Rawat Inap','0','"+ttlbhp+"'","Rekening");    
-                            Sequel.menyimpan("tampjurnal","'"+Persediaan_BHP_Laborat_Rawat_Inap+"','Persediaan BHP Laborat Rawat Inap','"+ttlbhp+"','0'","Rekening");                              
-                        }
-                        if(ttlkso>0){
-                            Sequel.menyimpan("tampjurnal","'"+Beban_Kso_Laborat_Ranap+"','Beban KSO Laborat Ranap','0','"+ttlkso+"'","Rekening");    
-                            Sequel.menyimpan("tampjurnal","'"+Utang_Kso_Laborat_Ranap+"','Utang KSO Laborat Ranap','"+ttlkso+"','0'","Rekening");                              
-                        }
-                        jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString(),"U","PEMBATALAN PEMERIKSAAN LABORAT RAWAT INAP PASIEN OLEH "+var.getkode());  
+                        tampil();                        
                     }
                 }
-                    
-                tampil();
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih terlebih dulu data yang mau anda hapus...\n Klik data pada table untuk memilih data...!!!!");
