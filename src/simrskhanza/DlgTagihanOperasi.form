@@ -681,7 +681,6 @@
                     </Component>
                     <Component class="widget.Tanggal" name="tgl">
                       <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
                         <Property name="name" type="java.lang.String" value="tgl" noResource="true"/>
                       </Properties>

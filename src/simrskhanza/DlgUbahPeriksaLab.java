@@ -868,7 +868,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
                             Sequel.menyimpan("tampjurnal","'"+Beban_Kso_Laborat_Ranap+"','Beban KSO Laborat Ranap','"+ttlkso+"','0'","Rekening");    
                             Sequel.menyimpan("tampjurnal","'"+Utang_Kso_Laborat_Ranap+"','Utang KSO Laborat Ranap','0','"+ttlkso+"'","Rekening");                              
                         }
-                        jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMERIKSAAN LABORAT RAWAT INAP PASIEN "+TPasien.getText());  
+                        jur.simpanJurnal(TNoRw.getText(),Sequel.cariIsi("select current_date()"),"U","PEMERIKSAAN LABORAT RAWAT INAP PASIEN "+TPasien.getText()+" DIPOSTING OLEH "+var.getkode());  
                     }
                     koneksi.setAutoCommit(true);
                     JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");

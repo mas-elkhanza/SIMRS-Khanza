@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="3.0"/>
-	<property name="ireport.x" value="623"/>
-	<property name="ireport.y" value="113"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="1"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -160,6 +160,13 @@
 	<columnHeader>
 		<band height="13">
 			<staticText>
+				<reportElement mode="Opaque" x="475" y="1" width="20" height="12" forecolor="#000000" backcolor="#F0F0DC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jml]]></text>
+			</staticText>
+			<staticText>
 				<reportElement mode="Opaque" x="0" y="1" width="19" height="12" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="7" isBold="true"/>
@@ -202,7 +209,7 @@
 				<text><![CDATA[ Jenis]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="365" y="1" width="130" height="12" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="365" y="1" width="110" height="12" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="7" isBold="true"/>
 				</textElement>
@@ -268,6 +275,12 @@
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
+			<line>
+				<reportElement x="474" y="1" width="1" height="11"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
@@ -308,7 +321,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp5}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="365" y="1" width="130" height="10"/>
+				<reportElement stretchType="RelativeToBandHeight" x="365" y="1" width="110" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="7"/>
 				</textElement>
@@ -352,6 +365,19 @@
 			</line>
 			<line>
 				<reportElement stretchType="RelativeToBandHeight" x="554" y="0" width="1" height="11"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="475" y="1" width="20" height="10"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp8}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="474" y="0" width="1" height="11"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>

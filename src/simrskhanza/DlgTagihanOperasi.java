@@ -818,7 +818,6 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         FormInput.add(label11);
         label11.setBounds(406, 40, 102, 23);
 
-        tgl.setEditable(false);
         tgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         tgl.setName("tgl"); // NOI18N
         tgl.addKeyListener(new java.awt.event.KeyAdapter() {
