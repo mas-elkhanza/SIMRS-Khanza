@@ -3613,7 +3613,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             periksarad.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
             periksarad.setLocationRelativeTo(internalFrame1);
             periksarad.emptTeks();
-            periksarad.setNoRm(TNoRw.getText());
+            periksarad.setNoRm(TNoRw.getText(),"Ranap");
             periksarad.tampil();
             periksarad.isCek();
             periksarad.setAlwaysOnTop(false);
