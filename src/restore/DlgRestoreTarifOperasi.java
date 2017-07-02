@@ -46,9 +46,9 @@ public final class DlgRestoreTarifOperasi extends javax.swing.JDialog {
         initComponents();
         
         Object[] row={"P","Kode Paket","Nama Operasi","Kategori","Operator 1","Operator 2","Operator 3",
-                      "Asisten Op 1","Asisten Op 2","Instrumen","dr Anestesi","Asisten Anestesi","dr Anak",
+                      "Asisten Op 1","Asisten Op 2","Asisten Op 3","Instrumen","dr Anestesi","Asisten Anes 1","Asisten Anes 2","dr Anak",
                       "Perawat Resus","Bidan 1","Bidan 2","Bidan 3","Perawat Luar","Alat","Sewa OK/VK",
-                      "Akomodasi","N.M.S.","Onloop 1","Onloop 2","Onloop 3","Sarpras","dr Pj Anak","dr Umum",
+                      "Akomodasi","N.M.S.","Onloop 1","Onloop 2","Onloop 3","Onloop 4","Onloop 5","Sarpras","dr Pj Anak","dr Umum",
                       "Total","Jenis Bayar"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
@@ -60,6 +60,7 @@ public final class DlgRestoreTarifOperasi extends javax.swing.JDialog {
              }
              Class[] types = new Class[] {
                  java.lang.Boolean.class, java.lang.Object.class,java.lang.Object.class,java.lang.Object.class, java.lang.Double.class, 
+                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
                  java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
                  java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
                  java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
@@ -79,18 +80,20 @@ public final class DlgRestoreTarifOperasi extends javax.swing.JDialog {
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 30; i++) {
+        for (i = 0; i < 34; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(90);
             }else if(i==2){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(220);
             }else if(i==3){
                 column.setPreferredWidth(100);
+            }else if(i==33){
+                column.setPreferredWidth(200);
             }else{
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(85);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -404,20 +407,20 @@ public final class DlgRestoreTarifOperasi extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                         "select paket_operasi.kode_paket, paket_operasi.nm_perawatan,paket_operasi.kategori,"+
                        "paket_operasi.operator1, paket_operasi.operator2, paket_operasi.operator3, "+
-                       "paket_operasi.asisten_operator1, paket_operasi.asisten_operator2,"+
-                       "paket_operasi.instrumen, paket_operasi.dokter_anestesi,paket_operasi.asisten_anestesi,"+
+                       "paket_operasi.asisten_operator1, paket_operasi.asisten_operator2,paket_operasi.asisten_operator3,"+
+                       "paket_operasi.instrumen, paket_operasi.dokter_anestesi,paket_operasi.asisten_anestesi,paket_operasi.asisten_anestesi2,"+
                        "paket_operasi.dokter_anak,paket_operasi.perawaat_resusitas, paket_operasi.bidan, "+
                        "paket_operasi.bidan2, paket_operasi.bidan3, paket_operasi.perawat_luar, paket_operasi.alat,"+
                        "paket_operasi.sewa_ok,paket_operasi.akomodasi,paket_operasi.bagian_rs,"+
-                       "paket_operasi.omloop,paket_operasi.omloop2,paket_operasi.omloop3,"+
+                       "paket_operasi.omloop,paket_operasi.omloop2,paket_operasi.omloop3,paket_operasi.omloop4,paket_operasi.omloop5,"+
                        "paket_operasi.sarpras,paket_operasi.dokter_pjanak,paket_operasi.dokter_umum, "+
                        "(paket_operasi.operator1+paket_operasi.operator2+paket_operasi.operator3+"+
-                       "paket_operasi.asisten_operator1+paket_operasi.asisten_operator2+paket_operasi.instrumen+"+
+                       "paket_operasi.asisten_operator1+paket_operasi.asisten_operator2+paket_operasi.asisten_operator3+paket_operasi.instrumen+"+
                        "paket_operasi.dokter_anak+paket_operasi.perawaat_resusitas+"+
-                       "paket_operasi.alat+paket_operasi.dokter_anestesi+paket_operasi.asisten_anestesi+"+
+                       "paket_operasi.alat+paket_operasi.dokter_anestesi+paket_operasi.asisten_anestesi+paket_operasi.asisten_anestesi2+"+
                        "paket_operasi.bidan+paket_operasi.bidan2+paket_operasi.bidan3+paket_operasi.perawat_luar+"+
                        "paket_operasi.sewa_ok+paket_operasi.akomodasi+paket_operasi.bagian_rs+"+
-                       "paket_operasi.omloop+paket_operasi.omloop2+paket_operasi.omloop3+"+
+                       "paket_operasi.omloop+paket_operasi.omloop2+paket_operasi.omloop3+paket_operasi.omloop4+paket_operasi.omloop5+"+
                        "paket_operasi.sarpras+paket_operasi.dokter_pjanak+paket_operasi.dokter_umum) as jumlah, "+
                        "penjab.png_jawab from paket_operasi inner join penjab on penjab.kd_pj=paket_operasi.kd_pj "+
                        "where paket_operasi.status='0' and paket_operasi.kode_paket like ? or "+
@@ -429,8 +432,7 @@ public final class DlgRestoreTarifOperasi extends javax.swing.JDialog {
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        false,rs.getString("kode_paket"),
+                    tabMode.addRow(new Object[]{false,rs.getString("kode_paket"),
                                    rs.getString("nm_perawatan"),
                                    rs.getString("kategori"), 
                                    rs.getDouble("operator1"), 
@@ -438,9 +440,11 @@ public final class DlgRestoreTarifOperasi extends javax.swing.JDialog {
                                    rs.getDouble("operator3"), 
                                    rs.getDouble("asisten_operator1"), 
                                    rs.getDouble("asisten_operator2"), 
+                                   rs.getDouble("asisten_operator3"), 
                                    rs.getDouble("instrumen"), 
                                    rs.getDouble("dokter_anestesi"), 
-                                   rs.getDouble("asisten_anestesi"), 
+                                   rs.getDouble("asisten_anestesi"),
+                                   rs.getDouble("asisten_anestesi2"), 
                                    rs.getDouble("dokter_anak"), 
                                    rs.getDouble("perawaat_resusitas"), 
                                    rs.getDouble("bidan"), 
@@ -454,6 +458,8 @@ public final class DlgRestoreTarifOperasi extends javax.swing.JDialog {
                                    rs.getDouble("omloop"), 
                                    rs.getDouble("omloop2"), 
                                    rs.getDouble("omloop3"), 
+                                   rs.getDouble("omloop4"), 
+                                   rs.getDouble("omloop5"), 
                                    rs.getDouble("sarpras"), 
                                    rs.getDouble("dokter_pjanak"), 
                                    rs.getDouble("dokter_umum"), 
