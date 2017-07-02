@@ -550,7 +550,7 @@ public final class sekuel {
     }
     
     public boolean queryutf(String qry){
-        bool=true;
+        bool=false;
         try {
             ps=connect.prepareStatement(qry);
             try{                            
@@ -627,6 +627,30 @@ public final class sekuel {
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
+    }
+    
+    public boolean queryu2tf(String qry,int i,String[] a){
+        bool=false;
+        try {
+            try{            
+                ps=connect.prepareStatement(qry);
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                } 
+                ps.executeUpdate(); 
+                bool=true;
+             }catch(Exception e){
+                bool=false;
+                System.out.println("Notifikasi : "+e);
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+        return bool;
     }
     
     public void queryu3(String qry,int i,String[] a){
