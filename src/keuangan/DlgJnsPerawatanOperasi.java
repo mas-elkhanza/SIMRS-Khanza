@@ -1354,17 +1354,19 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
         }else if(kdpnj.getText().trim().equals("")||nmpnj.getText().trim().equals("")){
             Valid.textKosong(kdpnj,"Jenis Bayar");
         }else{
-            Sequel.mengedit("paket_operasi","kode_paket='"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1) +"'",
-                    "kode_paket='"+TKd.getText()+"',nm_perawatan='"+TNm.getText()+"',operator1='"+TOperator1.getText()+"',operator2='"+TOperator2.getText()+"',operator3='"+TOperator3.getText()+
-                    "',asisten_operator1='"+TAsisOperator1.getText()+"',asisten_operator2='"+TAsisOperator2.getText()+"',asisten_operator3='"+TAsisOperator3.getText()+"',instrumen='"+TInstrumen.getText()+
-                    "',dokter_anak='"+TAnak.getText()+"',perawaat_resusitas='"+TResusitas.getText()+"',kategori='"+Kategori.getSelectedItem()+
-                    "',alat='"+TAlat.getText()+"',dokter_anestesi='"+TAnastesi.getText()+"',asisten_anestesi='"+TAsisAnastesi.getText()+"',asisten_anestesi2='"+TAsisAnastesi1.getText()+
-                    "',bidan='"+TBidan1.getText()+"',bidan2='"+TBidan2.getText()+"',bidan3='"+TBidan3.getText()+"',perawat_luar='"+TPerawatLuar.getText()+"'"+
-                    ",sewa_ok='"+TSewaOK.getText()+"',akomodasi='"+TAkomodasi.getText()+"',bagian_rs='"+TBagianRS.getText()+"',omloop='"+TOmloop1.getText()+"',"+
-                    "omloop2='"+TOmloop2.getText()+"',omloop3='"+TOmloop3.getText()+"',omloop4='"+TOmloop4.getText()+"',omloop5='"+TOmloop5.getText()+"',sarpras='"+TSarpras.getText()+"',dokter_pjanak='"+TdrPJAnak.getText()+"',"+
-                    "dokter_umum='"+TdrUmum.getText()+"',kd_pj='"+kdpnj.getText()+"'");
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
+            if(tbJnsPerawatan.getSelectedRow()!= -1){
+                Sequel.mengedit("paket_operasi","kode_paket='"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1) +"'",
+                        "kode_paket='"+TKd.getText()+"',nm_perawatan='"+TNm.getText()+"',operator1='"+TOperator1.getText()+"',operator2='"+TOperator2.getText()+"',operator3='"+TOperator3.getText()+
+                        "',asisten_operator1='"+TAsisOperator1.getText()+"',asisten_operator2='"+TAsisOperator2.getText()+"',asisten_operator3='"+TAsisOperator3.getText()+"',instrumen='"+TInstrumen.getText()+
+                        "',dokter_anak='"+TAnak.getText()+"',perawaat_resusitas='"+TResusitas.getText()+"',kategori='"+Kategori.getSelectedItem()+
+                        "',alat='"+TAlat.getText()+"',dokter_anestesi='"+TAnastesi.getText()+"',asisten_anestesi='"+TAsisAnastesi.getText()+"',asisten_anestesi2='"+TAsisAnastesi1.getText()+
+                        "',bidan='"+TBidan1.getText()+"',bidan2='"+TBidan2.getText()+"',bidan3='"+TBidan3.getText()+"',perawat_luar='"+TPerawatLuar.getText()+"'"+
+                        ",sewa_ok='"+TSewaOK.getText()+"',akomodasi='"+TAkomodasi.getText()+"',bagian_rs='"+TBagianRS.getText()+"',omloop='"+TOmloop1.getText()+"',"+
+                        "omloop2='"+TOmloop2.getText()+"',omloop3='"+TOmloop3.getText()+"',omloop4='"+TOmloop4.getText()+"',omloop5='"+TOmloop5.getText()+"',sarpras='"+TSarpras.getText()+"',dokter_pjanak='"+TdrPJAnak.getText()+"',"+
+                        "dokter_umum='"+TdrUmum.getText()+"',kd_pj='"+kdpnj.getText()+"'");
+                if(tabMode.getRowCount()!=0){tampil();}
+                emptTeks();
+            }                
         }
         
 }//GEN-LAST:event_BtnEditActionPerformed

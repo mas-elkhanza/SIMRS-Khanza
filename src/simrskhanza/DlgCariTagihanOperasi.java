@@ -42,7 +42,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         Object[] row={"Tgl.Operasi",
                       "No.Rawat",
                       "Pasien",
-                      "Jns.Ans","","","","","","","","","","","","","","","","","","","","","","","","","",""};
+                      "Jns.Ans","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -51,7 +51,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 34; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(120);
@@ -510,7 +510,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,2).toString()+"','"+
                                 tabMode.getValueAt(i,3).toString()+"','"+
                                 tabMode.getValueAt(i,4).toString()+"','"+
-                                tabMode.getValueAt(i,29).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi operasi"); 
+                                tabMode.getValueAt(i,33).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi operasi"); 
             }
             Sequel.AutoComitTrue();
             
@@ -658,11 +658,13 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                                "Operator 3",
                                "Asisten Operator 1",
                                "Asisten Operator 2",
+                               "Asisten Operator 3",
                                "Instrumen",
                                "Dokter Anak",
                                "Perawat Resusitas",
                                "Dokter Anestesi",
-                               "Asisten Anestesi",
+                               "Asisten Anestesi 1",
+                               "Asisten Anestesi 2",
                                "Bidan 1",
                                "Bidan 2",
                                "Bidan 3",
@@ -670,6 +672,8 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                                "Onloop 1",
                                "Onloop 2",
                                "Onloop 3",
+                               "Onloop 4",
+                               "Onloop 5",
                                "Sewa OK/VK",
                                "Alat",
                                "Akomodasi",
@@ -680,21 +684,21 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                                "Biaya Perawatan"});     
                 ResultSet rs2=koneksi.prepareStatement(
                         "select operasi.operator1, operasi.operator2, operasi.operator3, operasi.asisten_operator1,"+
-                        "operasi.asisten_operator2, operasi.instrumen, operasi.dokter_anak, operasi.perawaat_resusitas, "+
-                        "operasi.dokter_anestesi, operasi.asisten_anestesi, operasi.bidan, operasi.bidan2, operasi.bidan3, operasi.perawat_luar, "+
-                        "operasi.omloop,operasi.omloop2,operasi.omloop3,operasi.dokter_pjanak,operasi.dokter_umum,"+
+                        "operasi.asisten_operator2,operasi.asisten_operator3, operasi.instrumen, operasi.dokter_anak, operasi.perawaat_resusitas, "+
+                        "operasi.dokter_anestesi, operasi.asisten_anestesi,operasi.asisten_anestesi2, operasi.bidan, operasi.bidan2, operasi.bidan3, operasi.perawat_luar, "+
+                        "operasi.omloop,operasi.omloop2,operasi.omloop3,operasi.omloop4,operasi.omloop5,operasi.dokter_pjanak,operasi.dokter_umum,"+
                         "operasi.kode_paket,paket_operasi.nm_perawatan, operasi.biayaoperator1, operasi.biayaoperator2, operasi.biayaoperator3, "+
-                        "operasi.biayaasisten_operator1, operasi.biayaasisten_operator2, operasi.biayainstrumen, "+
+                        "operasi.biayaasisten_operator1, operasi.biayaasisten_operator2,operasi.biayaasisten_operator3, operasi.biayainstrumen, "+
                         "operasi.biayadokter_anak, operasi.biayaperawaat_resusitas, operasi.biayadokter_anestesi, "+
-                        "operasi.biayaasisten_anestesi, operasi.biayabidan,operasi.biayabidan2,operasi.biayabidan3, operasi.biayaperawat_luar, operasi.biayaalat,"+
+                        "operasi.biayaasisten_anestesi,operasi.biayaasisten_anestesi2, operasi.biayabidan,operasi.biayabidan2,operasi.biayabidan3, operasi.biayaperawat_luar, operasi.biayaalat,"+
                         "operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biaya_omloop,operasi.biaya_omloop2,"+
-                        "operasi.biaya_omloop3,operasi.biayasarpras,operasi.biaya_dokter_pjanak,operasi.biaya_dokter_umum,"+
+                        "operasi.biaya_omloop3,operasi.biaya_omloop4,operasi.biaya_omloop5,operasi.biayasarpras,operasi.biaya_dokter_pjanak,operasi.biaya_dokter_umum,"+
                         "(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"+
-                        "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"+
+                        "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayaasisten_operator3+operasi.biayainstrumen+"+
                         "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"+
-                        "operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+"+
+                        "operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+"+
                         "operasi.biayaperawat_luar+operasi.biayaalat+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum+"+
-                        "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biayasarpras) as total from operasi inner join paket_operasi "+
+                        "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+operasi.biayasarpras) as total from operasi inner join paket_operasi "+
                         "on operasi.kode_paket=paket_operasi.kode_paket where operasi.no_rawat='"+rs.getString("no_rawat")+"' and operasi.tgl_operasi='"+rs.getString("tgl_operasi")+"'").executeQuery();
                 no=1;
                 while(rs2.next()){
@@ -704,11 +708,13 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                                Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("operator3")),
                                Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator1")),
                                Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator2")),
+                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_operator3")),
                                Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("instrumen")),
                                Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_anak")),
                                Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("perawaat_resusitas")),
                                Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs2.getString("dokter_anestesi")),
                                Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_anestesi")),
+                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("asisten_anestesi2")),
                                Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan")),
                                Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan2")),
                                Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("bidan3")),
@@ -716,6 +722,8 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                                Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop")),
                                Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop2")),
                                Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop3")),
+                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop4")),
+                               Sequel.cariIsi("select nama from petugas where nip=?",rs2.getString("omloop5")),
                                "",
                                "",
                                "",
@@ -730,11 +738,13 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                                Valid.SetAngka(rs2.getDouble("biayaoperator3")),
                                Valid.SetAngka(rs2.getDouble("biayaasisten_operator1")),
                                Valid.SetAngka(rs2.getDouble("biayaasisten_operator2")),
+                               Valid.SetAngka(rs2.getDouble("biayaasisten_operator3")),
                                Valid.SetAngka(rs2.getDouble("biayainstrumen")),
                                Valid.SetAngka(rs2.getDouble("biayadokter_anak")),
                                Valid.SetAngka(rs2.getDouble("biayaperawaat_resusitas")),
                                Valid.SetAngka(rs2.getDouble("biayadokter_anestesi")),
                                Valid.SetAngka(rs2.getDouble("biayaasisten_anestesi")),
+                               Valid.SetAngka(rs2.getDouble("biayaasisten_anestesi2")),
                                Valid.SetAngka(rs2.getDouble("biayabidan")),
                                Valid.SetAngka(rs2.getDouble("biayabidan2")),
                                Valid.SetAngka(rs2.getDouble("biayabidan3")),
@@ -742,6 +752,8 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                                Valid.SetAngka(rs2.getDouble("biaya_omloop")),
                                Valid.SetAngka(rs2.getDouble("biaya_omloop2")),
                                Valid.SetAngka(rs2.getDouble("biaya_omloop3")),
+                               Valid.SetAngka(rs2.getDouble("biaya_omloop4")),
+                               Valid.SetAngka(rs2.getDouble("biaya_omloop5")),
                                Valid.SetAngka(rs2.getDouble("biayasewaok")),
                                Valid.SetAngka(rs2.getDouble("biayaalat")),
                                Valid.SetAngka(rs2.getDouble("akomodasi")),
@@ -755,7 +767,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                     no++;
                 }
                 
-                Object[] data3={"","","","","Obat & BHP", "Satuan", "Harga","Jml","","","","","","","","","","","","","","","","","","","","","","Biaya Obat"};
+                Object[] data3={"","","","","Obat & BHP", "Satuan", "Harga","Jml","","","","","","","","","","","","","","","","","","","","","","","","","","Biaya Obat"};
                 tabMode.addRow(data3); 
                 ResultSet rs3=koneksi.createStatement().executeQuery(
                         "select beri_obat_operasi.kd_obat,obatbhp_ok.nm_obat,kodesatuan.satuan, beri_obat_operasi.hargasatuan,beri_obat_operasi.jumlah "+
@@ -765,13 +777,13 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                 no=1;
                 while(rs3.next()){
                     Object[] data2={"","","","",no+". "+rs3.getString("nm_obat"),rs3.getString("satuan"), rs3.getString("hargasatuan"), 
-                                   rs3.getString("jumlah"),"","","","","","","","","","","","","","","","","","","","","",Valid.SetAngka(rs3.getDouble("jumlah")*rs3.getDouble("hargasatuan"))};
+                                   rs3.getString("jumlah"),"","","","","","","","","","","","","","","","","","","","","","","","","",Valid.SetAngka(rs3.getDouble("jumlah")*rs3.getDouble("hargasatuan"))};
                     tabMode.addRow(data2);  
                     total=total+(rs3.getDouble("jumlah")*rs3.getDouble("hargasatuan"));
                     no++;
                 }
                 
-                Object[] data4={"","","","","Total Biaya :", "", "","","","","","","","","","","","","","","","",""," ","","","","","",Valid.SetAngka(total)};
+                Object[] data4={"","","","","Total Biaya :", "", "","","","","","","","","","","","","","","","","","","","",""," ","","","","","",Valid.SetAngka(total)};
                 tabMode.addRow(data4); 
             }      
             rs.last();  

@@ -162,16 +162,19 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                     " periksa_radiologi.no_rawat=? group by periksa_radiologi.kd_jenis_prw  ",
             sqlpsnota="insert into nota_jalan values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             sqlcarinota="select * from nota_jalan where no_rawat=?",
-            sqlpsoperasi="select paket_operasi.nm_perawatan,(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"+
-                         "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"+
-                         "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"+
-                         "operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+"+
-                         "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+"+
-                         "operasi.biayasarpras+operasi.biayasarpras+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum) as biaya,operasi.biayaoperator1,"+
-                         "operasi.biayaoperator2,operasi.biayaoperator3,operasi.biayaasisten_operator1,operasi.biayaasisten_operator2,"+
+            sqlpsoperasi="select paket_operasi.nm_perawatan,(operasi.biayaoperator1+operasi.biayaoperator2+"+
+                         "operasi.biayaoperator3+operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+"+
+                         "operasi.biayaasisten_operator3+operasi.biayainstrumen+operasi.biayadokter_anak+"+
+                         "operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+operasi.biayaasisten_anestesi+"+
+                         "operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+"+
+                         "operasi.biayaperawat_luar+operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+"+
+                         "operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+"+
+                         "operasi.biaya_omloop4+operasi.biaya_omloop5+operasi.biayasarpras+operasi.biaya_dokter_pjanak+"+
+                         "operasi.biaya_dokter_umum) as biaya,operasi.biayaoperator1,"+
+                         "operasi.biayaoperator2,operasi.biayaoperator3,operasi.biayaasisten_operator1,operasi.biayaasisten_operator2,operasi.biayaasisten_operator3,"+
                          "operasi.biayainstrumen,operasi.biayadokter_anak,operasi.biayaperawaat_resusitas,"+
-                         "operasi.biayadokter_anestesi,operasi.biayaasisten_anestesi,operasi.biayabidan,operasi.biayabidan2,operasi.biayabidan3,operasi.biayaperawat_luar,"+
-                         "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biaya_omloop,operasi.biaya_omloop2,operasi.biaya_omloop3,"+
+                         "operasi.biayadokter_anestesi,operasi.biayaasisten_anestesi,operasi.biayaasisten_anestesi2,operasi.biayabidan,operasi.biayabidan2,operasi.biayabidan3,operasi.biayaperawat_luar,"+
+                         "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biaya_omloop,operasi.biaya_omloop2,operasi.biaya_omloop3,operasi.biaya_omloop4,operasi.biaya_omloop5,"+
                          "operasi.biayasarpras,operasi.biaya_dokter_pjanak,operasi.biaya_dokter_umum "+
                          "from operasi inner join paket_operasi "+
                          "on operasi.kode_paket=paket_operasi.kode_paket where "+
@@ -4566,15 +4569,15 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
                 rsoperasi.beforeFirst();
                 if(rincianoperasi.equals("Yes")){                        
-                    while(rsoperasi.next()){
+                    while(rsoperasi.next()){                        
                         Jasa_Medik_Dokter_Operasi_Ralan=Jasa_Medik_Dokter_Operasi_Ralan+rsoperasi.getDouble("biayaoperator1")+
                                 rsoperasi.getDouble("biayaoperator2")+rsoperasi.getDouble("biayaoperator3")+rsoperasi.getDouble("biayadokter_anak")+
                                 rsoperasi.getDouble("biayadokter_anestesi")+rsoperasi.getDouble("biaya_dokter_pjanak")+rsoperasi.getDouble("biaya_dokter_umum");
                         Jasa_Medik_Paramedis_Operasi_Ralan=Jasa_Medik_Paramedis_Operasi_Ralan+rsoperasi.getDouble("biayaasisten_operator1")+
-                                rsoperasi.getDouble("biayaasisten_operator2")+rsoperasi.getDouble("biayainstrumen")+rsoperasi.getDouble("biayaperawaat_resusitas")+
-                                rsoperasi.getDouble("biayaasisten_anestesi")+rsoperasi.getDouble("biayabidan")+rsoperasi.getDouble("biayabidan2")+
+                                rsoperasi.getDouble("biayaasisten_operator2")+rsoperasi.getDouble("biayaasisten_operator3")+rsoperasi.getDouble("biayainstrumen")+rsoperasi.getDouble("biayaperawaat_resusitas")+
+                                rsoperasi.getDouble("biayaasisten_anestesi")+rsoperasi.getDouble("biayaasisten_anestesi2")+rsoperasi.getDouble("biayabidan")+rsoperasi.getDouble("biayabidan2")+
                                 rsoperasi.getDouble("biayabidan3")+rsoperasi.getDouble("biayaperawat_luar")+rsoperasi.getDouble("biaya_omloop")+
-                                rsoperasi.getDouble("biaya_omloop2")+rsoperasi.getDouble("biaya_omloop3");
+                                rsoperasi.getDouble("biaya_omloop2")+rsoperasi.getDouble("biaya_omloop3")+rsoperasi.getDouble("biaya_omloop4")+rsoperasi.getDouble("biaya_omloop5");
                         
                         tabModeRwJlDr.addRow(new Object[]{true,"                           ",rsoperasi.getString("nm_perawatan"),":",null,null,null,null,"Operasi"});
                         if(rsoperasi.getDouble("biayaoperator1")>0){
@@ -4596,6 +4599,10 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         if(rsoperasi.getDouble("biayaasisten_operator2")>0){
                            tabModeRwJlDr.addRow(new Object[]{true,"                           ","  Biaya Asisten Operator 2",":",rsoperasi.getDouble("biayaasisten_operator2"),1,0,rsoperasi.getDouble("biayaasisten_operator2"),"Operasi"}); 
                         }
+                        
+                        if(rsoperasi.getDouble("biayaasisten_operator3")>0){
+                           tabModeRwJlDr.addRow(new Object[]{true,"                           ","  Biaya Asisten Operator 3",":",rsoperasi.getDouble("biayaasisten_operator3"),1,0,rsoperasi.getDouble("biayaasisten_operator3"),"Operasi"}); 
+                        }
 
                         if(rsoperasi.getDouble("biayainstrumen")>0){
                            tabModeRwJlDr.addRow(new Object[]{true,"                           ","  Biaya Instrumen",":",rsoperasi.getDouble("biayainstrumen"),1,0,rsoperasi.getDouble("biayainstrumen"),"Operasi"}); 
@@ -4614,7 +4621,11 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         }
                         
                         if(rsoperasi.getDouble("biayaasisten_anestesi")>0){
-                           tabModeRwJlDr.addRow(new Object[]{true,"                           ","  Biaya Asisten Anastesi",":",rsoperasi.getDouble("biayaasisten_anestesi"),1,0,rsoperasi.getDouble("biayaasisten_anestesi"),"Operasi"}); 
+                           tabModeRwJlDr.addRow(new Object[]{true,"                           ","  Biaya Asisten Anastesi 1",":",rsoperasi.getDouble("biayaasisten_anestesi"),1,0,rsoperasi.getDouble("biayaasisten_anestesi"),"Operasi"}); 
+                        }
+                        
+                        if(rsoperasi.getDouble("biayaasisten_anestesi2")>0){
+                           tabModeRwJlDr.addRow(new Object[]{true,"                           ","  Biaya Asisten Anastesi 2",":",rsoperasi.getDouble("biayaasisten_anestesi2"),1,0,rsoperasi.getDouble("biayaasisten_anestesi2"),"Operasi"}); 
                         }
                         
                         if(rsoperasi.getDouble("biayabidan")>0){
@@ -4656,6 +4667,14 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         if(rsoperasi.getDouble("biaya_omloop3")>0){
                            tabModeRwJlDr.addRow(new Object[]{true,"                           ","  Biaya Onloop 3",":",rsoperasi.getDouble("biaya_omloop3"),1,0,rsoperasi.getDouble("biaya_omloop3"),"Operasi"}); 
                         }
+                        
+                        if(rsoperasi.getDouble("biaya_omloop4")>0){
+                           tabModeRwJlDr.addRow(new Object[]{true,"                           ","  Biaya Onloop 4",":",rsoperasi.getDouble("biaya_omloop4"),1,0,rsoperasi.getDouble("biaya_omloop4"),"Operasi"}); 
+                        }
+                        
+                        if(rsoperasi.getDouble("biaya_omloop5")>0){
+                           tabModeRwJlDr.addRow(new Object[]{true,"                           ","  Biaya Onloop 5",":",rsoperasi.getDouble("biaya_omloop5"),1,0,rsoperasi.getDouble("biaya_omloop5"),"Operasi"}); 
+                        }
 
                         if(rsoperasi.getDouble("bagian_rs")>0){
                            tabModeRwJlDr.addRow(new Object[]{true,"                           ","  N.M.S.",":",rsoperasi.getDouble("bagian_rs"),1,0,rsoperasi.getDouble("bagian_rs"),"Operasi"}); 
@@ -4680,10 +4699,10 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                 rsoperasi.getDouble("biayaoperator2")+rsoperasi.getDouble("biayaoperator3")+rsoperasi.getDouble("biayadokter_anak")+
                                 rsoperasi.getDouble("biayadokter_anestesi")+rsoperasi.getDouble("biaya_dokter_pjanak")+rsoperasi.getDouble("biaya_dokter_umum");
                         Jasa_Medik_Paramedis_Operasi_Ralan=Jasa_Medik_Paramedis_Operasi_Ralan+rsoperasi.getDouble("biayaasisten_operator1")+
-                                rsoperasi.getDouble("biayaasisten_operator2")+rsoperasi.getDouble("biayainstrumen")+rsoperasi.getDouble("biayaperawaat_resusitas")+
-                                rsoperasi.getDouble("biayaasisten_anestesi")+rsoperasi.getDouble("biayabidan")+rsoperasi.getDouble("biayabidan2")+
+                                rsoperasi.getDouble("biayaasisten_operator2")+rsoperasi.getDouble("biayaasisten_operator3")+rsoperasi.getDouble("biayainstrumen")+rsoperasi.getDouble("biayaperawaat_resusitas")+
+                                rsoperasi.getDouble("biayaasisten_anestesi")+rsoperasi.getDouble("biayaasisten_anestesi2")+rsoperasi.getDouble("biayabidan")+rsoperasi.getDouble("biayabidan2")+
                                 rsoperasi.getDouble("biayabidan3")+rsoperasi.getDouble("biayaperawat_luar")+rsoperasi.getDouble("biaya_omloop")+
-                                rsoperasi.getDouble("biaya_omloop2")+rsoperasi.getDouble("biaya_omloop3");
+                                rsoperasi.getDouble("biaya_omloop2")+rsoperasi.getDouble("biaya_omloop3")+rsoperasi.getDouble("biaya_omloop4")+rsoperasi.getDouble("biaya_omloop5");
                         tabModeRwJlDr.addRow(new Object[]{true,"                           ",rsoperasi.getString("nm_perawatan"),":",rsoperasi.getDouble("biaya"),1,0,rsoperasi.getDouble("biaya"),"Operasi"});
                         subttl=subttl+rsoperasi.getDouble("biaya");
                     }

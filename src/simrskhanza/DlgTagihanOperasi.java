@@ -808,6 +808,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         });
         PanelInput.add(ChkInput, java.awt.BorderLayout.PAGE_END);
 
+        scrollPane1.setBorder(null);
         scrollPane1.setName("scrollPane1"); // NOI18N
 
         FormInput.setName("FormInput"); // NOI18N
@@ -2346,6 +2347,16 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             kdonloop3.setText("-");
             nmonloop3.setText("-");
         }
+        
+        if(kdonloop4.getText().trim().equals("")||nmonloop4.getText().trim().equals("")){
+            kdonloop4.setText("-");
+            nmonloop4.setText("-");
+        }
+        
+        if(kdonloop5.getText().trim().equals("")||nmonloop5.getText().trim().equals("")){
+            kdonloop5.setText("-");
+            nmonloop5.setText("-");
+        }
 
         if(kdasistoperator1.getText().trim().equals("")||nmasistoperator1.getText().trim().equals("")){
             kdasistoperator1.setText("-");
@@ -2356,6 +2367,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             kdasistoperator2.setText("-");
             nmasistoperator2.setText("-");
         }
+        
+        if(kdasistoperator3.getText().trim().equals("")||nmasistoperator3.getText().trim().equals("")){
+            kdasistoperator3.setText("-");
+            nmasistoperator3.setText("-");
+        }
 
         if(kdInstrumen.getText().trim().equals("")||nminstrumen.getText().trim().equals("")){
             kdInstrumen.setText("-");
@@ -2365,6 +2381,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(kdasistanestesi.getText().trim().equals("")||nmasistanestesi.getText().trim().equals("")){
             kdasistanestesi.setText("-");
             nmasistanestesi.setText("-");
+        }
+        
+        if(kdasistanestesi2.getText().trim().equals("")||nmasistanestesi2.getText().trim().equals("")){
+            kdasistanestesi2.setText("-");
+            nmasistanestesi2.setText("-");
         }
 
         if(kdprwresust.getText().trim().equals("")||nmprwresust.getText().trim().equals("")){
@@ -2413,14 +2434,22 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Valid.textKosong(kdonloop2,"Onloop 2");
         }else if(kdonloop3.getText().trim().equals("")||nmonloop3.getText().trim().equals("")){
             Valid.textKosong(kdonloop3,"Onloop 3");
+        }else if(kdonloop4.getText().trim().equals("")||nmonloop4.getText().trim().equals("")){
+            Valid.textKosong(kdonloop4,"Onloop 4");
+        }else if(kdonloop5.getText().trim().equals("")||nmonloop5.getText().trim().equals("")){
+            Valid.textKosong(kdonloop5,"Onloop 5");
         }else if(kdasistoperator1.getText().trim().equals("")||nmasistoperator1.getText().trim().equals("")){
             Valid.textKosong(kdasistoperator1,"Asisten Operator 1");
         }else if(kdasistoperator2.getText().trim().equals("")||nmasistoperator2.getText().trim().equals("")){
             Valid.textKosong(kdasistoperator2,"Asisten Operator 2");
+        }else if(kdasistoperator3.getText().trim().equals("")||nmasistoperator3.getText().trim().equals("")){
+            Valid.textKosong(kdasistoperator3,"Asisten Operator 3");
         }else if(kdInstrumen.getText().trim().equals("")||nminstrumen.getText().trim().equals("")){
-            Valid.textKosong(kdInstrumen,"Asisten Operator 3");
+            Valid.textKosong(kdInstrumen,"Instrumen");
         }else if(kdasistanestesi.getText().trim().equals("")||nmasistanestesi.getText().trim().equals("")){
-            Valid.textKosong(kdasistanestesi,"Asisten Anastesi");
+            Valid.textKosong(kdasistanestesi,"Asisten Anastesi 1");
+        }else if(kdasistanestesi2.getText().trim().equals("")||nmasistanestesi2.getText().trim().equals("")){
+            Valid.textKosong(kdasistanestesi2,"Asisten Anastesi 2");
         }else if(kdprwresust.getText().trim().equals("")||nmprwresust.getText().trim().equals("")){
             Valid.textKosong(kdprwresust,"Perawat Resusitas");
         }else if(kdprwluar.getText().trim().equals("")||nmprwluar.getText().trim().equals("")){
@@ -2437,10 +2466,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if(tabMode.getValueAt(i,0).toString().equals("true")){
                     Sequel.menyimpan("operasi","'"+TNoRw.getText()+"','"+Valid.SetTgl(tgl.getSelectedItem()+"")+" "+tgl.getSelectedItem().toString().substring(11,19)
                         +"','"+jenis.getText()+"','"+Kategori.getSelectedItem()+"','"+kdoperator1.getText()+"','"+kdoperator2.getText()+"','"+kdoperator3.getText()
-                        +"','"+kdasistoperator1.getText()+"','"+kdasistoperator2.getText()+"','"+kdInstrumen.getText()
-                        +"','"+kddranak.getText()+"','"+kdprwresust.getText()+"','"+kdanestesi.getText()+"','"+kdasistanestesi.getText()
+                        +"','"+kdasistoperator1.getText()+"','"+kdasistoperator2.getText()+"','"+kdasistoperator3.getText()+"','"+kdInstrumen.getText()
+                        +"','"+kddranak.getText()+"','"+kdprwresust.getText()+"','"+kdanestesi.getText()+"','"+kdasistanestesi.getText()+"','"+kdasistanestesi2.getText()
                         +"','"+kdbidan.getText()+"','"+kdbidan2.getText()+"','"+kdbidan3.getText()+"','"+kdprwluar.getText()
-                        +"','"+kdonloop1.getText()+"','"+kdonloop2.getText()+"','"+kdonloop3.getText()
+                        +"','"+kdonloop1.getText()+"','"+kdonloop2.getText()+"','"+kdonloop3.getText()+"','"+kdonloop4.getText()+"','"+kdonloop5.getText()
                         +"','"+kdpjanak.getText()+"','"+kddrumum.getText()
                         +"','"+tbtindakan.getValueAt(i,1).toString()
                         +"','"+tbtindakan.getValueAt(i,4).toString()
@@ -2466,7 +2495,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         +"','"+tbtindakan.getValueAt(i,24).toString()
                         +"','"+tbtindakan.getValueAt(i,25).toString()
                         +"','"+tbtindakan.getValueAt(i,26).toString()
-                        +"','"+tbtindakan.getValueAt(i,27).toString()+"'","data");
+                        +"','"+tbtindakan.getValueAt(i,27).toString()
+                        +"','"+tbtindakan.getValueAt(i,28).toString()
+                        +"','"+tbtindakan.getValueAt(i,29).toString()
+                        +"','"+tbtindakan.getValueAt(i,30).toString()
+                        +"','"+tbtindakan.getValueAt(i,31).toString()+"'","data");
                 }
             }
             for(int r=0;r<tbObat.getRowCount();r++){
@@ -2803,22 +2836,22 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         
         try{
             pstindakan=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
-                   "asisten_operator1, asisten_operator2, instrumen, dokter_anak,perawaat_resusitas,"+
-                   "dokter_anestesi, asisten_anestesi, bidan, bidan2, bidan3, perawat_luar, alat,"+
-                   "sewa_ok,akomodasi,bagian_rs,omloop,omloop2,omloop3,sarpras,dokter_pjanak,dokter_umum,(operator1+operator2+operator3+"+
-                   "asisten_operator1+asisten_operator2+instrumen+dokter_anak+perawaat_resusitas+"+
-                   "alat+dokter_anestesi+asisten_anestesi+bidan+bidan2+bidan3+perawat_luar+sewa_ok+"+
-                   "akomodasi+bagian_rs+omloop+omloop2+omloop3+sarpras+dokter_pjanak+dokter_umum) as jumlah "+
+                   "asisten_operator1, asisten_operator2,asisten_operator3, instrumen, dokter_anak,perawaat_resusitas,"+
+                   "dokter_anestesi, asisten_anestesi, asisten_anestesi2, bidan, bidan2, bidan3, perawat_luar, alat,"+
+                   "sewa_ok,akomodasi,bagian_rs,omloop,omloop2,omloop3,omloop4,omloop5,sarpras,dokter_pjanak,dokter_umum,(operator1+operator2+operator3+"+
+                   "asisten_operator1+asisten_operator2+asisten_operator3+instrumen+dokter_anak+perawaat_resusitas+"+
+                   "alat+dokter_anestesi+asisten_anestesi+asisten_anestesi2+bidan+bidan2+bidan3+perawat_luar+sewa_ok+"+
+                   "akomodasi+bagian_rs+omloop+omloop2+omloop3+omloop4+omloop5+sarpras+dokter_pjanak+dokter_umum) as jumlah "+
                    "from paket_operasi "+
                    "where status='1' and (kd_pj=? or kd_pj='-') and kode_paket like ? or "+
                    "status='1' and (kd_pj=? or kd_pj='-') and nm_perawatan like ? order by nm_perawatan ");
             pstindakan2=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
-                   "asisten_operator1, asisten_operator2, instrumen, dokter_anak,perawaat_resusitas,"+
-                   "dokter_anestesi, asisten_anestesi, bidan, bidan2, bidan3, perawat_luar, alat,"+
-                   "sewa_ok,akomodasi,bagian_rs,omloop,omloop2,omloop3,sarpras,dokter_pjanak,dokter_umum,(operator1+operator2+operator3+"+
-                   "asisten_operator1+asisten_operator2+instrumen+dokter_anak+perawaat_resusitas+"+
-                   "alat+dokter_anestesi+asisten_anestesi+bidan+bidan2+bidan3+perawat_luar+sewa_ok+"+
-                   "akomodasi+bagian_rs+omloop+omloop2+omloop3+sarpras+dokter_pjanak+dokter_umum) as jumlah "+
+                   "asisten_operator1, asisten_operator2,asisten_operator3, instrumen, dokter_anak,perawaat_resusitas,"+
+                   "dokter_anestesi, asisten_anestesi, asisten_anestesi2, bidan, bidan2, bidan3, perawat_luar, alat,"+
+                   "sewa_ok,akomodasi,bagian_rs,omloop,omloop2,omloop3,omloop4,omloop5,sarpras,dokter_pjanak,dokter_umum,(operator1+operator2+operator3+"+
+                   "asisten_operator1+asisten_operator2+asisten_operator3+instrumen+dokter_anak+perawaat_resusitas+"+
+                   "alat+dokter_anestesi+asisten_anestesi+asisten_anestesi2+bidan+bidan2+bidan3+perawat_luar+sewa_ok+"+
+                   "akomodasi+bagian_rs+omloop+omloop2+omloop3+omloop4+omloop5+sarpras+dokter_pjanak+dokter_umum) as jumlah "+
                    "from paket_operasi "+
                    "where status='1' and kode_paket like ? or "+
                    "status='1' and nm_perawatan like ? order by nm_perawatan ");
@@ -2844,11 +2877,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                    rs.getDouble("operator3"), 
                                    rs.getDouble("asisten_operator1"), 
                                    rs.getDouble("asisten_operator2"), 
+                                   rs.getDouble("asisten_operator3"), 
                                    rs.getDouble("instrumen"), 
                                    rs.getDouble("dokter_anak"), 
                                    rs.getDouble("perawaat_resusitas"), 
                                    rs.getDouble("dokter_anestesi"), 
                                    rs.getDouble("asisten_anestesi"), 
+                                   rs.getDouble("asisten_anestesi2"), 
                                    rs.getDouble("bidan"), 
                                    rs.getDouble("bidan2"), 
                                    rs.getDouble("bidan3"), 
@@ -2860,6 +2895,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                    rs.getDouble("omloop"), 
                                    rs.getDouble("omloop2"), 
                                    rs.getDouble("omloop3"), 
+                                   rs.getDouble("omloop4"), 
+                                   rs.getDouble("omloop5"), 
                                    rs.getDouble("sarpras"), 
                                    rs.getDouble("dokter_pjanak"), 
                                    rs.getDouble("dokter_umum"), 
@@ -3019,9 +3056,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                      Double.parseDouble(tbtindakan.getValueAt(row,24).toString())+
                                      Double.parseDouble(tbtindakan.getValueAt(row,25).toString())+
                                      Double.parseDouble(tbtindakan.getValueAt(row,26).toString())+
-                                     Double.parseDouble(tbtindakan.getValueAt(row,27).toString()), row,28);
+                                     Double.parseDouble(tbtindakan.getValueAt(row,27).toString())+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,28).toString())+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,29).toString())+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,30).toString())+
+                                     Double.parseDouble(tbtindakan.getValueAt(row,31).toString()), row,32);
                 } catch (Exception e) {
-                    tbtindakan.setValueAt(0, row,28);
+                    tbtindakan.setValueAt(0, row,32);
                 }                    
             }
            
@@ -3032,7 +3073,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 switch (tbtindakan.getValueAt(r,0).toString()) {
                     case "true":
                         try {
-                            y=Double.parseDouble(tbtindakan.getValueAt(r,28).toString());
+                            y=Double.parseDouble(tbtindakan.getValueAt(r,32).toString());
                         } catch (Exception e) {
                             y=0;
                         }                        
