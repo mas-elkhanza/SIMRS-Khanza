@@ -320,24 +320,24 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
         HPP_Persediaan_Radiologi_Rawat_Inap=tbPengaturan.getValueAt(64,1).toString();
         Persediaan_BHP_Radiologi_Rawat_Inap=tbPengaturan.getValueAt(65,1).toString();
         Suspen_Piutang_Obat_Ranap=tbPengaturan.getValueAt(66,1).toString();
-        Obat_Ranap=tbPengaturan.getValueAt(67,1).toString();
-        Registrasi_Ranap=tbPengaturan.getValueAt(68,1).toString();
-        Service_Ranap=tbPengaturan.getValueAt(69,1).toString();
-        Tambahan_Ranap=tbPengaturan.getValueAt(70,1).toString();
-        Potongan_Ranap=tbPengaturan.getValueAt(71,1).toString();
-        Retur_Obat_Ranap=tbPengaturan.getValueAt(72,1).toString();
-        Resep_Pulang_Ranap=tbPengaturan.getValueAt(73,1).toString();
-        Kamar_Inap=tbPengaturan.getValueAt(74,1).toString();
-        Suspen_Piutang_Operasi_Ranap=tbPengaturan.getValueAt(75,1).toString();
-        Operasi_Ranap=tbPengaturan.getValueAt(76,1).toString();
-        Beban_Jasa_Medik_Dokter_Operasi_Ranap=tbPengaturan.getValueAt(77,1).toString();
-        Utang_Jasa_Medik_Dokter_Operasi_Ranap=tbPengaturan.getValueAt(78,1).toString();
-        Beban_Jasa_Medik_Paramedis_Operasi_Ranap=tbPengaturan.getValueAt(79,1).toString();
-        Utang_Jasa_Medik_Paramedis_Operasi_Ranap=tbPengaturan.getValueAt(80,1).toString();
-        HPP_Obat_Operasi_Ranap=tbPengaturan.getValueAt(81,1).toString();
-        Persediaan_Obat_Kamar_Operasi_Ranap=tbPengaturan.getValueAt(82,1).toString();        
-        HPP_Obat_Rawat_Inap=tbPengaturan.getValueAt(83,1).toString();
-        Persediaan_Obat_Rawat_Inap=tbPengaturan.getValueAt(84,1).toString();
+        Obat_Ranap=tbPengaturan.getValueAt(67,1).toString();            
+        HPP_Obat_Rawat_Inap=tbPengaturan.getValueAt(68,1).toString();  
+        Persediaan_Obat_Rawat_Inap=tbPengaturan.getValueAt(69,1).toString();
+        Registrasi_Ranap=tbPengaturan.getValueAt(70,1).toString();
+        Service_Ranap=tbPengaturan.getValueAt(71,1).toString();
+        Tambahan_Ranap=tbPengaturan.getValueAt(72,1).toString();
+        Potongan_Ranap=tbPengaturan.getValueAt(73,1).toString();
+        Retur_Obat_Ranap=tbPengaturan.getValueAt(74,1).toString();
+        Resep_Pulang_Ranap=tbPengaturan.getValueAt(75,1).toString();
+        Kamar_Inap=tbPengaturan.getValueAt(76,1).toString();
+        Suspen_Piutang_Operasi_Ranap=tbPengaturan.getValueAt(77,1).toString();
+        Operasi_Ranap=tbPengaturan.getValueAt(78,1).toString();
+        Beban_Jasa_Medik_Dokter_Operasi_Ranap=tbPengaturan.getValueAt(79,1).toString();
+        Utang_Jasa_Medik_Dokter_Operasi_Ranap=tbPengaturan.getValueAt(80,1).toString();
+        Beban_Jasa_Medik_Paramedis_Operasi_Ranap=tbPengaturan.getValueAt(81,1).toString();
+        Utang_Jasa_Medik_Paramedis_Operasi_Ranap=tbPengaturan.getValueAt(82,1).toString();
+        HPP_Obat_Operasi_Ranap=tbPengaturan.getValueAt(83,1).toString();
+        Persediaan_Obat_Kamar_Operasi_Ranap=tbPengaturan.getValueAt(84,1).toString();  
         Harian_Ranap=tbPengaturan.getValueAt(85,1).toString();
         Uang_Muka_Ranap=tbPengaturan.getValueAt(86,1).toString();
         Piutang_Pasien_Ranap=tbPengaturan.getValueAt(87,1).toString();
@@ -429,23 +429,22 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Sequel.queryu("delete from set_akun_ranap");
             Sequel.menyimpan("set_akun_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,"
                     + "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",50,new String[]{
-                Suspen_Piutang_Tindakan_Ranap,Tindakan_Ranap, 
-                Beban_Jasa_Medik_Dokter_Tindakan_Ranap, Utang_Jasa_Medik_Dokter_Tindakan_Ranap, 
-                Beban_Jasa_Medik_Paramedis_Tindakan_Ranap, Utang_Jasa_Medik_Paramedis_Tindakan_Ranap, 
-                Beban_KSO_Tindakan_Ranap,Utang_KSO_Tindakan_Ranap,Suspen_Piutang_Laborat_Ranap,
-                Laborat_Ranap, Beban_Jasa_Medik_Dokter_Laborat_Ranap, 
+                Suspen_Piutang_Tindakan_Ranap, Tindakan_Ranap, Beban_Jasa_Medik_Dokter_Tindakan_Ranap, 
+                Utang_Jasa_Medik_Dokter_Tindakan_Ranap, Beban_Jasa_Medik_Paramedis_Tindakan_Ranap, 
+                Utang_Jasa_Medik_Paramedis_Tindakan_Ranap, Beban_KSO_Tindakan_Ranap, Utang_KSO_Tindakan_Ranap, 
+                Suspen_Piutang_Laborat_Ranap, Laborat_Ranap, Beban_Jasa_Medik_Dokter_Laborat_Ranap, 
                 Utang_Jasa_Medik_Dokter_Laborat_Ranap, Beban_Jasa_Medik_Petugas_Laborat_Ranap, 
                 Utang_Jasa_Medik_Petugas_Laborat_Ranap, Beban_Kso_Laborat_Ranap, Utang_Kso_Laborat_Ranap, 
-                HPP_Persediaan_Laborat_Rawat_inap, Persediaan_BHP_Laborat_Rawat_Inap,Suspen_Piutang_Radiologi_Ranap,
+                HPP_Persediaan_Laborat_Rawat_inap, Persediaan_BHP_Laborat_Rawat_Inap, Suspen_Piutang_Radiologi_Ranap, 
                 Radiologi_Ranap, Beban_Jasa_Medik_Dokter_Radiologi_Ranap, Utang_Jasa_Medik_Dokter_Radiologi_Ranap, 
-                Beban_Jasa_Medik_Petugas_Radiologi_Ranap, Utang_Jasa_Medik_Petugas_Radiologi_Ranap, 
-                Beban_Kso_Radiologi_Ranap, Utang_Kso_Radiologi_Ranap, HPP_Persediaan_Radiologi_Rawat_Inap, 
-                Persediaan_BHP_Radiologi_Rawat_Inap,Suspen_Piutang_Obat_Ranap,Obat_Ranap,HPP_Obat_Rawat_Inap,Persediaan_Obat_Rawat_Inap,
-                Registrasi_Ranap,Service_Ranap,Tambahan_Ranap,Potongan_Ranap,Retur_Obat_Ranap,Resep_Pulang_Ranap,
-                Kamar_Inap,Suspen_Piutang_Operasi_Ranap,Operasi_Ranap, Beban_Jasa_Medik_Dokter_Operasi_Ranap, 
+                Beban_Jasa_Medik_Petugas_Radiologi_Ranap, Utang_Jasa_Medik_Petugas_Radiologi_Ranap, Beban_Kso_Radiologi_Ranap, 
+                Utang_Kso_Radiologi_Ranap, HPP_Persediaan_Radiologi_Rawat_Inap, Persediaan_BHP_Radiologi_Rawat_Inap, 
+                Suspen_Piutang_Obat_Ranap, Obat_Ranap, HPP_Obat_Rawat_Inap, Persediaan_Obat_Rawat_Inap, Registrasi_Ranap, 
+                Service_Ranap, Tambahan_Ranap, Potongan_Ranap, Retur_Obat_Ranap, Resep_Pulang_Ranap, Kamar_Inap, 
+                Suspen_Piutang_Operasi_Ranap, Operasi_Ranap, Beban_Jasa_Medik_Dokter_Operasi_Ranap, 
                 Utang_Jasa_Medik_Dokter_Operasi_Ranap, Beban_Jasa_Medik_Paramedis_Operasi_Ranap, 
-                Utang_Jasa_Medik_Paramedis_Operasi_Ranap, HPP_Obat_Operasi_Ranap, Persediaan_Obat_Kamar_Operasi_Ranap,
-                Harian_Ranap,Uang_Muka_Ranap,Piutang_Pasien_Ranap
+                Utang_Jasa_Medik_Paramedis_Operasi_Ranap, HPP_Obat_Operasi_Ranap, Persediaan_Obat_Kamar_Operasi_Ranap, 
+                Harian_Ranap, Uang_Muka_Ranap, Piutang_Pasien_Ranap
             });
             Sequel.queryu("delete from set_akun");
             Sequel.menyimpan("set_akun","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",22,new String[]{
@@ -458,6 +457,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Penyerahan_Darah
             });
             JOptionPane.showMessageDialog(null,"Proses selesai...!!!!");
+            tampil();
         }
             
 }//GEN-LAST:event_BtnSimpanActionPerformed
