@@ -490,7 +490,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             
                     }                  
                                
-                    psobatsimpan= koneksi.prepareStatement("insert into detail_pemberian_obat values(?,?,?,?,?,?,?,?,?,?)");
+                    psobatsimpan= koneksi.prepareStatement("insert into detail_pemberian_obat values(?,?,?,?,?,?,?,?,?,?,?)");
                     try {
                         if(pagi>0){
                             psobatsimpan.setString(1,Valid.SetTgl(Tanggal.getSelectedItem()+""));
@@ -514,6 +514,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }
                             psobatsimpan.setString(8,tbObat.getValueAt(i,13).toString());
                             psobatsimpan.setString(9,tbObat.getValueAt(i,14).toString());
+                            psobatsimpan.setString(11,"Ranap");
                             psobatsimpan.executeUpdate();  
                         }
 
@@ -538,6 +539,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }
                             psobatsimpan.setString(8,tbObat.getValueAt(i,13).toString());
                             psobatsimpan.setString(9,tbObat.getValueAt(i,14).toString());
+                            psobatsimpan.setString(11,"Ranap");
                             psobatsimpan.executeUpdate();  
                         }
 
@@ -563,6 +565,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }
                             psobatsimpan.setString(8,tbObat.getValueAt(i,13).toString());
                             psobatsimpan.setString(9,tbObat.getValueAt(i,14).toString());
+                            psobatsimpan.setString(11,"Ranap");
                             psobatsimpan.executeUpdate();  
                         }
 
@@ -588,6 +591,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }
                             psobatsimpan.setString(8,tbObat.getValueAt(i,13).toString());
                             psobatsimpan.setString(9,tbObat.getValueAt(i,14).toString());
+                            psobatsimpan.setString(11,"Ranap");
                             psobatsimpan.executeUpdate();  
                         }
                     } catch (Exception e) {
