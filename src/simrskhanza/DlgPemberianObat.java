@@ -84,13 +84,13 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         Object[] row={"Tgl.Beri","Jam Beri","No.Rawat","No.R.M.",
                       "Nama Pasien","Kode Obat","Nama Obat/Alkes","Embalase",
-                      "Tuslah","Jml","Biaya Obat","Total"};
+                      "Tuslah","Jml","Biaya Obat","Total","Harga Beli"};
         tabModePO=new DefaultTableModel(null,row){
             @Override 
             public boolean isCellEditable(int rowIndex, int colIndex){return false;}
             Class[] types = new Class[]{
                 java.lang.Object.class, java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
-                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
             };
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -103,7 +103,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         tbPemberianObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPemberianObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 13; i++) {
             TableColumn column = tbPemberianObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(80);
@@ -129,6 +129,9 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }else if(i==11){
                 column.setPreferredWidth(90);
+            }else if(i==12){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbPemberianObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1971,7 +1974,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         sql="select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
                    "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                    "detail_pemberian_obat.kode_brng,databarang.nama_brng,detail_pemberian_obat.embalase,detail_pemberian_obat.tuslah,"+
-                   "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total "+
+                   "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total,detail_pemberian_obat.h_beli "+
                    "from detail_pemberian_obat inner join reg_periksa inner join pasien inner join databarang "+
                    "on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2006,7 +2009,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                rs.getDouble(9),
                                rs.getDouble(10),
                                rs.getDouble(11),
-                               rs.getDouble(12)};
+                               rs.getDouble(12),
+                               rs.getDouble(13)};
                 tabModePO.addRow(data);
             }
         }catch(Exception e){
@@ -2039,6 +2043,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TTuslah.setText(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),8).toString());
             TJumlah.setText(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString());
             TBiayaObat.setText(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),10).toString());
+            THBeli.setText(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),12).toString());
             Valid.SetTgl(DTPBeri,tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString());
             isjml();
         }
