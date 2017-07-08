@@ -47,6 +47,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.event.DocumentEvent;
+import keuangan.Jurnal;
 
 /**
  *
@@ -66,11 +67,13 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private DlgPasien pasien=new DlgPasien(null,false);
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private Date date = new Date();
-    private String now=dateFormat.format(date),bangsal="",tgl="",pas="",sql="",status="";
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private double embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase");
+    private String now=dateFormat.format(date),bangsal="",tgl="",pas="",sql="",status="",statussimpan="";
+    private PreparedStatement ps,psrekening;
+    private ResultSet rs,rsrekening;
+    private double embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),ttljual,ttlhpp;
     private double tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
+    private String statusberi="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
+    private Jurnal jur=new Jurnal();
 
     /** Creates new form DlgPemberianObat
      * @param parent
@@ -321,6 +324,30 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm(); 
         jam();   
+        
+        try {
+            psrekening=koneksi.prepareStatement("select * from set_akun_ranap");
+            try {
+                rsrekening=psrekening.executeQuery();
+                while(rsrekening.next()){
+                    Suspen_Piutang_Obat_Ranap=rsrekening.getString("Suspen_Piutang_Obat_Ranap");
+                    Obat_Ranap=rsrekening.getString("Obat_Ranap");
+                    HPP_Obat_Rawat_Inap=rsrekening.getString("HPP_Obat_Rawat_Inap");
+                    Persediaan_Obat_Rawat_Inap=rsrekening.getString("Persediaan_Obat_Rawat_Inap");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Rekening : "+e);
+            } finally{
+                if(rsrekening!=null){
+                    rsrekening.close();
+                }
+                if(psrekening!=null){
+                    psrekening.close();
+                }
+            }            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     //private DlgCariObatPenyakit dlgobtpny=new DlgCariObatPenyakit(null,false);
@@ -1146,21 +1173,77 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             Valid.textKosong(TEmbalase,"Embalase");
         }else if(TTuslah.getText().trim().equals("")){
             Valid.textKosong(TEmbalase,"Tuslah");
-        }else{          
-            if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
-                            cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
-                            TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
-                            TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+")","data")==true){                    
-                if(btnObat1.isEnabled()==true){
-                    Trackobat.catatRiwayat(TKdOb.getText(),0,Valid.SetAngka(TJumlah.getText()),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
-                    Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','-"+TJumlah.getText()+"'", 
-                                        "stok=stok-'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");
-                }   
+        }else{       
+            if(var.getkode().equals("Admin Utama")){
+                ttlhpp=0;
+                ttljual=0;
+                Sequel.AutoComitFalse();
+                if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
+                                cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
+                                TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
+                                TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"),'"+statussimpan+"'","data")==true){ 
+                    if(statussimpan.equals("Ranap")){
+                        ttlhpp=Double.parseDouble(THBeli.getText())*Double.parseDouble(TJumlah.getText());
+                        ttljual=(Double.parseDouble(TBiayaObat.getText())*Double.parseDouble(TJumlah.getText()))+Double.parseDouble(TEmbalase.getText())+Double.parseDouble(TTuslah.getText());
+                        Sequel.queryu("delete from tampjurnal");    
+                        if(ttljual>0){
+                            Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','"+ttljual+"','0'","Rekening");    
+                            Sequel.menyimpan("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','0','"+ttljual+"'","Rekening");                              
+                        }
+                        if(ttlhpp>0){
+                            Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
+                            Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
+                        }
+                        jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+var.getkode());                                              
+                    }
+
+                    if(btnObat1.isEnabled()==true){
+                        Trackobat.catatRiwayat(TKdOb.getText(),0,Valid.SetAngka(TJumlah.getText()),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
+                        Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','-"+TJumlah.getText()+"'", 
+                                            "stok=stok-'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");
+                    }
+                }
+                Sequel.AutoComitTrue();
                 tampilPO();
                 BtnBatalActionPerformed(evt);
-            }
-            
-            
+            }else{
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    TCari.requestFocus();
+                }else{
+                    ttlhpp=0;
+                    ttljual=0;
+                    Sequel.AutoComitFalse();
+                    if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
+                                    cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
+                                    TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
+                                    TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"),'"+statussimpan+"'","data")==true){ 
+                        if(statussimpan.equals("Ranap")){
+                            ttlhpp=Double.parseDouble(THBeli.getText())*Double.parseDouble(TJumlah.getText());
+                            ttljual=(Double.parseDouble(TBiayaObat.getText())*Double.parseDouble(TJumlah.getText()))+Double.parseDouble(TEmbalase.getText())+Double.parseDouble(TTuslah.getText());
+                            Sequel.queryu("delete from tampjurnal");    
+                            if(ttljual>0){
+                                Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','"+ttljual+"','0'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','0','"+ttljual+"'","Rekening");                              
+                            }
+                            if(ttlhpp>0){
+                                Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
+                            }
+                            jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+var.getkode());                                              
+                        }
+
+                        if(btnObat1.isEnabled()==true){
+                            Trackobat.catatRiwayat(TKdOb.getText(),0,Valid.SetAngka(TJumlah.getText()),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
+                            Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','-"+TJumlah.getText()+"'", 
+                                                "stok=stok-'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");
+                        }
+                    }  
+                    Sequel.AutoComitTrue();
+                    tampilPO();
+                    BtnBatalActionPerformed(evt);
+                }
+            }                
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1218,10 +1301,35 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             try{
                 if(var.getkode().equals("Admin Utama")){
                     Sequel.AutoComitFalse();
+                    statusberi=Sequel.cariIsi("select status from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                  "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                  "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                  "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                    ttlhpp=Sequel.cariIsiAngka("select sum(h_beli*jml) from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                  "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                  "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                  "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                    ttljual=Sequel.cariIsiAngka("select sum(total) from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                  "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                  "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                  "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
                     if(Sequel.queryutf("delete from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
                                   "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
                                   "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
                                   "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'")==true){
+                        if(statusberi.equals("Ranap")){
+                            Sequel.queryu("delete from tampjurnal");    
+                            if(ttljual>0){
+                                Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','0','"+ttljual+"'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','"+ttljual+"','0'","Rekening");                              
+                            }
+                            if(ttlhpp>0){
+                                Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");                              
+                            }
+                            jur.simpanJurnal(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString(),tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString(),"U","PEMBATALAN PEMBERIAN OBAT RAWAT INAP PASIEN, OLEH "+var.getkode());                                                
+                        }
+                        
                         Sequel.queryu("delete from aturan_pakai where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
                                       "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
                                       "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
@@ -1246,10 +1354,35 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                         TCari.requestFocus();
                     }else{
                         Sequel.AutoComitFalse();
+                        statusberi=Sequel.cariIsi("select status from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                      "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                      "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                      "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                        ttlhpp=Sequel.cariIsiAngka("select sum(h_beli*jml) from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                      "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                      "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                      "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                        ttljual=Sequel.cariIsiAngka("select sum(total) from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                      "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                      "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                      "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
                         if(Sequel.queryutf("delete from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
                                       "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
                                       "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
                                       "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'")==true){
+                            if(statusberi.equals("Ranap")){
+                                Sequel.queryu("delete from tampjurnal");    
+                                if(ttljual>0){
+                                    Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','0','"+ttljual+"'","Rekening");    
+                                    Sequel.menyimpan("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','"+ttljual+"','0'","Rekening");                              
+                                }
+                                if(ttlhpp>0){
+                                    Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");    
+                                    Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");                              
+                                }
+                                jur.simpanJurnal(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString(),tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString(),"U","PEMBATALAN PEMBERIAN OBAT RAWAT INAP PASIEN, OLEH "+var.getkode());                                                
+                            }
+
                             Sequel.queryu("delete from aturan_pakai where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
                                           "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
                                           "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
@@ -1264,6 +1397,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                                                         "kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' and kd_bangsal='"+bangsal+"'");                    
                             }
                         }
+
                         Sequel.AutoComitTrue();
                         tampilPO();
                         BtnBatalActionPerformed(evt);
@@ -1445,46 +1579,175 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else if(ChkJln.isSelected()==true){
             JOptionPane.showMessageDialog(rootPane,"Matikan dulu jam otomatis sebelum mengedit data..!!");
             ChkJln.requestFocus();
-        }else{          
-            try {  
-                Sequel.AutoComitFalse();
-                Sequel.queryu("delete from aturan_pakai where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+
-                              "' and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+
-                              "' and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+
-                              "' and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString().substring(0,2)+
-                              ":"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString().substring(3,5)+
-                              ":"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString().substring(6,8)+"'");                
-                Sequel.queryu("delete from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+
-                              "' and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+
-                              "' and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+
-                              "' and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString().substring(0,2)+
-                              ":"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString().substring(3,5)+
-                              ":"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString().substring(6,8)+"'");                
-                if(btnObat1.isEnabled()==true){
-                        Trackobat.catatRiwayat(TKdOb.getText(),Valid.SetAngka(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()),0,"Pemberian Obat",var.getkode(),bangsal,"Hapus");
-                        Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'", 
-                                                "stok=stok+'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");                    
-                }
-                if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
-                            cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
-                            TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
-                            TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+")","data")==true){
-                    if(btnObat1.isEnabled()==true){
-                        Trackobat.catatRiwayat(TKdOb.getText(),0,Valid.SetAngka(TJumlah.getText()),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
-                        Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','-"+TJumlah.getText()+"'", 
-                                                "stok=stok-'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");
+        }else{       
+            if(var.getkode().equals("Admin Utama")){
+                try {  
+                    Sequel.AutoComitFalse();
+                    statusberi=Sequel.cariIsi("select status from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                  "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                  "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                  "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                    ttlhpp=Sequel.cariIsiAngka("select sum(h_beli*jml) from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                  "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                  "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                  "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                    ttljual=Sequel.cariIsiAngka("select sum(total) from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                  "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                  "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                  "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+
+                    if(Sequel.queryutf("delete from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                  "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                  "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                  "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'")==true){
+                        if(statusberi.equals("Ranap")){
+                            Sequel.queryu("delete from tampjurnal");    
+                            if(ttljual>0){
+                                Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','0','"+ttljual+"'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','"+ttljual+"','0'","Rekening");                              
+                            }
+                            if(ttlhpp>0){
+                                Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");                              
+                            }
+                            jur.simpanJurnal(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString(),tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString(),"U","PEMBATALAN PEMBERIAN OBAT RAWAT INAP PASIEN, OLEH "+var.getkode());                                                
+                        }
+
+                        Sequel.queryu("delete from aturan_pakai where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                      "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                      "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                      "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                        if(btnObat1.isEnabled()==true){
+                            Trackobat.catatRiwayat(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString(),
+                                    Valid.SetAngka(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()),
+                                    0,"Pemberian Obat",var.getkode(),bangsal,"Hapus");
+                            Sequel.menyimpan("gudangbarang","'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"','"+bangsal+"',"+
+                                                    "'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'", 
+                                                    "stok=stok+'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'",
+                                                    "kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' and kd_bangsal='"+bangsal+"'");                    
+                        }
                     }
-                        
+
+                    ttlhpp=0;
+                    ttljual=0;
+                    if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
+                                    cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
+                                    TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
+                                    TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"),'"+statussimpan+"'","data")==true){ 
+                        if(statussimpan.equals("Ranap")){
+                            ttlhpp=Double.parseDouble(THBeli.getText())*Double.parseDouble(TJumlah.getText());
+                            ttljual=(Double.parseDouble(TBiayaObat.getText())*Double.parseDouble(TJumlah.getText()))+Double.parseDouble(TEmbalase.getText())+Double.parseDouble(TTuslah.getText());
+                            Sequel.queryu("delete from tampjurnal");    
+                            if(ttljual>0){
+                                Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','"+ttljual+"','0'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','0','"+ttljual+"'","Rekening");                              
+                            }
+                            if(ttlhpp>0){
+                                Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
+                                Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
+                            }
+                            jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+var.getkode());                                              
+                        }
+
+                        if(btnObat1.isEnabled()==true){
+                            Trackobat.catatRiwayat(TKdOb.getText(),0,Valid.SetAngka(TJumlah.getText()),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
+                            Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','-"+TJumlah.getText()+"'", 
+                                                "stok=stok-'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");
+                        }
+                    }
+                    Sequel.AutoComitTrue();
                     tampilPO();
                     BtnBatalActionPerformed(evt);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Kemungkinan ada data yang sama dimasukkan sebelumnya...!");
                 }
-                Sequel.AutoComitTrue();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Kemungkinan ada data yang sama dimasukkan sebelumnya...!");
-            }
-            
-            tampilPO();
-            BtnBatalActionPerformed(evt);
+            }else{
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    TCari.requestFocus();
+                }else{
+                    try {  
+                        Sequel.AutoComitFalse();
+                        statusberi=Sequel.cariIsi("select status from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                      "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                      "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                      "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                        ttlhpp=Sequel.cariIsiAngka("select sum(h_beli*jml) from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                      "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                      "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                      "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                        ttljual=Sequel.cariIsiAngka("select sum(total) from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                      "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                      "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                      "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+
+                        if(Sequel.queryutf("delete from detail_pemberian_obat where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                      "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                      "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                      "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'")==true){
+                            if(statusberi.equals("Ranap")){
+                                Sequel.queryu("delete from tampjurnal");    
+                                if(ttljual>0){
+                                    Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','0','"+ttljual+"'","Rekening");    
+                                    Sequel.menyimpan("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','"+ttljual+"','0'","Rekening");                              
+                                }
+                                if(ttlhpp>0){
+                                    Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");    
+                                    Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");                              
+                                }
+                                jur.simpanJurnal(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString(),tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString(),"U","PEMBATALAN PEMBERIAN OBAT RAWAT INAP PASIEN, OLEH "+var.getkode());                                                
+                            }
+
+                            Sequel.queryu("delete from aturan_pakai where no_rawat='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),2).toString()+"' "+
+                                          "and kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' "+
+                                          "and tgl_perawatan='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),0).toString()+"' "+
+                                          "and jam='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),1).toString()+"'");
+                            if(btnObat1.isEnabled()==true){
+                                Trackobat.catatRiwayat(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString(),
+                                        Valid.SetAngka(tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()),
+                                        0,"Pemberian Obat",var.getkode(),bangsal,"Hapus");
+                                Sequel.menyimpan("gudangbarang","'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"','"+bangsal+"',"+
+                                                        "'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'", 
+                                                        "stok=stok+'"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),9).toString()+"'",
+                                                        "kode_brng='"+tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),5).toString()+"' and kd_bangsal='"+bangsal+"'");                    
+                            }
+                        }
+
+                        ttlhpp=0;
+                        ttljual=0;
+                        if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
+                                        cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
+                                        TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
+                                        TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"),'"+statussimpan+"'","data")==true){ 
+                            if(statussimpan.equals("Ranap")){
+                                ttlhpp=Double.parseDouble(THBeli.getText())*Double.parseDouble(TJumlah.getText());
+                                ttljual=(Double.parseDouble(TBiayaObat.getText())*Double.parseDouble(TJumlah.getText()))+Double.parseDouble(TEmbalase.getText())+Double.parseDouble(TTuslah.getText());
+                                Sequel.queryu("delete from tampjurnal");    
+                                if(ttljual>0){
+                                    Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','"+ttljual+"','0'","Rekening");    
+                                    Sequel.menyimpan("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','0','"+ttljual+"'","Rekening");                              
+                                }
+                                if(ttlhpp>0){
+                                    Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
+                                    Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
+                                }
+                                jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+var.getkode());                                              
+                            }
+
+                            if(btnObat1.isEnabled()==true){
+                                Trackobat.catatRiwayat(TKdOb.getText(),0,Valid.SetAngka(TJumlah.getText()),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
+                                Sequel.menyimpan("gudangbarang","'"+TKdOb.getText()+"','"+bangsal+"','-"+TJumlah.getText()+"'", 
+                                                    "stok=stok-'"+TJumlah.getText()+"'","kode_brng='"+TKdOb.getText()+"' and kd_bangsal='"+bangsal+"'");
+                            }
+                        }
+                        Sequel.AutoComitTrue();
+                        tampilPO();
+                        BtnBatalActionPerformed(evt);
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Kemungkinan ada data yang sama dimasukkan sebelumnya...!");
+                    }
+                }
+            }   
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -1788,6 +2051,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         isPsien();   
         status=statuspasien;
         if(statuspasien.equals("ranap")){
+            statussimpan="Ranap";
             BtnObat2.setEnabled(true);
             BtnObat3.setEnabled(false);
             if(Sequel.cariInteger("select count(no_rawat) from stok_obat_pasien where no_rawat=? ",norwt)>0){
@@ -1796,6 +2060,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 btnObat1.setEnabled(true);
             }
         }else if(statuspasien.equals("ralan")){
+            statussimpan="Ralan";
             btnObat1.setEnabled(true);
             BtnObat2.setEnabled(false);
             BtnObat3.setEnabled(true);
