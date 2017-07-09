@@ -11,15 +11,12 @@
 
 package laporan;
 
-import fungsi.WarnaTable;
-import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Desktop;
-import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -30,13 +27,7 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -48,14 +39,14 @@ import simrskhanza.DlgPenanggungJawab;
  * @author perpustakaan
  */
 public final class DlgSensusHarianPoli extends javax.swing.JDialog {
-    private Connection koneksi=koneksiDB.condb();
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
+    private final Connection koneksi=koneksiDB.condb();
+    private final sekuel Sequel=new sekuel();
+    private final validasi Valid=new validasi();
     private PreparedStatement pstanggal,pspoli,psreg;
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private ResultSet rstanggal,rspoli,rsreg;
-    private int i=0;
+    private int i=0,jmllama=0,jmlbaru=0,jmllaki=0,jmlper=0;
     private String lama="",baru="",rujukandari="",alamatrujukandari="",dirujukke="",namapeyakit="",kodepenyakit="";
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -616,6 +607,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     public void tampil(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
+            jmllama=0;jmlbaru=0;jmllaki=0;jmlper=0;
             StringBuilder htmlContent = new StringBuilder();
             pstanggal=koneksi.prepareStatement("select tgl_registrasi,DATE_FORMAT(tgl_registrasi,'%d-%m-%Y') as tanggal from reg_periksa where tgl_registrasi between ? and ? group by tgl_registrasi order by tgl_registrasi ");
             try {
@@ -709,10 +701,16 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                     kodepenyakit=Sequel.cariIsi("select kd_penyakit from diagnosa_pasien where status='Ralan' and prioritas='1' and no_rawat=?",rsreg.getString("no_rawat"));
                                     if(rsreg.getString("stts_daftar").equals("Baru")){
                                         baru="V";
+                                        jmlbaru=jmlbaru+1;
                                     }else if(rsreg.getString("stts_daftar").equals("Lama")){
                                         lama="V";
+                                        jmllama=jmllama+1;
                                     }
-                                    
+                                    if(rsreg.getString("jk").equals("L")){
+                                        jmllaki=jmllaki+1;
+                                    }else{
+                                        jmlper=jmlper+1;
+                                    }
                                     htmlContent.append(
                                         "<tr class='isi3'>"+
                                             "<td valign='top' align='center'>"+i+"</td>"+
@@ -771,6 +769,30 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                             pspoli.close();
                         }
                     }                                        
+                }
+                if((jmlbaru+jmllama)>0){
+                    htmlContent.append(
+                                "<tr class='isi3'>"+
+                                    "<td valign='top' align='left' colspan='2'>Baru</td>"+
+                                    "<td valign='top' align='left' colspan='11'>: "+jmlbaru+"</td>"+
+                                "</tr>"+
+                                "<tr class='isi3'>"+
+                                    "<td valign='top' align='left' colspan='2'>Lama</td>"+
+                                    "<td valign='top' align='left' colspan='11'>: "+jmllama+"</td>"+
+                                "</tr>"+
+                                "<tr class='isi3'>"+
+                                    "<td valign='top' align='left' colspan='2'>Laki-Laki</td>"+
+                                    "<td valign='top' align='left' colspan='11'>: "+jmllaki+"</td>"+
+                                "</tr>"+
+                                "<tr class='isi3'>"+
+                                    "<td valign='top' align='left' colspan='2'>Perempuan</td>"+
+                                    "<td valign='top' align='left' colspan='11'>: "+jmlper+"</td>"+
+                                "</tr>"+
+                                "<tr class='isi3'>"+
+                                    "<td valign='top' align='left' colspan='2'>Total</td>"+
+                                    "<td valign='top' align='left' colspan='11'>: "+(jmllama+jmlbaru)+"</td>"+
+                                "</tr>"
+                     );
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi Cari Tanggal : "+e);

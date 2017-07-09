@@ -42,17 +42,18 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private Jurnal jur=new Jurnal();
-    private PreparedStatement pstampil,psstok;
-    private ResultSet rstampil,rsstok;
+    private PreparedStatement pstampil,psstok,psrekening;
+    private ResultSet rstampil,rsstok,rsrekening;
     private WarnaTable2 warna=new WarnaTable2();
     private riwayatobat Trackobat=new riwayatobat();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
     private DecimalFormat df3 = new DecimalFormat("###");
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
-    private double ttl=0,y=0,stokbarang=0;
+    private double ttl=0,y=0,stokbarang=0,ttlhpp=0,ttljual=0;
     private int jml=0,i=0,index=0;
-    private String[] keranap,kodebarang,namabarang,kategori,satuan,kapasitas,stok,harga;
+    private String Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
+    private String[] keranap,kodebarang,namabarang,kategori,satuan,kapasitas,stok,harga,hargabeli;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -68,7 +69,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
                     "Satuan",
                     "Kapasitas",
                     "Stok",
-                    "Harga"};
+                    "Harga","HargaBeli"};
         tabMode=new DefaultTableModel(null,row){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -83,7 +84,7 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(60);
@@ -101,6 +102,9 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
                 column.setPreferredWidth(50);
             }else if(i==7){
                 column.setPreferredWidth(80);
+            }else if(i==8){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         warna.kolom=0;
@@ -145,7 +149,30 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
             @Override
             public void windowDeactivated(WindowEvent e) {}
         });
-            
+           
+        try {
+            psrekening=koneksi.prepareStatement("select * from set_akun_ranap");
+            try {
+                rsrekening=psrekening.executeQuery();
+                while(rsrekening.next()){
+                    Suspen_Piutang_Obat_Ranap=rsrekening.getString("Suspen_Piutang_Obat_Ranap");
+                    Obat_Ranap=rsrekening.getString("Obat_Ranap");
+                    HPP_Obat_Rawat_Inap=rsrekening.getString("HPP_Obat_Rawat_Inap");
+                    Persediaan_Obat_Rawat_Inap=rsrekening.getString("Persediaan_Obat_Rawat_Inap");
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Rekening : "+e);
+            } finally{
+                if(rsrekening!=null){
+                    rsrekening.close();
+                }
+                if(psrekening!=null){
+                    psrekening.close();
+                }
+            }            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
 
@@ -500,26 +527,86 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data kosong..!!!!");
             tbDokter.requestFocus();
         }else{
-            i= JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
-            if (i == JOptionPane.YES_OPTION) {
-                for(i=0;i<tbDokter.getRowCount();i++){  
-                   if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                        if(Sequel.menyimpantf("stok_obat_pasien","?,?,?,?,?","Stok Obat Pasien",5,new String[]{
-                            Valid.SetTgl(Tgl.getSelectedItem()+""),norawat.getText(),tabMode.getValueAt(i,1).toString(),
-                            tabMode.getValueAt(i,0).toString(),kdgudang.getText()
-                        })==true){
-                            Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Pasien Ranap",var.getkode(),kdgudang.getText(),"Simpan");
-                            Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
-                                            "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
-                        }                            
-                   }
-                }   
-                for(index=0;index<tbDokter.getRowCount();index++){   
-                    tbDokter.setValueAt("",index,0);        
+            if(var.getkode().equals("Admin Utama")){
+                i= JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                if (i == JOptionPane.YES_OPTION) {
+                    Sequel.AutoComitFalse();
+                    ttlhpp=0;ttljual=0;
+                    for(i=0;i<tbDokter.getRowCount();i++){  
+                       if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
+                            if(Sequel.menyimpantf("stok_obat_pasien","?,?,?,?,?","Stok Obat Pasien",5,new String[]{                            
+                                Valid.SetTgl(Tgl.getSelectedItem()+""),norawat.getText(),tabMode.getValueAt(i,1).toString(),
+                                tabMode.getValueAt(i,0).toString(),kdgudang.getText()
+                            })==true){
+                                ttlhpp=ttlhpp+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,8).toString()));
+                                ttljual=ttlhpp+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,9).toString()));
+                                Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Pasien Ranap",var.getkode(),kdgudang.getText(),"Simpan");
+                                Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
+                                                "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                            }                            
+                       }
+                    }  
+
+                    Sequel.queryu("delete from tampjurnal");    
+                    if(ttljual>0){
+                        Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','"+ttljual+"','0'","Rekening");    
+                        Sequel.menyimpan("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','0','"+ttljual+"'","Rekening");                              
+                    }
+                    if(ttlhpp>0){
+                        Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
+                        Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
+                    }
+                    jur.simpanJurnal(norawat.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+var.getkode());                                                
+
+                    Sequel.AutoComitTrue();
+                    for(index=0;index<tbDokter.getRowCount();index++){   
+                        tbDokter.setValueAt("",index,0);        
+                    }
+                    tampil();
                 }
-                tampil();
+            }else{
+                if(Sequel.cariRegistrasi(norawat.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    TCari.requestFocus();
+                }else{
+                    i= JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                    if (i == JOptionPane.YES_OPTION) {
+                        Sequel.AutoComitFalse();
+                        ttlhpp=0;ttljual=0;
+                        for(i=0;i<tbDokter.getRowCount();i++){  
+                           if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
+                                if(Sequel.menyimpantf("stok_obat_pasien","?,?,?,?,?","Stok Obat Pasien",5,new String[]{                            
+                                    Valid.SetTgl(Tgl.getSelectedItem()+""),norawat.getText(),tabMode.getValueAt(i,1).toString(),
+                                    tabMode.getValueAt(i,0).toString(),kdgudang.getText()
+                                })==true){
+                                    ttlhpp=ttlhpp+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,8).toString()));
+                                    ttljual=ttlhpp+(Valid.SetAngka(tabMode.getValueAt(i,0).toString())*Valid.SetAngka(tabMode.getValueAt(i,9).toString()));
+                                    Trackobat.catatRiwayat(tabMode.getValueAt(i,1).toString(),0,Valid.SetAngka(tabMode.getValueAt(i,0).toString()),"Stok Pasien Ranap",var.getkode(),kdgudang.getText(),"Simpan");
+                                    Sequel.menyimpan("gudangbarang","'"+tabMode.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','-"+tabMode.getValueAt(i,0).toString()+"'", 
+                                                    "stok=stok-'"+tabMode.getValueAt(i,0).toString()+"'","kode_brng='"+tabMode.getValueAt(i,1).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
+                                }                            
+                           }
+                        }  
+
+                        Sequel.queryu("delete from tampjurnal");    
+                        if(ttljual>0){
+                            Sequel.menyimpan("tampjurnal","'"+Suspen_Piutang_Obat_Ranap+"','Suspen Piutang Obat Ranap','"+ttljual+"','0'","Rekening");    
+                            Sequel.menyimpan("tampjurnal","'"+Obat_Ranap+"','Pendapatan Obat Rawat Inap','0','"+ttljual+"'","Rekening");                              
+                        }
+                        if(ttlhpp>0){
+                            Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Inap+"','HPP Persediaan Obat Rawat Inap','"+ttlhpp+"','0'","Rekening");    
+                            Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Inap+"','Persediaan Obat Rawat Inap','0','"+ttlhpp+"'","Rekening");                              
+                        }
+                        jur.simpanJurnal(norawat.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PEMBERIAN OBAT RAWAT INAP PASIEN, DIPOSTING OLEH "+var.getkode());                                                
+
+                        Sequel.AutoComitTrue();
+                        for(index=0;index<tbDokter.getRowCount();index++){   
+                            tbDokter.setValueAt("",index,0);        
+                        }
+                        tampil();
+                    }
+                }
             }
-            
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -736,6 +823,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         stok=new String[jml];
         harga=null;
         harga=new String[jml];
+        hargabeli=null;
+        hargabeli=new String[jml];
         
         index=0;        
         for(i=0;i<tbDokter.getRowCount();i++){
@@ -748,19 +837,20 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 kapasitas[index]=tbDokter.getValueAt(i,5).toString();
                 stok[index]=tbDokter.getValueAt(i,6).toString();
                 harga[index]=tbDokter.getValueAt(i,7).toString();
+                hargabeli[index]=tbDokter.getValueAt(i,8).toString();
                 index++;
             }
         }
         
         Valid.tabelKosong(tabMode);
         for(i=0;i<jml;i++){
-            tabMode.addRow(new String[]{keranap[i],kodebarang[i],namabarang[i],kategori[i],satuan[i],kapasitas[i],stok[i],harga[i]});
+            tabMode.addRow(new String[]{keranap[i],kodebarang[i],namabarang[i],kategori[i],satuan[i],kapasitas[i],stok[i],harga[i],hargabeli[i]});
         }
         try{  
             pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama,"+
                     " databarang.kapasitas,databarang.kode_sat,databarang.kelas1,"+
                     " databarang.kelas2,databarang.kelas3,databarang.utama,databarang.vip,"+
-                    " databarang.vvip,databarang.beliluar,databarang.karyawan  "+
+                    " databarang.vvip,databarang.beliluar,databarang.karyawan,databarang.h_beli  "+
                     " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                     " where databarang.status='1' and databarang.kode_brng like ? or "+
                     " databarang.status='1' and databarang.nama_brng like ? or "+
@@ -799,49 +889,73 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,rstampil.getString("kelas1")});
+                                   rstampil.getString("kapasitas"),stokbarang,
+                                   rstampil.getString("kelas1"),
+                                   rstampil.getString("h_beli")
+                        });
                     }else if(Jeniskelas.getSelectedItem().equals("Kelas 2")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,rstampil.getString("kelas2")});
+                                   rstampil.getString("kapasitas"),stokbarang,
+                                   rstampil.getString("kelas2"),
+                                   rstampil.getString("h_beli")
+                        });
                     }else if(Jeniskelas.getSelectedItem().equals("Kelas 3")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,rstampil.getString("kelas3")});
+                                   rstampil.getString("kapasitas"),stokbarang,
+                                   rstampil.getString("kelas3"),
+                                   rstampil.getString("h_beli")
+                        });
                     }else if(Jeniskelas.getSelectedItem().equals("Utama/BPJS")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,rstampil.getString("utama")});
+                                   rstampil.getString("kapasitas"),stokbarang,
+                                   rstampil.getString("utama"),
+                                   rstampil.getString("h_beli")
+                        });
                     }else if(Jeniskelas.getSelectedItem().equals("VIP")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,rstampil.getString("vip")});
+                                   rstampil.getString("kapasitas"),stokbarang,
+                                   rstampil.getString("vip"),
+                                   rstampil.getString("h_beli")
+                        });
                     }else if(Jeniskelas.getSelectedItem().equals("VVIP")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,rstampil.getString("vvip")});
+                                   rstampil.getString("kapasitas"),stokbarang,
+                                   rstampil.getString("vvip"),
+                                   rstampil.getString("h_beli")
+                        });
                     }else if(Jeniskelas.getSelectedItem().equals("Beli Luar")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,rstampil.getString("beliluar")});
+                                   rstampil.getString("kapasitas"),stokbarang,
+                                   rstampil.getString("beliluar"),
+                                   rstampil.getString("h_beli")
+                        });
                     }else if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,rstampil.getString("karyawan")});
+                                   rstampil.getString("kapasitas"),stokbarang,
+                                   rstampil.getString("karyawan"),
+                                   rstampil.getString("h_beli")
+                        });
                     }
                 }                  
             }catch(Exception e){

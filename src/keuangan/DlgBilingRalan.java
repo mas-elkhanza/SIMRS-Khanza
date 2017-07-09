@@ -335,13 +335,13 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         for (i = 0; i < 5; i++) {
             TableColumn column = tbAkunBayar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(217);
+                column.setPreferredWidth(165);
             }else if(i==1){
                 //column.setPreferredWidth(70);
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==2){
-                column.setPreferredWidth(102);
+                column.setPreferredWidth(92);
             }else if(i==3){
                 column.setPreferredWidth(50);
             }else if(i==4){
@@ -376,7 +376,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         for (i = 0; i < 5; i++) {
             TableColumn column = tbAkunPiutang.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(267);
+                column.setPreferredWidth(215);
             }else if(i==1){
                 //column.setPreferredWidth(70);
                 column.setMinWidth(0);
@@ -386,7 +386,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==3){
-                column.setPreferredWidth(102);
+                column.setPreferredWidth(92);
             }else if(i==4){
                 column.setPreferredWidth(80);
             }
@@ -717,7 +717,6 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         scrollPane4 = new widget.ScrollPane();
         tbAkunPiutang = new widget.Table();
         jLabel16 = new widget.Label();
-        panelGlass6 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnNota = new widget.Button();
         BtnView = new widget.Button();
@@ -1594,7 +1593,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         panelGlass1.add(jLabel4);
 
         DTPTgl.setForeground(new java.awt.Color(100, 100, 100));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-05-2017 07:47:40" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2017 11:16:41" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1631,7 +1630,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(200, 285));
+        PanelInput.setPreferredSize(new java.awt.Dimension(200, 228));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
@@ -1678,13 +1677,13 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         TKembali.setHighlighter(null);
         TKembali.setName("TKembali"); // NOI18N
         panelBayar.add(TKembali);
-        TKembali.setBounds(113, 170, 200, 23);
+        TKembali.setBounds(113, 172, 200, 23);
 
         jLabel5.setText("Bayar : Rp.");
         jLabel5.setName("jLabel5"); // NOI18N
         jLabel5.setPreferredSize(new java.awt.Dimension(95, 23));
         panelBayar.add(jLabel5);
-        jLabel5.setBounds(330, 10, 90, 23);
+        jLabel5.setBounds(310, 8, 90, 23);
 
         jLabel9.setText("Total Tagihan : Rp.");
         jLabel9.setName("jLabel9"); // NOI18N
@@ -1703,7 +1702,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(chkPotongan);
-        chkPotongan.setBounds(130, 40, 90, 23);
+        chkPotongan.setBounds(115, 39, 90, 23);
 
         chkLaborat.setSelected(true);
         chkLaborat.setText("Laboratorium");
@@ -1716,7 +1715,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(chkLaborat);
-        chkLaborat.setBounds(10, 10, 100, 23);
+        chkLaborat.setBounds(10, 8, 100, 23);
 
         chkTarifDokter.setSelected(true);
         chkTarifDokter.setText("Tarif Dokter");
@@ -1729,7 +1728,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(chkTarifDokter);
-        chkTarifDokter.setBounds(240, 10, 100, 23);
+        chkTarifDokter.setBounds(215, 8, 100, 23);
 
         chkTarifPrm.setSelected(true);
         chkTarifPrm.setText("Tarif Paramedis");
@@ -1742,7 +1741,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(chkTarifPrm);
-        chkTarifPrm.setBounds(10, 70, 100, 23);
+        chkTarifPrm.setBounds(10, 69, 100, 23);
 
         chkTambahan.setSelected(true);
         chkTambahan.setText("Tambahan");
@@ -1755,7 +1754,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(chkTambahan);
-        chkTambahan.setBounds(10, 40, 100, 23);
+        chkTambahan.setBounds(10, 39, 100, 23);
 
         chkObat.setSelected(true);
         chkObat.setText("Obat");
@@ -1768,7 +1767,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(chkObat);
-        chkObat.setBounds(240, 40, 100, 23);
+        chkObat.setBounds(215, 39, 100, 23);
 
         chkRadiologi.setSelected(true);
         chkRadiologi.setText("Radiologi");
@@ -1781,13 +1780,13 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(chkRadiologi);
-        chkRadiologi.setBounds(130, 10, 90, 23);
+        chkRadiologi.setBounds(115, 8, 90, 23);
 
         jLabel12.setText("Tagihan + PPN : Rp.");
         jLabel12.setName("jLabel12"); // NOI18N
         jLabel12.setPreferredSize(new java.awt.Dimension(95, 23));
         panelBayar.add(jLabel12);
-        jLabel12.setBounds(0, 140, 110, 23);
+        jLabel12.setBounds(0, 141, 110, 23);
 
         TagihanPPn.setEditable(false);
         TagihanPPn.setText("0");
@@ -1795,7 +1794,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         TagihanPPn.setHighlighter(null);
         TagihanPPn.setName("TagihanPPn"); // NOI18N
         panelBayar.add(TagihanPPn);
-        TagihanPPn.setBounds(113, 140, 200, 23);
+        TagihanPPn.setBounds(113, 141, 200, 23);
 
         chkAdministrasi.setSelected(true);
         chkAdministrasi.setText("Administrasi");
@@ -1808,7 +1807,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(chkAdministrasi);
-        chkAdministrasi.setBounds(130, 70, 90, 23);
+        chkAdministrasi.setBounds(115, 69, 90, 23);
 
         chkSarpras.setSelected(true);
         chkSarpras.setText("Sarpras");
@@ -1821,7 +1820,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(chkSarpras);
-        chkSarpras.setBounds(240, 70, 100, 23);
+        chkSarpras.setBounds(215, 69, 100, 23);
 
         scrollPane3.setName("scrollPane3"); // NOI18N
         scrollPane3.setOpaque(true);
@@ -1852,13 +1851,13 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         scrollPane3.setViewportView(tbAkunBayar);
 
         panelBayar.add(scrollPane3);
-        scrollPane3.setBounds(425, 10, 475, 90);
+        scrollPane3.setBounds(405, 8, 405, 94);
 
         jLabel6.setText("Kembali : Rp.");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(95, 23));
         panelBayar.add(jLabel6);
-        jLabel6.setBounds(0, 170, 110, 23);
+        jLabel6.setBounds(0, 172, 110, 23);
 
         scrollPane4.setName("scrollPane4"); // NOI18N
         scrollPane4.setOpaque(true);
@@ -1889,19 +1888,13 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         scrollPane4.setViewportView(tbAkunPiutang);
 
         panelBayar.add(scrollPane4);
-        scrollPane4.setBounds(425, 104, 475, 90);
+        scrollPane4.setBounds(405, 107, 405, 94);
 
         jLabel16.setText("Piutang : Rp.");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setPreferredSize(new java.awt.Dimension(95, 23));
         panelBayar.add(jLabel16);
-        jLabel16.setBounds(330, 104, 90, 23);
-
-        PanelInput.add(panelBayar, java.awt.BorderLayout.CENTER);
-
-        panelGlass6.setName("panelGlass6"); // NOI18N
-        panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
-        panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        jLabel16.setBounds(310, 107, 90, 23);
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnSimpan.setMnemonic('S');
@@ -1921,7 +1914,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                 BtnSimpanKeyPressed(evt);
             }
         });
-        panelGlass6.add(BtnSimpan);
+        panelBayar.add(BtnSimpan);
+        BtnSimpan.setBounds(820, 12, 100, 30);
 
         BtnNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
         BtnNota.setMnemonic('N');
@@ -1941,7 +1935,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                 BtnNotaKeyPressed(evt);
             }
         });
-        panelGlass6.add(BtnNota);
+        panelBayar.add(BtnNota);
+        BtnNota.setBounds(820, 63, 100, 30);
 
         BtnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnView.setMnemonic('L');
@@ -1961,7 +1956,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                 BtnViewKeyPressed(evt);
             }
         });
-        panelGlass6.add(BtnView);
+        panelBayar.add(BtnView);
+        BtnView.setBounds(820, 114, 100, 30);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -1981,9 +1977,10 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                 BtnKeluarKeyPressed(evt);
             }
         });
-        panelGlass6.add(BtnKeluar);
+        panelBayar.add(BtnKeluar);
+        BtnKeluar.setBounds(820, 165, 100, 30);
 
-        PanelInput.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
+        PanelInput.add(panelBayar, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_END);
 
@@ -3514,7 +3511,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.TextBox norawatpotongan;
     private widget.panelisi panelBayar;
     private widget.panelisi panelGlass1;
-    private widget.panelisi panelGlass6;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi2;
     private widget.ScrollPane scrollPane1;
@@ -4730,10 +4726,10 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private void isForm(){
         if(ChkCari.isSelected()==true){
             panelBayar.setVisible(true);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,285));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,228));
         }else if(ChkCari.isSelected()==false){           
             panelBayar.setVisible(false);      
-            PanelInput.setPreferredSize(new Dimension(WIDTH,77));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,22));
         }
     }
     
