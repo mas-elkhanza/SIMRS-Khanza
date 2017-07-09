@@ -178,6 +178,7 @@ import java.awt.event.KeyListener;
 import keuangan.DlgAkunPiutang;
 import keuangan.DlgHutangObatBelumLunas;
 import keuangan.DlgPiutangRalan;
+import keuangan.DlgPiutangRanap;
 import keuangan.DlgRBKSO;
 import keuangan.DlgRBMenejemen;
 import keuangan.DlgRHKSO;
@@ -592,6 +593,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekInhealthFaskes = new widget.ButtonBig();
         btnInhealthSJP = new widget.ButtonBig();
         btnPiutangRalan = new widget.ButtonBig();
+        btnPiutangRanap = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3828,6 +3830,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPiutangRalan);
 
+        btnPiutangRanap.setForeground(new java.awt.Color(40, 70, 50));
+        btnPiutangRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
+        btnPiutangRanap.setText("Piutang Ranap");
+        btnPiutangRanap.setIconTextGap(0);
+        btnPiutangRanap.setName("btnPiutangRanap"); // NOI18N
+        btnPiutangRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPiutangRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPiutangRanapActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPiutangRanap);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3836,7 +3851,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/06/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/07/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8200,6 +8215,19 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPiutangRalanActionPerformed
 
+    private void btnPiutangRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPiutangRanapActionPerformed
+                
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPiutangRanap billing=new DlgPiutangRanap(this,false);
+        billing.tampil();
+        billing.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        billing.setLocationRelativeTo(PanelUtama);
+        billing.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPiutangRanapActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8365,6 +8393,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPiutang;
     private widget.ButtonBig btnPiutangBelumLunas;
     private widget.ButtonBig btnPiutangRalan;
+    private widget.ButtonBig btnPiutangRanap;
     private widget.ButtonBig btnPnyTakMenularRalan;
     private widget.ButtonBig btnPnyTakMenularRanap;
     private widget.ButtonBig btnPostingJurnal;
@@ -9099,6 +9128,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getpiutang_ralan()==true){
                 Panelmenu.add(btnPiutangRalan);
+                jmlmenu++;
+            }
+            
+            if(var.getpiutang_ranap()==true){
+                Panelmenu.add(btnPiutangRanap);
                 jmlmenu++;
             }
             
