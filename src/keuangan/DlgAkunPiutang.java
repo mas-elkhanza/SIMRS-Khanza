@@ -620,8 +620,8 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
             Valid.textKosong(kdrek,"Rekening");
         }else{
             if(tbJadwal.getSelectedRow()>-1){
-                Sequel.mengedit("akun_piutang","nama_bayar=?","nama_bayar=?,kd_rek=?",3,new String[]{
-                    nama.getText(),kdrek.getText(),tbJadwal.getValueAt(tbJadwal.getSelectedRow(),1).toString()
+                Sequel.mengedit("akun_piutang","nama_bayar=?","nama_bayar=?,kd_rek=?,kd_pj=?",4,new String[]{
+                    nama.getText(),kdrek.getText(),kdpnj.getText(),tbJadwal.getValueAt(tbJadwal.getSelectedRow(),1).toString()
                 });
                 tampil();
                 emptTeks();
