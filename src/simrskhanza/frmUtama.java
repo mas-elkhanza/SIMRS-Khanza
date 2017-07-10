@@ -178,6 +178,7 @@ import java.awt.event.KeyListener;
 import javax.swing.event.DocumentEvent;
 import keuangan.DlgAkunPiutang;
 import keuangan.DlgHutangObatBelumLunas;
+import keuangan.DlgPiutangPercaraBayar;
 import keuangan.DlgPiutangRalan;
 import keuangan.DlgPiutangRanap;
 import keuangan.DlgRBKSO;
@@ -608,6 +609,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnInhealthSJP = new widget.ButtonBig();
         btnPiutangRalan = new widget.ButtonBig();
         btnPiutangRanap = new widget.ButtonBig();
+        btnPiutangPerCaraBayar = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3888,6 +3890,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPiutangRanap);
+
+        btnPiutangPerCaraBayar.setForeground(new java.awt.Color(40, 70, 50));
+        btnPiutangPerCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
+        btnPiutangPerCaraBayar.setText("Piutang Per Cara Bayar");
+        btnPiutangPerCaraBayar.setIconTextGap(0);
+        btnPiutangPerCaraBayar.setName("btnPiutangPerCaraBayar"); // NOI18N
+        btnPiutangPerCaraBayar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPiutangPerCaraBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPiutangPerCaraBayarActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPiutangPerCaraBayar);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -8293,6 +8308,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }
     }//GEN-LAST:event_TCariKeyPressed
 
+    private void btnPiutangPerCaraBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPiutangPerCaraBayarActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPiutangPercaraBayar rbpaketbhp=new DlgPiutangPercaraBayar(this,false);
+        rbpaketbhp.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        rbpaketbhp.setLocationRelativeTo(PanelUtama);
+        rbpaketbhp.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPiutangPerCaraBayarActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8459,6 +8485,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPeriksaRadiologi;
     private widget.ButtonBig btnPiutang;
     private widget.ButtonBig btnPiutangBelumLunas;
+    private widget.ButtonBig btnPiutangPerCaraBayar;
     private widget.ButtonBig btnPiutangRalan;
     private widget.ButtonBig btnPiutangRanap;
     private widget.ButtonBig btnPnyTakMenularRalan;
@@ -9688,6 +9715,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                Panelmenu.add(btnPiutangBelumLunas); 
                jmlmenu++;
             }
+            
+            if(var.getdetail_piutang_penjab()==true){
+               Panelmenu.add(btnPiutangPerCaraBayar); 
+               jmlmenu++;
+            }
 
             if(var.getbayar_piutang()==true){
                Panelmenu.add(btnBayarPiutang); 
@@ -10835,6 +10867,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpiutang_pasien2()==true){
            Panelmenu.add(btnPiutangBelumLunas); 
            jmlmenu++;
+        }
+        
+        if(var.getdetail_piutang_penjab()==true){
+            Panelmenu.add(btnPiutangPerCaraBayar); 
+            jmlmenu++;
         }
 
         if(var.getbayar_piutang()==true){
@@ -12299,6 +12336,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnPiutangBelumLunas); 
                 jmlmenu++;
             }                
+        }
+        
+        if(var.getdetail_piutang_penjab()==true){
+            if(btnPiutangPerCaraBayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+               Panelmenu.add(btnPiutangPerCaraBayar); 
+               jmlmenu++; 
+            }               
         }
 
         if(var.getbayar_piutang()==true){

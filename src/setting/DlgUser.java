@@ -90,7 +90,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[J]Hutang Obat & BHP","[D]Riwayat Obat, Alkes & BHP","[I]Sensus Harian Poli","[I]RL 4A Morbiditas Ranap","[K]Referensi Kamar Aplicare","[K]Ketersediaan Kamar Aplicare",
                     "[K]Klaim Baru Otomatis INACBG","[K]Klaim Baru Manual INACBG","[K]Coder NIK INACBG","[L]Mutasi Berkas RM","[J]Akun Piutang","[H]Harian KSO","[H]Bulanan KSO",
                     "[H]Harian Menejemen","[H]Bulanan Menejemen","[K]Cek Eligibilitas Inhealth","[K]Referensi Ruang Rawat Inhealth","[K]Referensi Poli Inhealth","[K]Referensi Faskes Inhealth",
-                    "[K]Data Bridging SJP Inhealth","[H]Piutang Ralan","[H]Piutang Ranap"
+                    "[K]Data Bridging SJP Inhealth","[H]Piutang Ralan","[H]Piutang Ranap","[J]Piutang Per Cara Bayar"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -162,6 +162,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -175,7 +176,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 228; i++) {
+        for (i = 0; i < 229; i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(150);
@@ -705,7 +706,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -976,7 +977,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "inhealth_referensi_faskes='"+tbUser.getValueAt(i,224).toString()+"',"+
                     "inhealth_sjp='"+tbUser.getValueAt(i,225).toString()+"',"+
                     "piutang_ralan='"+tbUser.getValueAt(i,226).toString()+"',"+
-                    "piutang_ranap='"+tbUser.getValueAt(i,227).toString()+"'");
+                    "piutang_ranap='"+tbUser.getValueAt(i,227).toString()+"',"+
+                    "detail_piutang_penjab='"+tbUser.getValueAt(i,228).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1227,7 +1229,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "reklasifikasi_ranap,utd_penyerahan_darah,hutang_obat,riwayat_obat_alkes_bhp,sensus_harian_poli,rl4a,aplicare_referensi_kamar, "+
                         "aplicare_ketersediaan_kamar,inacbg_klaim_baru_otomatis,inacbg_klaim_baru_manual,inacbg_coder_nik,mutasi_berkas, "+
                         "akun_piutang,harian_kso,bulanan_kso,harian_menejemen,bulanan_menejemen,inhealth_cek_eligibilitas,inhealth_referensi_jenpel_ruang_rawat, "+
-                        "inhealth_referensi_poli,inhealth_referensi_faskes,inhealth_sjp,piutang_ralan,piutang_ranap from user order by AES_DECRYPT(id_user,'nur')");
+                        "inhealth_referensi_poli,inhealth_referensi_faskes,inhealth_sjp,piutang_ralan,piutang_ranap,detail_piutang_penjab "+
+                        " from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1465,7 +1468,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("inhealth_referensi_faskes"),
                                            rs.getBoolean("inhealth_sjp"),
                                            rs.getBoolean("piutang_ralan"),
-                                           rs.getBoolean("piutang_ranap")
+                                           rs.getBoolean("piutang_ranap"),
+                                           rs.getBoolean("detail_piutang_penjab")
                             });
                         }   
                     } catch (Exception e) {
@@ -1695,7 +1699,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("inhealth_referensi_faskes"),
                                            rs.getBoolean("inhealth_sjp"),
                                            rs.getBoolean("piutang_ralan"),
-                                           rs.getBoolean("piutang_ranap") 
+                                           rs.getBoolean("piutang_ranap"),
+                                           rs.getBoolean("detail_piutang_penjab") 
                             });
                     }                                             
                  }
