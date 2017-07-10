@@ -2346,8 +2346,8 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
 
                                 billing.TNoRw.setText(TNoRw.getText());  
-                                billing.isRawat(); 
                                 billing.isCek();
+                                billing.isRawat(); 
                                 if(sudah>0){
                                     billing.setPiutang();
                                 }
@@ -2434,8 +2434,8 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }                        
 
                             billing.TNoRw.setText(TNoRw.getText());  
-                            billing.isRawat(); 
                             billing.isCek();
+                            billing.isRawat(); 
                             billing.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                             billing.setLocationRelativeTo(internalFrame1);
                             tampilkasir();
