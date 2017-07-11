@@ -108,7 +108,7 @@
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<text><![CDATA[Tanggal Login]]></text>
+				<text><![CDATA[Jam Login]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="0" width="555" height="1"/>
