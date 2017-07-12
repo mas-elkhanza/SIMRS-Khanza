@@ -1060,9 +1060,9 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang.sisapiutang),0) FROM piutang where piutang.no_rkm_medis=?",Kdmem.getText())
                         - 
                         Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rkm_medis=?",Kdmem.getText());
-            Sisa.setText(Valid.SetAngka(Math.round(sisapiutang)));
+            Sisa.setText(Valid.SetAngka(Valid.roundUp(sisapiutang,100)));
             if(!Cicilan.getText().equals("")){                           
-                    Sisa.setText(Valid.SetAngka(Math.round(sisapiutang-Double.parseDouble(Cicilan.getText()))));                           
+                    Sisa.setText(Valid.SetAngka(Valid.roundUp(sisapiutang-Double.parseDouble(Cicilan.getText()),100)));                           
             }
     }
 

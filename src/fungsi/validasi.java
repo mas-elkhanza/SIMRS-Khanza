@@ -989,6 +989,24 @@ public final class validasi {
             }
             return x;
     }
+    
+    public double roundUp(double number, int multiple) {
+        int result = multiple;
+
+        if (number % multiple == 0) {
+            return (int) number;
+        }
+
+        if (number % multiple != 0) {
+
+            int division = (int) ((number / multiple) + 1);
+
+            result = division * multiple;
+
+        }
+        return result;
+
+    }
 
        
 }

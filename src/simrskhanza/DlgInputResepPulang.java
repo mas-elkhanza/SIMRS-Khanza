@@ -696,7 +696,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                    rs.getString("kode_sat"),
                                    "",
                                    rs.getString("letak_barang"),
-                                   Valid.SetAngka2(Math.round(rs.getDouble("harga"))),
+                                   Valid.SetAngka2(Valid.roundUp(rs.getDouble("harga"),100)),
                                    rs.getString("nama")});
                     }
                 }else{
@@ -712,7 +712,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                        rs.getString("kode_sat"),
                                        "",
                                        rs.getString("letak_barang"),
-                                       Valid.SetAngka2(Math.round(rs.getDouble("kelas1"))),
+                                       Valid.SetAngka2(Valid.roundUp(rs.getDouble("kelas1"),100)),
                                        rs.getString("nama")});
                         }
                     }else if(Jeniskelas.getSelectedItem().equals("Kelas 2")){
@@ -723,7 +723,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                        rs.getString("kode_sat"),
                                        "",
                                        rs.getString("letak_barang"),
-                                       Valid.SetAngka2(Math.round(rs.getDouble("kelas2"))),
+                                       Valid.SetAngka2(Valid.roundUp(rs.getDouble("kelas2"),100)),
                                        rs.getString("nama")});
                         }
                     }else if(Jeniskelas.getSelectedItem().equals("Kelas 3")){
@@ -734,7 +734,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                        rs.getString("kode_sat"),
                                        "",
                                        rs.getString("letak_barang"),
-                                       Valid.SetAngka2(Math.round(rs.getDouble("kelas3"))),
+                                       Valid.SetAngka2(Valid.roundUp(rs.getDouble("kelas3"),100)),
                                        rs.getString("nama")});
                         }
                     }else if(Jeniskelas.getSelectedItem().equals("Utama")){
@@ -745,7 +745,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                        rs.getString("kode_sat"),
                                        "",
                                        rs.getString("letak_barang"),
-                                       Valid.SetAngka2(Math.round(rs.getDouble("utama"))),
+                                       Valid.SetAngka2(Valid.roundUp(rs.getDouble("utama"),100)),
                                        rs.getString("nama")});
                         }
                     }else if(Jeniskelas.getSelectedItem().equals("VIP")){
@@ -756,7 +756,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                        rs.getString("kode_sat"),
                                        "",
                                        rs.getString("letak_barang"),
-                                       Valid.SetAngka2(Math.round(rs.getDouble("vip"))),
+                                       Valid.SetAngka2(Valid.roundUp(rs.getDouble("vip"),100)),
                                        rs.getString("nama")});
                         }
                      }else if(Jeniskelas.getSelectedItem().equals("VVIP")){
@@ -767,7 +767,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                        rs.getString("kode_sat"),
                                        "",
                                        rs.getString("letak_barang"),
-                                       Valid.SetAngka2(Math.round(rs.getDouble("vvip"))),
+                                       Valid.SetAngka2(Valid.roundUp(rs.getDouble("vvip"),100)),
                                        rs.getString("nama")});
                         }
                     }else if(Jeniskelas.getSelectedItem().equals("Beli Luar")){
@@ -778,7 +778,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                        rs.getString("kode_sat"),
                                        "",
                                        rs.getString("letak_barang"),
-                                       Valid.SetAngka2(Math.round(rs.getDouble("beliluar"))),
+                                       Valid.SetAngka2(Valid.roundUp(rs.getDouble("beliluar"),100)),
                                        rs.getString("nama")});
                         }
                     }else if(Jeniskelas.getSelectedItem().equals("Karyawan")){
@@ -789,7 +789,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                        rs.getString("kode_sat"),
                                        "",
                                        rs.getString("letak_barang"),
-                                       Valid.SetAngka2(Math.round(rs.getDouble("karyawan"))),
+                                       Valid.SetAngka2(Valid.roundUp(rs.getDouble("karyawan"),100)),
                                        rs.getString("nama")});
                         }
                     }
@@ -869,7 +869,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                    rs.getString("kode_sat"),
                                    rs.getString("dosis"),
                                    rs.getString("letak_barang"),
-                                   Valid.SetAngka2(Math.round(rs.getDouble("harga"))),
+                                   Valid.SetAngka2(Valid.roundUp(rs.getDouble("harga"),100)),
                                    rs.getString("nama")});
                 }
             } catch (Exception e) {
