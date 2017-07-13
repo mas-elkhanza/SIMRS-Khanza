@@ -223,7 +223,7 @@
                                             echo " .............................. ";
                                         }
                                         echo " )</td>     
-                                     <td padding='0' width='50%' align='center'><font color='000000' size='1'  face='Tahoma'>(.............)</font></td>              
+                                     <td padding='0' width='50%' align='center'><font color='000000' size='1'  face='Tahoma'>".getOne("select p_jawab from reg_periksa where no_rawat='$norawat'")."</font></td>              
                                     </tr>   
                               </table>
                             </td>
