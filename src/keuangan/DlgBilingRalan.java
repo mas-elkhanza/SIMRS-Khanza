@@ -4089,7 +4089,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }
 
                     if(chkAdministrasi.isSelected()==true){
-                        tabModeRwJlDr.addRow(new Object[]{true,"Administrasi ",":","",null,null,null,rsreg.getDouble("biaya_reg"),"Registrasi"});
+                        tabModeRwJlDr.addRow(new Object[]{true,"Registrasi",":","",null,null,null,rsreg.getDouble("biaya_reg"),"Registrasi"});
                     }
                 }       
 	    }catch (Exception e) {
@@ -5139,8 +5139,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             System.out.println("Notifikasi : "+ex);
          }
     }
-    
-    
     
     private void isSimpan(){
         if(notaralan.equals("Yes")){
