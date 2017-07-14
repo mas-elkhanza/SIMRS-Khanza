@@ -1215,7 +1215,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     ChkJln.setSelected(false);
-                    ttljmdokter=0;ttljmpetugas=0;ttlkso=0;ttlpendapatan=0;ttlbhp=0;
+                    ttljmdokter=0;ttljmpetugas=0;ttlkso=0;ttlpendapatan=0;
                     Sequel.AutoComitFalse();
                     for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                         if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
@@ -1234,6 +1234,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                             }
                         }                    
                     }
+                    
+                    ttlbhp=0;
                     for(i=0;i<tbObat.getRowCount();i++){     
                         if(Valid.SetAngka(tbObat.getValueAt(i,0).toString())>0){
                             if(Sequel.menyimpantf2("beri_bhp_radiologi","?,?,?,?,?,?,?,?","BHP",8, new String[]{
@@ -1292,7 +1294,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                     if (reply == JOptionPane.YES_OPTION) {
                         ChkJln.setSelected(false);
-                        ttljmdokter=0;ttljmpetugas=0;ttlkso=0;ttlpendapatan=0;ttlbhp=0;
+                        ttljmdokter=0;ttljmpetugas=0;ttlkso=0;ttlpendapatan=0;
                         Sequel.AutoComitFalse();
                         for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                             if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
@@ -1311,6 +1313,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                                 }
                             }                    
                         }
+                        ttlbhp=0;
                         for(i=0;i<tbObat.getRowCount();i++){     
                             if(Valid.SetAngka(tbObat.getValueAt(i,0).toString())>0){
                                 if(Sequel.menyimpantf2("beri_bhp_radiologi","?,?,?,?,?,?,?,?","BHP",8, new String[]{
