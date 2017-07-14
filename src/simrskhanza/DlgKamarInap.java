@@ -3551,7 +3551,6 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                      tbKamIn.requestFocus();
       }else{    
                 try {
-                    sudah=Sequel.cariInteger("select count(billing.no_rawat) from billing where billing.no_rawat=?",norawat.getText());
                     pscaripiutang=koneksi.prepareStatement("select tgl_piutang from piutang_pasien where no_rkm_medis=? and status='Belum Lunas' order by tgl_piutang asc limit 1");
                     try {
                         pscaripiutang.setString(1,TNoRM.getText());
@@ -3575,9 +3574,6 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 billing.TNoRw.setText(norawat.getText());  
                                 billing.isRawat();                             
                                 billing.isCek();
-                                if(sudah>0){                             
-                                    billing.setPiutang();
-                                }
                                 billing.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                                 billing.setLocationRelativeTo(internalFrame1);
                                 billing.setVisible(true);
