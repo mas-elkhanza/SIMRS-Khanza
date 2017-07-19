@@ -3571,9 +3571,9 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     var.setkdbangsal(Sequel.cariIsi("select kd_bangsal from set_lokasi"));
                                 }
 
-                                billing.TNoRw.setText(norawat.getText());  
-                                billing.isRawat();                             
-                                billing.isCek();
+                                billing.TNoRw.setText(norawat.getText());                   
+                                billing.isCek();  
+                                billing.isRawat();          
                                 billing.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                                 billing.setLocationRelativeTo(internalFrame1);
                                 billing.setVisible(true);
@@ -3586,8 +3586,8 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }
 
                             billing.TNoRw.setText(norawat.getText());  
-                            billing.isRawat(); 
                             billing.isCek();
+                            billing.isRawat(); 
                             billing.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                             billing.setLocationRelativeTo(internalFrame1);
                             billing.setVisible(true);

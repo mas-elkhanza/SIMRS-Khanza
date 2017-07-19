@@ -1638,7 +1638,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         panelGlass1.add(jLabel4);
 
         DTPTgl.setForeground(new java.awt.Color(100, 100, 100));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-07-2017 13:19:52" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2017 21:48:28" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1811,7 +1811,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         jLabel12.setName("jLabel12"); // NOI18N
         jLabel12.setPreferredSize(new java.awt.Dimension(95, 23));
         panelBayar.add(jLabel12);
-        jLabel12.setBounds(530, 37, 110, 23);
+        jLabel12.setBounds(532, 37, 110, 23);
 
         TagihanPPn.setEditable(false);
         TagihanPPn.setText("0");
@@ -1819,7 +1819,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         TagihanPPn.setHighlighter(null);
         TagihanPPn.setName("TagihanPPn"); // NOI18N
         panelBayar.add(TagihanPPn);
-        TagihanPPn.setBounds(640, 37, 230, 23);
+        TagihanPPn.setBounds(642, 37, 230, 23);
 
         chkAdministrasi.setSelected(true);
         chkAdministrasi.setText("Administrasi");
@@ -1933,7 +1933,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(TCari);
-        TCari.setBounds(110, 67, 760, 23);
+        TCari.setBounds(110, 67, 762, 23);
 
         BtnCariBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariBayar.setMnemonic('3');
@@ -1961,7 +1961,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             }
         });
         panelBayar.add(TCari1);
-        TCari1.setBounds(110, 222, 760, 23);
+        TCari1.setBounds(110, 222, 762, 23);
 
         btnCariPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         btnCariPiutang.setMnemonic('3');
@@ -2819,6 +2819,8 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
             this.setCursor(Cursor.getDefaultCursor());
             Sequel.AutoComitTrue();
             JOptionPane.showMessageDialog(rootPane,"Proses hapus data Nota Salah selesai..!!");
+            Valid.tabelKosong(tabModeAkunBayar);
+            Valid.tabelKosong(tabModeAkunPiutang);
             isRawat();
         }else if(i<=0){
             JOptionPane.showMessageDialog(rootPane,"Data belum pernah disimpan/diverifikasi.\n"+
