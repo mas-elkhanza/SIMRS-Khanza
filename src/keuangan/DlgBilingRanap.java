@@ -6048,20 +6048,20 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }  
 
                     if(countbayar>1){
-                        if(Sequel.menyimpantf2("detail_nota_inap","?,?,?,?","Akun bayar",4,new String[]{
+                        if(Sequel.menyimpantf2("detail_nota_jalan","?,?,?,?","Aku bayar",4,new String[]{
                                 TNoRw.getText(),tbAkunBayar.getValueAt(r,0).toString(),Double.toString(besarppn),Double.toString(itembayar)
                             })==true){
                                 Sequel.menyimpan("tampjurnal","'"+tbAkunBayar.getValueAt(r,1).toString()+"','"+tbAkunBayar.getValueAt(r,0).toString()+"','"+Double.toString(itembayar)+"','0'","Rekening");                 
                         }
                     }else if(countbayar==1){
                         if(piutang<=0){
-                            if(Sequel.menyimpantf2("detail_nota_inap","?,?,?,?","Akun bayar",4,new String[]{
-                                    TNoRw.getText(),tbAkunBayar.getValueAt(r,0).toString(),Double.toString(besarppn),Double.toString(itembayar)
+                            if(Sequel.menyimpantf2("detail_nota_jalan","?,?,?,?","Aku bayar",4,new String[]{
+                                    TNoRw.getText(),tbAkunBayar.getValueAt(r,0).toString(),Double.toString(besarppn),Double.toString(total-uangdeposit)
                                 })==true){
-                                    Sequel.menyimpan("tampjurnal","'"+tbAkunBayar.getValueAt(r,1).toString()+"','"+tbAkunBayar.getValueAt(r,0).toString()+"','"+Double.toString(itembayar)+"','0'","Rekening");                 
+                                    Sequel.menyimpan("tampjurnal","'"+tbAkunBayar.getValueAt(r,1).toString()+"','"+tbAkunBayar.getValueAt(r,0).toString()+"','"+Double.toString(total-uangdeposit)+"','0'","Rekening");                 
                             } 
                         }else{
-                            if(Sequel.menyimpantf2("detail_nota_inap","?,?,?,?","Akun bayar",4,new String[]{
+                            if(Sequel.menyimpantf2("detail_nota_jalan","?,?,?,?","Aku bayar",4,new String[]{
                                     TNoRw.getText(),tbAkunBayar.getValueAt(r,0).toString(),Double.toString(besarppn),Double.toString(itembayar)
                                 })==true){
                                     Sequel.menyimpan("tampjurnal","'"+tbAkunBayar.getValueAt(r,1).toString()+"','"+tbAkunBayar.getValueAt(r,0).toString()+"','"+Double.toString(itembayar)+"','0'","Rekening");                 

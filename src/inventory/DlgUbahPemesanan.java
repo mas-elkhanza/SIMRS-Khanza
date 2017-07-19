@@ -152,7 +152,7 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
             ps2=koneksi.prepareStatement("select detailpesan.kode_brng,databarang.nama_brng,ifnull(date_format(databarang.expire,'%d-%m-%Y'),'00-00-0000') as expire, "+
                         "detailpesan.kode_sat,kodesatuan.satuan,detailpesan.jumlah,detailpesan.h_pesan, "+
                         "detailpesan.subtotal,detailpesan.dis,detailpesan.besardis,detailpesan.total,detailpesan.no_batch, "+
-                        "databarang.kode_sat as satbar from detailpesan inner join databarang inner join kodesatuan inner join jenis "+
+                        "databarang.kode_sat as satbar,detailpesan.jumlah2 from detailpesan inner join databarang inner join kodesatuan inner join jenis "+
                         " on detailpesan.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
                         " and detailpesan.kode_sat=kodesatuan.kode_sat where detailpesan.no_faktur=? ");
             pskonversi=koneksi.prepareStatement("select nilai,nilai_konversi from konver_sat where kode_sat=? and sat_konversi=?");
@@ -1407,7 +1407,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 diskon[index]=rs.getDouble("dis");
                 besardiskon[index]=rs.getDouble("besardis");
                 jmltotal[index]=rs.getDouble("total");
-                jmlstok[index]=0;
+                jmlstok[index]=rs.getDouble("jumlah2");
                 no_batch[index]=rs.getString("no_batch");
                 index++;
             }           
