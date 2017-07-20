@@ -109,16 +109,35 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==6){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==7){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==8){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==9){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
             }else if(i==10){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(140);
+            }else if(i==11){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==12){
+                column.setPreferredWidth(120);
+            }else if(i==13){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==14){
+                column.setPreferredWidth(120);
+            }else if(i==15){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==16){
+                column.setPreferredWidth(120);
+            }else if(i==17){
+                column.setPreferredWidth(120);
+            }else if(i==18){
+                column.setPreferredWidth(120);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1822,7 +1841,9 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select *from bridging_inhealth where "+
+                    "select no_sjp, no_rawat, tglsep, tglrujukan, no_rujukan, kdppkrujukan, nmppkrujukan, "+
+                    "kdppkpelayanan, nmppkpelayanan, if(jnspelayanan='1','1 RJTP RAWAT JALAN TINGKAT PERTAMA', if(jnspelayanan='2','2 RITP RAWAT INAP TINGKAT PERTAMA',if(jnspelayanan='3','3 RJTL RAWAT JALAN TINGKAT LANJUT','4 RITL RAWAT INAP TINGKAT LANJUT'))), catatan, diagawal, nmdiagnosaawal, diagawal2, "+
+                    "nmdiagnosaawal2, kdpolitujuan, nmpolitujuan, klsrawat, klsdesc, kdbu, nmbu, lakalantas, lokasilaka, user, nomr, nama_pasien, tanggal_lahir, jkel, no_kartu, tglpulang, plan, plandesc, idakomodasi, tipesjp, tipecob from bridging_inhealth where "+
                     "bridging_inhealth.tglsep between ? and ? and bridging_inhealth.no_sjp like ? or "+
                     "bridging_inhealth.tglsep between ? and ? and bridging_inhealth.nomr like ? or "+
                     "bridging_inhealth.tglsep between ? and ? and bridging_inhealth.nama_pasien like ? or "+
