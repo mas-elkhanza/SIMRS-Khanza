@@ -688,7 +688,7 @@ public class DlgSetNota extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(0, 312, 165, 23);
 
-        jLabel24.setText("Administrasi di Billing Ranap :");
+        jLabel24.setText("Registrasi di Billing Ranap :");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
         jLabel24.setBounds(0, 252, 165, 23);

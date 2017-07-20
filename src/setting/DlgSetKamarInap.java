@@ -48,7 +48,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(457,249);
 
-        Object[] row={"Jam Minimal Dihitung di Kamar","Hitung Hari dari Awal Masuk","Fee Perujuk Ranap","Aktifkan Diagnosa Akhir"};
+        Object[] row={"Jam Minimal Dihitung di Kamar","Hitung Hari dari Awal Masuk","Fee Perujuk Ranap","Aktifkan Diagnosa Akhir","Biaya Ranap Gabung Bayi"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -59,16 +59,16 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         tbAdmin.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAdmin.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             TableColumn column = tbAdmin.getColumnModel().getColumn(i);
-            column.setPreferredWidth(150);
-            
+            column.setPreferredWidth(150);            
         }
 
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
 
         Jam.setDocument(new batasInput((byte)30).getOnlyAngka(Jam));
         fee.setDocument(new batasInput((byte)15).getOnlyAngka(fee));
+        Bayi.setDocument(new batasInput((byte)15).getOnlyAngka(Bayi));
         try {
             ps=koneksi.prepareStatement("select * from set_jam_minimal ");
         } catch (SQLException e) {
@@ -99,6 +99,9 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         fee = new widget.TextBox();
         jLabel8 = new widget.Label();
         cmbYes2 = new widget.ComboBox();
+        jLabel9 = new widget.Label();
+        Bayi = new widget.TextBox();
+        jLabel10 = new widget.Label();
         panelGlass5 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -141,7 +144,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 77));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 107));
         panelGlass7.setLayout(null);
 
         jLabel4.setText("Jam Minimal Dihitung di Kamar :");
@@ -213,6 +216,27 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         });
         panelGlass7.add(cmbYes2);
         cmbYes2.setBounds(455, 42, 60, 23);
+
+        jLabel9.setText("Biaya Ranap Gabung Bayi :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        panelGlass7.add(jLabel9);
+        jLabel9.setBounds(0, 72, 163, 23);
+
+        Bayi.setHighlighter(null);
+        Bayi.setName("Bayi"); // NOI18N
+        Bayi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BayiKeyPressed(evt);
+            }
+        });
+        panelGlass7.add(Bayi);
+        Bayi.setBounds(166, 72, 50, 23);
+
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setText("%");
+        jLabel10.setName("jLabel10"); // NOI18N
+        panelGlass7.add(jLabel10);
+        jLabel10.setBounds(219, 72, 50, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
@@ -322,8 +346,12 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(Jam.getText().trim().equals("")){
             Valid.textKosong(Jam,"Jumlah Jam");
+        }else if(Bayi.getText().trim().equals("")){
+            Valid.textKosong(Bayi,"Biaya Ranap Gabung Bayi");
+        }else if(fee.getText().trim().equals("")){
+            Valid.textKosong(fee,"Fee Perujuk Ranap");
         }else if(tabMode.getRowCount()==0){
-            Sequel.menyimpan("set_jam_minimal","'"+Jam.getText()+"','"+cmbYes.getSelectedItem()+"','"+fee.getText()+"','"+cmbYes2.getSelectedItem()+"'","Set Kamar Inap");
+            Sequel.menyimpan("set_jam_minimal","'"+Jam.getText()+"','"+cmbYes.getSelectedItem()+"','"+fee.getText()+"','"+cmbYes2.getSelectedItem()+"','"+Bayi.getText()+"'","Set Kamar Inap");
             tampil();
             emptTeks();
         }else if(tabMode.getRowCount()>0){
@@ -336,7 +364,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,cmbYes2,BtnBatal);
+            Valid.pindah(evt,Bayi,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -422,9 +450,13 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(Jam.getText().trim().equals("")){
             Valid.textKosong(Jam,"Jumlah Jam");
+        }else if(Bayi.getText().trim().equals("")){
+            Valid.textKosong(Bayi,"Biaya Ranap Gabung Bayi");
+        }else if(fee.getText().trim().equals("")){
+            Valid.textKosong(fee,"Fee Perujuk Ranap");
         }else{
             Sequel.queryu("delete from set_jam_minimal");
-            Sequel.menyimpan("set_jam_minimal","'"+Jam.getText()+"','"+cmbYes.getSelectedItem()+"','"+fee.getText()+"','"+cmbYes2.getSelectedItem()+"'","Jumlah Jam");
+            Sequel.menyimpan("set_jam_minimal","'"+Jam.getText()+"','"+cmbYes.getSelectedItem()+"','"+fee.getText()+"','"+cmbYes2.getSelectedItem()+"','"+Bayi.getText()+"'","Jumlah Jam");
             tampil();
             emptTeks();
         }
@@ -443,8 +475,12 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
     }//GEN-LAST:event_feeKeyPressed
 
     private void cmbYes2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbYes2KeyPressed
-        Valid.pindah(evt, fee,BtnSimpan);
+        Valid.pindah(evt, fee,Bayi);
     }//GEN-LAST:event_cmbYes2KeyPressed
+
+    private void BayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BayiKeyPressed
+        Valid.pindah(evt, cmbYes2,BtnSimpan);
+    }//GEN-LAST:event_BayiKeyPressed
 
     /**
     * @param args the command line arguments
@@ -463,6 +499,7 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox Bayi;
     private widget.Button BtnBatal;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
@@ -474,11 +511,13 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
     private widget.ComboBox cmbYes2;
     private widget.TextBox fee;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel10;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
+    private widget.Label jLabel9;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelGlass7;
     private widget.Table tbAdmin;
@@ -489,7 +528,7 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
         try{            
             rs=ps.executeQuery();
             while(rs.next()){
-                tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),Valid.SetAngka(rs.getDouble(3)),rs.getString(4),});
+                tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),Valid.SetAngka(rs.getDouble(3)),rs.getString(4),rs.getString(5)});
              }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
@@ -503,12 +542,14 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
             cmbYes.setSelectedItem(tbAdmin.getValueAt(row,1).toString());
             fee.setText(tbAdmin.getValueAt(row,2).toString());            
             cmbYes2.setSelectedItem(tbAdmin.getValueAt(row,3).toString());
+            Bayi.setText(tbAdmin.getValueAt(row,4).toString());
         }
     }
 
     public void emptTeks() {
-        Jam.setText("");
-        fee.setText("");
+        Jam.setText("0");
+        fee.setText("0");
+        Bayi.setText("0");
         cmbYes.setSelectedItem("No");
         cmbYes2.setSelectedItem("No");
         Jam.requestFocus();

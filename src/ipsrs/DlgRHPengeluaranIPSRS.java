@@ -114,8 +114,7 @@ public class DlgRHPengeluaranIPSRS extends javax.swing.JDialog {
                     "from ipsrsdetailpengeluaran inner join ipsrspengeluaran on ipsrsdetailpengeluaran.no_keluar=ipsrspengeluaran.no_keluar "+
                     "where ipsrsdetailpengeluaran.kode_brng=? and ipsrspengeluaran.tanggal between ? and ?");
             ps3=koneksi.prepareStatement("select sum(beri_bhp_radiologi.jumlah) as jumlah,sum(beri_bhp_radiologi.total) as total "+
-                    "from beri_bhp_radiologi inner join periksa_radiologi on beri_bhp_radiologi.no_rawat=periksa_radiologi.no_rawat "+
-                    "where beri_bhp_radiologi.tgl_periksa=periksa_radiologi.tgl_periksa and beri_bhp_radiologi.jam=periksa_radiologi.jam and beri_bhp_radiologi.kode_brng=? and periksa_radiologi.tgl_periksa between ? and ?");
+                    "from beri_bhp_radiologi where beri_bhp_radiologi.kode_brng=? and beri_bhp_radiologi.tgl_periksa between ? and ?");
         } catch (Exception e) {
             System.out.println(e);
         }     

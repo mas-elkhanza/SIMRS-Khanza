@@ -7,6 +7,8 @@ import fungsi.grafikpenjualanterbanyak;
 import fungsi.grafikpenjualantersedikit;
 import fungsi.grafikpiutangterbanyak;
 import fungsi.grafikpiutangtersedikit;
+import fungsi.grafikresepterbanyak;
+import fungsi.grafikreseptersedikit;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -196,6 +198,8 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         ppGrafikbelidikit = new javax.swing.JMenuItem();
         ppGrafikPiutangBanyak = new javax.swing.JMenuItem();
         ppGrafikPiutangDikit = new javax.swing.JMenuItem();
+        ppGrafikResepPaliingBanyak = new javax.swing.JMenuItem();
+        ppGrafikResepPaliingSedikit = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -223,7 +227,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppGrafikJualBanyak.setBackground(new java.awt.Color(242, 242, 242));
+        ppGrafikJualBanyak.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikJualBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikJualBanyak.setForeground(new java.awt.Color(102, 51, 0));
         ppGrafikJualBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -240,7 +244,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikJualBanyak);
 
-        ppGrafikJualDikit.setBackground(new java.awt.Color(242, 242, 242));
+        ppGrafikJualDikit.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikJualDikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikJualDikit.setForeground(new java.awt.Color(102, 51, 0));
         ppGrafikJualDikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -257,7 +261,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikJualDikit);
 
-        ppGrafikbeliBanyak.setBackground(new java.awt.Color(242, 242, 242));
+        ppGrafikbeliBanyak.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikbeliBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikbeliBanyak.setForeground(new java.awt.Color(102, 51, 0));
         ppGrafikbeliBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -274,7 +278,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikbeliBanyak);
 
-        ppGrafikbelidikit.setBackground(new java.awt.Color(242, 242, 242));
+        ppGrafikbelidikit.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikbelidikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikbelidikit.setForeground(new java.awt.Color(102, 51, 0));
         ppGrafikbelidikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -291,7 +295,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikbelidikit);
 
-        ppGrafikPiutangBanyak.setBackground(new java.awt.Color(242, 242, 242));
+        ppGrafikPiutangBanyak.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikPiutangBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikPiutangBanyak.setForeground(new java.awt.Color(102, 51, 0));
         ppGrafikPiutangBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -308,7 +312,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikPiutangBanyak);
 
-        ppGrafikPiutangDikit.setBackground(new java.awt.Color(242, 242, 242));
+        ppGrafikPiutangDikit.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikPiutangDikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikPiutangDikit.setForeground(new java.awt.Color(102, 51, 0));
         ppGrafikPiutangDikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
@@ -324,6 +328,40 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppGrafikPiutangDikit);
+
+        ppGrafikResepPaliingBanyak.setBackground(new java.awt.Color(255, 255, 255));
+        ppGrafikResepPaliingBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikResepPaliingBanyak.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikResepPaliingBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikResepPaliingBanyak.setText("Grafik 10 Barang Resep Ke Pasien Terbanyak");
+        ppGrafikResepPaliingBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikResepPaliingBanyak.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikResepPaliingBanyak.setIconTextGap(8);
+        ppGrafikResepPaliingBanyak.setName("ppGrafikResepPaliingBanyak"); // NOI18N
+        ppGrafikResepPaliingBanyak.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppGrafikResepPaliingBanyak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikResepPaliingBanyakActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikResepPaliingBanyak);
+
+        ppGrafikResepPaliingSedikit.setBackground(new java.awt.Color(255, 255, 255));
+        ppGrafikResepPaliingSedikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppGrafikResepPaliingSedikit.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikResepPaliingSedikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppGrafikResepPaliingSedikit.setText("Grafik 10 Barang Resep Ke Pasien Tersedikit");
+        ppGrafikResepPaliingSedikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppGrafikResepPaliingSedikit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppGrafikResepPaliingSedikit.setIconTextGap(8);
+        ppGrafikResepPaliingSedikit.setName("ppGrafikResepPaliingSedikit"); // NOI18N
+        ppGrafikResepPaliingSedikit.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppGrafikResepPaliingSedikit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppGrafikResepPaliingSedikitActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppGrafikResepPaliingSedikit);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -709,6 +747,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         prosesCari();
     }//GEN-LAST:event_formWindowOpened
 
+    private void ppGrafikResepPaliingBanyakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikResepPaliingBanyakActionPerformed
+        grafikresepterbanyak grafik=new grafikresepterbanyak("Grafik 10 Barang Resep Ke Pasien Terbanyak"," tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' "+
+            "and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ");
+        grafik.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
+        grafik.setLocationRelativeTo(internalFrame1);
+        grafik.setAlwaysOnTop(false);
+        grafik.setVisible(true);
+    }//GEN-LAST:event_ppGrafikResepPaliingBanyakActionPerformed
+
+    private void ppGrafikResepPaliingSedikitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikResepPaliingSedikitActionPerformed
+        grafikreseptersedikit grafik=new grafikreseptersedikit("Grafik 10 Barang Resep Ke Pasien Tersedikit"," tgl_perawatan between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' "+
+            "and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' ");
+        grafik.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
+        grafik.setLocationRelativeTo(internalFrame1);
+        grafik.setAlwaysOnTop(false);
+        grafik.setVisible(true);
+    }//GEN-LAST:event_ppGrafikResepPaliingSedikitActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -750,6 +806,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private javax.swing.JMenuItem ppGrafikJualDikit;
     private javax.swing.JMenuItem ppGrafikPiutangBanyak;
     private javax.swing.JMenuItem ppGrafikPiutangDikit;
+    private javax.swing.JMenuItem ppGrafikResepPaliingBanyak;
+    private javax.swing.JMenuItem ppGrafikResepPaliingSedikit;
     private javax.swing.JMenuItem ppGrafikbeliBanyak;
     private javax.swing.JMenuItem ppGrafikbelidikit;
     private widget.ScrollPane scrollPane1;

@@ -537,9 +537,6 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             billing.TNoRw.setText(Sequel.cariIsi("select no_rawat from nota_inap where no_nota=?",TKd.getText()));            
             billing.isRawat();
             billing.isCek();
-            if(Sequel.cariInteger("select count(no_rawat) from piutang_pasien where no_rawat=?",billing.TNoRw.getText())>0){
-                billing.setPiutang();
-            }
             billing.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             billing.setLocationRelativeTo(internalFrame1);
             billing.setVisible(true); 

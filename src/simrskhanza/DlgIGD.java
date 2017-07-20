@@ -3053,10 +3053,8 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }else{                                
                                 DlgBilingRalan dlgbil=new DlgBilingRalan(null,false);
                                 dlgbil.TNoRw.setText(TNoRw.getText());  
-                                dlgbil.isRawat(); 
-                                dlgbil.isKembali();
-                                dlgbil.isRawat();
                                 dlgbil.isCek();
+                                dlgbil.isRawat(); 
                                 dlgbil.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                                 dlgbil.setLocationRelativeTo(internalFrame1);
                                 dlgbil.setVisible(true);
@@ -3064,10 +3062,8 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }else{                            
                             DlgBilingRalan dlgbil=new DlgBilingRalan(null,false);
                             dlgbil.TNoRw.setText(TNoRw.getText());  
-                            dlgbil.isRawat(); 
-                            dlgbil.isKembali();
-                            dlgbil.isRawat();
                             dlgbil.isCek();
+                            dlgbil.isRawat(); 
                             dlgbil.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                             dlgbil.setLocationRelativeTo(internalFrame1);
                             dlgbil.setVisible(true);
