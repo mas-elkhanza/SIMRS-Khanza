@@ -210,7 +210,8 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             laboratserv=0,radiologiserv=0,operasiserv=0,obatserv=0,
             ranap_dokterserv=0,ranap_paramedisserv=0,ralan_dokterserv=0,
             ralan_paramedisserv=0,tambahanserv=0,potonganserv=0,
-            kamarserv=0,registrasiserv=0,harianserv=0,retur_Obatserv=0,resep_Pulangserv=0,ttlService=0;
+            kamarserv=0,registrasiserv=0,harianserv=0,retur_Obatserv=0,resep_Pulangserv=0,ttlService=0,
+            persenbayi=Sequel.cariInteger("select bayi from set_jam_minimal");
     private int x=0,z=0,i=0,countbayar=0,jml=0,r=0,row2=0;
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
@@ -2309,6 +2310,11 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         tbAkunPiutang.setToolTipText("");
         tbAkunPiutang.setComponentPopupMenu(PopupPiutang);
         tbAkunPiutang.setName("tbAkunPiutang"); // NOI18N
+        tbAkunPiutang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbAkunPiutangMouseClicked(evt);
+            }
+        });
         tbAkunPiutang.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 tbAkunPiutangPropertyChange(evt);
@@ -3844,6 +3850,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_ppBersihkanActionPerformed
 
+    private void tbAkunPiutangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAkunPiutangMouseClicked
+        if(ChkPiutang.isSelected()==false){
+            ChkPiutang.setSelected(true);
+            isRawat();
+        }            
+    }//GEN-LAST:event_tbAkunPiutangMouseClicked
+
 
 
     /**
@@ -4516,9 +4529,25 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             pstamkur.close();
                         }
                     }
-                    tabModeRwJlDr.addRow(new Object[]{true,"                           ",rskamarin.getString("kd_kamar")+", "+rskamarin.getString("nm_bangsal"),":",
-                                   rskamarin.getDouble("trf_kamar"),rskamarin.getDouble("lama"),tamkur,(rskamarin.getDouble("total")+tamkur),"Kamar"});
-                    subttl=subttl+rskamarin.getDouble("total")+tamkur;   
+                    if(!norawatbayi.equals("")){
+                        if(persenbayi>0){
+                            tabModeRwJlDr.addRow(new Object[]{true,"                           ",rskamarin.getString("kd_kamar")+", "+rskamarin.getString("nm_bangsal")+" (Ibu)",":",
+                                           rskamarin.getDouble("trf_kamar"),rskamarin.getDouble("lama"),tamkur,(rskamarin.getDouble("total")+tamkur),"Kamar"});
+                            subttl=subttl+rskamarin.getDouble("total")+tamkur;
+                        
+                            tabModeRwJlDr.addRow(new Object[]{true,"                           ",rskamarin.getString("kd_kamar")+", "+rskamarin.getString("nm_bangsal")+" (Bayi)",":",
+                                           (rskamarin.getDouble("trf_kamar")*(persenbayi/100)),rskamarin.getDouble("lama"),tamkur,((rskamarin.getDouble("total")*(persenbayi/100))+tamkur),"Kamar"});
+                            subttl=subttl+(rskamarin.getDouble("total")*(persenbayi/100))+tamkur;
+                        }else{
+                            tabModeRwJlDr.addRow(new Object[]{true,"                           ",rskamarin.getString("kd_kamar")+", "+rskamarin.getString("nm_bangsal"),":",
+                                           rskamarin.getDouble("trf_kamar"),rskamarin.getDouble("lama"),tamkur,(rskamarin.getDouble("total")+tamkur),"Kamar"});
+                            subttl=subttl+rskamarin.getDouble("total")+tamkur; 
+                        }                            
+                    }else{
+                        tabModeRwJlDr.addRow(new Object[]{true,"                           ",rskamarin.getString("kd_kamar")+", "+rskamarin.getString("nm_bangsal"),":",
+                                       rskamarin.getDouble("trf_kamar"),rskamarin.getDouble("lama"),tamkur,(rskamarin.getDouble("total")+tamkur),"Kamar"});
+                        subttl=subttl+rskamarin.getDouble("total")+tamkur;  
+                    }                         
 
                     psbiayasekali=koneksi.prepareStatement(sqlpsbiayasekali);
                     try {

@@ -75,7 +75,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private PreparedStatement ps,pscaripiutang,psdiagnosa,psibu,psanak,pstarif,psdpjp,pscariumur;
     private ResultSet rs,rs2;
     private int i,sudah=0,row=0;
-    private double lama=Sequel.cariIsiAngka("select lamajam from set_jam_minimal");
+    private double lama=Sequel.cariIsiAngka("select lamajam from set_jam_minimal"),persenbayi=Sequel.cariInteger("select bayi from set_jam_minimal");
     private String dokterranap="",diagnosa_akhir=Sequel.cariIsi("select diagnosaakhir from set_jam_minimal"),namakamar="",umur="0",sttsumur="Th";
 
     /** Creates new form DlgKamarInap
@@ -5850,12 +5850,12 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                             rs.getString(6),
                                             rs.getString(7),
                                             rs.getString(8),
-                                            "0","-","-",
+                                            Valid.SetAngka(rs.getDouble(9)*(persenbayi/100)),"-","-",
                                             rs.getString(12),
                                             rs.getString(13),
                                             rs.getString(14),
                                             rs.getString(15),
-                                            "0",
+                                            Valid.SetAngka(rs.getDouble(16)*(persenbayi/100)),
                                             rs.getString(17),
                                             rs.getString(18),
                                             rs.getString(19),
