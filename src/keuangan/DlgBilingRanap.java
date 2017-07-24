@@ -67,12 +67,12 @@ public class DlgBilingRanap extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private PreparedStatement pscekbilling,pscarirm,pscaripasien,psreg,pskamar,pscarialamat,psbiling,
-            psdokterranap,psdokterralan,pscariobat,pscariobat2,pscariobat3,psobatlangsung,psobatoperasi,
-            psreturobat,psdetaillab,psdetaillab2,psdetaillab3,pstamkur,psrekening,psakunbayar,psakunpiutang,
+            psdokterranap,psdokterralan,pscariobat,psobatlangsung,psobatoperasi,
+            psreturobat,psdetaillab,pstamkur,psrekening,psakunbayar,psakunpiutang,
             pskamarin,psbiayasekali,psbiayaharian,psreseppulang,pstambahanbiaya,pspotonganbiaya,pstemporary,
-            psralandokter,psralandrpr,psralandrpr2,psralandrpr3,psralandokter2,psralandokter3,psranapdrpr,psranapdrpr2,psranapdrpr3,psranapdokter,psranapdokter2,psranapdokter3,
-            psoperasi,psralanperawat,psralanperawat2,psralanperawat3,psranapperawat,psranapperawat2,psranapperawat3,
-            psperiksalab,psperiksalab2,psperiksalab3,pssudahmasuk,pskategori,psubahpenjab,psperiksarad,psperiksarad2,psperiksarad3,psanak,psnota,psservice;
+            psralandokter,psralandrpr,psranapdrpr,psranapdokter,
+            psoperasi,psralanperawat,psranapperawat,
+            psperiksalab,pssudahmasuk,pskategori,psubahpenjab,psperiksarad,psanak,psnota,psservice;
     private ResultSet rscekbilling,rscarirm,rscaripasien,rsreg,rskamar,rscarialamat,rsdetaillab,
             rsdokterranap,rsranapdrpr,rsdokterralan,rscariobat,rsobatlangsung,rsobatoperasi,rsreturobat,rsubahpenjab,
             rskamarin,rsbiayasekali,rsbiayaharian,rsreseppulang,rstambahanbiaya,rspotonganbiaya,
@@ -191,7 +191,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                          "operasi.biayasarpras,operasi.biaya_dokter_pjanak,operasi.biaya_dokter_umum "+
                          "from operasi inner join paket_operasi "+
                          "on operasi.kode_paket=paket_operasi.kode_paket where "+
-                         "operasi.no_rawat=?",
+                         "operasi.no_rawat=? and operasi.status like ?",
             sqlpsnota="insert into nota_inap values(?,?,?,?,?)",
             sqlpsbiling="insert into billing values('0',?,?,?,?,?,?,?,?,?,?)",
             sqlpssudahmasuk="select no,nm_perawatan, if(biaya<>0,biaya,null) as satu, if(jumlah<>0,jumlah,null) as dua,"+
@@ -620,178 +620,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         
        
         
-        try {                                                                        
-            psralandokter2=koneksi.prepareStatement(
-                    "select jns_perawatan.nm_perawatan,rawat_jl_dr.biaya_rawat as total_byrdr,count(rawat_jl_dr.kd_jenis_prw) as jml, "+
-                    "sum(rawat_jl_dr.biaya_rawat) as biaya,"+
-                    "sum(rawat_jl_dr.bhp) as totalbhp,"+
-                    "sum(rawat_jl_dr.material) as totalmaterial,"+
-                    "rawat_jl_dr.tarif_tindakandr,"+
-                    "sum(rawat_jl_dr.tarif_tindakandr) as totaltarif_tindakandr  "+
-                    "from reg_periksa inner join rawat_jl_dr inner join jns_perawatan inner join kategori_perawatan "+
-                    "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and "+
-                    "jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori where "+
-                    "concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) < ? and "+
-                    "rawat_jl_dr.no_rawat=? and kategori_perawatan.kd_kategori=? group by jns_perawatan.nm_perawatan");
-            psralandokter3=koneksi.prepareStatement("select jns_perawatan.nm_perawatan,rawat_jl_dr.biaya_rawat as total_byrdr,count(rawat_jl_dr.kd_jenis_prw) as jml, "+
-                    "sum(rawat_jl_dr.biaya_rawat) as biaya,"+
-                    "sum(rawat_jl_dr.bhp) as totalbhp,"+
-                    "sum(rawat_jl_dr.material) as totalmaterial,"+
-                    "rawat_jl_dr.tarif_tindakandr,"+
-                    "sum(rawat_jl_dr.tarif_tindakandr) as totaltarif_tindakandr  "+
-                    "from reg_periksa inner join rawat_jl_dr inner join jns_perawatan inner join kategori_perawatan "+
-                    "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and "+
-                    "jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori where "+
-                    "concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) > ? and "+
-                    "rawat_jl_dr.no_rawat=? and kategori_perawatan.kd_kategori=? group by jns_perawatan.nm_perawatan");            
-            psralandrpr2=koneksi.prepareStatement(
-                    "select jns_perawatan.nm_perawatan,rawat_jl_drpr.biaya_rawat as total_byrdr,count(rawat_jl_drpr.kd_jenis_prw) as jml, "+
-                    "sum(rawat_jl_drpr.biaya_rawat) as biaya,"+
-                    "sum(rawat_jl_drpr.bhp) as totalbhp,"+
-                    "sum(rawat_jl_drpr.material) as totalmaterial,"+
-                    "rawat_jl_drpr.tarif_tindakandr,"+
-                    "sum(rawat_jl_drpr.tarif_tindakanpr) as totaltarif_tindakanpr,"+
-                    "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr  "+
-                    "from reg_periksa inner join rawat_jl_drpr inner join jns_perawatan inner join kategori_perawatan "+
-                    "on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat and rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and "+
-                    "jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori where "+
-                    "concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) < ? and "+
-                    "rawat_jl_drpr.no_rawat=? and kategori_perawatan.kd_kategori=? group by jns_perawatan.nm_perawatan");
-            psralandrpr3=koneksi.prepareStatement("select jns_perawatan.nm_perawatan,rawat_jl_drpr.biaya_rawat as total_byrdr,count(rawat_jl_drpr.kd_jenis_prw) as jml, "+
-                    "sum(rawat_jl_drpr.biaya_rawat) as biaya,"+
-                    "sum(rawat_jl_drpr.bhp) as totalbhp,"+
-                    "sum(rawat_jl_drpr.material) as totalmaterial,"+
-                    "rawat_jl_drpr.tarif_tindakandr,"+
-                    "sum(rawat_jl_drpr.tarif_tindakanpr) as totaltarif_tindakanpr,"+
-                    "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr  "+
-                    "from reg_periksa inner join rawat_jl_drpr inner join jns_perawatan inner join kategori_perawatan "+
-                    "on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat and rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and "+
-                    "jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori where "+
-                    "concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) > ? and "+
-                    "rawat_jl_drpr.no_rawat=? and kategori_perawatan.kd_kategori=? group by jns_perawatan.nm_perawatan");            
-            psranapdokter2=koneksi.prepareStatement(
-                    "select jns_perawatan_inap.nm_perawatan,rawat_inap_dr.biaya_rawat as total_byrdr,count(rawat_inap_dr.kd_jenis_prw) as jml, "+
-                    "sum(rawat_inap_dr.biaya_rawat) as biaya,"+
-                    "sum(rawat_inap_dr.bhp) as totalbhp,"+
-                    "sum(rawat_inap_dr.material) as totalmaterial,"+
-                    "rawat_inap_dr.tarif_tindakandr,"+
-                    "sum(rawat_inap_dr.tarif_tindakandr) as totaltarif_tindakandr "+
-                    "from rawat_inap_dr inner join jns_perawatan_inap inner join kategori_perawatan "+
-                    "on rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and "+
-                    "jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori where "+
-                    "concat(rawat_inap_dr.tgl_perawatan,' ',rawat_inap_dr.jam_rawat) < ? and "+
-                    "rawat_inap_dr.no_rawat=? and kategori_perawatan.kd_kategori=? group by jns_perawatan_inap.nm_perawatan");
-            psranapdokter3=koneksi.prepareStatement(
-                    "select jns_perawatan_inap.nm_perawatan,rawat_inap_dr.biaya_rawat as total_byrdr,count(rawat_inap_dr.kd_jenis_prw) as jml, "+
-                    "sum(rawat_inap_dr.biaya_rawat) as biaya,"+
-                    "sum(rawat_inap_dr.bhp) as totalbhp,"+
-                    "sum(rawat_inap_dr.material) as totalmaterial,"+
-                    "rawat_inap_dr.tarif_tindakandr,"+
-                    "sum(rawat_inap_dr.tarif_tindakandr) as totaltarif_tindakandr "+
-                    "from rawat_inap_dr inner join jns_perawatan_inap inner join kategori_perawatan "+
-                    "on rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and "+
-                    "jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori where "+
-                    "concat(rawat_inap_dr.tgl_perawatan,' ',rawat_inap_dr.jam_rawat) > ? and "+
-                    "rawat_inap_dr.no_rawat=? and kategori_perawatan.kd_kategori=? group by jns_perawatan_inap.nm_perawatan");            
-            psranapdrpr2=koneksi.prepareStatement(
-                    "select jns_perawatan_inap.nm_perawatan,rawat_inap_drpr.biaya_rawat as total_byrdr,count(rawat_inap_drpr.kd_jenis_prw) as jml, "+
-                    "sum(rawat_inap_drpr.biaya_rawat) as biaya,"+
-                    "sum(rawat_inap_drpr.bhp) as totalbhp,"+
-                    "sum(rawat_inap_drpr.material) as totalmaterial,"+
-                    "rawat_inap_drpr.tarif_tindakandr,"+
-                    "sum(rawat_inap_drpr.tarif_tindakanpr) as totaltarif_tindakanpr, "+
-                    "sum(rawat_inap_drpr.tarif_tindakandr) as totaltarif_tindakandr "+
-                    "from rawat_inap_drpr inner join jns_perawatan_inap inner join kategori_perawatan "+
-                    "on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and "+
-                    "jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori where "+
-                    "concat(rawat_inap_drpr.tgl_perawatan,' ',rawat_inap_drpr.jam_rawat) < ? and "+
-                    "rawat_inap_drpr.no_rawat=? and kategori_perawatan.kd_kategori=? group by jns_perawatan_inap.nm_perawatan");
-            psranapdrpr3=koneksi.prepareStatement(
-                    "select jns_perawatan_inap.nm_perawatan,rawat_inap_drpr.biaya_rawat as total_byrdr,count(rawat_inap_drpr.kd_jenis_prw) as jml, "+
-                    "sum(rawat_inap_drpr.biaya_rawat) as biaya,"+
-                    "sum(rawat_inap_drpr.bhp) as totalbhp,"+
-                    "sum(rawat_inap_drpr.material) as totalmaterial,"+
-                    "rawat_inap_drpr.tarif_tindakandr,"+
-                    "sum(rawat_inap_drpr.tarif_tindakanpr) as totaltarif_tindakanpr, "+
-                    "sum(rawat_inap_drpr.tarif_tindakandr) as totaltarif_tindakandr "+
-                    "from rawat_inap_drpr inner join jns_perawatan_inap inner join kategori_perawatan "+
-                    "on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and "+
-                    "jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori where "+
-                    "concat(rawat_inap_drpr.tgl_perawatan,' ',rawat_inap_drpr.jam_rawat) > ? and "+
-                    "rawat_inap_drpr.no_rawat=? and kategori_perawatan.kd_kategori=? group by jns_perawatan_inap.nm_perawatan");                        
-            psralanperawat2=koneksi.prepareStatement("select jns_perawatan.nm_perawatan,jns_perawatan.total_byrpr,count(jns_perawatan.nm_perawatan) as jml, "+
-                                           "jns_perawatan.total_byrpr*count(jns_perawatan.nm_perawatan) as biaya "+
-                                           "from reg_periksa inner join rawat_jl_pr inner join jns_perawatan inner join kategori_perawatan  "+
-                                           "on rawat_jl_pr.no_rawat=reg_periksa.no_rawat and rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw  and "+
-                                           "jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori where "+
-                                           "concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) < ? and "+
-                                           "rawat_jl_pr.no_rawat=? and kategori_perawatan.kd_kategori=? group by jns_perawatan.nm_perawatan ");
-            psralanperawat3=koneksi.prepareStatement("select jns_perawatan.nm_perawatan,jns_perawatan.total_byrpr,count(jns_perawatan.nm_perawatan) as jml, "+
-                                           "jns_perawatan.total_byrpr*count(jns_perawatan.nm_perawatan) as biaya "+
-                                           "from reg_periksa inner join rawat_jl_pr inner join jns_perawatan inner join kategori_perawatan  "+
-                                           "on rawat_jl_pr.no_rawat=reg_periksa.no_rawat and rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw  and "+
-                                           "jns_perawatan.kd_kategori=kategori_perawatan.kd_kategori where "+
-                                           "concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) > ? and "+
-                                           "rawat_jl_pr.no_rawat=? and kategori_perawatan.kd_kategori=? group by jns_perawatan.nm_perawatan ");            
-            psranapperawat2=koneksi.prepareStatement("select jns_perawatan_inap.nm_perawatan,jns_perawatan_inap.total_byrpr,count(jns_perawatan_inap.nm_perawatan) as jml, "+
-                                           "jns_perawatan_inap.total_byrpr*count(jns_perawatan_inap.nm_perawatan) as biaya "+
-                                           "from rawat_inap_pr inner join jns_perawatan_inap  inner join kategori_perawatan "+
-                                           "on rawat_inap_pr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw  and "+
-                                           "jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori where "+
-                                           "concat(rawat_inap_pr.tgl_perawatan,' ',rawat_inap_pr.jam_rawat) < ? and "+
-                                           "rawat_inap_pr.no_rawat=? and kategori_perawatan.kd_kategori=?  group by jns_perawatan_inap.nm_perawatan");
-            psranapperawat3=koneksi.prepareStatement("select jns_perawatan_inap.nm_perawatan,jns_perawatan_inap.total_byrpr,count(jns_perawatan_inap.nm_perawatan) as jml, "+
-                                           "jns_perawatan_inap.total_byrpr*count(jns_perawatan_inap.nm_perawatan) as biaya "+
-                                           "from rawat_inap_pr inner join jns_perawatan_inap  inner join kategori_perawatan "+
-                                           "on rawat_inap_pr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw  and "+
-                                           "jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori where "+
-                                           "concat(rawat_inap_pr.tgl_perawatan,' ',rawat_inap_pr.jam_rawat) > ? and "+
-                                           "rawat_inap_pr.no_rawat=? and kategori_perawatan.kd_kategori=?  group by jns_perawatan_inap.nm_perawatan");
-            psperiksalab=koneksi.prepareStatement("select jns_perawatan_lab.nm_perawatan, count(periksa_lab.kd_jenis_prw) as jml,periksa_lab.biaya as biaya, "+
-                                           " sum(periksa_lab.biaya) as total,jns_perawatan_lab.kd_jenis_prw "+
-                                           " from periksa_lab inner join jns_perawatan_lab "+
-                                           " on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw where "+
-                                           " periksa_lab.no_rawat=? group by periksa_lab.kd_jenis_prw  ");
-            psperiksalab2=koneksi.prepareStatement("select jns_perawatan_lab.nm_perawatan, count(periksa_lab.kd_jenis_prw) as jml,periksa_lab.biaya as biaya, "+
-                                           " sum(periksa_lab.biaya) as total,jns_perawatan_lab.kd_jenis_prw "+
-                                           " from periksa_lab inner join jns_perawatan_lab "+
-                                           " on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw where "+
-                                           " concat(periksa_lab.tgl_periksa,' ',periksa_lab.jam) < ? and "+
-                                           " periksa_lab.no_rawat=? group by periksa_lab.kd_jenis_prw  ");
-            psperiksalab3=koneksi.prepareStatement("select jns_perawatan_lab.nm_perawatan, count(periksa_lab.kd_jenis_prw) as jml,periksa_lab.biaya as biaya, "+
-                                           " sum(periksa_lab.biaya) as total,jns_perawatan_lab.kd_jenis_prw "+
-                                           " from periksa_lab inner join jns_perawatan_lab "+
-                                           " on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw where "+
-                                           " concat(periksa_lab.tgl_periksa,' ',periksa_lab.jam) > ? and "+
-                                           " periksa_lab.no_rawat=? group by periksa_lab.kd_jenis_prw  ");
-            psperiksarad=koneksi.prepareStatement("select jns_perawatan_radiologi.nm_perawatan, count(periksa_radiologi.kd_jenis_prw) as jml,periksa_radiologi.biaya as biaya, "+
-                                           " sum(periksa_radiologi.biaya) as total,jns_perawatan_radiologi.kd_jenis_prw "+
-                                           " from periksa_radiologi inner join jns_perawatan_radiologi "+
-                                           " on jns_perawatan_radiologi.kd_jenis_prw=periksa_radiologi.kd_jenis_prw where "+
-                                           " periksa_radiologi.no_rawat=? group by periksa_radiologi.kd_jenis_prw  ");
-            psperiksarad2=koneksi.prepareStatement("select jns_perawatan_radiologi.nm_perawatan, count(periksa_radiologi.kd_jenis_prw) as jml,periksa_radiologi.biaya as biaya, "+
-                                           " sum(periksa_radiologi.biaya) as total,jns_perawatan_radiologi.kd_jenis_prw "+
-                                           " from periksa_radiologi inner join jns_perawatan_radiologi "+
-                                           " on jns_perawatan_radiologi.kd_jenis_prw=periksa_radiologi.kd_jenis_prw where "+
-                                           " concat(periksa_radiologi.tgl_periksa,' ',periksa_radiologi.jam) < ? and "+
-                                           " periksa_radiologi.no_rawat=? group by periksa_radiologi.kd_jenis_prw  ");
-            psperiksarad3=koneksi.prepareStatement("select jns_perawatan_radiologi.nm_perawatan, count(periksa_radiologi.kd_jenis_prw) as jml,periksa_radiologi.biaya as biaya, "+
-                                           " sum(periksa_radiologi.biaya) as total,jns_perawatan_radiologi.kd_jenis_prw "+
-                                           " from periksa_radiologi inner join jns_perawatan_radiologi "+
-                                           " on jns_perawatan_radiologi.kd_jenis_prw=periksa_radiologi.kd_jenis_prw where "+
-                                           " concat(periksa_radiologi.tgl_periksa,' ',periksa_radiologi.jam) > ? and "+
-                                           " periksa_radiologi.no_rawat=? group by periksa_radiologi.kd_jenis_prw  ");
-            psdetaillab=koneksi.prepareStatement("select sum(detail_periksa_lab.biaya_item) as total from detail_periksa_lab where detail_periksa_lab.no_rawat=? "+
-                                           "and detail_periksa_lab.kd_jenis_prw=? ");
-            psdetaillab2=koneksi.prepareStatement("select sum(detail_periksa_lab.biaya_item) as total from detail_periksa_lab where "+
-                                           " concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) < ? and "+
-                                           " detail_periksa_lab.no_rawat=? "+
-                                           " and detail_periksa_lab.kd_jenis_prw=? ");
-            psdetaillab3=koneksi.prepareStatement("select sum(detail_periksa_lab.biaya_item) as total from detail_periksa_lab where "+
-                                           " concat(detail_periksa_lab.tgl_periksa,' ',detail_periksa_lab.jam) > ? and "+
-                                           " detail_periksa_lab.no_rawat=? "+
-                                           " and detail_periksa_lab.kd_jenis_prw=? ");                                                
-            
+        try {
             psrekening=koneksi.prepareStatement("select * from set_akun_ranap");
             try {
                 rsrekening=psrekening.executeQuery();
@@ -4421,9 +4250,18 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total "+
                     "from detail_pemberian_obat inner join databarang "+
                     "on detail_pemberian_obat.kode_brng=databarang.kode_brng where "+
-                    "detail_pemberian_obat.no_rawat=? group by databarang.nama_brng,detail_pemberian_obat.biaya_obat");
+                    "detail_pemberian_obat.no_rawat=? and detail_pemberian_obat.status like ? group by databarang.nama_brng,detail_pemberian_obat.biaya_obat");
             try {
                 pscariobat.setString(1,norawat);
+                if((chkRalan.isSelected()==true)&&(chkRanap.isSelected()==true)){
+                    pscariobat.setString(2,"%%");
+                }else if((chkRalan.isSelected()==true)&&(chkRanap.isSelected()==false)){
+                    pscariobat.setString(2,"%Ralan%");
+                }else if((chkRalan.isSelected()==false)&&(chkRanap.isSelected()==true)){
+                    pscariobat.setString(2,"%Ranap%");
+                }else if((chkRalan.isSelected()==false)&&(chkRanap.isSelected()==false)){
+                    pscariobat.setString(2,"%Kosong%");
+                }
                 rscariobat=pscariobat.executeQuery();
                 while(rscariobat.next()){
                     tabModeRwJlDr.addRow(new Object[]{false,"                           ",rscariobat.getString("nama_brng"),":",
@@ -5097,13 +4935,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         psranapperawat.setString(2,rskategori.getString(1));
                         rsranapperawat=psranapperawat.executeQuery();
 
-                        if(rsralandrpr.next()||rsranapdrpr.next()||rsralandokter.next()||rsranapdokter.next()||rsralanperawat.next()||rsranapperawat.next()){
-                           tabModeRwJlDr.addRow(new Object[]{true,x+". "+rskategori.getString(2),":","",null,null,null,null,"Ranap Dokter"}); 
-                           x++;
-                        }
-
                         subttl=0;   
                         if(chkRalan.isSelected()==true){
+                            if(rsralandrpr.next()||rsralandokter.next()||rsralanperawat.next()){
+                                tabModeRwJlDr.addRow(new Object[]{true,x+". "+rskategori.getString(2),":","",null,null,null,null,"Ranap Dokter"}); 
+                                x++;
+                            }
                             rsralandokter.beforeFirst();
                             while(rsralandokter.next()){
                                 tamkur=0;
@@ -5207,6 +5044,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             
 
                         if(chkRanap.isSelected()==true){
+                            if(rsranapdrpr.next()||rsranapdokter.next()||rsranapperawat.next()){
+                                tabModeRwJlDr.addRow(new Object[]{true,x+". "+rskategori.getString(2),":","",null,null,null,null,"Ranap Dokter"}); 
+                                x++;
+                            }
                             rsranapdokter.beforeFirst();
                             while(rsranapdokter.next()){
                                 tamkur=0;
@@ -5364,68 +5205,135 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }  
             
             subttl=0;
-            psperiksalab.setString(1,norawat);
-            rsperiksalab=psperiksalab.executeQuery();
-            
-            if(rsperiksalab.next()){
-                   tabModeRwJlDr.addRow(new Object[]{true,x+". Pemeriksaan Lab",":","",null,null,null,null,"Laborat"}); 
-                   x++;
-            }
-            rsperiksalab.beforeFirst();
-            while(rsperiksalab.next()){
-                psdetaillab.setString(1,norawat);
-                psdetaillab.setString(2,rsperiksalab.getString("kd_jenis_prw"));
-                rsdetaillab=psdetaillab.executeQuery();
-                lab=0;
-                while(rsdetaillab.next()){  
-                    lab=rsdetaillab.getDouble("total");               
+            psperiksalab=koneksi.prepareStatement(
+                   "select jns_perawatan_lab.nm_perawatan, count(periksa_lab.kd_jenis_prw) as jml,periksa_lab.biaya as biaya, "+
+                   " sum(periksa_lab.biaya) as total,jns_perawatan_lab.kd_jenis_prw "+
+                   " from periksa_lab inner join jns_perawatan_lab "+
+                   " on jns_perawatan_lab.kd_jenis_prw=periksa_lab.kd_jenis_prw where "+
+                   " periksa_lab.no_rawat=? and periksa_lab.status like ? group by periksa_lab.kd_jenis_prw  ");
+            try {
+                psperiksalab.setString(1,norawat);
+                if((chkRalan.isSelected()==true)&&(chkRanap.isSelected()==true)){
+                    psperiksalab.setString(2,"%%");
+                }else if((chkRalan.isSelected()==true)&&(chkRanap.isSelected()==false)){
+                    psperiksalab.setString(2,"%Ralan%");
+                }else if((chkRalan.isSelected()==false)&&(chkRanap.isSelected()==true)){
+                    psperiksalab.setString(2,"%Ranap%");
+                }else if((chkRalan.isSelected()==false)&&(chkRanap.isSelected()==false)){
+                    psperiksalab.setString(2,"%Kosong%");
                 }
-                tabModeRwJlDr.addRow(new Object[]{true,"                           ",rsperiksalab.getString("nm_perawatan"),":",
-                              rsperiksalab.getDouble("biaya"),rsperiksalab.getDouble("jml"),lab,(rsperiksalab.getDouble("total")+lab),"Laborat"});
-                subttl=subttl+rsperiksalab.getDouble("total")+lab;
+                rsperiksalab=psperiksalab.executeQuery();
+                if(rsperiksalab.next()){
+                       tabModeRwJlDr.addRow(new Object[]{true,x+". Pemeriksaan Lab",":","",null,null,null,null,"Laborat"}); 
+                       x++;
+                }
+                rsperiksalab.beforeFirst();
+                while(rsperiksalab.next()){
+                    psdetaillab=koneksi.prepareStatement(
+                            "select sum(detail_periksa_lab.biaya_item) as total from detail_periksa_lab where detail_periksa_lab.no_rawat=? "+
+                            "and detail_periksa_lab.kd_jenis_prw=? ");
+                    try {
+                        psdetaillab.setString(1,norawat);
+                        psdetaillab.setString(2,rsperiksalab.getString("kd_jenis_prw"));
+                        rsdetaillab=psdetaillab.executeQuery();
+                        lab=0;
+                        while(rsdetaillab.next()){  
+                            lab=rsdetaillab.getDouble("total");               
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif Detail Lab : "+e);
+                    } finally{
+                        if(rsdetaillab!=null){
+                            rsdetaillab.close();
+                        }
+                        if(psdetaillab!=null){
+                            psdetaillab.close();
+                        }
+                    }
+                        
+                    tabModeRwJlDr.addRow(new Object[]{true,"                           ",rsperiksalab.getString("nm_perawatan"),":",
+                                  rsperiksalab.getDouble("biaya"),rsperiksalab.getDouble("jml"),lab,(rsperiksalab.getDouble("total")+lab),"Laborat"});
+                    subttl=subttl+rsperiksalab.getDouble("total")+lab;
+                }
+
+                if(subttl>1){
+                   tabModeRwJlDr.addRow(new Object[]{true,"","Total Periksa Lab : "+Valid.SetAngka(subttl),"",null,null,null,null,"TtlLaborat"});
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi Periksa Lab : "+e);
+            } finally{
+                if(rsperiksalab!=null){
+                    rsperiksalab.close();
+                }
+                if(psperiksalab!=null){
+                    psperiksalab.close();
+                }
             }
-            
-            if(subttl>1){
-               tabModeRwJlDr.addRow(new Object[]{true,"","Total Periksa Lab : "+Valid.SetAngka(subttl),"",null,null,null,null,"TtlLaborat"});
-            }
+                
             
             subttl=0;
-            psperiksarad.setString(1,norawat);
-            rsperiksarad=psperiksarad.executeQuery();            
-            if(rsperiksarad.next()){
-                   tabModeRwJlDr.addRow(new Object[]{true,x+". Pemeriksaan Radiologi",":","",null,null,null,null,"Radiologi"}); 
-                   x++;
-            }
-            rsperiksarad.beforeFirst();
-            while(rsperiksarad.next()){
-                tamkur=0;
-                pstamkur=koneksi.prepareStatement(sqlpstamkur);            
-                try {
-                    pstamkur.setString(1,TNoRw.getText());
-                    pstamkur.setString(2,rsperiksarad.getString("nm_perawatan"));
-                    pstamkur.setString(3,"Radiologi");
-                    rstamkur=pstamkur.executeQuery();
-                    if(rstamkur.next()){
-                        tamkur=rstamkur.getDouble(1);
-                    }    
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                } finally{
-                    if(rstamkur!=null){
-                        rstamkur.close();
-                    }
-                    if(pstamkur!=null){
-                        pstamkur.close();
-                    }
+            psperiksarad=koneksi.prepareStatement(
+                   "select jns_perawatan_radiologi.nm_perawatan, count(periksa_radiologi.kd_jenis_prw) as jml,periksa_radiologi.biaya as biaya, "+
+                   " sum(periksa_radiologi.biaya) as total,jns_perawatan_radiologi.kd_jenis_prw "+
+                   " from periksa_radiologi inner join jns_perawatan_radiologi "+
+                   " on jns_perawatan_radiologi.kd_jenis_prw=periksa_radiologi.kd_jenis_prw where "+
+                   " periksa_radiologi.no_rawat=? and periksa_radiologi.status like ? group by periksa_radiologi.kd_jenis_prw  ");            
+            try {
+                psperiksarad.setString(1,norawat);
+                if((chkRalan.isSelected()==true)&&(chkRanap.isSelected()==true)){
+                    psperiksarad.setString(2,"%%");
+                }else if((chkRalan.isSelected()==true)&&(chkRanap.isSelected()==false)){
+                    psperiksarad.setString(2,"%Ralan%");
+                }else if((chkRalan.isSelected()==false)&&(chkRanap.isSelected()==true)){
+                    psperiksarad.setString(2,"%Ranap%");
+                }else if((chkRalan.isSelected()==false)&&(chkRanap.isSelected()==false)){
+                    psperiksarad.setString(2,"%Kosong%");
                 }
-                tabModeRwJlDr.addRow(new Object[]{true,"                           ",rsperiksarad.getString("nm_perawatan"),":",
-                              rsperiksarad.getDouble("biaya"),rsperiksarad.getDouble("jml"),tamkur,(tamkur+rsperiksarad.getDouble("total")),"Radiologi"});
-                subttl=subttl+rsperiksarad.getDouble("total")+tamkur;
-            }            
-            
-            if(subttl>1){
-               tabModeRwJlDr.addRow(new Object[]{true,"","Total Periksa Radiologi : "+Valid.SetAngka(subttl),"",null,null,null,null,"TtlRadiologi"});
-            }
+                rsperiksarad=psperiksarad.executeQuery();            
+                if(rsperiksarad.next()){
+                       tabModeRwJlDr.addRow(new Object[]{true,x+". Pemeriksaan Radiologi",":","",null,null,null,null,"Radiologi"}); 
+                       x++;
+                }
+                rsperiksarad.beforeFirst();
+                while(rsperiksarad.next()){
+                    tamkur=0;
+                    pstamkur=koneksi.prepareStatement(sqlpstamkur);            
+                    try {
+                        pstamkur.setString(1,TNoRw.getText());
+                        pstamkur.setString(2,rsperiksarad.getString("nm_perawatan"));
+                        pstamkur.setString(3,"Radiologi");
+                        rstamkur=pstamkur.executeQuery();
+                        if(rstamkur.next()){
+                            tamkur=rstamkur.getDouble(1);
+                        }    
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rstamkur!=null){
+                            rstamkur.close();
+                        }
+                        if(pstamkur!=null){
+                            pstamkur.close();
+                        }
+                    }
+                    tabModeRwJlDr.addRow(new Object[]{true,"                           ",rsperiksarad.getString("nm_perawatan"),":",
+                                  rsperiksarad.getDouble("biaya"),rsperiksarad.getDouble("jml"),tamkur,(tamkur+rsperiksarad.getDouble("total")),"Radiologi"});
+                    subttl=subttl+rsperiksarad.getDouble("total")+tamkur;
+                }            
+
+                if(subttl>1){
+                   tabModeRwJlDr.addRow(new Object[]{true,"","Total Periksa Radiologi : "+Valid.SetAngka(subttl),"",null,null,null,null,"TtlRadiologi"});
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi Periksa Radiologi : "+e);
+            } finally{
+                if(rsperiksarad!=null){
+                    rsperiksarad.close();
+                }
+                if(psperiksarad!=null){
+                    psperiksarad.close();
+                }
+            }                
             
             if(detailjs>0){
                 tabModeRwJlDr.addRow(new Object[]{true,x+". Jasa Sarpras",":","",null,null,null,detailjs,"Ralan Dokter"});
@@ -5443,6 +5351,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             psoperasi=koneksi.prepareStatement(sqlpsoperasi);
             try {
                 psoperasi.setString(1,norawat);
+                if((chkRalan.isSelected()==true)&&(chkRanap.isSelected()==true)){
+                    psoperasi.setString(2,"%%");
+                }else if((chkRalan.isSelected()==true)&&(chkRanap.isSelected()==false)){
+                    psoperasi.setString(2,"%Ralan%");
+                }else if((chkRalan.isSelected()==false)&&(chkRanap.isSelected()==true)){
+                    psoperasi.setString(2,"%Ranap%");
+                }else if((chkRalan.isSelected()==false)&&(chkRanap.isSelected()==false)){
+                    psoperasi.setString(2,"%Kosong%");
+                }
                 rsoperasi=psoperasi.executeQuery();
                 if(rsoperasi.next()){
                        tabModeRwJlDr.addRow(new Object[]{true,x+". Operasi",":","",null,null,null,null,"Operasi"}); 
