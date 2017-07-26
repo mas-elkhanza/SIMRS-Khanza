@@ -1737,6 +1737,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgCariTagihanOperasi form=new DlgCariTagihanOperasi(null,false);
         //form.emptTeks();      
+        form.setPasien(TNoRw.getText());
         form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         form.setLocationRelativeTo(internalFrame1);
         form.setVisible(true);

@@ -297,8 +297,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TAlergi.setDocument(new batasInput((int)50).getKata(TAlergi));        
         TCari.setDocument(new batasInput((int)100).getKata(TCari));       
         TGCS.setDocument(new batasInput((byte)10).getKata(TGCS));
-        TTinggi.setDocument(new batasInput((byte)3).getOnlyAngka(TTinggi));
-        TBerat.setDocument(new batasInput((byte)3).getOnlyAngka(TBerat));
+        TTinggi.setDocument(new batasInput((byte)5).getKata(TTinggi));
+        TBerat.setDocument(new batasInput((byte)5).getKata(TBerat));
         TNadi.setDocument(new batasInput((byte)3).getOnlyAngka(TNadi));
         TRespirasi.setDocument(new batasInput((byte)3).getOnlyAngka(TRespirasi));
         if(koneksiDB.cariCepat().equals("aktif")){

@@ -185,6 +185,8 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         BtnCari5 = new widget.Button();
         label18 = new widget.Label();
         Tgl2 = new widget.Tanggal();
+        label15 = new widget.Label();
+        NoRawat = new widget.TextBox();
         panelisi1 = new widget.panelisi();
         label10 = new widget.Label();
         TCari = new widget.TextBox();
@@ -288,14 +290,14 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         internalFrame1.add(scrollPane1, java.awt.BorderLayout.CENTER);
 
         panelisi3.setName("panelisi3"); // NOI18N
-        panelisi3.setPreferredSize(new java.awt.Dimension(100, 44));
+        panelisi3.setPreferredSize(new java.awt.Dimension(100, 73));
         panelisi3.setLayout(null);
 
         label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
-        label11.setBounds(0, 10, 70, 23);
+        label11.setBounds(0, 40, 70, 23);
 
         Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
@@ -306,7 +308,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
             }
         });
         panelisi3.add(Tgl1);
-        Tgl1.setBounds(74, 10, 100, 23);
+        Tgl1.setBounds(74, 40, 100, 23);
 
         label13.setText("Pasien :");
         label13.setName("label13"); // NOI18N
@@ -348,7 +350,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         label18.setName("label18"); // NOI18N
         label18.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label18);
-        label18.setBounds(173, 10, 30, 23);
+        label18.setBounds(173, 40, 30, 23);
 
         Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
@@ -359,7 +361,23 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
             }
         });
         panelisi3.add(Tgl2);
-        Tgl2.setBounds(200, 10, 100, 23);
+        Tgl2.setBounds(200, 40, 100, 23);
+
+        label15.setText("No.Rawat :");
+        label15.setName("label15"); // NOI18N
+        label15.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelisi3.add(label15);
+        label15.setBounds(0, 10, 70, 23);
+
+        NoRawat.setName("NoRawat"); // NOI18N
+        NoRawat.setPreferredSize(new java.awt.Dimension(207, 23));
+        NoRawat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoRawatKeyPressed(evt);
+            }
+        });
+        panelisi3.add(NoRawat);
+        NoRawat.setBounds(74, 10, 226, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -774,6 +792,10 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
     }//GEN-LAST:event_MnUBahTagihanOperasiActionPerformed
 
+    private void NoRawatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRawatKeyPressed
+        Valid.pindah(evt, BtnKeluar,kdmem);
+    }//GEN-LAST:event_NoRawatKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -801,6 +823,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
     private javax.swing.JMenuItem MnHapusObatOperasi;
     private javax.swing.JMenuItem MnHapusTagihanOperasi;
     private javax.swing.JMenuItem MnUBahTagihanOperasi;
+    private widget.TextBox NoRawat;
     private widget.TextBox TCari;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
@@ -810,6 +833,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
     private widget.Label label10;
     private widget.Label label11;
     private widget.Label label13;
+    private widget.Label label15;
     private widget.Label label18;
     private widget.Label label9;
     private widget.TextBox nmmem;
@@ -825,14 +849,18 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         if(!kdmem.getText().equals("")){
             mem=" and pasien.no_rkm_medis='"+kdmem.getText()+"' ";
         }
+        String norawat="";
+        if(!NoRawat.getText().equals("")){
+            norawat=" and operasi.no_rawat='"+NoRawat.getText()+"' ";
+        }
         String sql="select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,operasi.jenis_anasthesi,"+
                    "operasi.tgl_operasi from operasi inner join reg_periksa inner join pasien "+
                     " on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    " where "+tanggal+mem+" and operasi.no_rawat like '%"+TCari.getText()+"%' or "+
-                    tanggal+mem+" and reg_periksa.no_rkm_medis like '%"+TCari.getText()+"%' or "+
-                    tanggal+mem+" and pasien.nm_pasien like '%"+TCari.getText()+"%' or "+
-                    tanggal+mem+" and operasi.tgl_operasi like '%"+TCari.getText()+"%' or "+
-                    tanggal+mem+" and operasi.jenis_anasthesi like '%"+TCari.getText()+"%'  "+                   
+                    " where "+tanggal+mem+norawat+" and operasi.no_rawat like '%"+TCari.getText()+"%' or "+
+                    tanggal+mem+norawat+" and reg_periksa.no_rkm_medis like '%"+TCari.getText()+"%' or "+
+                    tanggal+mem+norawat+" and pasien.nm_pasien like '%"+TCari.getText()+"%' or "+
+                    tanggal+mem+norawat+" and operasi.tgl_operasi like '%"+TCari.getText()+"%' or "+
+                    tanggal+mem+norawat+" and operasi.jenis_anasthesi like '%"+TCari.getText()+"%'  "+                   
                     " group by operasi.no_rawat,operasi.tgl_operasi order by operasi.tgl_operasi,operasi.no_rawat ";
         prosesCari(sql);
     }
@@ -1008,6 +1036,10 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
 
     public JButton getButton(){
         return BtnKeluar;
+    }
+    
+    public void setPasien(String pasien){
+        NoRawat.setText(pasien);
     }
  
 }
