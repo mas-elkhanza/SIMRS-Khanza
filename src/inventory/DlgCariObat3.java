@@ -1015,13 +1015,13 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                     stokmasuk=0;
                 }
                 if(tbObat.getValueAt(row,0).toString().equals("false")){
-                    if((stokmasuk-(pagi+siang+sore+malam))<0){
+                    /*if((stokmasuk-(pagi+siang+sore+malam))<0){
                         JOptionPane.showMessageDialog(null,"Maaf, Stok tidak cukup....!!!");
                         tbObat.requestFocus();
                         tbObat.setValueAt("0", row,kolom);  
-                    }else{
+                    }else{*/
                         tbObat.setValueAt((pagi+siang+sore+malam), row,9);  
-                    }  
+                    //}  
                 }else{
                     try {
                         kapasitas=1;
@@ -1048,14 +1048,14 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                             }
                         }
                             
-                        if((stokmasuk-((pagi/kapasitas)+(siang/kapasitas)+(sore/kapasitas)+(malam/kapasitas)))<0){
+                        /*if((stokmasuk-((pagi/kapasitas)+(siang/kapasitas)+(sore/kapasitas)+(malam/kapasitas)))<0){
                             JOptionPane.showMessageDialog(null,"Maaf, Stok tidak cukup....!!!");
                             tbObat.requestFocus();
                             tbObat.setValueAt("0", row,kolom);  
-                        }else{
+                        }else{*/
                             tbObat.setValueAt(((pagi/kapasitas)+(siang/kapasitas)+(sore/kapasitas)+(malam/kapasitas)), row,9);  
-                        }
-                    } catch (SQLException ex) {
+                        //}
+                    } catch (Exception ex) {
                         System.out.println(ex);
                     }
                 }
@@ -1073,13 +1073,13 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                 } catch (Exception e) {
                     stokmasuk=0;
                 }
-                if((stokmasuk-retur)<0){
+                /*if((stokmasuk-retur)<0){
                     JOptionPane.showMessageDialog(null,"Maaf, Stok tidak cukup....!!!");
                     tbObat.requestFocus();
                     tbObat.setValueAt("0", row,kolom);  
-                }else{
+                }else{*/
                     tbObat.setValueAt((stokmasuk-retur), row,12);   
-                }   
+                //}   
             }
         }
     }

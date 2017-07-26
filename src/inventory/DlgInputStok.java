@@ -576,8 +576,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     if(!tbDokter.getValueAt(i,0).toString().equals("")){
                         try {
                             if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>=0){
-                                if(Sequel.menyimpantf("opname","?,?,?,?,?,?,?,?","Stok Opname",8,new String[]{
-                                        tbDokter.getValueAt(i,1).toString(),Valid.SetTgl(Tgl.getSelectedItem()+""),tbDokter.getValueAt(i,6).toString(),
+                                if(Sequel.menyimpantf("opname","?,?,?,?,?,?,?,?,?","Stok Opname",9,new String[]{
+                                        tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,5).toString(),Valid.SetTgl(Tgl.getSelectedItem()+""),tbDokter.getValueAt(i,6).toString(),
                                         tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,7).toString(),tbDokter.getValueAt(i,8).toString(),catatan.getText(),kdgudang.getText()})==true){
                                     Trackobat.catatRiwayat(tbDokter.getValueAt(i,1).toString(),Valid.SetAngka(tbDokter.getValueAt(i,0).toString()),0,"Opname",var.getkode(),kdgudang.getText(),"Simpan");
                                     Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,1).toString()+"','"+kdgudang.getText()+"','"+tbDokter.getValueAt(i,0).toString()+"'", 

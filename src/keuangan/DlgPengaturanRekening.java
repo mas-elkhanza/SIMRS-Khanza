@@ -1228,7 +1228,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Harian_Ranap),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Harian_Ranap)
             });
-            tabMode.addRow(new Object[]{" [Kredit] Akun Pendapatan Uang Muka Pasien pada Billing menu Rawat Inap",Uang_Muka_Ranap,
+            tabMode.addRow(new Object[]{" [Kredit] Akun Uang Muka Pasien pada Billing menu Rawat Inap",Uang_Muka_Ranap,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Uang_Muka_Ranap),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Uang_Muka_Ranap),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Uang_Muka_Ranap)

@@ -57,7 +57,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"Kode Barang","Nama Barang","Satuan","Tanggal","Stok","Real",
+        Object[] row={"Kode Barang","Nama Barang","Harga Beli","Satuan","Tanggal","Stok","Real",
                       "Selisih","Nominal Hilang(Rp)","Keterangan","Kode Lokasi","Nama Lokasi"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -67,30 +67,32 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 12; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(80);
             }else if(i==1){
-                column.setPreferredWidth(160);
+                column.setPreferredWidth(170);
             }else if(i==2){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(90);
             }else if(i==3){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(50);
             }else if(i==4){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(80);
             }else if(i==5){
                 column.setPreferredWidth(35);
             }else if(i==6){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(35);
             }else if(i==7){
+                column.setPreferredWidth(40);
+            }else if(i==8){
                 column.setPreferredWidth(100);
             }else if(i==9){
                 column.setPreferredWidth(120);
-            }else if(i==8){
-                column.setPreferredWidth(90);
             }else if(i==10){
-                column.setPreferredWidth(160);
+                column.setPreferredWidth(90);
+            }else if(i==11){
+                column.setPreferredWidth(130);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -113,7 +115,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         }           
                 
         try {
-             pstampil=koneksi.prepareStatement("select opname.kode_brng, databarang.nama_brng, databarang.kode_sat, opname.tanggal, opname.stok, "+
+             pstampil=koneksi.prepareStatement("select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
                   "opname.real, opname.selisih, opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal "+
                   "from opname inner join databarang inner join bangsal "+
                   "on opname.kode_brng=databarang.kode_brng and opname.kd_bangsal=bangsal.kd_bangsal "+
@@ -639,7 +641,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptOpname.jrxml","report","::[ Stok Opname ]::","select opname.kode_brng, databarang.nama_brng, databarang.kode_sat, opname.tanggal, opname.stok, "+
+            Valid.MyReport("rptOpname.jrxml","report","::[ Stok Opname ]::","select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, "+
                   "opname.real, opname.selisih, opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal "+
                   "from opname inner join databarang inner join bangsal "+
                   "on opname.kode_brng=databarang.kode_brng and opname.kd_bangsal=bangsal.kd_bangsal "+
@@ -837,15 +839,16 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
                 total=total+rstampil.getDouble(8);
                 tabMode.addRow(new Object[]{rstampil.getString(1),
                                rstampil.getString(2),
-                               rstampil.getString(3),
+                               df2.format(rstampil.getDouble(3)),
                                rstampil.getString(4),
                                rstampil.getString(5),
-                               rstampil.getString(6),                              
-                               rstampil.getString(7),
-                               df2.format(rstampil.getDouble(8)),
-                               rstampil.getString(9),
+                               rstampil.getString(6),
+                               rstampil.getString(7),                              
+                               rstampil.getString(8),
+                               df2.format(rstampil.getDouble(9)),
                                rstampil.getString(10),
-                               rstampil.getString(11)});
+                               rstampil.getString(11),
+                               rstampil.getString(12)});
             }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
@@ -873,14 +876,14 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
             Kdbar.setText(tbKamar.getValueAt(row,0).toString());
             Kd2.setText(tbKamar.getValueAt(row,0).toString());
             Nmbar.setText(tbKamar.getValueAt(row,1).toString());
-            Stok.setText(tbKamar.getValueAt(row,4).toString());
-            Real.setText(tbKamar.getValueAt(row,5).toString());            
-            Selisih.setText(tbKamar.getValueAt(row,6).toString());        
-            Nominal.setText(tbKamar.getValueAt(row,7).toString());      
-            Keterangan.setText(tbKamar.getValueAt(row,8).toString());   
-            kdgudang.setText(tbKamar.getValueAt(row,9).toString());   
-            nmgudang.setText(tbKamar.getValueAt(row,10).toString());       
-            Valid.SetTgl(Tanggal,tbKamar.getValueAt(row,3).toString());
+            Stok.setText(tbKamar.getValueAt(row,5).toString());
+            Real.setText(tbKamar.getValueAt(row,6).toString());            
+            Selisih.setText(tbKamar.getValueAt(row,7).toString());        
+            Nominal.setText(tbKamar.getValueAt(row,8).toString());      
+            Keterangan.setText(tbKamar.getValueAt(row,9).toString());   
+            kdgudang.setText(tbKamar.getValueAt(row,10).toString());   
+            nmgudang.setText(tbKamar.getValueAt(row,11).toString());       
+            Valid.SetTgl(Tanggal,tbKamar.getValueAt(row,4).toString());
         }
     }
 

@@ -172,6 +172,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnHapusObatOperasi = new javax.swing.JMenuItem();
         MnHapusTagihanOperasi = new javax.swing.JMenuItem();
+        MnUBahTagihanOperasi = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -226,6 +227,20 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnHapusTagihanOperasi);
+
+        MnUBahTagihanOperasi.setBackground(new java.awt.Color(255, 255, 255));
+        MnUBahTagihanOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnUBahTagihanOperasi.setForeground(java.awt.Color.darkGray);
+        MnUBahTagihanOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnUBahTagihanOperasi.setText("Ubah Tagihan Operasi");
+        MnUBahTagihanOperasi.setName("MnUBahTagihanOperasi"); // NOI18N
+        MnUBahTagihanOperasi.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnUBahTagihanOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnUBahTagihanOperasiActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnUBahTagihanOperasi);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -755,6 +770,10 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
+    private void MnUBahTagihanOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnUBahTagihanOperasiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnUBahTagihanOperasiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -781,6 +800,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
     private widget.Label LTotal;
     private javax.swing.JMenuItem MnHapusObatOperasi;
     private javax.swing.JMenuItem MnHapusTagihanOperasi;
+    private javax.swing.JMenuItem MnUBahTagihanOperasi;
     private widget.TextBox TCari;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;

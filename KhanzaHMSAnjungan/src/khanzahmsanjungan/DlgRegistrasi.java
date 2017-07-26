@@ -32,6 +32,7 @@ public class DlgRegistrasi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
+    private String umur="0",sttsumur="Th";
 
     /** Creates new form DlgAdmin
      * @param parent
@@ -42,7 +43,15 @@ public class DlgRegistrasi extends javax.swing.JDialog {
        
         try{
            ps=koneksi.prepareStatement(
-                   "select * from pasien where no_rkm_medis=?"); 
+                   "select nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,"+
+                        "namakeluarga,keluarga,pasien.kd_pj,penjab.png_jawab,if(tgl_daftar=?,'Baru','Lama') as daftar, "+
+                        "TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) as tahun, "+
+                        "(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12)) as bulan, "+
+                        "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari from pasien "+
+                        "inner join kelurahan inner join kecamatan inner join kabupaten inner join penjab "+
+                        "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_pj=penjab.kd_pj "+
+                        "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
+                        "where pasien.no_rkm_medis=?"); 
         }catch(Exception ex){
             System.out.println(ex);
         }
@@ -586,11 +595,12 @@ public class DlgRegistrasi extends javax.swing.JDialog {
     }//GEN-LAST:event_NmBayarKeyPressed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",15,
+        if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,
             new String[]{LblNoReg.getText(),LblNoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),LblJam.getText(),
             LblKdDokter.getText(),LblNoRm.getText(),LblKdPoli.getText(),PngJawab.getText(),
             AlamatPngJawab.getText(),HubunganPngJawab.getText(),Biaya.getText(),"Belum",
-            Status.getText(),"Ralan",KdBayar.getText()})==true){
+            Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur})==true){
+                UpdateUmur();
                 DlgCetak cetak=new DlgCetak(null,true);
                 cetak.setSize(this.getWidth(),this.getHeight());
                 cetak.setLocationRelativeTo(this);
@@ -605,11 +615,12 @@ public class DlgRegistrasi extends javax.swing.JDialog {
             LblNoRawat.setText(NoRawat.getText());
             LblTanggal.setText(Tanggal.getSelectedItem().toString());
             LblJam.setText(Sequel.cariIsi("select current_time()"));
-            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",15,
+            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,
                 new String[]{LblNoReg.getText(),LblNoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),LblJam.getText(),
                 LblKdDokter.getText(),LblNoRm.getText(),LblKdPoli.getText(),PngJawab.getText(),
                 AlamatPngJawab.getText(),HubunganPngJawab.getText(),Biaya.getText(),"Belum",
-                Status.getText(),"Ralan",KdBayar.getText()})==true){
+                Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur})==true){
+                    UpdateUmur();
                     DlgCetak cetak=new DlgCetak(null,true);
                     cetak.setSize(this.getWidth(),this.getHeight());
                     cetak.setLocationRelativeTo(this);
@@ -742,23 +753,34 @@ public class DlgRegistrasi extends javax.swing.JDialog {
         LblTanggal.setText(Tanggal.getSelectedItem().toString());
         LblJam.setText(Sequel.cariIsi("select current_time()"));
         try {
-            ps.setString(1,norm);
+            ps.setString(1,Valid.SetTgl(Tanggal.getSelectedItem()+""));
+            ps.setString(2,norm);
             rs=ps.executeQuery();
             if(rs.next()){
                 LblNama.setText(rs.getString("nm_pasien"));
                 PngJawab.setText(rs.getString("namakeluarga"));
                 HubunganPngJawab.setText(rs.getString("keluarga"));
-                AlamatPngJawab.setText(rs.getString("alamatpj")+", "+rs.getString("kelurahanpj")+", "+rs.getString("kecamatanpj")+", "+rs.getString("kabupatenpj"));
-                if(Valid.SetTgl(Tanggal.getSelectedItem()+"").equals(rs.getString("tgl_daftar"))){
-                    Status.setText("Baru");
-                }else{
-                    Status.setText("Lama");
+                AlamatPngJawab.setText(rs.getString("asal"));
+                Status.setText(rs.getString("daftar"));
+                umur="0";
+                sttsumur="Th";
+                if(rs.getInt("tahun")>0){
+                    umur=rs.getString("tahun");
+                    sttsumur="Th";
+                }else if(rs.getInt("tahun")==0){
+                    if(rs.getInt("bulan")>0){
+                        umur=rs.getString("bulan");
+                        sttsumur="Bl";
+                    }else if(rs.getInt("bulan")==0){
+                        umur=rs.getString("hari");
+                        sttsumur="Hr";
+                    }
                 }
                 KdBayar.setText(rs.getString("kd_pj"));
                 NmBayar.setText(Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",KdBayar.getText()));
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
+            System.out.println("Notifikasi a : "+e);
         }
         LblKdPoli.setText(kodepoli);
         LblNamaPoli.setText(Sequel.cariIsi("select nm_poli from poliklinik where kd_poli=?", kodepoli));
@@ -769,5 +791,9 @@ public class DlgRegistrasi extends javax.swing.JDialog {
         }
         LblKdDokter.setText(kddokter);
         LblDokter.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", kddokter));
+    }
+    
+    private void UpdateUmur(){
+        Sequel.mengedit("pasien","no_rkm_medis=?","umur=CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '),CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')),CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))",1,new String[]{LblNoRm.getText()});
     }
 }
