@@ -636,7 +636,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     Resep_Pulang_Ranap=rsrekening.getString("Resep_Pulang_Ranap");
                     Kamar_Inap=rsrekening.getString("Kamar_Inap");
                     Operasi_Ranap=rsrekening.getString("Operasi_Ranap");
-                    Harian_Ranap=rsrekening.getString("Suspen_Piutang_Operasi_Ranap");
+                    Harian_Ranap=rsrekening.getString("Harian_Ranap");
                     Uang_Muka_Ranap=rsrekening.getString("Uang_Muka_Ranap");
                     Piutang_Pasien_Ranap=rsrekening.getString("Piutang_Pasien_Ranap");
                     Service_Ranap=rsrekening.getString("Service_Ranap");
@@ -1897,7 +1897,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         panelGlass1.add(jLabel4);
 
         DTPTgl.setForeground(new java.awt.Color(100, 100, 100));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2017 10:32:10" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-07-2017 09:26:47" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -2217,6 +2217,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         panelBayar.add(jLabel13);
         jLabel13.setBounds(0, 380, 110, 23);
 
+        Deposit.setEditable(false);
         Deposit.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         Deposit.setName("Deposit"); // NOI18N
         panelBayar.add(Deposit);
@@ -4765,11 +4766,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(rsservice.getString("resep_Pulang").equals("Yes")){
                                 resep_Pulangserv=ttlResep_Pulang;
                             }
-                            ttlService=(rsservice.getDouble("besar")/100)*
+                            ttlService=Valid.roundUp((rsservice.getDouble("besar")/100)*
                                     (laboratserv+radiologiserv+operasiserv+obatserv+
                                     ranap_dokterserv+ranap_paramedisserv+ralan_dokterserv+
                                     ralan_paramedisserv+tambahanserv+potonganserv+
-                                    kamarserv+registrasiserv+harianserv+retur_Obatserv+resep_Pulangserv);
+                                    kamarserv+registrasiserv+harianserv+retur_Obatserv+resep_Pulangserv),100);
                             ttl=ttl+ttlService;
                             tabModeRwJlDr.addRow(new Object[]{true,rsservice.getString("nama_service"),":","",null,null,null,ttlService,"Service"});
                         }                    
@@ -4868,7 +4869,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             total=ttl; 
         }
         
-        tagihanppn=besarppn+total;
+        tagihanppn=Valid.roundUp(besarppn+total,100);
         TagihanPPn.setText(Valid.SetAngka(tagihanppn));
         
         if(piutang<=0){
