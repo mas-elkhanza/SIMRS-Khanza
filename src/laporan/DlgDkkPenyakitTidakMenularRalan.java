@@ -54,7 +54,7 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
 
-        Object[] rowRwJlDr={"No.","Jenis Penyakit","< 1(L)","< 1(P)","1-4(L)","1-4(P)","5-14(L)","5-14(P)","15-44(L)","15-44(P)",
+        Object[] rowRwJlDr={"No.","ICD 10","Jenis Penyakit","< 1(L)","< 1(P)","1-4(L)","1-4(P)","5-14(L)","5-14(P)","15-44(L)","15-44(P)",
                             "45-64(L)","45-64(P)",">65(L)",">65(P)","Total(L)","Total(P)","Total(Jml)","Meninggal(L)","Meninggal(P)"};
         tabMode=new DefaultTableModel(null,rowRwJlDr){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -64,20 +64,22 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 19; i++) {
+        for (i = 0; i < 20; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(30);
             }else if(i==1){
-                column.setPreferredWidth(170);
-            }else if(i==16){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(60);
+            }else if(i==2){
+                column.setPreferredWidth(200);
             }else if(i==17){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==18){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(75);
+            }else if(i==19){
+                column.setPreferredWidth(75);
             }else{
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(47);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -297,8 +299,8 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
             for(int r=0;r<tabMode.getRowCount();r++){  
                     Sequel.menyimpan("temporary","'0','"+
                                     tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                    tabMode.getValueAt(r,1).toString().replaceAll("RUMAH SAKIT","                                  RUMAH SAKIT")+"','"+
-                                    tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
+                                    tabMode.getValueAt(r,1).toString().replaceAll("'","`") +"','"+
+                                    tabMode.getValueAt(r,2).toString().replaceAll("RUMAH SAKIT","                              RUMAH SAKIT")+"','"+
                                     tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','"+
@@ -314,7 +316,8 @@ public final class DlgDkkPenyakitTidakMenularRalan extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,15).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,16).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,17).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                    tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','"+
+                                    tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
             }
             Sequel.AutoComitTrue();   
             Valid.MyReport("rptDkkPenyakitTakMenularRalan.jrxml","report","::[ Penyakit Tidak Menular Rawat Jalan ]::",
@@ -532,12 +535,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 ttotalp=ttotalp+kr1p+th1s4p+th5s14p+th15S44p+th45s64p+th65plusp;
                 ttotaljml=ttotall+ttotalp;
                 tabMode.addRow(new Object[]{
-                   i,rs.getString("nm_penyakit"),kr1l,kr1p,th1s4l,th1s4p,th5s14l,th5s14p,th15s44l,th15S44p,th45s64l,th45s64p,th65plusl,th65plusp,totall,totalp,totaljml,matil,matip
+                   i,rs.getString("kd_penyakit"),rs.getString("nm_penyakit"),kr1l,kr1p,th1s4l,th1s4p,th5s14l,th5s14p,th15s44l,th15S44p,th45s64l,th45s64p,th65plusl,th65plusp,totall,totalp,totaljml,matil,matip
                 });
                 i++;                
             } 
             tabMode.addRow(new Object[]{
-                   "","RUMAH SAKIT",tkr1l,tkr1p,tth1s4l,tth1s4p,tth5s14l,tth5s14p,tth15s44l,tth15S44p,tth45s64l,tth45s64p,tth65plusl,tth65plusp,ttotall,ttotalp,ttotaljml,tmatil,tmatip
+                   "","","RUMAH SAKIT",tkr1l,tkr1p,tth1s4l,tth1s4p,tth5s14l,tth5s14p,tth15s44l,tth15S44p,tth45s64l,tth45s64p,tth65plusl,tth65plusp,ttotall,ttotalp,ttotaljml,tmatil,tmatip
             });
                 
             this.setCursor(Cursor.getDefaultCursor());
