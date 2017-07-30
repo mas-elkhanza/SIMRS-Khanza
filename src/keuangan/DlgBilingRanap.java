@@ -5734,41 +5734,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void tampilAkunBayarTersimpan() {
          try{           
              Valid.tabelKosong(tabModeAkunBayar);
-             jml=0;
-             for(z=0;z<tbAkunBayar.getRowCount();z++){
-                if(!tbAkunBayar.getValueAt(z,2).toString().equals("")){
-                    jml++;
-                }
-             }
-             Nama_Akun_Bayar=null;
-             Kode_Rek_Bayar=null;
-             Bayar=null;
-             PPN_Persen=null;
-             PPN_Besar=null;
-             Nama_Akun_Bayar=new String[jml];
-             Kode_Rek_Bayar=new String[jml];
-             Bayar=new String[jml];
-             PPN_Persen=new String[jml];
-             PPN_Besar=new String[jml];
-             
-             jml=0;
-             for(z=0;z<tbAkunBayar.getRowCount();z++){
-                if(!tbAkunBayar.getValueAt(z,2).toString().equals("")){
-                    Nama_Akun_Bayar[jml]=tbAkunBayar.getValueAt(z,0).toString();
-                    Kode_Rek_Bayar[jml]=tbAkunBayar.getValueAt(z,1).toString();
-                    Bayar[jml]=tbAkunBayar.getValueAt(z,2).toString();
-                    PPN_Persen[jml]=tbAkunBayar.getValueAt(z,3).toString();
-                    PPN_Besar[jml]=tbAkunBayar.getValueAt(z,4).toString();
-                    jml++;
-                }
-             }
-             
-             for(z=0;z<jml;z++){
-                tabModeAkunBayar.addRow(new Object[] {
-                    Nama_Akun_Bayar[z],Kode_Rek_Bayar[z],Bayar[z],PPN_Persen[z],PPN_Besar[z]
-                });
-             }
-             
              psakunbayar=koneksi.prepareStatement(
                      "select akun_bayar.nama_bayar,akun_bayar.kd_rek,detail_nota_inap.besar_bayar,"+
                      "akun_bayar.ppn,detail_nota_inap.besarppn from akun_bayar inner join detail_nota_inap "+
@@ -5862,42 +5827,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void tampilAkunPiutangTersimpan() {
          try{    
              Valid.tabelKosong(tabModeAkunPiutang);
-             jml=0;
-             for(z=0;z<tbAkunPiutang.getRowCount();z++){
-                if(!tbAkunPiutang.getValueAt(z,3).toString().equals("")){
-                    jml++;
-                }
-             }
-            
-             Nama_Akun_Piutang=null;
-             Nama_Akun_Piutang=new String[jml];
-             Kode_Rek_Piutang=null;
-             Kode_Rek_Piutang=new String[jml];
-             Kd_PJ=null;
-             Kd_PJ=new String[jml];
-             Besar_Piutang=null;
-             Besar_Piutang=new String[jml];
-             Jatuh_Tempo=null;
-             Jatuh_Tempo=new String[jml];
-             
-             jml=0;             
-             for(z=0;z<tbAkunPiutang.getRowCount();z++){
-                if(!tbAkunPiutang.getValueAt(z,3).toString().equals("")){
-                    Nama_Akun_Piutang[jml]=tbAkunPiutang.getValueAt(z,0).toString();
-                    Kode_Rek_Piutang[jml]=tbAkunPiutang.getValueAt(z,1).toString();
-                    Kd_PJ[jml]=tbAkunPiutang.getValueAt(z,2).toString();
-                    Besar_Piutang[jml]=tbAkunPiutang.getValueAt(z,3).toString();
-                    Jatuh_Tempo[jml]=tbAkunPiutang.getValueAt(z,4).toString(); 
-                    jml++;
-                }
-             }            
-        
-             for(z=0;z<jml;z++){
-                tabModeAkunPiutang.addRow(new Object[] {
-                    Nama_Akun_Piutang[z],Kode_Rek_Piutang[z],Kd_PJ[z],Besar_Piutang[z],Jatuh_Tempo[z]
-                });
-             }
-             
              psakunpiutang=koneksi.prepareStatement(
                      "select akun_piutang.nama_bayar,akun_piutang.kd_rek,akun_piutang.kd_pj, "+
                      "detail_piutang_pasien.totalpiutang,date_format(detail_piutang_pasien.tgltempo,'%d/%m/%Y') from "+
