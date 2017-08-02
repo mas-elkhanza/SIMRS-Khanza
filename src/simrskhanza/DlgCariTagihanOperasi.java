@@ -1366,11 +1366,6 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDokter.setComponentPopupMenu(jPopupMenu1);
         tbDokter.setName("tbDokter"); // NOI18N
-        tbDokter.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                tbDokterMouseMoved(evt);
-            }
-        });
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbDokterMouseClicked(evt);
@@ -1700,7 +1695,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        WindowGantiDokterParamedis.setVisible(true);
+        WindowGantiDokterParamedis.dispose();
+        petugas.dispose();
+        dokter.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -2642,16 +2639,6 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
     private void kdonloop5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdonloop5KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_kdonloop5KeyPressed
-
-    private void tbDokterMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDokterMouseMoved
-        Window[] wins = Window.getWindows();
-        for (Window win : wins) {
-            if (win instanceof JDialog) {
-                win.setLocationRelativeTo(internalFrame1);
-                win.toFront();
-            }
-        }  
-    }//GEN-LAST:event_tbDokterMouseMoved
 
     /**
     * @param args the command line arguments
