@@ -1387,6 +1387,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         BtnPrint.setEnabled(var.getperiksa_radiologi());
     }
  
-
+    public void setPasien(String pasien){
+        NoRawat.setText(pasien);
+    }
  
 }

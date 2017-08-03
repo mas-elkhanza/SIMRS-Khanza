@@ -636,7 +636,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     Resep_Pulang_Ranap=rsrekening.getString("Resep_Pulang_Ranap");
                     Kamar_Inap=rsrekening.getString("Kamar_Inap");
                     Operasi_Ranap=rsrekening.getString("Operasi_Ranap");
-                    Harian_Ranap=rsrekening.getString("Suspen_Piutang_Operasi_Ranap");
+                    Harian_Ranap=rsrekening.getString("Harian_Ranap");
                     Uang_Muka_Ranap=rsrekening.getString("Uang_Muka_Ranap");
                     Piutang_Pasien_Ranap=rsrekening.getString("Piutang_Pasien_Ranap");
                     Service_Ranap=rsrekening.getString("Service_Ranap");
@@ -1897,7 +1897,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         panelGlass1.add(jLabel4);
 
         DTPTgl.setForeground(new java.awt.Color(100, 100, 100));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2017 10:32:10" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-07-2017 09:26:47" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -2217,6 +2217,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         panelBayar.add(jLabel13);
         jLabel13.setBounds(0, 380, 110, 23);
 
+        Deposit.setEditable(false);
         Deposit.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         Deposit.setName("Deposit"); // NOI18N
         panelBayar.add(Deposit);
@@ -4765,11 +4766,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             if(rsservice.getString("resep_Pulang").equals("Yes")){
                                 resep_Pulangserv=ttlResep_Pulang;
                             }
-                            ttlService=(rsservice.getDouble("besar")/100)*
+                            ttlService=Valid.roundUp((rsservice.getDouble("besar")/100)*
                                     (laboratserv+radiologiserv+operasiserv+obatserv+
                                     ranap_dokterserv+ranap_paramedisserv+ralan_dokterserv+
                                     ralan_paramedisserv+tambahanserv+potonganserv+
-                                    kamarserv+registrasiserv+harianserv+retur_Obatserv+resep_Pulangserv);
+                                    kamarserv+registrasiserv+harianserv+retur_Obatserv+resep_Pulangserv),100);
                             ttl=ttl+ttlService;
                             tabModeRwJlDr.addRow(new Object[]{true,rsservice.getString("nama_service"),":","",null,null,null,ttlService,"Service"});
                         }                    
@@ -4868,7 +4869,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             total=ttl; 
         }
         
-        tagihanppn=besarppn+total;
+        tagihanppn=Valid.roundUp(besarppn+total,100);
         TagihanPPn.setText(Valid.SetAngka(tagihanppn));
         
         if(piutang<=0){
@@ -5733,41 +5734,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void tampilAkunBayarTersimpan() {
          try{           
              Valid.tabelKosong(tabModeAkunBayar);
-             jml=0;
-             for(z=0;z<tbAkunBayar.getRowCount();z++){
-                if(!tbAkunBayar.getValueAt(z,2).toString().equals("")){
-                    jml++;
-                }
-             }
-             Nama_Akun_Bayar=null;
-             Kode_Rek_Bayar=null;
-             Bayar=null;
-             PPN_Persen=null;
-             PPN_Besar=null;
-             Nama_Akun_Bayar=new String[jml];
-             Kode_Rek_Bayar=new String[jml];
-             Bayar=new String[jml];
-             PPN_Persen=new String[jml];
-             PPN_Besar=new String[jml];
-             
-             jml=0;
-             for(z=0;z<tbAkunBayar.getRowCount();z++){
-                if(!tbAkunBayar.getValueAt(z,2).toString().equals("")){
-                    Nama_Akun_Bayar[jml]=tbAkunBayar.getValueAt(z,0).toString();
-                    Kode_Rek_Bayar[jml]=tbAkunBayar.getValueAt(z,1).toString();
-                    Bayar[jml]=tbAkunBayar.getValueAt(z,2).toString();
-                    PPN_Persen[jml]=tbAkunBayar.getValueAt(z,3).toString();
-                    PPN_Besar[jml]=tbAkunBayar.getValueAt(z,4).toString();
-                    jml++;
-                }
-             }
-             
-             for(z=0;z<jml;z++){
-                tabModeAkunBayar.addRow(new Object[] {
-                    Nama_Akun_Bayar[z],Kode_Rek_Bayar[z],Bayar[z],PPN_Persen[z],PPN_Besar[z]
-                });
-             }
-             
              psakunbayar=koneksi.prepareStatement(
                      "select akun_bayar.nama_bayar,akun_bayar.kd_rek,detail_nota_inap.besar_bayar,"+
                      "akun_bayar.ppn,detail_nota_inap.besarppn from akun_bayar inner join detail_nota_inap "+
@@ -5861,42 +5827,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void tampilAkunPiutangTersimpan() {
          try{    
              Valid.tabelKosong(tabModeAkunPiutang);
-             jml=0;
-             for(z=0;z<tbAkunPiutang.getRowCount();z++){
-                if(!tbAkunPiutang.getValueAt(z,3).toString().equals("")){
-                    jml++;
-                }
-             }
-            
-             Nama_Akun_Piutang=null;
-             Nama_Akun_Piutang=new String[jml];
-             Kode_Rek_Piutang=null;
-             Kode_Rek_Piutang=new String[jml];
-             Kd_PJ=null;
-             Kd_PJ=new String[jml];
-             Besar_Piutang=null;
-             Besar_Piutang=new String[jml];
-             Jatuh_Tempo=null;
-             Jatuh_Tempo=new String[jml];
-             
-             jml=0;             
-             for(z=0;z<tbAkunPiutang.getRowCount();z++){
-                if(!tbAkunPiutang.getValueAt(z,3).toString().equals("")){
-                    Nama_Akun_Piutang[jml]=tbAkunPiutang.getValueAt(z,0).toString();
-                    Kode_Rek_Piutang[jml]=tbAkunPiutang.getValueAt(z,1).toString();
-                    Kd_PJ[jml]=tbAkunPiutang.getValueAt(z,2).toString();
-                    Besar_Piutang[jml]=tbAkunPiutang.getValueAt(z,3).toString();
-                    Jatuh_Tempo[jml]=tbAkunPiutang.getValueAt(z,4).toString(); 
-                    jml++;
-                }
-             }            
-        
-             for(z=0;z<jml;z++){
-                tabModeAkunPiutang.addRow(new Object[] {
-                    Nama_Akun_Piutang[z],Kode_Rek_Piutang[z],Kd_PJ[z],Besar_Piutang[z],Jatuh_Tempo[z]
-                });
-             }
-             
              psakunpiutang=koneksi.prepareStatement(
                      "select akun_piutang.nama_bayar,akun_piutang.kd_rek,akun_piutang.kd_pj, "+
                      "detail_piutang_pasien.totalpiutang,date_format(detail_piutang_pasien.tgltempo,'%d/%m/%Y') from "+

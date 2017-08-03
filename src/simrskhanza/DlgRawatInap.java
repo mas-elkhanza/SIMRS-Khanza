@@ -305,7 +305,9 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TSuhu.setDocument(new batasInput((byte)5).getKata(TSuhu));
         TTensi.setDocument(new batasInput((byte)7).getKata(TTensi));
         TCariPasien.setDocument(new batasInput((byte)20).getKata(TCariPasien));
-        TKeluhan.setDocument(new batasInput((int)300).getKata(TKeluhan));
+        TKeluhan.setDocument(new batasInput((int)300).getKata(TKeluhan));        
+        TTinggi.setDocument(new batasInput((byte)5).getKata(TTinggi));
+        TBerat.setDocument(new batasInput((byte)5).getKata(TBerat));
         TPemeriksaan.setDocument(new batasInput((int)300).getKata(TPemeriksaan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));        
         if(koneksiDB.cariCepat().equals("aktif")){

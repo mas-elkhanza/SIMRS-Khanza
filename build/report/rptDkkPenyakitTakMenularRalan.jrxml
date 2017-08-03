@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="1"/>
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="651"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="tanggal" class="java.util.Date"/>
 	<parameter name="tkr1l" class="java.lang.Integer"/>
@@ -242,7 +242,7 @@
 				<text><![CDATA[L]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="27" y="2" width="221" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="61" y="2" width="187" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
@@ -535,6 +535,19 @@
 					<pen lineWidth="0.25"/>
 				</graphicElement>
 			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="25" y="2" width="35" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ICD 10]]></text>
+			</staticText>
+			<line>
+				<reportElement x="60" y="1" width="1" height="25"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
@@ -547,130 +560,130 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="27" y="1" width="218" height="10"/>
+				<reportElement stretchType="RelativeToBandHeight" x="62" y="1" width="186" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp2}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="250" y="1" width="28" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp3}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="280" y="1" width="31" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp4}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp5}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="313" y="1" width="28" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp5}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp6}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="343" y="1" width="28" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp6}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp7}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="373" y="1" width="28" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp7}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp8}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="403" y="1" width="28" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp8}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp9}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="433" y="1" width="28" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp9}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp10}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="463" y="1" width="28" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp10}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp11}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="493" y="1" width="28" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp11}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp12}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="523" y="1" width="28" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp12}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp13}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="553" y="1" width="28" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp13}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp14}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="583" y="1" width="28" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp14}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp15}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="613" y="1" width="42" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp15}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp16}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="657" y="1" width="42" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp16}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp17}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="701" y="1" width="46" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp17}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp18}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="749" y="1" width="25" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp18}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp19}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="775" y="1" width="25" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp19}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp20}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement stretchType="RelativeToBandHeight" x="774" y="0" width="1" height="12"/>
@@ -794,6 +807,19 @@
 			</line>
 			<line>
 				<reportElement stretchType="RelativeToBandHeight" x="801" y="0" width="1" height="12"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="26" y="1" width="34" height="10"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp2}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" x="60" y="0" width="1" height="12"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
