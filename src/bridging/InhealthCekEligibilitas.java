@@ -2703,7 +2703,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
     private void MnDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDocumentActionPerformed
         if(!nosep.equals("")){
             DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,true);
-            pilihan.tampil();
+            pilihan.tampil3();
             if((JenisPelayanan.getSelectedIndex()==0)||(JenisPelayanan.getSelectedIndex()==2)){
                 pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
                         TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(), 
@@ -2718,7 +2718,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             pilihan.setLocationRelativeTo(internalFrame1);
             pilihan.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null,"Data SEP belum tersimpan, berkas tidak bisa dicetak...!");
+            JOptionPane.showMessageDialog(null,"Data SJP belum tersimpan, berkas tidak bisa dicetak...!");
         }
     }//GEN-LAST:event_MnDocumentActionPerformed
 

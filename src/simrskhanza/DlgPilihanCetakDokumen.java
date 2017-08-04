@@ -1017,9 +1017,9 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                     param.put("propinsirs",var.getpropinsirs());
                     param.put("kontakrs",var.getkontakrs());
                     if(JenisPelayanan.equals("ranap")){
-                        Valid.MyReport("rptBridgingSJP.jrxml","report","::[ Cetak SEP ]::","select * from bridging_sep where no_sjp='"+NoSEP+"'",param);
+                        Valid.MyReport("rptBridgingSJP.jrxml","report","::[ Cetak SEP ]::","select * from bridging_inhealth where no_sjp='"+NoSEP+"'",param);
                     }else{
-                        Valid.MyReport("rptBridgingSJP2.jrxml","report","::[ Cetak SEP ]::","select * from bridging_sep where no_sjp='"+NoSEP+"'",param);
+                        Valid.MyReport("rptBridgingSJP2.jrxml","report","::[ Cetak SEP ]::","select * from bridging_inhealth where no_sjp='"+NoSEP+"'",param);
                     }                
                     this.setCursor(Cursor.getDefaultCursor());
                 }                    

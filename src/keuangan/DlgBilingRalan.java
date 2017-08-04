@@ -4552,6 +4552,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             }                                
             ttl=ttl+y;             
         }
+        ttl=Valid.roundUp(ttl,100);
         TtlSemua.setText(Valid.SetAngka(ttl));
     }    
     

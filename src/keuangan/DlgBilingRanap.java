@@ -4788,6 +4788,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
             } 
+            ttl=Valid.roundUp(ttl,100);
             TtlSemua.setText(Valid.SetAngka(ttl));
         }        
     }
