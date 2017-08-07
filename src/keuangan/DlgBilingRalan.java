@@ -1638,7 +1638,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         panelGlass1.add(jLabel4);
 
         DTPTgl.setForeground(new java.awt.Color(100, 100, 100));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2017 21:48:28" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-08-2017 15:26:49" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -4552,8 +4552,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             }                                
             ttl=ttl+y;             
         }
-        ttl=Valid.roundUp(ttl,100);
-        TtlSemua.setText(Valid.SetAngka(ttl));
+        TtlSemua.setText(Valid.SetAngka3(ttl));
     }    
     
     
@@ -4633,7 +4632,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         
         
         tagihanppn=besarppn+total;
-        TagihanPPn.setText(Valid.SetAngka(tagihanppn));
+        TagihanPPn.setText(Valid.SetAngka3(tagihanppn));
         
         if(piutang<=0){
             kekurangan=(bayar+besarppn)-tagihanppn;
@@ -4644,7 +4643,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 jLabel6.setText("Kembali : Rp.");
             }
                  
-            TKembali.setText(Valid.SetAngka(kekurangan));            
+            TKembali.setText(Valid.SetAngka3(kekurangan));            
         }else{
             kekurangan=(tagihanppn-(bayar+besarppn)-piutang)* -1;
             jLabel5.setText("Uang Muka : Rp.");
@@ -4654,7 +4653,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 jLabel6.setText("Kekurangan : Rp.");
             }
                 
-            TKembali.setText(Valid.SetAngka(kekurangan));  
+            TKembali.setText(Valid.SetAngka3(kekurangan));  
         }  
           
     }
