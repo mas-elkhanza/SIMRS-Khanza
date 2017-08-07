@@ -42,7 +42,7 @@ public final class DlgPelayananRalan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0;   
+    private int i=0,limabelas=0,tigapuluh=0,satujam=0,lebihsatujam=0;   
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -68,7 +68,7 @@ public final class DlgPelayananRalan extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(70);
             }else if(i==2){
-                column.setPreferredWidth(155);
+                column.setPreferredWidth(175);
             }else if(i==3){
                 column.setPreferredWidth(175);
             }else if(i==4){
@@ -302,7 +302,11 @@ public final class DlgPelayananRalan extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));   
             param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));   
-            param.put("parameter","%"+TCari.getText().trim()+"%");      
+            param.put("parameter","%"+TCari.getText().trim()+"%");    
+            param.put("limabelas",""+limabelas);  
+            param.put("tigapuluh",""+tigapuluh);  
+            param.put("satujam",""+satujam);  
+            param.put("lebihsatujam",""+lebihsatujam);  
             Valid.MyReport("rptPelayananRalan.jrxml",param,"::[ Laporan Data Pelayanan Rawat Jalan ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -431,6 +435,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode);   
+            limabelas=0;
+            tigapuluh=0;
+            satujam=0;
+            lebihsatujam=0;
             ps=koneksi.prepareStatement(
                 "select reg_periksa.no_rkm_medis,pasien.nm_pasien,dokter.nm_dokter,poliklinik.nm_poli," +
                 "reg_periksa.tgl_registrasi,reg_periksa.jam_reg,nota_jalan.tanggal,nota_jalan.jam," +
@@ -466,7 +474,29 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         rs.getString(5)+" "+rs.getString(6),rs.getString(7)+" "+rs.getString(8),rs.getString(9)
                     });
                     i++;
-                } 
+                    if(rs.getDouble(9)<=15){
+                        limabelas++;
+                    }else if((rs.getDouble(9)>15)&&(rs.getDouble(9)<=30)){
+                        tigapuluh++;
+                    }else if((rs.getDouble(9)>30)&&(rs.getDouble(9)<=60)){
+                        satujam++;
+                    }else if(rs.getDouble(9)>60){
+                        lebihsatujam++;
+                    }
+                }                 
+                
+                tabMode.addRow(new Object[]{
+                    "","","0 - 15 Menit",": "+limabelas,"","","",""
+                });
+                tabMode.addRow(new Object[]{
+                    "","",">15 - <=30 Menit",": "+tigapuluh,"","","",""
+                });
+                tabMode.addRow(new Object[]{
+                    "","",">30 - <=60 Menit",": "+satujam,"","","",""
+                });
+                tabMode.addRow(new Object[]{
+                    "","",">60 Menit",": "+lebihsatujam,"","","",""
+                });
             } catch (Exception e) {
                 System.out.println("laporan.DlgPelayananRalan.tampil() : "+e);
             } finally{
