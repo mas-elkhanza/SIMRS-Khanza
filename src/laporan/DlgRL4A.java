@@ -16,9 +16,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 
 public class DlgRL4A extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabMode2;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
@@ -34,64 +36,18 @@ public class DlgRL4A extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        tabMode=new DefaultTableModel(null,new Object[]{"Kode Penyakit","Nama Penyakit","Diagnosa Lain","Jumlah"}){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
-              Class[] types = new Class[] {
-                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, java.lang.Integer.class
-             };
-             @Override
-             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-             }
-        };
-        tbDokter.setModel(tabMode);
-
-        tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
-        tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-        for (int m = 0; m < 4; m++) {
-            TableColumn column = tbDokter.getColumnModel().getColumn(m);
-            if(m==0){
-                column.setPreferredWidth(100);
-            }else if(m==1){
-                column.setPreferredWidth(300);
-            }else if(m==2){
-                column.setPreferredWidth(400);
-            }else if(m==3){
-                column.setPreferredWidth(100);
-            }
-        }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
-        
-        tabMode2=new DefaultTableModel(null,new Object[]{"Kode Penyakit","Nama Penyakit","Diagnosa Lain","Jumlah"}){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
-              Class[] types = new Class[] {
-                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, java.lang.Integer.class
-             };
-             @Override
-             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-             }
-        };
-        tbDokter2.setModel(tabMode2);
-
-        tbDokter2.setPreferredScrollableViewportSize(new Dimension(800,800));
-        tbDokter2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-        for (int m = 0; m < 4; m++) {
-            TableColumn column = tbDokter2.getColumnModel().getColumn(m);
-            if(m==0){
-                column.setPreferredWidth(100);
-            }else if(m==1){
-                column.setPreferredWidth(300);
-            }else if(m==2){
-                column.setPreferredWidth(400);
-            }else if(m==3){
-                column.setPreferredWidth(100);
-            }
-        }
-        tbDokter2.setDefaultRenderer(Object.class, new WarnaTable());   
-        
+        LoadHTML.setEditable(true);
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#3c5032;}"+
+                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
     }
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int i=0;
@@ -118,11 +74,9 @@ public class DlgRL4A extends javax.swing.JDialog {
         BtnKeluar = new widget.Button();
         TabRawat = new javax.swing.JTabbedPane();
         internalFrame2 = new widget.InternalFrame();
-        scrollPane1 = new widget.ScrollPane();
-        tbDokter = new widget.Table();
+        LoadHTML = new widget.editorpane();
         internalFrame3 = new widget.InternalFrame();
-        scrollPane2 = new widget.ScrollPane();
-        tbDokter2 = new widget.Table();
+        LoadHTML1 = new widget.editorpane();
 
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -243,26 +197,9 @@ public class DlgRL4A extends javax.swing.JDialog {
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
-        scrollPane1.setName("scrollPane1"); // NOI18N
-        scrollPane1.setOpaque(true);
-
-        tbDokter.setAutoCreateRowSorter(true);
-        tbDokter.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbDokter.setName("tbDokter"); // NOI18N
-        scrollPane1.setViewportView(tbDokter);
-
-        internalFrame2.add(scrollPane1, java.awt.BorderLayout.CENTER);
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
+        internalFrame2.add(LoadHTML, java.awt.BorderLayout.CENTER);
 
         TabRawat.addTab(".: Berdasar Tanggal Masuk  ", internalFrame2);
 
@@ -271,26 +208,9 @@ public class DlgRL4A extends javax.swing.JDialog {
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
-        scrollPane2.setName("scrollPane2"); // NOI18N
-        scrollPane2.setOpaque(true);
-
-        tbDokter2.setAutoCreateRowSorter(true);
-        tbDokter2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tbDokter2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbDokter2.setName("tbDokter2"); // NOI18N
-        scrollPane2.setViewportView(tbDokter2);
-
-        internalFrame3.add(scrollPane2, java.awt.BorderLayout.CENTER);
+        LoadHTML1.setBorder(null);
+        LoadHTML1.setName("LoadHTML1"); // NOI18N
+        internalFrame3.add(LoadHTML1, java.awt.BorderLayout.CENTER);
 
         TabRawat.addTab(".: Berdasar Tanggal Keluar  ", internalFrame3);
 
@@ -307,35 +227,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tbDokter.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            //TCari.requestFocus();
-        }else if(tbDokter.getRowCount()!=0){
-            Sequel.queryu("delete from temporary");
-            if(TabRawat.getSelectedIndex()==0){
-                int row=tbDokter.getRowCount();
-                for(int r=0;r<row;r++){  
-                    Sequel.menyimpan("temporary","'0','"+
-                                    tbDokter.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                    tbDokter.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                    tbDokter.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                    tbDokter.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Frekuensi Penyakit"); 
-                }
-            }else if(TabRawat.getSelectedIndex()==1){
-                int row=tbDokter2.getRowCount();
-                for(int r=0;r<row;r++){  
-                    Sequel.menyimpan("temporary","'0','"+
-                                    tbDokter2.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                    tbDokter2.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                    tbDokter2.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                    tbDokter2.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Frekuensi Penyakit"); 
-                }
-            }
-            Valid.MyReport("rptFrekuensiPenyakitRanap.jrxml","report","[ Frekuensi Penyakit Di Rawat Inap ]",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc");
-        }
-        this.setCursor(Cursor.getDefaultCursor());
+        
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -404,6 +296,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.TextBox Kd2;
+    private widget.editorpane LoadHTML;
+    private widget.editorpane LoadHTML1;
     private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
@@ -415,29 +309,85 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private widget.Label label18;
     private widget.Label label9;
     private widget.panelisi panelisi1;
-    private widget.ScrollPane scrollPane1;
-    private widget.ScrollPane scrollPane2;
-    private widget.Table tbDokter;
-    private widget.Table tbDokter2;
     // End of variables declaration//GEN-END:variables
 
     private void prosesCari() {
-       Valid.tabelKosong(tabMode);      
-       try{  
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            StringBuilder htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='isi3'>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='2%' rowspan='3'>No.Urut</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>No.Daftar Terperinci</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='18%' rowspan='3'>Golongan Sebab Penyakit</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='55%' colspan='18'>Jumlah Pasien Hidup dan Mati menurut Golongan Umur & Jenis Kelamin</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='10%' colspan='2'>Pasien Keluar (Hidup & Mati) Menurut Jenis Kelamin</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Hidup (23+24)</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Mati</td>"+
+                "</tr>"+
+                "<tr class='isi3'>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                "</tr>"+
+                "<tr class='isi3'>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'></td>"+
+                "</tr>"
+            );
             
-        }catch(Exception e){
-            System.out.println("Catatan  "+e);
-        }
+            LoadHTML.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        } catch (Exception e) {
+            System.out.println("laporan.DlgRL4A.prosesCari() : "+e);
+        } 
+        this.setCursor(Cursor.getDefaultCursor());
         
     }
     
      private void prosesCari2() {
-       Valid.tabelKosong(tabMode);      
-       try{  
-            
-        }catch(Exception e){
-            System.out.println("Catatan  "+e);
-        }
+       
         
     }
     

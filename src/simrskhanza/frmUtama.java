@@ -190,6 +190,7 @@ import laporan.DlgDkkPenyakitTidakMenularRanap;
 import laporan.DlgICD9;
 import laporan.DlgKunjunganRalan;
 import laporan.DlgKunjunganRanap;
+import laporan.DlgPelayananRalan;
 import laporan.DlgPenyakitPd3i;
 import laporan.DlgRL4A;
 import laporan.DlgRl32;
@@ -610,6 +611,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPiutangRalan = new widget.ButtonBig();
         btnPiutangRanap = new widget.ButtonBig();
         btnPiutangPerCaraBayar = new widget.ButtonBig();
+        btnLamaPelayananRalan = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3904,6 +3906,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPiutangPerCaraBayar);
 
+        btnLamaPelayananRalan.setForeground(new java.awt.Color(40, 70, 50));
+        btnLamaPelayananRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPelayananRalan.setText("Lama Pelayanan Ralan");
+        btnLamaPelayananRalan.setIconTextGap(0);
+        btnLamaPelayananRalan.setName("btnLamaPelayananRalan"); // NOI18N
+        btnLamaPelayananRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPelayananRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamaPelayananRalanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnLamaPelayananRalan);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3912,7 +3927,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/07/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/08/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8319,6 +8334,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPiutangPerCaraBayarActionPerformed
 
+    private void btnLamaPelayananRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamaPelayananRalanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPelayananRalan aplikasi=new DlgPelayananRalan(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnLamaPelayananRalanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8450,6 +8476,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnLabaRugi;
     private widget.ButtonBig btnLaboratorium;
     private widget.ButtonBig btnLahir;
+    private widget.ButtonBig btnLamaPelayananRalan;
     private widget.ButtonBig btnLihatPiutang;
     private widget.ButtonBig btnMerkInventaris;
     private widget.ButtonBig btnMonitoringKlaim;
@@ -9624,6 +9651,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnRl4a);                 
                 jmlmenu++;
             }
+            
+            if(var.getlama_pelayanan_ralan()==true){  
+                Panelmenu.add(btnLamaPelayananRalan);                 
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==9){   
             jmlmenu=0;
             if(var.getkamar()==true){
@@ -10776,6 +10808,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getrl4a()==true){  
             Panelmenu.add(btnRl4a);                 
+            jmlmenu++;
+        }
+        
+        if(var.getlama_pelayanan_ralan()==true){  
+            Panelmenu.add(btnLamaPelayananRalan);                 
             jmlmenu++;
         }
 
@@ -12208,6 +12245,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getrl4a()==true){  
             if(btnRl4a.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl4a);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getlama_pelayanan_ralan()==true){  
+            if(btnLamaPelayananRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLamaPelayananRalan);                 
                 jmlmenu++;
             }                
         }

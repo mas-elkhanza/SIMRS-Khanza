@@ -124,7 +124,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         Tgl2 = new widget.Tanggal();
         label19 = new widget.Label();
         BtnPrint = new widget.Button();
-        BtnAll = new widget.Button();
         BtnKeluar = new widget.Button();
         panelisi4 = new widget.panelisi();
         label17 = new widget.Label();
@@ -193,7 +192,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
 
         label19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label19.setName("label19"); // NOI18N
-        label19.setPreferredSize(new java.awt.Dimension(50, 23));
+        label19.setPreferredSize(new java.awt.Dimension(150, 23));
         panelGlass5.add(label19);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -208,24 +207,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
             }
         });
         panelGlass5.add(BtnPrint);
-
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelGlass5.add(BtnAll);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -318,7 +299,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             dispose();
-        }else{Valid.pindah(evt,BtnAll,TKd);}
+        }else{Valid.pindah(evt,Tgl1,TKd);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void KdRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdRwKeyPressed
@@ -358,20 +339,6 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
            // Valid.pindah(evt, TKd, BtnAll);
         }
 }//GEN-LAST:event_BtnCari1KeyPressed
-
-private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-        KdRw.setText("");
-        TPasien.setText("");
-        tampil();
-}//GEN-LAST:event_BtnAllActionPerformed
-
-private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnAllActionPerformed(null);
-        }else{
-            Valid.pindah(evt, BtnPrint, BtnKeluar);
-        }
-}//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -420,7 +387,6 @@ private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bt
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.Button BtnAll;
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
