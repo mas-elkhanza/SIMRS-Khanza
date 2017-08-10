@@ -935,9 +935,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     if(Sequel.menyimpantf2("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
                                         Tanggal.getText(),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,13).toString(),
                                         tbObat.getValueAt(i,6).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),
-                                        tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Valid.roundUp((Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                        tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                        (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)))),100),"Ralan"                          
+                                                        (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)))),"Ralan"                          
                                     })==true){
                                         Sequel.menyimpan("aturan_pakai","?,?,?,?,?",5,new String[]{
                                             Tanggal.getText(),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,11).toString()
@@ -952,9 +952,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
                                         Tanggal.getText(),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,13).toString(),
                                         tbObat.getValueAt(i,6).toString(),""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),
-                                        tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Valid.roundUp((Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                        tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                        Double.parseDouble(tbObat.getValueAt(i,1).toString()))),100),"Ralan"
+                                                        Double.parseDouble(tbObat.getValueAt(i,1).toString()))),"Ralan"
                                     })==true){
                                         Sequel.menyimpan("aturan_pakai","?,?,?,?,?",5,new String[]{
                                             Tanggal.getText(),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,11).toString()
@@ -978,9 +978,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
                                 Tanggal.getText(),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,13).toString(),
                                 tbObat.getValueAt(i,6).toString(),""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),
-                                tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Valid.roundUp((Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                         Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                Double.parseDouble(tbObat.getValueAt(i,1).toString()))),100),"Ralan"
+                                                Double.parseDouble(tbObat.getValueAt(i,1).toString()))),"Ralan"
                             })==true){
                                 Sequel.menyimpan("aturan_pakai","?,?,?,?,?",5,new String[]{
                                     Tanggal.getText(),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,11).toString()
@@ -1319,7 +1319,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                             tabModeobat.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
                                        rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("harga"),100),
                                        rsobat.getString("nama"),0,0,0,"",rsobat.getString("nama_industri"),
-                                       Valid.roundUp(rsobat.getDouble("h_beli"),100)
+                                       rsobat.getDouble("h_beli")
                             });          
                     }                 
                 }else{
@@ -1330,27 +1330,27 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     while(rsobat.next()){
                         if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                             tabModeobat.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),rsobat.getDouble("karyawan"),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("karyawan"),100),
                                        rsobat.getString("nama"),0,0,0,"",rsobat.getString("nama_industri"),
-                                       Valid.roundUp(rsobat.getDouble("h_beli"),100)
+                                       rsobat.getDouble("h_beli")
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Rawat Jalan")){
                             tabModeobat.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),rsobat.getDouble("ralan"),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("ralan"),100),
                                        rsobat.getString("nama"),0,0,0,"",rsobat.getString("nama_industri"),
-                                       Valid.roundUp(rsobat.getDouble("h_beli"),100)
+                                       rsobat.getDouble("h_beli")
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Beli Luar")){
                             tabModeobat.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),rsobat.getDouble("beliluar"),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("beliluar"),100),
                                        rsobat.getString("nama"),0,0,0,"",rsobat.getString("nama_industri"),
-                                       Valid.roundUp(rsobat.getDouble("h_beli"),100)
+                                       rsobat.getDouble("h_beli")
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Utama/BPJS")){
                             tabModeobat.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),rsobat.getDouble("utama"),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("utama"),100),
                                        rsobat.getString("nama"),0,0,0,"",rsobat.getString("nama_industri"),
-                                       Valid.roundUp(rsobat.getDouble("h_beli"),100)
+                                       rsobat.getDouble("h_beli")
                             });
                         }                 
                     }

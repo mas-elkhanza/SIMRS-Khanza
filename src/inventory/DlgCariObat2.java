@@ -844,15 +844,15 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     if(Sequel.menyimpantf2("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
                                         Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,12).toString(),
                                         tbObat.getValueAt(i,6).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),
-                                        tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Valid.roundUp(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                        tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                        (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1))),100),"Ranap"                          
+                                                        (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1))),"Ranap"                          
                                     })==true){
-                                        ttljual=ttljual+Valid.roundUp(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                        ttljual=ttljual+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                        (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1))),100);
-                                        ttlhpp=ttlhpp+Valid.roundUp((Double.parseDouble(tbObat.getValueAt(i,12).toString())*
-                                                        (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1))),100);
+                                                        (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)));
+                                        ttlhpp=ttlhpp+(Double.parseDouble(tbObat.getValueAt(i,12).toString())*
+                                                        (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)));
                                         Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),"Pemberian Obat",var.getkode(),kdgudang.getText(),"Simpan");
                                         Sequel.menyimpan("gudangbarang","'"+tbObat.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','-"+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1))+"'", 
                                                      "stok=stok-'"+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1))+"'","kode_brng='"+tbObat.getValueAt(i,2).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");   
@@ -863,15 +863,15 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
                                         Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,12).toString(),
                                         tbObat.getValueAt(i,6).toString(),""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),
-                                        tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Valid.roundUp(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                        tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                        Double.parseDouble(tbObat.getValueAt(i,1).toString())),100),"Ranap"
+                                                        Double.parseDouble(tbObat.getValueAt(i,1).toString())),"Ranap"
                                     })==true){        
-                                        ttljual=ttljual+Valid.roundUp(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                        ttljual=ttljual+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                        Double.parseDouble(tbObat.getValueAt(i,1).toString())),100);
-                                        ttlhpp=ttlhpp+Valid.roundUp((Double.parseDouble(tbObat.getValueAt(i,12).toString())*
-                                                        Double.parseDouble(tbObat.getValueAt(i,1).toString())),100);
+                                                        Double.parseDouble(tbObat.getValueAt(i,1).toString()));
+                                        ttlhpp=ttlhpp+(Double.parseDouble(tbObat.getValueAt(i,12).toString())*
+                                                        Double.parseDouble(tbObat.getValueAt(i,1).toString()));
                                         Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,Double.parseDouble(tbObat.getValueAt(i,1).toString()),"Pemberian Obat",var.getkode(),kdgudang.getText(),"Simpan");
                                         Sequel.menyimpan("gudangbarang","'"+tbObat.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','-"+Double.parseDouble(tbObat.getValueAt(i,1).toString())+"'", 
                                                      "stok=stok-'"+Double.parseDouble(tbObat.getValueAt(i,1).toString())+"'","kode_brng='"+tbObat.getValueAt(i,2).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");   
@@ -891,15 +891,15 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
                                 Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,12).toString(),
                                 tbObat.getValueAt(i,6).toString(),""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),
-                                tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Valid.roundUp(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                         Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                Double.parseDouble(tbObat.getValueAt(i,1).toString())),100),"Ranap"
+                                                Double.parseDouble(tbObat.getValueAt(i,1).toString())),"Ranap"
                             })==true){ 
-                                ttljual=ttljual+Valid.roundUp(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
+                                ttljual=ttljual+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                         Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                Double.parseDouble(tbObat.getValueAt(i,1).toString())),100);
-                                ttlhpp=ttlhpp+Valid.roundUp((Double.parseDouble(tbObat.getValueAt(i,12).toString())*
-                                                Double.parseDouble(tbObat.getValueAt(i,1).toString())),100);
+                                                Double.parseDouble(tbObat.getValueAt(i,1).toString()));
+                                ttlhpp=ttlhpp+(Double.parseDouble(tbObat.getValueAt(i,12).toString())*
+                                                Double.parseDouble(tbObat.getValueAt(i,1).toString()));
                                 Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,Double.parseDouble(tbObat.getValueAt(i,1).toString()),"Pemberian Obat",var.getkode(),kdgudang.getText(),"Simpan");
                                 Sequel.menyimpan("gudangbarang","'"+tbObat.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','-"+Double.parseDouble(tbObat.getValueAt(i,1).toString())+"'", 
                                              "stok=stok-'"+Double.parseDouble(tbObat.getValueAt(i,1).toString())+"'","kode_brng='"+tbObat.getValueAt(i,2).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");   
@@ -1268,49 +1268,49 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     while(rsobat.next()){
                         if(Jeniskelas.getSelectedItem().equals("Kelas 1")){
                             tabMode.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),rsobat.getDouble("kelas1"),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("kelas1"),100),
                                        rsobat.getString("nama"),0,0,0,rsobat.getString("nama_industri"),
                                        rsobat.getDouble("h_beli")
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Kelas 2")){
                             tabMode.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),rsobat.getDouble("kelas2"),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("kelas2"),100),
                                        rsobat.getString("nama"),0,0,0,rsobat.getString("nama_industri"),
                                        rsobat.getDouble("h_beli")
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Kelas 3")){
                             tabMode.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),(rsobat.getDouble("kelas3")),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("kelas3"),100),
                                        rsobat.getString("nama"),0,0,0,rsobat.getString("nama_industri"),
                                        rsobat.getDouble("h_beli")
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Utama/BPJS")){
                             tabMode.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),(rsobat.getDouble("utama")),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("utama"),100),
                                        rsobat.getString("nama"),0,0,0,rsobat.getString("nama_industri"),
                                        rsobat.getDouble("h_beli")
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("VIP")){
                             tabMode.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),(rsobat.getDouble("vip")),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("vip"),100),
                                        rsobat.getString("nama"),0,0,0,rsobat.getString("nama_industri"),
                                        rsobat.getDouble("h_beli")
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("VVIP")){
                             tabMode.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),(rsobat.getDouble("vvip")),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("vvip"),100),
                                        rsobat.getString("nama"),0,0,0,rsobat.getString("nama_industri"),
                                        rsobat.getDouble("h_beli")
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Beli Luar")){
                             tabMode.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),(rsobat.getDouble("beliluar")),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("beliluar"),100),
                                        rsobat.getString("nama"),0,0,0,rsobat.getString("nama_industri"),
                                        rsobat.getDouble("h_beli")
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                             tabMode.addRow(new Object[] {false,"",rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
-                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),(rsobat.getDouble("karyawan")),
+                                       rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("karyawan"),100),
                                        rsobat.getString("nama"),0,0,0,rsobat.getString("nama_industri"),
                                        rsobat.getDouble("h_beli")
                             });
