@@ -3843,7 +3843,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
              isHitung(); 
              status="belum";
          }else if(i>0){
-             DTPTgl.setDate(Sequel.cariIsi2("select billing.tgl_byr from billing where billing.no_rawat='"+TNoRw.getText()+"'"));             
+             DTPTgl.setSelectedItem(Sequel.cariIsi("select concat(tanggal,' ',jam) from nota_jalan where no_rawat='"+TNoRw.getText()+"'"));  
              Valid.tabelKosong(tabModeRwJlDr);
              try{                
                 psbilling=koneksi.prepareStatement(sqlpsbilling);    
