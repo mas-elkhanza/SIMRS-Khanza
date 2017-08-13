@@ -19,6 +19,8 @@ import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -26,7 +28,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
+import javax.swing.Timer;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -45,10 +49,11 @@ public final class DlgRujuk extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private String diagnosa="",diagnosa2="",keluar="",status="";
-    private PreparedStatement psobat;
+    private String diagnosa="",diagnosa2="",keluar="",status="",tgl="",sql="";
+    private PreparedStatement psobat,ps;
     private ResultSet rs;
     private int i=0;
+    private Date date = new Date();
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -60,9 +65,8 @@ public final class DlgRujuk extends javax.swing.JDialog {
 
 
         Object[] row={
-            "No.Rujuk","No.Rawat","No.Rekam Medis",
-            "Nama Pasien","Tempat Rujuk","Tgl.Rujuk",
-            "Keterangan Diagnosa","Kode Dokter","Nama Dokter"
+            "No.Rujuk","No.Rawat","No.R.M.","Nama Pasien","Tempat Rujuk","Tgl.Rujuk","Jam Rujuk",
+            "Keterangan Diagnosa","Kode Dokter","Dokter Perujuk","Kategori Rujuk","Ambulance","Keterangan"
         };
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -73,26 +77,35 @@ public final class DlgRujuk extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 9; i++) {
+        for (i = 0; i < 13; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(75);
             }else if(i==1){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(105);
             }else if(i==2){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(70);
             }else if(i==3){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(150);
             }else if(i==5){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(75);
             }else if(i==6){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(65);
             }else if(i==7){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==8){
-                column.setPreferredWidth(170);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==9){
+                column.setPreferredWidth(150);
+            }else if(i==10){
+                column.setPreferredWidth(90);
+            }else if(i==11){
+                column.setPreferredWidth(90);
+            }else if(i==12){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -101,6 +114,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
         TTmpRujuk.setDocument(new batasInput((byte)45).getKata(TTmpRujuk));
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         TDiagnosa.setDocument(new batasInput((int)5000).getKata(TDiagnosa));
+        ket.setDocument(new batasInput((int)5000).getKata(ket));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         KdDok.setDocument(new batasInput((byte)20).getKata(KdDok));
         if(koneksiDB.cariCepat().equals("aktif")){
@@ -112,7 +126,10 @@ public final class DlgRujuk extends javax.swing.JDialog {
                 @Override
                 public void changedUpdate(DocumentEvent e) {tampil();}
             });
-        }  
+        }
+        
+        jam();
+        
         dokter.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -199,6 +216,17 @@ public final class DlgRujuk extends javax.swing.JDialog {
         KdDok = new widget.TextBox();
         btnDokter = new widget.Button();
         TDokter = new widget.TextBox();
+        jLabel13 = new widget.Label();
+        jLabel14 = new widget.Label();
+        jLabel15 = new widget.Label();
+        ket = new widget.TextBox();
+        jLabel11 = new widget.Label();
+        CmbJam = new widget.ComboBox();
+        CmbMenit = new widget.ComboBox();
+        ambulance = new widget.ComboBox();
+        ChkJln = new widget.CekBox();
+        CmbDetik = new widget.ComboBox();
+        ktrujuk = new widget.ComboBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -228,6 +256,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
+        Scroll.setPreferredSize(new java.awt.Dimension(452, 200));
 
         tbObat.setAutoCreateRowSorter(true);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
@@ -395,7 +424,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-03-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-08-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -410,7 +439,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-03-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-08-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -468,13 +497,13 @@ public final class DlgRujuk extends javax.swing.JDialog {
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 137));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 165));
         FormInput.setLayout(null);
 
         jLabel3.setText("No.Rujuk :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(0, 12, 72, 23);
+        jLabel3.setBounds(0, 40, 72, 23);
 
         TNoRj.setHighlighter(null);
         TNoRj.setName("TNoRj"); // NOI18N
@@ -484,12 +513,12 @@ public final class DlgRujuk extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRj);
-        TNoRj.setBounds(75, 12, 100, 23);
+        TNoRj.setBounds(75, 40, 140, 23);
 
         jLabel8.setText("Tgl.Rujuk :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(184, 12, 70, 23);
+        jLabel8.setBounds(267, 40, 60, 23);
 
         TTmpRujuk.setHighlighter(null);
         TTmpRujuk.setName("TTmpRujuk"); // NOI18N
@@ -499,12 +528,12 @@ public final class DlgRujuk extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTmpRujuk);
-        TTmpRujuk.setBounds(457, 12, 270, 23);
+        TTmpRujuk.setBounds(75, 70, 312, 23);
 
         jLabel4.setText("No.Rawat :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 42, 72, 23);
+        jLabel4.setBounds(0, 10, 72, 23);
 
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
@@ -514,7 +543,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRw);
-        TNoRw.setBounds(75, 42, 160, 23);
+        TNoRw.setBounds(75, 10, 141, 23);
 
         TDiagnosa.setHighlighter(null);
         TDiagnosa.setName("TDiagnosa"); // NOI18N
@@ -524,12 +553,12 @@ public final class DlgRujuk extends javax.swing.JDialog {
             }
         });
         FormInput.add(TDiagnosa);
-        TDiagnosa.setBounds(75, 72, 652, 23);
+        TDiagnosa.setBounds(75, 100, 312, 23);
 
         jLabel9.setText("Diagnosa :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(0, 72, 72, 23);
+        jLabel9.setBounds(0, 100, 72, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
@@ -540,11 +569,11 @@ public final class DlgRujuk extends javax.swing.JDialog {
             }
         });
         FormInput.add(TPasien);
-        TPasien.setBounds(359, 42, 368, 23);
+        TPasien.setBounds(340, 10, 340, 23);
 
         DTPRujuk.setEditable(false);
         DTPRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        DTPRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-03-2017" }));
+        DTPRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-08-2017" }));
         DTPRujuk.setDisplayFormat("dd-MM-yyyy");
         DTPRujuk.setName("DTPRujuk"); // NOI18N
         DTPRujuk.setOpaque(false);
@@ -554,12 +583,12 @@ public final class DlgRujuk extends javax.swing.JDialog {
             }
         });
         FormInput.add(DTPRujuk);
-        DTPRujuk.setBounds(258, 12, 95, 23);
+        DTPRujuk.setBounds(330, 40, 100, 23);
 
         jLabel12.setText("Rujuk Ke :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(359, 12, 95, 23);
+        jLabel12.setBounds(0, 70, 72, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
@@ -570,12 +599,12 @@ public final class DlgRujuk extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRM);
-        TNoRM.setBounds(237, 42, 120, 23);
+        TNoRM.setBounds(218, 10, 120, 23);
 
         jLabel5.setText("Dokter :");
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
-        jLabel5.setBounds(0, 102, 72, 23);
+        jLabel5.setBounds(0, 130, 72, 23);
 
         KdDok.setHighlighter(null);
         KdDok.setName("KdDok"); // NOI18N
@@ -585,7 +614,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
             }
         });
         FormInput.add(KdDok);
-        KdDok.setBounds(75, 102, 130, 23);
+        KdDok.setBounds(75, 130, 100, 23);
 
         btnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnDokter.setMnemonic('2');
@@ -597,7 +626,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnDokter);
-        btnDokter.setBounds(699, 102, 28, 23);
+        btnDokter.setBounds(359, 130, 28, 23);
 
         TDokter.setEditable(false);
         TDokter.setHighlighter(null);
@@ -608,7 +637,105 @@ public final class DlgRujuk extends javax.swing.JDialog {
             }
         });
         FormInput.add(TDokter);
-        TDokter.setBounds(207, 102, 490, 23);
+        TDokter.setBounds(177, 130, 180, 23);
+
+        jLabel13.setText(" Kategori Rujuk :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        FormInput.add(jLabel13);
+        jLabel13.setBounds(416, 100, 90, 23);
+
+        jLabel14.setText(" Ambulance :");
+        jLabel14.setName("jLabel14"); // NOI18N
+        FormInput.add(jLabel14);
+        jLabel14.setBounds(416, 130, 90, 23);
+
+        jLabel15.setText(" Keterangan :");
+        jLabel15.setName("jLabel15"); // NOI18N
+        FormInput.add(jLabel15);
+        jLabel15.setBounds(416, 70, 90, 23);
+
+        ket.setHighlighter(null);
+        ket.setName("ket"); // NOI18N
+        ket.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ketKeyPressed(evt);
+            }
+        });
+        FormInput.add(ket);
+        ket.setBounds(510, 70, 170, 23);
+
+        jLabel11.setText("Jam :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        FormInput.add(jLabel11);
+        jLabel11.setBounds(437, 40, 40, 23);
+
+        CmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
+        CmbJam.setName("CmbJam"); // NOI18N
+        CmbJam.setOpaque(false);
+        CmbJam.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbJamKeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbJam);
+        CmbJam.setBounds(480, 40, 55, 23);
+
+        CmbMenit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        CmbMenit.setName("CmbMenit"); // NOI18N
+        CmbMenit.setOpaque(false);
+        CmbMenit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbMenitKeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbMenit);
+        CmbMenit.setBounds(540, 40, 55, 23);
+
+        ambulance.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "AGD", "SENDIRI", "SWASTA" }));
+        ambulance.setName("ambulance"); // NOI18N
+        ambulance.setOpaque(false);
+        ambulance.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ambulanceKeyPressed(evt);
+            }
+        });
+        FormInput.add(ambulance);
+        ambulance.setBounds(510, 130, 170, 23);
+
+        ChkJln.setBackground(new java.awt.Color(235, 255, 235));
+        ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
+        ChkJln.setForeground(new java.awt.Color(153, 0, 51));
+        ChkJln.setSelected(true);
+        ChkJln.setBorderPainted(true);
+        ChkJln.setBorderPaintedFlat(true);
+        ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkJln.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkJln.setName("ChkJln"); // NOI18N
+        FormInput.add(ChkJln);
+        ChkJln.setBounds(657, 40, 23, 23);
+
+        CmbDetik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
+        CmbDetik.setName("CmbDetik"); // NOI18N
+        CmbDetik.setOpaque(false);
+        CmbDetik.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CmbDetikKeyPressed(evt);
+            }
+        });
+        FormInput.add(CmbDetik);
+        CmbDetik.setBounds(600, 40, 55, 23);
+
+        ktrujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Bedah", "Non Bedah", "Kebidanan", "Anak" }));
+        ktrujuk.setName("ktrujuk"); // NOI18N
+        ktrujuk.setOpaque(false);
+        ktrujuk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ktrujukKeyPressed(evt);
+            }
+        });
+        FormInput.add(ktrujuk);
+        ktrujuk.setBounds(510, 100, 170, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -645,7 +772,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
 }//GEN-LAST:event_TNoRjKeyPressed
 
     private void TTmpRujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTmpRujukKeyPressed
-        Valid.pindah(evt,DTPRujuk,TNoRw);
+        Valid.pindah(evt,CmbDetik,ket);
 }//GEN-LAST:event_TTmpRujukKeyPressed
 
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
@@ -658,7 +785,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
 }//GEN-LAST:event_TNoRwKeyPressed
 
     private void TDiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDiagnosaKeyPressed
-        Valid.pindah(evt,TNoRw,KdDok);
+        Valid.pindah(evt,ket,ktrujuk);
 }//GEN-LAST:event_TDiagnosaKeyPressed
 
     private void TPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPasienKeyPressed
@@ -678,9 +805,14 @@ public final class DlgRujuk extends javax.swing.JDialog {
             Sequel.menyimpan("rujuk","'"+TNoRj.getText()+"','"+
                     TNoRw.getText()+"','"+
                     TTmpRujuk.getText()+"','"+
-                    Valid.SetTgl(DTPRujuk.getSelectedItem()+"")+"','"+
+                    Valid.SetTgl(DTPRujuk.getSelectedItem()+"")+"','"+ 
                     TDiagnosa.getText()+"','"+
-                    KdDok.getText()+"'","No.Rujuk");
+                    KdDok.getText()+"','"+
+                    ktrujuk.getSelectedItem()+"','"+
+                    ambulance.getSelectedItem()+ "','"+
+                    ket.getText()+"','"+
+                    CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem()+"'","No.Rujuk");
+                    
             tampil();
             emptTeks();
         }
@@ -690,7 +822,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,TPasien,BtnBatal);
+            Valid.pindah(evt,ambulance,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -733,8 +865,12 @@ public final class DlgRujuk extends javax.swing.JDialog {
             Valid.editTable(tabMode,"rujuk","no_rujuk",TNoRj,"no_rawat='"+TNoRw.getText()+
                     "',rujuk_ke='"+TTmpRujuk.getText()+
                     "',tgl_rujuk='"+Valid.SetTgl(DTPRujuk.getSelectedItem()+"")+
+                    "',jam='"+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem()+
                     "',keterangan_diagnosa='"+TDiagnosa.getText()+
-                    "',kd_dokter='"+KdDok.getText()+"'");
+                    "',kd_dokter='"+KdDok.getText()+
+                    "',kat_rujuk='"+ktrujuk.getSelectedItem().toString()+
+                    "',ambulance='"+ambulance.getSelectedItem().toString()+ 
+                    "',keterangan='"+ket.getText()+"'");
             if(tabMode.getRowCount()!=0){tampil();}
             emptTeks();
         }
@@ -777,7 +913,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             String tgl=" rujuk.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' ";
             Valid.MyReport("rptRujuk.jrxml","report","::[ Data Rujuk Pasien ]::","select rujuk.no_rujuk,rujuk.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                "rujuk.rujuk_ke,rujuk.tgl_rujuk,rujuk.keterangan_diagnosa,rujuk.kd_dokter,dokter.nm_dokter "+
+                "rujuk.rujuk_ke,rujuk.tgl_rujuk,rujuk.jam,rujuk.keterangan_diagnosa,rujuk.kd_dokter,dokter.nm_dokter,rujuk.kat_rujuk,rujuk.ambulance,rujuk.keterangan "+
                 "from rujuk inner join reg_periksa inner join pasien inner join dokter "+
                 "on rujuk.no_rawat=reg_periksa.no_rawat "+
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -841,7 +977,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnAllKeyPressed
 
     private void DTPRujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPRujukKeyPressed
-        Valid.pindah(evt,TNoRj,TTmpRujuk);
+        Valid.pindah(evt,TNoRj,CmbJam);
 }//GEN-LAST:event_DTPRujukKeyPressed
 
     private void TNoRMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRMKeyPressed
@@ -874,7 +1010,7 @@ private void KdDokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdD
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDokterActionPerformed(null);
         }else{            
-            Valid.pindah(evt,TDiagnosa,BtnSimpan);
+            Valid.pindah(evt,ktrujuk,ambulance);
         }
 }//GEN-LAST:event_KdDokKeyPressed
 
@@ -888,10 +1024,6 @@ private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDokterKeyPressed
         //Valid.pindah(evt,TKd,TSpek);
 }//GEN-LAST:event_TDokterKeyPressed
-
-private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
-  isForm();                
-}//GEN-LAST:event_ChkInputActionPerformed
 
     private void MnSuratRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSuratRujukanActionPerformed
         if(TPasien.getText().trim().equals("")){
@@ -976,6 +1108,34 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_MnSuratRujukanActionPerformed
 
+    private void ketKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ketKeyPressed
+        Valid.pindah(evt,TTmpRujuk,TDiagnosa);
+    }//GEN-LAST:event_ketKeyPressed
+
+    private void CmbJamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbJamKeyPressed
+        Valid.pindah(evt,DTPRujuk,CmbMenit);
+    }//GEN-LAST:event_CmbJamKeyPressed
+
+    private void CmbMenitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbMenitKeyPressed
+        Valid.pindah(evt,CmbJam,CmbDetik);
+    }//GEN-LAST:event_CmbMenitKeyPressed
+
+    private void ambulanceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ambulanceKeyPressed
+        Valid.pindah(evt,KdDok,BtnSimpan);
+    }//GEN-LAST:event_ambulanceKeyPressed
+
+    private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
+        isForm();
+    }//GEN-LAST:event_ChkInputActionPerformed
+
+    private void CmbDetikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbDetikKeyPressed
+        Valid.pindah(evt,CmbMenit,TTmpRujuk);
+    }//GEN-LAST:event_CmbDetikKeyPressed
+
+    private void ktrujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ktrujukKeyPressed
+        Valid.pindah(evt,TDiagnosa,KdDok);
+    }//GEN-LAST:event_ktrujukKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1002,6 +1162,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
+    private widget.CekBox ChkJln;
+    private widget.ComboBox CmbDetik;
+    private widget.ComboBox CmbJam;
+    private widget.ComboBox CmbMenit;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.Tanggal DTPRujuk;
@@ -1019,9 +1183,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.TextBox TTmpRujuk;
+    private widget.ComboBox ambulance;
     private widget.Button btnDokter;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel11;
     private widget.Label jLabel12;
+    private widget.Label jLabel13;
+    private widget.Label jLabel14;
+    private widget.Label jLabel15;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
     private widget.Label jLabel3;
@@ -1033,15 +1202,19 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.TextBox ket;
+    private widget.ComboBox ktrujuk;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
-        String tgl=" rujuk.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' ";
-        String sql="select rujuk.no_rujuk,rujuk.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                "rujuk.rujuk_ke,rujuk.tgl_rujuk,rujuk.keterangan_diagnosa,rujuk.kd_dokter,dokter.nm_dokter "+
+        Valid.tabelKosong(tabMode);
+        try{
+            tgl=" rujuk.tgl_rujuk between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' ";
+            sql="select rujuk.no_rujuk,rujuk.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                "rujuk.rujuk_ke,rujuk.tgl_rujuk,rujuk.jam,rujuk.keterangan_diagnosa,rujuk.kd_dokter,dokter.nm_dokter,rujuk.kat_rujuk,rujuk.ambulance,rujuk.keterangan "+
                 "from rujuk inner join reg_periksa inner join pasien inner join dokter "+
                 "on rujuk.no_rawat=reg_periksa.no_rawat "+
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1056,25 +1229,34 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 tgl+"and rujuk.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
                 tgl+"and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' "+
                 " order by rujuk.no_rujuk";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
-        Valid.tabelKosong(tabMode);
-        try{
-            java.sql.Statement stat=koneksi.createStatement();
-            ResultSet rs=stat.executeQuery(sql);
-            while(rs.next()){
-                String[] data={rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               rs.getString(5),
-                               rs.getString(6),
-                               rs.getString(7),
-                               rs.getString(8),
-                               rs.getString(9)};
-                tabMode.addRow(data);
+            ps=koneksi.prepareStatement(sql);
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    String[] data={rs.getString(1),
+                                   rs.getString(2),
+                                   rs.getString(3),
+                                   rs.getString(4),
+                                   rs.getString(5),
+                                   rs.getString(6),
+                                   rs.getString(7),
+                                   rs.getString(8),
+                                   rs.getString(9),
+                                   rs.getString(10),
+                                   rs.getString(11),
+                                   rs.getString(12),
+                                   rs.getString(13)};
+                    tabMode.addRow(data);
+                }
+            } catch (Exception e) {
+                System.out.println("simrskhanza.DlgRujuk.tampil() : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
@@ -1086,13 +1268,18 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void emptTeks() {
         TNoRj.setText("");
         TTmpRujuk.setText("");
-        //TNoRw.setText("");
-        //TNoRM.setText("");
-        //TPasien.setText("");
+        TNoRw.setText("");
+        TNoRM.setText("");
+        TPasien.setText("");
+        KdDok.setText("");
+        TDokter.setText("");
         TDiagnosa.setText("");
         DTPRujuk.setDate(new Date());
         Valid.autoNomer("rujuk","R",9,TNoRj);
         TNoRj.requestFocus();
+        ktrujuk.setSelectedIndex(0);
+        ambulance.setSelectedIndex(0);
+        ket.setText("");
     }
 
     public void load(String param) {
@@ -1116,9 +1303,15 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             TTmpRujuk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             Valid.SetTgl(DTPRujuk,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            TDiagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            KdDok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            TDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            CmbJam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(0,2));
+            CmbMenit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(3,5));
+            CmbDetik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString().substring(6,8));
+            TDiagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            KdDok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            TDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            ktrujuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            ambulance.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            ket.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
         }
     }
 
@@ -1146,7 +1339,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,158));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,186));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1163,4 +1356,56 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         BtnPrint.setEnabled(var.getrujukan_keluar());
     }
 
+   private void jam(){
+        ActionListener taskPerformer = new ActionListener(){
+            private int nilai_jam;
+            private int nilai_menit;
+            private int nilai_detik;
+            public void actionPerformed(ActionEvent e) {
+                String nol_jam = "";
+                String nol_menit = "";
+                String nol_detik = "";
+                
+                Date now = Calendar.getInstance().getTime();
+
+                // Mengambil nilaj JAM, MENIT, dan DETIK Sekarang
+                if(ChkJln.isSelected()==true){
+                    nilai_jam = now.getHours();
+                    nilai_menit = now.getMinutes();
+                    nilai_detik = now.getSeconds();
+                }else if(ChkJln.isSelected()==false){
+                    nilai_jam =CmbJam.getSelectedIndex();
+                    nilai_menit =CmbMenit.getSelectedIndex();
+                    nilai_detik =CmbDetik.getSelectedIndex();
+                }
+
+                // Jika nilai JAM lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_jam <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_jam = "0";
+                }
+                // Jika nilai MENIT lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_menit <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_menit = "0";
+                }
+                // Jika nilai DETIK lebih kecil dari 10 (hanya 1 digit)
+                if (nilai_detik <= 9) {
+                    // Tambahkan "0" didepannya
+                    nol_detik = "0";
+                }
+                // Membuat String JAM, MENIT, DETIK
+                String jam = nol_jam + Integer.toString(nilai_jam);
+                String menit = nol_menit + Integer.toString(nilai_menit);
+                String detik = nol_detik + Integer.toString(nilai_detik);
+                // Menampilkan pada Layar
+                //tampil_jam.setText("  " + jam + " : " + menit + " : " + detik + "  ");
+                CmbJam.setSelectedItem(jam);
+                CmbMenit.setSelectedItem(menit);
+                CmbDetik.setSelectedItem(detik);
+            }
+        };
+        // Timer
+        new Timer(1000, taskPerformer).start();
+    }
 }
