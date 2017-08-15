@@ -114,7 +114,7 @@
 					</td>
 				</tr> ";
 		}
-		updateAplicare();
+		//updateAplicare();
 	?>
 	</table>
 	<table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>

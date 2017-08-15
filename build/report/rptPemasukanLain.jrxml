@@ -11,7 +11,7 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.besar, pemasukan_lain.nip, petugas.nama,pemasukan_lain.kode_kategori,kategori_pemasukan_lain.nama_kategori from pemasukan_lain inner join petugas inner join kategori_pemasukan_lain on pemasukan_lain.nip=petugas.nip and pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori]]>
+		<![CDATA[select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.besar, pemasukan_lain.nip, petugas.nama,pemasukan_lain.kode_kategori,kategori_pemasukan_lain.nama_kategori,pemasukan_lain.keperluan from pemasukan_lain inner join petugas inner join kategori_pemasukan_lain on pemasukan_lain.nip=petugas.nip and pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori]]>
 	</queryString>
 	<field name="tanggal" class="java.sql.Timestamp">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -32,6 +32,9 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_kategori" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="keperluan" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<variable name="total" class="java.lang.Double" calculation="Sum">
@@ -95,35 +98,42 @@
 	<columnHeader>
 		<band height="18" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="450" y="0" width="100" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="472" y="0" width="78" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Keperluan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="392" y="0" width="80" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Keterangan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="2" y="0" width="82" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="1" y="0" width="80" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Tanggal]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="84" y="0" width="166" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="81" y="0" width="146" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Kategori]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="383" y="0" width="67" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="332" y="0" width="60" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Pemasukan   ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="250" y="0" width="133" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="227" y="0" width="105" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
@@ -146,39 +156,46 @@
 	<detail>
 		<band height="11" splitType="Stretch">
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH:mm:ss">
-				<reportElement x="2" y="0" width="82" height="10"/>
+				<reportElement x="1" y="0" width="80" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.util.Date"><![CDATA[$F{tanggal}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="84" y="0" width="166" height="10"/>
+				<reportElement x="81" y="0" width="146" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{kode_kategori}+" "+$F{nama_kategori}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="#,##0">
-				<reportElement x="383" y="0" width="61" height="10"/>
+				<reportElement x="332" y="0" width="60" height="10"/>
 				<textElement textAlignment="Right" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{besar}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="250" y="0" width="133" height="10"/>
+				<reportElement x="227" y="0" width="105" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nip}+" "+$F{nama}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="450" y="0" width="100" height="10"/>
+				<reportElement x="392" y="0" width="80" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{keterangan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="472" y="0" width="78" height="10"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{keperluan}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
