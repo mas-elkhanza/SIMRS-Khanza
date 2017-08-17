@@ -23,6 +23,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
@@ -43,7 +44,10 @@ public class DlgPasienMati extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    DlgPasien pasien=new DlgPasien(null,false);
+    private DlgPasien pasien=new DlgPasien(null,false);
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private String sql=" pasien_mati.no_rkm_medis=pasien.no_rkm_medis  ";
     /** Creates new form DlgPasienMati
      * @param parent
      * @param modal */
@@ -55,7 +59,8 @@ public class DlgPasienMati extends javax.swing.JDialog {
         setSize(628,674);
 
         Object[] row={"Tanggal","Jam","No.R.Medik","Nama Pasien","J.K.","Tmp.Lahir",
-                      "Tgl.Lahir","G.D.","Stts.Nikah","Agama","Keterangan"};
+                      "Tgl.Lahir","G.D.","Stts.Nikah","Agama","Keterangan","Tempat Meninggal",
+                      "ICD-X","Antara 1","Antara 2","Langsung"};
 
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -66,30 +71,40 @@ public class DlgPasienMati extends javax.swing.JDialog {
         tbMati.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbMati.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 16; i++) {
             TableColumn column = tbMati.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(75);
             }else if(i==1){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(60);
             }else if(i==2){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==3){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(30);
             }else if(i==5){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(120);
             }else if(i==6){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(75);
             }else if(i==7){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(30);
             }else if(i==8){
                 column.setPreferredWidth(90);
             }else if(i==9){
                 column.setPreferredWidth(90);
             }else if(i==10){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(120);
+            }else if(i==11){
+                column.setPreferredWidth(120);
+            }else if(i==12){
+                column.setPreferredWidth(65);
+            }else if(i==13){
+                column.setPreferredWidth(65);
+            }else if(i==14){
+                column.setPreferredWidth(65);
+            }else if(i==15){
+                column.setPreferredWidth(65);
             }
         }
         tbMati.setDefaultRenderer(Object.class, new WarnaTable());
@@ -193,6 +208,17 @@ public class DlgPasienMati extends javax.swing.JDialog {
         cmbMnt = new widget.ComboBox();
         cmbDtk = new widget.ComboBox();
         jLabel10 = new widget.Label();
+        jLabel5 = new widget.Label();
+        jLabel11 = new widget.Label();
+        jLabel12 = new widget.Label();
+        jLabel13 = new widget.Label();
+        jLabel14 = new widget.Label();
+        jLabel15 = new widget.Label();
+        icd1 = new widget.TextBox();
+        icd2 = new widget.TextBox();
+        icd3 = new widget.TextBox();
+        icd4 = new widget.TextBox();
+        tmptmeninggal = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -429,38 +455,43 @@ public class DlgPasienMati extends javax.swing.JDialog {
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         panelBiasa1.setName("panelBiasa1"); // NOI18N
-        panelBiasa1.setPreferredSize(new java.awt.Dimension(610, 107));
+        panelBiasa1.setPreferredSize(new java.awt.Dimension(610, 165));
         panelBiasa1.setLayout(null);
 
         jLabel8.setText("Jam :");
         jLabel8.setName("jLabel8"); // NOI18N
         panelBiasa1.add(jLabel8);
-        jLabel8.setBounds(225, 12, 40, 23);
+        jLabel8.setBounds(209, 10, 40, 23);
 
-        jLabel4.setText("No.R.Medik :");
+        jLabel4.setText("No.Rekam Medik :");
         jLabel4.setName("jLabel4"); // NOI18N
         panelBiasa1.add(jLabel4);
-        jLabel4.setBounds(0, 42, 97, 23);
+        jLabel4.setBounds(0, 40, 115, 23);
 
         jLabel9.setText("Keterangan :");
         jLabel9.setName("jLabel9"); // NOI18N
         panelBiasa1.add(jLabel9);
-        jLabel9.setBounds(0, 72, 97, 23);
+        jLabel9.setBounds(0, 130, 115, 23);
 
         TKtg.setHighlighter(null);
         TKtg.setName("TKtg"); // NOI18N
+        TKtg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TKtgKeyPressed(evt);
+            }
+        });
         panelBiasa1.add(TKtg);
-        TKtg.setBounds(101, 72, 517, 23);
+        TKtg.setBounds(118, 130, 506, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
         panelBiasa1.add(TPasien);
-        TPasien.setBounds(238, 42, 350, 23);
+        TPasien.setBounds(230, 40, 363, 23);
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2017" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-08-2017" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -470,7 +501,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(DTPTgl);
-        DTPTgl.setBounds(101, 12, 104, 23);
+        DTPTgl.setBounds(118, 10, 90, 23);
 
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
@@ -480,7 +511,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(TNoRM);
-        TNoRM.setBounds(101, 42, 135, 23);
+        TNoRM.setBounds(118, 40, 110, 23);
 
         BtnSeek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek.setMnemonic('1');
@@ -497,7 +528,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnSeek);
-        BtnSeek.setBounds(590, 42, 28, 23);
+        BtnSeek.setBounds(596, 40, 28, 23);
 
         cmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         cmbJam.setName("cmbJam"); // NOI18N
@@ -508,7 +539,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(cmbJam);
-        cmbJam.setBounds(269, 12, 55, 23);
+        cmbJam.setBounds(251, 10, 45, 23);
 
         cmbMnt.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbMnt.setName("cmbMnt"); // NOI18N
@@ -519,7 +550,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(cmbMnt);
-        cmbMnt.setBounds(328, 12, 55, 23);
+        cmbMnt.setBounds(298, 10, 45, 23);
 
         cmbDtk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         cmbDtk.setName("cmbDtk"); // NOI18N
@@ -530,12 +561,93 @@ public class DlgPasienMati extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(cmbDtk);
-        cmbDtk.setBounds(387, 12, 55, 23);
+        cmbDtk.setBounds(345, 10, 45, 23);
 
         jLabel10.setText("Tgl.Meninggal :");
         jLabel10.setName("jLabel10"); // NOI18N
         panelBiasa1.add(jLabel10);
-        jLabel10.setBounds(0, 12, 97, 23);
+        jLabel10.setBounds(0, 10, 115, 23);
+
+        jLabel5.setText("Tmp.Meninggal :");
+        jLabel5.setName("jLabel5"); // NOI18N
+        panelBiasa1.add(jLabel5);
+        jLabel5.setBounds(391, 10, 90, 23);
+
+        jLabel11.setText("ICD-X ( Langsung ) :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        panelBiasa1.add(jLabel11);
+        jLabel11.setBounds(387, 100, 110, 23);
+
+        jLabel12.setText("Penyebab Kematian :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        panelBiasa1.add(jLabel12);
+        jLabel12.setBounds(0, 70, 115, 23);
+
+        jLabel13.setText("ICD-X ( Dasar ) :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        panelBiasa1.add(jLabel13);
+        jLabel13.setBounds(117, 70, 110, 23);
+
+        jLabel14.setText("ICD-X ( Antara #1 ) :");
+        jLabel14.setName("jLabel14"); // NOI18N
+        panelBiasa1.add(jLabel14);
+        jLabel14.setBounds(117, 100, 110, 23);
+
+        jLabel15.setText("ICD-X ( Antara #2 ) :");
+        jLabel15.setName("jLabel15"); // NOI18N
+        panelBiasa1.add(jLabel15);
+        jLabel15.setBounds(387, 70, 110, 23);
+
+        icd1.setHighlighter(null);
+        icd1.setName("icd1"); // NOI18N
+        icd1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                icd1KeyPressed(evt);
+            }
+        });
+        panelBiasa1.add(icd1);
+        icd1.setBounds(230, 70, 124, 23);
+
+        icd2.setHighlighter(null);
+        icd2.setName("icd2"); // NOI18N
+        icd2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                icd2KeyPressed(evt);
+            }
+        });
+        panelBiasa1.add(icd2);
+        icd2.setBounds(230, 100, 124, 23);
+
+        icd3.setHighlighter(null);
+        icd3.setName("icd3"); // NOI18N
+        icd3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                icd3KeyPressed(evt);
+            }
+        });
+        panelBiasa1.add(icd3);
+        icd3.setBounds(500, 70, 124, 23);
+
+        icd4.setHighlighter(null);
+        icd4.setName("icd4"); // NOI18N
+        icd4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                icd4KeyPressed(evt);
+            }
+        });
+        panelBiasa1.add(icd4);
+        icd4.setBounds(500, 100, 124, 23);
+
+        tmptmeninggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Rumah Sakit", "Puskesmas", "Rumah Bersalin", "Rumah Tempat Tinggal", "Lain-lain (Termasuk Doa)", "Tidak tahu" }));
+        tmptmeninggal.setName("tmptmeninggal"); // NOI18N
+        tmptmeninggal.setOpaque(false);
+        tmptmeninggal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tmptmeninggalKeyPressed(evt);
+            }
+        });
+        panelBiasa1.add(tmptmeninggal);
+        tmptmeninggal.setBounds(484, 10, 140, 23);
 
         internalFrame1.add(panelBiasa1, java.awt.BorderLayout.PAGE_START);
 
@@ -570,7 +682,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
 }//GEN-LAST:event_cmbMntKeyPressed
 
     private void cmbDtkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbDtkKeyPressed
-        Valid.pindah(evt,cmbMnt,TNoRM);
+        Valid.pindah(evt,cmbMnt,tmptmeninggal);
 }//GEN-LAST:event_cmbDtkKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
@@ -582,7 +694,12 @@ public class DlgPasienMati extends javax.swing.JDialog {
             Sequel.menyimpan("pasien_mati","'"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"','"+
                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
                     TNoRM.getText()+"','"+
-                    TKtg.getText()+"'","pasien");
+                    TKtg.getText()+"','"+
+                    tmptmeninggal.getSelectedItem()+"','"+
+                    icd1.getText()+"','"+
+                    icd2.getText()+"','"+
+                    icd3.getText()+"','"+
+                    icd4.getText()+"'","pasien");
             tampil();
             emptTeks();
         }
@@ -592,7 +709,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,TPasien,BtnBatal);
+            Valid.pindah(evt,TKtg,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -647,30 +764,20 @@ public class DlgPasienMati extends javax.swing.JDialog {
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            if(TCari.getText().trim().equals("")){
-                Valid.MyReport("rptPasienMati.jrxml","report","::[ Data Pasien Meninggal (Umum) ]::",
+                Valid.MyReport("rptPasienMati.jrxml","report","::[ Data Pasien Meninggal ]::",
                         "select tanggal,jam,pasien_mati.no_rkm_medis,nm_pasien, "+
                         "jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
-                        "agama,keterangan from pasien_mati,pasien "+
-                        "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis order by tanggal",param);
-            }else if(! TCari.getText().trim().equals("")){
-                String sql=" pasien_mati.no_rkm_medis=pasien.no_rkm_medis  ";
-                Valid.MyReport("rptPasienMati.jrxml","report","::[ Data Pasien Meninggal (Umum) ]::",
-                        "select tanggal,jam,pasien_mati.no_rkm_medis,nm_pasien, "+
-                        "jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
-                        "agama,keterangan from pasien_mati,pasien "+
-                        "where "+
-                        sql+"and tanggal like '%"+TCari.getText().trim()+"%' or "+
-                        sql+"and pasien_mati.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                        sql+"and nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                        sql+"and jk like '%"+TCari.getText().trim()+"%' or "+
-                        sql+"and tmp_lahir like '%"+TCari.getText().trim()+"%' or "+
-                        sql+"and gol_darah like '%"+TCari.getText().trim()+"%' or "+
-                        sql+"and stts_nikah like '%"+TCari.getText().trim()+"%' or "+
-                        sql+"and agama like '%"+TCari.getText().trim()+"%' or "+
-                        sql+"and keterangan like '%"+TCari.getText().trim()+"%' "+
-                        " order by tanggal ",param);
-            }
+                        "agama,keterangan,temp_meninggal,icd1,icd2,icd3,icd4 from pasien_mati,pasien where "+
+                         sql+"and tanggal like '%"+TCari.getText().trim()+"%' or "+
+                         sql+"and pasien_mati.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                         sql+"and nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                         sql+"and jk like '%"+TCari.getText().trim()+"%' or "+
+                         sql+"and tmp_lahir like '%"+TCari.getText().trim()+"%' or "+
+                         sql+"and gol_darah like '%"+TCari.getText().trim()+"%' or "+
+                         sql+"and stts_nikah like '%"+TCari.getText().trim()+"%' or "+
+                         sql+"and agama like '%"+TCari.getText().trim()+"%' or "+
+                         sql+"and keterangan like '%"+TCari.getText().trim()+"%' "+
+                         " order by tanggal ",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -694,22 +801,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        String sql=" pasien_mati.no_rkm_medis=pasien.no_rkm_medis  ";
-
-        prosesCari("select tanggal,jam,pasien_mati.no_rkm_medis,nm_pasien, "+
-                "jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
-                "agama,keterangan from pasien_mati,pasien "+
-                "where "+
-                sql+"and tanggal like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and pasien_mati.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and jk like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and tmp_lahir like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and gol_darah like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and stts_nikah like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and agama like '%"+TCari.getText().trim()+"%' or "+
-                sql+"and keterangan like '%"+TCari.getText().trim()+"%' "+
-                " order by tanggal ");
+        tampil();
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -806,9 +898,33 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeekActionPerformed(null);
         }else{
-            Valid.pindah(evt,DTPTgl,TKtg);
+            Valid.pindah(evt,tmptmeninggal,icd1);
         }
     }//GEN-LAST:event_TNoRMKeyPressed
+
+    private void icd1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_icd1KeyPressed
+        Valid.pindah(evt,TNoRM,icd2);
+    }//GEN-LAST:event_icd1KeyPressed
+
+    private void icd2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_icd2KeyPressed
+        Valid.pindah(evt,icd1,icd3);
+    }//GEN-LAST:event_icd2KeyPressed
+
+    private void icd3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_icd3KeyPressed
+        Valid.pindah(evt,icd2,icd4);
+    }//GEN-LAST:event_icd3KeyPressed
+
+    private void icd4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_icd4KeyPressed
+        Valid.pindah(evt,icd3,TKtg);
+    }//GEN-LAST:event_icd4KeyPressed
+
+    private void tmptmeninggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tmptmeninggalKeyPressed
+        Valid.pindah(evt,cmbDtk,TNoRM);
+    }//GEN-LAST:event_tmptmeninggalKeyPressed
+
+    private void TKtgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKtgKeyPressed
+        Valid.pindah(evt,icd4,BtnSimpan);
+    }//GEN-LAST:event_TKtgKeyPressed
 
     /**
     * @param args the command line arguments
@@ -847,9 +963,19 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.ComboBox cmbDtk;
     private widget.ComboBox cmbJam;
     private widget.ComboBox cmbMnt;
+    private widget.TextBox icd1;
+    private widget.TextBox icd2;
+    private widget.TextBox icd3;
+    private widget.TextBox icd4;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
+    private widget.Label jLabel11;
+    private widget.Label jLabel12;
+    private widget.Label jLabel13;
+    private widget.Label jLabel14;
+    private widget.Label jLabel15;
     private widget.Label jLabel4;
+    private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
@@ -860,34 +986,44 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbMati;
+    private widget.ComboBox tmptmeninggal;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        String sql="select tanggal,jam,pasien_mati.no_rkm_medis,nm_pasien, "+
-                   "jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
-                   "agama,keterangan from pasien_mati,pasien "+
-                   "where pasien_mati.no_rkm_medis=pasien.no_rkm_medis order by tanggal";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
         Valid.tabelKosong(tabMode);
         try{
-            java.sql.Statement stat=koneksi.createStatement();
-            ResultSet rs=stat.executeQuery(sql);
-            while(rs.next()){
-                String[] data={rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               rs.getString(5),
-                               rs.getString(6),
-                               rs.getString(7),
-                               rs.getString(8),
-                               rs.getString(9),
-                               rs.getString(10),
-                               rs.getString(11)};
-                tabMode.addRow(data);
+            ps=koneksi.prepareStatement("select tanggal,jam,pasien_mati.no_rkm_medis,nm_pasien, "+
+                   "jk,tmp_lahir,tgl_lahir,gol_darah,stts_nikah, "+
+                   "agama,keterangan,temp_meninggal,icd1,icd2,icd3,icd4 from pasien_mati,pasien where "+
+                    sql+"and tanggal like '%"+TCari.getText().trim()+"%' or "+
+                    sql+"and pasien_mati.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                    sql+"and nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                    sql+"and jk like '%"+TCari.getText().trim()+"%' or "+
+                    sql+"and tmp_lahir like '%"+TCari.getText().trim()+"%' or "+
+                    sql+"and gol_darah like '%"+TCari.getText().trim()+"%' or "+
+                    sql+"and stts_nikah like '%"+TCari.getText().trim()+"%' or "+
+                    sql+"and agama like '%"+TCari.getText().trim()+"%' or "+
+                    sql+"and keterangan like '%"+TCari.getText().trim()+"%' "+
+                    " order by tanggal ");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){               
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                        rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
+                        rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),
+                        rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("simrskhanza.DlgPasienMati.tampil() : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
@@ -900,7 +1036,11 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         TNoRM.setText("");
         TPasien.setText("");
         TKtg.setText("");
-
+        tmptmeninggal.setSelectedItem("");
+        icd1.setText("");
+        icd2.setText("");
+        icd3.setText("");
+        icd4.setText("");
         DTPTgl.setDate(new Date());
         DTPTgl.requestFocus();
     }
@@ -913,7 +1053,12 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
             TNoRM.setText(tbMati.getValueAt(tbMati.getSelectedRow(),2).toString());
             TPasien.setText(tbMati.getValueAt(tbMati.getSelectedRow(),3).toString());
             TKtg.setText(tbMati.getValueAt(tbMati.getSelectedRow(),10).toString());
-            Valid.SetTgl(DTPTgl,tbMati.getValueAt(tbMati.getSelectedRow(),0).toString());           
+            Valid.SetTgl(DTPTgl,tbMati.getValueAt(tbMati.getSelectedRow(),0).toString());
+            tmptmeninggal.setSelectedItem(tbMati.getValueAt(tbMati.getSelectedRow(),11).toString());
+            icd1.setText(tbMati.getValueAt(tbMati.getSelectedRow(),12).toString());
+            icd2.setText(tbMati.getValueAt(tbMati.getSelectedRow(),13).toString());
+            icd3.setText(tbMati.getValueAt(tbMati.getSelectedRow(),14).toString());
+            icd4.setText(tbMati.getValueAt(tbMati.getSelectedRow(),15).toString());
         }
     }
     

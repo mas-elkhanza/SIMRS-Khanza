@@ -10,7 +10,6 @@
  */
 
 package keuangan;
-import simrskhanza.DlgCariPetugas;
 import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -63,12 +62,12 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(628,674);
 
-        Object[] row={"Tanggal","Kategori","Petugas","Pemasukan","Keterangan","Kode","NIP"};
+        Object[] row={"Tanggal","Kategori","Petugas","Pemasukan","Terima Dari","Keperluan","Kode","NIP"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, 
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -81,7 +80,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         tbResep.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbResep.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 8; i++) {
             TableColumn column = tbResep.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(120);
@@ -94,16 +93,19 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(150);
             }else if(i==5){
+                column.setPreferredWidth(150);
+            }else if(i==6){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
-            }else if(i==6){
+            }else if(i==7){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }
         }
         tbResep.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Keterangan.setDocument(new batasInput((byte)70).getKata(Keterangan));
+        Keperluan.setDocument(new batasInput((byte)70).getKata(Keperluan));
+        Keterangan.setDocument(new batasInput((byte)50).getKata(Keterangan));
         KdPtg.setDocument(new batasInput((byte)20).getKata(KdPtg));
         pemasukan.setDocument(new batasInput((byte)15).getKata(pemasukan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
@@ -185,7 +187,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         try {
             ps=koneksi.prepareStatement(
-                    "select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.besar, pemasukan_lain.nip, "+
+                    "select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.keperluan, pemasukan_lain.besar, pemasukan_lain.nip, "+
                     "petugas.nama,pemasukan_lain.kode_kategori,kategori_pemasukan_lain.nama_kategori "+
                     "from pemasukan_lain inner join petugas inner join kategori_pemasukan_lain on pemasukan_lain.nip=petugas.nip "+
                     "and pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori where "+
@@ -211,6 +213,8 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Popup = new javax.swing.JPopupMenu();
+        cetakkwitansi = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbResep = new widget.Table();
@@ -234,7 +238,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         PanelInput = new javax.swing.JPanel();
         FormInput = new widget.PanelBiasa();
-        Keterangan = new widget.TextBox();
+        Keperluan = new widget.TextBox();
         KdPtg = new widget.TextBox();
         NmPtg = new widget.TextBox();
         jLabel3 = new widget.Label();
@@ -248,7 +252,25 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         jLabel8 = new widget.Label();
         jLabel11 = new widget.Label();
         pemasukan = new widget.TextBox();
+        Keterangan = new widget.TextBox();
+        jLabel12 = new widget.Label();
         ChkInput = new widget.CekBox();
+
+        Popup.setName("Popup"); // NOI18N
+
+        cetakkwitansi.setBackground(new java.awt.Color(255, 255, 255));
+        cetakkwitansi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        cetakkwitansi.setForeground(java.awt.Color.darkGray);
+        cetakkwitansi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        cetakkwitansi.setText("Cetak Kwitansi Penerimaan");
+        cetakkwitansi.setName("cetakkwitansi"); // NOI18N
+        cetakkwitansi.setPreferredSize(new java.awt.Dimension(250, 25));
+        cetakkwitansi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cetakkwitansiActionPerformed(evt);
+            }
+        });
+        Popup.add(cetakkwitansi);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -268,6 +290,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
 
         tbResep.setAutoCreateRowSorter(true);
         tbResep.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbResep.setComponentPopupMenu(Popup);
         tbResep.setName("tbResep"); // NOI18N
         tbResep.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -424,7 +447,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-08-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -439,7 +462,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-08-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -490,15 +513,15 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(440, 77));
         FormInput.setLayout(null);
 
-        Keterangan.setHighlighter(null);
-        Keterangan.setName("Keterangan"); // NOI18N
-        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+        Keperluan.setHighlighter(null);
+        Keperluan.setName("Keperluan"); // NOI18N
+        Keperluan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganKeyPressed(evt);
+                KeperluanKeyPressed(evt);
             }
         });
-        FormInput.add(Keterangan);
-        Keterangan.setBounds(83, 72, 354, 23);
+        FormInput.add(Keperluan);
+        Keperluan.setBounds(545, 70, 190, 23);
 
         KdPtg.setHighlighter(null);
         KdPtg.setName("KdPtg"); // NOI18N
@@ -516,7 +539,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         FormInput.add(NmPtg);
         NmPtg.setBounds(185, 42, 221, 23);
 
-        jLabel3.setText("Keterangan :");
+        jLabel3.setText("Terima Dari :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
         jLabel3.setBounds(0, 72, 80, 23);
@@ -582,7 +605,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         btnKategori.setBounds(409, 12, 28, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-06-2017 23:46:28" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-08-2017 11:32:09" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -593,17 +616,17 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tanggal);
-        Tanggal.setBounds(545, 10, 154, 23);
+        Tanggal.setBounds(545, 10, 190, 23);
 
         jLabel8.setText("Tanggal :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
         jLabel8.setBounds(470, 10, 73, 23);
 
-        jLabel11.setText("Pemasukan : Rp.");
+        jLabel11.setText(" Keperluan :");
         jLabel11.setName("jLabel11"); // NOI18N
         FormInput.add(jLabel11);
-        jLabel11.setBounds(470, 40, 93, 23);
+        jLabel11.setBounds(470, 70, 73, 23);
 
         pemasukan.setText("0");
         pemasukan.setHighlighter(null);
@@ -614,7 +637,22 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
             }
         });
         FormInput.add(pemasukan);
-        pemasukan.setBounds(560, 40, 139, 23);
+        pemasukan.setBounds(563, 40, 172, 23);
+
+        Keterangan.setHighlighter(null);
+        Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKeyPressed(evt);
+            }
+        });
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(83, 72, 354, 23);
+
+        jLabel12.setText("Pemasukan : Rp.");
+        jLabel12.setName("jLabel12"); // NOI18N
+        FormInput.add(jLabel12);
+        jLabel12.setBounds(470, 40, 93, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -649,6 +687,8 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Keterangan");
+        }else if(Keperluan.getText().trim().equals("")){
+            Valid.textKosong(Keperluan,"Keperluan");
         }else if(KdPtg.getText().trim().equals("")||NmPtg.getText().trim().equals("")){
             Valid.textKosong(KdPtg,"Petugas Keuangan");
         }else if(KdKategori.getText().trim().equals("")||NmKategori.getText().trim().equals("")){
@@ -658,9 +698,9 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         }else{
             Sequel.AutoComitFalse();            
             try {
-                Sequel.menyimpan("pemasukan_lain","?,?,?,?,?","Pemasukan",5,new String[]{
+                Sequel.menyimpan("pemasukan_lain","?,?,?,?,?,?","Pemasukan",6,new String[]{
                     Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                    KdKategori.getText(),pemasukan.getText(),KdPtg.getText(),Keterangan.getText()
+                    KdKategori.getText(),pemasukan.getText(),KdPtg.getText(),Keterangan.getText(),Keperluan.getText()
                 });
                 Sequel.queryu("delete from tampjurnal");
                 psakun.setString(1,KdKategori.getText());
@@ -764,10 +804,11 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             Valid.MyReport("rptPemasukanLain.jrxml","report","::[ Data Pemasukan Lain-Lain ]::",
-                "select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.besar, pemasukan_lain.nip, "+
+                "select pemasukan_lain.tanggal, pemasukan_lain.keterangan, pemasukan_lain.keperluan, pemasukan_lain.besar, pemasukan_lain.nip, "+
                     "petugas.nama,pemasukan_lain.kode_kategori,kategori_pemasukan_lain.nama_kategori "+
                     "from pemasukan_lain inner join petugas inner join kategori_pemasukan_lain on pemasukan_lain.nip=petugas.nip "+
                     "and pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori where "+
+                        "pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pemasukan_lain.keperluan like '%"+TCari.getText().trim()+"%' or "+
                     "pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pemasukan_lain.keterangan like '%"+TCari.getText().trim()+"%' or "+
                     "pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and pemasukan_lain.nip like '%"+TCari.getText().trim()+"%' or "+
                     "pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
@@ -846,7 +887,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_ChkInputActionPerformed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        Valid.pindah(evt,Keterangan,pemasukan);
+        Valid.pindah(evt,Keperluan,pemasukan);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void pemasukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pemasukanKeyPressed
@@ -871,13 +912,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }else{
-            Valid.pindah(evt,KdKategori,Keterangan);
+            Valid.pindah(evt,KdKategori,Keperluan);
         }
     }//GEN-LAST:event_KdPtgKeyPressed
 
-    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
+    private void KeperluanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeperluanKeyPressed
         Valid.pindah(evt,KdPtg,Tanggal);
-    }//GEN-LAST:event_KeteranganKeyPressed
+    }//GEN-LAST:event_KeperluanKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
@@ -906,6 +947,48 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void btnKategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKategoriKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnKategoriKeyPressed
+
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeteranganKeyPressed
+
+    private void cetakkwitansiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetakkwitansiActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(Keperluan.getText().trim().equals("")){
+            Valid.textKosong(Keperluan,"Keperluan");
+        }else if(KdPtg.getText().trim().equals("")||NmPtg.getText().trim().equals("")){
+            Valid.textKosong(KdPtg,"Petugas");
+        }else if(KdKategori.getText().trim().equals("")||NmKategori.getText().trim().equals("")){
+            Valid.textKosong(KdKategori,"Kode Kategori");
+        }else if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            tbResep.requestFocus();
+        }else {
+            Sequel.AutoComitFalse();
+            Sequel.queryu("delete from temporary");
+            int row=tabMode.getRowCount();
+            for(int i=0;i<row;i++){  
+                try {
+                    if(Valid.SetAngka(tabMode.getValueAt(i,0).toString())>0){
+                           Sequel.menyimpan("temporary","'0','"+
+                                   tabMode.getValueAt(i,0).toString()+"','"+
+                                   tabMode.getValueAt(i,1).toString()+"','"+
+                                   tabMode.getValueAt(i,2).toString()+"','"+
+                                   tabMode.getValueAt(i,3).toString()+"','"+
+                                   tabMode.getValueAt(i,4).toString()+"','"+
+                                   tabMode.getValueAt(i,5).toString()+"','"+
+                                   tabMode.getValueAt(i,6).toString()+"','"+
+                                   tabMode.getValueAt(i,8).toString()+"','"+
+                                   tabMode.getValueAt(i,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Transaksi Penjualan"); 
+                    }
+                } catch (Exception e) {
+                }                
+            }
+            Sequel.AutoComitTrue();
+            Valid.panggilUrl("billing/LaporanKeuangan.php?kode="+KdKategori.getText()+"&Tanggal="+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"&nama="+NmKategori.getText().replaceAll(" ","_")+"&petugas="+NmPtg.getText().replaceAll(" ","_")+"&keperluan="+Keperluan.getText().replaceAll(" ","_")+"&keterangan="+Keterangan.getText().replaceAll(" ","_")+"&nom="+pemasukan.getText().replaceAll(" ","_")+"&kategori="+NmKategori.getText().replaceAll(" ","_"));
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_cetakkwitansiActionPerformed
 
     /**
     * @param args the command line arguments
@@ -937,18 +1020,22 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.PanelBiasa FormInput;
     private widget.TextBox KdKategori;
     private widget.TextBox KdPtg;
+    private widget.TextBox Keperluan;
     private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.TextBox NmKategori;
     private widget.TextBox NmPtg;
     private javax.swing.JPanel PanelInput;
+    private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
     private widget.Button btnKategori;
     private widget.Button btnPetugas;
+    private javax.swing.JMenuItem cetakkwitansi;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel11;
+    private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel14;
     private widget.Label jLabel19;
@@ -987,7 +1074,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             while(rs.next()){                
                 tabMode.addRow(new Object[]{
                     rs.getString("tanggal"),rs.getString("kode_kategori")+" "+rs.getString("nama_kategori"),
-                    rs.getString("nip")+" "+rs.getString("nama"),rs.getDouble("besar"),rs.getString("keterangan"),
+                    rs.getString("nip")+" "+rs.getString("nama"),rs.getDouble("besar"),rs.getString("keterangan"),rs.getString("keperluan"),
                     rs.getString("kode_kategori"),rs.getString("nip")
                 });
                 total=total+rs.getDouble("besar");
@@ -1003,7 +1090,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     public void emptTeks() {
         pemasukan.setText("0");
-        Keterangan.setText("");
+        Keperluan.setText("");
         KdKategori.setText("");
         NmKategori.setText("");
         Tanggal.setDate(new Date());
@@ -1012,12 +1099,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void getData() {
         if(tbResep.getSelectedRow()!= -1){
-            NmKategori.setText(tbResep.getValueAt(tbResep.getSelectedRow(),1).toString().replaceAll(tbResep.getValueAt(tbResep.getSelectedRow(),5).toString()+" ",""));
-            NmPtg.setText(tbResep.getValueAt(tbResep.getSelectedRow(),2).toString().replaceAll(tbResep.getValueAt(tbResep.getSelectedRow(),6).toString()+" ",""));
-            pemasukan.setText(tbResep.getValueAt(tbResep.getSelectedRow(),3).toString());
+            NmKategori.setText(tbResep.getValueAt(tbResep.getSelectedRow(),1).toString().replaceAll(tbResep.getValueAt(tbResep.getSelectedRow(),6).toString()+" ",""));
+            NmPtg.setText(tbResep.getValueAt(tbResep.getSelectedRow(),2).toString().replaceAll(tbResep.getValueAt(tbResep.getSelectedRow(),7).toString()+" ",""));
+            pemasukan.setText(String.valueOf(tbResep.getValueAt(tbResep.getSelectedRow(),3).toString()));
             Keterangan.setText(tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
-            KdKategori.setText(tbResep.getValueAt(tbResep.getSelectedRow(),5).toString());
-            KdPtg.setText(tbResep.getValueAt(tbResep.getSelectedRow(),6).toString());
+            Keperluan.setText(tbResep.getValueAt(tbResep.getSelectedRow(),5).toString());
+            KdKategori.setText(tbResep.getValueAt(tbResep.getSelectedRow(),6).toString());
+            KdPtg.setText(tbResep.getValueAt(tbResep.getSelectedRow(),7).toString());
             Valid.SetTgl(Tanggal,tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
         }
     }
