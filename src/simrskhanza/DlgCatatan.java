@@ -117,21 +117,19 @@ public class DlgCatatan extends javax.swing.JDialog {
     private void initComponents() {
 
         internalFrame1 = new widget.InternalFrame();
-        jPanel3 = new javax.swing.JPanel();
-        panelGlass8 = new widget.panelisi();
-        BtnSimpan = new widget.Button();
-        BtnHapus = new widget.Button();
-        BtnEdit = new widget.Button();
-        BtnKeluar = new widget.Button();
-        PanelInput = new javax.swing.JPanel();
         FormInput = new widget.PanelBiasa();
         jLabel3 = new widget.Label();
         TNoRw = new widget.TextBox();
         TNoRM = new widget.TextBox();
         TPasien = new widget.TextBox();
         jLabel9 = new widget.Label();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TCatatan = new javax.swing.JTextArea();
+        Scroll3 = new widget.ScrollPane();
+        TCatatan = new widget.TextArea();
+        panelGlass8 = new widget.panelisi();
+        BtnSimpan = new widget.Button();
+        BtnHapus = new widget.Button();
+        BtnEdit = new widget.Button();
+        BtnKeluar = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -141,13 +139,60 @@ public class DlgCatatan extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        jPanel3.setName("jPanel3"); // NOI18N
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(44, 100));
-        jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
+        FormInput.setName("FormInput"); // NOI18N
+        FormInput.setPreferredSize(new java.awt.Dimension(865, 137));
+        FormInput.setLayout(null);
+
+        jLabel3.setText("No.Rawat :");
+        jLabel3.setName("jLabel3"); // NOI18N
+        FormInput.add(jLabel3);
+        jLabel3.setBounds(0, 10, 75, 23);
+
+        TNoRw.setHighlighter(null);
+        TNoRw.setName("TNoRw"); // NOI18N
+        TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TNoRwKeyPressed(evt);
+            }
+        });
+        FormInput.add(TNoRw);
+        TNoRw.setBounds(79, 10, 152, 23);
+
+        TNoRM.setEditable(false);
+        TNoRM.setHighlighter(null);
+        TNoRM.setName("TNoRM"); // NOI18N
+        FormInput.add(TNoRM);
+        TNoRM.setBounds(233, 10, 100, 23);
+
+        TPasien.setEditable(false);
+        TPasien.setHighlighter(null);
+        TPasien.setName("TPasien"); // NOI18N
+        TPasien.setPreferredSize(new java.awt.Dimension(25, 28));
+        FormInput.add(TPasien);
+        TPasien.setBounds(335, 10, 363, 23);
+
+        jLabel9.setText("Catatan :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        FormInput.add(jLabel9);
+        jLabel9.setBounds(0, 40, 75, 23);
+
+        Scroll3.setName("Scroll3"); // NOI18N
+        Scroll3.setOpaque(true);
+
+        TCatatan.setColumns(20);
+        TCatatan.setRows(5);
+        TCatatan.setName("TCatatan"); // NOI18N
+        Scroll3.setViewportView(TCatatan);
+
+        FormInput.add(Scroll3);
+        Scroll3.setBounds(79, 40, 620, 200);
+
+        internalFrame1.add(FormInput, java.awt.BorderLayout.CENTER);
+        FormInput.getAccessibleContext().setAccessibleName("");
+        FormInput.getAccessibleContext().setAccessibleDescription("");
 
         panelGlass8.setName("panelGlass8"); // NOI18N
-        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass8.setPreferredSize(new java.awt.Dimension(100, 56));
         panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
@@ -222,65 +267,7 @@ public class DlgCatatan extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnKeluar);
 
-        jPanel3.add(panelGlass8, java.awt.BorderLayout.CENTER);
-
-        internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
-
-        PanelInput.setName("PanelInput"); // NOI18N
-        PanelInput.setOpaque(false);
-        PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
-        internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
-
-        FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(865, 137));
-        FormInput.setLayout(null);
-
-        jLabel3.setText("No.Rawat :");
-        jLabel3.setName("jLabel3"); // NOI18N
-        FormInput.add(jLabel3);
-        jLabel3.setBounds(-2, 12, 80, 23);
-
-        TNoRw.setHighlighter(null);
-        TNoRw.setName("TNoRw"); // NOI18N
-        TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRwKeyPressed(evt);
-            }
-        });
-        FormInput.add(TNoRw);
-        TNoRw.setBounds(81, 12, 175, 23);
-
-        TNoRM.setEditable(false);
-        TNoRM.setHighlighter(null);
-        TNoRM.setName("TNoRM"); // NOI18N
-        FormInput.add(TNoRM);
-        TNoRM.setBounds(258, 12, 143, 23);
-
-        TPasien.setEditable(false);
-        TPasien.setHighlighter(null);
-        TPasien.setName("TPasien"); // NOI18N
-        TPasien.setPreferredSize(new java.awt.Dimension(25, 28));
-        FormInput.add(TPasien);
-        TPasien.setBounds(403, 12, 425, 23);
-
-        jLabel9.setText("Catatan :");
-        jLabel9.setName("jLabel9"); // NOI18N
-        FormInput.add(jLabel9);
-        jLabel9.setBounds(0, 50, 80, 23);
-
-        jScrollPane1.setName("jScrollPane1"); // NOI18N
-
-        TCatatan.setColumns(20);
-        TCatatan.setRows(5);
-        TCatatan.setName("TCatatan"); // NOI18N
-        jScrollPane1.setViewportView(TCatatan);
-
-        FormInput.add(jScrollPane1);
-        jScrollPane1.setBounds(90, 60, 630, 190);
-
-        internalFrame1.add(FormInput, java.awt.BorderLayout.CENTER);
-        FormInput.getAccessibleContext().setAccessibleName("");
-        FormInput.getAccessibleContext().setAccessibleDescription("");
+        internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -403,16 +390,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
     private widget.PanelBiasa FormInput;
-    private javax.swing.JPanel PanelInput;
-    private javax.swing.JTextArea TCatatan;
+    private widget.ScrollPane Scroll3;
+    private widget.TextArea TCatatan;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel3;
     private widget.Label jLabel9;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private widget.panelisi panelGlass8;
     // End of variables declaration//GEN-END:variables
     

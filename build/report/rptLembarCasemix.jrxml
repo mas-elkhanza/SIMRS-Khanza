@@ -457,7 +457,7 @@ on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}+", "+$P{kontakrs}+", "+
-"E-mail : "+$P{emailrs}+", Hotline : 082221222494, Website : http://rs.uns.ac.id"]]></textFieldExpression>
+"E-mail : "+$P{emailrs}+", Hotline : 08562675039, Website : http://elkhanza.wordpress.com"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="141" y="19" width="397" height="15"/>
