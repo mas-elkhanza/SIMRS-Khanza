@@ -95,7 +95,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         peminjam.setDocument(new batasInput((byte)50).getKata(peminjam));
         tlp.setDocument(new batasInput((byte)13).getOnlyAngka(tlp));
         nip.setDocument(new batasInput((byte)20).getKata(nip));
-        no_inventaris.setDocument(new batasInput((byte)20).getKata(no_inventaris));
+        no_inventaris.setDocument(new batasInput((byte)30).getKata(no_inventaris));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
      
         
