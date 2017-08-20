@@ -12,41 +12,22 @@
 
 package simrskhanza;
 
-import fungsi.WarnaTable;
-import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import inventory.DlgCariKonversi;
 import inventory.DlgCariObat;
 import inventory.DlgCariObat2;
 import inventory.DlgCariObat3;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JTextArea;
-import javax.swing.event.DocumentEvent;
 
 /**
  *
@@ -96,8 +77,6 @@ public class DlgCatatan extends javax.swing.JDialog {
         
         this.setLocation(8,1);
         setSize(885,674);
-
-        TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         
         //TCatatan.setText(TCatatan); 
         TCatatan.setLineWrap(true);
@@ -119,7 +98,6 @@ public class DlgCatatan extends javax.swing.JDialog {
         internalFrame1 = new widget.InternalFrame();
         FormInput = new widget.PanelBiasa();
         jLabel3 = new widget.Label();
-        TNoRw = new widget.TextBox();
         TNoRM = new widget.TextBox();
         TPasien = new widget.TextBox();
         jLabel9 = new widget.Label();
@@ -143,38 +121,28 @@ public class DlgCatatan extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(865, 137));
         FormInput.setLayout(null);
 
-        jLabel3.setText("No.Rawat :");
+        jLabel3.setText("No.R.M. :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(0, 10, 75, 23);
-
-        TNoRw.setHighlighter(null);
-        TNoRw.setName("TNoRw"); // NOI18N
-        TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRwKeyPressed(evt);
-            }
-        });
-        FormInput.add(TNoRw);
-        TNoRw.setBounds(79, 10, 152, 23);
+        jLabel3.setBounds(0, 10, 65, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
         FormInput.add(TNoRM);
-        TNoRM.setBounds(233, 10, 100, 23);
+        TNoRM.setBounds(70, 10, 130, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
         TPasien.setPreferredSize(new java.awt.Dimension(25, 28));
         FormInput.add(TPasien);
-        TPasien.setBounds(335, 10, 363, 23);
+        TPasien.setBounds(202, 10, 486, 23);
 
         jLabel9.setText("Catatan :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(0, 40, 75, 23);
+        jLabel9.setBounds(0, 40, 65, 23);
 
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
@@ -185,7 +153,7 @@ public class DlgCatatan extends javax.swing.JDialog {
         Scroll3.setViewportView(TCatatan);
 
         FormInput.add(Scroll3);
-        Scroll3.setBounds(79, 40, 620, 200);
+        Scroll3.setBounds(70, 40, 620, 200);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.CENTER);
         FormInput.getAccessibleContext().setAccessibleName("");
@@ -249,9 +217,9 @@ public class DlgCatatan extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnEdit);
 
-        BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
+        BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
-        BtnKeluar.setText("Keluar");
+        BtnKeluar.setText("Tutup");
         BtnKeluar.setToolTipText("Alt+K");
         BtnKeluar.setName("BtnKeluar"); // NOI18N
         BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -274,27 +242,15 @@ public class DlgCatatan extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
-        
-}//GEN-LAST:event_TNoRwKeyPressed
-
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(Sequel.cariIsi("select catatan from pasien where no_rkm_medis='"+TNoRM.getText()+"'") == null || Sequel.cariIsi("select catatan from pasien where no_rkm_medis='"+TNoRM.getText()+"'") == ""){
-           if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-                Valid.textKosong(TNoRw,"No.Rawat");
-            }else{          
-                try {
-                    koneksi.prepareStatement("Update pasien set catatan='"+TCatatan.getText()+"' where no_rkm_medis='"+TNoRM.getText()+"'").execute();               
-                    JOptionPane.showMessageDialog(null,"Data Berhasil disimpan...!!!!");
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null,"Maaf, gagal mengubah data. "+ex);
-                }
-
-                BtnKeluarActionPerformed(evt);        
-            }            
-        }else{            
-            JOptionPane.showMessageDialog(null,"Catatan sudah ada...!!!!");
-        }
+        if(TNoRM.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+            Valid.textKosong(TNoRM,"No.Rekam Medis");
+        }else if(TCatatan.getText().trim().equals("")){
+            Valid.textKosong(TCatatan,"Catatan");
+        }else{          
+            Sequel.menyimpan3("catatan_pasien","?,?",2,new String[]{TNoRM.getText(),TCatatan.getText()},"no_rkm_medis=?","catatan=?",2,new String[]{TCatatan.getText(),TNoRM.getText()});
+            BtnKeluarActionPerformed(evt);        
+        }  
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -306,15 +262,8 @@ public class DlgCatatan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        TCatatan.setText("");
-         try {
-                    koneksi.prepareStatement("Update pasien set catatan='"+TCatatan.getText()+"' where no_rkm_medis='"+TNoRM.getText()+"'").execute();               
-                    JOptionPane.showMessageDialog(null,"Data Berhasil dihapus...!!!!");
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null,"Maaf, gagal mengubah data. "+ex);
-                }
-
-                BtnKeluarActionPerformed(evt);       
+       Sequel.meghapus2("catatan_pasien","no_rkm_medis",TNoRM.getText());
+       BtnKeluarActionPerformed(evt);       
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -328,43 +277,25 @@ public class DlgCatatan extends javax.swing.JDialog {
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             dispose();
-        }else{
-            
         }
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
-            bangsal=Sequel.cariIsi("select kamar.kd_bangsal from kamar inner join kamar_inap "+
-                    "on kamar.kd_kamar=kamar_inap.kd_kamar where kamar_inap.no_rawat=? "+
-                    "order by tgl_masuk desc limit 1",TNoRw.getText());
-            if(bangsal.equals("")){
-                bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
-            }
-        }else{
-            bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
-        }
-        
-        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"No.Rawat");
-        }else{          
-            try {  
-               koneksi.prepareStatement("Update pasien set catatan='"+TCatatan.getText()+"' where no_rkm_medis='"+TNoRM.getText()+"'").execute();                             
-             JOptionPane.showMessageDialog(null,"Data Berhasil disimpan...!!!!");
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Maaf, gagal mengubah data. "+ex);
-            }
-            
-            
-            BtnKeluarActionPerformed(evt);
-        }
+    if(TNoRM.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        Valid.textKosong(TNoRM,"No.Rekam Medis");
+    }else if(TCatatan.getText().trim().equals("")){
+        Valid.textKosong(TCatatan,"Catatan");
+    }else{  
+        Sequel.mengedit2("catatan_pasien","no_rkm_medis=?","catatan=?",2,new String[]{
+            TCatatan.getText(),TNoRM.getText()
+        });
+        BtnKeluarActionPerformed(evt);
+    }
 }//GEN-LAST:event_BtnEditActionPerformed
 
 private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnEditActionPerformed(null);
-        }else{
-            
         }
 }//GEN-LAST:event_BtnEditKeyPressed
 
@@ -393,7 +324,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.ScrollPane Scroll3;
     private widget.TextArea TCatatan;
     private widget.TextBox TNoRM;
-    private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel3;
@@ -402,23 +332,14 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     // End of variables declaration//GEN-END:variables
     
 
-    private void isRawat() {
-         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());
-    }
-
     private void isPsien() {
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRM.getText());
     }
 
-    public void setNoRm(String norwt, Date tgl1, Date tgl2,String statuspasien) {
-        TNoRw.setText(norwt);        
-        isRawat();
+    public void setNoRm(String norm) {
+        TNoRM.setText(norm);  
         isPsien();   
-        String catatan = Sequel.cariString("select catatan from pasien where no_rkm_medis="+TNoRM.getText());
-        //System.out.println("catatan "+catatan+" norwt "+TNoRM.getText());
-        TCatatan.setText(catatan);
-        status=statuspasien;       
-       
+        Sequel.cariIsi("select catatan from catatan_pasien where no_rkm_medis=?",TCatatan,TNoRM.getText());       
     }
     
     

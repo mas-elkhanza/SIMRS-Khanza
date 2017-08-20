@@ -76,28 +76,12 @@
           <SubComponents>
             <Component class="widget.Label" name="jLabel3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="No.Rawat :"/>
+                <Property name="text" type="java.lang.String" value="No.R.M. :"/>
                 <Property name="name" type="java.lang.String" value="jLabel3" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="10" width="75" height="23"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="widget.TextBox" name="TNoRw">
-              <Properties>
-                <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="null"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="TNoRw" noResource="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TNoRwKeyPressed"/>
-              </Events>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="79" y="10" width="152" height="23"/>
+                  <AbsoluteConstraints x="0" y="10" width="65" height="23"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -111,7 +95,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="233" y="10" width="100" height="23"/>
+                  <AbsoluteConstraints x="70" y="10" width="130" height="23"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -131,7 +115,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="335" y="10" width="363" height="23"/>
+                  <AbsoluteConstraints x="202" y="10" width="486" height="23"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -142,7 +126,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="40" width="75" height="23"/>
+                  <AbsoluteConstraints x="0" y="40" width="65" height="23"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -153,7 +137,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="79" y="40" width="620" height="200"/>
+                  <AbsoluteConstraints x="70" y="40" width="620" height="200"/>
                 </Constraint>
               </Constraints>
 
@@ -245,10 +229,10 @@
             <Component class="widget.Button" name="BtnKeluar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/picture/exit.png"/>
+                  <Image iconType="3" name="/picture/cross.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="75"/>
-                <Property name="text" type="java.lang.String" value="Keluar"/>
+                <Property name="text" type="java.lang.String" value="Tutup"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+K"/>
                 <Property name="name" type="java.lang.String" value="BtnKeluar" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

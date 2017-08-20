@@ -406,7 +406,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnRawatJalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRawatJalan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnRawatJalan.setName("MnRawatJalan"); // NOI18N
-        MnRawatJalan.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnRawatJalan.setPreferredSize(new java.awt.Dimension(220, 26));
         MnRawatJalan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRawatJalanActionPerformed(evt);
@@ -422,7 +422,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPemberianObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPemberianObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPemberianObat.setName("MnPemberianObat"); // NOI18N
-        MnPemberianObat.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnPemberianObat.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPemberianObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPemberianObatActionPerformed(evt);
@@ -438,7 +438,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnKamarInap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnKamarInap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnKamarInap.setName("MnKamarInap"); // NOI18N
-        MnKamarInap.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnKamarInap.setPreferredSize(new java.awt.Dimension(220, 26));
         MnKamarInap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKamarInapActionPerformed(evt);
@@ -454,7 +454,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPeriksaLab.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPeriksaLab.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPeriksaLab.setName("MnPeriksaLab"); // NOI18N
-        MnPeriksaLab.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnPeriksaLab.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPeriksaLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPeriksaLabActionPerformed(evt);
@@ -470,7 +470,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPeriksaRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPeriksaRadiologi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPeriksaRadiologi.setName("MnPeriksaRadiologi"); // NOI18N
-        MnPeriksaRadiologi.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnPeriksaRadiologi.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPeriksaRadiologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPeriksaRadiologiActionPerformed(evt);
@@ -486,7 +486,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnNoResep.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnNoResep.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnNoResep.setName("MnNoResep"); // NOI18N
-        MnNoResep.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnNoResep.setPreferredSize(new java.awt.Dimension(220, 26));
         MnNoResep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnNoResepActionPerformed(evt);
@@ -502,7 +502,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnObatLangsung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnObatLangsung.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnObatLangsung.setName("MnObatLangsung"); // NOI18N
-        MnObatLangsung.setPreferredSize(new java.awt.Dimension(200, 25));
+        MnObatLangsung.setPreferredSize(new java.awt.Dimension(220, 26));
         MnObatLangsung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnObatLangsungActionPerformed(evt);
@@ -518,7 +518,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnOperasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnOperasi.setName("MnOperasi"); // NOI18N
-        MnOperasi.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnOperasi.setPreferredSize(new java.awt.Dimension(220, 26));
         MnOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnOperasiActionPerformed(evt);
@@ -534,7 +534,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnBilling.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnBilling.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBilling.setName("MnBilling"); // NOI18N
-        MnBilling.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnBilling.setPreferredSize(new java.awt.Dimension(220, 26));
         MnBilling.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBillingActionPerformed(evt);
@@ -550,7 +550,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnDataRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnDataRalan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnDataRalan.setName("MnDataRalan"); // NOI18N
-        MnDataRalan.setPreferredSize(new java.awt.Dimension(200, 25));
+        MnDataRalan.setPreferredSize(new java.awt.Dimension(220, 26));
         MnDataRalan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDataRalanActionPerformed(evt);
@@ -566,7 +566,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnDataPemberianObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnDataPemberianObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnDataPemberianObat.setName("MnDataPemberianObat"); // NOI18N
-        MnDataPemberianObat.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnDataPemberianObat.setPreferredSize(new java.awt.Dimension(220, 26));
         MnDataPemberianObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDataPemberianObatActionPerformed(evt);
@@ -582,7 +582,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPoli.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPoli.setName("MnPoli"); // NOI18N
-        MnPoli.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnPoli.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPoliActionPerformed(evt);
@@ -598,7 +598,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnDokter.setName("MnDokter"); // NOI18N
-        MnDokter.setPreferredSize(new java.awt.Dimension(200, 25));
+        MnDokter.setPreferredSize(new java.awt.Dimension(220, 26));
         MnDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDokterActionPerformed(evt);
@@ -614,7 +614,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPenjab.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPenjab.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPenjab.setName("MnPenjab"); // NOI18N
-        MnPenjab.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnPenjab.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPenjab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPenjabActionPerformed(evt);
@@ -630,7 +630,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPenjualan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPenjualan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPenjualan.setName("MnPenjualan"); // NOI18N
-        MnPenjualan.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnPenjualan.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPenjualan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPenjualanActionPerformed(evt);
@@ -646,7 +646,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnDiagnosa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnDiagnosa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnDiagnosa.setName("MnDiagnosa"); // NOI18N
-        MnDiagnosa.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnDiagnosa.setPreferredSize(new java.awt.Dimension(220, 26));
         MnDiagnosa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDiagnosaActionPerformed(evt);
@@ -662,7 +662,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnRekap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRekap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnRekap.setName("MnRekap"); // NOI18N
-        MnRekap.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnRekap.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnRekapHarianDokter.setBackground(new java.awt.Color(255, 255, 255));
         MnRekapHarianDokter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -672,7 +672,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnRekapHarianDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRekapHarianDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnRekapHarianDokter.setName("MnRekapHarianDokter"); // NOI18N
-        MnRekapHarianDokter.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnRekapHarianDokter.setPreferredSize(new java.awt.Dimension(220, 26));
         MnRekapHarianDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHarianDokterActionPerformed(evt);
@@ -688,7 +688,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnRekapHarianParamedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRekapHarianParamedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnRekapHarianParamedis.setName("MnRekapHarianParamedis"); // NOI18N
-        MnRekapHarianParamedis.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnRekapHarianParamedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnRekapHarianParamedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHarianParamedisActionPerformed(evt);
@@ -704,7 +704,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnRekapBulananDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnRekapBulananDokter.setLabel("Rekap Bulanan Dokter ");
         MnRekapBulananDokter.setName("MnRekapBulananDokter"); // NOI18N
-        MnRekapBulananDokter.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnRekapBulananDokter.setPreferredSize(new java.awt.Dimension(220, 26));
         MnRekapBulananDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapBulananDokterActionPerformed(evt);
@@ -720,7 +720,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnRekapBulananParamedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRekapBulananParamedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnRekapBulananParamedis.setName("MnRekapBulananParamedis"); // NOI18N
-        MnRekapBulananParamedis.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnRekapBulananParamedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnRekapBulananParamedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapBulananParamedisActionPerformed(evt);
@@ -736,7 +736,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnRekapHarianPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRekapHarianPoli.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnRekapHarianPoli.setName("MnRekapHarianPoli"); // NOI18N
-        MnRekapHarianPoli.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnRekapHarianPoli.setPreferredSize(new java.awt.Dimension(220, 26));
         MnRekapHarianPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHarianPoliActionPerformed(evt);
@@ -752,7 +752,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnRekapHarianObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRekapHarianObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnRekapHarianObat.setName("MnRekapHarianObat"); // NOI18N
-        MnRekapHarianObat.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnRekapHarianObat.setPreferredSize(new java.awt.Dimension(220, 26));
         MnRekapHarianObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRekapHarianObatActionPerformed(evt);
@@ -770,7 +770,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnStatus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnStatus.setName("MnStatus"); // NOI18N
-        MnStatus.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnStatus.setPreferredSize(new java.awt.Dimension(220, 26));
 
         ppBerkas.setBackground(new java.awt.Color(255, 255, 255));
         ppBerkas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -780,7 +780,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         ppBerkas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppBerkas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppBerkas.setName("ppBerkas"); // NOI18N
-        ppBerkas.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppBerkas.setPreferredSize(new java.awt.Dimension(220, 26));
         ppBerkas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppBerkasBtnPrintActionPerformed(evt);
@@ -796,7 +796,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnSudah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnSudah.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnSudah.setName("MnSudah"); // NOI18N
-        MnSudah.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnSudah.setPreferredSize(new java.awt.Dimension(220, 26));
         MnSudah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSudahActionPerformed(evt);
@@ -812,7 +812,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnBelum.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnBelum.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBelum.setName("MnBelum"); // NOI18N
-        MnBelum.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnBelum.setPreferredSize(new java.awt.Dimension(220, 26));
         MnBelum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBelumActionPerformed(evt);
@@ -828,7 +828,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBayar.setName("MnBayar"); // NOI18N
-        MnBayar.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnBayar.setPreferredSize(new java.awt.Dimension(220, 26));
         MnBayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBayarActionPerformed(evt);
@@ -844,7 +844,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnBatal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnBatal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnBatal.setName("MnBatal"); // NOI18N
-        MnBatal.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnBatal.setPreferredSize(new java.awt.Dimension(220, 26));
         MnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBatalActionPerformed(evt);
@@ -862,7 +862,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusData.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusData.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusData.setName("MnHapusData"); // NOI18N
-        MnHapusData.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusData.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnHapusTagihanOperasi.setBackground(new java.awt.Color(255, 255, 255));
         MnHapusTagihanOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -872,7 +872,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusTagihanOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusTagihanOperasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusTagihanOperasi.setName("MnHapusTagihanOperasi"); // NOI18N
-        MnHapusTagihanOperasi.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusTagihanOperasi.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusTagihanOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusTagihanOperasiActionPerformed(evt);
@@ -888,7 +888,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusObatOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusObatOperasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusObatOperasi.setName("MnHapusObatOperasi"); // NOI18N
-        MnHapusObatOperasi.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusObatOperasi.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusObatOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusObatOperasiActionPerformed(evt);
@@ -904,7 +904,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusBilling.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusBilling.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusBilling.setName("MnHapusBilling"); // NOI18N
-        MnHapusBilling.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusBilling.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusBilling.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusBillingActionPerformed(evt);
@@ -920,7 +920,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusDeposit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusDeposit.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusDeposit.setName("MnHapusDeposit"); // NOI18N
-        MnHapusDeposit.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusDeposit.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusDeposit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusDepositActionPerformed(evt);
@@ -936,7 +936,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusDiet.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusDiet.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusDiet.setName("MnHapusDiet"); // NOI18N
-        MnHapusDiet.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusDiet.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusDiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusDietActionPerformed(evt);
@@ -952,7 +952,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusDiagnosa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusDiagnosa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusDiagnosa.setName("MnHapusDiagnosa"); // NOI18N
-        MnHapusDiagnosa.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusDiagnosa.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusDiagnosa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusDiagnosaActionPerformed(evt);
@@ -968,7 +968,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusDpjp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusDpjp.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusDpjp.setName("MnHapusDpjp"); // NOI18N
-        MnHapusDpjp.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusDpjp.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusDpjp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusDpjpActionPerformed(evt);
@@ -984,7 +984,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusHemodialisa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusHemodialisa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusHemodialisa.setName("MnHapusHemodialisa"); // NOI18N
-        MnHapusHemodialisa.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusHemodialisa.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusHemodialisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusHemodialisaActionPerformed(evt);
@@ -1000,7 +1000,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusKamarInap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusKamarInap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusKamarInap.setName("MnHapusKamarInap"); // NOI18N
-        MnHapusKamarInap.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusKamarInap.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusKamarInap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusKamarInapActionPerformed(evt);
@@ -1016,7 +1016,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusPotongan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusPotongan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusPotongan.setName("MnHapusPotongan"); // NOI18N
-        MnHapusPotongan.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusPotongan.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusPotongan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusPotonganActionPerformed(evt);
@@ -1032,7 +1032,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusPiutang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusPiutang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusPiutang.setName("MnHapusPiutang"); // NOI18N
-        MnHapusPiutang.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusPiutang.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusPiutang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusPiutangActionPerformed(evt);
@@ -1048,7 +1048,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusProsedur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusProsedur.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusProsedur.setName("MnHapusProsedur"); // NOI18N
-        MnHapusProsedur.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusProsedur.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusProsedur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusProsedurActionPerformed(evt);
@@ -1064,7 +1064,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusRanapGabung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusRanapGabung.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusRanapGabung.setName("MnHapusRanapGabung"); // NOI18N
-        MnHapusRanapGabung.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusRanapGabung.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusRanapGabung.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusRanapGabungActionPerformed(evt);
@@ -1080,7 +1080,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusRujukKeluar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusRujukKeluar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusRujukKeluar.setName("MnHapusRujukKeluar"); // NOI18N
-        MnHapusRujukKeluar.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusRujukKeluar.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusRujukKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusRujukKeluarActionPerformed(evt);
@@ -1096,7 +1096,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusRujukMasuk.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusRujukMasuk.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusRujukMasuk.setName("MnHapusRujukMasuk"); // NOI18N
-        MnHapusRujukMasuk.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusRujukMasuk.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusRujukMasuk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusRujukMasukActionPerformed(evt);
@@ -1112,7 +1112,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusTambahan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusTambahan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusTambahan.setName("MnHapusTambahan"); // NOI18N
-        MnHapusTambahan.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusTambahan.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusTambahan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusTambahanActionPerformed(evt);
@@ -1128,7 +1128,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnTindakan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnTindakan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnTindakan.setName("MnTindakan"); // NOI18N
-        MnTindakan.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnTindakan.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnHapusTindakanRanapDokter.setBackground(new java.awt.Color(255, 255, 255));
         MnHapusTindakanRanapDokter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1138,7 +1138,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusTindakanRanapDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusTindakanRanapDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusTindakanRanapDokter.setName("MnHapusTindakanRanapDokter"); // NOI18N
-        MnHapusTindakanRanapDokter.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusTindakanRanapDokter.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusTindakanRanapDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusTindakanRanapDokterActionPerformed(evt);
@@ -1154,7 +1154,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusTindakanRanapDokterParamedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusTindakanRanapDokterParamedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusTindakanRanapDokterParamedis.setName("MnHapusTindakanRanapDokterParamedis"); // NOI18N
-        MnHapusTindakanRanapDokterParamedis.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusTindakanRanapDokterParamedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusTindakanRanapDokterParamedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusTindakanRanapDokterParamedisActionPerformed(evt);
@@ -1170,7 +1170,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusTindakanRanapParamedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusTindakanRanapParamedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusTindakanRanapParamedis.setName("MnHapusTindakanRanapParamedis"); // NOI18N
-        MnHapusTindakanRanapParamedis.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusTindakanRanapParamedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusTindakanRanapParamedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusTindakanRanapParamedisActionPerformed(evt);
@@ -1186,7 +1186,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusTindakanRalanDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusTindakanRalanDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusTindakanRalanDokter.setName("MnHapusTindakanRalanDokter"); // NOI18N
-        MnHapusTindakanRalanDokter.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusTindakanRalanDokter.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusTindakanRalanDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusTindakanRalanDokterActionPerformed(evt);
@@ -1202,7 +1202,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusTindakanRalanDokterParamedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusTindakanRalanDokterParamedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusTindakanRalanDokterParamedis.setName("MnHapusTindakanRalanDokterParamedis"); // NOI18N
-        MnHapusTindakanRalanDokterParamedis.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusTindakanRalanDokterParamedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusTindakanRalanDokterParamedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusTindakanRalanDokterParamedisActionPerformed(evt);
@@ -1218,7 +1218,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusTindakanRalanParamedis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusTindakanRalanParamedis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusTindakanRalanParamedis.setName("MnHapusTindakanRalanParamedis"); // NOI18N
-        MnHapusTindakanRalanParamedis.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusTindakanRalanParamedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusTindakanRalanParamedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusTindakanRalanParamedisActionPerformed(evt);
@@ -1236,7 +1236,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPemeriksaan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPemeriksaan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPemeriksaan.setName("MnPemeriksaan"); // NOI18N
-        MnPemeriksaan.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnPemeriksaan.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnHapusPemeriksaanRalan.setBackground(new java.awt.Color(255, 255, 255));
         MnHapusPemeriksaanRalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1246,7 +1246,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusPemeriksaanRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusPemeriksaanRalan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusPemeriksaanRalan.setName("MnHapusPemeriksaanRalan"); // NOI18N
-        MnHapusPemeriksaanRalan.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusPemeriksaanRalan.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusPemeriksaanRalan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusPemeriksaanRalanActionPerformed(evt);
@@ -1262,7 +1262,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusPemeriksaanRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusPemeriksaanRanap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusPemeriksaanRanap.setName("MnHapusPemeriksaanRanap"); // NOI18N
-        MnHapusPemeriksaanRanap.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusPemeriksaanRanap.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusPemeriksaanRanap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusPemeriksaanRanapActionPerformed(evt);
@@ -1278,7 +1278,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusLab.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusLab.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusLab.setName("MnHapusLab"); // NOI18N
-        MnHapusLab.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusLab.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusLabActionPerformed(evt);
@@ -1294,7 +1294,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusRadiologi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusRadiologi.setName("MnHapusRadiologi"); // NOI18N
-        MnHapusRadiologi.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusRadiologi.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusRadiologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusRadiologiActionPerformed(evt);
@@ -1312,7 +1312,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnObat.setName("MnObat"); // NOI18N
-        MnObat.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnObat.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnHapusAturanPkaiObat.setBackground(new java.awt.Color(255, 255, 255));
         MnHapusAturanPkaiObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1322,7 +1322,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusAturanPkaiObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusAturanPkaiObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusAturanPkaiObat.setName("MnHapusAturanPkaiObat"); // NOI18N
-        MnHapusAturanPkaiObat.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusAturanPkaiObat.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusAturanPkaiObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusAturanPkaiObatActionPerformed(evt);
@@ -1338,7 +1338,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusObat.setName("MnHapusObat"); // NOI18N
-        MnHapusObat.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusObat.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusObatActionPerformed(evt);
@@ -1354,7 +1354,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusResepObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusResepObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusResepObat.setName("MnHapusResepObat"); // NOI18N
-        MnHapusResepObat.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusResepObat.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusResepObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusResepObatActionPerformed(evt);
@@ -1370,7 +1370,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusResepPulang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusResepPulang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusResepPulang.setName("MnHapusResepPulang"); // NOI18N
-        MnHapusResepPulang.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusResepPulang.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusResepPulang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusResepPulangActionPerformed(evt);
@@ -1386,7 +1386,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusReturObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusReturObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusReturObat.setName("MnHapusReturObat"); // NOI18N
-        MnHapusReturObat.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusReturObat.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusReturObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusReturObatActionPerformed(evt);
@@ -1402,7 +1402,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusStokObatRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusStokObatRanap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusStokObatRanap.setName("MnHapusStokObatRanap"); // NOI18N
-        MnHapusStokObatRanap.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusStokObatRanap.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusStokObatRanap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusStokObatRanapActionPerformed(evt);
@@ -1420,7 +1420,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHapusSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusSemua.setName("MnHapusSemua"); // NOI18N
-        MnHapusSemua.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusSemua.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusSemua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusSemuaActionPerformed(evt);
@@ -1438,7 +1438,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         ppRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppRiwayat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppRiwayat.setName("ppRiwayat"); // NOI18N
-        ppRiwayat.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppRiwayat.setPreferredSize(new java.awt.Dimension(220, 26));
         ppRiwayat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppRiwayatBtnPrintActionPerformed(evt);
@@ -1961,7 +1961,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel15);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-08-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1980,7 +1980,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel17);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-08-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);

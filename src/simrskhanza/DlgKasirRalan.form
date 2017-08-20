@@ -35,7 +35,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnRawatJalan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -61,7 +61,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnPemberianObat" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -87,7 +87,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnKamarInap" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -113,7 +113,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnPeriksaLab" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -139,7 +139,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnPeriksaRadiologi" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -165,7 +165,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnNoResep" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -191,7 +191,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnObatLangsung" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 25]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -217,7 +217,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnOperasi" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -243,7 +243,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnBilling" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -269,7 +269,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnDataRalan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 25]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -295,7 +295,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnDataPemberianObat" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -321,7 +321,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnPoli" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 25]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -347,7 +347,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnDokter" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 25]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -373,7 +373,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnPenjab" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -399,7 +399,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnPenjualan" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -425,7 +425,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnDiagnosa" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -451,7 +451,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnRekap" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -474,7 +474,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHarianDokter" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -500,7 +500,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHarianParamedis" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -526,7 +526,7 @@
                 <Property name="label" type="java.lang.String" value="Rekap Bulanan Dokter "/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulananDokter" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -552,7 +552,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnRekapBulananParamedis" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -578,7 +578,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHarianPoli" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -604,7 +604,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnRekapHarianObat" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -632,7 +632,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnStatus" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -655,7 +655,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="ppBerkas" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[150, 25]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -681,7 +681,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnSudah" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -707,7 +707,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnBelum" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -733,7 +733,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnBayar" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -759,7 +759,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnBatal" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -787,7 +787,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="MnHapusData" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[250, 28]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <SubComponents>
@@ -810,7 +810,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusTagihanOperasi" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -836,7 +836,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusObatOperasi" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -862,7 +862,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusBilling" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -888,7 +888,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusDeposit" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -914,7 +914,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusDiet" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -940,7 +940,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusDiagnosa" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -966,7 +966,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusDpjp" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -992,7 +992,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusHemodialisa" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1018,7 +1018,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusKamarInap" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1044,7 +1044,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusPotongan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1070,7 +1070,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusPiutang" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1096,7 +1096,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusProsedur" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1122,7 +1122,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusRanapGabung" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1148,7 +1148,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusRujukKeluar" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1174,7 +1174,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusRujukMasuk" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1200,7 +1200,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusTambahan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1226,7 +1226,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnTindakan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <SubComponents>
@@ -1249,7 +1249,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusTindakanRanapDokter" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1275,7 +1275,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusTindakanRanapDokterParamedis" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1301,7 +1301,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusTindakanRanapParamedis" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1327,7 +1327,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusTindakanRalanDokter" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1353,7 +1353,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusTindakanRalanDokterParamedis" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1379,7 +1379,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusTindakanRalanParamedis" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1407,7 +1407,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnPemeriksaan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <SubComponents>
@@ -1430,7 +1430,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusPemeriksaanRalan" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1456,7 +1456,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusPemeriksaanRanap" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1482,7 +1482,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusLab" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1508,7 +1508,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusRadiologi" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1536,7 +1536,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnObat" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <SubComponents>
@@ -1559,7 +1559,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusAturanPkaiObat" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1585,7 +1585,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusObat" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1611,7 +1611,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusResepObat" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1637,7 +1637,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusResepPulang" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1663,7 +1663,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusReturObat" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1689,7 +1689,7 @@
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="MnHapusStokObatRanap" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 28]"/>
+                      <Dimension value="[220, 26]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -1717,7 +1717,7 @@
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="name" type="java.lang.String" value="MnHapusSemua" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 28]"/>
+                  <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1745,7 +1745,7 @@
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="ppRiwayat" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[150, 25]"/>
+              <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
@@ -2713,7 +2713,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-07-2017"/>
+                        <StringItem index="0" value="20-08-2017"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2742,7 +2742,7 @@
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="10-07-2017"/>
+                        <StringItem index="0" value="20-08-2017"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
