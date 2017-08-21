@@ -9,5 +9,7 @@
   turunan. Susah cari jodoh sampai umur 50 tahun sampai 200 turunan.
   Ya Alloh maafkan kami karena telah berdoa buruk, semua ini kami lakukan
   karena kami tidak pernah rela karya kami dibajak tanpa ijin.
+  
+  Licensi yang dianut di software ini https://en.wikipedia.org/wiki/Aladdin_Free_Public_License
 
   Informasi dan panduan bisa dicek di halaman https://github.com/mas-elkhanza/SIMRS-Khanza/wiki

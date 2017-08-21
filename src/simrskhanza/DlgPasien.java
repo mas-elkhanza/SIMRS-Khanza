@@ -47,6 +47,13 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.event.DocumentEvent;
+import simrskhanza.DlgCatatan;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgKabupaten;
+import simrskhanza.DlgKecamatan;
+import simrskhanza.DlgKelurahan;
+import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgResumePerawatan;
 
 
 /**
@@ -178,7 +185,7 @@ public class DlgPasien extends javax.swing.JDialog {
         NmIbu.setDocument(new batasInput((byte)40).getKata(NmIbu));
         TKtp.setDocument(new batasInput((byte)20).getKata(TKtp));
         Kdpnj.setDocument(new batasInput((byte)3).getKata(Kdpnj));
-        TTlp.setDocument(new batasInput((byte)13).getOnlyAngka(TTlp));
+        TTlp.setDocument(new batasInput((int)40).getKata(TTlp));
         TTmp.setDocument(new batasInput((byte)15).getKata(TTmp));
         Alamat.setDocument(new batasInput((int)200).getFilter(Alamat));
         AlamatPj.setDocument(new batasInput((int)100).getFilter(AlamatPj));
@@ -487,6 +494,7 @@ public class DlgPasien extends javax.swing.JDialog {
         ppGrafikDemografi = new javax.swing.JMenuItem();
         ppRegistrasi = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
+        ppCatatanPasien = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         Kd2 = new widget.TextBox();
         DlgDemografi = new javax.swing.JDialog();
@@ -613,7 +621,7 @@ public class DlgPasien extends javax.swing.JDialog {
         KartuPasien.setText("Kartu Pasien");
         KartuPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         KartuPasien.setName("KartuPasien"); // NOI18N
-        KartuPasien.setPreferredSize(new java.awt.Dimension(180, 30));
+        KartuPasien.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnKartu1.setBackground(new java.awt.Color(255, 255, 255));
         MnKartu1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -621,7 +629,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu1.setText("Kartu Pasien 1");
         MnKartu1.setName("MnKartu1"); // NOI18N
-        MnKartu1.setPreferredSize(new java.awt.Dimension(200, 25));
+        MnKartu1.setPreferredSize(new java.awt.Dimension(200, 26));
         MnKartu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKartu1ActionPerformed(evt);
@@ -635,7 +643,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu2.setText("Kartu Pasien 2");
         MnKartu2.setName("MnKartu2"); // NOI18N
-        MnKartu2.setPreferredSize(new java.awt.Dimension(200, 25));
+        MnKartu2.setPreferredSize(new java.awt.Dimension(200, 26));
         MnKartu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKartu2ActionPerformed(evt);
@@ -649,7 +657,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu3.setText("Kartu Pasien 3");
         MnKartu3.setName("MnKartu3"); // NOI18N
-        MnKartu3.setPreferredSize(new java.awt.Dimension(200, 25));
+        MnKartu3.setPreferredSize(new java.awt.Dimension(200, 26));
         MnKartu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKartu3ActionPerformed(evt);
@@ -663,7 +671,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu4.setText("Kartu Pasien 4");
         MnKartu4.setName("MnKartu4"); // NOI18N
-        MnKartu4.setPreferredSize(new java.awt.Dimension(200, 25));
+        MnKartu4.setPreferredSize(new java.awt.Dimension(200, 26));
         MnKartu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKartu4ActionPerformed(evt);
@@ -677,7 +685,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartu5.setText("Kartu Pasien 5");
         MnKartu5.setName("MnKartu5"); // NOI18N
-        MnKartu5.setPreferredSize(new java.awt.Dimension(200, 25));
+        MnKartu5.setPreferredSize(new java.awt.Dimension(200, 26));
         MnKartu5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKartu5ActionPerformed(evt);
@@ -693,7 +701,7 @@ public class DlgPasien extends javax.swing.JDialog {
         Barcode.setText("Label Rekam Medis");
         Barcode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Barcode.setName("Barcode"); // NOI18N
-        Barcode.setPreferredSize(new java.awt.Dimension(180, 30));
+        Barcode.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnBarcodeRM.setBackground(new java.awt.Color(255, 255, 255));
         MnBarcodeRM.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -701,7 +709,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnBarcodeRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodeRM.setText("Label Rekam Medis 1");
         MnBarcodeRM.setName("MnBarcodeRM"); // NOI18N
-        MnBarcodeRM.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnBarcodeRM.setPreferredSize(new java.awt.Dimension(200, 26));
         MnBarcodeRM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcodeRMActionPerformed(evt);
@@ -715,7 +723,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnBarcodeRM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodeRM1.setText("Label Rekam Medis 2");
         MnBarcodeRM1.setName("MnBarcodeRM1"); // NOI18N
-        MnBarcodeRM1.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnBarcodeRM1.setPreferredSize(new java.awt.Dimension(200, 26));
         MnBarcodeRM1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcodeRM1ActionPerformed(evt);
@@ -729,7 +737,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnBarcodeRM2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodeRM2.setText("Label Rekam Medis 3");
         MnBarcodeRM2.setName("MnBarcodeRM2"); // NOI18N
-        MnBarcodeRM2.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnBarcodeRM2.setPreferredSize(new java.awt.Dimension(200, 26));
         MnBarcodeRM2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcodeRM2ActionPerformed(evt);
@@ -743,7 +751,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnBarcodeRM3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodeRM3.setText("Label Rekam Medis 4");
         MnBarcodeRM3.setName("MnBarcodeRM3"); // NOI18N
-        MnBarcodeRM3.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnBarcodeRM3.setPreferredSize(new java.awt.Dimension(200, 26));
         MnBarcodeRM3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcodeRM3ActionPerformed(evt);
@@ -757,7 +765,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnBarcodeRM4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodeRM4.setText("Label Rekam Medis 5");
         MnBarcodeRM4.setName("MnBarcodeRM4"); // NOI18N
-        MnBarcodeRM4.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnBarcodeRM4.setPreferredSize(new java.awt.Dimension(200, 26));
         MnBarcodeRM4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcodeRM4ActionPerformed(evt);
@@ -771,7 +779,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnBarcodeRM5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodeRM5.setText("Label Rekam Medis 6");
         MnBarcodeRM5.setName("MnBarcodeRM5"); // NOI18N
-        MnBarcodeRM5.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnBarcodeRM5.setPreferredSize(new java.awt.Dimension(200, 26));
         MnBarcodeRM5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcodeRM5ActionPerformed(evt);
@@ -785,7 +793,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnBarcodeRM6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodeRM6.setText("Label Rekam Medis 7");
         MnBarcodeRM6.setName("MnBarcodeRM6"); // NOI18N
-        MnBarcodeRM6.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnBarcodeRM6.setPreferredSize(new java.awt.Dimension(200, 26));
         MnBarcodeRM6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcodeRM6ActionPerformed(evt);
@@ -800,7 +808,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnBarcodeRM7.setText("Label Rekam Medis 8");
         MnBarcodeRM7.setToolTipText("");
         MnBarcodeRM7.setName("MnBarcodeRM7"); // NOI18N
-        MnBarcodeRM7.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnBarcodeRM7.setPreferredSize(new java.awt.Dimension(200, 26));
         MnBarcodeRM7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcodeRM7ActionPerformed(evt);
@@ -816,7 +824,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MenuIdentitas.setText("Identitas Pasien");
         MenuIdentitas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MenuIdentitas.setName("MenuIdentitas"); // NOI18N
-        MenuIdentitas.setPreferredSize(new java.awt.Dimension(180, 30));
+        MenuIdentitas.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnIdentitas.setBackground(new java.awt.Color(255, 255, 255));
         MnIdentitas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -824,7 +832,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnIdentitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnIdentitas.setText("Identitas Pasien");
         MnIdentitas.setName("MnIdentitas"); // NOI18N
-        MnIdentitas.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnIdentitas.setPreferredSize(new java.awt.Dimension(200, 26));
         MnIdentitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnIdentitasActionPerformed(evt);
@@ -838,7 +846,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnIdentitas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnIdentitas2.setText("Identitas Pasien 2");
         MnIdentitas2.setName("MnIdentitas2"); // NOI18N
-        MnIdentitas2.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnIdentitas2.setPreferredSize(new java.awt.Dimension(200, 26));
         MnIdentitas2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnIdentitas2ActionPerformed(evt);
@@ -852,7 +860,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnIdentitas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnIdentitas3.setText("Identitas Pasien 3");
         MnIdentitas3.setName("MnIdentitas3"); // NOI18N
-        MnIdentitas3.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnIdentitas3.setPreferredSize(new java.awt.Dimension(200, 26));
         MnIdentitas3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnIdentitas3ActionPerformed(evt);
@@ -868,7 +876,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnBarcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcode.setText("Kartu Indeks Keseluruhan");
         MnBarcode.setName("MnBarcode"); // NOI18N
-        MnBarcode.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnBarcode.setPreferredSize(new java.awt.Dimension(220, 26));
         MnBarcode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnBarcodeActionPerformed(evt);
@@ -882,7 +890,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnKartuStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKartuStatus.setText("Kartu Indeks Pasien Yang Dipilih");
         MnKartuStatus.setName("MnKartuStatus"); // NOI18N
-        MnKartuStatus.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnKartuStatus.setPreferredSize(new java.awt.Dimension(220, 26));
         MnKartuStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnKartuStatusActionPerformed(evt);
@@ -896,7 +904,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MenuBPJS.setText("BPJS");
         MenuBPJS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MenuBPJS.setName("MenuBPJS"); // NOI18N
-        MenuBPJS.setPreferredSize(new java.awt.Dimension(180, 30));
+        MenuBPJS.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnCekKepesertaan.setBackground(new java.awt.Color(255, 255, 255));
         MnCekKepesertaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -904,7 +912,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnCekKepesertaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCekKepesertaan.setText("Pencarian Peserta Berdasarkan Nomor Kepesertaan");
         MnCekKepesertaan.setName("MnCekKepesertaan"); // NOI18N
-        MnCekKepesertaan.setPreferredSize(new java.awt.Dimension(400, 28));
+        MnCekKepesertaan.setPreferredSize(new java.awt.Dimension(300, 26));
         MnCekKepesertaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekKepesertaanActionPerformed(evt);
@@ -918,7 +926,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnCekNIK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCekNIK.setText("Pencarian Peserta Berdasarkan NIK/No.KTP");
         MnCekNIK.setName("MnCekNIK"); // NOI18N
-        MnCekNIK.setPreferredSize(new java.awt.Dimension(400, 28));
+        MnCekNIK.setPreferredSize(new java.awt.Dimension(300, 26));
         MnCekNIK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekNIKActionPerformed(evt);
@@ -936,7 +944,7 @@ public class DlgPasien extends javax.swing.JDialog {
         ppKelahiranBayi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppKelahiranBayi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppKelahiranBayi.setName("ppKelahiranBayi"); // NOI18N
-        ppKelahiranBayi.setPreferredSize(new java.awt.Dimension(180, 30));
+        ppKelahiranBayi.setPreferredSize(new java.awt.Dimension(220, 26));
         ppKelahiranBayi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppKelahiranBayiActionPerformed(evt);
@@ -950,7 +958,7 @@ public class DlgPasien extends javax.swing.JDialog {
         jMenu1.setText("Berkas Rekam Medis");
         jMenu1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jMenu1.setName("jMenu1"); // NOI18N
-        jMenu1.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenu1.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnLaporanRM.setBackground(new java.awt.Color(255, 255, 255));
         MnLaporanRM.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -958,7 +966,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLaporanRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLaporanRM.setText("Lembar Rawat Jalan Model 1");
         MnLaporanRM.setName("MnLaporanRM"); // NOI18N
-        MnLaporanRM.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnLaporanRM.setPreferredSize(new java.awt.Dimension(300, 26));
         MnLaporanRM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLaporanRMActionPerformed(evt);
@@ -972,7 +980,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLaporanRM1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLaporanRM1.setText("Lembar Rawat Jalan Model 2");
         MnLaporanRM1.setName("MnLaporanRM1"); // NOI18N
-        MnLaporanRM1.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnLaporanRM1.setPreferredSize(new java.awt.Dimension(300, 26));
         MnLaporanRM1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLaporanRM1ActionPerformed(evt);
@@ -986,7 +994,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLaporanRM2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLaporanRM2.setText("Lembar Rawat Jalan Model 3");
         MnLaporanRM2.setName("MnLaporanRM2"); // NOI18N
-        MnLaporanRM2.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnLaporanRM2.setPreferredSize(new java.awt.Dimension(300, 26));
         MnLaporanRM2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLaporanRM2ActionPerformed(evt);
@@ -1000,7 +1008,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnFormulirPendaftaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnFormulirPendaftaran.setText("Formulir Pendaftaran Pasien");
         MnFormulirPendaftaran.setName("MnFormulirPendaftaran"); // NOI18N
-        MnFormulirPendaftaran.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnFormulirPendaftaran.setPreferredSize(new java.awt.Dimension(300, 26));
         MnFormulirPendaftaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnFormulirPendaftaranActionPerformed(evt);
@@ -1014,7 +1022,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnSCreening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSCreening.setText("Lembar Screening Awal Pasien Masuk Rawat Jalan");
         MnSCreening.setName("MnSCreening"); // NOI18N
-        MnSCreening.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnSCreening.setPreferredSize(new java.awt.Dimension(300, 26));
         MnSCreening.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSCreeningActionPerformed(evt);
@@ -1028,7 +1036,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnCopyResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCopyResep.setText("Formulir Penempelan Copy Resep");
         MnCopyResep.setName("MnCopyResep"); // NOI18N
-        MnCopyResep.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnCopyResep.setPreferredSize(new java.awt.Dimension(300, 26));
         MnCopyResep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCopyResepActionPerformed(evt);
@@ -1042,7 +1050,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarKeluarMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarKeluarMasuk.setText("Lembar Masuk Keluar Model 1");
         MnLembarKeluarMasuk.setName("MnLembarKeluarMasuk"); // NOI18N
-        MnLembarKeluarMasuk.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnLembarKeluarMasuk.setPreferredSize(new java.awt.Dimension(300, 26));
         MnLembarKeluarMasuk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLembarKeluarMasukActionPerformed(evt);
@@ -1056,7 +1064,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarKeluarMasuk2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarKeluarMasuk2.setText("Lembar Masuk Keluar Model 2");
         MnLembarKeluarMasuk2.setName("MnLembarKeluarMasuk2"); // NOI18N
-        MnLembarKeluarMasuk2.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnLembarKeluarMasuk2.setPreferredSize(new java.awt.Dimension(300, 26));
         MnLembarKeluarMasuk2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLembarKeluarMasuk2ActionPerformed(evt);
@@ -1070,7 +1078,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLaporanIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLaporanIGD.setText("Laporan IGD");
         MnLaporanIGD.setName("MnLaporanIGD"); // NOI18N
-        MnLaporanIGD.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnLaporanIGD.setPreferredSize(new java.awt.Dimension(300, 26));
         MnLaporanIGD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLaporanIGDActionPerformed(evt);
@@ -1084,7 +1092,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarAnamNesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarAnamNesa.setText("Lembar Anamnesa");
         MnLembarAnamNesa.setName("MnLembarAnamNesa"); // NOI18N
-        MnLembarAnamNesa.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnLembarAnamNesa.setPreferredSize(new java.awt.Dimension(300, 26));
         MnLembarAnamNesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLembarAnamNesaActionPerformed(evt);
@@ -1098,7 +1106,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarGrafik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarGrafik.setText("Lembar Grafik");
         MnLembarGrafik.setName("MnLembarGrafik"); // NOI18N
-        MnLembarGrafik.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnLembarGrafik.setPreferredSize(new java.awt.Dimension(300, 26));
         MnLembarGrafik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLembarGrafikActionPerformed(evt);
@@ -1112,7 +1120,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarCatatanPerkembangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarCatatanPerkembangan.setText("Lembar Catatan Perkembangan");
         MnLembarCatatanPerkembangan.setName("MnLembarCatatanPerkembangan"); // NOI18N
-        MnLembarCatatanPerkembangan.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnLembarCatatanPerkembangan.setPreferredSize(new java.awt.Dimension(300, 26));
         MnLembarCatatanPerkembangan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLembarCatatanPerkembanganActionPerformed(evt);
@@ -1126,7 +1134,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarCatatanKeperawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLembarCatatanKeperawatan.setText("Lembar Catatan Keperawatan");
         MnLembarCatatanKeperawatan.setName("MnLembarCatatanKeperawatan"); // NOI18N
-        MnLembarCatatanKeperawatan.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnLembarCatatanKeperawatan.setPreferredSize(new java.awt.Dimension(300, 26));
         MnLembarCatatanKeperawatan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLembarCatatanKeperawatanActionPerformed(evt);
@@ -1140,7 +1148,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLaporanAnestesia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnLaporanAnestesia.setText("Lembar Laporan Anastesia");
         MnLaporanAnestesia.setName("MnLaporanAnestesia"); // NOI18N
-        MnLaporanAnestesia.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnLaporanAnestesia.setPreferredSize(new java.awt.Dimension(300, 26));
         MnLaporanAnestesia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnLaporanAnestesiaActionPerformed(evt);
@@ -1154,7 +1162,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnPengantarHemodalisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPengantarHemodalisa.setText("Pengantar Hemodialisa");
         MnPengantarHemodalisa.setName("MnPengantarHemodalisa"); // NOI18N
-        MnPengantarHemodalisa.setPreferredSize(new java.awt.Dimension(300, 28));
+        MnPengantarHemodalisa.setPreferredSize(new java.awt.Dimension(300, 26));
         MnPengantarHemodalisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPengantarHemodalisaActionPerformed(evt);
@@ -1170,7 +1178,7 @@ public class DlgPasien extends javax.swing.JDialog {
         jMenu2.setText("Grafik Analisa");
         jMenu2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jMenu2.setName("jMenu2"); // NOI18N
-        jMenu2.setPreferredSize(new java.awt.Dimension(180, 30));
+        jMenu2.setPreferredSize(new java.awt.Dimension(220, 26));
 
         ppGrafikPerAgama.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikPerAgama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1180,7 +1188,7 @@ public class DlgPasien extends javax.swing.JDialog {
         ppGrafikPerAgama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikPerAgama.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppGrafikPerAgama.setName("ppGrafikPerAgama"); // NOI18N
-        ppGrafikPerAgama.setPreferredSize(new java.awt.Dimension(250, 28));
+        ppGrafikPerAgama.setPreferredSize(new java.awt.Dimension(230, 26));
         ppGrafikPerAgama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikPerAgamaActionPerformed(evt);
@@ -1196,7 +1204,7 @@ public class DlgPasien extends javax.swing.JDialog {
         ppGrafikPerPekerjaan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikPerPekerjaan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppGrafikPerPekerjaan.setName("ppGrafikPerPekerjaan"); // NOI18N
-        ppGrafikPerPekerjaan.setPreferredSize(new java.awt.Dimension(250, 28));
+        ppGrafikPerPekerjaan.setPreferredSize(new java.awt.Dimension(230, 26));
         ppGrafikPerPekerjaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikPerPekerjaanActionPerformed(evt);
@@ -1213,7 +1221,7 @@ public class DlgPasien extends javax.swing.JDialog {
         ppGrafikjkbayi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikjkbayi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppGrafikjkbayi.setName("ppGrafikjkbayi"); // NOI18N
-        ppGrafikjkbayi.setPreferredSize(new java.awt.Dimension(180, 30));
+        ppGrafikjkbayi.setPreferredSize(new java.awt.Dimension(230, 26));
         ppGrafikjkbayi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikjkbayiActionPerformed(evt);
@@ -1230,7 +1238,7 @@ public class DlgPasien extends javax.swing.JDialog {
         ppGrafikDemografi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppGrafikDemografi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppGrafikDemografi.setName("ppGrafikDemografi"); // NOI18N
-        ppGrafikDemografi.setPreferredSize(new java.awt.Dimension(250, 28));
+        ppGrafikDemografi.setPreferredSize(new java.awt.Dimension(230, 26));
         ppGrafikDemografi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppGrafikDemografiActionPerformed(evt);
@@ -1248,7 +1256,7 @@ public class DlgPasien extends javax.swing.JDialog {
         ppRegistrasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppRegistrasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppRegistrasi.setName("ppRegistrasi"); // NOI18N
-        ppRegistrasi.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppRegistrasi.setPreferredSize(new java.awt.Dimension(220, 26));
         ppRegistrasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppRegistrasiBtnPrintActionPerformed(evt);
@@ -1264,13 +1272,30 @@ public class DlgPasien extends javax.swing.JDialog {
         ppRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppRiwayat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppRiwayat.setName("ppRiwayat"); // NOI18N
-        ppRiwayat.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppRiwayat.setPreferredSize(new java.awt.Dimension(220, 26));
         ppRiwayat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ppRiwayatBtnPrintActionPerformed(evt);
             }
         });
         jPopupMenu1.add(ppRiwayat);
+
+        ppCatatanPasien.setBackground(new java.awt.Color(255, 255, 255));
+        ppCatatanPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppCatatanPasien.setForeground(new java.awt.Color(60, 80, 50));
+        ppCatatanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppCatatanPasien.setText("Catatan Untuk Pasien");
+        ppCatatanPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppCatatanPasien.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppCatatanPasien.setIconTextGap(5);
+        ppCatatanPasien.setName("ppCatatanPasien"); // NOI18N
+        ppCatatanPasien.setPreferredSize(new java.awt.Dimension(220, 26));
+        ppCatatanPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppCatatanPasienBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppCatatanPasien);
 
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -1792,7 +1817,7 @@ public class DlgPasien extends javax.swing.JDialog {
         jLabel13.setBounds(4, 102, 95, 23);
 
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2017" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-08-2017" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1930,7 +1955,7 @@ public class DlgPasien extends javax.swing.JDialog {
 
         DTPDaftar.setEditable(false);
         DTPDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2017" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-08-2017" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -4547,6 +4572,24 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }
     }//GEN-LAST:event_MnKartu5ActionPerformed
 
+    private void ppCatatanPasienBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppCatatanPasienBtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
+            TNo.requestFocus();
+        }else if(TNm.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgCatatan catatan=new DlgCatatan(null,true);
+            catatan.setNoRm(TNo.getText());
+            catatan.setSize(720,330);
+            catatan.setLocationRelativeTo(internalFrame1);
+            catatan.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_ppCatatanPasienBtnPrintActionPerformed
+
     /**
      * @data args the command line arguments
      */
@@ -4747,6 +4790,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.PanelBiasa panelBiasa2;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
+    private javax.swing.JMenuItem ppCatatanPasien;
     private javax.swing.JMenuItem ppGrafikDemografi;
     private javax.swing.JMenuItem ppGrafikPerAgama;
     private javax.swing.JMenuItem ppGrafikPerPekerjaan;
@@ -5068,6 +5112,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         BtnEdit.setEnabled(var.getpasien());
         BtnPrint.setEnabled(var.getpasien());
         ppRiwayat.setEnabled(var.getresume_pasien());
+        ppCatatanPasien.setEnabled(var.getcatatan_pasien());
         asalform=var.getform();
     }
 

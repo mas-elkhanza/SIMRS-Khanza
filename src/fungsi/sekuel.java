@@ -40,6 +40,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import uz.ncipro.calendar.JDateTimePicker;
 
@@ -308,6 +309,36 @@ public final class sekuel {
         }
     }
     
+    public void menyimpan3(String table,String value,int i,String[] a,String acuan_field,String update,int j,String[] b){
+        try{ 
+            ps=connect.prepareStatement("insert into "+table+" values("+value+")");
+            for(angka=1;angka<=i;angka++){
+                ps.setString(angka,a[angka-1]);
+            }            
+            ps.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"Proses simpan berhasil..!!");
+            if(ps != null){
+                ps.close();
+            } 
+        }catch(Exception e){
+            try {
+                ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
+                for(angka=1;angka<=j;angka++){
+                    ps.setString(angka,b[angka-1]);
+                } 
+                ps.executeUpdate();   
+                
+                JOptionPane.showMessageDialog(null,"Proses simpan berhasil..!!");
+                if(ps != null){
+                    ps.close();
+                } 
+            } catch (Exception e2) {
+                System.out.println("Notifikasi : "+e2);
+            }                         
+        }
+    }
+    
     public void menyimpan(String table,String value){
         try {
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");
@@ -405,6 +436,26 @@ public final class sekuel {
         }
     }
     
+    public void meghapus2(String table,String field,String nilai_field) {
+        try {
+            ps=connect.prepareStatement("delete from "+table+" where "+field+"=?");
+            try{       
+                ps.setString(1,nilai_field);
+                ps.executeUpdate(); 
+                JOptionPane.showMessageDialog(null,"Proses hapus berhasil...!!!!");
+             }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+                JOptionPane.showMessageDialog(null,"Maaf, data gagal dihapus. Kemungkinan data tersebut masih dipakai di table lain...!!!!");
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
 
     public void mengedit(String table,String acuan_field,String update){
         try {
@@ -458,6 +509,28 @@ public final class sekuel {
              }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
                 JOptionPane.showMessageDialog(null,"Maaf, Gagal Mengedit. Periksa kembali data...!!!!");
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }    
+    }
+    
+    public void mengedit2(String table,String acuan_field,String update,int i,String[] a){
+        try {
+            ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
+            try{
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                } 
+                ps.executeUpdate();   
+                JOptionPane.showMessageDialog(null,"Proses edit berhasil...!!!!");
+             }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Periksa kembali data...!!!!");
              }finally{
                 if(ps != null){
                     ps.close();
@@ -823,7 +896,34 @@ public final class sekuel {
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
-    }    
+    } 
+    
+    public void cariIsi(String sql,JTextArea txt,String kunci){
+        try {
+            ps=connect.prepareStatement(sql);
+            try{
+                ps.setString(1,kunci);
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    txt.setText(rs.getString(1));
+                }else{
+                    txt.setText("");
+                }   
+            }catch(SQLException e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rs != null){
+                    rs.close();
+                }
+                
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
     
 
     public void cariIsi(String sql,JLabel txt){

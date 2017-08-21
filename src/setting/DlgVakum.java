@@ -54,6 +54,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD93 = new usu.widget.ButtonGlass();
         BtnICD29 = new usu.widget.ButtonGlass();
         BtnICD108 = new usu.widget.ButtonGlass();
+        BtnICD113 = new usu.widget.ButtonGlass();
         BtnICD46 = new usu.widget.ButtonGlass();
         BtnICD40 = new usu.widget.ButtonGlass();
         BtnICD34 = new usu.widget.ButtonGlass();
@@ -343,6 +344,23 @@ public class DlgVakum extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnICD108);
+
+        BtnICD113.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD113.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD113.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD113.setText("Catatan Pasien");
+        BtnICD113.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD113.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD113.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD113.setName("BtnICD113"); // NOI18N
+        BtnICD113.setRoundRect(true);
+        BtnICD113.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD113ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD113);
 
         BtnICD46.setBackground(new java.awt.Color(195, 205, 185));
         BtnICD46.setForeground(new java.awt.Color(153, 0, 51));
@@ -2149,7 +2167,8 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD2ActionPerformed
 
     private void BtnICD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD3ActionPerformed
-        hapus("Pasien","Registrasi Periksa, Pasien Meninggal, Peminjaman Berkas, Piutang Obat,\nPenjualan Obat, Piutang Pasien","pasien");
+        hapus("Catatan Pasien","lain","catatan_pasien"); 
+        hapus("Pasien","Registrasi Periksa, Pasien Meninggal, Peminjaman Berkas, Piutang Obat,\nPenjualan Obat, Piutang Pasien, Catatan Pasien","pasien");
     }//GEN-LAST:event_BtnICD3ActionPerformed
 
     private void BtnICD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD4ActionPerformed
@@ -2680,6 +2699,10 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Akun Piutang","lain","akun_piutang");
     }//GEN-LAST:event_BtnICD112ActionPerformed
 
+    private void BtnICD113ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD113ActionPerformed
+        hapus("Catatan Pasien","lain","catatan_pasien"); 
+    }//GEN-LAST:event_BtnICD113ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2714,6 +2737,7 @@ public class DlgVakum extends javax.swing.JDialog {
     private usu.widget.ButtonGlass BtnICD110;
     private usu.widget.ButtonGlass BtnICD111;
     private usu.widget.ButtonGlass BtnICD112;
+    private usu.widget.ButtonGlass BtnICD113;
     private usu.widget.ButtonGlass BtnICD12;
     private usu.widget.ButtonGlass BtnICD13;
     private usu.widget.ButtonGlass BtnICD14;

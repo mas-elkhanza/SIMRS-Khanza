@@ -105,7 +105,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
-        no_inventaris.setDocument(new batasInput((byte)20).getKata(no_inventaris));
+        no_inventaris.setDocument(new batasInput((byte)30).getKata(no_inventaris));
         kode_barang.setDocument(new batasInput((byte)10).getKata(kode_barang));
         harga.setDocument(new batasInput((byte)15).getOnlyAngka(harga));
         id_ruang.setDocument(new batasInput((byte)5).getKata(id_ruang));
