@@ -30,6 +30,7 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -60,6 +61,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private ResultSet rs;
     private int pilih=0,i=0;
     private final Properties prop = new Properties();
+    private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private String no_peserta="", requestJson,URL="",jkel="",duplikat="",user="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private InhealthCariReferensiJenpelRuang kamar=new InhealthCariReferensiJenpelRuang(null,false);
@@ -350,6 +352,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         BtnSimpan4 = new widget.Button();
         jLabel26 = new widget.Label();
         TanggalPulang = new widget.Tanggal();
+        NoBalasan = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -536,7 +539,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel26.setBounds(6, 32, 100, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017 15:34:56" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017 08:10:16" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -545,6 +548,9 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         TanggalPulang.setBounds(110, 32, 220, 23);
 
         WindowUpdatePulang.getContentPane().add(internalFrame5, java.awt.BorderLayout.CENTER);
+
+        NoBalasan.setHighlighter(null);
+        NoBalasan.setName("NoBalasan"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -729,7 +735,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -744,7 +750,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -870,7 +876,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel20.setBounds(509, 72, 70, 23);
 
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017 15:34:56" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017 08:10:16" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -890,7 +896,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel22.setBounds(0, 70, 87, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017 15:34:56" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017 08:10:16" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -1787,6 +1793,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private widget.TextBox NmPenyakit2;
     private widget.TextBox NmPoli;
     private widget.TextBox NmPpkRujukan;
+    private widget.TextBox NoBalasan;
     private widget.TextBox NoKartu;
     private widget.TextBox NoRujukan;
     private javax.swing.JPanel PanelInput;
@@ -1936,6 +1943,8 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         LokasiLaka.setText("");
         TNoRM.setText("");
         NoRujukan.requestFocus();
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(rujuk_masuk.no_rawat,4),signed)),0) from reg_periksa inner join rujuk_masuk on reg_periksa.no_rawat=rujuk_masuk.no_rawat where reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"' ","BR/"+dateformat.format(TanggalSEP.getDate())+"/",4,NoBalasan);
+        
     }
     
     public void setNoRm(String norwt, Date tgl1,String status,String kdpoli,String namapoli) {
@@ -2023,9 +2032,10 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                       root.path("PLAN").asText(),root.path("PLANDESC").asText(),root.path("IDAKOMODASI").asText(),
                       root.path("TIPESJP").asText(),root.path("TIPECOB").asText()
                   })==true){
-                     Sequel.menyimpan("rujuk_masuk","?,?,?,?,?",5,new String[]{
-                         TNoRw.getText(),NmPpkRujukan.getText(),"-",NoRujukan.getText(),"0"
-                     });      
+                     Sequel.menyimpan("rujuk_masuk","?,?,?,?,?,?,?,?,?,?",10,new String[]{
+                         TNoRw.getText(),NmPpkRujukan.getText(),"-",NoRujukan.getText(),"0",NmPpkRujukan.getText(),KdPenyakit.getText(),"-",
+                         "-",NoBalasan.getText()
+                     });     
                      tampil();
                      emptTeks();
                 }

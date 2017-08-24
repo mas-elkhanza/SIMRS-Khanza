@@ -31,6 +31,7 @@ import java.net.URI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,6 +65,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;
     private final Properties prop = new Properties();
+    private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private BPJSApi api=new BPJSApi();
     private BPJSCekReferensiFaskes faskes=new BPJSCekReferensiFaskes(null,false);
     private BPJSCekReferensiPenyakit penyakit=new BPJSCekReferensiPenyakit(null,false);
@@ -323,6 +325,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         BtnSimpan4 = new widget.Button();
         jLabel26 = new widget.Label();
         TanggalPulang = new widget.Tanggal();
+        NoBalasan = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -514,7 +517,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         jLabel26.setBounds(6, 32, 100, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017 09:27:09" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017 08:02:02" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -523,6 +526,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         TanggalPulang.setBounds(110, 32, 220, 23);
 
         WindowUpdatePulang.getContentPane().add(internalFrame5, java.awt.BorderLayout.CENTER);
+
+        NoBalasan.setHighlighter(null);
+        NoBalasan.setName("NoBalasan"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -707,7 +713,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -722,7 +728,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -848,7 +854,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         jLabel20.setBounds(382, 102, 85, 23);
 
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017 09:27:09" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017 08:02:02" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -868,7 +874,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         jLabel22.setBounds(0, 102, 90, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017 09:27:09" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017 08:02:02" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -1854,6 +1860,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private widget.TextBox NmPenyakit;
     private widget.TextBox NmPoli;
     private widget.TextBox NmPpkRujukan;
+    private widget.TextBox NoBalasan;
     private widget.TextBox NoKartu;
     private widget.TextBox NoRujukan;
     private javax.swing.JPanel PanelInput;
@@ -2010,6 +2017,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         LokasiLaka.setText("");
         TNoRM.setText("");
         NoRujukan.requestFocus();
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(rujuk_masuk.no_rawat,4),signed)),0) from reg_periksa inner join rujuk_masuk on reg_periksa.no_rawat=rujuk_masuk.no_rawat where reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"' ","BR/"+dateformat.format(TanggalSEP.getDate())+"/",4,NoBalasan);
+        
     }
     
     public void setNoRm(String norwt, Date tgl1,String status,String kdpoli,String namapoli) {
@@ -2176,8 +2185,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                      LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),user, 
                      TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JenisPeserta.getText(),JK.getText(),NoKartu.getText(),"0000-00-00 00:00:00"
                  })==true){
-                     Sequel.menyimpan("rujuk_masuk","?,?,?,?,?",5,new String[]{
-                         TNoRw.getText(),NmPpkRujukan.getText(),"-",NoRujukan.getText(),"0"
+                     Sequel.menyimpan("rujuk_masuk","?,?,?,?,?,?,?,?,?,?",10,new String[]{
+                         TNoRw.getText(),NmPpkRujukan.getText(),"-",NoRujukan.getText(),"0",NmPpkRujukan.getText(),KdPenyakit.getText(),"-",
+                         "-",NoBalasan.getText()
                      });
                      if(JenisPelayanan.getSelectedIndex()==1){
                         try {

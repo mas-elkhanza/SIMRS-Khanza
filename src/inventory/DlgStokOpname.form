@@ -615,7 +615,7 @@
                     <Property name="text" type="java.lang.String" value="Key Word :"/>
                     <Property name="name" type="java.lang.String" value="label9" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[90, 23]"/>
+                      <Dimension value="[100, 23]"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -623,7 +623,7 @@
                   <Properties>
                     <Property name="name" type="java.lang.String" value="TCari" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[250, 23]"/>
+                      <Dimension value="[300, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -728,7 +728,7 @@
                     <Property name="text" type="java.lang.String" value="Record :"/>
                     <Property name="name" type="java.lang.String" value="label10" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[90, 30]"/>
+                      <Dimension value="[55, 30]"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -738,16 +738,35 @@
                     <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="name" type="java.lang.String" value="LCount" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[30, 30]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="widget.Label" name="label13">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Total Real :"/>
+                    <Property name="name" type="java.lang.String" value="label13" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[60, 30]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="widget.Label" name="LTotalBeli">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="name" type="java.lang.String" value="LTotalBeli" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[150, 30]"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="widget.Label" name="label12">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Total :"/>
+                    <Property name="text" type="java.lang.String" value="Hilang :"/>
                     <Property name="name" type="java.lang.String" value="label12" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[55, 30]"/>
+                      <Dimension value="[45, 30]"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -757,7 +776,7 @@
                     <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="name" type="java.lang.String" value="LTotal" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[175, 30]"/>
+                      <Dimension value="[105, 30]"/>
                     </Property>
                   </Properties>
                 </Component>
