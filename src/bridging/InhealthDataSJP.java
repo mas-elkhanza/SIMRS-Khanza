@@ -81,7 +81,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.SJP","No.Rawat","Tanggal SJP","Tanggal Rujukan","No.Rujukan", 
-                "kdppkrujukan","Namma PPK Rujukan","kdppkpelayanan","Nama PPK Pelayanan",
+                "kdppkrujukan","Nama PPK Rujukan","kdppkpelayanan","Nama PPK Pelayanan",
                 "Jenis Pelayanan","Catatan","ICD X","Diagnosa Awal","ICD X 2","Diagnosa Tambahan", 
                 "Kode Poli/Kamar","Nama Poli/Kamar","Kelas Rawat","Kelas Desc","Kode BU","Nama BU", 
                 "Laka Lantas","Lokasi Laka","User","No MR","Nama Pasien","Tgl.Lahir","Jns.Kelamin", 
@@ -118,7 +118,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(140);
             }else if(i==9){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(200);
             }else if(i==10){
                 column.setPreferredWidth(140);
             }else if(i==11){
@@ -161,7 +161,17 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }else if(i==28){
                 column.setPreferredWidth(100);
             }else if(i==29){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(85);
+            }else if(i==30){
+                column.setPreferredWidth(30);
+            }else if(i==31){
+                column.setPreferredWidth(85);
+            }else if(i==32){
+                column.setPreferredWidth(100);
+            }else if(i==33){
+                column.setPreferredWidth(100);
+            }else if(i==34){
+                column.setPreferredWidth(100);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -351,6 +361,10 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         } catch (Exception e) {
             user=var.getkode();
         }
+        
+        LabelJenpel.setVisible(false);
+        KdJenpel.setVisible(false);
+        NmJenpel.setVisible(false);
     }
 
 
@@ -1954,7 +1968,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         NmPpkRujukan.setText("");
         KdPPK.setText("");
         NmPPK.setText("");
-        JenisPelayanan.setSelectedIndex(1);
+        JenisPelayanan.setSelectedIndex(0);
         Catatan.setText("");
         KdPenyakit.setText("");
         NmPenyakit.setText("");

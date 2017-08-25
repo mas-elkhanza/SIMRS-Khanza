@@ -47,7 +47,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement pstampil,pskamin,psperujuk,psobat,psreseppulang;
+    private PreparedStatement pstampil,pskamin,psperujuk,psobat,psreseppulang,psdiagnosapulang;
     private ResultSet rs,rs2;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private int i=0;
@@ -201,23 +201,10 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        try{            
-            pskamin=koneksi.prepareStatement("select ifnull(kamar_inap.tgl_keluar,''),ifnull(kamar_inap.diagnosa_awal,''),ifnull(kamar_inap.diagnosa_akhir,''),ifnull(kamar_inap.stts_pulang,'') from kamar_inap where no_rawat=? "+
-                    "order by kamar_inap.tgl_keluar desc limit 1");            
-            psperujuk=koneksi.prepareStatement("select rujuk_masuk.perujuk,rujuk_masuk.alamat from rujuk_masuk where "+
-                    "rujuk_masuk.perujuk like ? or rujuk_masuk.alamat like ? group by rujuk_masuk.perujuk order by rujuk_masuk.perujuk");
-            psobat=koneksi.prepareStatement("select databarang.nama_brng from detail_pemberian_obat inner join databarang "+
-                   "on detail_pemberian_obat.kode_brng=databarang.kode_brng where detail_pemberian_obat.no_rawat=? group by databarang.nama_brng ");
-            psreseppulang=koneksi.prepareStatement("select databarang.nama_brng from resep_pulang inner join databarang "+
-                   "on resep_pulang.kode_brng=databarang.kode_brng where resep_pulang.no_rawat=? group by databarang.nama_brng ");
-        }catch(SQLException e){
-            System.out.println(e);
-        }
-
         ChkInput.setSelected(true);
         isForm();
     }
-    private String diagnosa="",diagnosa2="",keluar="",status="";
+    private String diagnosa="",diagnosa2="",keluar="",status="",diagnosapulang="";
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -1285,15 +1272,28 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         }else{
             Map<String, Object> param = new HashMap<>();
             diagnosa="";
-            try {                
-                psobat.setString(1,TNoRw.getText());
-                rs=psobat.executeQuery();
-                while(rs.next()){
-                    if(diagnosa.equals("")){
-                        diagnosa=rs.getString(1);
-                    }else {
-                        diagnosa=diagnosa+", "+rs.getString(1);
-                    }                    
+            try {           
+                psobat=koneksi.prepareStatement("select databarang.nama_brng from detail_pemberian_obat inner join databarang "+
+                   "on detail_pemberian_obat.kode_brng=databarang.kode_brng where detail_pemberian_obat.no_rawat=? group by databarang.nama_brng ");
+                try {
+                    psobat.setString(1,TNoRw.getText());
+                    rs=psobat.executeQuery();
+                    while(rs.next()){
+                        if(diagnosa.equals("")){
+                            diagnosa=rs.getString(1);
+                        }else {
+                            diagnosa=diagnosa+", "+rs.getString(1);
+                        }                    
+                    }
+                } catch (Exception e) {
+                    System.out.println("simrskhanza.DlgRujukMasuk.MnBalasanRujukanActionPerformed() : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(psobat!=null){
+                        psobat.close();
+                    }  
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -1339,16 +1339,29 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             keluar=Sequel.cariIsi("select stts_pulang from kamar_inap where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
             
             status="";
-            try {                
-                psreseppulang.setString(1,TNoRw.getText());
-                rs=psreseppulang.executeQuery();
-                while(rs.next()){
-                    if(status.equals("")){
-                        status=rs.getString(1);
-                    }else {
-                        status=status+", "+rs.getString(1);
-                    }                    
-                }
+            try {          
+                psreseppulang=koneksi.prepareStatement("select databarang.nama_brng from resep_pulang inner join databarang "+
+                   "on resep_pulang.kode_brng=databarang.kode_brng where resep_pulang.no_rawat=? group by databarang.nama_brng ");
+                try {
+                    psreseppulang.setString(1,TNoRw.getText());
+                    rs=psreseppulang.executeQuery();
+                    while(rs.next()){
+                        if(status.equals("")){
+                            status=rs.getString(1);
+                        }else {
+                            status=status+", "+rs.getString(1);
+                        }                    
+                    }
+                } catch (Exception e) {
+                    System.out.println("simrskhanza.DlgRujukMasuk.MnBalasanRujukanActionPerformed() : "+e);
+                }finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(psreseppulang!=null){
+                        psreseppulang.close();
+                    }
+                }                    
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -1384,19 +1397,32 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             Map<String, Object> param = new HashMap<>();
             diagnosa="";
             keluar="";
-            try {                
-                psobat.setString(1,TNoRw.getText());
-                rs=psobat.executeQuery();
-                while(rs.next()){
-                    if(diagnosa.equals("")){
-                        diagnosa=rs.getString(1);
-                    }else {
-                        diagnosa=diagnosa+", "+rs.getString(1);
-                    }                    
+            try {           
+                psobat=koneksi.prepareStatement("select databarang.nama_brng from detail_pemberian_obat inner join databarang "+
+                   "on detail_pemberian_obat.kode_brng=databarang.kode_brng where detail_pemberian_obat.no_rawat=? group by databarang.nama_brng ");
+                try {
+                    psobat.setString(1,TNoRw.getText());
+                    rs=psobat.executeQuery();
+                    while(rs.next()){
+                        if(diagnosa.equals("")){
+                            diagnosa=rs.getString(1);
+                        }else {
+                            diagnosa=diagnosa+", "+rs.getString(1);
+                        }                    
+                    }
+                } catch (Exception e) {
+                    System.out.println("simrskhanza.DlgRujukMasuk.MnBalasanRujukanActionPerformed() : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(psobat!=null){
+                        psobat.close();
+                    }  
                 }
             } catch (Exception e) {
                 System.out.println(e);
-            }            
+            }           
             
             diagnosa2="";
             i=Sequel.cariInteger("select count(no_rawat) from rawat_inap_dr where no_rawat=?",TNoRw.getText());
@@ -1508,19 +1534,62 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
             Map<String, Object> param = new HashMap<>();
             diagnosa="";
             keluar="";
-            try {                
-                psreseppulang.setString(1,TNoRw.getText());
-                rs=psreseppulang.executeQuery();
-                while(rs.next()){
-                    if(diagnosa.equals("")){
-                        diagnosa=rs.getString(1);
-                    }else {
-                        diagnosa=diagnosa+", "+rs.getString(1);
-                    }                    
-                }
+            try {          
+                psreseppulang=koneksi.prepareStatement("select databarang.nama_brng from resep_pulang inner join databarang "+
+                   "on resep_pulang.kode_brng=databarang.kode_brng where resep_pulang.no_rawat=? group by databarang.nama_brng ");
+                try {
+                    psreseppulang.setString(1,TNoRw.getText());
+                    rs=psreseppulang.executeQuery();
+                    while(rs.next()){
+                        if(status.equals("")){
+                            status=rs.getString(1);
+                        }else {
+                            status=status+", "+rs.getString(1);
+                        }                    
+                    }
+                } catch (Exception e) {
+                    System.out.println("simrskhanza.DlgRujukMasuk.MnBalasanRujukanActionPerformed() : "+e);
+                }finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(psreseppulang!=null){
+                        psreseppulang.close();
+                    }
+                }                    
             } catch (Exception e) {
                 System.out.println(e);
-            }            
+            } 
+            
+            
+            diagnosapulang="";
+            try {    
+                psdiagnosapulang=koneksi.prepareStatement(
+                        "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit from diagnosa_pasien inner join penyakit "+
+                        "on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit where diagnosa_pasien.no_rawat=?");
+                try {
+                    psdiagnosapulang.setString(1,TNoRw.getText());
+                    rs=psdiagnosapulang.executeQuery();
+                    while(rs.next()){
+                        if(diagnosapulang.equals("")){
+                            diagnosapulang=rs.getString(1)+" "+rs.getString(2);
+                        }else {
+                            diagnosapulang=diagnosapulang+", "+rs.getString(1)+" "+rs.getString(2);
+                        }                    
+                    }
+                } catch (Exception e) {
+                    System.out.println("simrskhanza.DlgRujukMasuk.MnBalasanRujukan2ActionPerformed() : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(psdiagnosapulang!=null){
+                        psdiagnosapulang.close();
+                    }
+                }                    
+            } catch (Exception e) {
+                System.out.println(e);
+            }
             
             diagnosa2="";
             i=Sequel.cariInteger("select count(no_rawat) from rawat_inap_dr where no_rawat=?",TNoRw.getText());
@@ -1559,10 +1628,10 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                 }                 
             }
             
-            keluar=Sequel.cariIsi("select stts_pulang from kamar_inap where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
+            keluar=Sequel.cariIsi("select stts_pulang from kamar_inap where no_rawat=? and stts_pulang<>'-' order by STR_TO_DATE(concat(tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
             
             param.put("html","Setelah penderita kami rawat di "+var.getnamars()+" pulang dengan keadaan :\n"+
-                    "     "+keluar+" dengan diagnosa akhir "+tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()+"\n"+
+                    "     "+keluar+" dengan diagnosa akhir "+diagnosapulang+"\n"+
                     "Atas kerjasamanya kami ucapkan terima kasih");
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -1736,14 +1805,28 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                 rs=pstampil.executeQuery();
                 while(rs.next()){
                     keluar="";diagnosa="";status="";diagnosa2="";
-                    pskamin.setString(1,rs.getString("no_rawat"));
-                    rs2=pskamin.executeQuery();
-                    if(rs2.next()){
-                        keluar=rs2.getString(1);
-                        diagnosa=rs2.getString(2);
-                        diagnosa2=rs2.getString(3);
-                        status=rs2.getString(4);
+                    pskamin=koneksi.prepareStatement("select ifnull(kamar_inap.tgl_keluar,''),ifnull(kamar_inap.diagnosa_awal,''),ifnull(kamar_inap.diagnosa_akhir,''),ifnull(kamar_inap.stts_pulang,'') from kamar_inap where no_rawat=? "+
+                                "order by kamar_inap.tgl_keluar desc limit 1");            
+                    try {
+                        pskamin.setString(1,rs.getString("no_rawat"));
+                        rs2=pskamin.executeQuery();
+                        if(rs2.next()){
+                            keluar=rs2.getString(1);
+                            diagnosa=rs2.getString(2);
+                            diagnosa2=rs2.getString(3);
+                            status=rs2.getString(4);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("simrskhanza.DlgRujukMasuk.tampil() : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(pskamin!=null){
+                            pskamin.close();
+                        }
                     }
+                        
                     tabMode.addRow(new Object[]{
                         false,rs.getString("perujuk"),rs.getString("alamat"),rs.getString("no_rujuk"),
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
@@ -1835,13 +1918,26 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     public void tampil2() {        
         Valid.tabelKosong(tabMode2);
         try{
-            psperujuk.setString(1,"%"+TCariPerujuk.getText()+"%");
-            psperujuk.setString(2,"%"+TCariPerujuk.getText()+"%");
-            rs=psperujuk.executeQuery();
-            while(rs.next()){                              
-                tabMode2.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+            psperujuk=koneksi.prepareStatement("select rujuk_masuk.perujuk,rujuk_masuk.alamat from rujuk_masuk where "+
+                    "rujuk_masuk.perujuk like ? or rujuk_masuk.alamat like ? group by rujuk_masuk.perujuk order by rujuk_masuk.perujuk");
+            try {
+                psperujuk.setString(1,"%"+TCariPerujuk.getText()+"%");
+                psperujuk.setString(2,"%"+TCariPerujuk.getText()+"%");
+                rs=psperujuk.executeQuery();
+                while(rs.next()){                              
+                    tabMode2.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+                }
+            } catch (Exception e) {
+                System.out.println("simrskhanza.DlgRujukMasuk.tampil2() : "+e);
+            } finally{
+                if(rs2!=null){
+                    rs2.close();
+                }
+                if(psperujuk!=null){
+                    psperujuk.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount1.setText(""+tabMode2.getRowCount());
