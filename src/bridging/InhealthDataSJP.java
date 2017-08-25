@@ -125,12 +125,12 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==12){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(150);
             }else if(i==13){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==14){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(150);
             }else if(i==15){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -139,7 +139,29 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }else if(i==17){
                 column.setPreferredWidth(120);
             }else if(i==18){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(80);
+            }else if(i==19){
+                column.setPreferredWidth(80);
+            }else if(i==20){
+                column.setPreferredWidth(150);
+            }else if(i==21){
+                column.setPreferredWidth(150);
+            }else if(i==22){
+                column.setPreferredWidth(150);
+            }else if(i==23){
+                column.setPreferredWidth(100);
+            }else if(i==24){
+                column.setPreferredWidth(75);
+            }else if(i==25){
+                column.setPreferredWidth(150);
+            }else if(i==26){
+                column.setPreferredWidth(75);
+            }else if(i==27){
+                column.setPreferredWidth(75);
+            }else if(i==28){
+                column.setPreferredWidth(100);
+            }else if(i==29){
+                column.setPreferredWidth(80);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1932,7 +1954,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         NmPpkRujukan.setText("");
         KdPPK.setText("");
         NmPPK.setText("");
-        JenisPelayanan.setSelectedIndex(0);
+        JenisPelayanan.setSelectedIndex(1);
         Catatan.setText("");
         KdPenyakit.setText("");
         NmPenyakit.setText("");

@@ -1047,7 +1047,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             }else{
                try {
                    pscarijual=koneksi.prepareStatement(
-                           "select nota_jual, kd_bangsal,status from penjualan where nota_jual=?");
+                           "select nota_jual, kd_bangsal,status,no_rkm_medis,nm_pasien,tgl_jual from penjualan where nota_jual=?");
                    try {
                       pscarijual.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
                       rs=pscarijual.executeQuery();
@@ -1075,11 +1075,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     psdetailjual.close();
                                 }
                              }
+                             ttljual=Sequel.cariIsiAngka("select sum(total) from detailjual where nota_jual=?",rs.getString("nota_jual"));
                              Sequel.queryu("delete from tampjurnal");
-                             Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Penjualan_Obat from set_akun")+"','PENJUALAN OBAT BEBAS','0','"+Sequel.cariIsi("select sum(total) from detailjual where nota_jual='"+rs.getString("nota_jual")+"'")+"'","Rekening");    
-                             Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select kd_rek from penjualan where nota_jual=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())+"','KAS DI TANGAN','"+Sequel.cariIsi("select sum(total) from detailjual where nota_jual='"+rs.getString("nota_jual")+"'")+"','0'","Rekening"); 
+                             Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Penjualan_Obat from set_akun")+"','PENJUALAN OBAT BEBAS','0','"+ttljual+"'","Rekening");    
+                             Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select kd_rek from penjualan where nota_jual=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())+"','KAS DI TANGAN','"+ttljual+"','0'","Rekening"); 
                              jur.simpanJurnal(rs.getString("nota_jual"),Sequel.cariIsi("select current_date()"),"U","PENJUALAN DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase());
                              Sequel.mengedit("penjualan","nota_jual=?","status='Sudah Dibayar'",1,new String[]{rs.getString("nota_jual")});
+                             Sequel.menyimpan("tagihan_sadewa","'"+rs.getString("nota_jual")+"','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien")+"','-',concat('"+rs.getString("tgl_jual")+
+                                    "',' ',CURTIME()),'Pelunasan','"+ttljual+"','"+ttljual+"','Sudah','"+var.getkode()+"'","No.Nota");                        
                           }                        
                       }                            
                       tampil();

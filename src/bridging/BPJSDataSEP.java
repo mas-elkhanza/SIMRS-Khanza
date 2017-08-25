@@ -301,6 +301,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         } catch (Exception e) {
             user=var.getkode();
         }
+             
+        Kelas.setVisible(false);
+        LabelKelas.setVisible(false);
     }
 
 
@@ -1051,6 +1054,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Catatan.setBounds(470, 192, 257, 23);
 
         JenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Rawat Inap", "2. Rawat Jalan" }));
+        JenisPelayanan.setSelectedIndex(1);
         JenisPelayanan.setName("JenisPelayanan"); // NOI18N
         JenisPelayanan.setOpaque(false);
         JenisPelayanan.addItemListener(new java.awt.event.ItemListener() {
@@ -2004,9 +2008,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         NoRujukan.setText("");
         KdPpkRujukan.setText("");
         NmPpkRujukan.setText("");
-        KdPPK.setText("");
-        NmPPK.setText("");
-        JenisPelayanan.setSelectedIndex(0);
+        JenisPelayanan.setSelectedIndex(1);
         Catatan.setText("");
         KdPenyakit.setText("");
         NmPenyakit.setText("");
