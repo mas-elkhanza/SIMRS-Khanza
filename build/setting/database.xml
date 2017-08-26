@@ -24,4 +24,5 @@
     <entry key="IPPRINTERTRACER">10.50.150.57/label2</entry>
     <entry key="URLAPIINHEALTH">http://dummy.inhealth.co.id/pelkesws2</entry>
     <entry key="TOKENINHEALTH">inh_aba40329b828c943e91f2e5c7f9f1f1b</entry>
+    <entry key="PEMBULATANHARGAOBAT">no</entry>
 </properties>

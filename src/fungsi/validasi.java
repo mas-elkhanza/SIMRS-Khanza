@@ -53,8 +53,8 @@ import uz.ncipro.calendar.JDateTimePicker;
  * @author Owner
  */
 public final class validasi {
-    private int a,j,i;
-    private String s,s1,auto;
+    private int a,j,i,result=0;
+    private String s,s1,auto,PEMBULATANHARGAOBAT="";
     private final Connection connect=koneksiDB.condb();
     private final sekuel sek=new sekuel();
     private final java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
@@ -65,6 +65,7 @@ public final class validasi {
     private ResultSet rs;
     private final Calendar now = Calendar.getInstance();
     private final int year=(now.get(Calendar.YEAR));
+    private static final Properties prop = new Properties();  
     
     public validasi(){super();};
 
@@ -991,20 +992,27 @@ public final class validasi {
     }
     
     public double roundUp(double number, int multiple) {
-        int result = multiple;
-
-        if (number % multiple == 0) {
-            return (int) number;
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            PEMBULATANHARGAOBAT=prop.getProperty("PEMBULATANHARGAOBAT");
+        }catch(Exception e){
+            PEMBULATANHARGAOBAT="no"; 
         }
+        
+        if(PEMBULATANHARGAOBAT.equals("yes")){
+            result = multiple;
+            if (number % multiple == 0) {
+                return (int) number;
+            }
 
-        if (number % multiple != 0) {
-
-            int division = (int) ((number / multiple) + 1);
-
-            result = division * multiple;
-
+            if (number % multiple != 0) {
+                int division = (int) ((number / multiple) + 1);
+                result = division * multiple;
+            }
+            return result;
+        }else{
+            return number;
         }
-        return result;
 
     }
 
