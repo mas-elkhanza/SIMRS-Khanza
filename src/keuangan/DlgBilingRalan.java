@@ -3193,7 +3193,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan tampilkan semua pilihan tagihan...!!!");
         }else if(cek>0){
             JOptionPane.showMessageDialog(null,"Maaf, data tagihan pasien dengan No.Rawat tersebut sudah pernah disimpan...!!!");
-        }else if(cek==0){   
+        }else if(cek==0){
             if(piutang<=0){
                 if(kekurangan<0){
                     JOptionPane.showMessageDialog(null,"Maaf, pembayaran pasien masih kurang ...!!!");
@@ -4655,7 +4655,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 
             TKembali.setText(Valid.SetAngka3(kekurangan));  
         }  
-          
     }
     
     

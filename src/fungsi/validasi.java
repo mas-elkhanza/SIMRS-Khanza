@@ -59,7 +59,7 @@ public final class validasi {
     private final sekuel sek=new sekuel();
     private final java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
     private final DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");  
-    private final DecimalFormat df4 = new DecimalFormat("###,###,###,###,###,###,###.###");  
+    private final DecimalFormat df4 = new DecimalFormat("###,###,###,###,###,###,###.#################");  
     private final DecimalFormat df3 = new DecimalFormat("######"); 
     private PreparedStatement ps;
     private ResultSet rs;
