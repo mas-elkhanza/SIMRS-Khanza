@@ -487,6 +487,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MnLembarCatatanKeperawatan = new javax.swing.JMenuItem();
         MnLaporanAnestesia = new javax.swing.JMenuItem();
         MnPengantarHemodalisa = new javax.swing.JMenuItem();
+        MnCover = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         ppGrafikPerAgama = new javax.swing.JMenuItem();
         ppGrafikPerPekerjaan = new javax.swing.JMenuItem();
@@ -1169,6 +1170,20 @@ public class DlgPasien extends javax.swing.JDialog {
             }
         });
         jMenu1.add(MnPengantarHemodalisa);
+
+        MnCover.setBackground(new java.awt.Color(255, 255, 255));
+        MnCover.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCover.setForeground(new java.awt.Color(60, 80, 50));
+        MnCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCover.setText("Cover Rekam Medis");
+        MnCover.setName("MnCover"); // NOI18N
+        MnCover.setPreferredSize(new java.awt.Dimension(300, 26));
+        MnCover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCoverActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MnCover);
 
         jPopupMenu1.add(jMenu1);
 
@@ -4590,6 +4605,33 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         }
     }//GEN-LAST:event_ppCatatanPasienBtnPrintActionPerformed
 
+    private void MnCoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCoverActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data pasien sudah habis...!!!!");
+            TNo.requestFocus();
+        }else if(TNm.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPasien.requestFocus();
+        }else{
+            Map<String, Object> param = new HashMap<>();                 
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select logo from setting")); 
+            Valid.MyReport("rptCoverMap.jrxml","report","::[ Cover Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                   "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,pasien.no_peserta,"+
+                   "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
+                   "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien "+
+                   "inner join kelurahan inner join kecamatan inner join kabupaten "+
+                   "inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+TNo.getText()+"' ",param);
+        }
+    }//GEN-LAST:event_MnCoverActionPerformed
+
     /**
      * @data args the command line arguments
      */
@@ -4696,6 +4738,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private javax.swing.JMenuItem MnCekKepesertaan;
     private javax.swing.JMenuItem MnCekNIK;
     private javax.swing.JMenuItem MnCopyResep;
+    private javax.swing.JMenuItem MnCover;
     private javax.swing.JMenuItem MnFormulirPendaftaran;
     private javax.swing.JMenuItem MnIdentitas;
     private javax.swing.JMenuItem MnIdentitas2;
