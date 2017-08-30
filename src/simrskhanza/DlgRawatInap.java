@@ -114,6 +114,12 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }else if(i==10){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
+            }else if(i==11){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==12){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbRawatDr.setDefaultRenderer(Object.class, new WarnaTable());
@@ -166,6 +172,12 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }else if(i==9){
                 column.setPreferredWidth(90);
             }else if(i==10){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==11){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==12){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }
@@ -226,6 +238,15 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(90);
             }else if(i==12){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==13){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==14){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==15){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }

@@ -30,6 +30,7 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -60,7 +61,8 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private ResultSet rs;
     private int pilih=0,i=0;
     private final Properties prop = new Properties();
-    private String no_peserta="", requestJson,URL="",jkel="",duplikat="",user="";
+    private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
+    private String no_peserta="", requestJson,URL="",jkel="",duplikat="",user="",kelas="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private InhealthCariReferensiJenpelRuang kamar=new InhealthCariReferensiJenpelRuang(null,false);
     private InhealthCekReferensiFaskes faskes=new InhealthCekReferensiFaskes(null,false);
@@ -79,10 +81,10 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.SJP","No.Rawat","Tanggal SJP","Tanggal Rujukan","No.Rujukan", 
-                "kdppkrujukan","Namma PPK Rujukan","kdppkpelayanan","Nama PPK Pelayanan",
+                "kdppkrujukan","Nama PPK Rujukan","kdppkpelayanan","Nama PPK Pelayanan",
                 "Jenis Pelayanan","Catatan","ICD X","Diagnosa Awal","ICD X 2","Diagnosa Tambahan", 
                 "Kode Poli/Kamar","Nama Poli/Kamar","Kelas Rawat","Kelas Desc","Kode BU","Nama BU", 
-                "Laka Lantas","Lokasi Laka","User","No MR","Nama Pasien","Tgl.Lahir","Jns.Kelamin", 
+                "Laka Lantas","Lokasi Laka","User","No.R.M","Nama Pasien","Tgl.Lahir","Jns.Kelamin", 
                 "No.Kartu","Tanggal Pulang","Plan","Plan Desc","ID Akomodasi","Tipe SJP","Tipe COB"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -116,19 +118,19 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(140);
             }else if(i==9){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(200);
             }else if(i==10){
                 column.setPreferredWidth(140);
             }else if(i==11){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==12){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(150);
             }else if(i==13){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==14){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(150);
             }else if(i==15){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -137,7 +139,39 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }else if(i==17){
                 column.setPreferredWidth(120);
             }else if(i==18){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(80);
+            }else if(i==19){
+                column.setPreferredWidth(80);
+            }else if(i==20){
+                column.setPreferredWidth(150);
+            }else if(i==21){
+                column.setPreferredWidth(150);
+            }else if(i==22){
+                column.setPreferredWidth(150);
+            }else if(i==23){
+                column.setPreferredWidth(100);
+            }else if(i==24){
+                column.setPreferredWidth(75);
+            }else if(i==25){
+                column.setPreferredWidth(150);
+            }else if(i==26){
+                column.setPreferredWidth(75);
+            }else if(i==27){
+                column.setPreferredWidth(75);
+            }else if(i==28){
+                column.setPreferredWidth(100);
+            }else if(i==29){
+                column.setPreferredWidth(85);
+            }else if(i==30){
+                column.setPreferredWidth(30);
+            }else if(i==31){
+                column.setPreferredWidth(85);
+            }else if(i==32){
+                column.setPreferredWidth(100);
+            }else if(i==33){
+                column.setPreferredWidth(100);
+            }else if(i==34){
+                column.setPreferredWidth(100);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -327,6 +361,10 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         } catch (Exception e) {
             user=var.getkode();
         }
+        
+        LabelJenpel.setVisible(false);
+        KdJenpel.setVisible(false);
+        NmJenpel.setVisible(false);
     }
 
 
@@ -350,6 +388,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         BtnSimpan4 = new widget.Button();
         jLabel26 = new widget.Label();
         TanggalPulang = new widget.Tanggal();
+        NoBalasan = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -536,7 +575,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel26.setBounds(6, 32, 100, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017 15:34:56" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017 08:10:16" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -545,6 +584,9 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         TanggalPulang.setBounds(110, 32, 220, 23);
 
         WindowUpdatePulang.getContentPane().add(internalFrame5, java.awt.BorderLayout.CENTER);
+
+        NoBalasan.setHighlighter(null);
+        NoBalasan.setName("NoBalasan"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -729,7 +771,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -744,7 +786,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -870,7 +912,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel20.setBounds(509, 72, 70, 23);
 
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017 15:34:56" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017 08:10:16" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -890,7 +932,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel22.setBounds(0, 70, 87, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-06-2017 15:34:56" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017 08:10:16" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -1787,6 +1829,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private widget.TextBox NmPenyakit2;
     private widget.TextBox NmPoli;
     private widget.TextBox NmPpkRujukan;
+    private widget.TextBox NoBalasan;
     private widget.TextBox NoKartu;
     private widget.TextBox NoRujukan;
     private javax.swing.JPanel PanelInput;
@@ -1843,7 +1886,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                     "select no_sjp, no_rawat, tglsep, tglrujukan, no_rujukan, kdppkrujukan, nmppkrujukan, "+
                     "kdppkpelayanan, nmppkpelayanan, if(jnspelayanan='1','1 RJTP RAWAT JALAN TINGKAT PERTAMA', if(jnspelayanan='2','2 RITP RAWAT INAP TINGKAT PERTAMA',if(jnspelayanan='3','3 RJTL RAWAT JALAN TINGKAT LANJUT','4 RITL RAWAT INAP TINGKAT LANJUT'))), catatan, diagawal, nmdiagnosaawal, diagawal2, "+
-                    "nmdiagnosaawal2, kdpolitujuan, nmpolitujuan, klsrawat, klsdesc, kdbu, nmbu, lakalantas, lokasilaka, user, nomr, nama_pasien, tanggal_lahir, jkel, no_kartu, tglpulang, plan, plandesc, idakomodasi, tipesjp, tipecob from bridging_inhealth where "+
+                    "nmdiagnosaawal2, kdpolitujuan, nmpolitujuan, klsrawat, klsdesc, kdbu, nmbu, if(lakalantas='0','0 Biasa',if(lakalantas='1','1 Kecelakaan Kerja','2 Kecelakaan Lalu Lintas')), lokasilaka, user, nomr, nama_pasien, tanggal_lahir, jkel, no_kartu, tglpulang, plan, plandesc, idakomodasi, tipesjp, tipecob from bridging_inhealth where "+
                     "bridging_inhealth.tglsep between ? and ? and bridging_inhealth.no_sjp like ? or "+
                     "bridging_inhealth.tglsep between ? and ? and bridging_inhealth.nomr like ? or "+
                     "bridging_inhealth.tglsep between ? and ? and bridging_inhealth.nama_pasien like ? or "+
@@ -1879,12 +1922,15 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                 ps.setString(24,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
+                    if(rs.getString(19).equals("000")){
+                        kelas="000 Non Kelas";
+                    }
                     tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),
                         rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16),
-                        rs.getString(17),rs.getString(18),rs.getString(19),rs.getString(20),
+                        rs.getString(17),kelas,rs.getString(19),rs.getString(20),
                         rs.getString(21),rs.getString(22),rs.getString(23),rs.getString(24),
                         rs.getString(25),rs.getString(26),rs.getString(27),rs.getString(28),
                         rs.getString(29),rs.getString(30),rs.getString(31),rs.getString(32),
@@ -1936,6 +1982,8 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         LokasiLaka.setText("");
         TNoRM.setText("");
         NoRujukan.requestFocus();
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(rujuk_masuk.no_rawat,4),signed)),0) from reg_periksa inner join rujuk_masuk on reg_periksa.no_rawat=rujuk_masuk.no_rawat where reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"' ","BR/"+dateformat.format(TanggalSEP.getDate())+"/",4,NoBalasan);
+        
     }
     
     public void setNoRm(String norwt, Date tgl1,String status,String kdpoli,String namapoli) {
@@ -1959,8 +2007,25 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            NoKartu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());   
+            NoRujukan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());  
+            KdPPK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
+            NmPPK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());      
+            KdPpkRujukan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());  
+            NmPpkRujukan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()); 
+            KdPenyakit.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());  
+            NmPenyakit.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());    
+            KdPenyakit2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());  
+            NmPenyakit2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());   
+            Catatan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());    
+            LakaLantas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            LokasiLaka.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());    
+            Valid.SetTgl2(TanggalSEP,tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+            Valid.SetTgl2(TanggalRujuk,tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());   
             
         }
     }
@@ -2023,9 +2088,10 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                       root.path("PLAN").asText(),root.path("PLANDESC").asText(),root.path("IDAKOMODASI").asText(),
                       root.path("TIPESJP").asText(),root.path("TIPECOB").asText()
                   })==true){
-                     Sequel.menyimpan("rujuk_masuk","?,?,?,?,?",5,new String[]{
-                         TNoRw.getText(),NmPpkRujukan.getText(),"-",NoRujukan.getText(),"0"
-                     });      
+                     Sequel.menyimpan("rujuk_masuk","?,?,?,?,?,?,?,?,?,?",10,new String[]{
+                         TNoRw.getText(),NmPpkRujukan.getText(),"-",NoRujukan.getText(),"0",NmPpkRujukan.getText(),KdPenyakit.getText(),"-",
+                         "-",NoBalasan.getText()
+                     });     
                      tampil();
                      emptTeks();
                 }

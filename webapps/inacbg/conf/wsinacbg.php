@@ -2,17 +2,17 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "23beec4e4daec451c28dc4d4816bbb2a6d033a0878c91230c21667283dff0bfb";   
+       $keyRS = "d2a382fc9d2dd3cdd000cf4c59fee76b98e536e3811006e89c699c777a4d18ed";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://inacbg.rs.uns.ac.id/E-Klaim/ws.php";
+        $UrlWS = "http://192.168.0.103/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "CP";
+        $kelasRS = "BP";
         return $kelasRS;
     }
 

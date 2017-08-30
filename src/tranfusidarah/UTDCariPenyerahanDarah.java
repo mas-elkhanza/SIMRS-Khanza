@@ -1060,7 +1060,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select kd_rek from utd_penyerahan_darah where no_penyerahan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString())+"','CARA BAYAR','"+subtotalpendapatan+"','0'","Rekening"); 
                         jur.simpanJurnal(nopenyerahan.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"U","PENJUALAN DARAH DI UTD ");                                                                        
                         Sequel.menyimpan("tagihan_sadewa","'"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"','-','"+tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString()+"','-',concat('"+tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()+
-                                "',' ',CURTIME()),'Pelunasan','"+subtotalpendapatan+"','"+subtotalpendapatan+"','Sudah'","No.Nota");
+                                "',' ',CURTIME()),'Pelunasan','"+subtotalpendapatan+"','"+subtotalpendapatan+"','Sudah','"+var.getkode()+"'","No.Nota");
                         Sequel.mengedit("utd_penyerahan_darah","no_penyerahan=?","status='Sudah Dibayar'",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
                         JOptionPane.showMessageDialog(rootPane,"Proses verifikasi selesai ...!!");
                     }else if(tbDokter.getValueAt(tbDokter.getSelectedRow(),5).toString().equals("Sudah Dibayar")){

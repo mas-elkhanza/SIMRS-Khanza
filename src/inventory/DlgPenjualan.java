@@ -994,7 +994,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())+"','CARA BAYAR','"+ttl+"','0'","Rekening"); 
                             jur.simpanJurnal(NoNota.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PENJUALAN DI "+nmgudang.getText().toUpperCase());                                                
                             Sequel.menyimpan("tagihan_sadewa","'"+NoNota.getText()+"','"+kdmem.getText()+"','"+nmmem.getText()+"','-',concat('"+Valid.SetTgl(Tgl.getSelectedItem()+"")+
-                                    "',' ',CURTIME()),'Pelunasan','"+ttl+"','"+ttl+"','Sudah'","No.Nota");
+                                    "',' ',CURTIME()),'Pelunasan','"+ttl+"','"+ttl+"','Sudah','"+var.getkode()+"'","No.Nota");
                         }
                         
                         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,6),signed)),0) from penjualan ","PJ",6,NoNota);                             

@@ -305,7 +305,7 @@
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_inventaris}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{kode_barang}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -3981,7 +3981,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }else if(i>0){
                 uangdeposit=Sequel.cariIsiAngka("select ifnull(sum(Uang_Muka),0) from nota_inap where no_rawat=?",TNoRw.getText());
                 Deposit.setText(Valid.SetAngka(uangdeposit));
-                DTPTgl.setSelectedItem(Sequel.cariIsi("select concat(tanggal,' ',jam) from nota_inap where no_rawat='"+TNoRw.getText()+"'"));             
+                Valid.SetTgl2(DTPTgl,Sequel.cariIsi("select concat(tanggal,' ',jam) from nota_inap where no_rawat='"+TNoRw.getText()+"'"));
                 Valid.tabelKosong(tabModeRwJlDr);  
                 pssudahmasuk=koneksi.prepareStatement(sqlpssudahmasuk);
                 try {
@@ -6104,13 +6104,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(piutang>0){
                 jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PIUTANG PASIEN RAWAT JALAN, DIPOSTING OLEH "+var.getkode());
                 Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText()+"','"+alamat+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
-                            "',' ',CURTIME()),'Uang Muka','"+total+"','"+bayar+"','Belum'","No.Rawat");
+                            "',' ',CURTIME()),'Uang Muka','"+total+"','"+bayar+"','Belum','"+var.getkode()+"'","No.Rawat");
                 Sequel.queryu2("insert into piutang_pasien values ('"+TNoRw.getText()+"','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"','"+
                         TNoRM.getText()+"','Belum Lunas','"+total+"','"+bayar+"','"+piutang+"','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"')");
             }else if(piutang<=0){
                 jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBAYARAN PASIEN RAWAT JALAN, DIPOSTING OLEH "+var.getkode());
                 Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText()+"','"+alamat+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
-                            "',' ',CURTIME()),'Pelunasan','"+total+"','"+total+"','Sudah'","No.Rawat");
+                            "',' ',CURTIME()),'Pelunasan','"+total+"','"+total+"','Sudah','"+var.getkode()+"'","No.Rawat");
             }
 
             Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"stts='Bayar'");

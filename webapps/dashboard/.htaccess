@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^home$ /webapps/dinkesdashboard/index.php
+RewriteRule ^([^/.]+)$ /dinkesdashboard/module.php?module=$1
+RewriteRule ^([^/.]+)/([^/.]+).html$ /dinkesdashboard/module.php?module=$1
