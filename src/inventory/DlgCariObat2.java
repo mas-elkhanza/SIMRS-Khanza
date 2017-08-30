@@ -748,7 +748,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
                         stokbarang=0;     
                         psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
                         try {
-                            psstok.setString(1,var.getkdbangsal());
+                            psstok.setString(1,kdgudang.getText());
                             psstok.setString(2,tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
                             rsstok=psstok.executeQuery();
                             if(rsstok.next()){
@@ -1027,7 +1027,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     stokbarang=0;
                     psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
                     try {
-                        psstok.setString(1,var.getkdbangsal());
+                        psstok.setString(1,kdgudang.getText());
                         psstok.setString(2,tbObat.getValueAt(i,2).toString());
                         rsstok=psstok.executeQuery();
                         if(rsstok.next()){
