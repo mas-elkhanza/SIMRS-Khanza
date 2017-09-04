@@ -301,9 +301,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         } catch (Exception e) {
             user=var.getkode();
         }
-             
-        Kelas.setVisible(false);
-        LabelKelas.setVisible(false);
     }
 
 
@@ -1799,15 +1796,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         if(JenisPelayanan.getSelectedIndex()==0){
             KdPoli.setText("");
             NmPoli.setText("");
-            Kelas.setVisible(true);
-            LabelKelas.setVisible(true);
             LabelPoli.setVisible(false);
             KdPoli.setVisible(false);
             NmPoli.setVisible(false);
             btnPoli.setVisible(false);
-        }else if(JenisPelayanan.getSelectedIndex()==1){            
-            Kelas.setVisible(false);
-            LabelKelas.setVisible(false);
+        }else if(JenisPelayanan.getSelectedIndex()==1){  
             LabelPoli.setVisible(true);
             KdPoli.setVisible(true);
             NmPoli.setVisible(true);
