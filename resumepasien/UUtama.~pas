@@ -758,7 +758,7 @@ begin
     begin
        ZQExec.Close;
        ZQExec.SQL.Clear;
-       ZQExec.SQL.Add('insert into temppanggilrm values("'+ID+'")')
+       ZQExec.SQL.Add('insert into temppanggilrm values("'+ID+'")') ;
        ZQExec.ExecSQL;
        ShellExecute(0,'open','resume.jar','','',SW_SHOWNORMAL);
     end;
