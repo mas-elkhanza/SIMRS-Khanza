@@ -192,7 +192,8 @@ import laporan.DlgKunjunganRalan;
 import laporan.DlgKunjunganRanap;
 import laporan.DlgPelayananRalan;
 import laporan.DlgPenyakitPd3i;
-import laporan.DlgRL4A;
+import laporan.DlgRL4ASebab;
+import laporan.DlgRL4BSebab;
 import laporan.DlgRl32;
 import laporan.DlgRl33;
 import laporan.DlgRl34;
@@ -613,6 +614,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPiutangPerCaraBayar = new widget.ButtonBig();
         btnLamaPelayananRalan = new widget.ButtonBig();
         btnCatatanPasien = new widget.ButtonBig();
+        btnRl4b = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3649,7 +3651,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnRl4a.setForeground(new java.awt.Color(40, 70, 50));
         btnRl4a.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
-        btnRl4a.setText("RL 4A Morbiditas Ranap");
+        btnRl4a.setText("RL 4A Sebab Morbiditas Ranap");
         btnRl4a.setIconTextGap(0);
         btnRl4a.setName("btnRl4a"); // NOI18N
         btnRl4a.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3933,6 +3935,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCatatanPasien);
 
+        btnRl4b.setForeground(new java.awt.Color(40, 70, 50));
+        btnRl4b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
+        btnRl4b.setText("RL 4B Sebab Morbiditas Ralan");
+        btnRl4b.setIconTextGap(0);
+        btnRl4b.setName("btnRl4b"); // NOI18N
+        btnRl4b.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl4b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl4bActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRl4b);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3941,7 +3956,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20/08/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/09/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8074,7 +8089,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgRL4A aplikasi=new DlgRL4A(this,false);
+        DlgRL4ASebab aplikasi=new DlgRL4ASebab(this,false);
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -8393,6 +8408,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCatatanPasienActionPerformed
 
+    private void btnRl4bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRl4bActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRL4BSebab aplikasi=new DlgRL4BSebab(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRl4bActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8616,6 +8642,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRl37;
     private widget.ButtonBig btnRl38;
     private widget.ButtonBig btnRl4a;
+    private widget.ButtonBig btnRl4b;
     private widget.ButtonBig btnRuangInventaris;
     private widget.ButtonBig btnRujukMasuk;
     private widget.ButtonBig btnRujukPasien;
@@ -9698,6 +9725,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getrl4a()==true){  
                 Panelmenu.add(btnRl4a);                 
+                jmlmenu++;
+            }
+            
+            if(var.getrl4b()==true){  
+                Panelmenu.add(btnRl4b);                 
                 jmlmenu++;
             }
             
@@ -10862,6 +10894,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getrl4a()==true){  
             Panelmenu.add(btnRl4a);                 
+            jmlmenu++;
+        }
+        
+        if(var.getrl4b()==true){  
+            Panelmenu.add(btnRl4b);                 
             jmlmenu++;
         }
         
@@ -12304,6 +12341,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getrl4a()==true){  
             if(btnRl4a.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl4a);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getrl4b()==true){  
+            if(btnRl4b.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRl4b);                 
                 jmlmenu++;
             }                
         }

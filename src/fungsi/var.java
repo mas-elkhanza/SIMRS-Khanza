@@ -55,7 +55,7 @@ public final class var {
             aplicare_referensi_kamar=false,aplicare_ketersediaan_kamar=false,inacbg_klaim_baru_otomatis=false,inacbg_klaim_baru_manual=false,inacbg_coder_nik=false,
             mutasi_berkas=false,akun_piutang=false,harian_kso=false,bulanan_kso=false,harian_menejemen=false,bulanan_menejemen=false,inhealth_cek_eligibilitas=false,
             inhealth_referensi_jenpel_ruang_rawat=false,inhealth_referensi_poli=false,inhealth_referensi_faskes=false,inhealth_sjp=false,piutang_ralan=false,
-            piutang_ranap=false,detail_piutang_penjab=false,lama_pelayanan_ralan=false,catatan_pasien=false;
+            piutang_ranap=false,detail_piutang_penjab=false,lama_pelayanan_ralan=false,catatan_pasien=false,rl4b=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -309,6 +309,7 @@ public final class var {
                         var.detail_piutang_penjab=true;
                         var.lama_pelayanan_ralan=true;
                         var.catatan_pasien=true;
+                        var.rl4b=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -544,6 +545,7 @@ public final class var {
                         var.detail_piutang_penjab=true;
                         var.lama_pelayanan_ralan=true;
                         var.catatan_pasien=true;
+                        var.rl4b=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -780,6 +782,7 @@ public final class var {
                         var.detail_piutang_penjab=rs2.getBoolean("detail_piutang_penjab");
                         var.lama_pelayanan_ralan=rs2.getBoolean("lama_pelayanan_ralan");
                         var.catatan_pasien=rs2.getBoolean("catatan_pasien");
+                        var.rl4b=rs2.getBoolean("rl4b");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1014,6 +1017,7 @@ public final class var {
                         var.detail_piutang_penjab=false;
                         var.lama_pelayanan_ralan=false;
                         var.catatan_pasien=false;
+                        var.rl4b=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1294,4 +1298,5 @@ public final class var {
     public static boolean getdetail_piutang_penjab(){return var.detail_piutang_penjab;}
     public static boolean getlama_pelayanan_ralan(){return var.lama_pelayanan_ralan;}
     public static boolean getcatatan_pasien(){return var.catatan_pasien;}
+    public static boolean getrl4b(){return var.rl4b;}
 }
