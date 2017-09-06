@@ -428,10 +428,10 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
-                                    "<font size='5' face='Tahoma'>"+var.getnamars()+"</font><br>"+
+                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
                                     var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
                                     var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
-                                    "<font size='5' face='Tahoma'>SENSUS HARIAN PASIEN POLIKLINIK</font>"+        
+                                    "<font size='2' face='Tahoma'>SENSUS HARIAN PASIEN POLIKLINIK<br>PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
                         "</table>")
