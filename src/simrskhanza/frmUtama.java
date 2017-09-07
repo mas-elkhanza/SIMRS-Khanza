@@ -615,6 +615,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnLamaPelayananRalan = new widget.ButtonBig();
         btnCatatanPasien = new widget.ButtonBig();
         btnRl4b = new widget.ButtonBig();
+        btnRl4asebab = new widget.ButtonBig();
+        btnRl4bsebab = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3651,7 +3653,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnRl4a.setForeground(new java.awt.Color(40, 70, 50));
         btnRl4a.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
-        btnRl4a.setText("RL 4A Sebab Morbiditas Ranap");
+        btnRl4a.setText("RL 4A Morbiditas Ranap");
         btnRl4a.setIconTextGap(0);
         btnRl4a.setName("btnRl4a"); // NOI18N
         btnRl4a.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3937,7 +3939,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnRl4b.setForeground(new java.awt.Color(40, 70, 50));
         btnRl4b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
-        btnRl4b.setText("RL 4B Sebab Morbiditas Ralan");
+        btnRl4b.setText("RL 4B Morbiditas Ralan");
         btnRl4b.setIconTextGap(0);
         btnRl4b.setName("btnRl4b"); // NOI18N
         btnRl4b.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3948,6 +3950,32 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl4b);
 
+        btnRl4asebab.setForeground(new java.awt.Color(40, 70, 50));
+        btnRl4asebab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
+        btnRl4asebab.setText("RL 4A Sebab Morbiditas Ralan");
+        btnRl4asebab.setIconTextGap(0);
+        btnRl4asebab.setName("btnRl4asebab"); // NOI18N
+        btnRl4asebab.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl4asebab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl4asebabActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRl4asebab);
+
+        btnRl4bsebab.setForeground(new java.awt.Color(40, 70, 50));
+        btnRl4bsebab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
+        btnRl4bsebab.setText("RL 4B Sebab Morbiditas Ralan");
+        btnRl4bsebab.setIconTextGap(0);
+        btnRl4bsebab.setName("btnRl4bsebab"); // NOI18N
+        btnRl4bsebab.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRl4bsebab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRl4bsebabActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRl4bsebab);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3956,7 +3984,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06/09/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/09/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8086,14 +8114,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_MnInfoBed2ActionPerformed
 
     private void btnRl4aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRl4aActionPerformed
-        isTutup();
-        DlgHome.dispose();
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgRL4ASebab aplikasi=new DlgRL4ASebab(this,false);
-        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
-        aplikasi.setLocationRelativeTo(PanelUtama);
-        aplikasi.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
+       
     }//GEN-LAST:event_btnRl4aActionPerformed
 
     private void btnAplicareReferensiKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicareReferensiKamarActionPerformed
@@ -8409,6 +8430,21 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_btnCatatanPasienActionPerformed
 
     private void btnRl4bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRl4bActionPerformed
+        
+    }//GEN-LAST:event_btnRl4bActionPerformed
+
+    private void btnRl4asebabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRl4asebabActionPerformed
+         isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRL4ASebab aplikasi=new DlgRL4ASebab(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRl4asebabActionPerformed
+
+    private void btnRl4bsebabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRl4bsebabActionPerformed
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -8417,7 +8453,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_btnRl4bActionPerformed
+    }//GEN-LAST:event_btnRl4bsebabActionPerformed
 
     /**
     * @param args the command line arguments
@@ -8642,7 +8678,9 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRl37;
     private widget.ButtonBig btnRl38;
     private widget.ButtonBig btnRl4a;
+    private widget.ButtonBig btnRl4asebab;
     private widget.ButtonBig btnRl4b;
+    private widget.ButtonBig btnRl4bsebab;
     private widget.ButtonBig btnRuangInventaris;
     private widget.ButtonBig btnRujukMasuk;
     private widget.ButtonBig btnRujukPasien;
@@ -9730,6 +9768,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getrl4b()==true){  
                 Panelmenu.add(btnRl4b);                 
+                jmlmenu++;
+            }
+            
+            if(var.getrl4asebab()==true){  
+                Panelmenu.add(btnRl4asebab);                 
+                jmlmenu++;
+            }
+            
+            if(var.getrl4bsebab()==true){  
+                Panelmenu.add(btnRl4bsebab);                 
                 jmlmenu++;
             }
             
@@ -10899,6 +10947,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getrl4b()==true){  
             Panelmenu.add(btnRl4b);                 
+            jmlmenu++;
+        }
+        
+        if(var.getrl4asebab()==true){  
+            Panelmenu.add(btnRl4asebab);                 
+            jmlmenu++;
+        }
+
+        if(var.getrl4bsebab()==true){  
+            Panelmenu.add(btnRl4bsebab);                 
             jmlmenu++;
         }
         
@@ -12348,6 +12406,20 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getrl4b()==true){  
             if(btnRl4b.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRl4b);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getrl4asebab()==true){  
+            if(btnRl4asebab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRl4asebab);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getrl4bsebab()==true){  
+            if(btnRl4bsebab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRl4bsebab);                 
                 jmlmenu++;
             }                
         }
