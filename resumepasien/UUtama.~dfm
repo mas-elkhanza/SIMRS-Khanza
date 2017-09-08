@@ -1,6 +1,6 @@
 object frmUtama: TfrmUtama
   Left = 300
-  Top = 110
+  Top = 108
   Align = alClient
   BorderStyle = bsSingle
   Caption = '::[ SIMRS KhanzaHMS Subsistem Resume Pasien Via Finger Print ]::'
@@ -267,7 +267,7 @@ object frmUtama: TfrmUtama
   end
   object PanelRegistrasi: TsuiGroupBox
     Left = 184
-    Top = 98
+    Top = 1000
     Width = 800
     Height = 487
     UIStyle = MacOS
@@ -1008,7 +1008,6 @@ object frmUtama: TfrmUtama
         Layout = blGlyphLeft
         Spacing = 4
         MouseContinuouslyDownInterval = 100
-        OnClick = PPresMasbtnCariClick
         ResHandle = 0
       end
     end
@@ -1248,7 +1247,6 @@ object frmUtama: TfrmUtama
         Layout = blGlyphLeft
         Spacing = 4
         MouseContinuouslyDownInterval = 100
-        OnClick = PPresPulBtnCariClick
         ResHandle = 0
       end
     end
@@ -1497,7 +1495,6 @@ object frmUtama: TfrmUtama
         Layout = blGlyphLeft
         Spacing = 4
         MouseContinuouslyDownInterval = 100
-        OnClick = PCariBtnCariClick
         ResHandle = 0
       end
       object PCariCMbTahun: TsuiComboBox
@@ -1542,7 +1539,7 @@ object frmUtama: TfrmUtama
   object suiSkinEngine1: TsuiSkinEngine
     Active = True
     Ready = True
-    SkinFile = 'E:\resumepasien\Skins\Emerald\EmeraldColor3.ssk'
+    SkinFile = 'C:\resumepasien\Skins\Wave\WaveColor1.ssk'
     ResSysMenuMin = 'Mi&nimize'
     ResSysMenuMax = 'Ma&ximize/Restore'
     ResSysMenuClose = '&Close'
@@ -1559,12 +1556,9 @@ object frmUtama: TfrmUtama
   end
   object ZCon: TZConnection
     Protocol = 'mysql'
-    HostName = '192.168.100.110'
     Port = 3306
     Database = 'sik'
     User = 'root'
-    Password = 'akusayangsamakamu'
-    Connected = True
     AfterConnect = ZConAfterConnect
     Left = 264
   end
@@ -2343,7 +2337,6 @@ object frmUtama: TfrmUtama
   end
   object ZQSidikJari: TZQuery
     Connection = ZCon
-    Active = True
     SQL.Strings = (
       
         'select pasien.no_rkm_medis,pasien.nm_pasien,sidikjaripasien.sidi' +
@@ -2528,634 +2521,17 @@ object frmUtama: TfrmUtama
       Size = 60
     end
   end
-  object ZQJadwalPegawai: TZQuery
-    Connection = ZCon
-    SQL.Strings = (
-      'select * from jadwal_pegawai')
-    Params = <>
-    Left = 552
-    Top = 2
-    object ZQJadwalPegawaiid: TIntegerField
-      FieldName = 'id'
-      Required = True
-    end
-    object ZQJadwalPegawaitahun: TSmallintField
-      FieldName = 'tahun'
-      Required = True
-    end
-    object ZQJadwalPegawaibulan: TStringField
-      FieldName = 'bulan'
-      Required = True
-      Size = 2
-    end
-    object ZQJadwalPegawaih1: TStringField
-      FieldName = 'h1'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih2: TStringField
-      FieldName = 'h2'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih3: TStringField
-      FieldName = 'h3'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih4: TStringField
-      FieldName = 'h4'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih5: TStringField
-      FieldName = 'h5'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih6: TStringField
-      FieldName = 'h6'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih7: TStringField
-      FieldName = 'h7'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih8: TStringField
-      FieldName = 'h8'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih9: TStringField
-      FieldName = 'h9'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih10: TStringField
-      FieldName = 'h10'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih11: TStringField
-      FieldName = 'h11'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih12: TStringField
-      FieldName = 'h12'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih13: TStringField
-      FieldName = 'h13'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih14: TStringField
-      FieldName = 'h14'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih15: TStringField
-      FieldName = 'h15'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih16: TStringField
-      FieldName = 'h16'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih17: TStringField
-      FieldName = 'h17'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih18: TStringField
-      FieldName = 'h18'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih19: TStringField
-      FieldName = 'h19'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih20: TStringField
-      FieldName = 'h20'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih21: TStringField
-      FieldName = 'h21'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih22: TStringField
-      FieldName = 'h22'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih23: TStringField
-      FieldName = 'h23'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih24: TStringField
-      FieldName = 'h24'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih25: TStringField
-      FieldName = 'h25'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih26: TStringField
-      FieldName = 'h26'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih27: TStringField
-      FieldName = 'h27'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih28: TStringField
-      FieldName = 'h28'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih29: TStringField
-      FieldName = 'h29'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih30: TStringField
-      FieldName = 'h30'
-      Required = True
-      Size = 12
-    end
-    object ZQJadwalPegawaih31: TStringField
-      FieldName = 'h31'
-      Required = True
-      Size = 12
-    end
-  end
-  object ZQJamMasuk: TZQuery
-    Connection = ZCon
-    SQL.Strings = (
-      'select * from jam_masuk')
-    Params = <>
-    Left = 584
-    Top = 2
-    object ZQJamMasukshift: TStringField
-      FieldName = 'shift'
-      Required = True
-      Size = 12
-    end
-    object ZQJamMasukjam_masuk: TTimeField
-      FieldName = 'jam_masuk'
-      Required = True
-    end
-    object ZQJamMasukjam_pulang: TTimeField
-      FieldName = 'jam_pulang'
-      Required = True
-    end
-  end
-  object ZQSudahPresensi: TZQuery
-    Connection = ZCon
-    SQL.Strings = (
-      'select id from rekap_presensi')
-    Params = <>
-    Left = 616
-    Top = 2
-    object ZQSudahPresensiid: TIntegerField
-      FieldName = 'id'
-      Required = True
-    end
-  end
-  object ZQTemporaryPresensi: TZQuery
-    Connection = ZCon
-    SQL.Strings = (
-      'select * from temporary_presensi')
-    Params = <>
-    Left = 648
-    Top = 2
-    object ZQTemporaryPresensiid: TIntegerField
-      FieldName = 'id'
-      Required = True
-    end
-    object ZQTemporaryPresensishift: TStringField
-      FieldName = 'shift'
-      Required = True
-      Size = 12
-    end
-    object ZQTemporaryPresensijam_datang: TDateTimeField
-      FieldName = 'jam_datang'
-    end
-    object ZQTemporaryPresensijam_pulang: TDateTimeField
-      FieldName = 'jam_pulang'
-    end
-    object ZQTemporaryPresensistatus: TStringField
-      FieldName = 'status'
-      Required = True
-      Size = 25
-    end
-    object ZQTemporaryPresensiketerlambatan: TStringField
-      FieldName = 'keterlambatan'
-      Required = True
-    end
-    object ZQTemporaryPresensidurasi: TStringField
-      FieldName = 'durasi'
-    end
-    object ZQTemporaryPresensiphoto: TStringField
-      FieldName = 'photo'
-      Required = True
-      Size = 500
-    end
-  end
   object ZQExec: TZQuery
     Connection = ZCon
     Params = <>
     Left = 680
     Top = 2
   end
-  object ZQRekapPresensi: TZQuery
-    Connection = ZCon
-    SQL.Strings = (
-      'select * from rekap_presensi')
-    Params = <>
-    Left = 744
-    Top = 2
-    object ZQRekapPresensiid: TIntegerField
-      FieldName = 'id'
-      Required = True
-    end
-    object ZQRekapPresensishift: TStringField
-      FieldName = 'shift'
-      Required = True
-      Size = 12
-    end
-    object ZQRekapPresensijam_datang: TDateTimeField
-      FieldName = 'jam_datang'
-      Required = True
-    end
-    object ZQRekapPresensijam_pulang: TDateTimeField
-      FieldName = 'jam_pulang'
-    end
-    object ZQRekapPresensistatus: TStringField
-      FieldName = 'status'
-      Required = True
-      Size = 25
-    end
-    object ZQRekapPresensiketerlambatan: TStringField
-      FieldName = 'keterlambatan'
-      Required = True
-    end
-    object ZQRekapPresensidurasi: TStringField
-      FieldName = 'durasi'
-    end
-    object ZQRekapPresensiketerangan: TStringField
-      FieldName = 'keterangan'
-      Required = True
-      Size = 100
-    end
-    object ZQRekapPresensiphoto: TStringField
-      FieldName = 'photo'
-      Required = True
-      Size = 500
-    end
-  end
-  object ZQPresensiDatang: TZQuery
-    Connection = ZCon
-    SQL.Strings = (
-      
-        'select pegawai.id, pegawai.nik, pegawai.nama, temporary_presensi' +
-        '.shift,'
-      
-        ' temporary_presensi.jam_datang, temporary_presensi.jam_pulang, t' +
-        'emporary_presensi.status,'
-      
-        ' temporary_presensi.keterlambatan, temporary_presensi.durasi, te' +
-        'mporary_presensi.photo  from pegawai'
-      
-        ' inner join temporary_presensi on pegawai.id=temporary_presensi.' +
-        'id order by temporary_presensi.jam_datang')
-    Params = <>
-    Left = 712
-    Top = 1
-    object ZQPresensiDatangid: TIntegerField
-      FieldName = 'id'
-    end
-    object ZQPresensiDatangnik: TStringField
-      FieldName = 'nik'
-      Required = True
-      Size = 12
-    end
-    object ZQPresensiDatangnama: TStringField
-      FieldName = 'nama'
-      Required = True
-      Size = 50
-    end
-    object ZQPresensiDatangshift: TStringField
-      FieldName = 'shift'
-      Required = True
-      Size = 12
-    end
-    object ZQPresensiDatangjam_datang: TDateTimeField
-      FieldName = 'jam_datang'
-    end
-    object ZQPresensiDatangjam_pulang: TDateTimeField
-      FieldName = 'jam_pulang'
-    end
-    object ZQPresensiDatangstatus: TStringField
-      FieldName = 'status'
-      Required = True
-      Size = 25
-    end
-    object ZQPresensiDatangketerlambatan: TStringField
-      FieldName = 'keterlambatan'
-      Required = True
-    end
-    object ZQPresensiDatangdurasi: TStringField
-      FieldName = 'durasi'
-    end
-    object ZQPresensiDatangphoto: TStringField
-      FieldName = 'photo'
-      Required = True
-      Size = 500
-    end
-  end
   object DSPresensidatang: TDataSource
-    DataSet = ZQPresensiDatang
     Left = 776
   end
-  object ZQPresensiPulang: TZQuery
-    Connection = ZCon
-    SQL.Strings = (
-      
-        'SELECT pegawai.id, pegawai.nik, pegawai.nama, rekap_presensi.shi' +
-        'ft,'
-      
-        '                rekap_presensi.jam_datang, rekap_presensi.jam_pu' +
-        'lang, rekap_presensi.status,'
-      
-        '                rekap_presensi.keterlambatan, rekap_presensi.dur' +
-        'asi,rekap_presensi.keterangan,'
-      '                rekap_presensi.photo  from pegawai '
-      
-        '                inner join rekap_presensi on pegawai.id=rekap_pr' +
-        'esensi.id  order by pegawai.nama')
-    Params = <>
-    Left = 808
-    Top = 8
-    object ZQPresensiPulangid: TIntegerField
-      FieldName = 'id'
-    end
-    object ZQPresensiPulangnik: TStringField
-      FieldName = 'nik'
-      Required = True
-      Size = 12
-    end
-    object ZQPresensiPulangnama: TStringField
-      FieldName = 'nama'
-      Required = True
-      Size = 50
-    end
-    object ZQPresensiPulangshift: TStringField
-      FieldName = 'shift'
-      Required = True
-      Size = 12
-    end
-    object ZQPresensiPulangjam_datang: TDateTimeField
-      FieldName = 'jam_datang'
-      Required = True
-    end
-    object ZQPresensiPulangjam_pulang: TDateTimeField
-      FieldName = 'jam_pulang'
-    end
-    object ZQPresensiPulangstatus: TStringField
-      FieldName = 'status'
-      Required = True
-      Size = 25
-    end
-    object ZQPresensiPulangketerlambatan: TStringField
-      FieldName = 'keterlambatan'
-      Required = True
-    end
-    object ZQPresensiPulangdurasi: TStringField
-      FieldName = 'durasi'
-    end
-    object ZQPresensiPulangketerangan: TStringField
-      FieldName = 'keterangan'
-      Required = True
-      Size = 100
-    end
-    object ZQPresensiPulangphoto: TStringField
-      FieldName = 'photo'
-      Required = True
-      Size = 500
-    end
-  end
   object DSPresensiPulang: TDataSource
-    DataSet = ZQPresensiPulang
     Left = 840
     Top = 8
-  end
-  object ZQSetKeterlambatan: TZQuery
-    Connection = ZCon
-    SQL.Strings = (
-      'select * from set_keterlambatan')
-    Params = <>
-    Left = 176
-    Top = 48
-    object ZQSetKeterlambatantoleransi: TIntegerField
-      FieldName = 'toleransi'
-    end
-    object ZQSetKeterlambatanterlambat1: TIntegerField
-      FieldName = 'terlambat1'
-    end
-    object ZQSetKeterlambatanterlambat2: TIntegerField
-      FieldName = 'terlambat2'
-    end
-  end
-  object ZQJadwalTambahan: TZQuery
-    Connection = ZCon
-    SQL.Strings = (
-      'select * from jadwal_tambahan')
-    Params = <>
-    Left = 216
-    Top = 50
-    object ZQJadwalTambahanid: TIntegerField
-      FieldName = 'id'
-      Required = True
-    end
-    object ZQJadwalTambahantahun: TSmallintField
-      FieldName = 'tahun'
-      Required = True
-    end
-    object ZQJadwalTambahanbulan: TStringField
-      FieldName = 'bulan'
-      Required = True
-      Size = 2
-    end
-    object ZQJadwalTambahanh1: TStringField
-      FieldName = 'h1'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh2: TStringField
-      FieldName = 'h2'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh3: TStringField
-      FieldName = 'h3'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh4: TStringField
-      FieldName = 'h4'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh5: TStringField
-      FieldName = 'h5'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh6: TStringField
-      FieldName = 'h6'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh7: TStringField
-      FieldName = 'h7'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh8: TStringField
-      FieldName = 'h8'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh9: TStringField
-      FieldName = 'h9'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh10: TStringField
-      FieldName = 'h10'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh11: TStringField
-      FieldName = 'h11'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh12: TStringField
-      FieldName = 'h12'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh13: TStringField
-      FieldName = 'h13'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh14: TStringField
-      FieldName = 'h14'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh15: TStringField
-      FieldName = 'h15'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh16: TStringField
-      FieldName = 'h16'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh17: TStringField
-      FieldName = 'h17'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh18: TStringField
-      FieldName = 'h18'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh19: TStringField
-      FieldName = 'h19'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh20: TStringField
-      FieldName = 'h20'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh21: TStringField
-      FieldName = 'h21'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh22: TStringField
-      FieldName = 'h22'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh23: TStringField
-      FieldName = 'h23'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh24: TStringField
-      FieldName = 'h24'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh25: TStringField
-      FieldName = 'h25'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh26: TStringField
-      FieldName = 'h26'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh27: TStringField
-      FieldName = 'h27'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh28: TStringField
-      FieldName = 'h28'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh29: TStringField
-      FieldName = 'h29'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh30: TStringField
-      FieldName = 'h30'
-      Required = True
-      Size = 13
-    end
-    object ZQJadwalTambahanh31: TStringField
-      FieldName = 'h31'
-      Required = True
-      Size = 13
-    end
   end
 end
