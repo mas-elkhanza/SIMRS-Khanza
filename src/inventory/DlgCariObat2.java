@@ -831,6 +831,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Valid.textKosong(TCari,"Lokasi");                              
         }else{
             try {  
+                ChkJln.setSelected(false);
                 koneksi.setAutoCommit(false);   
                 ttlhpp=0;ttljual=0;
                 for(i=0;i<tbObat.getRowCount();i++){ 
@@ -932,6 +933,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     resep.dokter.setAlwaysOnTop(true);
                     resep.setVisible(true);
                 }
+                ChkJln.setSelected(true);
                 dispose();                         
             } catch (Exception ex) {
                 System.out.println(ex);
