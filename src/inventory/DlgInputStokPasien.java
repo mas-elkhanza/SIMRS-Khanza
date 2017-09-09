@@ -78,6 +78,15 @@ public class DlgInputStokPasien extends javax.swing.JDialog {
                 }
                 return a;
              }
+             Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
         };
         tbDokter.setModel(tabMode);
 
@@ -889,72 +898,72 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,
-                                   rstampil.getString("kelas1"),
-                                   rstampil.getString("h_beli")
+                                   rstampil.getDouble("kapasitas"),stokbarang,
+                                   Valid.roundUp(rstampil.getDouble("kelas1"),100),
+                                   rstampil.getDouble("h_beli")
                         });
                     }else if(Jeniskelas.getSelectedItem().equals("Kelas 2")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,
-                                   rstampil.getString("kelas2"),
-                                   rstampil.getString("h_beli")
+                                   rstampil.getDouble("kapasitas"),stokbarang,
+                                   Valid.roundUp(rstampil.getDouble("kelas2"),100),
+                                   rstampil.getDouble("h_beli")
                         });
                     }else if(Jeniskelas.getSelectedItem().equals("Kelas 3")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,
-                                   rstampil.getString("kelas3"),
-                                   rstampil.getString("h_beli")
+                                   rstampil.getDouble("kapasitas"),stokbarang,
+                                   Valid.roundUp(rstampil.getDouble("kelas3"),100),
+                                   rstampil.getDouble("h_beli")
                         });
                     }else if(Jeniskelas.getSelectedItem().equals("Utama/BPJS")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,
-                                   rstampil.getString("utama"),
-                                   rstampil.getString("h_beli")
+                                   rstampil.getDouble("kapasitas"),stokbarang,
+                                   Valid.roundUp(rstampil.getDouble("utama"),100),
+                                   rstampil.getDouble("h_beli")
                         });
                     }else if(Jeniskelas.getSelectedItem().equals("VIP")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,
-                                   rstampil.getString("vip"),
-                                   rstampil.getString("h_beli")
+                                   rstampil.getDouble("kapasitas"),stokbarang,
+                                   Valid.roundUp(rstampil.getDouble("vip"),100),
+                                   rstampil.getDouble("h_beli")
                         });
                     }else if(Jeniskelas.getSelectedItem().equals("VVIP")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,
-                                   rstampil.getString("vvip"),
-                                   rstampil.getString("h_beli")
+                                   rstampil.getDouble("kapasitas"),stokbarang,
+                                   Valid.roundUp(rstampil.getDouble("vvip"),100),
+                                   rstampil.getDouble("h_beli")
                         });
                     }else if(Jeniskelas.getSelectedItem().equals("Beli Luar")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,
-                                   rstampil.getString("beliluar"),
-                                   rstampil.getString("h_beli")
+                                   rstampil.getDouble("kapasitas"),stokbarang,
+                                   Valid.roundUp(rstampil.getDouble("beliluar"),100),
+                                   rstampil.getDouble("h_beli")
                         });
                     }else if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                         tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
                                    rstampil.getString("nama_brng"),
                                    rstampil.getString("nama"),
                                    rstampil.getString("kode_sat"),
-                                   rstampil.getString("kapasitas"),stokbarang,
-                                   rstampil.getString("karyawan"),
-                                   rstampil.getString("h_beli")
+                                   rstampil.getDouble("kapasitas"),stokbarang,
+                                   Valid.roundUp(rstampil.getDouble("karyawan"),100),
+                                   rstampil.getDouble("h_beli")
                         });
                     }
                 }                  

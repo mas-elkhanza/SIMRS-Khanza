@@ -69,67 +69,7 @@ type
     mp3player: TMediaPlayer;
     PHomMemo1: TsuiMemo;
     ZQPasien: TZQuery;
-    ZQJadwalPegawai: TZQuery;
-    ZQJadwalPegawaiid: TIntegerField;
-    ZQJadwalPegawaitahun: TSmallintField;
-    ZQJadwalPegawaibulan: TStringField;
-    ZQJadwalPegawaih1: TStringField;
-    ZQJadwalPegawaih2: TStringField;
-    ZQJadwalPegawaih3: TStringField;
-    ZQJadwalPegawaih4: TStringField;
-    ZQJadwalPegawaih5: TStringField;
-    ZQJadwalPegawaih6: TStringField;
-    ZQJadwalPegawaih7: TStringField;
-    ZQJadwalPegawaih8: TStringField;
-    ZQJadwalPegawaih9: TStringField;
-    ZQJadwalPegawaih10: TStringField;
-    ZQJadwalPegawaih11: TStringField;
-    ZQJadwalPegawaih12: TStringField;
-    ZQJadwalPegawaih13: TStringField;
-    ZQJadwalPegawaih14: TStringField;
-    ZQJadwalPegawaih15: TStringField;
-    ZQJadwalPegawaih16: TStringField;
-    ZQJadwalPegawaih17: TStringField;
-    ZQJadwalPegawaih18: TStringField;
-    ZQJadwalPegawaih19: TStringField;
-    ZQJadwalPegawaih20: TStringField;
-    ZQJadwalPegawaih21: TStringField;
-    ZQJadwalPegawaih22: TStringField;
-    ZQJadwalPegawaih23: TStringField;
-    ZQJadwalPegawaih24: TStringField;
-    ZQJadwalPegawaih25: TStringField;
-    ZQJadwalPegawaih26: TStringField;
-    ZQJadwalPegawaih27: TStringField;
-    ZQJadwalPegawaih28: TStringField;
-    ZQJadwalPegawaih29: TStringField;
-    ZQJadwalPegawaih30: TStringField;
-    ZQJadwalPegawaih31: TStringField;
-    ZQJamMasuk: TZQuery;
-    ZQJamMasukshift: TStringField;
-    ZQJamMasukjam_masuk: TTimeField;
-    ZQJamMasukjam_pulang: TTimeField;
-    ZQSudahPresensi: TZQuery;
-    ZQSudahPresensiid: TIntegerField;
-    ZQTemporaryPresensi: TZQuery;
-    ZQTemporaryPresensiid: TIntegerField;
-    ZQTemporaryPresensishift: TStringField;
-    ZQTemporaryPresensijam_datang: TDateTimeField;
-    ZQTemporaryPresensijam_pulang: TDateTimeField;
-    ZQTemporaryPresensistatus: TStringField;
-    ZQTemporaryPresensiketerlambatan: TStringField;
-    ZQTemporaryPresensidurasi: TStringField;
-    ZQTemporaryPresensiphoto: TStringField;
     ZQExec: TZQuery;
-    ZQRekapPresensi: TZQuery;
-    ZQRekapPresensiid: TIntegerField;
-    ZQRekapPresensishift: TStringField;
-    ZQRekapPresensijam_datang: TDateTimeField;
-    ZQRekapPresensijam_pulang: TDateTimeField;
-    ZQRekapPresensistatus: TStringField;
-    ZQRekapPresensiketerlambatan: TStringField;
-    ZQRekapPresensidurasi: TStringField;
-    ZQRekapPresensiketerangan: TStringField;
-    ZQRekapPresensiphoto: TStringField;
     ZQUserid_user: TStringField;
     ZQUserpassword: TMemoField;
     ZQUserpenyakit: TStringField;
@@ -269,17 +209,6 @@ type
     ZQUsersidikjari: TStringField;
     ZQUserjam_masuk: TStringField;
     ZQUserjadwal_pegawai: TStringField;
-    ZQPresensiDatang: TZQuery;
-    ZQPresensiDatangid: TIntegerField;
-    ZQPresensiDatangnik: TStringField;
-    ZQPresensiDatangnama: TStringField;
-    ZQPresensiDatangshift: TStringField;
-    ZQPresensiDatangjam_datang: TDateTimeField;
-    ZQPresensiDatangjam_pulang: TDateTimeField;
-    ZQPresensiDatangstatus: TStringField;
-    ZQPresensiDatangketerlambatan: TStringField;
-    ZQPresensiDatangdurasi: TStringField;
-    ZQPresensiDatangphoto: TStringField;
     PanelPresensiDatang: TsuiGroupBox;
     suiDBGrid1: TsuiDBGrid;
     Panel5: TPanel;
@@ -295,18 +224,6 @@ type
     suiButton1: TsuiButton;
     PPresPulEdCari: TsuiEdit;
     PPresPulBtnCari: TsuiButton;
-    ZQPresensiPulang: TZQuery;
-    ZQPresensiPulangid: TIntegerField;
-    ZQPresensiPulangnik: TStringField;
-    ZQPresensiPulangnama: TStringField;
-    ZQPresensiPulangshift: TStringField;
-    ZQPresensiPulangjam_datang: TDateTimeField;
-    ZQPresensiPulangjam_pulang: TDateTimeField;
-    ZQPresensiPulangstatus: TStringField;
-    ZQPresensiPulangketerlambatan: TStringField;
-    ZQPresensiPulangdurasi: TStringField;
-    ZQPresensiPulangketerangan: TStringField;
-    ZQPresensiPulangphoto: TStringField;
     DSPresensiPulang: TDataSource;
     PanelCariPresensi: TsuiGroupBox;
     suiDBGrid3: TsuiDBGrid;
@@ -318,45 +235,6 @@ type
     PCariCMbTahun: TsuiComboBox;
     Label9: TLabel;
     PCariCmbBulan: TsuiComboBox;
-    ZQSetKeterlambatan: TZQuery;
-    ZQSetKeterlambatantoleransi: TIntegerField;
-    ZQSetKeterlambatanterlambat1: TIntegerField;
-    ZQSetKeterlambatanterlambat2: TIntegerField;
-    ZQJadwalTambahan: TZQuery;
-    ZQJadwalTambahanid: TIntegerField;
-    ZQJadwalTambahantahun: TSmallintField;
-    ZQJadwalTambahanbulan: TStringField;
-    ZQJadwalTambahanh1: TStringField;
-    ZQJadwalTambahanh2: TStringField;
-    ZQJadwalTambahanh3: TStringField;
-    ZQJadwalTambahanh4: TStringField;
-    ZQJadwalTambahanh5: TStringField;
-    ZQJadwalTambahanh6: TStringField;
-    ZQJadwalTambahanh7: TStringField;
-    ZQJadwalTambahanh8: TStringField;
-    ZQJadwalTambahanh9: TStringField;
-    ZQJadwalTambahanh10: TStringField;
-    ZQJadwalTambahanh11: TStringField;
-    ZQJadwalTambahanh12: TStringField;
-    ZQJadwalTambahanh13: TStringField;
-    ZQJadwalTambahanh14: TStringField;
-    ZQJadwalTambahanh15: TStringField;
-    ZQJadwalTambahanh16: TStringField;
-    ZQJadwalTambahanh17: TStringField;
-    ZQJadwalTambahanh18: TStringField;
-    ZQJadwalTambahanh19: TStringField;
-    ZQJadwalTambahanh20: TStringField;
-    ZQJadwalTambahanh21: TStringField;
-    ZQJadwalTambahanh22: TStringField;
-    ZQJadwalTambahanh23: TStringField;
-    ZQJadwalTambahanh24: TStringField;
-    ZQJadwalTambahanh25: TStringField;
-    ZQJadwalTambahanh26: TStringField;
-    ZQJadwalTambahanh27: TStringField;
-    ZQJadwalTambahanh28: TStringField;
-    ZQJadwalTambahanh29: TStringField;
-    ZQJadwalTambahanh30: TStringField;
-    ZQJadwalTambahanh31: TStringField;
     btnRegistrasi: TsuiButton;
     btnLogin: TsuiButton;
     suiButton3: TsuiButton;
@@ -402,7 +280,6 @@ type
     procedure edPassKeyPress(Sender: TObject; var Key: Char);
     procedure btnLoginAdminKeyPress(Sender: TObject; var Key: Char);
     procedure panelfalse();
-    procedure pulang(ID: WideString);
     procedure btnRegistrasiClick(Sender: TObject);
     procedure FinFPReg1FPRegistrationStatus(ASender: TObject; Status: Integer);
     procedure FinFPReg1FPRegistrationTemplate(ASender: TObject; const FPTemplate: WideString);
@@ -426,14 +303,11 @@ type
     procedure btnInputDataClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure suiButton6Click(Sender: TObject);
-    procedure PPresMasbtnCariClick(Sender: TObject);
     procedure PPresMasEdCariKeyPress(Sender: TObject; var Key: Char);
     procedure btnPresensiDatangClick(Sender: TObject);
-    procedure PPresPulBtnCariClick(Sender: TObject);
     procedure PPresPulEdCariKeyPress(Sender: TObject; var Key: Char);
     procedure btnPresensiPulangClick(Sender: TObject);
     procedure btnCariPresensiClick(Sender: TObject);
-    procedure PCariBtnCariClick(Sender: TObject);
     procedure PCariEdCariKeyPress(Sender: TObject; var Key: Char);
     procedure Button1Click(Sender: TObject);
   private
@@ -452,58 +326,6 @@ implementation
 uses DateUtils;
 
 {$R *.dfm}
-
-
-procedure TfrmUtama.pulang(ID: WideString);
-var
- jam,jam2:String;
-begin
-   ZQJamMasuk.Close;
-   ZQJamMasuk.SQL.Clear;
-   ZQJamMasuk.SQL.Add('select * from jam_masuk where shift="'+ZQTemporaryPresensishift.Value+'"');
-   ZQJamMasuk.Open;
-   jam:='CONCAT(CURRENT_DATE()," '+FormatDateTime('hh:nn:ss',ZQJamMasukjam_masuk.Value)+'")';
-   jam2:='CONCAT(CURRENT_DATE()," '+FormatDateTime('hh:nn:ss',ZQJamMasukjam_pulang.Value)+'")';
-   ZQExec.Close;
-   ZQExec.SQL.Clear;
-   ZQExec.SQL.Add('update temporary_presensi set jam_pulang=NOW(),status=if(TIME_TO_SEC("'+FormatDateTime('yyyy-mm-dd hh:nn:ss',ZQTemporaryPresensijam_datang.Value)+'")-'+
-           'TIME_TO_SEC('+jam+')>'+ZQSetKeterlambatantoleransi.AsString+',if(TIME_TO_SEC("'+FormatDateTime('yyyy-mm-dd hh:nn:ss',ZQTemporaryPresensijam_datang.Value)+'")-'+
-           'TIME_TO_SEC('+jam+')>'+ZQSetKeterlambatanterlambat1.AsString+',if(TIME_TO_SEC("'+FormatDateTime('yyyy-mm-dd hh:nn:ss',ZQTemporaryPresensijam_datang.Value)+'")-'+
-           'TIME_TO_SEC('+jam+')>'+ZQSetKeterlambatanterlambat2.AsString+', concat("Terlambat II",if(TIME_TO_SEC(now())-TIME_TO_SEC('+jam2+')<0," & PSW"," ")),'+
-           'concat("Terlambat I",if(TIME_TO_SEC(now())-TIME_TO_SEC('+jam2+')<0," & PSW"," "))),concat("Terlambat Toleransi",if(TIME_TO_SEC(now())-TIME_TO_SEC('+jam2+')<0," & PSW"," "))),'+
-           'concat("Tepat Waktu",if(TIME_TO_SEC(now())-TIME_TO_SEC('+jam2+')<0," & PSW"," "))),durasi=(SEC_TO_TIME(unix_timestamp(now()) - unix_timestamp(jam_datang))) where no_rkm_medis="'+ID+'"  ');
-   ZQExec.ExecSQL;
-
-   ZQTemporaryPresensi.Close;
-   ZQTemporaryPresensi.SQL.Clear;
-   ZQTemporaryPresensi.SQL.Add('select * from temporary_presensi where no_rkm_medis="'+ID+'"');
-   ZQTemporaryPresensi.Open;
-
-   ZQRekapPresensi.Insert;
-   ZQRekapPresensiid.Value:=ZQTemporaryPresensiid.Value;
-   ZQRekapPresensishift.Value:=ZQTemporaryPresensishift.Value;
-   ZQRekapPresensijam_datang.Value:=ZQTemporaryPresensijam_datang.Value;
-   ZQRekapPresensijam_pulang.Value:=ZQTemporaryPresensijam_pulang.Value;
-   ZQRekapPresensistatus.Value:=ZQTemporaryPresensistatus.Value;
-   ZQRekapPresensiketerlambatan.Value:=ZQTemporaryPresensiketerlambatan.Value;
-   ZQRekapPresensidurasi.Value:=ZQTemporaryPresensidurasi.Value;
-   ZQRekapPresensiketerangan.Value:='';
-   ZQRekapPresensiphoto.Value:='';
-   ZQRekapPresensi.Post;
-   ZQTemporaryPresensi.Delete;
-
-   mp3Player.FileName:=ExtractFilePath(Application.EXEName)+FIni.ReadString('sound','pulang','\suara\terimakasih.mp3');
-   if FileExists(mp3Player.FileName)then
-   begin
-       mp3Player.Open;
-       mp3Player.Play;
-   end
-   else
-   if not FileExists(mp3Player.FileName)then
-   begin
-       mp3Player.Close;
-   end;
-end;
 
 
 procedure TfrmUtama.FormActivate(Sender: TObject);
@@ -576,15 +398,6 @@ begin
   ZQSidikJari.Active:=true;
   ZQInputSidikJari.Active:=true;
   ZQPasien.Active:=true;
-  ZQJadwalPegawai.Active:=true;
-  ZQJamMasuk.Active:=true;
-  ZQSudahPresensi.Active:=true;
-  ZQTemporaryPresensi.Active:=true;
-  ZQRekapPresensi.Active:=true;
-  ZQPresensiDatang.Active:=true;
-  ZQPresensiPulang.Active:=true;
-  ZQSetKeterlambatan.Active:=true;
-  ZQJadwalTambahan.Active:=true;
   Label1.Caption:=ZTSettingalamat_instansi.Value+', '+ZTSettingkabupaten.Value+', '+ZTSettingpropinsi.Value;
 end;
 
@@ -943,6 +756,14 @@ begin
     ZQPasien.Open;
     if(not ZQPasien.IsEmpty)then
     begin
+       ZQExec.Close;
+       ZQExec.SQL.Clear;
+       ZQExec.SQL.Add('delete from temppanggilrm') ;
+       ZQExec.ExecSQL;
+       ZQExec.Close;
+       ZQExec.SQL.Clear;
+       ZQExec.SQL.Add('insert into temppanggilrm values("'+ID+'")') ;
+       ZQExec.ExecSQL;
        ShellExecute(0,'open','resume.jar','','',SW_SHOWNORMAL);
     end;
   end;
@@ -1077,94 +898,36 @@ begin
   PanelHome.Visible:=true;
 end;
 
-procedure TfrmUtama.PPresMasbtnCariClick(Sender: TObject);
-begin
-  ZQPresensiDatang.Close;
-  ZQPresensiDatang.SQL.Clear;
-  ZQPresensiDatang.SQL.Add('SELECT pasien.no_rkm_medis, pasien.no_rkm_medis, pasien.nm_pasien, temporary_presensi.shift,'+
-                'temporary_presensi.jam_datang, temporary_presensi.jam_pulang, temporary_presensi.status,'+
-                'temporary_presensi.keterlambatan, temporary_presensi.durasi, temporary_presensi.photo  from pasien '+
-                'inner join temporary_presensi on pasien.no_rkm_medis=temporary_presensi.no_rkm_medis '+                 
-                'where  pasien.no_rkm_medis like "%'+Trim(PPresMasEdCari.Text)+'%" or  '+
-                'pasien.nm_pasien like "%'+Trim(PPresMasEdCari.Text)+'%" or '+
-                'temporary_presensi.shift like "%'+Trim(PPresMasEdCari.Text)+'%" or '+
-                'temporary_presensi.jam_datang like "%'+Trim(PPresMasEdCari.Text)+'%" or '+
-                'temporary_presensi.status like "%'+Trim(PPresMasEdCari.Text)+'%" or '+
-                'temporary_presensi.keterlambatan like "%'+Trim(PPresMasEdCari.Text)+'%" '+
-                'order by temporary_presensi.jam_datang');
-  ZQPresensiDatang.Open;
-end;
-
 procedure TfrmUtama.PPresMasEdCariKeyPress(Sender: TObject; var Key: Char);
 begin
   if not(key in[chr(13),chr(8),'0'..'9','a'..'z','A'..'Z','.',',',' ',':',';','(',')','[',']','&','@','/']) then key:=#0
   else
-  if not(key=chr(13)) then exit
-  else PPresMasbtnCariClick(sender);
+  if not(key=chr(13)) then exit;
 end;
 
 procedure TfrmUtama.btnPresensiDatangClick(Sender: TObject);
 begin
   panelfalse;
   PanelPresensiDatang.Visible:=true;
-  PPresMasbtnCariClick(sender);
-end;
-
-procedure TfrmUtama.PPresPulBtnCariClick(Sender: TObject);
-begin
-  ZQPresensiPulang.Close;
-  ZQPresensiPulang.SQL.Clear;
-  ZQPresensiPulang.SQL.Add('SELECT pasien.no_rkm_medis, pasien.no_rkm_medis, pasien.nm_pasien, rekap_presensi.shift, '+
-                'rekap_presensi.jam_datang, rekap_presensi.jam_pulang, rekap_presensi.status, '+
-                'rekap_presensi.keterlambatan, rekap_presensi.durasi,rekap_presensi.keterangan, '+
-                'rekap_presensi.photo  from pasien inner join rekap_presensi on pasien.no_rkm_medis=rekap_presensi.no_rkm_medis '+
-                'where  rekap_presensi.jam_datang like "%'+FormatDateTime('yyyy-mm-dd',date)+'%" and pasien.no_rkm_medis like "%'+Trim(PPresPulEdCari.Text)+'%" or '+
-                'rekap_presensi.jam_datang like "%'+FormatDateTime('yyyy-mm-dd',date)+'%" and pasien.nm_pasien like "%'+Trim(PPresPulEdCari.Text)+'%" or '+
-                'rekap_presensi.jam_datang like "%'+FormatDateTime('yyyy-mm-dd',date)+'%" and rekap_presensi.shift like "%'+Trim(PPresPulEdCari.Text)+'%" or '+
-                'rekap_presensi.jam_datang like "%'+FormatDateTime('yyyy-mm-dd',date)+'%" and rekap_presensi.jam_datang like "%'+Trim(PPresPulEdCari.Text)+'%" or '+
-                'rekap_presensi.jam_datang like "%'+FormatDateTime('yyyy-mm-dd',date)+'%" and rekap_presensi.status like "%'+Trim(PPresPulEdCari.Text)+'%" or '+
-                'rekap_presensi.jam_datang like "%'+FormatDateTime('yyyy-mm-dd',date)+'%" and rekap_presensi.keterlambatan like "%'+Trim(PPresPulEdCari.Text)+'%" order by rekap_presensi.jam_datang');
-  ZQPresensiPulang.Open;
-
 end;
 
 procedure TfrmUtama.PPresPulEdCariKeyPress(Sender: TObject; var Key: Char);
 begin
   if not(key in[chr(13),chr(8),'0'..'9','a'..'z','A'..'Z','.',',',' ',':',';','(',')','[',']','&','@','/']) then key:=#0
   else
-  if not(key=chr(13)) then exit
-  else PPresPulBtnCariClick(sender);
+  if not(key=chr(13)) then exit;
 end;
 
 procedure TfrmUtama.btnPresensiPulangClick(Sender: TObject);
 begin
   panelfalse;
   PanelPresensiPulang.Visible:=true;
-  PPresPulBtnCariClick(sender);
 end;
 
 procedure TfrmUtama.btnCariPresensiClick(Sender: TObject);
 begin
   panelfalse;
   PanelCariPresensi.Visible:=true;
-  PCariBtnCariClick(sender);
-end;
-
-procedure TfrmUtama.PCariBtnCariClick(Sender: TObject);
-begin
-  ZQPresensiPulang.Close;
-  ZQPresensiPulang.SQL.Clear;
-  ZQPresensiPulang.SQL.Add('SELECT pasien.no_rkm_medis, pasien.no_rkm_medis, pasien.nm_pasien, rekap_presensi.shift, '+
-                'rekap_presensi.jam_datang, rekap_presensi.jam_pulang, rekap_presensi.status, '+
-                'rekap_presensi.keterlambatan, rekap_presensi.durasi,rekap_presensi.keterangan, '+
-                'rekap_presensi.photo  from pasien inner join rekap_presensi on pasien.no_rkm_medis=rekap_presensi.no_rkm_medis '+
-                'where  rekap_presensi.jam_datang like "%'+PCariCMbTahun.Text+'-'+PCariCmbBulan.Text+'%" and pasien.no_rkm_medis like "%'+Trim(PCariEdCari.Text)+'%" or '+
-                'rekap_presensi.jam_datang like "%'+PCariCMbTahun.Text+'-'+PCariCmbBulan.Text+'%" and pasien.nm_pasien like "%'+Trim(PCariEdCari.Text)+'%" or '+
-                'rekap_presensi.jam_datang like "%'+PCariCMbTahun.Text+'-'+PCariCmbBulan.Text+'%" and rekap_presensi.shift like "%'+Trim(PCariEdCari.Text)+'%" or '+
-                'rekap_presensi.jam_datang like "%'+PCariCMbTahun.Text+'-'+PCariCmbBulan.Text+'%" and rekap_presensi.jam_datang like "%'+Trim(PCariEdCari.Text)+'%" or '+
-                'rekap_presensi.jam_datang like "%'+PCariCMbTahun.Text+'-'+PCariCmbBulan.Text+'%" and rekap_presensi.status like "%'+Trim(PCariEdCari.Text)+'%" or '+
-                'rekap_presensi.jam_datang like "%'+PCariCMbTahun.Text+'-'+PCariCmbBulan.Text+'%" and rekap_presensi.keterlambatan like "%'+Trim(PCariEdCari.Text)+'%" order by pasien.nm_pasien,rekap_presensi.jam_datang');
-  ZQPresensiPulang.Open;
 end;
 
 procedure TfrmUtama.PCariEdCariKeyPress(Sender: TObject; var Key: Char);
@@ -1172,7 +935,6 @@ begin
    if not(key in[chr(13),chr(8),'0'..'9','a'..'z','A'..'Z','.',',',' ',':',';','(',')','[',']','&','@','/']) then key:=#0
   else
   if not(key=chr(13)) then exit
-  else PCariBtnCariClick(sender);
 end;
 
 procedure TfrmUtama.Button1Click(Sender: TObject);
