@@ -1,3 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Informasi Ketersediaan Kamar/Kelas</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link href="css/default.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body onload="MM_preloadImages('images/menu1.jpg')">
+	
+	<div id="main">
+	<div id="head"> <img src="images/header.jpg" /> </div>
+    
+    <div id="menutop">
+    
+     
+     <!-- Menu Dropdown -->
+   <div>
+   
+   <ul id="menu-bar">
+ <li class="active"><a href="/webapps/index.php">Home</a></li>
+ <li><a href="#">Info Layanan</a>
+  <ul>
+   <li><a href="/webapps/jadwaldokter.php">Jadwal Dokter</a></li>
+   <li><a href="/webapps/bed.php">Ketersediaan Kamar</a></li>
+   <li><a href="/webapps/bed2.php">Ketersediaan Kamar/Kelas</a></li>
+   <li><a href="/webapps/registrasi.php">Registrasi Pasien</a></li>
+   <li><a href="#">Products Sub Menu 4</a></li>
+  </ul>
+ </li>
+ <li><a href="#">Services</a>
+  <ul>
+   <li><a href="#">Services Sub Menu 1</a></li>
+   <li><a href="#">Services Sub Menu 2</a></li>
+   <li><a href="#">Services Sub Menu 3</a></li>
+   <li><a href="#">Services Sub Menu 4</a></li>
+  </ul>
+ </li>
+ <li><a href="#">About</a></li>
+ <li><a href="#">Contact Us</a></li>
+</ul>
+   </div>
+   </div>
 <?php
  //fitur update kamar aplicare ini adalah penyempurnaan dari kontribusi Mas Tirta dari RSUK Ciracas Jakarta Timur
  session_start();
@@ -25,7 +69,7 @@
 	body {
 		background-image: url();
 		background-repeat: no-repeat;
-		background-color: #FFFFCC;
+		background-color: #693;
 	}
 	-->
 	</style>
@@ -46,25 +90,20 @@
 		echo "   
 		   <table width='100%' align='center' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
 			  <tr>
-				<td  width='10%' align='right' valign='center'>
-					<img width='90' height='90' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
+				
 				</td>
 				<td>
 				   <center>
-					  <font size='7' color='#AA00AA' face='Tahoma'><b>".$setting["nama_instansi"]."</b></font><br>
-					  <font size='5' color='#AA00AA' face='Tahoma'>
-						  ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br>   
+					  
 					  </font> 
-					  <font size='5' color='#AAAA00' face='Tahoma' >".date("d-M-Y", $tanggal)."  ". $jam."</font>
+					  <font size='5' color='Black' face='Tahoma' >".date("d-M-Y", $tanggal)."  ". $jam."</font>
 					  <br><br>
 				   </center>
 				</td>   
 				<td  width='10%' align='left'>
 					&nbsp;
 				</td>  
-				<td  width='10%' align='left' valign='top'>
-					<img width='180' height='130' src='header-kanan.jpg'/>
-				</td>                                                          
+				                                                       
 			 </tr>
 		  </table> "; 
 	?>

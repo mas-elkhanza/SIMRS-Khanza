@@ -908,8 +908,8 @@ private void StokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Stok
             Selisih.setText(tbKamar.getValueAt(row,7).toString());        
             Nominal.setText(tbKamar.getValueAt(row,8).toString());      
             Keterangan.setText(tbKamar.getValueAt(row,9).toString());   
-            kdgudang.setText(tbKamar.getValueAt(row,10).toString());   
-            nmgudang.setText(tbKamar.getValueAt(row,11).toString());       
+            kdgudang.setText(tbKamar.getValueAt(row,11).toString());   
+            nmgudang.setText(tbKamar.getValueAt(row,12).toString());       
             Valid.SetTgl(Tanggal,tbKamar.getValueAt(row,4).toString());
         }
     }
