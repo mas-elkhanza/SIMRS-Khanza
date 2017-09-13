@@ -1034,7 +1034,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 tbObat.setValueAt(0,i,9);
                 tbObat.setValueAt(0,i,8);
             }
+            
             LTotal.setText("0");
+            LPpn.setText("0");
+            LTotalTagihan.setText("0");
 }//GEN-LAST:event_ppBersihkanActionPerformed
 
 private void JeniskelasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JeniskelasItemStateChanged
