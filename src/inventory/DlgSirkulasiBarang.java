@@ -1031,17 +1031,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                    Valid.SetAngka(jumlahretjual)+" ("+Valid.SetAngka(totalretjual)+")",
                                    Valid.SetAngka(jumlahretpiut)+" ("+Valid.SetAngka(totalretpiut)+")"
                                   }); 
+                        ttltotalbeli=ttltotalbeli+totalbeli;
+                        ttltotalpesan=ttltotalpesan+totalpesan;
+                        ttltotaljual=ttltotaljual+totaljual;
+                        ttlaset=ttlaset+aset;
+                        ttltotalpasien=ttltotalpasien+totalpasien;
+                        ttltotalpiutang=ttltotalpiutang+totalpiutang;
+                        ttltotalretbeli=ttltotalretbeli+totalretbeli;
+                        ttltotalretjual=ttltotalretjual+totalretjual;
+                        ttltotalretpiut=ttltotalretpiut+totalretpiut;
                     }
 
-                    ttltotalbeli=ttltotalbeli+totalbeli;
-                    ttltotalpesan=ttltotalpesan+totalpesan;
-                    ttltotaljual=ttltotaljual+totaljual;
-                    ttlaset=ttlaset+aset;
-                    ttltotalpasien=ttltotalpasien+totalpasien;
-                    ttltotalpiutang=ttltotalpiutang+totalpiutang;
-                    ttltotalretbeli=ttltotalretbeli+totalretbeli;
-                    ttltotalretjual=ttltotalretjual+totalretjual;
-                    ttltotalretpiut=ttltotalretpiut+totalretpiut;
+                        
                 }   
                 tabMode.addRow(new Object[]{"","","","","","","","","","","",""}); 
                 tabMode.addRow(new Object[]{"<>>","Total :","",Valid.SetAngka(ttlaset),
