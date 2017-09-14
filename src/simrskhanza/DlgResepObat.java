@@ -1060,6 +1060,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         isForm();
     }
     
+    public void setDokterRalan(){
+        Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",KdDokter,TNoRw.getText());
+        Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",NmDokter,KdDokter.getText());
+    }
+    
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);

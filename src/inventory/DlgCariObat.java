@@ -1006,6 +1006,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     resep.isCek();
                     resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
                     resep.tampil();
+                    resep.setDokterRalan();
                     resep.setVisible(true);
                 }
                 ChkJln.setSelected(true);
@@ -1060,14 +1061,15 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void ChkNoResepItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkNoResepItemStateChanged
         if(ChkNoResep.isSelected()==true){
-                    DlgResepObat resep=new DlgResepObat(null,false);
-                    resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                    resep.setLocationRelativeTo(internalFrame1);
-                    resep.emptTeks(); 
-                    resep.isCek();
-                    resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
-                    resep.tampil();
-                    resep.setVisible(true);
+            DlgResepObat resep=new DlgResepObat(null,false);
+            resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            resep.setLocationRelativeTo(internalFrame1);
+            resep.emptTeks(); 
+            resep.isCek();
+            resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
+            resep.tampil();
+            resep.setDokterRalan();
+            resep.setVisible(true);
         }
     }//GEN-LAST:event_ChkNoResepItemStateChanged
 
