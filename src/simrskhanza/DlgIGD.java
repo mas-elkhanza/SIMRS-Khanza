@@ -531,6 +531,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnCetakRegister = new javax.swing.JMenuItem();
         MnPersetujuanMedis = new javax.swing.JMenuItem();
         MnLembarCasemix = new javax.swing.JMenuItem();
+        MnSPBK = new javax.swing.JMenuItem();
         MnCetakSuratSakit = new javax.swing.JMenuItem();
         MnBarcode = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -1234,6 +1235,23 @@ public final class DlgIGD extends javax.swing.JDialog {
             }
         });
         jMenu4.add(MnLembarCasemix);
+
+        MnSPBK.setBackground(new java.awt.Color(255, 255, 255));
+        MnSPBK.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSPBK.setForeground(new java.awt.Color(60, 80, 50));
+        MnSPBK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSPBK.setText("Surat Bukti Pelayanan Kesehatan (SBPK)");
+        MnSPBK.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnSPBK.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnSPBK.setIconTextGap(5);
+        MnSPBK.setName("MnSPBK"); // NOI18N
+        MnSPBK.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnSPBK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSPBKActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MnSPBK);
 
         jPopupMenu1.add(jMenu4);
 
@@ -4110,6 +4128,31 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_ppCatatanPasienBtnPrintActionPerformed
 
+    private void MnSPBKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSPBKActionPerformed
+        if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptSBPK.jrxml","report","::[ Surat Bukti Pelayanan Kesehatan ]::",
+                "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,"+
+                "reg_periksa.jam_reg, reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli," +
+                "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg," +
+                "reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_peserta,pasien.tgl_lahir " +
+                "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab " +
+                "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
+                "where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnSPBKActionPerformed
+
     /**
     * @data args the command line arguments
     */
@@ -4206,6 +4249,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnRujuk;
     private javax.swing.JMenuItem MnRujukMasuk;
     private javax.swing.JMenuItem MnSEP;
+    private javax.swing.JMenuItem MnSPBK;
     private widget.TextBox NoBalasan;
     private widget.TextBox NomorSurat;
     private javax.swing.JPanel PanelInput;
