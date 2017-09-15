@@ -514,8 +514,9 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
             Sequel.AutoComitFalse();
             for(i=0;i<tbTindakan.getRowCount();i++){ 
                 if(tbTindakan.getValueAt(i,0).toString().equals("true")){
-                    Sequel.menyimpan("rawat_jl_dr","?,?,?,?,?,?,?,?,?", "Tindakan",9,new String[]{
+                    Sequel.menyimpan("rawat_jl_dr","?,?,?,?,?,?,?,?,?,?,?", "Tindakan",11,new String[]{
                         NoRawat.getText(),tbTindakan.getValueAt(i,1).toString(),kd_dokter,
+                        Sequel.cariIsi("select current_date()"),Sequel.cariIsi("select current_time()"),
                         tbTindakan.getValueAt(i,5).toString(),tbTindakan.getValueAt(i,6).toString(),
                         tbTindakan.getValueAt(i,7).toString(),tbTindakan.getValueAt(i,8).toString(),
                         tbTindakan.getValueAt(i,9).toString(),tbTindakan.getValueAt(i,4).toString()
