@@ -2439,8 +2439,8 @@ private void tbBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
                             }                                               
                         }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Obat & BHP")){
                             if(var.getberi_obat()==true){
-                                beriobat.dlgobt.isCek();
                                 beriobat.dlgobt.setNoRm(TNoRw.getText(),DTPTgl.getDate(),"00","00","00",true);
+                                beriobat.dlgobt.isCek();
                                 beriobat.dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                                 beriobat.dlgobt.tampil();
                                 beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
@@ -2479,8 +2479,8 @@ private void tbBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
                             }                                               
                         }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Obat & BHP")){
                             if(var.getberi_obat()==true){
-                                beriobat.dlgobt.isCek();
                                 beriobat.dlgobt.setNoRm(TNoRw.getText(),DTPTgl.getDate(),"00","00","00",true);
+                                beriobat.dlgobt.isCek();
                                 beriobat.dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                                 beriobat.dlgobt.tampil();
                                 beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
@@ -2585,9 +2585,9 @@ private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             }                                                
                         }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Obat & BHP")){
                             if(var.getberi_obat()==true){
-                                beriobat.dlgobt.isCek();
                                 beriobat.dlgobt.setNoRm(TNoRw.getText(),DTPTgl.getDate(),"00","00","00",true);
                                 beriobat.dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                                beriobat.dlgobt.isCek();
                                 beriobat.dlgobt.tampil();
                                 beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
                                 beriobat.dlgobt.setVisible(true);
@@ -2625,8 +2625,8 @@ private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             }                                                
                         }else if(tbBilling.getValueAt(tbBilling.getSelectedRow(), kolom).toString().contains("Obat & BHP")){
                             if(var.getberi_obat()==true){
-                                beriobat.dlgobt.isCek();
                                 beriobat.dlgobt.setNoRm(TNoRw.getText(),DTPTgl.getDate(),"00","00","00",true);
+                                beriobat.dlgobt.isCek();
                                 beriobat.dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                                 beriobat.dlgobt.tampil();
                                 beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
@@ -2700,8 +2700,8 @@ private void MnInputObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             TNoRw.requestFocus();
         }else{
             var.setform("DLgBilingRanap");
-            beriobat.dlgobt.isCek();
             beriobat.dlgobt.setNoRm(TNoRw.getText(),DTPTgl.getDate(),"00","00","00",true);
+            beriobat.dlgobt.isCek();
             beriobat.dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             beriobat.dlgobt.tampil();
             beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
