@@ -619,6 +619,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnRl4b = new widget.ButtonBig();
         btnRl4asebab = new widget.ButtonBig();
         btnRl4bsebab = new widget.ButtonBig();
+        btnDataHAIs = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3978,6 +3979,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl4bsebab);
 
+        btnDataHAIs.setForeground(new java.awt.Color(40, 70, 50));
+        btnDataHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
+        btnDataHAIs.setText("Data HAIs");
+        btnDataHAIs.setIconTextGap(0);
+        btnDataHAIs.setName("btnDataHAIs"); // NOI18N
+        btnDataHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataHAIs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataHAIsActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnDataHAIs);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3986,7 +4000,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/09/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/09/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8471,6 +8485,19 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRl4bsebabActionPerformed
 
+    private void btnDataHAIsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataHAIsActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDataHAIs aplikasi=new DlgDataHAIs(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.isCek();
+        aplikasi.tampil();
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnDataHAIsActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8559,6 +8586,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekInhealthPoli;
     private widget.ButtonBig btnClosingKasir;
     private widget.ButtonBig btnDaruratStok;
+    private widget.ButtonBig btnDataHAIs;
     private widget.ButtonBig btnDataPenjualan;
     private widget.ButtonBig btnDataPenyerahanDarah;
     private widget.ButtonBig btnDeposit;
@@ -10070,6 +10098,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnDiagnosa); 
                 jmlmenu++;
             }
+            
+            if(var.getdata_HAIs()==true){
+                Panelmenu.add(btnDataHAIs); 
+                jmlmenu++;
+            }
 
             if(var.getpeminjaman_berkas()==true){
                Panelmenu.add(btnSirkulasiBerkas); 
@@ -11244,6 +11277,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getdiagnosa_pasien()==true){
             Panelmenu.add(btnDiagnosa); 
+            jmlmenu++;
+        }
+        
+        if(var.getdata_HAIs()==true){
+            Panelmenu.add(btnDataHAIs); 
             jmlmenu++;
         }
 
@@ -12814,6 +12852,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getdiagnosa_pasien()==true){
             if(btnDiagnosa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDiagnosa); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getdata_HAIs()==true){
+            if(btnDataHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDataHAIs); 
                 jmlmenu++;
             }                
         }
