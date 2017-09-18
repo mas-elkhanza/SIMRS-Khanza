@@ -999,7 +999,7 @@ public final class DlgReg extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnHemodialisa);
 
-        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu1.setBackground(new java.awt.Color(248, 253, 243));
         jMenu1.setForeground(new java.awt.Color(60, 80, 50));
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu1.setText("Laporan");
@@ -1008,6 +1008,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jMenu1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu1.setIconTextGap(5);
         jMenu1.setName("jMenu1"); // NOI18N
+        jMenu1.setOpaque(true);
         jMenu1.setPreferredSize(new java.awt.Dimension(240, 26));
 
         MnLaporanRekapKunjunganPoli.setBackground(new java.awt.Color(255, 255, 255));
@@ -1148,7 +1149,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         jPopupMenu1.add(jMenu1);
 
-        jMenu2.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu2.setBackground(new java.awt.Color(248, 253, 243));
         jMenu2.setForeground(new java.awt.Color(60, 80, 50));
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu2.setText("Grafik Analisa");
@@ -1157,6 +1158,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jMenu2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu2.setIconTextGap(5);
         jMenu2.setName("jMenu2"); // NOI18N
+        jMenu2.setOpaque(true);
         jMenu2.setPreferredSize(new java.awt.Dimension(240, 26));
 
         ppGrafikPerpoli.setBackground(new java.awt.Color(255, 255, 255));
@@ -1384,7 +1386,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         jPopupMenu1.add(jMenu2);
 
-        jMenu4.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu4.setBackground(new java.awt.Color(248, 253, 243));
         jMenu4.setForeground(new java.awt.Color(60, 80, 50));
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu4.setText("Surat-Surat");
@@ -1393,6 +1395,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jMenu4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu4.setIconTextGap(5);
         jMenu4.setName("jMenu4"); // NOI18N
+        jMenu4.setOpaque(true);
         jMenu4.setPreferredSize(new java.awt.Dimension(240, 26));
 
         MnCetakSuratSehat.setBackground(new java.awt.Color(255, 255, 255));
@@ -1567,7 +1570,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         jPopupMenu1.add(jMenu4);
 
-        jMenu3.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu3.setBackground(new java.awt.Color(248, 253, 243));
         jMenu3.setForeground(new java.awt.Color(60, 80, 50));
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu3.setText("Check List Kelengkapan Pendaftaran");
@@ -1576,6 +1579,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu3.setIconTextGap(5);
         jMenu3.setName("jMenu3"); // NOI18N
+        jMenu3.setOpaque(true);
         jMenu3.setPreferredSize(new java.awt.Dimension(240, 26));
 
         MnCheckList.setBackground(new java.awt.Color(255, 255, 255));
@@ -1649,7 +1653,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         jPopupMenu1.add(jMenu3);
 
-        jMenu5.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu5.setBackground(new java.awt.Color(248, 253, 243));
         jMenu5.setForeground(new java.awt.Color(60, 80, 50));
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu5.setText("Lembar Periksa Pasien");
@@ -1658,6 +1662,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu5.setIconTextGap(5);
         jMenu5.setName("jMenu5"); // NOI18N
+        jMenu5.setOpaque(true);
         jMenu5.setPreferredSize(new java.awt.Dimension(240, 26));
 
         MnCheckList4.setBackground(new java.awt.Color(255, 255, 255));
@@ -1732,7 +1737,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         jPopupMenu1.add(jMenu5);
 
-        jMenu6.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu6.setBackground(new java.awt.Color(248, 253, 243));
         jMenu6.setForeground(new java.awt.Color(60, 80, 50));
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         jMenu6.setText("Label & Barcode");
@@ -1741,6 +1746,7 @@ public final class DlgReg extends javax.swing.JDialog {
         jMenu6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jMenu6.setIconTextGap(5);
         jMenu6.setName("jMenu6"); // NOI18N
+        jMenu6.setOpaque(true);
         jMenu6.setPreferredSize(new java.awt.Dimension(240, 26));
 
         MnLabelTracker.setBackground(new java.awt.Color(255, 255, 255));
@@ -1932,7 +1938,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         jPopupMenu1.add(jMenu6);
 
-        MnHapusData.setBackground(new java.awt.Color(255, 255, 255));
+        MnHapusData.setBackground(new java.awt.Color(248, 253, 243));
         MnHapusData.setForeground(new java.awt.Color(60, 80, 50));
         MnHapusData.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnHapusData.setText("Hapus Data");
@@ -1941,6 +1947,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnHapusData.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHapusData.setIconTextGap(5);
         MnHapusData.setName("MnHapusData"); // NOI18N
+        MnHapusData.setOpaque(true);
         MnHapusData.setPreferredSize(new java.awt.Dimension(240, 26));
 
         MnHapusTagihanOperasi.setBackground(new java.awt.Color(255, 255, 255));
@@ -2062,7 +2069,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         TglSakit1.setEditable(false);
         TglSakit1.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017" }));
+        TglSakit1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2017" }));
         TglSakit1.setDisplayFormat("dd-MM-yyyy");
         TglSakit1.setName("TglSakit1"); // NOI18N
         TglSakit1.setOpaque(false);
@@ -2110,7 +2117,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         TglSakit2.setEditable(false);
         TglSakit2.setForeground(new java.awt.Color(50, 70, 50));
-        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017" }));
+        TglSakit2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2017" }));
         TglSakit2.setDisplayFormat("dd-MM-yyyy");
         TglSakit2.setName("TglSakit2"); // NOI18N
         TglSakit2.setOpaque(false);
@@ -2566,7 +2573,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2581,7 +2588,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2723,7 +2730,7 @@ public final class DlgReg extends javax.swing.JDialog {
 
         DTPReg.setEditable(false);
         DTPReg.setForeground(new java.awt.Color(50, 70, 50));
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-08-2017" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2017" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);

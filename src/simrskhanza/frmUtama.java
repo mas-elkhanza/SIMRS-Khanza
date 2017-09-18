@@ -12,6 +12,7 @@
 
 package simrskhanza;
 
+import laporan.DlgDataHAIs;
 import bridging.AplicareCekReferensiKamar;
 import bridging.AplicareKetersediaanKamar;
 import bridging.BPJSCekKartu;
@@ -187,6 +188,7 @@ import keuangan.DlgRHKSO;
 import keuangan.DlgRHMenejemen;
 import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
+import laporan.DlgHarianHAIs;
 import laporan.DlgICD9;
 import laporan.DlgKunjunganRalan;
 import laporan.DlgKunjunganRanap;
@@ -620,6 +622,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnRl4asebab = new widget.ButtonBig();
         btnRl4bsebab = new widget.ButtonBig();
         btnDataHAIs = new widget.ButtonBig();
+        btnHarianHAIs = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3980,7 +3983,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnRl4bsebab);
 
         btnDataHAIs.setForeground(new java.awt.Color(40, 70, 50));
-        btnDataHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
+        btnDataHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
         btnDataHAIs.setText("Data HAIs");
         btnDataHAIs.setIconTextGap(0);
         btnDataHAIs.setName("btnDataHAIs"); // NOI18N
@@ -3992,6 +3995,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnDataHAIs);
 
+        btnHarianHAIs.setForeground(new java.awt.Color(40, 70, 50));
+        btnHarianHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
+        btnHarianHAIs.setText("Harian HAIs");
+        btnHarianHAIs.setIconTextGap(0);
+        btnHarianHAIs.setName("btnHarianHAIs"); // NOI18N
+        btnHarianHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHarianHAIs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHarianHAIsActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnHarianHAIs);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4000,7 +4016,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/09/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/09/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8498,6 +8514,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnDataHAIsActionPerformed
 
+    private void btnHarianHAIsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHarianHAIsActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgHarianHAIs aplikasi=new DlgHarianHAIs(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnHarianHAIsActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8596,6 +8623,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnDokter;
     private widget.ButtonBig btnFrekuensiRalan;
     private widget.ButtonBig btnFrekuensiRanap;
+    private widget.ButtonBig btnHarianHAIs;
     private widget.ButtonBig btnHarianKamar;
     private widget.ButtonBig btnHutangObat;
     private widget.ButtonBig btnICD;
@@ -9829,6 +9857,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnLamaPelayananRalan);                 
                 jmlmenu++;
             }
+            
+            if(var.getharian_HAIs()==true){  
+                Panelmenu.add(btnHarianHAIs);                 
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==9){   
             jmlmenu=0;
             if(var.getkamar()==true){
@@ -11011,6 +11044,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getlama_pelayanan_ralan()==true){  
             Panelmenu.add(btnLamaPelayananRalan);                 
+            jmlmenu++;
+        }
+        
+        if(var.getharian_HAIs()==true){  
+            Panelmenu.add(btnHarianHAIs);                 
             jmlmenu++;
         }
 
@@ -12481,6 +12519,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getlama_pelayanan_ralan()==true){  
             if(btnLamaPelayananRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananRalan);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getharian_HAIs()==true){  
+            if(btnHarianHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHarianHAIs);                 
                 jmlmenu++;
             }                
         }

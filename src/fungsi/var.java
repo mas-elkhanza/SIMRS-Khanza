@@ -56,7 +56,7 @@ public final class var {
             mutasi_berkas=false,akun_piutang=false,harian_kso=false,bulanan_kso=false,harian_menejemen=false,bulanan_menejemen=false,inhealth_cek_eligibilitas=false,
             inhealth_referensi_jenpel_ruang_rawat=false,inhealth_referensi_poli=false,inhealth_referensi_faskes=false,inhealth_sjp=false,piutang_ralan=false,
             piutang_ranap=false,detail_piutang_penjab=false,lama_pelayanan_ralan=false,catatan_pasien=false,rl4b=false,rl4asebab=false,rl4bsebab=false,
-            data_HAIs=false;
+            data_HAIs=false,harian_HAIs=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -314,6 +314,7 @@ public final class var {
                         var.rl4asebab=true;
                         var.rl4bsebab=true;
                         var.data_HAIs=true;
+                        var.harian_HAIs=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -553,6 +554,7 @@ public final class var {
                         var.rl4asebab=true;
                         var.rl4bsebab=true;
                         var.data_HAIs=true;
+                        var.harian_HAIs=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -793,6 +795,7 @@ public final class var {
                         var.rl4asebab=rs2.getBoolean("rl4asebab"); 
                         var.rl4bsebab=rs2.getBoolean("rl4bsebab"); 
                         var.data_HAIs=rs2.getBoolean("data_HAIs");
+                        var.harian_HAIs=rs2.getBoolean("harian_HAIs");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1031,6 +1034,7 @@ public final class var {
                         var.rl4asebab=false;
                         var.rl4bsebab=false;
                         var.data_HAIs=false;
+                        var.harian_HAIs=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1315,4 +1319,5 @@ public final class var {
     public static boolean getrl4asebab(){return var.rl4asebab;}
     public static boolean getrl4bsebab(){return var.rl4bsebab;}
     public static boolean getdata_HAIs(){return var.data_HAIs;}
+    public static boolean getharian_HAIs(){return var.harian_HAIs;}
 }
