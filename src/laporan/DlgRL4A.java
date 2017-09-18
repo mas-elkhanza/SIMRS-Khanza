@@ -372,7 +372,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='2%' rowspan='3'>No.Urut</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>No.Daftar Terperinci</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='18%' rowspan='3'>Golongan Sebab Penyakit</td>"+
@@ -381,7 +381,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Hidup (23+24)</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Mati</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>0-6 hr</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>7-28hr</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>28hr-<1th</td>"+
@@ -394,7 +394,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' rowspan='2'>LK</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' rowspan='2'>PR</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
@@ -414,7 +414,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>1</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>2</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>3</td>"+
@@ -578,7 +578,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         }
                     }
                     htmlContent.append(
-                        "<tr class='isi3'>"+
+                        "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("kd_penyakit")+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("nm_penyakit")+"</td>"+
@@ -636,7 +636,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='2%' rowspan='3'>No.Urut</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>No.Daftar Terperinci</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='18%' rowspan='3'>Golongan Sebab Penyakit</td>"+
@@ -645,7 +645,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Hidup (23+24)</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Mati</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>0-6 hr</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>7-28hr</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>28hr-<1th</td>"+
@@ -658,7 +658,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' rowspan='2'>LK</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' rowspan='2'>PR</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
@@ -678,7 +678,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>1</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>2</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>3</td>"+
@@ -843,7 +843,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         }
                     }
                     htmlContent.append(
-                        "<tr class='isi3'>"+
+                        "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("kd_penyakit")+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("nm_penyakit")+"</td>"+

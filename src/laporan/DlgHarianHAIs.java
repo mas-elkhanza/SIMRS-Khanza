@@ -335,7 +335,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='2%' rowspan='2'>No.</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='2'>No.R.M</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='15%' rowspan='2'>Nama Pasien</td>"+
@@ -346,7 +346,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='20%' colspan='3'>Hasil Kultur</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='8%' rowspan='2'>Antibiotik</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>ETT</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>CVL</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>IVL</td>"+
@@ -396,7 +396,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         darah=1;
                     }
                     htmlContent.append(
-                        "<tr class='isi3'>"+
+                        "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
                             "<td valign='middle' align='left'>"+rs.getString("no_rkm_medis")+"</td>"+
                             "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+

@@ -49,7 +49,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private Date cal=new Date();
     private String bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),nonota="",
-            sqlpsotomatis2="insert into rawat_jl_dr values (?,?,?,?,?,?,?,?,?)",
+            sqlpsotomatis2="insert into rawat_jl_dr values (?,?,?,?,?,?,?,?,?,?,?)",
             sqlpsotomatis=
                 "select jns_perawatan.kd_jenis_prw,jns_perawatan.material,jns_perawatan.bhp,"+
                 "jns_perawatan.tarif_tindakandr,jns_perawatan.total_byrdr,jns_perawatan.kso,jns_perawatan.menejemen from set_otomatis_tindakan_ralan "+
@@ -2323,12 +2323,14 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psotomatis2.setString(1,TNoRw.getText()); 
                                                     psotomatis2.setString(2,rskasir.getString(1));
                                                     psotomatis2.setString(3,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                                    psotomatis2.setDouble(4,rskasir.getDouble("material"));
-                                                    psotomatis2.setDouble(5,rskasir.getDouble("bhp"));
-                                                    psotomatis2.setDouble(6,rskasir.getDouble("tarif_tindakandr"));
-                                                    psotomatis2.setDouble(7,rskasir.getDouble("kso"));
-                                                    psotomatis2.setDouble(8,rskasir.getDouble("menejemen"));
-                                                    psotomatis2.setDouble(9,rskasir.getDouble("total_byrdr"));
+                                                    psotomatis2.setString(4,Sequel.cariIsi("select current_date()"));
+                                                    psotomatis2.setString(5,Sequel.cariIsi("select current_time()"));
+                                                    psotomatis2.setDouble(6,rskasir.getDouble("material"));
+                                                    psotomatis2.setDouble(7,rskasir.getDouble("bhp"));
+                                                    psotomatis2.setDouble(8,rskasir.getDouble("tarif_tindakandr"));
+                                                    psotomatis2.setDouble(9,rskasir.getDouble("kso"));
+                                                    psotomatis2.setDouble(10,rskasir.getDouble("menejemen"));
+                                                    psotomatis2.setDouble(11,rskasir.getDouble("total_byrdr"));
                                                     psotomatis2.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("proses input data "+e);
@@ -2352,12 +2354,14 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                         psotomatis2.setString(1,TNoRw.getText()); 
                                                         psotomatis2.setString(2,rskasir.getString(1));
                                                         psotomatis2.setString(3,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                                        psotomatis2.setDouble(4,rskasir.getDouble("material"));
-                                                        psotomatis2.setDouble(5,rskasir.getDouble("bhp"));
-                                                        psotomatis2.setDouble(6,rskasir.getDouble("tarif_tindakandr"));
-                                                        psotomatis2.setDouble(7,rskasir.getDouble("kso"));
-                                                        psotomatis2.setDouble(8,rskasir.getDouble("menejemen"));
-                                                        psotomatis2.setDouble(9,rskasir.getDouble("total_byrdr"));
+                                                        psotomatis2.setString(4,Sequel.cariIsi("select current_date()"));
+                                                        psotomatis2.setString(5,Sequel.cariIsi("select current_time()"));
+                                                        psotomatis2.setDouble(6,rskasir.getDouble("material"));
+                                                        psotomatis2.setDouble(7,rskasir.getDouble("bhp"));
+                                                        psotomatis2.setDouble(8,rskasir.getDouble("tarif_tindakandr"));
+                                                        psotomatis2.setDouble(9,rskasir.getDouble("kso"));
+                                                        psotomatis2.setDouble(10,rskasir.getDouble("menejemen"));
+                                                        psotomatis2.setDouble(11,rskasir.getDouble("total_byrdr"));
                                                         psotomatis2.executeUpdate();
                                                     } catch (Exception e) {
                                                         System.out.println("proses input data "+e);
@@ -2411,12 +2415,14 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                 psotomatis2.setString(1,TNoRw.getText()); 
                                                 psotomatis2.setString(2,rskasir.getString(1));
                                                 psotomatis2.setString(3,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                                psotomatis2.setDouble(4,rskasir.getDouble("material"));
-                                                psotomatis2.setDouble(5,rskasir.getDouble("bhp"));
-                                                psotomatis2.setDouble(6,rskasir.getDouble("tarif_tindakandr"));
-                                                psotomatis2.setDouble(7,rskasir.getDouble("kso"));
-                                                psotomatis2.setDouble(8,rskasir.getDouble("menejemen"));
-                                                psotomatis2.setDouble(9,rskasir.getDouble("total_byrdr"));
+                                                psotomatis2.setString(4,Sequel.cariIsi("select current_date()"));
+                                                psotomatis2.setString(5,Sequel.cariIsi("select current_time()"));
+                                                psotomatis2.setDouble(6,rskasir.getDouble("material"));
+                                                psotomatis2.setDouble(7,rskasir.getDouble("bhp"));
+                                                psotomatis2.setDouble(8,rskasir.getDouble("tarif_tindakandr"));
+                                                psotomatis2.setDouble(9,rskasir.getDouble("kso"));
+                                                psotomatis2.setDouble(10,rskasir.getDouble("menejemen"));
+                                                psotomatis2.setDouble(11,rskasir.getDouble("total_byrdr"));
                                                 psotomatis2.executeUpdate();
                                             } catch (Exception e) {
                                                 System.out.println("proses input data "+e);
@@ -2440,12 +2446,14 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     psotomatis2.setString(1,TNoRw.getText()); 
                                                     psotomatis2.setString(2,rskasir.getString(1));
                                                     psotomatis2.setString(3,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                                    psotomatis2.setDouble(4,rskasir.getDouble("material"));
-                                                    psotomatis2.setDouble(5,rskasir.getDouble("bhp"));
-                                                    psotomatis2.setDouble(6,rskasir.getDouble("tarif_tindakandr"));                                                    
-                                                    psotomatis2.setDouble(7,rskasir.getDouble("kso"));
-                                                    psotomatis2.setDouble(8,rskasir.getDouble("menejemen"));
-                                                    psotomatis2.setDouble(9,rskasir.getDouble("total_byrdr"));
+                                                    psotomatis2.setString(4,Sequel.cariIsi("select current_date()"));
+                                                    psotomatis2.setString(5,Sequel.cariIsi("select current_time()"));
+                                                    psotomatis2.setDouble(6,rskasir.getDouble("material"));
+                                                    psotomatis2.setDouble(7,rskasir.getDouble("bhp"));
+                                                    psotomatis2.setDouble(8,rskasir.getDouble("tarif_tindakandr"));                                                    
+                                                    psotomatis2.setDouble(9,rskasir.getDouble("kso"));
+                                                    psotomatis2.setDouble(10,rskasir.getDouble("menejemen"));
+                                                    psotomatis2.setDouble(11,rskasir.getDouble("total_byrdr"));
                                                     psotomatis2.executeUpdate();
                                                 } catch (Exception e) {
                                                     System.out.println("proses input data "+e);

@@ -187,6 +187,7 @@ import keuangan.DlgRBMenejemen;
 import keuangan.DlgRHKSO;
 import keuangan.DlgRHMenejemen;
 import keuangan.DlgRincianPiutangPasien;
+import laporan.DlgBulananHAIs;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
 import laporan.DlgHarianHAIs;
 import laporan.DlgICD9;
@@ -623,6 +624,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnRl4bsebab = new widget.ButtonBig();
         btnDataHAIs = new widget.ButtonBig();
         btnHarianHAIs = new widget.ButtonBig();
+        btnBulananHAIs = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3996,7 +3998,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnDataHAIs);
 
         btnHarianHAIs.setForeground(new java.awt.Color(40, 70, 50));
-        btnHarianHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
+        btnHarianHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
         btnHarianHAIs.setText("Harian HAIs");
         btnHarianHAIs.setIconTextGap(0);
         btnHarianHAIs.setName("btnHarianHAIs"); // NOI18N
@@ -4007,6 +4009,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnHarianHAIs);
+
+        btnBulananHAIs.setForeground(new java.awt.Color(40, 70, 50));
+        btnBulananHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
+        btnBulananHAIs.setText("Bulanan HAIs");
+        btnBulananHAIs.setIconTextGap(0);
+        btnBulananHAIs.setName("btnBulananHAIs"); // NOI18N
+        btnBulananHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBulananHAIs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBulananHAIsActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnBulananHAIs);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -8525,6 +8540,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnHarianHAIsActionPerformed
 
+    private void btnBulananHAIsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBulananHAIsActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBulananHAIs aplikasi=new DlgBulananHAIs(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnBulananHAIsActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8599,6 +8625,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnBayarPiutang;
     private widget.ButtonBig btnBeriObat;
     private widget.ButtonBig btnBubes;
+    private widget.ButtonBig btnBulananHAIs;
     private widget.ButtonBig btnCashFlow;
     private widget.ButtonBig btnCatatanPasien;
     private widget.ButtonBig btnCekBPJSDiagnosa;
@@ -9862,6 +9889,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnHarianHAIs);                 
                 jmlmenu++;
             }
+            
+            if(var.getbulanan_HAIs()==true){  
+                Panelmenu.add(btnBulananHAIs);                 
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==9){   
             jmlmenu=0;
             if(var.getkamar()==true){
@@ -11049,6 +11081,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getharian_HAIs()==true){  
             Panelmenu.add(btnHarianHAIs);                 
+            jmlmenu++;
+        }
+        
+        if(var.getbulanan_HAIs()==true){  
+            Panelmenu.add(btnBulananHAIs);                 
             jmlmenu++;
         }
 
@@ -12526,6 +12563,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getharian_HAIs()==true){  
             if(btnHarianHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHarianHAIs);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbulanan_HAIs()==true){  
+            if(btnBulananHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBulananHAIs);                 
                 jmlmenu++;
             }                
         }
