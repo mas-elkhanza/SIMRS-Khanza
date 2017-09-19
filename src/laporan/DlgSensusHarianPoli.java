@@ -428,10 +428,10 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                             "<tr class='isi2'>"+
                                 "<td valign='top' align='center'>"+
-                                    "<font size='5' face='Tahoma'>"+var.getnamars()+"</font><br>"+
+                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
                                     var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
                                     var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
-                                    "<font size='5' face='Tahoma'>SENSUS HARIAN PASIEN POLIKLINIK</font>"+        
+                                    "<font size='2' face='Tahoma'>SENSUS HARIAN PASIEN POLIKLINIK<br>PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
                         "</table>")
@@ -653,7 +653,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='13%' rowspan='2'>Alamat</td>"+
                                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='3%' rowspan='2'>L/P</td>"+
                                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='3%' rowspan='2'>Umur</td>"+
-                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='6%' colspan='2'>Kasus</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='6%' colspan='2'>Pengunjung</td>"+
                                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='10%' rowspan='2'>Cara Pembayaran</td>"+
                                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='14%' rowspan='2'>Asal Rujukan &<br>Alamatnya</td>"+
                                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='14%' rowspan='2'>Golongan Penyakit/<br>Sebab Penyakit</td>"+

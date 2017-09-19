@@ -67,7 +67,15 @@ public final class validasi {
     private final int year=(now.get(Calendar.YEAR));
     private static final Properties prop = new Properties();  
     
-    public validasi(){super();};
+    public validasi(){
+        super();
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            PEMBULATANHARGAOBAT=prop.getProperty("PEMBULATANHARGAOBAT");
+        }catch(Exception e){
+            PEMBULATANHARGAOBAT="no"; 
+        }
+    };
 
     public void autoNomer(DefaultTableModel tabMode,String strAwal,Integer pnj,javax.swing.JTextField teks){        
         s=Integer.toString(tabMode.getRowCount()+1);
@@ -992,13 +1000,6 @@ public final class validasi {
     }
     
     public double roundUp(double number, int multiple) {
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            PEMBULATANHARGAOBAT=prop.getProperty("PEMBULATANHARGAOBAT");
-        }catch(Exception e){
-            PEMBULATANHARGAOBAT="no"; 
-        }
-        
         if(PEMBULATANHARGAOBAT.equals("yes")){
             result = multiple;
             if (number % multiple == 0) {

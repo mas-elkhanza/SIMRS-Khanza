@@ -55,7 +55,8 @@ public final class var {
             aplicare_referensi_kamar=false,aplicare_ketersediaan_kamar=false,inacbg_klaim_baru_otomatis=false,inacbg_klaim_baru_manual=false,inacbg_coder_nik=false,
             mutasi_berkas=false,akun_piutang=false,harian_kso=false,bulanan_kso=false,harian_menejemen=false,bulanan_menejemen=false,inhealth_cek_eligibilitas=false,
             inhealth_referensi_jenpel_ruang_rawat=false,inhealth_referensi_poli=false,inhealth_referensi_faskes=false,inhealth_sjp=false,piutang_ralan=false,
-            piutang_ranap=false,detail_piutang_penjab=false,lama_pelayanan_ralan=false,catatan_pasien=false;
+            piutang_ranap=false,detail_piutang_penjab=false,lama_pelayanan_ralan=false,catatan_pasien=false,rl4b=false,rl4asebab=false,rl4bsebab=false,
+            data_HAIs=false,harian_HAIs=false,bulanan_HAIs=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -309,6 +310,12 @@ public final class var {
                         var.detail_piutang_penjab=true;
                         var.lama_pelayanan_ralan=true;
                         var.catatan_pasien=true;
+                        var.rl4b=true;
+                        var.rl4asebab=true;
+                        var.rl4bsebab=true;
+                        var.data_HAIs=true;
+                        var.harian_HAIs=true;
+                        var.bulanan_HAIs=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -544,6 +551,12 @@ public final class var {
                         var.detail_piutang_penjab=true;
                         var.lama_pelayanan_ralan=true;
                         var.catatan_pasien=true;
+                        var.rl4b=true;
+                        var.rl4asebab=true;
+                        var.rl4bsebab=true;
+                        var.data_HAIs=true;
+                        var.harian_HAIs=true;
+                        var.bulanan_HAIs=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -780,6 +793,12 @@ public final class var {
                         var.detail_piutang_penjab=rs2.getBoolean("detail_piutang_penjab");
                         var.lama_pelayanan_ralan=rs2.getBoolean("lama_pelayanan_ralan");
                         var.catatan_pasien=rs2.getBoolean("catatan_pasien");
+                        var.rl4b=rs2.getBoolean("rl4b");                        
+                        var.rl4asebab=rs2.getBoolean("rl4asebab"); 
+                        var.rl4bsebab=rs2.getBoolean("rl4bsebab"); 
+                        var.data_HAIs=rs2.getBoolean("data_HAIs");
+                        var.harian_HAIs=rs2.getBoolean("harian_HAIs");
+                        var.bulanan_HAIs=rs2.getBoolean("bulanan_HAIs");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1014,6 +1033,12 @@ public final class var {
                         var.detail_piutang_penjab=false;
                         var.lama_pelayanan_ralan=false;
                         var.catatan_pasien=false;
+                        var.rl4b=false;              
+                        var.rl4asebab=false;
+                        var.rl4bsebab=false;
+                        var.data_HAIs=false;
+                        var.harian_HAIs=false;
+                        var.bulanan_HAIs=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1294,4 +1319,10 @@ public final class var {
     public static boolean getdetail_piutang_penjab(){return var.detail_piutang_penjab;}
     public static boolean getlama_pelayanan_ralan(){return var.lama_pelayanan_ralan;}
     public static boolean getcatatan_pasien(){return var.catatan_pasien;}
+    public static boolean getrl4b(){return var.rl4b;}
+    public static boolean getrl4asebab(){return var.rl4asebab;}
+    public static boolean getrl4bsebab(){return var.rl4bsebab;}
+    public static boolean getdata_HAIs(){return var.data_HAIs;}
+    public static boolean getharian_HAIs(){return var.harian_HAIs;}
+    public static boolean getbulanan_HAIs(){return var.bulanan_HAIs;}
 }

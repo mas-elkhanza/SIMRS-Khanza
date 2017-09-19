@@ -84,13 +84,13 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         Object[] row={"Tgl.Beri","Jam Beri","No.Rawat","No.R.M.",
                       "Nama Pasien","Kode Obat","Nama Obat/Alkes","Embalase",
-                      "Tuslah","Jml","Biaya Obat","Total","Harga Beli"};
+                      "Tuslah","Jml","Biaya Obat","Total","Harga Beli","Gudang"};
         tabModePO=new DefaultTableModel(null,row){
             @Override 
             public boolean isCellEditable(int rowIndex, int colIndex){return false;}
             Class[] types = new Class[]{
                 java.lang.Object.class, java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
-                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Object.class
             };
             @Override
             public Class getColumnClass(int columnIndex) {
@@ -103,7 +103,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         tbPemberianObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPemberianObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 14; i++) {
             TableColumn column = tbPemberianObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(80);
@@ -130,6 +130,9 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(90);
             }else if(i==12){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==13){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }
@@ -480,7 +483,6 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbPemberianObat.setAutoCreateRowSorter(true);
         tbPemberianObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPemberianObat.setComponentPopupMenu(Popup2);
         tbPemberianObat.setName("tbPemberianObat"); // NOI18N
@@ -657,7 +659,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-09-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -671,7 +673,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-09-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -811,7 +813,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2017" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-09-2017" }));
         DTPBeri.setDisplayFormat("dd-MM-yyyy");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -1097,16 +1099,16 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             var.setform("DlgPemberianObat");
             if(var.getkode().equals("Admin Utama")){
                 if(status.equals("ranap")){
-                    dlgobt.isCek();
                     dlgobt.setNoRm(TNoRw.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
                     dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                    dlgobt.isCek();
                     dlgobt.tampil();
                     dlgobt.setLocationRelativeTo(internalFrame1);
                     dlgobt.setVisible(true);
                 }else if(status.equals("ralan")){
-                    dlgobtjalan.isCek();
                     dlgobtjalan.setNoRm(TNoRw.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
                                         Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
+                    dlgobtjalan.isCek();
                     dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     dlgobtjalan.tampilobat();
                     dlgobtjalan.setLocationRelativeTo(internalFrame1);
@@ -1120,17 +1122,17 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else{ 
                     if(status.equals("ranap")){
-                        dlgobt.isCek();
                         dlgobt.setNoRm(TNoRw.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
                         dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgobt.isCek();
                         dlgobt.tampil();
                         dlgobt.setLocationRelativeTo(internalFrame1);
                         dlgobt.setVisible(true);
                     }else if(status.equals("ralan")){
-                        dlgobtjalan.isCek();
                         dlgobtjalan.setNoRm(TNoRw.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
                                             Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
                         dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgobtjalan.isCek();
                         dlgobtjalan.tampilobat();
                         dlgobtjalan.setLocationRelativeTo(internalFrame1);
                         dlgobtjalan.setVisible(true);
@@ -1184,7 +1186,9 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                 if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
                                 cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
                                 TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
-                                TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"),'"+statussimpan+"'","data")==true){ 
+                                TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',"+
+                                "(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+
+                                TTuslah.getText()+"),'"+statussimpan+"','"+bangsal+"'","data")==true){ 
                     if(statussimpan.equals("Ranap")){
                         ttlhpp=Double.parseDouble(THBeli.getText())*Double.parseDouble(TJumlah.getText());
                         ttljual=(Double.parseDouble(TBiayaObat.getText())*Double.parseDouble(TJumlah.getText()))+Double.parseDouble(TEmbalase.getText())+Double.parseDouble(TTuslah.getText());
@@ -1220,7 +1224,9 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                     if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
                                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
                                     TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
-                                    TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"),'"+statussimpan+"'","data")==true){ 
+                                    TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',"+
+                                    "(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+
+                                    TTuslah.getText()+"),'"+statussimpan+"','"+bangsal+"'","data")==true){ 
                         if(statussimpan.equals("Ranap")){
                             ttlhpp=Double.parseDouble(THBeli.getText())*Double.parseDouble(TJumlah.getText());
                             ttljual=(Double.parseDouble(TBiayaObat.getText())*Double.parseDouble(TJumlah.getText()))+Double.parseDouble(TEmbalase.getText())+Double.parseDouble(TTuslah.getText());
@@ -1281,17 +1287,10 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
-            bangsal=Sequel.cariIsi("select kamar.kd_bangsal from kamar inner join kamar_inap "+
-                    "on kamar.kd_kamar=kamar_inap.kd_kamar where kamar_inap.no_rawat=? "+
-                    "order by tgl_masuk desc limit 1",TNoRw.getText());
-            if(bangsal.equals("")){
-                bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
-            }
-        }else{
-            bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
+        if(tbPemberianObat.getSelectedRow()!= -1){
+            bangsal=tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),13).toString();
         }
-        
+            
         if(tabModePO.getRowCount()==0){
              JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
              TNoRw.requestFocus();
@@ -1556,15 +1555,8 @@ private void btnKonversiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_btnKonversiActionPerformed
 
 private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
-            bangsal=Sequel.cariIsi("select kamar.kd_bangsal from kamar inner join kamar_inap "+
-                    "on kamar.kd_kamar=kamar_inap.kd_kamar where kamar_inap.no_rawat=? "+
-                    "order by tgl_masuk desc limit 1",TNoRw.getText());
-            if(bangsal.equals("")){
-                bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
-            }
-        }else{
-            bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
+        if(tbPemberianObat.getSelectedRow()!= -1){
+            bangsal=tbPemberianObat.getValueAt(tbPemberianObat.getSelectedRow(),13).toString();
         }
         
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
@@ -1636,7 +1628,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
                                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
                                     TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
-                                    TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"),'"+statussimpan+"'","data")==true){ 
+                                    TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"),'"+statussimpan+"','"+bangsal+"'","data")==true){ 
                         if(statussimpan.equals("Ranap")){
                             ttlhpp=Double.parseDouble(THBeli.getText())*Double.parseDouble(TJumlah.getText());
                             ttljual=(Double.parseDouble(TBiayaObat.getText())*Double.parseDouble(TJumlah.getText()))+Double.parseDouble(TEmbalase.getText())+Double.parseDouble(TTuslah.getText());
@@ -1721,7 +1713,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         if(Sequel.menyimpantf("detail_pemberian_obat","'"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"','"+
                                         cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+
                                         TNoRw.getText()+"','"+TKdOb.getText()+"','"+THBeli.getText()+"','"+TBiayaObat.getText()+"','"+
-                                        TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"),'"+statussimpan+"'","data")==true){ 
+                                        TJumlah.getText()+"','"+TEmbalase.getText()+"','"+TTuslah.getText()+"',(("+TBiayaObat.getText()+"*"+TJumlah.getText()+")+"+TEmbalase.getText()+"+"+TTuslah.getText()+"),'"+statussimpan+"','"+bangsal+"'","data")==true){ 
                             if(statussimpan.equals("Ranap")){
                                 ttlhpp=Double.parseDouble(THBeli.getText())*Double.parseDouble(TJumlah.getText());
                                 ttljual=(Double.parseDouble(TBiayaObat.getText())*Double.parseDouble(TJumlah.getText()))+Double.parseDouble(TEmbalase.getText())+Double.parseDouble(TTuslah.getText());
@@ -1974,7 +1966,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         sql="select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
                    "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                    "detail_pemberian_obat.kode_brng,databarang.nama_brng,detail_pemberian_obat.embalase,detail_pemberian_obat.tuslah,"+
-                   "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total,detail_pemberian_obat.h_beli "+
+                   "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total,detail_pemberian_obat.h_beli,detail_pemberian_obat.kd_bangsal "+
                    "from detail_pemberian_obat inner join reg_periksa inner join pasien inner join databarang "+
                    "on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -2010,7 +2002,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                rs.getDouble(10),
                                rs.getDouble(11),
                                rs.getDouble(12),
-                               rs.getDouble(13)};
+                               rs.getDouble(13),
+                               rs.getString(14)};
                 tabModePO.addRow(data);
             }
         }catch(Exception e){
