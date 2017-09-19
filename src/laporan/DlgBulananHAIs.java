@@ -70,8 +70,6 @@ public class DlgBulananHAIs extends javax.swing.JDialog {
         Tgl1 = new widget.Tanggal();
         label18 = new widget.Label();
         Tgl2 = new widget.Tanggal();
-        jLabel6 = new widget.Label();
-        TCari = new widget.TextBox();
         btnCari = new widget.Button();
         label9 = new widget.Label();
         BtnPrint = new widget.Button();
@@ -122,20 +120,6 @@ public class DlgBulananHAIs extends javax.swing.JDialog {
         Tgl2.setPreferredSize(new java.awt.Dimension(95, 23));
         panelisi1.add(Tgl2);
 
-        jLabel6.setText("Key Word :");
-        jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi1.add(jLabel6);
-
-        TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(150, 23));
-        TCari.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TCariKeyPressed(evt);
-            }
-        });
-        panelisi1.add(TCari);
-
         btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         btnCari.setMnemonic('2');
         btnCari.setToolTipText("Alt+2");
@@ -155,7 +139,7 @@ public class DlgBulananHAIs extends javax.swing.JDialog {
 
         label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(20, 30));
+        label9.setPreferredSize(new java.awt.Dimension(120, 30));
         panelisi1.add(label9);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -229,7 +213,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             );
             bg.close();
             
-            File f = new File("HarianHAIs.html");            
+            File f = new File("BulananHAIs.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
             bw.write(LoadHTML.getText().replaceAll(
                     "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -286,16 +270,6 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         prosesCari();
     }//GEN-LAST:event_formWindowOpened
 
-    private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            btnCariActionPerformed(null);
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            btnCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            BtnKeluar.requestFocus();
-        }
-    }//GEN-LAST:event_TCariKeyPressed
-
     /**
     * @param args the command line arguments
     */
@@ -318,12 +292,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private widget.TextBox Kd2;
     private widget.editorpane LoadHTML;
     private widget.ScrollPane Scroll;
-    private widget.TextBox TCari;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.Button btnCari;
     private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel6;
     private widget.Label label11;
     private widget.Label label18;
     private widget.Label label9;
@@ -337,13 +309,12 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             htmlContent.append(                             
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='2%' rowspan='2'>No.</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='2'>No.R.M</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='15%' rowspan='2'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='2'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='20%' colspan='4'>Hari Pemasangan</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='20%' colspan='4'>Infeksi</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='7%' rowspan='2'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='7%' rowspan='2'>Jml.Pasien</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='23%' colspan='4'>Hari Pemasangan</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='23%' colspan='4'>Infeksi</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='2'>Deku</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='20%' colspan='3'>Hasil Kultur</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='25%' colspan='3'>Hasil Kultur</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='8%' rowspan='2'>Antibiotik</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
@@ -361,61 +332,33 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 "</tr>"
             );     
             ps=koneksi.prepareStatement(
-                    "select data_HAIs.tanggal,data_HAIs.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                    "data_HAIs.ETT,data_HAIs.CVL,data_HAIs.IVL,data_HAIs.UC,data_HAIs.VAP,data_HAIs.IAD,"+
-                    "data_HAIs.PLEB,data_HAIs.ISK,data_HAIs.DEKU,data_HAIs.SPUTUM,data_HAIs.DARAH,data_HAIs.URINE,"+
-                    "data_HAIs.ANTIBIOTIK from data_HAIs inner join reg_periksa inner join pasien on "+
-                    "data_HAIs.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
-                    "data_HAIs.tanggal between ? and ? and data_HAIs.no_rawat like ? or "+
-                    "data_HAIs.tanggal between ? and ? and reg_periksa.no_rkm_medis like ? or "+
-                    "data_HAIs.tanggal between ? and ? and  pasien.nm_pasien like ? order by data_HAIs.tanggal ");
+                    "select tanggal from data_HAIs where tanggal between ? and ? group by tanggal order by tanggal");
             try {
                 i=1;
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    deku=0;urine=0;sputum=0;darah=0;
-                    if(rs.getString("DEKU").equals("IYA")){
-                        deku=1;
-                    }
-                    if(!rs.getString("URINE").equals("")){
-                        urine=1;
-                    }
-                    if(!rs.getString("SPUTUM").equals("")){
-                        sputum=1;
-                    }
-                    if(!rs.getString("DARAH").equals("")){
-                        darah=1;
-                    }
-                    htmlContent.append(
+                    htmlContent.append(                             
                         "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("no_rkm_medis")+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("tanggal")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("ETT")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("CVL")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("IVL")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("UC")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("VAP")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("IAD")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("PLEB")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("ISK")+"</td>"+
-                            "<td valign='middle' align='center'>"+deku+"</td>"+
-                            "<td valign='middle' align='center'>"+sputum+"</td>"+
-                            "<td valign='middle' align='center'>"+darah+"</td>"+
-                            "<td valign='middle' align='center'>"+urine+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("ANTIBIOTIK")+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(ETT) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(CVL) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(IVL) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(UC) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(VAP) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(IAD) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(PLEB) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(ISK) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=? and DEKU='IYA'",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=? and SPUTUM<>''",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=? and DARAH<>''",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=? and URINE<>''",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=? and ANTIBIOTIK<>''",rs.getString("tanggal"))+"</td>"+
                         "</tr>"
-                    );
+                    ); 
                     i++;
                 }
             } catch (Exception e) {
