@@ -3532,14 +3532,14 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
             }else {
                 Valid.editTable(tabModekasir,"reg_periksa","no_rawat",TNoRw,"stts='Meninggal'");
-                if(tabModekasir.getRowCount()!=0){tampilkasir();}
                 DlgPasienMati dlgPasienMati=new DlgPasienMati(null,false);
                 dlgPasienMati.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 dlgPasienMati.setLocationRelativeTo(internalFrame1);
                 dlgPasienMati.emptTeks();
                 dlgPasienMati.setNoRm(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),2).toString()); 
                 dlgPasienMati.isCek();
-                dlgPasienMati.setVisible(true);
+                dlgPasienMati.setVisible(true);                
+                if(tabModekasir.getRowCount()!=0){tampilkasir();}
             }
             
         }
