@@ -456,7 +456,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2017" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-09-2017" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -656,10 +656,6 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
 
     private void tbObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyPressed
         if(var.getkdbangsal().equals("")){
-            var.setkdbangsal(kdgudang.getText());
-        }
-        
-        if(var.getkdbangsal().equals("")){
             Valid.textKosong(TCari,"Lokasi");                              
         }else if(tbObat.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -821,16 +817,13 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnTambahActionPerformed
 
 private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(var.getkdbangsal().equals("")){
-            var.setkdbangsal(kdgudang.getText());
-        } 
-        
         if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(TCari,"Data");
         }else if(var.getkdbangsal().equals("")){
             Valid.textKosong(TCari,"Lokasi");                              
         }else{
             try {  
+                ChkJln.setSelected(false);
                 koneksi.setAutoCommit(false);   
                 ttlhpp=0;ttljual=0;
                 for(i=0;i<tbObat.getRowCount();i++){ 
@@ -841,12 +834,12 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 pscarikapasitas.setString(1,tbObat.getValueAt(i,2).toString());
                                 carikapasitas=pscarikapasitas.executeQuery();
                                 if(carikapasitas.next()){ 
-                                    if(Sequel.menyimpantf2("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
+                                    if(Sequel.menyimpantf2("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?,?","data",12,new String[]{
                                         Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,12).toString(),
                                         tbObat.getValueAt(i,6).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),
                                         tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                        (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)))),"Ranap"                          
+                                                        (Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)))),"Ranap",kdgudang.getText()                          
                                     })==true){
                                         ttljual=ttljual+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
@@ -860,12 +853,12 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         JOptionPane.showMessageDialog(null,"Gagal Menyimpan, Kemungkinan ada data sama/kapasitas tidak ditemukan..!!");
                                     }  
                                 }else{
-                                    if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
+                                    if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?,?","data",12,new String[]{
                                         Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,12).toString(),
                                         tbObat.getValueAt(i,6).toString(),""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),
                                         tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                        Double.parseDouble(tbObat.getValueAt(i,1).toString()))),"Ranap"
+                                                        Double.parseDouble(tbObat.getValueAt(i,1).toString()))),"Ranap",kdgudang.getText()
                                     })==true){        
                                         ttljual=ttljual+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                                 Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
@@ -888,12 +881,12 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }
                         }else{
-                            if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
+                            if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?,?","data",12,new String[]{
                                 Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),TNoRw.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,12).toString(),
                                 tbObat.getValueAt(i,6).toString(),""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),
                                 tbObat.getValueAt(i,8).toString(),tbObat.getValueAt(i,9).toString(),""+(Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                         Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
-                                                Double.parseDouble(tbObat.getValueAt(i,1).toString()))),"Ranap"
+                                                Double.parseDouble(tbObat.getValueAt(i,1).toString()))),"Ranap",kdgudang.getText()
                             })==true){ 
                                 ttljual=ttljual+Double.parseDouble(tbObat.getValueAt(i,8).toString())+
                                         Double.parseDouble(tbObat.getValueAt(i,9).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*
@@ -932,6 +925,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     resep.dokter.setAlwaysOnTop(true);
                     resep.setVisible(true);
                 }
+                ChkJln.setSelected(true);
                 dispose();                         
             } catch (Exception ex) {
                 System.out.println(ex);
@@ -1015,10 +1009,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_kelasKeyPressed
 
     private void ppStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppStokActionPerformed
-        if(var.getkdbangsal().equals("")){
-            var.setkdbangsal(kdgudang.getText());
-        }
-        
         if(var.getkdbangsal().equals("")){
             Valid.textKosong(TCari,"Lokasi");                              
         }else{
@@ -1354,7 +1344,17 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         return tbObat;
     }
     
-    public void isCek(){        
+    public void isCek(){   
+        if(var.getkode().equals("Admin Utama")){
+            kdgudang.setEditable(true);
+            nmgudang.setEditable(true);
+            BtnGudang.setEnabled(true);
+        }else{
+            kdgudang.setEditable(false);
+            nmgudang.setEditable(false);
+            BtnGudang.setEnabled(false);
+        }
+        
         kdgudang.setText(var.getkdbangsal());
         Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());  
         BtnTambah.setEnabled(var.getobat());

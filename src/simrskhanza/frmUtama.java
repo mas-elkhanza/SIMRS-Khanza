@@ -12,6 +12,7 @@
 
 package simrskhanza;
 
+import laporan.DlgDataHAIs;
 import bridging.AplicareCekReferensiKamar;
 import bridging.AplicareKetersediaanKamar;
 import bridging.BPJSCekKartu;
@@ -186,13 +187,17 @@ import keuangan.DlgRBMenejemen;
 import keuangan.DlgRHKSO;
 import keuangan.DlgRHMenejemen;
 import keuangan.DlgRincianPiutangPasien;
+import laporan.DlgBulananHAIs;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
+import laporan.DlgHarianHAIs;
 import laporan.DlgICD9;
 import laporan.DlgKunjunganRalan;
 import laporan.DlgKunjunganRanap;
 import laporan.DlgPelayananRalan;
 import laporan.DlgPenyakitPd3i;
+import laporan.DlgRL4A;
 import laporan.DlgRL4ASebab;
+import laporan.DlgRL4B;
 import laporan.DlgRL4BSebab;
 import laporan.DlgRl32;
 import laporan.DlgRl33;
@@ -617,6 +622,9 @@ public class frmUtama extends javax.swing.JFrame {
         btnRl4b = new widget.ButtonBig();
         btnRl4asebab = new widget.ButtonBig();
         btnRl4bsebab = new widget.ButtonBig();
+        btnDataHAIs = new widget.ButtonBig();
+        btnHarianHAIs = new widget.ButtonBig();
+        btnBulananHAIs = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3976,6 +3984,45 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl4bsebab);
 
+        btnDataHAIs.setForeground(new java.awt.Color(40, 70, 50));
+        btnDataHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
+        btnDataHAIs.setText("Data HAIs");
+        btnDataHAIs.setIconTextGap(0);
+        btnDataHAIs.setName("btnDataHAIs"); // NOI18N
+        btnDataHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDataHAIs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataHAIsActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnDataHAIs);
+
+        btnHarianHAIs.setForeground(new java.awt.Color(40, 70, 50));
+        btnHarianHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
+        btnHarianHAIs.setText("Harian HAIs");
+        btnHarianHAIs.setIconTextGap(0);
+        btnHarianHAIs.setName("btnHarianHAIs"); // NOI18N
+        btnHarianHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHarianHAIs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHarianHAIsActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnHarianHAIs);
+
+        btnBulananHAIs.setForeground(new java.awt.Color(40, 70, 50));
+        btnBulananHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
+        btnBulananHAIs.setText("Bulanan HAIs");
+        btnBulananHAIs.setIconTextGap(0);
+        btnBulananHAIs.setName("btnBulananHAIs"); // NOI18N
+        btnBulananHAIs.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBulananHAIs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBulananHAIsActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnBulananHAIs);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3984,7 +4031,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/09/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/09/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8114,7 +8161,14 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_MnInfoBed2ActionPerformed
 
     private void btnRl4aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRl4aActionPerformed
-       
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRL4A aplikasi=new DlgRL4A(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRl4aActionPerformed
 
     private void btnAplicareReferensiKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicareReferensiKamarActionPerformed
@@ -8430,7 +8484,14 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_btnCatatanPasienActionPerformed
 
     private void btnRl4bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRl4bActionPerformed
-        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRL4B aplikasi=new DlgRL4B(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRl4bActionPerformed
 
     private void btnRl4asebabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRl4asebabActionPerformed
@@ -8454,6 +8515,41 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRl4bsebabActionPerformed
+
+    private void btnDataHAIsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataHAIsActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDataHAIs aplikasi=new DlgDataHAIs(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.isCek();
+        aplikasi.tampil();
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnDataHAIsActionPerformed
+
+    private void btnHarianHAIsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHarianHAIsActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgHarianHAIs aplikasi=new DlgHarianHAIs(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnHarianHAIsActionPerformed
+
+    private void btnBulananHAIsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBulananHAIsActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBulananHAIs aplikasi=new DlgBulananHAIs(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnBulananHAIsActionPerformed
 
     /**
     * @param args the command line arguments
@@ -8529,6 +8625,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnBayarPiutang;
     private widget.ButtonBig btnBeriObat;
     private widget.ButtonBig btnBubes;
+    private widget.ButtonBig btnBulananHAIs;
     private widget.ButtonBig btnCashFlow;
     private widget.ButtonBig btnCatatanPasien;
     private widget.ButtonBig btnCekBPJSDiagnosa;
@@ -8543,6 +8640,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekInhealthPoli;
     private widget.ButtonBig btnClosingKasir;
     private widget.ButtonBig btnDaruratStok;
+    private widget.ButtonBig btnDataHAIs;
     private widget.ButtonBig btnDataPenjualan;
     private widget.ButtonBig btnDataPenyerahanDarah;
     private widget.ButtonBig btnDeposit;
@@ -8552,6 +8650,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnDokter;
     private widget.ButtonBig btnFrekuensiRalan;
     private widget.ButtonBig btnFrekuensiRanap;
+    private widget.ButtonBig btnHarianHAIs;
     private widget.ButtonBig btnHarianKamar;
     private widget.ButtonBig btnHutangObat;
     private widget.ButtonBig btnICD;
@@ -9785,6 +9884,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnLamaPelayananRalan);                 
                 jmlmenu++;
             }
+            
+            if(var.getharian_HAIs()==true){  
+                Panelmenu.add(btnHarianHAIs);                 
+                jmlmenu++;
+            }
+            
+            if(var.getbulanan_HAIs()==true){  
+                Panelmenu.add(btnBulananHAIs);                 
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==9){   
             jmlmenu=0;
             if(var.getkamar()==true){
@@ -10052,6 +10161,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getdiagnosa_pasien()==true){
                 Panelmenu.add(btnDiagnosa); 
+                jmlmenu++;
+            }
+            
+            if(var.getdata_HAIs()==true){
+                Panelmenu.add(btnDataHAIs); 
                 jmlmenu++;
             }
 
@@ -10964,6 +11078,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             Panelmenu.add(btnLamaPelayananRalan);                 
             jmlmenu++;
         }
+        
+        if(var.getharian_HAIs()==true){  
+            Panelmenu.add(btnHarianHAIs);                 
+            jmlmenu++;
+        }
+        
+        if(var.getbulanan_HAIs()==true){  
+            Panelmenu.add(btnBulananHAIs);                 
+            jmlmenu++;
+        }
 
         if(var.getkamar()==true){
             Panelmenu.add(btnKamar);
@@ -11228,6 +11352,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getdiagnosa_pasien()==true){
             Panelmenu.add(btnDiagnosa); 
+            jmlmenu++;
+        }
+        
+        if(var.getdata_HAIs()==true){
+            Panelmenu.add(btnDataHAIs); 
             jmlmenu++;
         }
 
@@ -12430,6 +12559,20 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }                
         }
+        
+        if(var.getharian_HAIs()==true){  
+            if(btnHarianHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHarianHAIs);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbulanan_HAIs()==true){  
+            if(btnBulananHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBulananHAIs);                 
+                jmlmenu++;
+            }                
+        }
 
         if(var.getkamar()==true){
             if(btnKamar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -12798,6 +12941,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getdiagnosa_pasien()==true){
             if(btnDiagnosa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDiagnosa); 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getdata_HAIs()==true){
+            if(btnDataHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDataHAIs); 
                 jmlmenu++;
             }                
         }

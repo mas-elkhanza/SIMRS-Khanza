@@ -216,7 +216,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             );
             bg.close();
             
-            File f = new File("rl4a.html");            
+            File f = new File("rl4bsebab.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
             bw.write(LoadHTML.getText().replaceAll(
                     "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -311,7 +311,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='2%' rowspan='3'>No.Urut</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>No.Daftar Terperinci</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='18%' rowspan='3'>Golongan Sebab Penyakit</td>"+
@@ -320,7 +320,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Hidup (23+24)</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Mati</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>0-6 hr</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>7-28hr</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>28hr-<1th</td>"+
@@ -333,7 +333,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' rowspan='2'>LK</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' rowspan='2'>PR</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
@@ -353,7 +353,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>1</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>2</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>3</td>"+
@@ -517,32 +517,32 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         }
                     }
                     htmlContent.append(
-                        "<tr class='isi3'>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+i+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+rs.getString("kd_penyakit")+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+rs.getString("nm_penyakit")+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr0s6l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr0s6p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr7s28l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr7s28p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr28s1thl+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr28s1thp+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th1s4l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th1s4p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th5s14l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th5s14p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th15s24l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th15s24p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th25s44l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th25s44p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th45s64l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th45s64p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+lbth65l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+lbth65p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l)+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+(hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p)+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l+hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p-mati)+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+mati+"</td>"+
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'>"+i+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("kd_penyakit")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("nm_penyakit")+"</td>"+
+                            "<td valign='middle' align='center'>"+hr0s6l+"</td>"+
+                            "<td valign='middle' align='center'>"+hr0s6p+"</td>"+
+                            "<td valign='middle' align='center'>"+hr7s28l+"</td>"+
+                            "<td valign='middle' align='center'>"+hr7s28p+"</td>"+
+                            "<td valign='middle' align='center'>"+hr28s1thl+"</td>"+
+                            "<td valign='middle' align='center'>"+hr28s1thp+"</td>"+
+                            "<td valign='middle' align='center'>"+th1s4l+"</td>"+
+                            "<td valign='middle' align='center'>"+th1s4p+"</td>"+
+                            "<td valign='middle' align='center'>"+th5s14l+"</td>"+
+                            "<td valign='middle' align='center'>"+th5s14p+"</td>"+
+                            "<td valign='middle' align='center'>"+th15s24l+"</td>"+
+                            "<td valign='middle' align='center'>"+th15s24p+"</td>"+
+                            "<td valign='middle' align='center'>"+th25s44l+"</td>"+
+                            "<td valign='middle' align='center'>"+th25s44p+"</td>"+
+                            "<td valign='middle' align='center'>"+th45s64l+"</td>"+
+                            "<td valign='middle' align='center'>"+th45s64p+"</td>"+
+                            "<td valign='middle' align='center'>"+lbth65l+"</td>"+
+                            "<td valign='middle' align='center'>"+lbth65p+"</td>"+
+                            "<td valign='middle' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l)+"</td>"+
+                            "<td valign='middle' align='center'>"+(hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p)+"</td>"+
+                            "<td valign='middle' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l+hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p-mati)+"</td>"+
+                            "<td valign='middle' align='center'>"+mati+"</td>"+
                         "</tr>"
                     );
                     i++;

@@ -514,8 +514,9 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
             Sequel.AutoComitFalse();
             for(i=0;i<tbTindakan.getRowCount();i++){ 
                 if(tbTindakan.getValueAt(i,0).toString().equals("true")){
-                    Sequel.menyimpan("rawat_jl_dr","?,?,?,?,?,?,?,?,?", "Tindakan",9,new String[]{
+                    Sequel.menyimpan("rawat_jl_dr","?,?,?,?,?,?,?,?,?,?,?", "Tindakan",11,new String[]{
                         NoRawat.getText(),tbTindakan.getValueAt(i,1).toString(),kd_dokter,
+                        Sequel.cariIsi("select current_date()"),Sequel.cariIsi("select current_time()"),
                         tbTindakan.getValueAt(i,5).toString(),tbTindakan.getValueAt(i,6).toString(),
                         tbTindakan.getValueAt(i,7).toString(),tbTindakan.getValueAt(i,8).toString(),
                         tbTindakan.getValueAt(i,9).toString(),tbTindakan.getValueAt(i,4).toString()
@@ -532,7 +533,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                                 pscarikapasitas.setString(1,tbObat.getValueAt(i,2).toString());
                                 carikapasitas=pscarikapasitas.executeQuery();
                                 if(carikapasitas.next()){ 
-                                    if(Sequel.menyimpantf2("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
+                                    if(Sequel.menyimpantf2("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?,?","data",12,new String[]{
                                         Sequel.cariIsi("select current_date()"),
                                         Sequel.cariIsi("select current_time()"),
                                         NoRawat.getText(),
@@ -542,7 +543,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                                         ""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),
                                         tbObat.getValueAt(i,9).toString(),
                                         tbObat.getValueAt(i,10).toString(),
-                                        ""+(Double.parseDouble(tbObat.getValueAt(i,9).toString())+Double.parseDouble(tbObat.getValueAt(i,10).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)))),"Ralan"                          
+                                        ""+(Double.parseDouble(tbObat.getValueAt(i,9).toString())+Double.parseDouble(tbObat.getValueAt(i,10).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)))),"Ralan",bangsal                          
                                     })==true){
                                         Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
                                         Sequel.menyimpan("gudangbarang","'"+tbObat.getValueAt(i,2).toString()+"','"+bangsal+"','-"+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1))+"'", 
@@ -551,11 +552,11 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                                         JOptionPane.showMessageDialog(null,"Gagal Menyimpan, Kemungkinan ada data sama/kapasitas tidak ditemukan..!!");
                                     }  
                                 }else{
-                                    if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
+                                    if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?,?","data",12,new String[]{
                                         Sequel.cariIsi("select current_date()"),Sequel.cariIsi("select current_time()"),NoRawat.getText(),tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,11).toString(),
                                         tbObat.getValueAt(i,6).toString(),""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),
                                         tbObat.getValueAt(i,9).toString(),tbObat.getValueAt(i,10).toString(),
-                                        ""+(Double.parseDouble(tbObat.getValueAt(i,9).toString())+Double.parseDouble(tbObat.getValueAt(i,10).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*Double.parseDouble(tbObat.getValueAt(i,1).toString()))),"Ralan"
+                                        ""+(Double.parseDouble(tbObat.getValueAt(i,9).toString())+Double.parseDouble(tbObat.getValueAt(i,10).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*Double.parseDouble(tbObat.getValueAt(i,1).toString()))),"Ralan",bangsal
                                     })==true){
                                         Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,Double.parseDouble(tbObat.getValueAt(i,1).toString()),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
                                         Sequel.menyimpan("gudangbarang","'"+tbObat.getValueAt(i,2).toString()+"','"+bangsal+"','-"+Double.parseDouble(tbObat.getValueAt(i,1).toString())+"'", 
@@ -573,7 +574,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                                 }
                             }
                         }else{
-                            if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?","data",10,new String[]{
+                            if(Sequel.menyimpantf("detail_pemberian_obat","?,?,?,?,?,?,?,?,?,?,?,?","data",12,new String[]{
                                 Sequel.cariIsi("select current_date()"),
                                 Sequel.cariIsi("select current_time()"),
                                 NoRawat.getText(),
@@ -583,7 +584,7 @@ public final class DlgBarcodeRalan extends javax.swing.JDialog {
                                 ""+Double.parseDouble(tbObat.getValueAt(i,1).toString()),
                                 tbObat.getValueAt(i,9).toString(),
                                 tbObat.getValueAt(i,10).toString(),
-                                ""+(Double.parseDouble(tbObat.getValueAt(i,9).toString())+Double.parseDouble(tbObat.getValueAt(i,10).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*Double.parseDouble(tbObat.getValueAt(i,1).toString())))
+                                ""+(Double.parseDouble(tbObat.getValueAt(i,9).toString())+Double.parseDouble(tbObat.getValueAt(i,10).toString())+(Double.parseDouble(tbObat.getValueAt(i,6).toString())*Double.parseDouble(tbObat.getValueAt(i,1).toString()))),"Ralan",bangsal
                             })==true){
                                 Trackobat.catatRiwayat(tbObat.getValueAt(i,2).toString(),0,Double.parseDouble(tbObat.getValueAt(i,1).toString()),"Pemberian Obat",var.getkode(),bangsal,"Simpan");
                                 Sequel.menyimpan("gudangbarang","'"+tbObat.getValueAt(i,2).toString()+"','"+bangsal+"','-"+Double.parseDouble(tbObat.getValueAt(i,1).toString())+"'", 
