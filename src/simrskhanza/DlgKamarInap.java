@@ -3194,8 +3194,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             "',trf_kamar='"+TTarif.getText()+"',jam_keluar='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+
                             "',ttl_biaya='"+ttlbiaya.getText()+"',stts_pulang='"+cmbStatus.getSelectedItem()+"',diagnosa_akhir='"+diagnosaakhir.getText()+"',lama='"+TJmlHari.getText()+"'");                
                     if(cmbStatus.getSelectedItem().equals("Meninggal")){
-                        Sequel.menyimpan("pasien_mati","'"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+"','"+
-                                       cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','"+diagnosaakhir.getText()+"'","pasien");
+                        DlgPasienMati dlgPasienMati=new DlgPasienMati(null,false);
+                        dlgPasienMati.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgPasienMati.setLocationRelativeTo(internalFrame1);
+                        dlgPasienMati.emptTeks();
+                        dlgPasienMati.setNoRm(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),1).toString()); 
+                        dlgPasienMati.isCek();
+                        dlgPasienMati.setVisible(true);
                     }else if(cmbStatus.getSelectedItem().equals("Rujuk")){
                         DlgRujuk dlgrjk=new DlgRujuk(null,false);
                         dlgrjk.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);

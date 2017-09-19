@@ -1068,4 +1068,13 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
         BtnPrint.setEnabled(var.getpasien_meninggal());
     }
     
+    public void setNoRm(String norm) {
+        TNoRM.setText(norm);  
+        isPsien();       
+    }
+    
+    private void isPsien() {
+        Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRM.getText());
+    }
+    
 }
