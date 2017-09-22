@@ -81,8 +81,8 @@ public class grafikpembeliantersedikit extends JDialog {
 
             try {
                 Statement stat = koneksiDB.condb().createStatement();
-                ResultSet rs = stat.executeQuery("SELECT detailbeli.kode_brng,sum(detailbeli.jumlah),sum(detailbeli.subtotal) from pembelian inner join detailbeli "+
-                        " on pembelian.no_faktur=detailbeli.no_faktur where "+symbol+" group by kode_brng order by sum(detailbeli.jumlah) asc limit 10");
+                ResultSet rs = stat.executeQuery("SELECT databarang.nama_brng,sum(detailbeli.jumlah),sum(detailbeli.subtotal) from pembelian inner join detailbeli inner join databarang"+
+                        " on pembelian.no_faktur=detailbeli.no_faktur and detailbeli.kode_brng=databarang.kode_brng where "+symbol+" group by databarang.nama_brng order by sum(detailbeli.jumlah) asc limit 10");
                 while (rs.next()) {
                     String tksbr=rs.getString(1)+"("+df2.format(rs.getDouble(2))+"; Rp"+df2.format(rs.getDouble(3))+")";
                     double njop=rs.getDouble(2);
@@ -111,8 +111,8 @@ public class grafikpembeliantersedikit extends JDialog {
 
              try {
                 Statement stat = koneksiDB.condb().createStatement();
-                ResultSet rs = stat.executeQuery("SELECT detailbeli.kode_brng,sum(detailbeli.jumlah),sum(detailbeli.subtotal) from pembelian inner join detailbeli "+
-                        " on pembelian.no_faktur=detailbeli.no_faktur where "+symbol+" group by kode_brng order by sum(detailbeli.jumlah) asc limit 10");
+                ResultSet rs = stat.executeQuery("SELECT databarang.nama_brng,sum(detailbeli.jumlah),sum(detailbeli.subtotal) from pembelian inner join detailbeli inner join databarang"+
+                        " on pembelian.no_faktur=detailbeli.no_faktur and detailbeli.kode_brng=databarang.kode_brng where "+symbol+" group by databarang.nama_brng order by sum(detailbeli.jumlah) asc limit 10");
                 while (rs.next()) {
                     String tksbr=rs.getString(1)+"("+df2.format(rs.getDouble(2))+"; Rp"+df2.format(rs.getDouble(3))+")";
                     double njop=rs.getDouble(2);
