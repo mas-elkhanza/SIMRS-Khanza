@@ -30,8 +30,8 @@
 		$datatime=date("Y-m-d H:i:s");
 		$date1      = $_POST['tanggal1']; 
         $date2      = $_POST['tanggal2'];
-		$tanggal1=date("Y-m-d",strtotime($date1));
-		$tanggal2=date("Y-m-d",strtotime($date2));
+		$tanggal1=date("y-m-d",strtotime($date1));
+		$tanggal2=date("y-m-d",strtotime($date2));
 		$datatime=date("Y-m-d H:i:s");
 		echo"
 		<input type='button' value='Back' onclick=self.history.go(-1)>
@@ -50,6 +50,17 @@
 				 GROUP BY poliklinik.nm_poli";            
         $hasil=bukaquery($_sql);
                  while($baris = mysql_fetch_array($hasil)) { 
+				//simpan data untuk kirim ke dinkes
+				$myvars="";
+				$post[] = array(
+	
+					'koders'=>$baris['kode_ppk'],
+					'tanggal'=>$tanggal2,
+					'namainstalasi'=>'Instalasi Rawat jalan',
+					'namaruangan'=>$baris['nm_poli'],
+					'jumlahpasien'=>$baris['jumlah_pasien'],
+					'updatedate'=>$datatime,
+					);
 		echo"
 		</tr>
 		</thead>
@@ -62,7 +73,35 @@
                 } 
 		echo"
 		<table>";   
-		break ; 
+		//keep data dengan JSON
+		$myvars=json_encode($post);
+
+
+?>
+
+<input id = 'content' type='text' name='content' value='<?php echo $myvars; ?>'>
+<div id="result"></div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $.ajax({
+	        url: "http://202.147.199.11/wsdashboarddinkes/wskunjunganpasienruangan.php",
+	        type: "POST",
+	        data: {
+				data: $("#content").val()
+			},
+	        dataType: "JSON",
+	        success: function (jsonStr) {
+	            $("#result").text(JSON.stringify(jsonStr));
+	        }
+	    });
+	});
+</script>
+	
+	
+<!-- <button id="submit" name="submit" type="submit">Send</buttton> -->
+		<?php break ; 
 }
 ?>
     </body>

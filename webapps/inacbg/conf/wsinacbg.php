@@ -2,17 +2,17 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "d2a382fc9d2dd3cdd000cf4c59fee76b98e536e3811006e89c699c777a4d18ed";   
+       $keyRS = "7dd3a2925702935ddf79ef12d7dc5b894cfdfeb87eac2a087e9d9208ab7bdaed";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://192.168.0.103/E-Klaim/ws.php";
+        $UrlWS = "http://192.168.3.26/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "BP";
+        $kelasRS = "CP";
         return $kelasRS;
     }
 
@@ -241,7 +241,7 @@
                    }';
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
-            KirimKlaimIndividualKeDC($nomor_sep);
+            //KirimKlaimIndividualKeDC($nomor_sep);
         }
     }
     
