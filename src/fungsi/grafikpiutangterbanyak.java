@@ -81,8 +81,9 @@ public class grafikpiutangterbanyak extends JDialog {
 
             try {
                 Statement stat = koneksiDB.condb().createStatement();
-                ResultSet rs = stat.executeQuery("SELECT detailpiutang.kode_brng,sum(detailpiutang.jumlah),sum(detailpiutang.total) from piutang inner join detailpiutang "+
-                        " on piutang.nota_piutang=detailpiutang.nota_piutang where "+symbol+" group by kode_brng order by sum(detailpiutang.jumlah) desc limit 10");
+                ResultSet rs = stat.executeQuery(
+                        "SELECT databarang.nama_brng,sum(detailpiutang.jumlah),sum(detailpiutang.total) from piutang inner join detailpiutang inner join databarang "+
+                        " on piutang.nota_piutang=detailpiutang.nota_piutang and detailpiutang.kode_brng=databarang.kode_brng where "+symbol+" group by databarang.nama_brng order by sum(detailpiutang.jumlah) desc limit 10");
                 while (rs.next()) {
                     String tksbr=rs.getString(1)+"("+df2.format(rs.getDouble(2))+"; Rp"+df2.format(rs.getDouble(3))+")";
                     double njop=rs.getDouble(2);
@@ -111,8 +112,8 @@ public class grafikpiutangterbanyak extends JDialog {
 
              try {
                 Statement stat = koneksiDB.condb().createStatement();
-                ResultSet rs = stat.executeQuery("SELECT detailpiutang.kode_brng,sum(detailpiutang.jumlah),sum(detailpiutang.total) from piutang inner join detailpiutang "+
-                        " on piutang.nota_piutang=detailpiutang.nota_piutang where "+symbol+" group by kode_brng order by sum(detailpiutang.jumlah) desc limit 10");
+                ResultSet rs = stat.executeQuery("SELECT databarang.nama_brng,sum(detailpiutang.jumlah),sum(detailpiutang.total) from piutang inner join detailpiutang inner join databarang "+
+                        " on piutang.nota_piutang=detailpiutang.nota_piutang and detailpiutang.kode_brng=databarang.kode_brng where "+symbol+" group by databarang.nama_brng order by sum(detailpiutang.jumlah) desc limit 10");
                 while (rs.next()) {
                     String tksbr=rs.getString(1)+"("+df2.format(rs.getDouble(2))+"; Rp"+df2.format(rs.getDouble(3))+")";
                     double njop=rs.getDouble(2);

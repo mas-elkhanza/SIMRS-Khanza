@@ -30,8 +30,9 @@
 		$datatime=date("Y-m-d H:i:s");
 		$date1      = $_POST['tanggal1']; 
         $date2      = $_POST['tanggal2'];
-		$tanggal1=date("Y-m-d",strtotime($date1));
-		$tanggal2=date("Y-m-d",strtotime($date2));
+		$tanggal1=date("y-m-d",strtotime($date1));
+		$tanggal2=date("y-m-d",strtotime($date2));
+		$datatime=date("Y-m-d H:i:s");
 
       
 		//query poliklinik
@@ -84,6 +85,16 @@
         while($baris = mysql_fetch_array($hasil)) {
 				$jml_pasien=$baris['jumlah_pasien'];
 		}
+		
+		$post[] = array(
+	
+					'koders'=>$k_ppk,
+					'tanggal'=>$tanggal2,
+					'namainstalasi'=>$instansi,
+					'statusdaftar'=>$status_pasien,
+					'jumlahpasien'=>$jml_pasien,
+					'updatedate'=>$datatime,
+				);
 		echo"<td>$instansi</td>
 			 <td>$status_pasien</td>
 			 <td>$jml_pasien</td>";
@@ -98,6 +109,16 @@
 		while($baris = mysql_fetch_array($hasil)) {
 				$jml_pasien=$baris['jumlah_pasien'];
 		}
+		
+			$post[] = array(
+	
+					'koders'=>$k_ppk,
+					'tanggal'=>$tanggal2,
+					'namainstalasi'=>$instansi,
+					'statusdaftar'=>$status_pasien,
+					'jumlahpasien'=>$jml_pasien,
+					'updatedate'=>$datatime,
+				);
 		echo"<td>$instansi</td>
 			 <td>$status_pasien</td>
 			 <td>$jml_pasien</td>";
@@ -112,6 +133,15 @@
 		while($baris = mysql_fetch_array($hasil)) {
 				$jml_pasien=$baris['jumlah_pasien'];
 		}
+			$post[] = array(
+	
+					'koders'=>$k_ppk,
+					'tanggal'=>$tanggal2,
+					'namainstalasi'=>$instansi,
+					'statusdaftar'=>$status_pasien,
+					'jumlahpasien'=>$jml_pasien,
+					'updatedate'=>$datatime,
+				);
 		echo"<td>$instansi</td>
 			 <td>$status_pasien</td>
 			 <td>$jml_pasien</td>";
@@ -122,7 +152,32 @@
                 } 
 		echo"
 		<table>";   
-		break ; 
+		$myvars=json_encode($post);
+		
+?>
+<input id = 'content' type='text' name='content' value='<?php echo $myvars; ?>'>
+<div id="result"></div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $.ajax({
+	        url: "http://202.147.199.11/wsdashboarddinkes/wskunjunganpasienstatusdaftar.php",
+	        type: "POST",
+	        data: {
+				data: $("#content").val()
+			},
+	        dataType: "JSON",
+	        success: function (jsonStr) {
+	            $("#result").text(JSON.stringify(jsonStr));
+	        }
+	    });
+	});
+</script>
+
+	
+<!-- <button id="submit" name="submit" type="submit">Send</buttton> -->
+	<?php break ; 
 }
 ?>	
     </body>

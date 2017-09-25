@@ -30,8 +30,8 @@
 		$datatime=date("Y-m-d H:i:s");
 		$date1      = $_POST['tanggal1']; 
         $date2      = $_POST['tanggal2'];
-		$tanggal1=date("Y-m-d",strtotime($date1));
-		$tanggal2=date("Y-m-d",strtotime($date2));
+		$tanggal1=date("y-m-d",strtotime($date1));
+		$tanggal2=date("y-m-d",strtotime($date2));
 		$datatime=date("Y-m-d H:i:s");
 
       
@@ -72,14 +72,6 @@
 		
     foreach($_instalasi as $instansi) {
 		echo"
-		<td>Nama Instalasi</td>
-		<td>Kode Penyakit</td>
-		<td>Nama Penyakit</td>
-		<td>Jumlah Pasien</td>
-		<td>Nama Instalasi</td>
-		<td>Kode Penyakit</td>
-		<td>Nama Penyakit</td>
-		<td>Jumlah Pasien</td>
 		</tr>
 		</thead>
 		<td>$k_ppk</td>
@@ -98,6 +90,18 @@
 				$kode_penyakit=$baris['kd_penyakit'];
 				$nama_penyakit=$baris['nm_penyakit'];
 				$jml_pasien=$baris['jumlah_pasien'];
+		
+		
+		$post[] = array(
+	
+					'koders'=>$k_ppk,
+					'tanggal'=>$tanggal2,
+					'namainstalasi'=>$instansi,
+					'kodediagnosa'=>$kode_penyakit,
+					'namadiagnosa'=>$nama_penyakit,
+					'jumlahpasien'=>$jml_pasien,
+					'updatedate'=>$datatime,
+		);
 		echo"<td>$instansi</td>
 			 <td>$kode_penyakit</td>
 			 <td>$nama_penyakit</td>
@@ -118,6 +122,18 @@
 				$kode_penyakit=$baris['kd_penyakit'];
 				$nama_penyakit=$baris['nm_penyakit'];
 				$jml_pasien=$baris['jumlah_pasien'];
+		
+		
+			$post[] = array(
+	
+					'koders'=>$k_ppk,
+					'tanggal'=>$tanggal2,
+					'namainstalasi'=>$instansi,
+					'kodediagnosa'=>$kode_penyakit,
+					'namadiagnosa'=>$nama_penyakit,
+					'jumlahpasien'=>$jml_pasien,
+					'updatedate'=>$datatime,
+				);
 		echo"<td>$instansi</td>
 			 <td>$kode_penyakit</td>
 			 <td>$nama_penyakit</td>
@@ -138,6 +154,17 @@
 				$kode_penyakit=$baris['kd_penyakit'];
 				$nama_penyakit=$baris['nm_penyakit'];
 				$jml_pasien=$baris['jumlah_pasien'];
+		
+			$post[] = array(
+	
+					'koders'=>$k_ppk,
+					'tanggal'=>$tanggal2,
+					'namainstalasi'=>$instansi,
+					'kodediagnosa'=>$kode_penyakit,
+					'namadiagnosa'=>$nama_penyakit,
+					'jumlahpasien'=>$jml_pasien,
+					'updatedate'=>$datatime,
+				);
 		echo"<td>$instansi</td>
 			 <td>$kode_penyakit</td>
 			 <td>$nama_penyakit</td>
@@ -150,7 +177,37 @@
                 } 
 		echo"
 		<table>";   
-		 break ; 
+		echo json_decode($post);
+		$myvars=json_encode($post);
+		
+		
+		
+
+
+?>
+<input id = 'content' type='text' name='content' value='<?php echo $myvars; ?>'>
+<div id="result"></div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+	    $.ajax({
+	        url: "http://202.147.199.11/wsdashboarddinkes/wskunjunganpasiendiagnosa.php",
+	        type: "POST",
+	        data: {
+				data: $("#content").val()
+			},
+	        dataType: "JSON",
+	        success: function (jsonStr) {
+	            $("#result").text(JSON.stringify(jsonStr));
+	        }
+	    });
+	});
+</script>
+
+	
+<!-- <button id="submit" name="submit" type="submit">Send</buttton> -->
+		<?php break ; 
 }
 ?>	
     </body>

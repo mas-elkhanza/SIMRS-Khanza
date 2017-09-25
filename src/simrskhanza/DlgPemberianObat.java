@@ -1099,16 +1099,16 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             var.setform("DlgPemberianObat");
             if(var.getkode().equals("Admin Utama")){
                 if(status.equals("ranap")){
-                    dlgobt.isCek();
                     dlgobt.setNoRm(TNoRw.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
                     dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                    dlgobt.isCek();
                     dlgobt.tampil();
                     dlgobt.setLocationRelativeTo(internalFrame1);
                     dlgobt.setVisible(true);
                 }else if(status.equals("ralan")){
-                    dlgobtjalan.isCek();
                     dlgobtjalan.setNoRm(TNoRw.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
                                         Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
+                    dlgobtjalan.isCek();
                     dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     dlgobtjalan.tampilobat();
                     dlgobtjalan.setLocationRelativeTo(internalFrame1);
@@ -1122,17 +1122,17 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                     TCari.requestFocus();
                 }else{ 
                     if(status.equals("ranap")){
-                        dlgobt.isCek();
                         dlgobt.setNoRm(TNoRw.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
                         dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgobt.isCek();
                         dlgobt.tampil();
                         dlgobt.setLocationRelativeTo(internalFrame1);
                         dlgobt.setVisible(true);
                     }else if(status.equals("ralan")){
-                        dlgobtjalan.isCek();
                         dlgobtjalan.setNoRm(TNoRw.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
                                             Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
                         dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgobtjalan.isCek();
                         dlgobtjalan.tampilobat();
                         dlgobtjalan.setLocationRelativeTo(internalFrame1);
                         dlgobtjalan.setVisible(true);

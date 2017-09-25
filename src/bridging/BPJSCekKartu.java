@@ -899,7 +899,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         jLabel19.setBounds(235, 85, 85, 23);
 
         CmbStts.setBackground(new java.awt.Color(245, 253, 240));
-        CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENIKAH", "SINGLE", "JANDA", "DUDHA", "JOMBLO" }));
+        CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENIKAH", "BELUM MENIKAH", "JANDA", "DUDHA" }));
         CmbStts.setLightWeightPopupEnabled(false);
         CmbStts.setName("CmbStts"); // NOI18N
         CmbStts.setOpaque(false);
@@ -2853,11 +2853,12 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "       Kode Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText()
                 });
-                Kdpnj.setText(response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText());
                 tabMode.addRow(new Object[]{
                     "       Nama Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText()
-                });                
-                nmpnj.setText(response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText());
+                });            
+                Kdpnj.setText("BPJ");
+                nmpnj.setText("BPJS");
+                Pekerjaan.setText(response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText());
                 tabMode.addRow(new Object[]{
                     "Kelas Tanggungan",":"
                 });
@@ -3317,9 +3318,17 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     }
                 }                     
             }else{
+                Sequel.meghapus("kamar_inap","no_rawat",TNoRw.getText());
+                Sequel.meghapus("diagnosa_pasien","no_rawat",TNoRw.getText());
+                Sequel.meghapus("rujuk_masuk","no_rawat",TNoRw.getText());
+                Sequel.meghapus("reg_periksa","no_rawat",TNoRw.getText());
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }
         }catch (Exception ex) {
+            Sequel.meghapus("kamar_inap","no_rawat",TNoRw.getText());
+            Sequel.meghapus("diagnosa_pasien","no_rawat",TNoRw.getText());
+            Sequel.meghapus("rujuk_masuk","no_rawat",TNoRw.getText());
+            Sequel.meghapus("reg_periksa","no_rawat",TNoRw.getText());
             System.out.println("Notifikasi Bridging : "+ex);
             if(ex.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
@@ -3391,13 +3400,13 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");                                     
                     Sequel.menyimpan2("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
                     Sequel.menyimpan2("diagnosa_pasien","?,?,?,?","Penyakit",4,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1"});                            
-                    if(Sequel.menyimpantf2("kamar_inap","'"+TNoRw.getText()+"','"+kdpoli.getText()+"','"+TBiaya.getText()+"','"+
+                    if(Sequel.menyimpantf2("kamar_inap","'"+TNoRw.getText()+"','"+KdPoli.getText()+"','"+TBiaya.getText()+"','"+
                             KdPenyakit.getText()+"','-','"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"','"+
                             TanggalSEP.getSelectedItem().toString().substring(11,19)+"','0000-00-00',"+
                             "'00:00:00','"+jmlhari+"','"+biaya+"','-'","No.Rawat"
                         )==true){
                             Sequel.mengedit("reg_periksa","no_rawat='"+TNoRw.getText()+"'","status_lanjut='Ranap'");
-                            Sequel.mengedit("kamar","kd_kamar='"+kdpoli.getText()+"'","status='ISI'"); 
+                            Sequel.mengedit("kamar","kd_kamar='"+KdPoli.getText()+"'","status='ISI'"); 
                             insertSEP();
                     }      
             }

@@ -81,8 +81,8 @@ public class grafikpenjualantersedikit extends JDialog {
 
             try {
                 Statement stat = koneksiDB.condb().createStatement();
-                ResultSet rs = stat.executeQuery("SELECT detailjual.kode_brng,sum(detailjual.jumlah),sum(detailjual.total) from penjualan inner join detailjual "+
-                        " on penjualan.nota_jual=detailjual.nota_jual where "+symbol+" group by kode_brng order by sum(detailjual.jumlah) asc limit 10");
+                ResultSet rs = stat.executeQuery("SELECT  databarang.nama_brng,sum(detailjual.jumlah),sum(detailjual.total) from penjualan inner join detailjual inner join databarang "+
+                        " on penjualan.nota_jual=detailjual.nota_jual and detailjual.kode_brng=databarang.kode_brng where "+symbol+" group by databarang.nama_brng order by sum(detailjual.jumlah) asc limit 10");
                 while (rs.next()) {
                     String tksbr=rs.getString(1)+"("+df2.format(rs.getDouble(2))+"; Rp"+df2.format(rs.getDouble(3))+")";
                     double njop=rs.getDouble(2);
@@ -111,8 +111,8 @@ public class grafikpenjualantersedikit extends JDialog {
 
              try {
                 Statement stat = koneksiDB.condb().createStatement();
-                ResultSet rs = stat.executeQuery("SELECT detailjual.kode_brng,sum(detailjual.jumlah),sum(detailjual.total) from penjualan inner join detailjual "+
-                        " on penjualan.nota_jual=detailjual.nota_jual where "+symbol+" group by kode_brng order by sum(detailjual.jumlah) asc limit 10");
+                ResultSet rs = stat.executeQuery("SELECT  databarang.nama_brng,sum(detailjual.jumlah),sum(detailjual.total) from penjualan inner join detailjual inner join databarang "+
+                        " on penjualan.nota_jual=detailjual.nota_jual and detailjual.kode_brng=databarang.kode_brng where "+symbol+" group by databarang.nama_brng order by sum(detailjual.jumlah) asc limit 10");
                 while (rs.next()) {
                     String tksbr=rs.getString(1)+"("+df2.format(rs.getDouble(2))+"; Rp"+df2.format(rs.getDouble(3))+")";
                     double njop=rs.getDouble(2);
@@ -154,7 +154,7 @@ public class grafikpenjualantersedikit extends JDialog {
                      renderer2);
              subplot2.setDomainGridlinesVisible(true);
 
-             CategoryAxis domainAxis = new CategoryAxis("Grafik 10 Barang Penjualan Terbanyak");
+             CategoryAxis domainAxis = new CategoryAxis("Grafik 10 Barang Penjualan Tersedikit");
              CombinedDomainCategoryPlot plot = new CombinedDomainCategoryPlot(domainAxis);
 //             CombinedCategoryPlot plot = new CombinedCategoryPlot(
 //                     domainAxis, new NumberAxis("Range"));

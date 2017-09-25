@@ -456,7 +456,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-08-2017" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-09-2017" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -656,10 +656,6 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
 
     private void tbObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyPressed
         if(var.getkdbangsal().equals("")){
-            var.setkdbangsal(kdgudang.getText());
-        }
-        
-        if(var.getkdbangsal().equals("")){
             Valid.textKosong(TCari,"Lokasi");                              
         }else if(tbObat.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -821,10 +817,6 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnTambahActionPerformed
 
 private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(var.getkdbangsal().equals("")){
-            var.setkdbangsal(kdgudang.getText());
-        } 
-        
         if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(TCari,"Data");
         }else if(var.getkdbangsal().equals("")){
@@ -1017,10 +1009,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_kelasKeyPressed
 
     private void ppStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppStokActionPerformed
-        if(var.getkdbangsal().equals("")){
-            var.setkdbangsal(kdgudang.getText());
-        }
-        
         if(var.getkdbangsal().equals("")){
             Valid.textKosong(TCari,"Lokasi");                              
         }else{
@@ -1356,7 +1344,17 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         return tbObat;
     }
     
-    public void isCek(){        
+    public void isCek(){   
+        if(var.getkode().equals("Admin Utama")){
+            kdgudang.setEditable(true);
+            nmgudang.setEditable(true);
+            BtnGudang.setEnabled(true);
+        }else{
+            kdgudang.setEditable(false);
+            nmgudang.setEditable(false);
+            BtnGudang.setEnabled(false);
+        }
+        
         kdgudang.setText(var.getkdbangsal());
         Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());  
         BtnTambah.setEnabled(var.getobat());
