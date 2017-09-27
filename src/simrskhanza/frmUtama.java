@@ -190,6 +190,7 @@ import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgBulananHAIs;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
 import laporan.DlgHarianHAIs;
+import laporan.DlgHitungBOR;
 import laporan.DlgICD9;
 import laporan.DlgKunjunganRalan;
 import laporan.DlgKunjunganRanap;
@@ -625,6 +626,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnDataHAIs = new widget.ButtonBig();
         btnHarianHAIs = new widget.ButtonBig();
         btnBulananHAIs = new widget.ButtonBig();
+        btnHitungBor = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4023,6 +4025,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBulananHAIs);
 
+        btnHitungBor.setForeground(new java.awt.Color(40, 70, 50));
+        btnHitungBor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
+        btnHitungBor.setText("Hitung BOR");
+        btnHitungBor.setIconTextGap(0);
+        btnHitungBor.setName("btnHitungBor"); // NOI18N
+        btnHitungBor.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHitungBor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHitungBorActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnHitungBor);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4031,7 +4046,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/09/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/09/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8551,6 +8566,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnBulananHAIsActionPerformed
 
+    private void btnHitungBorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHitungBorActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgHitungBOR aplikasi=new DlgHitungBOR(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnHitungBorActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8652,6 +8678,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnFrekuensiRanap;
     private widget.ButtonBig btnHarianHAIs;
     private widget.ButtonBig btnHarianKamar;
+    private widget.ButtonBig btnHitungBor;
     private widget.ButtonBig btnHutangObat;
     private widget.ButtonBig btnICD;
     private widget.ButtonBig btnICD9;
@@ -9894,6 +9921,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnBulananHAIs);                 
                 jmlmenu++;
             }
+            
+            if(var.gethitung_bor()==true){  
+                Panelmenu.add(btnHitungBor);                 
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==9){   
             jmlmenu=0;
             if(var.getkamar()==true){
@@ -11086,6 +11118,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getbulanan_HAIs()==true){  
             Panelmenu.add(btnBulananHAIs);                 
+            jmlmenu++;
+        }
+        
+        if(var.gethitung_bor()==true){  
+            Panelmenu.add(btnHitungBor);                 
             jmlmenu++;
         }
 
@@ -12570,6 +12607,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getbulanan_HAIs()==true){  
             if(btnBulananHAIs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBulananHAIs);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.gethitung_bor()==true){  
+            if(btnHitungBor.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHitungBor);                 
                 jmlmenu++;
             }                
         }
