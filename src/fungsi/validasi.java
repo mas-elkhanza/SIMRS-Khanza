@@ -60,6 +60,7 @@ public final class validasi {
     private final java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
     private final DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");  
     private final DecimalFormat df4 = new DecimalFormat("###,###,###,###,###,###,###.#################");  
+    private final DecimalFormat df5 = new DecimalFormat("###,###,###,###,###,###,###.##");  
     private final DecimalFormat df3 = new DecimalFormat("######"); 
     private PreparedStatement ps;
     private ResultSet rs;
@@ -983,6 +984,10 @@ public final class validasi {
     
     public String SetAngka3(double nilai){        
        return df4.format(nilai);
+    }
+    
+    public String SetAngka4(double nilai){        
+       return df5.format(nilai);
     }
     
     public String SetAngka2(double nilai){        
