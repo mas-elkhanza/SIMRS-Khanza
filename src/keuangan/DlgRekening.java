@@ -127,6 +127,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSubAkun = new javax.swing.JMenuItem();
         MnJadikanSub = new javax.swing.JMenuItem();
+        MnJadikanUtama = new javax.swing.JMenuItem();
         WindowJadikanSub = new javax.swing.JDialog();
         internalFrame8 = new widget.InternalFrame();
         BtnCloseIn6 = new widget.Button();
@@ -313,6 +314,23 @@ public final class DlgRekening extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnJadikanSub);
+
+        MnJadikanUtama.setBackground(new java.awt.Color(255, 255, 255));
+        MnJadikanUtama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnJadikanUtama.setForeground(java.awt.Color.darkGray);
+        MnJadikanUtama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnJadikanUtama.setText("Jadikan Akun Utama");
+        MnJadikanUtama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnJadikanUtama.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnJadikanUtama.setIconTextGap(5);
+        MnJadikanUtama.setName("MnJadikanUtama"); // NOI18N
+        MnJadikanUtama.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnJadikanUtama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnJadikanUtamaActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnJadikanUtama);
 
         WindowJadikanSub.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         WindowJadikanSub.setModal(true);
@@ -1005,6 +1023,20 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         }            
     }//GEN-LAST:event_KdSubIndukKeyPressed
 
+    private void MnJadikanUtamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnJadikanUtamaActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(Nm.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu Akun Rekening...!!!");
+            tbKamar.requestFocus();
+        }else{
+            Valid.editTable(tabMode,"rekening","kd_rek",Kd2,"level='0'");
+            BtnCariActionPerformed(evt);
+            emptTeks();
+        }
+    }//GEN-LAST:event_MnJadikanUtamaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1043,6 +1075,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private widget.TextBox KdSubInduk;
     private widget.Label LCount;
     private javax.swing.JMenuItem MnJadikanSub;
+    private javax.swing.JMenuItem MnJadikanUtama;
     private javax.swing.JMenuItem MnSubAkun;
     private widget.TextBox Nm;
     private widget.TextBox NmSub;

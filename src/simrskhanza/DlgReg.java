@@ -11,6 +11,7 @@
  */
 
 package simrskhanza;
+import inventory.DlgPemberianObat;
 import bridging.BPJSDataSEP;
 import bridging.InhealthDataSJP;
 import laporan.DlgDiagnosaPenyakit;
