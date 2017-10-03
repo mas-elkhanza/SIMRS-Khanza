@@ -279,8 +279,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(var.getform().equals("DlgKamarInap")){
                     if(ikb.getTable().getSelectedRow()!= -1){                   
-                        NoRmBayi.setText(ikb.getTable().getValueAt(ikb.getTable().getSelectedRow(),1).toString());                    
-                        NmBayi.setText(ikb.getTable().getValueAt(ikb.getTable().getSelectedRow(),2).toString());                    
+                        NoRmBayi.setText(ikb.getTable().getValueAt(ikb.getTable().getSelectedRow(),0).toString());                    
+                        NmBayi.setText(ikb.getTable().getValueAt(ikb.getTable().getSelectedRow(),1).toString());                    
                     }  
                     NoRmBayi.requestFocus();
                 }
