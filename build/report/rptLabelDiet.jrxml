@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="143" pageHeight="85" columnWidth="133" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select detail_beri_diet.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal),detail_beri_diet.tanggal,detail_beri_diet.waktu,diet.nama_diet 
+from detail_beri_diet inner join reg_periksa inner join pasien inner join diet inner join kamar
+ inner join bangsal on detail_beri_diet.no_rawat=reg_periksa.no_rawat and
+ detail_beri_diet.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and detail_beri_diet.kd_diet=diet.kd_diet order by bangsal.nm_bangsal,diet.nama_diet]]>
+	</queryString>
+	<field name="no_rawat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_rkm_medis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nm_pasien" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="concat(detail_beri_diet.kd_kamar,&apos;, &apos;,bangsal.nm_bangsal)" class="java.lang.String"/>
+	<field name="tanggal" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="waktu" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_diet" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="75" splitType="Stretch">
+			<textField>
+				<reportElement x="26" y="34" width="100" height="11"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[": "+$F{nm_pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="45" width="100" height="11"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[": "+$F{concat(detail_beri_diet.kd_kamar,', ',bangsal.nm_bangsal)}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="0" width="129" height="1" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="27" width="129" height="1" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="0" y="0" width="1" height="70" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="6" y="34" width="19" height="11"/>
+				<textElement textAlignment="Left" lineSpacing="Single">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<text><![CDATA[Pasien]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="69" width="129" height="1" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line direction="BottomUp">
+				<reportElement x="130" y="0" width="1" height="70" forecolor="#006666"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="6" y="45" width="19" height="11"/>
+				<textElement textAlignment="Left" lineSpacing="Single">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<text><![CDATA[Kamar]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="18" width="129" height="8"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{kontakrs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="10" width="129" height="8"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="2" width="130" height="8"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="56" width="19" height="11"/>
+				<textElement textAlignment="Left" lineSpacing="Single">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<text><![CDATA[Diet]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="26" y="56" width="100" height="11"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Tahoma" size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[": "+$F{nama_diet}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
