@@ -411,7 +411,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     tabMode.addRow(new Object[]{"","","","Jumlah Hari Perawatan",":","","",hari});
                     tabMode.addRow(new Object[]{"","","","Jumlah Kamar",":","","",kamar});
                     tabMode.addRow(new Object[]{"","","","Jumlah Hari Dalam Periode",":","","",jumlahhari});
-                    tabMode.addRow(new Object[]{"","","","Perhitungan BOR ",": ("+hari+"/("+kamar+" X "+hari+")) X 100%","","",Valid.SetAngka4((hari/(kamar*hari))*100)+" %"});
+                    tabMode.addRow(new Object[]{"","","","Perhitungan BOR ",": ("+hari+"/("+kamar+" X "+jumlahhari+")) X 100%","","",Valid.SetAngka4((hari/(kamar*jumlahhari))*100)+" %"});
                 }                    
             } catch (Exception e) {
                 System.out.println("laporan.DlgHitungBOR.tampil() : "+e);

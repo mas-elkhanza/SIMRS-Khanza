@@ -120,6 +120,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
 
         NoNota.setDocument(new batasInput((byte)8).getKata(NoNota));
         kdmem.setDocument(new batasInput((byte)10).getKata(kdmem));
+        nmmem.setDocument(new batasInput((byte)70).getKata(nmmem));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));
         kdbar.setDocument(new batasInput((byte)15).getKata(kdbar));
         kdsat.setDocument(new batasInput((byte)3).getKata(kdsat));
@@ -666,7 +667,6 @@ public class DlgCariPiutang extends javax.swing.JDialog {
         panelisi3.add(kdptg);
         kdptg.setBounds(449, 40, 80, 23);
 
-        nmmem.setEditable(false);
         nmmem.setName("nmmem"); // NOI18N
         nmmem.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(nmmem);
