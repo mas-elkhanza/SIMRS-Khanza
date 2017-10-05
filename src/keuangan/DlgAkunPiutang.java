@@ -125,12 +125,12 @@ public class DlgAkunPiutang extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(var.getform().equals("DlgAkunPiutang")){
                     if(rekening.getTabel().getSelectedRow()!= -1){      
-                        if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("R")&&
+                        if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("N")&&
                             rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString().equals("D")){
                             kdrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
                             nmrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString()); 
                         }else{
-                            JOptionPane.showMessageDialog(rootPane,"Rekening harus Tipe R dan Balance D..!!");
+                            JOptionPane.showMessageDialog(rootPane,"Rekening harus Tipe N dan Balance D..!!");
                         }
                                                                       
                         kdrek.requestFocus();

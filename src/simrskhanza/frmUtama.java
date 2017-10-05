@@ -627,6 +627,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnHarianHAIs = new widget.ButtonBig();
         btnBulananHAIs = new widget.ButtonBig();
         btnHitungBor = new widget.ButtonBig();
+        btnPerusahaan = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4038,6 +4039,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnHitungBor);
 
+        btnPerusahaan.setForeground(new java.awt.Color(40, 70, 50));
+        btnPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
+        btnPerusahaan.setText("Instansi/Perusahaan Pasien");
+        btnPerusahaan.setIconTextGap(0);
+        btnPerusahaan.setName("btnPerusahaan"); // NOI18N
+        btnPerusahaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPerusahaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerusahaanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPerusahaan);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4046,7 +4060,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/09/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01/10/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8577,6 +8591,19 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnHitungBorActionPerformed
 
+    private void btnPerusahaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerusahaanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPerusahaan aplikasi=new DlgPerusahaan(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.isCek();
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+        
+    }//GEN-LAST:event_btnPerusahaanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8747,6 +8774,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPenjualan;
     private widget.ButtonBig btnPenyakitPD3I;
     private widget.ButtonBig btnPeriksaRadiologi;
+    private widget.ButtonBig btnPerusahaan;
     private widget.ButtonBig btnPiutang;
     private widget.ButtonBig btnPiutangBelumLunas;
     private widget.ButtonBig btnPiutangPerCaraBayar;
@@ -8924,6 +8952,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     
     public void isTampil(){        
         Panelmenu.removeAll();
+        
         if(ChkInput.isSelected()==true){
             isCombo();  
         }else{
@@ -10171,6 +10200,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }
         }else if(cmbMenu.getSelectedIndex()==11){ 
             jmlmenu=0;
+            if(var.getperusahaan_pasien()==true){
+                Panelmenu.add(btnPerusahaan);
+                jmlmenu++;
+            }
+            
             if(var.getpasien()==true){
                 Panelmenu.add(btnPasien);
                 jmlmenu++;
@@ -11364,6 +11398,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getinhealth_sjp()==true){
             Panelmenu.add(btnInhealthSJP);
+            jmlmenu++;
+        }
+
+        if(var.getperusahaan_pasien()==true){
+            Panelmenu.add(btnPerusahaan);
             jmlmenu++;
         }
 
@@ -12954,6 +12993,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
 
+        if(var.getperusahaan_pasien()==true){
+            if(btnPerusahaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPerusahaan);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getpasien()==true){
             if(btnPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPasien);

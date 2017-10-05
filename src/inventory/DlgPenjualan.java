@@ -43,6 +43,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private String[] kodebarang,namabarang,kategori,satuan;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,totaljual,tambahan,stok;
     private WarnaTable2 warna=new WarnaTable2();
+    private String notapenjualan="No";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -253,6 +254,12 @@ public class DlgPenjualan extends javax.swing.JDialog {
             PPN.setText(Sequel.cariIsi("select ppn from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()));
         } catch (Exception e) {
             PPN.setText("0");
+        }
+        
+        try {
+            notapenjualan=Sequel.cariIsi("select cetaknotasimpanpenjualan from set_nota"); 
+        } catch (Exception e) {
+            notapenjualan="No"; 
         }
         
     }
@@ -997,6 +1004,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "',' ',CURTIME()),'Pelunasan','"+ttl+"','"+ttl+"','Sudah','"+var.getkode()+"'","No.Nota");
                         }
                         
+                        if(notapenjualan.equals("Yes")){
+                            BtnNotaActionPerformed(null);
+                        }
                         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,6),signed)),0) from penjualan ","PJ",6,NoNota);                             
                         Sequel.AutoComitTrue();
                         row=tabMode.getRowCount();
@@ -1685,7 +1695,16 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             BtnTambah.setEnabled(var.getobat());
             kdptg.setText(var.getkode());
             Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
-        }      
+        }    
+        if(Sequel.cariIsi("select tampilkan_tombol_nota_penjualan from set_nota").equals("Yes")){
+            BtnNota.setVisible(true);
+        }else{
+            if(var.getkode().equals("Admin Utama")){
+                BtnNota.setVisible(true);
+            }else{
+                BtnNota.setVisible(false);
+            }            
+        }
     }
     
     public void setPasien(String norm){
