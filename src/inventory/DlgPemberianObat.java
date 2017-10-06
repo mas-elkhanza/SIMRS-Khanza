@@ -136,8 +136,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==13){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(55);
             }
         }
         tbPemberianObat.setDefaultRenderer(Object.class, new WarnaTable());

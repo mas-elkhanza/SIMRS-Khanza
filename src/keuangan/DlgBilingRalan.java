@@ -2847,10 +2847,21 @@ private void MnPenjualanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_MnPenjualanActionPerformed
 
 private void MnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDokterActionPerformed
-    WindowGantiDokterPoli.setSize(630,80);
-    WindowGantiDokterPoli.setLocationRelativeTo(internalFrame1);
-    WindowGantiDokterPoli.setAlwaysOnTop(false);
-    WindowGantiDokterPoli.setVisible(true);
+    if(var.getkode().equals("Admin Utama")){
+        WindowGantiDokterPoli.setSize(630,80);
+        WindowGantiDokterPoli.setLocationRelativeTo(internalFrame1);
+        WindowGantiDokterPoli.setAlwaysOnTop(false);
+        WindowGantiDokterPoli.setVisible(true);
+    }else{
+        if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
+        }else{ 
+            WindowGantiDokterPoli.setSize(630,80);
+            WindowGantiDokterPoli.setLocationRelativeTo(internalFrame1);
+            WindowGantiDokterPoli.setAlwaysOnTop(false);
+            WindowGantiDokterPoli.setVisible(true);
+        }
+    } 
 }//GEN-LAST:event_MnDokterActionPerformed
 
 private void BtnCloseIn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseIn1ActionPerformed
