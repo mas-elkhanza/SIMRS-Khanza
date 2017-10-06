@@ -61,6 +61,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private final Properties prop = new Properties();
+    public  DlgIKBBayi ikb=new DlgIKBBayi(null,false);
 
     public  DlgKamar kamar=new DlgKamar(null,false);
     public  DlgReg reg=new DlgReg(null,false);
@@ -262,6 +263,46 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 if(var.getform().equals("DlgKamarInap")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         reg.pasien.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
+        ikb.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(var.getform().equals("DlgKamarInap")){
+                    if(ikb.getTable().getSelectedRow()!= -1){                   
+                        NoRmBayi.setText(ikb.getTable().getValueAt(ikb.getTable().getSelectedRow(),0).toString());                    
+                        NmBayi.setText(ikb.getTable().getValueAt(ikb.getTable().getSelectedRow(),1).toString());                    
+                    }  
+                    NoRmBayi.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        ikb.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(var.getform().equals("DlgKamarInap")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        ikb.dispose();
                     }
                 }
             }
@@ -641,6 +682,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         btnPasienRanapGabung = new widget.Button();
         BtnHapusGabung = new widget.Button();
         NoRawatGabung = new widget.TextBox();
+        btnPasienRanapGabung1 = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
         PanelCariUtama = new javax.swing.JPanel();
         panelGlass10 = new widget.panelisi();
@@ -2352,7 +2394,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         NmBayi.setName("NmBayi"); // NOI18N
         NmBayi.setSelectionColor(new java.awt.Color(255, 255, 255));
         internalFrame6.add(NmBayi);
-        NmBayi.setBounds(193, 30, 380, 23);
+        NmBayi.setBounds(193, 30, 350, 23);
 
         btnPasienRanapGabung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPasienRanapGabung.setMnemonic('7');
@@ -2364,7 +2406,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         internalFrame6.add(btnPasienRanapGabung);
-        btnPasienRanapGabung.setBounds(576, 30, 28, 23);
+        btnPasienRanapGabung.setBounds(546, 30, 28, 23);
 
         BtnHapusGabung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnHapusGabung.setMnemonic('H');
@@ -2384,6 +2426,18 @@ public class DlgKamarInap extends javax.swing.JDialog {
         NoRawatGabung.setName("NoRawatGabung"); // NOI18N
         internalFrame6.add(NoRawatGabung);
         NoRawatGabung.setBounds(230, 220, 190, 23);
+
+        btnPasienRanapGabung1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPasienRanapGabung1.setMnemonic('7');
+        btnPasienRanapGabung1.setToolTipText("ALt+7");
+        btnPasienRanapGabung1.setName("btnPasienRanapGabung1"); // NOI18N
+        btnPasienRanapGabung1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasienRanapGabung1ActionPerformed(evt);
+            }
+        });
+        internalFrame6.add(btnPasienRanapGabung1);
+        btnPasienRanapGabung1.setBounds(576, 30, 28, 23);
 
         WindowRanapGabung.getContentPane().add(internalFrame6, java.awt.BorderLayout.CENTER);
 
@@ -2648,7 +2702,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2673,7 +2727,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2703,7 +2757,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         DTPCari3.setEditable(false);
         DTPCari3.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2017" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2017" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -2728,7 +2782,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         DTPCari4.setEditable(false);
         DTPCari4.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2017" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2017" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -5861,6 +5915,15 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         }
     }//GEN-LAST:event_ppDataHAIsBtnPrintActionPerformed
 
+    private void btnPasienRanapGabung1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienRanapGabung1ActionPerformed
+        var.setform("DlgKamarInap");
+        ikb.emptTeks();
+        ikb.isCek();
+        ikb.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        ikb.setLocationRelativeTo(internalFrame1);
+        ikb.setVisible(true);
+    }//GEN-LAST:event_btnPasienRanapGabung1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -5999,6 +6062,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.Button btnKamar;
     private widget.Button btnKamar2;
     private widget.Button btnPasienRanapGabung;
+    private widget.Button btnPasienRanapGabung1;
     private widget.Button btnPindah;
     private widget.Button btnReg;
     private javax.swing.ButtonGroup buttonGroup1;
