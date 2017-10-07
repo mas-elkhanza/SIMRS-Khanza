@@ -2726,9 +2726,19 @@ private void MnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
     }else {
-        WindowGantiDokter.setSize(630,80);
-        WindowGantiDokter.setLocationRelativeTo(internalFrame1);
-        WindowGantiDokter.setVisible(true);
+        if(var.getkode().equals("Admin Utama")){
+            WindowGantiDokter.setSize(630,80);
+            WindowGantiDokter.setLocationRelativeTo(internalFrame1);
+            WindowGantiDokter.setVisible(true);
+        }else{
+            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
+            }else{ 
+                WindowGantiDokter.setSize(630,80);
+                WindowGantiDokter.setLocationRelativeTo(internalFrame1);
+                WindowGantiDokter.setVisible(true);
+            }
+        }             
     }
     
 }//GEN-LAST:event_MnDokterActionPerformed
@@ -2975,7 +2985,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         WindowGantiPoli.setSize(630,80);
         WindowGantiPoli.setLocationRelativeTo(internalFrame1);
         WindowGantiPoli.setAlwaysOnTop(false);
-        WindowGantiPoli.setVisible(true);
+        WindowGantiPoli.setVisible(true);                     
     }//GEN-LAST:event_MnPoliActionPerformed
 
     private void MnDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDiagnosaActionPerformed
