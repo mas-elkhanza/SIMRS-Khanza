@@ -271,6 +271,7 @@ type
     ZQSidikJarisidikjari: TMemoField;
     ZQInputSidikJarino_rkm_medis: TStringField;
     ZQInputSidikJarisidikjari: TMemoField;
+    suiButton4: TsuiButton;
     procedure FormActivate(Sender: TObject);
     procedure ZConAfterConnect(Sender: TObject);
     procedure btnLoginClick(Sender: TObject);
@@ -310,6 +311,7 @@ type
     procedure btnCariPresensiClick(Sender: TObject);
     procedure PCariEdCariKeyPress(Sender: TObject; var Key: Char);
     procedure Button1Click(Sender: TObject);
+    procedure suiButton4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -319,6 +321,7 @@ type
 var
   frmUtama: TfrmUtama;
   jml:integer;
+  pilihanform:string;
   FIni: TIniFile;
 
 implementation
@@ -758,9 +761,21 @@ begin
     begin
        ZQExec.Close;
        ZQExec.SQL.Clear;
+       ZQExec.SQL.Add('delete from temppanggilrm') ;
+       ZQExec.ExecSQL;
+       ZQExec.Close;
+       ZQExec.SQL.Clear;
        ZQExec.SQL.Add('insert into temppanggilrm values("'+ID+'")') ;
        ZQExec.ExecSQL;
-       ShellExecute(0,'open','resume.jar','','',SW_SHOWNORMAL);
+       if(pilihanform='CariData')then
+       begin
+          ShellExecute(0,'open','resume.jar','','',SW_SHOWNORMAL);
+       end
+       else
+       if(pilihanform='Registrasi')then
+       begin
+          ShellExecute(0,'open','registrasifingerprint.jar','','',SW_SHOWNORMAL);
+       end;
     end;
   end;
 end;
@@ -876,7 +891,7 @@ begin
      FinFPVer1.FPLoad(ZQSidikJarino_rkm_medis.AsString,0,ZQSidikJarisidikjari.Value,'MySecretKey');
      ZQSidikJari.Next;
   end;
-    
+  pilihanform:='CariData';
   FinFPVer1.FPVerificationStart('');
 end;
 
@@ -936,6 +951,24 @@ end;
 procedure TfrmUtama.Button1Click(Sender: TObject);
 begin
    ShellExecute(0,'open','resume.jar','','',SW_SHOWNORMAL);
+end;
+
+procedure TfrmUtama.suiButton4Click(Sender: TObject);
+begin
+  panelfalse;
+  PanelHome.Visible:=true;
+  
+  FinFPVer1.WorkingInBackground(StrToBool(FIni.ReadString('deviceinfo','workinginbackground','false')));
+
+  FinFPVer1.FPListClear;
+  ZQSidikJari.First;
+  while not ZQSidikJari.Eof do
+  begin
+     FinFPVer1.FPLoad(ZQSidikJarino_rkm_medis.AsString,0,ZQSidikJarisidikjari.Value,'MySecretKey');
+     ZQSidikJari.Next;
+  end;
+  pilihanform='Registrasi';  
+  FinFPVer1.FPVerificationStart('');
 end;
 
 end.
