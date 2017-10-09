@@ -38,7 +38,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
-import simrskhanza.DlgResepObat;
 
 /**
  *

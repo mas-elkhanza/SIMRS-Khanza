@@ -12,6 +12,7 @@
 
 package simrskhanza;
 
+import inventory.DlgResepObat;
 import laporan.DlgDataHAIs;
 import bridging.AplicareCekReferensiKamar;
 import bridging.AplicareKetersediaanKamar;
@@ -174,6 +175,7 @@ import keuangan.DlgRekening;
 import keuangan.DlgRekeningTahun;
 import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
+import inventory.DlgDaftarPermintaanResep;
 import inventory.DlgRiwayatBarangMedis;
 import java.awt.event.KeyListener;
 import javax.swing.event.DocumentEvent;
@@ -628,6 +630,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnBulananHAIs = new widget.ButtonBig();
         btnHitungBor = new widget.ButtonBig();
         btnPerusahaan = new widget.ButtonBig();
+        btnDaftarPermintaanResep = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -1155,7 +1158,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnResepObat.setForeground(new java.awt.Color(40, 70, 50));
         btnResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stock_task.png"))); // NOI18N
-        btnResepObat.setText("Resep Obat");
+        btnResepObat.setText("No. Resep");
         btnResepObat.setIconTextGap(0);
         btnResepObat.setName("btnResepObat"); // NOI18N
         btnResepObat.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -4052,6 +4055,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPerusahaan);
 
+        btnDaftarPermintaanResep.setForeground(new java.awt.Color(40, 70, 50));
+        btnDaftarPermintaanResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
+        btnDaftarPermintaanResep.setText("Daftar Resep Dokter");
+        btnDaftarPermintaanResep.setIconTextGap(0);
+        btnDaftarPermintaanResep.setName("btnDaftarPermintaanResep"); // NOI18N
+        btnDaftarPermintaanResep.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDaftarPermintaanResep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarPermintaanResepActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnDaftarPermintaanResep);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4060,7 +4076,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01/10/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/10/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8604,6 +8620,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
     }//GEN-LAST:event_btnPerusahaanActionPerformed
 
+    private void btnDaftarPermintaanResepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarPermintaanResepActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDaftarPermintaanResep daftar=new DlgDaftarPermintaanResep(null,false);
+        daftar.emptTeks();
+        daftar.isCek();
+        daftar.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        daftar.setLocationRelativeTo(PanelUtama);
+        daftar.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnDaftarPermintaanResepActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8692,6 +8720,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekInhealthFaskes;
     private widget.ButtonBig btnCekInhealthPoli;
     private widget.ButtonBig btnClosingKasir;
+    private widget.ButtonBig btnDaftarPermintaanResep;
     private widget.ButtonBig btnDaruratStok;
     private widget.ButtonBig btnDataHAIs;
     private widget.ButtonBig btnDataPenjualan;
@@ -9442,6 +9471,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getpenjualan_obat()==true){
                 Panelmenu.add(btnPenjualan);
+                jmlmenu++;
+            }
+            
+            if(var.getberi_obat()==true){
+                Panelmenu.add(btnDaftarPermintaanResep);
                 jmlmenu++;
             }
 
@@ -10652,6 +10686,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getpenjualan_obat()==true){
             Panelmenu.add(btnPenjualan);
+            jmlmenu++;
+        }
+
+        if(var.getberi_obat()==true){
+            Panelmenu.add(btnDaftarPermintaanResep);
             jmlmenu++;
         }
 
@@ -11945,6 +11984,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpenjualan_obat()==true){
             if(btnPenjualan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenjualan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getberi_obat()==true){
+            if(btnDaftarPermintaanResep.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDaftarPermintaanResep);
                 jmlmenu++;
             }                
         }
