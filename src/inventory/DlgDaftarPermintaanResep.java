@@ -8,6 +8,8 @@ import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +29,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
+    private DlgCariObat dlgobt=new DlgCariObat(null,false);
     
     /** Creates new form 
      * @param parent
@@ -78,6 +81,25 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             });
             TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         }
+        
+        dlgobt.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                tampil();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
 
     }
 
@@ -430,7 +452,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
             }else {
                 if(var.getkode().equals("Admin Utama")){
-                    DlgCariObat dlgobt=new DlgCariObat(null,false);
                     dlgobt.setNoRm(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString(),
                         tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),1).toString(),
                         tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),2).toString()
@@ -444,7 +465,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     if(Sequel.cariRegistrasi(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString())>0){
                         JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
                     }else{ 
-                        DlgCariObat dlgobt=new DlgCariObat(null,false);
                         dlgobt.setNoRm(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString(),
                             tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),1).toString(),
                             tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),2).toString()

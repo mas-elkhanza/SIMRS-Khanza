@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/inventory/DlgDaftarPermintaanResep.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/report/rptDaftarPermintaanResep.jrxml</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/inventory/DlgResepObat.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/inventory/DlgCariObat.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/DlgBangsal.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/laporan/DlgPelayananApotek.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/laporan/DlgPelayananRalan.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/report/rptPelayananApotek.jrxml</file>
         </group>
     </open-files>
 </project-private>

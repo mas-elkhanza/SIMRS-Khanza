@@ -75,7 +75,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         tabModeobat=new DefaultTableModel(null,row){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==1)||(colIndex==9)) {
+                if ((colIndex==0)||(colIndex==1)||(colIndex==8)) {
                     a=true;
                 }
                 return a;
@@ -146,7 +146,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(aturanpakai.getTable().getSelectedRow()!= -1){    
-                    tbObat.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbObat.getSelectedRow(),11);
+                    tbObat.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbObat.getSelectedRow(),8);
                 }   
                 tbObat.requestFocus();
             }
@@ -652,7 +652,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
                 }                
             }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                 i=tbObat.getSelectedColumn();
-                if(i==11){
+                if(i==8){
                     var.setform("DlgCariObat");
                     aturanpakai.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                     aturanpakai.setLocationRelativeTo(internalFrame1);
@@ -710,13 +710,13 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             Sequel.menyimpan("resep_dokter","?,?,?,?","data",4,new String[]{
                                                 NoResep.getText(),tbObat.getValueAt(i,2).toString(),
                                                 ""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())/carikapasitas.getDouble(1)),
-                                                tbObat.getValueAt(i,9).toString()
+                                                tbObat.getValueAt(i,8).toString()
                                             });
                                         }else{
                                             Sequel.menyimpan("resep_dokter","?,?,?,?","data",4,new String[]{
                                                 NoResep.getText(),tbObat.getValueAt(i,2).toString(),
                                                 ""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())),
-                                                tbObat.getValueAt(i,9).toString()
+                                                tbObat.getValueAt(i,8).toString()
                                             });                                
                                         }
                                     } catch (Exception e) {
@@ -733,7 +733,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     Sequel.menyimpan("resep_dokter","?,?,?,?","data",4,new String[]{
                                         NoResep.getText(),tbObat.getValueAt(i,2).toString(),
                                         ""+(Double.parseDouble(tbObat.getValueAt(i,1).toString())),
-                                        tbObat.getValueAt(i,9).toString()
+                                        tbObat.getValueAt(i,8).toString()
                                     });                                  
                                 }                      
                             }
@@ -956,7 +956,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }                  
                 namajenis[z]=tbObat.getValueAt(i,7).toString();
                 aturan[z]=tbObat.getValueAt(i,8).toString();
-                industri[z]=tbObat.getValueAt(i,9).toString();
+                industri[z]=tbObat.getValueAt(i,8).toString();
                 try {
                     beli[z]=Double.parseDouble(tbObat.getValueAt(i,10).toString());
                 } catch (Exception e) {
