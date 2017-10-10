@@ -196,6 +196,7 @@ import laporan.DlgHitungBOR;
 import laporan.DlgICD9;
 import laporan.DlgKunjunganRalan;
 import laporan.DlgKunjunganRanap;
+import laporan.DlgPelayananApotek;
 import laporan.DlgPelayananRalan;
 import laporan.DlgPenyakitPd3i;
 import laporan.DlgRL4A;
@@ -631,6 +632,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnHitungBor = new widget.ButtonBig();
         btnPerusahaan = new widget.ButtonBig();
         btnDaftarPermintaanResep = new widget.ButtonBig();
+        btnLamaPelayananApotek = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4067,6 +4069,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnDaftarPermintaanResep);
+
+        btnLamaPelayananApotek.setForeground(new java.awt.Color(40, 70, 50));
+        btnLamaPelayananApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPelayananApotek.setText("Lama Pelayanan Apotek");
+        btnLamaPelayananApotek.setIconTextGap(0);
+        btnLamaPelayananApotek.setName("btnLamaPelayananApotek"); // NOI18N
+        btnLamaPelayananApotek.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPelayananApotek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamaPelayananApotekActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnLamaPelayananApotek);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -8632,6 +8647,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnDaftarPermintaanResepActionPerformed
 
+    private void btnLamaPelayananApotekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamaPelayananApotekActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPelayananApotek aplikasi=new DlgPelayananApotek(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnLamaPelayananApotekActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8769,6 +8795,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnLabaRugi;
     private widget.ButtonBig btnLaboratorium;
     private widget.ButtonBig btnLahir;
+    private widget.ButtonBig btnLamaPelayananApotek;
     private widget.ButtonBig btnLamaPelayananRalan;
     private widget.ButtonBig btnLihatPiutang;
     private widget.ButtonBig btnMerkInventaris;
@@ -9972,6 +9999,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getlama_pelayanan_ralan()==true){  
                 Panelmenu.add(btnLamaPelayananRalan);                 
+                jmlmenu++;
+            }
+            
+            if(var.getlama_pelayanan_apotek()==true){  
+                Panelmenu.add(btnLamaPelayananApotek);                 
                 jmlmenu++;
             }
             
@@ -11181,6 +11213,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getlama_pelayanan_ralan()==true){  
             Panelmenu.add(btnLamaPelayananRalan);                 
+            jmlmenu++;
+        }
+        
+        if(var.getlama_pelayanan_apotek()==true){  
+            Panelmenu.add(btnLamaPelayananApotek);                 
             jmlmenu++;
         }
         
@@ -12678,6 +12715,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getlama_pelayanan_ralan()==true){  
             if(btnLamaPelayananRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananRalan);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getlama_pelayanan_apotek()==true){  
+            if(btnLamaPelayananApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLamaPelayananApotek);                 
                 jmlmenu++;
             }                
         }
