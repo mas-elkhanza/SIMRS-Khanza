@@ -53,6 +53,19 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private Date cal=new Date();
     private String bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),nonota="",
             sqlpsotomatis2="insert into rawat_jl_dr values (?,?,?,?,?,?,?,?,?,?,?)",
+            sqlpsotomatis2petugas="insert into rawat_jl_pr values (?,?,?,?,?,?,?,?,?,?,?)",
+            sqlpsotomatis2dokterpetugas="insert into rawat_jl_drpr values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            sqlpsotomatisdokterpetugas=
+                "select jns_perawatan.kd_jenis_prw,jns_perawatan.material,jns_perawatan.bhp,"+
+                "jns_perawatan.tarif_tindakandr,jns_perawatan.tarif_tindakanpr,jns_perawatan.total_byrdrpr,"+
+                "jns_perawatan.kso,jns_perawatan.menejemen from set_otomatis_tindakan_ralan_dokterpetugas "+
+                "inner join jns_perawatan on set_otomatis_tindakan_ralan_dokterpetugas.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                "where set_otomatis_tindakan_ralan_dokterpetugas.kd_dokter=? and set_otomatis_tindakan_ralan_dokterpetugas.kd_pj=?",
+            sqlpsotomatispetugas=
+                "select jns_perawatan.kd_jenis_prw,jns_perawatan.material,jns_perawatan.bhp,"+
+                "jns_perawatan.tarif_tindakanpr,jns_perawatan.total_byrpr,jns_perawatan.kso,jns_perawatan.menejemen from set_otomatis_tindakan_ralan_petugas "+
+                "inner join jns_perawatan on set_otomatis_tindakan_ralan_petugas.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                "where set_otomatis_tindakan_ralan_petugas.kd_pj=?",
             sqlpsotomatis=
                 "select jns_perawatan.kd_jenis_prw,jns_perawatan.material,jns_perawatan.bhp,"+
                 "jns_perawatan.tarif_tindakandr,jns_perawatan.total_byrdr,jns_perawatan.kso,jns_perawatan.menejemen from set_otomatis_tindakan_ralan "+
@@ -2379,86 +2392,10 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                  piutang.setLocationRelativeTo(internalFrame1);
                                  piutang.setVisible(true);
                             }else{
-                                try {
-                                    psotomatis=koneksi.prepareStatement(sqlpsotomatis);
-                                    try {
-                                        psotomatis.setString(1,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                        psotomatis.setString(2,Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                        rskasir=psotomatis.executeQuery();
-                                        if(rskasir.next()){    
-                                            if(Sequel.cariIsiAngka("select count(no_rawat) from rawat_jl_dr where "+
-                                               "no_rawat='"+TNoRw.getText()+"' and kd_jenis_prw='"+rskasir.getString(1)+"' "+
-                                               "and kd_dokter='"+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString()+"'")==0){
-                                                psotomatis2=koneksi.prepareStatement(sqlpsotomatis2);
-                                                try {
-                                                    psotomatis2.setString(1,TNoRw.getText()); 
-                                                    psotomatis2.setString(2,rskasir.getString(1));
-                                                    psotomatis2.setString(3,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                                    psotomatis2.setString(4,Sequel.cariIsi("select current_date()"));
-                                                    psotomatis2.setString(5,Sequel.cariIsi("select current_time()"));
-                                                    psotomatis2.setDouble(6,rskasir.getDouble("material"));
-                                                    psotomatis2.setDouble(7,rskasir.getDouble("bhp"));
-                                                    psotomatis2.setDouble(8,rskasir.getDouble("tarif_tindakandr"));
-                                                    psotomatis2.setDouble(9,rskasir.getDouble("kso"));
-                                                    psotomatis2.setDouble(10,rskasir.getDouble("menejemen"));
-                                                    psotomatis2.setDouble(11,rskasir.getDouble("total_byrdr"));
-                                                    psotomatis2.executeUpdate();
-                                                } catch (Exception e) {
-                                                    System.out.println("proses input data "+e);
-                                                } finally{
-                                                    if(psotomatis2!=null){
-                                                        psotomatis2.close();
-                                                    }
-                                                }
-                                                MnSudahActionPerformed(null);
-                                            }
-                                        }else{
-                                            psotomatis.setString(1,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                            psotomatis.setString(2,"-");
-                                            rskasir=psotomatis.executeQuery();
-                                            if(rskasir.next()){    
-                                                if(Sequel.cariIsiAngka("select count(no_rawat) from rawat_jl_dr where "+
-                                                   "no_rawat='"+TNoRw.getText()+"' and kd_jenis_prw='"+rskasir.getString(1)+"' "+
-                                                   "and kd_dokter='"+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString()+"'")==0){
-                                                    psotomatis2=koneksi.prepareStatement(sqlpsotomatis2);
-                                                    try {
-                                                        psotomatis2.setString(1,TNoRw.getText()); 
-                                                        psotomatis2.setString(2,rskasir.getString(1));
-                                                        psotomatis2.setString(3,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                                        psotomatis2.setString(4,Sequel.cariIsi("select current_date()"));
-                                                        psotomatis2.setString(5,Sequel.cariIsi("select current_time()"));
-                                                        psotomatis2.setDouble(6,rskasir.getDouble("material"));
-                                                        psotomatis2.setDouble(7,rskasir.getDouble("bhp"));
-                                                        psotomatis2.setDouble(8,rskasir.getDouble("tarif_tindakandr"));
-                                                        psotomatis2.setDouble(9,rskasir.getDouble("kso"));
-                                                        psotomatis2.setDouble(10,rskasir.getDouble("menejemen"));
-                                                        psotomatis2.setDouble(11,rskasir.getDouble("total_byrdr"));
-                                                        psotomatis2.executeUpdate();
-                                                    } catch (Exception e) {
-                                                        System.out.println("proses input data "+e);
-                                                    } finally{
-                                                        if(psotomatis2!=null){
-                                                            psotomatis2.close();
-                                                        }
-                                                    }
-                                                    MnSudahActionPerformed(null);
-                                                }
-                                            }
-                                        }   
-                                    } catch (Exception e) {
-                                        System.out.println("Notifikasi : "+e);
-                                    } finally {
-                                        if(rskasir!=null){
-                                            rskasir.close();
-                                        }
-                                        if(psotomatis!=null){
-                                            psotomatis.close();
-                                        }
-                                    }                                                                 
-                                } catch (Exception e) {
-                                    System.out.println("Notifikasi : "+e);
+                                if(var.getbilling_ralan()==true){
+                                    otomatisRalan();
                                 }
-
+                                    
                                 billing.TNoRw.setText(TNoRw.getText());  
                                 billing.isCek();
                                 billing.isRawat(); 
@@ -2471,86 +2408,9 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 billing.setVisible(true);
                             }
                         }else{
-                            try {
-                                psotomatis=koneksi.prepareStatement(sqlpsotomatis);
-                                try {
-                                    psotomatis.setString(1,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                    psotomatis.setString(2,Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
-                                    rskasir=psotomatis.executeQuery();
-                                    if(rskasir.next()){                            
-                                        if(Sequel.cariIsiAngka("select count(no_rawat) from rawat_jl_dr where "+
-                                           "no_rawat='"+TNoRw.getText()+"' and kd_jenis_prw='"+rskasir.getString(1)+"' "+
-                                           "and kd_dokter='"+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString()+"'")==0){
-                                            psotomatis2=koneksi.prepareStatement(sqlpsotomatis2);
-                                            try {
-                                                psotomatis2.setString(1,TNoRw.getText()); 
-                                                psotomatis2.setString(2,rskasir.getString(1));
-                                                psotomatis2.setString(3,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                                psotomatis2.setString(4,Sequel.cariIsi("select current_date()"));
-                                                psotomatis2.setString(5,Sequel.cariIsi("select current_time()"));
-                                                psotomatis2.setDouble(6,rskasir.getDouble("material"));
-                                                psotomatis2.setDouble(7,rskasir.getDouble("bhp"));
-                                                psotomatis2.setDouble(8,rskasir.getDouble("tarif_tindakandr"));
-                                                psotomatis2.setDouble(9,rskasir.getDouble("kso"));
-                                                psotomatis2.setDouble(10,rskasir.getDouble("menejemen"));
-                                                psotomatis2.setDouble(11,rskasir.getDouble("total_byrdr"));
-                                                psotomatis2.executeUpdate();
-                                            } catch (Exception e) {
-                                                System.out.println("proses input data "+e);
-                                            } finally{
-                                                if(psotomatis2!=null){
-                                                    psotomatis2.close();
-                                                }
-                                            }
-                                            MnSudahActionPerformed(null);
-                                        }
-                                    }else{
-                                        psotomatis.setString(1,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                        psotomatis.setString(2,"-");
-                                        rskasir=psotomatis.executeQuery();
-                                        if(rskasir.next()){                            
-                                            if(Sequel.cariIsiAngka("select count(no_rawat) from rawat_jl_dr where "+
-                                               "no_rawat='"+TNoRw.getText()+"' and kd_jenis_prw='"+rskasir.getString(1)+"' "+
-                                               "and kd_dokter='"+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString()+"'")==0){
-                                                psotomatis2=koneksi.prepareStatement(sqlpsotomatis2);
-                                                try {
-                                                    psotomatis2.setString(1,TNoRw.getText()); 
-                                                    psotomatis2.setString(2,rskasir.getString(1));
-                                                    psotomatis2.setString(3,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
-                                                    psotomatis2.setString(4,Sequel.cariIsi("select current_date()"));
-                                                    psotomatis2.setString(5,Sequel.cariIsi("select current_time()"));
-                                                    psotomatis2.setDouble(6,rskasir.getDouble("material"));
-                                                    psotomatis2.setDouble(7,rskasir.getDouble("bhp"));
-                                                    psotomatis2.setDouble(8,rskasir.getDouble("tarif_tindakandr"));                                                    
-                                                    psotomatis2.setDouble(9,rskasir.getDouble("kso"));
-                                                    psotomatis2.setDouble(10,rskasir.getDouble("menejemen"));
-                                                    psotomatis2.setDouble(11,rskasir.getDouble("total_byrdr"));
-                                                    psotomatis2.executeUpdate();
-                                                } catch (Exception e) {
-                                                    System.out.println("proses input data "+e);
-                                                } finally{
-                                                    if(psotomatis2!=null){
-                                                        psotomatis2.close();
-                                                    }
-                                                }
-                                                MnSudahActionPerformed(null);
-                                            }
-                                        }
-                                    }
-                                } catch (Exception e) {
-                                    System.out.println("Notifikasi : "+e);
-                                } finally{
-                                    if(rskasir!=null){
-                                        rskasir.close();
-                                    }
-                                    if(psotomatis!=null){
-                                        psotomatis.close();
-                                    }
-                                }                                
-                            } catch (Exception e) {
-                                System.out.println("Notifikasi : "+e);
-                            }                        
-
+                            if(var.getbilling_ralan()==true){
+                                otomatisRalan();
+                            }
                             billing.TNoRw.setText(TNoRw.getText());  
                             billing.isCek();
                             billing.isRawat(); 
@@ -3966,6 +3826,147 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }else{
             BtnSeek4.setEnabled(true);
             CrPoli.setEditable(true);
+        }
+    }
+
+    private void otomatisRalan() {
+        try {
+            psotomatis=koneksi.prepareStatement(sqlpsotomatis);
+            try {
+                psotomatis.setString(1,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
+                psotomatis.setString(2,Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
+                rskasir=psotomatis.executeQuery();
+                while(rskasir.next()){    
+                    if(Sequel.cariIsiAngka("select count(no_rawat) from rawat_jl_dr where "+
+                       "no_rawat='"+TNoRw.getText()+"' and kd_jenis_prw='"+rskasir.getString(1)+"' "+
+                       "and kd_dokter='"+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString()+"'")==0){
+                        psotomatis2=koneksi.prepareStatement(sqlpsotomatis2);
+                        try {
+                            psotomatis2.setString(1,TNoRw.getText()); 
+                            psotomatis2.setString(2,rskasir.getString(1));
+                            psotomatis2.setString(3,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
+                            psotomatis2.setString(4,Sequel.cariIsi("select current_date()"));
+                            psotomatis2.setString(5,Sequel.cariIsi("select current_time()"));
+                            psotomatis2.setDouble(6,rskasir.getDouble("material"));
+                            psotomatis2.setDouble(7,rskasir.getDouble("bhp"));
+                            psotomatis2.setDouble(8,rskasir.getDouble("tarif_tindakandr"));
+                            psotomatis2.setDouble(9,rskasir.getDouble("kso"));
+                            psotomatis2.setDouble(10,rskasir.getDouble("menejemen"));
+                            psotomatis2.setDouble(11,rskasir.getDouble("total_byrdr"));
+                            psotomatis2.executeUpdate();
+                        } catch (Exception e) {
+                            System.out.println("proses input data "+e);
+                        } finally{
+                            if(psotomatis2!=null){
+                                psotomatis2.close();
+                            }
+                        }                        
+                    }
+                }   
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally {
+                if(rskasir!=null){
+                    rskasir.close();
+                }
+                if(psotomatis!=null){
+                    psotomatis.close();
+                }
+            }    
+            
+            if(!var.getkode().equals("Admin Utama")){
+                psotomatis=koneksi.prepareStatement(sqlpsotomatispetugas);
+                try {                
+                    psotomatis.setString(1,Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
+                    rskasir=psotomatis.executeQuery();
+                    while(rskasir.next()){    
+                        if(Sequel.cariIsiAngka("select count(no_rawat) from rawat_jl_pr where "+
+                           "no_rawat='"+TNoRw.getText()+"' and kd_jenis_prw='"+rskasir.getString(1)+"' "+
+                           "and nip='"+var.getkode()+"'")==0){
+                            psotomatis2=koneksi.prepareStatement(sqlpsotomatis2petugas);
+                            try {
+                                psotomatis2.setString(1,TNoRw.getText()); 
+                                psotomatis2.setString(2,rskasir.getString(1));
+                                psotomatis2.setString(3,var.getkode());
+                                psotomatis2.setString(4,Sequel.cariIsi("select current_date()"));
+                                psotomatis2.setString(5,Sequel.cariIsi("select current_time()"));
+                                psotomatis2.setDouble(6,rskasir.getDouble("material"));
+                                psotomatis2.setDouble(7,rskasir.getDouble("bhp"));
+                                psotomatis2.setDouble(8,rskasir.getDouble("tarif_tindakanpr"));
+                                psotomatis2.setDouble(9,rskasir.getDouble("kso"));
+                                psotomatis2.setDouble(10,rskasir.getDouble("menejemen"));
+                                psotomatis2.setDouble(11,rskasir.getDouble("total_byrpr"));
+                                psotomatis2.executeUpdate();
+                            } catch (Exception e) {
+                                System.out.println("proses input data "+e);
+                            } finally{
+                                if(psotomatis2!=null){
+                                    psotomatis2.close();
+                                }
+                            }                        
+                        }
+                    }   
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally {
+                    if(rskasir!=null){
+                        rskasir.close();
+                    }
+                    if(psotomatis!=null){
+                        psotomatis.close();
+                    }
+                } 
+            }
+            
+            if(!var.getkode().equals("Admin Utama")){
+                psotomatis=koneksi.prepareStatement(sqlpsotomatisdokterpetugas);
+                try {
+                    psotomatis.setString(1,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
+                    psotomatis.setString(2,Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
+                    rskasir=psotomatis.executeQuery();
+                    while(rskasir.next()){    
+                        if(Sequel.cariIsiAngka("select count(no_rawat) from rawat_jl_drpr where "+
+                           "no_rawat='"+TNoRw.getText()+"' and kd_jenis_prw='"+rskasir.getString(1)+"' "+
+                           "and kd_dokter='"+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString()+"'")==0){
+                            psotomatis2=koneksi.prepareStatement(sqlpsotomatis2dokterpetugas);
+                            try {
+                                psotomatis2.setString(1,TNoRw.getText()); 
+                                psotomatis2.setString(2,rskasir.getString(1));
+                                psotomatis2.setString(3,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString());
+                                psotomatis2.setString(4,var.getkode());
+                                psotomatis2.setString(5,Sequel.cariIsi("select current_date()"));
+                                psotomatis2.setString(6,Sequel.cariIsi("select current_time()"));
+                                psotomatis2.setDouble(7,rskasir.getDouble("material"));
+                                psotomatis2.setDouble(8,rskasir.getDouble("bhp"));
+                                psotomatis2.setDouble(9,rskasir.getDouble("tarif_tindakandr"));
+                                psotomatis2.setDouble(10,rskasir.getDouble("tarif_tindakanpr"));
+                                psotomatis2.setDouble(11,rskasir.getDouble("kso"));
+                                psotomatis2.setDouble(12,rskasir.getDouble("menejemen"));
+                                psotomatis2.setDouble(13,rskasir.getDouble("total_byrdrpr"));
+                                psotomatis2.executeUpdate();
+                            } catch (Exception e) {
+                                System.out.println("proses input data "+e);
+                            } finally{
+                                if(psotomatis2!=null){
+                                    psotomatis2.close();
+                                }
+                            }                        
+                        }
+                    }   
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally {
+                    if(rskasir!=null){
+                        rskasir.close();
+                    }
+                    if(psotomatis!=null){
+                        psotomatis.close();
+                    }
+                } 
+            }
+            MnSudahActionPerformed(null);
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
         }
     }
     
