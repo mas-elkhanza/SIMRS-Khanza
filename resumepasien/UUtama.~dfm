@@ -43,7 +43,7 @@ object frmUtama: TfrmUtama
     SideBarWidth = 10
     object btnRegistrasi: TsuiButton
       Left = 12
-      Top = 71
+      Top = 107
       Width = 131
       Height = 32
       Font.Charset = DEFAULT_CHARSET
@@ -68,7 +68,7 @@ object frmUtama: TfrmUtama
     end
     object btnLogin: TsuiButton
       Left = 12
-      Top = 115
+      Top = 148
       Width = 131
       Height = 32
       Font.Charset = DEFAULT_CHARSET
@@ -112,6 +112,30 @@ object frmUtama: TfrmUtama
       Spacing = 4
       MouseContinuouslyDownInterval = 100
       OnClick = btnInputDataClick
+      ResHandle = 0
+    end
+    object suiButton4: TsuiButton
+      Left = 12
+      Top = 67
+      Width = 131
+      Height = 32
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGreen
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      Caption = 'Registrasi Poli'
+      AutoSize = False
+      ParentFont = False
+      UIStyle = MacOS
+      TabOrder = 3
+      Transparent = True
+      ModalResult = 0
+      FocusedRectMargin = 2
+      Layout = blGlyphLeft
+      Spacing = 4
+      MouseContinuouslyDownInterval = 100
+      OnClick = suiButton4Click
       ResHandle = 0
     end
   end
@@ -173,7 +197,7 @@ object frmUtama: TfrmUtama
   end
   object PanelLogin: TsuiGroupBox
     Left = 272
-    Top = 1000
+    Top = 10
     Width = 409
     Height = 241
     UIStyle = MacOS

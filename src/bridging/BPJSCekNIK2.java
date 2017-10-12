@@ -3104,6 +3104,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         JenisPelayanan.setSelectedIndex(1);
         JenisPelayananItemStateChanged(null);
         statuspasien="";
+        TBiaya.setText("0");
            
         TNo.requestFocus();
     }

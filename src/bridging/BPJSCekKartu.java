@@ -3104,8 +3104,8 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         LokasiLaka.setText("");
         JenisPelayanan.setSelectedIndex(1);
         JenisPelayananItemStateChanged(null);
-        statuspasien="";
-           
+        statuspasien="";        
+        TBiaya.setText("0");   
         TNo.requestFocus();
     }
     

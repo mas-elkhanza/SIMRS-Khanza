@@ -38,7 +38,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
-import simrskhanza.DlgResepObat;
 
 /**
  *
@@ -1344,8 +1343,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         return tbObat;
     }
     
-    public void isCek(){   
-        if(var.getkode().equals("Admin Utama")){
+    public void isCek(){  
+        kdgudang.setText(var.getkdbangsal());
+        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());  
+        BtnTambah.setEnabled(var.getobat());
+        TCari.requestFocus();
+        
+        if(Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",var.getkdbangsal()).equals("")){
             kdgudang.setEditable(true);
             nmgudang.setEditable(true);
             BtnGudang.setEnabled(true);
@@ -1353,12 +1357,13 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             kdgudang.setEditable(false);
             nmgudang.setEditable(false);
             BtnGudang.setEnabled(false);
-        }
+        } 
         
-        kdgudang.setText(var.getkdbangsal());
-        Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());  
-        BtnTambah.setEnabled(var.getobat());
-        TCari.requestFocus();
+        if(var.getkode().equals("Admin Utama")){
+            kdgudang.setEditable(true);
+            nmgudang.setEditable(true);
+            BtnGudang.setEnabled(true);
+        }
     }
     
     public void setNoRm(String norwt,Date tanggal,String jam,String menit,String detik,boolean status) {        
