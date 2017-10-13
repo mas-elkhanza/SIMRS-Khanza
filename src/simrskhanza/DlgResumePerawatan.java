@@ -1952,13 +1952,14 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='4'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
+                                        "<tr><td valign='top' colspan='5'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Aturan Pakai</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
@@ -1971,6 +1972,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top'>"+rs3.getString("kode_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getDouble("jml")+" "+rs3.getString("kode_sat")+"</td>"+
+                                                "<td valign='top'>"+Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rs3.getString("tgl_perawatan")+"' and jam='"+rs3.getString("jam")+"' and no_rawat='"+rs2.getString("no_rawat")+"' and kode_brng='"+rs3.getString("kode_brng")+"'")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
                                              "</tr>"); 
                                         w++;
@@ -4396,13 +4398,14 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='4'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
+                                        "<tr><td valign='top' colspan='5'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Aturan Pakai</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
@@ -4415,6 +4418,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top'>"+rs3.getString("kode_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getDouble("jml")+" "+rs3.getString("kode_sat")+"</td>"+
+                                                "<td valign='top'>"+Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rs3.getString("tgl_perawatan")+"' and jam='"+rs3.getString("jam")+"' and no_rawat='"+rs2.getString("no_rawat")+"' and kode_brng='"+rs3.getString("kode_brng")+"'")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
                                              "</tr>"); 
                                         w++;
