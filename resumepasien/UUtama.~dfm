@@ -197,7 +197,7 @@ object frmUtama: TfrmUtama
   end
   object PanelLogin: TsuiGroupBox
     Left = 272
-    Top = 1000
+    Top = 10
     Width = 409
     Height = 241
     UIStyle = MacOS

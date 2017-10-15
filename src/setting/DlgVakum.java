@@ -2179,8 +2179,10 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Piutang Pasien","lain","piutang_pasien");
         hapus("Bayar Piutang Pasien","lain","bayar_piutang");
         hapus("DPJP Ranap","lain","dpjp_ranap");
+        hapus("Detail Nota Rawat Jalan","lain","detail_nota_jalan");
         hapus("Nota Rawat Jalan","lain","nota_jalan");
         hapus("Detail Piutang Pasien","lain","detail_piutang_pasien");
+        hapus("Detail Nota Rawat Inap","lain","detail_nota_inap");
         hapus("Nota Rawat Inap","lain","nota_inap");
         hapus("Registrasi","Rawat Jalan,\nKamar Inap, Diagnosa Pasien, Tagihan Masuk, Pemberian Obat, Resep Obat, Rujukan Masuk,\n"+
                 "Rujukan Keluar, Stok Obat Pasien, Diagnosa Pasien, Resep Pulang, Potongan Biaya, Tambahan Biaya,\nDPJP Ranap, Diet Pasien","reg_periksa");

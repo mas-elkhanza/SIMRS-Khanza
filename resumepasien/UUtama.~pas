@@ -967,7 +967,7 @@ begin
      FinFPVer1.FPLoad(ZQSidikJarino_rkm_medis.AsString,0,ZQSidikJarisidikjari.Value,'MySecretKey');
      ZQSidikJari.Next;
   end;
-  pilihanform='Registrasi';  
+  pilihanform:='Registrasi';  
   FinFPVer1.FPVerificationStart('');
 end;
 
