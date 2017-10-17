@@ -30,7 +30,7 @@
 
                 Ubah2(" aplicare_ketersediaan_kamar "," kapasitas='".$kapasitas."',tersedia='".$tersedia."',tersediawanita='".$tersediawanita."' WHERE kode_kelas_aplicare='".$data['kode_kelas_aplicare']."' and kd_bangsal='".$data['kd_bangsal']."' and kelas='".$data['kelas']."' ");
 
-                $host="http://dvlp.bpjs-kesehatan.go.id:9080";
+                $host="http://dvlp.bpjs-kesehatan.go.id:8888";
                 $url = $host."/aplicaresws/rest/bed/update/".getOne("select kode_ppk from setting");				
                 $session = curl_init ( $url );			
                 $cid = "1000";
@@ -71,6 +71,7 @@
                 curl_setopt ( $session, CURLOPT_POSTFIELDS, $myvars );
                 curl_setopt ( $session, CURLOPT_RETURNTRANSFER, TRUE );
                 $response = curl_exec ( $session );
+                echo "Response : ".$response;
             }		
 	}
  ?>
