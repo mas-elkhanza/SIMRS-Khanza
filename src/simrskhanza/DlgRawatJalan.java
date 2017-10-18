@@ -19,6 +19,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
+import inventory.DlgPeresepanDokter;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -536,6 +537,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         JmPerawat = new javax.swing.JTextField();
         TTnd = new javax.swing.JTextField();
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        MnResepDOkter = new javax.swing.JMenuItem();
         MnPemberianObat = new javax.swing.JMenuItem();
         KSO = new javax.swing.JTextField();
         Menejemen = new javax.swing.JTextField();
@@ -654,6 +656,22 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TTnd.setName("TTnd"); // NOI18N
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        MnResepDOkter.setBackground(new java.awt.Color(255, 255, 255));
+        MnResepDOkter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnResepDOkter.setForeground(new java.awt.Color(60, 80, 50));
+        MnResepDOkter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnResepDOkter.setText("Input Resep Dokter");
+        MnResepDOkter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnResepDOkter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnResepDOkter.setName("MnResepDOkter"); // NOI18N
+        MnResepDOkter.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnResepDOkter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnResepDOkterActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnResepDOkter);
 
         MnPemberianObat.setBackground(new java.awt.Color(255, 255, 255));
         MnPemberianObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -2510,6 +2528,28 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Valid.pindah(evt,TCariPasien,DTPCari1);
     }//GEN-LAST:event_btnPasienKeyPressed
 
+    private void MnResepDOkterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnResepDOkterActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            TCari.requestFocus();
+        }else if(KdDok.getText().trim().equals("")||TDokter.getText().trim().equals("")){
+            Valid.textKosong(KdDok,"Dokter");
+        }else{
+            if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+            }else {
+                DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
+                resep.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                resep.setLocationRelativeTo(internalFrame1);
+                resep.isCek();
+                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),
+                        cmbDtk.getSelectedItem().toString(),KdDok.getText(),TDokter.getText());
+                resep.tampilobat();
+                resep.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_MnResepDOkterActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2555,6 +2595,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label LCount;
     private javax.swing.JTextField Menejemen;
     private javax.swing.JMenuItem MnPemberianObat;
+    private javax.swing.JMenuItem MnResepDOkter;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
@@ -2973,7 +3014,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnHapus.setEnabled(var.gettindakan_ralan());
         BtnEdit.setEnabled(var.gettindakan_ralan());
         BtnPrint.setEnabled(var.gettindakan_ralan());
-        
+        MnResepDOkter.setEnabled(var.getresep_dokter());
+        MnPemberianObat.setEnabled(var.getberi_obat());        
     }
 
     private void tampilPemeriksaan() {

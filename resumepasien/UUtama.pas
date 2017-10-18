@@ -472,7 +472,7 @@ begin
 		      ZQUser.Open;
 		      if(ZQUser.RecordCount>0)then
 		      begin
-			       btnRegistrasi.Enabled:=StrToBool(ZQUsersidikjari.Value);
+			       btnRegistrasi.Enabled:=StrToBool(ZQUserpasien.Value);
              btnLogin.Caption:='Log-Out Admin';
              panelfalse;
              PanelHome.Visible:=true;

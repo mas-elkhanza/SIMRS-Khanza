@@ -15,7 +15,6 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.event.KeyEvent;
@@ -24,12 +23,16 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JOptionPane;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -41,6 +44,7 @@ import javax.swing.text.html.StyleSheet;
 public final class DlgResumePerawatan extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
+    private final Properties prop = new Properties(); 
     private validasi Valid=new validasi();
     private ResultSet rs,rs2,rs3,rs4,rshal;
     private String sql;
@@ -92,6 +96,12 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+        } catch (Exception e) {
+            System.out.println("simrskhanza.DlgResumePerawatan.<init>() : "+e);
+        }
+        
         LoadHTML.setEditable(true);
         LoadHTML2.setEditable(true);
         LoadHTML3.setEditable(true);        
@@ -103,6 +113,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         LoadHTML9.setEditable(true);        
         LoadHTML10.setEditable(true);       
         LoadHTML11.setEditable(true);
+        
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditorKit(kit);
         LoadHTML2.setEditorKit(kit);
@@ -115,6 +126,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         LoadHTML9.setEditorKit(kit);
         LoadHTML10.setEditorKit(kit);
         LoadHTML11.setEditorKit(kit);
+        
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}");
         Document doc = kit.createDefaultDocument();
@@ -129,6 +141,139 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         LoadHTML9.setDocument(doc);
         LoadHTML10.setDocument(doc);
         LoadHTML11.setDocument(doc);
+        LoadHTML.setEditable(false);
+        LoadHTML2.setEditable(false);
+        LoadHTML3.setEditable(false);
+        LoadHTML4.setEditable(false);
+        LoadHTML5.setEditable(false);
+        LoadHTML6.setEditable(false);
+        LoadHTML7.setEditable(false);
+        LoadHTML8.setEditable(false);
+        LoadHTML9.setEditable(false);
+        LoadHTML10.setEditable(false);
+        LoadHTML11.setEditable(false);
+        
+        LoadHTML.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML2.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML3.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML4.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML5.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML6.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML7.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML8.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML9.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML10.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML11.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });        
     }
     
     DlgPasien pasien=new DlgPasien(null,false);
@@ -1643,7 +1788,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='5'>Bacaan/Hasil Radiologi</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
+                                        "<tr><td valign='top' colspan='3'>Bacaan/Hasil Radiologi</td></tr>"+  
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
@@ -1657,6 +1802,41 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("hasil")+"</td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //gambar pemeriksaan radiologi
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                     "select tgl_periksa,jam, lokasi_gambar from gambar_radiologi where no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Gambar Radiologi</td></tr>"+  
+                                        "<tr align='center'>"+
+                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#f8fdf3'>Gambar Radiologi</td>"+
+                                        "</tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
+                                                "<td valign='top'><a href='http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -1772,13 +1952,14 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='4'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
+                                        "<tr><td valign='top' colspan='5'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Aturan Pakai</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
@@ -1791,6 +1972,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top'>"+rs3.getString("kode_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getDouble("jml")+" "+rs3.getString("kode_sat")+"</td>"+
+                                                "<td valign='top'>"+Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rs3.getString("tgl_perawatan")+"' and jam='"+rs3.getString("jam")+"' and no_rawat='"+rs2.getString("no_rawat")+"' and kode_brng='"+rs3.getString("kode_brng")+"'")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
                                              "</tr>"); 
                                         w++;
@@ -3666,7 +3848,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='5'>Bacaan/Hasil Radiologi</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
+                                        "<tr><td valign='top' colspan='3'>Bacaan/Hasil Radiologi</td></tr>"+            
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
@@ -3680,6 +3862,41 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("hasil")+"</td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //gambar pemeriksaan radiologi
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                     "select tgl_periksa,jam, lokasi_gambar from gambar_radiologi where no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Gambar Radiologi</td></tr>"+  
+                                        "<tr align='center'>"+
+                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#f8fdf3'>Gambar Radiologi</td>"+
+                                        "</tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
+                                                "<td valign='top'><a href='http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -4181,13 +4398,14 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='4'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
+                                        "<tr><td valign='top' colspan='5'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
                                           "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Aturan Pakai</td>"+
                                           "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
@@ -4200,6 +4418,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top'>"+rs3.getString("kode_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getDouble("jml")+" "+rs3.getString("kode_sat")+"</td>"+
+                                                "<td valign='top'>"+Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rs3.getString("tgl_perawatan")+"' and jam='"+rs3.getString("jam")+"' and no_rawat='"+rs2.getString("no_rawat")+"' and kode_brng='"+rs3.getString("kode_brng")+"'")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
                                              "</tr>"); 
                                         w++;
