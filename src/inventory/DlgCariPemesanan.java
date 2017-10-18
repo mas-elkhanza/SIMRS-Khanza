@@ -90,7 +90,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        NoFaktur.setDocument(new batasInput((byte)15).getKata(NoFaktur));
+        NoFaktur.setDocument(new batasInput((byte)25).getKata(NoFaktur));
         kdsup.setDocument(new batasInput((byte)5).getKata(kdsup));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));
         kdbar.setDocument(new batasInput((byte)15).getKata(kdbar));

@@ -91,8 +91,8 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
         
-        NoRetur.setDocument(new batasInput((byte)8).getKata(NoRetur));
-        NoFaktur.setDocument(new batasInput((byte)8).getKata(NoFaktur));
+        NoRetur.setDocument(new batasInput((byte)25).getKata(NoRetur));
+        NoFaktur.setDocument(new batasInput((byte)25).getKata(NoFaktur));
         Kdptg.setDocument(new batasInput((byte)25).getKata(Kdptg));
         
        petugas.addWindowListener(new WindowListener() {
