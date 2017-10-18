@@ -137,7 +137,7 @@ public class DlgSirkulasiBarang2 extends javax.swing.JDialog {
                         "databarang.nama_brng like ? and kodesatuan.satuan like ? "+
                         " order by databarang.kode_brng");
             psstok=koneksi.prepareStatement("select sum(stok) from gudangbarang where kode_brng=?");
-            psopname=koneksi.prepareStatement("select opname.real from opname where kode_brng=? and tanggal=?");
+            psopname=koneksi.prepareStatement("select sum(opname.real) from opname where kode_brng=? and tanggal=?");
             ps2=koneksi.prepareStatement("select sum(detailbeli.jumlah2) "+
                         " from pembelian inner join detailbeli "+
                         " on pembelian.no_faktur=detailbeli.no_faktur "+
