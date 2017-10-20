@@ -9,6 +9,7 @@
     <entry key="PAS"></entry>
     <entry key="CARICEPAT">nonaktif</entry>
     <entry key="HYBRIDWEB">webapps</entry>
+    <entry key="PORTWEB">80</entry>
     <entry key="ANTRIAN">sender</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">http://192.168.0.131:8080/WsLokalRest</entry>
