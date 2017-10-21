@@ -257,7 +257,10 @@ public class DlgPenjualan extends javax.swing.JDialog {
         }
         
         try {
-            notapenjualan=Sequel.cariIsi("select cetaknotasimpanpenjualan from set_nota"); 
+            notapenjualan=Sequel.cariIsi("select cetaknotasimpanpenjualan from set_nota");
+            if(notapenjualan.equals("")){
+                notapenjualan="No";
+            }
         } catch (Exception e) {
             notapenjualan="No"; 
         }
