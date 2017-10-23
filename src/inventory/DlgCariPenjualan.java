@@ -103,8 +103,8 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        NoNota.setDocument(new batasInput((byte)8).getKata(NoNota));
-        kdmem.setDocument(new batasInput((byte)10).getKata(kdmem));
+        NoNota.setDocument(new batasInput((byte)25).getKata(NoNota));
+        kdmem.setDocument(new batasInput((byte)15).getKata(kdmem));
         nmmem.setDocument(new batasInput((byte)70).getKata(nmmem));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));
         kdbar.setDocument(new batasInput((byte)15).getKata(kdbar));

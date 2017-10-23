@@ -1037,7 +1037,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(Kd2.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Gagal mencteak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mencetak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
         }else if(!(Kd2.getText().trim().equals(""))){    
             try {                
                 ps4.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
@@ -1117,7 +1117,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
-        }else {
+        }else if(Kd2.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mencetak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
+        }else if(!(Kd2.getText().trim().equals(""))){  
             try {
                 Sequel.AutoComitFalse();
                 ps4.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
@@ -1164,7 +1166,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
-        }else {
+        }else if(Kd2.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mengubah. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
+        }else if(!(Kd2.getText().trim().equals(""))){  
             DlgUbahPeriksaLab ubah=new DlgUbahPeriksaLab(null,false);
             ubah.setSize(this.getWidth()-40,this.getHeight()-40);
             ubah.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),
