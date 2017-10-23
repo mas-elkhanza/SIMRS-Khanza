@@ -1170,7 +1170,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
         Menejemen.setText("0");
         TotalBiaya.setText("0");
         //Valid.autoNomer(" jns_perawatan_radiologi ","JP",6,TKd);
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kd_jenis_prw,3),signed)),0) from jns_perawatan_radiologi","J",6,TKd);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kd_jenis_prw,5),signed)),0) from jns_perawatan_radiologi","J",6,TKd);
         TKd.requestFocus();
     }
 

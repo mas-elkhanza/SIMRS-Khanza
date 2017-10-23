@@ -2088,7 +2088,7 @@ private void TOmloop1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         TdrUmum.setText("0");
         TTotal.setText("0");
         //Valid.autoNomer(" paket_operasi ","JP",6,TKd);
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kode_paket,4),signed)),0) from paket_operasi  ","PK",6,TKd);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kode_paket,5),signed)),0) from paket_operasi  ","PK",6,TKd);
         TKd.requestFocus();
     }
 

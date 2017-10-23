@@ -1419,7 +1419,7 @@ private void btnBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         TJmlPr.setText("0");
         TJmlDrPr.setText("0");
         //Valid.autoNomer(" jns_perawatan_inap ","JP",6,TKd);
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kd_jenis_prw,3),signed)),0) from jns_perawatan_inap  ","RI",5,TKd);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kd_jenis_prw,5),signed)),0) from jns_perawatan_inap  ","RI",5,TKd);
         TKd.requestFocus();
     }
 
