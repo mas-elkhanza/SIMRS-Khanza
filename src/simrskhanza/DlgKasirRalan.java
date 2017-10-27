@@ -3964,7 +3964,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     }
                 } 
             }
-            MnSudahActionPerformed(null);
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }

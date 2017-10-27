@@ -44,7 +44,7 @@ public class DlgUser extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private String user="";
+    private String user="",jabatan="";
     private int i=0;
 
     /** Creates new form DlgUser
@@ -56,7 +56,7 @@ public class DlgUser extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(706,674);
 
-        Object[] row={"ID User","Nama User","Password","[I]ICD 10","[I]Obat Penyakit","[C]Dokter","[A]Jadwal Praktek","[C]Petugas","[L]Pasien","[A]Registrasi","[A]Tindakan Ralan",
+        Object[] row={"ID User","Nama User","Jabatan","Password","[I]ICD 10","[I]Obat Penyakit","[C]Dokter","[A]Jadwal Praktek","[C]Petugas","[L]Pasien","[A]Registrasi","[A]Tindakan Ralan",
                     "[A]Kamar Inap","[A]Tindakan Ranap","[A]Operasi","[A]Rujukan Keluar","[A]Rujukan Masuk","[A]Beri Obat, Alkes & BHP","[A]Resep Pulang",
                     "[L]Pasien Meninggal","[A]Diet Pasien","[L]Kelahiran Bayi","[A]Periksa Lab","[A]Periksa Radiologi","[A]Kasir Ralan",
                     "[J]Deposit Pasien","[J]Piutang Pasien","[L]Peminjaman Berkas RM","[C]Barcode Presensi","[C]Presensi Harian","[C]Presensi Bulanan",
@@ -105,7 +105,7 @@ public class DlgUser extends javax.swing.JDialog {
                     return a;
               }              
               Class[] types = new Class[] {
-                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class,java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
@@ -183,123 +183,125 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 241;i++) {
+        for (i = 0; i < 242;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(130);
             }else if(i==1){
                 column.setPreferredWidth(180);
             }else if(i==2){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(100);
             }else if(i==3){
-                column.setPreferredWidth(58);
+                column.setPreferredWidth(130);
             }else if(i==4){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(58);
             }else if(i==5){
-                column.setPreferredWidth(59);
+                column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(100);
-            }else if(i==7){
-                column.setPreferredWidth(68);
-            }else if(i==8){
                 column.setPreferredWidth(59);
+            }else if(i==7){
+                column.setPreferredWidth(100);
+            }else if(i==8){
+                column.setPreferredWidth(68);
             }else if(i==9){
-                column.setPreferredWidth(78);
+                column.setPreferredWidth(59);
             }else if(i==10){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(78);
             }else if(i==11){
-                column.setPreferredWidth(84);
-            }else if(i==12){
-                column.setPreferredWidth(103);
-            }else if(i==13){
-                column.setPreferredWidth(66);
-            }else if(i==14){
                 column.setPreferredWidth(100);
+            }else if(i==12){
+                column.setPreferredWidth(84);
+            }else if(i==13){
+                column.setPreferredWidth(103);
+            }else if(i==14){
+                column.setPreferredWidth(66);
             }else if(i==15){
                 column.setPreferredWidth(100);
             }else if(i==16){
-                column.setPreferredWidth(135);
+                column.setPreferredWidth(100);
             }else if(i==17){
-                column.setPreferredWidth(94);
+                column.setPreferredWidth(135);
             }else if(i==18){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(94);
             }else if(i==19){
-                column.setPreferredWidth(82);
+                column.setPreferredWidth(110);
             }else if(i==20){
-                column.setPreferredWidth(93);
-            }else if(i==21){
                 column.setPreferredWidth(82);
+            }else if(i==21){
+                column.setPreferredWidth(93);
             }else if(i==22){
-                column.setPreferredWidth(107);
+                column.setPreferredWidth(82);
             }else if(i==23){
-                column.setPreferredWidth(81);
+                column.setPreferredWidth(107);
             }else if(i==24){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(81);
             }else if(i==25){
                 column.setPreferredWidth(95);
             }else if(i==26){
-                column.setPreferredWidth(135);
+                column.setPreferredWidth(95);
             }else if(i==27){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(135);
             }else if(i==28){
-                column.setPreferredWidth(103);
-            }else if(i==29){
-                column.setPreferredWidth(108);
-            }else if(i==30){
-                column.setPreferredWidth(100);
-            }else if(i==31){
-                column.setPreferredWidth(92);
-            }else if(i==32){
-                column.setPreferredWidth(136);
-            }else if(i==33){
-                column.setPreferredWidth(98);
-            }else if(i==34){
-                column.setPreferredWidth(105);
-            }else if(i==35){
-                column.setPreferredWidth(87);
-            }else if(i==36){
-                column.setPreferredWidth(114);
-            }else if(i==37){
-                column.setPreferredWidth(127);
-            }else if(i==38){
                 column.setPreferredWidth(110);
+            }else if(i==29){
+                column.setPreferredWidth(103);
+            }else if(i==30){
+                column.setPreferredWidth(108);
+            }else if(i==31){
+                column.setPreferredWidth(100);
+            }else if(i==32){
+                column.setPreferredWidth(92);
+            }else if(i==33){
+                column.setPreferredWidth(136);
+            }else if(i==34){
+                column.setPreferredWidth(98);
+            }else if(i==35){
+                column.setPreferredWidth(105);
+            }else if(i==36){
+                column.setPreferredWidth(87);
+            }else if(i==37){
+                column.setPreferredWidth(114);
+            }else if(i==38){
+                column.setPreferredWidth(127);
             }else if(i==39){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(110);
             }else if(i==40){
                 column.setPreferredWidth(170);
             }else if(i==41){
-                column.setPreferredWidth(163);
+                column.setPreferredWidth(170);
             }else if(i==42){
-                column.setPreferredWidth(153);
+                column.setPreferredWidth(163);
             }else if(i==43){
-                column.setPreferredWidth(101);
+                column.setPreferredWidth(153);
             }else if(i==44){
-                column.setPreferredWidth(115);
+                column.setPreferredWidth(101);
             }else if(i==45){
+                column.setPreferredWidth(115);
+            }else if(i==46){
                 column.setPreferredWidth(178);
-            }else if(i==229){
-                column.setPreferredWidth(125);
             }else if(i==230){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(125);
             }else if(i==231){
-                column.setPreferredWidth(165);
+                column.setPreferredWidth(100);
             }else if(i==232){
-                column.setPreferredWidth(133);
+                column.setPreferredWidth(165);
             }else if(i==233){
                 column.setPreferredWidth(133);
             }else if(i==234){
-                column.setPreferredWidth(73);
+                column.setPreferredWidth(133);
             }else if(i==235){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(73);
             }else if(i==236){
-                column.setPreferredWidth(82);
-            }else if(i==237){
                 column.setPreferredWidth(80);
+            }else if(i==237){
+                column.setPreferredWidth(82);
             }else if(i==238){
-                column.setPreferredWidth(155);
+                column.setPreferredWidth(80);
             }else if(i==239){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(155);
             }else if(i==240){
+                column.setPreferredWidth(90);
+            }else if(i==241){
                 column.setPreferredWidth(135);
             }else{
                 column.setPreferredWidth(120);
@@ -1115,7 +1117,7 @@ private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 Sequel.menyimpan("temporary","'0','"+
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
-                                tabMode.getValueAt(i,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
+                                tabMode.getValueAt(i,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
             }
             Valid.MyReport("rptUser.jrxml","report","::[ Data User ]::",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc");
@@ -1278,14 +1280,16 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 while(rs.next()){
                     user="";
                     user=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString(1));
+                    jabatan=Sequel.cariIsi("select nm_sps from spesialis where kd_sps=?",Sequel.cariIsi("select kd_sps from dokter where kd_dokter=?",rs.getString(1)));
                     if(user.equals("")){
                         user=Sequel.cariIsi("select nama from petugas where nip=?",rs.getString(1));
+                        jabatan=Sequel.cariIsi("select nm_jbtn from jabatan where kd_jbtn=?",Sequel.cariIsi("select kd_jbtn from petugas where nip=?",rs.getString(1)));
                     }    
                     try {
                         if(rs.getString(1).toLowerCase().contains(TCari.getText().toLowerCase())||
                                 user.toLowerCase().contains(TCari.getText().toLowerCase())){
                             tabMode.addRow(new Object[]{rs.getString(1),
-                               user,rs.getString(2),
+                               user,jabatan,rs.getString(2),
                                rs.getBoolean("penyakit"),
                                rs.getBoolean("obat_penyakit"),
                                rs.getBoolean("dokter"),
@@ -1528,7 +1532,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }   
                     } catch (Exception e) {
                         tabMode.addRow(new Object[]{rs.getString(1),
-                           "Turn Out",rs.getString(2),
+                           "Turn Out","Jabatan",rs.getString(2),
                            rs.getBoolean("penyakit"),
                            rs.getBoolean("obat_penyakit"),
                            rs.getBoolean("dokter"),
@@ -1800,6 +1804,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     TNmUser.setText("");
                 }
             }
+            if(rs!=null){
+                rs.close();
+            }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -1815,7 +1822,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         i=tbUser.getSelectedRow();
         if(i!= -1){
             TKd.setText(tbUser.getValueAt(i,0).toString());
-            TPass.setText(tbUser.getValueAt(i,2).toString());            
+            TPass.setText(tbUser.getValueAt(i,3).toString());            
         }
     }
 
