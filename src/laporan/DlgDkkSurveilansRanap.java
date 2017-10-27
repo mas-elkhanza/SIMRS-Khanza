@@ -359,16 +359,17 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            //TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
-            Sequel.queryu("delete from temporary");
-            Map<String, Object> param = new HashMap<>();
-            param.put("tanggal",Tgl2.getDate());
-            param.put("jmltotal",jmltotal+"");
-            if(TabRawat.getSelectedIndex()==0){
+        if(TabRawat.getSelectedIndex()==0){
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                //TCari.requestFocus();
+            }else if(tabMode.getRowCount()!=0){
+                Sequel.AutoComitFalse();
+                Sequel.queryu("delete from temporary");
+                Map<String, Object> param = new HashMap<>();
+                param.put("tanggal",Tgl2.getDate());
+                param.put("jmltotal",jmltotal+"");
+
                 for(int r=0;r<tabMode.getRowCount();r++){  
                     Sequel.menyimpan("temporary","'0','"+
                                     tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
@@ -392,7 +393,26 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }
-            }else if(TabRawat.getSelectedIndex()==1){
+
+                Sequel.AutoComitTrue();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                Valid.MyReport("rptSurveilansRanap.jrxml","report","::[ Surveilans PD3I ]::",
+                    "select * from temporary order by no asc",param);
+            }
+        }else if(TabRawat.getSelectedIndex()==1){
+            if(tabMode2.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                //TCari.requestFocus();
+            }else if(tabMode2.getRowCount()!=0){
+                Sequel.AutoComitFalse();
+                Sequel.queryu("delete from temporary");
+                Map<String, Object> param = new HashMap<>();
+                param.put("tanggal",Tgl2.getDate());
+                param.put("jmltotal",jmltotal+"");
+
                 for(int r=0;r<tabMode2.getRowCount();r++){  
                     Sequel.menyimpan("temporary","'0','"+
                                     tabMode2.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
@@ -416,16 +436,17 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                                     tabMode2.getValueAt(r,18).toString().replaceAll("'","`")+"','"+
                                     tabMode2.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }
+
+                Sequel.AutoComitTrue();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                Valid.MyReport("rptSurveilansRanap.jrxml","report","::[ Surveilans PD3I ]::",
+                    "select * from temporary order by no asc",param);
             }
-            
-            Sequel.AutoComitTrue();
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-            Valid.MyReport("rptSurveilansRanap.jrxml","report","::[ Surveilans PD3I ]::",
-                "select * from temporary order by no asc",param);
         }
+            
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
