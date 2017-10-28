@@ -56,7 +56,8 @@ public final class var {
             mutasi_berkas=false,akun_piutang=false,harian_kso=false,bulanan_kso=false,harian_menejemen=false,bulanan_menejemen=false,inhealth_cek_eligibilitas=false,
             inhealth_referensi_jenpel_ruang_rawat=false,inhealth_referensi_poli=false,inhealth_referensi_faskes=false,inhealth_sjp=false,piutang_ralan=false,
             piutang_ranap=false,detail_piutang_penjab=false,lama_pelayanan_ralan=false,catatan_pasien=false,rl4b=false,rl4asebab=false,rl4bsebab=false,
-            data_HAIs=false,harian_HAIs=false,bulanan_HAIs=false,hitung_bor=false,perusahaan_pasien=false,resep_dokter=false,lama_pelayanan_apotek=false;
+            data_HAIs=false,harian_HAIs=false,bulanan_HAIs=false,hitung_bor=false,perusahaan_pasien=false,resep_dokter=false,lama_pelayanan_apotek=false,
+            hitung_alos=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -320,6 +321,7 @@ public final class var {
                         var.perusahaan_pasien=true;
                         var.resep_dokter=true;
                         var.lama_pelayanan_apotek=true;
+                        var.hitung_alos=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -565,6 +567,7 @@ public final class var {
                         var.perusahaan_pasien=true;
                         var.resep_dokter=true;
                         var.lama_pelayanan_apotek=true;
+                        var.hitung_alos=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -811,6 +814,7 @@ public final class var {
                         var.perusahaan_pasien=rs2.getBoolean("perusahaan_pasien");
                         var.resep_dokter=rs2.getBoolean("resep_dokter");
                         var.lama_pelayanan_apotek=rs2.getBoolean("lama_pelayanan_apotek");
+                        var.hitung_alos=rs2.getBoolean("hitung_alos");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1055,6 +1059,7 @@ public final class var {
                         var.perusahaan_pasien=false;
                         var.resep_dokter=false;
                         var.lama_pelayanan_apotek=false;
+                        var.hitung_alos=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1345,4 +1350,5 @@ public final class var {
     public static boolean getperusahaan_pasien(){return var.perusahaan_pasien;}
     public static boolean getresep_dokter(){return var.resep_dokter;}
     public static boolean getlama_pelayanan_apotek(){return var.lama_pelayanan_apotek;}
+    public static boolean gethitung_alos(){return var.hitung_alos;}
 }

@@ -52,7 +52,7 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
 
-        tabMode=new DefaultTableModel(null,new String[]{"No","No.Rawat","Nomer RM","Nama Pasien","Kamar","Tgl.Masuk","Tgl.Keluar","Lama"}){
+        tabMode=new DefaultTableModel(null,new String[]{"No","No.Rawat","Nomer RM","Nama Pasien","Kamar","Tgl.Masuk","Tgl.Keluar","Lama","Status"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         Tabel1.setModel(tabMode);
@@ -61,7 +61,7 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
         Tabel1.setPreferredScrollableViewportSize(new Dimension(500,500));
         Tabel1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = Tabel1.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(35);
@@ -79,12 +79,14 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
                 column.setPreferredWidth(75);
             }else if(i==7){
                 column.setPreferredWidth(70);
+            }else if(i==8){
+                column.setPreferredWidth(80);
             }
         }
 
         Tabel1.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabMode2=new DefaultTableModel(null,new String[]{"No","No.Rawat","Nomer RM","Nama Pasien","Kamar","Tgl.Masuk","Tgl.Keluar","Lama"}){
+        tabMode2=new DefaultTableModel(null,new String[]{"No","No.Rawat","Nomer RM","Nama Pasien","Kamar","Tgl.Masuk","Tgl.Keluar","Lama","Status"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         Tabel2.setModel(tabMode2);
@@ -93,7 +95,7 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
         Tabel2.setPreferredScrollableViewportSize(new Dimension(500,500));
         Tabel2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = Tabel2.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(35);
@@ -111,6 +113,8 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
                 column.setPreferredWidth(75);
             }else if(i==7){
                 column.setPreferredWidth(70);
+            }else if(i==8){
+                column.setPreferredWidth(80);
             }
         }
 
@@ -354,7 +358,8 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
                                         tabMode.getValueAt(r,4).toString()+"','"+
                                         tabMode.getValueAt(r,5).toString()+"','"+
                                         tabMode.getValueAt(r,6).toString()+"','"+
-                                        tabMode.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                        tabMode.getValueAt(r,7).toString()+"','"+
+                                        tabMode.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
                 Sequel.AutoComitTrue();   
@@ -387,7 +392,8 @@ public final class DlgHitungBOR extends javax.swing.JDialog {
                                         tabMode2.getValueAt(r,4).toString()+"','"+
                                         tabMode2.getValueAt(r,5).toString()+"','"+
                                         tabMode2.getValueAt(r,6).toString()+"','"+
-                                        tabMode2.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                        tabMode2.getValueAt(r,7).toString()+"','"+
+                                        tabMode2.getValueAt(r,8).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                     }                    
                 }
                 Sequel.AutoComitTrue();   
@@ -524,7 +530,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             
             ps=koneksi.prepareStatement(
                        "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar," +
-                       "kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar,lama "+
+                       "kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar,kamar_inap.lama,kamar_inap.stts_pulang "+
                        "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal " +
                        "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
                        "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal  " +
@@ -540,7 +546,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     tabMode.addRow(new Object[]{
                         i,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("kamar"),rs.getString("tgl_masuk"),rs.getString("tgl_keluar"),
-                        rs.getString("lama")
+                        rs.getString("lama"),rs.getString("stts_pulang")
                     });
                     hari=hari+rs.getDouble("lama");
                     i++;
@@ -548,10 +554,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(hari>0){
                     kamar=Sequel.cariInteger("select count(*) from kamar ");
                     jumlahhari=Sequel.cariInteger("select (to_days('"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"')-to_days('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"'))");
-                    tabMode.addRow(new Object[]{"","","","Jumlah Hari Perawatan",":","","",hari});
-                    tabMode.addRow(new Object[]{"","","","Jumlah Kamar",":","","",kamar});
-                    tabMode.addRow(new Object[]{"","","","Jumlah Hari Dalam Periode",":","","",jumlahhari});
-                    tabMode.addRow(new Object[]{"","","","Perhitungan BOR ",": ("+hari+"/("+kamar+" X "+jumlahhari+")) X 100%","","",Valid.SetAngka4((hari/(kamar*jumlahhari))*100)+" %"});
+                    tabMode.addRow(new Object[]{"","","","Jumlah Hari Perawatan",":","","",hari,""});
+                    tabMode.addRow(new Object[]{"","","","Jumlah Kamar",":","","",kamar,""});
+                    tabMode.addRow(new Object[]{"","","","Jumlah Hari Dalam Periode",":","","",jumlahhari,""});
+                    tabMode.addRow(new Object[]{"","","","Perhitungan BOR ",": ("+hari+"/("+kamar+" X "+jumlahhari+")) X 100%","","",Valid.SetAngka4((hari/(kamar*jumlahhari))*100)+" %",""});
                 }                    
             } catch (Exception e) {
                 System.out.println("laporan.DlgHitungBOR.tampil() : "+e);
@@ -576,7 +582,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             
             ps=koneksi.prepareStatement(
                        "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar," +
-                       "kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar,lama "+
+                       "kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar,kamar_inap.lama,kamar_inap.stts_pulang "+
                        "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal " +
                        "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
                        "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal  " +
@@ -592,7 +598,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     tabMode2.addRow(new Object[]{
                         i,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("kamar"),rs.getString("tgl_masuk"),rs.getString("tgl_keluar"),
-                        rs.getString("lama")
+                        rs.getString("lama"),rs.getString("stts_pulang")
                     });
                     hari=hari+rs.getDouble("lama");
                     i++;
@@ -600,10 +606,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(hari>0){
                     kamar=Sequel.cariInteger("select count(*) from kamar ");
                     jumlahhari=Sequel.cariInteger("select (to_days('"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"')-to_days('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"'))");
-                    tabMode2.addRow(new Object[]{"","","","Jumlah Hari Perawatan",":","","",hari});
-                    tabMode2.addRow(new Object[]{"","","","Jumlah Kamar",":","","",kamar});
-                    tabMode2.addRow(new Object[]{"","","","Jumlah Hari Dalam Periode",":","","",jumlahhari});
-                    tabMode2.addRow(new Object[]{"","","","Perhitungan BOR ",": ("+hari+"/("+kamar+" X "+jumlahhari+")) X 100%","","",Valid.SetAngka4((hari/(kamar*jumlahhari))*100)+" %"});
+                    tabMode2.addRow(new Object[]{"","","","Jumlah Hari Perawatan",":","","",hari,""});
+                    tabMode2.addRow(new Object[]{"","","","Jumlah Kamar",":","","",kamar,""});
+                    tabMode2.addRow(new Object[]{"","","","Jumlah Hari Dalam Periode",":","","",jumlahhari,""});
+                    tabMode2.addRow(new Object[]{"","","","Perhitungan BOR ",": ("+hari+"/("+kamar+" X "+jumlahhari+")) X 100%","","",Valid.SetAngka4((hari/(kamar*jumlahhari))*100)+" %",""});
                 }                    
             } catch (Exception e) {
                 System.out.println("laporan.DlgHitungBOR.tampil() : "+e);
