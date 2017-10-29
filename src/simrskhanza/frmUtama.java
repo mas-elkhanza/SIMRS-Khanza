@@ -180,6 +180,7 @@ import inventory.DlgRiwayatBarangMedis;
 import java.awt.event.KeyListener;
 import javax.swing.event.DocumentEvent;
 import keuangan.DlgAkunPiutang;
+import keuangan.DlgDetailTindakan;
 import keuangan.DlgHutangObatBelumLunas;
 import keuangan.DlgPiutangPercaraBayar;
 import keuangan.DlgPiutangRalan;
@@ -635,6 +636,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnDaftarPermintaanResep = new widget.ButtonBig();
         btnLamaPelayananApotek = new widget.ButtonBig();
         btnHitungAlos = new widget.ButtonBig();
+        btnDetailTindakan = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4098,6 +4100,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnHitungAlos);
 
+        btnDetailTindakan.setForeground(new java.awt.Color(40, 70, 50));
+        btnDetailTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnDetailTindakan.setText("Detail Tindakan");
+        btnDetailTindakan.setIconTextGap(0);
+        btnDetailTindakan.setName("btnDetailTindakan"); // NOI18N
+        btnDetailTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDetailTindakan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetailTindakanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnDetailTindakan);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4106,7 +4121,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/10/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/10/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8684,6 +8699,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnHitungAlosActionPerformed
 
+    private void btnDetailTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailTindakanActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDetailTindakan dettin=new DlgDetailTindakan(this,false);
+        dettin.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        dettin.setLocationRelativeTo(PanelUtama);
+        dettin.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnDetailTindakanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8778,6 +8804,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnDataPenjualan;
     private widget.ButtonBig btnDataPenyerahanDarah;
     private widget.ButtonBig btnDeposit;
+    private widget.ButtonBig btnDetailTindakan;
     private widget.ButtonBig btnDiagnosa;
     private widget.ButtonBig btnDiet;
     private widget.ButtonBig btnDisplay;
@@ -9756,6 +9783,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
 
+            if(var.getdetail_tindakan()==true){
+                Panelmenu.add(btnDetailTindakan);
+                jmlmenu++;
+            } 
+            
             if(var.getjm_ranap_dokter()==true){
                 Panelmenu.add(btnJMDetailDokter);
                 jmlmenu++;
@@ -10975,6 +11007,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             Panelmenu.add(btnObatPerCaraBayar);
             jmlmenu++;
         }
+
+        if(var.getdetail_tindakan()==true){
+            Panelmenu.add(btnDetailTindakan);
+            jmlmenu++;
+        } 
 
         if(var.getjm_ranap_dokter()==true){
             Panelmenu.add(btnJMDetailDokter);
@@ -12374,6 +12411,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
 
+        if(var.getdetail_tindakan()==true){
+            if(btnDetailTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDetailTindakan);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getjm_ranap_dokter()==true){
             if(btnJMDetailDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJMDetailDokter);

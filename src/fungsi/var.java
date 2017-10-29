@@ -57,7 +57,7 @@ public final class var {
             inhealth_referensi_jenpel_ruang_rawat=false,inhealth_referensi_poli=false,inhealth_referensi_faskes=false,inhealth_sjp=false,piutang_ralan=false,
             piutang_ranap=false,detail_piutang_penjab=false,lama_pelayanan_ralan=false,catatan_pasien=false,rl4b=false,rl4asebab=false,rl4bsebab=false,
             data_HAIs=false,harian_HAIs=false,bulanan_HAIs=false,hitung_bor=false,perusahaan_pasien=false,resep_dokter=false,lama_pelayanan_apotek=false,
-            hitung_alos=false;
+            hitung_alos=false,detail_tindakan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -322,6 +322,7 @@ public final class var {
                         var.resep_dokter=true;
                         var.lama_pelayanan_apotek=true;
                         var.hitung_alos=true;
+                        var.detail_tindakan=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -568,6 +569,7 @@ public final class var {
                         var.resep_dokter=true;
                         var.lama_pelayanan_apotek=true;
                         var.hitung_alos=true;
+                        var.detail_tindakan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -815,6 +817,7 @@ public final class var {
                         var.resep_dokter=rs2.getBoolean("resep_dokter");
                         var.lama_pelayanan_apotek=rs2.getBoolean("lama_pelayanan_apotek");
                         var.hitung_alos=rs2.getBoolean("hitung_alos");
+                        var.detail_tindakan=rs2.getBoolean("detail_tindakan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1060,6 +1063,7 @@ public final class var {
                         var.resep_dokter=false;
                         var.lama_pelayanan_apotek=false;
                         var.hitung_alos=false;
+                        var.detail_tindakan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1351,4 +1355,5 @@ public final class var {
     public static boolean getresep_dokter(){return var.resep_dokter;}
     public static boolean getlama_pelayanan_apotek(){return var.lama_pelayanan_apotek;}
     public static boolean gethitung_alos(){return var.hitung_alos;}
+    public static boolean getdetail_tindakan(){return var.detail_tindakan;}
 }
