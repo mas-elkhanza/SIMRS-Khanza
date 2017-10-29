@@ -38,7 +38,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
     private DefaultTableModel tabModeRalanDokter,tabModeRalanParamedis,
-            tabModeRalanDokterParamedis;
+            tabModeRalanDokterParamedis,tabModeRanapDokter;
     private validasi Valid=new validasi();
     private ResultSet rs;
     private PreparedStatement ps;
@@ -271,6 +271,76 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             }
         }
         tbRalanDokterParamedis.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeRanapDokter=new DefaultTableModel(null,new Object[]{
+            "No.","No.Rawat","No.R.M.","Nama Pasien","Kd.Tnd","Perawatan/Tindakan","Kode Dokter",
+            "Dokter Yg Menangani","Tanggal","Jam","Cara Bayar","Ruangan",
+            "Jasa Sarana","Paket BHP","JM Dokter","KSO","Menejemen","Total"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Double.class,
+                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
+                 java.lang.Double.class,java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbRanapDokter.setModel(tabModeRanapDokter);
+        tbRanapDokter.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbRanapDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 18; i++) {
+            TableColumn column = tbRanapDokter.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(30);
+            }else if(i==1){
+                column.setPreferredWidth(105);
+            }else if(i==2){
+                column.setPreferredWidth(70);
+            }else if(i==3){
+                column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setPreferredWidth(75);
+            }else if(i==5){
+                column.setPreferredWidth(200);
+            }else if(i==6){
+                column.setPreferredWidth(75);
+            }else if(i==7){
+                column.setPreferredWidth(150);
+            }else if(i==8){
+                column.setPreferredWidth(70);
+            }else if(i==9){
+                column.setPreferredWidth(55);
+            }else if(i==10){
+                column.setPreferredWidth(110);
+            }else if(i==11){
+                column.setPreferredWidth(130);
+            }else if(i==12){
+                column.setPreferredWidth(75);
+            }else if(i==13){
+                column.setPreferredWidth(75);
+            }else if(i==14){
+                column.setPreferredWidth(75);
+            }else if(i==15){
+                column.setPreferredWidth(75);
+            }else if(i==16){
+                column.setPreferredWidth(75);
+            }else if(i==17){
+                column.setPreferredWidth(80);
+            }
+        }
+        tbRanapDokter.setDefaultRenderer(Object.class, new WarnaTable());
         
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
@@ -808,6 +878,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             case 2:
                 tampil3();
                 break; 
+            case 4:
+                tampil5();
+                break;
             default:
                 break;
         }
@@ -1271,7 +1344,98 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     }
     
     public void tampil5(){     
-        
+        Valid.tabelKosong(tabModeRanapDokter);
+        try{
+            ps=koneksi.prepareStatement(
+                   "select rawat_inap_dr.no_rawat,reg_periksa.no_rkm_medis,"+
+                   "pasien.nm_pasien,rawat_inap_dr.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,"+
+                   "rawat_inap_dr.kd_dokter,dokter.nm_dokter,rawat_inap_dr.tgl_perawatan,"+
+                   "rawat_inap_dr.jam_rawat,penjab.png_jawab,bangsal.nm_bangsal , " +
+                   "rawat_inap_dr.material,rawat_inap_dr.bhp,rawat_inap_dr.tarif_tindakandr,"+
+                   "rawat_inap_dr.kso,rawat_inap_dr.menejemen,rawat_inap_dr.biaya_rawat "+
+                   "from pasien inner join reg_periksa inner join jns_perawatan_inap inner join "+
+                   "dokter inner join rawat_inap_dr inner join kamar_inap inner join kamar "+
+                   "inner join bangsal inner join penjab "+
+                   "on rawat_inap_dr.no_rawat=reg_periksa.no_rawat "+
+                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "and reg_periksa.kd_pj=penjab.kd_pj "+
+                   "and reg_periksa.no_rawat=kamar_inap.no_rawat "+
+                   "and kamar_inap.kd_kamar=kamar.kd_kamar "+
+                   "and kamar.kd_bangsal=bangsal.kd_bangsal "+
+                   "and rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
+                   "and rawat_inap_dr.kd_dokter=dokter.kd_dokter "+
+                   "where rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.no_rawat like ? or "+
+                    "rawat_inap_dr.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? or "+
+                    "rawat_inap_dr.tgl_perawatan between ? and ? and pasien.nm_pasien like ? or "+
+                    "rawat_inap_dr.tgl_perawatan between ? and ? and jns_perawatan_inap.nm_perawatan like ? or "+
+                    "rawat_inap_dr.tgl_perawatan between ? and ? and rawat_inap_dr.kd_dokter like ? or "+
+                    "rawat_inap_dr.tgl_perawatan between ? and ? and dokter.nm_dokter like ? or "+
+                    "rawat_inap_dr.tgl_perawatan between ? and ? and penjab.png_jawab like ? or "+
+                    "rawat_inap_dr.tgl_perawatan between ? and ? and bangsal.nm_bangsal  like ? "+
+                   " order by rawat_inap_dr.no_rawat desc");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(21,"%"+TCari.getText().trim()+"%");
+                ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(24,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                i=1;
+                material=0;bhp=0;jmdokter=0;kso=0;menejemen=0;total=0;
+                while(rs.next()){
+                    material=material+rs.getDouble("material");
+                    bhp=bhp+rs.getDouble("bhp");
+                    jmdokter=jmdokter+rs.getDouble("tarif_tindakandr");
+                    kso=kso+rs.getDouble("kso");
+                    menejemen=menejemen+rs.getDouble("menejemen");
+                    total=total+rs.getDouble("biaya_rawat");
+                    tabModeRanapDokter.addRow(new Object[]{
+                        i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+                        rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
+                        rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
+                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(15),
+                        rs.getDouble(17)
+                    });
+                    i++;
+                }
+                if(total>0){
+                    tabModeRanapDokter.addRow(new Object[]{
+                        "","","","","","","","","","","","Jumlah Total :",material,
+                        bhp,jmdokter,kso,menejemen,total
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }           
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
     }
     
     public void tampil6(){     
