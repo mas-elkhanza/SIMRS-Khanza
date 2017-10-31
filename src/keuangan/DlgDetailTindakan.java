@@ -1173,6 +1173,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             case 6:
                 tampil7();
                 break;
+            case 7:
+                tampil8();
+                break;
             default:
                 break;
         }
