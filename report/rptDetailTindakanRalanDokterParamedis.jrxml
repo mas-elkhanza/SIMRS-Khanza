@@ -15,30 +15,31 @@
 	<parameter name="cari" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select rawat_jl_drpr.no_rawat,reg_periksa.no_rkm_medis,
-                   pasien.nm_pasien,rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,
-                   rawat_jl_drpr.kd_dokter,dokter.nm_dokter,rawat_jl_drpr.nip,petugas.nama,rawat_jl_drpr.tgl_perawatan,
-                   rawat_jl_drpr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli,  +
-                   rawat_jl_drpr.material,rawat_jl_drpr.bhp,rawat_jl_drpr.tarif_tindakandr,rawat_jl_drpr.tarif_tindakanpr,
-                   rawat_jl_drpr.kso,rawat_jl_drpr.menejemen,rawat_jl_drpr.biaya_rawat 
-                   from pasien inner join reg_periksa inner join jns_perawatan inner join 
-                   dokter inner join rawat_jl_drpr inner join poliklinik inner join penjab 
-                   inner join petugas on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat 
-                   and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
-                   and reg_periksa.kd_pj=penjab.kd_pj 
-                   and reg_periksa.kd_poli=poliklinik.kd_poli 
-                   and rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw 
-                   and rawat_jl_drpr.kd_dokter=dokter.kd_dokter 
-                   where rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and rawat_jl_drpr.no_rawat like $P{cari} or 
-                    rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and reg_periksa.no_rkm_medis like $P{cari} or 
-                    rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and pasien.nm_pasien like $P{cari} or 
-                    rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and jns_perawatan.nm_perawatan like $P{cari} or 
-                    rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and rawat_jl_drpr.kd_dokter like $P{cari} or 
-                    rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and dokter.nm_dokter like $P{cari} or 
-                    rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and rawat_jl_drpr.nip like $P{cari} or 
-                    rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and petugas.nama like $P{cari} or 
-                    rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and penjab.png_jawab like $P{cari} or 
-                    rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and poliklinik.nm_poli like $P{cari} 
-                    order by rawat_jl_drpr.no_rawat desc]]>
+pasien.nm_pasien,rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,
+rawat_jl_drpr.kd_dokter,dokter.nm_dokter,rawat_jl_drpr.nip,petugas.nama,rawat_jl_drpr.tgl_perawatan,
+rawat_jl_drpr.jam_rawat,penjab.png_jawab,poliklinik.nm_poli,  +
+rawat_jl_drpr.material,rawat_jl_drpr.bhp,rawat_jl_drpr.tarif_tindakandr,rawat_jl_drpr.tarif_tindakanpr,
+rawat_jl_drpr.kso,rawat_jl_drpr.menejemen,rawat_jl_drpr.biaya_rawat 
+from pasien inner join reg_periksa inner join jns_perawatan inner join 
+dokter inner join rawat_jl_drpr inner join poliklinik inner join penjab 
+inner join petugas on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat 
+and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
+and reg_periksa.kd_pj=penjab.kd_pj 
+and reg_periksa.kd_poli=poliklinik.kd_poli 
+and rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw 
+and rawat_jl_drpr.kd_dokter=dokter.kd_dokter 
+and rawat_jl_drpr.nip=petugas.nip 
+where rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and rawat_jl_drpr.no_rawat like $P{cari} or 
+ rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and reg_periksa.no_rkm_medis like $P{cari} or 
+ rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and pasien.nm_pasien like $P{cari} or 
+ rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and jns_perawatan.nm_perawatan like $P{cari} or 
+ rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and rawat_jl_drpr.kd_dokter like $P{cari} or 
+ rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and dokter.nm_dokter like $P{cari} or 
+ rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and rawat_jl_drpr.nip like $P{cari} or 
+ rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and petugas.nama like $P{cari} or 
+ rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and penjab.png_jawab like $P{cari} or 
+ rawat_jl_drpr.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and poliklinik.nm_poli like $P{cari} 
+ order by rawat_jl_drpr.no_rawat desc]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
