@@ -60,7 +60,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
     private double[] total,bagian_rs,bhp,tarif_perujuk,tarif_tindakan_dokter,tarif_tindakan_petugas,kso,menejemen,
             biaya_item2,bagian_rs2,bhp2,bagian_perujuk2,bagian_dokter2,bagian_laborat2,kso2,menejemen2;
     private int jml=0,i=0,index=0,jml2=0,i2=0,index2=0;
-    private String kamar,namakamar,cara_bayar_lab="Yes",pilihan="",status="";
+    private String kamar,namakamar,cara_bayar_lab="Yes",pilihan="",status="",diagnosa="";
     private double ttl=0,item=0;
     private boolean sukses=false;
     private double ttljmdokter=0,ttljmpetugas=0,ttlkso=0,ttlpendapatan=0,ttlbhp=0;
@@ -1301,6 +1301,8 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
             Map<String, Object> param = new HashMap<>();
             param.put("noperiksa",TNoRw.getText());
             param.put("norm",TNoRM.getText());
+            param.put("pekerjaan",Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?",TNoRM.getText()));
+            param.put("noktp",Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",TNoRM.getText()));
             param.put("namapasien",TPasien.getText());
             param.put("jkel",Jk.getText());
             param.put("umur",Umur.getText());
@@ -1312,6 +1314,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
             param.put("alamat",Alamat.getText());
             param.put("kamar",kamar);
             param.put("namakamar",namakamar);
+            param.put("diagnosa",diagnosa);
             param.put("jam",CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -1321,7 +1324,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
             param.put("emailrs",var.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
             
-            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih hasil pemeriksaan..!","Hasil Pemeriksaan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Model 1","Model 2", "Model 3", "Model 4", "Model 5", "Model 6"},"Model 1");
+            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih hasil pemeriksaan..!","Hasil Pemeriksaan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Model 1","Model 2", "Model 3", "Model 4", "Model 5", "Model 6", "Model 7", "Model 8"},"Model 1");
             switch (pilihan) {
                 case "Model 1":
                       Valid.MyReport("rptPeriksaLab.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
@@ -1345,6 +1348,14 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                       break;
                 case "Model 6":
                       Valid.MyReport("rptPeriksaLab6.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
+                            "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc",param);            
+                      break;
+                case "Model 7":
+                      Valid.MyReport("rptPeriksaLab7.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
+                            "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc",param);            
+                      break;
+                case "Model 8":
+                      Valid.MyReport("rptPeriksaLab8.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
                             "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc",param);            
                       break;
             }         
@@ -1918,12 +1929,12 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=? ",Penjab,TNoRw.getText());
         Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=? ",KodePerujuk,TNoRw.getText());
         Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=? ",NmPerujuk,KodePerujuk.getText());
-        
+        diagnosa=Sequel.cariIsi("select diagnosa_awal from kamar_inap where no_rawat=?",TNoRw.getText());
         kamar=Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat=? order by tgl_masuk desc limit 1",TNoRw.getText());
         if(!kamar.equals("")){
             namakamar=kamar+", "+Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar on bangsal.kd_bangsal=kamar.kd_bangsal "+
                     " where kamar.kd_kamar=? ",kamar);            
-            kamar="Kamar";
+            kamar="Kamar";            
         }else if(kamar.equals("")){
             kamar="Poli";
             namakamar=Sequel.cariIsi("select nm_poli from poliklinik inner join reg_periksa on poliklinik.kd_poli=reg_periksa.kd_poli "+

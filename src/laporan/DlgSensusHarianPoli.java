@@ -426,7 +426,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Seluruh Data Registrasi ", internalFrame2);
+        TabRawat.addTab("Seluruh Data Registrasi", internalFrame2);
 
         internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame3.setBorder(null);
@@ -442,7 +442,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
 
         internalFrame3.add(Scroll1, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Data Registrasi Non Batal  ", internalFrame3);
+        TabRawat.addTab("Data Registrasi Non Batal", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 

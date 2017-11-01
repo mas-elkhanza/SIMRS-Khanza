@@ -420,7 +420,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: No.R.M. Terakhir  ", internalFrame2);
+        TabRawat.addTab("No.R.M. Terakhir", internalFrame2);
 
         internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame3.setBorder(null);
@@ -521,7 +521,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         internalFrame3.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Pengurutan No.R.M  ", internalFrame3);
+        TabRawat.addTab("Pengurutan No.R.M", internalFrame3);
 
         internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame4.setBorder(null);
@@ -605,7 +605,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Pengaturan Alamat  ", internalFrame4);
+        TabRawat.addTab("Pengaturan Alamat", internalFrame4);
 
         internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame5.setBorder(null);
@@ -1226,7 +1226,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         internalFrame5.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Pengaturan Kelengkapan Data  ", internalFrame5);
+        TabRawat.addTab("Pengaturan Kelengkapan Data", internalFrame5);
 
         internalFrame6.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame6.setBorder(null);
@@ -1276,7 +1276,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         internalFrame6.add(panelGlass10, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Pengaturan Registrasi ", internalFrame6);
+        TabRawat.addTab("Pengaturan Registrasi", internalFrame6);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 

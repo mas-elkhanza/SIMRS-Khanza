@@ -457,7 +457,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Pengaturan Umum ", internalFrame2);
+        TabRawat.addTab("Pengaturan Umum", internalFrame2);
 
         internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame3.setBorder(null);
@@ -574,7 +574,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
 
         internalFrame3.add(Scroll1, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Pengaturan Depo Ralan ", internalFrame3);
+        TabRawat.addTab("Pengaturan Depo Ralan", internalFrame3);
 
         internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame4.setBorder(null);
@@ -691,7 +691,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
 
         internalFrame4.add(Scroll2, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Pengaturan Depo Ranap ", internalFrame4);
+        TabRawat.addTab("Pengaturan Depo Ranap", internalFrame4);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 

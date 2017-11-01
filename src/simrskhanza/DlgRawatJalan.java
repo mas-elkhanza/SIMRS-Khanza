@@ -865,7 +865,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-09-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -880,7 +880,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-09-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1032,7 +1032,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         internalFrame2.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Penanganan Dokter  ", internalFrame2);
+        TabRawat.addTab("Penanganan Dokter", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -1100,7 +1100,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         internalFrame3.add(panelGlass10, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Penanganan Petugas  ", internalFrame3);
+        TabRawat.addTab("Penanganan Petugas", internalFrame3);
 
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
@@ -1201,7 +1201,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         internalFrame4.add(panelGlass11, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Penanganan Dokter & Petugas  ", internalFrame4);
+        TabRawat.addTab("Penanganan Dokter & Petugas", internalFrame4);
 
         internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame5.setBorder(null);
@@ -1230,7 +1230,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         internalFrame5.add(Scroll3, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Pemeriksaan  ", internalFrame5);
+        TabRawat.addTab("Pemeriksaan", internalFrame5);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -1483,7 +1483,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-09-2017" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2017" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);

@@ -281,7 +281,7 @@ public final class DlgDkkPenyakitTidakMenularRanap extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Berdasar Tanggal Masuk  ", internalFrame2);
+        TabRawat.addTab("Berdasar Tanggal Masuk", internalFrame2);
 
         internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame3.setBorder(null);
@@ -307,7 +307,7 @@ public final class DlgDkkPenyakitTidakMenularRanap extends javax.swing.JDialog {
 
         internalFrame3.add(Scroll1, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Berdasar Tanggal Keluar  ", internalFrame3);
+        TabRawat.addTab("Berdasar Tanggal Keluar", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 

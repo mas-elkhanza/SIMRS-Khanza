@@ -39,7 +39,8 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private final sekuel Sequel=new sekuel();
     private DefaultTableModel tabModeRalanDokter,tabModeRalanParamedis,
             tabModeRalanDokterParamedis,tabModeRanapDokter,tabModeRanapParamedis,
-            tabModeRanapDokterParamedis,tabModeRadiologi;
+            tabModeRanapDokterParamedis,tabModeRadiologi,tabModeLaborat,
+            tabModeDetailLaborat;
     private validasi Valid=new validasi();
     private ResultSet rs;
     private PreparedStatement ps;
@@ -491,9 +492,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         tbRanapDokterParamedis.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeRadiologi=new DefaultTableModel(null,new Object[]{
-            "No.","No.Rawat","No.R.M.","Nama Pasien","Kd.Tnd","Perawatan/Tindakan","Kode P.J.",
-            "Dokter P.J.Lab","NIP","Petugas Lab","Kode Perujuk","Dokter Perujuk","Tanggal","Jam","Cara Bayar","Ruangan",
-            "Jasa Sarana","Paket BHP","JM P.J.Lab","JM Petugas","JM Perujuk","KSO","Menejemen","Total"}){
+            "No.","No.Rawat","No.R.M.","Nama Pasien","Kd.Prk","Pemeriksaan","Kode P.J.",
+            "Dokter P.J.Rad","NIP","Petugas Rad","Kode Perujuk","Dokter Perujuk","Tanggal","Jam","Cara Bayar","Ruangan",
+            "Jasa Sarana","Paket BHP","JM P.J.Rad","JM Petugas","JM Perujuk","KSO","Menejemen","Total"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -574,7 +575,174 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
         tbRadiologi.setDefaultRenderer(Object.class, new WarnaTable());
         
-        TKd.setDocument(new batasInput((byte)20).getKata(TKd));
+        tabModeLaborat=new DefaultTableModel(null,new Object[]{
+            "No.","No.Rawat","No.R.M.","Nama Pasien","Kd.Prk","Pemeriksaan","Kode P.J.",
+            "Dokter P.J.Lab","NIP","Petugas Lab","Kode Perujuk","Dokter Perujuk","Tanggal","Jam","Cara Bayar","Ruangan",
+            "Jasa Sarana","Paket BHP","JM P.J.Lab","JM Petugas","JM Perujuk","KSO","Menejemen","Total"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
+                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
+                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbLaborat.setModel(tabModeLaborat);
+        tbLaborat.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbLaborat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 24; i++) {
+            TableColumn column = tbLaborat.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(30);
+            }else if(i==1){
+                column.setPreferredWidth(105);
+            }else if(i==2){
+                column.setPreferredWidth(70);
+            }else if(i==3){
+                column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setPreferredWidth(75);
+            }else if(i==5){
+                column.setPreferredWidth(200);
+            }else if(i==6){
+                column.setPreferredWidth(75);
+            }else if(i==7){
+                column.setPreferredWidth(150);
+            }else if(i==8){
+                column.setPreferredWidth(75);
+            }else if(i==9){
+                column.setPreferredWidth(150);
+            }else if(i==10){
+                column.setPreferredWidth(75);
+            }else if(i==11){
+                column.setPreferredWidth(150);
+            }else if(i==12){
+                column.setPreferredWidth(70);
+            }else if(i==13){
+                column.setPreferredWidth(55);
+            }else if(i==14){
+                column.setPreferredWidth(110);
+            }else if(i==15){
+                column.setPreferredWidth(130);
+            }else if(i==16){
+                column.setPreferredWidth(75);
+            }else if(i==17){
+                column.setPreferredWidth(75);
+            }else if(i==18){
+                column.setPreferredWidth(75);
+            }else if(i==19){
+                column.setPreferredWidth(75);
+            }else if(i==20){
+                column.setPreferredWidth(75);
+            }else if(i==21){
+                column.setPreferredWidth(75);
+            }else if(i==22){
+                column.setPreferredWidth(75);
+            }else if(i==23){
+                column.setPreferredWidth(80);
+            }
+        }
+        tbLaborat.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeDetailLaborat=new DefaultTableModel(null,new Object[]{
+            "No.","No.Rawat","No.R.M.","Nama Pasien","Id","Pemeriksaan","Kode P.J.",
+            "Dokter P.J.Lab","NIP","Petugas Lab","Kode Perujuk","Dokter Perujuk","Tanggal","Jam","Cara Bayar","Ruangan",
+            "Jasa Sarana","Paket BHP","JM P.J.Lab","JM Petugas","JM Perujuk","KSO","Menejemen","Total"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
+                 java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
+                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
+                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbDetailLaborat.setModel(tabModeDetailLaborat);
+        tbDetailLaborat.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbDetailLaborat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 24; i++) {
+            TableColumn column = tbDetailLaborat.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(30);
+            }else if(i==1){
+                column.setPreferredWidth(105);
+            }else if(i==2){
+                column.setPreferredWidth(70);
+            }else if(i==3){
+                column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setPreferredWidth(75);
+            }else if(i==5){
+                column.setPreferredWidth(200);
+            }else if(i==6){
+                column.setPreferredWidth(75);
+            }else if(i==7){
+                column.setPreferredWidth(150);
+            }else if(i==8){
+                column.setPreferredWidth(75);
+            }else if(i==9){
+                column.setPreferredWidth(150);
+            }else if(i==10){
+                column.setPreferredWidth(75);
+            }else if(i==11){
+                column.setPreferredWidth(150);
+            }else if(i==12){
+                column.setPreferredWidth(70);
+            }else if(i==13){
+                column.setPreferredWidth(55);
+            }else if(i==14){
+                column.setPreferredWidth(110);
+            }else if(i==15){
+                column.setPreferredWidth(130);
+            }else if(i==16){
+                column.setPreferredWidth(75);
+            }else if(i==17){
+                column.setPreferredWidth(75);
+            }else if(i==18){
+                column.setPreferredWidth(75);
+            }else if(i==19){
+                column.setPreferredWidth(75);
+            }else if(i==20){
+                column.setPreferredWidth(75);
+            }else if(i==21){
+                column.setPreferredWidth(75);
+            }else if(i==22){
+                column.setPreferredWidth(75);
+            }else if(i==23){
+                column.setPreferredWidth(80);
+            }
+        }
+        tbDetailLaborat.setDefaultRenderer(Object.class, new WarnaTable());
+        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
             
     }
@@ -589,7 +757,6 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TKd = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass5 = new widget.panelisi();
         label9 = new widget.Label();
@@ -631,10 +798,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         internalFrame10 = new widget.InternalFrame();
         Scroll8 = new widget.ScrollPane();
         tbLaborat = new widget.Table();
-
-        TKd.setForeground(new java.awt.Color(255, 255, 255));
-        TKd.setName("TKd"); // NOI18N
-        TKd.setSelectionColor(new java.awt.Color(255, 255, 255));
+        internalFrame11 = new widget.InternalFrame();
+        Scroll9 = new widget.ScrollPane();
+        tbDetailLaborat = new widget.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1011,6 +1177,32 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
 
         TabRawat.addTab("Pemeriksaan Laboratorium", internalFrame10);
 
+        internalFrame11.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame11.setBorder(null);
+        internalFrame11.setName("internalFrame11"); // NOI18N
+        internalFrame11.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll9.setName("Scroll9"); // NOI18N
+        Scroll9.setOpaque(true);
+
+        tbDetailLaborat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDetailLaborat.setName("tbDetailLaborat"); // NOI18N
+        tbDetailLaborat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDetailLaboratMouseClicked(evt);
+            }
+        });
+        tbDetailLaborat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbDetailLaboratKeyPressed(evt);
+            }
+        });
+        Scroll9.setViewportView(tbDetailLaborat);
+
+        internalFrame11.add(Scroll9, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("Detail Pemeriksaan Laboratorium", internalFrame11);
+
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -1025,7 +1217,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             dispose();
-        }else{Valid.pindah(evt,Tgl1,TKd);}
+        }else{Valid.pindah(evt,Tgl1,TCari);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
@@ -1137,7 +1329,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailTindakanRanapDokterParamedis.jrxml",param,"::[ Detail Tindakan Ranap Yang Ditangani Paramedis ]::");                    
+                    Valid.MyReport("rptDetailTindakanRanapDokterParamedis.jrxml",param,"::[ Detail Tindakan Ranap Yang Ditangani Dokter & Paramedis ]::");                    
                 }   break;
             case 7:
                 if(tabModeRadiologi.getRowCount()==0){
@@ -1155,7 +1347,25 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
-                    Valid.MyReport("rptDetailRadiologi.jrxml",param,"::[ Detail Tindakan Ranap Yang Ditangani Paramedis ]::");                    
+                    Valid.MyReport("rptDetailRadiologi.jrxml",param,"::[ Detail Pemeriksaan Radiologi ]::");                    
+                }   break;
+            case 8:
+                if(tabModeLaborat.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    TCari.requestFocus();
+                }else if(tabModeLaborat.getRowCount()!=0){
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());
+                    param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
+                    Valid.MyReport("rptDetailLaborat.jrxml",param,"::[ Detail Pemeriksaan Laborat ]::");                    
                 }   break;
             default:
                     break;
@@ -1193,6 +1403,12 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 break;
             case 7:
                 tampil8();
+                break;
+            case 8:
+                tampil9();
+                break;
+            case 9:
+                tampil10();
                 break;
             default:
                 break;
@@ -1306,6 +1522,14 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
+    private void tbDetailLaboratMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDetailLaboratMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbDetailLaboratMouseClicked
+
+    private void tbDetailLaboratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDetailLaboratKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbDetailLaboratKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1336,13 +1560,14 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.ScrollPane Scroll6;
     private widget.ScrollPane Scroll7;
     private widget.ScrollPane Scroll8;
+    private widget.ScrollPane Scroll9;
     private widget.TextBox TCari;
-    private widget.TextBox TKd;
     private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame10;
+    private widget.InternalFrame internalFrame11;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
@@ -1356,6 +1581,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private widget.Label label18;
     private widget.Label label9;
     private widget.panelisi panelGlass5;
+    private widget.Table tbDetailLaborat;
     private widget.Table tbLaborat;
     private widget.Table tbOperasi;
     private widget.Table tbRadiologi;
@@ -2057,11 +2283,146 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     }
     
     public void tampil9(){     
-        
+        Valid.tabelKosong(tabModeLaborat);
+        try{
+            ps=koneksi.prepareStatement(
+                   "select periksa_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                   "periksa_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan, "+
+                   "periksa_lab.kd_dokter,dokter.nm_dokter,periksa_lab.nip,"+
+                   "petugas.nama,periksa_lab.dokter_perujuk,"+
+                   "(select nm_dokter from dokter where dokter.kd_dokter=periksa_lab.dokter_perujuk ) as perujuk,"+
+                   "periksa_lab.tgl_periksa,periksa_lab.jam,penjab.png_jawab,"+
+                   "periksa_lab.bagian_rs,periksa_lab.bhp,periksa_lab.tarif_perujuk,"+
+                   "periksa_lab.tarif_tindakan_dokter,periksa_lab.tarif_tindakan_petugas,"+
+                   "periksa_lab.kso,periksa_lab.menejemen,periksa_lab.biaya,"+
+                   "if(periksa_lab.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
+                   "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                   "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=periksa_lab.no_rawat limit 1 )) as ruangan "+
+                   "from periksa_lab inner join reg_periksa "+
+                   "inner join pasien inner join dokter inner join petugas inner join penjab "+
+                   "inner join jns_perawatan_lab on periksa_lab.no_rawat=reg_periksa.no_rawat "+
+                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj "+
+                   "and periksa_lab.kd_dokter=dokter.kd_dokter and periksa_lab.nip=petugas.nip "+
+                   "and periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw "+
+                   "where periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? or "+
+                   "periksa_lab.tgl_periksa between ? and ? and reg_periksa.no_rkm_medis like ? or "+
+                   "periksa_lab.tgl_periksa between ? and ? and pasien.nm_pasien like ? or "+
+                   "periksa_lab.tgl_periksa between ? and ? and periksa_lab.kd_jenis_prw like ? or "+
+                   "periksa_lab.tgl_periksa between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
+                   "periksa_lab.tgl_periksa between ? and ? and periksa_lab.kd_dokter like ? or "+
+                   "periksa_lab.tgl_periksa between ? and ? and dokter.nm_dokter like ? or "+
+                   "periksa_lab.tgl_periksa between ? and ? and periksa_lab.nip like ? or "+
+                   "periksa_lab.tgl_periksa between ? and ? and petugas.nama like ? or "+
+                   "periksa_lab.tgl_periksa between ? and ? and periksa_lab.dokter_perujuk like ? or "+
+                   "periksa_lab.tgl_periksa between ? and ? and penjab.png_jawab like ? "+
+                   " order by periksa_lab.tgl_periksa");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(21,"%"+TCari.getText().trim()+"%");
+                ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(24,"%"+TCari.getText().trim()+"%");
+                ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(27,"%"+TCari.getText().trim()+"%");
+                ps.setString(28,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(29,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(30,"%"+TCari.getText().trim()+"%");
+                ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(33,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                i=1;
+                material=0;bhp=0;jmdokter=0;jmpetugas=0;jmperujuk=0;
+                kso=0;menejemen=0;total=0;
+                while(rs.next()){
+                    material=material+rs.getDouble("bagian_rs");
+                    bhp=bhp+rs.getDouble("bhp");
+                    jmdokter=jmdokter+rs.getDouble("tarif_tindakan_dokter");
+                    jmpetugas=jmpetugas+rs.getDouble("tarif_tindakan_petugas");
+                    jmperujuk=jmperujuk+rs.getDouble("tarif_perujuk");
+                    kso=kso+rs.getDouble("kso");
+                    menejemen=menejemen+rs.getDouble("menejemen");
+                    total=total+rs.getDouble("biaya");
+                    tabModeLaborat.addRow(new Object[]{
+                        i,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),
+                        rs.getString("nm_pasien"),rs.getString("kd_jenis_prw"),
+                        rs.getString("nm_perawatan"),rs.getString("kd_dokter"),
+                        rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama"),
+                        rs.getString("dokter_perujuk"),rs.getString("perujuk"),
+                        rs.getString("tgl_periksa"),rs.getString("jam"),
+                        rs.getString("png_jawab"),rs.getString("ruangan"),rs.getDouble("bagian_rs"),
+                        rs.getDouble("bhp"),rs.getDouble("tarif_tindakan_dokter"),
+                        rs.getDouble("tarif_tindakan_petugas"),rs.getDouble("tarif_perujuk"),
+                        rs.getDouble("kso"),rs.getDouble("menejemen"),rs.getDouble("biaya")
+                    });
+                    i++;
+                }
+                if(total>0){
+                    tabModeLaborat.addRow(new Object[]{
+                        "","","","","","","","","","","","","","","","Jumlah Total :",
+                        material,bhp,jmdokter,jmpetugas,jmperujuk,kso,menejemen,total
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }           
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
     }
     
     public void tampil10(){     
-        
+        Valid.tabelKosong(tabModeDetailLaborat);
+        try {
+            ps=koneksi.prepareStatement(
+                    "select detail_periksa_lab.no_rawat,reg_periksa.no_rkm_medis,"+
+                    "pasien.nm_pasien,detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
+                    "periksa_lab.kd_dokter,dokter.nm_dokter,periksa_lab.nip,"+
+                    "petugas.nama,periksa_lab.dokter_perujuk,"+
+                    "(select nm_dokter from dokter where dokter.kd_dokter=periksa_lab.dokter_perujuk ) as perujuk,"+
+                    "detail_periksa_lab.tgl_periksa,detail_periksa_lab.jam, nilai, nilai_rujukan, keterangan, bagian_rs, bhp, bagian_perujuk, bagian_dokter, bagian_laborat, kso, menejemen, biaya_item");
+            try {
+
+            } catch (Exception e) {
+                System.out.println("Error 10 : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("keuangan.DlgDetailTindakan.tampil10() : "+e);
+        }            
     }
     
     public void tampil11(){     

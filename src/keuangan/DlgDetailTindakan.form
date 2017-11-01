@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
-  <NonVisualComponents>
-    <Component class="widget.TextBox" name="TKd">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="TKd" noResource="true"/>
-        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-      </Properties>
-    </Component>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="undecorated" type="boolean" value="true"/>
@@ -33,7 +20,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,12,0,0,4,90"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,12,0,0,4,-85"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -703,6 +690,56 @@
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbLaboratMouseClicked"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbLaboratKeyPressed"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="widget.InternalFrame" name="internalFrame11">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="eb" green="ff" red="eb" type="rgb"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="internalFrame11" noResource="true"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Detail Pemeriksaan Laboratorium">
+                    <Property name="tabTitle" type="java.lang.String" value="Detail Pemeriksaan Laboratorium"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
+                <Property name="horizontalGap" type="int" value="1"/>
+                <Property name="verticalGap" type="int" value="1"/>
+              </Layout>
+              <SubComponents>
+                <Container class="widget.ScrollPane" name="Scroll9">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="Scroll9" noResource="true"/>
+                    <Property name="opaque" type="boolean" value="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                      <BorderConstraints direction="Center"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="widget.Table" name="tbDetailLaborat">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="name" type="java.lang.String" value="tbDetailLaborat" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbDetailLaboratMouseClicked"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbDetailLaboratKeyPressed"/>
                       </Events>
                     </Component>
                   </SubComponents>
