@@ -92,7 +92,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[H]Harian Menejemen","[H]Bulanan Menejemen","[K]Cek Eligibilitas Inhealth","[K]Referensi Ruang Rawat Inhealth","[K]Referensi Poli Inhealth","[K]Referensi Faskes Inhealth",
                     "[K]Data Bridging SJP Inhealth","[H]Piutang Ralan","[H]Piutang Ranap","[J]Piutang Per Cara Bayar","[I]Lama Pelayanan Ralan","[L]Catatan Pasien","[I]RL 4B Sebab Morbiditas Ralan",
                     "[I]RL 4A Morbiditas Ralan","[I]RL 4B Morbiditas Ralan","[L]Data HAIs","[I]Harian HAIs","[I]Bulanan HAIs","[I]Hitung BOR","[L]Instansi/Perusahaan Pasien","[D]Resep Dokter",
-                    "[I]Lama Pelayanan Apotek","[I]Hitung ALOS"
+                    "[I]Lama Pelayanan Apotek","[I]Hitung ALOS","[H]Detail Tindakan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -184,7 +184,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 243;i++) {
+        for (i = 0; i < 244;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -306,6 +306,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(135);
             }else if(i==242){
                 column.setPreferredWidth(80);
+            }else if(i==243){
+                column.setPreferredWidth(96);
             }else{
                 column.setPreferredWidth(120);
             }
@@ -740,7 +742,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1025,7 +1027,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "perusahaan_pasien='"+tbUser.getValueAt(i,239).toString()+"',"+
                     "resep_dokter='"+tbUser.getValueAt(i,240).toString()+"',"+
                     "lama_pelayanan_apotek='"+tbUser.getValueAt(i,241).toString()+"',"+
-                    "hitung_alos='"+tbUser.getValueAt(i,242).toString()+"'");
+                    "hitung_alos='"+tbUser.getValueAt(i,242).toString()+"',"+
+                    "detail_tindakan='"+tbUser.getValueAt(i,243).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1278,7 +1281,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "akun_piutang,harian_kso,bulanan_kso,harian_menejemen,bulanan_menejemen,inhealth_cek_eligibilitas,inhealth_referensi_jenpel_ruang_rawat, "+
                         "inhealth_referensi_poli,inhealth_referensi_faskes,inhealth_sjp,piutang_ralan,piutang_ranap,detail_piutang_penjab, "+
                         "lama_pelayanan_ralan,catatan_pasien,rl4b,rl4asebab,rl4bsebab,data_HAIs,harian_HAIs,bulanan_HAIs,hitung_bor,perusahaan_pasien, "+
-                        "resep_dokter,lama_pelayanan_apotek,hitung_alos from user order by AES_DECRYPT(id_user,'nur')");
+                        "resep_dokter,lama_pelayanan_apotek,hitung_alos,detail_tindakan from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1532,7 +1535,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("perusahaan_pasien"),
                                rs.getBoolean("resep_dokter"),
                                rs.getBoolean("lama_pelayanan_apotek"),
-                               rs.getBoolean("hitung_alos")
+                               rs.getBoolean("hitung_alos"),
+                               rs.getBoolean("detail_tindakan")
                             });
                         }   
                     } catch (Exception e) {
@@ -1776,7 +1780,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("perusahaan_pasien"),
                            rs.getBoolean("resep_dokter"),
                            rs.getBoolean("lama_pelayanan_apotek"),
-                           rs.getBoolean("hitung_alos") 
+                           rs.getBoolean("hitung_alos"),
+                           rs.getBoolean("detail_tindakan") 
                         });
                     }                                             
                  }
