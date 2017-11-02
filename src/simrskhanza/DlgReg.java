@@ -3595,7 +3595,6 @@ private void BtnUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 poli.setLocationRelativeTo(internalFrame1);
                 poli.setVisible(true);
             }else{
-                poli2.setDokter(TDokter.getText());
                 poli2.isCek();     
                 poli2.tampil(); 
                 poli2.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);

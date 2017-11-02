@@ -4121,7 +4121,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/10/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02/11/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -4674,7 +4674,7 @@ public class frmUtama extends javax.swing.JFrame {
         MenuKeluar.setPreferredSize(new java.awt.Dimension(250, 35));
         MenuKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuKeluarBtnKeluarActionPerformed(evt);
+                BtnCloseActionPerformed(evt);
             }
         });
         jMenu1.add(MenuKeluar);
@@ -5205,14 +5205,6 @@ public class frmUtama extends javax.swing.JFrame {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnToolKamnapActionPerformed
 
-private void MenuKeluarBtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuKeluarBtnKeluarActionPerformed
-        int jawab=JOptionPane.showConfirmDialog(null, "Yakin anda mau keluar dari aplikasi ini ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
-        if(jawab==JOptionPane.YES_OPTION){
-            this.dispose();
-            System.exit(0);
-        }
-}//GEN-LAST:event_MenuKeluarBtnKeluarActionPerformed
-
 private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
      isTutup();
      About.setSize(PanelWall.getWidth(), PanelWall.getHeight());
@@ -5298,6 +5290,7 @@ private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST
 }//GEN-LAST:event_formWindowStateChanged
 
 private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnGantiPasswordBtnLogActionPerformed
+    isTutup();
     PassLama.setText("");
     Passbaru1.setText("");
     PassBaru2.setText("");

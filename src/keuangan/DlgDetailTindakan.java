@@ -1367,6 +1367,24 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailLaborat.jrxml",param,"::[ Detail Pemeriksaan Laborat ]::");                    
                 }   break;
+            case 9:
+                if(tabModeDetailLaborat.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    TCari.requestFocus();
+                }else if(tabModeDetailLaborat.getRowCount()!=0){
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());
+                    param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
+                    Valid.MyReport("rptDetailDetailLaborat.jrxml",param,"::[ Detail Pemeriksaan Laborat ]::");                    
+                }   break;
             default:
                     break;
         }
@@ -2405,13 +2423,107 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     "select detail_periksa_lab.no_rawat,reg_periksa.no_rkm_medis,"+
                     "pasien.nm_pasien,detail_periksa_lab.id_template,template_laboratorium.Pemeriksaan,"+
                     "periksa_lab.kd_dokter,dokter.nm_dokter,periksa_lab.nip,"+
-                    "petugas.nama,periksa_lab.dokter_perujuk,"+
+                    "petugas.nama,periksa_lab.dokter_perujuk,penjab.png_jawab,"+
                     "(select nm_dokter from dokter where dokter.kd_dokter=periksa_lab.dokter_perujuk ) as perujuk,"+
-                    "detail_periksa_lab.tgl_periksa,detail_periksa_lab.jam, nilai, nilai_rujukan, keterangan, bagian_rs, bhp, bagian_perujuk, bagian_dokter, bagian_laborat, kso, menejemen, biaya_item");
+                    "detail_periksa_lab.tgl_periksa,detail_periksa_lab.jam,"+
+                    "if(periksa_lab.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
+                    "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                    "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=periksa_lab.no_rawat limit 1 )) as ruangan,"+
+                    "detail_periksa_lab.bagian_rs,detail_periksa_lab.bhp,detail_periksa_lab.bagian_perujuk,"+
+                    "detail_periksa_lab.bagian_dokter,detail_periksa_lab.bagian_laborat,"+
+                    "detail_periksa_lab.kso,detail_periksa_lab.menejemen,"+
+                    "detail_periksa_lab.biaya_item from detail_periksa_lab "+
+                    "inner join reg_periksa inner join pasien inner join template_laboratorium "+
+                    "inner join jns_perawatan_lab inner join periksa_lab "+
+                    "inner join dokter inner join petugas inner join penjab "+
+                    "on detail_periksa_lab.no_rawat=reg_periksa.no_rawat "+
+                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.no_rawat=detail_periksa_lab.no_rawat "+
+                    "and periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
+                    "and reg_periksa.kd_pj=penjab.kd_pj and periksa_lab.kd_dokter=dokter.kd_dokter "+
+                    "and periksa_lab.nip=petugas.nip and periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa "+
+                    "and periksa_lab.jam=detail_periksa_lab.jam and detail_periksa_lab.id_template=template_laboratorium.id_template "+
+                    "and jns_perawatan_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw "+
+                    "where detail_periksa_lab.tgl_periksa between ? and ? and detail_periksa_lab.no_rawat like ? or "+
+                    "detail_periksa_lab.tgl_periksa between ? and ? and reg_periksa.no_rkm_medis like ? or "+
+                    "detail_periksa_lab.tgl_periksa between ? and ? and pasien.nm_pasien like ? or "+
+                    "detail_periksa_lab.tgl_periksa between ? and ? and detail_periksa_lab.kd_jenis_prw like ? or "+
+                    "detail_periksa_lab.tgl_periksa between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
+                    "detail_periksa_lab.tgl_periksa between ? and ? and periksa_lab.kd_dokter like ? or "+
+                    "detail_periksa_lab.tgl_periksa between ? and ? and dokter.nm_dokter like ? or "+
+                    "detail_periksa_lab.tgl_periksa between ? and ? and periksa_lab.nip like ? or "+
+                    "detail_periksa_lab.tgl_periksa between ? and ? and petugas.nama like ? or "+
+                    "detail_periksa_lab.tgl_periksa between ? and ? and periksa_lab.dokter_perujuk like ? or "+
+                    "detail_periksa_lab.tgl_periksa between ? and ? and penjab.png_jawab like ? "+
+                    " order by detail_periksa_lab.tgl_periksa");
             try {
-
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(21,"%"+TCari.getText().trim()+"%");
+                ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(24,"%"+TCari.getText().trim()+"%");
+                ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(27,"%"+TCari.getText().trim()+"%");
+                ps.setString(28,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(29,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(30,"%"+TCari.getText().trim()+"%");
+                ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(33,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                i=1;
+                material=0;bhp=0;jmdokter=0;jmpetugas=0;jmperujuk=0;
+                kso=0;menejemen=0;total=0;
+                while(rs.next()){
+                    material=material+rs.getDouble("bagian_rs");
+                    bhp=bhp+rs.getDouble("bhp");
+                    jmdokter=jmdokter+rs.getDouble("bagian_dokter");
+                    jmpetugas=jmpetugas+rs.getDouble("bagian_laborat");
+                    jmperujuk=jmperujuk+rs.getDouble("bagian_perujuk");
+                    kso=kso+rs.getDouble("kso");
+                    menejemen=menejemen+rs.getDouble("menejemen");
+                    total=total+rs.getDouble("biaya_item");
+                    tabModeDetailLaborat.addRow(new Object[]{
+                        i,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),
+                        rs.getString("nm_pasien"),rs.getString("id_template"),
+                        rs.getString("Pemeriksaan"),rs.getString("kd_dokter"),
+                        rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama"),
+                        rs.getString("dokter_perujuk"),rs.getString("perujuk"),
+                        rs.getString("tgl_periksa"),rs.getString("jam"),
+                        rs.getString("png_jawab"),rs.getString("ruangan"),rs.getDouble("bagian_rs"),
+                        rs.getDouble("bhp"),rs.getDouble("bagian_dokter"),
+                        rs.getDouble("bagian_laborat"),rs.getDouble("bagian_perujuk"),
+                        rs.getDouble("kso"),rs.getDouble("menejemen"),rs.getDouble("biaya_item")
+                    });
+                    i++;
+                }
+                if(total>0){
+                    tabModeDetailLaborat.addRow(new Object[]{
+                        "","","","","","","","","","","","","","","","Jumlah Total :",
+                        material,bhp,jmdokter,jmpetugas,jmperujuk,kso,menejemen,total
+                    });
+                }
             } catch (Exception e) {
-                System.out.println("Error 10 : "+e);
+                System.out.println("Notifikasi : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -2419,16 +2531,10 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }
+            }  
         } catch (Exception e) {
             System.out.println("keuangan.DlgDetailTindakan.tampil10() : "+e);
         }            
     }
-    
-    public void tampil11(){     
-        
-    }
-    
-    
-
+ 
 }
