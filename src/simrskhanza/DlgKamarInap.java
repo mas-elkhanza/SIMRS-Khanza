@@ -2663,13 +2663,13 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         jLabel7.setText("Record :");
         jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(55, 30));
+        jLabel7.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass11.add(jLabel7);
 
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(75, 30));
+        LCount.setPreferredSize(new java.awt.Dimension(75, 23));
         panelGlass11.add(LCount);
 
         PanelCariUtama.add(panelGlass11, java.awt.BorderLayout.CENTER);
@@ -2703,7 +2703,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-10-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2728,7 +2728,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-10-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2758,7 +2758,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         DTPCari3.setEditable(false);
         DTPCari3.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2017" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-10-2017" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -2783,7 +2783,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
         DTPCari4.setEditable(false);
         DTPCari4.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2017" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-10-2017" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);

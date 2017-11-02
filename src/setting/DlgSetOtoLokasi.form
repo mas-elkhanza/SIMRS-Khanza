@@ -213,8 +213,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pengaturan Umum ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pengaturan Umum "/>
+                  <JTabbedPaneConstraints tabName="Pengaturan Umum">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengaturan Umum"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -380,8 +380,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pengaturan Depo Ralan ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pengaturan Depo Ralan "/>
+                  <JTabbedPaneConstraints tabName="Pengaturan Depo Ralan">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengaturan Depo Ralan"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -570,8 +570,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pengaturan Depo Ranap ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pengaturan Depo Ranap "/>
+                  <JTabbedPaneConstraints tabName="Pengaturan Depo Ranap">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengaturan Depo Ranap"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>

@@ -3425,7 +3425,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                     if(!nosep.equals("")){
                         DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,true);
                         pilihan.tampil();
-                        if(JenisPelayanan.getSelectedIndex()==1){
+                        if(JenisPelayanan.getSelectedIndex()==0){
                             pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
                                     TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(), 
                                     Saudara.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),"ranap");

@@ -696,7 +696,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
 
         internalFrame2.add(panelGlass2, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Tindakan Dokter  ", internalFrame2);
+        TabRawat.addTab("Tindakan Dokter", internalFrame2);
 
         internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame3.setBorder(null);
@@ -809,7 +809,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
 
         internalFrame3.add(panelGlass3, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Tindakan Petugas  ", internalFrame3);
+        TabRawat.addTab("Tindakan Petugas", internalFrame3);
 
         internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame4.setBorder(null);
@@ -965,7 +965,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
 
         internalFrame4.add(Scroll2, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Tindakan Dokter & Petugas", internalFrame4);
+        TabRawat.addTab("Tindakan Dokter & Petugas", internalFrame4);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 

@@ -871,7 +871,7 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         internalFrame2.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
-        TabSetting.addTab(".: Nota, Kwitansi & Verifikasi Penjualan  ", internalFrame2);
+        TabSetting.addTab("Nota, Kwitansi & Verifikasi Penjualan", internalFrame2);
 
         internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame3.setBorder(null);
@@ -1177,7 +1177,7 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         internalFrame3.add(PanelInput2, java.awt.BorderLayout.PAGE_START);
 
-        TabSetting.addTab(".: Biaya Service Rawat Inap Non Piutang ", internalFrame3);
+        TabSetting.addTab("Biaya Service Rawat Inap Non Piutang", internalFrame3);
 
         internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame4.setBorder(null);
@@ -1483,7 +1483,7 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         internalFrame4.add(PanelInput3, java.awt.BorderLayout.PAGE_START);
 
-        TabSetting.addTab(".: Biaya Service Rawat Inap Piutang ", internalFrame4);
+        TabSetting.addTab("Biaya Service Rawat Inap Piutang", internalFrame4);
 
         internalFrame1.add(TabSetting, java.awt.BorderLayout.CENTER);
 

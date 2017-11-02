@@ -1194,7 +1194,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
         Menejemen.setText("0");
         TotalBiaya.setText("0");
         //Valid.autoNomer(" jns_perawatan_lab ","JP",6,TKd);
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kd_jenis_prw,3),signed)),0) from jns_perawatan_lab","J",6,TKd);
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kd_jenis_prw,5),signed)),0) from jns_perawatan_lab","J",6,TKd);
         TKd.requestFocus();
     }
 
