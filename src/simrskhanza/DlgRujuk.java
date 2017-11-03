@@ -1090,7 +1090,7 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                 "Atas kerjasamanya kami ucapkan terima kasih");
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
-            param.put("diagnosa",tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            param.put("diagnosa",tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             param.put("tindakan",diagnosa2);
             param.put("terpi",diagnosa);
             param.put("kotars",var.getkabupatenrs());

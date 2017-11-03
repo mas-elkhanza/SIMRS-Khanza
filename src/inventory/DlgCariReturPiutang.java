@@ -92,8 +92,8 @@ public class DlgCariReturPiutang extends javax.swing.JDialog {
         }
         tbRetur.setDefaultRenderer(Object.class, new WarnaTable());
 
-        NoRetur.setDocument(new batasInput((byte)8).getKata(NoRetur));
-        NoNota.setDocument(new batasInput((byte)8).getKata(NoNota));
+        NoRetur.setDocument(new batasInput((byte)25).getKata(NoRetur));
+        NoNota.setDocument(new batasInput((byte)25).getKata(NoNota));
         Kdptg.setDocument(new batasInput((byte)25).getKata(Kdptg));    
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.cariCepat().equals("aktif")){

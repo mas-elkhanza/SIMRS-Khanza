@@ -176,8 +176,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: No.R.M. Terakhir  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: No.R.M. Terakhir  "/>
+                  <JTabbedPaneConstraints tabName="No.R.M. Terakhir">
+                    <Property name="tabTitle" type="java.lang.String" value="No.R.M. Terakhir"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -273,8 +273,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pengurutan No.R.M  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pengurutan No.R.M  "/>
+                  <JTabbedPaneConstraints tabName="Pengurutan No.R.M">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengurutan No.R.M"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -480,8 +480,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pengaturan Alamat  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pengaturan Alamat  "/>
+                  <JTabbedPaneConstraints tabName="Pengaturan Alamat">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengaturan Alamat"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -652,8 +652,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pengaturan Kelengkapan Data  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pengaturan Kelengkapan Data  "/>
+                  <JTabbedPaneConstraints tabName="Pengaturan Kelengkapan Data">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengaturan Kelengkapan Data"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -1830,8 +1830,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pengaturan Registrasi ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pengaturan Registrasi "/>
+                  <JTabbedPaneConstraints tabName="Pengaturan Registrasi">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengaturan Registrasi"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>

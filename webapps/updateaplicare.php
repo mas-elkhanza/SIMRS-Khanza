@@ -11,6 +11,24 @@
             $tersediapria=0;
             $tersediawanita=0;
             $tersediapriawanita=0;
+            $host="http://dvlp.bpjs-kesehatan.go.id:8888";
+            $url = $host."/aplicaresws/rest/bed/update/".getOne("select kode_ppk from setting");				
+            $session = curl_init ( $url );			
+            $cid = "1000";
+            $ckey = "1112";			
+            date_default_timezone_set("Asia/Jakarta");
+            $timestamp = strtotime(date("Y/m/d H:i:s"));
+            $data = $cid."&".$timestamp;
+            $signature = hash_hmac('sha256', $data, $ckey, true);
+            $encodedSignature = base64_encode($signature);
+
+            $arrheader = array (
+                'X-cons-id: '.$cid,
+                'X-Timestamp: '.$timestamp,
+                'X-Signature: '.$encodedSignature,
+                'Accept: application/json',
+                'Content-Type: application/json'
+            );
 
             $_sql="select aplicare_ketersediaan_kamar.kode_kelas_aplicare,aplicare_ketersediaan_kamar.kd_bangsal,
                        bangsal.nm_bangsal,aplicare_ketersediaan_kamar.kelas,aplicare_ketersediaan_kamar.kapasitas,
@@ -29,25 +47,6 @@
                 $tersediapriawanita=getOne("select count(kd_kamar) from kamar where statusdata='1' and kelas='".$data['kelas']."' and kd_bangsal='".$data['kd_bangsal']."' and status='KOSONG'");
 
                 Ubah2(" aplicare_ketersediaan_kamar "," kapasitas='".$kapasitas."',tersedia='".$tersedia."',tersediawanita='".$tersediawanita."' WHERE kode_kelas_aplicare='".$data['kode_kelas_aplicare']."' and kd_bangsal='".$data['kd_bangsal']."' and kelas='".$data['kelas']."' ");
-
-                $host="http://dvlp.bpjs-kesehatan.go.id:8888";
-                $url = $host."/aplicaresws/rest/bed/update/".getOne("select kode_ppk from setting");				
-                $session = curl_init ( $url );			
-                $cid = "1000";
-                $ckey = "1112";			
-                date_default_timezone_set("Asia/Jakarta");
-                $timestamp = strtotime(date("Y/m/d H:i:s"));
-                $data = $cid."&".$timestamp;
-                $signature = hash_hmac('sha256', $data, $ckey, true);
-                $encodedSignature = base64_encode($signature);
-
-                $arrheader = array (
-                    'X-cons-id: '.$cid,
-                    'X-Timestamp: '.$timestamp,
-                    'X-Signature: '.$encodedSignature,
-                    'Accept: application/json',
-                    'Content-Type: application/json'
-                );
 
                 $myvars="";
                 $item = array(

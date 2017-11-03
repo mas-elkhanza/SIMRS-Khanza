@@ -865,7 +865,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-09-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -880,7 +880,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-09-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1032,7 +1032,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         internalFrame2.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Penanganan Dokter  ", internalFrame2);
+        TabRawat.addTab("Penanganan Dokter", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -1100,7 +1100,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         internalFrame3.add(panelGlass10, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Penanganan Petugas  ", internalFrame3);
+        TabRawat.addTab("Penanganan Petugas", internalFrame3);
 
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
@@ -1201,7 +1201,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         internalFrame4.add(panelGlass11, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Penanganan Dokter & Petugas  ", internalFrame4);
+        TabRawat.addTab("Penanganan Dokter & Petugas", internalFrame4);
 
         internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame5.setBorder(null);
@@ -1230,7 +1230,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         internalFrame5.add(Scroll3, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Pemeriksaan  ", internalFrame5);
+        TabRawat.addTab("Pemeriksaan", internalFrame5);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -1483,7 +1483,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-09-2017" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2017" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1810,146 +1810,149 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         if(! TCari.getText().trim().equals("")){
             BtnCariActionPerformed(evt);
         }
-        if(TabRawat.getSelectedIndex()==0){
-            if(tabModeDr.getRowCount()==0){
-                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                 BtnBatal.requestFocus();
-            }else if(tabModeDr.getRowCount()!=0){
-                Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                String pas=" and reg_periksa.no_rkm_medis like '%"+TCariPasien.getText()+"%' "; 
-                
-                String tgl=" rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+pas;
-                Valid.MyReport("rptJalanDr.jrxml","report","::[ Data Rawat Jalan Yang Ditangani Dokter ]::",
-                   "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                   "jns_perawatan.nm_perawatan,rawat_jl_dr.kd_dokter,dokter.nm_dokter,"+
-                   "rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat,rawat_jl_dr.biaya_rawat " +
-                   "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
-                   "dokter inner join rawat_jl_dr "+
-                   "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
-                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                   "and rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
-                   "where "+tgl+" and rawat_jl_dr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and rawat_jl_dr.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and tgl_perawatan like '%"+TCari.getText().trim()+"%' "+
-                   " order by rawat_jl_dr.no_rawat desc",param);
+        switch (TabRawat.getSelectedIndex()) {
+            case 0:
+                if(tabModeDr.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    BtnBatal.requestFocus();
+                }else if(tabModeDr.getRowCount()!=0){
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
+                    String pas=" and reg_periksa.no_rkm_medis like '%"+TCariPasien.getText()+"%' ";
                     
-            }
-        }else if(TabRawat.getSelectedIndex()==1){
-            if(tabModePr.getRowCount()==0){
-                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                 BtnBatal.requestFocus();
-            }else if(tabModePr.getRowCount()!=0){
-                Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                String pas=" and reg_periksa.no_rkm_medis like '%"+TCariPasien.getText()+"%' "; 
-                
-                String tgl=" rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+pas;
-                Valid.MyReport("rptJalanPr.jrxml","report","::[ Data Rawat Jalan Yang Ditangani Perawat ]::",
-                   "select rawat_jl_pr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                   "jns_perawatan.nm_perawatan,rawat_jl_pr.nip,petugas.nama,"+
-                   "rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat,rawat_jl_pr.biaya_rawat " +
-                   "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
-                   "petugas inner join rawat_jl_pr "+
-                   "on rawat_jl_pr.no_rawat=reg_periksa.no_rawat "+
-                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "and rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                   "and rawat_jl_pr.nip=petugas.nip where  "+
-                    tgl+"and rawat_jl_pr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and rawat_jl_pr.nip like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and rawat_jl_pr.tgl_perawatan like '%"+TCari.getText().trim()+"%'  "+
-                   "order by rawat_jl_pr.no_rawat desc",param);
-            }
-        }else if(TabRawat.getSelectedIndex()==2){
-            if(tabModeDrPr.getRowCount()==0){
-                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                 BtnBatal.requestFocus();
-            }else if(tabModeDrPr.getRowCount()!=0){
-                Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                String pas=" and reg_periksa.no_rkm_medis like '%"+TCariPasien.getText()+"%' "; 
-                
-                String tgl=" rawat_jl_drpr.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+pas;
-                Valid.MyReport("rptJalanDrPr.jrxml","report","::[ Data Rawat Jalan Yang Ditangani Dokter ]::",
-                   "select rawat_jl_drpr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                   "jns_perawatan.nm_perawatan,rawat_jl_drpr.kd_dokter,dokter.nm_dokter,rawat_jl_drpr.nip,petugas.nama,"+
-                   "rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat,rawat_jl_drpr.biaya_rawat " +
-                   "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
-                   "dokter inner join rawat_jl_drpr inner join "+
-                   "petugas on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "+
-                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "and rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                   "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter "+
-                   "and rawat_jl_drpr.nip=petugas.nip "+
-                   "where "+tgl+" and rawat_jl_drpr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and rawat_jl_drpr.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and rawat_jl_drpr.nip like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and tgl_perawatan like '%"+TCari.getText().trim()+"%' "+
-                   " order by rawat_jl_drpr.no_rawat desc",param);
-            }
-        }else if(TabRawat.getSelectedIndex()==3){
-            if(tabModePemeriksaan.getRowCount()==0){
-                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                 BtnBatal.requestFocus();
-            }else if(tabModePemeriksaan.getRowCount()!=0){
-                Map<String, Object> param = new HashMap<>();   
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-                param.put("kontakrs",var.getkontakrs());
-                param.put("emailrs",var.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                String pas=" and reg_periksa.no_rkm_medis like '%"+TCariPasien.getText()+"%' "; 
-                
-                String tgl=" pemeriksaan_ralan.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+pas;
-                Valid.MyReport("rptJalanPemeriksaan.jrxml","report","::[ Data Pemeriksaan Rawat Jalan ]::",
-                   "select pemeriksaan_ralan.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                    "pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi, " +
-                    "pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.tinggi, " +
-                    "pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, " +
-                    "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi from pasien inner join reg_periksa inner join pemeriksaan_ralan "+
-                    "on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where  "+
-                    tgl+"and pemeriksaan_ralan.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and pemeriksaan_ralan.alergi like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and pemeriksaan_ralan.keluhan like '%"+TCari.getText().trim()+"%' or "+
-                    tgl+"and pemeriksaan_ralan.pemeriksaan like '%"+TCari.getText().trim()+"%' "+
-                   "order by pemeriksaan_ralan.no_rawat desc",param);
-            }
+                    String tgl=" rawat_jl_dr.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+pas;
+                    Valid.MyReport("rptJalanDr.jrxml","report","::[ Data Rawat Jalan Yang Ditangani Dokter ]::",
+                            "select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                    "jns_perawatan.nm_perawatan,rawat_jl_dr.kd_dokter,dokter.nm_dokter,"+
+                                    "rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat,rawat_jl_dr.biaya_rawat " +
+                                    "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
+                                    "dokter inner join rawat_jl_dr "+
+                                    "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
+                                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                    "and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                                    "and rawat_jl_dr.kd_dokter=dokter.kd_dokter "+
+                                    "where "+tgl+" and rawat_jl_dr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and rawat_jl_dr.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and tgl_perawatan like '%"+TCari.getText().trim()+"%' "+
+                                            " order by rawat_jl_dr.no_rawat desc",param);
+                    
+                }   break;
+            case 1:
+                if(tabModePr.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    BtnBatal.requestFocus();
+                }else if(tabModePr.getRowCount()!=0){
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
+                    String pas=" and reg_periksa.no_rkm_medis like '%"+TCariPasien.getText()+"%' ";
+                    
+                    String tgl=" rawat_jl_pr.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+pas;
+                    Valid.MyReport("rptJalanPr.jrxml","report","::[ Data Rawat Jalan Yang Ditangani Perawat ]::",
+                            "select rawat_jl_pr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                    "jns_perawatan.nm_perawatan,rawat_jl_pr.nip,petugas.nama,"+
+                                    "rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat,rawat_jl_pr.biaya_rawat " +
+                                    "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
+                                    "petugas inner join rawat_jl_pr "+
+                                    "on rawat_jl_pr.no_rawat=reg_periksa.no_rawat "+
+                                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                    "and rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                                    "and rawat_jl_pr.nip=petugas.nip where  "+
+                                    tgl+"and rawat_jl_pr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and rawat_jl_pr.nip like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and rawat_jl_pr.tgl_perawatan like '%"+TCari.getText().trim()+"%'  "+
+                                            "order by rawat_jl_pr.no_rawat desc",param);
+                }   break;
+            case 2:
+                if(tabModeDrPr.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    BtnBatal.requestFocus();
+                }else if(tabModeDrPr.getRowCount()!=0){
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
+                    String pas=" and reg_periksa.no_rkm_medis like '%"+TCariPasien.getText()+"%' ";
+                    
+                    String tgl=" rawat_jl_drpr.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+pas;
+                    Valid.MyReport("rptJalanDrPr.jrxml","report","::[ Data Rawat Jalan Yang Ditangani Dokter ]::",
+                            "select rawat_jl_drpr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                    "jns_perawatan.nm_perawatan,rawat_jl_drpr.kd_dokter,dokter.nm_dokter,rawat_jl_drpr.nip,petugas.nama,"+
+                                    "rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat,rawat_jl_drpr.biaya_rawat " +
+                                    "from pasien inner join reg_periksa inner join jns_perawatan inner join "+
+                                    "dokter inner join rawat_jl_drpr inner join "+
+                                    "petugas on rawat_jl_drpr.no_rawat=reg_periksa.no_rawat "+
+                                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                    "and rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                                    "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter "+
+                                    "and rawat_jl_drpr.nip=petugas.nip "+
+                                    "where "+tgl+" and rawat_jl_drpr.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and jns_perawatan.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and rawat_jl_drpr.kd_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and rawat_jl_drpr.nip like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and tgl_perawatan like '%"+TCari.getText().trim()+"%' "+
+                                            " order by rawat_jl_drpr.no_rawat desc",param);
+                }   break;
+            case 3:
+                if(tabModePemeriksaan.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    BtnBatal.requestFocus();
+                }else if(tabModePemeriksaan.getRowCount()!=0){
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
+                    String pas=" and reg_periksa.no_rkm_medis like '%"+TCariPasien.getText()+"%' ";
+                    
+                    String tgl=" pemeriksaan_ralan.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+pas;
+                    Valid.MyReport("rptJalanPemeriksaan.jrxml","report","::[ Data Pemeriksaan Rawat Jalan ]::",
+                            "select pemeriksaan_ralan.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                    "pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi, " +
+                                    "pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.tinggi, " +
+                                    "pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, " +
+                                    "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi from pasien inner join reg_periksa inner join pemeriksaan_ralan "+
+                                    "on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where  "+
+                                    tgl+"and pemeriksaan_ralan.no_rawat like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and pemeriksaan_ralan.alergi like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and pemeriksaan_ralan.keluhan like '%"+TCari.getText().trim()+"%' or "+
+                                    tgl+"and pemeriksaan_ralan.pemeriksaan like '%"+TCari.getText().trim()+"%' "+
+                                            "order by pemeriksaan_ralan.no_rawat desc",param);
+                }   break;
+            default:
+                break;
         }
 
         this.setCursor(Cursor.getDefaultCursor());

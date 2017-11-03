@@ -371,7 +371,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="15-09-2017"/>
+                        <StringItem index="0" value="01-11-2017"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -400,7 +400,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="15-09-2017"/>
+                        <StringItem index="0" value="01-11-2017"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -545,8 +545,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Penanganan Dokter  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Penanganan Dokter  "/>
+                  <JTabbedPaneConstraints tabName="Penanganan Dokter">
+                    <Property name="tabTitle" type="java.lang.String" value="Penanganan Dokter"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -680,8 +680,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Penanganan Petugas  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Penanganan Petugas  "/>
+                  <JTabbedPaneConstraints tabName="Penanganan Petugas">
+                    <Property name="tabTitle" type="java.lang.String" value="Penanganan Petugas"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -818,8 +818,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Penanganan Dokter &amp; Petugas  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Penanganan Dokter &amp; Petugas  "/>
+                  <JTabbedPaneConstraints tabName="Penanganan Dokter &amp; Petugas">
+                    <Property name="tabTitle" type="java.lang.String" value="Penanganan Dokter &amp; Petugas"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -1015,8 +1015,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pemeriksaan  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pemeriksaan  "/>
+                  <JTabbedPaneConstraints tabName="Pemeriksaan">
+                    <Property name="tabTitle" type="java.lang.String" value="Pemeriksaan"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -1324,7 +1324,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="15-09-2017"/>
+                        <StringItem index="0" value="01-11-2017"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

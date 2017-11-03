@@ -353,7 +353,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
 
         panelGlass5.setName("panelGlass5"); // NOI18N
         panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
-        panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         ChkTanggal.setBorder(null);
         ChkTanggal.setForeground(new java.awt.Color(153, 0, 51));
