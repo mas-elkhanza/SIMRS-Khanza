@@ -1353,6 +1353,7 @@ public final class var {
     public static boolean gethitung_bor(){return var.hitung_bor;}
     public static boolean getperusahaan_pasien(){return var.perusahaan_pasien;}
     public static boolean getresep_dokter(){return var.resep_dokter;}
+    public static void setresep_dokterfalse(){var.resep_dokter=false;} 
     public static boolean getlama_pelayanan_apotek(){return var.lama_pelayanan_apotek;}
     public static boolean gethitung_alos(){return var.hitung_alos;}
     public static boolean getdetail_tindakan(){return var.detail_tindakan;}

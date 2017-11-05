@@ -70,7 +70,7 @@ public class DlgRBObatDokterRanap extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(35);
             }else if(i==1){
-                column.setPreferredWidth(190);
+                column.setPreferredWidth(280);
             }else if(i==2){
                 column.setPreferredWidth(80);
             }else if(i==3){
@@ -298,7 +298,7 @@ public class DlgRBObatDokterRanap extends javax.swing.JDialog {
         panelisi4.add(label17);
 
         kddokter.setName("kddokter"); // NOI18N
-        kddokter.setPreferredSize(new java.awt.Dimension(70, 23));
+        kddokter.setPreferredSize(new java.awt.Dimension(90, 23));
         kddokter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 kddokterKeyPressed(evt);
@@ -308,7 +308,7 @@ public class DlgRBObatDokterRanap extends javax.swing.JDialog {
 
         nmdokter.setEditable(false);
         nmdokter.setName("nmdokter"); // NOI18N
-        nmdokter.setPreferredSize(new java.awt.Dimension(203, 23));
+        nmdokter.setPreferredSize(new java.awt.Dimension(233, 23));
         panelisi4.add(nmdokter);
 
         BtnSeek2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -388,7 +388,7 @@ public class DlgRBObatDokterRanap extends javax.swing.JDialog {
         panelisi1.add(BtnPrint);
 
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(450, 30));
+        label9.setPreferredSize(new java.awt.Dimension(500, 30));
         panelisi1.add(label9);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
@@ -629,7 +629,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                embalase=0;
                tuslah=0;
                while(rspasien.next()){
-                   tabMode.addRow(new Object[]{"","     "+a+". "+rspasien.getString("nm_pasien"),"","",null,null,null,null});
+                   tabMode.addRow(new Object[]{"","     "+a+". "+rspasien.getString("no_rawat")+" "+rspasien.getString("nm_pasien"),"","",null,null,null,null});
                    pstanggal.setString(1,rspasien.getString("no_rawat"));
                    rstanggal=pstanggal.executeQuery();
                    while(rstanggal.next()){

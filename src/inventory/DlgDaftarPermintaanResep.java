@@ -375,7 +375,9 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             } catch (java.lang.NullPointerException e) {
             }
             if(evt.getClickCount()==2){
-                BtnTambahActionPerformed(null);
+                if(var.getberi_obat()==true){
+                    BtnTambahActionPerformed(null);
+                }
             }
         }
 }//GEN-LAST:event_tbPemisahanMouseClicked
@@ -383,7 +385,9 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private void tbPemisahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPemisahanKeyPressed
         if(tabMode.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                BtnTambahActionPerformed(null);
+                if(var.getberi_obat()==true){
+                    BtnTambahActionPerformed(null);
+                }                    
             }
         }
 }//GEN-LAST:event_tbPemisahanKeyPressed
@@ -607,7 +611,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     
     public void isCek(){
         BtnTambah.setEnabled(var.getberi_obat());
-        BtnPrint.setEnabled(var.getberi_obat());
+        BtnPrint.setEnabled(var.getresep_dokter());
     }
     
     

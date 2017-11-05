@@ -691,25 +691,53 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         
         tabModeOperasi=new DefaultTableModel(null,new Object[]{
             "No.","No.Rawat","No.R.M.","Nama Pasien","Kode Paket",
-            "Paket Operasi/VK","Tanggal","Jam","Cara Bayar","Ruangan"}){
+            "Paket Operasi/VK","Tanggal","Jam","Cara Bayar","Ruangan",
+            "Operator 1","JM Operator 1","Operator 2","JM Operator 2",
+            "Operator 3","JM Operator 3", "Asisten Operator 1","JM AO 1",
+            "Asisten Operator 2","JM AO 2","Asisten Operator 3", "JM AO 3",
+            "Instrumen","JM Instrumen","Dokter Anak", "JM dr Anak",
+            "Perawat Resusitas","JM P.R.","Dokter Anestesi","JM dr Anastesi",
+            "Asisten Anestesi 1", "JM A.A. 1","Asisten Anestesi 2","JM A.A. 2",
+            "Bidan 1","JM Bidan 1","Bidan 2","JM Bidan 2","Bidan 3","JM Bidan 3",
+            "Perawat Luar","JM P.L.","Onloop","JM Onloop 1","Onloop 2","JM Onloop 2",
+            "Onloop 3","JM Onloop 3", "Onloop 4","JM Onloop 4", "Onloop 5","JM Onloop 5",
+            "Dokter P.J. Anak","JM dr P.J. Anak","Dokter Umum", "JM dr Umum",
+            "Jasa Alat", "Sewa OK/VK", "Akomodasi", "N.M.S.",  "Sarpras","Total" 
+        }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                  java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
                  java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
                  java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
-                 java.lang.Object.class
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Double.class,
+                 java.lang.Object.class,java.lang.Double.class,java.lang.Object.class,
+                 java.lang.Double.class,java.lang.Object.class,java.lang.Double.class,
+                 java.lang.Object.class,java.lang.Double.class,java.lang.Object.class,
+                 java.lang.Double.class,java.lang.Object.class,java.lang.Double.class,
+                 java.lang.Object.class,java.lang.Double.class,java.lang.Object.class,
+                 java.lang.Double.class,java.lang.Object.class,java.lang.Double.class,
+                 java.lang.Object.class,java.lang.Double.class,java.lang.Object.class,
+                 java.lang.Double.class,java.lang.Object.class,java.lang.Double.class,
+                 java.lang.Object.class,java.lang.Double.class,java.lang.Object.class,
+                 java.lang.Double.class,java.lang.Object.class,java.lang.Double.class,
+                 java.lang.Object.class,java.lang.Double.class,java.lang.Object.class,
+                 java.lang.Double.class,java.lang.Object.class,java.lang.Double.class,
+                 java.lang.Object.class,java.lang.Double.class,java.lang.Object.class,
+                 java.lang.Double.class,java.lang.Object.class,java.lang.Double.class,
+                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
+                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
              }
         };
-        tbDetailLaborat.setModel(tabModeOperasi);
-        tbDetailLaborat.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbDetailLaborat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbOperasi.setModel(tabModeOperasi);
+        tbOperasi.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbOperasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 10; i++) {
-            TableColumn column = tbDetailLaborat.getColumnModel().getColumn(i);
+        for (i = 0; i < 62; i++) {
+            TableColumn column = tbOperasi.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(30);
             }else if(i==1){
@@ -726,9 +754,117 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 column.setPreferredWidth(75);
             }else if(i==7){
                 column.setPreferredWidth(55);
+            }else if(i==8){
+                column.setPreferredWidth(120);
+            }else if(i==9){
+                column.setPreferredWidth(120);
+            }else if(i==10){
+                column.setPreferredWidth(150);
+            }else if(i==11){
+                column.setPreferredWidth(80);
+            }else if(i==12){
+                column.setPreferredWidth(150);
+            }else if(i==13){
+                column.setPreferredWidth(80);
+            }else if(i==14){
+                column.setPreferredWidth(150);
+            }else if(i==15){
+                column.setPreferredWidth(80);
+            }else if(i==16){
+                column.setPreferredWidth(150);
+            }else if(i==17){
+                column.setPreferredWidth(80);
+            }else if(i==18){
+                column.setPreferredWidth(150);
+            }else if(i==19){
+                column.setPreferredWidth(80);
+            }else if(i==20){
+                column.setPreferredWidth(150);
+            }else if(i==21){
+                column.setPreferredWidth(80);
+            }else if(i==22){
+                column.setPreferredWidth(150);
+            }else if(i==23){
+                column.setPreferredWidth(80);
+            }else if(i==24){
+                column.setPreferredWidth(150);
+            }else if(i==25){
+                column.setPreferredWidth(80);
+            }else if(i==26){
+                column.setPreferredWidth(150);
+            }else if(i==27){
+                column.setPreferredWidth(80);
+            }else if(i==28){
+                column.setPreferredWidth(150);
+            }else if(i==29){
+                column.setPreferredWidth(80);
+            }else if(i==30){
+                column.setPreferredWidth(150);
+            }else if(i==31){
+                column.setPreferredWidth(80);
+            }else if(i==32){
+                column.setPreferredWidth(150);
+            }else if(i==33){
+                column.setPreferredWidth(80);
+            }else if(i==34){
+                column.setPreferredWidth(150);
+            }else if(i==35){
+                column.setPreferredWidth(80);
+            }else if(i==36){
+                column.setPreferredWidth(150);
+            }else if(i==37){
+                column.setPreferredWidth(80);
+            }else if(i==38){
+                column.setPreferredWidth(150);
+            }else if(i==39){
+                column.setPreferredWidth(80);
+            }else if(i==40){
+                column.setPreferredWidth(150);
+            }else if(i==41){
+                column.setPreferredWidth(80);
+            }else if(i==42){
+                column.setPreferredWidth(150);
+            }else if(i==43){
+                column.setPreferredWidth(80);
+            }else if(i==44){
+                column.setPreferredWidth(150);
+            }else if(i==45){
+                column.setPreferredWidth(80);
+            }else if(i==46){
+                column.setPreferredWidth(150);
+            }else if(i==47){
+                column.setPreferredWidth(80);
+            }else if(i==48){
+                column.setPreferredWidth(150);
+            }else if(i==49){
+                column.setPreferredWidth(80);
+            }else if(i==50){
+                column.setPreferredWidth(150);
+            }else if(i==51){
+                column.setPreferredWidth(80);
+            }else if(i==52){
+                column.setPreferredWidth(150);
+            }else if(i==53){
+                column.setPreferredWidth(80);
+            }else if(i==54){
+                column.setPreferredWidth(150);
+            }else if(i==55){
+                column.setPreferredWidth(80);
+            }else if(i==56){
+                column.setPreferredWidth(80);
+            }else if(i==57){
+                column.setPreferredWidth(80);
+            }else if(i==58){
+                column.setPreferredWidth(80);
+            }else if(i==59){
+                column.setPreferredWidth(80);
+            }else if(i==60){
+                column.setPreferredWidth(80);
+            }else if(i==61){
+                column.setPreferredWidth(80);
             }
         }
-        tbDetailLaborat.setDefaultRenderer(Object.class, new WarnaTable());
+        tbOperasi.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
             
