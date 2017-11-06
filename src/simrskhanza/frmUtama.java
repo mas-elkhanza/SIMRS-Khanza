@@ -4121,7 +4121,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/11/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/11/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -4187,12 +4187,12 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 195)));
+        internalFrame1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 235, 205)));
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
         internalFrame1.setWarnaAtas(new java.awt.Color(235, 245, 215));
-        internalFrame1.setWarnaBawah(new java.awt.Color(215, 225, 195));
+        internalFrame1.setWarnaBawah(new java.awt.Color(225, 235, 205));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
 
         BtnMenu.setForeground(new java.awt.Color(80, 100, 80));
@@ -4216,8 +4216,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnMenu);
 
-        jSeparator4.setBackground(new java.awt.Color(175, 195, 150));
-        jSeparator4.setForeground(new java.awt.Color(175, 195, 150));
+        jSeparator4.setBackground(new java.awt.Color(170, 190, 145));
+        jSeparator4.setForeground(new java.awt.Color(170, 190, 145));
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator4.setName("jSeparator4"); // NOI18N
         jSeparator4.setOpaque(true);
@@ -4266,8 +4266,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(btnToolIGD);
 
-        jSeparator5.setBackground(new java.awt.Color(175, 195, 150));
-        jSeparator5.setForeground(new java.awt.Color(175, 195, 150));
+        jSeparator5.setBackground(new java.awt.Color(170, 190, 145));
+        jSeparator5.setForeground(new java.awt.Color(170, 190, 145));
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator5.setName("jSeparator5"); // NOI18N
         jSeparator5.setOpaque(true);
@@ -4378,8 +4378,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolJualObat);
 
-        jSeparator9.setBackground(new java.awt.Color(175, 195, 150));
-        jSeparator9.setForeground(new java.awt.Color(175, 195, 150));
+        jSeparator9.setBackground(new java.awt.Color(170, 190, 145));
+        jSeparator9.setForeground(new java.awt.Color(170, 190, 145));
         jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator9.setName("jSeparator9"); // NOI18N
         jSeparator9.setOpaque(true);
@@ -4428,8 +4428,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolKasir);
 
-        jSeparator7.setBackground(new java.awt.Color(175, 195, 150));
-        jSeparator7.setForeground(new java.awt.Color(175, 195, 150));
+        jSeparator7.setBackground(new java.awt.Color(170, 190, 145));
+        jSeparator7.setForeground(new java.awt.Color(170, 190, 145));
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator7.setName("jSeparator7"); // NOI18N
         jSeparator7.setOpaque(true);
@@ -4478,10 +4478,10 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.PAGE_START);
 
-        internalFrame4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 195)));
+        internalFrame4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 235, 205)));
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(215, 225, 195));
+        internalFrame4.setWarnaAtas(new java.awt.Color(225, 235, 205));
         internalFrame4.setWarnaBawah(new java.awt.Color(235, 245, 215));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
@@ -4494,8 +4494,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblStts.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblStts);
 
-        jSeparator1.setBackground(new java.awt.Color(175, 195, 150));
-        jSeparator1.setForeground(new java.awt.Color(175, 195, 150));
+        jSeparator1.setBackground(new java.awt.Color(170, 190, 145));
+        jSeparator1.setForeground(new java.awt.Color(170, 190, 145));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setName("jSeparator1"); // NOI18N
         jSeparator1.setOpaque(true);
@@ -4511,8 +4511,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblUser.setPreferredSize(new java.awt.Dimension(170, 23));
         internalFrame4.add(lblUser);
 
-        jSeparator2.setBackground(new java.awt.Color(175, 195, 150));
-        jSeparator2.setForeground(new java.awt.Color(175, 195, 150));
+        jSeparator2.setBackground(new java.awt.Color(170, 190, 145));
+        jSeparator2.setForeground(new java.awt.Color(170, 190, 145));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator2.setName("jSeparator2"); // NOI18N
         jSeparator2.setOpaque(true);
@@ -4528,8 +4528,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblTgl.setPreferredSize(new java.awt.Dimension(150, 23));
         internalFrame4.add(lblTgl);
 
-        jSeparator3.setBackground(new java.awt.Color(175, 195, 150));
-        jSeparator3.setForeground(new java.awt.Color(175, 195, 150));
+        jSeparator3.setBackground(new java.awt.Color(170, 190, 145));
+        jSeparator3.setForeground(new java.awt.Color(170, 190, 145));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setName("jSeparator3"); // NOI18N
         jSeparator3.setOpaque(true);
@@ -4611,7 +4611,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(PanelUtama, java.awt.BorderLayout.CENTER);
 
-        MenuBar.setBackground(new java.awt.Color(202, 119, 119));
         MenuBar.setBorder(null);
         MenuBar.setForeground(new java.awt.Color(255, 204, 255));
         MenuBar.setName("MenuBar"); // NOI18N
@@ -5076,6 +5075,7 @@ public class frmUtama extends javax.swing.JFrame {
         var.setpenjualan_obatfalse();
         var.setpenjualan_obatfalse();
         var.setutd_penyerahan_darahfalse();
+        var.setresep_dokterfalse();
         
         switch (BtnLog.getText().trim()) {
             case "Log Out":
@@ -7865,9 +7865,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         FlayMenu.add(btnInputPenjualan);
         FlayMenu.add(btnDataPenjualan);
         FlayMenu.add(btnDataPenyerahanDarah);
+        FlayMenu.add(btnDaftarPermintaanResep);
         btnInputPenjualan.setEnabled(var.getpenjualan_obat());
         btnDataPenjualan.setEnabled(var.getpenjualan_obat());
         btnDataPenyerahanDarah.setEnabled(var.getutd_penyerahan_darah());
+        btnDaftarPermintaanResep.setEnabled(var.getresep_dokter());
         FlayMenu.setVisible(true);       
     }//GEN-LAST:event_BtnToolJualObatActionPerformed
 
@@ -9551,7 +9553,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
-            if(var.getberi_obat()==true){
+            if(var.getresep_dokter()==true){
                 Panelmenu.add(btnDaftarPermintaanResep);
                 jmlmenu++;
             }
@@ -10781,7 +10783,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
-        if(var.getberi_obat()==true){
+        if(var.getresep_dokter()==true){
             Panelmenu.add(btnDaftarPermintaanResep);
             jmlmenu++;
         }
@@ -12095,7 +12097,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
         
-        if(var.getberi_obat()==true){
+        if(var.getresep_dokter()==true){
             if(btnDaftarPermintaanResep.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnDaftarPermintaanResep);
                 jmlmenu++;

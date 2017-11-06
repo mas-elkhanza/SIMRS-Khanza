@@ -5237,7 +5237,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="03/11/2017"/>
+            <StringItem index="0" value="05/11/2017"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -5304,9 +5304,6 @@
     </Component>
     <Menu class="widget.MenuBar" name="MenuBar">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="77" green="77" red="ca" type="rgb"/>
-        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -6078,7 +6075,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
-              <Color PropertyName="color" blue="c3" green="e1" red="d7" type="rgb"/>
+              <Color PropertyName="color" blue="cd" green="eb" red="e1" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
@@ -6091,7 +6088,7 @@
           <Color blue="d7" green="f5" red="eb" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="c3" green="e1" red="d7" type="rgb"/>
+          <Color blue="cd" green="eb" red="e1" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -6138,10 +6135,10 @@
         <Component class="javax.swing.JSeparator" name="jSeparator4">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
             <Property name="name" type="java.lang.String" value="jSeparator4" noResource="true"/>
@@ -6212,10 +6209,10 @@
         <Component class="javax.swing.JSeparator" name="jSeparator5">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
             <Property name="name" type="java.lang.String" value="jSeparator5" noResource="true"/>
@@ -6372,10 +6369,10 @@
         <Component class="javax.swing.JSeparator" name="jSeparator9">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
             <Property name="name" type="java.lang.String" value="jSeparator9" noResource="true"/>
@@ -6446,10 +6443,10 @@
         <Component class="javax.swing.JSeparator" name="jSeparator7">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
             <Property name="name" type="java.lang.String" value="jSeparator7" noResource="true"/>
@@ -6522,7 +6519,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
-              <Color PropertyName="color" blue="c3" green="e1" red="d7" type="rgb"/>
+              <Color PropertyName="color" blue="cd" green="eb" red="e1" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
@@ -6531,7 +6528,7 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="c3" green="e1" red="d7" type="rgb"/>
+          <Color blue="cd" green="eb" red="e1" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="d7" green="f5" red="eb" type="rgb"/>
@@ -6568,10 +6565,10 @@
         <Component class="javax.swing.JSeparator" name="jSeparator1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
             <Property name="name" type="java.lang.String" value="jSeparator1" noResource="true"/>
@@ -6601,10 +6598,10 @@
         <Component class="javax.swing.JSeparator" name="jSeparator2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
             <Property name="name" type="java.lang.String" value="jSeparator2" noResource="true"/>
@@ -6634,10 +6631,10 @@
         <Component class="javax.swing.JSeparator" name="jSeparator3">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="96" green="c3" red="af" type="rgb"/>
+              <Color blue="91" green="be" red="aa" type="rgb"/>
             </Property>
             <Property name="orientation" type="int" value="1"/>
             <Property name="name" type="java.lang.String" value="jSeparator3" noResource="true"/>

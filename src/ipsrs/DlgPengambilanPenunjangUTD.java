@@ -463,7 +463,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(Nama.getText().trim().equals("")||Nip.getText().trim().equals("")){
-            Valid.textKosong(Nip,"Stok Asal");
+            Valid.textKosong(Nip,"Petugas");
         }else if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Keterangan");
         }else if(subtotal<=0){
