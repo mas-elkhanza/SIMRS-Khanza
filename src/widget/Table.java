@@ -27,8 +27,8 @@ public class Table extends JTable {
         setSelectionBackground(new Color(255,255,255));
         setSelectionForeground(new Color(100,100,0));
         getTableHeader().setForeground(new Color(60,80,50));
-        getTableHeader().setBackground(new Color(248,253,243));
-        getTableHeader().setBorder(javax.swing.BorderFactory.createLineBorder(new Color(248,253,243)));
+        getTableHeader().setBackground(new Color(247,252,242));
+        getTableHeader().setBorder(javax.swing.BorderFactory.createLineBorder(new Color(250,255,245)));
         getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 11));
     }
 }
