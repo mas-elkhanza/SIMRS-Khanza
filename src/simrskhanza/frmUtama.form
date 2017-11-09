@@ -434,7 +434,7 @@
                 <TitledBorder title="::[ Menu Utama ]::">
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
-                      <Color PropertyName="color" blue="e1" green="f5" red="e6" type="rgb"/>
+                      <Color PropertyName="color" blue="cd" green="eb" red="eb" type="rgb"/>
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -466,13 +466,6 @@
           <SubComponents>
             <Container class="widget.panelisi" name="panelisi2">
               <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="e1" green="f5" red="e6" type="rgb"/>
-                    </LineBorder>
-                  </Border>
-                </Property>
                 <Property name="name" type="java.lang.String" value="panelisi2" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[100, 39]"/>
@@ -624,13 +617,6 @@
             </Container>
             <Container class="widget.ScrollPane" name="scrollPane2">
               <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                    <LineBorder>
-                      <Color PropertyName="color" blue="e1" green="f5" red="e6" type="rgb"/>
-                    </LineBorder>
-                  </Border>
-                </Property>
                 <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
                 <Property name="name" type="java.lang.String" value="scrollPane2" noResource="true"/>
               </Properties>
@@ -5237,7 +5223,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="08/11/2017"/>
+            <StringItem index="0" value="09/11/2017"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
