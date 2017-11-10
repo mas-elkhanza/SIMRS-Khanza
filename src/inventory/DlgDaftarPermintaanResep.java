@@ -457,6 +457,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }else {
                 if(var.getkode().equals("Admin Utama")){
                     dlgobt.setNoRm(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString(),
+                        tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),4).toString(),
+                        tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),5).toString(),
                         tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),1).toString(),
                         tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),2).toString()
                     );
@@ -470,6 +472,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                         JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
                     }else{ 
                         dlgobt.setNoRm(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString(),
+                            tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),4).toString(),
+                            tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),5).toString(),
                             tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),1).toString(),
                             tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),2).toString()
                         );

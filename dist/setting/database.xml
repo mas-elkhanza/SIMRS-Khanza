@@ -27,4 +27,5 @@
     <entry key="URLAPIINHEALTH">http://dummy.inhealth.co.id/pelkesws2</entry>
     <entry key="TOKENINHEALTH">inh_aba40329b828c943e91f2e5c7f9f1f1b</entry>
     <entry key="PEMBULATANHARGAOBAT">no</entry>
+    <entry key="CETAKRINCIANOBAT">yes</entry>
 </properties>

@@ -46,7 +46,16 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     private PreparedStatement ps;
     private String sql;
     private int i=0;
-    private double material=0,bhp=0,jmdokter=0,jmpetugas=0,jmperujuk=0,kso=0,menejemen=0,total=0;
+    private double material=0,bhp=0,jmdokter=0,jmpetugas=0,jmperujuk=0,kso=0,
+            menejemen=0,total=0,biayaoperator1=0,biayaoperator2=0, 
+            biayaoperator3=0,biayaasisten_operator1=0,biayaasisten_operator2=0,
+            biayaasisten_operator3=0,biayainstrumen=0,biayadokter_anak=0,
+            biayaperawaat_resusitas=0,biayadokter_anestesi=0,biayaasisten_anestesi=0,
+            biayaasisten_anestesi2=0,biayabidan=0,biayabidan2=0,biayabidan3=0,
+            biayaperawat_luar=0,biayaalat=0,biayasewaok=0,akomodasi=0,
+            bagian_rs=0,biaya_omloop=0,biaya_omloop2=0,biaya_omloop3=0,
+            biaya_omloop4=0,biaya_omloop5=0,biayasarpras=0,biaya_dokter_pjanak=0,
+            biaya_dokter_umum=0;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -1533,6 +1542,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             case 2:
                 tampil3();
                 break; 
+            case 3:
+                tampil4();
+                break;
             case 4:
                 tampil5();
                 break;
@@ -2021,7 +2033,75 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     }
     
     public void tampil4(){     
-        
+        Valid.tabelKosong(tabModeOperasi);
+        try{
+            /*"No.","No.Rawat","No.R.M.","Nama Pasien","Kode Paket",
+            "Paket Operasi/VK","Tanggal","Jam","Cara Bayar","Ruangan",
+            "Operator 1","JM Operator 1","Operator 2","JM Operator 2",
+            "Operator 3","JM Operator 3", "Asisten Operator 1","JM AO 1",
+            "Asisten Operator 2","JM AO 2","Asisten Operator 3", "JM AO 3",
+            "Instrumen","JM Instrumen","Dokter Anak", "JM dr Anak",
+            "Perawat Resusitas","JM P.R.","Dokter Anestesi","JM dr Anastesi",
+            "Asisten Anestesi 1", "JM A.A. 1","Asisten Anestesi 2","JM A.A. 2",
+            "Bidan 1","JM Bidan 1","Bidan 2","JM Bidan 2","Bidan 3","JM Bidan 3",
+            "Perawat Luar","JM P.L.","Onloop","JM Onloop 1","Onloop 2","JM Onloop 2",
+            "Onloop 3","JM Onloop 3", "Onloop 4","JM Onloop 4", "Onloop 5","JM Onloop 5",
+            "Dokter P.J. Anak","JM dr P.J. Anak","Dokter Umum", "JM dr Umum",
+            "Jasa Alat", "Sewa OK/VK", "Akomodasi", "N.M.S.",  "Sarpras","Total" */
+            ps=koneksi.prepareStatement(
+                   "select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
+                   "operasi.kode_paket,paket_operasi.nm_perawatan,operasi.tgl_operasi, "+
+                   "penjab.png_jawab,if(operasi.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
+                   "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                   "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=operasi.no_rawat limit 1 )) as ruangan,"+
+                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.operator1) as operator1,operasi.biayaoperator1, "+
+                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.operator2) as operator2,operasi.biayaoperator2 "+
+                   " from operasi inner join reg_periksa inner join pasien "+
+                   "inner join paket_operasi inner join penjab "+
+                   "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "and operasi.kode_paket=paket_operasi.kode_paket and reg_periksa.kd_pj=reg_periksa.kd_pj");
+            try {
+                rs=ps.executeQuery();
+                i=1;
+                total=0;biayaoperator1=0;biayaoperator2=0; 
+                biayaoperator3=0;biayaasisten_operator1=0;biayaasisten_operator2=0;
+                biayaasisten_operator3=0;biayainstrumen=0;biayadokter_anak=0;
+                biayaperawaat_resusitas=0;biayadokter_anestesi=0;biayaasisten_anestesi=0;
+                biayaasisten_anestesi2=0;biayabidan=0;biayabidan2=0;biayabidan3=0;
+                biayaperawat_luar=0;biayaalat=0;biayasewaok=0;akomodasi=0;
+                bagian_rs=0;biaya_omloop=0;biaya_omloop2=0;biaya_omloop3=0;
+                biaya_omloop4=0;biaya_omloop5=0;biayasarpras=0;biaya_dokter_pjanak=0;
+                biaya_dokter_umum=0;
+                while(rs.next()){  
+                    biayaoperator1=biayaoperator1+rs.getDouble("biayaoperator1");
+                    biayaoperator2=biayaoperator2+rs.getDouble("biayaoperator2");
+                    total=total+rs.getDouble("biayaoperator1")+rs.getDouble("biayaoperator2");
+                    tabModeOperasi.addRow(new Object[]{
+                        i,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),
+                        rs.getString("nm_pasien"),rs.getString("kode_paket"),
+                        rs.getString("nm_perawatan"),rs.getString("tgl_operasi").substring(0,10),
+                        rs.getString("tgl_operasi").substring(11,19),rs.getString("png_jawab"),
+                        rs.getString("ruangan"),rs.getString("operator1"),rs.getDouble("biayaoperator1"),
+                        rs.getString("operator2"),rs.getDouble("biayaoperator2")
+                    });
+                    i++;
+                }
+                if(total>0){
+                    
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }           
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
     }
     
     public void tampil5(){     
@@ -2339,6 +2419,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                    "periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.nip like ? or "+
                    "periksa_radiologi.tgl_periksa between ? and ? and petugas.nama like ? or "+
                    "periksa_radiologi.tgl_periksa between ? and ? and periksa_radiologi.dokter_perujuk like ? or "+
+                   "periksa_radiologi.tgl_periksa between ? and ? and (select nm_dokter from dokter where dokter.kd_dokter=periksa_radiologi.dokter_perujuk ) like ? or "+
                    "periksa_radiologi.tgl_periksa between ? and ? and penjab.png_jawab like ? "+
                    " order by periksa_radiologi.tgl_periksa");
             try {
@@ -2375,6 +2456,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 ps.setString(33,"%"+TCari.getText().trim()+"%");
+                ps.setString(34,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(35,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(36,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
                 material=0;bhp=0;jmdokter=0;jmpetugas=0;jmperujuk=0;
@@ -2455,6 +2539,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.nip like ? or "+
                    "periksa_lab.tgl_periksa between ? and ? and petugas.nama like ? or "+
                    "periksa_lab.tgl_periksa between ? and ? and periksa_lab.dokter_perujuk like ? or "+
+                   "periksa_lab.tgl_periksa between ? and ? and (select nm_dokter from dokter where dokter.kd_dokter=periksa_lab.dokter_perujuk ) like ? or "+
                    "periksa_lab.tgl_periksa between ? and ? and penjab.png_jawab like ? "+
                    " order by periksa_lab.tgl_periksa");
             try {
@@ -2491,6 +2576,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 ps.setString(33,"%"+TCari.getText().trim()+"%");
+                ps.setString(34,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(35,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(36,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
                 material=0;bhp=0;jmdokter=0;jmpetugas=0;jmperujuk=0;
@@ -2576,6 +2664,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     "detail_periksa_lab.tgl_periksa between ? and ? and periksa_lab.nip like ? or "+
                     "detail_periksa_lab.tgl_periksa between ? and ? and petugas.nama like ? or "+
                     "detail_periksa_lab.tgl_periksa between ? and ? and periksa_lab.dokter_perujuk like ? or "+
+                    "detail_periksa_lab.tgl_periksa between ? and ? and (select nm_dokter from dokter where dokter.kd_dokter=periksa_lab.dokter_perujuk ) like ? or "+
                     "detail_periksa_lab.tgl_periksa between ? and ? and penjab.png_jawab like ? "+
                     " order by detail_periksa_lab.tgl_periksa");
             try {
@@ -2612,6 +2701,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 ps.setString(33,"%"+TCari.getText().trim()+"%");
+                ps.setString(34,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(35,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(36,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
                 material=0;bhp=0;jmdokter=0;jmpetugas=0;jmperujuk=0;
