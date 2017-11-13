@@ -1127,7 +1127,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="270" y="340" width="98" height="23"/>
+                              <AbsoluteConstraints x="270" y="342" width="98" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1144,7 +1144,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="370" y="340" width="122" height="23"/>
+                              <AbsoluteConstraints x="370" y="342" width="122" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1370,6 +1370,46 @@
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="598" y="282" width="122" height="23"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
+                        <Component class="widget.Label" name="jLabel5">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Kelas :"/>
+                            <Property name="name" type="java.lang.String" value="jLabel5" noResource="true"/>
+                          </Properties>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                              <AbsoluteConstraints x="495" y="342" width="98" height="23"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
+                        <Component class="widget.ComboBox" name="Kelas">
+                          <Properties>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="33" green="0" red="99" type="rgb"/>
+                            </Property>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="8">
+                                <StringItem index="0" value="-"/>
+                                <StringItem index="1" value="Rawat Jalan"/>
+                                <StringItem index="2" value="Kelas 1"/>
+                                <StringItem index="3" value="Kelas 2"/>
+                                <StringItem index="4" value="Kelas 3"/>
+                                <StringItem index="5" value="Kelas Utama"/>
+                                <StringItem index="6" value="Kelas VIP"/>
+                                <StringItem index="7" value="Kelas VVIP"/>
+                              </StringArray>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="Kelas" noResource="true"/>
+                            <Property name="opaque" type="boolean" value="false"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KelasKeyPressed"/>
+                          </Events>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                              <AbsoluteConstraints x="598" y="342" width="122" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>

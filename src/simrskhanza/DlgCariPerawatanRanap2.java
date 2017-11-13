@@ -43,10 +43,10 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement psinputrawatdr,psinputrawatpr,psinputrawatdrpr,pstarif,pscari,pscari2,pscari3,pscari4,
+    private PreparedStatement psinputrawatdr,psinputrawatpr,psinputrawatdrpr,pstarif,pscari,pscari2,pscari3,pscari4,pscari5,pscari6,pscari7,pscari8,
                               pstindakan,pstindakan2,pstindakan3,pshapustindakan,pshapustindakan2,pshapustindakan3,psrekening;
     private ResultSet rs,rstindakan,rstarif,rsrekening;
-    private String pilihtable="",kd_pj="",kd_bangsal="",ruang_ranap="Yes", cara_bayar_ranap="Yes";
+    private String pilihtable="",kd_pj="",kd_bangsal="",ruang_ranap="Yes", cara_bayar_ranap="Yes",kelas="",kelas_ranap="Yes";
     private boolean[] pagi,siang,sore,malam; 
     private boolean pg=false,sg=false,sr=false,mlm=false;
     private boolean sukses=false;
@@ -220,6 +220,33 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
                     psrekening.close();
                 }
             }            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        try {
+            pstarif=koneksi.prepareStatement("select * from set_tarif");
+            try {
+                rstarif=pstarif.executeQuery();
+                if(rstarif.next()){
+                    ruang_ranap=rstarif.getString("ruang_ranap");
+                    cara_bayar_ranap=rstarif.getString("cara_bayar_ranap");
+                    kelas_ranap=rstarif.getString("kelas_ranap");
+                }else{
+                    ruang_ranap="Yes";
+                    cara_bayar_ranap="Yes";
+                    kelas_ranap="Yes";
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rstarif != null){
+                    rstarif.close();
+                }
+                if(pstarif != null){
+                    pstarif.close();
+                }
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -1968,8 +1995,37 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                    "where jns_perawatan_inap.status='1' and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " jns_perawatan_inap.status='1' and jns_perawatan_inap.nm_perawatan like ? or "+
                     " jns_perawatan_inap.status='1' and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
+            pscari5=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
+                   "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
+            pscari6=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
+                   "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
+            pscari7=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
+                   "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
+            pscari8=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
+                   "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
+            
             try {
-                if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("Yes")){
+                if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("Yes")&&kelas_ranap.equals("No")){
                     pscari.setString(1,kd_pj.trim());
                     pscari.setString(2,kd_bangsal.trim());
                     pscari.setString(3,"%"+TCari.getText().trim()+"%");
@@ -1980,7 +2036,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pscari.setString(8,kd_bangsal.trim());
                     pscari.setString(9,"%"+TCari.getText().trim()+"%");
                     rs=pscari.executeQuery();
-                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("Yes")){
+                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("Yes")&&kelas_ranap.equals("No")){
                     pscari2.setString(1,kd_pj.trim());
                     pscari2.setString(2,"%"+TCari.getText().trim()+"%");
                     pscari2.setString(3,kd_pj.trim());
@@ -1988,7 +2044,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pscari2.setString(5,kd_pj.trim());
                     pscari2.setString(6,"%"+TCari.getText().trim()+"%");
                     rs=pscari2.executeQuery();
-                }else if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("No")){
+                }else if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("No")&&kelas_ranap.equals("No")){
                     pscari3.setString(1,kd_bangsal.trim());
                     pscari3.setString(2,"%"+TCari.getText().trim()+"%");
                     pscari3.setString(3,kd_bangsal.trim());
@@ -1996,11 +2052,55 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pscari3.setString(5,kd_bangsal.trim());
                     pscari3.setString(6,"%"+TCari.getText().trim()+"%");
                     rs=pscari3.executeQuery();
-                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("No")){
+                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("No")&&kelas_ranap.equals("No")){
                     pscari4.setString(1,"%"+TCari.getText().trim()+"%");
                     pscari4.setString(2,"%"+TCari.getText().trim()+"%");
                     pscari4.setString(3,"%"+TCari.getText().trim()+"%");
                     rs=pscari4.executeQuery();
+                }else if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("Yes")&&kelas_ranap.equals("Yes")){
+                    pscari5.setString(1,kd_pj.trim());
+                    pscari5.setString(2,kd_bangsal.trim());
+                    pscari5.setString(3,kelas.trim());
+                    pscari5.setString(4,"%"+TCari.getText().trim()+"%");
+                    pscari5.setString(5,kd_pj.trim());
+                    pscari5.setString(6,kd_bangsal.trim());
+                    pscari5.setString(7,kelas.trim());
+                    pscari5.setString(8,"%"+TCari.getText().trim()+"%");
+                    pscari5.setString(9,kd_pj.trim());
+                    pscari5.setString(10,kd_bangsal.trim());
+                    pscari5.setString(11,kelas.trim());
+                    pscari5.setString(12,"%"+TCari.getText().trim()+"%");
+                    rs=pscari5.executeQuery();
+                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("Yes")&&kelas_ranap.equals("Yes")){
+                    pscari6.setString(1,kd_pj.trim());
+                    pscari6.setString(2,kelas.trim());
+                    pscari6.setString(3,"%"+TCari.getText().trim()+"%");
+                    pscari6.setString(4,kd_pj.trim());
+                    pscari6.setString(5,kelas.trim());
+                    pscari6.setString(6,"%"+TCari.getText().trim()+"%");
+                    pscari6.setString(7,kd_pj.trim());
+                    pscari6.setString(8,kelas.trim());
+                    pscari6.setString(9,"%"+TCari.getText().trim()+"%");
+                    rs=pscari6.executeQuery();
+                }else if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("No")&&kelas_ranap.equals("Yes")){
+                    pscari7.setString(1,kd_bangsal.trim());
+                    pscari7.setString(2,kelas.trim());
+                    pscari7.setString(3,"%"+TCari.getText().trim()+"%");
+                    pscari7.setString(4,kd_bangsal.trim());
+                    pscari7.setString(5,kelas.trim());
+                    pscari7.setString(6,"%"+TCari.getText().trim()+"%");
+                    pscari7.setString(7,kd_bangsal.trim());
+                    pscari7.setString(8,kelas.trim());
+                    pscari7.setString(9,"%"+TCari.getText().trim()+"%");
+                    rs=pscari7.executeQuery();
+                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("No")&&kelas_ranap.equals("Yes")){
+                    pscari8.setString(1,kelas.trim());
+                    pscari8.setString(2,"%"+TCari.getText().trim()+"%");
+                    pscari8.setString(3,kelas.trim());
+                    pscari8.setString(4,"%"+TCari.getText().trim()+"%");
+                    pscari8.setString(5,kelas.trim());
+                    pscari8.setString(6,"%"+TCari.getText().trim()+"%");
+                    rs=pscari8.executeQuery();
                 }
 
                 while(rs.next()){
@@ -2275,8 +2375,37 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                    "where jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " jns_perawatan_inap.nm_perawatan like ? or "+
                     " kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
+            pscari5=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
+                   "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
+            pscari6=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
+                   "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
+            pscari7=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
+                   "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
+            pscari8=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
+                   "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
+                   "where jns_perawatan_inap.status='1' and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
+                    " jns_perawatan_inap.status='1' and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
+            
             try {
-                if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("Yes")){
+                if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("Yes")&&kelas_ranap.equals("No")){
                     pscari.setString(1,kd_pj.trim());
                     pscari.setString(2,kd_bangsal.trim());
                     pscari.setString(3,"%"+TCari.getText().trim()+"%");
@@ -2287,7 +2416,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pscari.setString(8,kd_bangsal.trim());
                     pscari.setString(9,"%"+TCari.getText().trim()+"%");
                     rs=pscari.executeQuery();
-                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("Yes")){
+                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("Yes")&&kelas_ranap.equals("No")){
                     pscari2.setString(1,kd_pj.trim());
                     pscari2.setString(2,"%"+TCari.getText().trim()+"%");
                     pscari2.setString(3,kd_pj.trim());
@@ -2295,7 +2424,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pscari2.setString(5,kd_pj.trim());
                     pscari2.setString(6,"%"+TCari.getText().trim()+"%");
                     rs=pscari2.executeQuery();
-                }else if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("No")){
+                }else if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("No")&&kelas_ranap.equals("No")){
                     pscari3.setString(1,kd_bangsal.trim());
                     pscari3.setString(2,"%"+TCari.getText().trim()+"%");
                     pscari3.setString(3,kd_bangsal.trim());
@@ -2303,12 +2432,57 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pscari3.setString(5,kd_bangsal.trim());
                     pscari3.setString(6,"%"+TCari.getText().trim()+"%");
                     rs=pscari3.executeQuery();
-                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("No")){
+                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("No")&&kelas_ranap.equals("No")){
                     pscari4.setString(1,"%"+TCari.getText().trim()+"%");
                     pscari4.setString(2,"%"+TCari.getText().trim()+"%");
                     pscari4.setString(3,"%"+TCari.getText().trim()+"%");
                     rs=pscari4.executeQuery();
+                }else if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("Yes")&&kelas_ranap.equals("Yes")){
+                    pscari5.setString(1,kd_pj.trim());
+                    pscari5.setString(2,kd_bangsal.trim());
+                    pscari5.setString(3,kelas.trim());
+                    pscari5.setString(4,"%"+TCari.getText().trim()+"%");
+                    pscari5.setString(5,kd_pj.trim());
+                    pscari5.setString(6,kd_bangsal.trim());
+                    pscari5.setString(7,kelas.trim());
+                    pscari5.setString(8,"%"+TCari.getText().trim()+"%");
+                    pscari5.setString(9,kd_pj.trim());
+                    pscari5.setString(10,kd_bangsal.trim());
+                    pscari5.setString(11,kelas.trim());
+                    pscari5.setString(12,"%"+TCari.getText().trim()+"%");
+                    rs=pscari5.executeQuery();
+                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("Yes")&&kelas_ranap.equals("Yes")){
+                    pscari6.setString(1,kd_pj.trim());
+                    pscari6.setString(2,kelas.trim());
+                    pscari6.setString(3,"%"+TCari.getText().trim()+"%");
+                    pscari6.setString(4,kd_pj.trim());
+                    pscari6.setString(5,kelas.trim());
+                    pscari6.setString(6,"%"+TCari.getText().trim()+"%");
+                    pscari6.setString(7,kd_pj.trim());
+                    pscari6.setString(8,kelas.trim());
+                    pscari6.setString(9,"%"+TCari.getText().trim()+"%");
+                    rs=pscari6.executeQuery();
+                }else if(ruang_ranap.equals("Yes")&&cara_bayar_ranap.equals("No")&&kelas_ranap.equals("Yes")){
+                    pscari7.setString(1,kd_bangsal.trim());
+                    pscari7.setString(2,kelas.trim());
+                    pscari7.setString(3,"%"+TCari.getText().trim()+"%");
+                    pscari7.setString(4,kd_bangsal.trim());
+                    pscari7.setString(5,kelas.trim());
+                    pscari7.setString(6,"%"+TCari.getText().trim()+"%");
+                    pscari7.setString(7,kd_bangsal.trim());
+                    pscari7.setString(8,kelas.trim());
+                    pscari7.setString(9,"%"+TCari.getText().trim()+"%");
+                    rs=pscari7.executeQuery();
+                }else if(ruang_ranap.equals("No")&&cara_bayar_ranap.equals("No")&&kelas_ranap.equals("Yes")){
+                    pscari8.setString(1,kelas.trim());
+                    pscari8.setString(2,"%"+TCari.getText().trim()+"%");
+                    pscari8.setString(3,kelas.trim());
+                    pscari8.setString(4,"%"+TCari.getText().trim()+"%");
+                    pscari8.setString(5,kelas.trim());
+                    pscari8.setString(6,"%"+TCari.getText().trim()+"%");
+                    rs=pscari8.executeQuery();
                 }
+                
                 while(rs.next()){
                     pg=false;
                     sg=false;
@@ -2587,6 +2761,10 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 "on bangsal.kd_bangsal=kamar.kd_bangsal and kamar.kd_kamar=kamar_inap.kd_kamar "+
                 "where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
         this.pilihtable=pilihtable;
+        this.kelas=Sequel.cariIsi(
+                "select kamar.kelas from kamar inner join kamar_inap "+
+                "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
+                "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());        
         switch (pilihtable) {
             case "rawat_inap_dr":
                 jLabel5.setText("Dokter :");                
@@ -2615,31 +2793,6 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
         DTPTgl.setDate(tanggal);
         TCari.requestFocus();
-        
-        try {
-            pstarif=koneksi.prepareStatement("select * from set_tarif");
-            try {
-                rstarif=pstarif.executeQuery();
-                if(rstarif.next()){
-                    ruang_ranap=rstarif.getString("ruang_ranap");
-                    cara_bayar_ranap=rstarif.getString("cara_bayar_ranap");
-                }else{
-                    ruang_ranap="Yes";
-                    cara_bayar_ranap="Yes";
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rstarif != null){
-                    rstarif.close();
-                }
-                if(pstarif != null){
-                    pstarif.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
         
         for(i=0;i<tbKamar.getRowCount();i++){ 
                     tbKamar.setValueAt(false,i,0);

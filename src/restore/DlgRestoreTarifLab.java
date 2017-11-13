@@ -44,7 +44,7 @@ public final class DlgRestoreTarifLab extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        Object[] row={"P","Kode Periksa","Nama Pemeriksaan","J.S. RS","Paket BHP","J.M. Perujuk","J.M. Dokter","J.M. Petugas","K.S.O.","Menejemen","Total Tarif","Jenis Bayar"};
+        Object[] row={"P","Kode Periksa","Nama Pemeriksaan","J.S. RS","Paket BHP","J.M. Perujuk","J.M. Dokter","J.M. Petugas","K.S.O.","Menejemen","Total Tarif","Jenis Bayar","Kelas"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -56,7 +56,8 @@ public final class DlgRestoreTarifLab extends javax.swing.JDialog {
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, 
                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class, java.lang.Object.class
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class, java.lang.Object.class, 
+                java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -69,7 +70,7 @@ public final class DlgRestoreTarifLab extends javax.swing.JDialog {
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 12; i++) {
+        for (i = 0; i < 13; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -79,6 +80,8 @@ public final class DlgRestoreTarifLab extends javax.swing.JDialog {
                 column.setPreferredWidth(180);
             }else if(i==11){
                 column.setPreferredWidth(140);
+            }else if(i==12){
+                column.setPreferredWidth(70);
             }else{
                 column.setPreferredWidth(80);
             }
@@ -395,15 +398,17 @@ public final class DlgRestoreTarifLab extends javax.swing.JDialog {
                         "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.bagian_rs,jns_perawatan_lab.bhp,"+
                         "jns_perawatan_lab.tarif_perujuk,jns_perawatan_lab.tarif_tindakan_dokter,jns_perawatan_lab.tarif_tindakan_petugas,"+
                         "jns_perawatan_lab.kso,jns_perawatan_lab.menejemen,jns_perawatan_lab.total_byr, "+
-                        "penjab.png_jawab from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
+                        "penjab.png_jawab,jns_perawatan_lab.kelas from jns_perawatan_lab inner join penjab on penjab.kd_pj=jns_perawatan_lab.kd_pj where "+
                         " jns_perawatan_lab.status='0' and jns_perawatan_lab.kd_jenis_prw like ? or  "+
                         " jns_perawatan_lab.status='0' and jns_perawatan_lab.nm_perawatan like ? or "+
+                        " jns_perawatan_lab.status='0' and jns_perawatan_lab.kelas like ? or "+
                         " jns_perawatan_lab.status='0' and penjab.png_jawab like ? "+
                         "order by jns_perawatan_lab.kd_jenis_prw");
             try {    
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     Object[] data={false,rs.getString(1),
@@ -416,7 +421,8 @@ public final class DlgRestoreTarifLab extends javax.swing.JDialog {
                                    rs.getDouble(8),
                                    rs.getDouble(9),
                                    rs.getDouble(10),
-                                   rs.getString(11)};
+                                   rs.getString(11),
+                                   rs.getString(12)};
                     tabMode.addRow(data);
                 }
             } catch (Exception e) {
