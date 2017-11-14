@@ -365,6 +365,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnUrutPoliklinikAsc = new javax.swing.JMenuItem();
         MnUrutPenjabDesc = new javax.swing.JMenuItem();
         MnUrutPenjabAsc = new javax.swing.JMenuItem();
+        MnUrutStatusDesc = new javax.swing.JMenuItem();
+        MnUrutStatusAsc = new javax.swing.JMenuItem();
         TNoRw = new widget.TextBox();
         WindowObatBhp = new javax.swing.JDialog();
         internalFrame2 = new widget.InternalFrame();
@@ -1766,6 +1768,38 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         });
         MnUrut.add(MnUrutPenjabAsc);
 
+        MnUrutStatusDesc.setBackground(new java.awt.Color(255, 255, 255));
+        MnUrutStatusDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnUrutStatusDesc.setForeground(new java.awt.Color(60, 80, 50));
+        MnUrutStatusDesc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnUrutStatusDesc.setText("Status Descending");
+        MnUrutStatusDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnUrutStatusDesc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnUrutStatusDesc.setName("MnUrutStatusDesc"); // NOI18N
+        MnUrutStatusDesc.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnUrutStatusDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnUrutStatusDescActionPerformed(evt);
+            }
+        });
+        MnUrut.add(MnUrutStatusDesc);
+
+        MnUrutStatusAsc.setBackground(new java.awt.Color(255, 255, 255));
+        MnUrutStatusAsc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnUrutStatusAsc.setForeground(new java.awt.Color(60, 80, 50));
+        MnUrutStatusAsc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnUrutStatusAsc.setText("Status Ascending");
+        MnUrutStatusAsc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnUrutStatusAsc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnUrutStatusAsc.setName("MnUrutStatusAsc"); // NOI18N
+        MnUrutStatusAsc.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnUrutStatusAsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnUrutStatusAscActionPerformed(evt);
+            }
+        });
+        MnUrut.add(MnUrutStatusAsc);
+
         jPopupMenu1.add(MnUrut);
 
         TNoRw.setHighlighter(null);
@@ -2282,7 +2316,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel15);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-11-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2301,7 +2335,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel17);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-11-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3706,6 +3740,16 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         tampilkasir();
     }//GEN-LAST:event_MnUrutPenjabAscActionPerformed
 
+    private void MnUrutStatusDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnUrutStatusDescActionPerformed
+        order="reg_periksa.stts desc";
+        tampilkasir();
+    }//GEN-LAST:event_MnUrutStatusDescActionPerformed
+
+    private void MnUrutStatusAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnUrutStatusAscActionPerformed
+        order="reg_periksa.stts asc";
+        tampilkasir();
+    }//GEN-LAST:event_MnUrutStatusAscActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -3824,6 +3868,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem MnUrutPenjabDesc;
     private javax.swing.JMenuItem MnUrutPoliklinikAsc;
     private javax.swing.JMenuItem MnUrutPoliklinikDesc;
+    private javax.swing.JMenuItem MnUrutStatusAsc;
+    private javax.swing.JMenuItem MnUrutStatusDesc;
     private javax.swing.JMenuItem MnUrutTanggalAsc;
     private javax.swing.JMenuItem MnUrutTanggalDesc;
     private javax.swing.JPanel PanelInput;
