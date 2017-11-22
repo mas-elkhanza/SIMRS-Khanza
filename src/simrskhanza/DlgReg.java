@@ -5952,7 +5952,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         if(TPasien.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
         }else{
-             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Map<String, Object> param = new HashMap<>();
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -5960,7 +5960,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             param.put("propinsirs",var.getpropinsirs());
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());
+            param.put("perujuk",Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",TNoRw.getText()));
             param.put("no_rawat",TNoRw.getText());
+            param.put("petugas",Sequel.cariIsi("select nama from petugas where nip=?",var.getkode()));
             param.put("logo",Sequel.cariGambar("select logo from setting"));
             Valid.MyReport("rptJkra.jrxml",param,"::[ SURAT JAMINAN KESEHATAN NASIONAL (JKRA) RAWAT JALAN ]::");
             this.setCursor(Cursor.getDefaultCursor());
