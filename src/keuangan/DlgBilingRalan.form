@@ -493,7 +493,7 @@
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -642,7 +642,7 @@
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -782,7 +782,7 @@
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -957,7 +957,7 @@
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -1104,7 +1104,7 @@
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -1279,7 +1279,7 @@
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -1511,7 +1511,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -1658,7 +1658,7 @@
               </Border>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="28" green="46" red="32" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>

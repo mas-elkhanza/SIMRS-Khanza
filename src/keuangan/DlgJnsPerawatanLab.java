@@ -189,7 +189,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
 
         ppTemplate.setBackground(new java.awt.Color(255, 255, 255));
         ppTemplate.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTemplate.setForeground(new java.awt.Color(50, 70, 40));
+        ppTemplate.setForeground(new java.awt.Color(90,120,80));
         ppTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTemplate.setText("Template Laboratorium");
         ppTemplate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -236,7 +236,7 @@ public final class DlgJnsPerawatanLab extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
