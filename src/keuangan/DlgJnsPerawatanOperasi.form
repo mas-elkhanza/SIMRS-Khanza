@@ -379,8 +379,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Input Paket  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Input Paket  "/>
+                  <JTabbedPaneConstraints tabName="Input Paket">
+                    <Property name="tabTitle" type="java.lang.String" value="Input Paket"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -1428,8 +1428,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Daftar Paket ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Daftar Paket "/>
+                  <JTabbedPaneConstraints tabName="Daftar Paket">
+                    <Property name="tabTitle" type="java.lang.String" value="Daftar Paket"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
