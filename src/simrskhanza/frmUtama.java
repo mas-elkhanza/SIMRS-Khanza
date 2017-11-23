@@ -715,7 +715,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame2.setWarnaBawah(new java.awt.Color(100, 140, 60));
         internalFrame2.setLayout(null);
 
-        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 12), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 12), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setWarnaAtas(new java.awt.Color(195, 215, 170));
         internalFrame3.setWarnaBawah(new java.awt.Color(245, 255, 220));
@@ -816,14 +816,13 @@ public class frmUtama extends javax.swing.JFrame {
         WindowInput.setUndecorated(true);
         WindowInput.setResizable(false);
 
-        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Password ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Password ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setWarnaBawah(new java.awt.Color(235, 245, 225));
         internalFrame6.setLayout(null);
 
         PassLama.setHighlighter(null);
         PassLama.setName("PassLama"); // NOI18N
-        PassLama.setSelectionColor(new java.awt.Color(255, 255, 255));
         internalFrame6.add(PassLama);
         PassLama.setBounds(128, 30, 190, 23);
 
@@ -875,7 +874,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         Passbaru1.setHighlighter(null);
         Passbaru1.setName("Passbaru1"); // NOI18N
-        Passbaru1.setSelectionColor(new java.awt.Color(255, 255, 255));
         internalFrame6.add(Passbaru1);
         Passbaru1.setBounds(128, 60, 190, 23);
 
@@ -886,7 +884,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         PassBaru2.setHighlighter(null);
         PassBaru2.setName("PassBaru2"); // NOI18N
-        PassBaru2.setSelectionColor(new java.awt.Color(255, 255, 255));
         internalFrame6.add(PassBaru2);
         PassBaru2.setBounds(128, 90, 190, 23);
 
@@ -899,7 +896,7 @@ public class frmUtama extends javax.swing.JFrame {
         DlgHome.setUndecorated(true);
         DlgHome.setResizable(false);
 
-        panelMenu.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(220, 225, 215)), "::[ Menu Utama ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        panelMenu.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Menu Utama ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         panelMenu.setName("panelMenu"); // NOI18N
         panelMenu.setPreferredSize(new java.awt.Dimension(2412, 3653));
         panelMenu.setWarnaAtas(new java.awt.Color(255, 255, 255));
@@ -910,7 +907,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelisi2.setName("panelisi2"); // NOI18N
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 39));
         panelisi2.setWarnaAtas(new java.awt.Color(255, 255, 255));
-        panelisi2.setWarnaBawah(new java.awt.Color(255, 255, 255));
+        panelisi2.setWarnaBawah(new java.awt.Color(252, 252, 245));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 7));
 
         label36.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -930,14 +927,12 @@ public class frmUtama extends javax.swing.JFrame {
         });
         panelisi2.add(button1);
 
-        label35.setForeground(new java.awt.Color(90, 120, 80));
         label35.setText("Tampilkan Menu :");
         label35.setName("label35"); // NOI18N
         label35.setPreferredSize(new java.awt.Dimension(105, 23));
         panelisi2.add(label35);
 
         cmbMenu.setBackground(new java.awt.Color(255, 255, 255));
-        cmbMenu.setForeground(new java.awt.Color(90, 120, 80));
         cmbMenu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[A] Registrasi, Tagihan Ranap & Ralan, Pelayanan & Billing Pasien", "[B] Input Data Tindakan, Obat & BHP Via Barcode No.Rawat", "[C] Presensi, Manajemen & Penggajian Pegawai Rumah Sakit", "[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien", "[E] Transaksi Inventory Barang Non Medis dan Penunjang ( Lab & RO )", "[F] Aset & Inventaris Barang Rumah Sakit", "[G] Parkir Rumah Sakit", "[H] Olah Data Tagihan Rawat Inap & Rawat Jalan", "[I] Olah Data Penyakit, Laporan DKK, Laporal RL & Laporan Internal Rumah Sakit", "[J] Tarif Pelayanan & Keuangan Rumah Sakit", "[K] Bridging SEP, Aplicare, PCare, INACBG, Kemenkes & Pihak Ke 3", "[L] Olah Data Pasien", "[M] Unit Pelayanan Tranfusi Darah", "[N] Pengaturan Program Aplikasi HMS" }));
         cmbMenu.setName("cmbMenu"); // NOI18N
         cmbMenu.setOpaque(false);
@@ -949,7 +944,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         panelisi2.add(cmbMenu);
 
-        TCari.setForeground(new java.awt.Color(90, 120, 80));
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(470, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -988,13 +982,11 @@ public class frmUtama extends javax.swing.JFrame {
         scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane2.setName("scrollPane2"); // NOI18N
 
-        Panelmenu.setBackground(new java.awt.Color(255, 255, 255));
         Panelmenu.setBorder(null);
         Panelmenu.setMinimumSize(new java.awt.Dimension(1975, 2826));
         Panelmenu.setName("Panelmenu"); // NOI18N
         Panelmenu.setLayout(new java.awt.GridLayout(0, 12));
 
-        btnBarcode.setForeground(new java.awt.Color(90, 120, 80));
         btnBarcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
         btnBarcode.setText("Barcode Presensi");
         btnBarcode.setIconTextGap(0);
@@ -1007,7 +999,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBarcode);
 
-        btnICD.setForeground(new java.awt.Color(90, 120, 80));
         btnICD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnICD.setText("ICD 10");
         btnICD.setIconTextGap(0);
@@ -1020,7 +1011,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnICD);
 
-        btnObat.setForeground(new java.awt.Color(90, 120, 80));
         btnObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
         btnObat.setText("Obat, Alkes & BHP");
         btnObat.setIconTextGap(0);
@@ -1033,7 +1023,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnObat);
 
-        btnObatPenyakit.setForeground(new java.awt.Color(90, 120, 80));
         btnObatPenyakit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484848_applications-science.png"))); // NOI18N
         btnObatPenyakit.setText("Obat Penyakit");
         btnObatPenyakit.setIconTextGap(0);
@@ -1046,7 +1035,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnObatPenyakit);
 
-        btnKamar.setForeground(new java.awt.Color(90, 120, 80));
         btnKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
         btnKamar.setText("Kamar");
         btnKamar.setIconTextGap(0);
@@ -1059,7 +1047,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKamar);
 
-        btnTindakanRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnTindakanRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/plaster.png"))); // NOI18N
         btnTindakanRalan.setText("Tarif Ralan");
         btnTindakanRalan.setIconTextGap(0);
@@ -1072,7 +1059,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTindakanRalan);
 
-        btnDokter.setForeground(new java.awt.Color(90, 120, 80));
         btnDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor2.png"))); // NOI18N
         btnDokter.setText("Dokter");
         btnDokter.setIconTextGap(0);
@@ -1085,7 +1071,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnDokter);
 
-        btnPegawai.setForeground(new java.awt.Color(90, 120, 80));
         btnPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/receptionist.png"))); // NOI18N
         btnPegawai.setText("Petugas");
         btnPegawai.setIconTextGap(0);
@@ -1098,7 +1083,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPegawai);
 
-        btnPasien.setForeground(new java.awt.Color(90, 120, 80));
         btnPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/patient.png"))); // NOI18N
         btnPasien.setText("Pasien");
         btnPasien.setIconTextGap(0);
@@ -1111,7 +1095,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPasien);
 
-        btnRegistrasi.setForeground(new java.awt.Color(90, 120, 80));
         btnRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
         btnRegistrasi.setText("Registrasi");
         btnRegistrasi.setIconTextGap(0);
@@ -1124,7 +1107,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRegistrasi);
 
-        btnRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/folder.png"))); // NOI18N
         btnRalan.setText("Tindakan Ralan");
         btnRalan.setIconTextGap(0);
@@ -1137,7 +1119,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRalan);
 
-        btnKamarInap.setForeground(new java.awt.Color(90, 120, 80));
         btnKamarInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Home.png"))); // NOI18N
         btnKamarInap.setText("Kamar Inap");
         btnKamarInap.setIconTextGap(0);
@@ -1150,7 +1131,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKamarInap);
 
-        btnRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
         btnRanap.setText("Tindakan Ranap");
         btnRanap.setIconTextGap(0);
@@ -1163,7 +1143,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRanap);
 
-        btnResepObat.setForeground(new java.awt.Color(90, 120, 80));
         btnResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stock_task.png"))); // NOI18N
         btnResepObat.setText("No. Resep");
         btnResepObat.setIconTextGap(0);
@@ -1176,7 +1155,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnResepObat);
 
-        btnRujukPasien.setForeground(new java.awt.Color(90, 120, 80));
         btnRujukPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
         btnRujukPasien.setText("Rujukan Keluar");
         btnRujukPasien.setIconTextGap(0);
@@ -1189,7 +1167,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRujukPasien);
 
-        btnBeriObat.setForeground(new java.awt.Color(90, 120, 80));
         btnBeriObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/first_aid_kit.png"))); // NOI18N
         btnBeriObat.setText("Beri Obat/BHP");
         btnBeriObat.setIconTextGap(0);
@@ -1202,7 +1179,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBeriObat);
 
-        btnPasienMati.setForeground(new java.awt.Color(90, 120, 80));
         btnPasienMati.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Ambulance.png"))); // NOI18N
         btnPasienMati.setText("Pasien Meninggal");
         btnPasienMati.setIconTextGap(0);
@@ -1215,7 +1191,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPasienMati);
 
-        btnAdmin.setForeground(new java.awt.Color(90, 120, 80));
         btnAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/preferences-desktop-cryptography.png"))); // NOI18N
         btnAdmin.setText("Set Admin");
         btnAdmin.setIconTextGap(0);
@@ -1228,7 +1203,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnAdmin);
 
-        btnUser.setForeground(new java.awt.Color(90, 120, 80));
         btnUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Login Manager.png"))); // NOI18N
         btnUser.setText("Set User");
         btnUser.setIconTextGap(0);
@@ -1241,7 +1215,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUser);
 
-        btnVakum.setForeground(new java.awt.Color(90, 120, 80));
         btnVakum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486615_remove-from-database.png"))); // NOI18N
         btnVakum.setText("Vakum Table");
         btnVakum.setIconTextGap(0);
@@ -1254,7 +1227,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnVakum);
 
-        btnDisplay.setForeground(new java.awt.Color(90, 120, 80));
         btnDisplay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/find.png"))); // NOI18N
         btnDisplay.setText("Display Antrian");
         btnDisplay.setIconTextGap(0);
@@ -1267,7 +1239,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnDisplay);
 
-        btnSetupHarga.setForeground(new java.awt.Color(90, 120, 80));
         btnSetupHarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
         btnSetupHarga.setText("Set Harga Obat");
         btnSetupHarga.setIconTextGap(0);
@@ -1280,7 +1251,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetupHarga);
 
-        btnSuplier.setForeground(new java.awt.Color(90, 120, 80));
         btnSuplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357959_truck.png"))); // NOI18N
         btnSuplier.setText("Suplier Obat/Alkes/BHP");
         btnSuplier.setIconTextGap(0);
@@ -1293,7 +1263,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSuplier);
 
-        btnJnsBarang.setForeground(new java.awt.Color(90, 120, 80));
         btnJnsBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Card_file.png"))); // NOI18N
         btnJnsBarang.setText("Jenis Obat, Alkes & BHP");
         btnJnsBarang.setIconTextGap(0);
@@ -1306,7 +1275,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnJnsBarang);
 
-        btnKonversi.setForeground(new java.awt.Color(90, 120, 80));
         btnKonversi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/ark2.png"))); // NOI18N
         btnKonversi.setText("Konversi Satuan");
         btnKonversi.setIconTextGap(0);
@@ -1319,7 +1287,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKonversi);
 
-        btnSatuan.setForeground(new java.awt.Color(90, 120, 80));
         btnSatuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bag1.png"))); // NOI18N
         btnSatuan.setText("Satuan Barang");
         btnSatuan.setIconTextGap(0);
@@ -1332,7 +1299,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSatuan);
 
-        btnCashFlow.setForeground(new java.awt.Color(90, 120, 80));
         btnCashFlow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
         btnCashFlow.setText("Cash Flow");
         btnCashFlow.setIconTextGap(0);
@@ -1345,7 +1311,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCashFlow);
 
-        btnBubes.setForeground(new java.awt.Color(90, 120, 80));
         btnBubes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/applications-office.png"))); // NOI18N
         btnBubes.setText("Buku Besar");
         btnBubes.setIconTextGap(0);
@@ -1358,7 +1323,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBubes);
 
-        btnPostingJurnal.setForeground(new java.awt.Color(90, 120, 80));
         btnPostingJurnal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         btnPostingJurnal.setText("Posting Jurnal");
         btnPostingJurnal.setIconTextGap(0);
@@ -1371,7 +1335,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPostingJurnal);
 
-        btnRekeningTahun.setForeground(new java.awt.Color(90, 120, 80));
         btnRekeningTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/money_bag.png"))); // NOI18N
         btnRekeningTahun.setText("Rekening Tahun");
         btnRekeningTahun.setIconTextGap(0);
@@ -1384,7 +1347,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRekeningTahun);
 
-        btnRekening.setForeground(new java.awt.Color(90, 120, 80));
         btnRekening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kwrite.png"))); // NOI18N
         btnRekening.setText("Akun Rekening");
         btnRekening.setIconTextGap(0);
@@ -1397,7 +1359,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRekening);
 
-        btnPembelian.setForeground(new java.awt.Color(90, 120, 80));
         btnPembelian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487067_calculator.png"))); // NOI18N
         btnPembelian.setText("Pengadaan Obat & BHP");
         btnPembelian.setIconTextGap(0);
@@ -1410,7 +1371,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPembelian);
 
-        btnPenjualan.setForeground(new java.awt.Color(90, 120, 80));
         btnPenjualan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
         btnPenjualan.setText("Penjualan Obat & BHP");
         btnPenjualan.setIconTextGap(0);
@@ -1423,7 +1383,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPenjualan);
 
-        btnPiutang.setForeground(new java.awt.Color(90, 120, 80));
         btnPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
         btnPiutang.setText("Piutang Obat & BHP");
         btnPiutang.setIconTextGap(0);
@@ -1436,7 +1395,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPiutang);
 
-        btnBayarPiutang.setForeground(new java.awt.Color(90, 120, 80));
         btnBayarPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
         btnBayarPiutang.setText("Bayar Piutang");
         btnBayarPiutang.setIconTextGap(0);
@@ -1449,7 +1407,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBayarPiutang);
 
-        btnOpname.setForeground(new java.awt.Color(90, 120, 80));
         btnOpname.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
         btnOpname.setText("Stok Opname Obat & BHP");
         btnOpname.setIconTextGap(0);
@@ -1462,7 +1419,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnOpname);
 
-        btnReturBeli.setForeground(new java.awt.Color(90, 120, 80));
         btnReturBeli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816189_arrow_down.png"))); // NOI18N
         btnReturBeli.setText("Retur Ke Suplier");
         btnReturBeli.setIconTextGap(0);
@@ -1475,7 +1431,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnReturBeli);
 
-        btnReturJual.setForeground(new java.awt.Color(90, 120, 80));
         btnReturJual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486142_shopping_cart.png"))); // NOI18N
         btnReturJual.setText("Retur Dari Pembeli");
         btnReturJual.setIconTextGap(0);
@@ -1488,7 +1443,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnReturJual);
 
-        btnSirkulasi.setForeground(new java.awt.Color(90, 120, 80));
         btnSirkulasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
         btnSirkulasi.setText("Sirkulasi Obat, Alkes & BHP");
         btnSirkulasi.setIconTextGap(0);
@@ -1501,7 +1455,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSirkulasi);
 
-        btnKeuntungan.setForeground(new java.awt.Color(90, 120, 80));
         btnKeuntungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
         btnKeuntungan.setText("Keuntungan Penjualan");
         btnKeuntungan.setIconTextGap(0);
@@ -1514,7 +1467,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKeuntungan);
 
-        btnLabaRugi.setForeground(new java.awt.Color(90, 120, 80));
         btnLabaRugi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486822_20.png"))); // NOI18N
         btnLabaRugi.setText("Keuangan");
         btnLabaRugi.setIconTextGap(0);
@@ -1527,7 +1479,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnLabaRugi);
 
-        btnReturPiutang.setForeground(new java.awt.Color(90, 120, 80));
         btnReturPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
         btnReturPiutang.setText("Retur Piutang Pembeli");
         btnReturPiutang.setIconTextGap(0);
@@ -1540,7 +1491,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnReturPiutang);
 
-        btnAnalisaKamar.setForeground(new java.awt.Color(90, 120, 80));
         btnAnalisaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357890_hospital.png"))); // NOI18N
         btnAnalisaKamar.setText("Informasi Kamar");
         btnAnalisaKamar.setIconTextGap(0);
@@ -1553,7 +1503,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnAnalisaKamar);
 
-        btnRHDOkter.setForeground(new java.awt.Color(90, 120, 80));
         btnRHDOkter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
         btnRHDOkter.setText("Harian Dokter");
         btnRHDOkter.setIconTextGap(0);
@@ -1566,7 +1515,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRHDOkter);
 
-        btnRBDokter.setForeground(new java.awt.Color(90, 120, 80));
         btnRBDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
         btnRBDokter.setText("Bulanan Dokter");
         btnRBDokter.setIconTextGap(0);
@@ -1579,7 +1527,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRBDokter);
 
-        btnTagihanMasuk.setForeground(new java.awt.Color(90, 120, 80));
         btnTagihanMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046800_Cash_register.png"))); // NOI18N
         btnTagihanMasuk.setText("Tagihan Masuk");
         btnTagihanMasuk.setIconTextGap(0);
@@ -1592,7 +1539,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTagihanMasuk);
 
-        btnResume.setForeground(new java.awt.Color(90, 120, 80));
         btnResume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
         btnResume.setText("Riwayat Perawatan");
         btnResume.setIconTextGap(0);
@@ -1605,7 +1551,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnResume);
 
-        btnDiet.setForeground(new java.awt.Color(90, 120, 80));
         btnDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486936_pie-chart.png"))); // NOI18N
         btnDiet.setText("Diet Pasien");
         btnDiet.setIconTextGap(0);
@@ -1618,7 +1563,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnDiet);
 
-        btnRHParamedis.setForeground(new java.awt.Color(90, 120, 80));
         btnRHParamedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
         btnRHParamedis.setText("Harian Paramedis");
         btnRHParamedis.setIconTextGap(0);
@@ -1631,7 +1575,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRHParamedis);
 
-        btnRBParamedis.setForeground(new java.awt.Color(90, 120, 80));
         btnRBParamedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
         btnRBParamedis.setText("Bulanan Paramedis");
         btnRBParamedis.setIconTextGap(0);
@@ -1644,7 +1587,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRBParamedis);
 
-        btnKasir.setForeground(new java.awt.Color(90, 120, 80));
         btnKasir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
         btnKasir.setText("Kasir Ralan");
         btnKasir.setIconTextGap(0);
@@ -1657,7 +1599,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKasir);
 
-        btnLahir.setForeground(new java.awt.Color(90, 120, 80));
         btnLahir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/baby-girl.png"))); // NOI18N
         btnLahir.setText("Kelahiran Bayi");
         btnLahir.setIconTextGap(0);
@@ -1670,7 +1611,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnLahir);
 
-        btnSetBiayaHarian.setForeground(new java.awt.Color(90, 120, 80));
         btnSetBiayaHarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
         btnSetBiayaHarian.setText("Biaya Harian");
         btnSetBiayaHarian.setIconTextGap(0);
@@ -1683,7 +1623,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetBiayaHarian);
 
-        btnJenisInventaris.setForeground(new java.awt.Color(90, 120, 80));
         btnJenisInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cabinet.png"))); // NOI18N
         btnJenisInventaris.setText("Jenis");
         btnJenisInventaris.setIconTextGap(0);
@@ -1696,7 +1635,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnJenisInventaris);
 
-        btnKategoriInventaris.setForeground(new java.awt.Color(90, 120, 80));
         btnKategoriInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
         btnKategoriInventaris.setText("Kategori");
         btnKategoriInventaris.setIconTextGap(0);
@@ -1709,7 +1647,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKategoriInventaris);
 
-        btnLihatPiutang.setForeground(new java.awt.Color(90, 120, 80));
         btnLihatPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
         btnLihatPiutang.setText("Piutang Pasien");
         btnLihatPiutang.setIconTextGap(0);
@@ -1722,7 +1659,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnLihatPiutang);
 
-        btnLaboratorium.setForeground(new java.awt.Color(90, 120, 80));
         btnLaboratorium.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/sign-up.png"))); // NOI18N
         btnLaboratorium.setText("Periksa Lab");
         btnLaboratorium.setIconTextGap(0);
@@ -1735,7 +1671,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnLaboratorium);
 
-        btnRalanMasuk.setForeground(new java.awt.Color(90, 120, 80));
         btnRalanMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
         btnRalanMasuk.setText("Pembayaran Ralan");
         btnRalanMasuk.setIconTextGap(0);
@@ -1748,7 +1683,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRalanMasuk);
 
-        btnSetupAplikasi.setForeground(new java.awt.Color(90, 120, 80));
         btnSetupAplikasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/local_network.png"))); // NOI18N
         btnSetupAplikasi.setText("Set Aplikasi");
         btnSetupAplikasi.setIconTextGap(0);
@@ -1761,7 +1695,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetupAplikasi);
 
-        btnSetOtoRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnSetOtoRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/stethoscope (1).png"))); // NOI18N
         btnSetOtoRalan.setText("Set Oto Ralan");
         btnSetOtoRalan.setIconTextGap(0);
@@ -1774,7 +1707,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetOtoRalan);
 
-        btnRanapMasuk.setForeground(new java.awt.Color(90, 120, 80));
         btnRanapMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
         btnRanapMasuk.setText("Pembayaran Ranap");
         btnRanapMasuk.setIconTextGap(0);
@@ -1787,7 +1719,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRanapMasuk);
 
-        btnProdusenInventaris.setForeground(new java.awt.Color(90, 120, 80));
         btnProdusenInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
         btnProdusenInventaris.setText("Produsen");
         btnProdusenInventaris.setIconTextGap(0);
@@ -1800,7 +1731,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnProdusenInventaris);
 
-        btnSetBiayaMasukSekali.setForeground(new java.awt.Color(90, 120, 80));
         btnSetBiayaMasukSekali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
         btnSetBiayaMasukSekali.setText("Biaya Masuk Sekali");
         btnSetBiayaMasukSekali.setIconTextGap(0);
@@ -1813,7 +1743,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetBiayaMasukSekali);
 
-        btnPaketOperasi.setForeground(new java.awt.Color(90, 120, 80));
         btnPaketOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487111_stock_paste.png"))); // NOI18N
         btnPaketOperasi.setText("Tarif Operasi/VK");
         btnPaketOperasi.setIconTextGap(0);
@@ -1826,7 +1755,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPaketOperasi);
 
-        btnTagihanOperasi.setForeground(new java.awt.Color(90, 120, 80));
         btnTagihanOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/surgeon.png"))); // NOI18N
         btnTagihanOperasi.setText("Operasi/VK");
         btnTagihanOperasi.setIconTextGap(0);
@@ -1839,7 +1767,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTagihanOperasi);
 
-        BtnJadwal.setForeground(new java.awt.Color(90, 120, 80));
         BtnJadwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor 3.png"))); // NOI18N
         BtnJadwal.setText("Jadwal Praktek");
         BtnJadwal.setIconTextGap(0);
@@ -1852,7 +1779,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(BtnJadwal);
 
-        btnMerkInventaris.setForeground(new java.awt.Color(90, 120, 80));
         btnMerkInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bag1.png"))); // NOI18N
         btnMerkInventaris.setText("Merk");
         btnMerkInventaris.setIconTextGap(0);
@@ -1865,7 +1791,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnMerkInventaris);
 
-        btnRuangInventaris.setForeground(new java.awt.Color(90, 120, 80));
         btnRuangInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
         btnRuangInventaris.setText("Ruang");
         btnRuangInventaris.setIconTextGap(0);
@@ -1878,7 +1803,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRuangInventaris);
 
-        btnBarangInventaris.setForeground(new java.awt.Color(90, 120, 80));
         btnBarangInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fax.png"))); // NOI18N
         btnBarangInventaris.setText("Koleksi");
         btnBarangInventaris.setIconTextGap(0);
@@ -1891,7 +1815,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBarangInventaris);
 
-        btnInventaris.setForeground(new java.awt.Color(90, 120, 80));
         btnInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486921_bar-code.png"))); // NOI18N
         btnInventaris.setText("Inventaris");
         btnInventaris.setIconTextGap(0);
@@ -1904,7 +1827,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnInventaris);
 
-        btnSirkulasiInventaris.setForeground(new java.awt.Color(90, 120, 80));
         btnSirkulasiInventaris.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
         btnSirkulasiInventaris.setText("Sirkulasi Inventaris");
         btnSirkulasiInventaris.setIconTextGap(0);
@@ -1917,7 +1839,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSirkulasiInventaris);
 
-        btnFrekuensiRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnFrekuensiRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnFrekuensiRalan.setText("Frekuensi Penyakit Ralan");
         btnFrekuensiRalan.setIconTextGap(0);
@@ -1930,7 +1851,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnFrekuensiRalan);
 
-        btnFrekuensiRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnFrekuensiRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/applications-office.png"))); // NOI18N
         btnFrekuensiRanap.setText("Frekuensi Penyakit Ranap");
         btnFrekuensiRanap.setIconTextGap(0);
@@ -1943,7 +1863,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnFrekuensiRanap);
 
-        btnSetupOtoLokasi.setForeground(new java.awt.Color(90, 120, 80));
         btnSetupOtoLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/our_process_2.png"))); // NOI18N
         btnSetupOtoLokasi.setText("Set Oto Lokasi");
         btnSetupOtoLokasi.setIconTextGap(0);
@@ -1956,7 +1875,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetupOtoLokasi);
 
-        btnTagihanPoli.setForeground(new java.awt.Color(90, 120, 80));
         btnTagihanPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
         btnTagihanPoli.setText("Harian Dokter Poli");
         btnTagihanPoli.setIconTextGap(0);
@@ -1969,7 +1887,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTagihanPoli);
 
-        btnRujukMasuk.setForeground(new java.awt.Color(90, 120, 80));
         btnRujukMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047834_application-vnd.ms-excel.png"))); // NOI18N
         btnRujukMasuk.setText("Rujukan Masuk");
         btnRujukMasuk.setIconTextGap(0);
@@ -1982,7 +1899,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRujukMasuk);
 
-        btnTracker.setForeground(new java.awt.Color(90, 120, 80));
         btnTracker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/receptionist.png"))); // NOI18N
         btnTracker.setText("Tracker Login");
         btnTracker.setIconTextGap(0);
@@ -1995,7 +1911,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTracker);
 
-        btnTindakanRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnTindakanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor (2).png"))); // NOI18N
         btnTindakanRanap.setText("Tarif Ranap");
         btnTindakanRanap.setIconTextGap(0);
@@ -2008,7 +1923,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTindakanRanap);
 
-        btnSetupJamInap.setForeground(new java.awt.Color(90, 120, 80));
         btnSetupJamInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Time.png"))); // NOI18N
         btnSetupJamInap.setText("Set Kamar Inap");
         btnSetupJamInap.setIconTextGap(0);
@@ -2021,7 +1935,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetupJamInap);
 
-        btnStokObatPasien.setForeground(new java.awt.Color(90, 120, 80));
         btnStokObatPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
         btnStokObatPasien.setText("Stok Obat Pasien");
         btnStokObatPasien.setIconTextGap(0);
@@ -2034,7 +1947,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnStokObatPasien);
 
-        btnTarifLab.setForeground(new java.awt.Color(90, 120, 80));
         btnTarifLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
         btnTarifLab.setText("Tarif Lab");
         btnTarifLab.setIconTextGap(0);
@@ -2047,7 +1959,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTarifLab);
 
-        btnSetPenjab.setForeground(new java.awt.Color(90, 120, 80));
         btnSetPenjab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/user3.png"))); // NOI18N
         btnSetPenjab.setText("Set P.J. Unit Penunjang");
         btnSetPenjab.setIconTextGap(0);
@@ -2060,7 +1971,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetPenjab);
 
-        btnTagihanObatPoli.setForeground(new java.awt.Color(90, 120, 80));
         btnTagihanObatPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
         btnTagihanObatPoli.setText("Obat Per Poli");
         btnTagihanObatPoli.setIconTextGap(0);
@@ -2073,7 +1983,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTagihanObatPoli);
 
-        btnTagihanObatBangsal.setForeground(new java.awt.Color(90, 120, 80));
         btnTagihanObatBangsal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
         btnTagihanObatBangsal.setText("Obat Per Kamar");
         btnTagihanObatBangsal.setIconTextGap(0);
@@ -2086,7 +1995,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTagihanObatBangsal);
 
-        btnReturPasien.setForeground(new java.awt.Color(90, 120, 80));
         btnReturPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815295_medical_case.png"))); // NOI18N
         btnReturPasien.setText("Retur Obat Ranap");
         btnReturPasien.setIconTextGap(0);
@@ -2099,7 +2007,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnReturPasien);
 
-        btnKeuntunganObatRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnKeuntunganObatRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
         btnKeuntunganObatRanap.setText("Keuntungan Beri Obat ");
         btnKeuntunganObatRanap.setIconTextGap(0);
@@ -2112,7 +2019,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKeuntunganObatRanap);
 
-        btnPenggajian.setForeground(new java.awt.Color(90, 120, 80));
         btnPenggajian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046603_wallet.png"))); // NOI18N
         btnPenggajian.setText("Kepegawaian & Gaji");
         btnPenggajian.setIconTextGap(0);
@@ -2125,7 +2031,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPenggajian);
 
-        btnRekapPresensi.setForeground(new java.awt.Color(90, 120, 80));
         btnRekapPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/sign-up.png"))); // NOI18N
         btnRekapPresensi.setText("Rekap Kehadiran");
         btnRekapPresensi.setIconTextGap(0);
@@ -2138,7 +2043,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRekapPresensi);
 
-        btnRekapHarian.setForeground(new java.awt.Color(90, 120, 80));
         btnRekapHarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/rekap.png"))); // NOI18N
         btnRekapHarian.setText("Presensi Harian");
         btnRekapHarian.setIconTextGap(0);
@@ -2151,7 +2055,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRekapHarian);
 
-        btnRekapBulanan.setForeground(new java.awt.Color(90, 120, 80));
         btnRekapBulanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486898_project-plan.png"))); // NOI18N
         btnRekapBulanan.setText("Presensi Bulanan");
         btnRekapBulanan.setIconTextGap(0);
@@ -2164,7 +2067,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRekapBulanan);
 
-        btnDeposit.setForeground(new java.awt.Color(90, 120, 80));
         btnDeposit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Money.png"))); // NOI18N
         btnDeposit.setText("Deposit Pasien");
         btnDeposit.setIconTextGap(0);
@@ -2177,7 +2079,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnDeposit);
 
-        btnSetupRM.setForeground(new java.awt.Color(90, 120, 80));
         btnSetupRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/patient (1).png"))); // NOI18N
         btnSetupRM.setText("Set RM");
         btnSetupRM.setIconTextGap(0);
@@ -2190,7 +2091,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetupRM);
 
-        btnResepPulang.setForeground(new java.awt.Color(90, 120, 80));
         btnResepPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         btnResepPulang.setText("Resep Pulang");
         btnResepPulang.setIconTextGap(0);
@@ -2203,7 +2103,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnResepPulang);
 
-        btnSetupTarif.setForeground(new java.awt.Color(90, 120, 80));
         btnSetupTarif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/x-office-address-book.png"))); // NOI18N
         btnSetupTarif.setText("Set Penggunaan Tarif");
         btnSetupTarif.setIconTextGap(0);
@@ -2216,7 +2115,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetupTarif);
 
-        btnBarangIpsrs.setForeground(new java.awt.Color(90, 120, 80));
         btnBarangIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
         btnBarangIpsrs.setText("Barang");
         btnBarangIpsrs.setIconTextGap(0);
@@ -2229,7 +2127,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBarangIpsrs);
 
-        btnPembelianIpsrs.setForeground(new java.awt.Color(90, 120, 80));
         btnPembelianIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/inventory-maintenance.png"))); // NOI18N
         btnPembelianIpsrs.setText("Pengadaan Barang");
         btnPembelianIpsrs.setIconTextGap(0);
@@ -2242,7 +2139,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPembelianIpsrs);
 
-        btnPengeluaranIpsrs.setForeground(new java.awt.Color(90, 120, 80));
         btnPengeluaranIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/shopping-basket-full.png"))); // NOI18N
         btnPengeluaranIpsrs.setText("Stok Keluar");
         btnPengeluaranIpsrs.setIconTextGap(0);
@@ -2255,7 +2151,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPengeluaranIpsrs);
 
-        btnRHMasukIpsrs.setForeground(new java.awt.Color(90, 120, 80));
         btnRHMasukIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/shopping_cart.png"))); // NOI18N
         btnRHMasukIpsrs.setText("Rekap Pengadaan");
         btnRHMasukIpsrs.setIconTextGap(0);
@@ -2268,7 +2163,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRHMasukIpsrs);
 
-        btnRHKeluarIpsrs.setForeground(new java.awt.Color(90, 120, 80));
         btnRHKeluarIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
         btnRHKeluarIpsrs.setText("Rekap Stok Keluar");
         btnRHKeluarIpsrs.setIconTextGap(0);
@@ -2281,7 +2175,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRHKeluarIpsrs);
 
-        btnRBiayaIpsrs.setForeground(new java.awt.Color(90, 120, 80));
         btnRBiayaIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
         btnRBiayaIpsrs.setText("Biaya Pengadaan");
         btnRBiayaIpsrs.setIconTextGap(0);
@@ -2294,7 +2187,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRBiayaIpsrs);
 
-        btnTarifRadiologi.setForeground(new java.awt.Color(90, 120, 80));
         btnTarifRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1410153940_radiology.png"))); // NOI18N
         btnTarifRadiologi.setText("Tarif Radiologi");
         btnTarifRadiologi.setIconTextGap(0);
@@ -2307,7 +2199,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTarifRadiologi);
 
-        btnPeriksaRadiologi.setForeground(new java.awt.Color(90, 120, 80));
         btnPeriksaRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Print.png"))); // NOI18N
         btnPeriksaRadiologi.setText("Periksa Radiologi");
         btnPeriksaRadiologi.setIconTextGap(0);
@@ -2320,7 +2211,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPeriksaRadiologi);
 
-        btnTagihanRalanPerhari.setForeground(new java.awt.Color(90, 120, 80));
         btnTagihanRalanPerhari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
         btnTagihanRalanPerhari.setText("Rekap Pembayaran Ralan");
         btnTagihanRalanPerhari.setIconTextGap(0);
@@ -2333,7 +2223,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTagihanRalanPerhari);
 
-        btnTagihanRanapPerhari.setForeground(new java.awt.Color(90, 120, 80));
         btnTagihanRanapPerhari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
         btnTagihanRanapPerhari.setText("Rekap Pembayaran Ranap");
         btnTagihanRanapPerhari.setIconTextGap(0);
@@ -2346,7 +2235,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTagihanRanapPerhari);
 
-        btnSetupEmbalase.setForeground(new java.awt.Color(90, 120, 80));
         btnSetupEmbalase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Money.png"))); // NOI18N
         btnSetupEmbalase.setText("Set Embalase & Tuslah");
         btnSetupEmbalase.setIconTextGap(0);
@@ -2359,7 +2247,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetupEmbalase);
 
-        btnSirkulasiBerkas.setForeground(new java.awt.Color(90, 120, 80));
         btnSirkulasiBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/data_management.png"))); // NOI18N
         btnSirkulasiBerkas.setText("Peminjaman Berkas RM");
         btnSirkulasiBerkas.setIconTextGap(0);
@@ -2372,7 +2259,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSirkulasiBerkas);
 
-        btnObatPasienRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnObatPasienRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
         btnObatPasienRalan.setText("Obat Per Dokter Ralan");
         btnObatPasienRalan.setIconTextGap(0);
@@ -2385,7 +2271,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnObatPasienRalan);
 
-        btnObatPasienRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnObatPasienRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
         btnObatPasienRanap.setText("Obat Per Dokter Ranap");
         btnObatPasienRanap.setIconTextGap(0);
@@ -2398,7 +2283,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnObatPasienRanap);
 
-        btnPemesanan.setForeground(new java.awt.Color(90, 120, 80));
         btnPemesanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kwrite.png"))); // NOI18N
         btnPemesanan.setText("Pemesanan Obat & BHP");
         btnPemesanan.setIconTextGap(0);
@@ -2411,7 +2295,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPemesanan);
 
-        btnPengeluaran.setForeground(new java.awt.Color(90, 120, 80));
         btnPengeluaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
         btnPengeluaran.setText("Pengeluaran Harian");
         btnPengeluaran.setIconTextGap(0);
@@ -2424,7 +2307,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPengeluaran);
 
-        btnTambahanBiaya.setForeground(new java.awt.Color(90, 120, 80));
         btnTambahanBiaya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046786_Money.png"))); // NOI18N
         btnTambahanBiaya.setText("Tambahan Biaya Pasien");
         btnTambahanBiaya.setIconTextGap(0);
@@ -2437,7 +2319,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTambahanBiaya);
 
-        btnPotonganBiaya.setForeground(new java.awt.Color(90, 120, 80));
         btnPotonganBiaya.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046786_Money.png"))); // NOI18N
         btnPotonganBiaya.setText("Potongan Biaya Pasien");
         btnPotonganBiaya.setIconTextGap(0);
@@ -2450,7 +2331,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPotonganBiaya);
 
-        btnJMDetailDokter.setForeground(new java.awt.Color(90, 120, 80));
         btnJMDetailDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
         btnJMDetailDokter.setText("Detail JM Dokter");
         btnJMDetailDokter.setIconTextGap(0);
@@ -2463,7 +2343,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnJMDetailDokter);
 
-        btnIGD.setForeground(new java.awt.Color(90, 120, 80));
         btnIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
         btnIGD.setText("IGD/UGD");
         btnIGD.setIconTextGap(0);
@@ -2476,7 +2355,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnIGD);
 
-        btnBarcodeRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnBarcodeRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
         btnBarcodeRalan.setText("Rawat Jalan");
         btnBarcodeRalan.setIconTextGap(0);
@@ -2489,7 +2367,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBarcodeRalan);
 
-        btnBarcodeRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnBarcodeRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
         btnBarcodeRanap.setText("Rawat Inap");
         btnBarcodeRanap.setIconTextGap(0);
@@ -2502,7 +2379,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBarcodeRanap);
 
-        btnSetObatRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnSetObatRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
         btnSetObatRalan.setText("Set Obat Ralan");
         btnSetObatRalan.setIconTextGap(0);
@@ -2515,7 +2391,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetObatRalan);
 
-        btnSetObatRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnSetObatRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
         btnSetObatRanap.setText("Set Obat Ranap");
         btnSetObatRanap.setIconTextGap(0);
@@ -2528,7 +2403,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetObatRanap);
 
-        btnPenyakitPD3I.setForeground(new java.awt.Color(90, 120, 80));
         btnPenyakitPD3I.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnPenyakitPD3I.setText("Penyakit AFP & PD3I");
         btnPenyakitPD3I.setIconTextGap(0);
@@ -2541,7 +2415,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPenyakitPD3I);
 
-        btnSurveilansPD3I.setForeground(new java.awt.Color(90, 120, 80));
         btnSurveilansPD3I.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnSurveilansPD3I.setText("Surveilans AFP & PD3I");
         btnSurveilansPD3I.setIconTextGap(0);
@@ -2554,7 +2427,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSurveilansPD3I);
 
-        btnSurveilansRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnSurveilansRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnSurveilansRalan.setText("Surveilans Ralan");
         btnSurveilansRalan.setIconTextGap(0);
@@ -2567,7 +2439,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSurveilansRalan);
 
-        btnDiagnosa.setForeground(new java.awt.Color(90, 120, 80));
         btnDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/health.png"))); // NOI18N
         btnDiagnosa.setText("Diagnosa Pasien");
         btnDiagnosa.setIconTextGap(0);
@@ -2580,7 +2451,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnDiagnosa);
 
-        btnSurveilansRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnSurveilansRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnSurveilansRanap.setText("Surveilans Ranap");
         btnSurveilansRanap.setIconTextGap(0);
@@ -2593,7 +2463,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSurveilansRanap);
 
-        btnPnyTakMenularRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnPnyTakMenularRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnPnyTakMenularRanap.setText("Pny Tdk Menular Ranap");
         btnPnyTakMenularRanap.setIconTextGap(0);
@@ -2606,7 +2475,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPnyTakMenularRanap);
 
-        btnPnyTakMenularRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnPnyTakMenularRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnPnyTakMenularRalan.setText("Pny Tdk Menular Ralan");
         btnPnyTakMenularRalan.setIconTextGap(0);
@@ -2619,7 +2487,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPnyTakMenularRalan);
 
-        btnKunjunganRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnKunjunganRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnKunjunganRalan.setText("Kunjungan Ralan");
         btnKunjunganRalan.setIconTextGap(0);
@@ -2632,7 +2499,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKunjunganRalan);
 
-        btnRl32.setForeground(new java.awt.Color(90, 120, 80));
         btnRl32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnRl32.setText("RL 3.2 Rawat Darurat");
         btnRl32.setIconTextGap(0);
@@ -2645,7 +2511,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl32);
 
-        btnRl33.setForeground(new java.awt.Color(90, 120, 80));
         btnRl33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnRl33.setText("RL 3.3 Gigi dan Mulut");
         btnRl33.setIconTextGap(0);
@@ -2658,7 +2523,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl33);
 
-        btnRl37.setForeground(new java.awt.Color(90, 120, 80));
         btnRl37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnRl37.setText("RL 3.7 Radiologi");
         btnRl37.setIconTextGap(0);
@@ -2671,7 +2535,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl37);
 
-        btnRl38.setForeground(new java.awt.Color(90, 120, 80));
         btnRl38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnRl38.setText("RL 3.8 Laboratorium");
         btnRl38.setIconTextGap(0);
@@ -2684,7 +2547,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl38);
 
-        btnTagihanDokter.setForeground(new java.awt.Color(90, 120, 80));
         btnTagihanDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
         btnTagihanDokter.setText("Harian Dokter Ralan");
         btnTagihanDokter.setIconTextGap(0);
@@ -2697,7 +2559,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTagihanDokter);
 
-        btnSMS.setForeground(new java.awt.Color(90, 120, 80));
         btnSMS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485538_recieve-mail.png"))); // NOI18N
         btnSMS.setText("SMS Gateway");
         btnSMS.setIconTextGap(0);
@@ -2710,7 +2571,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSMS);
 
-        btnSidikJari.setForeground(new java.awt.Color(90, 120, 80));
         btnSidikJari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/finger.png"))); // NOI18N
         btnSidikJari.setText("Sidik Jari");
         btnSidikJari.setIconTextGap(0);
@@ -2723,7 +2583,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSidikJari);
 
-        btnJamPresensi.setForeground(new java.awt.Color(90, 120, 80));
         btnJamPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Time.png"))); // NOI18N
         btnJamPresensi.setText("Jam Presensi");
         btnJamPresensi.setIconTextGap(0);
@@ -2736,7 +2595,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnJamPresensi);
 
-        btnJadwalPegawai.setForeground(new java.awt.Color(90, 120, 80));
         btnJadwalPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
         btnJadwalPegawai.setText("Jadwal Pegawai");
         btnJadwalPegawai.setIconTextGap(0);
@@ -2749,7 +2607,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnJadwalPegawai);
 
-        btnJenisParkir.setForeground(new java.awt.Color(90, 120, 80));
         btnJenisParkir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/parkirjenis.png"))); // NOI18N
         btnJenisParkir.setText("Jenis Parkir");
         btnJenisParkir.setIconTextGap(0);
@@ -2762,7 +2619,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnJenisParkir);
 
-        btnBarcodeParkir.setForeground(new java.awt.Color(90, 120, 80));
         btnBarcodeParkir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360484263_barcode.png"))); // NOI18N
         btnBarcodeParkir.setText("Barcode Parkir");
         btnBarcodeParkir.setIconTextGap(0);
@@ -2775,7 +2631,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBarcodeParkir);
 
-        btnParkirMasuk.setForeground(new java.awt.Color(90, 120, 80));
         btnParkirMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/parkirmasuk.png"))); // NOI18N
         btnParkirMasuk.setText("Parkir Masuk");
         btnParkirMasuk.setIconTextGap(0);
@@ -2788,7 +2643,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnParkirMasuk);
 
-        btnSetupNota.setForeground(new java.awt.Color(90, 120, 80));
         btnSetupNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         btnSetupNota.setText("Set Billing");
         btnSetupNota.setIconTextGap(0);
@@ -2801,7 +2655,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetupNota);
 
-        BtnDpjp.setForeground(new java.awt.Color(90, 120, 80));
         BtnDpjp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor2.png"))); // NOI18N
         BtnDpjp.setText("DPJP Ranap");
         BtnDpjp.setIconTextGap(0);
@@ -2814,7 +2667,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(BtnDpjp);
 
-        btnMutasiBarang.setForeground(new java.awt.Color(90, 120, 80));
         btnMutasiBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         btnMutasiBarang.setText("Mutasi Obat & BHP");
         btnMutasiBarang.setIconTextGap(0);
@@ -2827,7 +2679,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnMutasiBarang);
 
-        btnRl34.setForeground(new java.awt.Color(90, 120, 80));
         btnRl34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnRl34.setText("RL 3.4 Kebidanan");
         btnRl34.setIconTextGap(0);
@@ -2840,7 +2691,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl34);
 
-        btnRl36.setForeground(new java.awt.Color(90, 120, 80));
         btnRl36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnRl36.setText("RL 3.6 Pembedahan");
         btnRl36.setIconTextGap(0);
@@ -2853,7 +2703,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl36);
 
-        btnfee_visit_dokter.setForeground(new java.awt.Color(90, 120, 80));
         btnfee_visit_dokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
         btnfee_visit_dokter.setText("Fee Visit Dokter");
         btnfee_visit_dokter.setIconTextGap(0);
@@ -2866,7 +2715,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnfee_visit_dokter);
 
-        btnfee_bacaan_ekg.setForeground(new java.awt.Color(90, 120, 80));
         btnfee_bacaan_ekg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
         btnfee_bacaan_ekg.setText("Fee Bacaan EKG");
         btnfee_bacaan_ekg.setIconTextGap(0);
@@ -2879,7 +2727,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnfee_bacaan_ekg);
 
-        btnfee_rujukan_rontgen.setForeground(new java.awt.Color(90, 120, 80));
         btnfee_rujukan_rontgen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
         btnfee_rujukan_rontgen.setText("Fee Rujukan Rontgen");
         btnfee_rujukan_rontgen.setIconTextGap(0);
@@ -2892,7 +2739,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnfee_rujukan_rontgen);
 
-        btnfee_rujukan_ranap.setForeground(new java.awt.Color(90, 120, 80));
         btnfee_rujukan_ranap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
         btnfee_rujukan_ranap.setText("Fee Rujukan Ranap");
         btnfee_rujukan_ranap.setIconTextGap(0);
@@ -2905,7 +2751,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnfee_rujukan_ranap);
 
-        btnfee_ralan.setForeground(new java.awt.Color(90, 120, 80));
         btnfee_ralan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
         btnfee_ralan.setText("Fee Periksa Ralan");
         btnfee_ralan.setIconTextGap(0);
@@ -2918,7 +2763,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnfee_ralan);
 
-        btnakun_bayar.setForeground(new java.awt.Color(90, 120, 80));
         btnakun_bayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
         btnakun_bayar.setText("Akun Bayar");
         btnakun_bayar.setIconTextGap(0);
@@ -2931,7 +2775,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnakun_bayar);
 
-        btnbayar_pemesanan.setForeground(new java.awt.Color(90, 120, 80));
         btnbayar_pemesanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
         btnbayar_pemesanan.setText("Bayar Pesan Obat/BHP");
         btnbayar_pemesanan.setIconTextGap(0);
@@ -2944,7 +2787,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnbayar_pemesanan);
 
-        btnObatPasienPeresep.setForeground(new java.awt.Color(90, 120, 80));
         btnObatPasienPeresep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
         btnObatPasienPeresep.setText("Obat Per Dokter Peresep");
         btnObatPasienPeresep.setIconTextGap(0);
@@ -2957,7 +2799,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnObatPasienPeresep);
 
-        btnJenisIpsrs.setForeground(new java.awt.Color(90, 120, 80));
         btnJenisIpsrs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cabinet.png"))); // NOI18N
         btnJenisIpsrs.setText("Jenis Barang");
         btnJenisIpsrs.setIconTextGap(0);
@@ -2970,7 +2811,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnJenisIpsrs);
 
-        btnPemasukanLain.setForeground(new java.awt.Color(90, 120, 80));
         btnPemasukanLain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
         btnPemasukanLain.setText("Pemasukan Lain-Lain");
         btnPemasukanLain.setIconTextGap(0);
@@ -2983,7 +2823,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPemasukanLain);
 
-        btnPengaturanRekening.setForeground(new java.awt.Color(90, 120, 80));
         btnPengaturanRekening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/gtk-stock-book.png"))); // NOI18N
         btnPengaturanRekening.setText("Pengaturan Rekening");
         btnPengaturanRekening.setIconTextGap(0);
@@ -2996,7 +2835,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPengaturanRekening);
 
-        btnJadwalTambahan.setForeground(new java.awt.Color(90, 120, 80));
         btnJadwalTambahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
         btnJadwalTambahan.setText("Jadwal Tambahan");
         btnJadwalTambahan.setIconTextGap(0);
@@ -3009,7 +2847,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnJadwalTambahan);
 
-        btnClosingKasir.setForeground(new java.awt.Color(90, 120, 80));
         btnClosingKasir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
         btnClosingKasir.setText("Closing Kasir");
         btnClosingKasir.setIconTextGap(0);
@@ -3022,7 +2859,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnClosingKasir);
 
-        btnKeterlambatanPresensi.setForeground(new java.awt.Color(90, 120, 80));
         btnKeterlambatanPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Time.png"))); // NOI18N
         btnKeterlambatanPresensi.setText("Set Keterlambatan Presensi");
         btnKeterlambatanPresensi.setIconTextGap(0);
@@ -3035,7 +2871,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKeterlambatanPresensi);
 
-        btnSetHargaKamar.setForeground(new java.awt.Color(90, 120, 80));
         btnSetHargaKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
         btnSetHargaKamar.setText("Set Harga Kamar");
         btnSetHargaKamar.setIconTextGap(0);
@@ -3048,7 +2883,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSetHargaKamar);
 
-        btnRekapPershift.setForeground(new java.awt.Color(90, 120, 80));
         btnRekapPershift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
         btnRekapPershift.setText("Rekap Uang Pershift");
         btnRekapPershift.setIconTextGap(0);
@@ -3061,7 +2895,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRekapPershift);
 
-        btnCekBPJSNik.setForeground(new java.awt.Color(90, 120, 80));
         btnCekBPJSNik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/family.png"))); // NOI18N
         btnCekBPJSNik.setText("Cek NIK BPJS");
         btnCekBPJSNik.setIconTextGap(0);
@@ -3074,7 +2907,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekBPJSNik);
 
-        btnCekBPJSKartu.setForeground(new java.awt.Color(90, 120, 80));
         btnCekBPJSKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/administrator.png"))); // NOI18N
         btnCekBPJSKartu.setText("Cek No.Kartu BPJS");
         btnCekBPJSKartu.setIconTextGap(0);
@@ -3087,7 +2919,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekBPJSKartu);
 
-        btnCekBPJSRiwayat.setForeground(new java.awt.Color(90, 120, 80));
         btnCekBPJSRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor 3.png"))); // NOI18N
         btnCekBPJSRiwayat.setText("Riwayat Peserta BPJS");
         btnCekBPJSRiwayat.setIconTextGap(0);
@@ -3100,7 +2931,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekBPJSRiwayat);
 
-        btnRekapPresensi2.setForeground(new java.awt.Color(90, 120, 80));
         btnRekapPresensi2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/sign-up.png"))); // NOI18N
         btnRekapPresensi2.setText("Rekap Kehadiran 2");
         btnRekapPresensi2.setIconTextGap(0);
@@ -3113,7 +2943,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRekapPresensi2);
 
-        btnObatPerCaraBayar.setForeground(new java.awt.Color(90, 120, 80));
         btnObatPerCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
         btnObatPerCaraBayar.setText("Obat Per Cara Bayar");
         btnObatPerCaraBayar.setIconTextGap(0);
@@ -3126,7 +2955,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnObatPerCaraBayar);
 
-        btnKunjunganRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnKunjunganRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnKunjunganRanap.setText("Kunjungan Ranap");
         btnKunjunganRanap.setIconTextGap(0);
@@ -3139,7 +2967,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKunjunganRanap);
 
-        btnPaymentPoint.setForeground(new java.awt.Color(90, 120, 80));
         btnPaymentPoint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
         btnPaymentPoint.setText("Payment Point");
         btnPaymentPoint.setIconTextGap(0);
@@ -3152,7 +2979,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPaymentPoint);
 
-        btnCekBPJSNomorRujukanPCare.setForeground(new java.awt.Color(90, 120, 80));
         btnCekBPJSNomorRujukanPCare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
         btnCekBPJSNomorRujukanPCare.setText("Cek No.Rujukan PCare");
         btnCekBPJSNomorRujukanPCare.setIconTextGap(0);
@@ -3165,7 +2991,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekBPJSNomorRujukanPCare);
 
-        btnICD9.setForeground(new java.awt.Color(90, 120, 80));
         btnICD9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnICD9.setText("ICD 9");
         btnICD9.setIconTextGap(0);
@@ -3178,7 +3003,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnICD9);
 
-        btnDaruratStok.setForeground(new java.awt.Color(90, 120, 80));
         btnDaruratStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
         btnDaruratStok.setText("Darurat Stok");
         btnDaruratStok.setIconTextGap(0);
@@ -3191,7 +3015,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnDaruratStok);
 
-        btnRetensiRM.setForeground(new java.awt.Color(90, 120, 80));
         btnRetensiRM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reportorium.png"))); // NOI18N
         btnRetensiRM.setText("Retensi Berkas R.M.");
         btnRetensiRM.setIconTextGap(0);
@@ -3204,7 +3027,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRetensiRM);
 
-        btnTemporaryPresensi.setForeground(new java.awt.Color(90, 120, 80));
         btnTemporaryPresensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047834_application-vnd.ms-excel.png"))); // NOI18N
         btnTemporaryPresensi.setText("Temporary Presensi");
         btnTemporaryPresensi.setIconTextGap(0);
@@ -3217,7 +3039,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTemporaryPresensi);
 
-        btnJurnalHarian.setForeground(new java.awt.Color(90, 120, 80));
         btnJurnalHarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
         btnJurnalHarian.setText("Jurnal Harian");
         btnJurnalHarian.setIconTextGap(0);
@@ -3230,7 +3051,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnJurnalHarian);
 
-        btnSirkulasi2.setForeground(new java.awt.Color(90, 120, 80));
         btnSirkulasi2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
         btnSirkulasi2.setText("Sirkulasi Obat, Alkes & BHP 2");
         btnSirkulasi2.setIconTextGap(0);
@@ -3243,7 +3063,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSirkulasi2);
 
-        btnCekBPJSDiagnosa.setForeground(new java.awt.Color(90, 120, 80));
         btnCekBPJSDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnCekBPJSDiagnosa.setText("Referensi Diagnosa BPJS");
         btnCekBPJSDiagnosa.setIconTextGap(0);
@@ -3256,7 +3075,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekBPJSDiagnosa);
 
-        btnCekBPJSPoli.setForeground(new java.awt.Color(90, 120, 80));
         btnCekBPJSPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logout.png"))); // NOI18N
         btnCekBPJSPoli.setText("Referensi Poli BPJS");
         btnCekBPJSPoli.setIconTextGap(0);
@@ -3269,7 +3087,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekBPJSPoli);
 
-        btnIndustriFarmasi.setForeground(new java.awt.Color(90, 120, 80));
         btnIndustriFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486910_company.png"))); // NOI18N
         btnIndustriFarmasi.setText("Industri Farmasi");
         btnIndustriFarmasi.setIconTextGap(0);
@@ -3282,7 +3099,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnIndustriFarmasi);
 
-        btnRHJasaSarana.setForeground(new java.awt.Color(90, 120, 80));
         btnRHJasaSarana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
         btnRHJasaSarana.setText("Harian Jasa Sarana");
         btnRHJasaSarana.setIconTextGap(0);
@@ -3295,7 +3111,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRHJasaSarana);
 
-        btnRBJasaSarana.setForeground(new java.awt.Color(90, 120, 80));
         btnRBJasaSarana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
         btnRBJasaSarana.setText("Bulanan Jasa Sarana");
         btnRBJasaSarana.setIconTextGap(0);
@@ -3308,7 +3123,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRBJasaSarana);
 
-        btnRHPaketBHP.setForeground(new java.awt.Color(90, 120, 80));
         btnRHPaketBHP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
         btnRHPaketBHP.setText("Harian BHP Medis/Paket Obat");
         btnRHPaketBHP.setIconTextGap(0);
@@ -3321,7 +3135,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRHPaketBHP);
 
-        btnRBPaketBHP.setForeground(new java.awt.Color(90, 120, 80));
         btnRBPaketBHP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
         btnRBPaketBHP.setText("Bulanan BHP Medis/Paket Obat");
         btnRBPaketBHP.setIconTextGap(0);
@@ -3334,7 +3147,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRBPaketBHP);
 
-        btnPiutangBelumLunas.setForeground(new java.awt.Color(90, 120, 80));
         btnPiutangBelumLunas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
         btnPiutangBelumLunas.setText("Piutang Belum Lunas");
         btnPiutangBelumLunas.setIconTextGap(0);
@@ -3347,7 +3159,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPiutangBelumLunas);
 
-        btnCekBPJSFaskes.setForeground(new java.awt.Color(90, 120, 80));
         btnCekBPJSFaskes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
         btnCekBPJSFaskes.setText("Referensi Faskes BPJS");
         btnCekBPJSFaskes.setIconTextGap(0);
@@ -3360,7 +3171,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekBPJSFaskes);
 
-        btnBPJSSEP.setForeground(new java.awt.Color(90, 120, 80));
         btnBPJSSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038237_Adobe_Bridge_CS.png"))); // NOI18N
         btnBPJSSEP.setText("Data Bridging SEP BPJS");
         btnBPJSSEP.setIconTextGap(0);
@@ -3373,7 +3183,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBPJSSEP);
 
-        btnPengambilanUTD.setForeground(new java.awt.Color(90, 120, 80));
         btnPengambilanUTD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
         btnPengambilanUTD.setText("Pengambilan BHP UTD");
         btnPengambilanUTD.setIconTextGap(0);
@@ -3386,7 +3195,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPengambilanUTD);
 
-        btnTarifUtd.setForeground(new java.awt.Color(90, 120, 80));
         btnTarifUtd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001686_injection_blood.png"))); // NOI18N
         btnTarifUtd.setText("Tarif UTD");
         btnTarifUtd.setIconTextGap(0);
@@ -3399,7 +3207,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTarifUtd);
 
-        btnPengambilanUTD2.setForeground(new java.awt.Color(90, 120, 80));
         btnPengambilanUTD2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487078_shipping.png"))); // NOI18N
         btnPengambilanUTD2.setText("Pengambilan BHP Medis");
         btnPengambilanUTD2.setIconTextGap(0);
@@ -3412,7 +3219,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPengambilanUTD2);
 
-        btnUTDMedisRusak.setForeground(new java.awt.Color(90, 120, 80));
         btnUTDMedisRusak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486858_stock-market.png"))); // NOI18N
         btnUTDMedisRusak.setText("BHP Medis Rusak");
         btnUTDMedisRusak.setIconTextGap(0);
@@ -3425,7 +3231,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUTDMedisRusak);
 
-        btnPengambilanPenunjangUTD.setForeground(new java.awt.Color(90, 120, 80));
         btnPengambilanPenunjangUTD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002155_skills.png"))); // NOI18N
         btnPengambilanPenunjangUTD.setText("Pengambilan UTD");
         btnPengambilanPenunjangUTD.setIconTextGap(0);
@@ -3438,7 +3243,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPengambilanPenunjangUTD);
 
-        btnPengambilanPenunjangUTD2.setForeground(new java.awt.Color(90, 120, 80));
         btnPengambilanPenunjangUTD2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002155_skills.png"))); // NOI18N
         btnPengambilanPenunjangUTD2.setText("Pengambilan BHP Non Medis");
         btnPengambilanPenunjangUTD2.setIconTextGap(0);
@@ -3451,7 +3255,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPengambilanPenunjangUTD2);
 
-        btnUTDPenunjangRusak.setForeground(new java.awt.Color(90, 120, 80));
         btnUTDPenunjangRusak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/inventory-maintenance.png"))); // NOI18N
         btnUTDPenunjangRusak.setText("BHP Non Medis Rusak");
         btnUTDPenunjangRusak.setIconTextGap(0);
@@ -3464,7 +3267,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUTDPenunjangRusak);
 
-        btnSuplierIPSRS.setForeground(new java.awt.Color(90, 120, 80));
         btnSuplierIPSRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002123_wheelchair.png"))); // NOI18N
         btnSuplierIPSRS.setText("Suplier Non Medis");
         btnSuplierIPSRS.setIconTextGap(0);
@@ -3477,7 +3279,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSuplierIPSRS);
 
-        btnUTDDonorDarah.setForeground(new java.awt.Color(90, 120, 80));
         btnUTDDonorDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001706_heart_beat.png"))); // NOI18N
         btnUTDDonorDarah.setText("Donor Darah");
         btnUTDDonorDarah.setIconTextGap(0);
@@ -3490,7 +3291,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUTDDonorDarah);
 
-        btnMonitoringKlaim.setForeground(new java.awt.Color(90, 120, 80));
         btnMonitoringKlaim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360486845_23.png"))); // NOI18N
         btnMonitoringKlaim.setText("Monitoring Verifikasi Klaim BPJS");
         btnMonitoringKlaim.setIconTextGap(0);
@@ -3503,7 +3303,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnMonitoringKlaim);
 
-        btnUTDCekalDarah.setForeground(new java.awt.Color(90, 120, 80));
         btnUTDCekalDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487093_price.png"))); // NOI18N
         btnUTDCekalDarah.setText("Pencekalan Darah");
         btnUTDCekalDarah.setIconTextGap(0);
@@ -3516,7 +3315,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUTDCekalDarah);
 
-        btnUTDKomponenDarah.setForeground(new java.awt.Color(90, 120, 80));
         btnUTDKomponenDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001686_injection_blood.png"))); // NOI18N
         btnUTDKomponenDarah.setText("Komponen Darah");
         btnUTDKomponenDarah.setIconTextGap(0);
@@ -3529,7 +3327,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUTDKomponenDarah);
 
-        btnUTDStokDarah.setForeground(new java.awt.Color(90, 120, 80));
         btnUTDStokDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481001585_blood_drop.png"))); // NOI18N
         btnUTDStokDarah.setText("Stok Darah");
         btnUTDStokDarah.setIconTextGap(0);
@@ -3542,7 +3339,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUTDStokDarah);
 
-        btnUTDPemisahanDarah.setForeground(new java.awt.Color(90, 120, 80));
         btnUTDPemisahanDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815855_laboratory.png"))); // NOI18N
         btnUTDPemisahanDarah.setText("Pemisahan Darah");
         btnUTDPemisahanDarah.setIconTextGap(0);
@@ -3555,7 +3351,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUTDPemisahanDarah);
 
-        btnHarianKamar.setForeground(new java.awt.Color(90, 120, 80));
         btnHarianKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047106_emblem-money.png"))); // NOI18N
         btnHarianKamar.setText("Harian Kamar");
         btnHarianKamar.setIconTextGap(0);
@@ -3568,7 +3363,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnHarianKamar);
 
-        btnRincianPiutangPasien.setForeground(new java.awt.Color(90, 120, 80));
         btnRincianPiutangPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
         btnRincianPiutangPasien.setText("Rincian Piutang Pasien");
         btnRincianPiutangPasien.setIconTextGap(0);
@@ -3581,7 +3375,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRincianPiutangPasien);
 
-        btnKeuntunganObat2.setForeground(new java.awt.Color(90, 120, 80));
         btnKeuntunganObat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
         btnKeuntunganObat2.setText("Keuntungan Beri Obat 2");
         btnKeuntunganObat2.setIconTextGap(0);
@@ -3594,7 +3387,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKeuntunganObat2);
 
-        btnReklasifikasiRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnReklasifikasiRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
         btnReklasifikasiRalan.setText("Reklasifikasi Ralan");
         btnReklasifikasiRalan.setIconTextGap(0);
@@ -3607,7 +3399,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnReklasifikasiRalan);
 
-        btnReklasifikasiRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnReklasifikasiRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
         btnReklasifikasiRanap.setText("Reklasifikasi Ranap");
         btnReklasifikasiRanap.setIconTextGap(0);
@@ -3620,7 +3411,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnReklasifikasiRanap);
 
-        btnUTDPenyerahanDarah.setForeground(new java.awt.Color(90, 120, 80));
         btnUTDPenyerahanDarah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/health.png"))); // NOI18N
         btnUTDPenyerahanDarah.setText("Penyerahan Darah");
         btnUTDPenyerahanDarah.setIconTextGap(0);
@@ -3633,7 +3423,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnUTDPenyerahanDarah);
 
-        btnHutangObat.setForeground(new java.awt.Color(90, 120, 80));
         btnHutangObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/cashbox.png"))); // NOI18N
         btnHutangObat.setText("Hutang Obat & BHP");
         btnHutangObat.setIconTextGap(0);
@@ -3646,7 +3435,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnHutangObat);
 
-        btnRiwayatBarangMedis.setForeground(new java.awt.Color(90, 120, 80));
         btnRiwayatBarangMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/gnome-searchtool.png"))); // NOI18N
         btnRiwayatBarangMedis.setText("Riwayat Obat, Alkes & BHP");
         btnRiwayatBarangMedis.setIconTextGap(0);
@@ -3659,7 +3447,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRiwayatBarangMedis);
 
-        btnSensusHarianPoli.setForeground(new java.awt.Color(90, 120, 80));
         btnSensusHarianPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
         btnSensusHarianPoli.setText("Sensus Harian Poli");
         btnSensusHarianPoli.setIconTextGap(0);
@@ -3672,7 +3459,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSensusHarianPoli);
 
-        btnRl4a.setForeground(new java.awt.Color(90, 120, 80));
         btnRl4a.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
         btnRl4a.setText("RL 4A Morbiditas Ranap");
         btnRl4a.setIconTextGap(0);
@@ -3685,7 +3471,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl4a);
 
-        btnAplicareReferensiKamar.setForeground(new java.awt.Color(90, 120, 80));
         btnAplicareReferensiKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
         btnAplicareReferensiKamar.setText("Referensi Kamar Aplicare");
         btnAplicareReferensiKamar.setIconTextGap(0);
@@ -3698,7 +3483,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnAplicareReferensiKamar);
 
-        btnAplicareKetersediaanKamar.setForeground(new java.awt.Color(90, 120, 80));
         btnAplicareKetersediaanKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
         btnAplicareKetersediaanKamar.setText("Ketersediaan Kamar Aplicare");
         btnAplicareKetersediaanKamar.setIconTextGap(0);
@@ -3711,7 +3495,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnAplicareKetersediaanKamar);
 
-        btnInaCBGKlaimBaruOtomatis.setForeground(new java.awt.Color(90, 120, 80));
         btnInaCBGKlaimBaruOtomatis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485358050_receptionist.png"))); // NOI18N
         btnInaCBGKlaimBaruOtomatis.setText("Klaim Baru Otomatis INACBG");
         btnInaCBGKlaimBaruOtomatis.setIconTextGap(0);
@@ -3724,7 +3507,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnInaCBGKlaimBaruOtomatis);
 
-        btnInaCBGKlaimBaruManual.setForeground(new java.awt.Color(90, 120, 80));
         btnInaCBGKlaimBaruManual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485358050_receptionist.png"))); // NOI18N
         btnInaCBGKlaimBaruManual.setText("Klaim Baru Manual INACBG");
         btnInaCBGKlaimBaruManual.setIconTextGap(0);
@@ -3737,7 +3519,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnInaCBGKlaimBaruManual);
 
-        btnInaCBGCoderNIK.setForeground(new java.awt.Color(90, 120, 80));
         btnInaCBGCoderNIK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002113_guard.png"))); // NOI18N
         btnInaCBGCoderNIK.setText("Coder NIK INACBG");
         btnInaCBGCoderNIK.setIconTextGap(0);
@@ -3750,7 +3531,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnInaCBGCoderNIK);
 
-        btnMutasiBerkas.setForeground(new java.awt.Color(90, 120, 80));
         btnMutasiBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         btnMutasiBerkas.setText("Mutasi Berkas RM");
         btnMutasiBerkas.setIconTextGap(0);
@@ -3763,7 +3543,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnMutasiBerkas);
 
-        btnAkunPiutang.setForeground(new java.awt.Color(90, 120, 80));
         btnAkunPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046603_wallet.png"))); // NOI18N
         btnAkunPiutang.setText("Akun Piutang");
         btnAkunPiutang.setIconTextGap(0);
@@ -3776,7 +3555,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnAkunPiutang);
 
-        btnRHKSO.setForeground(new java.awt.Color(90, 120, 80));
         btnRHKSO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
         btnRHKSO.setText("Harian KSO");
         btnRHKSO.setIconTextGap(0);
@@ -3789,7 +3567,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRHKSO);
 
-        btnRBKSO.setForeground(new java.awt.Color(90, 120, 80));
         btnRBKSO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
         btnRBKSO.setText("Bulanan KSO");
         btnRBKSO.setIconTextGap(0);
@@ -3802,7 +3579,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRBKSO);
 
-        btnRHMenejemen.setForeground(new java.awt.Color(90, 120, 80));
         btnRHMenejemen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
         btnRHMenejemen.setText("Harian Menejemen");
         btnRHMenejemen.setIconTextGap(0);
@@ -3815,7 +3591,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRHMenejemen);
 
-        btnRBMenejemen.setForeground(new java.awt.Color(90, 120, 80));
         btnRBMenejemen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
         btnRBMenejemen.setText("Bulanan Menejemen");
         btnRBMenejemen.setIconTextGap(0);
@@ -3828,7 +3603,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRBMenejemen);
 
-        btnCekEligibilitasInhealth.setForeground(new java.awt.Color(90, 120, 80));
         btnCekEligibilitasInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/receptionist.png"))); // NOI18N
         btnCekEligibilitasInhealth.setText("Cek Eligibilitas Inhealth");
         btnCekEligibilitasInhealth.setIconTextGap(0);
@@ -3841,7 +3615,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekEligibilitasInhealth);
 
-        btnReferensiKamarInhealth.setForeground(new java.awt.Color(90, 120, 80));
         btnReferensiKamarInhealth.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Home.png"))); // NOI18N
         btnReferensiKamarInhealth.setText("Referensi Ruang Rawat Inhealth");
         btnReferensiKamarInhealth.setIconTextGap(0);
@@ -3854,7 +3627,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnReferensiKamarInhealth);
 
-        btnCekInhealthPoli.setForeground(new java.awt.Color(90, 120, 80));
         btnCekInhealthPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logout.png"))); // NOI18N
         btnCekInhealthPoli.setText("Referensi Poli Inhealth");
         btnCekInhealthPoli.setIconTextGap(0);
@@ -3867,7 +3639,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekInhealthPoli);
 
-        btnCekInhealthFaskes.setForeground(new java.awt.Color(90, 120, 80));
         btnCekInhealthFaskes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/industry.png"))); // NOI18N
         btnCekInhealthFaskes.setText("Referensi Faskes Inhealth");
         btnCekInhealthFaskes.setIconTextGap(0);
@@ -3880,7 +3651,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekInhealthFaskes);
 
-        btnInhealthSJP.setForeground(new java.awt.Color(90, 120, 80));
         btnInhealthSJP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038237_Adobe_Bridge_CS.png"))); // NOI18N
         btnInhealthSJP.setText("Data Bridging SJP Inhealth");
         btnInhealthSJP.setIconTextGap(0);
@@ -3893,7 +3663,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnInhealthSJP);
 
-        btnPiutangRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnPiutangRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
         btnPiutangRalan.setText("Piutang Ralan");
         btnPiutangRalan.setIconTextGap(0);
@@ -3906,7 +3675,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPiutangRalan);
 
-        btnPiutangRanap.setForeground(new java.awt.Color(90, 120, 80));
         btnPiutangRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047007_02.png"))); // NOI18N
         btnPiutangRanap.setText("Piutang Ranap");
         btnPiutangRanap.setIconTextGap(0);
@@ -3919,7 +3687,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPiutangRanap);
 
-        btnPiutangPerCaraBayar.setForeground(new java.awt.Color(90, 120, 80));
         btnPiutangPerCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist_pencil-o.png"))); // NOI18N
         btnPiutangPerCaraBayar.setText("Piutang Per Cara Bayar");
         btnPiutangPerCaraBayar.setIconTextGap(0);
@@ -3932,7 +3699,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPiutangPerCaraBayar);
 
-        btnLamaPelayananRalan.setForeground(new java.awt.Color(90, 120, 80));
         btnLamaPelayananRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnLamaPelayananRalan.setText("Lama Pelayanan Ralan");
         btnLamaPelayananRalan.setIconTextGap(0);
@@ -3945,7 +3711,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnLamaPelayananRalan);
 
-        btnCatatanPasien.setForeground(new java.awt.Color(90, 120, 80));
         btnCatatanPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kwrite.png"))); // NOI18N
         btnCatatanPasien.setText("Catatan Pasien");
         btnCatatanPasien.setIconTextGap(0);
@@ -3958,7 +3723,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCatatanPasien);
 
-        btnRl4b.setForeground(new java.awt.Color(90, 120, 80));
         btnRl4b.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
         btnRl4b.setText("RL 4B Morbiditas Ralan");
         btnRl4b.setIconTextGap(0);
@@ -3971,7 +3735,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl4b);
 
-        btnRl4asebab.setForeground(new java.awt.Color(90, 120, 80));
         btnRl4asebab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
         btnRl4asebab.setText("RL 4A Sebab Morbiditas Ralan");
         btnRl4asebab.setIconTextGap(0);
@@ -3984,7 +3747,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl4asebab);
 
-        btnRl4bsebab.setForeground(new java.awt.Color(90, 120, 80));
         btnRl4bsebab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
         btnRl4bsebab.setText("RL 4B Sebab Morbiditas Ralan");
         btnRl4bsebab.setIconTextGap(0);
@@ -3997,7 +3759,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRl4bsebab);
 
-        btnDataHAIs.setForeground(new java.awt.Color(90, 120, 80));
         btnDataHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360816018_tests.png"))); // NOI18N
         btnDataHAIs.setText("Data HAIs");
         btnDataHAIs.setIconTextGap(0);
@@ -4010,7 +3771,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnDataHAIs);
 
-        btnHarianHAIs.setForeground(new java.awt.Color(90, 120, 80));
         btnHarianHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
         btnHarianHAIs.setText("Harian HAIs");
         btnHarianHAIs.setIconTextGap(0);
@@ -4023,7 +3783,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnHarianHAIs);
 
-        btnBulananHAIs.setForeground(new java.awt.Color(90, 120, 80));
         btnBulananHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_shelf_1378832.png"))); // NOI18N
         btnBulananHAIs.setText("Bulanan HAIs");
         btnBulananHAIs.setIconTextGap(0);
@@ -4036,7 +3795,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBulananHAIs);
 
-        btnHitungBor.setForeground(new java.awt.Color(90, 120, 80));
         btnHitungBor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
         btnHitungBor.setText("Hitung BOR");
         btnHitungBor.setIconTextGap(0);
@@ -4049,7 +3807,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnHitungBor);
 
-        btnPerusahaan.setForeground(new java.awt.Color(90, 120, 80));
         btnPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357524_Company.png"))); // NOI18N
         btnPerusahaan.setText("Instansi/Perusahaan Pasien");
         btnPerusahaan.setIconTextGap(0);
@@ -4062,7 +3819,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPerusahaan);
 
-        btnDaftarPermintaanResep.setForeground(new java.awt.Color(90, 120, 80));
         btnDaftarPermintaanResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485894_add-notes.png"))); // NOI18N
         btnDaftarPermintaanResep.setText("Daftar Resep Dokter");
         btnDaftarPermintaanResep.setIconTextGap(0);
@@ -4075,7 +3831,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnDaftarPermintaanResep);
 
-        btnLamaPelayananApotek.setForeground(new java.awt.Color(90, 120, 80));
         btnLamaPelayananApotek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
         btnLamaPelayananApotek.setText("Lama Pelayanan Apotek");
         btnLamaPelayananApotek.setIconTextGap(0);
@@ -4088,7 +3843,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnLamaPelayananApotek);
 
-        btnHitungAlos.setForeground(new java.awt.Color(90, 120, 80));
         btnHitungAlos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedroom.png"))); // NOI18N
         btnHitungAlos.setText("Hitung ALOS");
         btnHitungAlos.setIconTextGap(0);
@@ -4101,7 +3855,6 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnHitungAlos);
 
-        btnDetailTindakan.setForeground(new java.awt.Color(90, 120, 80));
         btnDetailTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
         btnDetailTindakan.setText("Detail Tindakan");
         btnDetailTindakan.setIconTextGap(0);
@@ -4122,7 +3875,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/11/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/11/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
