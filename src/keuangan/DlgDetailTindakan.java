@@ -699,7 +699,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             "Perawat Resusitas","JM P.R.","Dokter Anestesi","JM dr Anastesi",
             "Asisten Anestesi 1", "JM A.A. 1","Asisten Anestesi 2","JM A.A. 2",
             "Bidan 1","JM Bidan 1","Bidan 2","JM Bidan 2","Bidan 3","JM Bidan 3",
-            "Perawat Luar","JM P.L.","Onloop","JM Onloop 1","Onloop 2","JM Onloop 2",
+            "Perawat Luar","JM P.L.","Onloop 1","JM Onloop 1","Onloop 2","JM Onloop 2",
             "Onloop 3","JM Onloop 3", "Onloop 4","JM Onloop 4", "Onloop 5","JM Onloop 5",
             "Dokter P.J. Anak","JM dr P.J. Anak","Dokter Umum", "JM dr Umum",
             "Sewa Alat", "Sewa OK/VK", "Akomodasi", "N.M.S.",  "Sarpras","Total" 
