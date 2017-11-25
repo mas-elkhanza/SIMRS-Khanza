@@ -644,7 +644,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                            ttlembalase=ttlembalase+rsobat.getDouble("embalase");
                            tuslah=tuslah+rsobat.getDouble("tuslah");
                            ttltuslah=ttltuslah+rsobat.getDouble("tuslah");
-                           tabMode.addRow(new Object[]{"","","",rsobat.getString("nama_brng"),rsobat.getDouble("jml"),rsobat.getDouble("total"),rsobat.getDouble("embalase"),rsobat.getDouble("tuslah")});
+                           tabMode.addRow(new Object[]{"","","",rsobat.getString("kode_brng")+" "+rsobat.getString("nama_brng"),rsobat.getDouble("jml"),rsobat.getDouble("total"),rsobat.getDouble("embalase"),rsobat.getDouble("tuslah")});
                        }
                    }
                    a++;

@@ -156,8 +156,8 @@ public class DlgRBObatDokterPeresep extends javax.swing.JDialog {
                      "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,"+
                      "resep_obat.no_rawat,pasien.nm_pasien,resep_obat.kd_dokter,databarang.nama_brng,"+
                      "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.embalase,"+
-                     "detail_pemberian_obat.tuslah,(detail_pemberian_obat.total-(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total "+
-                     "from resep_obat inner join reg_periksa inner join pasien inner join "+
+                     "detail_pemberian_obat.tuslah,(detail_pemberian_obat.total-(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total, "+
+                     "databarang.kode_brng from resep_obat inner join reg_periksa inner join pasien inner join "+
                      "detail_pemberian_obat inner join databarang "+
                      "on detail_pemberian_obat.kode_brng=databarang.kode_brng and detail_pemberian_obat.no_rawat=resep_obat.no_rawat "+
                      "and resep_obat.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -167,8 +167,8 @@ public class DlgRBObatDokterPeresep extends javax.swing.JDialog {
                      "select resep_obat.no_resep,resep_obat.tgl_perawatan,resep_obat.jam,"+
                      "resep_obat.no_rawat,pasien.nm_pasien,resep_obat.kd_dokter,databarang.nama_brng,"+
                      "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.embalase,"+
-                     "detail_pemberian_obat.tuslah,(detail_pemberian_obat.total-(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total "+
-                     "from resep_obat inner join reg_periksa inner join pasien inner join "+
+                     "detail_pemberian_obat.tuslah,(detail_pemberian_obat.total-(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total, "+
+                     "databarang.kode_brng from resep_obat inner join reg_periksa inner join pasien inner join "+
                      "detail_pemberian_obat inner join databarang "+
                      "on detail_pemberian_obat.kode_brng=databarang.kode_brng and detail_pemberian_obat.no_rawat=resep_obat.no_rawat "+
                      "and resep_obat.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -695,7 +695,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    ttltuslah=ttltuslah+rsresep.getDouble("tuslah");
                    tabMode.addRow(new Object[]{
                        "","   "+a+". ("+rsresep.getString("no_resep")+") "+rsresep.getString("nm_pasien"),
-                       rsresep.getString("tgl_perawatan")+" "+rsresep.getString("jam"),rsresep.getString("nama_brng"),
+                       rsresep.getString("tgl_perawatan")+" "+rsresep.getString("jam"),rsresep.getString("kode_brng")+" "+rsresep.getString("nama_brng"),
                        rsresep.getDouble("jml"),rsresep.getDouble("total"),rsresep.getDouble("embalase"),rsresep.getDouble("tuslah")
                    });
                    a++;
@@ -743,7 +743,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    ttltuslah=ttltuslah+rsresep.getDouble("tuslah");
                    tabMode.addRow(new Object[]{
                        "","   "+a+". ("+rsresep.getString("no_resep")+") "+rsresep.getString("nm_pasien"),
-                       rsresep.getString("tgl_perawatan")+" "+rsresep.getString("jam"),rsresep.getString("nama_brng"),
+                       rsresep.getString("tgl_perawatan")+" "+rsresep.getString("jam"),rsresep.getString("kode_brng")+" "+rsresep.getString("nama_brng"),
                        rsresep.getDouble("jml"),rsresep.getDouble("total"),rsresep.getDouble("embalase"),rsresep.getDouble("tuslah")
                    });
                    a++;
