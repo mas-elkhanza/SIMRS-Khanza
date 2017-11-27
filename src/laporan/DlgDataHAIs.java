@@ -1250,9 +1250,9 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getrujukan_keluar());
-        BtnHapus.setEnabled(var.getrujukan_keluar());
-        BtnPrint.setEnabled(var.getrujukan_keluar());
+        BtnSimpan.setEnabled(var.getdata_HAIs());
+        BtnHapus.setEnabled(var.getdata_HAIs());
+        BtnPrint.setEnabled(var.getdata_HAIs());
     }
 
    

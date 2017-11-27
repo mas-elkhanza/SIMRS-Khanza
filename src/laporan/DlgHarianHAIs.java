@@ -443,7 +443,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(var.getrl4bsebab());
+        BtnPrint.setEnabled(var.getharian_HAIs());
     }
     
 }
