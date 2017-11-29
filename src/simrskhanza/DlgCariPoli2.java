@@ -43,7 +43,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
     private ResultSet rs;
     private Calendar cal = Calendar.getInstance();
     private int day = cal.get(Calendar.DAY_OF_WEEK);
-    private String hari="",dokter="";
+    private String hari="";
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -120,7 +120,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Unit/Poliklinik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Unit/Poliklinik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -353,8 +353,8 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                     "select poliklinik.kd_poli,poliklinik.nm_poli,poliklinik.registrasi,poliklinik.registrasilama "+
                     "from poliklinik inner join jadwal inner join dokter on poliklinik.kd_poli=jadwal.kd_poli "+
                     "and dokter.kd_dokter=jadwal.kd_dokter "+
-                    "where jadwal.hari_kerja=? and poliklinik.kd_poli like ? and dokter.nm_dokter like ? or "+
-                    "jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? group by poliklinik.kd_poli order by poliklinik.nm_poli "); 
+                    "where jadwal.hari_kerja=? and poliklinik.kd_poli like ?  or "+
+                    "jadwal.hari_kerja=? and poliklinik.nm_poli like ? group by poliklinik.kd_poli order by poliklinik.nm_poli "); 
             try{                
                 switch (day) {
                     case 1:
@@ -383,10 +383,8 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                 }
                 ps.setString(1,hari);
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+dokter+"%");
-                ps.setString(4,hari);
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+dokter+"%");
+                ps.setString(3,hari);
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery(); 
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
@@ -407,9 +405,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
     
-    public void setDokter(String namadokter){
-        this.dokter=namadokter;
-    }
+    
 
     public void emptTeks() {   
         TCari.requestFocus();
