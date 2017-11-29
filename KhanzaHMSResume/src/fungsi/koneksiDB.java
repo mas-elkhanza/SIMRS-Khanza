@@ -5,6 +5,7 @@
  */
 package fungsi;
 
+import AESsecurity.EnkripsiAES;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -20,16 +21,16 @@ public final class koneksiDB {
     private static Connection connection=null;
     private static final Properties prop = new Properties();  
     private static final MysqlDataSource dataSource=new MysqlDataSource();
-    private static String caricepat="";
+    private static String caricepat="",var="";
     public static Connection condb(){      
         if(connection == null){
             try{
                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                dataSource.setURL("jdbc:mysql://"+prop.getProperty("HOST")+":"+prop.getProperty("PORT")+"/"+prop.getProperty("DATABASE")+"?zeroDateTimeBehavior=convertToNull");
-                dataSource.setUser(prop.getProperty("USER"));
-                dataSource.setPassword(prop.getProperty("PAS"));
+                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull");
+                dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
+                dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
                 connection=dataSource.getConnection();       
-                System.out.println("Koneksi Berhasil. Sorry bro loading, silahkan baca dulu.... \n\n"+
+                System.out.println("  Koneksi Berhasil. Sorry bro loading, silahkan baca dulu.... \n\n"+
                         "	Software ini adalah Software Menejemen Rumah Sakit/Klinik/\n" +
                         "  Puskesmas yang  gratis dan boleh digunakan siapa saja tanpa dikenai \n" +
                         "  biaya apapun. Dilarang keras memperjualbelikan/mengambil \n" +
@@ -40,9 +41,20 @@ public final class koneksiDB {
                         "  sampai 400 turunan. Anak pertamanya cacat tidak punya kaki sampai 300 \n" +
                         "  turunan. Susah cari jodoh sampai umur 50 tahun sampai 200 turunan.\n" +
                         "  Ya Alloh maafkan kami karena telah berdoa buruk, semua ini kami lakukan\n" +
-                        "  karena kami tidak pernah rela karya kami dibajak tanpa ijin.\n\n");
+                        "  karena kami tidak pernah rela karya kami dibajak tanpa ijin.\n\n"+
+                        "                                                                           \n"+
+                        "  #    ____  ___  __  __  ____   ____    _  __ _                              \n" +
+                        "  #   / ___||_ _||  \\/  ||  _ \\ / ___|  | |/ /| |__    __ _  _ __   ____ __ _ \n" +
+                        "  #   \\___ \\ | | | |\\/| || |_) |\\___ \\  | ' / | '_ \\  / _` || '_ \\ |_  // _` |\n" +
+                        "  #    ___) || | | |  | ||  _ <  ___) | | . \\ | | | || (_| || | | | / /| (_| |\n" +
+                        "  #   |____/|___||_|  |_||_| \\_\\|____/  |_|\\_\\|_| |_| \\__,_||_| |_|/___|\\__,_|\n" +
+                        "  #                                                                           \n"+
+                        "                                                                           \n"+
+                        "  Licensi yang dianut di software ini https://en.wikipedia.org/wiki/Aladdin_Free_Public_License \n"+
+                        "  Informasi dan panduan bisa dicek di halaman https://github.com/mas-elkhanza/SIMRS-Khanza/wiki \n"+
+                        "                                                                           ");
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null,"Notifikasi : "+e);
+                JOptionPane.showMessageDialog(null,"Koneksi Putus : "+e);
             }
         }
         return connection;        
@@ -57,5 +69,36 @@ public final class koneksiDB {
         }
         return caricepat;
     }
+    
+    public static String HOST(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("HOST"));
+        }catch(Exception e){
+            var="localhost"; 
+        }
+        return var;
+    }
+    
+    public static String PORT(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("PORT"));
+        }catch(Exception e){
+            var="3306"; 
+        }
+        return var;
+    }
+    
+    public static String DATABASE(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("DATABASE"));
+        }catch(Exception e){
+            var="sik"; 
+        }
+        return var;
+    }
+    
     
 }

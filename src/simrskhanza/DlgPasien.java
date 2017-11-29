@@ -47,6 +47,13 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.event.DocumentEvent;
+import simrskhanza.DlgCatatan;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgKabupaten;
+import simrskhanza.DlgKecamatan;
+import simrskhanza.DlgKelurahan;
+import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgResumePerawatan;
 
 
 /**
@@ -1375,7 +1382,6 @@ public class DlgPasien extends javax.swing.JDialog {
 
         Kelurahan2.setHighlighter(null);
         Kelurahan2.setName("Kelurahan2"); // NOI18N
-        Kelurahan2.setSelectionColor(new java.awt.Color(255, 255, 255));
         panelBiasa2.add(Kelurahan2);
         Kelurahan2.setBounds(105, 70, 350, 23);
 
@@ -1393,7 +1399,6 @@ public class DlgPasien extends javax.swing.JDialog {
 
         Kecamatan2.setHighlighter(null);
         Kecamatan2.setName("Kecamatan2"); // NOI18N
-        Kecamatan2.setSelectionColor(new java.awt.Color(255, 255, 255));
         panelBiasa2.add(Kecamatan2);
         Kecamatan2.setBounds(105, 40, 350, 23);
 
@@ -1411,7 +1416,6 @@ public class DlgPasien extends javax.swing.JDialog {
 
         Kabupaten2.setHighlighter(null);
         Kabupaten2.setName("Kabupaten2"); // NOI18N
-        Kabupaten2.setSelectionColor(new java.awt.Color(255, 255, 255));
         panelBiasa2.add(Kabupaten2);
         Kabupaten2.setBounds(105, 10, 350, 23);
 
@@ -1929,7 +1933,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2017" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2017" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -2064,7 +2068,7 @@ public class DlgPasien extends javax.swing.JDialog {
         TKtp.setBounds(712, 132, 130, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2017" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2017" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);

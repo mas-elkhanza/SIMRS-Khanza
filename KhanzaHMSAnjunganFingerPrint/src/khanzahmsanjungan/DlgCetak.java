@@ -81,6 +81,7 @@ public class DlgCetak extends javax.swing.JDialog {
         jPanel4 = new component.Panel();
         jLabel4 = new component.Label();
         BtnAbout = new component.Button();
+        BtnAbout4 = new component.Button();
         BtnAbout1 = new component.Button();
         BtnAbout3 = new component.Button();
         BtnAbout2 = new component.Button();
@@ -116,10 +117,9 @@ public class DlgCetak extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(50, 23));
         jPanel4.add(jLabel4);
 
-        BtnAbout.setBackground(new java.awt.Color(255, 255, 255));
         BtnAbout.setBorder(null);
         BtnAbout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
-        BtnAbout.setText("Bukti Register");
+        BtnAbout.setText("Bukti Register 1");
         BtnAbout.setBorderPainted(false);
         BtnAbout.setContentAreaFilled(false);
         BtnAbout.setFocusPainted(false);
@@ -135,7 +135,24 @@ public class DlgCetak extends javax.swing.JDialog {
         });
         jPanel4.add(BtnAbout);
 
-        BtnAbout1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnAbout4.setBorder(null);
+        BtnAbout4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
+        BtnAbout4.setText("Bukti Register 2");
+        BtnAbout4.setBorderPainted(false);
+        BtnAbout4.setContentAreaFilled(false);
+        BtnAbout4.setFocusPainted(false);
+        BtnAbout4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnAbout4.setIconTextGap(15);
+        BtnAbout4.setPreferredSize(new java.awt.Dimension(200, 110));
+        BtnAbout4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/backup-restore.png"))); // NOI18N
+        BtnAbout4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BtnAbout4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAbout4ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(BtnAbout4);
+
         BtnAbout1.setBorder(null);
         BtnAbout1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         BtnAbout1.setText("Lembar Periksa 1");
@@ -154,7 +171,6 @@ public class DlgCetak extends javax.swing.JDialog {
         });
         jPanel4.add(BtnAbout1);
 
-        BtnAbout3.setBackground(new java.awt.Color(255, 255, 255));
         BtnAbout3.setBorder(null);
         BtnAbout3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         BtnAbout3.setText("Lembar Periksa 2");
@@ -173,7 +189,6 @@ public class DlgCetak extends javax.swing.JDialog {
         });
         jPanel4.add(BtnAbout3);
 
-        BtnAbout2.setBackground(new java.awt.Color(255, 255, 255));
         BtnAbout2.setBorder(null);
         BtnAbout2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485642_edit-notes.png"))); // NOI18N
         BtnAbout2.setText("Barcode Perawatan");
@@ -192,7 +207,6 @@ public class DlgCetak extends javax.swing.JDialog {
         });
         jPanel4.add(BtnAbout2);
 
-        BtnKeluar.setBackground(new java.awt.Color(255, 255, 255));
         BtnKeluar.setBorder(null);
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logout.png"))); // NOI18N
         BtnKeluar.setText("Selesai");
@@ -331,6 +345,25 @@ public class DlgCetak extends javax.swing.JDialog {
         
     }//GEN-LAST:event_formWindowClosing
 
+    private void BtnAbout4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAbout4ActionPerformed
+        if(LblNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",nama_instansi);
+            param.put("alamatrs",alamat_instansi);
+            param.put("kotars",kabupaten);
+            param.put("propinsirs",propinsi);
+            param.put("kontakrs",kontak);
+            param.put("emailrs",email);
+            param.put("norawat",LblNoRw.getText());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptBuktiRegister3.jrxml",param,"::[ Bukti Register ]::");
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnAbout4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -352,6 +385,7 @@ public class DlgCetak extends javax.swing.JDialog {
     private component.Button BtnAbout1;
     private component.Button BtnAbout2;
     private component.Button BtnAbout3;
+    private component.Button BtnAbout4;
     private component.Button BtnKeluar;
     private component.Label LblNoRw;
     private component.Label jLabel4;
