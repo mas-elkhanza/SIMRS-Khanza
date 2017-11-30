@@ -78,7 +78,7 @@ import org.jfree.data.general.DefaultPieDataset;
  * @author dosen
  */
 public final class DlgReg extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
+    private final DefaultTableModel tabMode,tabMode2;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -155,10 +155,11 @@ public final class DlgReg extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
 
-        Object[] row={"P","No.Reg","No.Rawat","Tanggal","Jam","Kd.Dokter","Dokter Dituju","Nomer RM",
+        tabMode=new DefaultTableModel(null,new Object[]{
+            "P","No.Reg","No.Rawat","Tanggal","Jam","Kd.Dokter","Dokter Dituju","Nomer RM",
             "Pasien","J.K.","Umur","Poliklinik","Jenis Bayar","Penanggung Jawab","Alamat P.J.","Hubungan P.J.",
-            "Biaya Regristrasi","Status","No.Telp","Stts Rawat"};
-        tabMode=new DefaultTableModel(null,row){
+            "Biaya Regristrasi","Status","No.Telp","Stts Rawat"
+        }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -229,6 +230,77 @@ public final class DlgReg extends javax.swing.JDialog {
         }
         tbPetugas.setDefaultRenderer(Object.class, new WarnaTable());
 
+        tabMode2=new DefaultTableModel(null,new Object[]{
+            "P","No.Rawat","Tanggal","Jam","Kd.Dokter","Dokter Rujukan","Nomer RM",
+            "Pasien","J.K.","Umur","Poliklinik Rujukan","Jenis Bayar","Penanggung Jawab","Alamat P.J.","Hubungan P.J.",
+            "Status","No.Telp","Stts Rawat"
+        }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, 
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbPetugas2.setModel(tabMode2);
+
+        tbPetugas2.setPreferredScrollableViewportSize(new Dimension(800,800));
+        tbPetugas2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 17; i++) {
+            TableColumn column = tbPetugas2.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(120);
+            }else if(i==2){
+                column.setPreferredWidth(70);
+            }else if(i==3){
+                column.setPreferredWidth(50);   
+            }else if(i==4){
+                column.setPreferredWidth(70);
+            }else if(i==5){
+                column.setPreferredWidth(200);
+            }else if(i==6){
+                column.setPreferredWidth(70);
+            }else if(i==7){
+                column.setPreferredWidth(200);
+            }else if(i==8){
+                column.setPreferredWidth(30);
+            }else if(i==9){
+                column.setPreferredWidth(50);
+            }else if(i==10){
+                column.setPreferredWidth(140);
+            }else if(i==11){
+                column.setPreferredWidth(140);
+            }else if(i==12){
+                column.setPreferredWidth(200);
+            }else if(i==13){
+                column.setPreferredWidth(90);
+            }else if(i==14){
+                column.setPreferredWidth(90);
+            }else if(i==15){
+                column.setPreferredWidth(80);
+            }else if(i==16){
+                column.setPreferredWidth(80);
+            }else if(i==17){
+                column.setPreferredWidth(70);
+            }
+        }
+        tbPetugas2.setDefaultRenderer(Object.class, new WarnaTable());
+        
         TNoReg.setDocument(new batasInput((byte)8).getKata(TNoReg));
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         TNoRM.setDocument(new batasInput((byte)15).getKata(TNoRM));
@@ -833,7 +905,7 @@ public final class DlgReg extends javax.swing.JDialog {
         Scroll = new widget.ScrollPane();
         tbPetugas = new widget.Table();
         Scroll1 = new widget.ScrollPane();
-        tbPetugas1 = new widget.Table();
+        tbPetugas2 = new widget.Table();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -3584,20 +3656,20 @@ public final class DlgReg extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbPetugas1.setToolTipText("Klik data di table, kemudian klik kanan untuk memilih menu yang diinginkan");
-        tbPetugas1.setComponentPopupMenu(jPopupMenu1);
-        tbPetugas1.setName("tbPetugas1"); // NOI18N
-        tbPetugas1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbPetugas2.setToolTipText("Klik data di table, kemudian klik kanan untuk memilih menu yang diinginkan");
+        tbPetugas2.setComponentPopupMenu(jPopupMenu1);
+        tbPetugas2.setName("tbPetugas2"); // NOI18N
+        tbPetugas2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbPetugas1MouseClicked(evt);
+                tbPetugas2MouseClicked(evt);
             }
         });
-        tbPetugas1.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbPetugas2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbPetugas1KeyPressed(evt);
+                tbPetugas2KeyPressed(evt);
             }
         });
-        Scroll1.setViewportView(tbPetugas1);
+        Scroll1.setViewportView(tbPetugas2);
 
         TabRawat.addTab("Rujukan Internal Poli", Scroll1);
 
@@ -6107,13 +6179,13 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         
     }//GEN-LAST:event_TabRawatMouseClicked
 
-    private void tbPetugas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPetugas1MouseClicked
+    private void tbPetugas2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPetugas2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbPetugas1MouseClicked
+    }//GEN-LAST:event_tbPetugas2MouseClicked
 
-    private void tbPetugas1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPetugas1KeyPressed
+    private void tbPetugas2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPetugas2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbPetugas1KeyPressed
+    }//GEN-LAST:event_tbPetugas2KeyPressed
 
     /**
     * @param args the command line arguments
@@ -6350,7 +6422,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem ppGrafikPerpoli2;
     private javax.swing.JMenuItem ppRiwayat;
     private widget.Table tbPetugas;
-    private widget.Table tbPetugas1;
+    private widget.Table tbPetugas2;
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
