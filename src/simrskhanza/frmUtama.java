@@ -903,9 +903,9 @@ public class frmUtama extends javax.swing.JFrame {
         panelMenu.setWarnaBawah(new java.awt.Color(255, 255, 255));
         panelMenu.setLayout(new java.awt.BorderLayout(1, 1));
 
-        panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(242, 245, 230)));
+        panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 230)));
         panelisi2.setName("panelisi2"); // NOI18N
-        panelisi2.setPreferredSize(new java.awt.Dimension(100, 39));
+        panelisi2.setPreferredSize(new java.awt.Dimension(100, 40));
         panelisi2.setWarnaAtas(new java.awt.Color(255, 255, 255));
         panelisi2.setWarnaBawah(new java.awt.Color(252, 252, 245));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 7));
@@ -978,7 +978,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         panelMenu.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
-        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(242, 245, 230)));
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 230)));
         scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane2.setName("scrollPane2"); // NOI18N
 
@@ -3875,7 +3875,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29/11/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30/11/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -9167,12 +9167,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             if(var.getdeposit_pasien()==true){                          
                 Panelmenu.add(btnDeposit);
                 jmlmenu++;
-            }
-
-            if(var.getpiutang_pasien()==true){
-               Panelmenu.add(btnLihatPiutang); 
-               jmlmenu++;
-            }            
+            }                        
         }else if(cmbMenu.getSelectedIndex()==1){ 
             jmlmenu=0;
             if(var.getbarcoderalan()==true){
@@ -9637,6 +9632,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             if(var.getpembayaran_ranap()==true){
                 Panelmenu.add(btnRanapMasuk);
                 jmlmenu++;
+            }
+            
+            if(var.getpiutang_pasien()==true){
+               Panelmenu.add(btnLihatPiutang); 
+               jmlmenu++;
             }
 
             if(var.getpiutang_ralan()==true){

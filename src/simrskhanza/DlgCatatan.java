@@ -34,19 +34,9 @@ import java.sql.ResultSet;
  * @author perpustakaan
  */
 public class DlgCatatan extends javax.swing.JDialog {
-    private final DefaultTableModel tabModePO;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    public  DlgCariObat dlgobtjalan=new DlgCariObat(null,false);
-    public  DlgCariObat2 dlgobt=new DlgCariObat2(null,false);
-    public  DlgCariObat3 dlgobt2=new DlgCariObat3(null,false);
-    public  DlgCariObatPenyakit dlgobtpny=new DlgCariObatPenyakit(null,false);
-    private DlgCariKonversi carikonversi=new DlgCariKonversi(null,false);
-    private DlgPasien pasien=new DlgPasien(null,false);
-    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    private Date date = new Date();
-    private String now=dateFormat.format(date),bangsal="",tgl="",pas="",sql="",status="";
     private PreparedStatement ps;
     private ResultSet rs;
 
@@ -57,24 +47,6 @@ public class DlgCatatan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Tgl.Beri","Jam Beri","No.Rawat","No.R.M.",
-                      "Nama Pasien","Kode Obat","Nama Obat/Alkes","Embalase",
-                      "Tuslah","Jml","Biaya Obat","Total"};
-        tabModePO=new DefaultTableModel(null,row){
-            @Override 
-            public boolean isCellEditable(int rowIndex, int colIndex){return false;}
-            Class[] types = new Class[]{
-                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
-                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
-            };
-            @Override
-            public Class getColumnClass(int columnIndex) {
-                return types[columnIndex];
-            }
-        };
-        
-
-        
         this.setLocation(8,1);
         setSize(885,674);
         
@@ -118,7 +90,7 @@ public class DlgCatatan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Catatan Untuk Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Catatan Untuk Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -223,9 +195,9 @@ public class DlgCatatan extends javax.swing.JDialog {
         panelGlass8.add(BtnEdit);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
-        BtnKeluar.setMnemonic('K');
+        BtnKeluar.setMnemonic('T');
         BtnKeluar.setText("Tutup");
-        BtnKeluar.setToolTipText("Alt+K");
+        BtnKeluar.setToolTipText("Alt+T");
         BtnKeluar.setName("BtnKeluar"); // NOI18N
         BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnKeluar.addActionListener(new java.awt.event.ActionListener() {

@@ -165,10 +165,8 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         label9 = new widget.Label();
         BtnKeluar = new widget.Button();
         TabRawat = new javax.swing.JTabbedPane();
-        internalFrame2 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
-        internalFrame3 = new widget.InternalFrame();
         scrollPane2 = new widget.ScrollPane();
         tbDokter2 = new widget.Table();
 
@@ -254,7 +252,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Frekuensi Penyakit Di Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Frekuensi Penyakit Di Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -407,7 +405,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(90,120,80));
+        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -415,11 +413,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
                 TabRawatMouseClicked(evt);
             }
         });
-
-        internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
-        internalFrame2.setBorder(null);
-        internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
         scrollPane1.setComponentPopupMenu(jPopupMenu1);
         scrollPane1.setName("scrollPane1"); // NOI18N
@@ -442,14 +435,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
 
-        internalFrame2.add(scrollPane1, java.awt.BorderLayout.CENTER);
-
-        TabRawat.addTab("Berdasar Tanggal Masuk", internalFrame2);
-
-        internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
-        internalFrame3.setBorder(null);
-        internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
+        TabRawat.addTab("Berdasar Tanggal Masuk", scrollPane1);
 
         scrollPane2.setComponentPopupMenu(jPopupMenu1);
         scrollPane2.setName("scrollPane2"); // NOI18N
@@ -472,9 +458,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         tbDokter2.setName("tbDokter2"); // NOI18N
         scrollPane2.setViewportView(tbDokter2);
 
-        internalFrame3.add(scrollPane2, java.awt.BorderLayout.CENTER);
-
-        TabRawat.addTab("Berdasar Tanggal Keluar", internalFrame3);
+        TabRawat.addTab("Berdasar Tanggal Keluar", scrollPane2);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -2200,8 +2184,6 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Button btnCari;
     private widget.Button btnPenyakit;
     private widget.InternalFrame internalFrame1;
-    private widget.InternalFrame internalFrame2;
-    private widget.InternalFrame internalFrame3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdpenyakit;
     private widget.Label label11;
