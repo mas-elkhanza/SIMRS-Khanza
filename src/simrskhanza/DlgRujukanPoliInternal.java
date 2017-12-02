@@ -369,11 +369,19 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        kddokter.setText("");
+        TDokter.setText("");
+        kdpoli.setText("");
+        TPoli.setText("");
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            kddokter.setText("");
+            TDokter.setText("");
+            kdpoli.setText("");
+            TPoli.setText("");
             dispose();
         }
 }//GEN-LAST:event_BtnKeluarKeyPressed

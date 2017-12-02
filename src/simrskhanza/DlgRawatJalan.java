@@ -3213,5 +3213,20 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         // Timer
         new Timer(1000, taskPerformer).start();
     }
+    
+    public void setNoRm(String norwt,Date tgl1,Date tgl2,String kodedokter, String namadokter) {
+        TNoRw.setText(norwt);
+        TCari.setText(norwt);
+        DTPCari1.setDate(tgl1);
+        DTPCari2.setDate(tgl2);
+        isRawat();
+        isPsien();  
+        ChkInput.setSelected(true);
+        isForm(); 
+        KdDok.setText(kodedokter);
+        KdDok2.setText(kodedokter);
+        TDokter.setText(namadokter);
+        TDokter2.setText(namadokter);
+    }
 
 }
