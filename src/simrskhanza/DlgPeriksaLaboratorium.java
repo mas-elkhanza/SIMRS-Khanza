@@ -1520,8 +1520,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_rbAnakMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampiltarif();
-        tampil();
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNotaActionPerformed
@@ -2217,9 +2216,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     pstindakan3.setString(6,"%"+Pemeriksaan.getText().trim()+"%");
                     rstindakan=pstindakan3.executeQuery();
                 }else if(cara_bayar_lab.equals("No")&&kelas_lab.equals("Yes")){
-                    pstindakan4.setString(1,Penjab.getText().trim());
+                    pstindakan4.setString(1,kelas.trim());
                     pstindakan4.setString(2,"%"+Pemeriksaan.getText().trim()+"%");
-                    pstindakan4.setString(3,Penjab.getText().trim());                
+                    pstindakan4.setString(3,kelas.trim());                
                     pstindakan4.setString(4,"%"+Pemeriksaan.getText().trim()+"%");
                     rstindakan=pstindakan4.executeQuery();
                 } 
@@ -2251,5 +2250,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
 
+    public void setDokterPerujuk(String kodeperujuk,String namaperujuk){
+        KodePerujuk.setText(kodeperujuk);
+        NmPerujuk.setText(namaperujuk);
+    }
 
 }

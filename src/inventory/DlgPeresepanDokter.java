@@ -1070,7 +1070,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
     
     public void isCek(){   
-        BtnTambah.setEnabled(var.getobat());
+        BtnTambah.setEnabled(var.getresep_dokter());
         TCari.requestFocus();
     }
     

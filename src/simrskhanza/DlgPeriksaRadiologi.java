@@ -1998,6 +1998,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
     }
     
-
+    public void setDokterPerujuk(String kodeperujuk,String namaperujuk){
+        KodePerujuk.setText(kodeperujuk);
+        NmPerujuk.setText(namaperujuk);
+    }
 
 }

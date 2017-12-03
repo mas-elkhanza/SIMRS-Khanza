@@ -305,7 +305,7 @@ public class frmUtama extends javax.swing.JFrame {
                         isTutup();
                         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         try {
-                            inacbgklaim.loadURL("http://"+prop.getProperty("HOST")+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page="+pilihpage+"&codernik="+coder_nik);                    
+                            inacbgklaim.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page="+pilihpage+"&codernik="+coder_nik);                    
                         } catch (Exception ex) {
                             System.out.println("Notifikasi : "+ex);
                         }
@@ -903,11 +903,11 @@ public class frmUtama extends javax.swing.JFrame {
         panelMenu.setWarnaBawah(new java.awt.Color(255, 255, 255));
         panelMenu.setLayout(new java.awt.BorderLayout(1, 1));
 
-        panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 245, 245)));
+        panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(238, 243, 228)));
         panelisi2.setName("panelisi2"); // NOI18N
-        panelisi2.setPreferredSize(new java.awt.Dimension(100, 39));
+        panelisi2.setPreferredSize(new java.awt.Dimension(100, 40));
         panelisi2.setWarnaAtas(new java.awt.Color(255, 255, 255));
-        panelisi2.setWarnaBawah(new java.awt.Color(252, 252, 245));
+        panelisi2.setWarnaBawah(new java.awt.Color(252, 252, 243));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 7));
 
         label36.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -978,7 +978,8 @@ public class frmUtama extends javax.swing.JFrame {
 
         panelMenu.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
-        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 245, 245)));
+        scrollPane2.setBackground(new java.awt.Color(255, 255, 250));
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(238, 243, 228)));
         scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane2.setName("scrollPane2"); // NOI18N
 
@@ -3875,7 +3876,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/11/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02/12/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6245,9 +6246,9 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             if(var.getpegawai_admin()==true){
-                penggajian.loadURL("http://" +prop.getProperty("HOST")+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");
+                penggajian.loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");
             }else if(var.getpegawai_user()==true){
-                penggajian.loadURL("http://" +prop.getProperty("HOST")+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=paijo&passwordte=mumet");
+                penggajian.loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=paijo&passwordte=mumet");
             }            
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
@@ -7439,7 +7440,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
-            retensi.loadURL("http://" +prop.getProperty("HOST")+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            retensi.loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -8049,7 +8050,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 isTutup();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try {
-                    inacbgklaim.loadURL("http://"+prop.getProperty("HOST")+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruOtomatis&codernik="+coder_nik);                    
+                    inacbgklaim.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruOtomatis&codernik="+coder_nik);                    
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }
@@ -8083,7 +8084,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 isTutup();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try {
-                    inacbgklaim.loadURL("http://"+prop.getProperty("HOST")+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruManual&codernik="+coder_nik);                    
+                    inacbgklaim.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruManual&codernik="+coder_nik);                    
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }
@@ -8120,7 +8121,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         Hybrid.setJudul("::[ Mutasi Berkas Rekam Medis ]::","monitoringberkas/pages");
         try {
-            Hybrid.loadURL("http://"+prop.getProperty("HOST")+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"monitoringberkas/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            Hybrid.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"monitoringberkas/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -9167,12 +9168,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             if(var.getdeposit_pasien()==true){                          
                 Panelmenu.add(btnDeposit);
                 jmlmenu++;
-            }
-
-            if(var.getpiutang_pasien()==true){
-               Panelmenu.add(btnLihatPiutang); 
-               jmlmenu++;
-            }            
+            }                        
         }else if(cmbMenu.getSelectedIndex()==1){ 
             jmlmenu=0;
             if(var.getbarcoderalan()==true){
@@ -9637,6 +9633,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             if(var.getpembayaran_ranap()==true){
                 Panelmenu.add(btnRanapMasuk);
                 jmlmenu++;
+            }
+            
+            if(var.getpiutang_pasien()==true){
+               Panelmenu.add(btnLihatPiutang); 
+               jmlmenu++;
             }
 
             if(var.getpiutang_ralan()==true){

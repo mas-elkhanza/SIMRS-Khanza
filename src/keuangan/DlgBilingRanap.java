@@ -40,6 +40,9 @@ import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaRadiologi;
 import simrskhanza.DlgDeposit;
 import inventory.DlgPemberianObat;
+import keuangan.DlgLhtBiaya;
+import keuangan.DlgLhtPiutang;
+import keuangan.Jurnal;
 import simrskhanza.DlgPenanggungJawab;
 import simrskhanza.DlgPeriksaLaboratorium;
 import simrskhanza.DlgPeriksaRadiologi;
@@ -1893,7 +1896,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         panelGlass1.add(jLabel4);
 
         DTPTgl.setForeground(new java.awt.Color(100, 100, 100));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2017 20:36:01" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2017 11:47:19" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
