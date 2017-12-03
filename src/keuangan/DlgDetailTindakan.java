@@ -1,13 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/*
- * DlgLhtBiaya.java
- *
- * Created on 12 Jul 10, 16:21:34
- */
 
 package keuangan;
 
@@ -708,10 +699,10 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             "Perawat Resusitas","JM P.R.","Dokter Anestesi","JM dr Anastesi",
             "Asisten Anestesi 1", "JM A.A. 1","Asisten Anestesi 2","JM A.A. 2",
             "Bidan 1","JM Bidan 1","Bidan 2","JM Bidan 2","Bidan 3","JM Bidan 3",
-            "Perawat Luar","JM P.L.","Onloop","JM Onloop 1","Onloop 2","JM Onloop 2",
+            "Perawat Luar","JM P.L.","Onloop 1","JM Onloop 1","Onloop 2","JM Onloop 2",
             "Onloop 3","JM Onloop 3", "Onloop 4","JM Onloop 4", "Onloop 5","JM Onloop 5",
             "Dokter P.J. Anak","JM dr P.J. Anak","Dokter Umum", "JM dr Umum",
-            "Jasa Alat", "Sewa OK/VK", "Akomodasi", "N.M.S.",  "Sarpras","Total" 
+            "Sewa Alat", "Sewa OK/VK", "Akomodasi", "N.M.S.",  "Sarpras","Total" 
         }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
@@ -733,8 +724,9 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                  java.lang.Double.class,java.lang.Object.class,java.lang.Double.class,
                  java.lang.Object.class,java.lang.Double.class,java.lang.Object.class,
                  java.lang.Double.class,java.lang.Object.class,java.lang.Double.class,
+                 java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
                  java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
-                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+                 java.lang.Double.class,java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -870,7 +862,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
             }else if(i==60){
                 column.setPreferredWidth(80);
             }else if(i==61){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(100);
             }
         }
         tbOperasi.setDefaultRenderer(Object.class, new WarnaTable());
@@ -938,7 +930,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1066,7 +1058,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setForeground(new java.awt.Color(90,120,80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1408,6 +1400,24 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                     param.put("cari","%"+TCari.getText().trim()+"%");                    
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReport("rptDetailTindakanRalanDokterParamedis.jrxml",param,"::[ Detail Tindakan Ralan Yang Ditangani Dokter & Petugas ]::");                    
+                }   break;
+            case 3:
+                if(tabModeOperasi.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    TCari.requestFocus();
+                }else if(tabModeOperasi.getRowCount()!=0){
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());
+                    param.put("tanggal1",Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                    param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                    param.put("cari","%"+TCari.getText().trim()+"%");                    
+                    param.put("logo",Sequel.cariGambar("select logo from setting"));
+                    Valid.MyReport("rptDetailTindakanOperasi.jrxml",param,"::[ Detail Tindakan Operasi ]::");                    
                 }   break;
             case 4:
                 if(tabModeRanapDokter.getRowCount()==0){
@@ -2034,33 +2044,100 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
     
     public void tampil4(){     
         Valid.tabelKosong(tabModeOperasi);
-        try{
-            /*"No.","No.Rawat","No.R.M.","Nama Pasien","Kode Paket",
-            "Paket Operasi/VK","Tanggal","Jam","Cara Bayar","Ruangan",
-            "Operator 1","JM Operator 1","Operator 2","JM Operator 2",
-            "Operator 3","JM Operator 3", "Asisten Operator 1","JM AO 1",
-            "Asisten Operator 2","JM AO 2","Asisten Operator 3", "JM AO 3",
-            "Instrumen","JM Instrumen","Dokter Anak", "JM dr Anak",
-            "Perawat Resusitas","JM P.R.","Dokter Anestesi","JM dr Anastesi",
-            "Asisten Anestesi 1", "JM A.A. 1","Asisten Anestesi 2","JM A.A. 2",
-            "Bidan 1","JM Bidan 1","Bidan 2","JM Bidan 2","Bidan 3","JM Bidan 3",
-            "Perawat Luar","JM P.L.","Onloop","JM Onloop 1","Onloop 2","JM Onloop 2",
-            "Onloop 3","JM Onloop 3", "Onloop 4","JM Onloop 4", "Onloop 5","JM Onloop 5",
-            "Dokter P.J. Anak","JM dr P.J. Anak","Dokter Umum", "JM dr Umum",
-            "Jasa Alat", "Sewa OK/VK", "Akomodasi", "N.M.S.",  "Sarpras","Total" */
-            ps=koneksi.prepareStatement(
+        try{ps=koneksi.prepareStatement(
                    "select operasi.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien, "+
                    "operasi.kode_paket,paket_operasi.nm_perawatan,operasi.tgl_operasi, "+
                    "penjab.png_jawab,if(operasi.status='Ralan',(select nm_poli from poliklinik where poliklinik.kd_poli=reg_periksa.kd_poli),"+
                    "(select bangsal.nm_bangsal from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
                    "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=operasi.no_rawat limit 1 )) as ruangan,"+
                    "(select nm_dokter from dokter where dokter.kd_dokter=operasi.operator1) as operator1,operasi.biayaoperator1, "+
-                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.operator2) as operator2,operasi.biayaoperator2 "+
-                   " from operasi inner join reg_periksa inner join pasien "+
+                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.operator2) as operator2,operasi.biayaoperator2, "+
+                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.operator3) as operator3,operasi.biayaoperator3,"+
+                   "(select nama from petugas where petugas.nip=operasi.asisten_operator1) as asisten_operator1,operasi.biayaasisten_operator1, "+
+                   "(select nama from petugas where petugas.nip=operasi.asisten_operator2) as asisten_operator2,operasi.biayaasisten_operator2, "+
+                   "(select nama from petugas where petugas.nip=operasi.asisten_operator3) as asisten_operator3,operasi.biayaasisten_operator3, "+
+                   "(select nama from petugas where petugas.nip=operasi.instrumen) as instrumen,operasi.biayainstrumen, "+
+                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_anak) as dokter_anak,operasi.biayadokter_anak, "+
+                   "(select nama from petugas where petugas.nip=operasi.perawaat_resusitas) as perawaat_resusitas,operasi.biayaperawaat_resusitas, "+
+                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_anestesi) as dokter_anestesi,operasi.biayadokter_anestesi, "+
+                   "(select nama from petugas where petugas.nip=operasi.asisten_anestesi) as asisten_anestesi,operasi.biayaasisten_anestesi, "+
+                   "(select nama from petugas where petugas.nip=operasi.asisten_anestesi2) as asisten_anestesi2,operasi.biayaasisten_anestesi2, "+
+                   "(select nama from petugas where petugas.nip=operasi.bidan) as bidan,operasi.biayabidan, "+
+                   "(select nama from petugas where petugas.nip=operasi.bidan2) as bidan2,operasi.biayabidan2, "+
+                   "(select nama from petugas where petugas.nip=operasi.bidan3) as bidan3,operasi.biayabidan3, "+
+                   "(select nama from petugas where petugas.nip=operasi.perawat_luar) as perawat_luar,operasi.biayaperawat_luar, "+
+                   "(select nama from petugas where petugas.nip=operasi.omloop) as omloop,operasi.biaya_omloop, "+
+                   "(select nama from petugas where petugas.nip=operasi.omloop2) as omloop2,operasi.biaya_omloop2, "+
+                   "(select nama from petugas where petugas.nip=operasi.omloop3) as omloop3,operasi.biaya_omloop3, "+
+                   "(select nama from petugas where petugas.nip=operasi.omloop4) as omloop4,operasi.biaya_omloop4, "+
+                   "(select nama from petugas where petugas.nip=operasi.omloop5) as omloop5,operasi.biaya_omloop5, "+
+                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_pjanak) as dokter_pjanak,operasi.biaya_dokter_pjanak, "+
+                   "(select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_umum) as dokter_umum,operasi.biaya_dokter_umum, "+
+                   "operasi.biayaalat,operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biayasarpras "+
+                   "from operasi inner join reg_periksa inner join pasien "+
                    "inner join paket_operasi inner join penjab "+
-                   "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                   "and operasi.kode_paket=paket_operasi.kode_paket and reg_periksa.kd_pj=reg_periksa.kd_pj");
+                   "on operasi.no_rawat=reg_periksa.no_rawat and "+
+                   "reg_periksa.no_rkm_medis=pasien.no_rkm_medis and "+
+                   "operasi.kode_paket=paket_operasi.kode_paket and "+
+                   "reg_periksa.kd_pj=penjab.kd_pj "+
+                   "where operasi.tgl_operasi between ? and ? and operasi.no_rawat like ? or "+
+                   "operasi.tgl_operasi between ? and ? and reg_periksa.no_rkm_medis like ? or "+
+                   "operasi.tgl_operasi between ? and ? and pasien.nm_pasien like ? or "+
+                   "operasi.tgl_operasi between ? and ? and operasi.kode_paket like ? or "+
+                   "operasi.tgl_operasi between ? and ? and paket_operasi.nm_perawatan like ? or "+
+                   "operasi.tgl_operasi between ? and ? and penjab.png_jawab like ? or "+
+                   "operasi.tgl_operasi between ? and ? and (select nm_dokter from dokter where dokter.kd_dokter=operasi.operator1) like ? or "+
+                   "operasi.tgl_operasi between ? and ? and (select nm_dokter from dokter where dokter.kd_dokter=operasi.operator2) like ? or "+
+                   "operasi.tgl_operasi between ? and ? and (select nm_dokter from dokter where dokter.kd_dokter=operasi.operator3) like ? or "+
+                   "operasi.tgl_operasi between ? and ? and (select nama from petugas where petugas.nip=operasi.asisten_operator1) like ? or "+
+                   "operasi.tgl_operasi between ? and ? and (select nama from petugas where petugas.nip=operasi.asisten_operator2) like ? or "+
+                   "operasi.tgl_operasi between ? and ? and (select nama from petugas where petugas.nip=operasi.asisten_operator3) like ? or "+
+                   "operasi.tgl_operasi between ? and ? and (select nama from petugas where petugas.nip=operasi.bidan) like ? or "+
+                   "operasi.tgl_operasi between ? and ? and (select nm_dokter from dokter where dokter.kd_dokter=operasi.dokter_anestesi) like ? "+
+                   "order by operasi.no_rawat desc");
             try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(21,"%"+TCari.getText().trim()+"%");
+                ps.setString(22,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(23,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(24,"%"+TCari.getText().trim()+"%");
+                ps.setString(25,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(26,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(27,"%"+TCari.getText().trim()+"%");
+                ps.setString(28,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(29,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(30,"%"+TCari.getText().trim()+"%");
+                ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(33,"%"+TCari.getText().trim()+"%");
+                ps.setString(34,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(35,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(36,"%"+TCari.getText().trim()+"%");
+                ps.setString(37,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(38,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(39,"%"+TCari.getText().trim()+"%");
+                ps.setString(40,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(41,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(42,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;
                 total=0;biayaoperator1=0;biayaoperator2=0; 
@@ -2075,19 +2152,96 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                 while(rs.next()){  
                     biayaoperator1=biayaoperator1+rs.getDouble("biayaoperator1");
                     biayaoperator2=biayaoperator2+rs.getDouble("biayaoperator2");
-                    total=total+rs.getDouble("biayaoperator1")+rs.getDouble("biayaoperator2");
+                    biayaoperator3=biayaoperator3+rs.getDouble("biayaoperator3");
+                    biayaasisten_operator1=biayaasisten_operator1+rs.getDouble("biayaasisten_operator1");
+                    biayaasisten_operator2=biayaasisten_operator2+rs.getDouble("biayaasisten_operator2");
+                    biayaasisten_operator3=biayaasisten_operator3+rs.getDouble("biayaasisten_operator3");
+                    biayainstrumen=biayainstrumen+rs.getDouble("biayainstrumen");
+                    biayadokter_anak=biayadokter_anak+rs.getDouble("biayadokter_anak");
+                    biayaperawaat_resusitas=biayaperawaat_resusitas+rs.getDouble("biayaperawaat_resusitas");
+                    biayadokter_anestesi=biayadokter_anestesi+rs.getDouble("biayadokter_anestesi");
+                    biayaasisten_anestesi=biayaasisten_anestesi+rs.getDouble("biayaasisten_anestesi");
+                    biayaasisten_anestesi2=biayaasisten_anestesi2+rs.getDouble("biayaasisten_anestesi2");
+                    biayabidan=biayabidan+rs.getDouble("biayabidan");
+                    biayabidan2=biayabidan2+rs.getDouble("biayabidan2");
+                    biayabidan3=biayabidan3+rs.getDouble("biayabidan3");
+                    biayaperawat_luar=biayaperawat_luar+rs.getDouble("biayaperawat_luar");
+                    biaya_omloop=biaya_omloop+rs.getDouble("biaya_omloop");
+                    biaya_omloop2=biaya_omloop2+rs.getDouble("biaya_omloop2");
+                    biaya_omloop3=biaya_omloop3+rs.getDouble("biaya_omloop3");
+                    biaya_omloop4=biaya_omloop4+rs.getDouble("biaya_omloop4");
+                    biaya_omloop5=biaya_omloop5+rs.getDouble("biaya_omloop5");
+                    biaya_dokter_pjanak=biaya_dokter_pjanak+rs.getDouble("biaya_dokter_pjanak");
+                    biaya_dokter_umum=biaya_dokter_umum+rs.getDouble("biaya_dokter_umum");
+                    biayaalat=biayaalat+rs.getDouble("biayaalat");
+                    biayasewaok=biayasewaok+rs.getDouble("biayasewaok");
+                    akomodasi=akomodasi+rs.getDouble("akomodasi");
+                    bagian_rs=bagian_rs+rs.getDouble("bagian_rs");
+                    biayasarpras=biayasarpras+rs.getDouble("biayasarpras");
+                    total=total+rs.getDouble("biayaoperator1")+rs.getDouble("biayaoperator2")+rs.getDouble("biayaoperator3")+
+                          rs.getDouble("biayaasisten_operator1")+rs.getDouble("biayaasisten_operator2")+rs.getDouble("biayaasisten_operator3")+
+                          rs.getDouble("biayainstrumen")+rs.getDouble("biayadokter_anak")+rs.getDouble("biayaperawaat_resusitas")+
+                          rs.getDouble("biayadokter_anestesi")+rs.getDouble("biayaasisten_anestesi")+rs.getDouble("biayaasisten_anestesi2")+
+                          rs.getDouble("biayabidan")+rs.getDouble("biayabidan2")+rs.getDouble("biayabidan3")+
+                          rs.getDouble("biayaperawat_luar")+rs.getDouble("biaya_omloop")+rs.getDouble("biaya_omloop2")+
+                          rs.getDouble("biaya_omloop3")+rs.getDouble("biaya_omloop4")+rs.getDouble("biaya_omloop5")+
+                          rs.getDouble("biaya_dokter_pjanak")+rs.getDouble("biaya_dokter_umum")+rs.getDouble("biayaalat")+
+                          rs.getDouble("biayasewaok")+rs.getDouble("akomodasi")+rs.getDouble("bagian_rs")+rs.getDouble("biayasarpras");
                     tabModeOperasi.addRow(new Object[]{
                         i,rs.getString("no_rawat"),rs.getString("no_rkm_medis"),
                         rs.getString("nm_pasien"),rs.getString("kode_paket"),
                         rs.getString("nm_perawatan"),rs.getString("tgl_operasi").substring(0,10),
                         rs.getString("tgl_operasi").substring(11,19),rs.getString("png_jawab"),
                         rs.getString("ruangan"),rs.getString("operator1"),rs.getDouble("biayaoperator1"),
-                        rs.getString("operator2"),rs.getDouble("biayaoperator2")
+                        rs.getString("operator2"),rs.getDouble("biayaoperator2"),
+                        rs.getString("operator3"),rs.getDouble("biayaoperator3"),
+                        rs.getString("asisten_operator1"),rs.getDouble("biayaasisten_operator1"),
+                        rs.getString("asisten_operator2"),rs.getDouble("biayaasisten_operator2"),
+                        rs.getString("asisten_operator3"),rs.getDouble("biayaasisten_operator3"),
+                        rs.getString("instrumen"),rs.getDouble("biayainstrumen"),
+                        rs.getString("dokter_anak"),rs.getDouble("biayadokter_anak"),
+                        rs.getString("perawaat_resusitas"),rs.getDouble("biayaperawaat_resusitas"),
+                        rs.getString("dokter_anestesi"),rs.getDouble("biayadokter_anestesi"),
+                        rs.getString("asisten_anestesi"),rs.getDouble("biayaasisten_anestesi"),
+                        rs.getString("asisten_anestesi2"),rs.getDouble("biayaasisten_anestesi2"),
+                        rs.getString("bidan"),rs.getDouble("biayabidan"),
+                        rs.getString("bidan2"),rs.getDouble("biayabidan2"),
+                        rs.getString("bidan3"),rs.getDouble("biayabidan3"),
+                        rs.getString("perawat_luar"),rs.getDouble("biayaperawat_luar"),
+                        rs.getString("omloop"),rs.getDouble("biaya_omloop"),
+                        rs.getString("omloop2"),rs.getDouble("biaya_omloop2"),
+                        rs.getString("omloop3"),rs.getDouble("biaya_omloop3"),
+                        rs.getString("omloop4"),rs.getDouble("biaya_omloop4"),
+                        rs.getString("omloop5"),rs.getDouble("biaya_omloop5"),
+                        rs.getString("dokter_pjanak"),rs.getDouble("biaya_dokter_pjanak"),
+                        rs.getString("dokter_umum"),rs.getDouble("biaya_dokter_umum"),
+                        rs.getDouble("biayaalat"),rs.getDouble("biayasewaok"),
+                        rs.getDouble("akomodasi"),rs.getDouble("bagian_rs"),
+                        rs.getDouble("biayasarpras"),(rs.getDouble("biayaoperator1")+rs.getDouble("biayaoperator2")+rs.getDouble("biayaoperator3")+
+                        rs.getDouble("biayaasisten_operator1")+rs.getDouble("biayaasisten_operator2")+rs.getDouble("biayaasisten_operator3")+
+                        rs.getDouble("biayainstrumen")+rs.getDouble("biayadokter_anak")+rs.getDouble("biayaperawaat_resusitas")+
+                        rs.getDouble("biayadokter_anestesi")+rs.getDouble("biayaasisten_anestesi")+rs.getDouble("biayaasisten_anestesi2")+
+                        rs.getDouble("biayabidan")+rs.getDouble("biayabidan2")+rs.getDouble("biayabidan3")+
+                        rs.getDouble("biayaperawat_luar")+rs.getDouble("biaya_omloop")+rs.getDouble("biaya_omloop2")+
+                        rs.getDouble("biaya_omloop3")+rs.getDouble("biaya_omloop4")+rs.getDouble("biaya_omloop5")+
+                        rs.getDouble("biaya_dokter_pjanak")+rs.getDouble("biaya_dokter_umum")+rs.getDouble("biayaalat")+
+                        rs.getDouble("biayasewaok")+rs.getDouble("akomodasi")+rs.getDouble("bagian_rs")+rs.getDouble("biayasarpras"))
                     });
                     i++;
                 }
                 if(total>0){
-                    
+                    tabModeOperasi.addRow(new Object[]{
+                        "","","","","","","","","","Jumlah Total :","",biayaoperator1,
+                        "",biayaoperator2,"",biayaoperator3,"",biayaasisten_operator1,
+                        "",biayaasisten_operator2,"",biayaasisten_operator3,
+                        "",biayainstrumen,"",biayadokter_anak,"",biayaperawaat_resusitas,
+                        "",biayadokter_anestesi,"",biayaasisten_anestesi,"",
+                        biayaasisten_anestesi2,"",biayabidan,"",biayabidan2,
+                        "",biayabidan3,"",biayaperawat_luar,"",biaya_omloop,
+                        "",biaya_omloop2,"",biaya_omloop3,"",biaya_omloop4,
+                        "",biaya_omloop5,"",biaya_dokter_pjanak,"",biaya_dokter_umum,
+                        biayaalat,biayasewaok,akomodasi,bagian_rs,biayasarpras,total
+                    });
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
