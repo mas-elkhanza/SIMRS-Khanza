@@ -1313,6 +1313,10 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         BtnTambahTindakan.setEnabled(var.gettarif_ralan());
     }
     
+    public void setPoli(String KodePoli){
+        this.kd_poli=KodePoli;
+    }
+    
     public void setNoRm(String norwt,String kdpetugas,String nmpetugas, String pilihtable,
             String suhu, String tensi,String hasil, String perkembangan,String tanggal, 
             String jam,String kdpetugas2,String nmpetugas2, String berat,String tinggi, 

@@ -60,6 +60,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private PreparedStatement ps,ps2,ps3,ps4;
     private ResultSet rs;
     private int i=0;
+    private String kode_poli="";
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -2169,6 +2170,9 @@ private void btnTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                                 TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
                         var.setform("DlgRawatJalan");
                         perawatan.isCek();
+                        if(!kode_poli.equals("")){
+                            perawatan.setPoli(kode_poli);
+                        }
                         perawatan.tampil();
                         perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                         perawatan.setLocationRelativeTo(internalFrame1);
@@ -2182,6 +2186,9 @@ private void btnTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                                 TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
                             var.setform("DlgRawatJalan");
                             perawatan.isCek();
+                            if(!kode_poli.equals("")){
+                                perawatan.setPoli(kode_poli);
+                            }
                             perawatan.tampil();
                             perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                             perawatan.setLocationRelativeTo(internalFrame1);
@@ -2198,6 +2205,9 @@ private void btnTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         perawatan.setNoRm(TNoRw.getText(),kdptg.getText(),TPerawat.getText(),"rawat_jl_pr",TSuhu.getText(),TTensi.getText(),TKeluhan.getText(),TPemeriksaan.getText(),"","","-","-",
                             TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
                         perawatan.isCek();
+                        if(!kode_poli.equals("")){
+                            perawatan.setPoli(kode_poli);
+                        }
                         perawatan.tampil();
                         perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                         perawatan.setLocationRelativeTo(internalFrame1);
@@ -2211,6 +2221,9 @@ private void btnTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             perawatan.setNoRm(TNoRw.getText(),kdptg.getText(),TPerawat.getText(),"rawat_jl_pr",TSuhu.getText(),TTensi.getText(),TKeluhan.getText(),TPemeriksaan.getText(),"","","-","-",
                             TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
                             perawatan.isCek();
+                            if(!kode_poli.equals("")){
+                                perawatan.setPoli(kode_poli);
+                            }
                             perawatan.tampil();
                             perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                             perawatan.setLocationRelativeTo(internalFrame1);
@@ -2229,6 +2242,9 @@ private void btnTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         perawatan.setNoRm(TNoRw.getText(),KdDok2.getText(),TDokter2.getText(),"rawat_jl_drpr",TSuhu.getText(),TTensi.getText(),TKeluhan.getText(),TPemeriksaan.getText(),"","",kdptg2.getText(),TPerawat2.getText(),
                                 TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
                         perawatan.isCek();
+                        if(!kode_poli.equals("")){
+                            perawatan.setPoli(kode_poli);
+                        }
                         perawatan.tampil();
                         perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                         perawatan.setLocationRelativeTo(internalFrame1);
@@ -2242,6 +2258,9 @@ private void btnTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             perawatan.setNoRm(TNoRw.getText(),KdDok2.getText(),TDokter2.getText(),"rawat_jl_drpr",TSuhu.getText(),TTensi.getText(),TKeluhan.getText(),TPemeriksaan.getText(),"","",kdptg2.getText(),TPerawat2.getText(),
                                 TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
                             perawatan.isCek();
+                            if(!kode_poli.equals("")){
+                                perawatan.setPoli(kode_poli);
+                            }
                             perawatan.tampil();
                             perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                             perawatan.setLocationRelativeTo(internalFrame1);
@@ -3227,6 +3246,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         KdDok2.setText(kodedokter);
         TDokter.setText(namadokter);
         TDokter2.setText(namadokter);
+    }
+    
+    public void SetPoli(String KodePoli){
+        this.kode_poli=KodePoli;
     }
 
 }

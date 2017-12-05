@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="421" orientation="Landscape" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="111"/>
+	<property name="ireport.y" value="96"/>
 	<parameter name="hari" class="java.lang.String"/>
 	<parameter name="TanggalAwal" class="java.lang.String"/>
 	<parameter name="TanggalAkhir" class="java.lang.String"/>
@@ -19,9 +19,9 @@
 	<parameter name="norawat" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select reg_periksa.no_rawat,dokter.nm_dokter,pasien.tgl_lahir,pasien.jk,
- pasien.nm_pasien,pasien.jk,pasien.umur,pasien.pekerjaan,pasien.alamat
- from reg_periksa inner join pasien inner join dokter
- on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat=$P{norawat}]]>
+ pasien.nm_pasien,pasien.jk,pasien.umur,pasien.pekerjaan,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat
+ from reg_periksa inner join pasien inner join dokter inner join kelurahan inner join kecamatan inner join kabupaten
+ on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_dokter=dokter.kd_dokter and pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where reg_periksa.no_rawat=$P{norawat}]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -51,54 +51,54 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="381" splitType="Stretch">
+		<band height="555" splitType="Stretch">
 			<image scaleImage="FillFrame" onErrorType="Blank">
 				<reportElement x="3" y="0" width="48" height="45"/>
 				<imageExpression class="java.io.InputStream"><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="52" y="0" width="503" height="17"/>
+				<reportElement x="52" y="0" width="329" height="17"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="52" y="14" width="503" height="14"/>
+				<reportElement x="52" y="14" width="329" height="14"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="52" y="25" width="503" height="14"/>
+				<reportElement x="52" y="25" width="329" height="14"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="52" y="39" width="503" height="10"/>
+				<reportElement x="52" y="39" width="329" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["e-mail: "+$P{emailrs}]]></textFieldExpression>
 			</textField>
 			<line direction="BottomUp">
-				<reportElement x="1" y="51" width="554" height="1"/>
+				<reportElement x="1" y="51" width="380" height="1"/>
 				<graphicElement>
 					<pen lineWidth="1.25"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="5" y="55" width="550" height="21"/>
+				<reportElement x="0" y="55" width="381" height="21"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="12" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[SURAT KETERANGAN SEHAT]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="5" y="76" width="550" height="30"/>
+				<reportElement x="5" y="76" width="376" height="30"/>
 				<textElement textAlignment="Justified" lineSpacing="Single">
 					<font fontName="Tahoma" size="12" isBold="false"/>
 				</textElement>
@@ -119,7 +119,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="96" y="108" width="459" height="24"/>
+				<reportElement x="96" y="108" width="285" height="24"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12" isBold="false"/>
 				</textElement>
@@ -140,35 +140,35 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="96" y="178" width="459" height="23"/>
+				<reportElement x="96" y="176" width="285" height="35"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{alamat}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="248" width="555" height="35"/>
+				<reportElement x="0" y="261" width="381" height="35"/>
 				<textElement textAlignment="Justified" lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
-				<text><![CDATA[Pada hari ini telah kami periksa dengan teliti kesehatannya dan berpendapat bahwa kesehatan saudara tersebut pada waktu diperksa adalah:]]></text>
+				<text><![CDATA[Pada hari ini telah kami periksa dengan teliti kesehatannya dan berpendapat bahwa kesehatan saudara tersebut pada waktu diperiksa:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="306" width="554" height="31"/>
+				<reportElement x="1" y="328" width="380" height="31"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Demikian surat keterangan ini dibuat dengan sebenar-benarnya untuk dapat digunakan sesuai keperluan.]]></text>
 			</staticText>
 			<textField pattern="" isBlankWhenNull="true">
-				<reportElement x="368" y="340" width="81" height="23"/>
+				<reportElement x="216" y="377" width="81" height="23"/>
 				<textElement textAlignment="Right" lineSpacing="Single">
 					<font fontName="Tahoma" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{kotars}+", "]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd - MM - yyyy">
-				<reportElement x="448" y="340" width="107" height="23"/>
+				<reportElement x="297" y="377" width="84" height="23"/>
 				<textElement textAlignment="Left" lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
@@ -196,28 +196,28 @@
 				<text><![CDATA[Jenis Kelamin]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="196" width="83" height="22"/>
+				<reportElement x="5" y="209" width="83" height="22"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
 				<text><![CDATA[Berat badan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="295" y="196" width="74" height="22"/>
+				<reportElement x="197" y="211" width="74" height="22"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
 				<text><![CDATA[Tinggi badan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="5" y="217" width="83" height="22"/>
+				<reportElement x="5" y="230" width="83" height="22"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
 				<text><![CDATA[Tekanan darah]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="296" y="217" width="73" height="22"/>
+				<reportElement x="198" y="232" width="73" height="22"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
@@ -231,36 +231,36 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="87" y="200" width="7" height="12"/>
+				<reportElement x="87" y="212" width="7" height="12"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="87" y="220" width="7" height="12"/>
+				<reportElement x="87" y="232" width="7" height="12"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="368" y="198" width="7" height="12"/>
+				<reportElement x="270" y="213" width="7" height="12"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="368" y="219" width="7" height="12"/>
+				<reportElement x="270" y="234" width="7" height="12"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="201" y="282" width="125" height="22"/>
-				<textElement lineSpacing="Single">
+				<reportElement x="0" y="301" width="381" height="22"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
 				<text><![CDATA[SEHAT/ TIDAK SEHAT]]></text>
@@ -273,28 +273,28 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="374" y="217" width="73" height="22"/>
+				<reportElement x="277" y="231" width="73" height="22"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
 				<text><![CDATA[+/ -]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="153" y="196" width="83" height="22"/>
+				<reportElement x="153" y="210" width="21" height="22"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
 				<text><![CDATA[kg]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="152" y="217" width="83" height="22"/>
+				<reportElement x="152" y="231" width="45" height="22"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
 				<text><![CDATA[mmHg]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="413" y="196" width="83" height="22"/>
+				<reportElement x="333" y="212" width="48" height="22"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
@@ -308,28 +308,28 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{umur}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="96" y="153" width="150" height="24"/>
+				<reportElement x="96" y="151" width="150" height="24"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12" isBold="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{jk}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{jk}.equals("L")? "Laki-Laki":"Perempuan"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="96" y="198" width="56" height="24"/>
+				<reportElement x="96" y="210" width="56" height="20"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{bb}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="96" y="218" width="56" height="24"/>
+				<reportElement x="96" y="231" width="56" height="24"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{td}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="374" y="196" width="56" height="24"/>
+				<reportElement x="276" y="212" width="56" height="24"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12" isBold="false"/>
 				</textElement>

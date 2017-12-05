@@ -233,7 +233,7 @@ public final class DlgReg extends javax.swing.JDialog {
         tabMode2=new DefaultTableModel(null,new Object[]{
             "P","No.Rawat","Tanggal","Jam","Kd.Dokter","Dokter Rujukan","Nomer RM",
             "Pasien","J.K.","Umur","Poliklinik Rujukan","Jenis Bayar","Penanggung Jawab","Alamat P.J.","Hubungan P.J.",
-            "Status","No.Telp","Stts Rawat"
+            "Status","No.Telp","Stts Rawat","Kode Poli"
         }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -247,7 +247,7 @@ public final class DlgReg extends javax.swing.JDialog {
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -259,7 +259,7 @@ public final class DlgReg extends javax.swing.JDialog {
         tbPetugas2.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbPetugas2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 17; i++) {
+        for (i = 0; i < 19; i++) {
             TableColumn column = tbPetugas2.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -297,6 +297,9 @@ public final class DlgReg extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }else if(i==17){
                 column.setPreferredWidth(70);
+            }else if(i==18){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbPetugas2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -6844,7 +6847,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         DTPCari1.getDate(),DTPCari2.getDate(),
                         tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),4).toString(),
                         tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),5).toString()
-                    );    
+                    );   
+                    dlgrwjl.SetPoli(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),18).toString());
                     dlgrwjl.tampilDr();
                     dlgrwjl.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
@@ -7612,7 +7616,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         try {
             ps=koneksi.prepareStatement("select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                        "rujukan_internal_poli.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli,"+
-                       "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_tlp,reg_periksa.stts "+
+                       "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_tlp,reg_periksa.stts,rujukan_internal_poli.kd_poli "+
                        "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab inner join rujukan_internal_poli "+
                        "on rujukan_internal_poli.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                        "and rujukan_internal_poli.no_rawat=reg_periksa.no_rawat "+
@@ -7707,7 +7711,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         rs.getString("png_jawab"),rs.getString("p_jawab"),
                         rs.getString("almt_pj"),rs.getString("hubunganpj"),
                         rs.getString("stts_daftar"),rs.getString("no_tlp"),
-                        rs.getString("stts")
+                        rs.getString("stts"),rs.getString("kd_poli")
                     });
                 }                    
             }catch(Exception e){
