@@ -56,7 +56,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private boolean[] pilih; 
     private double[] jumlah,harga,eb,ts,stok,beli;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,aturan,industri;
-    private String noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="";
+    private String kodedokter="",namadokter="",noresep="",bangsal="",bangsaldefault=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),tampilkan_ppnobat_ralan="";
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     public DlgBarang barang=new DlgBarang(null,false);
     public DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
@@ -1048,9 +1048,13 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     resep.setLocationRelativeTo(internalFrame1);
                     resep.emptTeks(); 
                     resep.isCek();
-                    resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
+                    if(!namadokter.equals("")){
+                        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter);
+                    }else{
+                        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
+                        resep.setDokterRalan();
+                    }
                     resep.tampil();
-                    resep.setDokterRalan();
                     resep.setVisible(true);
                 }
                 ChkJln.setSelected(true);
@@ -1112,9 +1116,13 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             resep.setLocationRelativeTo(internalFrame1);
             resep.emptTeks(); 
             resep.isCek();
-            resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
+            if(!namadokter.equals("")){
+                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter);
+            }else{
+                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
+                resep.setDokterRalan();
+            }
             resep.tampil();
-            resep.setDokterRalan();
             resep.setVisible(true);
         }
     }//GEN-LAST:event_ChkNoResepItemStateChanged
@@ -1650,5 +1658,10 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         };
         // Timer
         new Timer(1000, taskPerformer).start();
+    }
+    
+    public void setDokter(String kodedokter,String namadokter){
+        this.kodedokter=kodedokter;
+        this.namadokter=namadokter;
     }
 }

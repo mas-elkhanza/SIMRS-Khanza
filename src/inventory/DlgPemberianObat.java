@@ -74,7 +74,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private ResultSet rs,rsrekening;
     private double embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),ttljual,ttlhpp;
     private double tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
-    private String statusberi="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
+    private String kodedokter="",namadokter="",statusberi="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
     private Jurnal jur=new Jurnal();
 
     /** Creates new form DlgPemberianObat
@@ -1110,6 +1110,9 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                     dlgobtjalan.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
                                         Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
                     dlgobtjalan.isCek();
+                    if(!namadokter.equals("")){
+                        dlgobtjalan.setDokter(kodedokter, namadokter);
+                    }
                     dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     dlgobtjalan.tampilobat();
                     dlgobtjalan.setLocationRelativeTo(internalFrame1);
@@ -1134,6 +1137,9 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                                             Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
                         dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                         dlgobtjalan.isCek();
+                        if(!namadokter.equals("")){
+                            dlgobtjalan.setDokter(kodedokter, namadokter);
+                        }
                         dlgobtjalan.tampilobat();
                         dlgobtjalan.setLocationRelativeTo(internalFrame1);
                         dlgobtjalan.setVisible(true);
@@ -2157,5 +2163,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         new Timer(1000, taskPerformer).start();
     }
 
+    public void setDokter(String kodedokter,String namadokter){
+        this.kodedokter=kodedokter;
+        this.namadokter=namadokter;
+    }
 
 }
