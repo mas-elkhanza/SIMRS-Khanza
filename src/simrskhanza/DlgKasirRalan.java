@@ -138,7 +138,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         tabModekasir2=new DefaultTableModel(null,new String[]{
             "Kd.Dokter","Dokter Rujukan","Nomer RM","Pasien",
             "Poliklinik Rujukan","Penanggung Jawab","Alamat P.J.","Hubungan P.J.",
-            "Jenis Bayar","Status","No.Rawat","Tanggal","Jam"}){
+            "Jenis Bayar","Status","No.Rawat","Tanggal","Jam","Kode Poli"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKasirRalan2.setModel(tabModekasir2);
@@ -146,7 +146,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         tbKasirRalan2.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbKasirRalan2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 13; i++) {
+        for (i = 0; i < 14; i++) {
             TableColumn column = tbKasirRalan2.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
@@ -174,6 +174,9 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 column.setPreferredWidth(65);
             }else if(i==12){
                 column.setPreferredWidth(55);
+            }else if(i==13){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbKasirRalan2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -3333,8 +3336,7 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         billing.dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
                         billing.dlgrwjl.perawatan.setVisible(true);
                     }
-                }
-                    
+                }                    
             }            
         }
 }//GEN-LAST:event_MnRawatJalanActionPerformed
@@ -4800,6 +4802,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),0).toString(),
                         tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),1).toString()
                     );    
+                    dlgrwjl2.SetPoli(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),13).toString());
                     dlgrwjl2.tampilDr();
                     dlgrwjl2.setVisible(true);
                 } 
@@ -4851,6 +4854,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                             "rawat_jl_dr","","","","","","","-","-","","","","","",""
                         );
                         billing.dlgrwjl.perawatan.isCek();
+                        billing.dlgrwjl.perawatan.setPoli(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),13).toString());
                         billing.dlgrwjl.perawatan.tampil();
                         billing.dlgrwjl.perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                         billing.dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
@@ -4866,6 +4870,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                                 "rawat_jl_dr","","","","","","","-","-","","","","","",""
                             );  
                             billing.dlgrwjl.perawatan.isCek();
+                            billing.dlgrwjl.perawatan.setPoli(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),13).toString());
                             billing.dlgrwjl.perawatan.tampil();
                             billing.dlgrwjl.perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                             billing.dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
@@ -5518,7 +5523,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         try{   
             pskasir=koneksi.prepareStatement("select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                 "rujukan_internal_poli.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,"+
-                "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.stts,penjab.png_jawab "+
+                "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.stts,penjab.png_jawab,rujukan_internal_poli.kd_poli "+
                 "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab inner join rujukan_internal_poli "+
                 "on rujukan_internal_poli.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                 "and rujukan_internal_poli.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -5617,7 +5622,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         rskasir.getString("almt_pj"),rskasir.getString("hubunganpj"),
                         rskasir.getString("png_jawab"),rskasir.getString("stts"),
                         rskasir.getString("no_rawat"),rskasir.getString("tgl_registrasi"),
-                        rskasir.getString("jam_reg")
+                        rskasir.getString("jam_reg"),rskasir.getString("kd_poli")
                     });
                 }                
             } catch(Exception e){

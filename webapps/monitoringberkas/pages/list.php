@@ -432,5 +432,5 @@
     </div>
 </div>
 <?php 
-  echo "<meta http-equiv='refresh' content='7;URL=?act=List&keyword=".str_replace(" ","_",$keyword)."&dokter=".str_replace(" ","_",$dokter)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=no'>";
+  echo "<meta http-equiv='refresh' content='30;URL=?act=List&keyword=".str_replace(" ","_",$keyword)."&dokter=".str_replace(" ","_",$dokter)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=no'>";
 ?>
