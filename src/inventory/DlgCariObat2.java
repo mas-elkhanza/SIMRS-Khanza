@@ -661,46 +661,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
                 try {
                     getData();
                     i=tbObat.getSelectedColumn();
-                    if(i==2){
-                        try {
-                            stokbarang=0;   
-                            psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
-                            try {
-                                psstok.setString(1,var.getkdbangsal());
-                                psstok.setString(2,tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-                                rsstok=psstok.executeQuery();
-                                if(rsstok.next()){
-                                    stokbarang=rsstok.getDouble(1);
-                                }
-                            } catch (Exception e) {
-                                stokbarang=0;
-                                System.out.println("Notifikasi : "+e);
-                            } finally{
-                                if(rsstok != null){
-                                    rsstok.close();
-                                }
-                                if(psstok != null){
-                                    psstok.close();
-                                }
-                            }
-                            
-                            tbObat.setValueAt(stokbarang,tbObat.getSelectedRow(),10);
-                            y=0;
-                            try {
-                                y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-                            } catch (Exception e) {
-                                y=0;
-                            }
-                            if(stokbarang<y){
-                                JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
-                                tbObat.setValueAt("",tbObat.getSelectedRow(),1);
-                            }
-                        } catch (Exception e) {
-                            tbObat.setValueAt(0,tbObat.getSelectedRow(),10);
-                        }   
-                        TCari.setText("");
-                        TCari.requestFocus();
-                    }else if(i==8){
+                    if(i==8){
                         try {
                             if(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString().equals("0")||tbObat.getValueAt(tbObat.getSelectedRow(),8).toString().equals("")||tbObat.getValueAt(tbObat.getSelectedRow(),8).toString().equals("0.0")||tbObat.getValueAt(tbObat.getSelectedRow(),8).toString().equals("0,0")) {
                                 tbObat.setValueAt(embalase,tbObat.getSelectedRow(),8);
@@ -1328,14 +1289,44 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            /*if(!tabMode.getValueAt(tbKamar.getSelectedRow(),0).toString().equals("")){
-                if(Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString())>Double.parseDouble(tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString())){
-                        JOptionPane.showMessageDialog(null,"Maaf, Stok tidak cukup....!!!");
-                        TCari.requestFocus();
-                        tbKamar.setValueAt("", tbKamar.getSelectedRow(),0);  
-                }                
-            }*/
-            
+            try {
+                stokbarang=0;   
+                psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
+                try {
+                    psstok.setString(1,var.getkdbangsal());
+                    psstok.setString(2,tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+                    rsstok=psstok.executeQuery();
+                    if(rsstok.next()){
+                        stokbarang=rsstok.getDouble(1);
+                    }
+                } catch (Exception e) {
+                    stokbarang=0;
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rsstok != null){
+                        rsstok.close();
+                    }
+                    if(psstok != null){
+                        psstok.close();
+                    }
+                }
+
+                tbObat.setValueAt(stokbarang,tbObat.getSelectedRow(),10);
+                y=0;
+                try {
+                    y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                } catch (Exception e) {
+                    y=0;
+                }
+                if(stokbarang<y){
+                    JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
+                    tbObat.setValueAt("",tbObat.getSelectedRow(),1);
+                }
+            } catch (Exception e) {
+                tbObat.setValueAt(0,tbObat.getSelectedRow(),10);
+            }   
+            TCari.setText("");
+            TCari.requestFocus();
         }
     }
 
