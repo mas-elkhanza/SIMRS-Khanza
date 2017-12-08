@@ -2590,6 +2590,8 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Akun Piutang","Jurnal Akuntansi","akun_piutang");
         hapus("Rekening Tahun","Jurnal Akuntansi","rekeningtahun");        
         hapus("Subrekening","Lain","subrekening");
+        hapus("Kategori Pemasukan Lain-Lain","Rekening Tahun","kategori_pemasukan_lain");
+        hapus("Kategori Pengeluaran Harian","Rekening Tahun","kategori_pengeluaran_harian");
         hapus("Akun Rekening","Rekening Tahun","rekening");
     }//GEN-LAST:event_BtnICD86ActionPerformed
 
