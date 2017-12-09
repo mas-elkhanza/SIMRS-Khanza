@@ -5,8 +5,10 @@
         <group>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/laporan/DlgSensusHarianPoli.java</file>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/setting/DlgUser.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/inventory/DlgCariObat.java</file>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/DlgIKBBayi.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/inventory/DlgCariObat2.java</file>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/keuangan/DlgRekapPoliAnak.java</file>
         </group>
     </open-files>

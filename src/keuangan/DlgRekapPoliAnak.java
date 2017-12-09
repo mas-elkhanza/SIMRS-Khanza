@@ -43,11 +43,13 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
-    private PreparedStatement pstanggal,psdokter,psreg;
+    private PreparedStatement pstanggal,psdokter,psreg,pstindakandokter;
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
-    private ResultSet rstanggal,rsdokter,rsreg;
+    private ResultSet rstanggal,rsdokter,rsreg,rstindakandokter;
     private int i=0;
+    private String h0s6l="",h0s6p="",h7s28l="",h7s28p="",h29st1l="",h29st1p="",
+            t1s4l="",t1s4p="",t5s14l="",t5s14p="";
     
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -431,7 +433,7 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                                     "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
                                     var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
                                     var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>SENSUS HARIAN PASIEN POLIKLINIK<br>PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                    "<font size='2' face='Tahoma'>REKAP HARIAN POLI ANAK<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
                         "</table>")
@@ -629,40 +631,24 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                         psdokter.setString(2,"%"+nmdokter.getText().trim()+"%");
                         rsdokter=psdokter.executeQuery();
                         while(rsdokter.next()){
-                            htmlContent.append(
+                            htmlContent.append(                                
                                 "<tr class='isi2'>"+
-                                    "<td valign='top' align='center'>&nbsp;</td>"+
-                                "</tr>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='center'>REKAP HARIAN POLI ANAK</td>"+
-                               "</tr>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='center'>"+var.getnamars().toUpperCase()+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='center'>TANGGAL : "+rstanggal.getString("tanggal")+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='center'>&nbsp;</td>"+
-                                "</tr>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='left'>Dokter : "+rsdokter.getString("kd_dokter")+" "+rsdokter.getString("nm_dokter")+"</td>"+
+                                    "<td valign='top' align='left'>TANGGAL : "+rstanggal.getString("tanggal")+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOKTER : "+rsdokter.getString("kd_dokter")+" "+rsdokter.getString("nm_dokter")+"</td>"+
                                 "</tr>"+
                                 "<tr class='isi2'>"+
                                     "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                        "<tr class='isi3'>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center' width='3%' rowspan='3'>NO.</td>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>NO.RM</td>"+
-                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' width='9%' rowspan='3'>NAMA IBU</td>"+
-                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' width='9%' rowspan='3'>NAMA ANAK</td>"+
-                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' width='11%' rowspan='3'>ALAMAT</td>"+
+                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' width='10%' rowspan='3'>NAMA IBU</td>"+
+                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' width='10%' rowspan='3'>NAMA ANAK</td>"+
+                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' width='12%' rowspan='3'>ALAMAT</td>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center' width='4%' rowspan='3'>TGL.LAHIR</td>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center' width='6%'>LAHIR</td>"+
-                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='2'>L/B</td>"+
+                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' width='1%' rowspan='2'>L/B</td>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center' width='25%' colspan='10'>USIA</td>"+
-                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' width='12%' rowspan='2'>TINDAKAN</td>"+
+                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' width='20%' rowspan='2'>TINDAKAN & HARGA</td>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center' width='4%'>IMUN KE</td>"+
-                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' width='7%' rowspan='2'>HARGA</td>"+
                                         "</tr>"+
                                         "<tr class='isi3'>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center'>DIMANA</td>"+
@@ -688,11 +674,11 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center'>&nbsp;</td>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center'>&nbsp;</td>"+
-                                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>&nbsp;</td>"+
                                         "</tr>");
                             psreg=koneksi.prepareStatement(
                                     "select reg_periksa.no_rkm_medis,pasien.nm_ibu,pasien.nm_pasien,pasien.alamat,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,"+
-                                    "reg_periksa.stts_daftar,penjab.png_jawab,reg_periksa.no_rawat,reg_periksa.almt_pj,pasien.tgl_lahir from reg_periksa inner join pasien inner join penjab "+
+                                    "reg_periksa.stts_daftar,penjab.png_jawab,reg_periksa.no_rawat,reg_periksa.almt_pj,pasien.tgl_lahir,pasien.tmp_lahir,reg_periksa.stts_daftar,"+
+                                    "reg_periksa.umurdaftar,reg_periksa.sttsumur from reg_periksa inner join pasien inner join penjab "+
                                     "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj where "+
                                     "reg_periksa.tgl_registrasi=? and reg_periksa.kd_dokter=? and penjab.png_jawab like ? and reg_periksa.no_rkm_medis like ? or "+
                                     "reg_periksa.tgl_registrasi=? and reg_periksa.kd_dokter=? and penjab.png_jawab like ? and pasien.nm_pasien like ? or "+
@@ -718,6 +704,49 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                                 psreg.setString(16,"%"+TCari.getText().trim()+"%");
                                 rsreg=psreg.executeQuery();
                                 while(rsreg.next()){
+                                    h0s6l="";h0s6p="";h7s28l="";h7s28p="";h29st1l="";
+                                    h29st1p="";t1s4l="";t1s4p="";t5s14l="";t5s14p="";
+                                    if(rsreg.getString("sttsumur").equals("Hr")){
+                                        if((rsreg.getInt("umurdaftar")>=0)&&(rsreg.getInt("umurdaftar")<=6)){
+                                            if(rsreg.getString("jk").equals("L")){
+                                                h0s6l="V";
+                                            }else if(rsreg.getString("jk").equals("P")){
+                                                h0s6p="V";
+                                            }
+                                        }else if((rsreg.getInt("umurdaftar")>=7)&&(rsreg.getInt("umurdaftar")<=28)){
+                                            if(rsreg.getString("jk").equals("L")){
+                                                h7s28l="V";
+                                            }else if(rsreg.getString("jk").equals("P")){
+                                                h7s28p="V";
+                                            }
+                                        }else if(rsreg.getInt("umurdaftar")>28){
+                                            if(rsreg.getString("jk").equals("L")){
+                                                h29st1l="V";
+                                            }else if(rsreg.getString("jk").equals("P")){
+                                                h29st1p="V";
+                                            }
+                                        }
+                                    }else if(rsreg.getString("sttsumur").equals("Bl")){
+                                        if(rsreg.getString("jk").equals("L")){
+                                            h29st1l="V";
+                                        }else if(rsreg.getString("jk").equals("P")){
+                                            h29st1p="V";
+                                        }
+                                    }else if(rsreg.getString("sttsumur").equals("Th")){
+                                        if((rsreg.getInt("umurdaftar")>=0)&&(rsreg.getInt("umurdaftar")<=4)){
+                                            if(rsreg.getString("jk").equals("L")){
+                                                t1s4l="V";
+                                            }else if(rsreg.getString("jk").equals("P")){
+                                                t1s4p="V";
+                                            }
+                                        }else if((rsreg.getInt("umurdaftar")>=5)&&(rsreg.getInt("umurdaftar")<=14)){
+                                            if(rsreg.getString("jk").equals("L")){
+                                                t5s14l="V";
+                                            }else if(rsreg.getString("jk").equals("P")){
+                                                t5s14p="V";
+                                            }
+                                        }
+                                    }
                                     htmlContent.append(
                                         "<tr class='isi3'>"+
                                             "<td valign='top' align='center'>"+i+"</td>"+
@@ -726,6 +755,50 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                                             "<td valign='top'>"+rsreg.getString("nm_pasien")+"</td>"+
                                             "<td valign='top'>"+rsreg.getString("almt_pj")+"</td>"+
                                             "<td valign='top'>"+rsreg.getString("tgl_lahir")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("tmp_lahir")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("stts_daftar").substring(0,1)+"</td>"+
+                                            "<td valign='top'>"+h0s6l+"</td>"+
+                                            "<td valign='top'>"+h0s6p+"</td>"+
+                                            "<td valign='top'>"+h7s28l+"</td>"+
+                                            "<td valign='top'>"+h7s28p+"</td>"+
+                                            "<td valign='top'>"+h29st1l+"</td>"+
+                                            "<td valign='top'>"+h29st1p+"</td>"+
+                                            "<td valign='top'>"+t1s4l+"</td>"+
+                                            "<td valign='top'>"+t1s4p+"</td>"+
+                                            "<td valign='top'>"+t5s14l+"</td>"+
+                                            "<td valign='top'>"+t5s14p+"</td>"+
+                                            "<td valign='top'>"+
+                                                "<table width='100%' border='0' align='center' cellpadding='0px' cellspacing='0' class='tbl_form'>");
+                                    pstindakandokter=koneksi.prepareStatement(
+                                            "select jns_perawatan.nm_perawatan,rawat_jl_dr.biaya_rawat "+
+                                            "from reg_periksa inner join rawat_jl_dr inner join jns_perawatan "+
+                                            "on rawat_jl_dr.no_rawat=reg_periksa.no_rawat "+
+                                            "and rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                                            "where rawat_jl_dr.kd_dokter=? and rawat_jl_dr.no_rawat=?");
+                                    try {
+                                        pstindakandokter.setString(1,rsdokter.getString("kd_dokter"));
+                                        pstindakandokter.setString(2,rsreg.getString("no_rawat"));
+                                        rstindakandokter=pstindakandokter.executeQuery();
+                                        while (rstindakandokter.next()) {
+                                            htmlContent.append("<tr class='isi3'>"+
+                                                                    "<td valign='top' align='left' width='69%'>&nbsp;"+rstindakandokter.getString("nm_perawatan")+"</td>"+
+                                                                    "<td valign='top' align='right' width='30%'>"+Valid.SetAngka(rstindakandokter.getDouble("biaya_rawat"))+"</td>"+
+                                                               "</tr>");
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("keuangan.DlgRekapPoliAnak.tampil() : "+e);
+                                    } finally{
+                                        if(rstindakandokter!=null){
+                                            rstindakandokter.close();
+                                        }
+                                        if(pstindakandokter!=null){
+                                            pstindakandokter.close();
+                                        }
+                                    }
+                                    htmlContent.append(
+                                                "</table>"+
+                                            "</td>"+                                                        
+                                            "<td valign='top' align='center'>"+Sequel.cariIsi("select imun_ke  from pemeriksaan_ralan where no_rawat=?",rsreg.getString("no_rawat"))+"</td>"+
                                         "</tr>");
                                     i++;
                                 }
@@ -739,6 +812,30 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                                     psreg.close();
                                 }
                             }
+                            htmlContent.append(
+                                "<tr class='isi4'>"+
+                                    "<td valign='top' align='center'>&nbsp;</td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                    "<td valign='top' align='center'></td>"+
+                                "</tr>"
+                            ); 
                             htmlContent.append(
                                     "</table>"+
                                 "</tr>");                                                            
