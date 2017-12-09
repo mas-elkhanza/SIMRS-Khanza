@@ -128,7 +128,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         LoadHTML11.setEditorKit(kit);
         
         StyleSheet styleSheet = kit.getStyleSheet();
-        styleSheet.addRule(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}");
+        styleSheet.addRule(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}");
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         LoadHTML2.setDocument(doc);
@@ -155,7 +155,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         
         LoadHTML.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
-              System.out.println(e.getURL());
               Desktop desktop = Desktop.getDesktop();
               try {
                 desktop.browse(e.getURL().toURI());
@@ -166,7 +165,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         LoadHTML2.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
-              System.out.println(e.getURL());
               Desktop desktop = Desktop.getDesktop();
               try {
                 desktop.browse(e.getURL().toURI());
@@ -188,7 +186,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         LoadHTML4.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
-              System.out.println(e.getURL());
               Desktop desktop = Desktop.getDesktop();
               try {
                 desktop.browse(e.getURL().toURI());
@@ -199,7 +196,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         LoadHTML5.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
-              System.out.println(e.getURL());
               Desktop desktop = Desktop.getDesktop();
               try {
                 desktop.browse(e.getURL().toURI());
@@ -210,7 +206,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         LoadHTML6.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
-              System.out.println(e.getURL());
               Desktop desktop = Desktop.getDesktop();
               try {
                 desktop.browse(e.getURL().toURI());
@@ -221,7 +216,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         LoadHTML7.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
-              System.out.println(e.getURL());
               Desktop desktop = Desktop.getDesktop();
               try {
                 desktop.browse(e.getURL().toURI());
@@ -232,7 +226,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         LoadHTML8.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
-              System.out.println(e.getURL());
               Desktop desktop = Desktop.getDesktop();
               try {
                 desktop.browse(e.getURL().toURI());
@@ -243,7 +236,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         LoadHTML9.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
-              System.out.println(e.getURL());
               Desktop desktop = Desktop.getDesktop();
               try {
                 desktop.browse(e.getURL().toURI());
@@ -254,7 +246,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         LoadHTML10.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
-              System.out.println(e.getURL());
               Desktop desktop = Desktop.getDesktop();
               try {
                 desktop.browse(e.getURL().toURI());
@@ -265,7 +256,6 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         LoadHTML11.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
-              System.out.println(e.getURL());
               Desktop desktop = Desktop.getDesktop();
               try {
                 desktop.browse(e.getURL().toURI());
@@ -743,7 +733,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         try {
             File g = new File("file.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-            bg.write(".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}");
+            bg.write(".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}");
             bg.close();
             
             File f = new File("resumemedis.html");            
