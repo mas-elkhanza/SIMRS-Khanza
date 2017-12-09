@@ -1325,8 +1325,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             } catch (Exception e) {
                 tbObat.setValueAt(0,tbObat.getSelectedRow(),10);
             }   
-            TCari.setText("");
-            TCari.requestFocus();
         }
     }
 
