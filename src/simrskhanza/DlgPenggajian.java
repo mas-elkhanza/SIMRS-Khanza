@@ -106,7 +106,6 @@ public class DlgPenggajian extends javax.swing.JDialog {
                 
                 engine.titleProperty().addListener((ObservableValue<? extends String> observable, String oldValue, final String newValue) -> {
                     SwingUtilities.invokeLater(() -> {
-                        System.out.println(".run() : "+"http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/index.php?act=HomeAdmin");
                         if(engine.getLocation().contains("/webapps/penggajian/index.php?act=HomeAdmin")){
                             try{            
                                 if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
