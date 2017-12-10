@@ -656,7 +656,7 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>7-28 hari</td>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>28-1 thn</td>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>1-4 thn</td>"+
-                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>5-14 hari</td>"+
+                                            "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>5-14 thn</td>"+
                                             "<td valign='middle' bgcolor='#f8fdf3' align='center'>BERAPA</td>"+
                                         "</tr>"+
                                         "<tr class='isi3'>"+

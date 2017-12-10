@@ -460,7 +460,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
-                      <Color PropertyName="color" blue="e6" green="f5" red="f0" type="rgb"/>
+                      <Color PropertyName="color" blue="e8" green="f7" red="f2" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -615,7 +615,7 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
-                      <Color PropertyName="color" blue="e6" green="f5" red="f0" type="rgb"/>
+                      <Color PropertyName="color" blue="e8" green="f7" red="f2" type="rgb"/>
                     </LineBorder>
                   </Border>
                 </Property>
@@ -4518,7 +4518,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="08/12/2017"/>
+            <StringItem index="0" value="10/12/2017"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>

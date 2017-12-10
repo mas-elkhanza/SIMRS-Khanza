@@ -67,6 +67,10 @@ public class DlgPenggajian extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         initComponents2();
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));                                
+        } catch (Exception e) {
+        }
     }
     
     private void initComponents2() {           
@@ -102,6 +106,23 @@ public class DlgPenggajian extends javax.swing.JDialog {
                 
                 engine.titleProperty().addListener((ObservableValue<? extends String> observable, String oldValue, final String newValue) -> {
                     SwingUtilities.invokeLater(() -> {
+                        System.out.println(".run() : "+"http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/index.php?act=HomeAdmin");
+                        if(engine.getLocation().contains("/webapps/penggajian/index.php?act=HomeAdmin")){
+                            try{            
+                                if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                                    com.sun.awt.AWTUtilities.setWindowOpacity(DlgPenggajian.this,0.6f);
+                                }else{
+                                    com.sun.awt.AWTUtilities.setWindowOpacity(DlgPenggajian.this,0.93f);
+                                }                
+                            }catch(Exception e){
+                            }
+                        }else{
+                            try{            
+                                com.sun.awt.AWTUtilities.setWindowOpacity(DlgPenggajian.this,1f);                                  
+                            }catch(Exception e){
+                            }
+                        }
+                        
                         DlgPenggajian.this.setTitle(newValue);
                     });
                 });
@@ -146,7 +167,6 @@ public class DlgPenggajian extends javax.swing.JDialog {
                     public void changed(ObservableValue ov, State oldState, State newState) {
                         if (newState == State.SUCCEEDED) {
                             try {
-                                prop.loadFromXML(new FileInputStream("setting/database.xml"));
                                 if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                                     Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOST()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
