@@ -264,7 +264,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         
         tabModePemeriksaan=new DefaultTableModel(null,new Object[]{
             "P","No.Rawat","No.R.M.","Nama Pasien","Tgl.Rawat","Jam Rawat","Suhu(C)","Tensi","Nadi(/menit)",
-            "Respirasi(/menit)","Tinggi(Cm)","Berat(Kg)","GCS(E,V,M)","Keluhan","Pemeriksaan","Alergi"}){
+            "Respirasi(/menit)","Tinggi(Cm)","Berat(Kg)","GCS(E,V,M)","Keluhan","Pemeriksaan","Alergi","Imun Ke"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -277,7 +277,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                 java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -288,7 +289,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         tbPemeriksaan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPemeriksaan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 17; i++) {
             TableColumn column = tbPemeriksaan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -322,6 +323,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 column.setPreferredWidth(180);
             }else if(i==15){
                 column.setPreferredWidth(130);
+            }else if(i==16){
+                column.setPreferredWidth(50);
             }
         }
         tbPemeriksaan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -637,6 +640,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         cmbMnt = new widget.ComboBox();
         cmbDtk = new widget.ComboBox();
         ChkJln = new widget.CekBox();
+        jLabel25 = new widget.Label();
+        cmbImun = new widget.ComboBox();
 
         BagianRS.setEditable(false);
         BagianRS.setText("0");
@@ -885,7 +890,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-11-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-12-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -900,7 +905,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-11-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-12-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1504,7 +1509,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-11-2017" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-12-2017" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1570,6 +1575,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         FormInput.add(ChkJln);
         ChkJln.setBounds(865, 42, 23, 23);
 
+        jLabel25.setText("Imun Ke :");
+        jLabel25.setName("jLabel25"); // NOI18N
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(640, 102, 50, 23);
+
+        cmbImun.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" }));
+        cmbImun.setName("cmbImun"); // NOI18N
+        cmbImun.setOpaque(false);
+        cmbImun.setPreferredSize(new java.awt.Dimension(55, 28));
+        cmbImun.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbImunKeyPressed(evt);
+            }
+        });
+        FormInput.add(cmbImun);
+        cmbImun.setBounds(693, 102, 48, 23);
+
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
@@ -1601,10 +1623,11 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     (!TAlergi.getText().trim().equals(""))||(!TTinggi.getText().trim().equals(""))||
                     (!TBerat.getText().trim().equals(""))||(!TRespirasi.getText().trim().equals(""))||
                     (!TNadi.getText().trim().equals(""))||(!TGCS.getText().trim().equals(""))){
-                Sequel.menyimpan("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?","Data",13,new String[]{
+                Sequel.menyimpan("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",14,new String[]{
                     TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),                      
                     TSuhu.getText(),TTensi.getText(),TNadi.getText(),TRespirasi.getText(),TTinggi.getText(),
-                    TBerat.getText(),TGCS.getText(),TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText()
+                    TBerat.getText(),TGCS.getText(),TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText(),
+                    cmbImun.getSelectedItem().toString()
                 });
             }
             if(TabRawat.getSelectedIndex()==0){
@@ -1962,7 +1985,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                     "pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi, " +
                                     "pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.tinggi, " +
                                     "pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, " +
-                                    "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi from pasien inner join reg_periksa inner join pemeriksaan_ralan "+
+                                    "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke from pasien inner join reg_periksa inner join pemeriksaan_ralan "+
                                     "on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where  "+
                                     tgl+"and pemeriksaan_ralan.no_rawat like '%"+TCari.getText().trim()+"%' or "+
                                     tgl+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
@@ -2386,7 +2409,7 @@ private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             "keluhan='"+TKeluhan.getText()+"',pemeriksaan='"+TPemeriksaan.getText()+"',"+
                             "nadi='"+TNadi.getText()+"',respirasi='"+TRespirasi.getText()+"',"+
                             "tinggi='"+TTinggi.getText()+"',berat='"+TBerat.getText()+"',"+
-                            "gcs='"+TGCS.getText()+"',alergi='"+TAlergi.getText()+"',"+
+                            "gcs='"+TGCS.getText()+"',alergi='"+TAlergi.getText()+"',imun_ke='"+cmbImun.getSelectedItem()+"',"+
                             "tgl_perawatan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"',"+
                             "jam_rawat='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");
                         tampilPemeriksaan();
@@ -2611,6 +2634,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_MnDiagnosaActionPerformed
 
+    private void cmbImunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbImunKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbImunKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2689,6 +2716,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button btnPasien;
     private widget.Button btnTindakan;
     private widget.ComboBox cmbDtk;
+    private widget.ComboBox cmbImun;
     private widget.ComboBox cmbJam;
     private widget.ComboBox cmbMnt;
     private widget.InternalFrame internalFrame1;
@@ -2711,6 +2739,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Label jLabel22;
     private widget.Label jLabel23;
     private widget.Label jLabel24;
+    private widget.Label jLabel25;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
@@ -3087,7 +3116,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi, " +
                     "pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.tinggi, " +
                     "pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, " +
-                    "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi from pasien inner join reg_periksa inner join pemeriksaan_ralan "+
+                    "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke from pasien inner join reg_periksa inner join pemeriksaan_ralan "+
                     "on pemeriksaan_ralan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where  "+
                     "pemeriksaan_ralan.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and pemeriksaan_ralan.no_rawat like ? or "+
                     "pemeriksaan_ralan.tgl_perawatan between ? and ? and reg_periksa.no_rkm_medis like ? and reg_periksa.no_rkm_medis like ? or "+
@@ -3137,7 +3166,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                    rs.getString(12),
                                    rs.getString(13),
                                    rs.getString(14),
-                                   rs.getString(15)
+                                   rs.getString(15),
+                                   rs.getString(16)
                     });
                 }
             } catch (Exception e) {
@@ -3171,6 +3201,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TKeluhan.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),13).toString()); 
             TPemeriksaan.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),14).toString()); 
             TAlergi.setText(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),15).toString()); 
+            cmbImun.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),16).toString()); 
             cmbJam.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(0,2));
             cmbMnt.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(3,5));
             cmbDtk.setSelectedItem(tbPemeriksaan.getValueAt(tbPemeriksaan.getSelectedRow(),5).toString().substring(6,8));

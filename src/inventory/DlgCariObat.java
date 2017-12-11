@@ -1546,8 +1546,6 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             } catch (Exception e) {
                 tbObat.setValueAt(0,tbObat.getSelectedRow(),10);
             }   
-            TCari.setText("");
-            TCari.requestFocus();
         }
     }
 
