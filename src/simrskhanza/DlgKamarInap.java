@@ -6604,6 +6604,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         ppRiwayat.setEnabled(var.getresume_pasien()); 
         ppCatatanPasien.setEnabled(var.getcatatan_pasien()); 
         ppDataHAIs.setEnabled(var.getdata_HAIs()); 
+        MnSEP.setEnabled(var.getbpjs_sep());
    }
     
     private void updateHari(){
