@@ -11,7 +11,6 @@
 
 package grafikanalisa;
 
-import fungsi.grafikperiksaperpoli;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
