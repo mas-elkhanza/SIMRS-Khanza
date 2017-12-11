@@ -74,7 +74,7 @@ public class grafikpendidikan extends JDialog {
     public static CategoryDataset createDataset1(String symbol) { //data grafik nilai K dan D
 
           DefaultCategoryDataset result = new DefaultCategoryDataset();
-          String series1 = "Pendidikan Ibu";
+          String series1 = "Pendidikan";
           String series2 = "Pendidikan";
 
             try {
@@ -103,7 +103,7 @@ public class grafikpendidikan extends JDialog {
         public static CategoryDataset createDataset2(String symbol) {//grafik volume
             DefaultCategoryDataset result = new DefaultCategoryDataset();
 
-             String series1 = "Pendidikan Ibu";
+             String series1 = "Pendidikan";
              String series2 = "Pendidikan";
 
              try {
@@ -151,7 +151,7 @@ public class grafikpendidikan extends JDialog {
                      renderer2);
              subplot2.setDomainGridlinesVisible(true);
 
-             CategoryAxis domainAxis = new CategoryAxis("Pendidikan Ibu");
+             CategoryAxis domainAxis = new CategoryAxis("Pendidikan");
              CombinedDomainCategoryPlot plot = new CombinedDomainCategoryPlot(domainAxis);
 //             CombinedCategoryPlot plot = new CombinedCategoryPlot(
 //                     domainAxis, new NumberAxis("Range"));
