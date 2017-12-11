@@ -92,7 +92,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[H]Harian Menejemen","[H]Bulanan Menejemen","[K]Cek Eligibilitas Inhealth","[K]Referensi Ruang Rawat Inhealth","[K]Referensi Poli Inhealth","[K]Referensi Faskes Inhealth",
                     "[K]Data Bridging SJP Inhealth","[H]Piutang Ralan","[H]Piutang Ranap","[J]Piutang Per Cara Bayar","[I]Lama Pelayanan Ralan","[L]Catatan Pasien","[I]RL 4B Sebab Morbiditas Ralan",
                     "[I]RL 4A Morbiditas Ralan","[I]RL 4B Morbiditas Ralan","[L]Data HAIs","[I]Harian HAIs","[I]Bulanan HAIs","[I]Hitung BOR","[L]Instansi/Perusahaan Pasien","[D]Resep Dokter",
-                    "[I]Lama Pelayanan Apotek","[I]Hitung ALOS","[H]Detail Tindakan","[A]Rujukan Poli Internal","[H]Rekap Poli Anak","[N]Grafik Kunjungan Per Poli","[N]Grafik Kunjungan Per Dokter"
+                    "[I]Lama Pelayanan Apotek","[I]Hitung ALOS","[H]Detail Tindakan","[A]Rujukan Poli Internal","[H]Rekap Poli Anak","[N]Kunjungan Registrasi Per Poli","[N]Kunjungan Registrasi Per Dokter"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -314,9 +314,9 @@ public class DlgUser extends javax.swing.JDialog {
             }else if(i==245){
                 column.setPreferredWidth(100);
             }else if(i==246){
-                column.setPreferredWidth(141);
+                column.setPreferredWidth(161);
             }else if(i==247){
-                column.setPreferredWidth(156);
+                column.setPreferredWidth(177);
             }else{
                 column.setPreferredWidth(120);
             }

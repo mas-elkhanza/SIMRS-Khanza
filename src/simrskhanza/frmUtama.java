@@ -3887,7 +3887,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnRekapPoliAnak);
 
         btnGrafikKunjunganPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKunjunganPoli.setText("Grafik Kunjungan Per Poli");
+        btnGrafikKunjunganPoli.setText("Kunjungan Registrasi Per Poli");
         btnGrafikKunjunganPoli.setIconTextGap(0);
         btnGrafikKunjunganPoli.setName("btnGrafikKunjunganPoli"); // NOI18N
         btnGrafikKunjunganPoli.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3899,7 +3899,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnGrafikKunjunganPoli);
 
         btnGrafikKunjunganPerDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
-        btnGrafikKunjunganPerDokter.setText("Grafik Kunjungan Per Dokter");
+        btnGrafikKunjunganPerDokter.setText("Kunjungan Registrasi Per Dokter");
         btnGrafikKunjunganPerDokter.setIconTextGap(0);
         btnGrafikKunjunganPerDokter.setName("btnGrafikKunjunganPerDokter"); // NOI18N
         btnGrafikKunjunganPerDokter.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -3918,7 +3918,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10/12/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/12/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
