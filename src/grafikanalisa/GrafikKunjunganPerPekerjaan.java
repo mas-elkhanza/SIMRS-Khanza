@@ -226,7 +226,7 @@ public class GrafikKunjunganPerPekerjaan extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notifikasi : " + e);
         }
-        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kunjungan Per Pekerjaan Tanggal "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),"Poliklinik/Unit","Jumlah Pasien", dcd, PlotOrientation.VERTICAL,true, true,true); 
+        JFreeChart freeChart = ChartFactory.createBarChart("Grafik Kunjungan Per Pekerjaan Tanggal "+Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tanggal2.getSelectedItem()+""),"Pekerjaan","Jumlah Pasien", dcd, PlotOrientation.VERTICAL,true, true,true); 
         ChartFrame cf = new ChartFrame("Grafik Kunjungan Per Pekerjaan",freeChart);
         cf.setSize(panelBiasa3.getWidth(),panelBiasa3.getHeight());   
         cf.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);

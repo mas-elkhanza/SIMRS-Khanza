@@ -93,7 +93,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Data Bridging SJP Inhealth","[H]Piutang Ralan","[H]Piutang Ranap","[J]Piutang Per Cara Bayar","[I]Lama Pelayanan Ralan","[L]Catatan Pasien","[I]RL 4B Sebab Morbiditas Ralan",
                     "[I]RL 4A Morbiditas Ralan","[I]RL 4B Morbiditas Ralan","[L]Data HAIs","[I]Harian HAIs","[I]Bulanan HAIs","[I]Hitung BOR","[L]Instansi/Perusahaan Pasien","[D]Resep Dokter",
                     "[I]Lama Pelayanan Apotek","[I]Hitung ALOS","[H]Detail Tindakan","[A]Rujukan Poli Internal","[H]Rekap Poli Anak","[N]Kunjungan Reg Per Poli","[N]Kunjungan Reg Per Dokter",
-                    "[N]Kunjungan Reg Per Pekerjaan","[N]Kunjungan Reg Per Pendidikan"
+                    "[N]Kunjungan Reg Per Pekerjaan","[N]Kunjungan Reg Per Pendidikan","[N]Kunjungan Reg Per Tahun"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -186,7 +186,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 250;i++) {
+        for (i = 0; i < 251;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -322,6 +322,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(165);
             }else if(i==249){
                 column.setPreferredWidth(167);
+            }else if(i==250){
+                column.setPreferredWidth(147);
             }else{
                 column.setPreferredWidth(120);
             }
@@ -756,7 +758,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1048,7 +1050,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_kunjungan_poli='"+tbUser.getValueAt(i,246).toString()+"',"+
                     "grafik_kunjungan_perdokter='"+tbUser.getValueAt(i,247).toString()+"',"+
                     "grafik_kunjungan_perpekerjaan='"+tbUser.getValueAt(i,248).toString()+"',"+
-                    "grafik_kunjungan_perpendidikan='"+tbUser.getValueAt(i,249).toString()+"'");
+                    "grafik_kunjungan_perpendidikan='"+tbUser.getValueAt(i,249).toString()+"',"+
+                    "grafik_kunjungan_pertahun='"+tbUser.getValueAt(i,250).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1313,7 +1316,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "inhealth_referensi_poli,inhealth_referensi_faskes,inhealth_sjp,piutang_ralan,piutang_ranap,detail_piutang_penjab, "+
                         "lama_pelayanan_ralan,catatan_pasien,rl4b,rl4asebab,rl4bsebab,data_HAIs,harian_HAIs,bulanan_HAIs,hitung_bor,perusahaan_pasien, "+
                         "resep_dokter,lama_pelayanan_apotek,hitung_alos,detail_tindakan,rujukan_poli_internal,rekap_poli_anak,grafik_kunjungan_poli, "+
-                        "grafik_kunjungan_perdokter,grafik_kunjungan_perpekerjaan,grafik_kunjungan_perpendidikan from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_kunjungan_perdokter,grafik_kunjungan_perpekerjaan,grafik_kunjungan_perpendidikan,grafik_kunjungan_pertahun from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1574,7 +1577,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_kunjungan_poli"),
                                rs.getBoolean("grafik_kunjungan_perdokter"),
                                rs.getBoolean("grafik_kunjungan_perpekerjaan"),
-                               rs.getBoolean("grafik_kunjungan_perpendidikan")
+                               rs.getBoolean("grafik_kunjungan_perpendidikan"),
+                               rs.getBoolean("grafik_kunjungan_pertahun")
                             });
                         }   
                     } catch (Exception e) {
@@ -1825,7 +1829,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_kunjungan_poli"),
                            rs.getBoolean("grafik_kunjungan_perdokter"),
                            rs.getBoolean("grafik_kunjungan_perpekerjaan"),
-                           rs.getBoolean("grafik_kunjungan_perpendidikan") 
+                           rs.getBoolean("grafik_kunjungan_perpendidikan"),
+                           rs.getBoolean("grafik_kunjungan_pertahun") 
                         });
                     }                                             
                  }
