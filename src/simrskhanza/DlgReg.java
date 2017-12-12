@@ -20,15 +20,15 @@ import laporan.DlgFrekuensiPenyakitRalan;
 import keuangan.DlgBilingRalan;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
-import fungsi.grafikperiksaperagama;
-import fungsi.grafikperiksaperbulan;
-import fungsi.grafikperiksaperdokter;
-import fungsi.grafikperiksaperhari;
-import fungsi.grafikperiksaperjk;
-import fungsi.grafikperiksaperpekerjaan;
-import fungsi.grafikperiksaperpoli;
-import fungsi.grafikperiksapertahun;
-import fungsi.grafiksql;
+import grafikanalisa.grafikperiksaperagama;
+import grafikanalisa.grafikperiksaperbulan;
+import grafikanalisa.grafikperiksaperdokter;
+import grafikanalisa.grafikperiksaperhari;
+import grafikanalisa.grafikperiksaperjk;
+import grafikanalisa.grafikperiksaperpekerjaan;
+import grafikanalisa.grafikperiksaperpoli;
+import grafikanalisa.grafikperiksapertahun;
+import grafikanalisa.grafiksql;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -4977,7 +4977,7 @@ private void ppGrafikPerAgamaActionPerformed(java.awt.event.ActionEvent evt) {//
 }//GEN-LAST:event_ppGrafikPerAgamaActionPerformed
 
 private void ppGrafikPerTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikPerTahunActionPerformed
-      tampil();
+       tampil();
        grafikperiksapertahun kas=new grafikperiksapertahun("Grafik Periksa Per Tahun "+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(DTPCari2.getSelectedItem()+""),"where tgl_registrasi between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' ");
        kas.setSize(this.getWidth(), this.getHeight());        
        kas.setLocationRelativeTo(this);
