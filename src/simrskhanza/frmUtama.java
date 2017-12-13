@@ -200,6 +200,8 @@ import keuangan.DlgRHMenejemen;
 import keuangan.DlgRekapPoliAnak;
 import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgBulananHAIs;
+import laporan.DlgDkkPenyakitMenularRalan;
+import laporan.DlgDkkPenyakitMenularRanap;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
 import laporan.DlgHarianHAIs;
 import laporan.DlgHitungALOS;
@@ -650,6 +652,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikKunjunganPerPendidikan = new widget.ButtonBig();
         btnGrafikKunjunganPerTahun = new widget.ButtonBig();
         btnBerkasDigitalPerawatan = new widget.ButtonBig();
+        btnPnyMenularRanap = new widget.ButtonBig();
+        btnPnyMenularRalan = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3965,6 +3969,30 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnBerkasDigitalPerawatan);
 
+        btnPnyMenularRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnPnyMenularRanap.setText("Pny Menular Ranap");
+        btnPnyMenularRanap.setIconTextGap(0);
+        btnPnyMenularRanap.setName("btnPnyMenularRanap"); // NOI18N
+        btnPnyMenularRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPnyMenularRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPnyMenularRanapActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPnyMenularRanap);
+
+        btnPnyMenularRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnPnyMenularRalan.setText("Pny Menular Ralan");
+        btnPnyMenularRalan.setIconTextGap(0);
+        btnPnyMenularRalan.setName("btnPnyMenularRalan"); // NOI18N
+        btnPnyMenularRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPnyMenularRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPnyMenularRalanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPnyMenularRalan);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -3973,7 +4001,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/12/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13/12/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8635,6 +8663,30 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnBerkasDigitalPerawatanActionPerformed
 
+    private void btnPnyMenularRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPnyMenularRanapActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDkkPenyakitMenularRanap aplikasi=new DlgDkkPenyakitMenularRanap(this,false);
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPnyMenularRanapActionPerformed
+
+    private void btnPnyMenularRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPnyMenularRalanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDkkPenyakitMenularRalan aplikasi=new DlgDkkPenyakitMenularRalan(this,false);
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPnyMenularRalanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8821,6 +8873,8 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPiutangPerCaraBayar;
     private widget.ButtonBig btnPiutangRalan;
     private widget.ButtonBig btnPiutangRanap;
+    private widget.ButtonBig btnPnyMenularRalan;
+    private widget.ButtonBig btnPnyMenularRanap;
     private widget.ButtonBig btnPnyTakMenularRalan;
     private widget.ButtonBig btnPnyTakMenularRanap;
     private widget.ButtonBig btnPostingJurnal;
@@ -9913,6 +9967,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getpny_takmenular_ranap()==true){
                 Panelmenu.add(btnPnyTakMenularRanap);
+                jmlmenu++;
+            }
+            
+            if(var.getpenyakit_menular_ralan()==true){
+                Panelmenu.add(btnPnyMenularRalan);
+                jmlmenu++;
+            }
+
+            if(var.getpenyakit_menular_ranap()==true){
+                Panelmenu.add(btnPnyMenularRanap);
                 jmlmenu++;
             }
 
@@ -11172,6 +11236,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getpny_takmenular_ranap()==true){
             Panelmenu.add(btnPnyTakMenularRanap);
+            jmlmenu++;
+        }
+        
+        if(var.getpenyakit_menular_ralan()==true){
+            Panelmenu.add(btnPnyMenularRalan);
+            jmlmenu++;
+        }
+
+        if(var.getpenyakit_menular_ranap()==true){
+            Panelmenu.add(btnPnyMenularRanap);
             jmlmenu++;
         }
 
@@ -12689,6 +12763,20 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpny_takmenular_ranap()==true){
             if(btnPnyTakMenularRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPnyTakMenularRanap);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpenyakit_menular_ralan()==true){
+            if(btnPnyMenularRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPnyMenularRalan);
+                jmlmenu++;
+            }                
+        }
+
+        if(var.getpenyakit_menular_ranap()==true){
+            if(btnPnyMenularRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPnyMenularRanap);
                 jmlmenu++;
             }                
         }
