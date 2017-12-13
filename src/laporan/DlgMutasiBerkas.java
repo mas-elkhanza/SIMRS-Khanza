@@ -9,7 +9,7 @@
  * Created on 23 Jun 10, 19:03:08
  */
 
-package simrskhanza;
+package laporan;
 
 import fungsi.koneksiDB;
 import fungsi.validasi;
@@ -49,12 +49,13 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import simrskhanza.DlgPilihanCetakDokumen;
 
 /**
  *
  * @author perpustakaan
  */
-public class DlgHybrid extends javax.swing.JDialog {
+public class DlgMutasiBerkas extends javax.swing.JDialog {
     private final JFXPanel jfxPanel = new JFXPanel();
     private WebEngine engine;
  
@@ -72,7 +73,7 @@ public class DlgHybrid extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
     
-    public DlgHybrid(java.awt.Frame parent, boolean modal) {
+    public DlgMutasiBerkas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         initComponents2();
@@ -111,7 +112,7 @@ public class DlgHybrid extends javax.swing.JDialog {
                 
                 engine.titleProperty().addListener((ObservableValue<? extends String> observable, String oldValue, final String newValue) -> {
                     SwingUtilities.invokeLater(() -> {
-                        DlgHybrid.this.setTitle(newValue);
+                        DlgMutasiBerkas.this.setTitle(newValue);
                     });
                 });
                 
@@ -265,7 +266,7 @@ public class DlgHybrid extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout());
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -288,7 +289,7 @@ public class DlgHybrid extends javax.swing.JDialog {
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgHybrid dialog = new DlgHybrid(new javax.swing.JFrame(), true);
+            DlgMutasiBerkas dialog = new DlgMutasiBerkas(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
