@@ -58,7 +58,8 @@ public final class var {
             piutang_ranap=false,detail_piutang_penjab=false,lama_pelayanan_ralan=false,catatan_pasien=false,rl4b=false,rl4asebab=false,rl4bsebab=false,
             data_HAIs=false,harian_HAIs=false,bulanan_HAIs=false,hitung_bor=false,perusahaan_pasien=false,resep_dokter=false,lama_pelayanan_apotek=false,
             hitung_alos=false,detail_tindakan=false,rujukan_poli_internal=false,rekap_poli_anak=false,grafik_kunjungan_poli=false,grafik_kunjungan_perdokter=false,
-            grafik_kunjungan_perpekerjaan=false,grafik_kunjungan_perpendidikan=false;
+            grafik_kunjungan_perpekerjaan=false,grafik_kunjungan_perpendidikan=false,grafik_kunjungan_pertahun=false,berkas_digital_perawatan=false,
+            penyakit_menular_ranap=false,penyakit_menular_ralan=false,grafik_kunjungan_perbulan=false,grafik_kunjungan_pertanggal=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -330,6 +331,12 @@ public final class var {
                         var.grafik_kunjungan_perdokter=true;
                         var.grafik_kunjungan_perpekerjaan=true;
                         var.grafik_kunjungan_perpendidikan=true;
+                        var.grafik_kunjungan_pertahun=true;
+                        var.berkas_digital_perawatan=true;
+                        var.penyakit_menular_ranap=true;
+                        var.penyakit_menular_ralan=true;
+                        var.grafik_kunjungan_perbulan=true;
+                        var.grafik_kunjungan_pertanggal=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -583,6 +590,12 @@ public final class var {
                         var.grafik_kunjungan_perdokter=true;
                         var.grafik_kunjungan_perpekerjaan=true;
                         var.grafik_kunjungan_perpendidikan=true;
+                        var.grafik_kunjungan_pertahun=true;
+                        var.berkas_digital_perawatan=true;
+                        var.penyakit_menular_ranap=true;
+                        var.penyakit_menular_ralan=true;
+                        var.grafik_kunjungan_perbulan=true;
+                        var.grafik_kunjungan_pertanggal=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -837,6 +850,12 @@ public final class var {
                         var.grafik_kunjungan_perdokter=rs2.getBoolean("grafik_kunjungan_perdokter");
                         var.grafik_kunjungan_perpekerjaan=rs2.getBoolean("grafik_kunjungan_perpekerjaan");
                         var.grafik_kunjungan_perpendidikan=rs2.getBoolean("grafik_kunjungan_perpendidikan");
+                        var.grafik_kunjungan_pertahun=rs2.getBoolean("grafik_kunjungan_pertahun");
+                        var.berkas_digital_perawatan=rs2.getBoolean("berkas_digital_perawatan");
+                        var.penyakit_menular_ranap=rs2.getBoolean("penyakit_menular_ranap");
+                        var.penyakit_menular_ralan=rs2.getBoolean("penyakit_menular_ralan");
+                        var.grafik_kunjungan_perbulan=rs2.getBoolean("grafik_kunjungan_perbulan");                        
+                        var.grafik_kunjungan_pertanggal=rs2.getBoolean("grafik_kunjungan_pertanggal");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1089,6 +1108,12 @@ public final class var {
                         var.grafik_kunjungan_perdokter=false;
                         var.grafik_kunjungan_perpekerjaan=false;
                         var.grafik_kunjungan_perpendidikan=false;
+                        var.grafik_kunjungan_pertahun=false;
+                        var.berkas_digital_perawatan=false;
+                        var.penyakit_menular_ranap=false;
+                        var.penyakit_menular_ralan=false;
+                        var.grafik_kunjungan_perbulan=false;                    
+                        var.grafik_kunjungan_pertanggal=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1388,4 +1413,10 @@ public final class var {
     public static boolean getgrafik_kunjungan_perdokter(){return var.grafik_kunjungan_perdokter;}
     public static boolean getgrafik_kunjungan_perpekerjaan(){return var.grafik_kunjungan_perpekerjaan;}
     public static boolean getgrafik_kunjungan_perpendidikan(){return var.grafik_kunjungan_perpendidikan;}
+    public static boolean getgrafik_kunjungan_pertahun(){return var.grafik_kunjungan_pertahun;}
+    public static boolean getberkas_digital_perawatan(){return var.berkas_digital_perawatan;}
+    public static boolean getpenyakit_menular_ranap(){return var.penyakit_menular_ranap;}
+    public static boolean getpenyakit_menular_ralan(){return var.penyakit_menular_ralan;}
+    public static boolean getgrafik_kunjungan_perbulan(){return var.grafik_kunjungan_perbulan;}
+    public static boolean getgrafik_kunjungan_pertanggal(){return var.grafik_kunjungan_pertanggal;}
 }

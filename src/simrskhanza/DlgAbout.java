@@ -94,7 +94,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(90, 120, 80));
-        jLabel7.setText("Nama Aplikasi : Khanza SIMKES 2017");
+        jLabel7.setText("Nama Aplikasi : Khanza SIMKES 2018");
         jLabel7.setName("jLabel7"); // NOI18N
         panelGlass1.add(jLabel7);
         jLabel7.setBounds(36, 8, 200, 14);
