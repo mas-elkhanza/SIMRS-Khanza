@@ -178,6 +178,7 @@ import keuangan.DlgRekening;
 import keuangan.DlgRekeningTahun;
 import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
+import grafikanalisa.GrafikDemografiRegistrasi;
 import grafikanalisa.GrafikKunjunganPerBulan;
 import grafikanalisa.GrafikKunjunganPerDokter;
 import grafikanalisa.GrafikKunjunganPerPekerjaan;
@@ -658,6 +659,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPnyMenularRalan = new widget.ButtonBig();
         btnGrafikKunjunganPerBulan = new widget.ButtonBig();
         btnGrafikKunjunganPerTanggal = new widget.ButtonBig();
+        btnGrafikDemografiRegistrasi = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4020,6 +4022,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnGrafikKunjunganPerTanggal);
+
+        btnGrafikDemografiRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikDemografiRegistrasi.setText("Demografi Registrasi");
+        btnGrafikDemografiRegistrasi.setIconTextGap(0);
+        btnGrafikDemografiRegistrasi.setName("btnGrafikDemografiRegistrasi"); // NOI18N
+        btnGrafikDemografiRegistrasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikDemografiRegistrasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikDemografiRegistrasiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikDemografiRegistrasi);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -8737,6 +8751,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikKunjunganPerTanggalActionPerformed
 
+    private void btnGrafikDemografiRegistrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikDemografiRegistrasiActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikDemografiRegistrasi aplikasi=new GrafikDemografiRegistrasi(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikDemografiRegistrasiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -8839,6 +8864,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnDokter;
     private widget.ButtonBig btnFrekuensiRalan;
     private widget.ButtonBig btnFrekuensiRanap;
+    private widget.ButtonBig btnGrafikDemografiRegistrasi;
     private widget.ButtonBig btnGrafikKunjunganPerBulan;
     private widget.ButtonBig btnGrafikKunjunganPerDokter;
     private widget.ButtonBig btnGrafikKunjunganPerPekerjaan;
@@ -10532,6 +10558,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikKunjunganPerTanggal);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_kunjungan_demografi()==true){
+                Panelmenu.add(btnGrafikDemografiRegistrasi);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -11804,6 +11835,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getgrafik_kunjungan_pertanggal()==true){
             Panelmenu.add(btnGrafikKunjunganPerTanggal);
+            jmlmenu++;
+        }
+
+        if(var.getgrafik_kunjungan_demografi()==true){
+            Panelmenu.add(btnGrafikDemografiRegistrasi);
             jmlmenu++;
         }
 
@@ -13542,6 +13578,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_kunjungan_pertanggal()==true){
             if(btnGrafikKunjunganPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_kunjungan_demografi()==true){
+            if(btnGrafikDemografiRegistrasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikDemografiRegistrasi);
                 jmlmenu++;
             }                
         }
