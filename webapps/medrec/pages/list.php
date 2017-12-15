@@ -22,7 +22,7 @@
                 $keyword     =isset($_GET['keyword'])?$_GET['keyword']:NULL;
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
-    <div style="width: 100%; height: 90%; overflow: auto;">
+    <div style="width: 100%; height: 91%; overflow: auto;">
     <?php
         
 	$keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
