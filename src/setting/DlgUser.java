@@ -94,7 +94,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[I]RL 4A Morbiditas Ralan","[I]RL 4B Morbiditas Ralan","[L]Data HAIs","[I]Harian HAIs","[I]Bulanan HAIs","[I]Hitung BOR","[L]Instansi/Perusahaan Pasien","[D]Resep Dokter",
                     "[I]Lama Pelayanan Apotek","[I]Hitung ALOS","[H]Detail Tindakan","[A]Rujukan Poli Internal","[H]Rekap Poli Anak","[N]Kunjungan Reg Per Poli","[N]Kunjungan Reg Per Dokter",
                     "[N]Kunjungan Reg Per Pekerjaan","[N]Kunjungan Reg Per Pendidikan","[N]Kunjungan Reg Per Tahun","[L]Berkas Digital Perawatan","[I]Pny Menular Ranap","[I]Pny Menular Ralan",
-                    "[N]Kunjungan Reg Per Bulan","[N]Kunjungan Reg Per Tanggal","[N]Demografi Registrasi"
+                    "[N]Kunjungan Reg Per Bulan","[N]Kunjungan Reg Per Tanggal","[N]Demografi Registrasi","[N]Reg Lama Per Tahun"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -187,7 +187,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 257;i++) {
+        for (i = 0; i < 258;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -337,6 +337,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(155);
             }else if(i==256){
                 column.setPreferredWidth(120);
+            }else if(i==257){
+                column.setPreferredWidth(119);
             }else{
                 column.setPreferredWidth(120);
             }
@@ -771,7 +773,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1070,7 +1072,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "penyakit_menular_ralan='"+tbUser.getValueAt(i,253).toString()+"',"+
                     "grafik_kunjungan_perbulan='"+tbUser.getValueAt(i,254).toString()+"',"+
                     "grafik_kunjungan_pertanggal='"+tbUser.getValueAt(i,255).toString()+"',"+
-                    "grafik_kunjungan_demografi='"+tbUser.getValueAt(i,256).toString()+"'");
+                    "grafik_kunjungan_demografi='"+tbUser.getValueAt(i,256).toString()+"',"+
+                    "grafik_kunjungan_statusdaftartahun='"+tbUser.getValueAt(i,257).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1337,7 +1340,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "resep_dokter,lama_pelayanan_apotek,hitung_alos,detail_tindakan,rujukan_poli_internal,rekap_poli_anak,grafik_kunjungan_poli, "+
                         "grafik_kunjungan_perdokter,grafik_kunjungan_perpekerjaan,grafik_kunjungan_perpendidikan,grafik_kunjungan_pertahun,"+
                         "berkas_digital_perawatan,penyakit_menular_ranap,penyakit_menular_ralan,grafik_kunjungan_perbulan,grafik_kunjungan_pertanggal, "+
-                        "grafik_kunjungan_demografi from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_kunjungan_demografi,grafik_kunjungan_statusdaftartahun from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1605,7 +1608,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("penyakit_menular_ralan"),
                                rs.getBoolean("grafik_kunjungan_perbulan"),
                                rs.getBoolean("grafik_kunjungan_pertanggal"),
-                               rs.getBoolean("grafik_kunjungan_demografi")
+                               rs.getBoolean("grafik_kunjungan_demografi"),
+                               rs.getBoolean("grafik_kunjungan_statusdaftartahun")
                             });
                         }   
                     } catch (Exception e) {
@@ -1863,7 +1867,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("penyakit_menular_ralan"),
                            rs.getBoolean("grafik_kunjungan_perbulan"),
                            rs.getBoolean("grafik_kunjungan_pertanggal"),
-                           rs.getBoolean("grafik_kunjungan_demografi") 
+                           rs.getBoolean("grafik_kunjungan_demografi"),
+                           rs.getBoolean("grafik_kunjungan_statusdaftartahun") 
                         });
                     }                                             
                  }
