@@ -2,7 +2,7 @@
 body  {
 	font-family:Tahoma;
 	font-size:11px;
-	background: #fafff5;
+	background: #fffff9;
 	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
 	padding: 0;
 	color: #65795b;
@@ -12,10 +12,10 @@ h1 {
 }
 #container { 
 	width: 100%;  /* using 20px less than a full 800px width allows for browser chrome and avoids a horizontal scroll bar */
-	background: #fafff5;
+	background: #fffff9;
 } 
 #header { 
-	background: #fafff5;
+	background: #fffff9;
 	width: 900px;
 	height: 168px;
 }
@@ -106,7 +106,7 @@ h1 {
 }
 #navcontainer table {
 	margin: auto 0;
-	background: #fafff5;
+	background: #fffff9;
 	float: left;
 	width: 100%;
         border-bottom-width: 1px;
@@ -170,7 +170,7 @@ h1 {
 #post ul li{
 	background:url(images/blue-add.png) no-repeat left #f2f7ed;
         background-position:5px 5px;
-        border-bottom:1px #fafff5 solid;
+        border-bottom:1px #fffff9 solid;
         text-decoration:none;
         color:#65795b;
         padding:0 0 0 30px;
@@ -183,7 +183,7 @@ h1 {
 #post p{
 	background: #f2f7ed;
         background-position:5px 5px;
-        border-bottom:1px #fafff5 solid;
+        border-bottom:1px #fffff9 solid;
         text-decoration:none;
         color:#65795b;
         padding:0 0 0 10px;
@@ -268,7 +268,7 @@ color: #65795b;
 .isi td{
 	border-right: 1px solid #f2f7ed;
 	border-bottom: 1px solid #f2f7ed;
-	background: #fafff5;
+	background: #fffff9;
 	padding-top:4px;
 	padding-bottom:4px;
 	padding-left:2px;
@@ -288,9 +288,9 @@ color: #65795b;
 }
 
 .isi3 td{
-	border-right: 1px solid #fafff5;
-	border-bottom: 1px solid #fafff5;
-	background: #fafff5;
+	border-right: 1px solid #fffff9;
+	border-bottom: 1px solid #fffff9;
+	background: #fffff9;
 	padding-left:2px;
 	padding-right:0px;
 	color:#65795b;
@@ -305,7 +305,7 @@ color: #65795b;
 	border-top: 1px solid #f2f7ed;
 	letter-spacing: 1px;
 	padding: 4px 2px 4px 10px;
-	background: #fafff5 ;
+	background: #fffff9 ;
 }
 
 .isi5 td{
@@ -321,9 +321,9 @@ color: #65795b;
 }
 
 .isi6 td{
-	border-right: 1px solid #fafff5;
-	border-bottom: 1px solid #fafff5;
-	background: #fafff5;
+	border-right: 1px solid #fffff9;
+	border-bottom: 1px solid #fffff9;
+	background: #fffff9;
 	padding-top:0px;
 	padding-bottom:0px;
 	padding-left:1px;
@@ -343,7 +343,7 @@ color: #65795b;
 }
 
 .text {
-	background: #fafff5;
+	background: #fffff9;
         font-size: 11px;
         font: Tahoma;
 	padding: 3px 0 3px 5px;
@@ -352,7 +352,7 @@ color: #65795b;
 }
 
 .text2 {
-	background: #fafff5;
+	background: #fffff9;
         font-size: 11px;
         font: Tahoma;
 	padding: 3px 0 3px 5px;
@@ -362,7 +362,7 @@ color: #65795b;
 }
 
 .text3 {
-	background: #fafff5;
+	background: #fffff9;
         font-size: 11px;
         font: Tahoma;
 	padding: 3px 0 3px 5px;
@@ -418,6 +418,6 @@ background:#7bbcc7; color:#aaceaf;background-position:5px 5px;font: 11px  Tahoma
         display:inline;
         background:url(images/65.png) no-repeat left #e6ebe1;
         background-position:4px 5px;
-        border-bottom:1px #fafff5 solid;
+        border-bottom:1px #fffff9 solid;
         color:#65795b;
 }
