@@ -1982,7 +1982,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 "select kamar.kelas from kamar inner join kamar_inap "+
                 "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
                 "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
-        }else if(status.equals("Ranap")){
+        }else if(status.equals("Ralan")){
             kelas="Rawat Jalan";
         }
     }
