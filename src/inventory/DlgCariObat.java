@@ -71,7 +71,10 @@ public final class DlgCariObat extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"K","Jumlah","Kode Barang","Nama Barang","Satuan","Letak Barang","Harga(Rp)","Jenis Obat","Embalase","Tuslah","Stok","Aturan Pakai","I.F.","H.Beli"};
+        Object[] row={"K","Jumlah","Kode Barang","Nama Barang","Satuan",
+            "Letak Barang","Harga(Rp)","Jenis Obat","Embalase","Tuslah",
+            "Stok","Aturan Pakai","I.F.","H.Beli"
+        };
         tabModeobat=new DefaultTableModel(null,row){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
