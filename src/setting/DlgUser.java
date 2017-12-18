@@ -94,7 +94,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[I]RL 4A Morbiditas Ralan","[I]RL 4B Morbiditas Ralan","[L]Data HAIs","[I]Harian HAIs","[I]Bulanan HAIs","[I]Hitung BOR","[L]Instansi/Perusahaan Pasien","[D]Resep Dokter",
                     "[I]Lama Pelayanan Apotek","[I]Hitung ALOS","[H]Detail Tindakan","[A]Rujukan Poli Internal","[H]Rekap Poli Anak","[N]Kunjungan Reg Per Poli","[N]Kunjungan Reg Per Dokter",
                     "[N]Kunjungan Reg Per Pekerjaan","[N]Kunjungan Reg Per Pendidikan","[N]Kunjungan Reg Per Tahun","[L]Berkas Digital Perawatan","[I]Pny Menular Ranap","[I]Pny Menular Ralan",
-                    "[N]Kunjungan Reg Per Bulan","[N]Kunjungan Reg Per Tanggal"
+                    "[N]Kunjungan Reg Per Bulan","[N]Kunjungan Reg Per Tanggal","[N]Demografi Registrasi","[N]Reg Lama Per Tahun","[N]Reg Lama Per Tahun"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -187,7 +187,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 256;i++) {
+        for (i = 0; i < 259;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -335,6 +335,12 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(142);
             }else if(i==255){
                 column.setPreferredWidth(155);
+            }else if(i==256){
+                column.setPreferredWidth(120);
+            }else if(i==257){
+                column.setPreferredWidth(120);
+            }else if(i==258){
+                column.setPreferredWidth(120);
             }else{
                 column.setPreferredWidth(120);
             }
@@ -769,7 +775,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1067,7 +1073,10 @@ public class DlgUser extends javax.swing.JDialog {
                     "penyakit_menular_ranap='"+tbUser.getValueAt(i,252).toString()+"',"+
                     "penyakit_menular_ralan='"+tbUser.getValueAt(i,253).toString()+"',"+
                     "grafik_kunjungan_perbulan='"+tbUser.getValueAt(i,254).toString()+"',"+
-                    "grafik_kunjungan_pertanggal='"+tbUser.getValueAt(i,255).toString()+"'");
+                    "grafik_kunjungan_pertanggal='"+tbUser.getValueAt(i,255).toString()+"',"+
+                    "grafik_kunjungan_demografi='"+tbUser.getValueAt(i,256).toString()+"',"+
+                    "grafik_kunjungan_statusdaftartahun='"+tbUser.getValueAt(i,257).toString()+"',"+
+                    "grafik_kunjungan_statusdaftartahun2='"+tbUser.getValueAt(i,258).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1333,8 +1342,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "lama_pelayanan_ralan,catatan_pasien,rl4b,rl4asebab,rl4bsebab,data_HAIs,harian_HAIs,bulanan_HAIs,hitung_bor,perusahaan_pasien, "+
                         "resep_dokter,lama_pelayanan_apotek,hitung_alos,detail_tindakan,rujukan_poli_internal,rekap_poli_anak,grafik_kunjungan_poli, "+
                         "grafik_kunjungan_perdokter,grafik_kunjungan_perpekerjaan,grafik_kunjungan_perpendidikan,grafik_kunjungan_pertahun,"+
-                        "berkas_digital_perawatan,penyakit_menular_ranap,penyakit_menular_ralan,grafik_kunjungan_perbulan,grafik_kunjungan_pertanggal "+
-                        "from user order by AES_DECRYPT(id_user,'nur')");
+                        "berkas_digital_perawatan,penyakit_menular_ranap,penyakit_menular_ralan,grafik_kunjungan_perbulan,grafik_kunjungan_pertanggal, "+
+                        "grafik_kunjungan_demografi,grafik_kunjungan_statusdaftartahun,grafik_kunjungan_statusdaftartahun2 from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1601,7 +1610,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("penyakit_menular_ranap"),
                                rs.getBoolean("penyakit_menular_ralan"),
                                rs.getBoolean("grafik_kunjungan_perbulan"),
-                               rs.getBoolean("grafik_kunjungan_pertanggal")
+                               rs.getBoolean("grafik_kunjungan_pertanggal"),
+                               rs.getBoolean("grafik_kunjungan_demografi"),
+                               rs.getBoolean("grafik_kunjungan_statusdaftartahun"),
+                               rs.getBoolean("grafik_kunjungan_statusdaftartahun2")
                             });
                         }   
                     } catch (Exception e) {
@@ -1858,7 +1870,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("penyakit_menular_ranap"),
                            rs.getBoolean("penyakit_menular_ralan"),
                            rs.getBoolean("grafik_kunjungan_perbulan"),
-                           rs.getBoolean("grafik_kunjungan_pertanggal") 
+                           rs.getBoolean("grafik_kunjungan_pertanggal"),
+                           rs.getBoolean("grafik_kunjungan_demografi"),
+                           rs.getBoolean("grafik_kunjungan_statusdaftartahun"),
+                           rs.getBoolean("grafik_kunjungan_statusdaftartahun2") 
                         });
                     }                                             
                  }

@@ -47,13 +47,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.event.DocumentEvent;
-import simrskhanza.DlgCatatan;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgKabupaten;
-import simrskhanza.DlgKecamatan;
-import simrskhanza.DlgKelurahan;
-import simrskhanza.DlgPenanggungJawab;
-import simrskhanza.DlgResumePerawatan;
 
 
 /**
