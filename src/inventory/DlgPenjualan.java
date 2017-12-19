@@ -1364,9 +1364,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         psstok.close();
                     }
                 }                    
-                tbDokter.setValueAt(stokbarang,i,11);
+                tbDokter.setValueAt(stokbarang,i,14);
             } catch (Exception e) {
-                tbDokter.setValueAt(0,i,10);
+                tbDokter.setValueAt(0,i,14);
             }
         }
     }//GEN-LAST:event_ppStokActionPerformed
