@@ -95,7 +95,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[I]Lama Pelayanan Apotek","[I]Hitung ALOS","[H]Detail Tindakan","[A]Rujukan Poli Internal","[H]Rekap Poli Anak","[N]Kunjungan Reg Per Poli","[N]Kunjungan Reg Per Dokter",
                     "[N]Kunjungan Reg Per Pekerjaan","[N]Kunjungan Reg Per Pendidikan","[N]Kunjungan Reg Per Tahun","[L]Berkas Digital Perawatan","[I]Pny Menular Ranap","[I]Pny Menular Ralan",
                     "[N]Kunjungan Reg Per Bulan","[N]Kunjungan Reg Per Tanggal","[N]Demografi Registrasi","[N]Reg Lama Per Tahun","[N]Reg Baru Per Tahun","[N]Reg Lama Per Bulan","[N]Reg Baru Per Bulan",
-                    "[N]Reg Lama Per Tanggal","[N]Reg Baru Per Tanggal","[N]Batal Periksa Per Tahun"
+                    "[N]Reg Lama Per Tanggal","[N]Reg Baru Per Tanggal","[N]Batal Periksa Per Tahun","[N]Batal Periksa Per Bulan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -188,7 +188,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 264;i++) {
+        for (i = 0; i < 265;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -351,7 +351,9 @@ public class DlgUser extends javax.swing.JDialog {
             }else if(i==262){
                 column.setPreferredWidth(125);
             }else if(i==263){
-                column.setPreferredWidth(135);
+                column.setPreferredWidth(134);
+            }else if(i==264){
+                column.setPreferredWidth(130);
             }else{
                 column.setPreferredWidth(120);
             }
@@ -786,7 +788,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1092,7 +1095,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_kunjungan_statusdaftarbulan2='"+tbUser.getValueAt(i,260).toString()+"',"+
                     "grafik_kunjungan_statusdaftartanggal='"+tbUser.getValueAt(i,261).toString()+"',"+
                     "grafik_kunjungan_statusdaftartanggal2='"+tbUser.getValueAt(i,262).toString()+"',"+
-                    "grafik_kunjungan_statusbataltahun='"+tbUser.getValueAt(i,263).toString()+"'");
+                    "grafik_kunjungan_statusbataltahun='"+tbUser.getValueAt(i,263).toString()+"',"+
+                    "grafik_kunjungan_statusbatalbulan='"+tbUser.getValueAt(i,264).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1361,7 +1365,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "berkas_digital_perawatan,penyakit_menular_ranap,penyakit_menular_ralan,grafik_kunjungan_perbulan,grafik_kunjungan_pertanggal, "+
                         "grafik_kunjungan_demografi,grafik_kunjungan_statusdaftartahun,grafik_kunjungan_statusdaftartahun2, "+
                         "grafik_kunjungan_statusdaftarbulan,grafik_kunjungan_statusdaftarbulan2,grafik_kunjungan_statusdaftartanggal,"+
-                        "grafik_kunjungan_statusdaftartanggal2,grafik_kunjungan_statusbataltahun from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_kunjungan_statusdaftartanggal2,grafik_kunjungan_statusbataltahun,grafik_kunjungan_statusbatalbulan from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1636,7 +1640,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_kunjungan_statusdaftarbulan2"),
                                rs.getBoolean("grafik_kunjungan_statusdaftartanggal"),
                                rs.getBoolean("grafik_kunjungan_statusdaftartanggal2"),
-                               rs.getBoolean("grafik_kunjungan_statusbataltahun")
+                               rs.getBoolean("grafik_kunjungan_statusbataltahun"),
+                               rs.getBoolean("grafik_kunjungan_statusbatalbulan")
                             });
                         }   
                     } catch (Exception e) {
@@ -1901,7 +1906,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_kunjungan_statusdaftarbulan2"),
                            rs.getBoolean("grafik_kunjungan_statusdaftartanggal"),
                            rs.getBoolean("grafik_kunjungan_statusdaftartanggal2"),
-                           rs.getBoolean("grafik_kunjungan_statusbataltahun") 
+                           rs.getBoolean("grafik_kunjungan_statusbataltahun"),
+                           rs.getBoolean("grafik_kunjungan_statusbatalbulan") 
                         });
                     }                                             
                  }
