@@ -61,7 +61,7 @@ public final class var {
             grafik_kunjungan_perpekerjaan=false,grafik_kunjungan_perpendidikan=false,grafik_kunjungan_pertahun=false,berkas_digital_perawatan=false,
             penyakit_menular_ranap=false,penyakit_menular_ralan=false,grafik_kunjungan_perbulan=false,grafik_kunjungan_pertanggal=false,grafik_kunjungan_demografi=false,
             grafik_kunjungan_statusdaftartahun=false,grafik_kunjungan_statusdaftartahun2=false,grafik_kunjungan_statusdaftarbulan=false,grafik_kunjungan_statusdaftarbulan2=false,
-            grafik_kunjungan_statusdaftartanggal=false,grafik_kunjungan_statusdaftartanggal2=false,grafik_kunjungan_statusbataltahun=false;
+            grafik_kunjungan_statusdaftartanggal=false,grafik_kunjungan_statusdaftartanggal2=false,grafik_kunjungan_statusbataltahun=false,grafik_kunjungan_statusbatalbulan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -347,6 +347,7 @@ public final class var {
                         var.grafik_kunjungan_statusdaftartanggal=true;
                         var.grafik_kunjungan_statusdaftartanggal2=true;
                         var.grafik_kunjungan_statusbataltahun=true;
+                        var.grafik_kunjungan_statusbatalbulan=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -614,6 +615,7 @@ public final class var {
                         var.grafik_kunjungan_statusdaftartanggal=true;
                         var.grafik_kunjungan_statusdaftartanggal2=true;
                         var.grafik_kunjungan_statusbataltahun=true;
+                        var.grafik_kunjungan_statusbatalbulan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -882,6 +884,7 @@ public final class var {
                         var.grafik_kunjungan_statusdaftartanggal=rs2.getBoolean("grafik_kunjungan_statusdaftartanggal");
                         var.grafik_kunjungan_statusdaftartanggal2=rs2.getBoolean("grafik_kunjungan_statusdaftartanggal2");
                         var.grafik_kunjungan_statusbataltahun=rs2.getBoolean("grafik_kunjungan_statusbataltahun");
+                        var.grafik_kunjungan_statusbatalbulan=rs2.getBoolean("grafik_kunjungan_statusbatalbulan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1148,6 +1151,7 @@ public final class var {
                         var.grafik_kunjungan_statusdaftartanggal=false;
                         var.grafik_kunjungan_statusdaftartanggal2=false;
                         var.grafik_kunjungan_statusbataltahun=false;
+                        var.grafik_kunjungan_statusbatalbulan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1461,4 +1465,5 @@ public final class var {
     public static boolean getgrafik_kunjungan_statusdaftartanggal(){return var.grafik_kunjungan_statusdaftartanggal;} 
     public static boolean getgrafik_kunjungan_statusdaftartanggal2(){return var.grafik_kunjungan_statusdaftartanggal2;} 
     public static boolean getgrafik_kunjungan_statusbataltahun(){return var.grafik_kunjungan_statusbataltahun;} 
+    public static boolean getgrafik_kunjungan_statusbatalbulan(){return var.grafik_kunjungan_statusbatalbulan;}
 }
