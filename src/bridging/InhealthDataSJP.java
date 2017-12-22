@@ -1998,10 +1998,10 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
       
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getbpjs_sep());
-        BtnHapus.setEnabled(var.getbpjs_sep());
-        BtnPrint.setEnabled(var.getbpjs_sep());
-        BtnEdit.setEnabled(var.getbpjs_sep());        
+        BtnSimpan.setEnabled(var.getinhealth_sjp());
+        BtnHapus.setEnabled(var.getinhealth_sjp());
+        BtnPrint.setEnabled(var.getinhealth_sjp());
+        BtnEdit.setEnabled(var.getinhealth_sjp());        
     }
     
     private void getData() {
