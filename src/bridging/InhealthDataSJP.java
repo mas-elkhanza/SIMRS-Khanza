@@ -1534,7 +1534,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
                         KdPpkRujukan.setText(root.path("KODEPROVIDER").asText());
                         NmPpkRujukan.setText(root.path("NAMAPROVIDER").asText());
                         jkel=Sequel.cariIsi("select jk from pasien where no_rkm_medis=?",TNoRM.getText());
-                        JK.setText(jkel.replaceAll("P","PEREMPUAN").replaceAll("L","LAKI_LAKI"));
+                        JK.setText(jkel.replaceAll("P","PEREMPUAN").replaceAll("L","LAKI-LAKI"));
                     }else {
                         emptTeks();
                         JOptionPane.showMessageDialog(null,root.path("ERRORDESC").asText());                
