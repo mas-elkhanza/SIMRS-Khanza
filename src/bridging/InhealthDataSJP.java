@@ -575,7 +575,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel26.setBounds(6, 32, 100, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2017 14:47:21" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-12-2017 21:47:49" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -771,7 +771,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-12-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -786,7 +786,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-12-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -912,7 +912,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel20.setBounds(509, 72, 70, 23);
 
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2017 14:47:21" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-12-2017 21:47:48" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -932,7 +932,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         jLabel22.setBounds(0, 70, 87, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2017 14:47:21" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-12-2017 21:47:48" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);

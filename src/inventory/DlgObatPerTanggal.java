@@ -616,7 +616,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
                 param.put("jd29","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")");
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
-                Valid.MyReport("rptObatPerTanggal.jrxml","report","::[ Pemberian Obat Ke Paien Per Tanggal ]::","select * from temporary",param);            
+                Valid.MyReport("rptObatPerTanggal.jrxml","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::","select * from temporary",param);            
                                  
         }
         this.setCursor(Cursor.getDefaultCursor());

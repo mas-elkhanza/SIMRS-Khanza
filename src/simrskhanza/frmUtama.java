@@ -200,6 +200,7 @@ import inventory.DlgDaftarPermintaanResep;
 import inventory.DlgGolongan;
 import inventory.DlgKategori;
 import inventory.DlgObatPerTanggal;
+import inventory.DlgPenjualanPerTanggal;
 import inventory.DlgRiwayatBarangMedis;
 import java.awt.event.KeyListener;
 import javax.swing.event.DocumentEvent;
@@ -686,6 +687,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnKategoriBarang = new widget.ButtonBig();
         btnGolonganBarang = new widget.ButtonBig();
         btnObatPerTanggal = new widget.ButtonBig();
+        btnPenjualanPerTanggal = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4218,6 +4220,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnObatPerTanggal);
 
+        btnPenjualanPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360485865_schedule.png"))); // NOI18N
+        btnPenjualanPerTanggal.setText("Penjualan Bebas Per Tanggal");
+        btnPenjualanPerTanggal.setIconTextGap(0);
+        btnPenjualanPerTanggal.setName("btnPenjualanPerTanggal"); // NOI18N
+        btnPenjualanPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenjualanPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenjualanPerTanggalActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPenjualanPerTanggal);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4226,7 +4240,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/12/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27/12/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -9091,6 +9105,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnObatPerTanggalActionPerformed
 
+    private void btnPenjualanPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjualanPerTanggalActionPerformed
+        isTutup();
+        DlgPenjualanPerTanggal form=new DlgPenjualanPerTanggal(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPenjualanPerTanggalActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9285,6 +9309,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPengeluaranIpsrs;
     private widget.ButtonBig btnPenggajian;
     private widget.ButtonBig btnPenjualan;
+    private widget.ButtonBig btnPenjualanPerTanggal;
     private widget.ButtonBig btnPenyakitPD3I;
     private widget.ButtonBig btnPeriksaRadiologi;
     private widget.ButtonBig btnPerusahaan;
@@ -10037,6 +10062,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getpemberian_obat_pertanggal()==true){
                 Panelmenu.add(btnObatPerTanggal);
+                jmlmenu++;
+            }
+            
+            if(var.getpenjualan_obat_pertanggal()==true){
+                Panelmenu.add(btnPenjualanPerTanggal);
                 jmlmenu++;
             }
 
@@ -11397,6 +11427,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpemberian_obat_pertanggal()==true){
             Panelmenu.add(btnObatPerTanggal);
+            jmlmenu++;
+        }
+        
+        if(var.getpenjualan_obat_pertanggal()==true){
+            Panelmenu.add(btnPenjualanPerTanggal);
             jmlmenu++;
         }
 
@@ -12866,6 +12901,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpemberian_obat_pertanggal()==true){
             if(btnObatPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnObatPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpenjualan_obat_pertanggal()==true){
+            if(btnPenjualanPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenjualanPerTanggal);
                 jmlmenu++;
             }                
         }

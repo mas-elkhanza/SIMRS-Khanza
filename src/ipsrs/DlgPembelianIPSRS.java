@@ -65,7 +65,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         for (i = 0; i < 9; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(42);
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){

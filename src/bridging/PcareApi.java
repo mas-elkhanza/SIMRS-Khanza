@@ -26,8 +26,7 @@ public class PcareApi {
 	try {
 	    generateHmacSHA256Signature = generateHmacSHA256Signature(salt,secretKey);
 	} catch (GeneralSecurityException e) {
-	    // TODO Auto-generated catch block
-            System.out.println("Error Signature : "+e);
+	    System.out.println("Error Signature : "+e);
 	    e.printStackTrace();
 	}
 
