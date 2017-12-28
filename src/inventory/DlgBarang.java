@@ -355,7 +355,7 @@ public class DlgBarang extends javax.swing.JDialog {
                         nmgolongan.setText(golongan.getTable().getValueAt(golongan.getTable().getSelectedRow(), 1).toString());
                     }
                 }
-                kdsat.requestFocus();
+                kdgolongan.requestFocus();
             }
 
             @Override
@@ -393,7 +393,7 @@ public class DlgBarang extends javax.swing.JDialog {
                         nmkategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(), 1).toString());
                     }
                 }
-                kdsat.requestFocus();
+                kdkategori.requestFocus();
             }
 
             @Override
