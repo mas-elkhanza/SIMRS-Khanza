@@ -230,22 +230,17 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
-        TNoRw.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         TKdPny.setName("TKdPny"); // NOI18N
-        TKdPny.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         Tanggal.setHighlighter(null);
         Tanggal.setName("Tanggal"); // NOI18N
-        Tanggal.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         Jam.setHighlighter(null);
         Jam.setName("Jam"); // NOI18N
-        Jam.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         KdPj.setHighlighter(null);
         KdPj.setName("KdPj"); // NOI18N
-        KdPj.setSelectionColor(new java.awt.Color(255, 255, 255));
         KdPj.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KdPjKeyPressed(evt);
@@ -254,7 +249,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         kelas.setHighlighter(null);
         kelas.setName("kelas"); // NOI18N
-        kelas.setSelectionColor(new java.awt.Color(255, 255, 255));
         kelas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 kelasKeyPressed(evt);
@@ -270,7 +264,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
