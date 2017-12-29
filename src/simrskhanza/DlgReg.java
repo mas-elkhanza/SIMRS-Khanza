@@ -95,7 +95,8 @@ public final class DlgReg extends javax.swing.JDialog {
     private int pilihan=0,i=0;
     private Date cal=new Date();
     private String URUTNOREG="",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",
-            validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi");
+            validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi"),
+            validasicatatan=Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private char ESC = 27;
     // ganti kertas
@@ -7884,6 +7885,21 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis=? and (stts='Sudah' or stts='Belum') ",TNoRM.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak kasir.. !!");
             }else{
+                if(validasicatatan.equals("Yes")){
+                    if(Sequel.cariInteger("select count(no_rkm_medis) from catatan_pasien where no_rkm_medis=?",TNoRM.getText())>0){
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        DlgCatatan catatan=new DlgCatatan(null,true);
+                        catatan.setNoRm(TNoRM.getText());
+                        catatan.setSize(720,330);
+                        catatan.setLocationRelativeTo(internalFrame1);
+                        catatan.setVisible(true);
+                        this.setCursor(Cursor.getDefaultCursor());
+                    }
+                }                    
+                isCekPasien();
+            }
+        }else{
+            if(validasicatatan.equals("Yes")){
                 if(Sequel.cariInteger("select count(no_rkm_medis) from catatan_pasien where no_rkm_medis=?",TNoRM.getText())>0){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     DlgCatatan catatan=new DlgCatatan(null,true);
@@ -7893,9 +7909,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     catatan.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
-                isCekPasien();
             }
-        }else{
             isCekPasien();
         }        
     }
