@@ -36,6 +36,7 @@ import bridging.InhealthCekReferensiFaskes;
 import bridging.InhealthCekReferensiPoli;
 import bridging.InhealthDataSJP;
 import bridging.InhealthReferensiJenpelRuang;
+import bridging.PCareCekReferensiDokter;
 import bridging.PCareCekReferensiPenyakit;
 import informasi.InformasiAnalisaKamin;
 import laporan.DlgDkkSurveilansRalan;
@@ -688,6 +689,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGolonganBarang = new widget.ButtonBig();
         btnObatPerTanggal = new widget.ButtonBig();
         btnPenjualanPerTanggal = new widget.ButtonBig();
+        btnCekPCareDokter = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -3789,7 +3791,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnRl4b);
 
         btnRl4asebab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582089_Finance_financial_report.png"))); // NOI18N
-        btnRl4asebab.setText("RL 4A Sebab Morbiditas Ralan");
+        btnRl4asebab.setText("RL 4A Sebab Morbiditas Ranap");
         btnRl4asebab.setIconTextGap(0);
         btnRl4asebab.setName("btnRl4asebab"); // NOI18N
         btnRl4asebab.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -4232,6 +4234,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPenjualanPerTanggal);
 
+        btnCekPCareDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor2.png"))); // NOI18N
+        btnCekPCareDokter.setText("Referensi Dokter PCare");
+        btnCekPCareDokter.setIconTextGap(0);
+        btnCekPCareDokter.setName("btnCekPCareDokter"); // NOI18N
+        btnCekPCareDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekPCareDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekPCareDokterActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCekPCareDokter);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4240,7 +4254,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27/12/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29/12/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -9115,6 +9129,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPenjualanPerTanggalActionPerformed
 
+    private void btnCekPCareDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekPCareDokterActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareCekReferensiDokter form=new PCareCekReferensiDokter(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCekPCareDokterActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9204,6 +9229,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekInhealthFaskes;
     private widget.ButtonBig btnCekInhealthPoli;
     private widget.ButtonBig btnCekPCareDiagnosa;
+    private widget.ButtonBig btnCekPCareDokter;
     private widget.ButtonBig btnClosingKasir;
     private widget.ButtonBig btnDaftarPermintaanResep;
     private widget.ButtonBig btnDaruratStok;
@@ -10808,6 +10834,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnCekPCareDiagnosa);
                 jmlmenu++;
             }
+            
+            if(var.getpcare_cek_dokter()==true){
+                Panelmenu.add(btnCekPCareDokter);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==11){ 
             jmlmenu=0;
             if(var.getperusahaan_pasien()==true){
@@ -12158,6 +12189,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_cek_penyakit()==true){
             Panelmenu.add(btnCekPCareDiagnosa);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_cek_dokter()==true){
+            Panelmenu.add(btnCekPCareDokter);
             jmlmenu++;
         }
 
@@ -13923,6 +13959,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_cek_penyakit()==true){
             if(btnCekPCareDiagnosa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekPCareDiagnosa);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_cek_dokter()==true){
+            if(btnCekPCareDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCekPCareDokter);
                 jmlmenu++;
             }                
         }

@@ -347,7 +347,6 @@ public final class PCareCekReferensiPenyakit extends javax.swing.JDialog {
                         i++;
                     }
                 }
-                System.out.println("bridging.PCareCekReferensiPenyakit.tampil() ok");
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }  
