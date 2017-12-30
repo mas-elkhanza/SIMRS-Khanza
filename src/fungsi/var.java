@@ -63,7 +63,7 @@ public final class var {
             grafik_kunjungan_statusdaftartahun=false,grafik_kunjungan_statusdaftartahun2=false,grafik_kunjungan_statusdaftarbulan=false,grafik_kunjungan_statusdaftarbulan2=false,
             grafik_kunjungan_statusdaftartanggal=false,grafik_kunjungan_statusdaftartanggal2=false,grafik_kunjungan_statusbataltahun=false,grafik_kunjungan_statusbatalbulan=false,
             pcare_cek_penyakit=false,grafik_kunjungan_statusbataltanggal=false,kategori_barang=false,golongan_barang=false,pemberian_obat_pertanggal=false,
-            penjualan_obat_pertanggal=false,pcare_cek_dokter=false;
+            penjualan_obat_pertanggal=false,pcare_cek_dokter=false,pembatalan_periksa_dokter=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -357,6 +357,7 @@ public final class var {
                         var.pemberian_obat_pertanggal=true;
                         var.penjualan_obat_pertanggal=true;
                         var.pcare_cek_dokter=true;
+                        var.pembatalan_periksa_dokter=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -632,6 +633,7 @@ public final class var {
                         var.pemberian_obat_pertanggal=true;                        
                         var.penjualan_obat_pertanggal=true;
                         var.pcare_cek_dokter=true;
+                        var.pembatalan_periksa_dokter=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -907,7 +909,8 @@ public final class var {
                         var.golongan_barang=rs2.getBoolean("golongan_barang");
                         var.pemberian_obat_pertanggal=rs2.getBoolean("pemberian_obat_pertanggal");
                         var.penjualan_obat_pertanggal=rs2.getBoolean("penjualan_obat_pertanggal");
-                        var.pcare_cek_dokter=rs2.getBoolean("pcare_cek_dokter");
+                        var.pcare_cek_dokter=rs2.getBoolean("pcare_cek_dokter");                        
+                        var.pembatalan_periksa_dokter=rs2.getBoolean("pembatalan_periksa_dokter");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1182,6 +1185,7 @@ public final class var {
                         var.pemberian_obat_pertanggal=false;
                         var.penjualan_obat_pertanggal=false;
                         var.pcare_cek_dokter=false;
+                        var.pembatalan_periksa_dokter=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1503,4 +1507,5 @@ public final class var {
     public static boolean getpemberian_obat_pertanggal(){return var.pemberian_obat_pertanggal;}
     public static boolean getpenjualan_obat_pertanggal(){return var.penjualan_obat_pertanggal;}
     public static boolean getpcare_cek_dokter(){return var.pcare_cek_dokter;}
+    public static boolean getpembatalan_periksa_dokter(){return var.pembatalan_periksa_dokter;}
 }

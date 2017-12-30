@@ -248,7 +248,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbNoRM">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbNoRM" noResource="true"/>
                       </Properties>
@@ -299,7 +298,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbNoUrut">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbNoUrut" noResource="true"/>
                       </Properties>
@@ -506,7 +504,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbAlamat">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbAlamat" noResource="true"/>
                       </Properties>
@@ -678,7 +675,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbKelengkapan">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbKelengkapan" noResource="true"/>
                       </Properties>
@@ -1856,7 +1852,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbValidasiRegistrasi">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbValidasiRegistrasi" noResource="true"/>
                       </Properties>
@@ -1960,7 +1955,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbValidasiCatatan">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbValidasiCatatan" noResource="true"/>
                       </Properties>

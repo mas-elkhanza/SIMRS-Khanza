@@ -426,7 +426,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbNoRM.setAutoCreateRowSorter(true);
         tbNoRM.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbNoRM.setName("tbNoRM"); // NOI18N
         tbNoRM.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -453,7 +452,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbNoUrut.setAutoCreateRowSorter(true);
         tbNoUrut.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbNoUrut.setName("tbNoUrut"); // NOI18N
         tbNoUrut.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -554,7 +552,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbAlamat.setAutoCreateRowSorter(true);
         tbAlamat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbAlamat.setName("tbAlamat"); // NOI18N
         tbAlamat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -638,7 +635,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
 
-        tbKelengkapan.setAutoCreateRowSorter(true);
         tbKelengkapan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKelengkapan.setName("tbKelengkapan"); // NOI18N
         tbKelengkapan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1259,7 +1255,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll5.setName("Scroll5"); // NOI18N
         Scroll5.setOpaque(true);
 
-        tbValidasiRegistrasi.setAutoCreateRowSorter(true);
         tbValidasiRegistrasi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbValidasiRegistrasi.setName("tbValidasiRegistrasi"); // NOI18N
         tbValidasiRegistrasi.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1309,7 +1304,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll6.setName("Scroll6"); // NOI18N
         Scroll6.setOpaque(true);
 
-        tbValidasiCatatan.setAutoCreateRowSorter(true);
         tbValidasiCatatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbValidasiCatatan.setName("tbValidasiCatatan"); // NOI18N
         tbValidasiCatatan.addMouseListener(new java.awt.event.MouseAdapter() {

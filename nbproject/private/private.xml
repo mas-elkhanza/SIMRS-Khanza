@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/setting/DlgUser.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/DlgCariDokter.java</file>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/fungsi/var.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/DlgReg.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/setting/DlgSetRM.java</file>
         </group>
     </open-files>
 </project-private>
