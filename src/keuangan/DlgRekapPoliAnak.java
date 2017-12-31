@@ -37,7 +37,7 @@ import simrskhanza.DlgPenanggungJawab;
 
 /**
  *
- * @author perpustakaan
+ * @author maskhanza
  */
 public final class DlgRekapPoliAnak extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
@@ -47,7 +47,10 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private ResultSet rstanggal,rsdokter,rsreg,rstindakandokter;
-    private int i=0;
+    private int i=0,jmlh0s6l=0,jmlh0s6p=0,jmlh7s28l=0,jmlh7s28p=0,jmlh29st1l=0,
+            jmlh29st1p=0,jmlt1s4l=0,jmlt1s4p=0,jmlt5s14l=0,jmlt5s14p=0,
+            ttlh0s6l=0,ttlh0s6p=0,ttlh7s28l=0,ttlh7s28p=0,ttlh29st1l=0,
+            ttlh29st1p=0,ttlt1s4l=0,ttlt1s4p=0,ttlt5s14l=0,ttlt5s14p=0;
     private String h0s6l="",h0s6p="",h7s28l="",h7s28p="",h29st1l="",h29st1p="",
             t1s4l="",t1s4p="",t5s14l="",t5s14p="";
     
@@ -610,6 +613,8 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
     public void tampil(){        
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
+            ttlh0s6l=0;ttlh0s6p=0;ttlh7s28l=0;ttlh7s28p=0;ttlh29st1l=0;
+            ttlh29st1p=0;ttlt1s4l=0;ttlt1s4p=0;ttlt5s14l=0;ttlt5s14p=0;
             StringBuilder htmlContent = new StringBuilder();
             pstanggal=koneksi.prepareStatement(
                     "select reg_periksa.tgl_registrasi,DATE_FORMAT(reg_periksa.tgl_registrasi,'%d-%m-%Y') as tanggal "+
@@ -626,7 +631,7 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                             "inner join dokter inner join poliklinik on reg_periksa.kd_dokter=dokter.kd_dokter "+
                             "and reg_periksa.kd_poli=poliklinik.kd_poli "+
                             "where poliklinik.nm_poli like '%anak%' and tgl_registrasi=? and dokter.nm_dokter like ? group by reg_periksa.kd_dokter");
-                    try {
+                    try {                        
                         psdokter.setString(1,rstanggal.getString("tgl_registrasi"));
                         psdokter.setString(2,"%"+nmdokter.getText().trim()+"%");
                         rsdokter=psdokter.executeQuery();
@@ -686,6 +691,8 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                                     "reg_periksa.tgl_registrasi=? and reg_periksa.kd_dokter=? and penjab.png_jawab like ? and reg_periksa.stts_daftar like ? order by reg_periksa.no_reg ");
                             try {
                                 i=1;
+                                jmlh0s6l=0;jmlh0s6p=0;jmlh7s28l=0;jmlh7s28p=0;jmlh29st1l=0;
+                                jmlh29st1p=0;jmlt1s4l=0;jmlt1s4p=0;jmlt5s14l=0;jmlt5s14p=0;
                                 psreg.setString(1,rstanggal.getString("tgl_registrasi"));
                                 psreg.setString(2,rsdokter.getString("kd_dokter"));
                                 psreg.setString(3,"%"+nmpenjab.getText().trim()+"%");
@@ -710,63 +717,87 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                                         if((rsreg.getInt("umurdaftar")>=0)&&(rsreg.getInt("umurdaftar")<=6)){
                                             if(rsreg.getString("jk").equals("L")){
                                                 h0s6l="V";
+                                                jmlh0s6l++;
+                                                ttlh0s6l++;
                                             }else if(rsreg.getString("jk").equals("P")){
                                                 h0s6p="V";
+                                                jmlh0s6p++;
+                                                ttlh0s6p++;
                                             }
                                         }else if((rsreg.getInt("umurdaftar")>=7)&&(rsreg.getInt("umurdaftar")<=28)){
                                             if(rsreg.getString("jk").equals("L")){
                                                 h7s28l="V";
+                                                jmlh7s28l++;
+                                                ttlh7s28l++;
                                             }else if(rsreg.getString("jk").equals("P")){
                                                 h7s28p="V";
+                                                jmlh7s28p++;
+                                                ttlh7s28p++;
                                             }
                                         }else if(rsreg.getInt("umurdaftar")>28){
                                             if(rsreg.getString("jk").equals("L")){
                                                 h29st1l="V";
+                                                jmlh29st1l++;
+                                                ttlh29st1l++;
                                             }else if(rsreg.getString("jk").equals("P")){
                                                 h29st1p="V";
+                                                jmlh29st1p++;
+                                                ttlh29st1p++;
                                             }
                                         }
                                     }else if(rsreg.getString("sttsumur").equals("Bl")){
                                         if(rsreg.getString("jk").equals("L")){
                                             h29st1l="V";
+                                            jmlh29st1l++;
+                                            ttlh29st1l++;
                                         }else if(rsreg.getString("jk").equals("P")){
                                             h29st1p="V";
+                                            jmlh29st1p++;
+                                            ttlh29st1p++;
                                         }
                                     }else if(rsreg.getString("sttsumur").equals("Th")){
                                         if((rsreg.getInt("umurdaftar")>=0)&&(rsreg.getInt("umurdaftar")<=4)){
                                             if(rsreg.getString("jk").equals("L")){
                                                 t1s4l="V";
+                                                jmlt1s4l++;
+                                                ttlt1s4l++;
                                             }else if(rsreg.getString("jk").equals("P")){
                                                 t1s4p="V";
+                                                jmlt1s4p++;
+                                                ttlt1s4p++;
                                             }
                                         }else if((rsreg.getInt("umurdaftar")>=5)&&(rsreg.getInt("umurdaftar")<=14)){
                                             if(rsreg.getString("jk").equals("L")){
                                                 t5s14l="V";
+                                                jmlt5s14l++;
+                                                ttlt5s14l++;
                                             }else if(rsreg.getString("jk").equals("P")){
                                                 t5s14p="V";
+                                                jmlt5s14p++;
+                                                ttlt5s14p++;
                                             }
                                         }
                                     }
                                     htmlContent.append(
                                         "<tr class='isi3'>"+
                                             "<td valign='top' align='center'>"+i+"</td>"+
-                                            "<td valign='top' align='center'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("no_rkm_medis")+"</td>"+
                                             "<td valign='top'>"+rsreg.getString("nm_ibu")+"</td>"+
                                             "<td valign='top'>"+rsreg.getString("nm_pasien")+"</td>"+
                                             "<td valign='top'>"+rsreg.getString("almt_pj")+"</td>"+
-                                            "<td valign='top'>"+rsreg.getString("tgl_lahir")+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("tgl_lahir")+"</td>"+
                                             "<td valign='top'>"+rsreg.getString("tmp_lahir")+"</td>"+
-                                            "<td valign='top'>"+rsreg.getString("stts_daftar").substring(0,1)+"</td>"+
-                                            "<td valign='top'>"+h0s6l+"</td>"+
-                                            "<td valign='top'>"+h0s6p+"</td>"+
-                                            "<td valign='top'>"+h7s28l+"</td>"+
-                                            "<td valign='top'>"+h7s28p+"</td>"+
-                                            "<td valign='top'>"+h29st1l+"</td>"+
-                                            "<td valign='top'>"+h29st1p+"</td>"+
-                                            "<td valign='top'>"+t1s4l+"</td>"+
-                                            "<td valign='top'>"+t1s4p+"</td>"+
-                                            "<td valign='top'>"+t5s14l+"</td>"+
-                                            "<td valign='top'>"+t5s14p+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("stts_daftar").substring(0,1)+"</td>"+
+                                            "<td valign='top' align='center'>"+h0s6l+"</td>"+
+                                            "<td valign='top' align='center'>"+h0s6p+"</td>"+
+                                            "<td valign='top' align='center'>"+h7s28l+"</td>"+
+                                            "<td valign='top' align='center'>"+h7s28p+"</td>"+
+                                            "<td valign='top' align='center'>"+h29st1l+"</td>"+
+                                            "<td valign='top' align='center'>"+h29st1p+"</td>"+
+                                            "<td valign='top' align='center'>"+t1s4l+"</td>"+
+                                            "<td valign='top' align='center'>"+t1s4p+"</td>"+
+                                            "<td valign='top' align='center'>"+t5s14l+"</td>"+
+                                            "<td valign='top' align='center'>"+t5s14p+"</td>"+
                                             "<td valign='top'>"+
                                                 "<table width='100%' border='0' align='center' cellpadding='0px' cellspacing='0' class='tbl_form'>");
                                     pstindakandokter=koneksi.prepareStatement(
@@ -813,6 +844,20 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                                 }
                             }
                             htmlContent.append(
+                                "<tr class='isi3'>"+
+                                    "<td valign='top' align='left' colspan='8'>Total : </td>"+
+                                    "<td valign='top' align='center'>"+jmlh0s6l+"</td>"+
+                                    "<td valign='top' align='center'>"+jmlh0s6p+"</td>"+
+                                    "<td valign='top' align='center'>"+jmlh7s28l+"</td>"+
+                                    "<td valign='top' align='center'>"+jmlh7s28p+"</td>"+
+                                    "<td valign='top' align='center'>"+jmlh29st1l+"</td>"+
+                                    "<td valign='top' align='center'>"+jmlh29st1p+"</td>"+
+                                    "<td valign='top' align='center'>"+jmlt1s4l+"</td>"+
+                                    "<td valign='top' align='center'>"+jmlt1s4p+"</td>"+
+                                    "<td valign='top' align='center'>"+jmlt5s14l+"</td>"+
+                                    "<td valign='top' align='center'>"+jmlt5s14p+"</td>"+
+                                    "<td valign='top' colspan='2'></td>"+
+                                "</tr>"+
                                 "<tr class='isi4'>"+
                                     "<td valign='top' align='center'>&nbsp;</td>"+
                                     "<td valign='top' align='center'></td>"+
@@ -839,7 +884,7 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                             htmlContent.append(
                                     "</table>"+
                                 "</tr>");                                                            
-                        }
+                        }                        
                     } catch (Exception e) {
                         System.out.println("keuangan.DlgRekapPoliAnak.tampil() : "+e);
                     } finally{
@@ -850,7 +895,7 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                             psdokter.close();
                         }
                     }                                                        
-                }                
+                }                                     
             } catch (Exception e) {
                 System.out.println("Notifikasi Cari Tanggal : "+e);
             } finally{
@@ -861,6 +906,53 @@ public final class DlgRekapPoliAnak extends javax.swing.JDialog {
                     pstanggal.close();
                 }
             }
+            if((ttlh0s6l+ttlh0s6p+ttlh7s28l+ttlh7s28p+ttlh29st1l+ttlh29st1p+ttlt1s4l+ttlt1s4p+ttlt5s14l+ttlt5s14p)>0){
+                htmlContent.append(
+                    "<tr class='isi2'>"+
+                        "<td valign='top' align='left'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"+
+                    "</tr>"+
+                    "<tr class='isi2'>"+
+                        "<td valign='top' align='left'> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"+
+                    "</tr>"+
+                    "<tr class='isi2'>"+
+                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<tr class='isi3'>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='right' width='10%'>Usia : </td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center' width='18%' colspan='2'>0-6 hari</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center' width='18%' colspan='2'>7-28 hari</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center' width='18%' colspan='2'>28-1 thn</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center' width='18%' colspan='2'>1-4 thn</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center' width='18%' colspan='2'>5-14 thn</td>"+
+                            "</tr>"+
+                            "<tr class='isi3'>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='right'>Jenis Kelamin :</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
+                            "</tr>"+
+                            "<tr class='isi3'>"+
+                                "<td valign='middle' bgcolor='#f8fdf3' align='right'>Jumlah Total :</td>"+
+                                "<td valign='top' align='center'>"+ttlh0s6l+"</td>"+
+                                "<td valign='top' align='center'>"+ttlh0s6p+"</td>"+
+                                "<td valign='top' align='center'>"+ttlh7s28l+"</td>"+
+                                "<td valign='top' align='center'>"+ttlh7s28p+"</td>"+
+                                "<td valign='top' align='center'>"+ttlh29st1l+"</td>"+
+                                "<td valign='top' align='center'>"+ttlh29st1p+"</td>"+
+                                "<td valign='top' align='center'>"+ttlt1s4l+"</td>"+
+                                "<td valign='top' align='center'>"+ttlt1s4p+"</td>"+
+                                "<td valign='top' align='center'>"+ttlt5s14l+"</td>"+
+                                "<td valign='top' align='center'>"+ttlt5s14p+"</td>"+
+                            "</tr>"+
+                         "</table>"+
+                    "</tr>");
+            } 
             LoadHTML.setText(
                     "<html>"+
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
