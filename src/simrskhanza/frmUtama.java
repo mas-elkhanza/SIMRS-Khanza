@@ -229,6 +229,7 @@ import laporan.DlgKunjunganRalan;
 import laporan.DlgKunjunganRanap;
 import laporan.DlgPelayananApotek;
 import laporan.DlgPelayananRalan;
+import laporan.DlgPembatalanPeriksaPerDokter;
 import laporan.DlgPenyakitPd3i;
 import laporan.DlgRL4A;
 import laporan.DlgRL4ASebab;
@@ -690,6 +691,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnObatPerTanggal = new widget.ButtonBig();
         btnPenjualanPerTanggal = new widget.ButtonBig();
         btnCekPCareDokter = new widget.ButtonBig();
+        btnPembatalanPeriksaDokter = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4245,6 +4247,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnCekPCareDokter);
+
+        btnPembatalanPeriksaDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnPembatalanPeriksaDokter.setText("Pembatalan Periksa Per Dokter");
+        btnPembatalanPeriksaDokter.setIconTextGap(0);
+        btnPembatalanPeriksaDokter.setName("btnPembatalanPeriksaDokter"); // NOI18N
+        btnPembatalanPeriksaDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembatalanPeriksaDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembatalanPeriksaDokterActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPembatalanPeriksaDokter);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -9140,6 +9154,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCekPCareDokterActionPerformed
 
+    private void btnPembatalanPeriksaDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPembatalanPeriksaDokterActionPerformed
+        isTutup();
+        DlgPembatalanPeriksaPerDokter form=new DlgPembatalanPeriksaPerDokter(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPembatalanPeriksaDokterActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9323,6 +9347,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPaymentPoint;
     private widget.ButtonBig btnPegawai;
     private widget.ButtonBig btnPemasukanLain;
+    private widget.ButtonBig btnPembatalanPeriksaDokter;
     private widget.ButtonBig btnPembelian;
     private widget.ButtonBig btnPembelianIpsrs;
     private widget.ButtonBig btnPemesanan;
@@ -10584,6 +10609,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.gethitung_alos()==true){  
                 Panelmenu.add(btnHitungAlos);                 
+                jmlmenu++;
+            }
+            
+            if(var.getpembatalan_periksa_dokter()==true){  
+                Panelmenu.add(btnPembatalanPeriksaDokter);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
@@ -11943,6 +11973,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.gethitung_alos()==true){  
             Panelmenu.add(btnHitungAlos);                 
+            jmlmenu++;
+        }
+        
+        if(var.getpembatalan_periksa_dokter()==true){  
+            Panelmenu.add(btnPembatalanPeriksaDokter);                 
             jmlmenu++;
         }
 
@@ -13616,6 +13651,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.gethitung_alos()==true){  
             if(btnHitungAlos.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHitungAlos);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpembatalan_periksa_dokter()==true){  
+            if(btnPembatalanPeriksaDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPembatalanPeriksaDokter);                 
                 jmlmenu++;
             }                
         }
