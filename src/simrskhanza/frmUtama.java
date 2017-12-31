@@ -208,6 +208,7 @@ import javax.swing.event.DocumentEvent;
 import keuangan.DlgAkunPiutang;
 import keuangan.DlgDetailTindakan;
 import keuangan.DlgHutangObatBelumLunas;
+import keuangan.DlgPembayaranPerPoli;
 import keuangan.DlgPiutangPercaraBayar;
 import keuangan.DlgPiutangRalan;
 import keuangan.DlgPiutangRanap;
@@ -692,6 +693,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPenjualanPerTanggal = new widget.ButtonBig();
         btnCekPCareDokter = new widget.ButtonBig();
         btnPembatalanPeriksaDokter = new widget.ButtonBig();
+        btnPembayaranPerUnit = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4260,6 +4262,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPembatalanPeriksaDokter);
 
+        btnPembayaranPerUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kde-document-open_23426.png"))); // NOI18N
+        btnPembayaranPerUnit.setText("Rekap Pembayaran Per Unit");
+        btnPembayaranPerUnit.setIconTextGap(0);
+        btnPembayaranPerUnit.setName("btnPembayaranPerUnit"); // NOI18N
+        btnPembayaranPerUnit.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranPerUnit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembayaranPerUnitActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPembayaranPerUnit);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4268,7 +4282,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29/12/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31/12/2017" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -5384,23 +5398,28 @@ private void edPwdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edP
 }//GEN-LAST:event_edPwdKeyPressed
 
 private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenuActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-        isTutup();
-        try{            
+        try{     
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
+            isTutup();
             if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
                 com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.61f);
             }else{
                 com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.93f);
-            }                
+            }      
+            DlgHome.setSize(PanelUtama.getWidth()-45, PanelUtama.getHeight()-45);
+            isTampil();
+            DlgHome.setLocationRelativeTo(PanelUtama);
+            DlgHome.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
         }catch(Exception e){
-            
-        }
-        
-        DlgHome.setSize(PanelUtama.getWidth()-45, PanelUtama.getHeight()-45);
-        isTampil();
-        DlgHome.setLocationRelativeTo(PanelUtama);
-        DlgHome.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
+            isTutup();
+            DlgHome.setSize(PanelUtama.getWidth()-45, PanelUtama.getHeight()-45);
+            isTampil();
+            DlgHome.setLocationRelativeTo(PanelUtama);
+            DlgHome.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }   
 }//GEN-LAST:event_BtnMenuActionPerformed
 
 private void BtnToolKasirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnToolKasirActionPerformed
@@ -9164,6 +9183,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPembatalanPeriksaDokterActionPerformed
 
+    private void btnPembayaranPerUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPembayaranPerUnitActionPerformed
+        isTutup();
+        DlgPembayaranPerPoli form=new DlgPembayaranPerPoli(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPembayaranPerUnitActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9348,6 +9377,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPegawai;
     private widget.ButtonBig btnPemasukanLain;
     private widget.ButtonBig btnPembatalanPeriksaDokter;
+    private widget.ButtonBig btnPembayaranPerUnit;
     private widget.ButtonBig btnPembelian;
     private widget.ButtonBig btnPembelianIpsrs;
     private widget.ButtonBig btnPemesanan;
@@ -10413,6 +10443,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getrekap_pembayaran_ranap()==true){
                 Panelmenu.add(btnTagihanRanapPerhari);
+                jmlmenu++;
+            }
+            
+            if(var.getpembayaran_per_unit()==true){
+                Panelmenu.add(btnPembayaranPerUnit);
                 jmlmenu++;
             }
 
@@ -11778,6 +11813,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getrekap_pembayaran_ranap()==true){
             Panelmenu.add(btnTagihanRanapPerhari);
+            jmlmenu++;
+        }
+
+        if(var.getpembayaran_per_unit()==true){
+            Panelmenu.add(btnPembayaranPerUnit);
             jmlmenu++;
         }
 
@@ -13378,6 +13418,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getrekap_pembayaran_ranap()==true){
             if(btnTagihanRanapPerhari.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanRanapPerhari);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpembayaran_per_unit()==true){
+            if(btnPembayaranPerUnit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPembayaranPerUnit);
                 jmlmenu++;
             }                
         }
