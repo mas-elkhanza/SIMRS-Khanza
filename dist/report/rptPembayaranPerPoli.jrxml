@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="4.0"/>
-	<property name="ireport.x" value="505"/>
-	<property name="ireport.y" value="221"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -10,6 +10,7 @@
 	<parameter name="kontakrs" class="java.lang.String"/>
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="tanggal" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc]]>
 	</queryString>
@@ -70,13 +71,13 @@
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="68" y="52" width="424" height="23"/>
-				<textElement textAlignment="Center" lineSpacing="Single">
-					<font fontName="Tahoma" size="14" isBold="false"/>
+			<textField>
+				<reportElement x="0" y="52" width="554" height="23"/>
+				<textElement textAlignment="Center" lineSpacing="Single" markup="none">
+					<font fontName="Tahoma" size="12" isBold="false"/>
 				</textElement>
-				<text><![CDATA[REKAP PEMBAYARAN PER BAGIAN/UNIT]]></text>
-			</staticText>
+				<textFieldExpression class="java.lang.String"><![CDATA["PEMBAYARAN PER BAGIAN/UNIT TANGGAL "+$P{tanggal}]]></textFieldExpression>
+			</textField>
 			<image scaleImage="FillFrame" onErrorType="Blank">
 				<reportElement x="0" y="2" width="48" height="45"/>
 				<imageExpression class="java.io.InputStream"><![CDATA[$P{logo}]]></imageExpression>

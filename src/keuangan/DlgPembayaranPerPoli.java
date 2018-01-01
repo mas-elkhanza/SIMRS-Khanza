@@ -25,8 +25,8 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private Jurnal jur=new Jurnal();
-    private PreparedStatement pspoli,psmasuk;
-    private ResultSet rspoli,rsmasuk; 
+    private PreparedStatement pspoli,psmasuk,psjamshift;
+    private ResultSet rspoli,rsmasuk,rsjamshift; 
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int i=0,jmlpas=0,ttljmlpas=0;
     private double total=0,ttltotal=0;
@@ -88,8 +88,8 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
         panelisi1 = new widget.panelisi();
         label11 = new widget.Label();
         Tgl1 = new widget.Tanggal();
-        label18 = new widget.Label();
-        Tgl2 = new widget.Tanggal();
+        jLabel9 = new widget.Label();
+        CmbStatus = new widget.ComboBox();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -107,7 +107,7 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Pembayaran Per Bagian/Unit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Bagian/Unit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -137,7 +137,7 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
 
         label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(50, 23));
+        label11.setPreferredSize(new java.awt.Dimension(53, 23));
         panelisi1.add(label11);
 
         Tgl1.setBackground(new java.awt.Color(245, 250, 240));
@@ -147,22 +147,21 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
         Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
         panelisi1.add(Tgl1);
 
-        label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label18.setText("s.d.");
-        label18.setName("label18"); // NOI18N
-        label18.setPreferredSize(new java.awt.Dimension(25, 23));
-        panelisi1.add(label18);
+        jLabel9.setText("Shift :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        jLabel9.setPreferredSize(new java.awt.Dimension(38, 23));
+        panelisi1.add(jLabel9);
 
-        Tgl2.setBackground(new java.awt.Color(245, 250, 240));
-        Tgl2.setEditable(false);
-        Tgl2.setDisplayFormat("dd-MM-yyyy");
-        Tgl2.setName("Tgl2"); // NOI18N
-        Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
-        panelisi1.add(Tgl2);
+        CmbStatus.setForeground(new java.awt.Color(153, 0, 51));
+        CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Pagi", "Siang", "Sore", "Malam" }));
+        CmbStatus.setName("CmbStatus"); // NOI18N
+        CmbStatus.setOpaque(false);
+        CmbStatus.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelisi1.add(CmbStatus);
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
+        jLabel6.setPreferredSize(new java.awt.Dimension(63, 23));
         panelisi1.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
@@ -209,7 +208,7 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
         panelisi1.add(BtnAll);
 
         jLabel8.setName("jLabel8"); // NOI18N
-        jLabel8.setPreferredSize(new java.awt.Dimension(30, 23));
+        jLabel8.setPreferredSize(new java.awt.Dimension(25, 23));
         panelisi1.add(jLabel8);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -283,9 +282,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kotars",var.getkabupatenrs());
                 param.put("propinsirs",var.getpropinsirs());
                 param.put("kontakrs",var.getkontakrs());
+                param.put("tanggal",Tgl1.getSelectedItem()+" SHIFT "+CmbStatus.getSelectedItem().toString().toUpperCase());
                 param.put("emailrs",var.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptPembayaranPerPoli.jrxml","report","[ Rekap Pembayaran Per Bagian/Unit ]",
+            Valid.MyReport("rptPembayaranPerPoli.jrxml","report","[ Pembayaran Per Bagian/Unit ]",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -295,7 +295,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnPrintActionPerformed(null);
         }else{
-            Valid.pindah(evt,Tgl2,BtnKeluar);
+            Valid.pindah(evt,TCari,BtnKeluar);
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
@@ -372,14 +372,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.ComboBox CmbStatus;
     private widget.TextBox TCari;
     private widget.Tanggal Tgl1;
-    private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel6;
     private widget.Label jLabel8;
+    private widget.Label jLabel9;
     private widget.Label label11;
-    private widget.Label label18;
     private widget.panelisi panelisi1;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
@@ -397,40 +397,63 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ttljmlpas=0;
                 ttltotal=0;
                 while(rspoli.next()){
-                    psmasuk=koneksi.prepareStatement(
-                            "select sum(totalbiaya),count(DISTINCT reg_periksa.no_rawat) from billing inner join reg_periksa "+
-                            "on reg_periksa.no_rawat=billing.no_rawat where "+
-                            "reg_periksa.kd_poli=? and reg_periksa.status_lanjut='Ralan' and "+
-                            "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
-                            "(status='Laborat' or status='Radiologi' or status='Operasi' or "+
-                            "status='Obat' or status='Ralan Dokter' or "+
-                            "status='Ralan Paramedis' or status='Ralan Dokter Paramedis' or "+
-                            "status='Tambahan' or status='Potongan' or status='Kamar' or "+
-                            "status='Registrasi' or status='Harian' or status='Retur Obat' or "+
-                            "status='Resep Pulang' or status='Service') and reg_periksa.tgl_registrasi between ? and ? ");
-                    try {
-                        psmasuk.setString(1,rspoli.getString(1));
-                        psmasuk.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                        psmasuk.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                        rsmasuk=psmasuk.executeQuery();
+                    psjamshift=koneksi.prepareStatement("select * from closing_kasir where shift like ?");
+                    try{
+                        psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                        rsjamshift=psjamshift.executeQuery();
                         jmlpas=0;
                         total=0;
-                        while(rsmasuk.next()){
-                            jmlpas=rsmasuk.getInt(2);
-                            total=rsmasuk.getDouble(1);
-                            ttljmlpas=ttljmlpas+rsmasuk.getInt(2);
-                            ttltotal=ttltotal+rsmasuk.getDouble(1);
-                        }                        
-                    } catch (Exception e) {
-                        System.out.println("Notif 2 : "+e);
-                    } finally{
-                        if(rsmasuk!=null){
-                            rsmasuk.close();
+                        while(rsjamshift.next()){
+                            psmasuk=koneksi.prepareStatement(
+                                    "select sum(totalbiaya),count(DISTINCT reg_periksa.no_rawat) "+
+                                    "from billing inner join reg_periksa inner join nota_jalan "+
+                                    "on reg_periksa.no_rawat=billing.no_rawat and nota_jalan.no_rawat=billing.no_rawat where "+
+                                    "reg_periksa.kd_poli=? and reg_periksa.status_lanjut='Ralan' and "+
+                                    "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien "+
+                                    "where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
+                                    "(status='Laborat' or status='Radiologi' or status='Operasi' or "+
+                                    "status='Obat' or status='Ralan Dokter' or status='Ralan Paramedis' or "+
+                                    "status='Ralan Dokter Paramedis' or status='Tambahan' or status='Potongan' or "+
+                                    "status='Kamar' or status='Registrasi' or status='Harian' or "+
+                                    "status='Retur Obat' or status='Resep Pulang' or status='Service') and "+
+                                    "concat(nota_jalan.tanggal,' ',nota_jalan.jam) between ? and ? ");
+                            try {
+                                psmasuk.setString(1,rspoli.getString(1));
+                                psmasuk.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_masuk"));
+                                if(rsjamshift.getString("shift").equals("Malam")){
+                                    psmasuk.setString(3,Sequel.cariIsi("select DATE_ADD('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_pulang")+"',INTERVAL 1 DAY)"));
+                                }else{
+                                    psmasuk.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_pulang"));
+                                }
+                                rsmasuk=psmasuk.executeQuery();
+                                while(rsmasuk.next()){
+                                    jmlpas=rsmasuk.getInt(2);
+                                    total=rsmasuk.getDouble(1);
+                                    ttljmlpas=ttljmlpas+rsmasuk.getInt(2);
+                                    ttltotal=ttltotal+rsmasuk.getDouble(1);
+                                }                        
+                            } catch (Exception e) {
+                                System.out.println("Notif 2 : "+e);
+                            } finally{
+                                if(rsmasuk!=null){
+                                    rsmasuk.close();
+                                }
+                                if(psmasuk!=null){
+                                    psmasuk.close();
+                                }
+                            }
                         }
-                        if(psmasuk!=null){
-                            psmasuk.close();
+                    } catch(Exception e){
+                        System.out.println("Notifikasi Shift : "+e);                
+                    } finally{
+                        if(rsjamshift!=null){
+                            rsjamshift.close();
+                        }
+                        if(psjamshift!=null){
+                            psjamshift.close();
                         }
                     }
+                        
                     tabMode.addRow(new Object[]{i+". ",rspoli.getString(2),jmlpas,total});
                     i++;
                 }

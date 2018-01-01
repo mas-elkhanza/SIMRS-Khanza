@@ -216,6 +216,7 @@ import keuangan.DlgRBKSO;
 import keuangan.DlgRBMenejemen;
 import keuangan.DlgRHKSO;
 import keuangan.DlgRHMenejemen;
+import keuangan.DlgRekapPembayaranPerPoli;
 import keuangan.DlgRekapPoliAnak;
 import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgBulananHAIs;
@@ -694,6 +695,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekPCareDokter = new widget.ButtonBig();
         btnPembatalanPeriksaDokter = new widget.ButtonBig();
         btnPembayaranPerUnit = new widget.ButtonBig();
+        btnRekapPembayaranPerUnit = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4262,8 +4264,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPembatalanPeriksaDokter);
 
-        btnPembayaranPerUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kde-document-open_23426.png"))); // NOI18N
-        btnPembayaranPerUnit.setText("Rekap Pembayaran Per Unit");
+        btnPembayaranPerUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
+        btnPembayaranPerUnit.setText("Pembayaran Per Unit");
         btnPembayaranPerUnit.setIconTextGap(0);
         btnPembayaranPerUnit.setName("btnPembayaranPerUnit"); // NOI18N
         btnPembayaranPerUnit.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -4274,6 +4276,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPembayaranPerUnit);
 
+        btnRekapPembayaranPerUnit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kde-document-open_23426.png"))); // NOI18N
+        btnRekapPembayaranPerUnit.setText("Rekap Pembayaran Per Unit");
+        btnRekapPembayaranPerUnit.setIconTextGap(0);
+        btnRekapPembayaranPerUnit.setName("btnRekapPembayaranPerUnit"); // NOI18N
+        btnRekapPembayaranPerUnit.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPembayaranPerUnit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPembayaranPerUnitActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRekapPembayaranPerUnit);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4282,7 +4296,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31/12/2017" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01/01/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -9193,6 +9207,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPembayaranPerUnitActionPerformed
 
+    private void btnRekapPembayaranPerUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekapPembayaranPerUnitActionPerformed
+        isTutup();
+        DlgRekapPembayaranPerPoli form=new DlgRekapPembayaranPerPoli(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRekapPembayaranPerUnitActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9429,6 +9453,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRegistrasi;
     private widget.ButtonBig btnRekapBulanan;
     private widget.ButtonBig btnRekapHarian;
+    private widget.ButtonBig btnRekapPembayaranPerUnit;
     private widget.ButtonBig btnRekapPershift;
     private widget.ButtonBig btnRekapPoliAnak;
     private widget.ButtonBig btnRekapPresensi;
@@ -10448,6 +10473,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getpembayaran_per_unit()==true){
                 Panelmenu.add(btnPembayaranPerUnit);
+                jmlmenu++;
+            }
+            
+            if(var.getrekap_pembayaran_per_unit()==true){
+                Panelmenu.add(btnRekapPembayaranPerUnit);
                 jmlmenu++;
             }
 
@@ -11818,6 +11848,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getpembayaran_per_unit()==true){
             Panelmenu.add(btnPembayaranPerUnit);
+            jmlmenu++;
+        }
+        
+        if(var.getrekap_pembayaran_per_unit()==true){
+            Panelmenu.add(btnRekapPembayaranPerUnit);
             jmlmenu++;
         }
 
@@ -13425,6 +13460,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpembayaran_per_unit()==true){
             if(btnPembayaranPerUnit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembayaranPerUnit);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getrekap_pembayaran_per_unit()==true){
+            if(btnRekapPembayaranPerUnit.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapPembayaranPerUnit);
                 jmlmenu++;
             }                
         }
