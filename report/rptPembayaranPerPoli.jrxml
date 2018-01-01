@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="389"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
@@ -117,35 +117,28 @@
 	<columnHeader>
 		<band height="17" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="32" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
-					<font fontName="Tahoma" size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[  NO.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="32" y="0" width="221" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="1" y="0" width="276" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[BAGIAN/UNIT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="253" y="0" width="75" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="278" y="0" width="66" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[JUMLAH PASIEN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="328" y="0" width="97" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="345" y="0" width="91" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[PEMASUKAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="425" y="0" width="130" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="437" y="0" width="118" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
@@ -170,25 +163,19 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="31" y="1" width="1" height="15"/>
+				<reportElement x="277" y="1" width="1" height="15"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="252" y="1" width="1" height="15"/>
+				<reportElement x="344" y="1" width="1" height="15"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="328" y="1" width="1" height="15"/>
-				<graphicElement>
-					<pen lineWidth="0.5"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="425" y="1" width="1" height="15"/>
+				<reportElement x="436" y="1" width="1" height="15"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -204,32 +191,25 @@
 	<detail>
 		<band height="11" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="3" y="0" width="28" height="10"/>
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="0" width="274" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="32" y="0" width="220" height="10"/>
-				<textElement lineSpacing="Single">
+				<reportElement stretchType="RelativeToBandHeight" x="278" y="0" width="66" height="10"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="253" y="0" width="75" height="10"/>
-				<textElement textAlignment="Center" lineSpacing="Single">
-					<font fontName="Tahoma" size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp3}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="329" y="0" width="94" height="10"/>
+				<reportElement stretchType="RelativeToBandHeight" x="346" y="0" width="88" height="10"/>
 				<textElement textAlignment="Right" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp4}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="1" y="10" width="553" height="1"/>
@@ -244,25 +224,19 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="31" y="0" width="1" height="10"/>
+				<reportElement x="277" y="0" width="1" height="10"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="252" y="0" width="1" height="10"/>
+				<reportElement x="344" y="0" width="1" height="10"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="328" y="0" width="1" height="10"/>
-				<graphicElement>
-					<pen lineWidth="0.5"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="425" y="0" width="1" height="10"/>
+				<reportElement x="436" y="0" width="1" height="10"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>

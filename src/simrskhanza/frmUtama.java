@@ -5416,7 +5416,7 @@ private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             isTutup();
             if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
-                com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.61f);
+                com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.63f);
             }else{
                 com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.93f);
             }      

@@ -25,11 +25,12 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
     private Jurnal jur=new Jurnal();
-    private PreparedStatement pspoli,psmasuk,psjamshift;
-    private ResultSet rspoli,rsmasuk,rsjamshift; 
+    private PreparedStatement pspoli,psmasuk,psjamshift,psdokter;
+    private ResultSet rspoli,rsmasuk,rsjamshift,rsdokter; 
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int i=0,jmlpas=0,ttljmlpas=0;
     private double total=0,ttltotal=0;
+    private String stringjml="",stringtotal="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -38,30 +39,27 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"No.","Bagian/Unit","Jumlah Pasien","Pemasukan"};
+        Object[] row={"Bagian/Unit","Jumlah Pasien","Pemasukan"};
         tabMode=new DefaultTableModel(null,row){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
-              Class[] types = new Class[] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class
-                
-             };
-             @Override
-             public Class getColumnClass(int columnIndex) {
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class
+            };
+            @Override
+            public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-             }
+            }
         };
         tbDokter.setModel(tabMode);
 
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0;i < 4; i++) {
+        for (i = 0;i < 3; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(525);
             }else if(i==1){
-                column.setPreferredWidth(480);
-            }else if(i==2){
                 column.setPreferredWidth(100);
             }else{
                 column.setPreferredWidth(190);
@@ -107,7 +105,7 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Bagian/Unit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Bagian/Unit Berdasarkan Shift Jaga ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -269,11 +267,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Sequel.queryu("delete from temporary");
             int row=tabMode.getRowCount();
             for(int r=0;r<row;r++){  
+                stringjml="";
+                stringtotal="";
+                try {
+                    stringjml=tabMode.getValueAt(r,1).toString()+""; 
+                } catch (Exception e) {
+                    stringjml="";
+                } 
+                try {
+                    stringtotal=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(r,2).toString())); 
+                } catch (Exception e) {
+                    stringtotal="";
+                }
                 Sequel.menyimpan("temporary","'0','"+
-                                tabMode.getValueAt(r,0).toString() +"','"+
-                                tabMode.getValueAt(r,1).toString()+"','"+
-                                tabMode.getValueAt(r,2).toString()+"','"+
-                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(r,3).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Pemasukan Perpoli Dokter"); 
+                                tabMode.getValueAt(r,0).toString()+"','"+
+                                stringjml+"','"+
+                                stringtotal+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Pemasukan Perpoli Dokter"); 
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>();
@@ -397,65 +406,88 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ttljmlpas=0;
                 ttltotal=0;
                 while(rspoli.next()){
-                    psjamshift=koneksi.prepareStatement("select * from closing_kasir where shift like ?");
-                    try{
-                        psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                        rsjamshift=psjamshift.executeQuery();
-                        jmlpas=0;
-                        total=0;
-                        while(rsjamshift.next()){
-                            psmasuk=koneksi.prepareStatement(
-                                    "select sum(totalbiaya),count(DISTINCT reg_periksa.no_rawat) "+
-                                    "from billing inner join reg_periksa inner join nota_jalan "+
-                                    "on reg_periksa.no_rawat=billing.no_rawat and nota_jalan.no_rawat=billing.no_rawat where "+
-                                    "reg_periksa.kd_poli=? and reg_periksa.status_lanjut='Ralan' and "+
-                                    "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien "+
-                                    "where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
-                                    "(status='Laborat' or status='Radiologi' or status='Operasi' or "+
-                                    "status='Obat' or status='Ralan Dokter' or status='Ralan Paramedis' or "+
-                                    "status='Ralan Dokter Paramedis' or status='Tambahan' or status='Potongan' or "+
-                                    "status='Kamar' or status='Registrasi' or status='Harian' or "+
-                                    "status='Retur Obat' or status='Resep Pulang' or status='Service') and "+
-                                    "concat(nota_jalan.tanggal,' ',nota_jalan.jam) between ? and ? ");
-                            try {
-                                psmasuk.setString(1,rspoli.getString(1));
-                                psmasuk.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_masuk"));
-                                if(rsjamshift.getString("shift").equals("Malam")){
-                                    psmasuk.setString(3,Sequel.cariIsi("select DATE_ADD('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_pulang")+"',INTERVAL 1 DAY)"));
-                                }else{
-                                    psmasuk.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_pulang"));
+                    tabMode.addRow(new Object[]{rspoli.getString(2),null,null});
+                    psdokter=koneksi.prepareStatement(
+                            "select dokter.kd_dokter,dokter.nm_dokter from reg_periksa inner join dokter "+
+                            "on dokter.kd_dokter=reg_periksa.kd_dokter where reg_periksa.kd_poli=? and reg_periksa.tgl_registrasi=? group by dokter.kd_dokter");
+                    try {
+                        i=1;
+                        psdokter.setString(1,rspoli.getString("kd_poli"));
+                        psdokter.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        rsdokter=psdokter.executeQuery();
+                        while(rsdokter.next()){
+                            psjamshift=koneksi.prepareStatement("select * from closing_kasir where shift like ?");
+                            try{
+                                psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                                rsjamshift=psjamshift.executeQuery();
+                                jmlpas=0;
+                                total=0;
+                                while(rsjamshift.next()){
+                                    psmasuk=koneksi.prepareStatement(
+                                            "select sum(totalbiaya),count(DISTINCT reg_periksa.no_rawat) "+
+                                            "from billing inner join reg_periksa inner join nota_jalan "+
+                                            "on reg_periksa.no_rawat=billing.no_rawat and nota_jalan.no_rawat=billing.no_rawat where "+
+                                            "reg_periksa.kd_poli=? and reg_periksa.kd_dokter=? and reg_periksa.status_lanjut='Ralan' and "+
+                                            "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien "+
+                                            "where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
+                                            "(status='Laborat' or status='Radiologi' or status='Operasi' or "+
+                                            "status='Obat' or status='Ralan Dokter' or status='Ralan Paramedis' or "+
+                                            "status='Ralan Dokter Paramedis' or status='Tambahan' or status='Potongan' or "+
+                                            "status='Kamar' or status='Registrasi' or status='Harian' or "+
+                                            "status='Retur Obat' or status='Resep Pulang' or status='Service') and "+
+                                            "concat(nota_jalan.tanggal,' ',nota_jalan.jam) between ? and ? ");
+                                    try {
+                                        psmasuk.setString(1,rspoli.getString("kd_poli"));
+                                        psmasuk.setString(2,rsdokter.getString("kd_dokter"));
+                                        psmasuk.setString(3,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_masuk"));
+                                        if(rsjamshift.getString("shift").equals("Malam")){
+                                            psmasuk.setString(4,Sequel.cariIsi("select DATE_ADD('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_pulang")+"',INTERVAL 1 DAY)"));
+                                        }else{
+                                            psmasuk.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_pulang"));
+                                        }
+                                        rsmasuk=psmasuk.executeQuery();
+                                        while(rsmasuk.next()){
+                                            jmlpas=rsmasuk.getInt(2);
+                                            total=rsmasuk.getDouble(1);
+                                            ttljmlpas=ttljmlpas+rsmasuk.getInt(2);
+                                            ttltotal=ttltotal+rsmasuk.getDouble(1);
+                                            if(total>0){
+                                                tabMode.addRow(new Object[]{"  "+i+". "+rsdokter.getString("nm_dokter")+" ("+rsjamshift.getString("shift")+")",jmlpas,total});
+                                                i++;
+                                            }                                                
+                                        }                        
+                                    } catch (Exception e) {
+                                        System.out.println("Notif 2 : "+e);
+                                    } finally{
+                                        if(rsmasuk!=null){
+                                            rsmasuk.close();
+                                        }
+                                        if(psmasuk!=null){
+                                            psmasuk.close();
+                                        }
+                                    }
                                 }
-                                rsmasuk=psmasuk.executeQuery();
-                                while(rsmasuk.next()){
-                                    jmlpas=rsmasuk.getInt(2);
-                                    total=rsmasuk.getDouble(1);
-                                    ttljmlpas=ttljmlpas+rsmasuk.getInt(2);
-                                    ttltotal=ttltotal+rsmasuk.getDouble(1);
-                                }                        
-                            } catch (Exception e) {
-                                System.out.println("Notif 2 : "+e);
+                            } catch(Exception e){
+                                System.out.println("Notifikasi Shift : "+e);                
                             } finally{
-                                if(rsmasuk!=null){
-                                    rsmasuk.close();
+                                if(rsjamshift!=null){
+                                    rsjamshift.close();
                                 }
-                                if(psmasuk!=null){
-                                    psmasuk.close();
+                                if(psjamshift!=null){
+                                    psjamshift.close();
                                 }
                             }
                         }
-                    } catch(Exception e){
-                        System.out.println("Notifikasi Shift : "+e);                
+                    } catch (Exception e) {
+                        System.out.println("Notif Dokter : "+e);
                     } finally{
-                        if(rsjamshift!=null){
-                            rsjamshift.close();
+                        if(rsdokter!=null){
+                            rsdokter.close();
                         }
-                        if(psjamshift!=null){
-                            psjamshift.close();
+                        if(psdokter!=null){
+                            psdokter.close();
                         }
                     }
-                        
-                    tabMode.addRow(new Object[]{i+". ",rspoli.getString(2),jmlpas,total});
-                    i++;
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -467,7 +499,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     pspoli.close();
                 }
             } 
-            tabMode.addRow(new Object[]{"","Total :",ttljmlpas,ttltotal});
+            tabMode.addRow(new Object[]{"Total :",ttljmlpas,ttltotal});
             this.setCursor(Cursor.getDefaultCursor());             
         }catch(Exception e){
             System.out.println("Catatan  "+e);
