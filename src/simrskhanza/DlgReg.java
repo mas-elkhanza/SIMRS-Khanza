@@ -750,6 +750,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnPersetujuanMedis = new javax.swing.JMenuItem();
         MnBuktiPelayananRalan = new javax.swing.JMenuItem();
         MnLembarCasemix = new javax.swing.JMenuItem();
+        MnLembarCasemix1 = new javax.swing.JMenuItem();
         MnSPBK = new javax.swing.JMenuItem();
         MnJKRA = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -1822,7 +1823,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnLembarCasemix.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLembarCasemix.setForeground(new java.awt.Color(90, 120, 80));
         MnLembarCasemix.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnLembarCasemix.setText("Lembar Casemix");
+        MnLembarCasemix.setText("Lembar Casemix 1");
         MnLembarCasemix.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnLembarCasemix.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnLembarCasemix.setIconTextGap(5);
@@ -1834,6 +1835,23 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         jMenu4.add(MnLembarCasemix);
+
+        MnLembarCasemix1.setBackground(new java.awt.Color(255, 255, 255));
+        MnLembarCasemix1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLembarCasemix1.setForeground(new java.awt.Color(90, 120, 80));
+        MnLembarCasemix1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnLembarCasemix1.setText("Lembar Casemix 2");
+        MnLembarCasemix1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnLembarCasemix1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnLembarCasemix1.setIconTextGap(5);
+        MnLembarCasemix1.setName("MnLembarCasemix1"); // NOI18N
+        MnLembarCasemix1.setPreferredSize(new java.awt.Dimension(320, 26));
+        MnLembarCasemix1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnLembarCasemix1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(MnLembarCasemix1);
 
         MnSPBK.setBackground(new java.awt.Color(255, 255, 255));
         MnSPBK.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -6476,7 +6494,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     }//GEN-LAST:event_MnGelang6ActionPerformed
 
     private void MnLembarCasemixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLembarCasemixActionPerformed
-                if(TPasien.getText().trim().equals("")){
+        if(TPasien.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
         }else{
              this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -7338,6 +7356,31 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         DlgCatatan.dispose();
     }//GEN-LAST:event_internalFrame6MouseClicked
 
+    private void MnLembarCasemix1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLembarCasemix1ActionPerformed
+        if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{
+             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",var.getnamars());
+            param.put("alamatrs",var.getalamatrs());
+            param.put("kotars",var.getkabupatenrs());
+            param.put("propinsirs",var.getpropinsirs());
+            param.put("kontakrs",var.getkontakrs());
+            param.put("emailrs",var.getemailrs());
+            param.put("logo",Sequel.cariGambar("select logo from setting"));
+            Valid.MyReport("rptLembarCasemix2.jrxml","report","::[ Surat Jaminan & Bukti Pelayanan Rawat Jalan ]::",
+                   "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,"+
+                   "reg_periksa.jam_reg, reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli," +
+                   "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg," +
+                   "reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_peserta,pasien.tgl_lahir " +
+                   "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab " +
+                   "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
+                   "where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_MnLembarCasemix1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -7455,6 +7498,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnLaporanRekapPerujuk;
     private javax.swing.JMenuItem MnLaporanRekapRawatDarurat;
     private javax.swing.JMenuItem MnLembarCasemix;
+    private javax.swing.JMenuItem MnLembarCasemix1;
     private javax.swing.JMenuItem MnMeninggal;
     private javax.swing.JMenuItem MnNoResep;
     private javax.swing.JMenuItem MnNoResep1;

@@ -422,20 +422,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 rsjamshift=psjamshift.executeQuery();
                                 jmlpas=0;
                                 total=0;
-                                while(rsjamshift.next()){
+                                while(rsjamshift.next()){                                    
                                     psmasuk=koneksi.prepareStatement(
-                                            "select sum(totalbiaya),count(DISTINCT reg_periksa.no_rawat) "+
-                                            "from billing inner join reg_periksa inner join nota_jalan "+
-                                            "on reg_periksa.no_rawat=billing.no_rawat and nota_jalan.no_rawat=billing.no_rawat where "+
+                                            "select sum(besar_bayar) total,count(DISTINCT reg_periksa.no_rawat) pasien,nama_bayar "+
+                                            "from detail_nota_jalan inner join reg_periksa inner join nota_jalan "+
+                                            "on reg_periksa.no_rawat=detail_nota_jalan.no_rawat and nota_jalan.no_rawat=reg_periksa.no_rawat where "+
                                             "reg_periksa.kd_poli=? and reg_periksa.kd_dokter=? and reg_periksa.status_lanjut='Ralan' and "+
                                             "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien "+
                                             "where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
-                                            "(status='Laborat' or status='Radiologi' or status='Operasi' or "+
-                                            "status='Obat' or status='Ralan Dokter' or status='Ralan Paramedis' or "+
-                                            "status='Ralan Dokter Paramedis' or status='Tambahan' or status='Potongan' or "+
-                                            "status='Kamar' or status='Registrasi' or status='Harian' or "+
-                                            "status='Retur Obat' or status='Resep Pulang' or status='Service') and "+
-                                            "concat(nota_jalan.tanggal,' ',nota_jalan.jam) between ? and ? ");
+                                            "concat(nota_jalan.tanggal,' ',nota_jalan.jam) between ? and ? group by nama_bayar");
                                     try {
                                         psmasuk.setString(1,rspoli.getString("kd_poli"));
                                         psmasuk.setString(2,rsdokter.getString("kd_dokter"));
@@ -452,7 +447,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             ttljmlpas=ttljmlpas+rsmasuk.getInt(2);
                                             ttltotal=ttltotal+rsmasuk.getDouble(1);
                                             if(total>0){
-                                                tabMode.addRow(new Object[]{"  "+i+". "+rsdokter.getString("nm_dokter")+" ("+rsjamshift.getString("shift")+")",jmlpas,total});
+                                                tabMode.addRow(new Object[]{"  "+i+". "+rsdokter.getString("nm_dokter")+" ( "+rsjamshift.getString("shift")+" ) ( "+rsmasuk.getString(3)+" )",jmlpas,total});
                                                 i++;
                                             }                                                
                                         }                        

@@ -399,16 +399,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ttltotal=0;
                 while(rspoli.next()){
                     psmasuk=koneksi.prepareStatement(
-                            "select sum(totalbiaya),count(DISTINCT reg_periksa.no_rawat) from billing inner join reg_periksa "+
-                            "on reg_periksa.no_rawat=billing.no_rawat where "+
+                            "select sum(besar_bayar),count(DISTINCT reg_periksa.no_rawat) from detail_nota_jalan inner join reg_periksa "+
+                            "on reg_periksa.no_rawat=detail_nota_jalan.no_rawat where "+
                             "reg_periksa.kd_poli=? and reg_periksa.status_lanjut='Ralan' and "+
-                            "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
-                            "(status='Laborat' or status='Radiologi' or status='Operasi' or "+
-                            "status='Obat' or status='Ralan Dokter' or "+
-                            "status='Ralan Paramedis' or status='Ralan Dokter Paramedis' or "+
-                            "status='Tambahan' or status='Potongan' or status='Kamar' or "+
-                            "status='Registrasi' or status='Harian' or status='Retur Obat' or "+
-                            "status='Resep Pulang' or status='Service') and reg_periksa.tgl_registrasi between ? and ? ");
+                            "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat "+
+                            "from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) "+
+                            "and reg_periksa.tgl_registrasi between ? and ? ");
                     try {
                         psmasuk.setString(1,rspoli.getString(1));
                         psmasuk.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));

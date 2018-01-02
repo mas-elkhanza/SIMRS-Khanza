@@ -5417,9 +5417,7 @@ private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             isTutup();
             if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
                 com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.63f);
-            }else{
-                com.sun.awt.AWTUtilities.setWindowOpacity(DlgHome,0.93f);
-            }      
+            }     
             DlgHome.setSize(PanelUtama.getWidth()-45, PanelUtama.getHeight()-45);
             isTampil();
             DlgHome.setLocationRelativeTo(PanelUtama);
