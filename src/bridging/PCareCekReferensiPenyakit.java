@@ -32,6 +32,7 @@ import java.util.Map;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -317,22 +318,23 @@ public final class PCareCekReferensiPenyakit extends javax.swing.JDialog {
         PcareApi api=new PcareApi();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIPCARE")+"/pcare-rest/v1/diagnosa/"+diagnosa+"/0/1000";	
+            String URL = prop.getProperty("URLAPIPCARE")+"/v1/diagnosa/"+diagnosa+"/0/500";	
 
-	    HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIPCARE"));
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
+            String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
+            headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
 	    HttpEntity requestEntity = new HttpEntity(headers);
 	    RestTemplate rest = new RestTemplate();	
             
-            System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metadata");
-            System.out.println("code : "+nameNode.path("code").asText());
-            System.out.println("message : "+nameNode.path("message").asText());
+            JsonNode nameNode = root.path("metaData");
+            //System.out.println("code : "+nameNode.path("code").asText());
+            //System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
                 JsonNode response = root.path("response");
@@ -340,7 +342,7 @@ public final class PCareCekReferensiPenyakit extends javax.swing.JDialog {
                     i=1;
                     for(JsonNode list:response.path("list")){
                         tabMode.addRow(new Object[]{
-                            i+".",list.path("kodeDiagnosa").asText(),list.path("namaDiagnosa").asText()
+                            i+".",list.path("kdDiag").asText(),list.path("nmDiag").asText()
                         });
                         i++;
                     }
