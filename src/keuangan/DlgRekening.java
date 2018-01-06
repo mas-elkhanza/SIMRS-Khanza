@@ -167,7 +167,6 @@ public final class DlgRekening extends javax.swing.JDialog {
 
         Kd2.setHighlighter(null);
         Kd2.setName("Kd2"); // NOI18N
-        Kd2.setSelectionColor(new java.awt.Color(255, 255, 255));
         Kd2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 Kd2KeyPressed(evt);
@@ -180,7 +179,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         WindowSubRekening.setUndecorated(true);
         WindowSubRekening.setResizable(false);
 
-        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Sub Akun Rekening ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Sub Akun Rekening ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame7.setName("internalFrame7"); // NOI18N
         internalFrame7.setWarnaBawah(new java.awt.Color(240, 245, 235));
         internalFrame7.setLayout(null);
@@ -283,7 +282,7 @@ public final class DlgRekening extends javax.swing.JDialog {
 
         MnSubAkun.setBackground(new java.awt.Color(255, 255, 255));
         MnSubAkun.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSubAkun.setForeground(java.awt.Color.darkGray);
+        MnSubAkun.setForeground(new java.awt.Color(90, 120, 80));
         MnSubAkun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSubAkun.setText("Buat Sub Akun Rekening");
         MnSubAkun.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -300,7 +299,7 @@ public final class DlgRekening extends javax.swing.JDialog {
 
         MnJadikanSub.setBackground(new java.awt.Color(255, 255, 255));
         MnJadikanSub.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnJadikanSub.setForeground(java.awt.Color.darkGray);
+        MnJadikanSub.setForeground(new java.awt.Color(90, 120, 80));
         MnJadikanSub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnJadikanSub.setText("Jadikan Sub Akun Rekening");
         MnJadikanSub.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -317,7 +316,7 @@ public final class DlgRekening extends javax.swing.JDialog {
 
         MnJadikanUtama.setBackground(new java.awt.Color(255, 255, 255));
         MnJadikanUtama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnJadikanUtama.setForeground(java.awt.Color.darkGray);
+        MnJadikanUtama.setForeground(new java.awt.Color(90, 120, 80));
         MnJadikanUtama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnJadikanUtama.setText("Jadikan Akun Utama");
         MnJadikanUtama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -338,7 +337,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         WindowJadikanSub.setUndecorated(true);
         WindowJadikanSub.setResizable(false);
 
-        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Jadikan Sub Akun ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Jadikan Sub Akun ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame8.setName("internalFrame8"); // NOI18N
         internalFrame8.setWarnaBawah(new java.awt.Color(240, 245, 235));
         internalFrame8.setLayout(null);
@@ -416,7 +415,7 @@ public final class DlgRekening extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rekening ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rekening ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

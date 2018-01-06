@@ -141,7 +141,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -375,7 +375,9 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             } catch (java.lang.NullPointerException e) {
             }
             if(evt.getClickCount()==2){
-                BtnTambahActionPerformed(null);
+                if(var.getberi_obat()==true){
+                    BtnTambahActionPerformed(null);
+                }
             }
         }
 }//GEN-LAST:event_tbPemisahanMouseClicked
@@ -383,7 +385,9 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private void tbPemisahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPemisahanKeyPressed
         if(tabMode.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                BtnTambahActionPerformed(null);
+                if(var.getberi_obat()==true){
+                    BtnTambahActionPerformed(null);
+                }                    
             }
         }
 }//GEN-LAST:event_tbPemisahanKeyPressed
@@ -450,9 +454,13 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         }else{
             if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString())>0){
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+            }else if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),7).toString().equals("Sudah Terlayani")){
+                JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
             }else {
                 if(var.getkode().equals("Admin Utama")){
                     dlgobt.setNoRm(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString(),
+                        tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),4).toString(),
+                        tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),5).toString(),
                         tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),1).toString(),
                         tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),2).toString()
                     );
@@ -466,6 +474,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                         JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
                     }else{ 
                         dlgobt.setNoRm(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString(),
+                            tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),4).toString(),
+                            tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),5).toString(),
                             tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),1).toString(),
                             tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),2).toString()
                         );
@@ -607,7 +617,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     
     public void isCek(){
         BtnTambah.setEnabled(var.getberi_obat());
-        BtnPrint.setEnabled(var.getberi_obat());
+        BtnPrint.setEnabled(var.getresep_dokter());
     }
     
     

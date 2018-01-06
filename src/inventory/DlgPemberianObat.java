@@ -74,7 +74,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private ResultSet rs,rsrekening;
     private double embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),ttljual,ttlhpp;
     private double tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
-    private String statusberi="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
+    private String kodedokter="",namadokter="",statusberi="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
     private Jurnal jur=new Jurnal();
 
     /** Creates new form DlgPemberianObat
@@ -476,7 +476,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Pemberian Obat/Barang/Alkes/Perlengkapan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Pemberian Obat/Barang/Alkes/Perlengkapan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1107,9 +1107,12 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                     dlgobt.setLocationRelativeTo(internalFrame1);
                     dlgobt.setVisible(true);
                 }else if(status.equals("ralan")){
-                    dlgobtjalan.setNoRm(TNoRw.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
+                    dlgobtjalan.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
                                         Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
                     dlgobtjalan.isCek();
+                    if(!namadokter.equals("")){
+                        dlgobtjalan.setDokter(kodedokter, namadokter);
+                    }
                     dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     dlgobtjalan.tampilobat();
                     dlgobtjalan.setLocationRelativeTo(internalFrame1);
@@ -1130,10 +1133,13 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                         dlgobt.setLocationRelativeTo(internalFrame1);
                         dlgobt.setVisible(true);
                     }else if(status.equals("ralan")){
-                        dlgobtjalan.setNoRm(TNoRw.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
+                        dlgobtjalan.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
                                             Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
                         dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                         dlgobtjalan.isCek();
+                        if(!namadokter.equals("")){
+                            dlgobtjalan.setDokter(kodedokter, namadokter);
+                        }
                         dlgobtjalan.tampilobat();
                         dlgobtjalan.setLocationRelativeTo(internalFrame1);
                         dlgobtjalan.setVisible(true);
@@ -2157,5 +2163,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         new Timer(1000, taskPerformer).start();
     }
 
+    public void setDokter(String kodedokter,String namadokter){
+        this.kodedokter=kodedokter;
+        this.namadokter=namadokter;
+    }
 
 }

@@ -358,7 +358,7 @@ public class DlgPembelian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -818,7 +818,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         for(i=0;i<jml;i++){  
                             try {
                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                    if(Sequel.menyimpantf2("detailbeli","?,?,?,?,?,?,?,?,?,?,?","Transaksi Pembelian",11,new String[]{
+                                    if(Sequel.menyimpantf2("detailbeli","?,?,?,?,?,?,?,?,?,?,?,?","Transaksi Pembelian",12,new String[]{
                                            NoFaktur.getText(),
                                            tbDokter.getValueAt(i,2).toString(),
                                            tbDokter.getValueAt(i,1).toString(),
@@ -829,7 +829,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                            tbDokter.getValueAt(i,10).toString(),
                                            tbDokter.getValueAt(i,11).toString(),
                                            tbDokter.getValueAt(i,13).toString(),
-                                           tbDokter.getValueAt(i,12).toString()
+                                           tbDokter.getValueAt(i,12).toString(),
+                                           Valid.SetTgl(tbDokter.getValueAt(i,6).toString()+"")
                                     })==true){
                                         Trackobat.catatRiwayat(tbDokter.getValueAt(i,2).toString(),Valid.SetAngka(tbDokter.getValueAt(i,12).toString()),0,"Pengadaan",var.getkode(),kdgudang.getText(),"Simpan");
                                         Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','"+tbDokter.getValueAt(i,12).toString()+"'", 

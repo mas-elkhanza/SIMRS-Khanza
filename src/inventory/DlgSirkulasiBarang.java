@@ -1,14 +1,14 @@
 package inventory;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
-import fungsi.grafikpembelianterbanyak;
-import fungsi.grafikpembeliantersedikit;
-import fungsi.grafikpenjualanterbanyak;
-import fungsi.grafikpenjualantersedikit;
-import fungsi.grafikpiutangterbanyak;
-import fungsi.grafikpiutangtersedikit;
-import fungsi.grafikresepterbanyak;
-import fungsi.grafikreseptersedikit;
+import grafikanalisa.grafikpembelianterbanyak;
+import grafikanalisa.grafikpembeliantersedikit;
+import grafikanalisa.grafikpenjualanterbanyak;
+import grafikanalisa.grafikpenjualantersedikit;
+import grafikanalisa.grafikpiutangterbanyak;
+import grafikanalisa.grafikpiutangtersedikit;
+import grafikanalisa.grafikresepterbanyak;
+import grafikanalisa.grafikreseptersedikit;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -325,7 +325,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Obat, Alkes & BHP Medis Keluar Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Obat, Alkes & BHP Medis Keluar Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

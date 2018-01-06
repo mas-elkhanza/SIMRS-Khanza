@@ -5,6 +5,7 @@
  */
 package khanzahmsautoverify;
 
+import AESsecurity.EnkripsiAES;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -334,11 +335,11 @@ public class frmUtama extends javax.swing.JFrame {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             MysqlDataSource server=new MysqlDataSource();
-            server.setServerName(prop.getProperty("HOST"));
-            server.setPort(Integer.parseInt(prop.getProperty("PORT")));
-            server.setUser(prop.getProperty("USER"));
-            server.setPassword(prop.getProperty("PAS"));
-            server.setDatabaseName(prop.getProperty("DATABASE"));
+            server.setServerName(EnkripsiAES.decrypt(prop.getProperty("HOST")));
+            server.setPort(Integer.parseInt(EnkripsiAES.decrypt(prop.getProperty("PORT"))));
+            server.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
+            server.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
+            server.setDatabaseName(EnkripsiAES.decrypt(prop.getProperty("DATABASE")));
             koneksi=server.getConnection();
             textArea1.append("Tersambung ke server"+"  ");
         } catch (Exception e) {
