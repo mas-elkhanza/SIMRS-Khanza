@@ -51,13 +51,13 @@ $tanggal=date('Y-m-d', strtotime($_POST["tanggal"]));
 				//mencari no rawat terakhir
 				$no_rawat_akhir = getone("SELECT max(reg_periksa.no_rawat) as maxno_rawat FROM reg_periksa WHERE no_rawat LIKE '%$tgl_registrasi%'");
 				$no_urut_rawat = (int) substr($no_rawat_akhir, 11, 6);
-				$no_urut_rawat++;
+				//$no_urut_rawat++;
 				//output no rawat
 				$no_rawat= $tgl_registrasi .sprintf('%06s',$no_urut_rawat++);
 				//mencari no reg terakhir
 				$no_reg_akhir = getone("SELECT max(reg_periksa.no_reg) as maxno_reg FROM reg_periksa WHERE reg_periksa.kd_dokter='$_POST[kd_dokter]' and reg_periksa.tgl_registrasi='$tgl_registrasi'");
 				$no_urut_reg = (int) substr($no_reg_akhir,0,3);
-				$no_urut_reg++;
+				//$no_urut_reg++;
 				//output no reg
 				$no_reg= sprintf('%03s',$no_urut_reg++);
 				/*mysql_query("insert into reg_periksa set no_reg='$no_reg', no_rawat='$no_rawat', tgl_registrasi='$tanggal', jam_reg='$jam_reg',
