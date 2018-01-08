@@ -43,7 +43,7 @@ import org.springframework.web.client.RestTemplate;
  *
  * @author dosen
  */
-public final class PCareCekReferensiDokter extends javax.swing.JDialog {
+public final class PCareCekReferensiKesadaran extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private final Properties prop = new Properties();
     private validasi Valid=new validasi();
@@ -53,13 +53,13 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
-    public PCareCekReferensiDokter(java.awt.Frame parent, boolean modal) {
+    public PCareCekReferensiKesadaran(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
         this.setLocation(10,2);
         setSize(628,674);
-        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode Dokter","Nama Dokter"}){
+        tabMode=new DefaultTableModel(null,new String[]{"No.","Kode Kesadaran","Nama Kesadaran"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbKamar.setModel(tabMode);
@@ -75,7 +75,7 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(140);
             }else if(i==2){
-                column.setPreferredWidth(470);
+                column.setPreferredWidth(370);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -122,7 +122,7 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Dokter PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Kesadaran PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -140,9 +140,9 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
         panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel16.setText("Kode/Nama Diagnosa :");
+        jLabel16.setText("Kesadaran :");
         jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(120, 23));
+        jLabel16.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass6.add(jLabel16);
 
         diagnosa.setName("diagnosa"); // NOI18N
@@ -248,7 +248,7 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariPCAREReferensiDiagnosa.jrxml","report","[ Pencarian Referensi Diagnosa ]",
+            Valid.MyReport("rptCariPCAREReferensiKesadaran.jrxml","report","[ Pencarian Referensi Diagnosa ]",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
@@ -286,7 +286,7 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            PCareCekReferensiDokter dialog = new PCareCekReferensiDokter(new javax.swing.JFrame(), true);
+            PCareCekReferensiKesadaran dialog = new PCareCekReferensiKesadaran(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -314,7 +314,7 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
         PcareApi api=new PcareApi();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIPCARE")+"/v1/dokter/0/10000";	
+            String URL = prop.getProperty("URLAPIPCARE")+"/v1/kesadaran";	
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
@@ -337,10 +337,10 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
-                        if(list.path("kdDokter").asText().toLowerCase().contains(diagnosa.toLowerCase())||
-                                list.path("nmDokter").asText().toLowerCase().contains(diagnosa.toLowerCase())){
+                        if(list.path("kdSadar").asText().toLowerCase().contains(diagnosa.toLowerCase())||
+                                list.path("nmSadar").asText().toLowerCase().contains(diagnosa.toLowerCase())){
                             tabMode.addRow(new Object[]{
-                                i+".",list.path("kdDokter").asText(),list.path("nmDokter").asText()
+                                i+".",list.path("kdSadar").asText(),list.path("nmSadar").asText()
                             });
                             i++;
                         }
