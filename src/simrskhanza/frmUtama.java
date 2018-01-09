@@ -205,6 +205,7 @@ import inventory.DlgObatPerTanggal;
 import inventory.DlgPenjualanPerTanggal;
 import inventory.DlgRiwayatBarangMedis;
 import ipsrs.DlgPengadaanIPSRSPerTanggal;
+import ipsrs.DlgStokKeluarIPSRSPerTanggal;
 import java.awt.event.KeyListener;
 import javax.swing.event.DocumentEvent;
 import keuangan.DlgAkunPiutang;
@@ -706,6 +707,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnRekapPembayaranPerUnit = new widget.ButtonBig();
         btnGrafikKunjunganPerCarabayar = new widget.ButtonBig();
         btnPengadaanIPSRSPerTanggal = new widget.ButtonBig();
+        btnStokKeluarIPSRSPerTanggal = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4322,6 +4324,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPengadaanIPSRSPerTanggal);
 
+        btnStokKeluarIPSRSPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-open_23214.png"))); // NOI18N
+        btnStokKeluarIPSRSPerTanggal.setText("Stok Keluar Non Medis Per Tanggal");
+        btnStokKeluarIPSRSPerTanggal.setIconTextGap(0);
+        btnStokKeluarIPSRSPerTanggal.setName("btnStokKeluarIPSRSPerTanggal"); // NOI18N
+        btnStokKeluarIPSRSPerTanggal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnStokKeluarIPSRSPerTanggal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStokKeluarIPSRSPerTanggalActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnStokKeluarIPSRSPerTanggal);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4330,7 +4344,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/01/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/01/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -9257,6 +9271,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPengadaanIPSRSPerTanggalActionPerformed
 
+    private void btnStokKeluarIPSRSPerTanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStokKeluarIPSRSPerTanggalActionPerformed
+        isTutup();
+        DlgStokKeluarIPSRSPerTanggal form=new DlgStokKeluarIPSRSPerTanggal(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnStokKeluarIPSRSPerTanggalActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9550,6 +9574,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnSirkulasi2;
     private widget.ButtonBig btnSirkulasiBerkas;
     private widget.ButtonBig btnSirkulasiInventaris;
+    private widget.ButtonBig btnStokKeluarIPSRSPerTanggal;
     private widget.ButtonBig btnStokObatPasien;
     private widget.ButtonBig btnSuplier;
     private widget.ButtonBig btnSuplierIPSRS;
@@ -10281,6 +10306,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getipsrs_pengadaan_pertanggal()==true){
                 Panelmenu.add(btnPengadaanIPSRSPerTanggal);
+                jmlmenu++;
+            } 
+            
+            if(var.getipsrs_stokkeluar_pertanggal()==true){
+                Panelmenu.add(btnStokKeluarIPSRSPerTanggal);
                 jmlmenu++;
             } 
 
@@ -11677,6 +11707,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             Panelmenu.add(btnPengadaanIPSRSPerTanggal);
             jmlmenu++;
         }
+        
+        if(var.getipsrs_stokkeluar_pertanggal()==true){
+            Panelmenu.add(btnStokKeluarIPSRSPerTanggal);
+            jmlmenu++;
+        } 
 
         if(var.getinventaris_jenis()==true){
             Panelmenu.add(btnJenisInventaris);  
@@ -13207,6 +13242,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getipsrs_pengadaan_pertanggal()==true){
             if(btnPengadaanIPSRSPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengadaanIPSRSPerTanggal);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(var.getipsrs_stokkeluar_pertanggal()==true){
+            if(btnStokKeluarIPSRSPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnStokKeluarIPSRSPerTanggal);
                 jmlmenu++;
             }                
         } 
