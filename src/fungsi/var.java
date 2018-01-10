@@ -64,7 +64,8 @@ public final class var {
             grafik_kunjungan_statusdaftartanggal=false,grafik_kunjungan_statusdaftartanggal2=false,grafik_kunjungan_statusbataltahun=false,grafik_kunjungan_statusbatalbulan=false,
             pcare_cek_penyakit=false,grafik_kunjungan_statusbataltanggal=false,kategori_barang=false,golongan_barang=false,pemberian_obat_pertanggal=false,
             penjualan_obat_pertanggal=false,pcare_cek_kesadaran=false,pembatalan_periksa_dokter=false,pembayaran_per_unit=false,rekap_pembayaran_per_unit=false,
-            grafik_kunjungan_percarabayar=false,ipsrs_pengadaan_pertanggal=false,ipsrs_stokkeluar_pertanggal=false;
+            grafik_kunjungan_percarabayar=false,ipsrs_pengadaan_pertanggal=false,ipsrs_stokkeluar_pertanggal=false,grafik_kunjungan_ranaptahun=false,
+            pcare_cek_rujukan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -364,6 +365,8 @@ public final class var {
                         var.grafik_kunjungan_percarabayar=true;
                         var.ipsrs_pengadaan_pertanggal=true;
                         var.ipsrs_stokkeluar_pertanggal=true;
+                        var.grafik_kunjungan_ranaptahun=true;
+                        var.pcare_cek_rujukan=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -645,6 +648,8 @@ public final class var {
                         var.grafik_kunjungan_percarabayar=true;
                         var.ipsrs_pengadaan_pertanggal=true;
                         var.ipsrs_stokkeluar_pertanggal=true;
+                        var.grafik_kunjungan_ranaptahun=true;
+                        var.pcare_cek_rujukan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -927,6 +932,8 @@ public final class var {
                         var.grafik_kunjungan_percarabayar=rs2.getBoolean("grafik_kunjungan_percarabayar");
                         var.ipsrs_pengadaan_pertanggal=rs2.getBoolean("ipsrs_pengadaan_pertanggal");
                         var.ipsrs_stokkeluar_pertanggal=rs2.getBoolean("ipsrs_stokkeluar_pertanggal");
+                        var.grafik_kunjungan_ranaptahun=rs2.getBoolean("grafik_kunjungan_ranaptahun");
+                        var.pcare_cek_rujukan=rs2.getBoolean("pcare_cek_rujukan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1207,6 +1214,8 @@ public final class var {
                         var.grafik_kunjungan_percarabayar=false;
                         var.ipsrs_pengadaan_pertanggal=false;
                         var.ipsrs_stokkeluar_pertanggal=false;
+                        var.grafik_kunjungan_ranaptahun=false;
+                        var.pcare_cek_rujukan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1534,4 +1543,6 @@ public final class var {
     public static boolean getgrafik_kunjungan_percarabayar(){return var.grafik_kunjungan_percarabayar;}
     public static boolean getipsrs_pengadaan_pertanggal(){return var.ipsrs_pengadaan_pertanggal;}
     public static boolean getipsrs_stokkeluar_pertanggal(){return var.ipsrs_stokkeluar_pertanggal;}
+    public static boolean getgrafik_kunjungan_ranaptahun(){return var.grafik_kunjungan_ranaptahun;}
+    public static boolean getpcare_cek_rujukan(){return var.pcare_cek_rujukan;}
 }
