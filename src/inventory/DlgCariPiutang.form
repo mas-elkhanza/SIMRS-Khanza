@@ -140,7 +140,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -630,7 +630,6 @@
             </Component>
             <Component class="widget.TextBox" name="nmmem">
               <Properties>
-                <Property name="editable" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="nmmem" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[207, 23]"/>

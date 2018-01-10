@@ -12,6 +12,8 @@
 
 package fungsi;
 
+import fungsi.koneksiDB;
+import fungsi.var;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -1078,6 +1080,33 @@ public final class sekuel {
                 }else{
                     angka=0;
                 } 
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rs != null){
+                    rs.close();
+                }
+                
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+            
+        return angka;
+    }
+    
+    public Integer cariIntegerCount(String sql){
+        angka=0;
+        try {
+            ps=connect.prepareStatement(sql);
+            try{            
+                rs=ps.executeQuery();            
+                while(rs.next()){
+                    angka=angka+rs.getInt(1);
+                }
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
             }finally{

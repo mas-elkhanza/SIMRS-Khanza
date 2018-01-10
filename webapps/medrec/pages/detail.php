@@ -154,7 +154,14 @@
                     }
                 echo "</table>";
 
-            } else {echo "Data retensi masih kosong!";}
+            } else {echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head'>
+                                <td width='5%'><div align='center'>Proses</div></td>
+                                <td width='10%'><div align='center'>Terakhir Daftar</div></td>
+                                <td width='10%'><div align='center'>Tgl.Retensi</div></td>
+                                <td width='25%'><div align='center'>File Retensi</div></td>
+                            </tr>
+                         </table>";}
         ?>
         </div>
         </form>

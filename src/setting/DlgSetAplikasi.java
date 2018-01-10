@@ -11,6 +11,7 @@
 
 package setting;
 
+import fungsi.sekuel;
 import fungsi.koneksiDB;
 import fungsi.*;
 import java.awt.Canvas;
@@ -77,7 +78,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
 
         Nm.setDocument(new batasInput((byte)60).getKata(Nm));
-        Almt.setDocument(new batasInput((byte)150).getKata(Almt));
+        Almt.setDocument(new batasInput((int)150).getKata(Almt));
         Kota.setDocument(new batasInput((byte)30).getKata(Kota));
         Propinsi.setDocument(new batasInput((byte)30).getKata(Propinsi));
         Kontak.setDocument(new batasInput((byte)50).getKata(Kontak));
@@ -150,7 +151,7 @@ public class DlgSetAplikasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Aplikasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Aplikasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

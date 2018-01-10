@@ -38,6 +38,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
     private ResultSet rs;    
     public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private int i=0;
+    private DlgTemplateUTD template=new DlgTemplateUTD(null,false);
 
     /** Creates new form DlgJnsPerawatanRalan
      * @param parent
@@ -165,6 +166,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        ppTemplate = new javax.swing.JMenuItem();
         MnRestore = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -214,13 +216,31 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
+        ppTemplate.setBackground(new java.awt.Color(255, 255, 255));
+        ppTemplate.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppTemplate.setForeground(new java.awt.Color(90, 120, 80));
+        ppTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppTemplate.setText("Template UTD");
+        ppTemplate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppTemplate.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppTemplate.setIconTextGap(5);
+        ppTemplate.setName("ppTemplate"); // NOI18N
+        ppTemplate.setPreferredSize(new java.awt.Dimension(150, 25));
+        ppTemplate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppTemplateActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppTemplate);
+
         MnRestore.setBackground(new java.awt.Color(255, 255, 255));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(60, 80, 50));
+        MnRestore.setForeground(new java.awt.Color(90, 120, 80));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnRestore.setIconTextGap(5);
         MnRestore.setName("MnRestore"); // NOI18N
         MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
         MnRestore.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +259,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Pelayanan Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Pelayanan Unit Tranfusi Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -459,7 +479,7 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(100, 197));
         FormInput.setLayout(null);
 
-        jLabel3.setText("Kode Periksa :");
+        jLabel3.setText("Kode Pelayanan :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
         jLabel3.setBounds(-10, 12, 115, 23);
@@ -923,8 +943,11 @@ public final class DlgJnsPerawatanUTD extends javax.swing.JDialog {
                     getData();
                 } catch (java.lang.NullPointerException e) {
                 }
-            }
-            
+            }else if(evt.getKeyCode()==KeyEvent.VK_A){                
+                for(i=0;i<tbJnsPerawatan.getRowCount();i++){ 
+                    tbJnsPerawatan.setValueAt(true,i,0);
+                }
+            }             
         }
 }//GEN-LAST:event_tbJnsPerawatanKeyPressed
 
@@ -1024,6 +1047,19 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
         }
     }//GEN-LAST:event_ManajemenKeyPressed
 
+    private void ppTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTemplateActionPerformed
+        if(TNm.getText().trim().equals("")){
+            Valid.textKosong(TNm,"Nama Pemeriksaan");
+        }else{
+            template.KdPeriksa.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
+            template.NmPeriksa.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString());
+            template.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            template.setLocationRelativeTo(internalFrame1);
+            template.tampil();
+            template.setVisible(true);
+        }
+    }//GEN-LAST:event_ppTemplateActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1087,6 +1123,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     private widget.TextBox nmpnj;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
+    private javax.swing.JMenuItem ppTemplate;
     private widget.Table tbJnsPerawatan;
     // End of variables declaration//GEN-END:variables
 

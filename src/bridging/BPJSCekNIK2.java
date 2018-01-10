@@ -703,7 +703,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-06-2017" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2017" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -799,7 +799,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Peserta BPJS Berdasarkan NIK ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Peserta BPJS Berdasarkan NIK ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -835,7 +835,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(560, 168));
         FormInput.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         FormKelengkapanPasien.setName("FormKelengkapanPasien"); // NOI18N
         FormKelengkapanPasien.setOpaque(false);
         FormKelengkapanPasien.setPreferredSize(new java.awt.Dimension(1000, 245));
@@ -900,7 +900,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         jLabel19.setBounds(235, 85, 85, 23);
 
         CmbStts.setBackground(new java.awt.Color(245, 253, 240));
-        CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENIKAH", "SINGLE", "JANDA", "DUDHA", "JOMBLO" }));
+        CmbStts.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MENIKAH", "BELUM MENIKAH", "JANDA", "DUDHA" }));
         CmbStts.setLightWeightPopupEnabled(false);
         CmbStts.setName("CmbStts"); // NOI18N
         CmbStts.setOpaque(false);
@@ -981,8 +981,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         TNo.setBounds(107, 25, 160, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-06-2017" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2017" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -1389,7 +1388,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
 
         FormInput.add(FormKelengkapanPasien);
 
-        FormKelengkapanSEP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), "::[ Kelengkapan Data SEP, Registrasi & Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        FormKelengkapanSEP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), "::[ Kelengkapan Data SEP, Registrasi & Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         FormKelengkapanSEP.setName("FormKelengkapanSEP"); // NOI18N
         FormKelengkapanSEP.setOpaque(false);
         FormKelengkapanSEP.setPreferredSize(new java.awt.Dimension(1000, 187));
@@ -1412,8 +1411,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel23);
         jLabel23.setBounds(430, 55, 100, 23);
 
-        TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-06-2017 12:24:42" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2017 19:34:56" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -1432,8 +1430,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel30);
         jLabel30.setBounds(430, 25, 100, 23);
 
-        TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-06-2017 12:24:42" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2017 19:34:56" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -2852,11 +2849,12 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "       Kode Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText()
                 });
-                Kdpnj.setText(response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText());
+                Kdpnj.setText("BPJ");
+                nmpnj.setText("BPJS");
                 tabMode.addRow(new Object[]{
                     "       Nama Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText()
                 });                
-                nmpnj.setText(response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText());
+                Pekerjaan.setText(response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText());
                 tabMode.addRow(new Object[]{
                     "Kelas Tanggungan",":"
                 });
@@ -3103,6 +3101,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         JenisPelayanan.setSelectedIndex(1);
         JenisPelayananItemStateChanged(null);
         statuspasien="";
+        TBiaya.setText("0");
            
         TNo.requestFocus();
     }
@@ -3300,7 +3299,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                     if(!nosep.equals("")){
                         DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,true);
                         pilihan.tampil();
-                        if(JenisPelayanan.getSelectedIndex()==1){
+                        if(JenisPelayanan.getSelectedIndex()==0){
                             pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
                                     TDokter.getText(),TNm.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(), 
                                     Saudara.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),"ranap");
@@ -3390,13 +3389,13 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                     Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");                                     
                     Sequel.menyimpan2("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
                     Sequel.menyimpan2("diagnosa_pasien","?,?,?,?","Penyakit",4,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1"});                            
-                    if(Sequel.menyimpantf2("kamar_inap","'"+TNoRw.getText()+"','"+kdpoli.getText()+"','"+TBiaya.getText()+"','"+
+                    if(Sequel.menyimpantf2("kamar_inap","'"+TNoRw.getText()+"','"+KdPoli.getText()+"','"+TBiaya.getText()+"','"+
                             KdPenyakit.getText()+"','-','"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"','"+
                             TanggalSEP.getSelectedItem().toString().substring(11,19)+"','0000-00-00',"+
                             "'00:00:00','"+jmlhari+"','"+biaya+"','-'","No.Rawat"
                         )==true){
                             Sequel.mengedit("reg_periksa","no_rawat='"+TNoRw.getText()+"'","status_lanjut='Ranap'");
-                            Sequel.mengedit("kamar","kd_kamar='"+kdpoli.getText()+"'","status='ISI'"); 
+                            Sequel.mengedit("kamar","kd_kamar='"+KdPoli.getText()+"'","status='ISI'"); 
                             insertSEP();
                     }      
             }

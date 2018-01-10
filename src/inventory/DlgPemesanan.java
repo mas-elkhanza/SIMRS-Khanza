@@ -353,7 +353,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pemesanan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pemesanan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -378,6 +378,11 @@ public class DlgPemesanan extends javax.swing.JDialog {
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbDokterMouseClicked(evt);
+            }
+        });
+        tbDokter.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tbDokterPropertyChange(evt);
             }
         });
         tbDokter.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -845,7 +850,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         for(i=0;i<jml;i++){  
                             try {
                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                    if(Sequel.menyimpantf2("detailpesan","?,?,?,?,?,?,?,?,?,?,?","Transaksi Pemesanan",11,new String[]{
+                                    if(Sequel.menyimpantf2("detailpesan","?,?,?,?,?,?,?,?,?,?,?,?","Transaksi Pemesanan",12,new String[]{
                                            NoFaktur.getText(),
                                            tbDokter.getValueAt(i,2).toString(),
                                            tbDokter.getValueAt(i,1).toString(),
@@ -856,7 +861,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                            tbDokter.getValueAt(i,10).toString(),
                                            tbDokter.getValueAt(i,11).toString(),
                                            tbDokter.getValueAt(i,13).toString(),
-                                           tbDokter.getValueAt(i,12).toString()
+                                           tbDokter.getValueAt(i,12).toString(),
+                                           Valid.SetTgl(tbDokter.getValueAt(i,6).toString()+"")
                                     })==true){
                                         Trackobat.catatRiwayat(tbDokter.getValueAt(i,2).toString(),Valid.SetAngka(tbDokter.getValueAt(i,12).toString()),0,"Pemesanan",var.getkode(),kdgudang.getText(),"Simpan");
                                         Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','"+tbDokter.getValueAt(i,12).toString()+"'", 
@@ -1509,6 +1515,12 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         this.setCursor(Cursor.getDefaultCursor());
             
     }//GEN-LAST:event_BtnTambahActionPerformed
+
+    private void tbDokterPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbDokterPropertyChange
+        if(this.isVisible()==true){
+              getData();
+        }
+    }//GEN-LAST:event_tbDokterPropertyChange
 
     /**
     * @param args the command line arguments

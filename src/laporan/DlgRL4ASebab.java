@@ -45,10 +45,10 @@ public class DlgRL4ASebab extends javax.swing.JDialog {
         LoadHTML1.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#3c5032;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"
+                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#5a7850;}"+
+                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -95,7 +95,7 @@ public class DlgRL4ASebab extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ RL 4A Sebab Data Keadaan Morbiditas Pasien Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ RL 4A Sebab Data Keadaan Morbiditas Pasien Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -188,7 +188,7 @@ public class DlgRL4ASebab extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -238,10 +238,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#3c5032;}"+                    
-                    ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"
+                    ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#5a7850;}"+                    
+                    ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"
             );
             bg.close();
             
@@ -372,7 +372,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='2%' rowspan='3'>No.Urut</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>No.Daftar Terperinci</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='18%' rowspan='3'>Golongan Sebab Penyakit</td>"+
@@ -381,7 +381,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Hidup (23+24)</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Mati</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>0-6 hr</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>7-28hr</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>28hr-<1th</td>"+
@@ -394,7 +394,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' rowspan='2'>LK</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' rowspan='2'>PR</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
@@ -414,7 +414,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>1</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>2</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>3</td>"+
@@ -578,32 +578,32 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         }
                     }
                     htmlContent.append(
-                        "<tr class='isi3'>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+i+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+rs.getString("kd_penyakit")+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+rs.getString("nm_penyakit")+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr0s6l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr0s6p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr7s28l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr7s28p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr28s1thl+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr28s1thp+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th1s4l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th1s4p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th5s14l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th5s14p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th15s24l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th15s24p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th25s44l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th25s44p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th45s64l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th45s64p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+lbth65l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+lbth65p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l)+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+(hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p)+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l+hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p-mati)+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+mati+"</td>"+
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'>"+i+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("kd_penyakit")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("nm_penyakit")+"</td>"+
+                            "<td valign='middle' align='center'>"+hr0s6l+"</td>"+
+                            "<td valign='middle' align='center'>"+hr0s6p+"</td>"+
+                            "<td valign='middle' align='center'>"+hr7s28l+"</td>"+
+                            "<td valign='middle' align='center'>"+hr7s28p+"</td>"+
+                            "<td valign='middle' align='center'>"+hr28s1thl+"</td>"+
+                            "<td valign='middle' align='center'>"+hr28s1thp+"</td>"+
+                            "<td valign='middle' align='center'>"+th1s4l+"</td>"+
+                            "<td valign='middle' align='center'>"+th1s4p+"</td>"+
+                            "<td valign='middle' align='center'>"+th5s14l+"</td>"+
+                            "<td valign='middle' align='center'>"+th5s14p+"</td>"+
+                            "<td valign='middle' align='center'>"+th15s24l+"</td>"+
+                            "<td valign='middle' align='center'>"+th15s24p+"</td>"+
+                            "<td valign='middle' align='center'>"+th25s44l+"</td>"+
+                            "<td valign='middle' align='center'>"+th25s44p+"</td>"+
+                            "<td valign='middle' align='center'>"+th45s64l+"</td>"+
+                            "<td valign='middle' align='center'>"+th45s64p+"</td>"+
+                            "<td valign='middle' align='center'>"+lbth65l+"</td>"+
+                            "<td valign='middle' align='center'>"+lbth65p+"</td>"+
+                            "<td valign='middle' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l)+"</td>"+
+                            "<td valign='middle' align='center'>"+(hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p)+"</td>"+
+                            "<td valign='middle' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l+hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p-mati)+"</td>"+
+                            "<td valign='middle' align='center'>"+mati+"</td>"+
                         "</tr>"
                     );
                     i++;
@@ -636,7 +636,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         try {
             StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='2%' rowspan='3'>No.Urut</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>No.Daftar Terperinci</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='18%' rowspan='3'>Golongan Sebab Penyakit</td>"+
@@ -645,7 +645,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Hidup (23+24)</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='3'>Jumlah Pasien Keluar Mati</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>0-6 hr</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>7-28hr</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' colspan='2'>28hr-<1th</td>"+
@@ -658,7 +658,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' rowspan='2'>LK</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center' rowspan='2'>PR</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
@@ -678,7 +678,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>L</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>P</td>"+
                 "</tr>"+
-                "<tr class='isi3'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>1</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>2</td>"+
                     "<td valign='middle' bgcolor='#f8fdf3' align='center'>3</td>"+
@@ -843,32 +843,32 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         }
                     }
                     htmlContent.append(
-                        "<tr class='isi3'>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+i+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+rs.getString("kd_penyakit")+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+rs.getString("nm_penyakit")+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr0s6l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr0s6p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr7s28l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr7s28p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr28s1thl+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+hr28s1thp+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th1s4l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th1s4p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th5s14l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th5s14p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th15s24l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th15s24p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th25s44l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th25s44p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th45s64l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+th45s64p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+lbth65l+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+lbth65p+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l)+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+(hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p)+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l+hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p-mati)+"</td>"+
-                            "<td valign='middle' bgcolor='#f8fdf3' align='center'>"+mati+"</td>"+
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'>"+i+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("kd_penyakit")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("nm_penyakit")+"</td>"+
+                            "<td valign='middle' align='center'>"+hr0s6l+"</td>"+
+                            "<td valign='middle' align='center'>"+hr0s6p+"</td>"+
+                            "<td valign='middle' align='center'>"+hr7s28l+"</td>"+
+                            "<td valign='middle' align='center'>"+hr7s28p+"</td>"+
+                            "<td valign='middle' align='center'>"+hr28s1thl+"</td>"+
+                            "<td valign='middle' align='center'>"+hr28s1thp+"</td>"+
+                            "<td valign='middle' align='center'>"+th1s4l+"</td>"+
+                            "<td valign='middle' align='center'>"+th1s4p+"</td>"+
+                            "<td valign='middle' align='center'>"+th5s14l+"</td>"+
+                            "<td valign='middle' align='center'>"+th5s14p+"</td>"+
+                            "<td valign='middle' align='center'>"+th15s24l+"</td>"+
+                            "<td valign='middle' align='center'>"+th15s24p+"</td>"+
+                            "<td valign='middle' align='center'>"+th25s44l+"</td>"+
+                            "<td valign='middle' align='center'>"+th25s44p+"</td>"+
+                            "<td valign='middle' align='center'>"+th45s64l+"</td>"+
+                            "<td valign='middle' align='center'>"+th45s64p+"</td>"+
+                            "<td valign='middle' align='center'>"+lbth65l+"</td>"+
+                            "<td valign='middle' align='center'>"+lbth65p+"</td>"+
+                            "<td valign='middle' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l)+"</td>"+
+                            "<td valign='middle' align='center'>"+(hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p)+"</td>"+
+                            "<td valign='middle' align='center'>"+(hr0s6l+hr7s28l+hr28s1thl+th1s4l+th5s14l+th15s24l+th25s44l+th45s64l+lbth65l+hr0s6p+hr7s28p+hr28s1thp+th1s4p+th5s14p+th15s24p+th25s44p+th45s64p+lbth65p-mati)+"</td>"+
+                            "<td valign='middle' align='center'>"+mati+"</td>"+
                         "</tr>"
                     );
                     i++;

@@ -82,28 +82,28 @@
 	</background>
 	<title>
 		<band height="221" splitType="Stretch">
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="2" y="14" width="520" height="25" forecolor="#000000" backcolor="#00FF00"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="20" isBold="false" isItalic="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="2" y="68" width="520" height="14"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="2" y="55" width="520" height="14"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="2" y="42" width="520" height="14"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
@@ -118,224 +118,224 @@
 				<text><![CDATA[HASIL PEMERIKSAAN LABORATORIUM]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="159" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="0" y="159" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Alamat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="159" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="89" y="159" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="99" y="159" width="175" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="99" y="159" width="175" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{alamat}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="99" y="114" width="175" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="99" y="114" width="175" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{norm}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="114" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="89" y="114" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="114" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="0" y="114" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[No.RM]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="99" y="129" width="175" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="99" y="129" width="175" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{namapasien}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="129" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="89" y="129" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="129" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="0" y="129" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Nama Pasien]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="144" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="89" y="144" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="144" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="0" y="144" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[JK/Tgl.Lahir]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="99" y="144" width="35" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="99" y="144" width="35" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{jkel}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="385" y="129" width="136" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="385" y="129" width="136" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{pengirim}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="286" y="129" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="286" y="129" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Dokter Pengirim]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="375" y="129" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="375" y="129" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="375" y="144" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="375" y="144" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="286" y="144" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="286" y="144" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Tgl.Pemeriksaan]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="385" y="144" width="136" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="385" y="144" width="136" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{tanggal}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="134" y="144" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="134" y="144" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[/]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="144" y="144" width="83" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="144" y="144" width="83" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{lahir}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="375" y="159" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="375" y="159" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="385" y="159" width="136" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="385" y="159" width="136" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{jam}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="286" y="159" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="286" y="159" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Jam Pemeriksaan]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="385" y="114" width="136" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="385" y="114" width="136" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{penjab}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="375" y="114" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="375" y="114" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="286" y="114" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="286" y="114" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Penanggung Jawab]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="89" y="174" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="89" y="174" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="99" y="174" width="175" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="99" y="174" width="175" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{noperiksa}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="174" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="0" y="174" width="89" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[No.Periksa]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="375" y="174" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="375" y="174" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="385" y="174" width="136" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="385" y="174" width="136" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{namakamar}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="286" y="174" width="89" height="15"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="286" y="174" width="89" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
@@ -352,35 +352,35 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="1" y="203" width="133" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="1" y="203" width="133" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Pemeriksaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="293" y="203" width="153" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="293" y="203" width="153" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Nilai Rujukan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="446" y="203" width="75" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="446" y="203" width="75" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Keterangan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="135" y="203" width="81" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="135" y="203" width="81" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Hasil]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="217" y="203" width="75" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="217" y="203" width="75" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>

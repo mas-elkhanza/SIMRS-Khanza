@@ -41,7 +41,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     private PreparedStatement psjamshift,pspasienralan,psbilling,pspasienranap,pspemasukan,pspengeluaran;
     private ResultSet rs,rspasien,rsbilling;
     private String tanggal2="",
-            sqlpsjamshift="select * from closing_kasir ",
+            sqlpsjamshift="select * from closing_kasir where shift like ? ",
             sqlpsbilling="select billing.nm_perawatan,billing.totalbiaya,billing.status from billing where billing.no_rawat=? ",
             sqlpspasienranap="select reg_periksa.no_rawat,nota_inap.no_nota,pasien.nm_pasien,nota_inap.tanggal,nota_inap.jam,penjab.png_jawab "+
                         "from reg_periksa inner join pasien inner join penjab inner join nota_inap "+
@@ -197,6 +197,8 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         panelGlass5 = new widget.panelisi();
         label12 = new widget.Label();
         Tgl1 = new widget.Tanggal();
+        jLabel9 = new widget.Label();
+        CmbStatus = new widget.ComboBox();
         BtnCari1 = new widget.Button();
         label19 = new widget.Label();
         BtnPrint = new widget.Button();
@@ -224,7 +226,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Uang Pershift ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Uang Pershift ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -243,6 +245,18 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass5.add(Tgl1);
+
+        jLabel9.setText("Shift :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        jLabel9.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass5.add(jLabel9);
+
+        CmbStatus.setForeground(new java.awt.Color(153, 0, 51));
+        CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Pagi", "Siang", "Sore", "Malam" }));
+        CmbStatus.setName("CmbStatus"); // NOI18N
+        CmbStatus.setOpaque(false);
+        CmbStatus.setPreferredSize(new java.awt.Dimension(100, 23));
+        panelGlass5.add(CmbStatus);
 
         BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari1.setMnemonic('2');
@@ -306,7 +320,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -329,7 +343,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Rekap Pendapatan Ralan ", internalFrame2);
+        TabRawat.addTab("Rekap Pendapatan Ralan", internalFrame2);
 
         internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame3.setBorder(null);
@@ -346,7 +360,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         internalFrame3.add(Scroll2, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Rekap Pendapatan Ranap ", internalFrame3);
+        TabRawat.addTab("Rekap Pendapatan Ranap", internalFrame3);
 
         internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame4.setBorder(null);
@@ -373,7 +387,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         internalFrame4.add(Scroll3, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Rekap Pemasukan Lain-Lain ", internalFrame4);
+        TabRawat.addTab("Rekap Pemasukan Lain-Lain", internalFrame4);
 
         internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame5.setBorder(null);
@@ -400,7 +414,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         internalFrame5.add(Scroll4, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Rekap Pengeluaran Harian ", internalFrame5);
+        TabRawat.addTab("Rekap Pengeluaran Harian", internalFrame5);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -637,6 +651,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.ComboBox CmbStatus;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
@@ -648,6 +663,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
     private widget.InternalFrame internalFrame5;
+    private widget.Label jLabel9;
     private widget.Label label12;
     private widget.Label label19;
     private widget.panelisi panelGlass5;
@@ -663,6 +679,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         try{      
             psjamshift=koneksi.prepareStatement(sqlpsjamshift);
             try {
+                psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
                 while(rs.next()){
                     tabModeRalan.addRow(new Object[]{
@@ -793,6 +810,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         try{
             psjamshift=koneksi.prepareStatement(sqlpsjamshift);
             try{
+                psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
                 while(rs.next()){
                     tabModeRanap.addRow(new Object[]{
@@ -959,6 +977,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         try{
             psjamshift=koneksi.prepareStatement(sqlpsjamshift);
             try{
+                psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
                 while(rs.next()){
                     tabModePemasukan.addRow(new Object[]{
@@ -1021,6 +1040,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         try{
             psjamshift=koneksi.prepareStatement(sqlpsjamshift);
             try{
+                psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
                 while(rs.next()){
                     tabModePengeluaran.addRow(new Object[]{

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="41"/>
+	<property name="ireport.x" value="321"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
@@ -12,9 +12,9 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[select opname.kode_brng, databarang.nama_brng,opname.h_beli, databarang.kode_sat, opname.tanggal, opname.stok, 
-                  opname.real, opname.selisih, opname.nomihilang, opname.keterangan,(opname.real*opname.h_beli) as totalreal 
-                  from opname inner join databarang 
-                  on opname.kode_brng=databarang.kode_brng]]>
+opname.real, opname.selisih, opname.nomihilang, opname.keterangan, bangsal.kd_bangsal, bangsal.nm_bangsal, (opname.real*opname.h_beli) as totalreal 
+from opname inner join databarang inner join bangsal 
+on opname.kode_brng=databarang.kode_brng and opname.kd_bangsal=bangsal.kd_bangsal]]>
 	</queryString>
 	<field name="kode_brng" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -44,6 +44,12 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="keterangan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kd_bangsal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nm_bangsal" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="totalreal" class="java.lang.Double"/>
@@ -150,7 +156,7 @@
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<text><![CDATA[Keterangan]]></text>
+				<text><![CDATA[Lokasi]]></text>
 			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="326" y="0" width="32" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
@@ -236,7 +242,7 @@
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{keterangan}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nm_bangsal}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="408" y="1" width="30" height="10"/>
@@ -298,7 +304,7 @@
 				<textElement textAlignment="Right" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[ $V{PAGE_NUMBER} + " dari "+ $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER} + " dari "+ $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy HH.mm.ss" isBlankWhenNull="false">
 				<reportElement key="textField" x="1" y="3" width="74" height="15" forecolor="#000000" backcolor="#FFFFFF"/>

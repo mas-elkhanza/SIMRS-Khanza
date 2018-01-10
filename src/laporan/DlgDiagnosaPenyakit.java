@@ -11,7 +11,6 @@
 
 package laporan;
 
-import laporan.DlgPenyakit;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -35,7 +34,6 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.event.DocumentEvent;
-import laporan.DlgICD9;
 import simrskhanza.DlgPasien;
 
 /**
@@ -368,7 +366,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -512,8 +510,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         panelGlass9.add(jLabel14);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-01-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-12-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -526,8 +523,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-01-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-12-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -795,7 +791,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -828,7 +824,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Riwayat Diagnosa  ", internalFrame2);
+        TabRawat.addTab("Riwayat Diagnosa", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -854,7 +850,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 
         internalFrame3.add(Scroll3, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Prosedur Tindakan  ", internalFrame3);
+        TabRawat.addTab("Prosedur Tindakan", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
