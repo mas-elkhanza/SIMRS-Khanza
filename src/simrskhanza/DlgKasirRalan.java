@@ -3189,6 +3189,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel4);
 
+        TNoRw1.setEditable(false);
         TNoRw1.setHighlighter(null);
         TNoRw1.setName("TNoRw1"); // NOI18N
         TNoRw1.setPreferredSize(new java.awt.Dimension(140, 23));
@@ -3199,9 +3200,10 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel5.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass9.add(jLabel5);
 
+        TNoReg.setEditable(false);
         TNoReg.setHighlighter(null);
         TNoReg.setName("TNoReg"); // NOI18N
-        TNoReg.setPreferredSize(new java.awt.Dimension(70, 23));
+        TNoReg.setPreferredSize(new java.awt.Dimension(50, 23));
         TNoReg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TNoRegKeyPressed(evt);
@@ -3214,9 +3216,10 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel7.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass9.add(jLabel7);
 
+        TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
-        TNoRM.setPreferredSize(new java.awt.Dimension(100, 23));
+        TNoRM.setPreferredSize(new java.awt.Dimension(90, 23));
         panelGlass9.add(TNoRM);
 
         jLabel8.setText("Nama Pasien :");
@@ -3224,9 +3227,10 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel8.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass9.add(jLabel8);
 
+        TPasien.setEditable(false);
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
-        TPasien.setPreferredSize(new java.awt.Dimension(200, 23));
+        TPasien.setPreferredSize(new java.awt.Dimension(250, 23));
         panelGlass9.add(TPasien);
 
         internalFrame1.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
