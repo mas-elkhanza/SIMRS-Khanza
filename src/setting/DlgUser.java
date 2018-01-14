@@ -98,7 +98,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[N]Reg Lama Per Tanggal","[N]Reg Baru Per Tanggal","[N]Batal Periksa Per Tahun","[N]Batal Periksa Per Bulan","[K]Referensi Diagnosa Pcare","[N]Batal Periksa Per Tanggal",
                     "[D]Kategori Obat/Alkes/BHP","[D]Golongan Obat/Alkes/BHP","[D]Obat/Alkes/BHP Per Tanggal","[D]Penjualan Bebas Per Tanggal","[K]Referensi Kesadaran Pcare","[I]Pembatalan Periksa Per Dokter",
                     "[H]Pembayaran Per Unit","[H]Rekap Pembayaran Per Unit","[N]Kunjungan Reg Per Cara Bayar","[E]Pengadaan Non Medis Per Tanggal","[E]Stok Keluar Non Medis Per Tanggal",
-                    "[N]Kunjungan Ranap Per Tahun","[K]Cek Rujukan PCare","[N]Kunjungan Lab Ralan Per Tahun","[N]Kunjungan Rad Ralan Per Tahun"
+                    "[N]Kunjungan Ranap Per Tahun","[K]Cek Rujukan PCare","[N]Kunjungan Lab Ralan Per Tahun","[N]Kunjungan Rad Ralan Per Tahun","[I]Cek Entry Ralan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -180,6 +180,8 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -193,7 +195,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 282;i++) {
+        for (i = 0; i < 283;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -393,6 +395,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(175);
             }else if(i==281){
                 column.setPreferredWidth(176);
+            }else if(i==282){
+                column.setPreferredWidth(94);
             }else{
                 column.setPreferredWidth(120);
             }
@@ -827,7 +831,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1151,7 +1155,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_kunjungan_ranaptahun='"+tbUser.getValueAt(i,278).toString()+"',"+
                     "pcare_cek_rujukan='"+tbUser.getValueAt(i,279).toString()+"',"+
                     "grafik_lab_ralantahun='"+tbUser.getValueAt(i,280).toString()+"',"+
-                    "grafik_rad_ralantahun='"+tbUser.getValueAt(i,281).toString()+"'");
+                    "grafik_rad_ralantahun='"+tbUser.getValueAt(i,281).toString()+"',"+
+                    "cek_entry_ralan='"+tbUser.getValueAt(i,282).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1424,7 +1429,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "pcare_cek_penyakit,grafik_kunjungan_statusbataltanggal,kategori_barang,golongan_barang,pemberian_obat_pertanggal,"+
                         "penjualan_obat_pertanggal,pcare_cek_kesadaran,pembatalan_periksa_dokter,pembayaran_per_unit,rekap_pembayaran_per_unit, "+
                         "grafik_kunjungan_percarabayar,ipsrs_pengadaan_pertanggal,ipsrs_stokkeluar_pertanggal,grafik_kunjungan_ranaptahun,"+
-                        "pcare_cek_rujukan,grafik_lab_ralantahun,grafik_rad_ralantahun from user order by AES_DECRYPT(id_user,'nur')");
+                        "pcare_cek_rujukan,grafik_lab_ralantahun,grafik_rad_ralantahun,cek_entry_ralan from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1717,7 +1722,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_kunjungan_ranaptahun"),
                                rs.getBoolean("pcare_cek_rujukan"),
                                rs.getBoolean("grafik_lab_ralantahun"),
-                               rs.getBoolean("grafik_rad_ralantahun")
+                               rs.getBoolean("grafik_rad_ralantahun"),
+                               rs.getBoolean("cek_entry_ralan")
                             });
                         }   
                     } catch (Exception e) {
@@ -2000,7 +2006,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_kunjungan_ranaptahun"),
                            rs.getBoolean("pcare_cek_rujukan"),
                            rs.getBoolean("grafik_lab_ralantahun"),
-                           rs.getBoolean("grafik_rad_ralantahun") 
+                           rs.getBoolean("grafik_rad_ralantahun"),
+                           rs.getBoolean("cek_entry_ralan") 
                         });
                     }                                             
                  }

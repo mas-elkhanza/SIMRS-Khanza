@@ -227,6 +227,7 @@ import keuangan.DlgRekapPembayaranPerPoli;
 import keuangan.DlgRekapPoliAnak;
 import keuangan.DlgRincianPiutangPasien;
 import laporan.DlgBulananHAIs;
+import laporan.DlgCekEntryRalan;
 import laporan.DlgDkkPenyakitMenularRalan;
 import laporan.DlgDkkPenyakitMenularRanap;
 import laporan.DlgDkkPenyakitTidakMenularRanap;
@@ -716,6 +717,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekPCareRujukan = new widget.ButtonBig();
         btnGrafikLabRalanPerTahun = new widget.ButtonBig();
         btnGrafikRadRalanPerTahun = new widget.ButtonBig();
+        btnCekEntryRalan = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4392,6 +4394,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnGrafikRadRalanPerTahun);
 
+        btnCekEntryRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
+        btnCekEntryRalan.setText("Cek Entry Ralan");
+        btnCekEntryRalan.setIconTextGap(0);
+        btnCekEntryRalan.setName("btnCekEntryRalan"); // NOI18N
+        btnCekEntryRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekEntryRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekEntryRalanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCekEntryRalan);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4400,7 +4414,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/01/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/01/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -9381,6 +9395,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikRadRalanPerTahunActionPerformed
 
+    private void btnCekEntryRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekEntryRalanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgCekEntryRalan aplikasi=new DlgCekEntryRalan(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCekEntryRalanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9467,6 +9492,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekBPJSPoli;
     private widget.ButtonBig btnCekBPJSRiwayat;
     private widget.ButtonBig btnCekEligibilitasInhealth;
+    private widget.ButtonBig btnCekEntryRalan;
     private widget.ButtonBig btnCekInhealthFaskes;
     private widget.ButtonBig btnCekInhealthPoli;
     private widget.ButtonBig btnCekPCareDiagnosa;
@@ -10860,6 +10886,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getpembatalan_periksa_dokter()==true){  
                 Panelmenu.add(btnPembatalanPeriksaDokter);                 
+                jmlmenu++;
+            }
+            
+            if(var.getcek_entry_ralan()==true){  
+                Panelmenu.add(btnCekEntryRalan);                 
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){   
@@ -12269,6 +12300,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpembatalan_periksa_dokter()==true){  
             Panelmenu.add(btnPembatalanPeriksaDokter);                 
+            jmlmenu++;
+        }
+        
+        if(var.getcek_entry_ralan()==true){  
+            Panelmenu.add(btnCekEntryRalan);                 
             jmlmenu++;
         }
 
@@ -14002,6 +14038,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpembatalan_periksa_dokter()==true){  
             if(btnPembatalanPeriksaDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembatalanPeriksaDokter);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getcek_entry_ralan()==true){  
+            if(btnCekEntryRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCekEntryRalan);                 
                 jmlmenu++;
             }                
         }

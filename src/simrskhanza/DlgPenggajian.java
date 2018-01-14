@@ -110,14 +110,14 @@ public class DlgPenggajian extends javax.swing.JDialog {
                             try{            
                                 if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
                                     com.sun.awt.AWTUtilities.setWindowOpacity(DlgPenggajian.this,0.6f);
-                                }else{
-                                    com.sun.awt.AWTUtilities.setWindowOpacity(DlgPenggajian.this,0.93f);
-                                }                
+                                }               
                             }catch(Exception e){
                             }
                         }else{
-                            try{            
-                                com.sun.awt.AWTUtilities.setWindowOpacity(DlgPenggajian.this,1f);                                  
+                            try{     
+                                if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                                    com.sun.awt.AWTUtilities.setWindowOpacity(DlgPenggajian.this,1f);
+                                }                                                                      
                             }catch(Exception e){
                             }
                         }

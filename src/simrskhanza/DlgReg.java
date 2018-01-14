@@ -667,7 +667,12 @@ public final class DlgReg extends javax.swing.JDialog {
         });
         
         DlgCatatan.setSize(595,34);
-        com.sun.awt.AWTUtilities.setWindowOpacity(DlgCatatan,0.5f);
+        try{    
+            if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                com.sun.awt.AWTUtilities.setWindowOpacity(DlgCatatan,0.5f);
+            }     
+        }catch(Exception e){    
+        }
                 
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));

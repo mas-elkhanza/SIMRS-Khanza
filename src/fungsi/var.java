@@ -65,7 +65,7 @@ public final class var {
             pcare_cek_penyakit=false,grafik_kunjungan_statusbataltanggal=false,kategori_barang=false,golongan_barang=false,pemberian_obat_pertanggal=false,
             penjualan_obat_pertanggal=false,pcare_cek_kesadaran=false,pembatalan_periksa_dokter=false,pembayaran_per_unit=false,rekap_pembayaran_per_unit=false,
             grafik_kunjungan_percarabayar=false,ipsrs_pengadaan_pertanggal=false,ipsrs_stokkeluar_pertanggal=false,grafik_kunjungan_ranaptahun=false,
-            pcare_cek_rujukan=false,grafik_lab_ralantahun=false,grafik_rad_ralantahun=false;
+            pcare_cek_rujukan=false,grafik_lab_ralantahun=false,grafik_rad_ralantahun=false,cek_entry_ralan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -369,6 +369,7 @@ public final class var {
                         var.pcare_cek_rujukan=true;
                         var.grafik_lab_ralantahun=true;
                         var.grafik_rad_ralantahun=true;
+                        var.cek_entry_ralan=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -653,7 +654,8 @@ public final class var {
                         var.grafik_kunjungan_ranaptahun=true;
                         var.pcare_cek_rujukan=true;
                         var.grafik_lab_ralantahun=true;
-                        var.grafik_rad_ralantahun=true;
+                        var.grafik_rad_ralantahun=true;;
+                        var.cek_entry_ralan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -940,6 +942,7 @@ public final class var {
                         var.pcare_cek_rujukan=rs2.getBoolean("pcare_cek_rujukan");
                         var.grafik_lab_ralantahun=rs2.getBoolean("grafik_lab_ralantahun");                        
                         var.grafik_rad_ralantahun=rs2.getBoolean("grafik_rad_ralantahun");
+                        var.cek_entry_ralan=rs2.getBoolean("cek_entry_ralan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1224,6 +1227,7 @@ public final class var {
                         var.pcare_cek_rujukan=false;
                         var.grafik_lab_ralantahun=false;
                         var.grafik_rad_ralantahun=false;
+                        var.cek_entry_ralan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1555,4 +1559,5 @@ public final class var {
     public static boolean getpcare_cek_rujukan(){return var.pcare_cek_rujukan;}
     public static boolean getgrafik_lab_ralantahun(){return var.grafik_lab_ralantahun;}
     public static boolean getgrafik_rad_ralantahun(){return var.grafik_rad_ralantahun;}
+    public static boolean getcek_entry_ralan(){return var.cek_entry_ralan;}
 }
