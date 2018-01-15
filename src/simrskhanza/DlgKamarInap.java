@@ -3120,10 +3120,19 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
                 i = 0;
                 try{
-                    pilihancetak = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan yang mau dicetak!","Laporan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1", "Laporan 2"},"Laporan 1");
+                    pilihancetak = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan yang mau dicetak!","Laporan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1", "Laporan 2","Lembar Binroh"},"Laporan 1");
                     switch (pilihancetak) {
                         case "Laporan 1":
-                                String sql="select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab),"+
+                                 Map<String, Object> param = new HashMap<>();    
+                                 param.put("namars",var.getnamars());
+                                 param.put("alamatrs",var.getalamatrs());
+                                 param.put("kotars",var.getkabupatenrs());
+                                 param.put("propinsirs",var.getpropinsirs());
+                                 param.put("kontakrs",var.getkontakrs());
+                                 param.put("emailrs",var.getemailrs());   
+                                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                 Valid.MyReport("rptKamarInap.jrxml","report","::[ Data Kamar Inap Pasien ]::","select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab),"+
                                     "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir," +
                                     "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,"+
                                     "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter "+
@@ -3135,22 +3144,20 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     "and kamar_inap.kd_kamar=kamar.kd_kamar " +
                                     "and kamar.kd_bangsal=bangsal.kd_bangsal and pasien.kd_kel=kelurahan.kd_kel "+
                                     "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab " +
-                                    "where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk";
-
-                                 Map<String, Object> param = new HashMap<>();    
-                                 param.put("namars",var.getnamars());
-                                 param.put("alamatrs",var.getalamatrs());
-                                 param.put("kotars",var.getkabupatenrs());
-                                 param.put("propinsirs",var.getpropinsirs());
-                                 param.put("kontakrs",var.getkontakrs());
-                                 param.put("emailrs",var.getemailrs());   
-                                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                 Valid.MyReport("rptKamarInap.jrxml","report","::[ Data Kamar Inap Pasien ]::",sql,param);
+                                    "where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",param);
                                  this.setCursor(Cursor.getDefaultCursor());
                               break;
                         case "Laporan 2":
-                                 String sql2="select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"+
+                                 Map<String, Object> param2 = new HashMap<>();    
+                                 param2.put("namars",var.getnamars());
+                                 param2.put("alamatrs",var.getalamatrs());
+                                 param2.put("kotars",var.getkabupatenrs());
+                                 param2.put("propinsirs",var.getpropinsirs());
+                                 param2.put("kontakrs",var.getkontakrs());
+                                 param2.put("emailrs",var.getemailrs());   
+                                 param2.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                 Valid.MyReport("rptKamarInap2.jrxml","report","::[ Data Kamar Inap Pasien ]::","select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"+
                                     "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir," +
                                     "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,"+
                                     "ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,"+
@@ -3164,18 +3171,34 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                     "and kamar_inap.kd_kamar=kamar.kd_kamar " +
                                     "and kamar.kd_bangsal=bangsal.kd_bangsal and pasien.kd_kel=kelurahan.kd_kel "+
                                     "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab " +
-                                    "where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk";
-
-                                 Map<String, Object> param2 = new HashMap<>();    
-                                 param2.put("namars",var.getnamars());
-                                 param2.put("alamatrs",var.getalamatrs());
-                                 param2.put("kotars",var.getkabupatenrs());
-                                 param2.put("propinsirs",var.getpropinsirs());
-                                 param2.put("kontakrs",var.getkontakrs());
-                                 param2.put("emailrs",var.getemailrs());   
-                                 param2.put("logo",Sequel.cariGambar("select logo from setting")); 
+                                    "where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",param2);
+                                 this.setCursor(Cursor.getDefaultCursor());
+                              break;
+                        case "Lembar Binroh":
+                                 Map<String, Object> param3 = new HashMap<>();    
+                                 param3.put("namars",var.getnamars());
+                                 param3.put("alamatrs",var.getalamatrs());
+                                 param3.put("kotars",var.getkabupatenrs());
+                                 param3.put("propinsirs",var.getpropinsirs());
+                                 param3.put("kontakrs",var.getkontakrs());
+                                 param3.put("emailrs",var.getemailrs());   
+                                 param3.put("logo",Sequel.cariGambar("select logo from setting")); 
                                  this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                 Valid.MyReport("rptKamarInap2.jrxml","report","::[ Data Kamar Inap Pasien ]::",sql2,param2);
+                                 Valid.MyReport("rptKamarInap3.jrxml","report","::[ Data Kamar Inap Pasien ]::","select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"+
+                                    "penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir," +
+                                    "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,"+
+                                    "ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,"+
+                                    "ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,"+
+                                    "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter "+
+                                    "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal inner join kelurahan inner join kecamatan inner join kabupaten inner join dokter inner join penjab " +
+                                    "on kamar_inap.no_rawat=reg_periksa.no_rawat " +
+                                    "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
+                                    "and reg_periksa.kd_dokter=dokter.kd_dokter " +
+                                    "and reg_periksa.kd_pj=penjab.kd_pj " +
+                                    "and kamar_inap.kd_kamar=kamar.kd_kamar " +
+                                    "and kamar.kd_bangsal=bangsal.kd_bangsal and pasien.kd_kel=kelurahan.kd_kel "+
+                                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab " +
+                                    "where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk",param3);
                                  this.setCursor(Cursor.getDefaultCursor());
                               break;
                     }

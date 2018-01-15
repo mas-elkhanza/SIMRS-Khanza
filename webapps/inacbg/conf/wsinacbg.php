@@ -122,6 +122,57 @@
                             $adl_chronic,$icu_indikator,$icu_los,$ventilator_hour,$upgrade_class_ind,$upgrade_class_class,
                             $upgrade_class_los,$add_payment_pct,$birth_weight,$discharge_status,$diagnosa,$procedure,
                             $tarif_poli_eks,$nama_dokter,$kode_tarif,$payor_id,$payor_cd,$cob_cd,$coder_nik,$no_rawat){	
+        
+        $prosedur_non_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ralan Dokter Paramedis'");
+        if($prosedur_non_bedah==""){
+            $prosedur_non_bedah="0";
+        }
+        $prosedur_bedah=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Operasi'");
+        if($prosedur_bedah==""){
+            $prosedur_bedah="0";
+        }
+        $konsultasi=(getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ranap Dokter'")+
+                     getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ralan Dokter'"));
+        if($konsultasi==""){
+            $konsultasi="0";
+        }
+        $tenaga_ahli=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ranap Dokter Paramedis'");
+        if($tenaga_ahli==""){
+            $tenaga_ahli="0";
+        }
+        $keperawatan=(getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ranap Paramedis'")+
+                      getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Ralan Paramedis'"));
+        if($keperawatan==""){
+            $keperawatan="0";
+        }
+        $radiologi=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Radiologi'");
+        if($radiologi==""){
+            $radiologi="0";
+        }
+        $laboratorium=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Laborat'");
+        if($laboratorium==""){
+            $laboratorium="0";
+        }
+        $kamar=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Kamar'");
+        if($kamar==""){
+            $kamar="0";
+        }
+        $obat=(getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Obat'")+
+               getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Retur Obat'")+
+               getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Resep Pulang'"));
+        if($obat==""){
+            $obat="0";
+        }
+        $bmhp=getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Tambahan'");
+        if($bmhp==""){
+            $bmhp="0";
+        }
+        $sewa_alat=(getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Harian'")+
+                    getOne("select if(sum(totalbiaya)='','0',sum(totalbiaya)) from billing where no_rawat='".$no_rawat."' and status='Service'"));
+        if($sewa_alat==""){
+            $sewa_alat="0";
+        }
+        
         $request ='{
                         "metadata": {
                             "method": "set_claim_data",
@@ -148,27 +199,22 @@
                             "diagnosa": "'.$diagnosa.'",
                             "procedure": "'.$procedure.'",
                             "tarif_rs": {
-                                "prosedur_non_bedah": "'.getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Ralan Dokter Paramedis'").'",
-                                "prosedur_bedah": "'.getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Operasi'").'",
-                                "konsultasi": "'.(getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Ranap Dokter'")+
-                                                  getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Ralan Dokter'")).'",
-                                "tenaga_ahli": "'.getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Ranap Dokter Paramedis'").'",
-                                "keperawatan": "'.(getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Ranap Paramedis'")+
-                                                   getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Ralan Paramedis'")).'",
+                                "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
+                                "prosedur_bedah": "'.$prosedur_bedah.'",
+                                "konsultasi": "'.$konsultasi.'",
+                                "tenaga_ahli": "'.$tenaga_ahli.'",
+                                "keperawatan": "'.$keperawatan.'",
                                 "penunjang": "0",
-                                "radiologi": "'.getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Radiologi'").'",
-                                "laboratorium": "'.getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Laborat'").'",
+                                "radiologi": "'.$radiologi.'",
+                                "laboratorium": "'.$laboratorium.'",
                                 "pelayanan_darah": "0",
                                 "rehabilitasi": "0",
-                                "kamar": "'.getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Kamar'").'",
-                                "rawat_intensif": "'.$rawat_intensif.'",
-                                "obat": "'.(getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Obat'")+
-                                            getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Retur Obat'")+
-                                            getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Resep Pulang'")).'",
+                                "kamar": "'.$kamar.'",
+                                "rawat_intensif": "0",
+                                "obat": "'.$obat.'",
                                 "alkes": "0",
-                                "bmhp": "'.getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Tambahan'").'",
-                                "sewa_alat": "'.(getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Harian'")+
-                                                 getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Service'")).'"
+                                "bmhp": "'.$bmhp.'",
+                                "sewa_alat": "'.$sewa_alat.'"
                              },
                             "tarif_poli_eks": "'.$tarif_poli_eks.'",
                             "nama_dokter": "'.$nama_dokter.'",
