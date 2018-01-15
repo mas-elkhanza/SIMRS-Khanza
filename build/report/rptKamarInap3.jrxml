@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="653"/>
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
@@ -11,42 +11,22 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[SELECT
-     kamar_inap.`no_rawat`,
-     reg_periksa.`no_rkm_medis`,
-     pasien.`nm_pasien`,
-     concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,
-     pasien.`jk`,
-     penjab.png_jawab,
-     kamar_inap.`kd_kamar`,
-     bangsal.`nm_bangsal`,
-     kamar.`trf_kamar`,
-     ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,
-     ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,
-     kamar_inap.`diagnosa_awal`,
-     kamar_inap.`diagnosa_akhir`,
-     kamar_inap.`tgl_masuk`,
-     kamar_inap.`jam_masuk`,
-     kamar_inap.`tgl_keluar`,
-     kamar_inap.`jam_keluar`,
-     kamar_inap.`ttl_biaya`,
-     kamar_inap.stts_pulang
-FROM
-     `kamar_inap` kamar_inap,
-     `reg_periksa` reg_periksa,
-     `pasien` pasien,
-     `kamar` kamar,
-     `bangsal` bangsal,kelurahan,kecamatan,kabupaten,penjab
-WHERE
-     kamar_inap.no_rawat = reg_periksa.no_rawat
-     and reg_periksa.no_rkm_medis = pasien.no_rkm_medis
-     and kamar_inap.kd_kamar = kamar.kd_kamar
-     and kamar.kd_bangsal = bangsal.kd_bangsal and 
-      pasien.kd_kel=kelurahan.kd_kel
-    and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab 
-    and reg_periksa.kd_pj=penjab.kd_pj
-ORDER BY
-     kamar_inap.no_rawat ASC]]>
+		<![CDATA[select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,
+pasien.jk,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,
+penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,
+kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,
+kamar_inap.tgl_masuk,kamar_inap.jam_masuk,
+ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,
+ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter 
+from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal inner join kelurahan inner join kecamatan inner join kabupaten inner join dokter inner join penjab 
+on kamar_inap.no_rawat=reg_periksa.no_rawat 
+and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
+and reg_periksa.kd_dokter=dokter.kd_dokter
+and reg_periksa.kd_pj=penjab.kd_pj
+and kamar_inap.kd_kamar=kamar.kd_kamar
+and kamar.kd_bangsal=bangsal.kd_bangsal and pasien.kd_kel=kelurahan.kd_kel 
+and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab 
+]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -57,10 +37,10 @@ ORDER BY
 	<field name="nm_pasien" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="alamat" class="java.lang.String">
+	<field name="jk" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="jk" class="java.lang.String">
+	<field name="alamat" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="png_jawab" class="java.lang.String">
@@ -75,10 +55,6 @@ ORDER BY
 	<field name="trf_kamar" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="perujuk" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="dpjp" class="java.lang.String"/>
 	<field name="diagnosa_awal" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -91,16 +67,20 @@ ORDER BY
 	<field name="jam_masuk" class="java.sql.Time">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="tgl_keluar" class="java.sql.Date">
+	<field name="perujuk" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="jam_keluar" class="java.sql.Time">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="dpjp" class="java.lang.String"/>
 	<field name="ttl_biaya" class="java.lang.Double">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="stts_pulang" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lama" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nm_dokter" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -167,7 +147,7 @@ ORDER BY
 	<columnHeader>
 		<band height="17" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="190" y="1" width="128" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="190" y="1" width="128" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
@@ -181,21 +161,21 @@ ORDER BY
 				<text><![CDATA[J.K.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1" y="0" width="32" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="1" y="1" width="32" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[NO.R.M.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="34" y="0" width="134" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="34" y="1" width="134" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[NAMA PASIEN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="364" y="1" width="65" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="364" y="1" width="65" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
@@ -216,84 +196,12 @@ ORDER BY
 				<text><![CDATA[  JENIS BAYAR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="429" y="0" width="82" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="429" y="1" width="82" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[DIAGNOSA AWAL]]></text>
 			</staticText>
-			<line>
-				<reportElement x="0" y="0" width="802" height="1"/>
-				<graphicElement>
-					<pen lineWidth="1.25"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="0" y="16" width="802" height="1"/>
-				<graphicElement>
-					<pen lineWidth="1.25"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="0" y="0" width="1" height="17"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="1" y="-43" width="802" height="1"/>
-				<graphicElement>
-					<pen lineWidth="0.5"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="32" y="1" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="168" y="1" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="188" y="1" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="363" y="1" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="429" y="0" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="512" y="0" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="560" y="0" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="605" y="1" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
 			<staticText>
 				<reportElement mode="Opaque" x="561" y="1" width="44" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
@@ -301,12 +209,6 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[JAM MASUK]]></text>
 			</staticText>
-			<line>
-				<reportElement x="665" y="1" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25"/>
-				</graphicElement>
-			</line>
 			<staticText>
 				<reportElement mode="Opaque" x="666" y="1" width="62" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
@@ -314,12 +216,6 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[TANDA TANGAN]]></text>
 			</staticText>
-			<line>
-				<reportElement x="728" y="1" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25"/>
-				</graphicElement>
-			</line>
 			<staticText>
 				<reportElement mode="Opaque" x="729" y="1" width="72" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
@@ -327,18 +223,6 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[CATATAN]]></text>
 			</staticText>
-			<line>
-				<reportElement x="801" y="1" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="318" y="0" width="1" height="16"/>
-				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
 			<staticText>
 				<reportElement mode="Opaque" x="319" y="1" width="44" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
@@ -346,32 +230,122 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[AGAMA]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="32" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="168" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="188" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="363" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="429" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="512" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="560" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="605" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="665" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="728" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="801" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="318" y="1" width="1" height="15"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="0" width="800" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="16" width="800" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="22" splitType="Stretch">
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement x="2" y="3" width="30" height="16"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement x="35" y="1" width="133" height="19"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement x="515" y="3" width="42" height="16"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.util.Date"><![CDATA[$F{tgl_masuk}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement x="431" y="2" width="81" height="18"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="6"/>
@@ -379,12 +353,12 @@ ORDER BY
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{diagnosa_awal}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="21" width="802" height="1"/>
+				<reportElement x="1" y="21" width="800" height="1"/>
 				<graphicElement>
-					<pen lineWidth="1.25"/>
+					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement x="171" y="3" width="15" height="11"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
@@ -394,47 +368,47 @@ ORDER BY
 			<line>
 				<reportElement x="0" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="32" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="168" y="-1" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="188" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="363" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="429" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement x="189" y="1" width="127" height="19"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="7"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{alamat}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="HH.mm.ss" isBlankWhenNull="true">
+			<textField pattern="HH.mm.ss" isBlankWhenNull="true">
 				<reportElement x="562" y="3" width="40" height="16"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
@@ -444,22 +418,22 @@ ORDER BY
 			<line>
 				<reportElement x="512" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="560" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25"/>
+					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="605" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25"/>
+					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
-			<textField isStretchWithOverflow="true" pattern="">
+			<textField pattern="">
 				<reportElement x="607" y="3" width="57" height="16"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="7"/>
@@ -469,22 +443,22 @@ ORDER BY
 			<line>
 				<reportElement x="665" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25"/>
+					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="728" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25"/>
+					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 			<line>
 				<reportElement x="801" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25"/>
+					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
-			<textField isStretchWithOverflow="true">
+			<textField>
 				<reportElement x="364" y="1" width="65" height="18"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="6"/>
@@ -494,7 +468,7 @@ ORDER BY
 			<line>
 				<reportElement x="318" y="0" width="1" height="21"/>
 				<graphicElement>
-					<pen lineWidth="1.25" lineStyle="Solid"/>
+					<pen lineWidth="0.75" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 		</band>
@@ -531,7 +505,7 @@ ORDER BY
 				<textFieldExpression class="java.lang.String"><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="false">
-				<reportElement key="textField" x="655" y="1" width="79" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement key="textField" x="711" y="1" width="90" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -555,13 +529,13 @@ ORDER BY
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
-			<staticText>
+			<textField>
 				<reportElement x="602" y="21" width="199" height="20"/>
-				<textElement lineSpacing="Single">
+				<textElement textAlignment="Center" lineSpacing="Single" markup="none">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[RSU PKU Muhammadiyah Jatinom]]></text>
-			</staticText>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{namars}]]></textFieldExpression>
+			</textField>
 			<staticText>
 				<reportElement x="602" y="67" width="199" height="20"/>
 				<textElement textAlignment="Left" verticalAlignment="Bottom" lineSpacing="Single">
@@ -570,11 +544,11 @@ ORDER BY
 				<text><![CDATA[Petugas ....................................]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="603" y="1" width="48" height="20"/>
-				<textElement lineSpacing="Single">
+				<reportElement x="602" y="1" width="109" height="20"/>
+				<textElement textAlignment="Right" lineSpacing="Single">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Jatinom,]]></text>
+				<text><![CDATA[$P{kotars}+","]]></text>
 			</staticText>
 		</band>
 	</pageFooter>
