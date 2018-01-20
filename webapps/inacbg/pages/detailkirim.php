@@ -123,9 +123,15 @@
                 <td width="31%" >Kelas Rawat</td><td width="">:</td>
                 <td width="67%">
                     <select name="kelas_rawat" class="text3">
-                       <option value="1">1</option>
-                       <option value="2">2</option>
-                       <option value="3">3</option>
+                        <?php if($status_lanjut=="Ralan"){
+                                  echo "<option value='3'>Kelas Reguler</option>
+                                        <option value='1'>Kelas Eksekutif</option>";                            
+                              }else{
+                                  echo "<option value='1'>Kelas 1</option>
+                                        <option value='2'>Kelas 2</option>
+                                        <option value='3'>Kelas 3</option>";
+                              }
+                        ?>
                     </select> 
                 </td>
             </tr>
