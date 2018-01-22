@@ -798,7 +798,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,3),signed)),0) from ipsrspengeluaran where tanggal='"+Valid.SetTgl(TglKeluar.getSelectedItem()+"")+"' ",
-                TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5)+TglKeluar.getSelectedItem().toString().substring(0,2),3,NoKeluar); 
+                "SKNM"+TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5)+TglKeluar.getSelectedItem().toString().substring(0,2),3,NoKeluar); 
     }
 
  
