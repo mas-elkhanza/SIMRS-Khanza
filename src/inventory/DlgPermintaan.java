@@ -251,7 +251,7 @@ public class DlgPermintaan extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter.setToolTipText("Masukkan jumlah pengajuan di ujung paling kiri pada warna biru kemudian geser kanan");
         tbDokter.setComponentPopupMenu(Popup);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -503,7 +503,8 @@ public class DlgPermintaan extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        form.emptTeks();    
+        form.emptTeks(); 
+        form.isCek();
         form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
@@ -641,7 +642,22 @@ private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 }//GEN-LAST:event_tbDokterMouseClicked
 
 private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDokterKeyPressed
-        
+        if(tbDokter.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                if(tbDokter.getSelectedColumn()==1){
+                    TCari.setText("");
+                    TCari.requestFocus();
+                }                
+            }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
+                i=tbDokter.getSelectedRow();
+                if(i!= -1){
+                    tbDokter.setValueAt("", i,0);
+                }
+            }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                TCari.setText("");
+                TCari.requestFocus();
+            }
+        }
 }//GEN-LAST:event_tbDokterKeyPressed
 
 private void NoPermintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPermintaanKeyPressed

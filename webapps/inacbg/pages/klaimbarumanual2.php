@@ -78,7 +78,7 @@
                         $carabayar =str_replace(" ","_",$carabayar)?str_replace(" ","_",$carabayar):NULL;
                         $status="<a href='?act=DetailKirim&norawat=".$baris["no_rawat"]."&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar'>[Kirim]</a>";
                         if(getOne("select count(no_rawat) from inacbg_klaim_baru2 where no_rawat='".$baris["no_rawat"]."'")>0){
-                            $status="Terkirim INACBG";
+                            $status="Terkirim INACBG<br><a href='?act=DetailKirim&norawat=".$baris["no_rawat"]."&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar'>[Kirim Ulang]</a>";
                         }
                         echo "<tr class='isi' title='".$baris["no_rawat"].", ".$baris["no_rkm_medis"].", ".$baris["nm_pasien"]."'>
                                         <td bgcolor='#FFFFA9' valign='center'>".$baris["no_rkm_medis"]."</td>
