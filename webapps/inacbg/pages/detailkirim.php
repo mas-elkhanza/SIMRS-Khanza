@@ -15,7 +15,7 @@
             $codernik       =isset($_GET['codernik'])?$_GET['codernik']:NULL;
             $carabayar      =str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL;
             $_sql         = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
-                            reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,
+                            reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,
                             pasien.umur,pasien.tgl_lahir,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur,
                             reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab 
                             from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab 
@@ -102,21 +102,19 @@
             <tr class="head">
                 <td width="31%" >No.Kartu</td><td width="">:</td>
                 <td width="67%">
-                    <input name="nokartu" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo getOne("select no_peserta from pasien where no_rkm_medis='$no_rkm_medis'")?>" size="40" maxlength="40">
-                    <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="nokartu" class="text" type=text class="inputbox" value="<?php echo getOne("select no_peserta from pasien where no_rkm_medis='$no_rkm_medis'")?>" size="40" maxlength="40">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Tgl.Keluar</td><td width="">:</td>
                 <td width="67%">
-                    <input name="keluar" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" 
+                    <input name="keluar" class="text" type=text class="inputbox" 
                         value="<?php if($status_lanjut=="Ralan"){
                                          echo $tgl_registrasi;
                                      }else{
                                          echo getOne("select tgl_keluar from kamar_inap where no_rawat='".$norawat."'order by tgl_keluar desc limit 1");
                                      }
                                 ?>" size="15" maxlength="10">
-                    <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                 </td>
             </tr>
             <tr class="head">
@@ -173,15 +171,13 @@
             <tr class="head">
                 <td width="31%" >ICU Los</td><td width="">:</td>
                 <td width="67%">
-                    <input name="icu_los" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type="text" id="TxtIsi3" class="inputbox" value="0" size="5" maxlength="5">
-                    <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="icu_los" class="text" type="text" class="inputbox" value="0" size="5" maxlength="5">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Jumlah Jam Penggunaan Ventilator di ICU</td><td width="">:</td>
                 <td width="67%">
-                    <input name="ventilator_hour" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" type="text" id="TxtIsi4" class="inputbox" value="0" size="5" maxlength="5">
-                    <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="ventilator_hour" class="text" type="text" class="inputbox" value="0" size="5" maxlength="5">
                 </td>
             </tr>
             <tr class="head">
@@ -208,15 +204,13 @@
             <tr class="head">
                 <td width="31%" >Lama Hari Naik Kelas</td><td width="">:</td>
                 <td width="67%">
-                    <input name="upgrade_class_los" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type="text" id="TxtIsi5" class="inputbox" value="0" size="5" maxlength="5">
-                    <span id="MsgIsi5" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="upgrade_class_los" class="text" type="text" class="inputbox" value="0" size="5" maxlength="5">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Tambahan</td><td width="">:</td>
                 <td width="67%">
-                    <input name="add_payment_pct" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" type="text" id="TxtIsi6" class="inputbox" value="0" size="20" maxlength="15">
-                    <span id="MsgIsi6" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="add_payment_pct" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
@@ -259,7 +253,7 @@
             <tr class="head">
                 <td width="31%" >Diagnosa</td><td width="">:</td>
                 <td width="67%">
-                    <input name="diagnosa" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi7'));" type=text id="TxtIsi7" class="inputbox" 
+                    <input name="diagnosa" class="text" type=text class="inputbox" 
                            value="<?php  
                                         $penyakit="";
                                         $a=1;
@@ -274,7 +268,6 @@
                                         }
                                         echo $penyakit;
                                   ?>" size="60" maxlength="100">
-                    <span id="MsgIsi7" style="color:#CC0000; font-size:10px;"></span>
                 </td>
             </tr>
             <tr class="head">
@@ -351,127 +344,109 @@
             <tr class="head">
                 <td width="31%" >Biaya Prosedur Non Bedah</td><td width="">:</td>
                 <td width="67%">
-                    <input name="prosedur_non_bedah" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi8'));" type="text" id="TxtIsi8" class="inputbox" value="<?php echo $prosedur_non_bedah; ?>" size="20" maxlength="15">
-                    <span id="MsgIsi8" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="prosedur_non_bedah" class="text" type="text" class="inputbox" value="<?php echo $prosedur_non_bedah; ?>" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Prosedur Bedah</td><td width="">:</td>
                 <td width="67%">
-                    <input name="prosedur_bedah" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" type="text" id="TxtIsi9" class="inputbox" value="<?php echo $prosedur_bedah; ?>" size="20" maxlength="15">
-                    <span id="MsgIsi9" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="prosedur_bedah" class="text" type="text" class="inputbox" value="<?php echo $prosedur_bedah; ?>" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Konsultasi</td><td width="">:</td>
                 <td width="67%">
-                    <input name="konsultasi" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi10'));" type="text" id="TxtIsi10" class="inputbox" value="<?php echo $konsultasi; ?>" size="20" maxlength="15">
-                    <span id="MsgIsi10" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="konsultasi" class="text" type="text" class="inputbox" value="<?php echo $konsultasi; ?>" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Tenaga Ahli</td><td width="">:</td>
                 <td width="67%">
-                    <input name="tenaga_ahli" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi11'));" type="text" id="TxtIsi11" class="inputbox" value="<?php echo $tenaga_ahli; ?>" size="20" maxlength="15">
-                    <span id="MsgIsi11" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="tenaga_ahli" class="text" type="text" class="inputbox" value="<?php echo $tenaga_ahli; ?>" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Keperawatan</td><td width="">:</td>
                 <td width="67%">
-                    <input name="keperawatan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi12'));" type="text" id="TxtIsi12" class="inputbox" value="<?php echo $keperawatan; ?>" size="20" maxlength="15">
-                    <span id="MsgIsi12" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="keperawatan" class="text" type="text" class="inputbox" value="<?php echo $keperawatan; ?>" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Penunjang</td><td width="">:</td>
                 <td width="67%">
-                    <input name="penunjang" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi13'));" type="text" id="TxtIsi13" class="inputbox" value="0" size="20" maxlength="15">
-                    <span id="MsgIsi13" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="penunjang" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Radiologi</td><td width="">:</td>
                 <td width="67%">
-                    <input name="radiologi" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi14'));" type="text" id="TxtIsi14" class="inputbox" value="<?php echo $radiologi;?>" size="20" maxlength="15">
-                    <span id="MsgIsi14" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="radiologi" class="text" type="text" class="inputbox" value="<?php echo $radiologi;?>" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Laboratorium</td><td width="">:</td>
                 <td width="67%">
-                    <input name="laboratorium" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi15'));" type="text" id="TxtIsi16" class="inputbox" value="<?php echo $laboratorium;?>" size="20" maxlength="15">
-                    <span id="MsgIsi16" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="laboratorium" class="text" type="text" class="inputbox" value="<?php echo $laboratorium;?>" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Pelayanan Darah</td><td width="">:</td>
                 <td width="67%">
-                    <input name="pelayanan_darah" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi16'));" type="text" id="TxtIsi16" class="inputbox" value="0" size="20" maxlength="15">
-                    <span id="MsgIsi16" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="pelayanan_darah" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Rehabilitasi</td><td width="">:</td>
                 <td width="67%">
-                    <input name="rehabilitasi" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi17'));" type="text" id="TxtIsi17" class="inputbox" value="0" size="20" maxlength="15">
-                    <span id="MsgIsi17" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="rehabilitasi" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Kamar</td><td width="">:</td>
                 <td width="67%">
-                    <input name="kamar" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi18'));" type="text" id="TxtIsi18" class="inputbox" value="<?php echo $kamar;?>" size="20" maxlength="15">
-                    <span id="MsgIsi18" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="kamar" class="text" type="text" class="inputbox" value="<?php echo $kamar;?>" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Rawat Intensif</td><td width="">:</td>
                 <td width="67%">
-                    <input name="rawat_intensif" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi19'));" type="text" id="TxtIsi19" class="inputbox" value="0" size="20" maxlength="15">
-                    <span id="MsgIsi19" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="rawat_intensif" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Obat</td><td width="">:</td>
                 <td width="67%">
-                    <input name="obat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi20'));" type="text" id="TxtIsi20" class="inputbox" value="<?php echo $obat;?>" size="20" maxlength="15">
-                    <span id="MsgIsi20" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="obat" class="text" type="text" class="inputbox" value="<?php echo $obat;?>" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Alkes</td><td width="">:</td>
                 <td width="67%">
-                    <input name="alkes" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi21'));" type="text" id="TxtIsi21" class="inputbox" value="0" size="20" maxlength="15">
-                    <span id="MsgIsi21" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="alkes" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya BMHP</td><td width="">:</td>
                 <td width="67%">
-                    <input name="bmhp" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi22'));" type="text" id="TxtIsi22" class="inputbox" value="<?php echo $bmhp;?>" size="20" maxlength="15">
-                    <span id="MsgIsi22" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="bmhp" class="text" type="text" class="inputbox" value="<?php echo $bmhp;?>" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Biaya Sewa Alat</td><td width="">:</td>
                 <td width="67%">
-                    <input name="sewa_alat" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi23'));" type="text" id="TxtIsi23" class="inputbox" value="<?php echo $sewa_alat;?>" size="20" maxlength="15">
-                    <span id="MsgIsi23" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="sewa_alat" class="text" type="text" class="inputbox" value="<?php echo $sewa_alat;?>" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Tarif Poli Eksekutif</td><td width="">:</td>
                 <td width="67%">
-                    <input name="tarif_poli_eks" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi24'));" type="text" id="TxtIsi24" class="inputbox" value="0" size="20" maxlength="15">
-                    <span id="MsgIsi24" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="tarif_poli_eks" class="text" type="text" class="inputbox" value="0" size="20" maxlength="15">
                 </td>
             </tr>
             <tr class="head">
                 <td width="31%" >Nama Dokter</td><td width="">:</td>
                 <td width="67%">
-                    <input name="nama_dokter" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi25'));" type="text" id="TxtIsi25" class="inputbox" value="<?php echo $nm_dokter;?>" size="60" maxlength="100">
-                    <span id="MsgIsi25" style="color:#CC0000; font-size:10px;"></span>
+                    <input name="nama_dokter" class="text" type="text" class="inputbox" value="<?php echo $nm_dokter;?>" size="60" maxlength="100">
                 </td>
             </tr>
         </table>                

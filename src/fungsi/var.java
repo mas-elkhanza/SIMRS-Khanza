@@ -66,7 +66,7 @@ public final class var {
             penjualan_obat_pertanggal=false,pcare_cek_kesadaran=false,pembatalan_periksa_dokter=false,pembayaran_per_unit=false,rekap_pembayaran_per_unit=false,
             grafik_kunjungan_percarabayar=false,ipsrs_pengadaan_pertanggal=false,ipsrs_stokkeluar_pertanggal=false,grafik_kunjungan_ranaptahun=false,
             pcare_cek_rujukan=false,grafik_lab_ralantahun=false,grafik_rad_ralantahun=false,cek_entry_ralan=false,inacbg_klaim_baru_manual2=false,
-            permintaan_medis=false;
+            permintaan_medis=false,rekap_permintaan_medis=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -661,6 +661,7 @@ public final class var {
                         var.cek_entry_ralan=true;
                         var.inacbg_klaim_baru_manual2=true;
                         var.permintaan_medis=true;
+                        var.rekap_permintaan_medis=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -950,6 +951,7 @@ public final class var {
                         var.cek_entry_ralan=rs2.getBoolean("cek_entry_ralan");
                         var.inacbg_klaim_baru_manual2=rs2.getBoolean("inacbg_klaim_baru_manual2");
                         var.permintaan_medis=rs2.getBoolean("permintaan_medis");
+                        var.rekap_permintaan_medis=rs2.getBoolean("rekap_permintaan_medis");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1237,6 +1239,7 @@ public final class var {
                         var.cek_entry_ralan=false;
                         var.inacbg_klaim_baru_manual2=false;
                         var.permintaan_medis=false;
+                        var.rekap_permintaan_medis=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1571,4 +1574,5 @@ public final class var {
     public static boolean getcek_entry_ralan(){return var.cek_entry_ralan;}
     public static boolean getinacbg_klaim_baru_manual2(){return var.inacbg_klaim_baru_manual2;}
     public static boolean getpermintaan_medis(){return var.permintaan_medis;}
+    public static boolean getrekap_permintaan_medis(){return var.rekap_permintaan_medis;}
 }
