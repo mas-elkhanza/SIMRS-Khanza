@@ -218,6 +218,8 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         ppHapus = new javax.swing.JMenuItem();
+        ppDisetujui = new javax.swing.JMenuItem();
+        ppTidakDisetujui = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -262,10 +264,10 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(102, 51, 0));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppHapus.setText("Hapus Data Pengadaan Barang");
+        ppHapus.setText("Hapus Permintaan Barang");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapus.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHapus.setIconTextGap(8);
+        ppHapus.setIconTextGap(5);
         ppHapus.setName("ppHapus"); // NOI18N
         ppHapus.setPreferredSize(new java.awt.Dimension(200, 25));
         ppHapus.addActionListener(new java.awt.event.ActionListener() {
@@ -274,6 +276,40 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppHapus);
+
+        ppDisetujui.setBackground(new java.awt.Color(242, 242, 242));
+        ppDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDisetujui.setForeground(new java.awt.Color(102, 51, 0));
+        ppDisetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppDisetujui.setText("Disetujui");
+        ppDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppDisetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppDisetujui.setIconTextGap(5);
+        ppDisetujui.setName("ppDisetujui"); // NOI18N
+        ppDisetujui.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppDisetujui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppDisetujuiActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppDisetujui);
+
+        ppTidakDisetujui.setBackground(new java.awt.Color(242, 242, 242));
+        ppTidakDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppTidakDisetujui.setForeground(new java.awt.Color(102, 51, 0));
+        ppTidakDisetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppTidakDisetujui.setText("Tidak Disetujui");
+        ppTidakDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppTidakDisetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppTidakDisetujui.setIconTextGap(5);
+        ppTidakDisetujui.setName("ppTidakDisetujui"); // NOI18N
+        ppTidakDisetujui.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppTidakDisetujui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppTidakDisetujuiActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppTidakDisetujui);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -809,7 +845,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
         Valid.textKosong(TCari,"pilihan data");
     }else{
-        Sequel.queryu("delete from permintaan_medis where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+        Sequel.queryu("delete from permintaan_medis where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
         tampil();
     }    
 }//GEN-LAST:event_ppHapusActionPerformed
@@ -836,6 +872,33 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         barang.jenis.setLocationRelativeTo(internalFrame1);
         barang.jenis.setVisible(true);
     }//GEN-LAST:event_btnJenisActionPerformed
+
+    private void ppDisetujuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDisetujuiActionPerformed
+        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+            Valid.textKosong(TCari,"pilihan data");
+        }else{
+            Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgMutasiBarang aplikasi=new DlgMutasiBarang(null,false);
+            aplikasi.tampilkanpermintaan=true;
+            aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+            aplikasi.isCek();
+            aplikasi.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            aplikasi.setLocationRelativeTo(internalFrame1);
+            aplikasi.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+            tampil();
+        }
+    }//GEN-LAST:event_ppDisetujuiActionPerformed
+
+    private void ppTidakDisetujuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTidakDisetujuiActionPerformed
+        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+            Valid.textKosong(TCari,"pilihan data");
+        }else{
+            Sequel.queryu("update permintaan_medis set status='Tidak Disetujui' where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+            tampil();
+        } 
+    }//GEN-LAST:event_ppTidakDisetujuiActionPerformed
 
     /**
     * @param args the command line arguments
@@ -890,7 +953,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
+    private javax.swing.JMenuItem ppDisetujui;
     private javax.swing.JMenuItem ppHapus;
+    private javax.swing.JMenuItem ppTidakDisetujui;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
@@ -1088,6 +1153,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             ppHapus.setEnabled(true);
         }else{
             ppHapus.setEnabled(false);
-        }       
+        }    
+        ppDisetujui.setEnabled(var.getmutasi_barang());
+        ppTidakDisetujui.setEnabled(var.getmutasi_barang());
     }
 }
