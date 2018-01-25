@@ -40,6 +40,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
+    private DlgMutasiBarang aplikasi=new DlgMutasiBarang(null,false);
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -260,7 +261,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        ppHapus.setBackground(new java.awt.Color(242, 242, 242));
+        ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppHapus.setForeground(new java.awt.Color(102, 51, 0));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -277,7 +278,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppHapus);
 
-        ppDisetujui.setBackground(new java.awt.Color(242, 242, 242));
+        ppDisetujui.setBackground(new java.awt.Color(255, 255, 255));
         ppDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppDisetujui.setForeground(new java.awt.Color(102, 51, 0));
         ppDisetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -294,7 +295,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppDisetujui);
 
-        ppTidakDisetujui.setBackground(new java.awt.Color(242, 242, 242));
+        ppTidakDisetujui.setBackground(new java.awt.Color(255, 255, 255));
         ppTidakDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppTidakDisetujui.setForeground(new java.awt.Color(102, 51, 0));
         ppTidakDisetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -663,7 +664,12 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-            dispose();  
+        aplikasi.dispose();
+        suplier.dispose();
+        pegawai.dispose();
+        barang.dispose();
+        barang.jenis.dispose();
+        dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
@@ -879,7 +885,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else{
             Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgMutasiBarang aplikasi=new DlgMutasiBarang(null,false);
             aplikasi.tampilkanpermintaan=true;
             aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
             aplikasi.isCek();

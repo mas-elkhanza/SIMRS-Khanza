@@ -32,7 +32,9 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
     private DlgBarang barang=new DlgBarang(null,false);
     private int i=0,z=0;
     private boolean[] pilihan;
-    private String[] kodebarang,namabarang,satuan,jenis,jumlah;
+    private String[] kodebarang,namabarang,satuan,jenis,jumlah,kodesat;
+    private double harga=0,jml=0;
+    private DlgSuratPemesanan form=new DlgSuratPemesanan(null,false);    
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -41,7 +43,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"P","Kode Barang","Nama Barang","Satuan","Jenis","Jumlah"};
+        Object[] row={"P","Kode Barang","Nama Barang","Satuan","Jenis","Jumlah","Kode Sat"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -52,7 +54,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
              }
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
              /*Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -67,7 +69,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0;i < 6; i++) {
+        for (i = 0;i < 7; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -81,6 +83,9 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==5){
                 column.setPreferredWidth(60);
+            }else if(i==6){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
@@ -163,6 +168,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
         label10 = new widget.Label();
+        BtnPrint1 = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
@@ -285,7 +291,7 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
 
         TCari.setToolTipText("Alt+C");
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(350, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(245, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -330,6 +336,24 @@ public class DlgRekapPermintaan extends javax.swing.JDialog {
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(25, 23));
         panelisi1.add(label10);
+
+        BtnPrint1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
+        BtnPrint1.setMnemonic('P');
+        BtnPrint1.setText("Pesan");
+        BtnPrint1.setToolTipText("Alt+P");
+        BtnPrint1.setName("BtnPrint1"); // NOI18N
+        BtnPrint1.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnPrint1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPrint1ActionPerformed(evt);
+            }
+        });
+        BtnPrint1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPrint1KeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnPrint1);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -459,11 +483,6 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
    //Valid.pindah(evt,DTPCari2,TCari);
 }//GEN-LAST:event_BtnSeek2KeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        Tgl1.requestFocus();
-        prosesCari();
-    }//GEN-LAST:event_formWindowOpened
-
     private void Tgl1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tgl1KeyPressed
         Valid.pindah(evt, BtnKeluar,Tgl2);
     }//GEN-LAST:event_Tgl1KeyPressed
@@ -511,6 +530,45 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
+    private void BtnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint1ActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda pilih...!!!!");
+            //TCari.requestFocus();
+        }else if(tabMode.getRowCount()!=0){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));            
+            form.tampilkan=false;
+            form.isCek();
+            Valid.tabelKosong(form.tabMode());
+            for(i=0;i<tbDokter.getRowCount();i++){ 
+                if(tbDokter.getValueAt(i,0).toString().equals("true")){
+                    harga=Sequel.cariIsiAngka("select h_beli from databarang where kode_brng=?",tbDokter.getValueAt(i,1).toString());
+                    jml=Double.parseDouble(tbDokter.getValueAt(i,5).toString());
+                    form.tabMode().addRow(new Object[]{
+                        jml,tbDokter.getValueAt(i,6).toString(),
+                        tbDokter.getValueAt(i,1).toString(),
+                        tbDokter.getValueAt(i,2).toString(),
+                        tbDokter.getValueAt(i,6).toString(),
+                        harga,(jml*harga),0,0,(jml*harga),jml
+                    });
+                }
+            }
+            form.panggilgetData();
+            form.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+            
+    }//GEN-LAST:event_BtnPrint1ActionPerformed
+
+    private void BtnPrint1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrint1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnPrint1KeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        prosesCari();
+    }//GEN-LAST:event_formWindowOpened
+
     /**
     * @param args the command line arguments
     */
@@ -532,6 +590,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.Button BtnPrint1;
     private widget.Button BtnSeek2;
     private widget.TextBox TCari;
     private widget.Tanggal Tgl1;
@@ -572,6 +631,8 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             satuan=new String[z];
             jenis=null;
             jenis=new String[z]; 
+            kodesat=null;
+            kodesat=new String[z]; 
 
             z=0;        
             for(i=0;i<tbDokter.getRowCount();i++){
@@ -582,6 +643,7 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     satuan[z]=tbDokter.getValueAt(i,3).toString();
                     jenis[z]=tbDokter.getValueAt(i,4).toString();
                     jumlah[z]=tbDokter.getValueAt(i,5).toString();
+                    kodesat[z]=tbDokter.getValueAt(i,6).toString();
                     z++;
                 }
             }
@@ -589,13 +651,13 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             Valid.tabelKosong(tabMode);
             for(i=0;i<z;i++){
                 tabMode.addRow(new Object[] {
-                    pilihan[i],kodebarang[i],namabarang[i],satuan[i],jenis[i],jumlah[i]
+                    pilihan[i],kodebarang[i],namabarang[i],satuan[i],jenis[i],jumlah[i],kodesat[i]
                 });
             }
             
             ps=koneksi.prepareStatement(
                     "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,jenis.nama as jenis,"+
-                    "sum(detail_permintaan_medis.jumlah) as jumlah from databarang inner join kodesatuan "+
+                    "sum(detail_permintaan_medis.jumlah) as jumlah,databarang.kode_sat from databarang inner join kodesatuan "+
                     "inner join jenis inner join detail_permintaan_medis inner join permintaan_medis "+
                     "on databarang.kode_brng=detail_permintaan_medis.kode_brng and databarang.kode_sat=kodesatuan.kode_sat "+
                     "and databarang.kdjns=jenis.kdjns and detail_permintaan_medis.no_permintaan=permintaan_medis.no_permintaan "+
@@ -620,7 +682,8 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         false,rs.getString("kode_brng"),rs.getString("nama_brng"),
-                        rs.getString("satuan"),rs.getString("jenis"),rs.getString("jumlah")
+                        rs.getString("satuan"),rs.getString("jenis"),
+                        rs.getString("jumlah"),rs.getString("kode_sat")
                     });          
                 } 
             } catch (Exception e) {
