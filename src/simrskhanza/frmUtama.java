@@ -210,6 +210,7 @@ import inventory.DlgPenjualanPerTanggal;
 import inventory.DlgPermintaan;
 import inventory.DlgRekapPermintaan;
 import inventory.DlgRiwayatBarangMedis;
+import inventory.DlgSuratPemesanan;
 import ipsrs.DlgPengadaanIPSRSPerTanggal;
 import ipsrs.DlgStokKeluarIPSRSPerTanggal;
 import java.awt.event.KeyListener;
@@ -723,6 +724,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnInaCBGKlaimBaruManual2 = new widget.ButtonBig();
         btnPermintaanMedis = new widget.ButtonBig();
         btnRekapPermintaanMedis = new widget.ButtonBig();
+        btnSuratPemesananMedis = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4436,7 +4438,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPermintaanMedis);
 
-        btnRekapPermintaanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Select-Language_49621.png"))); // NOI18N
+        btnRekapPermintaanMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
         btnRekapPermintaanMedis.setText("Rekap Permintaan Obat & BHP");
         btnRekapPermintaanMedis.setIconTextGap(0);
         btnRekapPermintaanMedis.setName("btnRekapPermintaanMedis"); // NOI18N
@@ -4448,6 +4450,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRekapPermintaanMedis);
 
+        btnSuratPemesananMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Select-Language_49621.png"))); // NOI18N
+        btnSuratPemesananMedis.setText("Surat Pemesanan Obat & BHP");
+        btnSuratPemesananMedis.setIconTextGap(0);
+        btnSuratPemesananMedis.setName("btnSuratPemesananMedis"); // NOI18N
+        btnSuratPemesananMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratPemesananMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratPemesananMedisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSuratPemesananMedis);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4456,7 +4470,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/01/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/01/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -9526,6 +9540,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRekapPermintaanMedisActionPerformed
 
+    private void btnSuratPemesananMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuratPemesananMedisActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSuratPemesanan form=new DlgSuratPemesanan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSuratPemesananMedisActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9832,6 +9858,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnStokObatPasien;
     private widget.ButtonBig btnSuplier;
     private widget.ButtonBig btnSuplierIPSRS;
+    private widget.ButtonBig btnSuratPemesananMedis;
     private widget.ButtonBig btnSurveilansPD3I;
     private widget.ButtonBig btnSurveilansRalan;
     private widget.ButtonBig btnSurveilansRanap;
@@ -10419,6 +10446,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getrekap_permintaan_medis()==true){
                 Panelmenu.add(btnRekapPermintaanMedis);   
+                jmlmenu++;
+            }
+            
+            if(var.getsurat_pemesanan_medis()==true){
+                Panelmenu.add(btnSuratPemesananMedis);   
                 jmlmenu++;
             }
             
@@ -11859,6 +11891,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getrekap_permintaan_medis()==true){
             Panelmenu.add(btnRekapPermintaanMedis);   
+            jmlmenu++;
+        }
+        
+        if(var.getsurat_pemesanan_medis()==true){
+            Panelmenu.add(btnSuratPemesananMedis);   
             jmlmenu++;
         }
 
@@ -13379,6 +13416,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getrekap_permintaan_medis()==true){
             if(btnRekapPermintaanMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPermintaanMedis);   
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getsurat_pemesanan_medis()==true){
+            if(btnSuratPemesananMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratPemesananMedis);   
                 jmlmenu++;
             }                
         }

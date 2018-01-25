@@ -43,13 +43,13 @@
                 $jnsrawat="2";
             }
 
-            echo "<input type=hidden name=no_rawat value=$norawat>
-                  <input type=hidden name=tgl_registrasi value=$tgl_registrasi>
-                  <input type=hidden name=tgl_lahir value=$tgl_lahir>
-                  <input type=hidden name=nm_pasien value=$nm_pasien>
-                  <input type=hidden name=jnsrawat value=$jnsrawat>
-                  <input type=hidden name=jk value=$jk>
-                  <input type=hidden name=codernik value=$codernik>";
+            echo "<input type=hidden name=no_rawat value='$norawat'>
+                  <input type=hidden name=tgl_registrasi value='$tgl_registrasi'>
+                  <input type=hidden name=tgl_lahir value='$tgl_lahir'>
+                  <input type=hidden name=nm_pasien value='$nm_pasien'>
+                  <input type=hidden name=jnsrawat value='$jnsrawat'>
+                  <input type=hidden name=jk value='$jk'>
+                  <input type=hidden name=codernik value='$codernik'>";
             echo "<div align='center' class='link'>
                       <a href='?act=KlaimBaruManual2&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar'>| List Data |</a>
                   </div>";
@@ -502,6 +502,8 @@
                 }else{
                     $gender="2";
                 }
+                
+                echo "JK : ".$gender." Pasien ".$nm_pasien;
 
                 if ((!empty($norawat))&&(!empty($nosep))&&(!empty($nokartu))) {                        
                     BuatKlaimBaru2($nokartu,$nosep,$no_rkm_medis,$nm_pasien,$tgl_lahir." 00:00:00", $gender,$norawat);

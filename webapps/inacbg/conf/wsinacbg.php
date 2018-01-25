@@ -415,7 +415,7 @@
                    }';
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
-            //KirimKlaimIndividualKeDC($nomor_sep);
+            KirimKlaimIndividualKeDC($nomor_sep);
         }
     }
     
