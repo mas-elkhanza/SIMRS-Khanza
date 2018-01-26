@@ -885,7 +885,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else{
             Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            aplikasi.tampilkanpermintaan=true;
+            aplikasi.tampilkanpermintaan=false;
             aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
             aplikasi.isCek();
             aplikasi.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());

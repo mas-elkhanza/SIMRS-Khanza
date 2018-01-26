@@ -41,7 +41,7 @@ public class DlgPermintaan extends javax.swing.JDialog {
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     private DlgCariPermintaan form=new DlgCariPermintaan(null,false);
-
+    private DlgBarang barang=new DlgBarang(null,false);
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
@@ -721,7 +721,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgBarang barang=new DlgBarang(null,false);
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);

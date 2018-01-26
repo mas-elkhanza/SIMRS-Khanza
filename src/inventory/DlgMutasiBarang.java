@@ -562,11 +562,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_ppBersihkanActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(tampilkanpermintaan==false){
+        if(tampilkanpermintaan==true){
             tampil();
-        }else{
-            
-        }            
+        }           
     }//GEN-LAST:event_formWindowOpened
 
     private void kddariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddariKeyPressed

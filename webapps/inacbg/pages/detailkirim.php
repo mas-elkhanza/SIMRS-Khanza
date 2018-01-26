@@ -238,8 +238,14 @@
                                 echo "<option value='4'>Meninggal</option>";
                             }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='+' and no_rawat='".$norawat."'")>0){
                                 echo "<option value='4'>Meninggal</option>";
-                            }else{
+                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Atas Persetujuan Dokter' and no_rawat='".$norawat."'")>0){
+                                echo "<option value='1'>Atas persetujuan dokter</option>";
+                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Atas Permintaan Sendiri' and no_rawat='".$norawat."'")>0){
+                                echo "<option value='3'>Atas permintaan sendiri</option>";
+                            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Lain-lain' and no_rawat='".$norawat."'")>0){
                                 echo "<option value='5'>Lain-lain</option>";
+                            }else{
+                                echo "<option value='1'>Atas persetujuan dokter</option>";
                             }
                         ?>
                         <option value="1">Atas persetujuan dokter</option>
