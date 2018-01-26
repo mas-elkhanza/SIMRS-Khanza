@@ -213,6 +213,7 @@ import inventory.DlgRiwayatBarangMedis;
 import inventory.DlgSuratPemesanan;
 import ipsrs.DlgPengadaanIPSRSPerTanggal;
 import ipsrs.DlgPermintaanNonMedis;
+import ipsrs.DlgRekapPermintaanNonMedis;
 import ipsrs.DlgStokKeluarIPSRSPerTanggal;
 import java.awt.event.KeyListener;
 import javax.swing.event.DocumentEvent;
@@ -727,6 +728,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnRekapPermintaanMedis = new widget.ButtonBig();
         btnSuratPemesananMedis = new widget.ButtonBig();
         btnPermintaanNonMedis = new widget.ButtonBig();
+        btnRekapPermintaanNonMedis = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4475,6 +4477,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPermintaanNonMedis);
+
+        btnRekapPermintaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); // NOI18N
+        btnRekapPermintaanNonMedis.setText("Rekap Permintaan Barang Non Medis");
+        btnRekapPermintaanNonMedis.setIconTextGap(0);
+        btnRekapPermintaanNonMedis.setName("btnRekapPermintaanNonMedis"); // NOI18N
+        btnRekapPermintaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPermintaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPermintaanNonMedisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRekapPermintaanNonMedis);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -9578,6 +9592,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPermintaanNonMedisActionPerformed
 
+    private void btnRekapPermintaanNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekapPermintaanNonMedisActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRekapPermintaanNonMedis rhipsrs=new DlgRekapPermintaanNonMedis(this,false);
+        rhipsrs.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        rhipsrs.setLocationRelativeTo(PanelUtama);
+        rhipsrs.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRekapPermintaanNonMedisActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9827,6 +9852,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRekapHarian;
     private widget.ButtonBig btnRekapPembayaranPerUnit;
     private widget.ButtonBig btnRekapPermintaanMedis;
+    private widget.ButtonBig btnRekapPermintaanNonMedis;
     private widget.ButtonBig btnRekapPershift;
     private widget.ButtonBig btnRekapPoliAnak;
     private widget.ButtonBig btnRekapPresensi;
@@ -10599,6 +10625,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getpermintaan_non_medis()==true){
                 Panelmenu.add(btnPermintaanNonMedis);  
+                jmlmenu++;
+            }
+            
+            if(var.getrekap_permintaan_non_medis()==true){
+                Panelmenu.add(btnRekapPermintaanNonMedis);  
                 jmlmenu++;
             }
             
@@ -12048,6 +12079,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getpermintaan_non_medis()==true){
             Panelmenu.add(btnPermintaanNonMedis);  
+            jmlmenu++;
+        }
+        
+        if(var.getrekap_permintaan_non_medis()==true){
+            Panelmenu.add(btnRekapPermintaanNonMedis);  
             jmlmenu++;
         }
 
@@ -13629,6 +13665,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpermintaan_non_medis()==true){
             if(btnPermintaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanNonMedis);  
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getrekap_permintaan_non_medis()==true){
+            if(btnRekapPermintaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapPermintaanNonMedis);  
                 jmlmenu++;
             }                
         }
