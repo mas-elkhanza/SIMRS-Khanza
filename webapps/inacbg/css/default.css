@@ -391,6 +391,16 @@ color: #65795b;
         width:90px;
 }
 
+.text4 {
+	background: #fffff9;
+        font-size: 11px;
+        font: Tahoma;
+	padding: 3px 0 3px 5px;
+	border: 1px solid #e2e7de;
+	color: #65795b;
+        width:210px;
+}
+
 .caption{
         height: 22px;
 	padding: 0px 0 0 3px;
