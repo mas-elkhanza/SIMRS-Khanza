@@ -39,6 +39,7 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
     private double ttl,keluar;
     private String[] kodebarang,namabarang,satuan,jumlah,stok,harga,total;
     private WarnaTable2 warna=new WarnaTable2();
+    public boolean tampilkanpermintaan=true;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -105,8 +106,7 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,4),signed)),0) from ipsrspengeluaran ",
-                TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5),4,NoKeluar); 
+                autoNomor();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -141,16 +141,8 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {}
             @Override
             public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        try{            
-            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),ipsrsbarang.kode_sat,stok, "+
-                " ipsrsbarang.harga from ipsrsbarang where ipsrsbarang.kode_brng like ? or "+
-                " ipsrsbarang.nama_brng like ? or "+
-                " ipsrsbarang.jenis like ? order by ipsrsbarang.nama_brng");
-        }catch(SQLException e){
-            System.out.println(e);
-        }           
+        });        
+                  
     }
 
     /** This method is called from within the constructor to
@@ -648,7 +640,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        if(tampilkanpermintaan==true){
+            tampil();
+        }            
     }//GEN-LAST:event_formWindowOpened
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
@@ -669,7 +663,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }//GEN-LAST:event_BtnTambahActionPerformed
 
     private void TglKeluarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TglKeluarItemStateChanged
-        autoNomor();
+        try {
+            autoNomor();
+        } catch (Exception e) {
+        }        
     }//GEN-LAST:event_TglKeluarItemStateChanged
 
     /**
@@ -752,17 +749,32 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],stok[i],harga[i],total[i]});
         }
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{"",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),"0"});
-            }                 
+            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),ipsrsbarang.kode_sat,stok, "+
+                    " ipsrsbarang.harga from ipsrsbarang where ipsrsbarang.kode_brng like ? or "+
+                    " ipsrsbarang.nama_brng like ? or "+
+                    " ipsrsbarang.jenis like ? order by ipsrsbarang.nama_brng");
+            
+            try{  
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{"",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),"0"});
+                } 
+            }catch(Exception e){
+                System.out.println(e);
+            }finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                                
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
-        }
-        
+        }        
     }
     
     public void isCek(){
@@ -801,5 +813,37 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 "SKNM"+TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5)+TglKeluar.getSelectedItem().toString().substring(0,2),3,NoKeluar); 
     }
 
- 
+    public void tampil(String nopermintaan) {
+        
+        Valid.tabelKosong(tabMode);        
+        try{
+            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),"+
+                    " ipsrsbarang.kode_sat,stok, ipsrsbarang.harga,detail_permintaan_non_medis.jumlah "+
+                    " from ipsrsbarang inner join detail_permintaan_non_medis "+
+                    " on ipsrsbarang.kode_brng=detail_permintaan_non_medis.kode_brng "+
+                    " where detail_permintaan_non_medis.no_permintaan=? order by ipsrsbarang.nama_brng");
+            
+            try{  
+                ps.setString(1,nopermintaan);
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString("jumlah"),rs.getString(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getString(5),(rs.getDouble("jumlah")*rs.getDouble("harga"))
+                    });
+                } 
+            }catch(Exception e){
+                System.out.println(e);
+            }finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                                
+        }catch(SQLException e){
+            System.out.println("Notifikasi : "+e);
+        }        
+    }
 }
