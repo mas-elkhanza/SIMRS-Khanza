@@ -50,7 +50,8 @@ public class DlgPermintaanNonMedis extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] judul={"Jml","Kode Barang","Nama Barang","Satuan","Jenis Barang","Keterangan"};
+        Object[] judul={
+            "Jml","Kode Barang","Nama Barang","Satuan","Jenis Barang","Keterangan"};
         tabMode=new DefaultTableModel(null,judul){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -202,7 +203,7 @@ public class DlgPermintaanNonMedis extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengajuan Permintaan Barang Non Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengajuan Permintaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -577,11 +578,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
             for(i=0;i<tbDokter.getRowCount();i++){ 
                 tbDokter.setValueAt("",i,0);
-                tbDokter.setValueAt("0",i,4);
-                tbDokter.setValueAt("0",i,5);
-                tbDokter.setValueAt("0",i,6);
-                tbDokter.setValueAt("0",i,7);
-                tbDokter.setValueAt("0",i,8);
+                tbDokter.setValueAt("",i,5);
             }
 }//GEN-LAST:event_ppBersihkanActionPerformed
 

@@ -630,11 +630,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
             for(i=0;i<tbDokter.getRowCount();i++){ 
                 tbDokter.setValueAt("",i,0);
-                tbDokter.setValueAt("0",i,4);
-                tbDokter.setValueAt("0",i,5);
-                tbDokter.setValueAt("0",i,6);
-                tbDokter.setValueAt("0",i,7);
-                tbDokter.setValueAt("0",i,8);
+                tbDokter.setValueAt("",i,7);
             }
 }//GEN-LAST:event_ppBersihkanActionPerformed
 

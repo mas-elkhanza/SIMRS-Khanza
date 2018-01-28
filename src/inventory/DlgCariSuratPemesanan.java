@@ -15,7 +15,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -23,8 +22,8 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.DlgBayarPemesanan;
 import keuangan.Jurnal;
+import simrskhanza.DlgCariPegawai;
 import simrskhanza.DlgCariPetugas;
 
 public class DlgCariSuratPemesanan extends javax.swing.JDialog {
@@ -35,7 +34,7 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     public  DlgSuplier suplier=new DlgSuplier(null,false);
-    public  DlgCariPetugas pegawai=new DlgCariPetugas(null,false);
+    public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
@@ -807,7 +806,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         var.setform("DlgCariPemesanan");
         pegawai.emptTeks();
-        pegawai.isCek();
         pegawai.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);

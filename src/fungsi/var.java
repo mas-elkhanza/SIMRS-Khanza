@@ -66,7 +66,8 @@ public final class var {
             penjualan_obat_pertanggal=false,pcare_cek_kesadaran=false,pembatalan_periksa_dokter=false,pembayaran_per_unit=false,rekap_pembayaran_per_unit=false,
             grafik_kunjungan_percarabayar=false,ipsrs_pengadaan_pertanggal=false,ipsrs_stokkeluar_pertanggal=false,grafik_kunjungan_ranaptahun=false,
             pcare_cek_rujukan=false,grafik_lab_ralantahun=false,grafik_rad_ralantahun=false,cek_entry_ralan=false,inacbg_klaim_baru_manual2=false,
-            permintaan_medis=false,rekap_permintaan_medis=false,surat_pemesanan_medis=false,permintaan_non_medis=false,rekap_permintaan_non_medis=false;
+            permintaan_medis=false,rekap_permintaan_medis=false,surat_pemesanan_medis=false,permintaan_non_medis=false,rekap_permintaan_non_medis=false,
+            surat_pemesanan_non_medis=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -376,6 +377,7 @@ public final class var {
                         var.surat_pemesanan_medis=true;
                         var.permintaan_non_medis=true;
                         var.rekap_permintaan_non_medis=true;
+                        var.surat_pemesanan_non_medis=true;
                     }else */
                     if(rs.getRow()>=1){
                         var.kode="Admin Utama";
@@ -668,6 +670,7 @@ public final class var {
                         var.surat_pemesanan_medis=true;
                         var.permintaan_non_medis=true;
                         var.rekap_permintaan_non_medis=true;
+                        var.surat_pemesanan_non_medis=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -961,6 +964,7 @@ public final class var {
                         var.surat_pemesanan_medis=rs2.getBoolean("surat_pemesanan_medis");
                         var.permintaan_non_medis=rs2.getBoolean("permintaan_non_medis");
                         var.rekap_permintaan_non_medis=rs2.getBoolean("rekap_permintaan_non_medis");
+                        var.surat_pemesanan_non_medis=rs2.getBoolean("surat_pemesanan_non_medis");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1252,6 +1256,7 @@ public final class var {
                         var.surat_pemesanan_medis=false;
                         var.permintaan_non_medis=false;
                         var.rekap_permintaan_non_medis=false;
+                        var.surat_pemesanan_non_medis=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1590,4 +1595,5 @@ public final class var {
     public static boolean getsurat_pemesanan_medis(){return var.surat_pemesanan_medis;}
     public static boolean getpermintaan_non_medis(){return var.permintaan_non_medis;}
     public static boolean getrekap_permintaan_non_medis(){return var.rekap_permintaan_non_medis;}
+    public static boolean getsurat_pemesanan_non_medis(){return var.surat_pemesanan_non_medis;}
 }
