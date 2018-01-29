@@ -35,7 +35,7 @@ public class DlgRekapPermintaanNonMedis extends javax.swing.JDialog {
     private boolean[] pilihan;
     private String[] kodebarang,namabarang,satuan,jenis,jumlah,kodesat;
     private double harga=0,jml=0;
-    private DlgSuratPemesanan form=new DlgSuratPemesanan(null,false);    
+    private DlgSuratPemesananNonMedis form=new DlgSuratPemesananNonMedis(null,false);    
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -182,7 +182,7 @@ public class DlgRekapPermintaanNonMedis extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Pengajuan Permintaan Barang Non Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Pengajuan Permintaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -410,19 +410,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             //TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            Sequel.AutoComitFalse();
-            Sequel.queryu("delete from temporary");
-            int row=tabMode.getRowCount();
-            for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
-                                tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,4).toString().replaceAll("'","`")+"','"+
-                                tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
-            }
-            Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>();                 
             param.put("namars",var.getnamars());
             param.put("alamatrs",var.getalamatrs());
@@ -542,14 +529,13 @@ private void BtnSeek2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             Valid.tabelKosong(form.tabMode());
             for(i=0;i<tbDokter.getRowCount();i++){ 
                 if(tbDokter.getValueAt(i,0).toString().equals("true")){
-                    harga=Sequel.cariIsiAngka("select h_beli from ipsrsbarang where kode_brng=?",tbDokter.getValueAt(i,1).toString());
+                    harga=Sequel.cariIsiAngka("select harga from ipsrsbarang where kode_brng=?",tbDokter.getValueAt(i,1).toString());
                     jml=Double.parseDouble(tbDokter.getValueAt(i,5).toString());
                     form.tabMode().addRow(new Object[]{
                         jml,tbDokter.getValueAt(i,6).toString(),
                         tbDokter.getValueAt(i,1).toString(),
                         tbDokter.getValueAt(i,2).toString(),
-                        tbDokter.getValueAt(i,6).toString(),
-                        harga,(jml*harga),0,0,(jml*harga),jml
+                        harga,(jml*harga),0,0,(jml*harga)
                     });
                 }
             }
