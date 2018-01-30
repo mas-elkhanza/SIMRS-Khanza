@@ -4,12 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/D:/SIMRS-Khanza/SIMRS-Khanza/src/setting/DlgUser.java</file>
 =======
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/fungsi/var.java</file>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/ipsrs/DlgPengadaanIPSRSPerTanggal.java</file>
 >>>>>>> cf5c0841685965ed4ab1eb888cf38304f0e90320
+=======
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/ipsrs/DlgCariPembelianIpsrs.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/ipsrs/DlgPembelianIPSRS.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/inventory/DlgCariPembelian.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/ipsrs/DlgSuratPemesananNonMedis.java</file>
+>>>>>>> 3c3f25d238f1ac0d5cdedc53ae41f583c393272d
         </group>
     </open-files>
 </project-private>
