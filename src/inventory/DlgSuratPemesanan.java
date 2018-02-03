@@ -46,6 +46,7 @@ public class DlgSuratPemesanan extends javax.swing.JDialog {
     private String[] kodebarang,namabarang,satuan,satuanbeli;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal,jmlstok;
     public boolean tampilkan=true;
+    private DlgBarang barang=new DlgBarang(null,false);        
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -96,9 +97,9 @@ public class DlgSuratPemesanan extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }else if(i==6){
                 column.setPreferredWidth(85);
-            }else if(i==5){
+            }else if(i==7){
                 column.setPreferredWidth(50);
-            }else if(i==6){
+            }else if(i==8){
                 column.setPreferredWidth(80);
             }else if(i==9){
                 column.setPreferredWidth(85);
@@ -827,11 +828,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
     for(i=0;i<tbDokter.getRowCount();i++){ 
-        tbDokter.setValueAt(null,i,0);
+        tbDokter.setValueAt("",i,0);
         tbDokter.setValueAt(0,i,6);
         tbDokter.setValueAt(0,i,7);
         tbDokter.setValueAt(0,i,8);
+        tbDokter.setValueAt(0,i,9);
+        tbDokter.setValueAt(0,i,10);
     }
+    Meterai.setText("0");
+    getData();
 }//GEN-LAST:event_ppBersihkanActionPerformed
 
 private void NoPemesananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPemesananKeyPressed
@@ -940,6 +945,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         DlgCetak.dispose();
         pegawai.dispose();
         suplier.dispose();
+        barang.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -951,7 +957,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgBarang barang=new DlgBarang(null,false);
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
@@ -1212,7 +1217,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(ttl<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan penerimaan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan pemesanan...!!!!");
             tbDokter.requestFocus();
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
@@ -1257,7 +1262,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     Meterai.setText("0");
                     getData();
                 }else{
-                    JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Faktur sudah ada sebelumnya...!!");
+                    JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Pemesanan sudah ada sebelumnya...!!");
                 }
                 Sequel.AutoComitTrue();
                 autoNomor();
@@ -1296,11 +1301,15 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             Valid.textKosong(kdptg,"Petugas");
         }else if(Meterai.getText().trim().equals("")){
             Valid.textKosong(Meterai,"Meterai");
+        }else if(Apoteker.getText().trim().equals("")){
+            Valid.textKosong(Apoteker,"Apoteker");
+        }else if(KabidKeu.getText().trim().equals("")){
+            Valid.textKosong(KabidKeu,"Kepala Bagian Keuangan");
         }else if(tbDokter.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(ttl<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan penerimaan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan pemesanan...!!!!");
             tbDokter.requestFocus();
         }else if(tbDokter.getRowCount()!=0){
             Sequel.AutoComitFalse();
@@ -1341,7 +1350,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 param.put("petugas",nmptg.getText()); 
                 param.put("kabidkeu",KabidKeu.getText()); 
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptSuratPemesanan.jrxml","report","::[ Transaksi Penerimaan Barang ]::",
+            Valid.MyReport("rptSuratPemesanan.jrxml","report","::[ Transaksi Pemesanan Barang ]::",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1501,8 +1510,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
         
         try{
-            ps=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,databarang.kode_sat, databarang.h_beli, "+
-                " ifnull(date_format(databarang.expire,'%d-%m-%Y'),'00-00-0000') from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+            ps=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,databarang.kode_sat, "+
+                " databarang.h_beli from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                 " where databarang.status='1' and databarang.kode_brng like ? or "+
                 " databarang.status='1' and databarang.nama_brng like ? or "+
                 " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
