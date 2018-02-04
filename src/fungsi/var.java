@@ -67,7 +67,7 @@ public final class var {
             grafik_kunjungan_percarabayar=false,ipsrs_pengadaan_pertanggal=false,ipsrs_stokkeluar_pertanggal=false,grafik_kunjungan_ranaptahun=false,
             pcare_cek_rujukan=false,grafik_lab_ralantahun=false,grafik_rad_ralantahun=false,cek_entry_ralan=false,inacbg_klaim_baru_manual2=false,
             permintaan_medis=false,rekap_permintaan_medis=false,surat_pemesanan_medis=false,permintaan_non_medis=false,rekap_permintaan_non_medis=false,
-            surat_pemesanan_non_medis=false;
+            surat_pemesanan_non_medis=false,grafik_per_perujuk=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -671,6 +671,7 @@ public final class var {
                         var.permintaan_non_medis=true;
                         var.rekap_permintaan_non_medis=true;
                         var.surat_pemesanan_non_medis=true;
+                        var.grafik_per_perujuk=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -965,6 +966,7 @@ public final class var {
                         var.permintaan_non_medis=rs2.getBoolean("permintaan_non_medis");
                         var.rekap_permintaan_non_medis=rs2.getBoolean("rekap_permintaan_non_medis");
                         var.surat_pemesanan_non_medis=rs2.getBoolean("surat_pemesanan_non_medis");
+                        var.grafik_per_perujuk=rs2.getBoolean("grafik_per_perujuk");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1257,6 +1259,7 @@ public final class var {
                         var.permintaan_non_medis=false;
                         var.rekap_permintaan_non_medis=false;
                         var.surat_pemesanan_non_medis=false;
+                        var.grafik_per_perujuk=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1596,4 +1599,5 @@ public final class var {
     public static boolean getpermintaan_non_medis(){return var.permintaan_non_medis;}
     public static boolean getrekap_permintaan_non_medis(){return var.rekap_permintaan_non_medis;}
     public static boolean getsurat_pemesanan_non_medis(){return var.surat_pemesanan_non_medis;}
+    public static boolean getgrafik_per_perujuk(){return grafik_per_perujuk;}
 }

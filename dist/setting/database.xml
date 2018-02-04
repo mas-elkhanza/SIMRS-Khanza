@@ -33,4 +33,9 @@
     <entry key="TOKENINHEALTH">inh_aba40329b828c943e91f2e5c7f9f1f1b</entry>
     <entry key="PEMBULATANHARGAOBAT">no</entry>
     <entry key="CETAKRINCIANOBAT">yes</entry>
+    <entry key="URLDUKCAPILJAKARTA">http://kependudukan.jakarta.go.id/rsudxxx/xml.jsp</entry>
+    <entry key="USERDUKCAPILJAKARTA">WSRSIABK</entry>
+    <entry key="PASSDUKCAPILJAKARTA">R8ud!KSW5</entry>
+    <entry key="VAR1DUKCAPILJAKARTA">RSIABK</entry>
+    <entry key="VAR2DUKCAPILJAKARTA">12</entry>
 </properties>
