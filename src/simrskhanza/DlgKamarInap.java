@@ -3298,16 +3298,18 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         kdkamar.requestFocus();
                         break;
                     case "KOSONG":
-                        Sequel.menyimpan("kamar_inap","'"+norawat.getText()+"','"+
+                        if(Sequel.menyimpantf("kamar_inap","'"+norawat.getText()+"','"+
                                 kdkamar.getText()+"','"+TTarif.getText()+"','"+
                                 diagnosaawal.getText()+"','"+
                                 diagnosaakhir.getText()+"','"+
                                 CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+"','"+
                                 cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','0000-00-00','00:00:00','"+TJmlHari.getText()+"','"+
-                                ttlbiaya.getText()+"','-'","No.Rawat");                        
-                        Sequel.mengedit("reg_periksa","no_rawat='"+norawat.getText()+"'","status_lanjut='Ranap'");
-                        Sequel.mengedit("kamar","kd_kamar='"+kdkamar.getText()+"'","status='ISI'");                
-                        emptTeks();
+                                ttlbiaya.getText()+"','-'","No.Rawat")==true){
+                            Sequel.mengedit("reg_periksa","no_rawat='"+norawat.getText()+"'","status_lanjut='Ranap'");
+                            Sequel.mengedit("kamar","kd_kamar='"+kdkamar.getText()+"'","status='ISI'");                
+                            emptTeks();                            
+                        }                        
+                            
                         break;
                 }
                 norawat.requestFocus();
