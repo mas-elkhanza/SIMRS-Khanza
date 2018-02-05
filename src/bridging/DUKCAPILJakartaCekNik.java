@@ -12,6 +12,8 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.util.Properties;
 import javax.swing.JOptionPane;
+import org.json.JSONObject;
+import org.json.XML;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -44,13 +46,9 @@ public class DUKCAPILJakartaCekNik {
 	    RestTemplate rest = new RestTemplate();
             String data=rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody();
             
-            System.out.println("data : "+data);
-            File g = new File("nik.xml");            
-            BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-            bg.write(data);
-            bg.close();
-            
-            prop.loadFromXML(new FileInputStream("nik.xml"));
+            JSONObject xmlJSONObj = XML.toJSONObject(data);
+            String jsonPrettyPrintString = xmlJSONObj.toString(4);
+            System.out.println(jsonPrettyPrintString);
             
         } catch (Exception ex) {
             System.out.println("Notifikasi Peserta : "+ex);
