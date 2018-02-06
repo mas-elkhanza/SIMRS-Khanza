@@ -100,7 +100,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[H]Pembayaran Per Unit","[H]Rekap Pembayaran Per Unit","[N]Kunjungan Reg Per Cara Bayar","[E]Pengadaan Non Medis Per Tanggal","[E]Stok Keluar Non Medis Per Tanggal",
                     "[N]Kunjungan Ranap Per Tahun","[K]Cek Rujukan PCare","[N]Kunjungan Lab Ralan Per Tahun","[N]Kunjungan Rad Ralan Per Tahun","[I]Cek Entry Ralan","[K]Klaim Baru Manual INACBG 2",
                     "[D]Permintaan Obat & BHP","[D]Rekap Permintaan Obat & BHP","[D]Surat Pemesanan Obat & BHP","[E]Permintaan Barang Non Medis","[E]Rekap Permintaan Barang Non Medis",
-                    "[E]Surat Pemesanan Barang Non Medis","[N]Kunjungan Per Perujuk","[K]Referensi Prosedur VClaim","[K]Referensi Kelas Rawat VClaim"
+                    "[E]Surat Pemesanan Barang Non Medis","[N]Kunjungan Per Perujuk","[K]Referensi Prosedur VClaim","[K]Referensi Kelas Rawat VClaim","[K]Referensi Dokter VClaim"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -198,7 +198,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 293;i++) {
+        for (i = 0; i < 294;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -420,6 +420,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(146);
             }else if(i==292){
                 column.setPreferredWidth(162);
+            }else if(i==293){
+                column.setPreferredWidth(134);
             }else{
                 column.setPreferredWidth(120);
             }
@@ -854,7 +856,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1189,7 +1191,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "surat_pemesanan_non_medis='"+tbUser.getValueAt(i,289).toString()+"',"+
                     "grafik_per_perujuk='"+tbUser.getValueAt(i,290).toString()+"',"+
                     "bpjs_cek_prosedur='"+tbUser.getValueAt(i,291).toString()+"',"+
-                    "bpjs_cek_kelas_rawat='"+tbUser.getValueAt(i,292).toString()+"'");
+                    "bpjs_cek_kelas_rawat='"+tbUser.getValueAt(i,292).toString()+"',"+
+                    "bpjs_cek_dokter='"+tbUser.getValueAt(i,293).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1464,7 +1467,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_kunjungan_percarabayar,ipsrs_pengadaan_pertanggal,ipsrs_stokkeluar_pertanggal,grafik_kunjungan_ranaptahun,"+
                         "pcare_cek_rujukan,grafik_lab_ralantahun,grafik_rad_ralantahun,cek_entry_ralan,inacbg_klaim_baru_manual2,"+
                         "permintaan_medis,rekap_permintaan_medis,surat_pemesanan_medis,permintaan_non_medis,rekap_permintaan_non_medis, "+
-                        "surat_pemesanan_non_medis,grafik_per_perujuk,bpjs_cek_prosedur,bpjs_cek_kelas_rawat "+
+                        "surat_pemesanan_non_medis,grafik_per_perujuk,bpjs_cek_prosedur,bpjs_cek_kelas_rawat,bpjs_cek_dokter "+
                         "from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
@@ -1769,7 +1772,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("surat_pemesanan_non_medis"),
                                rs.getBoolean("grafik_per_perujuk"),
                                rs.getBoolean("bpjs_cek_prosedur"),
-                               rs.getBoolean("bpjs_cek_kelas_rawat")
+                               rs.getBoolean("bpjs_cek_kelas_rawat"),
+                               rs.getBoolean("bpjs_cek_dokter")
                             });
                         }   
                     } catch (Exception e) {
@@ -2063,7 +2067,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("surat_pemesanan_non_medis"),
                            rs.getBoolean("grafik_per_perujuk"),
                            rs.getBoolean("bpjs_cek_prosedur"),
-                           rs.getBoolean("bpjs_cek_kelas_rawat") 
+                           rs.getBoolean("bpjs_cek_kelas_rawat"),
+                           rs.getBoolean("bpjs_cek_dokter") 
                         });
                     }                                             
                  }

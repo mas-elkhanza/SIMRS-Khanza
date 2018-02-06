@@ -67,7 +67,7 @@ public final class var {
             grafik_kunjungan_percarabayar=false,ipsrs_pengadaan_pertanggal=false,ipsrs_stokkeluar_pertanggal=false,grafik_kunjungan_ranaptahun=false,
             pcare_cek_rujukan=false,grafik_lab_ralantahun=false,grafik_rad_ralantahun=false,cek_entry_ralan=false,inacbg_klaim_baru_manual2=false,
             permintaan_medis=false,rekap_permintaan_medis=false,surat_pemesanan_medis=false,permintaan_non_medis=false,rekap_permintaan_non_medis=false,
-            surat_pemesanan_non_medis=false,grafik_per_perujuk=false,bpjs_cek_prosedur=false,bpjs_cek_kelas_rawat=false;
+            surat_pemesanan_non_medis=false,grafik_per_perujuk=false,bpjs_cek_prosedur=false,bpjs_cek_kelas_rawat=false,bpjs_cek_dokter=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -381,6 +381,7 @@ public final class var {
                         var.grafik_per_perujuk=true;
                         var.bpjs_cek_prosedur=true;
                         var.bpjs_cek_kelas_rawat=true;
+                        var.bpjs_cek_dokter=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -678,6 +679,7 @@ public final class var {
                         var.grafik_per_perujuk=rs2.getBoolean("grafik_per_perujuk");
                         var.bpjs_cek_prosedur=rs2.getBoolean("bpjs_cek_prosedur");
                         var.bpjs_cek_kelas_rawat=rs2.getBoolean("bpjs_cek_kelas_rawat");
+                        var.bpjs_cek_dokter=rs2.getBoolean("bpjs_cek_dokter");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -973,6 +975,7 @@ public final class var {
                         var.grafik_per_perujuk=false;
                         var.bpjs_cek_prosedur=false;
                         var.bpjs_cek_kelas_rawat=false;
+                        var.bpjs_cek_dokter=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1315,4 +1318,5 @@ public final class var {
     public static boolean getgrafik_per_perujuk(){return var.grafik_per_perujuk;}
     public static boolean getbpjs_cek_prosedur(){return var.bpjs_cek_prosedur;}
     public static boolean getbpjs_cek_kelas_rawat(){return var.bpjs_cek_kelas_rawat;}
+    public static boolean getbpjs_cek_dokter(){return var.bpjs_cek_dokter;}
 }
