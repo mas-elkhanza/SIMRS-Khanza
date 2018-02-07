@@ -29,6 +29,8 @@ import bridging.BPJSCekNoRujukanPCare;
 import bridging.BPJSCekReferensiDokter;
 import bridging.BPJSCekReferensiKelasRawat;
 import bridging.BPJSCekReferensiProsedur;
+import bridging.BPJSCekReferensiRuangRawat;
+import bridging.BPJSCekReferensiSpesialistik;
 import bridging.BPJSDataSEP;
 import bridging.BPJSMonitoringKlaim;
 import bridging.INACBGCariCoderNIK;
@@ -739,6 +741,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekReferensiProsedurBPJS = new widget.ButtonBig();
         btnCekReferensiKelasRawatBPJS = new widget.ButtonBig();
         btnCekReferensiDokterBPJS = new widget.ButtonBig();
+        btnCekReferensiSpesialistikBPJS = new widget.ButtonBig();
+        btnCekReferensiRuangRawatBPJS = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4559,6 +4563,30 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnCekReferensiDokterBPJS);
+
+        btnCekReferensiSpesialistikBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/teacher.png"))); // NOI18N
+        btnCekReferensiSpesialistikBPJS.setText("Referensi Spesialistik VClaim");
+        btnCekReferensiSpesialistikBPJS.setIconTextGap(0);
+        btnCekReferensiSpesialistikBPJS.setName("btnCekReferensiSpesialistikBPJS"); // NOI18N
+        btnCekReferensiSpesialistikBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiSpesialistikBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiSpesialistikBPJSActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCekReferensiSpesialistikBPJS);
+
+        btnCekReferensiRuangRawatBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357890_hospital.png"))); // NOI18N
+        btnCekReferensiRuangRawatBPJS.setText("Referensi Ruang Rawat VClaim");
+        btnCekReferensiRuangRawatBPJS.setIconTextGap(0);
+        btnCekReferensiRuangRawatBPJS.setName("btnCekReferensiRuangRawatBPJS"); // NOI18N
+        btnCekReferensiRuangRawatBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiRuangRawatBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiRuangRawatBPJSActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCekReferensiRuangRawatBPJS);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -9729,6 +9757,28 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCekReferensiDokterBPJSActionPerformed
 
+    private void btnCekReferensiSpesialistikBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekReferensiSpesialistikBPJSActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSCekReferensiSpesialistik form=new BPJSCekReferensiSpesialistik(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCekReferensiSpesialistikBPJSActionPerformed
+
+    private void btnCekReferensiRuangRawatBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekReferensiRuangRawatBPJSActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSCekReferensiRuangRawat form=new BPJSCekReferensiRuangRawat(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCekReferensiRuangRawatBPJSActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9825,6 +9875,8 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekReferensiDokterBPJS;
     private widget.ButtonBig btnCekReferensiKelasRawatBPJS;
     private widget.ButtonBig btnCekReferensiProsedurBPJS;
+    private widget.ButtonBig btnCekReferensiRuangRawatBPJS;
+    private widget.ButtonBig btnCekReferensiSpesialistikBPJS;
     private widget.ButtonBig btnClosingKasir;
     private widget.ButtonBig btnDaftarPermintaanResep;
     private widget.ButtonBig btnDaruratStok;
@@ -11447,6 +11499,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getbpjs_cek_spesialistik()==true){
+                Panelmenu.add(btnCekReferensiSpesialistikBPJS);
+                jmlmenu++;
+            }
+            
+            if(var.getbpjs_cek_ruangrawat()==true){
+                Panelmenu.add(btnCekReferensiRuangRawatBPJS);
+                jmlmenu++;
+            }
+            
             if(var.getbpjs_sep()==true){
                 Panelmenu.add(btnBPJSSEP);
                 jmlmenu++;
@@ -12914,6 +12976,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
         
+        if(var.getbpjs_cek_spesialistik()==true){
+            Panelmenu.add(btnCekReferensiSpesialistikBPJS);
+            jmlmenu++;
+        }
+        
+        if(var.getbpjs_cek_ruangrawat()==true){
+            Panelmenu.add(btnCekReferensiRuangRawatBPJS);
+            jmlmenu++;
+        }
+
         if(var.getbpjs_sep()==true){
             Panelmenu.add(btnBPJSSEP);
             jmlmenu++;
@@ -14791,6 +14863,20 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getbpjs_cek_dokter()==true){
             if(btnCekReferensiDokterBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiDokterBPJS);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbpjs_cek_spesialistik()==true){
+            if(btnCekReferensiSpesialistikBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCekReferensiSpesialistikBPJS);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbpjs_cek_ruangrawat()==true){
+            if(btnCekReferensiRuangRawatBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCekReferensiRuangRawatBPJS);
                 jmlmenu++;
             }                
         }
