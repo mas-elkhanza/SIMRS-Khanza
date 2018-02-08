@@ -152,7 +152,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                         "and returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual=? group by databarang.nama_brng",
             sqlpstambahan="select nama_biaya, besar_biaya from tambahan_biaya where no_rawat=?  ",
             sqlpsbiling="insert into billing values('0',?,?,?,?,?,?,?,?,?,?)",
-            sqlpstemporary="insert into temporary_bayar_ralan values('0',?,?,?,?,?,?,?,?,'','','','','','','','','')",
+            sqlpstemporary="insert into temporary_bayar_ralan values('0',?,?,?,?,?,?,?,?,?,'','','','','','','','')",
             sqlpspotongan="select nama_pengurangan,besar_pengurangan from pengurangan_biaya where no_rawat=?",
             sqlpsbilling="select no,nm_perawatan, if(biaya<>0,biaya,null) as satu, if(jumlah<>0,jumlah,null) as dua,"+
                         "if(tambahan<>0,tambahan,null) as tiga, if(totalbiaya<>0,totalbiaya,null) as empat,pemisah,status "+
@@ -2159,7 +2159,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try{
                     koneksi.setAutoCommit(false);
-                    Sequel.queryu2("delete from temporary_bayar_ralan"); 
+                    Sequel.queryu2("delete from temporary_bayar_ralan where temp9='"+var.getkode()+"'"); 
                     for(i=0;i<tabModeRwJlDr.getRowCount();i++){  
                         if(tabModeRwJlDr.getValueAt(i,0).toString().equals("true")){
                             biaya="";
@@ -2198,7 +2198,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                                    pstemporary.setString(8,tabModeRwJlDr.getValueAt(i,8).toString().replaceAll("'","`"));  
                                 } catch (Exception e) {
                                     pstemporary.setString(8,""); 
-                                }                              
+                                }    
+                                pstemporary.setString(9,var.getkode());
                                 pstemporary.executeUpdate();                         
                             } catch (Exception e) {
                                 System.out.println("Notifikasi : "+e);
@@ -2211,15 +2212,15 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                     }
                     
                     if(piutang<=0){                        
-                        Sequel.menyimpan("temporary_bayar_ralan","'0','TOTAL TAGIHAN',':','','','','','"+TtlSemua.getText()+"','Tagihan','','','','','','','','',''","Tagihan"); 
-                        Sequel.menyimpan("temporary_bayar_ralan","'0','PPN',':','','','','','"+Valid.SetAngka(besarppn)+"','Tagihan','','','','','','','','',''","Tagihan"); 
-                        Sequel.menyimpan("temporary_bayar_ralan","'0','TOTAL BAYAR',':','','','','','"+TagihanPPn.getText()+"','Tagihan','','','','','','','','',''","Tagihan"); 
+                        Sequel.menyimpan("temporary_bayar_ralan","'0','TOTAL TAGIHAN',':','','','','','"+TtlSemua.getText()+"','Tagihan','"+var.getkode()+"','','','','','','','',''","Tagihan"); 
+                        Sequel.menyimpan("temporary_bayar_ralan","'0','PPN',':','','','','','"+Valid.SetAngka(besarppn)+"','Tagihan','"+var.getkode()+"','','','','','','','',''","Tagihan"); 
+                        Sequel.menyimpan("temporary_bayar_ralan","'0','TOTAL BAYAR',':','','','','','"+TagihanPPn.getText()+"','Tagihan','"+var.getkode()+"','','','','','','','',''","Tagihan"); 
                     }else if(piutang>0){                                                   
-                        Sequel.menyimpan("temporary_bayar_ralan","'0','TOTAL TAGIHAN',':','','','','','"+TtlSemua.getText()+"','Tagihan','','','','','','','','',''","Tagihan"); 
-                        Sequel.menyimpan("temporary_bayar_ralan","'0','PPN',':','','','','','"+Valid.SetAngka(besarppn)+"','Tagihan','','','','','','','','',''","Tagihan"); 
-                        Sequel.menyimpan("temporary_bayar_ralan","'0','TAGIHAN + PPN',':','','','','','"+TagihanPPn.getText()+"','Tagihan','','','','','','','','',''","Tagihan"); 
-                        Sequel.menyimpan("temporary_bayar_ralan","'0','UANG MUKA',':','','','','','"+Valid.SetAngka(bayar)+"','Tagihan','','','','','','','','',''","Tagihan"); 
-                        Sequel.menyimpan("temporary_bayar_ralan","'0','SISA PIUTANG',':','','','','','"+Valid.SetAngka(piutang)+"','Tagihan','','','','','','','','',''","Tagihan");                                           
+                        Sequel.menyimpan("temporary_bayar_ralan","'0','TOTAL TAGIHAN',':','','','','','"+TtlSemua.getText()+"','Tagihan','"+var.getkode()+"','','','','','','','',''","Tagihan"); 
+                        Sequel.menyimpan("temporary_bayar_ralan","'0','PPN',':','','','','','"+Valid.SetAngka(besarppn)+"','Tagihan','"+var.getkode()+"','','','','','','','',''","Tagihan"); 
+                        Sequel.menyimpan("temporary_bayar_ralan","'0','TAGIHAN + PPN',':','','','','','"+TagihanPPn.getText()+"','Tagihan','"+var.getkode()+"','','','','','','','',''","Tagihan"); 
+                        Sequel.menyimpan("temporary_bayar_ralan","'0','UANG MUKA',':','','','','','"+Valid.SetAngka(bayar)+"','Tagihan','"+var.getkode()+"','','','','','','','',''","Tagihan"); 
+                        Sequel.menyimpan("temporary_bayar_ralan","'0','SISA PIUTANG',':','','','','','"+Valid.SetAngka(piutang)+"','Tagihan','"+var.getkode()+"','','','','','','','',''","Tagihan");                                           
                     }
 
                     i = 0;

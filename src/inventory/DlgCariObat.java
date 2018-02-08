@@ -51,7 +51,8 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement psobat,pscarikapasitas,psobatasuransi,psstok;
     private ResultSet rsobat,carikapasitas,rsstok;
-    private double x=0,y=0,embalase=0,tuslah=0,kenaikan=0,stokbarang=0,ttl=0,ppnobat=0;
+    private double x=0,y=0,embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),
+                   tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase"),kenaikan=0,stokbarang=0,ttl=0,ppnobat=0;
     private int i=0,z=0;
     private boolean[] pilih; 
     private double[] jumlah,harga,eb,ts,stok,beli;
@@ -1061,9 +1062,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 }//GEN-LAST:event_JeniskelasKeyPressed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        emptTeksobat();
-        embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase");
-        tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
+        emptTeksobat();        
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

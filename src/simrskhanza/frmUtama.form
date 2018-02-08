@@ -543,7 +543,7 @@
                         <StringItem index="7" value="[H] Olah Data Tagihan Rawat Inap &amp; Rawat Jalan"/>
                         <StringItem index="8" value="[I] Olah Data Penyakit, Laporan DKK, Laporal RL &amp; Laporan Internal Rumah Sakit"/>
                         <StringItem index="9" value="[J] Tarif Pelayanan &amp; Keuangan Rumah Sakit"/>
-                        <StringItem index="10" value="[K] Bridging SEP, Aplicare, PCare, INACBG, Kemenkes &amp; Pihak Ke 3"/>
+                        <StringItem index="10" value="[K] Bridging VClaim, Aplicare, PCare, INACBG, Kemenkes &amp; Pihak Ke 3"/>
                         <StringItem index="11" value="[L] Olah Data Pasien"/>
                         <StringItem index="12" value="[M] Unit Pelayanan Tranfusi Darah"/>
                         <StringItem index="13" value="[N] Analisa, Dashboard &amp; Info Grafik"/>
@@ -3199,7 +3199,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/family.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Cek NIK BPJS"/>
+                        <Property name="text" type="java.lang.String" value="Cek NIK VClaim"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSNik" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3215,7 +3215,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/administrator.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Cek No.Kartu BPJS"/>
+                        <Property name="text" type="java.lang.String" value="Cek No.Kartu VClaim"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSKartu" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3231,7 +3231,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/doctor 3.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Riwayat Peserta BPJS"/>
+                        <Property name="text" type="java.lang.String" value="Riwayat Peserta VClaim"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSRiwayat" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3311,7 +3311,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/checklist.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Cek No.Rujukan PCare"/>
+                        <Property name="text" type="java.lang.String" value="Cek No.Rujukan PCare di VClaim"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSNomorRujukanPCare" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3423,7 +3423,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/Gnome-X-Office-Address-Book-48.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Referensi Diagnosa BPJS"/>
+                        <Property name="text" type="java.lang.String" value="Referensi Diagnosa VClaim"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSDiagnosa" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3439,7 +3439,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/logout.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Referensi Poli BPJS"/>
+                        <Property name="text" type="java.lang.String" value="Referensi Poli VClaim"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSPoli" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3551,7 +3551,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/industry.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Referensi Faskes BPJS"/>
+                        <Property name="text" type="java.lang.String" value="Referensi Faskes VClaim"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnCekBPJSFaskes" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -3567,7 +3567,7 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/48x48/1481038237_Adobe_Bridge_CS.png"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Data Bridging SEP BPJS"/>
+                        <Property name="text" type="java.lang.String" value="Data Bridging SEP VClaim"/>
                         <Property name="iconTextGap" type="int" value="0"/>
                         <Property name="name" type="java.lang.String" value="btnBPJSSEP" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -5210,6 +5210,102 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuratPemesananNonMedisActionPerformed"/>
                       </Events>
                     </Component>
+                    <Component class="widget.ButtonBig" name="btnGrafikPerPerujuk">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1491582080_6.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Kunjungan Per Perujuk"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnGrafikPerPerujuk" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrafikPerPerujukActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnCekReferensiProsedurBPJS">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/stethoscope (1).png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Referensi Prosedur VClaim"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnCekReferensiProsedurBPJS" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCekReferensiProsedurBPJSActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnCekReferensiKelasRawatBPJS">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/applications-office.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Referensi Kelas Rawat VClaim"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnCekReferensiKelasRawatBPJS" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCekReferensiKelasRawatBPJSActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnCekReferensiDokterBPJS">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/user3.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Referensi Dokter VClaim"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnCekReferensiDokterBPJS" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCekReferensiDokterBPJSActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnCekReferensiSpesialistikBPJS">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/teacher.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Referensi Spesialistik VClaim"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnCekReferensiSpesialistikBPJS" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCekReferensiSpesialistikBPJSActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnCekReferensiRuangRawatBPJS">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/1485357890_hospital.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Referensi Ruang Rawat VClaim"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnCekReferensiRuangRawatBPJS" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCekReferensiRuangRawatBPJSActionPerformed"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -5226,7 +5322,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="28/01/2018"/>
+            <StringItem index="0" value="07/02/2018"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>

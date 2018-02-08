@@ -1879,7 +1879,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="191" y="12" width="274" height="23"/>
+                      <AbsoluteConstraints x="191" y="12" width="244" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -2146,6 +2146,24 @@
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="437" y="192" width="28" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.Button" name="BtnKelurahan1">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/011.png"/>
+                    </Property>
+                    <Property name="mnemonic" type="int" value="50"/>
+                    <Property name="toolTipText" type="java.lang.String" value="ALt+2"/>
+                    <Property name="name" type="java.lang.String" value="BtnKelurahan1" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnKelurahan1ActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="437" y="12" width="28" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
