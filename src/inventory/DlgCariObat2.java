@@ -52,7 +52,8 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private PreparedStatement psobat,pscarikapasitas,psobatasuransi,psstok,psrekening;
     private ResultSet rsobat,carikapasitas,rsstok,rsrekening;
     private Jurnal jur=new Jurnal();
-    private double x=0,y=0,embalase,kenaikan,tuslah,stokbarang,ttlhpp,ttljual;
+    private double x=0,y=0,embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),
+            tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase"),kenaikan,stokbarang,ttlhpp,ttljual;
     private int jml=0,i=0;
     private boolean[] pilih; 
     private double[] jumlah,harga,eb,ts,stok,beli;
@@ -989,8 +990,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         emptTeks();
-        embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase");
-        tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
     }//GEN-LAST:event_formWindowActivated
 
     private void ChkNoResepItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkNoResepItemStateChanged

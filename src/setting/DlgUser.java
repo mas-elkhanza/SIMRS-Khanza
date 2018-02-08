@@ -82,9 +82,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "[H]Obat Per Dokter Peresep","[E]Jenis Non Medis","[J]Pemasukkan Lain-Lain","[J]Pengaturan Rekening","[O]Closing Kasir","[O]Set Keterlambatan Presensi",
                     "[O]Set Harga Kamar","[H]Rekap Per Shift","[K]Cek NIK","[K]Cek No.Kartu","[K]Riwayat Peserta","[H]Obat Per Cara Bayar","[I]Kunjungan Ranap",
                     "[J]Bayar Piutang","[H]Payment Point","[K]Cek No.Rujukan Pcare","[I]ICD 9","[D]Darurat Stok","[L]Retensi Data R.M.","[C]Temporary Presensi",
-                    "[J]Jurnal Harian","[D]Sirkulasi Obat, Alkes & BHP 2","[A]Edit Registrasi","[K]Referensi Diagnosa BPJS","[K]Referensi Poli BPJS","[D]Industri Farmasi",
-                    "[H]Harian J.S.","[H]Bulanan J.S.","[H]Harian BHP Medis/Paket Obat","[H]Bulanan BHP Medis/Paket Obat","[J]Piutang Belum Lunas","[K]Referensi Faskes BPJS",
-                    "[K]Data Bridging SEP BPJS","[D]Pengambilan BHP UTD","[J]Tarif UTD","[M]Pengambilan BHP Medis","[M]BHP Medis Rusak","[E]Pengambilan UTD","[M]Pengambilan BHP Non Medis",
+                    "[J]Jurnal Harian","[D]Sirkulasi Obat, Alkes & BHP 2","[A]Edit Registrasi","[K]Referensi Diagnosa VClaim","[K]Referensi Poli VClaim","[D]Industri Farmasi",
+                    "[H]Harian J.S.","[H]Bulanan J.S.","[H]Harian BHP Medis/Paket Obat","[H]Bulanan BHP Medis/Paket Obat","[J]Piutang Belum Lunas","[K]Referensi Faskes VClaim",
+                    "[K]Data Bridging SEP VClaim","[D]Pengambilan BHP UTD","[J]Tarif UTD","[M]Pengambilan BHP Medis","[M]BHP Medis Rusak","[E]Pengambilan UTD","[M]Pengambilan BHP Non Medis",
                     "[M]BHP Non Medis Rusak","[E]Suplier Non Medis","[M]Donor Darah","[K]Monitoring Verifikasi Klaim","[M]Cekal Darah","[M]Komponen Darah","[M]Stok Darah","[M]Pemisahan Darah",
                     "[H]Harian Kamar","[J]Rincian Piutang Pasien","[D]Keuntungan Beri Obat, Alkes & BHP 2","[K]Reklasifikasi Ralan","[K]Reklasifikasi Ranap","[M]Penyerahan Darah",
                     "[J]Hutang Obat & BHP","[D]Riwayat Obat, Alkes & BHP","[I]Sensus Harian Poli","[I]RL 4A Sebab Morbiditas Ranap","[K]Referensi Kamar Aplicare","[K]Ketersediaan Kamar Aplicare",
@@ -100,7 +100,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "[H]Pembayaran Per Unit","[H]Rekap Pembayaran Per Unit","[N]Kunjungan Reg Per Cara Bayar","[E]Pengadaan Non Medis Per Tanggal","[E]Stok Keluar Non Medis Per Tanggal",
                     "[N]Kunjungan Ranap Per Tahun","[K]Cek Rujukan PCare","[N]Kunjungan Lab Ralan Per Tahun","[N]Kunjungan Rad Ralan Per Tahun","[I]Cek Entry Ralan","[K]Klaim Baru Manual INACBG 2",
                     "[D]Permintaan Obat & BHP","[D]Rekap Permintaan Obat & BHP","[D]Surat Pemesanan Obat & BHP","[E]Permintaan Barang Non Medis","[E]Rekap Permintaan Barang Non Medis",
-                    "[E]Surat Pemesanan Barang Non Medis"
+                    "[E]Surat Pemesanan Barang Non Medis","[N]Kunjungan Per Perujuk","[K]Referensi Prosedur VClaim","[K]Referensi Kelas Rawat VClaim","[K]Referensi Dokter VClaim",
+                    "[K]Referensi Spesialistik VClaim","[K]Referensi Ruang Rawat VClaim"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -185,6 +186,11 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -198,7 +204,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 290;i++) {
+        for (i = 0; i < 296;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -414,6 +420,18 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(196);
             }else if(i==289){
                 column.setPreferredWidth(192);
+            }else if(i==290){
+                column.setPreferredWidth(131);
+            }else if(i==291){
+                column.setPreferredWidth(146);
+            }else if(i==292){
+                column.setPreferredWidth(162);
+            }else if(i==293){
+                column.setPreferredWidth(134);
+            }else if(i==294){
+                column.setPreferredWidth(154);
+            }else if(i==295){
+                column.setPreferredWidth(168);
             }else{
                 column.setPreferredWidth(120);
             }
@@ -848,7 +866,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1180,7 +1198,13 @@ public class DlgUser extends javax.swing.JDialog {
                     "surat_pemesanan_medis='"+tbUser.getValueAt(i,286).toString()+"',"+
                     "permintaan_non_medis='"+tbUser.getValueAt(i,287).toString()+"',"+
                     "rekap_permintaan_non_medis='"+tbUser.getValueAt(i,288).toString()+"',"+
-                    "surat_pemesanan_non_medis='"+tbUser.getValueAt(i,289).toString()+"'");
+                    "surat_pemesanan_non_medis='"+tbUser.getValueAt(i,289).toString()+"',"+
+                    "grafik_per_perujuk='"+tbUser.getValueAt(i,290).toString()+"',"+
+                    "bpjs_cek_prosedur='"+tbUser.getValueAt(i,291).toString()+"',"+
+                    "bpjs_cek_kelas_rawat='"+tbUser.getValueAt(i,292).toString()+"',"+
+                    "bpjs_cek_dokter='"+tbUser.getValueAt(i,293).toString()+"',"+
+                    "bpjs_cek_spesialistik='"+tbUser.getValueAt(i,294).toString()+"',"+
+                    "bpjs_cek_ruangrawat='"+tbUser.getValueAt(i,295).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1455,7 +1479,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_kunjungan_percarabayar,ipsrs_pengadaan_pertanggal,ipsrs_stokkeluar_pertanggal,grafik_kunjungan_ranaptahun,"+
                         "pcare_cek_rujukan,grafik_lab_ralantahun,grafik_rad_ralantahun,cek_entry_ralan,inacbg_klaim_baru_manual2,"+
                         "permintaan_medis,rekap_permintaan_medis,surat_pemesanan_medis,permintaan_non_medis,rekap_permintaan_non_medis, "+
-                        "surat_pemesanan_non_medis from user order by AES_DECRYPT(id_user,'nur')");
+                        "surat_pemesanan_non_medis,grafik_per_perujuk,bpjs_cek_prosedur,bpjs_cek_kelas_rawat,bpjs_cek_dokter, "+
+                        "bpjs_cek_spesialistik,bpjs_cek_ruangrawat from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1756,7 +1781,13 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("surat_pemesanan_medis"),
                                rs.getBoolean("permintaan_non_medis"),
                                rs.getBoolean("rekap_permintaan_non_medis"),
-                               rs.getBoolean("surat_pemesanan_non_medis")
+                               rs.getBoolean("surat_pemesanan_non_medis"),
+                               rs.getBoolean("grafik_per_perujuk"),
+                               rs.getBoolean("bpjs_cek_prosedur"),
+                               rs.getBoolean("bpjs_cek_kelas_rawat"),
+                               rs.getBoolean("bpjs_cek_dokter"),
+                               rs.getBoolean("bpjs_cek_spesialistik"),
+                               rs.getBoolean("bpjs_cek_ruangrawat")
                             });
                         }   
                     } catch (Exception e) {
@@ -2047,7 +2078,13 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("surat_pemesanan_medis"),
                            rs.getBoolean("permintaan_non_medis"),
                            rs.getBoolean("rekap_permintaan_non_medis"),
-                           rs.getBoolean("surat_pemesanan_non_medis") 
+                           rs.getBoolean("surat_pemesanan_non_medis"),
+                           rs.getBoolean("grafik_per_perujuk"),
+                           rs.getBoolean("bpjs_cek_prosedur"),
+                           rs.getBoolean("bpjs_cek_kelas_rawat"),
+                           rs.getBoolean("bpjs_cek_dokter"),
+                           rs.getBoolean("bpjs_cek_spesialistik"),
+                           rs.getBoolean("bpjs_cek_ruangrawat") 
                         });
                     }                                             
                  }

@@ -598,7 +598,7 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                                     }
                                 }
                                 tabMode.addRow(new Object[]{
-                                    i,rs.getString("tgl_bayar"),rsjamshift.getString("shift"),nonota,rs.getString("nama_pasien"),rs.getDouble("jumlah_bayar"),rs.getString("petugas")
+                                    i,rs.getString("tgl_bayar"),rsjamshift.getString("shift"),nonota,rs.getString("nama_pasien"),rs.getDouble("jumlah_bayar"),rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"))
                                 });
                             }else if(rsjamshift.getString("shift").equals(CmbStatus.getSelectedItem().toString())){
                                 nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
@@ -609,7 +609,7 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                                     }
                                 }
                                 tabMode.addRow(new Object[]{
-                                    i,rs.getString("tgl_bayar"),rsjamshift.getString("shift"),nonota,rs.getString("nama_pasien"),rs.getDouble("jumlah_bayar"),rs.getString("petugas")
+                                    i,rs.getString("tgl_bayar"),rsjamshift.getString("shift"),nonota,rs.getString("nama_pasien"),rs.getDouble("jumlah_bayar"),rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"))
                                 });
                             }
                             i++;                            

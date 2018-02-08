@@ -316,6 +316,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         KdPenolong = new widget.TextBox();
         NmPenolong = new widget.TextBox();
         BtnPenjab = new widget.Button();
+        BtnKelurahan1 = new widget.Button();
 
         Popup.setName("Popup"); // NOI18N
 
@@ -1337,7 +1338,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             }
         });
         FormInput.add(NmBayi);
-        NmBayi.setBounds(191, 12, 274, 23);
+        NmBayi.setBounds(191, 12, 244, 23);
 
         label35.setText("Umur Ayah :");
         label35.setName("label35"); // NOI18N
@@ -1482,6 +1483,18 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         });
         FormInput.add(BtnPenjab);
         BtnPenjab.setBounds(437, 192, 28, 23);
+
+        BtnKelurahan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/011.png"))); // NOI18N
+        BtnKelurahan1.setMnemonic('2');
+        BtnKelurahan1.setToolTipText("ALt+2");
+        BtnKelurahan1.setName("BtnKelurahan1"); // NOI18N
+        BtnKelurahan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKelurahan1ActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnKelurahan1);
+        BtnKelurahan1.setBounds(437, 12, 28, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -2321,6 +2334,10 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnSKL1ActionPerformed
 
+    private void BtnKelurahan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahan1ActionPerformed
+        
+    }//GEN-LAST:event_BtnKelurahan1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2347,6 +2364,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKelurahan1;
     private widget.Button BtnPenjab;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
