@@ -1,4 +1,6 @@
 package simrskhanza;
+import bridging.DUKCAPILJakartaCekNik;
+import bridging.DUKCAPILJakartaPostLahir;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import grafikanalisa.grafikberat;
@@ -47,7 +49,13 @@ public class DlgIKBBayi extends javax.swing.JDialog {
     private Period p;
     private long p2;
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
-    private String pengurutan="",bulan="",tahun="",awalantahun="",awalanbulan="",posisitahun="";
+    private DUKCAPILJakartaCekNik cekViaDukcapilJakarta=new DUKCAPILJakartaCekNik();
+    private DUKCAPILJakartaPostLahir postlahir=new DUKCAPILJakartaPostLahir();
+    private String pengurutan="",bulan="",tahun="",awalantahun="",awalanbulan="",posisitahun="",
+            nokk="",nmbayi="",tgllhr="",jamlhr="",jk="",jnslhr="",lahirke="",brt="",
+            pjg="",pnlglhr="",nikibu="",nmibu="",alamatibu="",kerjaibu="",nikayah="",
+            nmayah="",alamatayah="",kerjaayah="",noskl="",pnlgnama="",tindaklhr="",
+            bpjsibu="",bpjsayah="",notlp="",bpjsby="";
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -146,6 +154,12 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         keterangan.setDocument(new batasInput((byte)50).getKata(keterangan));
         NoSKL.setDocument(new batasInput((byte)30).getKata(NoSKL));
         Anakke.setDocument(new batasInput((byte)2).getOnlyAngka(Anakke));
+        NIKAyah.setDocument(new batasInput((byte)40).getKata(NIKAyah));
+        NIKIbu.setDocument(new batasInput((byte)40).getKata(NIKIbu));
+        TelpOrtu.setDocument(new batasInput((byte)15).getKata(TelpOrtu));
+        BPJSAyah.setDocument(new batasInput((byte)40).getKata(BPJSAyah));
+        BPJSIbu.setDocument(new batasInput((byte)40).getKata(BPJSIbu));
+        BPJSBayi.setDocument(new batasInput((byte)40).getKata(BPJSBayi));
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.cariCepat().equals("aktif")){
@@ -187,7 +201,7 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         tahun=Sequel.cariIsi("select tahun from set_urut_no_rkm_medis");
         bulan=Sequel.cariIsi("select bulan from set_urut_no_rkm_medis");
         posisitahun=Sequel.cariIsi("select posisi_tahun_bulan from set_urut_no_rkm_medis");
-        
+        DlgBridgingLahir.setSize(590,240);
     }
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private String[] hlm;
@@ -233,6 +247,31 @@ public class DlgIKBBayi extends javax.swing.JDialog {
         MnSKL = new javax.swing.JMenuItem();
         MnSKL1 = new javax.swing.JMenuItem();
         Kd2 = new widget.TextBox();
+        DlgBridgingLahir = new javax.swing.JDialog();
+        internalFrame3 = new widget.InternalFrame();
+        panelBiasa2 = new widget.PanelBiasa();
+        BtnKeluar2 = new widget.Button();
+        label17 = new widget.Label();
+        NIKIbu = new widget.TextBox();
+        BtnCari1 = new widget.Button();
+        NIKAyah = new widget.TextBox();
+        BtnCari2 = new widget.Button();
+        label42 = new widget.Label();
+        label43 = new widget.Label();
+        JenisLahir = new widget.ComboBox();
+        PenolongLahir = new widget.ComboBox();
+        label44 = new widget.Label();
+        label45 = new widget.Label();
+        CaraLahir = new widget.ComboBox();
+        BtnSimpan1 = new widget.Button();
+        label46 = new widget.Label();
+        TelpOrtu = new widget.TextBox();
+        label47 = new widget.Label();
+        BPJSAyah = new widget.TextBox();
+        label48 = new widget.Label();
+        BPJSIbu = new widget.TextBox();
+        label49 = new widget.Label();
+        BPJSBayi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         jPanel2 = new javax.swing.JPanel();
         panelisi2 = new widget.panelisi();
@@ -712,6 +751,243 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 
         Kd2.setName("Kd2"); // NOI18N
         Kd2.setPreferredSize(new java.awt.Dimension(207, 23));
+
+        DlgBridgingLahir.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        DlgBridgingLahir.setName("DlgBridgingLahir"); // NOI18N
+        DlgBridgingLahir.setUndecorated(true);
+        DlgBridgingLahir.setResizable(false);
+
+        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Bridging Dukcapil Kelahiran Bayi Wilayah DKI Jakarta ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame3.setName("internalFrame3"); // NOI18N
+        internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
+
+        panelBiasa2.setName("panelBiasa2"); // NOI18N
+        panelBiasa2.setLayout(null);
+
+        BtnKeluar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
+        BtnKeluar2.setMnemonic('K');
+        BtnKeluar2.setText("Keluar");
+        BtnKeluar2.setToolTipText("Alt+K");
+        BtnKeluar2.setName("BtnKeluar2"); // NOI18N
+        BtnKeluar2.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKeluar2ActionPerformed(evt);
+            }
+        });
+        panelBiasa2.add(BtnKeluar2);
+        BtnKeluar2.setBounds(455, 170, 100, 30);
+
+        label17.setText("NIK Ibu :");
+        label17.setName("label17"); // NOI18N
+        label17.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelBiasa2.add(label17);
+        label17.setBounds(0, 10, 70, 23);
+
+        NIKIbu.setName("NIKIbu"); // NOI18N
+        NIKIbu.setPreferredSize(new java.awt.Dimension(70, 23));
+        NIKIbu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NIKIbuKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(NIKIbu);
+        NIKIbu.setBounds(73, 10, 148, 23);
+
+        BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari1.setMnemonic('2');
+        BtnCari1.setToolTipText("Alt+2");
+        BtnCari1.setName("BtnCari1"); // NOI18N
+        BtnCari1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCari1ActionPerformed(evt);
+            }
+        });
+        BtnCari1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCari1KeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(BtnCari1);
+        BtnCari1.setBounds(225, 10, 28, 23);
+
+        NIKAyah.setName("NIKAyah"); // NOI18N
+        NIKAyah.setPreferredSize(new java.awt.Dimension(70, 23));
+        NIKAyah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NIKAyahKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(NIKAyah);
+        NIKAyah.setBounds(382, 10, 148, 23);
+
+        BtnCari2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari2.setMnemonic('2');
+        BtnCari2.setToolTipText("Alt+2");
+        BtnCari2.setName("BtnCari2"); // NOI18N
+        BtnCari2.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCari2ActionPerformed(evt);
+            }
+        });
+        BtnCari2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCari2KeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(BtnCari2);
+        BtnCari2.setBounds(534, 10, 28, 23);
+
+        label42.setText("NIK Ayah :");
+        label42.setName("label42"); // NOI18N
+        label42.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelBiasa2.add(label42);
+        label42.setBounds(278, 10, 100, 23);
+
+        label43.setText("Jenis Lahir :");
+        label43.setName("label43"); // NOI18N
+        label43.setPreferredSize(new java.awt.Dimension(65, 23));
+        panelBiasa2.add(label43);
+        label43.setBounds(0, 40, 70, 23);
+
+        JenisLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Tunggal", "2. Kembar Dua", "3. Kembar Tiga", "4. Kembar Empat", "5. Kembar Banyak/Lainnya (Number)" }));
+        JenisLahir.setName("JenisLahir"); // NOI18N
+        JenisLahir.setPreferredSize(new java.awt.Dimension(100, 23));
+        JenisLahir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JenisLahirKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(JenisLahir);
+        JenisLahir.setBounds(73, 40, 180, 23);
+
+        PenolongLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Dokter", "2. Bidan/Perawat", "3. Dukun", "4. Lainnya (Number)" }));
+        PenolongLahir.setName("PenolongLahir"); // NOI18N
+        PenolongLahir.setPreferredSize(new java.awt.Dimension(100, 23));
+        PenolongLahir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PenolongLahirActionPerformed(evt);
+            }
+        });
+        PenolongLahir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PenolongLahirKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(PenolongLahir);
+        PenolongLahir.setBounds(382, 40, 180, 23);
+
+        label44.setText("Penolong Lahir :");
+        label44.setName("label44"); // NOI18N
+        label44.setPreferredSize(new java.awt.Dimension(65, 23));
+        panelBiasa2.add(label44);
+        label44.setBounds(278, 40, 100, 23);
+
+        label45.setText("Cara Lahir :");
+        label45.setName("label45"); // NOI18N
+        label45.setPreferredSize(new java.awt.Dimension(65, 23));
+        panelBiasa2.add(label45);
+        label45.setBounds(0, 70, 70, 23);
+
+        CaraLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Normal", "2. Caesar (Number)" }));
+        CaraLahir.setName("CaraLahir"); // NOI18N
+        CaraLahir.setPreferredSize(new java.awt.Dimension(100, 23));
+        CaraLahir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CaraLahirKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(CaraLahir);
+        CaraLahir.setBounds(73, 70, 180, 23);
+
+        BtnSimpan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan1.setMnemonic('S');
+        BtnSimpan1.setText("Simpan");
+        BtnSimpan1.setToolTipText("Alt+S");
+        BtnSimpan1.setName("BtnSimpan1"); // NOI18N
+        BtnSimpan1.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnSimpan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpan1ActionPerformed(evt);
+            }
+        });
+        BtnSimpan1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnSimpan1KeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(BtnSimpan1);
+        BtnSimpan1.setBounds(20, 170, 100, 30);
+
+        label46.setText("Telp. Ortu :");
+        label46.setName("label46"); // NOI18N
+        label46.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelBiasa2.add(label46);
+        label46.setBounds(278, 70, 100, 23);
+
+        TelpOrtu.setName("TelpOrtu"); // NOI18N
+        TelpOrtu.setPreferredSize(new java.awt.Dimension(70, 23));
+        TelpOrtu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TelpOrtuKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(TelpOrtu);
+        TelpOrtu.setBounds(382, 70, 148, 23);
+
+        label47.setText("BPJS Ayah :");
+        label47.setName("label47"); // NOI18N
+        label47.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelBiasa2.add(label47);
+        label47.setBounds(278, 100, 100, 23);
+
+        BPJSAyah.setName("BPJSAyah"); // NOI18N
+        BPJSAyah.setPreferredSize(new java.awt.Dimension(70, 23));
+        BPJSAyah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BPJSAyahKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(BPJSAyah);
+        BPJSAyah.setBounds(382, 100, 148, 23);
+
+        label48.setText("BPJS Ibu :");
+        label48.setName("label48"); // NOI18N
+        label48.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelBiasa2.add(label48);
+        label48.setBounds(0, 100, 70, 23);
+
+        BPJSIbu.setName("BPJSIbu"); // NOI18N
+        BPJSIbu.setPreferredSize(new java.awt.Dimension(70, 23));
+        BPJSIbu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BPJSIbuKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(BPJSIbu);
+        BPJSIbu.setBounds(73, 100, 148, 23);
+
+        label49.setText("BPJS Bayi :");
+        label49.setName("label49"); // NOI18N
+        label49.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelBiasa2.add(label49);
+        label49.setBounds(0, 130, 70, 23);
+
+        BPJSBayi.setName("BPJSBayi"); // NOI18N
+        BPJSBayi.setPreferredSize(new java.awt.Dimension(70, 23));
+        BPJSBayi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BPJSBayiKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(BPJSBayi);
+        BPJSBayi.setBounds(73, 130, 148, 23);
+
+        internalFrame3.add(panelBiasa2, java.awt.BorderLayout.CENTER);
+
+        DlgBridgingLahir.getContentPane().add(internalFrame3, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1637,7 +1913,8 @@ public class DlgIKBBayi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-           dispose();  
+        DlgBridgingLahir.dispose();
+        dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
@@ -1937,6 +2214,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             Valid.textKosong(NmBayi,"nama bayi");
         }else if(KdPenolong.getText().trim().equals("")||NmPenolong.getText().trim().equals("")){
             Valid.textKosong(KdPenolong,"penolong");
+        }else if(NoSKL.getText().trim().equals("")){
+            Valid.textKosong(NoSKL,"No.SKL");
         }else{
             if(Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_rkm_medis=?",NoRm.getText()).isEmpty()){   
                 Sequel.AutoComitFalse();
@@ -2335,8 +2614,163 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_MnSKL1ActionPerformed
 
     private void BtnKelurahan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahan1ActionPerformed
-        
+        if(NoRm.getText().trim().equals("")){
+            Valid.textKosong(NoRm,"No.Rekam Medis");
+        }else if(NmBayi.getText().trim().equals("")){
+            Valid.textKosong(NmBayi,"nama bayi");
+        }else if(KdPenolong.getText().trim().equals("")||NmPenolong.getText().trim().equals("")){
+            Valid.textKosong(KdPenolong,"penolong");
+        }else if(NoSKL.getText().trim().equals("")){
+            Valid.textKosong(NoSKL,"No.SKL");
+        }else if(Anakke.getText().trim().equals("")){
+            Valid.textKosong(Anakke,"Kelahiran");
+        }else if(Berat.getText().trim().equals("")){
+            Valid.textKosong(Berat,"Berat");
+        }else if(Panjang.getText().trim().equals("")){
+            Valid.textKosong(Panjang,"Panjang");
+        }else{
+            DlgBridgingLahir.setLocationRelativeTo(null);
+            DlgBridgingLahir.setVisible(true);
+        }            
     }//GEN-LAST:event_BtnKelurahan1ActionPerformed
+
+    private void BtnKeluar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluar2ActionPerformed
+        DlgBridgingLahir.dispose();
+    }//GEN-LAST:event_BtnKeluar2ActionPerformed
+
+    private void NIKIbuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIKIbuKeyPressed
+        
+    }//GEN-LAST:event_NIKIbuKeyPressed
+
+    private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
+        if(NIKIbu.getText().trim().equals("")){
+            NIKIbu.requestFocus();
+            JOptionPane.showMessageDialog(null,"Silahkan isi terlebih dahulu NIK Ibu..!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            cekViaDukcapilJakarta.tampil(NIKIbu.getText());
+            nokk=cekViaDukcapilJakarta.NO_KK;
+            nikibu=cekViaDukcapilJakarta.NIK;
+            nmibu=cekViaDukcapilJakarta.NAMA_LGKP;
+            Nmibu.setText(cekViaDukcapilJakarta.NAMA_LGKP);
+            alamatibu=cekViaDukcapilJakarta.ALAMAT+" "+cekViaDukcapilJakarta.NO_RT+" "+cekViaDukcapilJakarta.NO_RW+" "+cekViaDukcapilJakarta.NM_KEL+" "+cekViaDukcapilJakarta.NM_KEC+" "+cekViaDukcapilJakarta.NM_KAB+" "+cekViaDukcapilJakarta.NM_PROP;
+            AlamatIbu.setText(cekViaDukcapilJakarta.ALAMAT+" "+cekViaDukcapilJakarta.NO_RT+" "+cekViaDukcapilJakarta.NO_RW+" "+cekViaDukcapilJakarta.NM_KEL+" "+cekViaDukcapilJakarta.NM_KEC+" "+cekViaDukcapilJakarta.NM_KAB+" "+cekViaDukcapilJakarta.NM_PROP);
+            UmurIbu.setText(cekViaDukcapilJakarta.UMUR);
+            kerjaibu=cekViaDukcapilJakarta.JENIS_PKRJN;
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnCari1ActionPerformed
+
+    private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnCariActionPerformed(null);
+        }else{
+            Valid.pindah(evt, NIKIbu, BtnAll);
+        }
+    }//GEN-LAST:event_BtnCari1KeyPressed
+
+    private void NIKAyahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIKAyahKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NIKAyahKeyPressed
+
+    private void BtnCari2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari2ActionPerformed
+        if(NIKIbu.getText().trim().equals("")){
+            NIKIbu.requestFocus();
+            JOptionPane.showMessageDialog(null,"Silahkan isi terlebih dahulu NIK Ibu..!!");
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            cekViaDukcapilJakarta.tampil(NIKAyah.getText());
+            nikayah=cekViaDukcapilJakarta.NIK;
+            nmayah=cekViaDukcapilJakarta.NAMA_LGKP;
+            NmAyah.setText(cekViaDukcapilJakarta.NAMA_LGKP);
+            UmurAyah.setText(cekViaDukcapilJakarta.UMUR);
+            alamatayah=cekViaDukcapilJakarta.ALAMAT+" "+cekViaDukcapilJakarta.NO_RT+" "+cekViaDukcapilJakarta.NO_RW+" "+cekViaDukcapilJakarta.NM_KEL+" "+cekViaDukcapilJakarta.NM_KEC+" "+cekViaDukcapilJakarta.NM_KAB+" "+cekViaDukcapilJakarta.NM_PROP;
+            kerjaayah=cekViaDukcapilJakarta.JENIS_PKRJN;
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnCari2ActionPerformed
+
+    private void BtnCari2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCari2KeyPressed
+
+    private void JenisLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisLahirKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JenisLahirKeyPressed
+
+    private void PenolongLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenolongLahirKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PenolongLahirKeyPressed
+
+    private void CaraLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraLahirKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CaraLahirKeyPressed
+
+    private void BtnSimpan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan1ActionPerformed
+        if(NoRm.getText().trim().equals("")){
+            Valid.textKosong(NoRm,"No.Rekam Medis");
+        }else if(NmBayi.getText().trim().equals("")){
+            Valid.textKosong(NmBayi,"nama bayi");
+        }else if(KdPenolong.getText().trim().equals("")||NmPenolong.getText().trim().equals("")){
+            Valid.textKosong(KdPenolong,"penolong");
+        }else if(NoSKL.getText().trim().equals("")){
+            Valid.textKosong(NoSKL,"No.SKL");
+        }else if(Anakke.getText().trim().equals("")){
+            Valid.textKosong(Anakke,"Kelahiran");
+        }else if(Berat.getText().trim().equals("")){
+            Valid.textKosong(Berat,"Berat");
+        }else if(Panjang.getText().trim().equals("")){
+            Valid.textKosong(Panjang,"Panjang");
+        }else if(NIKAyah.getText().trim().equals("")){
+            Valid.textKosong(NIKAyah,"NIK Ayah");
+        }else if(NIKIbu.getText().trim().equals("")){
+            Valid.textKosong(NIKIbu,"NIK Ibu");
+        }else if(TelpOrtu.getText().trim().equals("")){
+            Valid.textKosong(TelpOrtu,"Telp Ortu");
+        }else{
+            tgllhr=Lahir.getSelectedItem().toString().replaceAll("-","/");
+            jamlhr=jam.getSelectedItem()+":"+menit.getSelectedItem();
+            jk=JKel.getSelectedItem().toString().replaceAll("LAKI-LAKI","1").replaceAll("PEREMPUAN","2");
+            jnslhr=JenisLahir.getSelectedItem().toString().substring(0,1);
+            lahirke=Anakke.getText();
+            brt=Berat.getText();
+            pjg=Panjang.getText();
+            pnlglhr=PenolongLahir.getSelectedItem().toString().substring(0,1);
+            bpjsibu=BPJSIbu.getText();
+            noskl=NoSKL.getText();
+            pnlgnama=NmPenolong.getText();
+            tindaklhr=CaraLahir.getToolTipText();            
+            bpjsayah=BPJSAyah.getText();
+            bpjsby=BPJSBayi.getText();
+            if(postlahir.post(nokk, nmbayi, tgllhr, jamlhr, jk, jnslhr, lahirke, brt, pjg, pnlglhr, nikibu, nmibu, alamatibu, kerjaibu, nikayah, nmayah, alamatayah, kerjaayah, noskl, pnlgnama, tindaklhr, bpjsibu, bpjsayah, notlp, bpjsby)==true){
+                Sequel.menyimpan("bridging_dukcapil","?,?",2,new String[]{NoRm.getText(),postlahir.UID});
+            }
+        }
+    }//GEN-LAST:event_BtnSimpan1ActionPerformed
+
+    private void BtnSimpan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpan1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnSimpan1KeyPressed
+
+    private void TelpOrtuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelpOrtuKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TelpOrtuKeyPressed
+
+    private void BPJSAyahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BPJSAyahKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BPJSAyahKeyPressed
+
+    private void BPJSIbuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BPJSIbuKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BPJSIbuKeyPressed
+
+    private void PenolongLahirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PenolongLahirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PenolongLahirActionPerformed
+
+    private void BPJSBayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BPJSBayiKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BPJSBayiKeyPressed
 
     /**
     * @param args the command line arguments
@@ -2357,24 +2791,34 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox AlamatIbu;
     private widget.TextBox Anakke;
+    private widget.TextBox BPJSAyah;
+    private widget.TextBox BPJSBayi;
+    private widget.TextBox BPJSIbu;
     private widget.TextBox Berat;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnCari1;
+    private widget.Button BtnCari2;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKeluar2;
     private widget.Button BtnKelurahan1;
     private widget.Button BtnPenjab;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
+    private widget.Button BtnSimpan1;
+    private widget.ComboBox CaraLahir;
     private widget.CekBox ChkInput;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.Tanggal Daftar;
     private widget.TextBox Diagnosa;
+    private javax.swing.JDialog DlgBridgingLahir;
     private widget.PanelBiasa FormInput;
     private widget.ComboBox JKel;
+    private widget.ComboBox JenisLahir;
     private widget.TextBox Kd2;
     private widget.TextBox KdPenolong;
     private widget.TextBox Ketuban;
@@ -2387,6 +2831,8 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private javax.swing.JMenuItem MnKartu;
     private javax.swing.JMenuItem MnSKL;
     private javax.swing.JMenuItem MnSKL1;
+    private widget.TextBox NIKAyah;
+    private widget.TextBox NIKIbu;
     private widget.TextBox NmAyah;
     private widget.TextBox NmBayi;
     private widget.TextBox NmPenolong;
@@ -2395,10 +2841,12 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.TextBox NoSKL;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Panjang;
+    private widget.ComboBox PenolongLahir;
     private widget.TextBox PenyulitKehamilan;
     private javax.swing.JPopupMenu Popup;
     private widget.TextBox Proses;
     private widget.TextBox TCari;
+    private widget.TextBox TelpOrtu;
     private widget.TextBox UmurAyah;
     private widget.TextBox UmurBayi;
     private widget.TextBox UmurIbu;
@@ -2407,6 +2855,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.ComboBox cmbHlm;
     private widget.ComboBox detik;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame3;
     private widget.Label jLabel24;
     private widget.Label jLabel7;
     private javax.swing.JMenu jMenu1;
@@ -2419,6 +2868,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.TextArea keterangan;
     private widget.Label label10;
     private widget.Label label12;
+    private widget.Label label17;
     private widget.Label label18;
     private widget.Label label19;
     private widget.Label label20;
@@ -2443,8 +2893,17 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label label39;
     private widget.Label label40;
     private widget.Label label41;
+    private widget.Label label42;
+    private widget.Label label43;
+    private widget.Label label44;
+    private widget.Label label45;
+    private widget.Label label46;
+    private widget.Label label47;
+    private widget.Label label48;
+    private widget.Label label49;
     private widget.Label label9;
     private widget.ComboBox menit;
+    private widget.PanelBiasa panelBiasa2;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi2;
     private javax.swing.JMenuItem ppGrafikberat;

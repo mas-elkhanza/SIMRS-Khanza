@@ -484,17 +484,18 @@ public final class DlgIGD extends javax.swing.JDialog {
         }
         
         DlgCatatan.setSize(595,34);
-        try{    
-            if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
-                com.sun.awt.AWTUtilities.setWindowOpacity(DlgCatatan,0.5f);
-            }     
-        }catch(Exception e){    
-        }        
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             IPPRINTERTRACER=prop.getProperty("IPPRINTERTRACER");
             URUTNOREG=prop.getProperty("URUTNOREG");
+            
+            try{    
+                if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                    com.sun.awt.AWTUtilities.setWindowOpacity(DlgCatatan,0.5f);
+                }     
+            }catch(Exception e){    
+            } 
         } catch (Exception ex) {
             IPPRINTERTRACER="";
             URUTNOREG="";
@@ -3279,6 +3280,12 @@ public final class DlgIGD extends javax.swing.JDialog {
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         DlgCatatan.dispose();
+        catatan.dispose();
+        pasien.dispose();
+        dokter.dispose();
+        DlgSakit.dispose();
+        DlgSakit2.dispose();
+        DlgDemografi.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 

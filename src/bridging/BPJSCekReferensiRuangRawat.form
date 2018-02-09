@@ -101,10 +101,10 @@
           <SubComponents>
             <Component class="widget.Label" name="jLabel16">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Kelas Rawat :"/>
+                <Property name="text" type="java.lang.String" value="Ruang Rawat :"/>
                 <Property name="name" type="java.lang.String" value="jLabel16" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[75, 23]"/>
+                  <Dimension value="[80, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -112,7 +112,7 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="Poli" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[250, 23]"/>
+                  <Dimension value="[245, 23]"/>
                 </Property>
               </Properties>
               <Events>
