@@ -441,7 +441,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode);   
             ps=koneksi.prepareStatement(
-                    "select kd_dokter,nm_dokter from dokter where status='1' and kd_dokter like ? or status='1' and nm_dokter like ? order by nm_dokter");
+                    "select kd_dokter,nm_dokter from dokter where kd_dokter like ? or nm_dokter like ? order by nm_dokter");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");                
                 ps.setString(2,"%"+TCari.getText().trim()+"%");

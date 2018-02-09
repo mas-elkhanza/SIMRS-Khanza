@@ -158,6 +158,18 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
 
         });
         
+        try {
+            ps=koneksi.prepareStatement(
+                    "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, kodesatuan.satuan, ipsrsjenisbarang.nm_jenis, "+
+                    "ipsrsbarang.stok,ipsrsbarang.harga from ipsrsbarang inner join kodesatuan inner join ipsrsjenisbarang "+
+                    "on ipsrsbarang.kode_sat=kodesatuan.kode_sat and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
+                    "where ipsrsbarang.kode_brng like ? "+
+                    "or ipsrsbarang.nama_brng like ? "+
+                    "or kodesatuan.satuan like ? "+
+                    "or ipsrsjenisbarang.nm_jenis like ? order by ipsrsbarang.kode_brng");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     
 
@@ -911,35 +923,16 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     public void tampil() {
         Valid.tabelKosong(tabMode);
-        try{
-            ps=koneksi.prepareStatement(
-                        "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, kodesatuan.satuan, ipsrsjenisbarang.nm_jenis, "+
-                        "ipsrsbarang.stok,ipsrsbarang.harga from ipsrsbarang inner join kodesatuan inner join ipsrsjenisbarang "+
-                        "on ipsrsbarang.kode_sat=kodesatuan.kode_sat and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                        "where ipsrsbarang.kode_brng like ? "+
-                        "or ipsrsbarang.nama_brng like ? "+
-                        "or kodesatuan.satuan like ? "+
-                        "or ipsrsjenisbarang.nm_jenis like ? order by ipsrsbarang.kode_brng");
-            try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("nm_jenis"),rs.getString("stok"),Valid.SetAngka(rs.getDouble("harga"))
-                    });
-                }
-            } catch (Exception e) {
-                System.out.println("Data : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
+        try{            
+            ps.setString(1,"%"+TCari.getText().trim()+"%");
+            ps.setString(2,"%"+TCari.getText().trim()+"%");
+            ps.setString(3,"%"+TCari.getText().trim()+"%");
+            ps.setString(4,"%"+TCari.getText().trim()+"%");
+            rs=ps.executeQuery();
+            while(rs.next()){
+                tabMode.addRow(new Object[]{
+                    rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("nm_jenis"),rs.getString("stok"),Valid.SetAngka(rs.getDouble("harga"))
+                });
             }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);

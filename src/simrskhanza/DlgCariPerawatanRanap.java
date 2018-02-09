@@ -65,7 +65,7 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
     private String Suspen_Piutang_Tindakan_Ranap="",Tindakan_Ranap="",Beban_Jasa_Medik_Dokter_Tindakan_Ranap="",
             Utang_Jasa_Medik_Dokter_Tindakan_Ranap="",Beban_Jasa_Medik_Paramedis_Tindakan_Ranap="",
             Utang_Jasa_Medik_Paramedis_Tindakan_Ranap="",Beban_KSO_Tindakan_Ranap="",
-            Utang_KSO_Tindakan_Ranap="",norawatibu="";
+            Utang_KSO_Tindakan_Ranap="";
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -1523,29 +1523,15 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         TPasien.setText(pasien);
         kddokter.setText("");
         this.kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText());
-        
-        norawatibu=Sequel.cariIsi("select no_rawat from ranap_gabung where no_rawat2=?",norwt);
-        if(!norawatibu.equals("")){
-            this.kd_bangsal=Sequel.cariIsi(
-                    "select bangsal.kd_bangsal from bangsal inner join kamar inner join kamar_inap "+
-                    "on bangsal.kd_bangsal=kamar.kd_bangsal and kamar.kd_kamar=kamar_inap.kd_kamar "+
-                    "where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norawatibu);
-            this.kelas=Sequel.cariIsi(
-                    "select kamar.kelas from kamar inner join kamar_inap "+
-                    "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
-                    "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norawatibu);
-        }else{
-            this.kd_bangsal=Sequel.cariIsi(
-                    "select bangsal.kd_bangsal from bangsal inner join kamar inner join kamar_inap "+
-                    "on bangsal.kd_bangsal=kamar.kd_bangsal and kamar.kd_kamar=kamar_inap.kd_kamar "+
-                    "where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
-            this.kelas=Sequel.cariIsi(
-                    "select kamar.kelas from kamar inner join kamar_inap "+
-                    "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
-                    "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
-        }
-            
+        this.kd_bangsal=Sequel.cariIsi(
+                "select bangsal.kd_bangsal from bangsal inner join kamar inner join kamar_inap "+
+                "on bangsal.kd_bangsal=kamar.kd_bangsal and kamar.kd_kamar=kamar_inap.kd_kamar "+
+                "where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
         this.pilihtable=pilihtable;
+        this.kelas=Sequel.cariIsi(
+                "select kamar.kelas from kamar inner join kamar_inap "+
+                "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
+                "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
         switch (pilihtable) {
             case "rawat_inap_dr":
                 jLabel5.setText("Dokter :");                

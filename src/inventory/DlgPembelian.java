@@ -1654,47 +1654,47 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void getData(){        
         row=tbDokter.getSelectedRow();
         if(row!= -1){              
-            try {
-                if(Valid.SetAngka(tbDokter.getValueAt(row,0).toString())>0){                        
-                    tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,12).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);                
-                    tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,8).toString())-Double.parseDouble(tbDokter.getValueAt(row,10).toString()), row,11);           
-                } 
-            } catch (Exception e) {
-                tbDokter.setValueAt(0, row,8);                
-                tbDokter.setValueAt(0, row,11);           
-            }
-        }
+                try {
+                    if(Valid.SetAngka(tbDokter.getValueAt(row,0).toString())>0){                        
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,12).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);                
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,8).toString())-Double.parseDouble(tbDokter.getValueAt(row,10).toString()), row,11);           
+                    } 
+                } catch (Exception e) {
+                    tbDokter.setValueAt(0, row,8);                
+                    tbDokter.setValueAt(0, row,11);           
+                }
                 
-        ttl=0;sbttl=0;ppn=0;ttldisk=0;
-        y=0;w=0;
-        jml=tbDokter.getRowCount();
-        for(i=0;i<jml;i++){     
-            try {
-                w=Double.parseDouble(tbDokter.getValueAt(i,8).toString());                                        
-            } catch (Exception e) {
-                tbDokter.setValueAt(0,tbDokter.getSelectedRow(),8);
-                w=0;
-            }                        
-            sbttl=sbttl+w;                
-
-            try {
-                y=Double.parseDouble(tbDokter.getValueAt(i,10).toString());                
-            } catch (Exception e) {
-                tbDokter.setValueAt(0,tbDokter.getSelectedRow(),10);
-                y=0;
-            }
-            ttldisk=ttldisk+y;
+                ttl=0;sbttl=0;ppn=0;ttldisk=0;
+                y=0;w=0;
+                jml=tbDokter.getRowCount();
+                for(i=0;i<jml;i++){     
+                    try {
+                        w=Double.parseDouble(tbDokter.getValueAt(i,8).toString());                                        
+                    } catch (Exception e) {
+                        tbDokter.setValueAt(0,tbDokter.getSelectedRow(),8);
+                        w=0;
+                    }                        
+                    sbttl=sbttl+w;                
+                    
+                    try {
+                        y=Double.parseDouble(tbDokter.getValueAt(i,10).toString());                
+                    } catch (Exception e) {
+                        tbDokter.setValueAt(0,tbDokter.getSelectedRow(),10);
+                        y=0;
+                    }
+                    ttldisk=ttldisk+y;
+                }
+                LSubtotal.setText(Valid.SetAngka(sbttl));
+                LPotongan.setText(Valid.SetAngka(ttldisk));
+                ttl=sbttl-ttldisk;
+                LTotal2.setText(Valid.SetAngka(ttl));
+                ppn=0;
+                if(!tppn.getText().equals("")){
+                    ppn=(Double.parseDouble(tppn.getText())/100) *(ttl);
+                    LPpn.setText(Valid.SetAngka(ppn));
+                    LTagiha.setText(Valid.SetAngka(ttl+ppn));
+                }
         }
-        LSubtotal.setText(Valid.SetAngka(sbttl));
-        LPotongan.setText(Valid.SetAngka(ttldisk));
-        ttl=sbttl-ttldisk;
-        LTotal2.setText(Valid.SetAngka(ttl));
-        ppn=0;
-        if(!tppn.getText().equals("")){
-            ppn=(Double.parseDouble(tppn.getText())/100) *(ttl);
-            LPpn.setText(Valid.SetAngka(ppn));
-            LTagiha.setText(Valid.SetAngka(ttl+ppn));
-        }        
     }
     
     public void isCek(){

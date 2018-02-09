@@ -1741,21 +1741,22 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     }
                 }
             } catch (Exception e) {
-            }  
-        }
-        ttl=0;
-        y=0;
-        int row2=tabMode.getRowCount();
-        for(int r=0;r<row2;r++){ 
-            try {
-                y=Double.parseDouble(tabMode.getValueAt(r,13).toString()); 
-            } catch (Exception e) {
-                y=0;
+            }             
+            
+            ttl=0;
+            y=0;
+            int row2=tabMode.getRowCount();
+            for(int r=0;r<row2;r++){ 
+                try {
+                    y=Double.parseDouble(tabMode.getValueAt(r,13).toString()); 
+                } catch (Exception e) {
+                    y=0;
+                }
+                ttl=ttl+y;
             }
-            ttl=ttl+y;
+            LTotal.setText(Valid.SetAngka(ttl));
+            isKembali();
         }
-        LTotal.setText(Valid.SetAngka(ttl));
-        isKembali();
     }
     
     
