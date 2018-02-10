@@ -47,14 +47,15 @@ public class DUKCAPILJakartaPostLahir {
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_XML);
 	    HttpEntity requestEntity = new HttpEntity(headers);
-	    RestTemplate rest = new RestTemplate();
+	    RestTemplate rest = new RestTemplate();            
+            // System.out.println(URL);
             String data=rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody();
             JSONObject xmlJSONObj = XML.toJSONObject(data);
             String jsonPrettyPrintString = xmlJSONObj.toString(4);
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(jsonPrettyPrintString);
             JsonNode nameNode = root.path("DATA");
-            System.out.println(jsonPrettyPrintString);
+            //System.out.println(jsonPrettyPrintString);
             UID="";
             if(nameNode.path("STATUS").asText().equals("POST PERMOHONAN AKTA BERHASIL !")){
                 UID=nameNode.path("UID").asText();

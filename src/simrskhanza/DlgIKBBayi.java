@@ -2727,24 +2727,159 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(NIKIbu,"NIK Ibu");
         }else if(TelpOrtu.getText().trim().equals("")){
             Valid.textKosong(TelpOrtu,"Telp Ortu");
-        }else{
-            tgllhr=Lahir.getSelectedItem().toString().replaceAll("-","/");
-            jamlhr=jam.getSelectedItem()+":"+menit.getSelectedItem();
-            jk=JKel.getSelectedItem().toString().replaceAll("LAKI-LAKI","1").replaceAll("PEREMPUAN","2");
-            jnslhr=JenisLahir.getSelectedItem().toString().substring(0,1);
-            lahirke=Anakke.getText();
-            brt=Berat.getText();
-            pjg=Panjang.getText();
-            pnlglhr=PenolongLahir.getSelectedItem().toString().substring(0,1);
-            bpjsibu=BPJSIbu.getText();
-            noskl=NoSKL.getText();
-            pnlgnama=NmPenolong.getText();
-            tindaklhr=CaraLahir.getToolTipText();            
-            bpjsayah=BPJSAyah.getText();
-            bpjsby=BPJSBayi.getText();
-            if(postlahir.post(nokk, nmbayi, tgllhr, jamlhr, jk, jnslhr, lahirke, brt, pjg, pnlglhr, nikibu, nmibu, alamatibu, kerjaibu, nikayah, nmayah, alamatayah, kerjaayah, noskl, pnlgnama, tindaklhr, bpjsibu, bpjsayah, notlp, bpjsby)==true){
-                Sequel.menyimpan("bridging_dukcapil","?,?",2,new String[]{NoRm.getText(),postlahir.UID});
+        }else{            
+            if(Sequel.cariInteger("select count(no_rkm_medis) from bridging_dukcapil where no_rkm_medis=?",NoRm.getText())==0){
+                tgllhr=Lahir.getSelectedItem().toString().replaceAll("-","/");
+                jamlhr=jam.getSelectedItem()+":"+menit.getSelectedItem();
+                jk=JKel.getSelectedItem().toString().replaceAll("LAKI-LAKI","1").replaceAll("PEREMPUAN","2");
+                jnslhr=JenisLahir.getSelectedItem().toString().substring(0,1);
+                lahirke=Anakke.getText();
+                brt=Berat.getText();
+                pjg=Panjang.getText();
+                pnlglhr=PenolongLahir.getSelectedItem().toString().substring(0,1);
+                bpjsibu=BPJSIbu.getText();
+                noskl=NoSKL.getText();
+                pnlgnama=NmPenolong.getText();         
+                bpjsayah=BPJSAyah.getText();
+                bpjsby=BPJSBayi.getText();
+                nmbayi=NmBayi.getText();
+                tindaklhr=CaraLahir.getSelectedItem().toString().substring(0,1);
+                
+                if(postlahir.post(nokk, nmbayi, tgllhr, jamlhr, jk, jnslhr, lahirke, brt, pjg, pnlglhr, nikibu, nmibu, alamatibu, kerjaibu, nikayah, nmayah, alamatayah, kerjaayah, noskl, pnlgnama, tindaklhr, bpjsibu, bpjsayah, notlp, bpjsby)==true){
+                    if(Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_rkm_medis=?",NoRm.getText()).isEmpty()){   
+                        Sequel.AutoComitFalse();
+                        Sequel.queryu2("insert into penjab values(?,?)",2,new String[]{"-","-"});
+                        Sequel.queryu2("insert into kelurahan values(?,?)",2,new String[]{"0","-"});
+                        Sequel.queryu2("insert into kecamatan values(?,?)",2,new String[]{"0","-"});
+                        Sequel.queryu2("insert into kabupaten values(?,?)",2,new String[]{"0","-"});
+                        if(Sequel.menyimpantf("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",28,new String[]{
+                            NoRm.getText(),NmBayi.getText(),"-",
+                            JKel.getSelectedItem().toString().substring(0,1),"-",
+                            Valid.SetTgl(Lahir.getSelectedItem()+""),
+                            Nmibu.getText(),AlamatIbu.getText(),"-","-","BELUM MENIKAH","-",
+                            Valid.SetTgl(Daftar.getSelectedItem()+""),"0",UmurBayi.getText(),
+                            "-","AYAH",NmAyah.getText(),"-","-",
+                            Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?","-"),
+                            Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?","-"),
+                            Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?","-"),
+                            "-",AlamatIbu.getText(),"-","-","-"})==true){
+                                if(Sequel.menyimpantf("pasien_bayi","'"+NoRm.getText()+"','"+
+                                    UmurIbu.getText()+"','"+
+                                    NmAyah.getText()+"','"+
+                                    UmurAyah.getText()+"','"+
+                                    Berat.getText()+"','"+
+                                    Panjang.getText()+"','"+
+                                    LingkarKepala.getText()+"','"+
+                                    Proses.getText()+"','"+
+                                    Anakke.getText()+"','"+
+                                    jam.getSelectedItem()+":"+menit.getSelectedItem()+":"+detik.getSelectedItem()+"','"+
+                                    keterangan.getText()+"','"+Diagnosa.getText()+"','"+
+                                    PenyulitKehamilan.getText()+"','"+Ketuban.getText()+"','"+
+                                    LingkarPerut.getText()+"','"+LingkarDada.getText()+"','"+
+                                    KdPenolong.getText()+"','"+NoSKL.getText()+"'","No.RM/No.SKL")==true){
+                                        Sequel.queryu2("delete from set_no_rkm_medis");
+                                        Sequel.queryu2("insert into set_no_rkm_medis values(?)",1,new String[]{NoRm.getText()});
+                                        tampil();
+                                        Sequel.menyimpan("bridging_dukcapil","?,?",2,new String[]{NoRm.getText(),postlahir.UID});
+                                        emptTeks();
+                                }                                           
+                        }else{
+                            autoNomor();
+                            autoSKL();
+                            if(Sequel.menyimpantf("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",28,new String[]{
+                                NoRm.getText(),NmBayi.getText(),"-",
+                                JKel.getSelectedItem().toString().substring(0,1),"-",
+                                Valid.SetTgl(Lahir.getSelectedItem()+""),
+                                Nmibu.getText(),AlamatIbu.getText(),"-","-","BELUM MENIKAH","-",
+                                Valid.SetTgl(Daftar.getSelectedItem()+""),"0",UmurBayi.getText(),
+                                "-","AYAH",NmAyah.getText(),"-","-",
+                                Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?","-"),
+                                Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?","-"),
+                                Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?","-"),
+                                "-",AlamatIbu.getText(),"-","-","-"})==true){
+                                    if(Sequel.menyimpantf("pasien_bayi","'"+NoRm.getText()+"','"+
+                                        UmurIbu.getText()+"','"+
+                                        NmAyah.getText()+"','"+
+                                        UmurAyah.getText()+"','"+
+                                        Berat.getText()+"','"+
+                                        Panjang.getText()+"','"+
+                                        LingkarKepala.getText()+"','"+
+                                        Proses.getText()+"','"+
+                                        Anakke.getText()+"','"+
+                                        jam.getSelectedItem()+":"+menit.getSelectedItem()+":"+detik.getSelectedItem()+"','"+
+                                        keterangan.getText()+"','"+Diagnosa.getText()+"','"+
+                                        PenyulitKehamilan.getText()+"','"+Ketuban.getText()+"','"+
+                                        LingkarPerut.getText()+"','"+LingkarDada.getText()+"','"+
+                                        KdPenolong.getText()+"','"+NoSKL.getText()+"'","No.RM/No.SKL")==true){
+                                            Sequel.queryu2("delete from set_no_rkm_medis");
+                                            Sequel.queryu2("insert into set_no_rkm_medis values(?)",1,new String[]{NoRm.getText()});
+                                            tampil();
+                                            Sequel.menyimpan("bridging_dukcapil","?,?",2,new String[]{NoRm.getText(),postlahir.UID});
+                                            emptTeks();
+                                    }  
+                            }else{
+                                autoNomor();
+                                autoSKL();
+                                if(Sequel.menyimpantf("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",28,new String[]{
+                                    NoRm.getText(),NmBayi.getText(),"-",
+                                    JKel.getSelectedItem().toString().substring(0,1),"-",
+                                    Valid.SetTgl(Lahir.getSelectedItem()+""),
+                                    Nmibu.getText(),AlamatIbu.getText(),"-","-","BELUM MENIKAH","-",
+                                    Valid.SetTgl(Daftar.getSelectedItem()+""),"0",UmurBayi.getText(),
+                                    "-","AYAH",NmAyah.getText(),"-","-",
+                                    Sequel.cariIsi("select kelurahan.kd_kel from kelurahan where kelurahan.nm_kel=?","-"),
+                                    Sequel.cariIsi("select kecamatan.kd_kec from kecamatan where kecamatan.nm_kec=?","-"),
+                                    Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?","-"),
+                                    "-",AlamatIbu.getText(),"-","-","-"})==true){
+                                        if(Sequel.menyimpantf("pasien_bayi","'"+NoRm.getText()+"','"+
+                                            UmurIbu.getText()+"','"+
+                                            NmAyah.getText()+"','"+
+                                            UmurAyah.getText()+"','"+
+                                            Berat.getText()+"','"+
+                                            Panjang.getText()+"','"+
+                                            LingkarKepala.getText()+"','"+
+                                            Proses.getText()+"','"+
+                                            Anakke.getText()+"','"+
+                                            jam.getSelectedItem()+":"+menit.getSelectedItem()+":"+detik.getSelectedItem()+"','"+
+                                            keterangan.getText()+"','"+Diagnosa.getText()+"','"+
+                                            PenyulitKehamilan.getText()+"','"+Ketuban.getText()+"','"+
+                                            LingkarPerut.getText()+"','"+LingkarDada.getText()+"','"+
+                                            KdPenolong.getText()+"','"+NoSKL.getText()+"'","No.RM/No.SKL")==true){
+                                                Sequel.queryu2("delete from set_no_rkm_medis");
+                                                Sequel.queryu2("insert into set_no_rkm_medis values(?)",1,new String[]{NoRm.getText()});
+                                                tampil();
+                                                Sequel.menyimpan("bridging_dukcapil","?,?",2,new String[]{NoRm.getText(),postlahir.UID});
+                                                emptTeks();
+                                        }                                                  
+                                }
+                            }
+                        }
+                        Sequel.AutoComitTrue();
+                    }else{
+                        if(Sequel.menyimpantf("pasien_bayi","'"+NoRm.getText()+"','"+
+                                UmurIbu.getText()+"','"+
+                                NmAyah.getText()+"','"+
+                                UmurAyah.getText()+"','"+
+                                Berat.getText()+"','"+
+                                Panjang.getText()+"','"+
+                                LingkarKepala.getText()+"','"+
+                                Proses.getText()+"','"+
+                                Anakke.getText()+"','"+
+                                jam.getSelectedItem()+":"+menit.getSelectedItem()+":"+detik.getSelectedItem()+"','"+
+                                keterangan.getText()+"','"+Diagnosa.getText()+"','"+
+                                PenyulitKehamilan.getText()+"','"+Ketuban.getText()+"','"+
+                                LingkarPerut.getText()+"','"+LingkarDada.getText()+"','"+
+                                KdPenolong.getText()+"','"+NoSKL.getText()+"'","No.RM/No.SKL")==true){
+                                    tampil();
+                                    Sequel.menyimpan("bridging_dukcapil","?,?",2,new String[]{NoRm.getText(),postlahir.UID});
+                                    emptTeks();
+                        }             
+                    }                    
+                }
+            }else{
+                JOptionPane.showMessageDialog(rootPane,"Pasien sudah terbridging dukcapil sebelumnya..!!");
             }
+                
         }
     }//GEN-LAST:event_BtnSimpan1ActionPerformed
 
