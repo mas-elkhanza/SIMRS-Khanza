@@ -50,6 +50,7 @@ public class DUKCAPILJakartaCekNik {
             
             JSONObject xmlJSONObj = XML.toJSONObject(data);
             String jsonPrettyPrintString = xmlJSONObj.toString(4);
+            //System.out.println(jsonPrettyPrintString);
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(jsonPrettyPrintString);
             JsonNode nameNode = root.path("DATA");

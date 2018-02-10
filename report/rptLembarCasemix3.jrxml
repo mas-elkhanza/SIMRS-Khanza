@@ -407,7 +407,7 @@ on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no
 			</staticText>
 			<image scaleImage="FillFrame" onErrorType="Blank">
 				<reportElement x="50" y="0" width="68" height="68"/>
-				<imageExpression class="java.lang.String"><![CDATA[$P{logo}]]></imageExpression>
+				<imageExpression class="java.io.InputStream"><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<textField pattern="">
 				<reportElement x="371" y="106" width="170" height="12"/>

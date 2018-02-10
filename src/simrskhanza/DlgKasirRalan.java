@@ -72,7 +72,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 "jns_perawatan.tarif_tindakandr,jns_perawatan.total_byrdr,jns_perawatan.kso,jns_perawatan.menejemen from set_otomatis_tindakan_ralan "+
                 "inner join jns_perawatan on set_otomatis_tindakan_ralan.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
                 "where set_otomatis_tindakan_ralan.kd_dokter=? and set_otomatis_tindakan_ralan.kd_pj=?",
-            namadokter="",namapoli="",order="reg_periksa.no_rawat desc";
+            namadokter="",namapoli="",order="reg_periksa.no_rawat desc",
+            validasicatatan=Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
     public  DlgBilingRalan billing=new DlgBilingRalan(null,false);
     private int i=0,pilihan=0,sudah=0;
     public DlgKamarInap kamarinap=new DlgKamarInap(null,false);
@@ -317,10 +318,19 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         }); 
         
+        DlgCatatan.setSize(595,34); 
+        
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             namadokter=prop.getProperty("DOKTERAKTIFKASIRRALAN");
             namapoli=prop.getProperty("POLIAKTIFKASIRRALAN");
+            
+            try{    
+                if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                    com.sun.awt.AWTUtilities.setWindowOpacity(DlgCatatan,0.5f);
+                }     
+            }catch(Exception e){    
+            }
         } catch (Exception ex) {
             namadokter="";
             namapoli="";
@@ -499,6 +509,9 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnUrutPenjabAsc2 = new javax.swing.JMenuItem();
         MnUrutStatusDesc2 = new javax.swing.JMenuItem();
         MnUrutStatusAsc2 = new javax.swing.JMenuItem();
+        DlgCatatan = new javax.swing.JDialog();
+        internalFrame7 = new widget.InternalFrame();
+        LabelCatatan = new widget.Label();
         internalFrame1 = new widget.InternalFrame();
         jPanel2 = new javax.swing.JPanel();
         panelGlass6 = new widget.panelisi();
@@ -2917,6 +2930,36 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
 
         jPopupMenu2.add(MnUrut1);
 
+        DlgCatatan.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        DlgCatatan.setName("DlgCatatan"); // NOI18N
+        DlgCatatan.setUndecorated(true);
+        DlgCatatan.setResizable(false);
+
+        internalFrame7.setBorder(null);
+        internalFrame7.setName("internalFrame7"); // NOI18N
+        internalFrame7.setWarnaAtas(new java.awt.Color(100, 100, 10));
+        internalFrame7.setWarnaBawah(new java.awt.Color(100, 100, 10));
+        internalFrame7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                internalFrame7MouseClicked(evt);
+            }
+        });
+        internalFrame7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        LabelCatatan.setForeground(new java.awt.Color(255, 255, 255));
+        LabelCatatan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LabelCatatan.setText("Catatan");
+        LabelCatatan.setName("LabelCatatan"); // NOI18N
+        LabelCatatan.setPreferredSize(new java.awt.Dimension(580, 23));
+        LabelCatatan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LabelCatatanMouseClicked(evt);
+            }
+        });
+        internalFrame7.add(LabelCatatan);
+
+        DlgCatatan.getContentPane().add(internalFrame7, java.awt.BorderLayout.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -3072,7 +3115,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel15);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3091,7 +3134,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel17);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3241,6 +3284,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        DlgCatatan.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -3316,7 +3360,22 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 getDatakasir();
             } catch (java.lang.NullPointerException e) {
             }
-            if(evt.getClickCount()==2){
+            if(evt.getClickCount()==1){
+                i=tbKasirRalan.getSelectedColumn();
+                if(i==3){
+                    if(validasicatatan.equals("Yes")){
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        LabelCatatan.setText(Sequel.cariIsi("select catatan from catatan_pasien where no_rkm_medis=?",TNoRM.getText()));
+                        if(!LabelCatatan.getText().equals("")){
+                            DlgCatatan.setLocationRelativeTo(TabRawat);
+                            DlgCatatan.setVisible(true);
+                        }else{
+                            DlgCatatan.setVisible(false);
+                        }                            
+                        this.setCursor(Cursor.getDefaultCursor());
+                    }  
+                }                
+            }else if(evt.getClickCount()==2){
                 i=tbKasirRalan.getSelectedColumn();
                 if(i==0){
                     if(var.gettindakan_ralan()==true){
@@ -5299,6 +5358,14 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         Valid.pindah(evt,TCari,TNoRw);
     }//GEN-LAST:event_TNoRegKeyPressed
 
+    private void LabelCatatanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelCatatanMouseClicked
+        DlgCatatan.dispose();
+    }//GEN-LAST:event_LabelCatatanMouseClicked
+
+    private void internalFrame7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_internalFrame7MouseClicked
+        DlgCatatan.dispose();
+    }//GEN-LAST:event_internalFrame7MouseClicked
+
     /**
     * @param args the command line arguments
     */
@@ -5334,9 +5401,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.TextBox CrPtg;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
+    private javax.swing.JDialog DlgCatatan;
     private widget.TextBox Jam;
     private widget.TextBox Kd2;
     private widget.Label LCount;
+    private widget.Label LabelCatatan;
     private javax.swing.JMenuItem MnBatal;
     private javax.swing.JMenuItem MnBayar;
     private javax.swing.JMenuItem MnBelum;
@@ -5483,6 +5552,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame5;
     private widget.InternalFrame internalFrame6;
+    private widget.InternalFrame internalFrame7;
     private widget.Label jLabel10;
     private widget.Label jLabel12;
     private widget.Label jLabel13;

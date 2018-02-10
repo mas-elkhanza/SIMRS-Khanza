@@ -140,13 +140,13 @@ public final class BPJSCekReferensiRuangRawat extends javax.swing.JDialog {
         panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel16.setText("Kelas Rawat :");
+        jLabel16.setText("Ruang Rawat :");
         jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(75, 23));
+        jLabel16.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass6.add(jLabel16);
 
         Poli.setName("Poli"); // NOI18N
-        Poli.setPreferredSize(new java.awt.Dimension(250, 23));
+        Poli.setPreferredSize(new java.awt.Dimension(245, 23));
         Poli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PoliKeyPressed(evt);
