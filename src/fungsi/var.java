@@ -68,7 +68,7 @@ public final class var {
             pcare_cek_rujukan=false,grafik_lab_ralantahun=false,grafik_rad_ralantahun=false,cek_entry_ralan=false,inacbg_klaim_baru_manual2=false,
             permintaan_medis=false,rekap_permintaan_medis=false,surat_pemesanan_medis=false,permintaan_non_medis=false,rekap_permintaan_non_medis=false,
             surat_pemesanan_non_medis=false,grafik_per_perujuk=false,bpjs_cek_prosedur=false,bpjs_cek_kelas_rawat=false,bpjs_cek_dokter=false,
-            bpjs_cek_spesialistik=false,bpjs_cek_ruangrawat=false;
+            bpjs_cek_spesialistik=false,bpjs_cek_ruangrawat=false,bpjs_cek_carakeluar=false,bpjs_cek_pasca_pulang=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -385,6 +385,8 @@ public final class var {
                         var.bpjs_cek_dokter=true;
                         var.bpjs_cek_spesialistik=true;
                         var.bpjs_cek_ruangrawat=true;
+                        var.bpjs_cek_carakeluar=true;
+                        var.bpjs_cek_pasca_pulang=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -684,7 +686,9 @@ public final class var {
                         var.bpjs_cek_kelas_rawat=rs2.getBoolean("bpjs_cek_kelas_rawat");
                         var.bpjs_cek_dokter=rs2.getBoolean("bpjs_cek_dokter");
                         var.bpjs_cek_spesialistik=rs2.getBoolean("bpjs_cek_spesialistik");
-                        var.bpjs_cek_ruangrawat=rs2.getBoolean("bpjs_cek_ruangrawat");
+                        var.bpjs_cek_ruangrawat=rs2.getBoolean("bpjs_cek_ruangrawat");                        
+                        var.bpjs_cek_carakeluar=rs2.getBoolean("bpjs_cek_carakeluar");
+                        var.bpjs_cek_pasca_pulang=rs2.getBoolean("bpjs_cek_pasca_pulang");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -983,6 +987,8 @@ public final class var {
                         var.bpjs_cek_dokter=false;
                         var.bpjs_cek_spesialistik=false;
                         var.bpjs_cek_ruangrawat=false;
+                        var.bpjs_cek_carakeluar=false;
+                        var.bpjs_cek_pasca_pulang=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1328,4 +1334,7 @@ public final class var {
     public static boolean getbpjs_cek_dokter(){return var.bpjs_cek_dokter;}
     public static boolean getbpjs_cek_spesialistik(){return var.bpjs_cek_spesialistik;}
     public static boolean getbpjs_cek_ruangrawat(){return var.bpjs_cek_ruangrawat;}
+    public static boolean getbpjs_cek_carakeluar(){return  var.bpjs_cek_carakeluar;}
+    public static boolean getbpjs_cek_pasca_pulang(){return var.bpjs_cek_pasca_pulang;} 
+
 }
