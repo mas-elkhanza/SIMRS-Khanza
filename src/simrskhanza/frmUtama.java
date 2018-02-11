@@ -228,6 +228,7 @@ import java.awt.event.KeyListener;
 import javax.swing.event.DocumentEvent;
 import keuangan.DlgAkunPiutang;
 import keuangan.DlgDetailTindakan;
+import keuangan.DlgDetailVKOK;
 import keuangan.DlgHutangObatBelumLunas;
 import keuangan.DlgPembayaranPerPoli;
 import keuangan.DlgPiutangPercaraBayar;
@@ -747,6 +748,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekReferensiRuangRawatBPJS = new widget.ButtonBig();
         btnCekReferensiCaraKeluarBPJS = new widget.ButtonBig();
         btnCekReferensiPascaPulangBPJS = new widget.ButtonBig();
+        btnDetailVKOK = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4615,6 +4617,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnCekReferensiPascaPulangBPJS);
+
+        btnDetailVKOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnDetailVKOK.setText("Detail VK & OK");
+        btnDetailVKOK.setIconTextGap(0);
+        btnDetailVKOK.setName("btnDetailVKOK"); // NOI18N
+        btnDetailVKOK.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDetailVKOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetailVKOKActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnDetailVKOK);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -9829,6 +9843,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCekReferensiPascaPulangBPJSActionPerformed
 
+    private void btnDetailVKOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailVKOKActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDetailVKOK dettin=new DlgDetailVKOK(this,false);
+        dettin.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        dettin.setLocationRelativeTo(PanelUtama);
+        dettin.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnDetailVKOKActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9937,6 +9962,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnDataPenyerahanDarah;
     private widget.ButtonBig btnDeposit;
     private widget.ButtonBig btnDetailTindakan;
+    private widget.ButtonBig btnDetailVKOK;
     private widget.ButtonBig btnDiagnosa;
     private widget.ButtonBig btnDiet;
     private widget.ButtonBig btnDisplay;
@@ -11112,6 +11138,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
 
+            if(var.getdetail_tindakan_okvk()==true){
+                Panelmenu.add(btnDetailVKOK);
+                jmlmenu++;
+            }
+            
             if(var.getpembayaran_ralan()==true){
                 Panelmenu.add(btnRalanMasuk);
                 jmlmenu++;
@@ -12607,6 +12638,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
+        if(var.getdetail_tindakan_okvk()==true){
+            Panelmenu.add(btnDetailVKOK);
+            jmlmenu++;
+        }
+        
         if(var.getpembayaran_ralan()==true){
             Panelmenu.add(btnRalanMasuk);
             jmlmenu++;
@@ -14337,6 +14373,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
 
+        if(var.getdetail_tindakan_okvk()==true){
+            if(btnDetailVKOK.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDetailVKOK);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getpembayaran_ralan()==true){
             if(btnRalanMasuk.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRalanMasuk);
