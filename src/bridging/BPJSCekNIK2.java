@@ -87,6 +87,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     private PreparedStatement ps,pskelengkapan,pscariumur;
     private ResultSet rs;
     private double biaya=0;
+    private BPJSCekNIK cekViaBPJS=new BPJSCekNIK();
     
 
     /** Creates new form DlgKamar
@@ -2781,52 +2782,39 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String nomorpeserta) {
-        BPJSApi api=new BPJSApi();
         try {
             nosep="";
-            statuspasien="";
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIBPJS")+"/Peserta/Peserta/nik/"+nomorpeserta;	
-
-	    HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
-	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
-	    headers.add("X-Signature",api.getHmac());
-	    HttpEntity requestEntity = new HttpEntity(headers);
-	    RestTemplate rest = new RestTemplate();	
-            
-            //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metadata");
-            System.out.println("code : "+nameNode.path("code").asText());
-            System.out.println("message : "+nameNode.path("message").asText());
-            if(nameNode.path("message").asText().equals("OK")){
+            statuspasien="";            
+            cekViaBPJS.tampil(nomorpeserta);
+            if(cekViaBPJS.informasi.equals("OK")){
                 Valid.tabelKosong(tabMode);
-                JsonNode response = root.path("response");                
+                Valid.tabelKosong(tabMode);             
                 tabMode.addRow(new Object[]{
-                    "Nama",": "+response.path("peserta").path("nama").asText()
+                    "Nama",": "+cekViaBPJS.nama
                 });
-                TNm.setText(response.path("peserta").path("nama").asText());
+                TNm.setText(cekViaBPJS.nama);
                 tabMode.addRow(new Object[]{
-                    "NIK",": "+response.path("peserta").path("nik").asText()
+                    "NIK",": "+cekViaBPJS.nik
                 });
-                TKtp.setText(response.path("peserta").path("nik").asText());
+                TKtp.setText(cekViaBPJS.nik);
                 tabMode.addRow(new Object[]{
-                    "Nomor Kartu",": "+response.path("peserta").path("noKartu").asText()
+                    "Nomor Kartu",": "+cekViaBPJS.noKartu
                 });
-                TNoPeserta.setText(response.path("peserta").path("noKartu").asText());
+                TNoPeserta.setText(cekViaBPJS.nik);
                 tabMode.addRow(new Object[]{
-                    "Nomor MR",": "+response.path("peserta").path("noMr").asText()
-                });
-                tabMode.addRow(new Object[]{
-                    "Pisa",": "+response.path("peserta").path("pisa").asText()
+                    "Nomor MR",": "+cekViaBPJS.mrnoMR
                 });
                 tabMode.addRow(new Object[]{
-                    "Jenis Kelamin",": "+response.path("peserta").path("sex").asText().replaceAll("L","Laki-Laki").replaceAll("P","Perempuan")
+                    "Nomor Telp",": "+cekViaBPJS.mrnoTelepon
                 });
-                switch (response.path("peserta").path("sex").asText()) {
+                TTlp.setText(cekViaBPJS.mrnoTelepon);
+                tabMode.addRow(new Object[]{
+                    "Pisa",": "+cekViaBPJS.pisa
+                });
+                tabMode.addRow(new Object[]{
+                    "Jenis Kelamin",": "+cekViaBPJS.sex.replaceAll("L","Laki-Laki").replaceAll("P","Perempuan")
+                });
+                switch (cekViaBPJS.sex) {
                     case "L":
                         CmbJk.setSelectedItem("LAKI-LAKI");
                         break;
@@ -2838,96 +2826,100 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                     "Status Peserta",":"
                 });
                 tabMode.addRow(new Object[]{
-                    "       Keterangan",": "+response.path("peserta").path("statusPeserta").path("keterangan").asText()
+                    "       Keterangan",": "+cekViaBPJS.statusPesertaketerangan
                 });
                 tabMode.addRow(new Object[]{
-                    "       Kode",": "+response.path("peserta").path("statusPeserta").path("kode").asText()
+                    "       Kode",": "+cekViaBPJS.statusPesertakode
                 });
                 tabMode.addRow(new Object[]{
                     "Jenis Peserta",":"
                 });
                 tabMode.addRow(new Object[]{
-                    "       Kode Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText()
+                    "       Kode Jenis Peserta",": "+cekViaBPJS.jenisPesertakode
                 });
+                tabMode.addRow(new Object[]{
+                    "       Nama Jenis Peserta",": "+cekViaBPJS.jenisPesertaketerangan
+                });            
                 Kdpnj.setText("BPJ");
                 nmpnj.setText("BPJS");
-                tabMode.addRow(new Object[]{
-                    "       Nama Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText()
-                });                
-                Pekerjaan.setText(response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText());
+                Pekerjaan.setText(cekViaBPJS.jenisPesertaketerangan);
                 tabMode.addRow(new Object[]{
                     "Kelas Tanggungan",":"
                 });
                 tabMode.addRow(new Object[]{
-                    "       Kode Kelas",": "+response.path("peserta").path("kelasTanggungan").path("kdKelas").asText()
+                    "       Kode Kelas",": "+cekViaBPJS.hakKelaskode
                 });
-                if(response.path("peserta").path("kelasTanggungan").path("kdKelas").asText().equals("1")){
+                if(cekViaBPJS.hakKelaskode.equals("1")){
                     Kelas.setSelectedIndex(0);
-                }else if(response.path("peserta").path("kelasTanggungan").path("kdKelas").asText().equals("2")){
+                }else if(cekViaBPJS.hakKelaskode.equals("2")){
                     Kelas.setSelectedIndex(1);
-                }else if(response.path("peserta").path("kelasTanggungan").path("kdKelas").asText().equals("3")){
+                }else if(cekViaBPJS.hakKelaskode.equals("3")){
                     Kelas.setSelectedIndex(2);
                 }
                 tabMode.addRow(new Object[]{
-                    "       Nama Kelas",": "+response.path("peserta").path("kelasTanggungan").path("nmKelas").asText()
+                    "       Nama Kelas",": "+cekViaBPJS.hakKelasketerangan
                 });
                 tabMode.addRow(new Object[]{
                     "Provider Umum",":"
                 });
                 tabMode.addRow(new Object[]{
-                    "       Kode Cabang",": "+response.path("peserta").path("provUmum").path("kdCabang").asText()
-                });
-                tabMode.addRow(new Object[]{
-                    "       Kode Provider",": "+response.path("peserta").path("provUmum").path("kdProvider").asText()
+                    "       Kode Provider",": "+cekViaBPJS.provUmumkdProvider
                 });                
-                KdPpkRujukan.setText(response.path("peserta").path("provUmum").path("kdProvider").asText());
+                KdPpkRujukan.setText(cekViaBPJS.provUmumkdProvider);
                 tabMode.addRow(new Object[]{
-                    "       Nama Cabang",": "+response.path("peserta").path("provUmum").path("nmCabang").asText()
+                    "       Nama Provider",": "+cekViaBPJS.provUmumnmProvider
                 });
-                Kabupaten.setText(response.path("peserta").path("provUmum").path("nmCabang").asText());
-                KabupatenPj.setText(response.path("peserta").path("provUmum").path("nmCabang").asText());
+                NmPpkRujukan.setText(cekViaBPJS.provUmumnmProvider);                
                 tabMode.addRow(new Object[]{
-                    "       Nama Provider",": "+response.path("peserta").path("provUmum").path("nmProvider").asText()
-                });
-                NmPpkRujukan.setText(response.path("peserta").path("provUmum").path("nmProvider").asText());                
-                tabMode.addRow(new Object[]{
-                    "Tanggal Cetak Kartu",": "+response.path("peserta").path("tglCetakKartu").asText()
+                    "Tanggal Cetak Kartu",": "+cekViaBPJS.tglCetakKartu
                 });
                 tabMode.addRow(new Object[]{
-                    "Tanggal Lahir",": "+response.path("peserta").path("tglLahir").asText()
+                    "Tanggal Lahir",": "+cekViaBPJS.tglLahir
                 });
-                Valid.SetTgl(DTPLahir,response.path("peserta").path("tglLahir").asText());
+                Valid.SetTgl(DTPLahir,cekViaBPJS.tglLahir);
                 tabMode.addRow(new Object[]{
-                    "Tanggal TAT",": "+response.path("peserta").path("tglTAT").asText()
+                    "Tanggal TAT",": "+cekViaBPJS.tglTAT
                 });
                 tabMode.addRow(new Object[]{
-                    "Tanggal TMT",": "+response.path("peserta").path("tglTMT").asText()
+                    "Tanggal TMT",": "+cekViaBPJS.tglTMT
                 });
                 tabMode.addRow(new Object[]{
                     "Umur",":"
                 });
                 tabMode.addRow(new Object[]{
-                    "       Umur Saat Pelayanan",": "+response.path("peserta").path("umur").path("umurSaatPelayanan").asText()
+                    "       Umur Saat Pelayanan",": "+cekViaBPJS.umurumurSaatPelayanan
                 });
                 tabMode.addRow(new Object[]{
-                    "       Umur Sekarang",": "+response.path("peserta").path("umur").path("umurSekarang").asText().replaceAll("tahun ,","Th ").replaceAll("bulan ,","Bl ").replaceAll("hari","Hr")
+                    "       Umur Sekarang",": "+cekViaBPJS.umurumurSekarang.replaceAll("tahun ,","Th ").replaceAll("bulan ,","Bl ").replaceAll("hari","Hr")
                 });
                 tabMode.addRow(new Object[]{
                     "Informasi",":"
                 });
                 tabMode.addRow(new Object[]{
-                    "       Dinsos",": "+response.path("peserta").path("informasi").path("dinsos").asText()
+                    "       Dinsos",": "+cekViaBPJS.informasidinsos
                 });
                 tabMode.addRow(new Object[]{
-                    "       Iuran",": "+response.path("peserta").path("informasi").path("iuran").asText()
+                    "       No.SKTM",": "+cekViaBPJS.informasinoSKTM
                 });
                 tabMode.addRow(new Object[]{
-                    "       No.SKTM",": "+response.path("peserta").path("informasi").path("noSKTM").asText()
+                    "       Prolanis PRB",": "+cekViaBPJS.informasiprolanisPRB
                 });
                 tabMode.addRow(new Object[]{
-                    "       Prolanis PRB",": "+response.path("peserta").path("informasi").path("prolanisPRB").asText()
+                    "COB",":"
                 });
-                TUmur.setText(response.path("peserta").path("umur").path("umurSekarang").asText().replaceAll("tahun ,","Th ").replaceAll("bulan ,","Bl ").replaceAll("hari","Hr"));
+                tabMode.addRow(new Object[]{
+                    "       Nama Asuransi",": "+cekViaBPJS.cobnmAsuransi
+                });
+                tabMode.addRow(new Object[]{
+                    "       No Asuransi",": "+cekViaBPJS.cobnoAsuransi
+                });
+                tabMode.addRow(new Object[]{
+                    "       Tanggal TAT",": "+cekViaBPJS.cobtglTAT
+                });
+                tabMode.addRow(new Object[]{
+                    "       Tanggal TMT",": "+cekViaBPJS.cobtglTMT
+                });
+                TUmur.setText(cekViaBPJS.umurumurSekarang.replaceAll("tahun ,","Th ").replaceAll("bulan ,","Bl ").replaceAll("hari","Hr"));
                 ps=koneksi.prepareStatement(
                    "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, pasien.alamat,"+
@@ -2941,7 +2933,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
                    "where pasien.no_peserta=?");
                 try {
-                    ps.setString(1,response.path("peserta").path("noKartu").asText());
+                    ps.setString(1,cekViaBPJS.noKartu);
                     rs=ps.executeQuery();
                     if(rs.next()){
                         statuspasien="lama";                        
@@ -3001,13 +2993,10 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                 }
             }else {
                 emptTeks();
-                JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
+                JOptionPane.showMessageDialog(null,cekViaBPJS.informasi);                
             }   
         } catch (Exception ex) {
-            System.out.println("Notifikasi Peserta : "+ex);
-            if(ex.toString().contains("UnknownHostException")){
-                JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
-            }
+            System.out.println("Notifikasi Peserta : "+ex);            
         }
     }  
     
