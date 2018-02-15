@@ -4330,11 +4330,11 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         cekViaBPJS.tampil(TKtp.getText());
         TNm.setText(cekViaBPJS.nama);
-        CmbJk.setSelectedItem(cekViaBPJS.jk);
-        TNoPeserta.setText(cekViaBPJS.nokartu);
-        Pekerjaan.setText(cekViaBPJS.pekerjaan);
-        TUmurTh.setText(cekViaBPJS.umur);
-        Valid.SetTgl(DTPLahir,cekViaBPJS.tgl_lahir);
+        CmbJk.setSelectedItem(cekViaBPJS.sex);
+        TNoPeserta.setText(cekViaBPJS.noKartu);
+        Pekerjaan.setText(cekViaBPJS.jenisPesertaketerangan);
+        TUmurTh.setText(cekViaBPJS.umurumurSekarang);
+        Valid.SetTgl(DTPLahir,cekViaBPJS.tglLahir);
         jPopupMenu2.setVisible(false);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnViaBPJSNikActionPerformed
@@ -4343,11 +4343,11 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         cekViaBPJSKartu.tampil(TNoPeserta.getText());
         TNm.setText(cekViaBPJSKartu.nama);
-        CmbJk.setSelectedItem(cekViaBPJSKartu.jk);
+        CmbJk.setSelectedItem(cekViaBPJSKartu.sex);
         TKtp.setText(cekViaBPJSKartu.nik);
-        Pekerjaan.setText(cekViaBPJSKartu.pekerjaan);
-        TUmurTh.setText(cekViaBPJSKartu.umur);
-        Valid.SetTgl(DTPLahir,cekViaBPJSKartu.tgl_lahir);
+        Pekerjaan.setText(cekViaBPJSKartu.jenisPesertaketerangan);
+        TUmurTh.setText(cekViaBPJSKartu.umurumurSekarang);
+        Valid.SetTgl(DTPLahir,cekViaBPJSKartu.tglLahir);
         jPopupMenu2.setVisible(false);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnViaBPJSNoKartuActionPerformed
