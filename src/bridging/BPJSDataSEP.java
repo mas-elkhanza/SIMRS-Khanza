@@ -1495,7 +1495,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
                     JsonNode response = root.path("response");
-                    if(nameNode.path("message").asText().equals("Sukses")){
+                    if(nameNode.path("code").asText().equals("200")){
                         Sequel.mengedit("bridging_sep",
                              "no_sep=?","no_sep=?,no_rawat=?,tglsep=?,tglrujukan=?,no_rujukan=?,kdppkrujukan=?,"+
                              "nmppkrujukan=?,kdppkpelayanan=?,nmppkpelayanan=?,jnspelayanan=?,catatan=?,diagawal=?,"+
@@ -1857,7 +1857,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 JsonNode response = root.path("response");
-                if(nameNode.path("message").asText().equals("Sukses")){
+                if(nameNode.path("code").asText().equals("200")){
                     Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
                          Valid.SetTgl(TanggalPulang.getSelectedItem()+"")+" "+TanggalPulang.getSelectedItem().toString().substring(11,19),
                          tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
@@ -1929,7 +1929,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 JsonNode response = root.path("response");
-                if(nameNode.path("message").asText().equals("OK")){
+                if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
                     JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
@@ -2045,7 +2045,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
                 JsonNode response = root.path("response");
-                if(nameNode.path("message").asText().equals("OK")){
+                if(nameNode.path("code").asText().equals("200")){
                     JOptionPane.showMessageDialog(null,"Proses mapping selesai, data nomor rawat berhasil dikirim ke SEP..!!");
                 }else{
                     JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
@@ -2281,7 +2281,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         KdPoli.setText("");
         NmPoli.setText("");
         Kelas.setSelectedIndex(0);
-        LakaLantas.setSelectedIndex(1);
+        LakaLantas.setSelectedIndex(0);
         LokasiLaka.setText("");
         TNoRM.setText("");
         NoRujukan.requestFocus();
@@ -2398,7 +2398,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             JsonNode nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
-            if(nameNode.path("message").asText().equals("OK")){
+            if(nameNode.path("code").asText().equals("200")){
                 Sequel.meghapus("bridging_sep","no_sep",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 tampil();
                 emptTeks();
@@ -2496,7 +2496,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
             JsonNode response = root.path("response").path("sep").path("noSep");
-            if(nameNode.path("message").asText().equals("Sukses")){
+            if(nameNode.path("code").asText().equals("200")){
                 System.out.println("SEP : "+response.asText());
                  if(Sequel.menyimpantf("bridging_sep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","SEP",31,new String[]{
                      response.asText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
@@ -2542,7 +2542,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                             System.out.println("code : "+nameNode2.path("code").asText());
                             System.out.println("message : "+nameNode2.path("message").asText());
                             JsonNode response2 = root2.path("response");
-                            if(nameNode2.path("message").asText().equals("Sukses")){
+                            if(nameNode2.path("code").asText().equals("200")){
                                 Sequel.mengedit("bridging_sep","no_sep=?","tglpulang=?",2,new String[]{                             
                                      Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
                                      response.asText()
