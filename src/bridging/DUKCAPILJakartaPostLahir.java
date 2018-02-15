@@ -37,18 +37,21 @@ public class DUKCAPILJakartaPostLahir {
     public boolean post(String nokk,String nmbayi,String tgllhr,String jamlhr,String jk,String jnslhr,String lahirke,
                        String brt,String pjg,String pnlglhr,String nikibu,String nmibu,String alamatibu,String kerjaibu,
                        String nikayah,String nmayah,String alamatayah,String kerjaayah,String noskl,String pnlgnama,
-                       String tindaklhr,String bpjsibu,String bpjsayah,String notlp,String bpjsby) {
+                       String tindaklhr,String bpjsibu,String bpjsayah,String notlp,String bpjsby,String nikplpr,String nmplpr,
+                       String almtplpr,String krjplpr,String niks1,String nms1,String almts1,String krjs1,String niks2,
+                       String nms2,String almts2,String krjs2,String umribu,String umrayah,String umrplpr,String umrs1,
+                       String umrs2) {
         BPJSApi api=new BPJSApi();
         status=false;
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLDUKCAPILJAKARTA")+"?usernm="+prop.getProperty("USERDUKCAPILJAKARTA")+"&pass="+prop.getProperty("PASSDUKCAPILJAKARTA")+"&app=SILaporLahir&pget=Kelahiran&pusr=admin&proc=POSTLAHIR&nokk="+nokk+"&nmbayi="+nmbayi+"&tgllhr="+tgllhr+"&jamlhr="+jamlhr+"&jk="+jk+"&jnslhr="+jnslhr+"&lahirke="+lahirke+"&brt="+brt+"&pjg="+pjg+"&pnlglhr="+pnlglhr+"&nikibu="+nikibu+"&nmibu="+nmibu+"&alamatibu="+alamatibu+"&kerjaibu="+kerjaibu+"&nikayah="+nikayah+"&nmayah="+nmayah+"&alamatayah="+alamatayah+"&kerjaayah="+kerjaayah+"&noskl="+noskl+"&pnlgnama="+pnlgnama+"&tindaklhr="+tindaklhr+"&bpjsibu="+bpjsibu+"&bpjsayah="+bpjsayah+"&notlp="+notlp+"&bpjsby="+bpjsby+"&pkey="+Sequel.cariIsi("select md5(concat('"+prop.getProperty("VAR1DUKCAPILJAKARTA")+"',md5(date_format(current_date(),'%d%m%Y')),'"+prop.getProperty("VAR2DUKCAPILJAKARTA")+"'))");	
+            String URL = prop.getProperty("URLDUKCAPILJAKARTA")+"?usernm="+prop.getProperty("USERDUKCAPILJAKARTA")+"&pass="+prop.getProperty("PASSDUKCAPILJAKARTA")+"&app=SILaporLahir&pget=Kelahiran&pusr=admin&proc=POSTLAHIR&nokk="+nokk+"&nmbayi="+nmbayi+"&tgllhr="+tgllhr+"&jamlhr="+jamlhr+"&jk="+jk+"&jnslhr="+jnslhr+"&lahirke="+lahirke+"&brt="+brt+"&pjg="+pjg+"&pnlglhr="+pnlglhr+"&nikibu="+nikibu+"&nmibu="+nmibu+"&alamatibu="+alamatibu+"&kerjaibu="+kerjaibu+"&nikayah="+nikayah+"&nmayah="+nmayah+"&alamatayah="+alamatayah+"&kerjaayah="+kerjaayah+"&noskl="+noskl+"&pnlgnama="+pnlgnama+"&tindaklhr="+tindaklhr+"&bpjsibu="+bpjsibu+"&bpjsayah="+bpjsayah+"&notlp="+notlp+"&bpjsby="+bpjsby+"&nikplpr="+nikplpr+"&nmplpr="+nmplpr+"&almtplpr="+almtplpr+"&krjplpr="+krjplpr+"&niks1="+niks1+"&nms1="+nms1+"&almts1="+almts1+"&krjs1="+krjs1+"&niks2="+niks2+"&nms2="+nms2+"&almts2="+almts2+"&krjs2="+krjs2+"&umribu="+umribu+"&umrayah="+umrayah+"&umrplpr="+umrplpr+"&umrs1="+umrs1+"&umrs2="+umrs2+"&pkey="+Sequel.cariIsi("select md5(concat('"+prop.getProperty("VAR1DUKCAPILJAKARTA")+"',md5(date_format(current_date(),'%d%m%Y')),'"+prop.getProperty("VAR2DUKCAPILJAKARTA")+"'))");	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_XML);
 	    HttpEntity requestEntity = new HttpEntity(headers);
 	    RestTemplate rest = new RestTemplate();            
-            // System.out.println(URL);
+             System.out.println(URL);
             String data=rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody();
             JSONObject xmlJSONObj = XML.toJSONObject(data);
             String jsonPrettyPrintString = xmlJSONObj.toString(4);

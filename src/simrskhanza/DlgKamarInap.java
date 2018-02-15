@@ -3469,6 +3469,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             norawatgabung="";
                             tampil();
                         }
+                    }else{
+                        gabungkan="";
+                        norawatgabung="";
                     }
                 }
             }
