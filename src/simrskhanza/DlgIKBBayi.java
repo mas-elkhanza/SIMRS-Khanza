@@ -3122,6 +3122,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 krjplpr=(PekerjaanPelapor.getSelectedIndex()+1)+"";
                 krjs1=(PekerjaanSaksi1.getSelectedIndex()+1)+"";
                 krjs2=(PekerjaanSaksi2.getSelectedIndex()+1)+"";
+                notlp=TelpOrtu.getText();
                 
                 if(postlahir.post(nokk, nmbayi, tgllhr, jamlhr, jk, jnslhr, lahirke, brt, pjg, 
                         pnlglhr, nikibu, nmibu, alamatibu, kerjaibu, nikayah, nmayah, alamatayah, 

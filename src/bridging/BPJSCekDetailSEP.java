@@ -57,7 +57,7 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"","","",""};
+        Object[] row={"","",""};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -67,16 +67,14 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(150);
             }else if(i==1){
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(250);
             }else if(i==2){
-                column.setPreferredWidth(210);
-            }else if(i==3){
-                column.setPreferredWidth(220);
+                column.setPreferredWidth(250);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());        
@@ -191,8 +189,7 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
                 Sequel.menyimpan("temporary","'0','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','"+
-                                tabMode.getValueAt(r,2).toString()+"','"+
-                                tabMode.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
+                                tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>();                 
@@ -262,58 +259,58 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
                 Valid.tabelKosong(tabMode);
                 JsonNode response = root.path("response");
                 tabMode.addRow(new Object[]{
-                    "Catatan",": "+response.path("catatan").asText(),"",""
+                    "Catatan",": "+response.path("catatan").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Diagnosa",": "+response.path("diagnosa").asText(),"",""
+                    "Diagnosa",": "+response.path("diagnosa").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Jenis Pelayanan",": "+response.path("jnsPelayanan").asText(),"",""
+                    "Jenis Pelayanan",": "+response.path("jnsPelayanan").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Kelas Rawat",": "+response.path("kelasRawat").asText(),"",""
+                    "Kelas Rawat",": "+response.path("kelasRawat").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Nomor SEP",": "+response.path("noSep").asText(),"",""
+                    "Nomor SEP",": "+response.path("noSep").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Penjamin",": "+response.path("penjamin").asText(),"",""
+                    "Penjamin",": "+response.path("penjamin").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Peserta",": ","",""
+                    "Peserta",": ",""
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Asuransi",": "+response.path("peserta").path("asuransi").asText(),""
+                    "","   Asuransi",": "+response.path("peserta").path("asuransi").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Hak Kelas",": "+response.path("peserta").path("hakKelas").asText(),""
+                    "","   Hak Kelas",": "+response.path("peserta").path("hakKelas").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Jenis Peserta",": "+response.path("peserta").path("jnsPeserta").asText(),""
+                    "","   Jenis Peserta",": "+response.path("peserta").path("jnsPeserta").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Jenis Kelamin",": "+response.path("peserta").path("kelamin").asText(),""
+                    "","   Jenis Kelamin",": "+response.path("peserta").path("kelamin").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Nama",": "+response.path("peserta").path("nama").asText(),""
+                    "","   Nama",": "+response.path("peserta").path("nama").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   No.Kartu",": "+response.path("peserta").path("noKartu").asText(),""
+                    "","   No.Kartu",": "+response.path("peserta").path("noKartu").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   No.R.M.",": "+response.path("peserta").path("noMr").asText(),""
+                    "","   No.R.M.",": "+response.path("peserta").path("noMr").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "","   Tangga Lahir",": "+response.path("peserta").path("tglLahir").asText(),""
+                    "","   Tangga Lahir",": "+response.path("peserta").path("tglLahir").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "Poli",": "+response.path("poli").asText(),"",""
+                    "Poli",": "+response.path("poli").asText(),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Eksekutif",": "+response.path("poliEksekutif").asText().replaceAll("0","Tidak").replaceAll("1","Ya"),"",""
+                    "Eksekutif",": "+response.path("poliEksekutif").asText().replaceAll("0","Tidak").replaceAll("1","Ya"),""
                 });
                 tabMode.addRow(new Object[]{
-                    "Tanggal SEP",": "+response.path("tglSep").asText(),"",""
+                    "Tanggal SEP",": "+response.path("tglSep").asText(),""
                 });
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
