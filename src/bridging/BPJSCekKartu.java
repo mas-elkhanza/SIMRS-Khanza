@@ -714,7 +714,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -992,7 +992,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         TNo.setBounds(107, 25, 160, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2018" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2018" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -1422,7 +1422,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel23);
         jLabel23.setBounds(430, 55, 100, 23);
 
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2018 15:02:12" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2018 09:35:37" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -1441,7 +1441,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel30);
         jLabel30.setBounds(430, 25, 100, 23);
 
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2018 15:02:12" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2018 09:35:37" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -1751,11 +1751,6 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         Eksekutif.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         Eksekutif.setName("Eksekutif"); // NOI18N
         Eksekutif.setOpaque(false);
-        Eksekutif.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                EksekutifItemStateChanged(evt);
-            }
-        });
         Eksekutif.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 EksekutifKeyPressed(evt);
@@ -2473,7 +2468,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_TanggalSEPKeyPressed
 
     private void TanggalRujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalRujukKeyPressed
-        Valid.pindah2(evt, TNoReg,NoRujukan);
+        Valid.pindah2(evt, kdpoli,NoRujukan);
     }//GEN-LAST:event_TanggalRujukKeyPressed
 
     private void NoRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRujukanKeyPressed
@@ -2487,7 +2482,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPPKRujukanActionPerformed
 
     private void btnPPKRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPPKRujukanKeyPressed
-        Valid.pindah(evt,TanggalSEP,btnDiagnosa);
+        Valid.pindah(evt,AsalRujukan,btnDiagnosa);
     }//GEN-LAST:event_btnPPKRujukanKeyPressed
 
     private void btnDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaActionPerformed
@@ -2517,7 +2512,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPoliActionPerformed
 
     private void btnPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliKeyPressed
-        Valid.pindah(evt,btnDiagnosa,LakaLantas);
+        Valid.pindah(evt,btnDiagnosa,TanggalRujuk);
     }//GEN-LAST:event_btnPoliKeyPressed
 
     private void CatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CatatanKeyPressed
@@ -2539,7 +2534,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_JenisPelayananKeyPressed
 
     private void KelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelasKeyPressed
-        Valid.pindah(evt,JenisPelayanan,kddokter);
+        Valid.pindah(evt,JenisPelayanan,Eksekutif);
     }//GEN-LAST:event_KelasKeyPressed
 
     private void LakaLantasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LakaLantasKeyPressed
@@ -2552,7 +2547,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
 
     private void TNoRegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRegKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            TanggalRujuk.requestFocus();
+            AsalRujukan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             if(KabupatenPj.getText().equals("KABUPATEN")){
                 KabupatenPj.setText("");
@@ -2568,7 +2563,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokterActionPerformed(null);
         }else{
-            Valid.pindah(evt,Kelas,BtnSimpan);
+            Valid.pindah(evt,COB,BtnSimpan);
         }
     }//GEN-LAST:event_kddokterKeyPressed
 
@@ -2757,19 +2752,15 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     }//GEN-LAST:event_MnDocumentActionPerformed
 
     private void AsalRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsalRujukanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TNoReg,btnPPKRujukan);
     }//GEN-LAST:event_AsalRujukanKeyPressed
 
-    private void EksekutifItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EksekutifItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EksekutifItemStateChanged
-
     private void EksekutifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EksekutifKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kelas,COB);
     }//GEN-LAST:event_EksekutifKeyPressed
 
     private void COBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_COBKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Eksekutif,kddokter);
     }//GEN-LAST:event_COBKeyPressed
 
     private void ChkJasaRaharjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkJasaRaharjaActionPerformed

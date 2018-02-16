@@ -618,7 +618,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         jLabel30 = new widget.Label();
         TanggalRujuk = new widget.Tanggal();
         jLabel31 = new widget.Label();
-        NoRujukan1 = new widget.TextBox();
+        NoRujukan2 = new widget.TextBox();
         jLabel10 = new widget.Label();
         KdPPK = new widget.TextBox();
         NmPPK = new widget.TextBox();
@@ -1490,7 +1490,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel23);
         jLabel23.setBounds(430, 55, 100, 23);
 
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2018 15:06:36" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2018 09:46:50" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -1509,7 +1509,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel30);
         jLabel30.setBounds(430, 25, 100, 23);
 
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2018 15:06:36" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2018 09:46:50" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -1528,15 +1528,15 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel31);
         jLabel31.setBounds(675, 25, 80, 23);
 
-        NoRujukan1.setHighlighter(null);
-        NoRujukan1.setName("NoRujukan1"); // NOI18N
-        NoRujukan1.addKeyListener(new java.awt.event.KeyAdapter() {
+        NoRujukan2.setHighlighter(null);
+        NoRujukan2.setName("NoRujukan2"); // NOI18N
+        NoRujukan2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoRujukan1KeyPressed(evt);
+                NoRujukan2KeyPressed(evt);
             }
         });
-        FormKelengkapanSEP.add(NoRujukan1);
-        NoRujukan1.setBounds(759, 25, 165, 23);
+        FormKelengkapanSEP.add(NoRujukan2);
+        NoRujukan2.setBounds(759, 25, 165, 23);
 
         jLabel10.setText("PPK Pelayanan :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -1819,11 +1819,6 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         Eksekutif.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         Eksekutif.setName("Eksekutif"); // NOI18N
         Eksekutif.setOpaque(false);
-        Eksekutif.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                EksekutifItemStateChanged(evt);
-            }
-        });
         Eksekutif.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 EksekutifKeyPressed(evt);
@@ -2571,12 +2566,12 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     }//GEN-LAST:event_TanggalSEPKeyPressed
 
     private void TanggalRujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalRujukKeyPressed
-        Valid.pindah2(evt, TNoReg,NoRujukan);
+        Valid.pindah2(evt, kdpoli,NoRujukan);
     }//GEN-LAST:event_TanggalRujukKeyPressed
 
-    private void NoRujukan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRujukan1KeyPressed
+    private void NoRujukan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRujukan2KeyPressed
         Valid.pindah(evt,TanggalRujuk, TanggalSEP);
-    }//GEN-LAST:event_NoRujukan1KeyPressed
+    }//GEN-LAST:event_NoRujukan2KeyPressed
 
     private void btnPPKRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPKRujukanActionPerformed
         faskes.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
@@ -2585,7 +2580,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPPKRujukanActionPerformed
 
     private void btnPPKRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPPKRujukanKeyPressed
-        Valid.pindah(evt,TanggalSEP,btnDiagnosa);
+        Valid.pindah(evt,AsalRujukan,btnDiagnosa);
     }//GEN-LAST:event_btnPPKRujukanKeyPressed
 
     private void btnDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaActionPerformed
@@ -2615,7 +2610,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPoliActionPerformed
 
     private void btnPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliKeyPressed
-        Valid.pindah(evt,btnDiagnosa,LakaLantas);
+        Valid.pindah(evt,btnDiagnosa,TanggalRujuk);
     }//GEN-LAST:event_btnPoliKeyPressed
 
     private void CatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CatatanKeyPressed
@@ -2637,7 +2632,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     }//GEN-LAST:event_JenisPelayananKeyPressed
 
     private void KelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelasKeyPressed
-        Valid.pindah(evt,JenisPelayanan,kddokter);
+        Valid.pindah(evt,JenisPelayanan,Eksekutif);
     }//GEN-LAST:event_KelasKeyPressed
 
     private void LakaLantasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LakaLantasKeyPressed
@@ -2650,7 +2645,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
 
     private void TNoRegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRegKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            TanggalRujuk.requestFocus();
+            AsalRujukan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             if(KabupatenPj.getText().equals("KABUPATEN")){
                 KabupatenPj.setText("");
@@ -2666,7 +2661,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokterActionPerformed(null);
         }else{
-            Valid.pindah(evt,Kelas,BtnSimpan);
+            Valid.pindah(evt,COB,BtnSimpan);
         }
     }//GEN-LAST:event_kddokterKeyPressed
 
@@ -2679,19 +2674,15 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void AsalRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsalRujukanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TNoReg,btnPPKRujukan);
     }//GEN-LAST:event_AsalRujukanKeyPressed
 
-    private void EksekutifItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EksekutifItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EksekutifItemStateChanged
-
     private void EksekutifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EksekutifKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kelas,COB);
     }//GEN-LAST:event_EksekutifKeyPressed
 
     private void COBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_COBKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Eksekutif,kddokter);
     }//GEN-LAST:event_COBKeyPressed
 
     private void ChkJasaRaharjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkJasaRaharjaActionPerformed
@@ -2787,7 +2778,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     private widget.TextBox NoBalasan;
     private widget.TextBox NoRm;
     private widget.TextBox NoRujukan;
-    private widget.TextBox NoRujukan1;
+    private widget.TextBox NoRujukan2;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Pekerjaan;
     private widget.TextBox PekerjaanPj;
@@ -2864,7 +2855,6 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String nomorrujukan) {
-        BPJSApi api=new BPJSApi();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/"+nomorrujukan;	
@@ -2882,212 +2872,131 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             JsonNode nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
-                JsonNode response = root.path("response").path("item");
+                JsonNode response = root.path("response").path("rujukan");
                 tabMode.addRow(new Object[]{
-                    "Catatan",": "+response.path("catatan").asText()
-                });   
-                Catatan.setText(response.path("catatan").asText());
+                    "Diagnosa",": "+response.path("diagnosa").path("kode").asText()+" "+response.path("diagnosa").path("nama").asText()
+                });                   
+                KdPenyakit.setText(response.path("diagnosa").path("kode").asText());
+                NmPenyakit.setText(response.path("diagnosa").path("nama").asText());
                 tabMode.addRow(new Object[]{
                     "Keluhan",": "+response.path("keluhan").asText()
-                });     
+                }); 
                 tabMode.addRow(new Object[]{
                     "No.Kunjungan",": "+response.path("noKunjungan").asText()
                 }); 
                 tabMode.addRow(new Object[]{
-                    "Tanggal Kunjungan",": "+response.path("tglKunjungan").asText()
+                    "Pelayanan",": "+response.path("pelayanan").path("kode").asText()+" "+response.path("pelayanan").path("nama").asText()
                 }); 
                 tabMode.addRow(new Object[]{
-                    "Pemeriksaan Fisik Lain",": "+response.path("pemFisikLain").asText()
-                });  
+                    "Peserta",": "
+                }); 
                 tabMode.addRow(new Object[]{
-                    "Poli Rujukan",""
+                    "       COB",": "
                 });
                 tabMode.addRow(new Object[]{
-                    "       Kode Poli",": "+response.path("poliRujukan").path("kdPoli").asText()
+                    "              Nama Asuransi",": "+response.path("peserta").path("cob").path("nmAsuransi").asText()
                 }); 
-                KdPoli.setText(response.path("poliRujukan").path("kdPoli").asText());
                 tabMode.addRow(new Object[]{
-                    "       Nama Poli",": "+response.path("poliRujukan").path("nmPoli").asText()
+                    "              No. Asuransi",": "+response.path("peserta").path("cob").path("noAsuransi").asText()
                 }); 
-                NmPoli.setText(response.path("poliRujukan").path("nmPoli").asText());
-                isNumber();
-                isPoli();
                 tabMode.addRow(new Object[]{
-                    "Diagnosa",":"
-                });               
-                tabMode.addRow(new Object[]{
-                    "       Kode Diagnosa",": "+response.path("diagnosa").path("kdDiag").asText()
-                });   
-                KdPenyakit.setText(response.path("diagnosa").path("kdDiag").asText());
-                tabMode.addRow(new Object[]{
-                    "       Nama Diagnosa",": "+response.path("diagnosa").path("nmDiag").asText()
-                });                  
-                NmPenyakit.setText(response.path("diagnosa").path("nmDiag").asText());
-                tabMode.addRow(new Object[]{
-                    "Peserta",":"
-                });  
-                tabMode.addRow(new Object[]{
-                    "       Nama",": "+response.path("peserta").path("nama").asText()
+                    "              Tanggal TAT",": "+response.path("peserta").path("cob").path("tglTAT").asText()
                 }); 
+                tabMode.addRow(new Object[]{
+                    "              Tanggal TMT",": "+response.path("peserta").path("cob").path("tglTMT").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "       Hak Kelas",": "+response.path("peserta").path("hakKelas").path("kode").asText()+". "+response.path("peserta").path("hakKelas").path("keterangan").asText()
+                });
+                Kelas.setSelectedItem(response.path("peserta").path("hakKelas").path("kode").asText()+". "+response.path("peserta").path("hakKelas").path("keterangan").asText().replaceAll("KELAS","Kelas"));
+                tabMode.addRow(new Object[]{
+                    "       Informasi",": "
+                });
+                tabMode.addRow(new Object[]{
+                    "              Dinsos",": "+response.path("peserta").path("informasi").path("dinsos").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "              No.SKTM",": "+response.path("peserta").path("informasi").path("noSKTM").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "              Prolanis PRB",": "+response.path("peserta").path("informasi").path("prolanisPRB").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "       Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("kode").asText()+". "+response.path("peserta").path("jenisPeserta").path("keterangan").asText()
+                });
+                Pekerjaan.setText(response.path("peserta").path("jenisPeserta").path("keterangan").asText());
+                tabMode.addRow(new Object[]{
+                    "       Medical Record",": "
+                });
+                tabMode.addRow(new Object[]{
+                    "              Nomor RM",": "+response.path("peserta").path("mr").path("noMR").asText()
+                }); 
+                tabMode.addRow(new Object[]{
+                    "              Nomor Telp",": "+response.path("peserta").path("mr").path("noTelepon").asText()
+                });
+                TTlp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
+                tabMode.addRow(new Object[]{
+                    "       Nama Pasien",": "+response.path("peserta").path("nama").asText()
+                });
                 TNm.setText(response.path("peserta").path("nama").asText());
                 tabMode.addRow(new Object[]{
                     "       NIK",": "+response.path("peserta").path("nik").asText()
-                }); 
+                });
                 TKtp.setText(response.path("peserta").path("nik").asText());
                 tabMode.addRow(new Object[]{
                     "       No.Kartu",": "+response.path("peserta").path("noKartu").asText()
-                }); 
+                });
                 TNoPeserta.setText(response.path("peserta").path("noKartu").asText());
                 tabMode.addRow(new Object[]{
-                    "       No.Rekam Medis",": "+response.path("peserta").path("noMr").asText()
-                }); 
-                tabMode.addRow(new Object[]{
                     "       Pisa",": "+response.path("peserta").path("pisa").asText()
-                }); 
-                if(response.path("peserta").path("sex").asText().equals("L")){
-                    tabMode.addRow(new Object[]{
-                        "       Jenis Kelamin",": Laki-Laki"
-                    });
-                }else if(response.path("peserta").path("sex").asText().equals("P")){
-                    tabMode.addRow(new Object[]{
-                        "       Jenis Kelamin",": Perempuan"
-                    });
-                }   
-                switch (response.path("peserta").path("sex").asText()) {
-                    case "L":
-                        CmbJk.setSelectedItem("L");
-                        break;
-                    case "P":
-                        CmbJk.setSelectedItem("P");
-                        break;
-                }
-                tabMode.addRow(new Object[]{
-                    "       Tanggal Cetak Kartu",": "+response.path("peserta").path("tglCetakKartu").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "       Tanggal Lahir",": "+response.path("peserta").path("tglLahir").asText()
+                    "       Provider",": "+response.path("peserta").path("provUmum").path("kdProvider").asText()+" "+response.path("peserta").path("provUmum").path("nmProvider").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "       Jenis Kelamin",": "+response.path("peserta").path("sex").asText().replaceAll("L","Laki-Laki").replaceAll("P","Perempuan")
+                });
+                CmbJk.setSelectedItem(response.path("peserta").path("sex").asText());
+                tabMode.addRow(new Object[]{
+                    "       Status Peserta",": "+response.path("peserta").path("statusPeserta").path("kode").asText()+" "+response.path("peserta").path("statusPeserta").path("keterangan").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "       Tgl. Cetak Kartu",": "+response.path("peserta").path("tglCetakKartu").asText()
+                });
+                tabMode.addRow(new Object[]{
+                    "       Tgl. Lahir",": "+response.path("peserta").path("tglLahir").asText()
                 });
                 Valid.SetTgl(DTPLahir,response.path("peserta").path("tglLahir").asText());
-                
                 tabMode.addRow(new Object[]{
-                    "       Tanggal TAT",": "+response.path("peserta").path("tglTAT").asText()
+                    "       Tgl. TAT",": "+response.path("peserta").path("tglTAT").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "       Tanggal TMT",": "+response.path("peserta").path("tglTMT").asText()
+                    "       Tgl. TMT",": "+response.path("peserta").path("tglTMT").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "       Umur",": "+response.path("peserta").path("umur").asText()
+                    "       Umur Saat Pelayanan",": "+response.path("peserta").path("umur").path("umurSaatPelayanan").asText()
                 });
                 tabMode.addRow(new Object[]{
-                    "       Jenis Peserta",":"
-                });                  
+                    "       Umur Sekarang",": "+response.path("peserta").path("umur").path("umurSekarang").asText()
+                });
+                TUmur.setText(response.path("peserta").path("umur").path("umurSekarang").asText().replaceAll("tahun ,","Th ").replaceAll("bulan ,","Bl ").replaceAll("hari","Hr"));
                 tabMode.addRow(new Object[]{
-                    "               Kode Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText()
-                });  
-                tabMode.addRow(new Object[]{
-                    "               Nama Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText()
+                    "Poli Rujukan",": "+response.path("poliRujukan").path("kode").asText()+" "+response.path("poliRujukan").path("nama").asText()
                 }); 
+                KdPoli.setText(response.path("poliRujukan").path("kode").asText());
+                NmPoli.setText(response.path("poliRujukan").path("nama").asText());
+                tabMode.addRow(new Object[]{
+                    "Provider Perujuk",": "+response.path("provPerujuk").path("kode").asText()+" "+response.path("provPerujuk").path("nama").asText()
+                });
+                KdPpkRujukan.setText(response.path("provPerujuk").path("kode").asText());
+                NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());                
+                tabMode.addRow(new Object[]{
+                    "Tanggal Kunjungan",": "+response.path("tglKunjungan").asText()
+                }); 
+                isNumber();
+                isPoli();
                 Kdpnj.setText("BPJ");
                 nmpnj.setText("BPJS");
-                Pekerjaan.setText(response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText());
-                
-                tabMode.addRow(new Object[]{
-                    "       Kelas Tanggungan",":"
-                });  
-                tabMode.addRow(new Object[]{
-                    "               Kode Kelas",": "+response.path("peserta").path("kelasTanggungan").path("kdKelas").asText()
-                });  
-                tabMode.addRow(new Object[]{
-                    "               Nama Kelas",": "+response.path("peserta").path("kelasTanggungan").path("nmKelas").asText()
-                });   
-                if(response.path("peserta").path("kelasTanggungan").path("kdKelas").asText().equals("1")){
-                    Kelas.setSelectedIndex(0);
-                }else if(response.path("peserta").path("kelasTanggungan").path("kdKelas").asText().equals("2")){
-                    Kelas.setSelectedIndex(1);
-                }else if(response.path("peserta").path("kelasTanggungan").path("kdKelas").asText().equals("3")){
-                    Kelas.setSelectedIndex(2);
-                }
-                tabMode.addRow(new Object[]{
-                    "       Provider Umum",":"
-                });  
-                tabMode.addRow(new Object[]{
-                    "               Kode Cabang",": "+response.path("peserta").path("provUmum").path("kdCabang").asText()
-                });  
-                tabMode.addRow(new Object[]{
-                    "               Nama Cabang",": "+response.path("peserta").path("provUmum").path("nmCabang").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "               Kode Provider",": "+response.path("peserta").path("provUmum").path("kdProvider").asText()
-                }); 
-                KdPpkRujukan.setText(response.path("peserta").path("provUmum").path("kdProvider").asText());
-                
-                tabMode.addRow(new Object[]{
-                    "               Nama Provider",": "+response.path("peserta").path("provUmum").path("nmProvider").asText()
-                }); 
-                NmPpkRujukan.setText(response.path("peserta").path("provUmum").path("nmProvider").asText());                
-                tabMode.addRow(new Object[]{
-                    "       Status Peserta",":"
-                });  
-                tabMode.addRow(new Object[]{
-                    "               Keterangan",": "+response.path("peserta").path("statusPeserta").path("keterangan").asText()
-                });  
-                tabMode.addRow(new Object[]{
-                    "               Kode",": "+response.path("peserta").path("statusPeserta").path("kode").asText()
-                });   
-                tabMode.addRow(new Object[]{
-                    "       Informasi",":"
-                });                 
-                tabMode.addRow(new Object[]{
-                    "               Dinsos",": "+response.path("peserta").path("informasi").path("dinsos").asText()
-                });  
-                tabMode.addRow(new Object[]{
-                    "               Iuran",": "+response.path("peserta").path("informasi").path("iuran").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "               No.SKTM",": "+response.path("peserta").path("informasi").path("noSKTM").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "               Prolanis PRB",": "+response.path("peserta").path("informasi").path("prolanisPRB").asText()
-                });                                 
-                tabMode.addRow(new Object[]{
-                    "Provider Kunjungan",""
-                });
-                tabMode.addRow(new Object[]{
-                    "       Kode Cabang",": "+response.path("provKunjungan").path("kdCabang").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "       Nama Cabang",": "+response.path("provKunjungan").path("nmCabang").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "       Kode Provider",": "+response.path("provKunjungan").path("kdProvider").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "       Nama Provider",": "+response.path("provKunjungan").path("nmProvider").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "Provider Rujukan",""
-                });
-                tabMode.addRow(new Object[]{
-                    "       Kode Cabang",": "+response.path("provRujukan").path("kdCabang").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "       Nama Cabang",": "+response.path("provRujukan").path("nmCabang").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "       Kode Provider",": "+response.path("provRujukan").path("kdProvider").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "       Nama Provider",": "+response.path("provRujukan").path("nmProvider").asText()
-                });                 
-                tabMode.addRow(new Object[]{
-                    "Tingkat Pelayanan",""
-                });
-                tabMode.addRow(new Object[]{
-                    "       Tingkat Pelayanan",": "+response.path("tktPelayanan").path("tktPelayanan").asText()
-                }); 
-                tabMode.addRow(new Object[]{
-                    "       Nama Pelayanan",": "+response.path("tktPelayanan").path("nmPelayanan").asText()
-                }); 
                 ps=koneksi.prepareStatement(
                    "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
                    "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, pasien.alamat,"+
