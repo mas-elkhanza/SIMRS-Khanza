@@ -1318,7 +1318,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbObat.getSelectedRow()!= -1){
-            
+            deleteSJP();            
         }else{
             JOptionPane.showMessageDialog(null,"Silahkan pilih dulu data yang mau dihapus..!!");
         }            
@@ -2098,6 +2098,37 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(null,root.path("ERRORDESC").asText());
                 NoKartu.requestFocus();
+            }
+        }catch (Exception ex) {
+            System.out.println("Notifikasi Bridging : "+ex);
+            if(ex.toString().contains("UnknownHostException")){
+                JOptionPane.showMessageDialog(null,"Koneksi ke server Inhealth terputus...!");
+            }
+        }
+    }
+	
+    private void deleteSJP(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            String URL = prop.getProperty("URLAPIINHEALTH")+"/api/HapusSJP";	
+	    HttpHeaders headers = new HttpHeaders();            
+            headers.add("Content-Type","application/json");
+	    requestJson ="{ \"token\": \""+prop.getProperty("TOKENINHEALTH")+"\"," +
+                            "\"kodeprovider\": \""+KdPPK.getText()+"\"," +
+                            "\"nosjp\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"," +
+                            "\"alasanhapus\": \""+"kesalahan-input"+"\"," +
+                            "\"username\": \""+user+"\""+
+                         "}";
+            HttpEntity requestEntity = new HttpEntity(requestJson,headers);
+            RestTemplate rest = new RestTemplate();
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+            if(root.path("ERRORCODE").asText().equals("00")){
+                Sequel.meghapus("bridging_inhealth","no_sjp",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                tampil();
+                emptTeks();
+            }else{
+                JOptionPane.showMessageDialog(null,root.path("ERRORDESC").asText());
             }
         }catch (Exception ex) {
             System.out.println("Notifikasi Bridging : "+ex);
