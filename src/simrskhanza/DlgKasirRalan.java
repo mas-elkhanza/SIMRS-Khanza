@@ -30,7 +30,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.DlgBillingParsialRalan;
+import keuangan.DlgBilingParsialRalan;
 import keuangan.DlgLhtPiutang;
 import keuangan.DlgRBObatPoli;
 import keuangan.DlgRBJmDokter;
@@ -78,7 +78,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     public DlgBilingRalan billing=new DlgBilingRalan(null,false);
     private int i=0,pilihan=0,sudah=0;
     public DlgKamarInap kamarinap=new DlgKamarInap(null,false);
-    private DlgBillingParsialRalan parsialralan=new DlgBillingParsialRalan(null,false);
+    private DlgBilingParsialRalan parsialralan=new DlgBilingParsialRalan(null,false);
 
     /** Creates new form DlgReg
      * @param parent
@@ -5449,7 +5449,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             parsialralan.setLocationRelativeTo(internalFrame1);
             //parsialralan.emptTeks();
             //parsialralan.isCek();
-            //parsialralan.setNoRm(TNoRw.getText());   
+            parsialralan.setNoRm(TNoRw.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),1).toString());   
             //parsialralan.tampil();
             parsialralan.setVisible(true);                        
         }
