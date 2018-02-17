@@ -48,8 +48,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private String[] kode,nama,kategori;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
     private PreparedStatement psakunbayar,pstindakan,pstindakan2,pstindakan3,
-            pstindakan4,psset_tarif;
-    private ResultSet rsakunbayar,rstindakan,rsset_tarif;
+            pstindakan4,psset_tarif,psBayarDr,psBayarPr,psBayarDrPr;
+    private ResultSet rsakunbayar,rstindakan,rsset_tarif,rsbayar;
     private String kd_pj="",kd_poli="",poli_ralan="Yes",cara_bayar_ralan="Yes";
     /**
      * Creates new form DlgBillingParsialRalan
@@ -1293,6 +1293,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         tampil();
+        tampilBayar();
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void tbRawatDrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRawatDrMouseClicked
@@ -1444,6 +1445,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampilAkunBayar();
         tampil();
+        tampilBayar();
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -1638,7 +1640,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
          }
     }
     
-    public void tampil() {
+    private void tampil() {
         try{     
             jml=0;
             for(i=0;i<tbRawatDr.getRowCount();i++){
@@ -1828,5 +1830,59 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     
     public void isCek(){
         BtnTambahTindakan.setEnabled(var.gettarif_ralan());
+        BtnSimpan.setEnabled(var.getbilling_parsial());
+    }
+    
+    private void tampilBayar() {        
+        try {
+            switch (TabRawat.getSelectedIndex()) {
+                case 0:
+                    Valid.tabelKosong(tabModeDrBayar);
+                    psBayarDr=koneksi.prepareStatement(
+                        "select permintaan_jl_dr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                        "permintaan_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,permintaan_jl_dr.kd_dokter,"+
+                        "dokter.nm_dokter,permintaan_jl_dr.tgl_bayar,permintaan_jl_dr.jam_bayar,"+
+                        "permintaan_jl_dr.biaya_rawat from pasien inner join reg_periksa inner join "+
+                        "jns_perawatan inner join dokter inner join permintaan_jl_dr "+
+                        "on permintaan_jl_dr.no_rawat=reg_periksa.no_rawat "+
+                        "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "and permintaan_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                        "and permintaan_jl_dr.kd_dokter=dokter.kd_dokter where permintaan_jl_dr.no_rawat=?");
+                    try {
+                        psBayarDr.setString(1,TNoRw.getText());
+                        rsbayar=psBayarDr.executeQuery();
+                        while(rsbayar.next()){
+                            tabModeDrBayar.addRow(new Object[]{
+                                false,rsbayar.getString("no_rawat"),rsbayar.getString("no_rkm_medis"),
+                                rsbayar.getString("nm_pasien"),rsbayar.getString("kd_jenis_prw"),
+                                rsbayar.getString("nm_perawatan"),rsbayar.getString("kd_dokter"),
+                                rsbayar.getString("nm_dokter"),rsbayar.getString("tgl_bayar"),
+                                rsbayar.getString("jam_bayar"),rsbayar.getDouble("biaya_rawat")
+                            });
+                        }
+                    } catch (Exception e) {
+                        System.out.println("keuangan.DlgBilingParsialRalan.tampilBayar() : "+e);
+                    } finally{
+                        if(rsbayar!=null){
+                            rsbayar.close();
+                        }
+                        if(psBayarDr!=null){
+                            psBayarDr.close();
+                        }                
+                    }
+                    break;
+                case 1:
+                    Valid.tabelKosong(tabModePrBayar);
+                    break;
+                case 2:
+                    Valid.tabelKosong(tabModeDrPrBayar);
+                    break;
+                default:
+                    break;
+            } 
+                    
+        } catch (Exception e) {
+            System.out.println("keuangan.DlgBilingParsialRalan.tampilBayar() : "+e);
+        } 
     }
 }

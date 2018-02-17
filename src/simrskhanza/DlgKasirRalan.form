@@ -392,7 +392,7 @@
             </Property>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="MnRawatJalan2">
+            <MenuItem class="javax.swing.JMenuItem" name="MnBillingRawatJalan">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -410,16 +410,16 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="iconTextGap" type="int" value="5"/>
-                <Property name="name" type="java.lang.String" value="MnRawatJalan2" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="MnBillingRawatJalan" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnRawatJalan2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnBillingRawatJalanActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="MnPeriksaLab2">
+            <MenuItem class="javax.swing.JMenuItem" name="MnBillingPeriksaLab">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -437,16 +437,16 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="iconTextGap" type="int" value="5"/>
-                <Property name="name" type="java.lang.String" value="MnPeriksaLab2" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="MnBillingPeriksaLab" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnPeriksaLab2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnBillingPeriksaLabActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="MnPeriksaRadiologi2">
+            <MenuItem class="javax.swing.JMenuItem" name="MnBillingPeriksaRadiologi">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -464,13 +464,13 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="iconTextGap" type="int" value="5"/>
-                <Property name="name" type="java.lang.String" value="MnPeriksaRadiologi2" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="MnBillingPeriksaRadiologi" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[220, 26]"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnPeriksaRadiologi2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnBillingPeriksaRadiologiActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MnBilling">

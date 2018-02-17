@@ -68,7 +68,8 @@ public final class var {
             pcare_cek_rujukan=false,grafik_lab_ralantahun=false,grafik_rad_ralantahun=false,cek_entry_ralan=false,inacbg_klaim_baru_manual2=false,
             permintaan_medis=false,rekap_permintaan_medis=false,surat_pemesanan_medis=false,permintaan_non_medis=false,rekap_permintaan_non_medis=false,
             surat_pemesanan_non_medis=false,grafik_per_perujuk=false,bpjs_cek_prosedur=false,bpjs_cek_kelas_rawat=false,bpjs_cek_dokter=false,
-            bpjs_cek_spesialistik=false,bpjs_cek_ruangrawat=false,bpjs_cek_carakeluar=false,bpjs_cek_pasca_pulang=false,detail_tindakan_okvk=false;
+            bpjs_cek_spesialistik=false,bpjs_cek_ruangrawat=false,bpjs_cek_carakeluar=false,bpjs_cek_pasca_pulang=false,detail_tindakan_okvk=false,
+            billing_parsial=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -388,6 +389,7 @@ public final class var {
                         var.bpjs_cek_carakeluar=true;
                         var.bpjs_cek_pasca_pulang=true;
                         var.detail_tindakan_okvk=true;
+                        var.billing_parsial=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -691,6 +693,7 @@ public final class var {
                         var.bpjs_cek_carakeluar=rs2.getBoolean("bpjs_cek_carakeluar");
                         var.bpjs_cek_pasca_pulang=rs2.getBoolean("bpjs_cek_pasca_pulang");
                         var.detail_tindakan_okvk=rs2.getBoolean("detail_tindakan_okvk");
+                        var.billing_parsial=rs2.getBoolean("billing_parsial");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -992,6 +995,7 @@ public final class var {
                         var.bpjs_cek_carakeluar=false;
                         var.bpjs_cek_pasca_pulang=false;
                         var.detail_tindakan_okvk=false;
+                        var.billing_parsial=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1340,5 +1344,6 @@ public final class var {
     public static boolean getbpjs_cek_carakeluar(){return  var.bpjs_cek_carakeluar;}
     public static boolean getbpjs_cek_pasca_pulang(){return var.bpjs_cek_pasca_pulang;} 
     public static boolean getdetail_tindakan_okvk(){return var.detail_tindakan_okvk;}
+    public static boolean getbilling_parsial(){return var.billing_parsial;}
 
 }

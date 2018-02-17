@@ -365,9 +365,9 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnObatLangsung = new javax.swing.JMenuItem();
         MnDataPemberianObat = new javax.swing.JMenuItem();
         MnPilihBilling = new javax.swing.JMenu();
-        MnRawatJalan2 = new javax.swing.JMenuItem();
-        MnPeriksaLab2 = new javax.swing.JMenuItem();
-        MnPeriksaRadiologi2 = new javax.swing.JMenuItem();
+        MnBillingRawatJalan = new javax.swing.JMenuItem();
+        MnBillingPeriksaLab = new javax.swing.JMenuItem();
+        MnBillingPeriksaRadiologi = new javax.swing.JMenuItem();
         MnBilling = new javax.swing.JMenuItem();
         MnGanti = new javax.swing.JMenu();
         MnPoli = new javax.swing.JMenuItem();
@@ -787,56 +787,56 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnPilihBilling.setOpaque(true);
         MnPilihBilling.setPreferredSize(new java.awt.Dimension(220, 26));
 
-        MnRawatJalan2.setBackground(new java.awt.Color(255, 255, 255));
-        MnRawatJalan2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRawatJalan2.setForeground(new java.awt.Color(90, 120, 80));
-        MnRawatJalan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnRawatJalan2.setText("Billing Parsial Rawat Jalan");
-        MnRawatJalan2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnRawatJalan2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnRawatJalan2.setIconTextGap(5);
-        MnRawatJalan2.setName("MnRawatJalan2"); // NOI18N
-        MnRawatJalan2.setPreferredSize(new java.awt.Dimension(220, 26));
-        MnRawatJalan2.addActionListener(new java.awt.event.ActionListener() {
+        MnBillingRawatJalan.setBackground(new java.awt.Color(255, 255, 255));
+        MnBillingRawatJalan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnBillingRawatJalan.setForeground(new java.awt.Color(90, 120, 80));
+        MnBillingRawatJalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnBillingRawatJalan.setText("Billing Parsial Rawat Jalan");
+        MnBillingRawatJalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnBillingRawatJalan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnBillingRawatJalan.setIconTextGap(5);
+        MnBillingRawatJalan.setName("MnBillingRawatJalan"); // NOI18N
+        MnBillingRawatJalan.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnBillingRawatJalan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnRawatJalan2ActionPerformed(evt);
+                MnBillingRawatJalanActionPerformed(evt);
             }
         });
-        MnPilihBilling.add(MnRawatJalan2);
+        MnPilihBilling.add(MnBillingRawatJalan);
 
-        MnPeriksaLab2.setBackground(new java.awt.Color(255, 255, 255));
-        MnPeriksaLab2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPeriksaLab2.setForeground(new java.awt.Color(90, 120, 80));
-        MnPeriksaLab2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPeriksaLab2.setText("Billing Parsial Laborat");
-        MnPeriksaLab2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnPeriksaLab2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnPeriksaLab2.setIconTextGap(5);
-        MnPeriksaLab2.setName("MnPeriksaLab2"); // NOI18N
-        MnPeriksaLab2.setPreferredSize(new java.awt.Dimension(220, 26));
-        MnPeriksaLab2.addActionListener(new java.awt.event.ActionListener() {
+        MnBillingPeriksaLab.setBackground(new java.awt.Color(255, 255, 255));
+        MnBillingPeriksaLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnBillingPeriksaLab.setForeground(new java.awt.Color(90, 120, 80));
+        MnBillingPeriksaLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnBillingPeriksaLab.setText("Billing Parsial Laborat");
+        MnBillingPeriksaLab.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnBillingPeriksaLab.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnBillingPeriksaLab.setIconTextGap(5);
+        MnBillingPeriksaLab.setName("MnBillingPeriksaLab"); // NOI18N
+        MnBillingPeriksaLab.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnBillingPeriksaLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPeriksaLab2ActionPerformed(evt);
+                MnBillingPeriksaLabActionPerformed(evt);
             }
         });
-        MnPilihBilling.add(MnPeriksaLab2);
+        MnPilihBilling.add(MnBillingPeriksaLab);
 
-        MnPeriksaRadiologi2.setBackground(new java.awt.Color(255, 255, 255));
-        MnPeriksaRadiologi2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPeriksaRadiologi2.setForeground(new java.awt.Color(90, 120, 80));
-        MnPeriksaRadiologi2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPeriksaRadiologi2.setText("Billing Parsial Radiologi");
-        MnPeriksaRadiologi2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnPeriksaRadiologi2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnPeriksaRadiologi2.setIconTextGap(5);
-        MnPeriksaRadiologi2.setName("MnPeriksaRadiologi2"); // NOI18N
-        MnPeriksaRadiologi2.setPreferredSize(new java.awt.Dimension(220, 26));
-        MnPeriksaRadiologi2.addActionListener(new java.awt.event.ActionListener() {
+        MnBillingPeriksaRadiologi.setBackground(new java.awt.Color(255, 255, 255));
+        MnBillingPeriksaRadiologi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnBillingPeriksaRadiologi.setForeground(new java.awt.Color(90, 120, 80));
+        MnBillingPeriksaRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnBillingPeriksaRadiologi.setText("Billing Parsial Radiologi");
+        MnBillingPeriksaRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnBillingPeriksaRadiologi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnBillingPeriksaRadiologi.setIconTextGap(5);
+        MnBillingPeriksaRadiologi.setName("MnBillingPeriksaRadiologi"); // NOI18N
+        MnBillingPeriksaRadiologi.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnBillingPeriksaRadiologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPeriksaRadiologi2ActionPerformed(evt);
+                MnBillingPeriksaRadiologiActionPerformed(evt);
             }
         });
-        MnPilihBilling.add(MnPeriksaRadiologi2);
+        MnPilihBilling.add(MnBillingPeriksaRadiologi);
 
         MnBilling.setBackground(new java.awt.Color(255, 255, 255));
         MnBilling.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -3186,7 +3186,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel15);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3205,7 +3205,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel17);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-02-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-02-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -5437,7 +5437,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         DlgCatatan.dispose();
     }//GEN-LAST:event_internalFrame7MouseClicked
 
-    private void MnRawatJalan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRawatJalan2ActionPerformed
+    private void MnBillingRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBillingRawatJalanActionPerformed
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -5448,20 +5448,19 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             parsialralan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             parsialralan.setLocationRelativeTo(internalFrame1);
             //parsialralan.emptTeks();
-            //parsialralan.isCek();
+            parsialralan.isCek();
             parsialralan.setNoRm(TNoRw.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),1).toString());   
-            //parsialralan.tampil();
             parsialralan.setVisible(true);                        
         }
-    }//GEN-LAST:event_MnRawatJalan2ActionPerformed
+    }//GEN-LAST:event_MnBillingRawatJalanActionPerformed
 
-    private void MnPeriksaLab2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPeriksaLab2ActionPerformed
+    private void MnBillingPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBillingPeriksaLabActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MnPeriksaLab2ActionPerformed
+    }//GEN-LAST:event_MnBillingPeriksaLabActionPerformed
 
-    private void MnPeriksaRadiologi2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPeriksaRadiologi2ActionPerformed
+    private void MnBillingPeriksaRadiologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBillingPeriksaRadiologiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MnPeriksaRadiologi2ActionPerformed
+    }//GEN-LAST:event_MnBillingPeriksaRadiologiActionPerformed
 
     /**
     * @param args the command line arguments
@@ -5508,6 +5507,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem MnBelum;
     private javax.swing.JMenuItem MnBilling;
     private javax.swing.JMenuItem MnBilling1;
+    private javax.swing.JMenuItem MnBillingPeriksaLab;
+    private javax.swing.JMenuItem MnBillingPeriksaRadiologi;
+    private javax.swing.JMenuItem MnBillingRawatJalan;
     private javax.swing.JMenuItem MnDIrawat;
     private javax.swing.JMenuItem MnDataPemberianObat;
     private javax.swing.JMenuItem MnDataPemberianObat1;
@@ -5572,16 +5574,13 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem MnPenjualan;
     private javax.swing.JMenuItem MnPeriksaLab;
     private javax.swing.JMenuItem MnPeriksaLab1;
-    private javax.swing.JMenuItem MnPeriksaLab2;
     private javax.swing.JMenuItem MnPeriksaRadiologi;
     private javax.swing.JMenuItem MnPeriksaRadiologi1;
-    private javax.swing.JMenuItem MnPeriksaRadiologi2;
     private javax.swing.JMenu MnPilihBilling;
     private javax.swing.JMenuItem MnPoli;
     private javax.swing.JMenuItem MnPoliInternal;
     private javax.swing.JMenuItem MnRawatJalan;
     private javax.swing.JMenuItem MnRawatJalan1;
-    private javax.swing.JMenuItem MnRawatJalan2;
     private javax.swing.JMenu MnRekap;
     private javax.swing.JMenuItem MnRekapBulananDokter;
     private javax.swing.JMenuItem MnRekapBulananParamedis;
@@ -5979,6 +5978,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnNoResep1.setEnabled(var.getresep_obat());
         MnObatLangsung.setEnabled(var.getberi_obat());
         MnObatLangsung1.setEnabled(var.getberi_obat());
+        MnBillingPeriksaLab.setEnabled(var.getbilling_parsial());
+        MnBillingPeriksaRadiologi.setEnabled(var.getbilling_parsial());
+        MnBillingRawatJalan.setEnabled(var.getbilling_parsial());
         //MnBilling.setEnabled(var.getbilling_ralan());
         MnSudah.setEnabled(var.getkasir_ralan());
         MnBelum.setEnabled(var.getkasir_ralan());
