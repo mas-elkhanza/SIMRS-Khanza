@@ -365,7 +365,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
              Class[] types = new Class[] {
                  java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, 
                  java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                 java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -378,7 +378,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         tbRawatDrBayar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbRawatDrBayar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 11; i++) {
             TableColumn column = tbRawatDrBayar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -397,9 +397,11 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(180);
             }else if(i==8){
-                column.setPreferredWidth(80);
-            }else if(i==9){
                 column.setPreferredWidth(75);
+            }else if(i==9){
+                column.setPreferredWidth(60);
+            }else if(i==10){
+                column.setPreferredWidth(80);
             }
         }
         tbRawatDrBayar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -416,7 +418,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
              }
              Class[] types = new Class[] {
                  java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, 
-                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                 java.lang.Object.class, java.lang.Object.class,
                  java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
              };
              @Override
@@ -430,7 +433,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         tbRawatPrBayar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbRawatPrBayar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 11; i++) {
             TableColumn column = tbRawatPrBayar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -449,15 +452,18 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(180);
             }else if(i==8){
-                column.setPreferredWidth(80);
-            }else if(i==9){
                 column.setPreferredWidth(75);
+            }else if(i==9){
+                column.setPreferredWidth(60);
+            }else if(i==10){
+                column.setPreferredWidth(80);
             }
         }
         tbRawatPrBayar.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeDrPrBayar=new DefaultTableModel(null,new Object[]{
-            "P","No.Rawat","No.R.M.","Nama Pasien","Kode Tarif","Perawatan/Tindakan","Kode Dokter","Dokter Yang Menangani",
+            "P","No.Rawat","No.R.M.","Nama Pasien","Kode Tarif","Perawatan/Tindakan",
+            "Kode Dokter","Dokter Yang Menangani",
             "NIP","Petugas Yg Menangani","Tgl.Bayar","Jam Bayar","Biaya"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -468,8 +474,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
              }
              Class[] types = new Class[] {
                  java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, 
-                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                 java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, java.lang.Object.class, 
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                 java.lang.Object.class, 
+                 java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, 
+                 java.lang.Object.class,java.lang.Object.class, 
                  java.lang.Double.class
              };
              @Override
@@ -483,7 +491,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         tbRawatDrPrBayar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbRawatDrPrBayar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 12; i++) {
+        for (i = 0; i < 13; i++) {
             TableColumn column = tbRawatDrPrBayar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -506,9 +514,11 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }else if(i==9){
                 column.setPreferredWidth(180);
             }else if(i==10){
-                column.setPreferredWidth(80);
-            }else if(i==11){
                 column.setPreferredWidth(75);
+            }else if(i==11){
+                column.setPreferredWidth(60);
+            }else if(i==12){
+                column.setPreferredWidth(80);
             }
         }
         tbRawatDrPrBayar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1873,9 +1883,76 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     break;
                 case 1:
                     Valid.tabelKosong(tabModePrBayar);
+                    psBayarPr=koneksi.prepareStatement(
+                        "select permintaan_jl_pr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                        "permintaan_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,permintaan_jl_pr.nip,"+
+                        "petugas.nama,permintaan_jl_pr.tgl_bayar,permintaan_jl_pr.jam_bayar,"+
+                        "permintaan_jl_pr.biaya_rawat from pasien inner join reg_periksa inner join "+
+                        "jns_perawatan inner join petugas inner join permintaan_jl_pr "+
+                        "on permintaan_jl_pr.no_rawat=reg_periksa.no_rawat "+
+                        "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "and permintaan_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                        "and permintaan_jl_pr.nip=petugas.nip where permintaan_jl_pr.no_rawat=?");
+                    try {
+                        psBayarPr.setString(1,TNoRw.getText());
+                        rsbayar=psBayarPr.executeQuery();
+                        while(rsbayar.next()){
+                            tabModePrBayar.addRow(new Object[]{
+                                false,rsbayar.getString("no_rawat"),rsbayar.getString("no_rkm_medis"),
+                                rsbayar.getString("nm_pasien"),rsbayar.getString("kd_jenis_prw"),
+                                rsbayar.getString("nm_perawatan"),rsbayar.getString("nip"),
+                                rsbayar.getString("nama"),rsbayar.getString("tgl_bayar"),
+                                rsbayar.getString("jam_bayar"),rsbayar.getDouble("biaya_rawat")
+                            });
+                        }
+                    } catch (Exception e) {
+                        System.out.println("keuangan.DlgBilingParsialRalan.tampilBayar() : "+e);
+                    } finally{
+                        if(rsbayar!=null){
+                            rsbayar.close();
+                        }
+                        if(psBayarPr!=null){
+                            psBayarPr.close();
+                        }                
+                    }
                     break;
                 case 2:
                     Valid.tabelKosong(tabModeDrPrBayar);
+                    psBayarDrPr=koneksi.prepareStatement(
+                        "select permintaan_jl_drpr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                        "permintaan_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,permintaan_jl_drpr.kd_dokter,"+
+                        "dokter.nm_dokter,permintaan_jl_drpr.nip,"+
+                        "petugas.nama,permintaan_jl_drpr.tgl_bayar,permintaan_jl_drpr.jam_bayar,"+
+                        "permintaan_jl_drpr.biaya_rawat from pasien inner join reg_periksa inner join "+
+                        "jns_perawatan inner join petugas inner join permintaan_jl_drpr inner join dokter "+
+                        "on permintaan_jl_drpr.no_rawat=reg_periksa.no_rawat "+
+                        "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "and permintaan_jl_drpr.kd_dokter=dokter.kd_dokter "+
+                        "and permintaan_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
+                        "and permintaan_jl_drpr.nip=petugas.nip where permintaan_jl_drpr.no_rawat=?");
+                    try {
+                        psBayarDrPr.setString(1,TNoRw.getText());
+                        rsbayar=psBayarDrPr.executeQuery();
+                        while(rsbayar.next()){
+                            tabModeDrPrBayar.addRow(new Object[]{
+                                false,rsbayar.getString("no_rawat"),rsbayar.getString("no_rkm_medis"),
+                                rsbayar.getString("nm_pasien"),rsbayar.getString("kd_jenis_prw"),
+                                rsbayar.getString("nm_perawatan"),rsbayar.getString("kd_dokter"),
+                                rsbayar.getString("nm_dokter"),rsbayar.getString("nip"),
+                                rsbayar.getString("nama"),rsbayar.getString("tgl_bayar"),
+                                rsbayar.getString("jam_bayar"),rsbayar.getDouble("biaya_rawat")
+                            });
+                        }
+                    } catch (Exception e) {
+                        System.out.println("keuangan.DlgBilingParsialRalan.tampilBayar() : "+e);
+                    } finally{
+                        if(rsbayar!=null){
+                            rsbayar.close();
+                        }
+                        if(psBayarDrPr!=null){
+                            psBayarDrPr.close();
+                        }                
+                    }
                     break;
                 default:
                     break;
