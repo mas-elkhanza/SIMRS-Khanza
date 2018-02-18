@@ -8,6 +8,7 @@ uses
 
 begin
   Application.Initialize;
+  Application.Title := 'Registrasi & Resume Pasien';
   Application.CreateForm(TfrmUtama, frmUtama);
   Application.Run;
 end.
