@@ -208,8 +208,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
     public DlgBilingRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Object[] rowRwJlDr={"Pilih","Keterangan","Tagihan/Tindakan/Terapi","","Biaya","Jml","Tambahan","Total Biaya",""};
-        tabModeRwJlDr=new DefaultTableModel(null,rowRwJlDr){
+        
+        tabModeRwJlDr=new DefaultTableModel(null,new Object[]{"Pilih","Keterangan","Tagihan/Tindakan/Terapi","","Biaya","Jml","Tambahan","Total Biaya",""}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                     boolean a = false;
                     if ((colIndex==6)||(colIndex==0)) {
