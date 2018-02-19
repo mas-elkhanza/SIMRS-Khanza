@@ -79,7 +79,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,row){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==1)||(colIndex==8)||(colIndex==9)) {
+                if ((colIndex==0)||(colIndex==1)||(colIndex==8)||(colIndex==9)||(colIndex==13)) {
                     a=true;
                 }
                 return a;
@@ -688,7 +688,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
 }//GEN-LAST:event_tbObatMouseClicked
 
     private void tbObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyPressed
-        if(var.getkdbangsal().equals("")){
+        if(kdgudang.getText().equals("")){
             Valid.textKosong(TCari,"Lokasi");                              
         }else if(tbObat.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -817,7 +817,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
 private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")){
             Valid.textKosong(TCari,"Data");
-        }else if(var.getkdbangsal().equals("")){
+        }else if(kdgudang.getText().equals("")){
             Valid.textKosong(TCari,"Lokasi");                              
         }else{
             try {  
@@ -1014,7 +1014,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_kelasKeyPressed
 
     private void ppStokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppStokActionPerformed
-        if(var.getkdbangsal().equals("")){
+        if(kdgudang.getText().equals("")){
             Valid.textKosong(TCari,"Lokasi");                              
         }else{
             for(i=0;i<tbObat.getRowCount();i++){
@@ -1358,7 +1358,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 stokbarang=0;   
                 psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
                 try {
-                    psstok.setString(1,var.getkdbangsal());
+                    psstok.setString(1,kdgudang.getText());
                     psstok.setString(2,tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
                     rsstok=psstok.executeQuery();
                     if(rsstok.next()){
@@ -1403,14 +1403,20 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         BtnTambah.setEnabled(var.getobat());
         TCari.requestFocus();
         
-        if(Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",var.getkdbangsal()).equals("")){
+        if(Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",kdgudang.getText()).equals("")){
             kdgudang.setEditable(true);
             nmgudang.setEditable(true);
             BtnGudang.setEnabled(true);
         }else{
-            kdgudang.setEditable(false);
-            nmgudang.setEditable(false);
-            BtnGudang.setEnabled(false);
+            if(var.getakses_depo_obat()==true){
+                kdgudang.setEditable(true);
+                nmgudang.setEditable(true);
+                BtnGudang.setEnabled(true);
+            }else{
+                kdgudang.setEditable(false);
+                nmgudang.setEditable(false);
+                BtnGudang.setEnabled(false);
+            }                
         } 
         
         if(var.getkode().equals("Admin Utama")){
