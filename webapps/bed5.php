@@ -159,6 +159,7 @@
                       </tr> ";
                   }
                   updateAplicare();
+                  //updateSiranap();
                 ?>
               </table>
              </div>
