@@ -821,7 +821,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                                 pssimpanperawat.setString(8,tbTindakan.getValueAt(i,8).toString());
                                                 pssimpanperawat.setString(9,tbTindakan.getValueAt(i,9).toString());
                                                 pssimpanperawat.setString(10,tbTindakan.getValueAt(i,10).toString());  
-                                                pssimpanperawat.setString(11,tbTindakan.getValueAt(i,4).toString());  
+                                                pssimpanperawat.setString(11,tbTindakan.getValueAt(i,4).toString()); 
                                                 pssimpanperawat.executeUpdate();
                                             } catch (Exception e) {
                                                 System.out.println("Notifikasi : "+e);

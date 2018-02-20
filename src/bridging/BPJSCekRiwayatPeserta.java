@@ -399,12 +399,10 @@ public final class BPJSCekRiwayatPeserta extends javax.swing.JDialog {
 	    HttpEntity requestEntity = new HttpEntity(headers);
 	    RestTemplate rest = new RestTemplate();	
             
-            //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             ObjectMapper mapper = new ObjectMapper();
+            System.out.println(""+rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metadata");
-            //System.out.println("code : "+nameNode.path("code").asText());
-            //System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("Peserta Tidak Ditemukan")){
                 JOptionPane.showMessageDialog(rootPane,"Peserta Tidak Ditemukan");
                 BtnKeluar.requestFocus();

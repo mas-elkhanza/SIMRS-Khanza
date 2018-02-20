@@ -70,7 +70,6 @@
                 curl_setopt ( $session, CURLOPT_POSTFIELDS, $myvars );
                 curl_setopt ( $session, CURLOPT_RETURNTRANSFER, TRUE );
                 $response = curl_exec ( $session );
-                echo "Response : ".$response;
             }		
 	}
  ?>
