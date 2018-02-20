@@ -1609,9 +1609,15 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             nmgudang.setEditable(true);
             BtnGudang.setEnabled(true);
         }else{
-            kdgudang.setEditable(false);
-            nmgudang.setEditable(false);
-            BtnGudang.setEnabled(false);
+            if(var.getakses_depo_obat()==true){
+                kdgudang.setEditable(true);
+                nmgudang.setEditable(true);
+                BtnGudang.setEnabled(true);
+            }else{
+                kdgudang.setEditable(false);
+                nmgudang.setEditable(false);
+                BtnGudang.setEnabled(false);
+            }
         }            
         kdgudang.setText(bangsal);
         Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",nmgudang,kdgudang.getText());            

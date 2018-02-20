@@ -2,12 +2,15 @@ program presensi;
 
 uses
   Forms,
-  UUtama in 'UUtama.pas' {Form1};
+  UUtama in 'UUtama.pas' {frmUtama};
+
+{$E resume}
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.Title := 'Registrasi & Resume Pasien';
+  Application.CreateForm(TfrmUtama, frmUtama);
   Application.Run;
 end.

@@ -60,7 +60,7 @@ public class BPJSCekNoKartu {
             //System.out.println("code : "+nameNode.path("code").asText());
             //System.out.println("message : "+nameNode.path("message").asText());
             informasi=nameNode.path("message").asText();
-            if(nameNode.path("message").asText().equals("OK")){
+            if(nameNode.path("code").asText().equals("200")){
                 JsonNode response = root.path("response");
                 nik=response.path("peserta").path("nik").asText();
                 nama=response.path("peserta").path("nama").asText();

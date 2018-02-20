@@ -29,6 +29,7 @@ import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaRadiologi;
 import simrskhanza.DlgCariPoli;
 import inventory.DlgPemberianObat;
+import javax.swing.event.DocumentEvent;
 import keuangan.DlgLhtBiaya;
 import keuangan.DlgLhtPiutang;
 import keuangan.Jurnal;
@@ -207,8 +208,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
     public DlgBilingRalan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        Object[] rowRwJlDr={"Pilih","Keterangan","Tagihan/Tindakan/Terapi","","Biaya","Jml","Tambahan","Total Biaya",""};
-        tabModeRwJlDr=new DefaultTableModel(null,rowRwJlDr){
+        
+        tabModeRwJlDr=new DefaultTableModel(null,new Object[]{"Pilih","Keterangan","Tagihan/Tindakan/Terapi","","Biaya","Jml","Tambahan","Total Biaya",""}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                     boolean a = false;
                     if ((colIndex==6)||(colIndex==0)) {
@@ -549,7 +550,29 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             tampilkan_ppnobat_ralan="No";
             centangobatralan="No";
         }
-            
+        
+        TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        TCari1.setDocument(new batasInput((int)100).getKata(TCari1));
+        
+        if(koneksiDB.cariCepat().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {BtnCariBayarActionPerformed(null);}
+                @Override
+                public void removeUpdate(DocumentEvent e) {BtnCariBayarActionPerformed(null);}
+                @Override
+                public void changedUpdate(DocumentEvent e) {BtnCariBayarActionPerformed(null);}
+            });
+            TCari1.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {btnCariPiutangActionPerformed(null);}
+                @Override
+                public void removeUpdate(DocumentEvent e) {btnCariPiutangActionPerformed(null);}
+                @Override
+                public void changedUpdate(DocumentEvent e) {btnCariPiutangActionPerformed(null);}
+            });
+        } 
+        
         try {
             psrekening=koneksi.prepareStatement(sqlpsrekening);
             try {
