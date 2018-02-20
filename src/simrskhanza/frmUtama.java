@@ -34,6 +34,8 @@ import bridging.BPJSCekReferensiPascaPulang;
 import bridging.BPJSCekReferensiProsedur;
 import bridging.BPJSCekReferensiRuangRawat;
 import bridging.BPJSCekReferensiSpesialistik;
+import bridging.BPJSCekRujukanKartuPCare;
+import bridging.BPJSCekRujukanKartuRS;
 import bridging.BPJSDataSEP;
 import bridging.BPJSMonitoringKlaim;
 import bridging.INACBGCariCoderNIK;
@@ -751,6 +753,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekReferensiPascaPulangBPJS = new widget.ButtonBig();
         btnDetailVKOK = new widget.ButtonBig();
         btnCekBPJSNomorRujukanRS = new widget.ButtonBig();
+        btnCekBPJSRujukanKartuPCare = new widget.ButtonBig();
+        btnCekBPJSRujukanKartuRS = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4644,6 +4648,30 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekBPJSNomorRujukanRS);
 
+        btnCekBPJSRujukanKartuPCare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnCekBPJSRujukanKartuPCare.setText("Cek Rujukan Kartu PCare di VClaim");
+        btnCekBPJSRujukanKartuPCare.setIconTextGap(0);
+        btnCekBPJSRujukanKartuPCare.setName("btnCekBPJSRujukanKartuPCare"); // NOI18N
+        btnCekBPJSRujukanKartuPCare.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSRujukanKartuPCare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSRujukanKartuPCareActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCekBPJSRujukanKartuPCare);
+
+        btnCekBPJSRujukanKartuRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checklist.png"))); // NOI18N
+        btnCekBPJSRujukanKartuRS.setText("Cek Rujukan Kartu RS di VClaim");
+        btnCekBPJSRujukanKartuRS.setIconTextGap(0);
+        btnCekBPJSRujukanKartuRS.setName("btnCekBPJSRujukanKartuRS"); // NOI18N
+        btnCekBPJSRujukanKartuRS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekBPJSRujukanKartuRS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekBPJSRujukanKartuRSActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCekBPJSRujukanKartuRS);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4652,7 +4680,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/02/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/02/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -9879,6 +9907,28 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCekBPJSNomorRujukanRSActionPerformed
 
+    private void btnCekBPJSRujukanKartuPCareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekBPJSRujukanKartuPCareActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSCekRujukanKartuPCare form=new BPJSCekRujukanKartuPCare(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCekBPJSRujukanKartuPCareActionPerformed
+
+    private void btnCekBPJSRujukanKartuRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekBPJSRujukanKartuRSActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSCekRujukanKartuRS form=new BPJSCekRujukanKartuRS(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCekBPJSRujukanKartuRSActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -9966,6 +10016,8 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekBPJSNomorRujukanRS;
     private widget.ButtonBig btnCekBPJSPoli;
     private widget.ButtonBig btnCekBPJSRiwayat;
+    private widget.ButtonBig btnCekBPJSRujukanKartuPCare;
+    private widget.ButtonBig btnCekBPJSRujukanKartuRS;
     private widget.ButtonBig btnCekEligibilitasInhealth;
     private widget.ButtonBig btnCekEntryRalan;
     private widget.ButtonBig btnCekInhealthFaskes;
@@ -11582,6 +11634,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnCekBPJSNomorRujukanRS);
                 jmlmenu++;
             }
+            
+            if(var.getbpjs_cek_rujukan_kartu_pcare()==true){
+                Panelmenu.add(btnCekBPJSRujukanKartuPCare);
+                jmlmenu++;
+            }
+            
+            if(var.getbpjs_cek_rujukan_kartu_rs()==true){
+                Panelmenu.add(btnCekBPJSRujukanKartuRS);
+                jmlmenu++;
+            }
 
             if(var.getbpjs_referensi_diagnosa()==true){
                 Panelmenu.add(btnCekBPJSDiagnosa);
@@ -13077,6 +13139,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getbpjs_cek_nomor_rujukan_rs()==true){
             Panelmenu.add(btnCekBPJSNomorRujukanRS);
+            jmlmenu++;
+        }
+        
+        if(var.getbpjs_cek_rujukan_kartu_pcare()==true){
+            Panelmenu.add(btnCekBPJSRujukanKartuPCare);
+            jmlmenu++;
+        }
+
+        if(var.getbpjs_cek_rujukan_kartu_rs()==true){
+            Panelmenu.add(btnCekBPJSRujukanKartuRS);
             jmlmenu++;
         }
 
@@ -14979,6 +15051,20 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getbpjs_cek_nomor_rujukan_rs()==true){
             if(btnCekBPJSNomorRujukanRS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSNomorRujukanRS);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbpjs_cek_rujukan_kartu_pcare()==true){
+            if(btnCekBPJSRujukanKartuPCare.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCekBPJSRujukanKartuPCare);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbpjs_cek_rujukan_kartu_rs()==true){
+            if(btnCekBPJSRujukanKartuRS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCekBPJSRujukanKartuRS);
                 jmlmenu++;
             }                
         }
