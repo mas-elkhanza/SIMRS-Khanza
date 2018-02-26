@@ -8,7 +8,7 @@
 ?>
 <html>
     <body>
-
+        
     <?php
     reportsqlinjection();      
         $tanggal1      = $_GET['tanggal1']; 

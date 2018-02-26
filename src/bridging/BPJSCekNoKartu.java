@@ -8,6 +8,9 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileInputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 import org.springframework.http.HttpEntity;
@@ -21,11 +24,16 @@ import org.springframework.web.client.RestTemplate;
  * @author khanzasoft
  */
 public class BPJSCekNoKartu {
-    public String nik="",nama="",pekerjaan="",tgl_lahir="",jk="",umur="",kdJenisPeserta="",
-                kdKelas="",nmKelas="",noMr="",pisa="",kdCabang="",kdProvider="",nmCabang="",
-                nmProvider="",keterangan="",kode="",tglCetakKartu="",tglTAT="",tglTMT="",
-                umurSaatPelayanan="",informasi="";
+    public String cobnmAsuransi="",cobnoAsuransi="",cobtglTAT="",cobtglTMT="",
+            hakKelasketerangan="",hakKelaskode="",informasidinsos="",informasinoSKTM="",
+            informasiprolanisPRB="",jenisPesertaketerangan="",jenisPesertakode="",
+            mrnoMR="",mrnoTelepon="",nama="",nik="",noKartu="",pisa="",
+            provUmumkdProvider="",provUmumnmProvider="",sex="",statusPesertaketerangan="",
+            statusPesertakode="",tglCetakKartu="",tglLahir="",tglTAT="",
+            tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",informasi="";
     private final Properties prop = new Properties();
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date date = new Date();
     
     public BPJSCekNoKartu(){
         super();
@@ -35,7 +43,7 @@ public class BPJSCekNoKartu {
         BPJSApi api=new BPJSApi();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIBPJS")+"/Peserta/Peserta/"+nokartu;	
+            String URL = prop.getProperty("URLAPIBPJS")+"/Peserta/nokartu/"+nokartu+"/tglSEP/"+dateFormat.format(date);	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -48,37 +56,42 @@ public class BPJSCekNoKartu {
             //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metadata");
+            JsonNode nameNode = root.path("metaData");
             //System.out.println("code : "+nameNode.path("code").asText());
             //System.out.println("message : "+nameNode.path("message").asText());
             informasi=nameNode.path("message").asText();
-            if(nameNode.path("message").asText().equals("OK")){
+            if(nameNode.path("code").asText().equals("200")){
                 JsonNode response = root.path("response");
                 nik=response.path("peserta").path("nik").asText();
                 nama=response.path("peserta").path("nama").asText();
-                pekerjaan=response.path("peserta").path("jenisPeserta").path("nmJenisPeserta").asText();
-                tgl_lahir=response.path("peserta").path("tglLahir").asText();
-                jk=response.path("peserta").path("sex").asText().replaceAll("L","LAKI-LAKI").replaceAll("P","PEREMPUAN");
-                try {
-                    umur=response.path("peserta").path("umur").path("umurSekarang").asText().substring(0,2);
-                } catch (Exception e) {
-                    umur="0";
-                }
-                kdJenisPeserta=response.path("peserta").path("jenisPeserta").path("kdJenisPeserta").asText();
-                kdKelas=response.path("peserta").path("kelasTanggungan").path("kdKelas").asText();
-                nmKelas=response.path("peserta").path("kelasTanggungan").path("nmKelas").asText();
-                noMr=response.path("peserta").path("noMr").asText();
+                cobnmAsuransi=response.path("peserta").path("cob").path("nmAsuransi").asText();
+                cobnoAsuransi=response.path("peserta").path("cob").path("noAsuransi").asText();
+                cobtglTAT=response.path("peserta").path("cob").path("tglTAT").asText();
+                cobtglTMT=response.path("peserta").path("cob").path("tglTMT").asText();
+                hakKelasketerangan=response.path("peserta").path("hakKelas").path("keterangan").asText();
+                hakKelaskode=response.path("peserta").path("hakKelas").path("kode").asText();
+                informasidinsos=response.path("peserta").path("informasi").path("dinsos").asText();
+                informasinoSKTM=response.path("peserta").path("informasi").path("noSKTM").asText();
+                informasiprolanisPRB=response.path("peserta").path("informasi").path("prolanisPRB").asText();
+                jenisPesertaketerangan=response.path("peserta").path("jenisPeserta").path("keterangan").asText();
+                jenisPesertakode=response.path("peserta").path("jenisPeserta").path("kode").asText();
+                mrnoMR=response.path("peserta").path("mr").path("noMR").asText();
+                mrnoTelepon=response.path("peserta").path("mr").path("noTelepon").asText();
+                nama=response.path("peserta").path("nama").asText();
+                nik=response.path("peserta").path("nik").asText();
+                noKartu=response.path("peserta").path("noKartu").asText();
                 pisa=response.path("peserta").path("pisa").asText();
-                kdCabang=response.path("peserta").path("provUmum").path("kdCabang").asText();
-                kdProvider=response.path("peserta").path("provUmum").path("kdProvider").asText();
-                nmCabang=response.path("peserta").path("provUmum").path("nmCabang").asText();
-                nmProvider=response.path("peserta").path("provUmum").path("nmProvider").asText();
-                keterangan=response.path("peserta").path("statusPeserta").path("keterangan").asText();
-                kode=response.path("peserta").path("statusPeserta").path("kode").asText();
+                provUmumkdProvider=response.path("peserta").path("provUmum").path("kdProvider").asText();
+                provUmumnmProvider=response.path("peserta").path("provUmum").path("nmProvider").asText();
+                sex=response.path("peserta").path("sex").asText();
+                statusPesertaketerangan=response.path("peserta").path("statusPeserta").path("keterangan").asText();
+                statusPesertakode=response.path("peserta").path("statusPeserta").path("kode").asText();
                 tglCetakKartu=response.path("peserta").path("tglCetakKartu").asText();
+                tglLahir=response.path("peserta").path("tglLahir").asText();
                 tglTAT=response.path("peserta").path("tglTAT").asText();
                 tglTMT=response.path("peserta").path("tglTMT").asText();
-                umurSaatPelayanan=response.path("peserta").path("umur").path("umurSaatPelayanan").asText();
+                umurumurSaatPelayanan=response.path("peserta").path("umur").path("umurSaatPelayanan").asText();
+                umurumurSekarang=response.path("peserta").path("umur").path("umurSekarang").asText();
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }   
