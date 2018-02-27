@@ -135,7 +135,17 @@ ProductName=
 ProductVersion=1.0.0.0
 Comments=
 [Excluded Packages]
+C:\Program Files\Borland\Delphi7\Projects\Bpl\BE4.bpl=Billenium Effects 4.1 Runtime Package
+C:\Program Files\Borland\Delphi7\Projects\Bpl\fs7.bpl=(untitled)
+C:\Program Files\Borland\Delphi7\Projects\Bpl\frx7.bpl=(untitled)
+C:\Program Files\Borland\Delphi7\Projects\Bpl\frxDB7.bpl=(untitled)
+C:\Program Files\Borland\Delphi7\Projects\Bpl\fsDB7.bpl=(untitled)
+C:\Program Files\Borland\Delphi7\Projects\Bpl\fqb70.bpl=FastQueryBuilder 1.03
+C:\Program Files\Borland\Delphi7\Projects\Bpl\frxe7.bpl=(untitled)
 C:\Program Files\Borland\Delphi7\Projects\Bpl\ZParseSql70.bpl=Zeos SQL Parsing Classes and Interfaces
 C:\Program Files\Borland\Delphi7\Projects\Bpl\ZCore70.bpl=Zeos Core Classes and Interfaces
 C:\Program Files\Borland\Delphi7\Projects\Bpl\ZDbc70.bpl=Zeos Low Level Database API
 C:\Program Files\Borland\Delphi7\Projects\Bpl\ZPlain70.bpl=Zeos Plain Database API
+[HistoryLists\hlUnitAliases]
+Count=1
+Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;

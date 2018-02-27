@@ -509,8 +509,6 @@
                     $gender="2";
                 }
                 
-                echo "JK : ".$gender." Pasien ".$nm_pasien;
-
                 if ((!empty($norawat))&&(!empty($nosep))&&(!empty($nokartu))) {                        
                     BuatKlaimBaru2($nokartu,$nosep,$no_rkm_medis,$nm_pasien,$tgl_lahir." 00:00:00", $gender,$norawat);
                     EditUlangKlaim($nosep);
