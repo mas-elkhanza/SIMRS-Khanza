@@ -6,7 +6,9 @@
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body bgcolor='#ffffff'>
-
+        <script type="text/javascript">
+            window.onload = function() { window.print(); }
+        </script>
     <?php
     reportsqlinjection();      
         $KdKategori   =$_GET['kode']; 

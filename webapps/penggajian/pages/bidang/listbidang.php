@@ -1,7 +1,7 @@
 
 
 <div id="post">
-	<div class="entry"> 
+<div class="entry"> 
     <div align="center" class="link">
         <a href=?act=InputBidang&action=TAMBAH>| Input Data |</a>
         <a href=?act=ListBidang>| List Data |</a>

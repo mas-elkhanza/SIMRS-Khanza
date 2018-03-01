@@ -11,6 +11,7 @@
 
 package setting;
 
+import fungsi.sekuel;
 import fungsi.koneksiDB;
 import fungsi.*;
 import java.awt.Canvas;

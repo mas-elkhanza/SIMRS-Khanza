@@ -16,7 +16,7 @@
                 $poli           =str_replace("_"," ",isset($_GET['poli']))?str_replace("_"," ",$_GET['poli']):NULL;
                 echo "<input type=hidden name=dokter value=$dokter><input type=hidden name=poli value=$poli><input type=hidden name=keyword value=$keyword>";
         ?>
-    <div style="width: 100%; height: 85%; overflow: auto;">
+    <div style="width: 100%; height: 85.4%; overflow: auto;">
     <?php        
 	$BtnCari  =isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
         if (isset($BtnCari)) {      
@@ -432,5 +432,5 @@
     </div>
 </div>
 <?php 
-  echo "<meta http-equiv='refresh' content='7;URL=?act=List&keyword=".str_replace(" ","_",$keyword)."&dokter=".str_replace(" ","_",$dokter)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=no'>";
+  echo "<meta http-equiv='refresh' content='30;URL=?act=List&keyword=".str_replace(" ","_",$keyword)."&dokter=".str_replace(" ","_",$dokter)."&poli=".str_replace(" ","_",$poli)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=no'>";
 ?>

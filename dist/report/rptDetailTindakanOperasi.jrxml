@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="5112" pageHeight="792" orientation="Landscape" columnWidth="5072" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="8970"/>
+	<property name="ireport.x" value="3364"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
@@ -245,6 +245,27 @@ order by operasi.no_rawat desc]]>
 	</field>
 	<variable name="no" class="java.lang.Integer" calculation="Count">
 		<variableExpression><![CDATA[$F{no_rawat}]]></variableExpression>
+	</variable>
+	<variable name="totaloperator1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{biayaoperator1}]]></variableExpression>
+	</variable>
+	<variable name="totaloperator2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{biayaoperator2}]]></variableExpression>
+	</variable>
+	<variable name="totaloperator3" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{biayaoperator3}]]></variableExpression>
+	</variable>
+	<variable name="totalasistenoperator1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{biayaasisten_operator1}]]></variableExpression>
+	</variable>
+	<variable name="totalasistenoperator2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{biayaasisten_operator2}]]></variableExpression>
+	</variable>
+	<variable name="totalasistenoperator3" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{biayaasisten_operator3}]]></variableExpression>
+	</variable>
+	<variable name="totalinstrumen" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{biayainstrumen}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -1242,12 +1263,61 @@ order by operasi.no_rawat desc]]>
 	<summary>
 		<band height="15" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Transparent" x="749" y="0" width="71" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="730" y="0" width="71" height="13" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Jumlah Total :]]></text>
 			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="861" y="0" width="53" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totaloperator1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="1033" y="0" width="53" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totaloperator2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="1205" y="0" width="53" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totaloperator3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="1377" y="0" width="53" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalasistenoperator1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="1549" y="0" width="53" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalasistenoperator2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="1721" y="0" width="53" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalasistenoperator3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="1893" y="0" width="53" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{totalinstrumen}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

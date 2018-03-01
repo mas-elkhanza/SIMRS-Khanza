@@ -616,7 +616,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-09-2017" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-12-2017" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -821,7 +821,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                                 pssimpanperawat.setString(8,tbTindakan.getValueAt(i,8).toString());
                                                 pssimpanperawat.setString(9,tbTindakan.getValueAt(i,9).toString());
                                                 pssimpanperawat.setString(10,tbTindakan.getValueAt(i,10).toString());  
-                                                pssimpanperawat.setString(11,tbTindakan.getValueAt(i,4).toString());  
+                                                pssimpanperawat.setString(11,tbTindakan.getValueAt(i,4).toString()); 
                                                 pssimpanperawat.executeUpdate();
                                             } catch (Exception e) {
                                                 System.out.println("Notifikasi : "+e);
@@ -1311,6 +1311,10 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     
     public void isCek(){
         BtnTambahTindakan.setEnabled(var.gettarif_ralan());
+    }
+    
+    public void setPoli(String KodePoli){
+        this.kd_poli=KodePoli;
     }
     
     public void setNoRm(String norwt,String kdpetugas,String nmpetugas, String pilihtable,

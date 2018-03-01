@@ -173,15 +173,14 @@
 	 {
        bukakoneksi();
        $result=mysql_query($sql)
-        or die(mysql_error()."<br/><font color=red><b>Gagal</b>, Ada data dengan primary key yang sama !");
+        or die("<font color=red><b>Gagal</b>, Ada data dengan primary key yang sama !");
         return $result;
      }
 
-     function hapusinput($sql)
-	 {
-       bukakoneksi();
-       $result=mysql_query($sql)
-        or die(mysql_error()."<br/><font color=red><b>Gagal</b>, Data masih dipakai di tabel lain !");
+     function hapusinput($sql){
+        bukakoneksi();
+        $result=mysql_query($sql)
+        or die(mysql_error()."<font color=red><b>Gagal</b>, Data masih dipakai di tabel lain !");
         return $result;
      }
 

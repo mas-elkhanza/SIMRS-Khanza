@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -87,38 +86,6 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil();}
             });
         } 
-        
-        try {
-            ps=koneksi.prepareStatement("select nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,"+
-                 "npwp, pendidikan, tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,"+
-                 "indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak from pegawai "+
-                 "where "+
-                 "nik like ? or "+
-                 "nama like ? or "+
-                 "jk like ? or "+
-                 "jbtn like ? or "+
-                 "jnj_jabatan like ? or "+
-                 "departemen like ? or "+
-                 "bidang like ? or "+
-                 "stts_wp like ? or "+
-                 "stts_kerja like ? or "+
-                 "npwp like ? or "+
-                 "pendidikan like ? or "+
-                 "gapok like ? or "+
-                 "tmp_lahir like ? or "+
-                 "tgl_lahir like ? or "+
-                 "alamat like ? or "+
-                 "kota like ? or "+
-                 "mulai_kerja like ? or "+
-                 "ms_kerja like ? or "+
-                 "indexins like ? or "+
-                 "bpd like ? or "+
-                 "rekening like ? or "+
-                 "stts_aktif like ? "+
-                 "order by id ASC ");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
     
 
@@ -146,7 +113,6 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
 
         Kd2.setHighlighter(null);
         Kd2.setName("Kd2"); // NOI18N
-        Kd2.setSelectionColor(new java.awt.Color(255, 255, 255));
         Kd2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 Kd2KeyPressed(evt);
@@ -165,7 +131,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pegawai ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pegawai ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -365,55 +331,93 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
     private void tampil() {  
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            ps.setString(4,"%"+TCari.getText().trim()+"%");
-            ps.setString(5,"%"+TCari.getText().trim()+"%");
-            ps.setString(6,"%"+TCari.getText().trim()+"%");
-            ps.setString(7,"%"+TCari.getText().trim()+"%");
-            ps.setString(8,"%"+TCari.getText().trim()+"%");
-            ps.setString(9,"%"+TCari.getText().trim()+"%");
-            ps.setString(10,"%"+TCari.getText().trim()+"%");
-            ps.setString(11,"%"+TCari.getText().trim()+"%");
-            ps.setString(12,"%"+TCari.getText().trim()+"%");
-            ps.setString(13,"%"+TCari.getText().trim()+"%");
-            ps.setString(14,"%"+TCari.getText().trim()+"%");
-            ps.setString(15,"%"+TCari.getText().trim()+"%");
-            ps.setString(16,"%"+TCari.getText().trim()+"%");
-            ps.setString(17,"%"+TCari.getText().trim()+"%");
-            ps.setString(18,"%"+TCari.getText().trim()+"%");
-            ps.setString(19,"%"+TCari.getText().trim()+"%");
-            ps.setString(20,"%"+TCari.getText().trim()+"%");
-            ps.setString(21,"%"+TCari.getText().trim()+"%");
-            ps.setString(22,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{
-                               rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               rs.getString(5),
-                               rs.getString(6),
-                               rs.getString(7),
-                               rs.getString(8),
-                               rs.getString(9),
-                               rs.getString(10),
-                               rs.getString(11),
-                               rs.getString(12),
-                               rs.getString(13),
-                               rs.getString(14),
-                               rs.getString(15),
-                               rs.getString(16),
-                               rs.getString(17),
-                               rs.getString(18),
-                               rs.getString(19),
-                               rs.getString(20),
-                               rs.getString(21),
-                               rs.getString(22),
-                               rs.getString(23)});
-            }
+            ps=koneksi.prepareStatement("select nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,"+
+                 "npwp, pendidikan, tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,"+
+                 "indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak from pegawai "+
+                 "where "+
+                 "nik like ? or "+
+                 "nama like ? or "+
+                 "jk like ? or "+
+                 "jbtn like ? or "+
+                 "jnj_jabatan like ? or "+
+                 "departemen like ? or "+
+                 "bidang like ? or "+
+                 "stts_wp like ? or "+
+                 "stts_kerja like ? or "+
+                 "npwp like ? or "+
+                 "pendidikan like ? or "+
+                 "gapok like ? or "+
+                 "tmp_lahir like ? or "+
+                 "tgl_lahir like ? or "+
+                 "alamat like ? or "+
+                 "kota like ? or "+
+                 "mulai_kerja like ? or "+
+                 "ms_kerja like ? or "+
+                 "indexins like ? or "+
+                 "bpd like ? or "+
+                 "rekening like ? or "+
+                 "stts_aktif like ? "+
+                 "order by id ASC ");
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,"%"+TCari.getText().trim()+"%");
+                ps.setString(8,"%"+TCari.getText().trim()+"%");
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,"%"+TCari.getText().trim()+"%");
+                ps.setString(11,"%"+TCari.getText().trim()+"%");
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                ps.setString(13,"%"+TCari.getText().trim()+"%");
+                ps.setString(14,"%"+TCari.getText().trim()+"%");
+                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                ps.setString(16,"%"+TCari.getText().trim()+"%");
+                ps.setString(17,"%"+TCari.getText().trim()+"%");
+                ps.setString(18,"%"+TCari.getText().trim()+"%");
+                ps.setString(19,"%"+TCari.getText().trim()+"%");
+                ps.setString(20,"%"+TCari.getText().trim()+"%");
+                ps.setString(21,"%"+TCari.getText().trim()+"%");
+                ps.setString(22,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                                   rs.getString(1),
+                                   rs.getString(2),
+                                   rs.getString(3),
+                                   rs.getString(4),
+                                   rs.getString(5),
+                                   rs.getString(6),
+                                   rs.getString(7),
+                                   rs.getString(8),
+                                   rs.getString(9),
+                                   rs.getString(10),
+                                   rs.getString(11),
+                                   rs.getString(12),
+                                   rs.getString(13),
+                                   rs.getString(14),
+                                   rs.getString(15),
+                                   rs.getString(16),
+                                   rs.getString(17),
+                                   rs.getString(18),
+                                   rs.getString(19),
+                                   rs.getString(20),
+                                   rs.getString(21),
+                                   rs.getString(22),
+                                   rs.getString(23)});
+                }
+            } catch (Exception e) {
+                System.out.println("Note : "+e);
+            }finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }            
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }

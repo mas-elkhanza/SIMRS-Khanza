@@ -35,7 +35,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
     private ResultSet rs;
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgCariPembelianIpsrs form=new DlgCariPembelianIpsrs(null,false);
-    private double saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0;
+    private double saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,meterai=0;
     private int jml=0,i=0,row=0,index=0;
     private String[] kodebarang,namabarang,satuan,harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
     private WarnaTable2 warna=new WarnaTable2();
@@ -65,7 +65,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         for (i = 0; i < 9; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(42);
             }else if(i==1){
                 column.setPreferredWidth(90);
             }else if(i==2){
@@ -89,7 +89,8 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
 
         NoFaktur.setDocument(new batasInput((byte)15).getKata(NoFaktur));
         kdsup.setDocument(new batasInput((byte)5).getKata(kdsup));
-        kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));        
+        kdptg.setDocument(new batasInput((byte)25).getKata(kdptg)); 
+        Meterai.setDocument(new batasInput((byte)15).getOnlyAngka(Meterai));        
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -109,7 +110,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,6),signed)),0) from ipsrspembelian ","PI",6,NoFaktur);
+                autoNomor();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -186,16 +187,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        Valid.loadCombo(CmbAkun,"nama_bayar","akun_bayar");
-        
-        try{            
-            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),ipsrsbarang.kode_sat,ipsrsbarang.harga "+
-                " from ipsrsbarang where ipsrsbarang.kode_brng like ? or "+
-                " ipsrsbarang.nama_brng like ? or "+
-                " ipsrsbarang.jenis like ? order by ipsrsbarang.nama_brng");
-        }catch(SQLException e){
-            System.out.println(e);
-        }
+        Valid.loadCombo(CmbAkun,"nama_bayar","akun_bayar");        
            
     }
 
@@ -219,20 +211,21 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         label10 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari1 = new widget.Button();
-        label9 = new widget.Label();
-        LSubtotal = new widget.Label();
         BtnCari = new widget.Button();
         BtnKeluar = new widget.Button();
-        label12 = new widget.Label();
-        LPotongan = new widget.Label();
-        label19 = new widget.Label();
-        LTotal = new widget.Label();
         BtnTambah = new widget.Button();
+        label12 = new widget.Label();
+        LSubtotal = new widget.Label();
+        label9 = new widget.Label();
+        LPotongan = new widget.Label();
+        label20 = new widget.Label();
+        LTotal2 = new widget.Label();
         label17 = new widget.Label();
         tppn = new widget.TextBox();
-        label21 = new widget.Label();
         LPpn = new widget.Label();
-        label20 = new widget.Label();
+        label24 = new widget.Label();
+        Meterai = new widget.TextBox();
+        label19 = new widget.Label();
         LTagiha = new widget.Label();
         panelisi3 = new widget.panelisi();
         label15 = new widget.Label();
@@ -282,7 +275,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -301,7 +294,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
 
             }
         ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter.setToolTipText("Masukkan jumlah pengajuan di ujung paling kiri pada warna biru kemudian geser kanan");
         tbDokter.setComponentPopupMenu(Popup);
         tbDokter.setName("tbDokter"); // NOI18N
         tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -374,21 +367,6 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         panelisi1.add(BtnCari1);
         BtnCari1.setBounds(482, 65, 28, 23);
 
-        label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label9.setText("Potongan :");
-        label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label9);
-        label9.setBounds(130, 0, 120, 30);
-
-        LSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LSubtotal.setText("0");
-        LSubtotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LSubtotal.setName("LSubtotal"); // NOI18N
-        LSubtotal.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LSubtotal);
-        LSubtotal.setBounds(10, 20, 120, 30);
-
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnCari.setMnemonic('C');
         BtnCari.setText("Cari");
@@ -427,36 +405,6 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         panelisi1.add(BtnKeluar);
         BtnKeluar.setBounds(670, 62, 100, 30);
 
-        label12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label12.setText("Subtotal :");
-        label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label12);
-        label12.setBounds(10, 0, 120, 30);
-
-        LPotongan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LPotongan.setText("0");
-        LPotongan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LPotongan.setName("LPotongan"); // NOI18N
-        LPotongan.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LPotongan);
-        LPotongan.setBounds(130, 20, 120, 30);
-
-        label19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label19.setText("Total Beli :");
-        label19.setName("label19"); // NOI18N
-        label19.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label19);
-        label19.setBounds(250, 0, 120, 30);
-
-        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal.setText("0");
-        LTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LTotal);
-        LTotal.setBounds(250, 20, 120, 30);
-
         BtnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambah.setMnemonic('3');
         BtnTambah.setToolTipText("Alt+3");
@@ -470,13 +418,59 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         panelisi1.add(BtnTambah);
         BtnTambah.setBounds(510, 65, 28, 23);
 
+        label12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label12.setText("Total 1 :");
+        label12.setName("label12"); // NOI18N
+        label12.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label12);
+        label12.setBounds(10, 0, 60, 30);
+
+        LSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LSubtotal.setText("0");
+        LSubtotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LSubtotal.setName("LSubtotal"); // NOI18N
+        LSubtotal.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelisi1.add(LSubtotal);
+        LSubtotal.setBounds(10, 20, 100, 30);
+
+        label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label9.setText("Potongan :");
+        label9.setName("label9"); // NOI18N
+        label9.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label9);
+        label9.setBounds(120, 0, 90, 30);
+
+        LPotongan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LPotongan.setText("0");
+        LPotongan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LPotongan.setName("LPotongan"); // NOI18N
+        LPotongan.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelisi1.add(LPotongan);
+        LPotongan.setBounds(120, 20, 100, 30);
+
+        label20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label20.setText("Total 2 :");
+        label20.setName("label20"); // NOI18N
+        label20.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label20);
+        label20.setBounds(230, 0, 90, 30);
+
+        LTotal2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal2.setText("0");
+        LTotal2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LTotal2.setName("LTotal2"); // NOI18N
+        LTotal2.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelisi1.add(LTotal2);
+        LTotal2.setBounds(230, 20, 100, 30);
+
         label17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         label17.setText("PPN :");
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label17);
-        label17.setBounds(370, 0, 90, 30);
+        label17.setBounds(340, 0, 40, 30);
 
+        tppn.setText("10");
         tppn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tppn.setName("tppn"); // NOI18N
         tppn.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -486,15 +480,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
             }
         });
         panelisi1.add(tppn);
-        tppn.setBounds(370, 26, 60, 23);
-
-        label21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label21.setText("%");
-        label21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        label21.setName("label21"); // NOI18N
-        label21.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi1.add(label21);
-        label21.setBounds(433, 26, 40, 23);
+        tppn.setBounds(340, 26, 45, 23);
 
         LPpn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LPpn.setText("0");
@@ -502,14 +488,33 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         LPpn.setName("LPpn"); // NOI18N
         LPpn.setPreferredSize(new java.awt.Dimension(110, 30));
         panelisi1.add(LPpn);
-        LPpn.setBounds(470, 20, 120, 30);
+        LPpn.setBounds(410, 20, 100, 30);
 
-        label20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label20.setText("Jumlah Tagihan :");
-        label20.setName("label20"); // NOI18N
-        label20.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label20);
-        label20.setBounds(590, 0, 130, 30);
+        label24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label24.setText("Meterai :");
+        label24.setName("label24"); // NOI18N
+        label24.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label24);
+        label24.setBounds(520, 0, 90, 30);
+
+        Meterai.setText("0");
+        Meterai.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Meterai.setName("Meterai"); // NOI18N
+        Meterai.setPreferredSize(new java.awt.Dimension(80, 23));
+        Meterai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MeteraiKeyPressed(evt);
+            }
+        });
+        panelisi1.add(Meterai);
+        Meterai.setBounds(520, 26, 100, 23);
+
+        label19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label19.setText("Jumlah Tagihan :");
+        label19.setName("label19"); // NOI18N
+        label19.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label19);
+        label19.setBounds(630, 0, 130, 30);
 
         LTagiha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LTagiha.setText("0");
@@ -517,7 +522,7 @@ public class DlgPembelianIPSRS extends javax.swing.JDialog {
         LTagiha.setName("LTagiha"); // NOI18N
         LTagiha.setPreferredSize(new java.awt.Dimension(110, 30));
         panelisi1.add(LTagiha);
-        LTagiha.setBounds(590, 20, 120, 30);
+        LTagiha.setBounds(630, 20, 150, 30);
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
@@ -679,6 +684,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.textKosong(kdsup,"Supplier");
         }else if(nmptg.getText().trim().equals("")){
             Valid.textKosong(kdptg,"Petugas");
+        }else if(Meterai.getText().trim().equals("")){
+            Valid.textKosong(Meterai,"meterai");
         }else if(tbDokter.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
@@ -689,9 +696,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
-                if(Sequel.menyimpantf("ipsrspembelian","?,?,?,?,?,?,?,?,?,?","data",10,new String[]{
+                if(Sequel.menyimpantf("ipsrspembelian","?,?,?,?,?,?,?,?,?,?,?","data",11,new String[]{
                         NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),""+sbttl,""+ttldisk,""+ttl,
-                        ""+ppn,""+(ttl+ppn),Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())
+                        ""+ppn,""+meterai,""+(ttl+ppn+meterai),Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString())
                 })==true){
                     jml=tbDokter.getRowCount();
                     for(i=0;i<jml;i++){  
@@ -708,8 +715,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     } 
 
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun"),"PEMBELIAN",""+(ttl+ppn),"0"});
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),"KAS KELUAR","0",""+(ttl+ppn)}); 
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun"),"PEMBELIAN",""+(ttl+ppn+meterai),"0"});
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",CmbAkun.getSelectedItem().toString()),"KAS KELUAR","0",""+(ttl+ppn+meterai)}); 
                     jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),"U","Pembelian Barang Non Medis dan Penunjang(Lab & Rad) ");
                     jml=tbDokter.getRowCount();
                     for(i=0;i<jml;i++){ 
@@ -719,10 +726,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         tbDokter.setValueAt("0",i,7);
                         tbDokter.setValueAt("0",i,8);
                     }
+                    Meterai.setText("0");
                     getData();
                 }                        
                 Sequel.AutoComitTrue();        
-                Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,6),signed)),0) from ipsrspembelian ","PB",6,NoFaktur); 
+                autoNomor();
             }
         }        
     }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -795,7 +803,7 @@ private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
 private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDokterKeyPressed
         if(tbDokter.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                 try {                  
                    if((tbDokter.getSelectedColumn()==1)||(tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==4)||(tbDokter.getSelectedColumn()==5)||(tbDokter.getSelectedColumn()==7)){                       
                         Sequel.mengedit("ipsrsbarang","kode_brng=?","harga=?",2,new String[]{
@@ -841,12 +849,12 @@ private void TglBeliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
 private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_suplier from datasuplier where kode_suplier=?", nmsup,kdsup.getText());           
+            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());           
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_suplier from datasuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
             NoFaktur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_suplier from datasuplier where kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select nama_suplier from ipsrssuplier where kode_suplier=?", nmsup,kdsup.getText());
             kdptg.requestFocus(); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSuplierActionPerformed(null);
@@ -910,6 +918,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
     }//GEN-LAST:event_tppnKeyPressed
 
+    private void MeteraiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MeteraiKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            getData();
+        }
+    }//GEN-LAST:event_MeteraiKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -938,7 +952,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.Label LPpn;
     private widget.Label LSubtotal;
     private widget.Label LTagiha;
-    private widget.Label LTotal;
+    private widget.Label LTotal2;
+    private widget.TextBox Meterai;
     private widget.TextBox NoFaktur;
     private javax.swing.JPopupMenu Popup;
     private widget.TextBox TCari;
@@ -958,7 +973,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.Label label17;
     private widget.Label label19;
     private widget.Label label20;
-    private widget.Label label21;
+    private widget.Label label24;
     private widget.Label label9;
     private widget.TextBox nmptg;
     private widget.TextBox nmsup;
@@ -1008,13 +1023,28 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],harga[i],subtotal[i],diskon[i],besardiskon[i],jmltotal[i]});
         }
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{"",rs.getString(1),rs.getString(2),rs.getString(3),Valid.SetAngka2(rs.getDouble(4)),"0","0","0","0"});
-            }                 
+            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),ipsrsbarang.kode_sat,ipsrsbarang.harga "+
+                    " from ipsrsbarang where ipsrsbarang.kode_brng like ? or "+
+                    " ipsrsbarang.nama_brng like ? or "+
+                    " ipsrsbarang.jenis like ? order by ipsrsbarang.nama_brng");
+            try{   
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{"",rs.getString(1),rs.getString(2),rs.getString(3),Valid.SetAngka2(rs.getDouble(4)),"0","0","0","0"});
+                }   
+            }catch(Exception e){
+                System.out.println(e);
+            }finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }              
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
@@ -1023,46 +1053,58 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void getData(){
         row=tbDokter.getSelectedRow();
-        if(row!= -1){            
+        if(row!= -1){
+            try {
                 if(!tbDokter.getValueAt(row,0).toString().equals("")){
                     tbDokter.setValueAt(Valid.SetAngka2(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,4).toString())), row,5);                
                     tbDokter.setValueAt(Valid.SetAngka2(Double.parseDouble(tbDokter.getValueAt(row,5).toString())-Double.parseDouble(tbDokter.getValueAt(row,7).toString())), row,8);           
-                } 
-                ttl=0;sbttl=0;ttldisk=0;
-                y=0;w=0;
-                jml=tbDokter.getRowCount();
-                for(i=0;i<jml;i++){                 
-                    if(!tbDokter.getValueAt(i,5).toString().isEmpty()){
-                        w=Double.parseDouble(tbDokter.getValueAt(i,5).toString());                
-                    }else if(tbDokter.getValueAt(i,5).toString().isEmpty()){
-                        w=0;                
-                    }
-                    sbttl=sbttl+w;                
-                    if(!tbDokter.getValueAt(i,7).toString().isEmpty()){
-                        y=Double.parseDouble(tbDokter.getValueAt(i,7).toString());                
-                    }else if(tbDokter.getValueAt(i,7).toString().isEmpty()){
-                        y=0;                
-                    }
-                    ttldisk=ttldisk+y;
                 }
-                LSubtotal.setText(Valid.SetAngka(sbttl));
-                LPotongan.setText(Valid.SetAngka(ttldisk));
-                ttl=sbttl-ttldisk;
-                LTotal.setText(Valid.SetAngka(ttl));
-                ppn=0;
-                if(!tppn.getText().equals("")){
-                    ppn=(Double.parseDouble(tppn.getText())/100) *(ttl);
-                    LPpn.setText(Valid.SetAngka(ppn));
-                    LTagiha.setText(Valid.SetAngka(ttl+ppn));
-                }
+            } catch (Exception e) {
+                tbDokter.setValueAt(0, row,5);                
+                tbDokter.setValueAt(0, row,8);    
+            }                 
         }
+        ttl=0;sbttl=0;ttldisk=0;
+        y=0;w=0;
+        meterai=0;
+        if(!Meterai.getText().equals("")){
+            meterai=Double.parseDouble(Meterai.getText());
+        }
+        
+        jml=tbDokter.getRowCount();
+        for(i=0;i<jml;i++){                 
+            if(!tbDokter.getValueAt(i,5).toString().isEmpty()){
+                w=Double.parseDouble(tbDokter.getValueAt(i,5).toString());                
+            }else if(tbDokter.getValueAt(i,5).toString().isEmpty()){
+                w=0;                
+            }
+            sbttl=sbttl+w;                
+            if(!tbDokter.getValueAt(i,7).toString().isEmpty()){
+                y=Double.parseDouble(tbDokter.getValueAt(i,7).toString());                
+            }else if(tbDokter.getValueAt(i,7).toString().isEmpty()){
+                y=0;                
+            }
+            ttldisk=ttldisk+y;
+        }
+        LSubtotal.setText(Valid.SetAngka(sbttl));
+        LPotongan.setText(Valid.SetAngka(ttldisk));
+        ttl=sbttl-ttldisk;
+        LTotal2.setText(Valid.SetAngka(ttl));
+        ppn=0;
+        if(!tppn.getText().equals("")){
+            ppn=(Double.parseDouble(tppn.getText())/100) *(ttl);
+            LPpn.setText(Valid.SetAngka(ppn));
+            LTagiha.setText(Valid.SetAngka(ttl+ppn+meterai));
+        }
+        
     }
    
     
     public void isCek(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,6),signed)),0) from ipsrspembelian ","PI",6,NoFaktur); 
+        autoNomor();
         TCari.requestFocus();
         tppn.setText("10");
+        Meterai.setText("0");
         if(var.getjml2()>=1){
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1071,6 +1113,11 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             BtnTambah.setEnabled(var.getipsrs_barang());
             Sequel.cariIsi("select nama from petugas where nip=?", nmptg,kdptg.getText());
         }        
+    }
+    
+    private void autoNomor() {
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_faktur,3),signed)),0) from ipsrspembelian where tgl_beli='"+Valid.SetTgl(TglBeli.getSelectedItem()+"")+"' ",
+                "PI"+TglBeli.getSelectedItem().toString().substring(8,10)+TglBeli.getSelectedItem().toString().substring(3,5)+TglBeli.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
     }
 
  

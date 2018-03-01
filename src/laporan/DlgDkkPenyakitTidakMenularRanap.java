@@ -375,7 +375,7 @@ public final class DlgDkkPenyakitTidakMenularRanap extends javax.swing.JDialog {
                 }
             }
             Sequel.AutoComitTrue();
-            Valid.MyReport("rptDkkPenyakitTakMenularRanap.jrxml","report","::[ Surveilans PD3I ]::",
+            Valid.MyReport("rptDkkPenyakitTakMenularRanap.jrxml","report","::[ Penyakit Menular Rawat Inap ]::",
                 "select * from temporary order by no asc",param);
         }
         this.setCursor(Cursor.getDefaultCursor());

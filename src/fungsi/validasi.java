@@ -678,9 +678,9 @@ public final class validasi {
                 if (fileRpt.isFile()) { // Cek apakah file RptMaster.jrxml ada
                     fullPath = fileRpt.toString();
                     System.out.println("Found Report File at : " + fullPath);
-                } // end if
-            } // end for i
-        } // end if
+                } 
+            } 
+        } 
 
         // Ambil Direktori tempat file RptMaster.jrxml berada
         String[] subRptDir = fullPath.split(reportName);

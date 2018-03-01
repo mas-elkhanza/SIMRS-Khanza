@@ -454,6 +454,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         }else{
             if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString())>0){
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+            }else if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),7).toString().equals("Sudah Terlayani")){
+                JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
             }else {
                 if(var.getkode().equals("Admin Utama")){
                     dlgobt.setNoRm(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString(),

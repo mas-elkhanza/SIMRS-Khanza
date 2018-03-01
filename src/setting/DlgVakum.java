@@ -63,6 +63,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD17 = new usu.widget.ButtonGlass();
         BtnICD25 = new usu.widget.ButtonGlass();
         BtnICD104 = new usu.widget.ButtonGlass();
+        BtnICD115 = new usu.widget.ButtonGlass();
         BtnICD111 = new usu.widget.ButtonGlass();
         BtnICD35 = new usu.widget.ButtonGlass();
         BtnICD76 = new usu.widget.ButtonGlass();
@@ -79,6 +80,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD80 = new usu.widget.ButtonGlass();
         BtnICD110 = new usu.widget.ButtonGlass();
         BtnICD9 = new usu.widget.ButtonGlass();
+        BtnICD114 = new usu.widget.ButtonGlass();
         BtnICD71 = new usu.widget.ButtonGlass();
         BtnICD42 = new usu.widget.ButtonGlass();
         BtnICD18 = new usu.widget.ButtonGlass();
@@ -167,7 +169,7 @@ public class DlgVakum extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), ".: Silahkan klik tombol untuk menghapus isi table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), ".: Silahkan klik tombol untuk menghapus isi table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setToolTipText("");
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -498,6 +500,23 @@ public class DlgVakum extends javax.swing.JDialog {
         });
         panelBiasa1.add(BtnICD104);
 
+        BtnICD115.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD115.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD115.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD115.setText("Golongan Barang");
+        BtnICD115.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD115.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD115.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD115.setName("BtnICD115"); // NOI18N
+        BtnICD115.setRoundRect(true);
+        BtnICD115.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD115ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD115);
+
         BtnICD111.setBackground(new java.awt.Color(195, 205, 185));
         BtnICD111.setForeground(new java.awt.Color(153, 0, 51));
         BtnICD111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -769,6 +788,23 @@ public class DlgVakum extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnICD9);
+
+        BtnICD114.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD114.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD114.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD114.setText("Kategori Barang");
+        BtnICD114.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD114.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD114.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD114.setName("BtnICD114"); // NOI18N
+        BtnICD114.setRoundRect(true);
+        BtnICD114.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD114ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD114);
 
         BtnICD71.setBackground(new java.awt.Color(195, 205, 185));
         BtnICD71.setForeground(new java.awt.Color(153, 0, 51));
@@ -2707,6 +2743,14 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Catatan Pasien","lain","catatan_pasien"); 
     }//GEN-LAST:event_BtnICD113ActionPerformed
 
+    private void BtnICD114ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD114ActionPerformed
+        hapus("Kategori Barang","Data Obat/Alkes/BHP","kategori_barang");
+    }//GEN-LAST:event_BtnICD114ActionPerformed
+
+    private void BtnICD115ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD115ActionPerformed
+        hapus("Golongan Barang","Data Obat/Alkes/BHP","golongan_barang");
+    }//GEN-LAST:event_BtnICD115ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2742,6 +2786,8 @@ public class DlgVakum extends javax.swing.JDialog {
     private usu.widget.ButtonGlass BtnICD111;
     private usu.widget.ButtonGlass BtnICD112;
     private usu.widget.ButtonGlass BtnICD113;
+    private usu.widget.ButtonGlass BtnICD114;
+    private usu.widget.ButtonGlass BtnICD115;
     private usu.widget.ButtonGlass BtnICD12;
     private usu.widget.ButtonGlass BtnICD13;
     private usu.widget.ButtonGlass BtnICD14;
