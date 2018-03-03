@@ -2402,7 +2402,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                         "\"jnsPelayanan\": \""+JenisPelayanan1.getSelectedItem().toString().substring(0,1)+"\"," +
                                         "\"catatan\": \""+Catatan1.getText()+"\"," +
                                         "\"diagRujukan\": \""+KdPenyakit1.getText()+"\"," +
-                                        "\"tipeRujukan\": \""+TipeRujukan.getSelectedItem().toString().substring(0,1)+"\"," +
+                                        "\"tipeRujukan\": \""+TipeRujukan.getSelectedItem().toString()+"\"," +
                                         "\"poliRujukan\": \""+KdPoli1.getText()+"\"," +
                                         "\"user\": \""+user+"\"" +
                                     "}" +
@@ -2411,7 +2411,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 HttpEntity requestEntity = new HttpEntity(requestJson,headers);
                 RestTemplate rest = new RestTemplate();
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
+                JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 JsonNode nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
