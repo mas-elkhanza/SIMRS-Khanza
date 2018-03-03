@@ -73,8 +73,8 @@
                 poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  poliklinik.nm_poli like '%".$keyword."%' or 
                 poliklinik.nm_poli like '%".$poli."%' and  penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  penjab.png_jawab like '%".$keyword."%' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
-        if(mysql_num_rows($hasil)!=0) {
+        $jumlah=mysqli_num_rows($hasil);
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='7%'><div align='center'>Proses</div></td>
@@ -82,7 +82,7 @@
                         <td width='22%'><div align='center'>Registrasi</div></td>
                         <td width='36%'><div align='center'>Berkas Digital</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {                        
+                    while($baris = mysqli_fetch_array($hasil)) {                        
                         echo "<tr class='isi'>
                                <td valign='top'>
                                     <center>
@@ -130,7 +130,7 @@
                                                   where berkas_digital_perawatan.no_rawat='".$baris["no_rawat"]."' ORDER BY master_berkas_digital.nama ASC ";
                                         $hasil2=bukaquery($_sql2);
                                         $no=1;
-                                        while($baris2 = mysql_fetch_array($hasil2)) { 
+                                        while($baris2 = mysqli_fetch_array($hasil2)) { 
                                             echo "<tr class='isi8'> 
                                                     <td width='5%'>$no.</td>
                                                     <td width='95%'><a target=_blank href=../berkasrawat/pages/upload/".$baris2["lokasi_file"].">".$baris2["nama"]."</a></td>
@@ -225,7 +225,7 @@
                                     echo "<option value='$carabayar'>$carabayar</option>";
                                 }
                                 echo "<option value=''></option>";
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>
@@ -243,7 +243,7 @@
                                     echo "<option value='$poli'>$poli</option>";
                                 }
                                 echo "<option value=''></option>";
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>

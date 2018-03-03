@@ -17,7 +17,7 @@
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT * FROM bank WHERE namabank='$namabank'";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $namabank         = $baris[0];
                 }
                 echo"<input type=hidden name=namabank value=$namabank><input type=hidden name=action value=$action>";

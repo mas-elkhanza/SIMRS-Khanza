@@ -52,8 +52,8 @@ if(empty($tahunawal)){
                 bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu, if(bridging_sep.tglpulang='0000-00-00 00:00:00',now(),bridging_sep.tglpulang) as tglpulang  
                 from bridging_sep where bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' order by bridging_sep.tglsep";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
-        if(mysql_num_rows($hasil)!=0) {
+        $jumlah=mysqli_num_rows($hasil);
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head2'>
                         <td width='10%'><div align='center'>No.Rawat</div></td>
@@ -67,7 +67,7 @@ if(empty($tahunawal)){
                         <td width='9%'><div align='center'>Peserta</div></td>
                         <td width='13%'><div align='center'>Status Data</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $status="";
                         if(getOne("select count(no_sep) from inacbg_data_terkirim where no_sep='".$baris["no_sep"]."'")>0){
                             $status="Terkirim INACBG";
@@ -82,7 +82,7 @@ if(empty($tahunawal)){
                         $prosedur="";
                         $a=1;
                         $hasilprosedur=bukaquery("select kode from prosedur_pasien where no_rawat='".$baris["no_rawat"]."' order by prioritas asc");
-                        while($barisprosedur = mysql_fetch_array($hasilprosedur)) {
+                        while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
                             if($a==1){
                                 $prosedur=$barisprosedur["kode"];
                             }else{
@@ -94,7 +94,7 @@ if(empty($tahunawal)){
                         $penyakit="";
                         $a=1;
                         $hasilpenyakit=bukaquery("select kd_penyakit from diagnosa_pasien where no_rawat='".$baris["no_rawat"]."' order by prioritas asc");
-                        while($barispenyakit = mysql_fetch_array($hasilpenyakit)) {
+                        while($barispenyakit = mysqli_fetch_array($hasilpenyakit)) {
                             if($a==1){
                                 $penyakit=$barispenyakit["kd_penyakit"];
                             }else{

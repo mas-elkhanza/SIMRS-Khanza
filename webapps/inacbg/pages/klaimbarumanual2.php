@@ -64,8 +64,8 @@
                 reg_periksa.stts<>'Batal' and penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  poliklinik.nm_poli like '%".$keyword."%' or 
                 reg_periksa.stts<>'Batal' and penjab.png_jawab like '%".$carabayar."%' and tgl_registrasi between '".$tahunawal."-".$bulanawal."-".$tanggalawal."' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir."' and  penjab.png_jawab like '%".$keyword."%' order by reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
-        if(mysql_num_rows($hasil)!=0) {
+        $jumlah=mysqli_num_rows($hasil);
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head2'>
                         <td width='6%'><div align='center'>No.RM</div></td>
@@ -74,7 +74,7 @@
                         <td width='25%'><div align='center'>Dokter</div></td>
                         <td width='10%'><div align='center'>Status</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $carabayar =str_replace(" ","_",$carabayar)?str_replace(" ","_",$carabayar):NULL;
                         $status="<a href='?act=DetailKirim&norawat=".$baris["no_rawat"]."&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar'>[Kirim]</a>";
                         if(getOne("select count(no_rawat) from inacbg_klaim_baru2 where no_rawat='".$baris["no_rawat"]."'")>0){
@@ -171,7 +171,7 @@
                                     echo "<option value='$carabayar'>$carabayar</option>";
                                 }
                                 echo "<option value=''></option>";
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>

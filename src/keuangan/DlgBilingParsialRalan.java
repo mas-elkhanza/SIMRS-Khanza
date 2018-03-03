@@ -19,6 +19,7 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -1807,6 +1808,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     }
     
     private void isRawat(){
+        DTPTgl.setDate(new Date());
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());
     }
 

@@ -2,7 +2,7 @@
  include '../../../conf/conf.php';
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bln_leng=strlen($baris[1]);
    $bulan="0";
@@ -24,7 +24,7 @@
         
         $_sqlthnini  = "SELECT DAY(LAST_DAY('$tahun-$bulan-01')) ";
         $hasilthnini = bukaquery($_sqlthnini);
-        $datathnini  = mysql_fetch_array($hasilthnini);        
+        $datathnini  = mysqli_fetch_array($hasilthnini);        
         $thnini      = $tahun."-".$bulan."-".$datathnini[0];
         $thnlalu     = ($tahun-1)."-".$bulan."-".$datathnini[0];
         
@@ -43,7 +43,7 @@
                        and pegawai.departemen=departemen.dep_id where pegawai.stts_aktif<>'KELUAR' order by pegawai.id ASC  ";
         $hasil6       = bukaquery($_sql);
         
-        if(mysql_num_rows($hasil6)!=0) {
+        if(mysqli_num_rows($hasil6)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <caption><h2 class=title><font color='999999'>Laporan THR Semua Karyawan Tahun ".$tahun." Bulan ".($bulan+1)."</font></h2></caption>
                     <tr class='head'>
@@ -53,7 +53,7 @@
                          <td width='20%'><div align='center'><font size='2' face='Verdana'><strong>Departemen</strong></font></div></td>
                          <td width='20%'><div align='center'><font size='2' face='Verdana' color='green'><strong>THR</strong></font></div></td>
                     </tr>";
-            while($data = mysql_fetch_array($hasil6)) {   
+            while($data = mysqli_fetch_array($hasil6)) {   
                 $nik         = $data[0];
                 $nama        = $data[1];
                 $status      = $data[2]; 
@@ -106,7 +106,7 @@
         
                 $_sql3     = "SELECT sum(jml) FROM tambahjaga where id='$id' and tgl between '$thnlalu' and '$thnini' ";
                 $hasil3    = bukaquery($_sql3);
-                $data3     = mysql_fetch_array($hasil3);
+                $data3     = mysqli_fetch_array($hasil3);
                 $tmbhn     = $data3[0];
                 $nmasuk    = $tmbhn/12;
         
@@ -114,7 +114,7 @@
                     $_sqlgp    = "SELECT `gapok1`, `kenaikan`, `maksimal`
                                 from pendidikan  where tingkat like '%".$pendidikan."%' order by gapok1 desc limit 1 ";
                     $hasilgp   = bukaquery($_sqlgp);
-                    $barisgp   = mysql_fetch_array($hasilgp);
+                    $barisgp   = mysqli_fetch_array($hasilgp);
                     $gapokgp    = 0;
                     @$gapok1    = $barisgp["gapok1"];
                     @$kenaikan  = $barisgp["kenaikan"];
@@ -133,7 +133,7 @@
                     $_sqlgp    = "SELECT `gapok1`, `kenaikan`, `maksimal`
                                 from pendidikan  where tingkat like '%".$pendidikan."%' order by gapok1 desc limit 1 ";
                     $hasilgp   = bukaquery($_sqlgp);
-                    $barisgp   = mysql_fetch_array($hasilgp);
+                    $barisgp   = mysqli_fetch_array($hasilgp);
                     $gapokgp    = 0;
                     @$gapok1    = $barisgp["gapok1"];
                     @$kenaikan  = $barisgp["kenaikan"];

@@ -118,7 +118,7 @@
 											$tes=("select count(status) as jml from kamar where status = 'ISI'") ;
 											$hasil=bukaquery($tes);
 											
-											while ($data = mysql_fetch_array ($hasil)){
+											while ($data = mysqli_fetch_array ($hasil)){
 											$jml= ($data['jml']);
 										}
 										print_r ($jml);
@@ -151,7 +151,7 @@
 											$tes=("select count(status) as jml from kamar where status = 'KOSONG'") ;
 											$hasil=bukaquery($tes);
 											
-											while ($data = mysql_fetch_array ($hasil)){
+											while ($data = mysqli_fetch_array ($hasil)){
 											$jml= ($data['jml']);
 										}
 										print_r ($jml);
@@ -185,7 +185,7 @@
 											$tes=("select count(no_rawat)  as h from periksa_lab where tgl_periksa='$tgl'") ;
 											$hasil=bukaquery($tes);
 											
-											while ($data = mysql_fetch_array ($hasil)){
+											while ($data = mysqli_fetch_array ($hasil)){
 											$jml= ($data['h']);
 										}
 										print_r ($jml);
@@ -218,7 +218,7 @@
 											$tes=("select count(no_rawat)  as h from periksa_radiologi where tgl_periksa='$ff'") ;
 											$hasil=bukaquery($tes);
 											
-											while ($data = mysql_fetch_array ($hasil)){
+											while ($data = mysqli_fetch_array ($hasil)){
 											$jml= ($data['h']);
 										}
 										print_r ($jml);
@@ -264,7 +264,7 @@
 						$sql = "select poliklinik.nm_poli, count(*) as jumlah from reg_periksa INNER JOIN poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli WHERE reg_periksa.tgl_registrasi='$date' group by reg_periksa.kd_poli  order by count(*) desc ";
 						$hasil=bukaquery($sql);
 
-						while ($data = mysql_fetch_array ($hasil)){
+						while ($data = mysqli_fetch_array ($hasil)){
                         
                             $jumlah[]=intval($data['jumlah']);
                             $poli[]= $data['nm_poli'];
@@ -379,7 +379,7 @@
                           AND jadwal.kd_poli=poliklinik.kd_poli WHERE hari_kerja = '$namahari'" ;  
                       $hasil=bukaquery($_sql);
 
-                      while ($data = mysql_fetch_array ($hasil)){
+                      while ($data = mysqli_fetch_array ($hasil)){
                         echo "<tr>
                             <td>".$data['nm_dokter']."</b></td>
                             <td>".$data['nm_poli']."</td>
@@ -410,13 +410,13 @@
                   $_sql="Select * From bangsal where status='1' and kd_bangsal in(select kd_bangsal from kamar)" ;  
                   $hasil=bukaquery($_sql);
 
-                  while ($data = mysql_fetch_array ($hasil)){
+                  while ($data = mysqli_fetch_array ($hasil)){
                     echo "<tr class='isi1' >
                         <td align='left'>".$data['nm_bangsal']."</td>
                         <td align='center'>
                              <font color='blue'>
                               ";
-                               $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."'"));
+                               $data2=mysqli_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."'"));
 					       echo $data2[0];
                         echo "
                               </font>
@@ -424,7 +424,7 @@
                         <td align='center'>
                              <font color='red'>
                               ";
-                             $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='ISI'"));
+                             $data2=mysqli_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='ISI'"));
 						   echo $data2[0];
                         echo "
                               </font>
@@ -432,7 +432,7 @@
                         <td align='center'>
                               <font color='#000'>
                               ";
-                             $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='KOSONG'"));
+                             $data2=mysqli_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='KOSONG'"));
 						   echo $data2[0];
                         echo "
                              </font>
