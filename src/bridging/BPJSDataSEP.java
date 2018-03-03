@@ -374,7 +374,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         NmPoli1 = new widget.TextBox();
         btnPoli1 = new widget.Button();
         jLabel33 = new widget.Label();
-        JenisPelayanan2 = new widget.ComboBox();
+        TipeRujukan = new widget.ComboBox();
         jLabel34 = new widget.Label();
         Catatan1 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -805,26 +805,26 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         internalFrame6.add(jLabel33);
         jLabel33.setBounds(200, 25, 80, 23);
 
-        JenisPelayanan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Penuh", "1. Partial ", "2. Rujuk Balik" }));
-        JenisPelayanan2.setName("JenisPelayanan2"); // NOI18N
-        JenisPelayanan2.setOpaque(false);
-        JenisPelayanan2.addItemListener(new java.awt.event.ItemListener() {
+        TipeRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Penuh", "1. Partial ", "2. Rujuk Balik" }));
+        TipeRujukan.setName("TipeRujukan"); // NOI18N
+        TipeRujukan.setOpaque(false);
+        TipeRujukan.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                JenisPelayanan2ItemStateChanged(evt);
+                TipeRujukanItemStateChanged(evt);
             }
         });
-        JenisPelayanan2.addActionListener(new java.awt.event.ActionListener() {
+        TipeRujukan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JenisPelayanan2ActionPerformed(evt);
+                TipeRujukanActionPerformed(evt);
             }
         });
-        JenisPelayanan2.addKeyListener(new java.awt.event.KeyAdapter() {
+        TipeRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                JenisPelayanan2KeyPressed(evt);
+                TipeRujukanKeyPressed(evt);
             }
         });
-        internalFrame6.add(JenisPelayanan2);
-        JenisPelayanan2.setBounds(283, 25, 110, 23);
+        internalFrame6.add(TipeRujukan);
+        TipeRujukan.setBounds(283, 25, 110, 23);
 
         jLabel34.setText("Catatan :");
         jLabel34.setName("jLabel34"); // NOI18N
@@ -2398,13 +2398,13 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                     "\"t_rujukan\": {" +
                                         "\"noSep\": \""+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"\"," +
                                         "\"tglRujukan\": \""+Valid.SetTgl(TanggalRujukKeluar.getSelectedItem()+"")+"\"," +
-                                        "\"ppkDirujuk\": \"0301R002\"," +
-                                        "\"jnsPelayanan\": \"1\"," +
-                                        "\"catatan\": \"test\"," +
-                                        "\"diagRujukan\": \"A00.1\"," +
-                                        "\"tipeRujukan\": \"1\"," +
-                                        "\"poliRujukan\": \"INT\"," +
-                                        "\"user\": \"Coba Ws\"" +
+                                        "\"ppkDirujuk\": \""+KdPpkRujukan1.getText()+"\"," +
+                                        "\"jnsPelayanan\": \""+JenisPelayanan1.getSelectedItem().toString().substring(0,1)+"\"," +
+                                        "\"catatan\": \""+Catatan1.getText()+"\"," +
+                                        "\"diagRujukan\": \""+KdPenyakit1.getText()+"\"," +
+                                        "\"tipeRujukan\": \""+TipeRujukan.getSelectedItem().toString().substring(0,1)+"\"," +
+                                        "\"poliRujukan\": \""+KdPoli1.getText()+"\"," +
+                                        "\"user\": \""+user+"\"" +
                                     "}" +
                                 "}" +
                             "}";
@@ -2417,29 +2417,20 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 System.out.println("message : "+nameNode.path("message").asText());
                 JsonNode response = root.path("response");
                 if(nameNode.path("code").asText().equals("200")){
-                    Sequel.mengedit("bridging_sep",
-                         "no_sep=?","no_sep=?,no_rawat=?,tglsep=?,tglrujukan=?,no_rujukan=?,kdppkrujukan=?,"+
-                         "nmppkrujukan=?,kdppkpelayanan=?,nmppkpelayanan=?,jnspelayanan=?,catatan=?,diagawal=?,"+
-                         "nmdiagnosaawal=?,kdpolitujuan=?,nmpolitujuan=?,klsrawat=?,lakalantas=?,lokasilaka=?,"+
-                         "user=?,nomr=?,nama_pasien=?,tanggal_lahir=?,peserta=?,jkel=?,no_kartu=?,asal_rujukan=?,eksekutif=?,cob=?,penjamin=?,notelep=?",31,new String[]{
-                         response.asText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
-                         Valid.SetTgl(TanggalRujuk.getSelectedItem()+"")+" "+TanggalRujuk.getSelectedItem().toString().substring(11,19), 
-                         NoRujukan.getText(),KdPpkRujukan.getText(), NmPpkRujukan.getText(),KdPPK.getText(), NmPPK.getText(), 
-                         JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
-                         NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
-                         LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),user, 
-                         TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JenisPeserta.getText(),JK.getText(),NoKartu.getText(),
-                         AsalRujukan.getSelectedItem().toString(),Eksekutif.getSelectedItem().toString(),
-                         COB.getSelectedItem().toString(),penjamin,NoTelp.getText(),
-                         tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-                     });
-                     Sequel.mengedit("rujuk_masuk","no_rawat=?","no_rawat=?,perujuk=?,no_rujuk=?",4,new String[]{
-                         TNoRw.getText(),NmPpkRujukan.getText(),NoRujukan.getText(),
-                         tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()
-                     });
-                     emptTeks();                         
-                     tampil();
-
+                    if(Sequel.menyimpantf2("bridging_rujukan_bpjs","?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rujukan",13,new String[]{
+                            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),Valid.SetTgl(TanggalRujukKeluar.getSelectedItem()+""),
+                            KdPpkRujukan1.getText(),NmPpkRujukan1.getText(),JenisPelayanan1.getSelectedItem().toString().substring(0,1),
+                            Catatan1.getText(),KdPenyakit1.getText(),NmPenyakit1.getText(),
+                            TipeRujukan.getSelectedItem().toString(),KdPoli1.getText(),
+                            NmPoli1.getText(),response.path("rujukan").path("noRujukan").asText(),
+                            user
+                        })==true){
+                        Sequel.menyimpan("rujuk","'"+response.path("rujukan").path("noRujukan").asText()+"','"+
+                            TNoRw.getText()+"','"+NmPpkRujukan1.getText()+"','"+
+                            Valid.SetTgl(TanggalRujukKeluar.getSelectedItem()+"")+"','"+ 
+                            NmPenyakit1.getText()+"','"+Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText())+
+                            "','-','-','"+Catatan1.getText()+"','12:00:01'","No.Rujuk");
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
                 }
@@ -2493,21 +2484,21 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPoli1KeyPressed
 
-    private void JenisPelayanan2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JenisPelayanan2ItemStateChanged
+    private void TipeRujukanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TipeRujukanItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_JenisPelayanan2ItemStateChanged
+    }//GEN-LAST:event_TipeRujukanItemStateChanged
 
-    private void JenisPelayanan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisPelayanan2KeyPressed
+    private void TipeRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TipeRujukanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JenisPelayanan2KeyPressed
+    }//GEN-LAST:event_TipeRujukanKeyPressed
 
     private void Catatan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Catatan1KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_Catatan1KeyPressed
 
-    private void JenisPelayanan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JenisPelayanan2ActionPerformed
+    private void TipeRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TipeRujukanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JenisPelayanan2ActionPerformed
+    }//GEN-LAST:event_TipeRujukanActionPerformed
 
     /**
     * @param args the command line arguments
@@ -2554,7 +2545,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private widget.TextBox JK;
     private widget.ComboBox JenisPelayanan;
     private widget.ComboBox JenisPelayanan1;
-    private widget.ComboBox JenisPelayanan2;
     private widget.TextBox JenisPeserta;
     private widget.TextBox KdPPK;
     private widget.TextBox KdPenyakit;
@@ -2595,6 +2585,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private widget.Tanggal TanggalRujukKeluar;
     private widget.Tanggal TanggalSEP;
     private widget.TextBox TglLahir;
+    private widget.ComboBox TipeRujukan;
     private javax.swing.JDialog WindowRujukan;
     private javax.swing.JDialog WindowUpdatePulang;
     private widget.Button btnDiagnosa;
