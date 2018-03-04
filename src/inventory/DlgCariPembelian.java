@@ -89,7 +89,7 @@ public class DlgCariPembelian extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        NoFaktur.setDocument(new batasInput((byte)15).getKata(NoFaktur));
+        NoFaktur.setDocument(new batasInput((byte)25).getKata(NoFaktur));
         kdsup.setDocument(new batasInput((byte)5).getKata(kdsup));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));
         kdbar.setDocument(new batasInput((byte)15).getKata(kdbar));
@@ -360,7 +360,7 @@ public class DlgCariPembelian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -964,7 +964,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
   if(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim().equals("")){
-      Valid.textKosong(TCari,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
+      Valid.textKosong(TCari,"pilihan data");
   }else{
      try {
          Sequel.AutoComitFalse();
@@ -1260,7 +1260,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     ps2=koneksi.prepareStatement("select detailbeli.kode_brng,databarang.nama_brng, "+
                         "detailbeli.kode_sat,kodesatuan.satuan,detailbeli.jumlah,detailbeli.h_beli, "+
                         "detailbeli.subtotal,detailbeli.dis,detailbeli.besardis,detailbeli.total,"+
-                        "detailbeli.no_batch,industrifarmasi.nama_industri "+
+                        "detailbeli.no_batch,industrifarmasi.nama_industri,detailbeli.kadaluarsa "+
                         "from detailbeli inner join databarang inner join kodesatuan inner join jenis inner join industrifarmasi "+
                         " on detailbeli.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
                         " and detailbeli.kode_sat=kodesatuan.kode_sat and databarang.kode_industri=industrifarmasi.kode_industri where "+
@@ -1304,7 +1304,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         rs2=ps2.executeQuery();
                         int no=1;
                         while(rs2.next()){
-                            tabMode.addRow(new Object[]{"","",no+". No.Batch : "+rs2.getString("no_batch"),"Ind.Farm : "+rs2.getString("nama_industri"),rs2.getString(1)+", "+rs2.getString(2),
+                            tabMode.addRow(new Object[]{"",no+". Batch : "+rs2.getString("no_batch"),"Exp : "+rs2.getString("kadaluarsa"),"I.F. : "+rs2.getString("nama_industri"),rs2.getString(1)+", "+rs2.getString(2),
                                             rs2.getString(3)+", "+rs2.getString(4),
                                             rs2.getString(5),Valid.SetAngka(rs2.getDouble(6)),Valid.SetAngka(rs2.getDouble(7)),
                                             Valid.SetAngka(rs2.getDouble(8)),Valid.SetAngka(rs2.getDouble(9)),Valid.SetAngka(rs2.getDouble(10))});

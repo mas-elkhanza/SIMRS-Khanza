@@ -34,7 +34,7 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
     private riwayatobat Trackobat=new riwayatobat();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgCariSatuan satuanbarang=new DlgCariSatuan(null,false);
-    private double saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,tagihan=0,jmlkonversi=0,hargappn=0;
+    private double meterai=0,saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,tagihan=0,jmlkonversi=0,hargappn=0;
     private int jml=0,i=0,row=0,index=0;
     private String[] kodebarang,namabarang,satuan,satuanbeli,kadaluwarsa,no_batch;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal,jmlstok;
@@ -183,20 +183,22 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
         label10 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari1 = new widget.Button();
-        label9 = new widget.Label();
-        LSubtotal = new widget.Label();
         BtnKeluar = new widget.Button();
+        BtnTambah = new widget.Button();
         label12 = new widget.Label();
+        LSubtotal = new widget.Label();
+        label9 = new widget.Label();
         LPotongan = new widget.Label();
-        LTotal2 = new widget.Label();
         label14 = new widget.Label();
+        LTotal2 = new widget.Label();
         label17 = new widget.Label();
-        LPpn = new widget.Label();
-        label19 = new widget.Label();
-        LTagiha = new widget.Label();
         tppn = new widget.TextBox();
         label21 = new widget.Label();
-        BtnTambah = new widget.Button();
+        LPpn = new widget.Label();
+        label24 = new widget.Label();
+        Meterai = new widget.TextBox();
+        LTagiha = new widget.Label();
+        label19 = new widget.Label();
         panelisi3 = new widget.panelisi();
         label15 = new widget.Label();
         NoFaktur = new widget.TextBox();
@@ -246,7 +248,7 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Pemesanan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Penerimaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -338,21 +340,6 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
         panelisi1.add(BtnCari1);
         BtnCari1.setBounds(472, 65, 28, 23);
 
-        label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label9.setText("Potongan :");
-        label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label9);
-        label9.setBounds(130, 0, 90, 30);
-
-        LSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LSubtotal.setText("0");
-        LSubtotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LSubtotal.setName("LSubtotal"); // NOI18N
-        LSubtotal.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LSubtotal);
-        LSubtotal.setBounds(10, 20, 120, 30);
-
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
         BtnKeluar.setText("Keluar");
@@ -372,85 +359,6 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
         panelisi1.add(BtnKeluar);
         BtnKeluar.setBounds(633, 62, 100, 30);
 
-        label12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label12.setText("Total 1 :");
-        label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label12);
-        label12.setBounds(10, 0, 60, 30);
-
-        LPotongan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LPotongan.setText("0");
-        LPotongan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LPotongan.setName("LPotongan"); // NOI18N
-        LPotongan.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LPotongan);
-        LPotongan.setBounds(130, 20, 120, 30);
-
-        LTotal2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal2.setText("0");
-        LTotal2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LTotal2.setName("LTotal2"); // NOI18N
-        LTotal2.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LTotal2);
-        LTotal2.setBounds(250, 20, 120, 30);
-
-        label14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label14.setText("Total 2 :");
-        label14.setName("label14"); // NOI18N
-        label14.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label14);
-        label14.setBounds(250, 0, 90, 30);
-
-        label17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label17.setText("PPN :");
-        label17.setName("label17"); // NOI18N
-        label17.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label17);
-        label17.setBounds(370, 0, 90, 30);
-
-        LPpn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LPpn.setText("0");
-        LPpn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LPpn.setName("LPpn"); // NOI18N
-        LPpn.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LPpn);
-        LPpn.setBounds(470, 20, 120, 30);
-
-        label19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label19.setText("Jumlah Tagihan :");
-        label19.setName("label19"); // NOI18N
-        label19.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label19);
-        label19.setBounds(590, 0, 130, 30);
-
-        LTagiha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTagiha.setText("0");
-        LTagiha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LTagiha.setName("LTagiha"); // NOI18N
-        LTagiha.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LTagiha);
-        LTagiha.setBounds(590, 20, 120, 30);
-
-        tppn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tppn.setName("tppn"); // NOI18N
-        tppn.setPreferredSize(new java.awt.Dimension(80, 23));
-        tppn.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tppnKeyPressed(evt);
-            }
-        });
-        panelisi1.add(tppn);
-        tppn.setBounds(370, 26, 60, 23);
-
-        label21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label21.setText("%");
-        label21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        label21.setName("label21"); // NOI18N
-        label21.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi1.add(label21);
-        label21.setBounds(433, 26, 40, 23);
-
         BtnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambah.setMnemonic('3');
         BtnTambah.setToolTipText("Alt+3");
@@ -463,6 +371,119 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
         });
         panelisi1.add(BtnTambah);
         BtnTambah.setBounds(501, 65, 28, 23);
+
+        label12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label12.setText("Total 1 :");
+        label12.setName("label12"); // NOI18N
+        label12.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label12);
+        label12.setBounds(10, 0, 60, 30);
+
+        LSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LSubtotal.setText("0");
+        LSubtotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LSubtotal.setName("LSubtotal"); // NOI18N
+        LSubtotal.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelisi1.add(LSubtotal);
+        LSubtotal.setBounds(10, 20, 100, 30);
+
+        label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label9.setText("Potongan :");
+        label9.setName("label9"); // NOI18N
+        label9.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label9);
+        label9.setBounds(120, 0, 90, 30);
+
+        LPotongan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LPotongan.setText("0");
+        LPotongan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LPotongan.setName("LPotongan"); // NOI18N
+        LPotongan.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelisi1.add(LPotongan);
+        LPotongan.setBounds(120, 20, 100, 30);
+
+        label14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label14.setText("Total 2 :");
+        label14.setName("label14"); // NOI18N
+        label14.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label14);
+        label14.setBounds(230, 0, 90, 30);
+
+        LTotal2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal2.setText("0");
+        LTotal2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LTotal2.setName("LTotal2"); // NOI18N
+        LTotal2.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelisi1.add(LTotal2);
+        LTotal2.setBounds(230, 20, 100, 30);
+
+        label17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label17.setText("PPN :");
+        label17.setName("label17"); // NOI18N
+        label17.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label17);
+        label17.setBounds(340, 0, 40, 30);
+
+        tppn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tppn.setName("tppn"); // NOI18N
+        tppn.setPreferredSize(new java.awt.Dimension(80, 23));
+        tppn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tppnKeyPressed(evt);
+            }
+        });
+        panelisi1.add(tppn);
+        tppn.setBounds(340, 26, 45, 23);
+
+        label21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label21.setText("%");
+        label21.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        label21.setName("label21"); // NOI18N
+        label21.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi1.add(label21);
+        label21.setBounds(387, 26, 30, 23);
+
+        LPpn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LPpn.setText("0");
+        LPpn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LPpn.setName("LPpn"); // NOI18N
+        LPpn.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelisi1.add(LPpn);
+        LPpn.setBounds(410, 20, 100, 30);
+
+        label24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label24.setText("Meterai :");
+        label24.setName("label24"); // NOI18N
+        label24.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label24);
+        label24.setBounds(520, 0, 90, 30);
+
+        Meterai.setText("0");
+        Meterai.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        Meterai.setName("Meterai"); // NOI18N
+        Meterai.setPreferredSize(new java.awt.Dimension(80, 23));
+        Meterai.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MeteraiKeyPressed(evt);
+            }
+        });
+        panelisi1.add(Meterai);
+        Meterai.setBounds(520, 26, 100, 23);
+
+        LTagiha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTagiha.setText("0");
+        LTagiha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LTagiha.setName("LTagiha"); // NOI18N
+        LTagiha.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelisi1.add(LTagiha);
+        LTagiha.setBounds(630, 20, 150, 30);
+
+        label19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label19.setText("Jumlah Tagihan :");
+        label19.setName("label19"); // NOI18N
+        label19.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label19);
+        label19.setBounds(630, 0, 130, 30);
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
@@ -655,11 +676,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.textKosong(kdptg,"Petugas");
         }else if(nmgudang.getText().trim().equals("")){
             Valid.textKosong(kdgudang,"Lokasi");
+        }else if(Meterai.getText().trim().equals("")){
+            Valid.textKosong(Meterai,"Meterai");
         }else if(tbDokter.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(ttl<=0){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan pemesanan...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan masukkan penerimaan...!!!!");
             tbDokter.requestFocus();
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
@@ -672,7 +695,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             psdetailpesan.setString(1,rs.getString(1));
                             rs2=psdetailpesan.executeQuery();
                             while(rs2.next()){
-                                Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah2"),"Pemesanan",var.getkode(),rs.getString("kd_bangsal") ,"Hapus");
+                                Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah2"),"Penerimaan",var.getkode(),rs.getString("kd_bangsal") ,"Hapus");
                                 Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jumlah2") +"'", 
                                                        "stok=stok-'"+rs2.getString("jumlah2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
                             }
@@ -683,22 +706,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                 Sequel.cariIsi("select Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA",rs.getString("tagihan"),"0"
                             }); 
-                            jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PEMESANAN BARANG DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",rs.getString("kd_bangsal")).toUpperCase());
+                            jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN BARANG DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",rs.getString("kd_bangsal")).toUpperCase());
                         }
                         Sequel.queryu2("delete from pemesanan where no_faktur=?",1,new String[]{NoFaktur.getText()});
                     } catch (Exception e) {
                     }
                               
-                    if(Sequel.menyimpantf2("pemesanan","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Nota",14,new String[]{
+                    if(Sequel.menyimpantf2("pemesanan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Nota",15,new String[]{
                         NoFaktur.getText(),NoOrder.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),
                         Valid.SetTgl(TglFaktur.getSelectedItem()+""),Valid.SetTgl(TglTempo.getSelectedItem()+""),""+sbttl,""+ttldisk,""+ttl,
-                        ""+ppn,""+(ttl+ppn),kdgudang.getText(),"Belum Dibayar"
+                        ""+ppn,""+meterai,""+(ttl+ppn+meterai),kdgudang.getText(),"Belum Dibayar"
                     })==true){
                         jml=tbDokter.getRowCount();
                         for(i=0;i<jml;i++){  
                             try {
                                 if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                                    if(Sequel.menyimpantf2("detailpesan","?,?,?,?,?,?,?,?,?,?,?","Transaksi Pemesanan",11,new String[]{
+                                    if(Sequel.menyimpantf2("detailpesan","?,?,?,?,?,?,?,?,?,?,?,?","Transaksi Penerimaan",12,new String[]{
                                            NoFaktur.getText(),
                                            tbDokter.getValueAt(i,2).toString(),
                                            tbDokter.getValueAt(i,1).toString(),
@@ -709,9 +732,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                            tbDokter.getValueAt(i,10).toString(),
                                            tbDokter.getValueAt(i,11).toString(),
                                            tbDokter.getValueAt(i,13).toString(),
-                                           tbDokter.getValueAt(i,12).toString()
+                                           tbDokter.getValueAt(i,12).toString(),
+                                           Valid.SetTgl(tbDokter.getValueAt(i,6).toString()+"")
                                     })==true){
-                                        Trackobat.catatRiwayat(tbDokter.getValueAt(i,2).toString(),Valid.SetAngka(tbDokter.getValueAt(i,12).toString()),0,"Pemesanan",var.getkode(),kdgudang.getText(),"Simpan");
+                                        Trackobat.catatRiwayat(tbDokter.getValueAt(i,2).toString(),Valid.SetAngka(tbDokter.getValueAt(i,12).toString()),0,"Penerimaan",var.getkode(),kdgudang.getText(),"Simpan");
                                         Sequel.menyimpan("gudangbarang","'"+tbDokter.getValueAt(i,2).toString()+"','"+kdgudang.getText()+"','"+tbDokter.getValueAt(i,12).toString()+"'", 
                                                    "stok=stok+'"+tbDokter.getValueAt(i,12).toString()+"'","kode_brng='"+tbDokter.getValueAt(i,2).toString()+"' and kd_bangsal='"+kdgudang.getText()+"'");
                                     }
@@ -722,9 +746,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         } 
 
                         Sequel.queryu("delete from tampjurnal");
-                        Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pemesanan_Obat from set_akun"),"PERSEDIAAN BARANG",""+(ttl+ppn),"0"});
-                        Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA","0",""+(ttl+ppn)}); 
-                        jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),"U","PEMESANAN BARANG DI "+nmgudang.getText().toUpperCase());
+                        Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pemesanan_Obat from set_akun"),"PERSEDIAAN BARANG",""+(ttl+ppn+meterai),"0"});
+                        Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA","0",""+(ttl+ppn+meterai)}); 
+                        jur.simpanJurnal(NoFaktur.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),"U","PENERIMAAN BARANG DI "+nmgudang.getText().toUpperCase());
                         jml=tbDokter.getRowCount();
                         for(i=0;i<jml;i++){ 
                             tbDokter.setValueAt(null,i,0);
@@ -735,6 +759,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             tbDokter.setValueAt(0,i,12);
                             tbDokter.setValueAt("",i,13);
                         }
+                        Meterai.setText("0");
                         getData();
                     }else{
                         JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Nota sudah ada sebelumnya...!!");
@@ -1131,12 +1156,6 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         
     }//GEN-LAST:event_formWindowOpened
 
-    private void tppnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tppnKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            getData();
-        }
-    }//GEN-LAST:event_tppnKeyPressed
-
     private void TglTempoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglTempoKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_TglTempoKeyPressed
@@ -1160,6 +1179,18 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         barang.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnTambahActionPerformed
+
+    private void tppnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tppnKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            getData();
+        }
+    }//GEN-LAST:event_tppnKeyPressed
+
+    private void MeteraiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MeteraiKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            getData();
+        }
+    }//GEN-LAST:event_MeteraiKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1187,6 +1218,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Label LSubtotal;
     private widget.Label LTagiha;
     private widget.Label LTotal2;
+    private widget.TextBox Meterai;
     private widget.TextBox NoFaktur;
     private widget.TextBox NoOrder;
     private javax.swing.JPopupMenu Popup;
@@ -1212,6 +1244,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Label label21;
     private widget.Label label22;
     private widget.Label label23;
+    private widget.Label label24;
     private widget.Label label9;
     private widget.TextBox nmgudang;
     private widget.TextBox nmptg;
@@ -1299,7 +1332,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         row=tbDokter.getSelectedRow();
         if(row!= -1){              
                 try {
-                    if(!tbDokter.getValueAt(row,0).toString().isEmpty()){                        
+                    if(Valid.SetAngka(tbDokter.getValueAt(row,0).toString())>0){                        
                         tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,12).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);                
                         tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,8).toString())-Double.parseDouble(tbDokter.getValueAt(row,10).toString()), row,11);           
                     } 
@@ -1310,6 +1343,11 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 
                 ttl=0;sbttl=0;ppn=0;ttldisk=0;
                 y=0;w=0;
+                meterai=0;
+                if(!Meterai.getText().equals("")){
+                    meterai=Double.parseDouble(Meterai.getText());
+                }
+                    
                 jml=tbDokter.getRowCount();
                 for(i=0;i<jml;i++){                 
                     try {
@@ -1336,7 +1374,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 if(!tppn.getText().equals("")){
                     ppn=(Double.parseDouble(tppn.getText())/100) *(ttl);
                     LPpn.setText(Valid.SetAngka(ppn));
-                    LTagiha.setText(Valid.SetAngka(ttl+ppn));
+                    LTagiha.setText(Valid.SetAngka(ttl+ppn+meterai));
                 }
         }
     }
@@ -1347,7 +1385,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "pemesanan.kode_suplier,datasuplier.nama_suplier,pemesanan.no_order, "+
                     "pemesanan.nip,petugas.nama,pemesanan.kd_bangsal,bangsal.nm_bangsal,pemesanan.tgl_faktur, "+
                     "pemesanan.tgl_tempo,pemesanan.status,pemesanan.total1,pemesanan.potongan,pemesanan.total2,"+
-                    "pemesanan.ppn,pemesanan.tagihan "+
+                    "pemesanan.ppn,pemesanan.tagihan,pemesanan.meterai "+
                     " from pemesanan inner join datasuplier inner join petugas inner join bangsal  "+
                     " on  pemesanan.kd_bangsal=bangsal.kd_bangsal "+
                     " and pemesanan.kode_suplier=datasuplier.kode_suplier "+
@@ -1373,6 +1411,8 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 LTotal2.setText(Valid.SetAngka(ttl));
                 ppn=rs.getDouble("ppn");
                 LPpn.setText(Double.toString(ppn));
+                meterai=rs.getDouble("meterai");
+                Meterai.setText(Double.toString(meterai));
                 tagihan=rs.getDouble("tagihan");
                 LTagiha.setText(Valid.SetAngka(tagihan));
             }

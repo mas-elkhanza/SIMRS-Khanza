@@ -129,21 +129,6 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
-        try{
-            ps= koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,reg_periksa.tgl_registrasi,dokter.nm_dokter,penjab.png_jawab "+
-                        "from reg_periksa inner join pasien inner join penjab inner join dokter "+
-                        "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and "+
-                        "reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.status_lanjut='Ralan' and "+
-                        "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
-                        "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? order by reg_periksa.kd_dokter,reg_periksa.tgl_registrasi");
-            ps2=koneksi.prepareStatement(
-                        "select billing.nm_perawatan,billing.totalbiaya,billing.status from billing where billing.no_rawat=? ");
-        }catch(SQLException e){
-            System.out.println(e);
-        }
-
     }    
     
      
@@ -182,13 +167,12 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
-        TKd.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         MnBilling.setBackground(new java.awt.Color(255, 255, 255));
         MnBilling.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnBilling.setForeground(java.awt.Color.darkGray);
+        MnBilling.setForeground(new java.awt.Color(90, 120, 80));
         MnBilling.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBilling.setText("Billing/Pembayaran Pasien");
         MnBilling.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -211,7 +195,7 @@ public final class DlgPembayaranRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pembayaran Pasien Ralan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pembayaran Pasien Ralan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -598,100 +582,130 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         Valid.tabelKosong(tabMode);
-        try{            
-            ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-            ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-            ps.setString(3,"%"+kdpenjab.getText()+"%");
-            rs=ps.executeQuery();
-            all=0;
-            ttlLaborat=0;ttlRadiologi=0;ttlOperasi=0;ttlObat=0;ttlRalan_Dokter=0;ttlRalan_Paramedis=0;ttlTambahan=0;ttlPotongan=0;ttlRegistrasi=0;
-            while(rs.next()){
-                Operasi=0;Laborat=0;Radiologi=0;Obat=0;Ralan_Dokter=0;Ralan_Dokter_paramedis=0;Ralan_Paramedis=0;Tambahan=0;Potongan=0;Registrasi=0;
-                Keterangan="Belum Bayar";
-                
-                ps2.setString(1,rs.getString("no_rawat"));
-                rs2=ps2.executeQuery();                
-                while(rs2.next()){
-                    switch (rs2.getString("status")) {
-                        case "Laborat":
-                            ttlLaborat=ttlLaborat+rs2.getDouble("totalbiaya");
-                            Laborat=Laborat+rs2.getDouble("totalbiaya");
-                            break;
-                        case "Radiologi":
-                            ttlRadiologi=ttlRadiologi+rs2.getDouble("totalbiaya");
-                            Radiologi=Radiologi+rs2.getDouble("totalbiaya");
-                            break;
-                        case "Obat":
-                            ttlObat=ttlObat+rs2.getDouble("totalbiaya");
-                            Obat=Obat+rs2.getDouble("totalbiaya");
-                            break;
-                        case "Ralan Dokter":
-                            ttlRalan_Dokter=ttlRalan_Dokter+rs2.getDouble("totalbiaya");
-                            Ralan_Dokter=Ralan_Dokter+rs2.getDouble("totalbiaya");
-                            break;     
-                        case "Ralan Dokter Paramedis":
-                            ttlRalan_Dokter=ttlRalan_Dokter+rs2.getDouble("totalbiaya");
-                            Ralan_Dokter_paramedis=Ralan_Dokter_paramedis+rs2.getDouble("totalbiaya");
-                            break;    
-                        case "Ralan Paramedis":
-                            ttlRalan_Paramedis=ttlRalan_Paramedis+rs2.getDouble("totalbiaya");
-                            Ralan_Paramedis=Ralan_Paramedis+rs2.getDouble("totalbiaya");
-                            break;
-                        case "Tambahan":
-                            ttlTambahan=ttlTambahan+rs2.getDouble("totalbiaya");
-                            Tambahan=Tambahan+rs2.getDouble("totalbiaya");
-                            break;
-                        case "Potongan":
-                            ttlPotongan=ttlPotongan+rs2.getDouble("totalbiaya");
-                            Potongan=Potongan+rs2.getDouble("totalbiaya");
-                            break;
-                        case "Registrasi":
-                            ttlRegistrasi=ttlRegistrasi+rs2.getDouble("totalbiaya");
-                            Registrasi=Registrasi+rs2.getDouble("totalbiaya");
-                            break;
-                        case "Operasi":
-                            ttlOperasi=ttlOperasi+rs2.getDouble("totalbiaya");
-                            Operasi=Operasi+rs2.getDouble("totalbiaya");
-                            break;
-                    }                                
+        try{      
+            ps= koneksi.prepareStatement(
+                "select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,reg_periksa.tgl_registrasi,dokter.nm_dokter,penjab.png_jawab "+
+                "from reg_periksa inner join pasien inner join penjab inner join dokter "+
+                "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_pj=penjab.kd_pj and "+
+                "reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.status_lanjut='Ralan' and "+
+                "reg_periksa.no_rawat not in (select piutang_pasien.no_rawat from piutang_pasien where piutang_pasien.no_rawat=reg_periksa.no_rawat) and "+
+                "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? order by reg_periksa.kd_dokter,reg_periksa.tgl_registrasi");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(3,"%"+kdpenjab.getText()+"%");
+                rs=ps.executeQuery();
+                all=0;
+                ttlLaborat=0;ttlRadiologi=0;ttlOperasi=0;ttlObat=0;ttlRalan_Dokter=0;ttlRalan_Paramedis=0;ttlTambahan=0;ttlPotongan=0;ttlRegistrasi=0;
+                while(rs.next()){
+                    Operasi=0;Laborat=0;Radiologi=0;Obat=0;Ralan_Dokter=0;Ralan_Dokter_paramedis=0;Ralan_Paramedis=0;Tambahan=0;Potongan=0;Registrasi=0;
+                    Keterangan="Belum Bayar";
+                    ps2=koneksi.prepareStatement(
+                        "select billing.nm_perawatan,billing.totalbiaya,billing.status from billing where billing.no_rawat=? ");
+                    try{
+                        ps2.setString(1,rs.getString("no_rawat"));
+                        rs2=ps2.executeQuery();                
+                        while(rs2.next()){
+                            switch (rs2.getString("status")) {
+                                case "Laborat":
+                                    ttlLaborat=ttlLaborat+rs2.getDouble("totalbiaya");
+                                    Laborat=Laborat+rs2.getDouble("totalbiaya");
+                                    break;
+                                case "Radiologi":
+                                    ttlRadiologi=ttlRadiologi+rs2.getDouble("totalbiaya");
+                                    Radiologi=Radiologi+rs2.getDouble("totalbiaya");
+                                    break;
+                                case "Obat":
+                                    ttlObat=ttlObat+rs2.getDouble("totalbiaya");
+                                    Obat=Obat+rs2.getDouble("totalbiaya");
+                                    break;
+                                case "Ralan Dokter":
+                                    ttlRalan_Dokter=ttlRalan_Dokter+rs2.getDouble("totalbiaya");
+                                    Ralan_Dokter=Ralan_Dokter+rs2.getDouble("totalbiaya");
+                                    break;     
+                                case "Ralan Dokter Paramedis":
+                                    ttlRalan_Dokter=ttlRalan_Dokter+rs2.getDouble("totalbiaya");
+                                    Ralan_Dokter_paramedis=Ralan_Dokter_paramedis+rs2.getDouble("totalbiaya");
+                                    break;    
+                                case "Ralan Paramedis":
+                                    ttlRalan_Paramedis=ttlRalan_Paramedis+rs2.getDouble("totalbiaya");
+                                    Ralan_Paramedis=Ralan_Paramedis+rs2.getDouble("totalbiaya");
+                                    break;
+                                case "Tambahan":
+                                    ttlTambahan=ttlTambahan+rs2.getDouble("totalbiaya");
+                                    Tambahan=Tambahan+rs2.getDouble("totalbiaya");
+                                    break;
+                                case "Potongan":
+                                    ttlPotongan=ttlPotongan+rs2.getDouble("totalbiaya");
+                                    Potongan=Potongan+rs2.getDouble("totalbiaya");
+                                    break;
+                                case "Registrasi":
+                                    ttlRegistrasi=ttlRegistrasi+rs2.getDouble("totalbiaya");
+                                    Registrasi=Registrasi+rs2.getDouble("totalbiaya");
+                                    break;
+                                case "Operasi":
+                                    ttlOperasi=ttlOperasi+rs2.getDouble("totalbiaya");
+                                    Operasi=Operasi+rs2.getDouble("totalbiaya");
+                                    break;
+                            }                                
+                        }
+                    }catch(Exception e){
+                        System.out.println("Notif 2 : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    all=all+Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Dokter_paramedis+Ralan_Paramedis+Tambahan+Potongan+Registrasi;
+
+                    if((Laborat+Operasi+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis+Tambahan+Potongan+Registrasi)>0){
+                        Keterangan="Sudah Bayar";
+                    }                
+
+                    tabMode.addRow(new Object[] {
+                        rs.getString("tgl_registrasi"),
+                        Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_rawat")),
+                        rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),
+                        rs.getString("png_jawab"),
+                        Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),
+                        Valid.SetAngka(Registrasi),
+                        Valid.SetAngka(Obat),
+                        Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis),
+                        Valid.SetAngka(Operasi),
+                        Valid.SetAngka(Laborat),
+                        Valid.SetAngka(Radiologi),
+                        Valid.SetAngka(Tambahan),
+                        Valid.SetAngka(Potongan),
+                        Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis+Tambahan+Potongan+Registrasi),
+                        rs.getString("nm_dokter"),Keterangan
+                    });
                 }
-                all=all+Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Dokter_paramedis+Ralan_Paramedis+Tambahan+Potongan+Registrasi;
-                
-                if((Laborat+Operasi+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis+Tambahan+Potongan+Registrasi)>0){
-                    Keterangan="Sudah Bayar";
-                }                
-                
                 tabMode.addRow(new Object[] {
-                    rs.getString("tgl_registrasi"),
-                    Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_rawat")),
-                    rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),
-                    rs.getString("png_jawab"),
-                    Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),
-                    Valid.SetAngka(Registrasi),
-                    Valid.SetAngka(Obat),
-                    Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis),
-                    Valid.SetAngka(Operasi),
-                    Valid.SetAngka(Laborat),
-                    Valid.SetAngka(Radiologi),
-                    Valid.SetAngka(Tambahan),
-                    Valid.SetAngka(Potongan),
-                    Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_paramedis+Tambahan+Potongan+Registrasi),
-                    rs.getString("nm_dokter"),Keterangan
+                        ">> Total",":","","","",
+                        Valid.SetAngka(ttlRegistrasi),
+                        Valid.SetAngka(ttlObat),
+                        Valid.SetAngka(ttlRalan_Dokter+ttlRalan_Paramedis),
+                        Valid.SetAngka(ttlOperasi),
+                        Valid.SetAngka(ttlLaborat),
+                        Valid.SetAngka(ttlRadiologi),
+                        Valid.SetAngka(ttlTambahan),
+                        Valid.SetAngka(ttlPotongan),
+                        Valid.SetAngka(ttlLaborat+ttlRadiologi+ttlObat+ttlRalan_Dokter+ttlRalan_Paramedis+
+                                ttlTambahan+ttlPotongan+ttlRegistrasi+ttlOperasi),"",""
                 });
+            } catch (Exception e) {
+                System.out.println("Notif 1 :"+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-            tabMode.addRow(new Object[] {
-                    ">> Total",":","","","",
-                    Valid.SetAngka(ttlRegistrasi),
-                    Valid.SetAngka(ttlObat),
-                    Valid.SetAngka(ttlRalan_Dokter+ttlRalan_Paramedis),
-                    Valid.SetAngka(ttlOperasi),
-                    Valid.SetAngka(ttlLaborat),
-                    Valid.SetAngka(ttlRadiologi),
-                    Valid.SetAngka(ttlTambahan),
-                    Valid.SetAngka(ttlPotongan),
-                    Valid.SetAngka(ttlLaborat+ttlRadiologi+ttlObat+ttlRalan_Dokter+ttlRalan_Paramedis+
-                            ttlTambahan+ttlPotongan+ttlRegistrasi+ttlOperasi),"",""
-            });
             LCount.setText(Valid.SetAngka(all));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);

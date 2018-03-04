@@ -3,7 +3,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bulan          = $baris[1];
 ?>
@@ -26,7 +26,7 @@
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT pendapatan,persen FROM set_insentif WHERE tahun='$tahun' and bulan='$bulan'";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $pendapatan         = $baris[0];
                     $persen          = $baris[1];
 					$total_insentif=$baris[2];
@@ -53,7 +53,7 @@
 			
 				$_sql         = "SELECT * FROM set_tahun";
 				$hasil        = bukaquery($_sql);
-				$baris        = mysql_fetch_row($hasil);
+				$baris        = mysqli_fetch_row($hasil);
 				$tahun         = $baris[0];
 				$bulan          = $baris[1];
 

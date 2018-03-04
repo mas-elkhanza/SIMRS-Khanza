@@ -11,6 +11,7 @@
 
 package simrskhanza;
 
+import fungsi.koneksiDB;
 import fungsi.validasi;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
@@ -66,6 +67,10 @@ public class DlgPenggajian extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         initComponents2();
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));                                
+        } catch (Exception e) {
+        }
     }
     
     private void initComponents2() {           
@@ -101,6 +106,22 @@ public class DlgPenggajian extends javax.swing.JDialog {
                 
                 engine.titleProperty().addListener((ObservableValue<? extends String> observable, String oldValue, final String newValue) -> {
                     SwingUtilities.invokeLater(() -> {
+                        if(engine.getLocation().contains("/webapps/penggajian/index.php?act=HomeAdmin")){
+                            try{            
+                                if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                                    com.sun.awt.AWTUtilities.setWindowOpacity(DlgPenggajian.this,0.6f);
+                                }               
+                            }catch(Exception e){
+                            }
+                        }else{
+                            try{     
+                                if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                                    com.sun.awt.AWTUtilities.setWindowOpacity(DlgPenggajian.this,1f);
+                                }                                                                      
+                            }catch(Exception e){
+                            }
+                        }
+                        
                         DlgPenggajian.this.setTitle(newValue);
                     });
                 });
@@ -145,13 +166,12 @@ public class DlgPenggajian extends javax.swing.JDialog {
                     public void changed(ObservableValue ov, State oldState, State newState) {
                         if (newState == State.SUCCEEDED) {
                             try {
-                                prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                                if(engine.getLocation().replaceAll("http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
+                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
+                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOST()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+prop.getProperty("HOST")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
                                     dispose();    
                                 }
                             } catch (Exception ex) {
@@ -228,7 +248,7 @@ public class DlgPenggajian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengolahan Data Kepegawaian & Penggajian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengolahan Data Kepegawaian & Penggajian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout());
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);

@@ -187,7 +187,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengaturan Rekening ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengaturan Rekening ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1243,12 +1243,12 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Pengadaan_Obat),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Pengadaan_Obat)
             });
-            tabMode.addRow(new Object[]{" [Debet] Akun Pemesanan Obat & BHP pada menu Pemesanan Obat & BHP",Pemesanan_Obat,
+            tabMode.addRow(new Object[]{" [Debet] Akun Penerimaan Obat & BHP pada menu Penerimaan Obat & BHP",Pemesanan_Obat,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Pemesanan_Obat),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Pemesanan_Obat),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Pemesanan_Obat)
             });
-            tabMode.addRow(new Object[]{" [Kredit] Kontra Akun Pemesanan Obat & BHP pada menu Pemesanan Obat & BHP",Kontra_Pemesanan_Obat,
+            tabMode.addRow(new Object[]{" [Kredit] Kontra Akun Penerimaan Obat & BHP pada menu Penerimaan Obat & BHP",Kontra_Pemesanan_Obat,
                 Sequel.cariIsi("select nm_rek from rekening where kd_rek=?",Kontra_Pemesanan_Obat),
                 Sequel.cariIsi("select tipe from rekening where kd_rek=?",Kontra_Pemesanan_Obat),
                 Sequel.cariIsi("select balance from rekening where kd_rek=?",Kontra_Pemesanan_Obat)

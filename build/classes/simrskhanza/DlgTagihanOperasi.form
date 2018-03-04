@@ -87,7 +87,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -127,14 +127,14 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title=".: Tindakan ">
+                    <TitledBorder title=" Tindakan ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
                           <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                      <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -283,14 +283,14 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title=".: Obat &amp; BHP ">
+                    <TitledBorder title=" Obat &amp; BHP ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
                           <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                      <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>

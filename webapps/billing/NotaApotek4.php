@@ -6,6 +6,9 @@
         <link href="css/default.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+        <script type="text/javascript">
+            window.onload = function() { window.print(); }
+        </script>
 
     <?php
     reportsqlinjection();      
@@ -25,7 +28,7 @@
                     and piutang.nip=petugas.nip
                     and piutang.nota_piutang=detailpiutang.nota_piutang where piutang.nota_piutang='$nonota' ";            
         $hasil=bukaquery($_sql);
-        $barisdata=  mysql_fetch_array($hasil);
+        $barisdata=  mysqli_fetch_array($hasil);
         
         $nota_piutang   =$barisdata["nota_piutang"];
         $tgl_piutang    =$barisdata["tgl_piutang"]; 
@@ -43,9 +46,9 @@
         
         $_sqlins = "SELECT nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting";            
         $hasilins=bukaquery($_sqlins);
-        $setting = mysql_fetch_array($hasilins);
+        $setting = mysqli_fetch_array($hasilins);
         
-        if(mysql_num_rows($hasil)!=0) { 
+        if(mysqli_num_rows($hasil)!=0) { 
           echo "<table width='".getOne("select notaapotek from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <tr class='isi14'>
                        <td width=50% colspan=4 align=left>
@@ -110,7 +113,7 @@
                                </tr>";
                                       $ttlpesan=0;
                                       $i=1;
-                                      while($barisdata = mysql_fetch_array($hasil2)) { 
+                                      while($barisdata = mysqli_fetch_array($hasil2)) { 
                                           $ttlpesan=$ttlpesan+$barisdata["total"];
                                           echo "
                                             <tr class='isi15'>

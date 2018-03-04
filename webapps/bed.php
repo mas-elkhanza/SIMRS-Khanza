@@ -48,13 +48,14 @@
  session_start();
  require_once('conf/conf.php');
  require_once('updateaplicare.php');
+ require_once('./updatesiranap.php');
  header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
  header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); 
  header("Cache-Control: no-store, no-cache, must-revalidate"); 
  header("Cache-Control: post-check=0, pre-check=0", false);
  header("Pragma: no-cache"); // HTTP/1.0
+ date_default_timezone_set("Asia/Bangkok");
  $tanggal= mktime(date("m"),date("d"),date("Y"));
- date_default_timezone_set('Asia/Jakarta');
  $jam=date("H:i");
 ?>
 <head>
@@ -87,7 +88,7 @@
        </object>
      </noscript>
      <?php
-		$setting=  mysql_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+		$setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
 		echo "   
 		   <table width='100%' align='center' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
 			  <tr>
@@ -129,13 +130,13 @@
 		$_sql="Select * From bangsal where status='1' and kd_bangsal in(select kd_bangsal from kamar)" ;  
 		$hasil=bukaquery($_sql);
 
-		while ($data = mysql_fetch_array ($hasil)){
+		while ($data = mysqli_fetch_array ($hasil)){
 			echo "<tr class='isi7' >
 					<td align='left'><font size='5' color='#BB00BB' face='Tahoma'><b>".$data['nm_bangsal']."</b></font></td>
 					<td align='center'>
 					     <font size='6' color='red' face='Tahoma'>
 					      <b>";
-					       $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."'"));
+					       $data2=mysqli_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."'"));
 					       echo $data2[0];
 					echo "</b>
 					      </font>
@@ -143,7 +144,7 @@
 					<td align='center'>
 					     <font color='#DDDD00' size='6'  face='Tahoma'>
 					      <b>";
-						   $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='ISI'"));
+						   $data2=mysqli_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='ISI'"));
 						   echo $data2[0];
 					echo "</b>
 					      </font>
@@ -151,14 +152,15 @@
 					<td align='center'>
 					      <font color='gren' size='6'  face='Tahoma'>
 					      <b>";
-						   $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='KOSONG'"));
+						   $data2=mysqli_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='KOSONG'"));
 						   echo $data2[0];
 					echo "</b>
 					     </font>
 					</td>
 				</tr> ";
 		}
-		//updateAplicare();
+		updateAplicare();
+                //updateSiranap();
 	?>
 	</table>
 	<table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>

@@ -17,7 +17,7 @@
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT * FROM fungsional WHERE kode='$TxtKode'";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $TxtKode      = $baris[0];
                     $TxtNama    = $baris[1];
                 }

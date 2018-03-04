@@ -14,10 +14,11 @@
      function  bukakoneksi()
 	 {
      	global $db_hostname, $db_username, $db_password, $db_name;
-        $konektor=@mysql_connect($db_hostname,$db_username,$db_password)
+        $konektor=mysqli_connect($db_hostname,$db_username,$db_password)
         or die ("<font color=red><h3>Not Connected ..!!</h3></font>");
-        $db_select=mysql_select_db($db_name)
+        $db_select=mysqli_select_db($konektor, $db_name)
         or die("<font color=red><h3>Cannot chose database..!!</h3></font>");
+		return $konektor;
      }
      
      $sqlinjectionchars = array("=","-","'","\"","+"); //tambah sendiri
@@ -37,7 +38,7 @@
         $args = array_slice(func_get_args(),1);
         $args = array_map('mysql_safe_string',$args);
         $query = vsprintf($format,$args);
-        return mysql_query($query);
+        return mysqli_query($query);
     }
     
     function validUrl($url){
@@ -152,36 +153,34 @@
      function tutupkoneksi()
 	 {
        global  $konektor;
-       mysql_close($konektor);
+       mysqli_close($konektor);
      }
 
      function bukaquery($sql)
-	 {
-       bukakoneksi();
-       $result=mysql_query($sql)
-        or die (mysql_error()."<br/><font color=red><b>hmmmmmmm.....??????????</b>");
+	 {    
+		$konektor=bukakoneksi();
+		$result=mysqli_query($konektor, $sql)
+        or die (mysqli_error($konektor)."<br/><font color=red><b>hmmmmmmm.....??????????</b>");
         return $result;
      }
      
      function bukaquery2($sql){
        bukakoneksi();
-       $result=mysql_query($sql);
+       $result=mysqli_query(bukakoneksi(),$sql);
         return $result;
      }
 
-     function bukainput($sql)
-	 {
+     function bukainput($sql){
        bukakoneksi();
-       $result=mysql_query($sql)
-        or die(mysql_error()."<br/><font color=red><b>Gagal</b>, Ada data dengan primary key yang sama !");
+       $result=mysqli_query(bukakoneksi(),$sql)
+        or die(mysqli_error()."<font color=red><b>Gagal</b>, Ada data dengan primary key yang sama !");
         return $result;
      }
 
-     function hapusinput($sql)
-	 {
-       bukakoneksi();
-       $result=mysql_query($sql)
-        or die(mysql_error()."<br/><font color=red><b>Gagal</b>, Data masih dipakai di tabel lain !");
+     function hapusinput($sql){
+        bukakoneksi();
+        $result=mysqli_query(bukakoneksi(),$sql)
+        or die(mysqli_error()."<font color=red><b>Gagal</b>, Data masih dipakai di tabel lain !");
         return $result;
      }
 
@@ -247,7 +246,7 @@
      function deletegb($sql){
           $_sql         = $sql;
           $hasil        = bukaquery($_sql);
-          $baris        = mysql_fetch_row($hasil);
+          $baris        = mysqli_fetch_row($hasil);
           $gb           = $baris[0];
           $hapus=unlink($gb);
      }
@@ -325,17 +324,17 @@
 	}
 
     function JumlahBaris($result) {
-  		return mysql_num_rows($result);
+  		return mysqli_num_rows($result);
 	}
 
      function getOne($sql) {
      $hasil=bukaquery($sql);
-     list($result) =mysql_fetch_array($hasil);
+     list($result) =mysqli_fetch_array($hasil);
      return $result;
      }
 
      function cekKosong($sql) {
-		$jum = mysql_num_rows($sql);
+		$jum = mysqli_num_rows($sql);
 		if ($jum==0) return true;
 		else return false;
 	}
@@ -506,7 +505,7 @@
         
         function autonomer($table,$strawal,$pnj){
             $hasil        = bukaquery($table);
-            $s            = mysql_num_rows($hasil)+1;
+            $s            = mysqli_num_rows($hasil)+1;
             $j            = strlen($s);         
             $s1           = "";
             for($i=1;$i<=$pnj-$j;$i++){

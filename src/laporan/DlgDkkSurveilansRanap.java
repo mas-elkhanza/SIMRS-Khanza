@@ -142,16 +142,13 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         TabRawat = new javax.swing.JTabbedPane();
-        internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
-        internalFrame3 = new widget.InternalFrame();
         Scroll1 = new widget.ScrollPane();
         tbBangsal2 = new widget.Table();
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
-        TKd.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -215,7 +212,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surveilans Rawat Inap Kasus Baru ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surveilans Rawat Inap Kasus Baru ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -307,7 +304,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -315,11 +312,6 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                 TabRawatMouseClicked(evt);
             }
         });
-
-        internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
-        internalFrame2.setBorder(null);
-        internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
@@ -329,14 +321,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         tbBangsal.setName("tbBangsal"); // NOI18N
         Scroll.setViewportView(tbBangsal);
 
-        internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
-
-        TabRawat.addTab(".: Berdasar Tanggal Masuk  ", internalFrame2);
-
-        internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
-        internalFrame3.setBorder(null);
-        internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
+        TabRawat.addTab("Berdasar Tanggal Masuk", Scroll);
 
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
@@ -346,9 +331,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         tbBangsal2.setName("tbBangsal2"); // NOI18N
         Scroll1.setViewportView(tbBangsal2);
 
-        internalFrame3.add(Scroll1, java.awt.BorderLayout.CENTER);
-
-        TabRawat.addTab(".: Berdasar Tanggal Keluar  ", internalFrame3);
+        TabRawat.addTab("Berdasar Tanggal Keluar", Scroll1);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -359,16 +342,17 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            //TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            Sequel.AutoComitFalse();
-            Sequel.queryu("delete from temporary");
-            Map<String, Object> param = new HashMap<>();
-            param.put("tanggal",Tgl2.getDate());
-            param.put("jmltotal",jmltotal+"");
-            if(TabRawat.getSelectedIndex()==0){
+        if(TabRawat.getSelectedIndex()==0){
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                //TCari.requestFocus();
+            }else if(tabMode.getRowCount()!=0){
+                Sequel.AutoComitFalse();
+                Sequel.queryu("delete from temporary");
+                Map<String, Object> param = new HashMap<>();
+                param.put("tanggal",Tgl2.getDate());
+                param.put("jmltotal",jmltotal+"");
+
                 for(int r=0;r<tabMode.getRowCount();r++){  
                     Sequel.menyimpan("temporary","'0','"+
                                     tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
@@ -392,7 +376,26 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,18).toString().replaceAll("'","`")+"','"+
                                     tabMode.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }
-            }else if(TabRawat.getSelectedIndex()==1){
+
+                Sequel.AutoComitTrue();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                Valid.MyReport("rptSurveilansRanap.jrxml","report","::[ Surveilans PD3I ]::",
+                    "select * from temporary order by no asc",param);
+            }
+        }else if(TabRawat.getSelectedIndex()==1){
+            if(tabMode2.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                //TCari.requestFocus();
+            }else if(tabMode2.getRowCount()!=0){
+                Sequel.AutoComitFalse();
+                Sequel.queryu("delete from temporary");
+                Map<String, Object> param = new HashMap<>();
+                param.put("tanggal",Tgl2.getDate());
+                param.put("jmltotal",jmltotal+"");
+
                 for(int r=0;r<tabMode2.getRowCount();r++){  
                     Sequel.menyimpan("temporary","'0','"+
                                     tabMode2.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
@@ -416,16 +419,17 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                                     tabMode2.getValueAt(r,18).toString().replaceAll("'","`")+"','"+
                                     tabMode2.getValueAt(r,19).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }
+
+                Sequel.AutoComitTrue();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                Valid.MyReport("rptSurveilansRanap.jrxml","report","::[ Surveilans PD3I ]::",
+                    "select * from temporary order by no asc",param);
             }
-            
-            Sequel.AutoComitTrue();
-                param.put("namars",var.getnamars());
-                param.put("alamatrs",var.getalamatrs());
-                param.put("kotars",var.getkabupatenrs());
-                param.put("propinsirs",var.getpropinsirs());
-            Valid.MyReport("rptSurveilansRanap.jrxml","report","::[ Surveilans PD3I ]::",
-                "select * from temporary order by no asc",param);
         }
+            
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
@@ -565,8 +569,6 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
-    private widget.InternalFrame internalFrame2;
-    private widget.InternalFrame internalFrame3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label12;

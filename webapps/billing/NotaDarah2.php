@@ -6,13 +6,15 @@
         <link href="css/default.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-
+        <script type="text/javascript">
+            window.onload = function() { window.print(); }
+        </script>
     <?php
     reportsqlinjection();      
         $nopenyerahan    =str_replace("_"," ",$_GET['nopenyerahan']); 
         
         $_sql = "SELECT tanggal,nip_cross,pengambil_darah,keterangan,besarppn from utd_penyerahan_darah where no_penyerahan='$nopenyerahan'";            
-        $hasil=mysql_fetch_array(bukaquery($_sql));
+        $hasil=mysqli_fetch_array(bukaquery($_sql));
         
         $tanggal   = $hasil["tanggal"]; 
         $catatan   = $hasil["keterangan"];
@@ -29,7 +31,7 @@
         $hasil=bukaquery($_sql);
         
         
-          $setting=  mysql_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+          $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
           echo "<table width='".getOne("select notaapotek from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <tr class='isi14'>
                        <td width=50% colspan=4 align=left>
@@ -106,7 +108,7 @@
                                </tr>";
                                       $ttlpesan=0;
                                       $i=1;
-                                      while($barispesan = mysql_fetch_array($hasil)) { 
+                                      while($barispesan = mysqli_fetch_array($hasil)) { 
                                            $ttlpesan=$ttlpesan+$barispesan[4];
                                          echo "
                                             <tr class='isi15'>

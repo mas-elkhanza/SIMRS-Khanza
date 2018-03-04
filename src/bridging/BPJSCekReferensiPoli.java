@@ -123,7 +123,7 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Poli/Unit BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Poli/Unit VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -315,7 +315,7 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         BPJSApi api=new BPJSApi();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIBPJS")+"/poli/ref/poli";	
+            String URL = prop.getProperty("URLAPIBPJS")+"/referensi/poli/"+poli;	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -328,21 +328,16 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
             //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            JsonNode nameNode = root.path("metadata");
-            //System.out.println("code : "+nameNode.path("code").asText());
-            //System.out.println("message : "+nameNode.path("message").asText());
-            if(nameNode.path("message").asText().equals("OK")){
+            JsonNode nameNode = root.path("metaData");
+            if(nameNode.path("message").asText().equals("Sukses")){
                 Valid.tabelKosong(tabMode);
                 JsonNode response = root.path("response");
-                if(response.path("list").isArray()){
+                if(response.path("poli").isArray()){
                     i=1;
-                    for(JsonNode list:response.path("list")){
-                        if(list.path("kdPoli").asText().toLowerCase().contains(poli.toLowerCase())||
-                                list.path("nmPoli").asText().toLowerCase().contains(poli.toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                i+".",list.path("kdPoli").asText(),list.path("nmPoli").asText()
-                            });
-                        }
+                    for(JsonNode list:response.path("poli")){
+                        tabMode.addRow(new Object[]{
+                            i+".",list.path("kode").asText(),list.path("nama").asText()
+                        });
                         i++;
                     }
                 }

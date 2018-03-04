@@ -91,8 +91,8 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
         
-        NoRetur.setDocument(new batasInput((byte)8).getKata(NoRetur));
-        NoFaktur.setDocument(new batasInput((byte)8).getKata(NoFaktur));
+        NoRetur.setDocument(new batasInput((byte)25).getKata(NoRetur));
+        NoFaktur.setDocument(new batasInput((byte)25).getKata(NoFaktur));
         Kdptg.setDocument(new batasInput((byte)25).getKata(Kdptg));
         
        petugas.addWindowListener(new WindowListener() {
@@ -273,7 +273,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

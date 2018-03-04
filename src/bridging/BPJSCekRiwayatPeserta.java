@@ -158,7 +158,7 @@ public final class BPJSCekRiwayatPeserta extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian 10 Riwayat Peserta BPJS Terakhir Berdasarkan Nomor Kepesertaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian 10 Riwayat Peserta BPJS Terakhir Berdasarkan Nomor Kepesertaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -399,12 +399,10 @@ public final class BPJSCekRiwayatPeserta extends javax.swing.JDialog {
 	    HttpEntity requestEntity = new HttpEntity(headers);
 	    RestTemplate rest = new RestTemplate();	
             
-            //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             ObjectMapper mapper = new ObjectMapper();
+            System.out.println(""+rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metadata");
-            //System.out.println("code : "+nameNode.path("code").asText());
-            //System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("Peserta Tidak Ditemukan")){
                 JOptionPane.showMessageDialog(rootPane,"Peserta Tidak Ditemukan");
                 BtnKeluar.requestFocus();

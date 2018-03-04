@@ -62,7 +62,7 @@ body {
 }
 
 #bg_menu {
-	background-color::white;
+	background-color:white;
 	background-image: url(images/menu1.jpg);
 	border-image: 1px solid #555555;
 	padding: 30px;
@@ -146,9 +146,6 @@ body {
 	float: right;
 }
 
-
-	
-}
 #containeri>#btn3:hover {
 	box-shadow: 10px 0px 20px 0px black;
 }

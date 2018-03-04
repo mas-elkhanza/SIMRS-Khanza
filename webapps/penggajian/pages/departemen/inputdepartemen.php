@@ -18,7 +18,7 @@
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT * FROM departemen WHERE dep_id='$dep_id'";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $dep_id         = $baris[0];
                     $nama          = $baris[1];
                 }

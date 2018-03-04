@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>DASHBOARD</title>
+		<title>Bootstrap 3 Admin</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -60,7 +60,7 @@
                     <ul class="nav nav-stacked collapse" id="menu3">
                         <li><a href="?module=3.1">laporan RL 3.1</a>
                         </li>
-                        <li><a href="#">Laporan RL 3.2</a>
+                        <li><a href="?module=3.2">Laporan RL 3.2</a>
                         </li>
                         <li><a href="#">Laporan RL 3.3</a>
                         </li>
@@ -70,13 +70,13 @@
                         </li>
 						<li><a href="#">Laporan RL 3.6</a>
                         </li>
-						<li><a href="#">Laporan RL 3.7</a>
+						<li><a href="?module=3.7">Laporan RL 3.7</a>
                         </li>
 						<li><a href="#">Laporan RL 3.8</a>
                         </li>
 						<li><a href="#">Laporan RL 3.9</a>
                         </li>
-						<li><a href="?module=3.10-">Laporan RL 3.10</a>
+						<li><a href="#">Laporan RL 3.10</a>
                         </li>
 						<li><a href="#">Laporan RL 3.11</a>
                         </li>
@@ -110,7 +110,7 @@
                         </li>
 						<li><a href="?module=5.3">laporan RL 5.3</a>
                         </li>
-						<li><a href="?module=5.4">laporan RL 5.4</a>
+						<li><a href="#">laporan RL 5.4</a>
                         </li>
                     </ul>
                 </li>
@@ -119,7 +119,7 @@
         </div>
         <!-- /col-3 -->
         <div class="col-sm-9">
-		<a href="?module=home"><strong><i class="glyphicon glyphicon-dashboard"></i> My Dashboard</strong></a>
+		<a href="#"><strong><i class="glyphicon glyphicon-dashboard"></i> My Dashboard</strong></a>
             <hr>
 			<div class="panel panel-default">
                         <?php include"module.php"; ?>
@@ -131,7 +131,7 @@
             
 <!-- /Main -->
 
-<footer class="text-center">DASHBOARD SIMRS_KHANZA</a></footer>
+<footer class="text-center">This Bootstrap 3 dashboard layout is compliments of <a href="http://www.bootply.com/85850"><strong>Bootply.com</strong></a></footer>
 
 <!-- /.modal -->
 	<!-- script references -->

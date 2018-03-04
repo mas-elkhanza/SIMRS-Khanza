@@ -6,18 +6,21 @@
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body bgcolor='#ffffff'>
+        <script type="text/javascript">
+            window.onload = function() { window.print(); }
+        </script>
 
     <?php
         reportsqlinjection();        
         $petugas = str_replace("_"," ",$_GET['petugas']); 
         $nonota  = str_replace("_"," ",$_GET['nonota']); 
-        $nonota2= str_replace(": ","",getOne("select temp2 from temporary_bayar_ralan where temp1='No.Nota'"));
+        $nonota2= str_replace(": ","",getOne("select temp2 from temporary_bayar_ralan where temp9='$petugas' and temp1='No.Nota'"));
         $norawat=getOne("select no_rawat from nota_jalan where no_nota='$nonota2'");
-        $_sql = "select temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_bayar_ralan order by no asc";   
+        $_sql = "select temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_bayar_ralan where temp9='$petugas' order by no asc";   
         $hasil=bukaquery($_sql);
         
-        if(mysql_num_rows($hasil)!=0) { 
-			$setting=  mysql_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+        if(mysqli_num_rows($hasil)!=0) { 
+			$setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
             //cari biling
             echo "   
             <table width='".getOne("select kwitansiralan from set_nota")."' bgcolor='#ffffff' align='left' border='0' padding='0' class='tbl_form' cellspacing='0' cellpadding='0'>
@@ -64,13 +67,13 @@
                                     <tr valign='top'>
                                        <td><font color='333333' size='3'  face='Tahoma'>Uang Sebanyak</font></td>
                                        <td><font color='333333' size='3'  face='Tahoma'>:</font></td>
-                                       <td><font color='333333' size='3'  face='Tahoma'>".Terbilang(str_replace("</b>","",str_replace("<b>","",str_replace(".","",str_replace(",","",getOne("select temp7 from temporary_bayar_ralan where temp1='TOTAL BAYAR'"))))))." rupiah</font></td>
+                                       <td><font color='333333' size='3'  face='Tahoma'>".Terbilang(str_replace("</b>","",str_replace("<b>","",str_replace(".","",str_replace(",","",getOne("select temp7 from temporary_bayar_ralan where temp9='$petugas' and temp1='TOTAL BAYAR'"))))))." rupiah</font></td>
                                     </tr>
                                     <tr valign='top'>
                                        <td><font color='333333' size='3'  face='Tahoma'>Untuk Pembayaran</font></td>
                                        <td><font color='333333' size='3'  face='Tahoma'>:</font></td>
-                                       <td><font color='333333' size='3'  face='Tahoma'>Pelayanan Kesehatan Rawat Jalan di ".$setting["nama_instansi"]." a/n ".str_replace(":","",getOne("select temp2 from temporary_bayar_ralan where temp1='Nama Pasien'")).", 
-                                           RM ".str_replace(":","",getOne("select temp2 from temporary_bayar_ralan where temp1='No.RM'"))."
+                                       <td><font color='333333' size='3'  face='Tahoma'>Pelayanan Kesehatan Rawat Jalan di ".$setting["nama_instansi"]." a/n ".str_replace(":","",getOne("select temp2 from temporary_bayar_ralan where temp9='$petugas' and temp1='Nama Pasien'")).", 
+                                           RM ".str_replace(":","",getOne("select temp2 from temporary_bayar_ralan where temp9='$petugas' and temp1='No.RM'"))."
                                            </font></td>
                                     </tr>                           
                                     <tr>
@@ -91,7 +94,7 @@
                                     <tr>
                                        <td align='right'><font color='333333' size='3'  face='Tahoma'>Terbilang</font></td>
                                        <td><font color='333333' size='3'  face='Tahoma'></font></td>
-                                       <td><font color='333333' size='3'  face='Tahoma'>Rp. ".getOne("select temp7 from temporary_bayar_ralan where temp1='TOTAL BAYAR'")."</font></td>
+                                       <td><font color='333333' size='3'  face='Tahoma'>Rp. ".getOne("select temp7 from temporary_bayar_ralan where temp9='$petugas' and temp1='TOTAL BAYAR'")."</font></td>
                                     </tr>
 
                                     <tr>
