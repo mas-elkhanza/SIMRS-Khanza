@@ -19,7 +19,7 @@
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT * FROM stts_kerja WHERE stts='$stts'";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $stts         = $baris[0];
                     $ktg          = $baris[1];
                     $indek        = $baris[2];

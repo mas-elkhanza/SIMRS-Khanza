@@ -15,12 +15,12 @@ if($act=='registrasi' ){
 				$stts_daftar='Lama';
 				$stts_lanjut='Ralan';	
 				//jam pelayanan
-				$jam_pel=mysql_fetch_array(bukaquery("select jadwal.kd_poli,poliklinik.nm_poli,jadwal.jam_mulai,jadwal.jam_selesai from jadwal,poliklinik,dokter where jadwal.kd_poli=poliklinik.kd_poli and
+				$jam_pel=mysqli_fetch_array(bukaquery("select jadwal.kd_poli,poliklinik.nm_poli,jadwal.jam_mulai,jadwal.jam_selesai from jadwal,poliklinik,dokter where jadwal.kd_poli=poliklinik.kd_poli and
 																				jadwal.kd_dokter=dokter.kd_dokter and hari_kerja LIKE '%$hari%' GROUP BY poliklinik.kd_poli"));
 				$jam_mulai=$jam_pel['jam_mulai'];
 				$jam_selesai=$jam_pel['jam_selesai'];
 				//mencari biodata pasien dari no rm
-				$b=mysql_fetch_array(bukaquery("SELECT pasien.nm_ibu, pasien.alamatpj, pasien.kd_kel, pasien.nm_pasien, pasien.kd_kec, pasien.kd_kab, pasien.tgl_lahir, pasien.keluarga FROM pasien WHERE pasien.no_rkm_medis='$no_rkm_medis'"));
+				$b=mysqli_fetch_array(bukaquery("SELECT pasien.nm_ibu, pasien.alamatpj, pasien.kd_kel, pasien.nm_pasien, pasien.kd_kec, pasien.kd_kab, pasien.tgl_lahir, pasien.keluarga FROM pasien WHERE pasien.no_rkm_medis='$no_rkm_medis'"));
 				$p_jawab=$b['nm_ibu'];
 				$alamat_pj=$b['alamatpj'];
 				$hubunganpj=$b['keluarga'];
@@ -41,7 +41,7 @@ if($act=='registrasi' ){
 				//mencari nama dokter
 				$nm_dokter=getone("SELECT dokter.nm_dokter FROM dokter WHERE dokter.kd_dokter='$kd_dokter'");
 				//mengambil kop rumah sakit
-				$setting=  mysql_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+				$setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
 				//mencari no rawat terakhir
 				$no_rawat_akhir = getone("SELECT max(reg_periksa.no_rawat) as maxno_rawat FROM reg_periksa WHERE no_rawat LIKE '%$tgl_registrasi%'");
 				$no_urut_rawat = (int) substr($no_rawat_akhir, 11, 6);

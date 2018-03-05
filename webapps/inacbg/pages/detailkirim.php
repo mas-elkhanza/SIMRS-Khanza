@@ -22,7 +22,7 @@
                             on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
                             and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='$norawat' ";
             $hasil        = bukaquery($_sql);
-            $baris        = mysql_fetch_array($hasil);
+            $baris        = mysqli_fetch_array($hasil);
             $no_rkm_medis = $baris["no_rkm_medis"];
             $nm_pasien    = $baris["nm_pasien"];
             $umurdaftar   = $baris["umurdaftar"];
@@ -264,7 +264,7 @@
                                         $penyakit="";
                                         $a=1;
                                         $hasilpenyakit=bukaquery("select kd_penyakit from diagnosa_pasien where no_rawat='".$norawat."' order by prioritas asc");
-                                        while($barispenyakit = mysql_fetch_array($hasilpenyakit)) {
+                                        while($barispenyakit = mysqli_fetch_array($hasilpenyakit)) {
                                             if($a==1){
                                                 $penyakit=$barispenyakit["kd_penyakit"];
                                             }else{
@@ -284,7 +284,7 @@
                                     $prosedur="";
                                     $a=1;
                                     $hasilprosedur=bukaquery("select kode from prosedur_pasien where no_rawat='".$norawat."' order by prioritas asc");
-                                    while($barisprosedur = mysql_fetch_array($hasilprosedur)) {
+                                    while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
                                         if($a==1){
                                             $prosedur=$barisprosedur["kode"];
                                         }else{

@@ -2,7 +2,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bln_leng=strlen($baris[1]);
    $bulan="0";
@@ -48,9 +48,9 @@
                 pegawai.id=presensi.id and tgl like '%".$tahun."-".$bulan."%' and pegawai.nama like '%".$keyword."%'
                 group by pegawai.id ORDER BY pegawai.nik ASC ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
 
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
 
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
@@ -59,7 +59,7 @@
                         <td width='65%'><div align='center'>Kehadiran</div></td>
                         <td width='15%'><div align='center'>Proses</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
                                 <td>$baris[1]</td>
                                 <td>$baris[2]</td>
@@ -79,8 +79,8 @@
     </div>
 	</form>
     <?php
-        if(mysql_num_rows($hasil)!=0) {
-            $jumladiv=mysql_num_rows($hasil);
+        if(mysqli_num_rows($hasil)!=0) {
+            $jumladiv=mysqli_num_rows($hasil);
             $i=$jumladiv/19;
             $i=ceil($i);
             echo("Data : $jumlah <a target=_blank href=../penggajian/pages/presensi/LaporanPresensi.php?&keyword=$keyword>| Laporan |</a> ");

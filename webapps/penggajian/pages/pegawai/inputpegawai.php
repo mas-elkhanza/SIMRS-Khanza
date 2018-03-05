@@ -15,7 +15,7 @@
                 }else if($action == "UBAH"){
                     $_sql         	= "SELECT `id`, `nik`, `nama`, `jk`, `jbtn`, `jnj_jabatan`, `departemen`, `bidang`, `stts_wp`, `stts_kerja`, `npwp`, `pendidikan`, `gapok`, `tmp_lahir`, `tgl_lahir`, `alamat`, `kota`, `mulai_kerja`, `ms_kerja`, `indexins`, `bpd`, `rekening`, `stts_aktif`, `wajibmasuk`, `pengurang`, `indek`, `mulai_kontrak`, `cuti_diambil` FROM pegawai WHERE id='$id'";
                     $hasil        	= bukaquery($_sql);
-                    $baris        	= mysql_fetch_row($hasil);                    
+                    $baris        	= mysqli_fetch_row($hasil);                    
 
                     $id               = $baris[0];
                     $nik              = $baris[1];
@@ -66,12 +66,12 @@
                 
                     $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
-                    $barisnext        	= mysql_fetch_row($hasilnext);
+                    $barisnext        	= mysqli_fetch_row($hasilnext);
                     $next               = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
-                    $barisprev        	= mysql_fetch_row($hasilprev);
+                    $barisprev        	= mysqli_fetch_row($hasilprev);
                     $prev               = $barisprev[0];
                     
                     if(empty($prev)){
@@ -140,12 +140,12 @@
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT kode,nama FROM jnj_jabatan where kode='$jnj_jabatan' ORDER BY kode";
                                     $hasil2=bukaquery($_sql2);
-                                    while($baris2 = mysql_fetch_array($hasil2)) {
+                                    while($baris2 = mysqli_fetch_array($hasil2)) {
                                         echo "<option id='TxtIsi5' value='$baris2[0]'>$baris2[0]  $baris2[1]</option>";
                                     }
                                 }
 
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi5' value='$baris[0]'>$baris[0] $baris[1]</option>";
                                 }
                             ?>
@@ -165,12 +165,12 @@
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT dep_id,nama FROM departemen where dep_id='$departemen' ORDER BY dep_id";
                                     $hasil2=bukaquery($_sql2);
-                                    while($baris2 = mysql_fetch_array($hasil2)) {
+                                    while($baris2 = mysqli_fetch_array($hasil2)) {
                                         echo "<option id='TxtIsi6' value='$baris2[0]'>$baris2[0]  $baris2[1]</option>";
                                     }
                                 }
 
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi6' value='$baris[0]'>$baris[0]  $baris[1]</option>";
                                 }
                             ?>
@@ -190,12 +190,12 @@
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT nama FROM bidang where nama='$bidang' ORDER BY nama";
                                     $hasil2=bukaquery($_sql2);
-                                    while($baris2 = mysql_fetch_array($hasil2)) {
+                                    while($baris2 = mysqli_fetch_array($hasil2)) {
                                         echo "<option id='TxtIsi7' value='$baris2[0]'>$baris2[0]</option>";
                                     }
                                 }
 
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi7' value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>
@@ -215,12 +215,12 @@
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT stts,ktg FROM stts_wp where stts='$stts_wp' ORDER BY stts";
                                     $hasil2=bukaquery($_sql2);
-                                    while($baris2 = mysql_fetch_array($hasil2)) {
+                                    while($baris2 = mysqli_fetch_array($hasil2)) {
                                         echo "<option id='TxtIsi8' value='$baris2[0]'>$baris2[0]  $baris2[1]</option>";
                                     }
                                 }
 
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi8' value='$baris[0]'>$baris[0] $baris[1]</option>";
                                 }
                             ?>
@@ -240,12 +240,12 @@
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT stts,ktg FROM stts_kerja where stts='$stts_kerja' ORDER BY stts";
                                     $hasil2=bukaquery($_sql2);
-                                    while($baris2 = mysql_fetch_array($hasil2)) {
+                                    while($baris2 = mysqli_fetch_array($hasil2)) {
                                         echo "<option id='TxtIsi9' value='$baris2[0]'>$baris2[0]  $baris2[1]</option>";
                                     }
                                 }
 
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi9' value='$baris[0]'>$baris[0] $baris[1]</option>";
                                 }
                             ?>
@@ -271,12 +271,12 @@
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT tingkat FROM pendidikan where tingkat='$pendidikan' ORDER BY tingkat";
                                     $hasil2=bukaquery($_sql2);
-                                    while($baris2 = mysql_fetch_array($hasil2)) {
+                                    while($baris2 = mysqli_fetch_array($hasil2)) {
                                         echo "<option id='TxtIsi11' value='$baris2[0]'>$baris2[0]</option>";
                                     }
                                 }
 
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi11' value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>
@@ -395,12 +395,12 @@
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT dep_id,persen FROM indexins where dep_id='$indexins' ORDER BY dep_id";
                                     $hasil2=bukaquery($_sql2);
-                                    while($baris2 = mysql_fetch_array($hasil2)) {
+                                    while($baris2 = mysqli_fetch_array($hasil2)) {
                                         echo "<option id='TxtIsi18' value='$baris2[0]'>$baris2[0] $baris2[1]%</option>";
                                     }
                                 }
 
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi18' value='$baris[0]'>$baris[0] $baris[1]%</option>";
                                 }
                             ?>
@@ -420,12 +420,12 @@
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT namabank FROM bank where namabank='$bpd' ORDER BY namabank";
                                     $hasil2=bukaquery($_sql2);
-                                    while($baris2 = mysql_fetch_array($hasil2)) {
+                                    while($baris2 = mysqli_fetch_array($hasil2)) {
                                         echo "<option id='TxtIsi19' value='$baris2[0]'>$baris2[0]</option>";
                                     }
                                 }
 
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi19' value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>

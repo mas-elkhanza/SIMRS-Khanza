@@ -13,7 +13,7 @@
         <?php
             $_sqlthn         = "SELECT * FROM set_tahun";
             $hasilthn        = bukaquery($_sqlthn);
-            $baristhn        = mysql_fetch_row($hasilthn);
+            $baristhn        = mysqli_fetch_row($hasilthn);
             $tahun           = $baristhn[0];
             $blnini          =$baristhn[1];
             $hari            =$baristhn[2];
@@ -75,9 +75,9 @@
                 ".$say." and pegawai.mulai_kerja like '%".$keyword."%' 
                 order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
         
-        if(mysql_num_rows($hasil)!=0) {            
+        if(mysqli_num_rows($hasil)!=0) {            
             echo "<table width='2650px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                                  <td width='60px'><div align='center'>Proses</div></td>
@@ -102,11 +102,11 @@
                                  <td width='100px'><div align='center'>DanKes</div></td>   
                                  <td width='100px'><div align='center'>Sisa DanKes</div></td>                
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                            $_sql4    = "SELECT `gapok1`, `kenaikan`, `maksimal`
                             from pendidikan  where tingkat='$baris[4]' ";
                             $hasil4   = bukaquery($_sql4);
-                            $baris4   = mysql_fetch_array($hasil4);
+                            $baris4   = mysqli_fetch_array($hasil4);
                             $gapok     = 0;
                             @$gapok1    = $baris4["gapok1"];
                             @$kenaikan  = $baris4["kenaikan"];
@@ -117,7 +117,7 @@
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."%' and jns='C' group by id";
                             $hasil6   = bukaquery($_sql6);
-                            $baris6   = mysql_fetch_row($hasil6);
+                            $baris6   = mysqli_fetch_row($hasil6);
                             if(empty ($baris6[0])){
                                 $ttlc=0;
                             }
@@ -199,7 +199,7 @@
     </div>
             </form>
        <?php
-            if(mysql_num_rows($hasil)!=0) {
+            if(mysqli_num_rows($hasil)!=0) {
                 $say=" pegawai.pendidikan=pendidikan.tingkat
                 and pegawai.stts_kerja =stts_kerja.stts
                 and pegawai.jnj_jabatan=jnj_jabatan.kode ";
@@ -228,7 +228,7 @@
                 ".$say." and pegawai.mulai_kontrak like '%".$keyword."%' or
                 ".$say." and pegawai.mulai_kerja like '%".$keyword."%'
                 order by pegawai.id ASC");
-                $jumladiv=mysql_num_rows($hasil1);
+                $jumladiv=mysqli_num_rows($hasil1);
                 $i=$jumladiv/19;
                 $i=ceil($i);
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

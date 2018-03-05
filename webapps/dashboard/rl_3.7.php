@@ -49,7 +49,7 @@
 				 WHERE periksa_radiologi.kd_jenis_prw = jns_perawatan_radiologi.kd_jenis_prw AND periksa_radiologi.tgl_periksa BETWEEN '$tanggal1' AND '$tanggal2'
 				 GROUP BY periksa_radiologi.kd_jenis_prw";            
         $hasil=bukaquery($_sql);
-                 while($baris = mysql_fetch_array($hasil)) { 
+                 while($baris = mysqli_fetch_array($hasil)) { 
 				 $ppk=$baris['kode_ppk'];
 				 $jenis=$baris['nm_perawatan'];
 				 $jml=$baris['jumlah'];

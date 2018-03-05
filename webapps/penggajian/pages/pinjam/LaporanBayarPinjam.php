@@ -14,7 +14,7 @@
                 $_sql2  	= "SELECT id, banyak_angsur, pinjaman, pokok, 
 								jasa, tanggal, status  FROM peminjaman_koperasi where id='$id' and tanggal='$tanggal'";
                 $hasil2 	=bukaquery($_sql2);
-                $baris2 	= mysql_fetch_row($hasil2);
+                $baris2 	= mysqli_fetch_row($hasil2);
                 $id         = $baris2[0];
                 $banyak_angsur = $baris2[1];
                 $pinjaman   = $baris2[2];
@@ -26,12 +26,12 @@
                 
 		        $_sql  = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil = bukaquery($_sql);
-                $baris = mysql_fetch_row($hasil);
+                $baris = mysqli_fetch_row($hasil);
                 //mencari jumlah angsuran dan angsuran yang sudah dibayarkan
                 $_sqlj = "select count(id),sum(pokok)
                         from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal'  group by id";
                 $hasilj=bukaquery($_sqlj);
-                $barisj = mysql_fetch_array($hasilj);
+                $barisj = mysqli_fetch_array($hasilj);
                 $jml_sdh_angsur =$barisj[0];
                 $sdh_setor      =$barisj[1];
                 $sisa_pinjam    =$pinjaman-($jml_sdh_angsur*$pokok);
@@ -102,7 +102,7 @@
 				    
 				    $_sql         = "SELECT * FROM set_tahun";
 				    $hasil        = bukaquery($_sql);
-				    $baris        = mysql_fetch_row($hasil);
+				    $baris        = mysqli_fetch_row($hasil);
 				    $tahun        = $baris[0];
 				    $bulan        = $baris[1];
 				    if(strlen($bulan)==1){
@@ -121,8 +121,8 @@
                 $_sql = "select id, tanggal_pinjam, tanggal_angsur, pokok, jasa
                         from angsuran_koperasi where id='$id' and tanggal_pinjam='$tanggal'";
                 $hasil=bukaquery($_sql);
-                $jumlah=mysql_num_rows($hasil);
-                if(mysql_num_rows($hasil)!=0) {
+                $jumlah=mysqli_num_rows($hasil);
+                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='5%'><div align='center'>No.</div></td>
@@ -132,7 +132,7 @@
                                 <td width='24%'><div align='center'>Angsuran</div></td>
                             </tr>";
                     $i=1;
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                       echo "<tr class='isi' title='$baris[2], $baris[3], $baris[4]'>
                                 <td>$i</td>
                                 <td>$baris[2]</td>

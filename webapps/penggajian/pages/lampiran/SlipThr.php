@@ -2,7 +2,7 @@
  include '../../../conf/conf.php';
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bln_leng=strlen($baris[1]);
    $bulan="0";
@@ -24,7 +24,7 @@
         
         $_sqlthnini  = "SELECT DAY(LAST_DAY('$tahun-$bulan-01')) ";
         $hasilthnini = bukaquery($_sqlthnini);
-        $datathnini  = mysql_fetch_array($hasilthnini);        
+        $datathnini  = mysqli_fetch_array($hasilthnini);        
         $thnini      = $tahun."-".$bulan."-".$datathnini[0];
         $thnlalu     = ($tahun-1)."-".$bulan."-".$datathnini[0];
         
@@ -36,7 +36,7 @@
                        on pegawai.stts_kerja=stts_kerja.stts
                        and pegawai.departemen=departemen.dep_id where id='$id' ";
         $hasil       = bukaquery($_sql);
-        $data        = mysql_fetch_array($hasil);
+        $data        = mysqli_fetch_array($hasil);
         $nik         = $data[0];
         $nama        = $data[1];
         $status      = $data[2]; 
@@ -88,7 +88,7 @@
         
         $_sql3     = "SELECT sum(jml) FROM tambahjaga where id='$id' and tgl between '$thnlalu' and '$thnini' ";
         $hasil3    = bukaquery($_sql3);
-        $data3     = mysql_fetch_array($hasil3);
+        $data3     = mysqli_fetch_array($hasil3);
         $tmbhn     = $data3[0];
         $nmasuk    = $tmbhn/12;
         
@@ -96,7 +96,7 @@
                     $_sqlgp    = "SELECT `gapok1`, `kenaikan`, `maksimal`
                                 from pendidikan  where tingkat like '%".$pendidikan."%' order by gapok1 desc limit 1 ";
                     $hasilgp   = bukaquery($_sqlgp);
-                    $barisgp   = mysql_fetch_array($hasilgp);
+                    $barisgp   = mysqli_fetch_array($hasilgp);
                     $gapokgp    = 0;
                     @$gapok1    = $barisgp["gapok1"];
                     @$kenaikan  = $barisgp["kenaikan"];
@@ -115,7 +115,7 @@
                     $_sqlgp    = "SELECT `gapok1`, `kenaikan`, `maksimal`
                                 from pendidikan  where tingkat like '%".$pendidikan."%' order by gapok1 desc limit 1 ";
                     $hasilgp   = bukaquery($_sqlgp);
-                    $barisgp   = mysql_fetch_array($hasilgp);
+                    $barisgp   = mysqli_fetch_array($hasilgp);
                     $gapokgp    = 0;
                     @$gapok1    = $barisgp["gapok1"];
                     @$kenaikan  = $barisgp["kenaikan"];
