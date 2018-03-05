@@ -102,7 +102,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[D]Permintaan Obat & BHP","[D]Rekap Permintaan Obat & BHP","[D]Surat Pemesanan Obat & BHP","[E]Permintaan Barang Non Medis","[E]Rekap Permintaan Barang Non Medis",
                     "[E]Surat Pemesanan Barang Non Medis","[N]Kunjungan Per Perujuk","[K]Referensi Prosedur VClaim","[K]Referensi Kelas Rawat VClaim","[K]Referensi Dokter VClaim",
                     "[K]Referensi Spesialistik VClaim","[K]Referensi Ruang Rawat VClaim","[K]Referensi Cara Keluar VClaim","[K]Referensi Pasca Pulang VClaim","[H]Detail VK/OK","[A]Billing Parsial",
-                    "[K]Cek No.Rujukan RS di VClaim","[K]Cek Rujukan Kartu PCare di VClaim","[K]Cek Rujukan Kartu RS di VClaim","[A]Akses Depo Obat/BHP"
+                    "[K]Cek No.Rujukan RS di VClaim","[K]Cek Rujukan Kartu PCare di VClaim","[K]Cek Rujukan Kartu RS di VClaim","[A]Akses Depo Obat/BHP","[K]Pembuatan Rujukan VClaim"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -206,7 +206,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 304;i++) {
+        for (i = 0; i < 305;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -450,6 +450,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(170);
             }else if(i==303){
                 column.setPreferredWidth(127);
+            }else if(i==304){
+                column.setPreferredWidth(150);
             }else{
                 column.setPreferredWidth(120);
             }
@@ -884,7 +886,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1230,7 +1232,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "bpjs_cek_nomor_rujukan_rs='"+tbUser.getValueAt(i,300).toString()+"',"+
                     "bpjs_cek_rujukan_kartu_pcare='"+tbUser.getValueAt(i,301).toString()+"',"+
                     "bpjs_cek_rujukan_kartu_rs='"+tbUser.getValueAt(i,302).toString()+"',"+
-                    "akses_depo_obat='"+tbUser.getValueAt(i,303).toString()+"'");
+                    "akses_depo_obat='"+tbUser.getValueAt(i,303).toString()+"',"+
+                    "bpjs_rujukan_keluar='"+tbUser.getValueAt(i,304).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1507,8 +1510,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "permintaan_medis,rekap_permintaan_medis,surat_pemesanan_medis,permintaan_non_medis,rekap_permintaan_non_medis, "+
                         "surat_pemesanan_non_medis,grafik_per_perujuk,bpjs_cek_prosedur,bpjs_cek_kelas_rawat,bpjs_cek_dokter, "+
                         "bpjs_cek_spesialistik,bpjs_cek_ruangrawat,bpjs_cek_carakeluar,bpjs_cek_pasca_pulang,detail_tindakan_okvk, "+
-                        "billing_parsial,bpjs_cek_nomor_rujukan_rs,bpjs_cek_rujukan_kartu_pcare,bpjs_cek_rujukan_kartu_rs,akses_depo_obat "+
-                        "from user order by AES_DECRYPT(id_user,'nur')");
+                        "billing_parsial,bpjs_cek_nomor_rujukan_rs,bpjs_cek_rujukan_kartu_pcare,bpjs_cek_rujukan_kartu_rs,akses_depo_obat,"+
+                        "bpjs_rujukan_keluar from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1823,7 +1826,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("bpjs_cek_nomor_rujukan_rs"),
                                rs.getBoolean("bpjs_cek_rujukan_kartu_pcare"),
                                rs.getBoolean("bpjs_cek_rujukan_kartu_rs"),
-                               rs.getBoolean("akses_depo_obat")
+                               rs.getBoolean("akses_depo_obat"),
+                               rs.getBoolean("bpjs_rujukan_keluar")
                             });
                         }   
                     } catch (Exception e) {
@@ -2128,7 +2132,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("bpjs_cek_nomor_rujukan_rs"),
                            rs.getBoolean("bpjs_cek_rujukan_kartu_pcare"),
                            rs.getBoolean("bpjs_cek_rujukan_kartu_rs"),
-                           rs.getBoolean("akses_depo_obat") 
+                           rs.getBoolean("akses_depo_obat"),
+                           rs.getBoolean("bpjs_rujukan_keluar") 
                         });
                     }                                             
                  }

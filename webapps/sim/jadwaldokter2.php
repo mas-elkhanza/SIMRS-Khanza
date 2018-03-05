@@ -40,7 +40,7 @@
        </object>
      </noscript>
      <?php
-		$setting=  mysql_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+		$setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
 		echo "   
 		   <table width='100%' align='center' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
 			  <tr>
@@ -102,7 +102,7 @@
 				and jadwal.kd_poli=poliklinik.kd_poli where jadwal.hari_kerja='$namahari'" ;  
 		$hasil=bukaquery($_sql);
 
-		while ($data = mysql_fetch_array ($hasil)){
+		while ($data = mysqli_fetch_array ($hasil)){
 			echo "<tr class='isi7' >
 					<td align='left'><font size='5' color='#BB00BB' face='Tahoma'>".$data['nm_dokter']."</font></td>
 					<td align='center'><font size='5' color='gray' face='Tahoma'>".$data['nm_poli']."</font></td>

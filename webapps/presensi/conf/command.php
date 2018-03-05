@@ -1,7 +1,7 @@
 <?php
 	function title(){
  		$judul ="Presensi Pegawai  --)(*!!@#$%";
-		$judul = ereg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);
+		$judul = preg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);
 		$judul = str_replace(array('.','-','/',',')," ",$judul);
 		$judul = trim($judul);
 		echo "$judul";	
@@ -129,7 +129,7 @@
 	function ListArtikel()
 	{
 		$x= bukaquery("SELECT * FROM artikel where page='artikel' ORDER BY id DESC LIMIT 4");
-		while($row=mysql_fetch_array($x))
+		while($row=mysqli_fetch_array($x))
 		{
 		  $judul=$row['1'];
 		  $isi  = substr($row['1'],0,160);

@@ -419,41 +419,14 @@ bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.p
 				<text><![CDATA[Kls. Rawat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="367" y="106" width="67" height="11"/>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
+				<reportElement x="367" y="106" width="104" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Pasien/]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="367" y="117" width="67" height="11"/>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
-					<font fontName="Tahoma" size="9" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Keluarga Pasien]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="460" y="117" width="67" height="11"/>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
-					<font fontName="Tahoma" size="9" isBold="false"/>
-				</textElement>
-				<text><![CDATA[BPJS Kesehatan]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="460" y="106" width="67" height="11"/>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
-					<font fontName="Tahoma" size="9" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Petugas]]></text>
+				<text><![CDATA[Pasien/Keluarga Pasien]]></text>
 			</staticText>
 			<line>
-				<reportElement x="460" y="155" width="67" height="1"/>
-				<graphicElement>
-					<pen lineWidth="0.5"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="367" y="155" width="67" height="1"/>
+				<reportElement x="367" y="155" width="104" height="1"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>

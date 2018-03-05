@@ -69,7 +69,8 @@ public final class var {
             permintaan_medis=false,rekap_permintaan_medis=false,surat_pemesanan_medis=false,permintaan_non_medis=false,rekap_permintaan_non_medis=false,
             surat_pemesanan_non_medis=false,grafik_per_perujuk=false,bpjs_cek_prosedur=false,bpjs_cek_kelas_rawat=false,bpjs_cek_dokter=false,
             bpjs_cek_spesialistik=false,bpjs_cek_ruangrawat=false,bpjs_cek_carakeluar=false,bpjs_cek_pasca_pulang=false,detail_tindakan_okvk=false,
-            billing_parsial=false,bpjs_cek_nomor_rujukan_rs=false,bpjs_cek_rujukan_kartu_pcare=false,bpjs_cek_rujukan_kartu_rs=false,akses_depo_obat=false;
+            billing_parsial=false,bpjs_cek_nomor_rujukan_rs=false,bpjs_cek_rujukan_kartu_pcare=false,bpjs_cek_rujukan_kartu_rs=false,akses_depo_obat=false,
+            bpjs_rujukan_keluar=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -394,6 +395,7 @@ public final class var {
                         var.bpjs_cek_rujukan_kartu_pcare=true;
                         var.bpjs_cek_rujukan_kartu_rs=true;
                         var.akses_depo_obat=true;
+                        var.bpjs_rujukan_keluar=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -702,6 +704,7 @@ public final class var {
                         var.bpjs_cek_rujukan_kartu_pcare=rs2.getBoolean("bpjs_cek_rujukan_kartu_pcare");
                         var.bpjs_cek_rujukan_kartu_rs=rs2.getBoolean("bpjs_cek_rujukan_kartu_rs");
                         var.akses_depo_obat=rs2.getBoolean("akses_depo_obat");
+                        var.bpjs_rujukan_keluar=rs2.getBoolean("bpjs_rujukan_keluar");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1008,6 +1011,7 @@ public final class var {
                         var.bpjs_cek_rujukan_kartu_pcare=false;
                         var.bpjs_cek_rujukan_kartu_rs=false;
                         var.akses_depo_obat=false;
+                        var.bpjs_rujukan_keluar=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1361,4 +1365,5 @@ public final class var {
     public static boolean getbpjs_cek_rujukan_kartu_pcare(){return var.bpjs_cek_rujukan_kartu_pcare;}
     public static boolean getbpjs_cek_rujukan_kartu_rs(){return var.bpjs_cek_rujukan_kartu_rs;}
     public static boolean getakses_depo_obat(){return var.akses_depo_obat;}
+    public static boolean getbpjs_rujukan_keluar(){return var.bpjs_rujukan_keluar;}
 }

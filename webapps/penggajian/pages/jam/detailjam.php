@@ -20,7 +20,7 @@
                             <?php
                                 $_sql = "SELECT dep_id,nama FROM departemen ORDER BY dep_id";
                                 $hasil=bukaquery($_sql);
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi1' value='$baris[0]'>$baris[0] $baris[1]</option>";
                                 }
                             ?>
@@ -160,9 +160,9 @@
                     jam_jaga.jam_masuk,jam_jaga.jam_pulang from jam_jaga
                     ORDER BY jam_jaga.dep_id ";
                 $hasil=bukaquery($_sql);
-                $jumlah=mysql_num_rows($hasil);
+                $jumlah=mysqli_num_rows($hasil);
 
-                if(mysql_num_rows($hasil)!=0) {
+                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='10%'><div align='center'>Proses</div></td>
@@ -171,7 +171,7 @@
                                 <td width='23%'><div align='center'>Jam Datang</div></td>
                                 <td width='23%'><div align='center'>Jam Pulang</div></td>
                             </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                       echo "<tr class='isi'>
                                 <td>
                                     <center>";?>
@@ -196,7 +196,7 @@
                 Hapus("  jam_jaga "," no_id ='".$no_id."' ","?act=ListJam&action=TAMBAH");
             }
 
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah</div></td>                        

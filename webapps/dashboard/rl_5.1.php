@@ -44,7 +44,7 @@
 		$ppkkode="SELECT * FROM setting";
 		$ppk_kode=bukaquery($ppkkode);
 		
-		 while($ppk = mysql_fetch_array($ppk_kode)) { 
+		 while($ppk = mysqli_fetch_array($ppk_kode)) { 
 			$k_ppk=$ppk['kode_ppk'];
 			$n_ppk=$ppk['nama_ppk'];
 		 }
@@ -82,7 +82,7 @@
 			$_sql = "SELECT Count(reg_periksa.stts_daftar) AS jumlah_pasien
 				 FROM reg_periksa WHERE reg_periksa.kd_poli = 'IGDK' AND stts_daftar='$status_pasien' AND tgl_registrasi  BETWEEN '$tanggal1' AND '$tanggal2'";            
         $hasil=bukaquery($_sql);
-        while($baris = mysql_fetch_array($hasil)) {
+        while($baris = mysqli_fetch_array($hasil)) {
 				$jml_pasien=$baris['jumlah_pasien'];
 		}
 		
@@ -106,7 +106,7 @@
 			$_sql = "SELECT Count(reg_periksa.stts_daftar) AS jumlah_pasien
 				 FROM reg_periksa WHERE reg_periksa.kd_poli != 'IGDK' AND stts_daftar='$status_pasien' AND tgl_registrasi  BETWEEN '$tanggal1' AND '$tanggal2'";            
         $hasil=bukaquery($_sql);
-		while($baris = mysql_fetch_array($hasil)) {
+		while($baris = mysqli_fetch_array($hasil)) {
 				$jml_pasien=$baris['jumlah_pasien'];
 		}
 		
@@ -130,7 +130,7 @@
 			$_sql = "SELECT Count(reg_periksa.stts_daftar) AS jumlah_pasien
 				 FROM reg_periksa WHERE stts_daftar='$status_pasien' AND status_lanjut='Ranap' AND tgl_registrasi  BETWEEN '$tanggal1' AND '$tanggal2' ";            
         $hasil=bukaquery($_sql);
-		while($baris = mysql_fetch_array($hasil)) {
+		while($baris = mysqli_fetch_array($hasil)) {
 				$jml_pasien=$baris['jumlah_pasien'];
 		}
 			$post[] = array(

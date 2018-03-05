@@ -15,7 +15,7 @@
                                 on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
                                 and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='$no_rawat' ";
                 $hasil        = bukaquery($_sql);
-                $baris        = mysql_fetch_array($hasil);
+                $baris        = mysqli_fetch_array($hasil);
                 $no_rkm_medis = $baris["no_rkm_medis"];
                 $nm_pasien    = $baris["nm_pasien"];
                 $umurdaftar   = $baris["umurdaftar"];
@@ -80,7 +80,7 @@
                                 $_sql = "SELECT kode,nama FROM master_berkas_digital ORDER BY nama";
                                 $hasil=bukaquery($_sql);
 
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi1' value='$baris[0]'>$baris[1]</option>";
                                 }
                             ?>
@@ -125,18 +125,18 @@
                         on berkas_digital_perawatan.kode=master_berkas_digital.kode 
                         where berkas_digital_perawatan.no_rawat='$no_rawat' ORDER BY master_berkas_digital.nama ASC ";
                 $hasil=bukaquery($_sql);
-                $jumlah=mysql_num_rows($hasil);
+                $jumlah=mysqli_num_rows($hasil);
                 $ttllembur=0;
                 $ttlhr=0;
 
-                if(mysql_num_rows($hasil)!=0) {
+                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='5%'><div align='center'>Proses</div></td>
                                 <td width='30%'><div align='center'>Berkas Digital</div></td>
                                 <td width='65%'><div align='center'>File</div></td>
                             </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {                        
+                    while($baris = mysqli_fetch_array($hasil)) {                        
                       echo "<tr class='isi'>
                                 <td>
                                     <center>

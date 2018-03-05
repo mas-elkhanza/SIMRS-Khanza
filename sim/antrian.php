@@ -180,7 +180,7 @@ td{
     }
 	updateAplicare();	
    // mengecek data
-   $cek = mysql_num_rows($sql);
+   $cek = mysqli_num_rows($sql);
    // jika data kurang dari 1
    if($cek < 1) {
     ?>
@@ -191,7 +191,7 @@ td{
    } else {
 
    // mengulangi data agar tidak hanya 1 yang tampil
-   while($data = mysql_fetch_array($sql)) {
+   while($data = mysqli_fetch_array($sql)) {
 
    ?>
    <tr>

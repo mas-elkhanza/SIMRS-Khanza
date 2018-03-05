@@ -125,9 +125,9 @@
 
        
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
         
-        if(mysql_num_rows($hasil)!=0) { 
+        if(mysqli_num_rows($hasil)!=0) { 
             $i=1;
             $total=0;
             echo "<table width='1600px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
@@ -144,7 +144,7 @@
                         <td width='100px'><div align='center'><font size='2' face='Comic Sans Ms'><strong> Keterangan </strong></font></div></td>
                         <td width='100px'><div align='center'><font size='2' face='Comic Sans Ms'><strong> Photo </strong></font></div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $gb="-";
                         if($baris[10]=="pages/pegawai/"){
                             $gb="-";                            
@@ -177,7 +177,7 @@
               
  </form>
     <?php
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo"<table width='100%'  align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='isi13'>
                       <td width='40px' align='right'>Data : </td>

@@ -3,7 +3,7 @@
 <?php
  //fitur update kamar aplicare ini adalah penyempurnaan dari kontribusi Mas Tirta dari RSUK Ciracas Jakarta Timur
  session_start();
- require_once('conf/conf.php');
+ require_once('../conf/conf.php');
   require_once('updateaplicare.php');
  header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
  header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); 
@@ -137,7 +137,7 @@
                           AND jadwal.kd_poli=poliklinik.kd_poli WHERE hari_kerja = '$namahari'" ;  
                       $hasil=bukaquery($_sql);
 
-                      while ($data = mysql_fetch_array ($hasil)){
+                      while ($data = mysqli_fetch_array ($hasil)){
                         echo "<tr>
                             <td><b>".$data['nm_dokter']."</b></td>
                             <td><b>".$data['nm_poli']."</b></td>
@@ -168,13 +168,13 @@
                   $_sql="Select * From bangsal where status='1' and kd_bangsal in(select kd_bangsal from kamar)" ;  
                   $hasil=bukaquery($_sql);
 
-                  while ($data = mysql_fetch_array ($hasil)){
+                  while ($data = mysqli_fetch_array ($hasil)){
                     echo "<tr class='isi7' >
                         <td align='left'><b>".$data['nm_bangsal']."</b></td>
                         <td align='center'>
                              <font color='gren'>
                               <b>";
-                               $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."'"));
+                               $data2=mysqli_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."'"));
 					       echo $data2[0];
                         echo "</b>
                               </font>
@@ -182,7 +182,7 @@
                         <td align='center'>
                              <font color='red'>
                               <b>";
-                             $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='ISI'"));
+                             $data2=mysqli_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='ISI'"));
 						   echo $data2[0];
                         echo "</b>
                               </font>
@@ -190,7 +190,7 @@
                         <td align='center'>
                               <font color='#FF8C00'>
                               <b>";
-                             $data2=mysql_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='KOSONG'"));
+                             $data2=mysqli_fetch_array(bukaquery("select count(kd_bangsal) from kamar where kamar.statusdata='1' and kd_bangsal='".$data['kd_bangsal']."' and status='KOSONG'"));
 						   echo $data2[0];
                         echo "</b>
                              </font>
