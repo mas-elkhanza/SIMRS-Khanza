@@ -81,7 +81,7 @@
                       </tr>"; 			                    
                 } 
                 
-                $hasil3=bukaquery("select temp1,temp2,temp3,temp7,temp5 from temporary_bayar_ralan where temp9='$petugas' and temp8='Ralan Dokter' or temp8='Ralan Dokter Paramedis' or temp8='Ralan Paramedis' or temp8='Laborat' or temp8='Radiologi' order by no asc");
+                $hasil3=bukaquery("select temp1,temp2,temp3,temp7,temp5 from temporary_bayar_ralan where temp9='$petugas' and (temp8='Ralan Dokter' or temp8='Ralan Dokter Paramedis' or temp8='Ralan Paramedis' or temp8='Laborat' or temp8='Radiologi') order by no asc");
                 echo "<tr class='isi12' padding='0'>
                        <td padding='0' width='30%' valign='top'><font color='000000' size='1'  face='Tahoma'>Tindakan</td> 
                        <td padding='0' width='40%' colspan='6'>

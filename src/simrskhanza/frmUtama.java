@@ -38,6 +38,7 @@ import bridging.BPJSCekRujukanKartuPCare;
 import bridging.BPJSCekRujukanKartuRS;
 import bridging.BPJSDataSEP;
 import bridging.BPJSMonitoringKlaim;
+import bridging.BPJSRujukanKeluar;
 import bridging.INACBGCariCoderNIK;
 import bridging.INACBGCoderNIK;
 import bridging.INACBGHybrid;
@@ -755,6 +756,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekBPJSNomorRujukanRS = new widget.ButtonBig();
         btnCekBPJSRujukanKartuPCare = new widget.ButtonBig();
         btnCekBPJSRujukanKartuRS = new widget.ButtonBig();
+        btnRujukanKeluarBPJS = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4672,6 +4674,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekBPJSRujukanKartuRS);
 
+        btnRujukanKeluarBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357758_Doctor.png"))); // NOI18N
+        btnRujukanKeluarBPJS.setText("Data Rujukan Keluar VClaim");
+        btnRujukanKeluarBPJS.setIconTextGap(0);
+        btnRujukanKeluarBPJS.setName("btnRujukanKeluarBPJS"); // NOI18N
+        btnRujukanKeluarBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRujukanKeluarBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRujukanKeluarBPJSActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRujukanKeluarBPJS);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4680,7 +4694,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/02/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/03/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -9929,6 +9943,20 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCekBPJSRujukanKartuRSActionPerformed
 
+    private void btnRujukanKeluarBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRujukanKeluarBPJSActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSRujukanKeluar rujuk=new BPJSRujukanKeluar(this,false);
+        rujuk.tampil();
+        rujuk.emptTeks();
+        rujuk.isCek();
+        rujuk.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        rujuk.setLocationRelativeTo(PanelUtama);
+        rujuk.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRujukanKeluarBPJSActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10222,6 +10250,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRuangInventaris;
     private widget.ButtonBig btnRujukMasuk;
     private widget.ButtonBig btnRujukPasien;
+    private widget.ButtonBig btnRujukanKeluarBPJS;
     private widget.ButtonBig btnSMS;
     private widget.ButtonBig btnSatuan;
     private widget.ButtonBig btnSensusHarianPoli;
@@ -11697,6 +11726,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getbpjs_sep()==true){
                 Panelmenu.add(btnBPJSSEP);
+                jmlmenu++;
+            }
+            
+            if(var.getbpjs_rujukan_keluar()==true){
+                Panelmenu.add(btnRujukanKeluarBPJS);
                 jmlmenu++;
             }
 
@@ -13204,6 +13238,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getbpjs_sep()==true){
             Panelmenu.add(btnBPJSSEP);
+            jmlmenu++;
+        }
+        
+        if(var.getbpjs_rujukan_keluar()==true){
+            Panelmenu.add(btnRujukanKeluarBPJS);
             jmlmenu++;
         }
 
@@ -15142,6 +15181,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getbpjs_sep()==true){
             if(btnBPJSSEP.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBPJSSEP);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbpjs_rujukan_keluar()==true){
+            if(btnRujukanKeluarBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRujukanKeluarBPJS);
                 jmlmenu++;
             }                
         }
