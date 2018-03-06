@@ -11,14 +11,13 @@
     }
     
 
-     function  bukakoneksi()
-	 {
+     function  bukakoneksi(){
      	global $db_hostname, $db_username, $db_password, $db_name;
         $konektor=mysqli_connect($db_hostname,$db_username,$db_password)
         or die ("<font color=red><h3>Not Connected ..!!</h3></font>");
         $db_select=mysqli_select_db($konektor, $db_name)
         or die("<font color=red><h3>Cannot chose database..!!</h3></font>");
-		return $konektor;
+	return $konektor;
      }
      
      $sqlinjectionchars = array("=","-","'","\"","+"); //tambah sendiri
@@ -156,24 +155,26 @@
        mysqli_close($konektor);
      }
 
-     function bukaquery($sql)
-	 {    
-		$konektor=bukakoneksi();
-		$result=mysqli_query($konektor, $sql)
+     function bukaquery($sql){    
+        $konektor=bukakoneksi();
+        $result=mysqli_query($konektor, $sql)
         or die (mysqli_error($konektor)."<br/><font color=red><b>hmmmmmmm.....??????????</b>");
+        mysqli_close($konektor);
         return $result;
      }
      
      function bukaquery2($sql){
-       bukakoneksi();
-       $result=mysqli_query(bukakoneksi(),$sql);
+        bukakoneksi();
+        $result=mysqli_query(bukakoneksi(),$sql);
+        mysqli_close(bukakoneksi());
         return $result;
      }
 
      function bukainput($sql){
-       bukakoneksi();
-       $result=mysqli_query(bukakoneksi(),$sql)
+        bukakoneksi();
+        $result=mysqli_query(bukakoneksi(),$sql)
         or die(mysqli_error()."<font color=red><b>Gagal</b>, Ada data dengan primary key yang sama !");
+        mysqli_close(bukakoneksi());
         return $result;
      }
 
@@ -181,12 +182,12 @@
         bukakoneksi();
         $result=mysqli_query(bukakoneksi(),$sql)
         or die(mysqli_error()."<font color=red><b>Gagal</b>, Data masih dipakai di tabel lain !");
+        mysqli_close(bukakoneksi());
         return $result;
      }
 
-	function Tambah($tabelname,$attrib,$pesan) {
-
-             $command = bukainput("INSERT INTO ".$tabelname." VALUES (".$attrib.")");
+     function Tambah($tabelname,$attrib,$pesan) {
+        $command = bukainput("INSERT INTO ".$tabelname." VALUES (".$attrib.")");
         echo  "<img src='images/simpan.gif' />&nbsp;&nbsp; Data $pesan berhasil disimpan";
         return $command;
      }
@@ -226,7 +227,7 @@
 
      function Hapus($tabelname,$param,$hal) {
         $sql ="DELETE FROM ".$tabelname." WHERE ".$param." ";
-             $command = hapusinput($sql);
+        $command = hapusinput($sql);
         Zet($hal);
         return $command;
      }

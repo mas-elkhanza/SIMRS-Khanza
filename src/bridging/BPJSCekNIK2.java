@@ -478,7 +478,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         TNoReg.setDocument(new batasInput((byte)8).getKata(TNoReg));
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         kddokter.setDocument(new batasInput((byte)20).getKata(kddokter));
-        NoRujukan.setDocument(new batasInput((byte)20).getKata(NoRujukan));
+        NoRujukan.setDocument(new batasInput((byte)40).getKata(NoRujukan));
         Catatan.setDocument(new batasInput((byte)50).getKata(Catatan));
         LokasiLaka.setDocument(new batasInput((byte)100).getKata(LokasiLaka));
         try{
