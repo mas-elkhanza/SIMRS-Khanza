@@ -18,7 +18,7 @@
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT tingkat,indek,gapok1,kenaikan,maksimal FROM pendidikan WHERE tingkat='$tingkat'";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $tingkat      = $baris[0];
                     $indek        = $baris[1];
                     $gapok1       = $baris[2];

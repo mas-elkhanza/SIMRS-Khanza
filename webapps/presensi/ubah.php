@@ -21,7 +21,7 @@
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT id, keterangan FROM rekap_presensi WHERE id='$id'";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $id          = $baris[0];
                     $keterangan         = $baris[1];
                 }

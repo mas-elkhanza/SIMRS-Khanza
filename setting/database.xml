@@ -12,9 +12,9 @@
     <entry key="PORTWEB">80</entry>
     <entry key="ANTRIAN">sender</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
-    <entry key="URLAPIBPJS">http://dvlp.bpjs-kesehatan.go.id:8081/devWslokalrest</entry>
-    <entry key="SECRETKEYAPIBPJS">0qO2F4D0AF</entry>
-    <entry key="CONSIDAPIBPJS">1236</entry>
+    <entry key="URLAPIBPJS">http://dvlp.bpjs-kesehatan.go.id:8081/VClaim-rest</entry>
+    <entry key="SECRETKEYAPIBPJS">5fTEA0DF23</entry>
+    <entry key="CONSIDAPIBPJS">18119</entry>
     <entry key="URLAPIAPLICARE">http://dvlp.bpjs-kesehatan.go.id:8888/aplicaresws</entry>
     <entry key="SECRETKEYAPIAPLICARE">1112</entry>
     <entry key="CONSIDAPIAPLICARE">1000</entry>
@@ -33,4 +33,9 @@
     <entry key="TOKENINHEALTH">inh_aba40329b828c943e91f2e5c7f9f1f1b</entry>
     <entry key="PEMBULATANHARGAOBAT">no</entry>
     <entry key="CETAKRINCIANOBAT">yes</entry>
+    <entry key="URLDUKCAPILJAKARTA">http://kependudukan.jakarta.go.id/rsudxxx/xml.jsp</entry>
+    <entry key="USERDUKCAPILJAKARTA">WSRSIABK</entry>
+    <entry key="PASSDUKCAPILJAKARTA">R8ud!KSW5</entry>
+    <entry key="VAR1DUKCAPILJAKARTA">RSIABK</entry>
+    <entry key="VAR2DUKCAPILJAKARTA">12</entry>
 </properties>

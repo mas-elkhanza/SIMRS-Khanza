@@ -35,7 +35,7 @@
                    reg_periksa.tgl_registrasi='$tanggal' and reg_periksa.almt_pj like '%$cari%' ";            
         $hasil=bukaquery($_sql);
         
-        if(mysql_num_rows($hasil)!=0) { 
+        if(mysqli_num_rows($hasil)!=0) { 
           echo "<table width='100%'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
             <tr>
               <td colspan='6'>
@@ -136,7 +136,7 @@
                      </tr>
                      ";
                                       $i=1;
-                                      while($barispesan = mysql_fetch_array($hasil)) { 
+                                      while($barispesan = mysqli_fetch_array($hasil)) { 
                                           $baru="&nbsp;";
                                           if($barispesan["tgl_registrasi"]==$barispesan["tgl_daftar"]){
                                               $baru=$barispesan["no_rkm_medis"];

@@ -53,7 +53,7 @@
                                    and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal where 
                                    kamar_inap.tgl_masuk between '$tanggal1' and '$tanggal2' and bangsal.nm_bangsal like '%$kamar%' group by kamar_inap.no_rawat";            
                           $hasil=bukaquery($_sql);
-                          while($baris = mysql_fetch_array($hasil)) { 							  
+                          while($baris = mysqli_fetch_array($hasil)) { 							  
 							  $ya="&nbsp;";
 							  $tdk="&nbsp;";
 							  if(getOne("select count(no_rawat) from rujuk_masuk where no_rawat='".$baris["no_rawat"]."'")>0){
@@ -102,7 +102,7 @@
                                    kamar_inap.tgl_masuk between '$tanggal1' and '$tanggal2' and bangsal.nm_bangsal like '%$kamar%' 
                                    and kamar_inap.tgl_keluar<>'0000-00-00' group by kamar_inap.no_rawat";            
                           $hasil=bukaquery($_sql);
-                          while($baris = mysql_fetch_array($hasil)) { 							  
+                          while($baris = mysqli_fetch_array($hasil)) { 							  
 							  $ya="&nbsp;";
 							  $tdk="&nbsp;";
 							  if(getOne("select count(no_rawat) from rujuk_masuk where no_rawat='".$baris["no_rawat"]."'")>0){

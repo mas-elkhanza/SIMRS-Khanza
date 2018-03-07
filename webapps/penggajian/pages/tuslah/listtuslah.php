@@ -3,7 +3,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun        = $baris[0];
    $bulan        = $baris[1];
 ?>
@@ -21,9 +21,9 @@
                    bagian_rs, persen_kry,bagian_kry
                    FROM set_tuslah WHERE tahun='$tahun' and bulan='$bulan' ORDER BY bagian_kry";
         $hasil   =bukaquery($_sql);
-        $jumlah  =mysql_num_rows($hasil);
+        $jumlah  =mysqli_num_rows($hasil);
         $pendapatan_tuslah="0";
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='12%'><div align='center'>Proses</div></td>                        
@@ -33,7 +33,7 @@
                         <td width='7%'><div align='center'>% Kry</div></td>
                         <td width='25%'><div align='center'>Bagian Kry</div></td>
                     </tr>";					
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $pendapatan_tuslah=$baris[4];
                         echo "<tr class='isi'>
 				<td>
@@ -80,10 +80,10 @@
         $_sql   = "SELECT pembagian_tuslah.id,pegawai.nama,pembagian_tuslah.persen FROM pembagian_tuslah inner join pegawai
                  on pembagian_tuslah.id=pegawai.id where pegawai.nama like '%".$keyword."%' ORDER BY persen desc";
         $hasil   =bukaquery($_sql);
-        $jumlah  =mysql_num_rows($hasil);
+        $jumlah  =mysqli_num_rows($hasil);
 	$ttl=0;
 	$prosen=0;
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='12%'><div align='center'>Proses</div></td>
@@ -92,7 +92,7 @@
 			<td width='25%'><div align='center'>Bagian Karyawan</div></td>
                     </tr>";
 		    $bagiankry=0;
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $bagiankry=($baris[2]/100)*$pendapatan_tuslah;
 			$ttl=$ttl+$bagiankry;
 			$prosen=$prosen+$baris[2];
@@ -123,7 +123,7 @@
        if ($aksi=="HAPUSPENERIMA") {
             Hapus(" pembagian_tuslah "," id ='".$_GET['id']."'","?act=ListTuslah");
        }
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah, Ttl Prosen : ".$prosen."%, Ttl Bagian : ".formatDuit($ttl)." | <a target=_blank href=../penggajian/pages/tuslah/LaporanTuslah.php?&keyword=$keyword>Laporan</a> | <a target=_blank href=../penggajian/pages/tuslah/LaporanTuslahExel.php?&keyword=$keyword>Excel</a> |</div></td>                        

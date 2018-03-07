@@ -26,7 +26,7 @@
         $_sql = "select * from temporary";            
         $hasil=bukaquery($_sql);
         
-        if(mysql_num_rows($hasil)!=0) { 
+        if(mysqli_num_rows($hasil)!=0) { 
           echo "<table width='100%'  border='1' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <caption><br/><center><font color='000000' size='4' face='Arial'>Laporan RL 53 10 Besar Penyakit Rawat jalan<br> Periode $tanggal1 s.d. $tanggal2 </font></center><br/></caption>
                  <tr class=isi15>
@@ -44,7 +44,7 @@
                     <td align=center>Perempuan</td>
                  </tr>";
                  $i=1;
-                 while($baris = mysql_fetch_array($hasil)) { 
+                 while($baris = mysqli_fetch_array($hasil)) { 
 					 echo "<tr>
 					         <td>$i</td>
 					         <td>$baris[1] &nbsp;</td>

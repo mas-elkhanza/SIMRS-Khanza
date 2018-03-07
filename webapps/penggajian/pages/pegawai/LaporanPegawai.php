@@ -3,7 +3,7 @@
 
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bln_leng=strlen($baris[1]);
    $hari         =$baris[2];
@@ -19,7 +19,7 @@
                         from set_hari_libur
                         where tanggal like '%".$tahun."-".$bulan."%' ORDER BY tanggal";
                 $hasillibur=bukaquery($_sqllibur);
-                $jumlahlibur=mysql_num_rows($hasillibur);
+                $jumlahlibur=mysqli_num_rows($hasillibur);
 ?>
 <html>
     <head>
@@ -57,9 +57,9 @@
                  stts_aktif like '%".$keyword."%' 
                  order by id ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
 
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table  border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
 				<caption><h1 class=title>DAFTAR PEGAWAI/KARYAWAN</h1><br></caption>
                     <tr class='head'>
@@ -87,10 +87,10 @@
                                  <td width='70px'><div align='center'>Wajib Masuk</div></td>
                                  <td width='100px'><div align='center'>Mulai Kontrak</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
 			$_sql2         = "SELECT normal-$jumlahlibur,jmlhr,normal FROM set_tahun";
 			 $hasil2        = bukaquery($_sql2);
-			 $baris2        = mysql_fetch_row($hasil2);
+			 $baris2        = mysqli_fetch_row($hasil2);
 			 $jmlmsk         = $baris2[0];
 			 if($baris[23]==-1){
 			     $jmlmsk=0;

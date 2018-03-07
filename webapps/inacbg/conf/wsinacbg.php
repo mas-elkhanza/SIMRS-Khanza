@@ -2,17 +2,17 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "7dd3a2925702935ddf79ef12d7dc5b894cfdfeb87eac2a087e9d9208ab7bdaed";   
+       $keyRS = "fe1e122d41a4dc5f8dccf9adc68e3570cf59bde0721686294ae06e3acd27efc3";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://192.168.3.26/E-Klaim/ws.php";
+        $UrlWS = "http://192.168.21.200/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "CP";
+        $kelasRS = "BP";
         return $kelasRS;
     }
 
@@ -148,6 +148,7 @@
                             "diagnosa": "'.$diagnosa.'",
                             "procedure": "'.$procedure.'",
                             "tarif_rs": {
+<<<<<<< HEAD
                                 "prosedur_non_bedah": "'.getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Ralan Dokter Paramedis'").'",
                                 "prosedur_bedah": "'.getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Operasi'").'",
                                 "konsultasi": "'.(getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Ranap Dokter'")+
@@ -169,6 +170,24 @@
                                 "bmhp": "'.getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Tambahan'").'",
                                 "sewa_alat": "'.(getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Harian'")+
                                                  getOne("select sum(totalbiaya) from billing where no_rawat='".$no_rawat."' and status='Service'")).'"
+=======
+                                "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
+                                "prosedur_bedah": "'.$prosedur_bedah.'",
+                                "konsultasi": "'.$konsultasi.'",
+                                "tenaga_ahli": "'.$tenaga_ahli.'",
+                                "keperawatan": "'.$keperawatan.'",
+                                "penunjang": "'.$penunjang.'",
+                                "radiologi": "'.$radiologi.'",
+                                "laboratorium": "'.$laboratorium.'",
+                                "pelayanan_darah": "'.$pelayanan_darah.'",
+                                "rehabilitasi": "'.$rehabilitasi.'",
+                                "kamar": "'.$kamar.'",
+                                "rawat_intensif": "'.$rawat_intensif.'",
+                                "obat": "'.$obat.'",
+                                "alkes": "'.$alkes.'",
+                                "bmhp": "'.$bmhp.'",
+                                "sewa_alat": "'.$sewa_alat.'"
+>>>>>>> 89808a96b3c7fcbf0d4c09f7e1c5b622822b8491
                              },
                             "tarif_poli_eks": "'.$tarif_poli_eks.'",
                             "nama_dokter": "'.$nama_dokter.'",

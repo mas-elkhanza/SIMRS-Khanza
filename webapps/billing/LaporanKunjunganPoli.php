@@ -26,7 +26,7 @@
         $_sql = "select kd_poli,nm_poli from poliklinik ";            
         $hasil=bukaquery($_sql);
         
-        if(mysql_num_rows($hasil)!=0) { 
+        if(mysqli_num_rows($hasil)!=0) { 
           echo "<table width='100%'  border='1' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <caption><br/><center><font color='000000' size='4' face='Arial'>Laporan Kunjuangan Rawat Jalan Per Poli<br> Periode $tanggal1 s.d. $tanggal2 </font></center><br/></caption>
                  <tr class=isi15>
@@ -40,7 +40,7 @@
                  $lama=0;
                  $baru=0;
                  $total=0;
-                 while($baris = mysql_fetch_array($hasil)) { 
+                 while($baris = mysqli_fetch_array($hasil)) { 
 				   $lama=$lama+getOne("select count(no_rawat) from reg_periksa where kd_poli='$baris[0]' and tgl_registrasi between '$tanggal1' and '$tanggal2' and stts_daftar='Lama'");
 				   $baru=$baru+getOne("select count(no_rawat) from reg_periksa where kd_poli='$baris[0]' and tgl_registrasi between '$tanggal1' and '$tanggal2' and stts_daftar='Baru'");
 				   $total=$total+getOne("select count(no_rawat) from reg_periksa where kd_poli='$baris[0]' and tgl_registrasi between '$tanggal1' and '$tanggal2'");

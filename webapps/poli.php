@@ -34,15 +34,15 @@
         $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
         $_sql = "SELECT * FROM poliklinik where nm_poli like '%".$keyword."%' ORDER BY nm_poli ASC ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
         
-        if(mysql_num_rows($hasil)!=0) {            
+        if(mysqli_num_rows($hasil)!=0) {            
             
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='90%'><div align='center'>Silahkan Pilih Unit/Poliklinik</strong></div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi' align='center'>
                                 <td><a href='index.php?page=PilihDokter&Pasien=$norm&Poli=$baris[0]'><font size='5' color='#ff5555'>$baris[1]</font></a></td>                                
                              </tr>";
