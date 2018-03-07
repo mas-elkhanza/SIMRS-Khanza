@@ -16,7 +16,7 @@ session_start();
 
 require_once('config.php');
 
-$data=fetch_array(query("SELECT AES_DECRYPT(a.id_user,'nur') as id_user, AES_DECRYPT(a.password,'windi') as password,  b.kd_poli as kd_poli from user a, jadwal b where a.id_user = AES_ENCRYPT('{$_COOKIE[username]}','nur') and b.kd_dokter = '$_COOKIE[username]' and a.password = AES_ENCRYPT('{$_COOKIE[password]}','windi')")); 
+$data=fetch_array(query("SELECT AES_DECRYPT(a.id_user,'nur') as id_user, AES_DECRYPT(a.password,'windi') as password,  b.kd_poli as kd_poli from user a, jadwal b where a.id_user = AES_ENCRYPT('{$_COOKIE[username]}','nur') and b.kd_dokter = '{$_COOKIE[username]}' and a.password = AES_ENCRYPT('{$_COOKIE[password]}','windi')")); 
 
 $user = $data[0];
 $pass = $data[1];
