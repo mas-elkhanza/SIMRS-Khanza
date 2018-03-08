@@ -70,7 +70,7 @@ public final class var {
             surat_pemesanan_non_medis=false,grafik_per_perujuk=false,bpjs_cek_prosedur=false,bpjs_cek_kelas_rawat=false,bpjs_cek_dokter=false,
             bpjs_cek_spesialistik=false,bpjs_cek_ruangrawat=false,bpjs_cek_carakeluar=false,bpjs_cek_pasca_pulang=false,detail_tindakan_okvk=false,
             billing_parsial=false,bpjs_cek_nomor_rujukan_rs=false,bpjs_cek_rujukan_kartu_pcare=false,bpjs_cek_rujukan_kartu_rs=false,akses_depo_obat=false,
-            bpjs_rujukan_keluar=false;
+            bpjs_rujukan_keluar=false,grafik_lab_ralanbulan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -396,6 +396,7 @@ public final class var {
                         var.bpjs_cek_rujukan_kartu_rs=true;
                         var.akses_depo_obat=true;
                         var.bpjs_rujukan_keluar=true;
+                        var.grafik_lab_ralanbulan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -705,6 +706,7 @@ public final class var {
                         var.bpjs_cek_rujukan_kartu_rs=rs2.getBoolean("bpjs_cek_rujukan_kartu_rs");
                         var.akses_depo_obat=rs2.getBoolean("akses_depo_obat");
                         var.bpjs_rujukan_keluar=rs2.getBoolean("bpjs_rujukan_keluar");
+                        var.grafik_lab_ralanbulan=rs2.getBoolean("grafik_lab_ralanbulan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1012,6 +1014,7 @@ public final class var {
                         var.bpjs_cek_rujukan_kartu_rs=false;
                         var.akses_depo_obat=false;
                         var.bpjs_rujukan_keluar=false;
+                        var.grafik_lab_ralanbulan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1366,4 +1369,5 @@ public final class var {
     public static boolean getbpjs_cek_rujukan_kartu_rs(){return var.bpjs_cek_rujukan_kartu_rs;}
     public static boolean getakses_depo_obat(){return var.akses_depo_obat;}
     public static boolean getbpjs_rujukan_keluar(){return var.bpjs_rujukan_keluar;}
+    public static boolean getgrafik_lab_ralanbulan(){return var.grafik_lab_ralanbulan;}
 }
