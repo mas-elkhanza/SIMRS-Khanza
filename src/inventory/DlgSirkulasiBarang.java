@@ -23,7 +23,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -32,6 +31,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
+import simrskhanza.DlgCariBangsal;
 
 public class DlgSirkulasiBarang extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -39,6 +39,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
+    private DlgCariBangsal bangsal = new DlgCariBangsal(null, false);
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize(); 
     private double ttltotaljual=0,totaljual=0,jumlahjual=0,ttltotalbeli=0,totalbeli=0,jumlahbeli=0,
                    ttltotalpesan=0,totalpesan=0,jumlahpesan=0,jumlahutd,totalutd,ttltotalutd,jumlahkeluar,totalkeluar,ttltotalkeluar,
@@ -117,6 +118,40 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (bangsal.getTable().getSelectedRow() != -1) {
+                    prosesCari2(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 0).toString());
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                bangsal.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+        
         barang.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
@@ -153,6 +188,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         ppGrafikPiutangDikit = new javax.swing.JMenuItem();
         ppGrafikResepPaliingBanyak = new javax.swing.JMenuItem();
         ppGrafikResepPaliingSedikit = new javax.swing.JMenuItem();
+        ppLokasi = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -182,7 +218,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
 
         ppGrafikJualBanyak.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikJualBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikJualBanyak.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikJualBanyak.setForeground(new java.awt.Color(60, 80, 50));
         ppGrafikJualBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikJualBanyak.setText("Grafik 10 Barang Penjualan Terbanyak");
         ppGrafikJualBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -199,7 +235,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
 
         ppGrafikJualDikit.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikJualDikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikJualDikit.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikJualDikit.setForeground(new java.awt.Color(60, 80, 50));
         ppGrafikJualDikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikJualDikit.setText("Grafik 10 Barang Penjualan Tersedikit");
         ppGrafikJualDikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -216,7 +252,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
 
         ppGrafikbeliBanyak.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikbeliBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikbeliBanyak.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikbeliBanyak.setForeground(new java.awt.Color(60, 80, 50));
         ppGrafikbeliBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikbeliBanyak.setText("Grafik 10 Barang Pembelian Terbanyak");
         ppGrafikbeliBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -233,7 +269,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
 
         ppGrafikbelidikit.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikbelidikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikbelidikit.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikbelidikit.setForeground(new java.awt.Color(60, 80, 50));
         ppGrafikbelidikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikbelidikit.setText("Grafik 10 Barang Pembelian Tersedikit");
         ppGrafikbelidikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -250,7 +286,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
 
         ppGrafikPiutangBanyak.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikPiutangBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikPiutangBanyak.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikPiutangBanyak.setForeground(new java.awt.Color(60, 80, 50));
         ppGrafikPiutangBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikPiutangBanyak.setText("Grafik 10 Barang Piutang Terbanyak");
         ppGrafikPiutangBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -267,7 +303,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
 
         ppGrafikPiutangDikit.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikPiutangDikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikPiutangDikit.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikPiutangDikit.setForeground(new java.awt.Color(60, 80, 50));
         ppGrafikPiutangDikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikPiutangDikit.setText("Grafik 10 Barang Piutang Tersedikit");
         ppGrafikPiutangDikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -284,7 +320,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
 
         ppGrafikResepPaliingBanyak.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikResepPaliingBanyak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikResepPaliingBanyak.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikResepPaliingBanyak.setForeground(new java.awt.Color(60, 80, 50));
         ppGrafikResepPaliingBanyak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikResepPaliingBanyak.setText("Grafik 10 Barang Resep Ke Pasien Terbanyak");
         ppGrafikResepPaliingBanyak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -301,7 +337,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
 
         ppGrafikResepPaliingSedikit.setBackground(new java.awt.Color(255, 255, 255));
         ppGrafikResepPaliingSedikit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikResepPaliingSedikit.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikResepPaliingSedikit.setForeground(new java.awt.Color(60, 80, 50));
         ppGrafikResepPaliingSedikit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikResepPaliingSedikit.setText("Grafik 10 Barang Resep Ke Pasien Tersedikit");
         ppGrafikResepPaliingSedikit.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -316,6 +352,23 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppGrafikResepPaliingSedikit);
 
+        ppLokasi.setBackground(new java.awt.Color(255, 255, 255));
+        ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppLokasi.setForeground(new java.awt.Color(60, 80, 50));
+        ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppLokasi.setText("Tampilkan Per Lokasi");
+        ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppLokasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppLokasi.setIconTextGap(8);
+        ppLokasi.setName("ppLokasi"); // NOI18N
+        ppLokasi.setPreferredSize(new java.awt.Dimension(180, 25));
+        ppLokasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppLokasiBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppLokasi);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -325,7 +378,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Obat, Alkes & BHP Medis Keluar Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Obat, Alkes & BHP Medis Keluar Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -718,6 +771,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     grafik.setVisible(true);
     }//GEN-LAST:event_ppGrafikResepPaliingSedikitActionPerformed
 
+    private void ppLokasiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppLokasiBtnPrintActionPerformed
+        bangsal.isCek();
+        bangsal.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        bangsal.setLocationRelativeTo(internalFrame1);
+        bangsal.setVisible(true);
+    }//GEN-LAST:event_ppLokasiBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -763,6 +823,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private javax.swing.JMenuItem ppGrafikResepPaliingSedikit;
     private javax.swing.JMenuItem ppGrafikbeliBanyak;
     private javax.swing.JMenuItem ppGrafikbelidikit;
+    private javax.swing.JMenuItem ppLokasi;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
@@ -1055,6 +1116,376 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps11.setString(1,rs.getString(1));
                         ps11.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                         ps11.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        rs11=ps11.executeQuery();
+                        if(rs11.next()){                    
+                            jumlahkeluar=rs11.getDouble(1);
+                            totalkeluar=rs11.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikas keluar : "+e);
+                    } finally{
+                        if(rs11!=null){
+                            rs11.close();
+                        }
+                        if(ps11!=null){
+                            ps11.close();
+                        }
+                    }
+                    
+                    if((aset>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||
+                            (jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(jumlahutd>0)||(jumlahkeluar>0)){
+                        tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),
+                                   rs.getString(3),Valid.SetAngka(stok)+" ("+Valid.SetAngka(aset)+")",
+                                   Valid.SetAngka(jumlahbeli)+" ("+Valid.SetAngka(totalbeli)+")",
+                                   Valid.SetAngka(jumlahpesan)+" ("+Valid.SetAngka(totalpesan)+")",
+                                   Valid.SetAngka(jumlahjual)+" ("+Valid.SetAngka(totaljual)+")",
+                                   Valid.SetAngka(jumlahpasin)+" ("+Valid.SetAngka(totalpasien)+")",
+                                   Valid.SetAngka(jumlahpiutang)+" ("+Valid.SetAngka(totalpiutang)+")",
+                                   Valid.SetAngka(jumlahretbeli)+" ("+Valid.SetAngka(totalretbeli)+")",
+                                   Valid.SetAngka(jumlahretjual)+" ("+Valid.SetAngka(totalretjual)+")",
+                                   Valid.SetAngka(jumlahretpiut)+" ("+Valid.SetAngka(totalretpiut)+")",
+                                   Valid.SetAngka(jumlahutd)+" ("+Valid.SetAngka(totalutd)+")",
+                                   Valid.SetAngka(jumlahkeluar)+" ("+Valid.SetAngka(totalkeluar)+")"
+                                  }); 
+                        ttltotalbeli=ttltotalbeli+totalbeli;
+                        ttltotalpesan=ttltotalpesan+totalpesan;
+                        ttltotaljual=ttltotaljual+totaljual;
+                        ttlaset=ttlaset+aset;
+                        ttltotalpasien=ttltotalpasien+totalpasien;
+                        ttltotalpiutang=ttltotalpiutang+totalpiutang;
+                        ttltotalretbeli=ttltotalretbeli+totalretbeli;
+                        ttltotalretjual=ttltotalretjual+totalretjual;
+                        ttltotalretpiut=ttltotalretpiut+totalretpiut;
+                        ttltotalutd=ttltotalutd+totalutd;
+                        ttltotalkeluar=ttltotalkeluar+totalkeluar;
+                    }
+
+                        
+                }   
+                tabMode.addRow(new Object[]{"","","","","","","","","","","","","",""}); 
+                tabMode.addRow(new Object[]{"<>>","Total :","",Valid.SetAngka(ttlaset),
+                                   Valid.SetAngka(ttltotalbeli),Valid.SetAngka(ttltotalpesan),
+                                   Valid.SetAngka(ttltotaljual),Valid.SetAngka(ttltotalpasien),
+                                   Valid.SetAngka(ttltotalpiutang),Valid.SetAngka(ttltotalretbeli),
+                                   Valid.SetAngka(ttltotalretjual),Valid.SetAngka(ttltotalretpiut),
+                                   Valid.SetAngka(ttltotalutd),Valid.SetAngka(ttltotalkeluar)
+                                  }); 
+            } catch (Exception e) {
+                System.out.println("Notifikasi Data Barang : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        
+    }
+    
+    private void prosesCari2(String lokasi) {
+       Valid.tabelKosong(tabMode);      
+       try{   
+            ps=koneksi.prepareStatement("select databarang.kode_brng,databarang.nama_brng, "+
+                        "kodesatuan.satuan from databarang inner join kodesatuan   "+
+                        "on databarang.kode_sat=kodesatuan.kode_sat "+
+                        "where databarang.nama_brng like ? and databarang.kode_brng like ? or "+
+                        "databarang.nama_brng like ? and databarang.nama_brng like ? or "+
+                        "databarang.nama_brng like ? and kodesatuan.satuan like ? "+
+                        " order by databarang.kode_brng");
+            try {
+                ttltotaljual=0;ttltotalbeli=0;ttltotalpesan=0;
+                ttltotalpiutang=0;ttltotalretbeli=0;ttltotalretjual=0;
+                ttltotalretpiut=0;ttltotalpasien=0;ttlaset=0;
+                ttltotalutd=0;ttltotalkeluar=0;
+                ps.setString(1,"%"+nmbar.getText()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+nmbar.getText()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+nmbar.getText()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();            
+                while(rs.next()){
+                    totaljual=0;jumlahjual=0;totalbeli=0;jumlahbeli=0;totalpiutang=0;jumlahpiutang=0;
+                    totalpesan=0;jumlahpesan=0;
+                    totalretbeli=0;jumlahretbeli=0;totalretjual=0;jumlahretjual=0;totalretpiut=0;jumlahretpiut=0;
+                    jumlahpasin=0;stok=0;aset=0;
+                    jumlahutd=0;jumlahkeluar=0;totalkeluar=0;totalutd=0;
+
+                    psstok=koneksi.prepareStatement("select sum(stok),(sum(stok)*h_beli) as aset "+
+                        "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                        "where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=?");
+                    try {
+                        psstok.setString(1,rs.getString(1));
+                        psstok.setString(2,lokasi);
+                        rsstok=psstok.executeQuery();
+                        if(rsstok.next()){
+                            stok=rsstok.getDouble(1);
+                            aset=rsstok.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi Stok : "+e);
+                    } finally{
+                        if(rsstok!=null){
+                            rsstok.close();
+                        }
+                        if(psstok!=null){
+                            psstok.close();
+                        }
+                    }
+
+                    //pembelian  
+                    ps2=koneksi.prepareStatement("select sum(detailbeli.jumlah2), sum(detailbeli.subtotal) "+
+                        " from pembelian inner join detailbeli "+
+                        " on pembelian.no_faktur=detailbeli.no_faktur "+
+                        " where detailbeli.kode_brng=? and pembelian.tgl_beli "+
+                        " between ? and ? and pembelian.kd_bangsal=?");
+                    try {
+                        ps2.setString(1,rs.getString(1));
+                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps2.setString(4,lokasi);
+                        rs2=ps2.executeQuery();
+                        if(rs2.next()){                    
+                            jumlahbeli=rs2.getDouble(1);
+                            totalbeli=rs2.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi Detail Beli : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }          
+                    
+                    //pemesanan
+                    ps9=koneksi.prepareStatement(
+                        "select sum(detailpesan.jumlah2), sum(detailpesan.subtotal) "+
+                        " from pemesanan inner join detailpesan "+
+                        " on pemesanan.no_faktur=detailpesan.no_faktur "+
+                        " where detailpesan.kode_brng=? and pemesanan.tgl_pesan "+
+                        " between ? and ? and pemesanan.kd_bangsal=?");
+                    try {
+                        ps9.setString(1,rs.getString(1));
+                        ps9.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps9.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps9.setString(4,lokasi);
+                        rs9=ps9.executeQuery();
+                        if(rs9.next()){                    
+                            jumlahpesan=rs9.getDouble(1);
+                            totalpesan=rs9.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Pemesanan : "+e);
+                    } finally{
+                        if(rs9!=null){
+                            rs9.close();
+                        }
+                        if(ps9!=null){
+                            ps9.close();
+                        }
+                    }
+                        
+                    //penjualan
+                    ps3=koneksi.prepareStatement("select sum(detailjual.jumlah), sum(detailjual.total) "+
+                        " from penjualan inner join detailjual "+
+                        " on penjualan.nota_jual=detailjual.nota_jual "+
+                        " where detailjual.kode_brng=? and "+
+                        " penjualan.tgl_jual  between ? and ? and penjualan.kd_bangsal=?");
+                    try {
+                        ps3.setString(1,rs.getString(1));
+                        ps3.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps3.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps3.setString(4,lokasi);
+                        rs3=ps3.executeQuery();
+                        if(rs3.next()){                    
+                            jumlahjual=rs3.getDouble(1);
+                            totaljual=rs3.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi Penjualan : "+e);
+                    } finally{
+                        if(rs3!=null){
+                            rs3.close();
+                        }
+                        if(ps3!=null){
+                            ps3.close();
+                        }
+                    }
+
+                    //piutang  
+                    ps4=koneksi.prepareStatement("select sum(detailpiutang.jumlah), sum(detailpiutang.total) "+
+                        " from piutang inner join detailpiutang "+
+                        " on piutang.nota_piutang=detailpiutang.nota_piutang "+
+                        " where detailpiutang.kode_brng=? and "+
+                        " piutang.tgl_piutang between ? and ? and piutang.kd_bangsal=?");
+                    try {
+                        ps4.setString(1,rs.getString(1));
+                        ps4.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps4.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps4.setString(4,lokasi);
+                        rs4=ps4.executeQuery();
+                        if(rs4.next()){                    
+                            jumlahpiutang=rs4.getDouble(1);
+                            totalpiutang=rs4.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi Piutang : "+e);
+                    } finally{
+                        if(rs4!=null){
+                            rs4.close();
+                        }
+                        if(ps4!=null){
+                            ps4.close();
+                        }
+                    }
+
+                    //returbeli
+                    ps5=koneksi.prepareStatement("select sum(detreturbeli.jml_retur2), sum(detreturbeli.total) "+
+                        " from returbeli inner join detreturbeli "+
+                        " on returbeli.no_retur_beli=detreturbeli.no_retur_beli "+
+                        " where detreturbeli.kode_brng=? and "+
+                        " returbeli.tgl_retur between ? and ? and returbeli.kd_bangsal=?");
+                    try {
+                        ps5.setString(1,rs.getString(1));
+                        ps5.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps5.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps5.setString(4,lokasi);
+                        rs5=ps5.executeQuery();
+                        if(rs5.next()){                    
+                            jumlahretbeli=rs5.getDouble(1);
+                            totalretbeli=rs5.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi Retur Beli : "+e);
+                    } finally{
+                        if(rs5!=null){
+                            rs5.close();
+                        }
+                        if(ps5!=null){
+                            ps5.close();
+                        }
+                    }
+
+                    //returjual
+                    ps6=koneksi.prepareStatement("select sum(detreturjual.jml_retur), sum(detreturjual.subtotal) "+
+                        " from returjual inner join detreturjual "+
+                        " on returjual.no_retur_jual=detreturjual.no_retur_jual "+
+                        " where detreturjual.kode_brng=? and "+
+                        " returjual.tgl_retur between ? and ? and returjual.kd_bangsal=?");
+                    try {
+                        ps6.setString(1,rs.getString(1));
+                        ps6.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps6.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps6.setString(4,lokasi);
+                        rs6=ps6.executeQuery();
+                        if(rs6.next()){                    
+                            jumlahretjual=rs6.getDouble(1);
+                            totalretjual=rs6.getDouble(2);
+                        } 
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi Retur Jual : "+e);
+                    } finally{
+                        if(rs6!=null){
+                            rs6.close();
+                        }
+                        if(ps6!=null){
+                            ps6.close();
+                        }
+                    }               
+
+                    ps7=koneksi.prepareStatement("select sum(detreturpiutang.jml_retur), sum(detreturpiutang.subtotal) "+
+                        " from returpiutang inner join detreturpiutang "+
+                        " on returpiutang.no_retur_piutang=detreturpiutang.no_retur_piutang "+
+                        " where detreturpiutang.kode_brng=? and "+
+                        " returpiutang.tgl_retur between ? and ? and returpiutang.kd_bangsal=?");
+                    try {
+                        ps7.setString(1,rs.getString(1));
+                        ps7.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps7.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps7.setString(4,lokasi);
+                        rs7=ps7.executeQuery();
+                        if(rs7.next()){                    
+                            jumlahretpiut=rs7.getDouble(1);
+                            totalretpiut=rs7.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikas Retur Piutang : "+e);
+                    } finally{
+                        if(rs7!=null){
+                            rs7.close();
+                        }
+                        if(ps7!=null){
+                            ps7.close();
+                        }
+                    }
+
+                    ps8=koneksi.prepareStatement("select sum(detail_pemberian_obat.jml) as jumlah, "+
+                        "(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as jumpas "+
+                        " from detail_pemberian_obat where detail_pemberian_obat.kode_brng=? and "+
+                        " detail_pemberian_obat.tgl_perawatan between ? and ? and detail_pemberian_obat.kd_bangsal=?");
+                    try {
+                        ps8.setString(1,rs.getString(1));
+                        ps8.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps8.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps8.setString(4,lokasi);
+                        rs8=ps8.executeQuery();
+                        if(rs8.next()){                    
+                            jumlahpasin=rs8.getDouble(1);
+                            totalpasien=rs8.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi Pemberian Obat : "+e);
+                    } finally{
+                        if(rs8!=null){
+                            rs8.close();
+                        }
+                        if(ps8!=null){
+                            ps8.close();
+                        }
+                    }
+                    
+                    ps10=koneksi.prepareStatement("select sum(utd_pengambilan_medis.jml) as jumlah, "+
+                        "sum(utd_pengambilan_medis.total) as jumpas "+
+                        " from utd_pengambilan_medis where utd_pengambilan_medis.kode_brng=? and "+
+                        " utd_pengambilan_medis.tanggal between ? and ? and utd_pengambilan_medis.kd_bangsal_dr=?");
+                    try {
+                        ps10.setString(1,rs.getString(1));
+                        ps10.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps10.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps10.setString(4,lokasi);
+                        rs10=ps10.executeQuery();
+                        if(rs10.next()){                    
+                            jumlahutd=rs10.getDouble(1);
+                            totalutd=rs10.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi UTD : "+e);
+                    } finally{
+                        if(rs10!=null){
+                            rs10.close();
+                        }
+                        if(ps10!=null){
+                            ps10.close();
+                        }
+                    }
+
+                    ps11=koneksi.prepareStatement("select sum(detail_pengeluaran_obat_bhp.jumlah), sum(detail_pengeluaran_obat_bhp.total) "+
+                        " from pengeluaran_obat_bhp inner join detail_pengeluaran_obat_bhp "+
+                        " on pengeluaran_obat_bhp.no_keluar=detail_pengeluaran_obat_bhp.no_keluar "+
+                        " where detail_pengeluaran_obat_bhp.kode_brng=? and "+
+                        " pengeluaran_obat_bhp.tanggal between ? and ? and pengeluaran_obat_bhp.kd_bangsal=?");
+                    try {
+                        ps11.setString(1,rs.getString(1));
+                        ps11.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps11.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps11.setString(4,lokasi);
                         rs11=ps11.executeQuery();
                         if(rs11.next()){                    
                             jumlahkeluar=rs11.getDouble(1);
