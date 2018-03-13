@@ -26,7 +26,7 @@
         $_sql = "select left(tgl_registrasi,7) from reg_periksa where tgl_registrasi between '$tanggal1' and '$tanggal2' group by left(tgl_registrasi,7)  order by tgl_registrasi";            
         $hasil=bukaquery($_sql);
         
-        if(mysql_num_rows($hasil)!=0) { 
+        if(mysqli_num_rows($hasil)!=0) { 
           echo "<table width='100%'  border='1' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <caption><br/><center><font color='000000' size='4' face='Arial'>Laporan RL 52<br> Periode $tanggal1 s.d. $tanggal2 </font></center><br/></caption>
                  <tr class=isi15>
@@ -42,9 +42,9 @@
                  $lama=0;
                  $baru=0;
                  $total=0;
-                 while($baris = mysql_fetch_array($hasil)) { 
+                 while($baris = mysqli_fetch_array($hasil)) { 
 				     $hasil2=bukaquery("select kd_poli, nm_poli from poliklinik");
-				     while($baris2 = mysql_fetch_array($hasil2)) { 
+				     while($baris2 = mysqli_fetch_array($hasil2)) { 
 						 $lama=$lama+getOne("select count(no_rawat) from reg_periksa where tgl_registrasi like '%$baris[0]%' and kd_poli='$baris2[0]' and stts_daftar='Lama'");
 						 $baru=$baru+getOne("select count(no_rawat) from reg_periksa where tgl_registrasi like '%$baris[0]%' and kd_poli='$baris2[0]' and stts_daftar='Baru'");
 						 $total=$total+getOne("select count(no_rawat) from reg_periksa where tgl_registrasi like '%$baris[0]%' and kd_poli='$baris2[0]'");

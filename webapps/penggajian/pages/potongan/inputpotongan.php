@@ -2,7 +2,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bulan          = $baris[1];
 ?>
@@ -21,11 +21,11 @@
                 
                 $_sqlkon = "SELECT (To_days(NOW())-to_days(mulai_kontrak)) as maskon FROM pegawai WHERE id='$id'";
                 $hasilkon=bukaquery($_sqlkon);
-                $bariskon= mysql_fetch_row($hasilkon);
+                $bariskon= mysqli_fetch_row($hasilkon);
 
-                if(mysql_num_rows($hasil)!=0) {
+                if(mysqli_num_rows($hasil)!=0) {
                     $action = "UBAH";
-		    $baris        = mysql_fetch_row($hasil); 
+		    $baris        = mysqli_fetch_row($hasil); 
 		    $bpjs         = $baris[1];
 		    $jamsostek    = $baris[2];
 		    $dansos	  = $baris[3];
@@ -34,14 +34,14 @@
 	            $_sql2	="select status,pokok,jasa,tanggal,pinjaman from peminjaman_koperasi where
 					    status='Belum Lunas' and id='$id' ";
 		    $hasil2	=bukaquery($_sql2);
-                    $jumlah2	=mysql_num_rows($hasil2);
+                    $jumlah2	=mysqli_num_rows($hasil2);
 		    $angkop	= '-';
 		    $pokok	= '-';
 		    $jasa	= '-';
 		    $tanggal_pinjam='0000-00-00';
 		    $pinjaman   ='0';
 		    if($jumlah2!=0){
-			$baris2		=mysql_fetch_row($hasil2);
+			$baris2		=mysqli_fetch_row($hasil2);
 			$pokok		=$baris2[1];
 			$jasa		=$baris2[2];
 			$tanggal_pinjam =$baris2[3];
@@ -68,7 +68,7 @@
 		    if($lain==0){$lain = '-';}
 		    if($ktg==""){$ktg = '-';}
                                         
-                }else if(mysql_num_rows($hasil)==0) {
+                }else if(mysqli_num_rows($hasil)==0) {
                     $action = "TAMBAH";
 		    $_sql3  = "SELECT koperasi.wajib,jamsostek.biaya,bpjs.biaya
 			       from keanggotaan,jamsostek,koperasi,bpjs
@@ -77,14 +77,14 @@
 			       and keanggotaan.bpjs=bpjs.stts 
 			       and keanggotaan.id='$id'";
 		    $hasil3      = bukaquery($_sql3);
-		    $baris3      = mysql_fetch_row($hasil3);
+		    $baris3      = mysqli_fetch_row($hasil3);
 		    $simwajib	 = $baris3[0];
 		    $jamsostek   = $baris3[1];
 		    $bpjs        = $baris3[2];
 				
 		    $_sql4       = "SELECT dana FROM dansos";
 		    $hasil4      = bukaquery($_sql4);
-		    $baris4      = mysql_fetch_row($hasil4);
+		    $baris4      = mysqli_fetch_row($hasil4);
                     if($bariskon[0]>=1){
                           $dansos      = $baris4[0];
                     }else if($bariskon[0]<1){
@@ -99,14 +99,14 @@
 		    $_sql2	="select status,pokok,jasa,tanggal,pinjaman from 
                                 peminjaman_koperasi where status='Belum Lunas' and id='$id' ";
 	            $hasil2	=bukaquery($_sql2);
-                    $jumlah2	=mysql_num_rows($hasil2);
+                    $jumlah2	=mysqli_num_rows($hasil2);
 		    $angkop	= '-';
 		    $pokok	= '-';
 		    $jasa	= '-';
 		    $tanggal_pinjam='0000-00-00';
 		    $pinjaman   ='0';
 		    if($jumlah2!=0){
-			$baris2		=mysql_fetch_row($hasil2);
+			$baris2		=mysqli_fetch_row($hasil2);
 			$pokok		=$baris2[1];
 			$jasa		=$baris2[2];
 			$tanggal_pinjam=$baris2[3];
@@ -124,18 +124,18 @@
                 
                 $_sql2 = "SELECT nik,nama,departemen FROM pegawai where id='$id'";
                 $hasil2=bukaquery($_sql2);
-                $baris2 = mysql_fetch_row($hasil2);  		
+                $baris2 = mysqli_fetch_row($hasil2);  		
 				
                 echo"<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
 
                     $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
-                    $barisnext        	= mysql_fetch_row($hasilnext);
+                    $barisnext        	= mysqli_fetch_row($hasilnext);
                     $next               = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
-                    $barisprev        	= mysql_fetch_row($hasilprev);
+                    $barisprev        	= mysqli_fetch_row($hasilprev);
                     $prev               = $barisprev[0];
                     
                     if(empty($prev)){

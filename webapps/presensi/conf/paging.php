@@ -20,7 +20,7 @@ $offset = ($page - 1) * $item_per_page ;
 */
 
    $q        = bukaquery($sql);
-   $n        = mysql_num_rows($q);
+   $n        = mysqli_num_rows($q);
    $jumdata  = $n;
    $jumhal   = ceil ( $n / $item_per_page );
    $jumblock = ceil ( $jumhal / $page_per_block );

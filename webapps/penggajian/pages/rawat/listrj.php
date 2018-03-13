@@ -2,7 +2,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bln_leng=strlen($baris[1]);
    $bulan="0";
@@ -49,9 +49,9 @@
 				pegawai.departemen like '%".$keyword."%' and pegawai.stts_aktif<>'KELUAR' and pegawai.jbtn like '%dokter spesialis%'
 				group by pegawai.id order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
         $ttljm=0;
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='8%'><div align='center'>Proses</div></td>
@@ -60,7 +60,7 @@
                         <td width='40%'><div align='center'>Jumlah Tindakan</div></td>
                         <td width='10%'><div align='center'>Ttl.JM Tindakan</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
 					    $ttljm=$ttljm+$baris[5];
                         echo "<tr class='isi' title='$baris[1] $baris[2]'>
                                 <td>
@@ -77,7 +77,7 @@
                                               and tgl like '%".$tahun."-".$bulan."%'
                                               group by rawatjalan.tnd ";
 				      $hasil2=bukaquery($_sql2);
-				     while($baris2 = mysql_fetch_array($hasil2)) {
+				     while($baris2 = mysqli_fetch_array($hasil2)) {
 					  echo "<table width='300px'><tr class='isi3'><td width='200px'>$baris2[0]</td><td>: $baris2[1]</td></tr></table>";
 				     }
 				    echo"&nbsp;</a>

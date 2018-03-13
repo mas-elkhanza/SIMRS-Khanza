@@ -21,7 +21,7 @@
  require_once('conf/conf.php');
  $a="SELECT * FROM poliklinik";
  $sql=mysql_query($a);
- while($data=mysql_fetch_array($sql)){
+ while($data=mysqli_fetch_array($sql)){
  ?>
  <option value="<?php echo $data['kd_poli']?>"><?php echo $data['nm_poli']?></option>
  <?php
@@ -44,7 +44,7 @@
  if(isset($_POST['kd_poli'])){
  $sql = "select * from reg_periksa WHERE kd_poli = ".$_POST['kd_poli'];
  $q = mysql_query($sql);
- while($data = mysql_fetch_array($q)){
+ while($data = mysqli_fetch_array($q)){
  ?>
  <tr>
  <td style="border: none;padding: 4px;"><?php echo $data['no_reg'];?></td>

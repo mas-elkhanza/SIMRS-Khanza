@@ -2,7 +2,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bln_leng=strlen($baris[1]);
    $bulan="0";
@@ -32,16 +32,16 @@
                       <input type=hidden name=action value=$action>";
 		        $_sql = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil=bukaquery($_sql);
-                $baris = mysql_fetch_row($hasil);
+                $baris = mysqli_fetch_row($hasil);
 
                 $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' and pegawai.jbtn like '%dokter spesialis%' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
-                    $barisnext        	= mysql_fetch_row($hasilnext);
+                    $barisnext        	= mysqli_fetch_row($hasilnext);
                     $next               = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' and pegawai.jbtn like '%dokter spesialis%' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
-                    $barisprev        	= mysql_fetch_row($hasilprev);
+                    $barisprev        	= mysqli_fetch_row($hasilprev);
                     $prev               = $barisprev[0];
                     
                     if(empty($next)){
@@ -79,12 +79,12 @@
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT id,nama FROM master_tindakan where id='$tnd'";
                                     $hasil2=bukaquery($_sql2);
-                                    while($baris2 = mysql_fetch_array($hasil2)) {
+                                    while($baris2 = mysqli_fetch_array($hasil2)) {
                                         echo "<option id='TxtIsi2' value='$baris2[0]'>$baris2[1]</option>";
                                     }
                                 }
                                 
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi2' value='$baris[0]'>$baris[1]</option>";
                                 }
                             ?>
@@ -109,7 +109,7 @@
                     $tnd                =trim(isset($_POST['tnd']))?trim($_POST['tnd']):NULL;
                     $_sql = "SELECT jm FROM master_tindakan where id='$tnd'";
                     $hasil=bukaquery($_sql);
-                    $baris = mysql_fetch_array($hasil);
+                    $baris = mysqli_fetch_array($hasil);
                     $jm                 =$baris[0];
                     $nm_pasien          =trim(isset($_POST['nm_pasien']))?trim($_POST['nm_pasien']):NULL;
                     $kamar              =trim(isset($_POST['kamar']))?trim($_POST['kamar']):NULL;
@@ -149,10 +149,10 @@
                         where rawatjalan.tnd=master_tindakan.id and rawatjalan.id='$id'
 			and tgl like '%".$tahun."-".$bulan."%' ORDER BY tgl ASC";
                 $hasil=bukaquery($_sql);
-                $jumlah=mysql_num_rows($hasil);
+                $jumlah=mysqli_num_rows($hasil);
                 $ttljm=0;
 
-                if(mysql_num_rows($hasil)!=0) {
+                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='12%'><div align='center'>Proses</div></td>
@@ -160,7 +160,7 @@
                                 <td width='24%'><div align='center'>JM Tindakan</div></td>
                                 <td width='24%'><div align='center'>Jml.Tindakan</div></td>
                             </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $ttljm=$ttljm+$baris[4];
                       echo "<tr class='isi'>
                                 <td>

@@ -45,7 +45,7 @@
 
 		// GET DATA
 		$query = mysql_query(" SELECT * FROM $sTable WHERE $sIndexColumn = " . intval($_GET['edit']), $gaSql['link']);
-		die(json_encode(mysql_fetch_assoc($query)));
+		die(json_encode(mysqli_fetch_assoc($query)));
 	}
 
 	// AJAX ADD FROM JQUERY
@@ -58,7 +58,7 @@
 			@mysql_query(" INSERT INTO $sTable (name, email, mobile) VALUES ('" . $p['firstname'] . "', '" . $p['email'] . "', '" . $p['mobile'] . "')");
 			$id = mysql_insert_id();
 			$query = mysql_query(" SELECT * FROM $sTable WHERE $sIndexColumn = " . $id, $gaSql['link']);
-			die(json_encode(mysql_fetch_assoc($query)));
+			die(json_encode(mysqli_fetch_assoc($query)));
 		}
 	}
 
@@ -121,13 +121,13 @@
 		$rResult = mysql_query($sQuery, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
 		$sQuery = " SELECT FOUND_ROWS() ";
 		$rResultFilterTotal = mysql_query($sQuery, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
-		$aResultFilterTotal = mysql_fetch_array($rResultFilterTotal);
+		$aResultFilterTotal = mysqli_fetch_array($rResultFilterTotal);
 		$iFilteredTotal = $aResultFilterTotal[0];
 		$sQuery = " SELECT COUNT(" . $sIndexColumn . ") FROM $sTable ";
 		$rResultTotal = mysql_query($sQuery, $gaSql['link']) or fatal_error('MySQL Error: ' . mysql_errno());
-		$aResultTotal = mysql_fetch_array($rResultTotal);
+		$aResultTotal = mysqli_fetch_array($rResultTotal);
 		$iTotal = $aResultTotal[0];
-		while ( $aRow = mysql_fetch_array($rResult) ) {
+		while ( $aRow = mysqli_fetch_array($rResult) ) {
 			$row = array();
 			for ( $i = 0 ; $i < count($aColumns); $i++ ) {
 				if ( $aColumns[$i] == "version" ) $row[] = ( $aRow[$aColumns[$i]] == "0" ) ? '-' : $aRow[$aColumns[$i]];
