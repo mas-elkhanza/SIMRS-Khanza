@@ -23,7 +23,7 @@
                             <?php
                                 $_sql = "SELECT id,nik,nama FROM pegawai  ORDER BY nama";
                                 $hasil=bukaquery($_sql);
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi1' value='$baris[0]'>$baris[2] $baris[1]</option>";
                                 }
                             ?>
@@ -74,9 +74,9 @@
                 pegawai.departemen,
                 pegawai.bidang from kasift inner join pegawai where pegawai.id=kasift.id ORDER BY pegawai.nik ASC ";
                 $hasil=bukaquery($_sql);
-                $jumlah=mysql_num_rows($hasil);
+                $jumlah=mysqli_num_rows($hasil);
 
-                if(mysql_num_rows($hasil)!=0) {
+                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='7%'><div align='center'>Proses</div></td>
@@ -89,7 +89,7 @@
                                  <td width='11%'><div align='center'>Departemen</div></td>
                                  <td width='9%'><div align='center'>Bidang</div></td>
                             </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                       echo "<tr class='isi'>
                                 <td>
                                     <center>";?>

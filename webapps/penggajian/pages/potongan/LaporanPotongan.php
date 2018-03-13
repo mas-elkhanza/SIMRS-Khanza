@@ -10,7 +10,7 @@
         $keyword=isset($_GET['keyword'])?$_GET['keyword']:NULL;
         $_sql         = "SELECT * FROM set_tahun";
         $hasil        = bukaquery($_sql);
-        $baris        = mysql_fetch_row($hasil);
+        $baris        = mysqli_fetch_row($hasil);
         $tahun        = $baris[0];
         $bulan        = $baris[1];
         $_sql = "SELECT pegawai.id, 
@@ -42,7 +42,7 @@
 				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and keanggotaan.jamsostek like '%".$keyword."%'
 				order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
         $bpjs=0;
         $jamsos=0;
         $dansos=0;
@@ -54,7 +54,7 @@
         $pribadi=0;
         $jml=0;
         $lain=0;
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <caption><h3><font color='999999'>Laporan Potongan Gaji Tahun ".$tahun." Bulan ".$bulan."</font></h3></caption>
                     <tr class='head'>
@@ -77,7 +77,7 @@
                         <td width='100px'><div align='center'>Total Potongan</div></td>
                         <td width='200px'><div align='center'>Keterangan</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $ttl=$baris[7]+$baris[8]+$baris[9]+$baris[10]+$baris[11]+$baris[12]+$baris[13]+$baris[14]+$baris[15]+$baris[16];
                         $jml=$jml+$ttl;
                         $bpjs=$bpjs+$baris[7];

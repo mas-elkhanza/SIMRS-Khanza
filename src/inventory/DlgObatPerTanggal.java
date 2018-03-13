@@ -36,6 +36,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import simrskhanza.DlgCariBangsal;
 
 /**
  *
@@ -47,8 +48,9 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
     private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
+    private DlgCariBangsal bangsal = new DlgCariBangsal(null, false);
     private ResultSet rs,rs2;
-    private String pilihan="",dateString,dayOfWeek,hari;
+    private String dateString,dayOfWeek,hari,lokasi="";
     private double h1=0,h2=0,h3=0,h4=0,h5=0,h6=0,h7=0,h8=0,h9=0,h10=0,h11=0,h12=0,h13=0,
                    h14=0,h15=0,h16=0,h17=0,h18=0,h19=0,h20=0,h21=0,h22=0,h23=0,h24=0,h25=0,h26=0,h27=0,h28=0,h29=0,h30=0,h31=0 ;
     private Date date = null;
@@ -188,6 +190,40 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
             }
         });
         
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (bangsal.getTable().getSelectedRow() != -1) {
+                    lokasi=bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString();
+                    tampil(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(), 0).toString());
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                bangsal.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
         
     }
    
@@ -201,6 +237,8 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        ppLokasi = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJadwal = new widget.Table();
@@ -227,6 +265,25 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
+        jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        ppLokasi.setBackground(new java.awt.Color(255, 255, 255));
+        ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppLokasi.setForeground(new java.awt.Color(60, 80, 50));
+        ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
+        ppLokasi.setText("Tampilkan Per Lokasi");
+        ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppLokasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppLokasi.setIconTextGap(8);
+        ppLokasi.setName("ppLokasi"); // NOI18N
+        ppLokasi.setPreferredSize(new java.awt.Dimension(180, 25));
+        ppLokasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppLokasiBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppLokasi);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -240,10 +297,12 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbJadwal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbJadwal.setComponentPopupMenu(jPopupMenu1);
         tbJadwal.setName("tbJadwal"); // NOI18N
         tbJadwal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -457,6 +516,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
+        lokasi="";
         tampil();
 }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -473,6 +533,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
         nmgolongan.setText("");
         nmjns.setText("");
         nmkategori.setText("");
+        lokasi="";
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -616,8 +677,12 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
                 param.put("jd29","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")");
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
-                Valid.MyReport("rptObatPerTanggal.jrxml","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::","select * from temporary",param);            
-                                 
+                if(lokasi.equals("")){
+                    Valid.MyReport("rptObatPerTanggal.jrxml","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::","select * from temporary",param);            
+                }else if(!lokasi.equals("")){
+                    param.put("bangsal",lokasi);  
+                    Valid.MyReport("rptObatPerTanggal2.jrxml","report","::[ Pemberian Obat Ke Pasien Per Tanggal ]::","select * from temporary",param);            
+                }                                 
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -629,6 +694,13 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
            // Valid.pindah(evt, BtnEdit, BtnAll);
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
+
+    private void ppLokasiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppLokasiBtnPrintActionPerformed
+        bangsal.isCek();
+        bangsal.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        bangsal.setLocationRelativeTo(internalFrame1);
+        bangsal.setVisible(true);
+    }//GEN-LAST:event_ppLokasiBtnPrintActionPerformed
 
     /**
     * @param args the command line arguments
@@ -662,6 +734,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label20;
     private widget.Label label22;
@@ -671,6 +744,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
     private widget.TextBox nmkategori;
     private widget.PanelBiasa panelBiasa1;
     private widget.panelisi panelGlass8;
+    private javax.swing.JMenuItem ppLokasi;
     private widget.Table tbJadwal;
     // End of variables declaration//GEN-END:variables
 
@@ -838,6 +912,169 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void tampil(String lokasi) {  
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Object[] row={"Nama Obat/Alkes/BHP","Satuan","Jenis","Kategori","Golongan",
+            "1("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),1)+")",
+            "2("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),2)+")",
+            "3("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),3)+")",
+            "4("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),4)+")",
+            "5("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),5)+")",
+            "6("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),6)+")",
+            "7("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),7)+")",
+            "8("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),8)+")",
+            "9("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),9)+")",
+            "10("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),10)+")",
+            "11("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),11)+")",
+            "12("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),12)+")",
+            "13("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),13)+")",
+            "14("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),14)+")",
+            "15("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),15)+")",
+            "16("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),16)+")",
+            "17("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),17)+")",
+            "18("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),18)+")",
+            "19("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),19)+")",
+            "20("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),20)+")",
+            "21("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),21)+")",
+            "22("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),22)+")",
+            "23("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),23)+")",
+            "24("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),24)+")",
+            "25("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),25)+")",
+            "26("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),26)+")",
+            "27("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),27)+")",
+            "28("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),28)+")",
+            "29("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")",
+            "30("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")",
+            "31("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")",
+            "Total"
+        };
+        tabMode=new DefaultTableModel(null,row){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
+                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
+                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
+                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
+                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
+                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                 java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbJadwal.setModel(tabMode);
+        
+        for (int i = 0; i < 37; i++) {
+            TableColumn column = tbJadwal.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(250);
+            }else if(i==1){
+                column.setPreferredWidth(70);
+            }else if(i==2){
+                column.setPreferredWidth(90);
+            }else if(i==3){
+                column.setPreferredWidth(90);
+            }else if(i==4){
+                column.setPreferredWidth(90);
+            }else{
+                column.setPreferredWidth(60);
+            }
+        }
+        tbJadwal.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        Valid.tabelKosong(tabMode);
+        try{
+            ps=koneksi.prepareStatement(
+                  "select databarang.kode_brng, databarang.nama_brng, "
+                + " kodesatuan.satuan,jenis.nama as jenis,kategori_barang.nama as kategori,"
+                + " golongan_barang.nama as golongan from databarang inner join kodesatuan "
+                + " inner join jenis inner join golongan_barang inner join kategori_barang "
+                + " on databarang.kode_sat=kodesatuan.kode_sat and databarang.kdjns=jenis.kdjns "
+                + " and databarang.kode_golongan=golongan_barang.kode and databarang.kode_kategori=kategori_barang.kode "
+                + " where databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and databarang.kode_brng like ? or "
+                + " databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and databarang.nama_brng like ? or "
+                + " databarang.status='1' and jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and kodesatuan.satuan like ? "
+                + " order by databarang.nama_brng");
+            try {
+                ps.setString(1,"%"+nmjns.getText().trim()+"%");
+                ps.setString(2,"%"+nmkategori.getText().trim()+"%");
+                ps.setString(3,"%"+nmgolongan.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+nmjns.getText().trim()+"%");
+                ps.setString(6,"%"+nmkategori.getText().trim()+"%");
+                ps.setString(7,"%"+nmgolongan.getText().trim()+"%");
+                ps.setString(8,"%"+TCari.getText().trim()+"%");
+                ps.setString(9,"%"+nmjns.getText().trim()+"%");
+                ps.setString(10,"%"+nmkategori.getText().trim()+"%");
+                ps.setString(11,"%"+nmgolongan.getText().trim()+"%");
+                ps.setString(12,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                i=1;
+                while(rs.next()){
+                    h1=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-01",rs.getString("kode_brng"),lokasi);
+                    h2=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-02",rs.getString("kode_brng"),lokasi);
+                    h3=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-03",rs.getString("kode_brng"),lokasi);
+                    h4=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-04",rs.getString("kode_brng"),lokasi);
+                    h5=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-05",rs.getString("kode_brng"),lokasi);
+                    h6=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-06",rs.getString("kode_brng"),lokasi);
+                    h7=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-07",rs.getString("kode_brng"),lokasi);
+                    h8=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-08",rs.getString("kode_brng"),lokasi);
+                    h9=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-09",rs.getString("kode_brng"),lokasi);
+                    h10=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-10",rs.getString("kode_brng"),lokasi);
+                    h11=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-11",rs.getString("kode_brng"),lokasi);
+                    h12=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-12",rs.getString("kode_brng"),lokasi);
+                    h13=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-13",rs.getString("kode_brng"),lokasi);
+                    h14=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-14",rs.getString("kode_brng"),lokasi);
+                    h15=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-15",rs.getString("kode_brng"),lokasi);
+                    h16=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-16",rs.getString("kode_brng"),lokasi);
+                    h17=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-17",rs.getString("kode_brng"),lokasi);
+                    h18=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-18",rs.getString("kode_brng"),lokasi);
+                    h19=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-19",rs.getString("kode_brng"),lokasi);
+                    h20=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-20",rs.getString("kode_brng"),lokasi);
+                    h21=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-21",rs.getString("kode_brng"),lokasi);
+                    h22=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-22",rs.getString("kode_brng"),lokasi);
+                    h23=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-23",rs.getString("kode_brng"),lokasi);
+                    h24=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-24",rs.getString("kode_brng"),lokasi);
+                    h25=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-25",rs.getString("kode_brng"),lokasi);
+                    h26=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-26",rs.getString("kode_brng"),lokasi);
+                    h27=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-27",rs.getString("kode_brng"),lokasi);
+                    h28=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-28",rs.getString("kode_brng"),lokasi);
+                    h29=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-29",rs.getString("kode_brng"),lokasi);
+                    h30=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-30",rs.getString("kode_brng"),lokasi);
+                    h31=JmlObat(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-31",rs.getString("kode_brng"),lokasi);
+                    
+                    tabMode.addRow(new Object[]{
+                        rs.getString("kode_brng")+" "+rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("jenis"),rs.getString("kategori"),rs.getString("golongan"),
+                        h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25,h26,h27,h28,h29,h30,h31,
+                        (h1+h2+h3+h4+h5+h6+h7+h8+h9+h10+h11+h12+h13+h14+h15+h16+h17+h18+h19+h20+h21+h22+h23+h24+h25+h26+h27+h28+h29+h30+h31)
+                    });
+                    i++;
+                }
+            } catch (Exception e) {
+                System.out.println("inventory.DlgObatPerTanggal.tampil() : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        LCount.setText(""+tabMode.getRowCount());
+        this.setCursor(Cursor.getDefaultCursor());
+    }
     
     String konversi(int year, int month, int day){
         dateString = String.format("%d-%d-%d", year, month, day);        
@@ -878,6 +1115,10 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
     
     private double JmlObat(String tanggal,String kodebarang){
         return Sequel.cariIsiAngka("select sum(jml) from detail_pemberian_obat where kode_brng='"+kodebarang+"' and tgl_perawatan=?",tanggal);
+    }
+    
+    private double JmlObat(String tanggal,String kodebarang,String lokasi){
+        return Sequel.cariIsiAngka("select sum(jml) from detail_pemberian_obat where kode_brng='"+kodebarang+"' and kd_bangsal='"+lokasi+"' and tgl_perawatan=?",tanggal);
     }
     
 }

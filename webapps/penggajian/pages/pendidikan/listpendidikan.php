@@ -29,9 +29,9 @@
         $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
         $_sql = "SELECT tingkat,indek,gapok1,kenaikan,maksimal FROM pendidikan where tingkat like '%".$keyword."%' ORDER BY indek DESC,tingkat ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
         
-        if(mysql_num_rows($hasil)!=0) {            
+        if(mysqli_num_rows($hasil)!=0) {            
             
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
@@ -42,7 +42,7 @@
                         <td width='15%'><div align='center'>Kenaikan Per Tahun</div></td>
                         <td width='15%'><div align='center'>Jml Tahun Maksimal</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
 						        <td>
                                     <center>
@@ -72,7 +72,7 @@
     ?>
     </div>
     <?php
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='12%'><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/pendidikan/LaporanPendidikan.php?&keyword=$keyword>Laporan</a> | <a target=_blank href=../penggajian/pages/pendidikan/LaporanPendidikanExel.php?&keyword=$keyword>Excel</a> |</div></td>                        

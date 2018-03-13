@@ -3,7 +3,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bulan          = $baris[1];
 ?>
@@ -30,7 +30,7 @@
                                     bagian_rs,persen_kry,bagian_kry
                                     FROM set_resume WHERE tahun='$tahun' and bulan='$bulan'";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $pendapatan_resume = $baris[0];
                     $persen_rs       = $baris[1];
 		    $bagian_rs       = $baris[2];
@@ -65,7 +65,7 @@
 			
 				$_sql         = "SELECT * FROM set_tahun";
 				$hasil        = bukaquery($_sql);
-				$baris        = mysql_fetch_row($hasil);
+				$baris        = mysqli_fetch_row($hasil);
 				$tahun         = $baris[0];
 				$bulan          = $baris[1];
 

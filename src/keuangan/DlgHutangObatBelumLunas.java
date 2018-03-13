@@ -2,8 +2,7 @@
 
 package keuangan;
 
-import fungsi.WarnaTable;
-import fungsi.WarnaTable2;
+import fungsi.WarnaTable3;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -45,7 +44,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
     private String koderekening="";
     private double sisahutang=0,cicilan=0;
     private Jurnal jur=new Jurnal();
-    private WarnaTable2 warna=new WarnaTable2();
+    private WarnaTable3 warna=new WarnaTable3();
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -74,7 +73,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
                 java.lang.Object.class,java.lang.Object.class,
                 java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Object.class,java.lang.Object.class
+                java.lang.Double.class,java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -113,7 +112,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }
         }
-        warna.kolom=9;
+        warna.kolom=11;
         tbBangsal.setDefaultRenderer(Object.class,warna);
 
         no_bukti.setDocument(new batasInput((byte)20).getKata(no_bukti));
@@ -635,16 +634,17 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         if(tabMode.getRowCount()!=0){
             if(evt.getClickCount()==1){
                 if(tbBangsal.getSelectedColumn()==0){
-                    if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString().equals("")){
-                        tbBangsal.setValueAt(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString(), tbBangsal.getSelectedRow(),11);
+                    if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString().equals("0")){
+                        tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()), tbBangsal.getSelectedRow(),11);
                     }
                     if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("true")){
                         tbBangsal.setValueAt(
-                            (Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())-
-                            Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString()))
+                            (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())-
+                            Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString()))
                             ,tbBangsal.getSelectedRow(),10);
                     }else if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("false")){
-                        tbBangsal.setValueAt(Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()),tbBangsal.getSelectedRow(),10);
+                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),11);
+                        tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()),tbBangsal.getSelectedRow(),10);
                     }
                 }                
             }
@@ -656,15 +656,15 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
             if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                 if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("true")){
                     tbBangsal.setValueAt(
-                            (Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())-
-                            Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString()))
+                            (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())-
+                            Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString()))
                             ,tbBangsal.getSelectedRow(),10);
                 }else if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("false")){
-                    tbBangsal.setValueAt(Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()),tbBangsal.getSelectedRow(),10);
+                    tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()),tbBangsal.getSelectedRow(),10);
                 }
             }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
                 if(tbBangsal.getSelectedColumn()==11){
-                   tbBangsal.setValueAt("", tbBangsal.getSelectedRow(),11); 
+                   tbBangsal.setValueAt(0, tbBangsal.getSelectedRow(),11); 
                 }
             }
         }
@@ -739,7 +739,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
                 if(tabMode.getValueAt(i,0).toString().equals("true")){
-                    if(Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString())>0){
+                    if(Double.parseDouble(tbBangsal.getValueAt(i,11).toString())>0){
                         if(Sequel.menyimpantf("bayar_pemesanan","?,?,?,?,?,?,?","Data", 7,new String[]{
                             Valid.SetTgl(tgl_bayar.getSelectedItem()+""),tabMode.getValueAt(i,1).toString(),nip.getText(),
                             tabMode.getValueAt(i,11).toString(),keterangan.getText(),nama_bayar.getSelectedItem().toString(),
@@ -901,7 +901,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         rs.getString("nama_suplier"),rs.getString("nama"),rs.getString("tgl_faktur"),
                         rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),rs.getString("nm_bangsal"),
                         rs.getDouble("tagihan"),(rs.getDouble("tagihan")-rs.getDouble("bayar")),
-                        "",(rs.getDouble("tagihan")-rs.getDouble("bayar"))
+                        0,(rs.getDouble("tagihan")-rs.getDouble("bayar"))
                     });
                     sisahutang=sisahutang+rs.getDouble("tagihan");
                     cicilan=cicilan+rs.getDouble("bayar");

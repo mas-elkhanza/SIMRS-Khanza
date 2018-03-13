@@ -95,9 +95,9 @@
 
                 $_sql = "SELECT * FROM set_tahun ORDER BY tahun";
                 $hasil=bukaquery($_sql);
-                $jumlah=mysql_num_rows($hasil);
+                $jumlah=mysqli_num_rows($hasil);
                 $masuk=0;
-                if(mysql_num_rows($hasil)!=0) {
+                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='17%'><div align='center'>Tahun Gaji</div></td>
@@ -107,7 +107,7 @@
                                 <td width='17%'><div align='center'>Normal Masuk</div></td>
                                 <td width='15%'><div align='center'>Proses</div></td>
                             </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $masuk=$baris[4];
                       echo "<tr class='isi'>
                                 <td>$baris[0]</td>
@@ -153,7 +153,7 @@
             $BtnSimpan2=isset($_POST['BtnSimpan2'])?$_POST['BtnSimpan2']:NULL;
                      $_sql2         = "SELECT * FROM set_tahun";
                      $hasil2        = bukaquery($_sql2);
-                     $baris2        = mysql_fetch_row($hasil2);
+                     $baris2        = mysqli_fetch_row($hasil2);
                      $tahun2        = $baris2[0];
                      $bln_leng=strlen($baris2[1]);
                      $bulan2="0";
@@ -185,16 +185,16 @@
                         from set_hari_libur 
                         where tanggal like '%".$tahun2."-".$bulan2."%' ORDER BY tanggal";
                 $hasil3=bukaquery($_sql3);
-                $jumlah3=mysql_num_rows($hasil3);
+                $jumlah3=mysqli_num_rows($hasil3);
 
-                if(mysql_num_rows($hasil3)!=0) {
+                if(mysqli_num_rows($hasil3)!=0) {
                     echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='70px'><div align='center'>Proses</div></td>
                                 <td width='100px'><div align='center'>Tgl.Libur</div></td>
                                 <td width='400px'><div align='center'>Keterangan</div></td>
                             </tr>";
-                            while($baris3 = mysql_fetch_array($hasil3)) {
+                            while($baris3 = mysqli_fetch_array($hasil3)) {
                                 echo "<tr class='isi'>
                                     <td width='70'>
                                         <center>"; ?>

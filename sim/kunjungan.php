@@ -134,7 +134,7 @@
 						$sql = "select poliklinik.nm_poli, count(*) as jumlah from reg_periksa INNER JOIN poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli WHERE reg_periksa.tgl_registrasi='$date' group by reg_periksa.kd_poli  order by count(*) desc ";
 						$hasil=bukaquery($sql);
 
-						while ($data = mysql_fetch_array ($hasil)){
+						while ($data = mysqli_fetch_array ($hasil)){
                         
                             $jumlah[]=intval($data['jumlah']);
                             $poli[]= $data['nm_poli'];

@@ -4,7 +4,7 @@
   	if (isset($_GET['act']) && ($_GET['act']=="login")){
             $sql = "SELECT nip,usere,passwordte,type FROM user WHERE usere='".$_POST['usere']."' AND passwordte=aes_encrypt('".$_POST['passwordte']."','dianku')";
 	    $hasil=bukaquery($sql);
-	    $baris=mysql_fetch_row($hasil);
+	    $baris=mysqli_fetch_row($hasil);
 
             $nip            = $baris[0];
             $usere          = $baris[1];
@@ -12,19 +12,19 @@
             $type           = $baris[3];
 
             $hasil=bukaquery($sql);
-	    $baris=mysql_fetch_row($hasil);
+	    $baris=mysqli_fetch_row($hasil);
 		if (JumlahBaris($hasil)==0) {
                         $sql2   = "SELECT pegawai.id,user.password FROM user inner join pegawai
                             on pegawai.id=user.id
                             where pegawai.nik='".$_POST['usere']."' AND 
                             user.password=aes_encrypt('".$_POST['passwordte']."','dianku')";
                         $hasil2  = bukaquery($sql2);
-                        $baris2  = mysql_fetch_row($hasil2);
+                        $baris2  = mysqli_fetch_row($hasil2);
 
                         $nip     = $baris2[0];
 
                         $hasil2=bukaquery($sql2);
-                        $baris2=mysql_fetch_row($hasil2);
+                        $baris2=mysqli_fetch_row($hasil2);
                         if (JumlahBaris($hasil2)==0) {
                             header("Location:index.php");
                         }else{
