@@ -2,7 +2,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bulan          = $baris[1];
 ?>
@@ -34,14 +34,14 @@
     <?php
         $_sqlcari="select pegawai.id from pegawai";
         $hasilcari=bukaquery($_sqlcari);
-        while($bariscari = mysql_fetch_array($hasilcari)) {
+        while($bariscari = mysqli_fetch_array($hasilcari)) {
             $_sqlkon = "SELECT stts_kerja FROM pegawai WHERE id='$bariscari[0]'";
             $hasilkon=bukaquery($_sqlkon);
-            $bariskon= mysql_fetch_row($hasilkon);
+            $bariskon= mysqli_fetch_row($hasilkon);
 
             $_sqldansos       = "SELECT dana FROM dansos";
 	    $hasildansos      = bukaquery($_sqldansos);
-	    $barisdansos      = mysql_fetch_row($hasildansos);
+	    $barisdansos      = mysqli_fetch_row($hasildansos);
             
             $dansos=0;
             if($bariskon[0]!="Poc"){
@@ -57,22 +57,22 @@
 	             and keanggotaan.bpjs=bpjs.stts
 		     and keanggotaan.id='$bariscari[0]'";
 	    $hasilpot      =bukaquery($_sqlpot);
-	    $barispot      = mysql_fetch_row($hasilpot);
+	    $barispot      = mysqli_fetch_row($hasilpot);
 	    $simwajib	 = $barispot[0];
             $jamsostek   = $barispot[1];
             $bpjs        = $barispot[2];
 
-            if(mysql_num_rows($hasilpot)!=0) {  
+            if(mysqli_num_rows($hasilpot)!=0) {  
                 $_sqlcari2="select potongan.id from potongan where 
                        potongan.tahun='$tahun'  and
                        potongan.bulan='$bulan' and id='$bariscari[0]'";
                 $hasilvalidasi  =bukaquery($_sqlcari2);
-                if(mysql_num_rows($hasilvalidasi)!=0) { 
+                if(mysqli_num_rows($hasilvalidasi)!=0) { 
                     EditData(" potongan ","bpjs='$bpjs',jamsostek='$jamsostek',dansos='$dansos',simwajib='$simwajib' where 
                        potongan.tahun='$tahun'  and
                        potongan.bulan='$bulan' and id='$bariscari[0]'  ");
                     
-                }elseif(mysql_num_rows($hasilvalidasi)==0) { 
+                }elseif(mysqli_num_rows($hasilvalidasi)==0) { 
                     InsertData(" potongan ","'$tahun','$bulan','$bariscari[0]','$bpjs','$jamsostek','$dansos','$simwajib',
                				     '0','0','0','0','0','0','-' ");
                 }   
@@ -111,10 +111,10 @@
 				pegawai.stts_aktif<>'KELUAR' and keanggotaan.id=pegawai.id and keanggotaan.jamsostek like '%".$keyword."%'
 				order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
         $jml=0;
         
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='2100px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='70px'><div align='center'>Proses</div></td>
@@ -137,7 +137,7 @@
                         <td width='100px'><div align='center'>Total Potongan</div></td>
                         <td width='200px'><div align='center'>Keterangan</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
 			$ttl=$baris[7]+$baris[8]+$baris[9]+$baris[10]+$baris[11]+$baris[12]+$baris[13]+$baris[14]+$baris[15]+$baris[16];
                         $jml=$jml+$ttl;
                         echo "<tr class='isi' title='$baris[1] $baris[2]'>
@@ -173,7 +173,7 @@
     </div>
 	</form>
          <?php
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah, Jml.Ptg : ".formatDuit($jml)." <a target=_blank href=../penggajian/pages/potongan/LaporanPotongan.php?&keyword=$keyword>| Laporan |</a> </div></td>                        

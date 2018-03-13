@@ -65,7 +65,7 @@
                                         <option id='TxtIsi1' value=''>&nbsp;</option>
                                         <?php
                                             $hasil=bukaquery("select jam_masuk from jam_jaga group by jam_masuk");
-                                            while($baris = mysql_fetch_array($hasil)) {   
+                                            while($baris = mysqli_fetch_array($hasil)) {   
                                                 echo "<option id='TxtIsi1' value='$baris[0]'>$baris[0]</option>";
                                             }
                                         ?>
@@ -97,20 +97,20 @@
                     
                     $_sqlbar        = "select id from barcode where barcode='$barcode'";
                     $hasilbar       = bukaquery($_sqlbar);
-                    $barisbar       = mysql_fetch_array($hasilbar);  
+                    $barisbar       = mysqli_fetch_array($hasilbar);  
                     $idpeg          = $barisbar["id"];
                     
                     $_sqljamdatang  = "select jam_jaga.shift,CURRENT_DATE() as hariini,pegawai.departemen from jam_jaga inner join pegawai on pegawai.departemen=jam_jaga.dep_id 
                                        where jam_jaga.jam_masuk='$jam_masuk' and pegawai.id='$idpeg'";
                     $hasiljamdatang = bukaquery($_sqljamdatang);
-                    $barisjamdatang = mysql_fetch_array($hasiljamdatang);  
+                    $barisjamdatang = mysqli_fetch_array($hasiljamdatang);  
                     $shift          = $barisjamdatang["shift"];
                     $hariini        = $barisjamdatang["hariini"];
                     $departemen     = $barisjamdatang["departemen"];
                     
                     $_sqlketerlambatan = "select * from set_keterlambatan";
                     $hasilketerlmabatan=  bukaquery($_sqlketerlambatan);
-                    $barisketerlambatan=  mysql_fetch_array($hasilketerlmabatan);
+                    $barisketerlambatan=  mysqli_fetch_array($hasilketerlmabatan);
                     $toleransi      = $barisketerlambatan[0];
                     $terlambat1     = $barisketerlambatan[1];
                     $terlambat2     = $barisketerlambatan[2];
@@ -124,7 +124,7 @@
                     
                     $_sqlvalid        = "select id from rekap_presensi where id='$idpeg' and shift='$shift' and jam_datang like '%$hariini%'";
                     $hasilvalid       = bukaquery($_sqlvalid);
-                    $barisvalid       = mysql_fetch_array($hasilvalid);  
+                    $barisvalid       = mysqli_fetch_array($hasilvalid);  
                     $idvalid          = $barisvalid["id"];  
                     
                     if(!empty($idvalid)){
@@ -132,7 +132,7 @@
                     }elseif((!empty($idpeg))&&(!empty($shift))&&(empty($idvalid))) {
                         $_sqlcek        = "select id, shift, jam_datang, jam_pulang, status, keterlambatan, durasi, photo from temporary_presensi where id='$idpeg'";
                         $hasilcek       = bukaquery($_sqlcek);
-                        $bariscek       = mysql_fetch_array($hasilcek);  
+                        $bariscek       = mysqli_fetch_array($hasilcek);  
                         $idcek          = $bariscek["id"];         
                         
                         
@@ -170,7 +170,7 @@
                                        durasi=(SEC_TO_TIME(unix_timestamp(now()) - unix_timestamp(jam_datang))) where id='$idpeg'  ");                            
                                 $_sqlcek        = "select id, shift, jam_datang, jam_pulang, status, keterlambatan, durasi, photo from temporary_presensi where id='$idpeg'";
                                 $hasilcek       = bukaquery($_sqlcek);
-                                $bariscek       = mysql_fetch_array($hasilcek);  
+                                $bariscek       = mysqli_fetch_array($hasilcek);  
                                 $idcek          = $bariscek["id"];                                                      
                                 $shift          = $bariscek["shift"];
                                 $jam_datang     = $bariscek["jam_datang"];

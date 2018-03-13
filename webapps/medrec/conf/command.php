@@ -1,7 +1,7 @@
 <?php
 	function title(){
  		$judul ="Digital Payrol Khanza HMS --)(*!!@#$%";
-		$judul = ereg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);
+		$judul = preg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);
 		$judul = str_replace(array('.','-','/',',')," ",$judul);
 		$judul = trim($judul);
 		echo "$judul";	

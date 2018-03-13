@@ -38,9 +38,9 @@
 				pegawai.stts_aktif<>'KELUAR' and keanggotaan.jamsostek like '%".$keyword."%'
 				order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
         
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='10%'><div align='center'>Proses</div></td>
@@ -50,7 +50,7 @@
                         <td width='15%'><div align='center'>Anggota Jamsostek</div></td>
                         <td width='15%'><div align='center'>Anggota BPJS</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
                                 <td>
                                     <center>
@@ -71,7 +71,7 @@
     </div>
 	</form>
     <?php
-        if(mysql_num_rows($hasil)!=0) {        
+        if(mysqli_num_rows($hasil)!=0) {        
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah <a target=_blank href=../penggajian/pages/keanggotaan/LaporanKeanggotaan.php?&keyword=$keyword>| Laporan |</a></div></td>                        

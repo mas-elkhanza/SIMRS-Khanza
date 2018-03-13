@@ -26,7 +26,7 @@
 		$ppkkode="SELECT * FROM setting";
 		$ppk_kode=bukaquery($ppkkode);
 		
-		 while($ppk = mysql_fetch_array($ppk_kode)) { 
+		 while($ppk = mysqli_fetch_array($ppk_kode)) { 
 			$k_ppk=$ppk['kode_ppk'];
 			$n_ppk=$ppk['nama_ppk'];
 		 }
@@ -45,7 +45,7 @@
 			$_sql = "SELECT Count(pasien.jk) AS jumlah_pasien
 				 FROM reg_periksa JOIN penjab ON reg_periksa.kd_pj = penjab.kd_pj JOIN pasien ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis WHERE reg_periksa.kd_poli = 'IGDK' AND jk='$jns_kelamin' AND tgl_registrasi  BETWEEN '$tanggal1' AND '$tanggal2'";            
         $hasil=bukaquery($_sql);
-        while($baris = mysql_fetch_array($hasil)) {
+        while($baris = mysqli_fetch_array($hasil)) {
 				$jml_pasien=$baris['jumlah_pasien'];
 		}
 		
@@ -66,7 +66,7 @@
 			$_sql = "SELECT Count(pasien.jk) AS jumlah_pasien
 				 FROM reg_periksa JOIN penjab ON reg_periksa.kd_pj = penjab.kd_pj JOIN pasien ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis WHERE reg_periksa.kd_poli != 'IGDK' AND jk='$jns_kelamin' AND tgl_registrasi  BETWEEN '$tanggal1' AND '$tanggal2'";            
         $hasil=bukaquery($_sql);
-		while($baris = mysql_fetch_array($hasil)) {
+		while($baris = mysqli_fetch_array($hasil)) {
 				$jml_pasien=$baris['jumlah_pasien'];
 		}
 		
@@ -87,7 +87,7 @@
 			$_sql = "SELECT Count(pasien.jk) AS jumlah_pasien
 				 FROM reg_periksa JOIN penjab ON reg_periksa.kd_pj = penjab.kd_pj  JOIN pasien ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis  WHERE  jk='$jns_kelamin' AND status_lanjut='Ranap' AND tgl_registrasi  BETWEEN '$tanggal1' AND '$tanggal2' ";            
         $hasil=bukaquery($_sql);
-		while($baris = mysql_fetch_array($hasil)) {
+		while($baris = mysqli_fetch_array($hasil)) {
 				$jml_pasien=$baris['jumlah_pasien'];
 		}
 			$post[] = array(

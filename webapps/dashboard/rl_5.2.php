@@ -49,7 +49,7 @@
 				 WHERE reg_periksa.kd_poli = poliklinik.kd_poli AND reg_periksa.kd_poli != 'IGDK' AND reg_periksa.tgl_registrasi BETWEEN '$tanggal1' AND '$tanggal2'
 				 GROUP BY poliklinik.nm_poli";            
         $hasil=bukaquery($_sql);
-                 while($baris = mysql_fetch_array($hasil)) { 
+                 while($baris = mysqli_fetch_array($hasil)) { 
 				//simpan data untuk kirim ke dinkes
 				$myvars="";
 				$post[] = array(

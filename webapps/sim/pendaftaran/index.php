@@ -90,7 +90,7 @@
  $hasil = bukaquery($query);
 
  // membuat if untuk masing-masing pilihan poliklinik beserta isi option untuk combobox dokter
- while ($data = mysql_fetch_array($hasil))
+ while ($data = mysqli_fetch_array($hasil))
  {
    $idPoli = $data['kd_poli'];
 
@@ -103,7 +103,7 @@
 		   jadwal.kd_dokter=dokter.kd_dokter and jadwal.kd_poli='$idPoli' and jadwal.hari_kerja LIKE '%$hari%'";
    $hasil2 = mysql_query($query2);
    $content = "document.getElementById('dokter').innerHTML = \"<select name='kd_dokter' class='form-control'>";
-   while ($data2 = mysql_fetch_array($hasil2))
+   while ($data2 = mysqli_fetch_array($hasil2))
    {
        $content .= "<option value='".$data2['kd_dokter']."'>".$data2['nm_dokter']."</option>";
    }
@@ -174,7 +174,7 @@ case"regist-pasien-lama":
 			else{
 				echo "<script>alert('Data Ditemukan.. ')</script>";
 				$rm=mysql_query("select * from pasien where no_rkm_medis='$no_rkm_medis'");
-				$b=mysql_fetch_array($rm);
+				$b=mysqli_fetch_array($rm);
 				$nm_pasien=$b['nm_pasien'];
 		?>
 		<form action='tes.php?act=registrasi' name='pilihan' align='center' onsubmit='return validasi_lama(this)' method='post' enctype='multipart/form-data' >
@@ -200,7 +200,7 @@ case"regist-pasien-lama":
 															 <?php $poliklinik="select jadwal.kd_poli,poliklinik.nm_poli,jadwal.jam_mulai,jadwal.jam_selesai from jadwal,poliklinik,dokter where jadwal.kd_poli=poliklinik.kd_poli and
 																				jadwal.kd_dokter=dokter.kd_dokter and hari_kerja LIKE '%$hari%' GROUP BY poliklinik.kd_poli";
 															 $hasil=bukaquery($poliklinik);
-															 while($baris=mysql_fetch_array($hasil)){
+															 while($baris=mysqli_fetch_array($hasil)){
 															 echo "<option value='".$baris['kd_poli']."'>".$baris['nm_poli']." [".$baris['jam_mulai']."-".$baris['jam_selesai']."]</option>";
 															 }?>
 															 </select></td>
@@ -213,7 +213,7 @@ case"regist-pasien-lama":
 														<option value='' selected >ASKES*</option>";
 														<?php $askes="select * from penjab where png_jawab LIKE '%umum%' or png_jawab LIKE '%bpjs%' and kd_pj!='2'  ";
 														$hasil=bukaquery($askes);
-														while($baris=mysql_fetch_array($hasil)){
+														while($baris=mysqli_fetch_array($hasil)){
 														echo "<option value='$baris[kd_pj]'>$baris[png_jawab]</option>";
 														}?>
 														</select></td>
@@ -290,7 +290,7 @@ case"regist-pasien-lama":
 														<option value='' selected >ASKES*</option>";
 														<?php $askes="select * from penjab where png_jawab LIKE '%umum%' or png_jawab LIKE '%bpjs%' and kd_pj!='2'  ";
 														$hasil=bukaquery($askes);
-														while($baris=mysql_fetch_array($hasil)){
+														while($baris=mysqli_fetch_array($hasil)){
 														echo "<option value='$baris[kd_pj]'>$baris[png_jawab]</option>";
 														}?>
 														</select></td>
@@ -332,7 +332,7 @@ case"regist-pasien-lama":
 															 <?php $poliklinik="select jadwal.kd_poli,poliklinik.nm_poli,jadwal.jam_mulai,jadwal.jam_selesai from jadwal,poliklinik,dokter where jadwal.kd_poli=poliklinik.kd_poli and
 																				jadwal.kd_dokter=dokter.kd_dokter and hari_kerja LIKE '%$hari%'";
 															 $hasil=bukaquery($poliklinik);
-															 while($baris=mysql_fetch_array($hasil)){
+															 while($baris=mysqli_fetch_array($hasil)){
 															 echo "<option value='".$baris['kd_poli']."'>".$baris['nm_poli']." [".$baris['jam_mulai']."-".$baris['jam_selesai']."]</option>";
 															 }?>
 															 </select></td>
@@ -345,7 +345,7 @@ case"regist-pasien-lama":
 														<option value='' selected >ASKES*</option>";
 														<?php $askes="select * from penjab where png_jawab LIKE '%umum%' or png_jawab LIKE '%bpjs%' and kd_pj!='2'  ";
 														$hasil=bukaquery($askes);
-														while($baris=mysql_fetch_array($hasil)){
+														while($baris=mysqli_fetch_array($hasil)){
 														echo "<option value='$baris[kd_pj]'>$baris[png_jawab]</option>";
 														}?>
 														</select></td>
