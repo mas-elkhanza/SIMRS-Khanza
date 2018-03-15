@@ -1,7 +1,6 @@
 package ipsrs;
 
 
-import fungsi.WarnaTable;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
