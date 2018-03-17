@@ -48,21 +48,23 @@ public final class DlgTemplateUTD extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Sub Pelayanan","J.S. Rmh Skt","Paket BHP",
+        Object[] row={"Sub Pelayanan","Nilai Rujukan","J.S. Rmh Skt","Paket BHP",
                       "J.M. Perujuk","J.M. Dokter","J.M. Laborat",
                       "K.S.O.","Menejemen","Biaya Item","",""};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = true;
-                if (colIndex==8) {
+                if (colIndex==9) {
                     a=false;
                 }
                 return a;
              }
              Class[] types = new Class[] {
-                java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class, 
-                java.lang.Double.class,java.lang.Double.class,java.lang.Object.class,java.lang.Object.class
+                java.lang.Object.class,java.lang.Object.class,java.lang.Double.class,
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class, 
+                java.lang.Double.class,java.lang.Object.class,java.lang.Object.class
+                
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -73,11 +75,13 @@ public final class DlgTemplateUTD extends javax.swing.JDialog {
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 12; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(200);
-            }else if((i==9)||(i==10)){
+            }else if(i==1){
+                column.setPreferredWidth(140);
+            }else if((i==10)||(i==11)){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else {
@@ -225,9 +229,9 @@ public final class DlgTemplateUTD extends javax.swing.JDialog {
             Valid.textKosong(KdPeriksa,"Pemeriksaan");
         }else{
             if(tbKamar.getSelectedRow()>-1){                
-                tabMode.insertRow(tbKamar.getSelectedRow(),new Object[]{"","","","","","",0,0,0,0,0,0,0,0,""});
+                tabMode.insertRow(tbKamar.getSelectedRow(),new Object[]{"","",0,0,0,0,0,0,0,0,"",""});
             }else{
-                tabMode.addRow(new Object[]{"",0,0,0,0,0,0,0,0,"",""});
+                tabMode.addRow(new Object[]{"","",0,0,0,0,0,0,0,0,"",""});
                 tbKamar.requestFocus();
             }
             urut();
@@ -244,18 +248,18 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
              if(row>-1){
                  for(int i=0;i<row;i++){  
                      //System.out.println(tbKamar.getValueAt(i,0).toString());
-                    if(tbKamar.getValueAt(i,9).toString().equals("")){
-                         Sequel.menyimpan("template_utd","?,?,?,?,?,?,?,?,?,?,?,?","Id Template",12,new String[]{
+                    if(tbKamar.getValueAt(i,10).toString().equals("")){
+                         Sequel.menyimpan("template_utd","?,?,?,?,?,?,?,?,?,?,?,?,?","Id Template",13,new String[]{
                                KdPeriksa.getText(),"0",tbKamar.getValueAt(i,0).toString(),tbKamar.getValueAt(i,1).toString(),
                                tbKamar.getValueAt(i,2).toString(),tbKamar.getValueAt(i,3).toString(),tbKamar.getValueAt(i,4).toString(),
                                tbKamar.getValueAt(i,5).toString(),tbKamar.getValueAt(i,6).toString(),tbKamar.getValueAt(i,7).toString(),
-                               tbKamar.getValueAt(i,8).toString(),tbKamar.getValueAt(i,10).toString()                                     
+                               tbKamar.getValueAt(i,8).toString(),tbKamar.getValueAt(i,9).toString(),tbKamar.getValueAt(i,11).toString(),                                   
                          });
-                    }else if(!tbKamar.getValueAt(i,9).toString().equals("")){
-                         Sequel.mengedit("template_utd","id_template=?","Pemeriksaan=?,bagian_rs=?,bhp=?,bagian_perujuk=?,bagian_dokter=?,petugas_utd=?,kso=?,menejemen=?,biaya_item=?,urut=?",11,new String[]{
+                    }else if(!tbKamar.getValueAt(i,10).toString().equals("")){
+                         Sequel.mengedit("template_utd","id_template=?","Pemeriksaan=?,nilai_rujukan=?,bagian_rs=?,bhp=?,bagian_perujuk=?,bagian_dokter=?,petugas_utd=?,kso=?,menejemen=?,biaya_item=?,urut=?",12,new String[]{
                                tbKamar.getValueAt(i,0).toString(),tbKamar.getValueAt(i,1).toString(),tbKamar.getValueAt(i,2).toString(),tbKamar.getValueAt(i,3).toString(),
                                tbKamar.getValueAt(i,4).toString(),tbKamar.getValueAt(i,5).toString(),tbKamar.getValueAt(i,6).toString(),tbKamar.getValueAt(i,7).toString(),
-                               tbKamar.getValueAt(i,8).toString(),tbKamar.getValueAt(i,10).toString(),tbKamar.getValueAt(i,9).toString()
+                               tbKamar.getValueAt(i,8).toString(),tbKamar.getValueAt(i,9).toString(),tbKamar.getValueAt(i,11).toString(),tbKamar.getValueAt(i,10).toString()
                          } );   
                     }
                  }
@@ -267,7 +271,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
 private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
    try{
-       Sequel.meghapus("template_utd","id_template",tbKamar.getValueAt(tbKamar.getSelectedRow(),9).toString());
+       Sequel.meghapus("template_utd","id_template",tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString());
        tabMode.removeRow(tbKamar.getSelectedRow());
        urut();
    }catch(Exception ex){
@@ -329,17 +333,17 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{            
-            ps=koneksi.prepareStatement("select id_template, pemeriksaan,bagian_rs,bhp,bagian_perujuk,bagian_dokter,petugas_utd,kso,menejemen,biaya_item,urut "+
+            ps=koneksi.prepareStatement("select id_template, pemeriksaan,nilai_rujukan,bagian_rs,bhp,bagian_perujuk,bagian_dokter,petugas_utd,kso,menejemen,biaya_item,urut "+
                         "from template_utd where kd_jenis_prw=? order by urut");
             try {
                 ps.setString(1,KdPeriksa.getText());
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString(2),
-                        rs.getDouble(3),rs.getDouble(4),rs.getDouble(5),
-                        rs.getDouble(6),rs.getDouble(7),rs.getDouble(8),
-                        rs.getDouble(9),rs.getDouble(10),rs.getString(1),""
+                        rs.getString(2),rs.getString(3),
+                        rs.getDouble(4),rs.getDouble(5),rs.getDouble(6),
+                        rs.getDouble(7),rs.getDouble(8),rs.getDouble(9),
+                        rs.getDouble(10),rs.getDouble(11),rs.getString(1),""
                     });
                 }
                 urut();
@@ -367,14 +371,15 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     &&(!tbKamar.getValueAt(row,4).toString().equals(""))
                     &&(!tbKamar.getValueAt(row,5).toString().equals(""))
                     &&(!tbKamar.getValueAt(row,6).toString().equals(""))
-                    &&(!tbKamar.getValueAt(row,7).toString().equals(""))){
-               tbKamar.setValueAt(Valid.SetAngka(tbKamar.getValueAt(row,1).toString())+
-                       Valid.SetAngka(tbKamar.getValueAt(row,2).toString())+
+                    &&(!tbKamar.getValueAt(row,7).toString().equals(""))
+                    &&(!tbKamar.getValueAt(row,2).toString().equals(""))){
+               tbKamar.setValueAt(Valid.SetAngka(tbKamar.getValueAt(row,2).toString())+
                        Valid.SetAngka(tbKamar.getValueAt(row,3).toString())+
                        Valid.SetAngka(tbKamar.getValueAt(row,4).toString())+
                        Valid.SetAngka(tbKamar.getValueAt(row,5).toString())+
                        Valid.SetAngka(tbKamar.getValueAt(row,6).toString())+
-                       Valid.SetAngka(tbKamar.getValueAt(row,7).toString()), row,8); 
+                       Valid.SetAngka(tbKamar.getValueAt(row,7).toString())+
+                       Valid.SetAngka(tbKamar.getValueAt(row,8).toString()), row,9); 
             }
         }
     } 
@@ -390,7 +395,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void urut(){
         if(tbKamar.getRowCount()>-1){
             for(int i=0;i<tbKamar.getRowCount();i++){  
-                  tbKamar.setValueAt(i, i,10);
+                  tbKamar.setValueAt(i, i,11);
             }
         }
     }
