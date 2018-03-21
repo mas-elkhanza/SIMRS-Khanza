@@ -860,8 +860,8 @@ public final class DlgPetugas extends javax.swing.JDialog {
                 Sequel.menyimpan("pegawai","");
                 Sequel.menyimpan("pegawai","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",29,new String[]{
                     "0",TNip.getText(),TNm.getText(),CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria"),
-                    "-","-","-","-","-","-","-","-","0",TTmp.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),TAlmt.getText(),"-","0000-00-00","<1",
-                    "-","T","-","AKTIF","0","0","0","0000-00-00","0","0"
+                    "-","-","-","-","-","-","-","-","0",TTmp.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),TAlmt.getText(),"-","1900-01-01","<1",
+                    "-","T","-","AKTIF","0","0","0","1900-01-01","0","0"
                 });
                 
                 Sequel.menyimpan("petugas","?,?,?,?,?,?,?,?,?,?,?,?","NIP",12,new String[]{

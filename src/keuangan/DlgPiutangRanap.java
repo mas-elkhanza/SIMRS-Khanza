@@ -533,8 +533,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }else{
             DlgBilingRanap billing=new DlgBilingRanap(null,false);
             billing.TNoRw.setText(Sequel.cariIsi("select no_rawat from nota_inap where no_nota=?",TKd.getText()));            
-            billing.isRawat();
             billing.isCek();
+            billing.isRawat();
             billing.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             billing.setLocationRelativeTo(internalFrame1);
             billing.setVisible(true); 
