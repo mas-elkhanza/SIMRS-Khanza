@@ -1171,7 +1171,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             ps=koneksi.prepareStatement("select pemesanan.tgl_pesan,pemesanan.no_faktur, "+
                     "pemesanan.kode_suplier,datasuplier.nama_suplier, "+
                     "pemesanan.nip,petugas.nama,bangsal.nm_bangsal,pemesanan.tgl_faktur, "+
-                    "pemesanan.tgl_tempo,pemesanan.status,pemesanan.total2,pemesanan.ppn,pemesanan.meterai,pemesanan.tagihan "+
+                    "pemesanan.tgl_tempo,pemesanan.status,pemesanan.total2,pemesanan.ppn,"+
+                    "pemesanan.meterai,pemesanan.tagihan,pemesanan.no_order "+
                     " from pemesanan inner join datasuplier inner join petugas inner join bangsal  "+
                     " inner join detailpesan inner join databarang inner join kodesatuan "+
                     " inner join jenis inner join industrifarmasi "+
@@ -1193,6 +1194,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     " pemesanan.tgl_pesan between ? and ? and pemesanan.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailpesan.kode_sat like ? or "+
                     " pemesanan.tgl_pesan between ? and ? and pemesanan.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and detailpesan.no_batch like ? or "+
                     " pemesanan.tgl_pesan between ? and ? and pemesanan.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and industrifarmasi.nama_industri like ? or "+
+                    " pemesanan.tgl_pesan between ? and ? and pemesanan.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and pemesanan.no_order like ? or "+
                     " pemesanan.tgl_pesan between ? and ? and pemesanan.no_faktur like ? and datasuplier.nama_suplier like ? and petugas.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and industrifarmasi.nama_industri like ? and jenis.nama like ? "+
                     " group by pemesanan.no_faktur order by pemesanan.tgl_pesan,pemesanan.no_faktur ");
             try {
@@ -1304,6 +1306,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(106,"%"+nmbar.getText()+"%");
                 ps.setString(107,"%"+NmIF.getText()+"%");
                 ps.setString(108,"%"+TCari.getText()+"%");
+                ps.setString(109,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
+                ps.setString(110,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
+                ps.setString(111,"%"+NoFaktur.getText()+"%");
+                ps.setString(112,"%"+nmsup.getText()+"%");
+                ps.setString(113,"%"+nmptg.getText()+"%");
+                ps.setString(114,"%"+nmsat.getText()+"%");
+                ps.setString(115,"%"+nmbar.getText()+"%");
+                ps.setString(116,"%"+NmIF.getText()+"%");
+                ps.setString(117,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 tagihan=0;
                 while(rs.next()){
@@ -1375,7 +1386,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ps2.close();
                         }
                     }
-                    tabMode.addRow(new Object[]{"","Tgl.Faktur",": "+rs.getString("tgl_faktur"),"","","","","","Total",":",Valid.SetAngka(rs.getDouble("total2"))});
+                    tabMode.addRow(new Object[]{rs.getString("no_order"),"Tgl.Faktur",": "+rs.getString("tgl_faktur"),"","","","","","Total",":",Valid.SetAngka(rs.getDouble("total2"))});
                     tabMode.addRow(new Object[]{"","Tgl.Datang",": "+rs.getString("tgl_pesan"),"","","","","","Meterai",":",Valid.SetAngka(rs.getDouble("meterai"))});
                     tabMode.addRow(new Object[]{"","Jth.Tempo",": "+rs.getString("tgl_tempo"),"","","","","","PPN",":",Valid.SetAngka(rs.getDouble("ppn"))});
                     tabMode.addRow(new Object[]{"","Status Bayar",": "+rs.getString("status"),"","","","","","Tagihan",":",Valid.SetAngka(rs.getDouble("tagihan"))});

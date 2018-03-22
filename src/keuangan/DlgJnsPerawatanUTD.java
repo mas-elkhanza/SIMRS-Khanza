@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import restore.DlgRestoreTarifUTD;
 import simrskhanza.DlgPenanggungJawab;
 
 /**
@@ -1017,7 +1018,7 @@ private void btnPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_BhpKeyPressed
 
     private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
-        DlgRestoreTarifRadiologi restore=new DlgRestoreTarifRadiologi(null,true);
+        DlgRestoreTarifUTD restore=new DlgRestoreTarifUTD(null,true);
         restore.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         restore.setLocationRelativeTo(internalFrame1);
         restore.setVisible(true);
