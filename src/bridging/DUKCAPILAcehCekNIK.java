@@ -24,7 +24,8 @@ public class DUKCAPILAcehCekNIK {
     public String EKTP_STATUS="",NO_KK="",NIK="",NAMA_LGKP="",KAB_NAME="",AGAMA="",
             NO_RW="",KEC_NAME="",JENIS_PKRJN="",NO_RT="",NO_KEL="",ALAMAT="",NO_KEC="",
             TMPT_LHR="",PDDK_AKH="",STATUS_KAWIN="",NO_PROP="",NAMA_LGKP_IBU="",
-            PROP_NAME="",NO_KAB="",KEL_NAME="",JENIS_KLMIN="",TGL_LHR="",requestJson="";
+            PROP_NAME="",NO_KAB="",KEL_NAME="",JENIS_KLMIN="",TGL_LHR="",
+            requestJson="",stringbalik="";
     private final Properties prop = new Properties();
     
     public DUKCAPILAcehCekNIK(){
@@ -45,11 +46,14 @@ public class DUKCAPILAcehCekNIK {
                             "\"password\": \""+prop.getProperty("PASSDUKCAPILACEH")+"\"," +
                             "\"IP_USER\":\""+prop.getProperty("IPUSERDUKCAPILACEH")+"\"" +
                             "}"; 
+            System.out.println("JSON dikirim : "+requestJson);
 	    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
 	    RestTemplate rest = new RestTemplate();	
             
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+            stringbalik=rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody();
+            System.out.println("string balik : "+stringbalik);
+            JsonNode root = mapper.readTree(stringbalik);
             JsonNode nameNode = root.path("content");
             if(nameNode.isArray()){
                 for(JsonNode list:nameNode){                    
