@@ -46,13 +46,13 @@ public class DUKCAPILAcehCekNIK {
                             "\"password\": \""+prop.getProperty("PASSDUKCAPILACEH")+"\"," +
                             "\"IP_USER\":\""+prop.getProperty("IPUSERDUKCAPILACEH")+"\"" +
                             "}"; 
-            System.out.println("JSON dikirim : "+requestJson);
+            //System.out.println("JSON dikirim : "+requestJson);
 	    HttpEntity requestEntity = new HttpEntity(requestJson,headers);
 	    RestTemplate rest = new RestTemplate();	
             
             ObjectMapper mapper = new ObjectMapper();
             stringbalik=rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody();
-            System.out.println("string balik : "+stringbalik);
+            //System.out.println("string balik : "+stringbalik);
             JsonNode root = mapper.readTree(stringbalik);
             JsonNode nameNode = root.path("content");
             if(nameNode.isArray()){
@@ -66,6 +66,8 @@ public class DUKCAPILAcehCekNIK {
                             JOptionPane.showMessageDialog(null,"IP Address Tidak Sesuai");
                         }else if(list.path("RESPON").asText().equals("IP Client  Tidak terdaftar")){
                             JOptionPane.showMessageDialog(null,"IP Client  Tidak terdaftar");
+                        }else if(list.path("RESPON").asText().equals("Kuota Akses Hari ini telah Habis")){
+                            JOptionPane.showMessageDialog(null,"Kuota Akses Hari ini telah Habis");
                         }else{
                             EKTP_STATUS=list.path("EKTP_STATUS").asText();
                             NO_KK=list.path("NO_KK").asText();
