@@ -4033,7 +4033,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 rsobat=psobat.executeQuery();
                 while(rsobat.next()){                    
                     tabModeObat.addRow(new Object[]{
-                        false,rsobat.getString(1),rsobat.getString(2),rsobat.getString(3),
+                        true,rsobat.getString(1),rsobat.getString(2),rsobat.getString(3),
                         rsobat.getString(4),rsobat.getString(5),rsobat.getString(6),
                         rsobat.getString(7),rsobat.getDouble(8),rsobat.getDouble(9),
                         rsobat.getDouble(10),rsobat.getDouble(11),rsobat.getDouble(12),
