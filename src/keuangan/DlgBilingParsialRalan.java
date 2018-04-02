@@ -4140,6 +4140,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         if(notaralan.equals("Yes")){
             BtnNotaActionPerformed(null);
         }
+        
     }
     
 }
