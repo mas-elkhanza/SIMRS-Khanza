@@ -34,13 +34,13 @@ public class BPJSCekNoKartu {
     private final Properties prop = new Properties();
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
-    
+    private BPJSApi api=new BPJSApi();
+        
     public BPJSCekNoKartu(){
         super();
     }
     
     public void tampil(String nokartu) {
-        BPJSApi api=new BPJSApi();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/Peserta/nokartu/"+nokartu+"/tglSEP/"+dateFormat.format(date);	

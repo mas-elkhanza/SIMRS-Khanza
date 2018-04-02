@@ -34,13 +34,13 @@ public class BPJSCekNIK {
     private final Properties prop = new Properties();
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
-    
+    private BPJSApi api=new BPJSApi();
+        
     public BPJSCekNIK(){
         super();
     }
     
     public void tampil(String nik) {
-        BPJSApi api=new BPJSApi();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/Peserta/nik/"+nik+"/tglSEP/"+dateFormat.format(date);	

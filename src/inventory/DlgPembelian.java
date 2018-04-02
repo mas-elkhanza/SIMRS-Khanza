@@ -916,7 +916,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
             for(i=0;i<tbDokter.getRowCount();i++){ 
-                tbDokter.setValueAt(null,i,0);
+                tbDokter.setValueAt("",i,0);
                 tbDokter.setValueAt(0,i,8);
                 tbDokter.setValueAt(0,i,9);
                 tbDokter.setValueAt(0,i,10);

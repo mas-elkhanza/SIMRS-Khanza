@@ -38,6 +38,7 @@ import keuangan.DlgRBJmParamedis;
 import keuangan.DlgRBTindakanPoli;
 import keuangan.DlgRHJmDokter;
 import keuangan.DlgRHJmParamedis;
+import laporan.DlgBerkasRawat;
 
 /**
  *
@@ -446,6 +447,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnUrutStatusAsc = new javax.swing.JMenuItem();
         MnUrutRegDesc1 = new javax.swing.JMenuItem();
         MnUrutRegAsc1 = new javax.swing.JMenuItem();
+        ppBerkasDigital = new javax.swing.JMenuItem();
         TNoRw = new widget.TextBox();
         WindowObatBhp = new javax.swing.JDialog();
         internalFrame2 = new widget.InternalFrame();
@@ -2137,6 +2139,23 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
 
         jPopupMenu1.add(MnUrut);
 
+        ppBerkasDigital.setBackground(new java.awt.Color(255, 255, 255));
+        ppBerkasDigital.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBerkasDigital.setForeground(new java.awt.Color(90, 120, 80));
+        ppBerkasDigital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBerkasDigital.setText("Berkas Digital Perawatan");
+        ppBerkasDigital.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBerkasDigital.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBerkasDigital.setIconTextGap(5);
+        ppBerkasDigital.setName("ppBerkasDigital"); // NOI18N
+        ppBerkasDigital.setPreferredSize(new java.awt.Dimension(240, 26));
+        ppBerkasDigital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBerkasDigitalBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppBerkasDigital);
+
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
         TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -3150,7 +3169,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel15);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-03-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3169,7 +3188,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel17);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-02-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-03-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -5413,10 +5432,26 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             parsialralan.setLocationRelativeTo(internalFrame1);
             //parsialralan.emptTeks();
             parsialralan.isCek();
-            parsialralan.setNoRm(TNoRw.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),1).toString(),Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));   
+            parsialralan.setNoRm(TNoRw.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),1).toString(),Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()));   
             parsialralan.setVisible(true);                        
         }
     }//GEN-LAST:event_MnBillingParsialActionPerformed
+
+    private void ppBerkasDigitalBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBerkasDigitalBtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBerkasRawat berkas=new DlgBerkasRawat(null,true);
+        berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
+        try {
+            berkas.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+TNoRw.getText());
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+
+        berkas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        berkas.setLocationRelativeTo(internalFrame1);
+        berkas.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppBerkasDigitalBtnPrintActionPerformed
 
     /**
     * @param args the command line arguments
@@ -5635,6 +5670,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppBerkas;
+    private javax.swing.JMenuItem ppBerkasDigital;
     private javax.swing.JMenuItem ppCatatanPasien;
     private javax.swing.JMenuItem ppRiwayat;
     private javax.swing.JMenuItem ppRiwayat1;
