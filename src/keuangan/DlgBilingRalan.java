@@ -152,7 +152,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                         "on detreturjual.kode_brng=databarang.kode_brng "+
                         "and returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual=? group by databarang.nama_brng",
             sqlpstambahan="select nama_biaya, besar_biaya from tambahan_biaya where no_rawat=?  ",
-            sqlpsbiling="insert into billing values('0',?,?,?,?,?,?,?,?,?,?)",
+            sqlpsbiling="insert into billing values(?,?,?,?,?,?,?,?,?,?,?)",
             sqlpstemporary="insert into temporary_bayar_ralan values('0',?,?,?,?,?,?,?,?,?,'','','','','','','','')",
             sqlpspotongan="select nama_pengurangan,besar_pengurangan from pengurangan_biaya where no_rawat=?",
             sqlpsbilling="select no,nm_perawatan, if(biaya<>0,biaya,null) as satu, if(jumlah<>0,jumlah,null) as dua,"+
@@ -2752,8 +2752,8 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
                         }
 
                         if(rsceknota.getDouble("Obat_Rawat_Jalan")>0){
-                            Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Jalan+"','Operasi Ralan','"+rsceknota.getDouble("Obat_Rawat_Jalan")+"','0'","debet=debet+'"+(rsceknota.getDouble("Obat_Rawat_Jalan"))+"'","kd_rek='"+Persediaan_Obat_Rawat_Jalan+"'"); 
-                            Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Jalan+"','Operasi Ralan','0','"+rsceknota.getDouble("Obat_Rawat_Jalan")+"'","kredit=kredit+'"+(rsceknota.getDouble("Obat_Rawat_Jalan"))+"'","kd_rek='"+HPP_Obat_Rawat_Jalan+"'");
+                            Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Jalan+"','Obat Ralan','"+rsceknota.getDouble("Obat_Rawat_Jalan")+"','0'","debet=debet+'"+(rsceknota.getDouble("Obat_Rawat_Jalan"))+"'","kd_rek='"+Persediaan_Obat_Rawat_Jalan+"'"); 
+                            Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Jalan+"','Obat Ralan','0','"+rsceknota.getDouble("Obat_Rawat_Jalan")+"'","kredit=kredit+'"+(rsceknota.getDouble("Obat_Rawat_Jalan"))+"'","kd_rek='"+HPP_Obat_Rawat_Jalan+"'");
                         }
 
                         if(rsceknota.getDouble("Jasa_Medik_Dokter_Operasi_Ralan")>0){
@@ -5199,30 +5199,31 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 for(i=0;i<tbBilling.getRowCount();i++){  
                     psbiling=koneksi.prepareStatement(sqlpsbiling);
                     try {
-                        psbiling.setString(1,TNoRw.getText());
-                        psbiling.setString(2,Valid.SetTgl(DTPTgl.getSelectedItem()+""));
-                        psbiling.setString(3,tbBilling.getValueAt(i,1).toString());
-                        psbiling.setString(4,tbBilling.getValueAt(i,2).toString().replaceAll("'","`"));
-                        psbiling.setString(5,tbBilling.getValueAt(i,3).toString());                    
+                        psbiling.setInt(1,i);
+                        psbiling.setString(2,TNoRw.getText());
+                        psbiling.setString(3,Valid.SetTgl(DTPTgl.getSelectedItem()+""));
+                        psbiling.setString(4,tbBilling.getValueAt(i,1).toString());
+                        psbiling.setString(5,tbBilling.getValueAt(i,2).toString().replaceAll("'","`"));
+                        psbiling.setString(6,tbBilling.getValueAt(i,3).toString());                    
                         try {                        
-                            psbiling.setDouble(6,Valid.SetAngka(tbBilling.getValueAt(i,4).toString()));
-                        } catch (Exception e) {
-                            psbiling.setDouble(6,0);
-                        }
-                        try {
-                            psbiling.setDouble(7,Valid.SetAngka(tbBilling.getValueAt(i,5).toString()));
+                            psbiling.setDouble(7,Valid.SetAngka(tbBilling.getValueAt(i,4).toString()));
                         } catch (Exception e) {
                             psbiling.setDouble(7,0);
+                        }
+                        try {
+                            psbiling.setDouble(8,Valid.SetAngka(tbBilling.getValueAt(i,5).toString()));
+                        } catch (Exception e) {
+                            psbiling.setDouble(8,0);
                         }
                         subttl=0;
                         try {
                             if((!tbBilling.getValueAt(i,8).toString().equals("Laborat"))&&(!tbBilling.getValueAt(i,8).toString().equals("Obat"))){
                                 subttl=Valid.SetAngka(tbBilling.getValueAt(i,6).toString());
                             }                        
-                            psbiling.setDouble(8,Valid.SetAngka(tbBilling.getValueAt(i,6).toString()));                        
+                            psbiling.setDouble(9,Valid.SetAngka(tbBilling.getValueAt(i,6).toString()));                        
                         } catch (Exception e) {
                             subttl=0;
-                            psbiling.setDouble(8,0);   
+                            psbiling.setDouble(9,0);   
                         }
                         if(subttl>0){
                             Sequel.queryu2("delete from tambahan_biaya where no_rawat=? and nama_biaya=?",2,new String[]{
@@ -5239,11 +5240,11 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                     "','"+tbBilling.getValueAt(i,6).toString()+"'","Potongan Biaya");                        
                         }
                         try {
-                            psbiling.setDouble(9,Valid.SetAngka(tbBilling.getValueAt(i,7).toString())); 
+                            psbiling.setDouble(10,Valid.SetAngka(tbBilling.getValueAt(i,7).toString())); 
                         } catch (Exception e) {
-                            psbiling.setDouble(9,0);
+                            psbiling.setDouble(10,0);
                         }                    
-                        psbiling.setString(10,tbBilling.getValueAt(i,8).toString());
+                        psbiling.setString(11,tbBilling.getValueAt(i,8).toString());
                         psbiling.executeUpdate();
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);

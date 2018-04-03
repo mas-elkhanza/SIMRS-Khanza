@@ -63,6 +63,7 @@
 			case 'HomeAdmin'	  	: include_once('pages/kontak.php'); break;
                         case 'List'                     : include_once('pages/list.php'); break;
                         case 'Detail'                   : include_once('pages/detail.php'); break;
+                        case 'Detail2'                  : include_once('pages/detail2.php'); break;
                         case 'MasterBerkas'             : include_once('pages/master.php'); break;
 
                         default			        : include_once('pages/kontak.php');
