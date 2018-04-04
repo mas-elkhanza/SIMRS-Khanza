@@ -41,7 +41,6 @@ public class DUKCAPILJakartaPostLahir {
                        String almtplpr,String krjplpr,String niks1,String nms1,String almts1,String krjs1,String niks2,
                        String nms2,String almts2,String krjs2,String umribu,String umrayah,String umrplpr,String umrs1,
                        String umrs2) {
-        BPJSApi api=new BPJSApi();
         status=false;
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));

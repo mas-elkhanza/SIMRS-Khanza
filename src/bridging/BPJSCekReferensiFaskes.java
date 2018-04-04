@@ -48,6 +48,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
+    private BPJSApi api=new BPJSApi();
 
     /** Creates new form DlgKamar
      * @param parent
@@ -90,7 +91,12 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
                 @Override
                 public void changedUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
             });
-        }     
+        }   
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     }
     
     
@@ -311,10 +317,8 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String faskes) {
-        BPJSApi api=new BPJSApi();
         try {
             Valid.tabelKosong(tabMode);
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/referensi/faskes/"+faskes+"/1";	
 
 	    HttpHeaders headers = new HttpHeaders();
@@ -355,8 +359,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
         }
     }    
     
-    public void tampil2(String faskes) {
-        BPJSApi api=new BPJSApi();
+    public void tampil2(String faskes) {        
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/referensi/faskes/"+faskes+"/2";	
