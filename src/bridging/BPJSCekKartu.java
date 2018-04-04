@@ -2826,7 +2826,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
 
     private void ppPengajuanBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuanBtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tbKamar.getSelectedRow()!= -1){
+        if(tbKamar.getRowCount()>0){
             try {
                 URL = prop.getProperty("URLAPIBPJS")+"/Sep/pengajuanSEP";
 
@@ -2866,7 +2866,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
             NoRujukan.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -2874,7 +2874,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
 
     private void ppPengajuan1BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuan1BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tbKamar.getSelectedRow()!= -1){
+        if(tbKamar.getRowCount()>0){
             try {
                 URL = prop.getProperty("URLAPIBPJS")+"/Sep/aprovalSEP";
 
@@ -2914,7 +2914,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
             NoRujukan.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
