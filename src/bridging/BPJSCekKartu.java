@@ -546,6 +546,12 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         } catch (Exception e) {
             user=var.getkode();
         }
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     }
     
     
@@ -3499,7 +3505,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             }else{
                 penjamin="";
             }
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            
             URL = prop.getProperty("URLAPIBPJS")+"/SEP/insert";	
 
             HttpHeaders headers = new HttpHeaders();
@@ -3568,7 +3574,6 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 })==true){
                     if(JenisPelayanan.getSelectedIndex()==1){
                         try {
-                            prop.loadFromXML(new FileInputStream("setting/database.xml"));
                             URL = prop.getProperty("URLAPIBPJS")+"/Sep/updtglplg";	
 
                             HttpHeaders headers2 = new HttpHeaders();

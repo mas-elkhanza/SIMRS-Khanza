@@ -126,7 +126,12 @@ public final class BPJSCekRiwayatPeserta extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });       
+        }); 
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     }
     
     
@@ -388,7 +393,6 @@ public final class BPJSCekRiwayatPeserta extends javax.swing.JDialog {
 
     public void tampil(String nomorpeserta) {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/sep/peserta/"+nomorpeserta;	
 
 	    HttpHeaders headers = new HttpHeaders();

@@ -93,6 +93,12 @@ public final class BPJSCekReferensiPascaPulang extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil(Poli.getText());}
             });
         } 
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
               
     }
     
@@ -268,7 +274,6 @@ public final class BPJSCekReferensiPascaPulang extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/referensi/pascapulang";	
 
 	    HttpHeaders headers = new HttpHeaders();
