@@ -93,6 +93,12 @@ public final class BPJSCekReferensiDokter extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil(Poli.getText());}
             });
         } 
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
               
     }
     
@@ -314,7 +320,6 @@ public final class BPJSCekReferensiDokter extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/referensi/dokter/"+poli;	
 
 	    HttpHeaders headers = new HttpHeaders();

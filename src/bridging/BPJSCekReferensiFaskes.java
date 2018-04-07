@@ -91,7 +91,12 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
                 @Override
                 public void changedUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
             });
-        }     
+        }   
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     }
     
     
@@ -314,7 +319,6 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     public void tampil(String faskes) {
         try {
             Valid.tabelKosong(tabMode);
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/referensi/faskes/"+faskes+"/1";	
 
 	    HttpHeaders headers = new HttpHeaders();
