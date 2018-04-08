@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.basoro.damanhuri">
+
+  <!-- Normal permissions, access automatically granted to app -->
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+  <!-- Runtime permissions -->
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+  <application
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:supportsRtl="true"
+      android:theme="@android:style/Theme.NoTitleBar">
+    <activity
+        android:name="org.basoro.damanhuri.activities.SplashActivity"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+
+    <activity
+        android:name="org.basoro.damanhuri.activities.MainActivity"
+        android:label="@string/app_main_activity"
+        android:screenOrientation="portrait"
+        android:theme="@style/Theme.AppCompat"/>
+
+  </application>
+</manifest>
