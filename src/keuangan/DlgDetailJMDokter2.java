@@ -1,14 +1,24 @@
 package keuangan;
+import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import fungsi.var;
+import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -22,8 +32,11 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
     private final Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgPenanggungJawab carabayar=new DlgPenanggungJawab(null,false);
     private int i=0,a=0,c=0;
-    private boolean ranapgabung=false;
-    private String pilihancarabayar="";
+    private String pilihancarabayar="",tglkeluar="",namaruangan="";
+    private StringBuilder htmlContent;
+    private PreparedStatement psreg,pskamar,pstindakan;
+    private ResultSet rsreg,rskamar,rstindakan;
+    private double totalsarana=0,totaljm=0,totalbayar=0;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -32,6 +45,17 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
+        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        if(koneksiDB.cariCepat().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {prosesCari();}
+                @Override
+                public void removeUpdate(DocumentEvent e) {prosesCari();}
+                @Override
+                public void changedUpdate(DocumentEvent e) {prosesCari();}
+            });
+        } 
         carabayar.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -91,7 +115,6 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         ppTampilkanSeleksi = new javax.swing.JMenuItem();
-        ppTampilkanRanapGabung = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi4 = new widget.panelisi();
         label11 = new widget.Label();
@@ -110,12 +133,8 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
-        TabRawat = new javax.swing.JTabbedPane();
-        internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         LoadHTML = new widget.editorpane();
-        internalFrame3 = new widget.InternalFrame();
-        Scroll1 = new widget.ScrollPane();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -135,23 +154,6 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppTampilkanSeleksi);
-
-        ppTampilkanRanapGabung.setBackground(new java.awt.Color(255, 255, 255));
-        ppTampilkanRanapGabung.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanRanapGabung.setForeground(java.awt.Color.darkGray);
-        ppTampilkanRanapGabung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppTampilkanRanapGabung.setText("Tampilkan Per Ranap Gabung (Ibu Harus Ada Tindakan Ranap)");
-        ppTampilkanRanapGabung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppTampilkanRanapGabung.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppTampilkanRanapGabung.setIconTextGap(5);
-        ppTampilkanRanapGabung.setName("ppTampilkanRanapGabung"); // NOI18N
-        ppTampilkanRanapGabung.setPreferredSize(new java.awt.Dimension(360, 25));
-        ppTampilkanRanapGabung.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppTampilkanRanapGabungBtnPrintActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(ppTampilkanRanapGabung);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -364,22 +366,6 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
-        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        TabRawat.setName("TabRawat"); // NOI18N
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
-            }
-        });
-
-        internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
-        internalFrame2.setBorder(null);
-        internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
-
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
@@ -387,22 +373,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
         LoadHTML.setName("LoadHTML"); // NOI18N
         Scroll.setViewportView(LoadHTML);
 
-        internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
-
-        TabRawat.addTab("Rekap JM", internalFrame2);
-
-        internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
-        internalFrame3.setBorder(null);
-        internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
-
-        Scroll1.setName("Scroll1"); // NOI18N
-        Scroll1.setOpaque(true);
-        internalFrame3.add(Scroll1, java.awt.BorderLayout.CENTER);
-
-        TabRawat.addTab("Lakukan Hitung RVU", internalFrame3);
-
-        internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
+        internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -415,7 +386,41 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            
+            File g = new File("file2.css");            
+            BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+            bg.write(
+                    ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#5a7850;}"+                    
+                    ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"
+            );
+            bg.close();
+            
+            File f = new File("sensuspoli.html");            
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+            bw.write(LoadHTML.getText().replaceAll(
+                    "<head>","<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<tr class='isi2'>"+
+                                "<td valign='top' align='center'>"+
+                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
+                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
+                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
+                                    "<font size='2' face='Tahoma'>REKAP JM DOKTER<br>PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                "</td>"+
+                           "</tr>"+
+                        "</table>")
+            );
+            bw.close();
+            Desktop.getDesktop().browse(f.toURI());
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }     
         
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -450,8 +455,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        ranapgabung=false;
-        prosesCari();
+    pilihancarabayar="";
+    prosesCari();       
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -472,32 +477,27 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         Tgl1.requestFocus();
-        ranapgabung=false;
         pilihancarabayar="";
+        prosesCari();
     }//GEN-LAST:event_formWindowOpened
 
     private void chkRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRalanActionPerformed
-        ranapgabung=false;
         prosesCari();
     }//GEN-LAST:event_chkRalanActionPerformed
 
     private void chkRadiologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRadiologiActionPerformed
-        ranapgabung=false;
         prosesCari();
     }//GEN-LAST:event_chkRadiologiActionPerformed
 
     private void chkLaboratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLaboratActionPerformed
-        ranapgabung=false;
         prosesCari();
     }//GEN-LAST:event_chkLaboratActionPerformed
 
     private void chkOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOperasiActionPerformed
-        ranapgabung=false;
         prosesCari();
     }//GEN-LAST:event_chkOperasiActionPerformed
 
     private void chkRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRanapActionPerformed
-        ranapgabung=false;
         prosesCari();
     }//GEN-LAST:event_chkRanapActionPerformed
 
@@ -507,11 +507,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         carabayar.setLocationRelativeTo(internalFrame1);
         carabayar.setVisible(true);
     }//GEN-LAST:event_ppTampilkanSeleksiBtnPrintActionPerformed
-
-    private void ppTampilkanRanapGabungBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTampilkanRanapGabungBtnPrintActionPerformed
-        ranapgabung=true;
-        prosesCari();
-    }//GEN-LAST:event_ppTampilkanRanapGabungBtnPrintActionPerformed
 
     private void TCariKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyTyped
        
@@ -528,14 +523,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             
         }
     }//GEN-LAST:event_TCariKeyPressed
-
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==0){
-            //tampil();
-        }else if(TabRawat.getSelectedIndex()==1){
-            //tampil2();
-        }
-    }//GEN-LAST:event_TabRawatMouseClicked
 
     /**
     * @param args the command line arguments
@@ -560,9 +547,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnPrint;
     private widget.editorpane LoadHTML;
     private widget.ScrollPane Scroll;
-    private widget.ScrollPane Scroll1;
     private widget.TextBox TCari;
-    private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.CekBox chkLaborat;
@@ -571,20 +556,800 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.CekBox chkRalan;
     private widget.CekBox chkRanap;
     private widget.InternalFrame internalFrame1;
-    private widget.InternalFrame internalFrame2;
-    private widget.InternalFrame internalFrame3;
     private widget.Label jLabel6;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label18;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppTampilkanRanapGabung;
     private javax.swing.JMenuItem ppTampilkanSeleksi;
     // End of variables declaration//GEN-END:variables
 
     private void prosesCari() {
-       
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Nomor RM</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Tanggal Masuk</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Tanggal Keluar</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Dokter</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anestesi</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anak</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Kode</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%'>Kategori</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Nama Unit</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='9%'>Ruangan</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='12%'>Nama Tindakan</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Frekuensi (Jumlah)</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Sarana</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Pelayanan</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Tarif</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Sarana</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Pelayanan</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total</td>"+
+                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Tanggal Transaksi</td>"+
+                "</tr>"
+            ); 
+            psreg=koneksi.prepareStatement(
+                    "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,"+
+                    "pasien.nm_pasien,penjab.png_jawab,reg_periksa.kd_poli,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.kd_pj "+
+                    "from reg_periksa inner join pasien inner join poliklinik inner join penjab "+
+                    "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
+                    "where reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and reg_periksa.no_rkm_medis like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and pasien.nm_pasien like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and penjab.png_jawab like ? or "+
+                    "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.kd_pj like ? and poliklinik.nm_poli like ? order by reg_periksa.tgl_registrasi");
+            try {
+                psreg.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                psreg.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                psreg.setString(3,"%"+pilihancarabayar+"%");
+                psreg.setString(4,"%"+TCari.getText().trim()+"%");
+                psreg.setString(5,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                psreg.setString(6,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                psreg.setString(7,"%"+pilihancarabayar+"%");
+                psreg.setString(8,"%"+TCari.getText().trim()+"%");
+                psreg.setString(9,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                psreg.setString(10,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                psreg.setString(11,"%"+pilihancarabayar+"%");
+                psreg.setString(12,"%"+TCari.getText().trim()+"%");
+                psreg.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                psreg.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                psreg.setString(15,"%"+pilihancarabayar+"%");
+                psreg.setString(16,"%"+TCari.getText().trim()+"%");
+                rsreg=psreg.executeQuery();
+                a=1;totalsarana=0;totaljm=0;totalbayar=0;
+                while(rsreg.next()){
+                    namaruangan="";
+                    tglkeluar="";
+                    if(rsreg.getString("status_lanjut").equals("Ralan")){
+                        namaruangan=rsreg.getString("nm_poli");
+                        tglkeluar=rsreg.getString("tgl_registrasi");
+                    }else if(rsreg.getString("status_lanjut").equals("Ranap")){
+                        pskamar=koneksi.prepareStatement(
+                            "select kamar_inap.kd_kamar,bangsal.nm_bangsal,"+
+                            "if(kamar_inap.tgl_keluar='0000-00-00','-',kamar_inap.tgl_keluar) as tgl_keluar,kamar.kelas "+
+                            "from kamar_inap inner join kamar inner join bangsal on "+
+                            "kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal "+
+                            "where kamar_inap.no_rawat=? group by kamar_inap.no_rawat");
+                        try {
+                            pskamar.setString(1,rsreg.getString("no_rawat"));
+                            rskamar=pskamar.executeQuery();
+                            if(rskamar.next()){ 
+                                namaruangan=rskamar.getString("nm_bangsal")+"("+rskamar.getString("kelas")+")";
+                                tglkeluar=rskamar.getString("tgl_keluar");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi Kamar : "+e);
+                        } finally{
+                            if(rskamar!=null){
+                                rskamar.close();
+                            } 
+                            if(pskamar!=null){
+                                pskamar.close();
+                            } 
+                        }
+                    }
+                    if(chkRalan.isSelected()==true){
+                        //tindakan dr
+                        pstindakan=koneksi.prepareStatement(
+                                "select jns_perawatan.nm_perawatan,dokter.nm_dokter, "+
+                                "rawat_jl_dr.tgl_perawatan,count(rawat_jl_dr.no_rawat) as jumlah, "+
+                                "rawat_jl_dr.tarif_tindakandr,sum(rawat_jl_dr.tarif_tindakandr) as totaljm,"+
+                                "(rawat_jl_dr.material+rawat_jl_dr.bhp+rawat_jl_dr.kso+rawat_jl_dr.menejemen) as sarana,"+
+                                "sum(rawat_jl_dr.material+rawat_jl_dr.bhp+rawat_jl_dr.kso+rawat_jl_dr.menejemen) as totalsarana "+
+                                "from rawat_jl_dr inner join jns_perawatan inner join dokter on "+
+                                "rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and "+
+                                "rawat_jl_dr.kd_dokter=dokter.kd_dokter where rawat_jl_dr.no_rawat=? "+
+                                "group by rawat_jl_dr.kd_jenis_prw,rawat_jl_dr.tgl_perawatan");
+                        try {
+                            pstindakan.setString(1,rsreg.getString("no_rawat"));
+                            rstindakan=pstindakan.executeQuery();
+                            while(rstindakan.next()){
+                                totalsarana=totalsarana+rstindakan.getDouble("totalsarana");
+                                totaljm=totaljm+rstindakan.getDouble("totaljm");
+                                totalbayar=totalbayar+rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana");
+                                if(a%2==0){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>Poli</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+namaruangan+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("tgl_perawatan")+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }else if(a%2==1){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top'>Poli</td>"+
+                                            "<td valign='top'>"+namaruangan+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("tgl_perawatan")+"</td>"+
+                                        "</tr>"
+                                    );
+                                } 
+                                a++;
+                            }                           
+                        } catch (Exception e) {
+                            System.out.println("Notif Ralan dr : "+e);
+                        } finally{
+                            if(rstindakan!=null){
+                                rstindakan.close();
+                            }
+                            if(pstindakan!=null){
+                                pstindakan.close();
+                            }
+                        }
+                        
+                        //tindakan drpr
+                        pstindakan=koneksi.prepareStatement(
+                                "select jns_perawatan.nm_perawatan,dokter.nm_dokter, "+
+                                "rawat_jl_drpr.tgl_perawatan,count(rawat_jl_drpr.no_rawat) as jumlah, "+
+                                "rawat_jl_drpr.tarif_tindakandr,sum(rawat_jl_drpr.tarif_tindakandr) as totaljm,"+
+                                "(rawat_jl_drpr.material+rawat_jl_drpr.bhp+rawat_jl_drpr.kso+rawat_jl_drpr.menejemen+rawat_jl_drpr.tarif_tindakanpr) as sarana,"+
+                                "sum(rawat_jl_drpr.material+rawat_jl_drpr.bhp+rawat_jl_drpr.kso+rawat_jl_drpr.menejemen+rawat_jl_drpr.tarif_tindakanpr) as totalsarana "+
+                                "from rawat_jl_drpr inner join jns_perawatan inner join dokter on "+
+                                "rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and "+
+                                "rawat_jl_drpr.kd_dokter=dokter.kd_dokter where rawat_jl_drpr.no_rawat=? "+
+                                "group by rawat_jl_drpr.kd_jenis_prw,rawat_jl_drpr.tgl_perawatan");
+                        try {
+                            pstindakan.setString(1,rsreg.getString("no_rawat"));
+                            rstindakan=pstindakan.executeQuery();
+                            while(rstindakan.next()){
+                                totalsarana=totalsarana+rstindakan.getDouble("totalsarana");
+                                totaljm=totaljm+rstindakan.getDouble("totaljm");
+                                totalbayar=totalbayar+rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana");
+                                if(a%2==0){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>Poli</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+namaruangan+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("tgl_perawatan")+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }else if(a%2==1){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top'>Poli</td>"+
+                                            "<td valign='top'>"+namaruangan+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("tgl_perawatan")+"</td>"+
+                                        "</tr>"
+                                    );
+                                } 
+                                a++;
+                            }                           
+                        } catch (Exception e) {
+                            System.out.println("Notif Ralan dr pr : "+e);
+                        } finally{
+                            if(rstindakan!=null){
+                                rstindakan.close();
+                            }
+                            if(pstindakan!=null){
+                                pstindakan.close();
+                            }
+                        }
+                    }
+                    
+                    if(chkRanap.isSelected()==true){
+                        //tindakan dr
+                        pstindakan=koneksi.prepareStatement(
+                                "select jns_perawatan_inap.nm_perawatan,dokter.nm_dokter, "+
+                                "rawat_inap_dr.tgl_perawatan,count(rawat_inap_dr.no_rawat) as jumlah, "+
+                                "rawat_inap_dr.tarif_tindakandr,sum(rawat_inap_dr.tarif_tindakandr) as totaljm,"+
+                                "(rawat_inap_dr.material+rawat_inap_dr.bhp+rawat_inap_dr.kso+rawat_inap_dr.menejemen) as sarana,"+
+                                "sum(rawat_inap_dr.material+rawat_inap_dr.bhp+rawat_inap_dr.kso+rawat_inap_dr.menejemen) as totalsarana "+
+                                "from rawat_inap_dr inner join jns_perawatan_inap inner join dokter on "+
+                                "rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and "+
+                                "rawat_inap_dr.kd_dokter=dokter.kd_dokter where rawat_inap_dr.no_rawat=? "+
+                                "group by rawat_inap_dr.kd_jenis_prw,rawat_inap_dr.tgl_perawatan");
+                        try {
+                            pstindakan.setString(1,rsreg.getString("no_rawat"));
+                            rstindakan=pstindakan.executeQuery();
+                            while(rstindakan.next()){
+                                totalsarana=totalsarana+rstindakan.getDouble("totalsarana");
+                                totaljm=totaljm+rstindakan.getDouble("totaljm");
+                                totalbayar=totalbayar+rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana");
+                                if(a%2==0){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>Ranap</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+namaruangan+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("tgl_perawatan")+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }else if(a%2==1){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top'>Ranap</td>"+
+                                            "<td valign='top'>"+namaruangan+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("tgl_perawatan")+"</td>"+
+                                        "</tr>"
+                                    );
+                                } 
+                                a++;
+                            }                           
+                        } catch (Exception e) {
+                            System.out.println("Notif Inap dr : "+e);
+                        } finally{
+                            if(rstindakan!=null){
+                                rstindakan.close();
+                            }
+                            if(pstindakan!=null){
+                                pstindakan.close();
+                            }
+                        }
+                        
+                        //tindakan drpr
+                        pstindakan=koneksi.prepareStatement(
+                                "select jns_perawatan_inap.nm_perawatan,dokter.nm_dokter, "+
+                                "rawat_inap_drpr.tgl_perawatan,count(rawat_inap_drpr.no_rawat) as jumlah, "+
+                                "rawat_inap_drpr.tarif_tindakandr,sum(rawat_inap_drpr.tarif_tindakandr) as totaljm,"+
+                                "(rawat_inap_drpr.material+rawat_inap_drpr.bhp+rawat_inap_drpr.kso+rawat_inap_drpr.menejemen+rawat_inap_drpr.tarif_tindakanpr) as sarana,"+
+                                "sum(rawat_inap_drpr.material+rawat_inap_drpr.bhp+rawat_inap_drpr.kso+rawat_inap_drpr.menejemen+rawat_inap_drpr.tarif_tindakanpr) as totalsarana "+
+                                "from rawat_inap_drpr inner join jns_perawatan_inap inner join dokter on "+
+                                "rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and "+
+                                "rawat_inap_drpr.kd_dokter=dokter.kd_dokter where rawat_inap_drpr.no_rawat=? "+
+                                "group by rawat_inap_drpr.kd_jenis_prw,rawat_inap_drpr.tgl_perawatan");
+                        try {
+                            pstindakan.setString(1,rsreg.getString("no_rawat"));
+                            rstindakan=pstindakan.executeQuery();
+                            while(rstindakan.next()){
+                                totalsarana=totalsarana+rstindakan.getDouble("totalsarana");
+                                totaljm=totaljm+rstindakan.getDouble("totaljm");
+                                totalbayar=totalbayar+rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana");
+                                if(a%2==0){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>Ranap</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+namaruangan+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("tgl_perawatan")+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }else if(a%2==1){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top'>Ranap</td>"+
+                                            "<td valign='top'>"+namaruangan+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("tgl_perawatan")+"</td>"+
+                                        "</tr>"
+                                    );
+                                } 
+                                a++;
+                            }                           
+                        } catch (Exception e) {
+                            System.out.println("Notif Inap dr pr : "+e);
+                        } finally{
+                            if(rstindakan!=null){
+                                rstindakan.close();
+                            }
+                            if(pstindakan!=null){
+                                pstindakan.close();
+                            }
+                        }
+                    }
+                    
+                    if(chkRadiologi.isSelected()==true){
+                        //tindakan radiologi
+                        pstindakan=koneksi.prepareStatement(
+                                "select jns_perawatan_radiologi.nm_perawatan,dokter.nm_dokter, "+
+                                "periksa_radiologi.tgl_periksa,count(periksa_radiologi.no_rawat) as jumlah, "+
+                                "periksa_radiologi.tarif_tindakan_dokter,sum(periksa_radiologi.tarif_tindakan_dokter) as totaljm,"+
+                                "(periksa_radiologi.bagian_rs+periksa_radiologi.bhp+periksa_radiologi.kso+periksa_radiologi.menejemen+periksa_radiologi.tarif_perujuk+periksa_radiologi.tarif_tindakan_petugas) as sarana,"+
+                                "sum(periksa_radiologi.bagian_rs+periksa_radiologi.bhp+periksa_radiologi.kso+periksa_radiologi.menejemen+periksa_radiologi.tarif_perujuk+periksa_radiologi.tarif_tindakan_petugas) as totalsarana "+
+                                "from periksa_radiologi inner join jns_perawatan_radiologi inner join dokter on "+
+                                "periksa_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw and "+
+                                "periksa_radiologi.kd_dokter=dokter.kd_dokter where periksa_radiologi.no_rawat=? "+
+                                "group by periksa_radiologi.kd_jenis_prw,periksa_radiologi.tgl_periksa");
+                        try {
+                            pstindakan.setString(1,rsreg.getString("no_rawat"));
+                            rstindakan=pstindakan.executeQuery();
+                            while(rstindakan.next()){
+                                totalsarana=totalsarana+rstindakan.getDouble("totalsarana");
+                                totaljm=totaljm+rstindakan.getDouble("totaljm");
+                                totalbayar=totalbayar+rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana");
+                                if(a%2==0){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>Radiologi</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+namaruangan+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("tgl_periksa")+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }else if(a%2==1){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top'>Radiologi</td>"+
+                                            "<td valign='top'>"+namaruangan+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("tgl_periksa")+"</td>"+
+                                        "</tr>"
+                                    );
+                                } 
+                                a++;
+                            }                           
+                        } catch (Exception e) {
+                            System.out.println("Notif Ralan dr : "+e);
+                        } finally{
+                            if(rstindakan!=null){
+                                rstindakan.close();
+                            }
+                            if(pstindakan!=null){
+                                pstindakan.close();
+                            }
+                        }
+                    }
+                    
+                    //operasi
+                    if(chkOperasi.isSelected()==true){
+                        pstindakan=koneksi.prepareStatement(
+                                "select paket_operasi.nm_perawatan,dokter.nm_dokter,operasi.dokter_anestesi,operasi.dokter_anak, "+
+                                "DATE_FORMAT(tgl_operasi, '%Y-%m-%d') as tgl_operasi,count(operasi.no_rawat) as jumlah, "+
+                                "(operasi.biayaoperator1+biayadokter_anestesi+biayadokter_anak) as biayaoperator1,sum(operasi.biayaoperator1+biayadokter_anestesi+biayadokter_anak) as totaljm,"+
+                                "(operasi.biayaoperator2+operasi.biayaoperator3+operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayaasisten_operator3+operasi.biayainstrumen+operasi.biayaperawaat_resusitas+operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+operasi.biayasarpras+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum) as sarana,"+
+                                "sum(operasi.biayaoperator2+operasi.biayaoperator3+operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayaasisten_operator3+operasi.biayainstrumen+operasi.biayaperawaat_resusitas+operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+operasi.biayasarpras+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum) as totalsarana "+
+                                "from operasi inner join paket_operasi inner join dokter on "+
+                                "operasi.kode_paket=paket_operasi.kode_paket and "+
+                                "operasi.operator1=dokter.kd_dokter where operasi.no_rawat=? "+
+                                "group by operasi.kode_paket,DATE_FORMAT(tgl_operasi,'%Y-%m-%d')");
+                        try {
+                            pstindakan.setString(1,rsreg.getString("no_rawat"));
+                            rstindakan=pstindakan.executeQuery();
+                            while(rstindakan.next()){
+                                totalsarana=totalsarana+rstindakan.getDouble("totalsarana");
+                                totaljm=totaljm+rstindakan.getDouble("totaljm");
+                                totalbayar=totalbayar+rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana");
+                                if(a%2==0){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anestesi"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anak"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>Operasi</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+namaruangan+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator1"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("biayaoperator1"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("tgl_operasi")+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }else if(a%2==1){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top'>"+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anestesi"))+"</td>"+
+                                            "<td valign='top'>"+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anak"))+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top'>Operasi</td>"+
+                                            "<td valign='top'>"+namaruangan+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator1"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("biayaoperator1"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("tgl_operasi")+"</td>"+
+                                        "</tr>"
+                                    );
+                                } 
+                                a++;
+                            }                           
+                        } catch (Exception e) {
+                            System.out.println("Notif Ralan dr : "+e);
+                        } finally{
+                            if(rstindakan!=null){
+                                rstindakan.close();
+                            }
+                            if(pstindakan!=null){
+                                pstindakan.close();
+                            }
+                        }
+                    }
+                    
+                    if(chkLaborat.isSelected()==true){
+                        //tindakan lab
+                        pstindakan=koneksi.prepareStatement(
+                                "select jns_perawatan_lab.nm_perawatan,dokter.nm_dokter, "+
+                                "periksa_lab.tgl_periksa,count(periksa_lab.no_rawat) as jumlah, "+
+                                "periksa_lab.tarif_tindakan_dokter,sum(periksa_lab.tarif_tindakan_dokter) as totaljm,"+
+                                "(periksa_lab.bagian_rs+periksa_lab.bhp+periksa_lab.kso+periksa_lab.menejemen+periksa_lab.tarif_perujuk+periksa_lab.tarif_tindakan_petugas) as sarana,"+
+                                "sum(periksa_lab.bagian_rs+periksa_lab.bhp+periksa_lab.kso+periksa_lab.menejemen+periksa_lab.tarif_perujuk+periksa_lab.tarif_tindakan_petugas) as totalsarana "+
+                                "from periksa_lab inner join jns_perawatan_lab inner join dokter on "+
+                                "periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and "+
+                                "periksa_lab.kd_dokter=dokter.kd_dokter where periksa_lab.no_rawat=? and periksa_lab.biaya>0 "+
+                                "group by periksa_lab.kd_jenis_prw,periksa_lab.tgl_periksa");
+                        try {
+                            pstindakan.setString(1,rsreg.getString("no_rawat"));
+                            rstindakan=pstindakan.executeQuery();
+                            while(rstindakan.next()){
+                                totalsarana=totalsarana+rstindakan.getDouble("totalsarana");
+                                totaljm=totaljm+rstindakan.getDouble("totaljm");
+                                totalbayar=totalbayar+rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana");
+                                if(a%2==0){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>Laborat</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+namaruangan+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("tgl_periksa")+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }else if(a%2==1){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top'>Laborat</td>"+
+                                            "<td valign='top'>"+namaruangan+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_perawatan")+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("tgl_periksa")+"</td>"+
+                                        "</tr>"
+                                    );
+                                } 
+                                a++;
+                            }                           
+                        } catch (Exception e) {
+                            System.out.println("Notif Ralan dr : "+e);
+                        } finally{
+                            if(rstindakan!=null){
+                                rstindakan.close();
+                            }
+                            if(pstindakan!=null){
+                                pstindakan.close();
+                            }
+                        }
+                        
+                        pstindakan=koneksi.prepareStatement(
+                                "select template_laboratorium.Pemeriksaan,dokter.nm_dokter, "+
+                                "detail_periksa_lab.tgl_periksa,count(detail_periksa_lab.no_rawat) as jumlah, "+
+                                "detail_periksa_lab.bagian_dokter,sum(detail_periksa_lab.bagian_dokter) as totaljm,"+
+                                "(detail_periksa_lab.bagian_rs+detail_periksa_lab.bhp+detail_periksa_lab.kso+detail_periksa_lab.menejemen+detail_periksa_lab.bagian_perujuk+detail_periksa_lab.bagian_laborat) as sarana,"+
+                                "sum(detail_periksa_lab.bagian_rs+detail_periksa_lab.bhp+detail_periksa_lab.kso+detail_periksa_lab.menejemen+detail_periksa_lab.bagian_perujuk+detail_periksa_lab.bagian_laborat) as totalsarana "+
+                                "from detail_periksa_lab inner join template_laboratorium inner join dokter inner join periksa_lab on "+
+                                "detail_periksa_lab.id_template=template_laboratorium.id_template and "+
+                                "periksa_lab.kd_jenis_prw=detail_periksa_lab.kd_jenis_prw and "+
+                                "periksa_lab.tgl_periksa=detail_periksa_lab.tgl_periksa and "+
+                                "periksa_lab.jam=detail_periksa_lab.jam and periksa_lab.no_rawat=detail_periksa_lab.no_rawat and "+
+                                "periksa_lab.kd_dokter=dokter.kd_dokter where detail_periksa_lab.no_rawat=? and detail_periksa_lab.biaya_item>0 "+
+                                "group by detail_periksa_lab.id_template,detail_periksa_lab.tgl_periksa");
+                        try {
+                            pstindakan.setString(1,rsreg.getString("no_rawat"));
+                            rstindakan=pstindakan.executeQuery();
+                            while(rstindakan.next()){
+                                totalsarana=totalsarana+rstindakan.getDouble("totalsarana");
+                                totaljm=totaljm+rstindakan.getDouble("totaljm");
+                                totalbayar=totalbayar+rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana");
+                                if(a%2==0){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5'></td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>Laborat</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+namaruangan+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5'>"+rstindakan.getString("Pemeriksaan")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bagian_dokter"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("bagian_dokter"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' bgcolor='#fafff5' align='center'>"+rstindakan.getString("tgl_periksa")+"</td>"+
+                                        "</tr>"
+                                    ); 
+                                }else if(a%2==1){
+                                    htmlContent.append(                             
+                                        "<tr class='isi'>"+
+                                            "<td valign='top'>"+rsreg.getString("no_rkm_medis")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("nm_pasien")+"</td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("tgl_registrasi")+"</td>"+
+                                            "<td valign='top' align='center'>"+tglkeluar+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("nm_dokter")+"</td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top'></td>"+
+                                            "<td valign='top' align='center'>"+rsreg.getString("kd_pj")+"</td>"+
+                                            "<td valign='top'>"+rsreg.getString("png_jawab")+"</td>"+
+                                            "<td valign='top'>Laborat</td>"+
+                                            "<td valign='top'>"+namaruangan+"</td>"+
+                                            "<td valign='top'>"+rstindakan.getString("Pemeriksaan")+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("jumlah")+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bagian_dokter"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("sarana")+rstindakan.getDouble("bagian_dokter"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm"))+"</td>"+
+                                            "<td valign='top' align='right'>"+Valid.SetAngka(rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana"))+"</td>"+
+                                            "<td valign='top' align='center'>"+rstindakan.getString("tgl_periksa")+"</td>"+
+                                        "</tr>"
+                                    );
+                                } 
+                                a++;
+                            }                           
+                        } catch (Exception e) {
+                            System.out.println("Notif Detail Laborat : "+e);
+                        } finally{
+                            if(rstindakan!=null){
+                                rstindakan.close();
+                            }
+                            if(pstindakan!=null){
+                                pstindakan.close();
+                            }
+                        }
+                    }
+                }
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='top' colspan='16'>Total :</td>"+
+                        "<td valign='top' align='right'>"+Valid.SetAngka(totalsarana)+"</td>"+
+                        "<td valign='top' align='right'>"+Valid.SetAngka(totaljm)+"</td>"+
+                        "<td valign='top' align='right'>"+Valid.SetAngka(totalbayar)+"</td>"+
+                        "<td valign='top' align='center'></td>"+
+                    "</tr>"
+                );
+            } catch (Exception e) {
+                System.out.println("Notifikasi preg : "+e);
+            } finally{
+                if(rsreg!=null){
+                    rsreg.close();
+                }
+                if(psreg!=null){
+                    psreg.close();
+                }
+            }
+            LoadHTML.setText(
+                    "<html>"+
+                      "<table width='1500px' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        } 
+       this.setCursor(Cursor.getDefaultCursor());
         
     }    
     

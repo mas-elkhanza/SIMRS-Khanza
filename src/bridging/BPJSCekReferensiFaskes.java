@@ -49,6 +49,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private BPJSApi api=new BPJSApi();
+    private String URL="";
 
     /** Creates new form DlgKamar
      * @param parent
@@ -262,9 +263,11 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     private void diagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_diagnosaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampil(diagnosa.getText());
+            tampil2(diagnosa.getText());
             BtnPrint.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             tampil(diagnosa.getText());
+            tampil2(diagnosa.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -319,7 +322,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     public void tampil(String faskes) {
         try {
             Valid.tabelKosong(tabMode);
-            String URL = prop.getProperty("URLAPIBPJS")+"/referensi/faskes/"+faskes+"/1";	
+            URL = prop.getProperty("URLAPIBPJS")+"/referensi/faskes/"+faskes+"/1";	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -362,7 +365,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     public void tampil2(String faskes) {        
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIBPJS")+"/referensi/faskes/"+faskes+"/2";	
+            URL = prop.getProperty("URLAPIBPJS")+"/referensi/faskes/"+faskes+"/2";	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

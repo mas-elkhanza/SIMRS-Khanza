@@ -50,7 +50,7 @@ public class DUKCAPILJakartaPostLahir {
             headers.setContentType(MediaType.APPLICATION_XML);
 	    HttpEntity requestEntity = new HttpEntity(headers);
 	    RestTemplate rest = new RestTemplate();            
-             System.out.println(URL);
+            System.out.println(URL);
             String data=rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody();
             JSONObject xmlJSONObj = XML.toJSONObject(data);
             String jsonPrettyPrintString = xmlJSONObj.toString(4);
