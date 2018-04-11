@@ -1117,7 +1117,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td><td valign='top' width='24%' bgcolor='#f8fdf3'>Kode</td><td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#f8fdf3'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td><td valign='top' width='24%' bgcolor='#f7fcf2'>Kode</td><td valign='top' width='50%' bgcolor='#f7fcf2'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#f7fcf2'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -1152,7 +1152,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td><td valign='top' width='24%' bgcolor='#f8fdf3'>Kode</td><td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#f8fdf3'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td><td valign='top' width='24%' bgcolor='#f7fcf2'>Kode</td><td valign='top' width='50%' bgcolor='#f7fcf2'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#f7fcf2'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -1188,18 +1188,18 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Suhu(C)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Tensi</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>GCS(E,V,M)</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#f8fdf3'>Keluhan</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#f8fdf3'>Pemeriksaan</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Alergi</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Suhu(C)</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Tensi</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#f7fcf2'>Keluhan</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#f7fcf2'>Pemeriksaan</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Alergi</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -1249,18 +1249,18 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Suhu(C)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Tensi</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>GCS(E,V,M)</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#f8fdf3'>Keluhan</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#f8fdf3'>Pemeriksaan</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Alergi</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Suhu(C)</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Tensi</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#f7fcf2'>Keluhan</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#f7fcf2'>Pemeriksaan</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Alergi</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -1323,12 +1323,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='45%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1367,12 +1367,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+                                        
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+      
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='45%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1411,13 +1411,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Jalan Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='25%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='25%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Dokter</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1459,12 +1459,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1505,12 +1505,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1550,13 +1550,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Inap Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Dokter</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1597,13 +1597,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Penggunaan Kamar</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal Masuk</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggak Keluar</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Lama Inap</td>"+
-                                          "<td valign='top' width='35%' bgcolor='#f8fdf3'>Kamar</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Status</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal Masuk</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggak Keluar</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Lama Inap</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#f7fcf2'>Kamar</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Status</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1656,12 +1656,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Operasi/VK</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Tindakan</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Anastesi</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#f7fcf2'>Nama Tindakan</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Anastesi</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1772,13 +1772,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Radiologi</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#f7fcf2'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1815,9 +1815,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Bacaan/Hasil Radiologi</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#f8fdf3'>Hasil Pemeriksaan</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#f7fcf2'>Hasil Pemeriksaan</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1850,9 +1850,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Gambar Radiologi</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#f8fdf3'>Gambar Radiologi</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#f7fcf2'>Gambar Radiologi</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1889,13 +1889,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#f7fcf2'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1927,9 +1927,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                        "<td valign='top' align='center'></td>"+
                                                        "<td valign='top'></td>"+
                                                        "<td valign='top'></td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Detail Pemeriksaan</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Hasil</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Nilai Rujukan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#f7fcf2'>Detail Pemeriksaan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#f7fcf2'>Hasil</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#f7fcf2'>Nilai Rujukan</td>"+
                                                        "<td valign='top' align='right'></td>"+
                                                     "</tr>");
                                                 rs4.beforeFirst();
@@ -1979,13 +1979,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='35%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Aturan Pakai</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#f7fcf2'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Jumlah</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Aturan Pakai</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2025,12 +2025,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Penggunaan Obat/BHP Operasi</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#f7fcf2'>Nama Obat/BHP</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2069,12 +2069,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Resep Pulang</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Dosis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#f7fcf2'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Dosis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2113,11 +2113,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Retur Obat</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='65%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='65%' bgcolor='#f7fcf2'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2152,10 +2152,10 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='2'>Tambahan Biaya</td><td valign='top' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='84%' bgcolor='#f8fdf3'>Nama Tambahan</td>"+
-                                          "<td valign='top' width='1%' bgcolor='#f8fdf3'></td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='84%' bgcolor='#f7fcf2'>Nama Tambahan</td>"+
+                                          "<td valign='top' width='1%' bgcolor='#f7fcf2'></td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2189,10 +2189,10 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='2'>Potongan Biaya</td><td valign='top' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='84%' bgcolor='#f8fdf3'>Nama Potongan</td>"+
-                                          "<td valign='top' width='1%' bgcolor='#f8fdf3'></td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='84%' bgcolor='#f7fcf2'>Nama Potongan</td>"+
+                                          "<td valign='top' width='1%' bgcolor='#f7fcf2'></td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2229,8 +2229,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Berkas Digital Perawatan</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='95%' bgcolor='#f8fdf3'>Berkas Digital</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='95%' bgcolor='#f7fcf2'>Berkas Digital</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2453,7 +2453,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td><td valign='top' width='24%' bgcolor='#f8fdf3'>Kode</td><td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#f8fdf3'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td><td valign='top' width='24%' bgcolor='#f7fcf2'>Kode</td><td valign='top' width='50%' bgcolor='#f7fcf2'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#f7fcf2'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -2674,7 +2674,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td><td valign='top' width='24%' bgcolor='#f8fdf3'>Kode</td><td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#f8fdf3'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td><td valign='top' width='24%' bgcolor='#f7fcf2'>Kode</td><td valign='top' width='50%' bgcolor='#f7fcf2'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#f7fcf2'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -2899,12 +2899,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='45%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2943,12 +2943,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+                                        
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+      
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='45%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2987,13 +2987,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Jalan Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='25%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='25%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Dokter</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3228,12 +3228,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3274,12 +3274,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#f7fcf2'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3319,13 +3319,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Inap Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#f7fcf2'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Dokter</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3571,12 +3571,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Operasi/VK</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Tindakan</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Anastesi</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#f7fcf2'>Nama Tindakan</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Anastesi</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3880,13 +3880,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Radiologi</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#f7fcf2'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3923,9 +3923,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Bacaan/Hasil Radiologi</td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#f8fdf3'>Hasil Pemeriksaan</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#f7fcf2'>Hasil Pemeriksaan</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3958,9 +3958,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Gambar Radiologi</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#f8fdf3'>Gambar Radiologi</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#f7fcf2'>Gambar Radiologi</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4190,13 +4190,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#f7fcf2'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#f7fcf2'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4228,9 +4228,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                        "<td valign='top' align='center'></td>"+
                                                        "<td valign='top'></td>"+
                                                        "<td valign='top'></td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Detail Pemeriksaan</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Hasil</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Nilai Rujukan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#f7fcf2'>Detail Pemeriksaan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#f7fcf2'>Hasil</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#f7fcf2'>Nilai Rujukan</td>"+
                                                        "<td valign='top' align='right'></td>"+
                                                     "</tr>");
                                                 rs4.beforeFirst();
@@ -4473,13 +4473,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='35%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Aturan Pakai</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#f7fcf2'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Jumlah</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Aturan Pakai</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4519,11 +4519,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Retur Obat</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='65%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='65%' bgcolor='#f7fcf2'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4754,12 +4754,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Penggunaan Obat/BHP Operasi</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#f7fcf2'>Nama Obat/BHP</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4991,12 +4991,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Resep Pulang</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Dosis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#f7fcf2'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#f7fcf2'>Dosis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#f7fcf2'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -5228,8 +5228,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Berkas Digital Perawatan</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='95%' bgcolor='#f8fdf3'>Berkas Digital</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
+                                          "<td valign='top' width='95%' bgcolor='#f7fcf2'>Berkas Digital</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;

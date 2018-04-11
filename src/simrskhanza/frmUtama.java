@@ -234,6 +234,7 @@ import ipsrs.DlgSuratPemesananNonMedis;
 import java.awt.event.KeyListener;
 import javax.swing.event.DocumentEvent;
 import keuangan.DlgAkunPiutang;
+import keuangan.DlgDetailJMDokter2;
 import keuangan.DlgDetailTindakan;
 import keuangan.DlgDetailVKOK;
 import keuangan.DlgHutangObatBelumLunas;
@@ -763,6 +764,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikLabRalanPerBulan = new widget.ButtonBig();
         btnStokKeluarMedis = new widget.ButtonBig();
         btnGrafikRadRalanPerBulan = new widget.ButtonBig();
+        btnJMDetailDokter2 = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4728,6 +4730,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnGrafikRadRalanPerBulan);
 
+        btnJMDetailDokter2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/address-book.png"))); // NOI18N
+        btnJMDetailDokter2.setText("Detail JM Dokter 2");
+        btnJMDetailDokter2.setIconTextGap(0);
+        btnJMDetailDokter2.setName("btnJMDetailDokter2"); // NOI18N
+        btnJMDetailDokter2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJMDetailDokter2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJMDetailDokter2ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnJMDetailDokter2);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4736,7 +4750,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27/03/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/04/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7931,6 +7945,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgMutasiBarang aplikasi=new DlgMutasiBarang(this,false);
+        aplikasi.tampilkanpermintaan=true;
         aplikasi.isCek();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
@@ -10014,6 +10029,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgPengeluaranApotek pengeluaran=new DlgPengeluaranApotek(this,false);
+        pengeluaran.tampilkanpermintaan=true;
         pengeluaran.isCek();
         pengeluaran.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         pengeluaran.setLocationRelativeTo(PanelUtama);
@@ -10032,6 +10048,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikRadRalanPerBulanActionPerformed
+
+    private void btnJMDetailDokter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJMDetailDokter2ActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgDetailJMDokter2 rhtindakandokter=new DlgDetailJMDokter2(this,false);
+        rhtindakandokter.isCek();
+        rhtindakandokter.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        rhtindakandokter.setLocationRelativeTo(PanelUtama);
+        rhtindakandokter.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnJMDetailDokter2ActionPerformed
 
     /**
     * @param args the command line arguments
@@ -10193,6 +10221,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnInputPenjualan;
     private widget.ButtonBig btnInventaris;
     private widget.ButtonBig btnJMDetailDokter;
+    private widget.ButtonBig btnJMDetailDokter2;
     private widget.ButtonBig btnJadwalPegawai;
     private widget.ButtonBig btnJadwalTambahan;
     private widget.ButtonBig btnJamPresensi;
@@ -11250,6 +11279,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getjm_ranap_dokter()==true){
                 Panelmenu.add(btnJMDetailDokter);
+                jmlmenu++;
+            } 
+            
+            if(var.getdetailjmdokter2()==true){
+                Panelmenu.add(btnJMDetailDokter2);
                 jmlmenu++;
             } 
 
@@ -12785,6 +12819,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getjm_ranap_dokter()==true){
             Panelmenu.add(btnJMDetailDokter);
+            jmlmenu++;
+        } 
+
+        if(var.getdetailjmdokter2()==true){
+            Panelmenu.add(btnJMDetailDokter2);
             jmlmenu++;
         } 
 
@@ -14521,6 +14560,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getjm_ranap_dokter()==true){
             if(btnJMDetailDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJMDetailDokter);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(var.getdetailjmdokter2()==true){
+            if(btnJMDetailDokter2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnJMDetailDokter2);
                 jmlmenu++;
             }                
         } 

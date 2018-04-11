@@ -3498,10 +3498,10 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                 Taspen="3,";
             }
             if(ChkAsa.isSelected()==true){
-                Taspen="4,";
+                Asabri="4,";
             }
             if((ChkJasaRaharja.isSelected()==true)||(ChkBPJSTenaga.isSelected()==true)||(ChkTaspen.isSelected()==true)||(ChkAsa.isSelected()==true)){
-                penjamin=jasaraharja+BPJS+Taspen+penjamin;
+                penjamin=jasaraharja+BPJS+Taspen+Asabri+penjamin;
             }else{
                 penjamin="";
             }
