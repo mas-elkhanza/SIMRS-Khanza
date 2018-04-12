@@ -479,7 +479,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File f;            
             BufferedWriter bw; 
             
-            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Laporan Penjualan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (HTML)","Laporan 3 (WPS)","Laporan 4 (WPS)","Laporan 5 (CSV)"},"Laporan 1");
+            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Laporan Penjualan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (HTML)","Laporan 3 (WPS)","Laporan 4 (WPS)","Laporan 5 (CSV)","Laporan 6 (CSV)"},"Laporan 1");
             switch (pilihan) {
                 case "Laporan 1 (HTML)":
                         htmlContent = new StringBuilder();
@@ -965,7 +965,56 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
                         bw.close();                         
                         Desktop.getDesktop().browse(f.toURI());
-                    break;  
+                    break; 
+                case "Laporan 6 (CSV)":
+                        htmlContent = new StringBuilder();
+                        htmlContent.append(                             
+                            "Nomor RM;Nama Pasien;Tgl.Masuk;Tgl.Keluar;Nama Dokter;Dokter Anestesi;Dokter Anak;Kode;Kategori;Nama Unit;Ruangan;Nama Tindakan;Frekuensi (Jumlah);Jasa Sarana;Jasa Pelayanan;Tarif;Total Jasa Sarana;Total Jasa Pelayanan;Total;Tgl.Transaksi\n"
+                        ); 
+                        for(i=0;i<tabMode.getRowCount();i++){  
+                            try {
+                                js=tabMode.getValueAt(i,13).toString();
+                            } catch (Exception e) {
+                                js="";
+                            }
+                            try {
+                                jm=tabMode.getValueAt(i,14).toString();
+                            } catch (Exception e) {
+                                jm="";
+                            }
+                            try {
+                                tarif=tabMode.getValueAt(i,15).toString();
+                            } catch (Exception e) {
+                                tarif="";
+                            }
+                            try {
+                                totalsaranas=tabMode.getValueAt(i,16).toString();
+                            } catch (Exception e) {
+                                totalsaranas="";
+                            }
+                            try {
+                                totaljms=tabMode.getValueAt(i,17).toString();
+                            } catch (Exception e) {
+                                totaljms="";
+                            }
+                            try {
+                                totalbayars=tabMode.getValueAt(i,18).toString();
+                            } catch (Exception e) {
+                                totalbayars="";
+                            }
+
+                            htmlContent.append(                             
+                                ""+tabMode.getValueAt(i,0).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,1).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,2).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,3).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,4).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,5).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,6).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,7).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,8).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,9).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,10).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,11).toString().replaceAll("'","`")+";"+tabMode.getValueAt(i,12).toString().replaceAll("'","`")+";"+js+";"+jm+";"+tarif+";"+totalsaranas+";"+totaljms+";"+totalbayars+";"+tabMode.getValueAt(i,19).toString().replaceAll("'","`")+"\n"
+                            ); 
+                        }            
+
+                        f = new File("DetailJMDokter2.csv");            
+                        bw = new BufferedWriter(new FileWriter(f));            
+                        bw.write(htmlContent.toString());
+
+                        bw.close();                         
+                        Desktop.getDesktop().browse(f.toURI());
+                    break; 
             }                 
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
