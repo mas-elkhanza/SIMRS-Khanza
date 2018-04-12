@@ -40,7 +40,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
     private PreparedStatement psreg,pskamar,pstindakan;
     private ResultSet rsreg,rskamar,rstindakan;
     private double totalsarana=0,totaljm=0,totalbayar=0;   
-    private String totalsaranas="",totaljms="",totalbayars="",js="",jm="",tarif="";
+    private String totalsaranas="",totaljms="",totalbayars="",js="",jm="",tarif="",pilihan="";
     private final DefaultTableModel tabMode;
     private StringBuilder htmlContent;
 
@@ -476,113 +476,448 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             );
             bg.close();
             
-            htmlContent = new StringBuilder();
-            htmlContent.append(                             
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Nomor RM</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>&nbsp;&nbsp;Tgl.Masuk&nbsp;&nbsp;</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>&nbsp;&nbsp;Tgl.Keluar&nbsp;&nbsp;</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Dokter</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anestesi</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anak</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Kode</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%'>Kategori</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Nama Unit</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='9%'>Ruangan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='12%'>Nama Tindakan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Frekuensi (Jumlah)</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Pelayanan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Tarif</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Sarana</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Pelayanan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Tgl.Transaksi</td>"+
-                "</tr>"
-            ); 
-            for(i=0;i<tabMode.getRowCount();i++){  
-                try {
-                    js=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,13).toString()));
-                } catch (Exception e) {
-                    js="";
-                }
-                try {
-                    jm=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,14).toString()));
-                } catch (Exception e) {
-                    jm="";
-                }
-                try {
-                    tarif=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,15).toString()));
-                } catch (Exception e) {
-                    tarif="";
-                }
-                try {
-                    totalsaranas=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,16).toString()));
-                } catch (Exception e) {
-                    totalsaranas="";
-                }
-                try {
-                    totaljms=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,17).toString()));
-                } catch (Exception e) {
-                    totaljms="";
-                }
-                try {
-                    totalbayars=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,18).toString()));
-                } catch (Exception e) {
-                    totalbayars="";
-                }
-                
-                htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='top'>"+tabMode.getValueAt(i,0).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top'>"+tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top'>"+tabMode.getValueAt(i,4).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top'>"+tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top'>"+tabMode.getValueAt(i,6).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,7).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top'>"+tabMode.getValueAt(i,8).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top'>"+tabMode.getValueAt(i,9).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top'>"+tabMode.getValueAt(i,10).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top'>"+tabMode.getValueAt(i,11).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,12).toString().replaceAll("'","`")+"</td>"+
-                        "<td valign='top' align='right'>"+js+"</td>"+
-                        "<td valign='top' align='right'>"+jm+"</td>"+
-                        "<td valign='top' align='right'>"+tarif+"</td>"+
-                        "<td valign='top' align='right'>"+totalsaranas+"</td>"+
-                        "<td valign='top' align='right'>"+totaljms+"</td>"+
-                        "<td valign='top' align='right'>"+totalbayars+"</td>"+
-                        "<td valign='top' align='center'>"+tabMode.getValueAt(i,19).toString().replaceAll("'","`")+"</td>"+
-                    "</tr>"
-                ); 
-            }            
+            File f;            
+            BufferedWriter bw; 
             
-            File f = new File("DetailJMDokter2.html");            
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write("<html>"+
-                        "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
-                        "<body>"+
-                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='center'>"+
-                                        "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
-                                        var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
-                                        var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DETAIL JM DOKTER PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
-                                    "</td>"+
-                               "</tr>"+
-                            "</table>"+
-                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                htmlContent.toString()+
-                            "</table>"+
-                        "</body>"+                   
-                     "</html>"
-            );
-            
-            bw.close();                         
-            Desktop.getDesktop().browse(f.toURI());
+            pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Laporan Penjualan",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1","Laporan 2","Laporan 3","Laporan 4"},"Laporan 1");
+            switch (pilihan) {
+                case "Laporan 1":
+                        htmlContent = new StringBuilder();
+                        htmlContent.append(                             
+                            "<tr class='isi'>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Nomor RM</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Pasien</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>&nbsp;&nbsp;Tgl.Masuk&nbsp;&nbsp;</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>&nbsp;&nbsp;Tgl.Keluar&nbsp;&nbsp;</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Dokter</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anestesi</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anak</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Kode</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%'>Kategori</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Nama Unit</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='9%'>Ruangan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='12%'>Nama Tindakan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Frekuensi (Jumlah)</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Sarana</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Pelayanan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Tarif</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Sarana</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Pelayanan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Tgl.Transaksi</td>"+
+                            "</tr>"
+                        ); 
+                        for(i=0;i<tabMode.getRowCount();i++){  
+                            try {
+                                js=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,13).toString()));
+                            } catch (Exception e) {
+                                js="";
+                            }
+                            try {
+                                jm=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,14).toString()));
+                            } catch (Exception e) {
+                                jm="";
+                            }
+                            try {
+                                tarif=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,15).toString()));
+                            } catch (Exception e) {
+                                tarif="";
+                            }
+                            try {
+                                totalsaranas=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,16).toString()));
+                            } catch (Exception e) {
+                                totalsaranas="";
+                            }
+                            try {
+                                totaljms=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,17).toString()));
+                            } catch (Exception e) {
+                                totaljms="";
+                            }
+                            try {
+                                totalbayars=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,18).toString()));
+                            } catch (Exception e) {
+                                totalbayars="";
+                            }
+
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,0).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,4).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,6).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,7).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,8).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,9).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,10).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,11).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,12).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='right'>"+js+"</td>"+
+                                    "<td valign='top' align='right'>"+jm+"</td>"+
+                                    "<td valign='top' align='right'>"+tarif+"</td>"+
+                                    "<td valign='top' align='right'>"+totalsaranas+"</td>"+
+                                    "<td valign='top' align='right'>"+totaljms+"</td>"+
+                                    "<td valign='top' align='right'>"+totalbayars+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,19).toString().replaceAll("'","`")+"</td>"+
+                                "</tr>"
+                            ); 
+                        }            
+
+                        f = new File("DetailJMDokter2.html");            
+                        bw = new BufferedWriter(new FileWriter(f));            
+                        bw.write("<html>"+
+                                    "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                    "<body>"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td valign='top' align='center'>"+
+                                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
+                                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
+                                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
+                                                    "<font size='2' face='Tahoma'>DETAIL JM DOKTER PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                "</td>"+
+                                           "</tr>"+
+                                        "</table>"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            htmlContent.toString()+
+                                        "</table>"+
+                                    "</body>"+                   
+                                 "</html>"
+                        );
+
+                        bw.close();                         
+                        Desktop.getDesktop().browse(f.toURI());
+                    break;
+                case "Laporan 2":
+                        htmlContent = new StringBuilder();
+                        htmlContent.append(                             
+                            "<tr class='isi'>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Nomor RM</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Pasien</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>&nbsp;&nbsp;Tgl.Masuk&nbsp;&nbsp;</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>&nbsp;&nbsp;Tgl.Keluar&nbsp;&nbsp;</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Dokter</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anestesi</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anak</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Kode</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%'>Kategori</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Nama Unit</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='9%'>Ruangan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='12%'>Nama Tindakan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Frekuensi (Jumlah)</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Sarana</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Pelayanan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Tarif</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Sarana</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Pelayanan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Tgl.Transaksi</td>"+
+                            "</tr>"
+                        ); 
+                        for(i=0;i<tabMode.getRowCount();i++){  
+                            try {
+                                js=tabMode.getValueAt(i,13).toString();
+                            } catch (Exception e) {
+                                js="";
+                            }
+                            try {
+                                jm=tabMode.getValueAt(i,14).toString();
+                            } catch (Exception e) {
+                                jm="";
+                            }
+                            try {
+                                tarif=tabMode.getValueAt(i,15).toString();
+                            } catch (Exception e) {
+                                tarif="";
+                            }
+                            try {
+                                totalsaranas=tabMode.getValueAt(i,16).toString();
+                            } catch (Exception e) {
+                                totalsaranas="";
+                            }
+                            try {
+                                totaljms=tabMode.getValueAt(i,17).toString();
+                            } catch (Exception e) {
+                                totaljms="";
+                            }
+                            try {
+                                totalbayars=tabMode.getValueAt(i,18).toString();
+                            } catch (Exception e) {
+                                totalbayars="";
+                            }
+
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,0).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,4).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,6).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,7).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,8).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,9).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,10).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,11).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,12).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='right'>"+js+"</td>"+
+                                    "<td valign='top' align='right'>"+jm+"</td>"+
+                                    "<td valign='top' align='right'>"+tarif+"</td>"+
+                                    "<td valign='top' align='right'>"+totalsaranas+"</td>"+
+                                    "<td valign='top' align='right'>"+totaljms+"</td>"+
+                                    "<td valign='top' align='right'>"+totalbayars+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,19).toString().replaceAll("'","`")+"</td>"+
+                                "</tr>"
+                            ); 
+                        }            
+
+                        f = new File("DetailJMDokter2.html");            
+                        bw = new BufferedWriter(new FileWriter(f));            
+                        bw.write("<html>"+
+                                    "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                    "<body>"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td valign='top' align='center'>"+
+                                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
+                                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
+                                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
+                                                    "<font size='2' face='Tahoma'>DETAIL JM DOKTER PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                "</td>"+
+                                           "</tr>"+
+                                        "</table>"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            htmlContent.toString()+
+                                        "</table>"+
+                                    "</body>"+                   
+                                 "</html>"
+                        );
+
+                        bw.close();                         
+                        Desktop.getDesktop().browse(f.toURI());
+                    break;  
+                case "Laporan 3":
+                        htmlContent = new StringBuilder();
+                        htmlContent.append(                             
+                            "<tr class='isi'>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Nomor RM</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Pasien</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>&nbsp;&nbsp;Tgl.Masuk&nbsp;&nbsp;</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>&nbsp;&nbsp;Tgl.Keluar&nbsp;&nbsp;</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Dokter</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anestesi</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anak</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Kode</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%'>Kategori</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Nama Unit</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='9%'>Ruangan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='12%'>Nama Tindakan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Frekuensi (Jumlah)</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Sarana</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Pelayanan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Tarif</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Sarana</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Pelayanan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Tgl.Transaksi</td>"+
+                            "</tr>"
+                        ); 
+                        for(i=0;i<tabMode.getRowCount();i++){  
+                            try {
+                                js=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,13).toString()));
+                            } catch (Exception e) {
+                                js="";
+                            }
+                            try {
+                                jm=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,14).toString()));
+                            } catch (Exception e) {
+                                jm="";
+                            }
+                            try {
+                                tarif=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,15).toString()));
+                            } catch (Exception e) {
+                                tarif="";
+                            }
+                            try {
+                                totalsaranas=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,16).toString()));
+                            } catch (Exception e) {
+                                totalsaranas="";
+                            }
+                            try {
+                                totaljms=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,17).toString()));
+                            } catch (Exception e) {
+                                totaljms="";
+                            }
+                            try {
+                                totalbayars=Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(i,18).toString()));
+                            } catch (Exception e) {
+                                totalbayars="";
+                            }
+
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,0).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,4).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,6).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,7).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,8).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,9).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,10).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,11).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,12).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='right'>"+js+"</td>"+
+                                    "<td valign='top' align='right'>"+jm+"</td>"+
+                                    "<td valign='top' align='right'>"+tarif+"</td>"+
+                                    "<td valign='top' align='right'>"+totalsaranas+"</td>"+
+                                    "<td valign='top' align='right'>"+totaljms+"</td>"+
+                                    "<td valign='top' align='right'>"+totalbayars+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,19).toString().replaceAll("'","`")+"</td>"+
+                                "</tr>"
+                            ); 
+                        }            
+
+                        f = new File("DetailJMDokter2.doc");            
+                        bw = new BufferedWriter(new FileWriter(f));            
+                        bw.write("<html>"+
+                                    "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                    "<body>"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td valign='top' align='center'>"+
+                                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
+                                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
+                                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
+                                                    "<font size='2' face='Tahoma'>DETAIL JM DOKTER PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                "</td>"+
+                                           "</tr>"+
+                                        "</table>"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            htmlContent.toString()+
+                                        "</table>"+
+                                    "</body>"+                   
+                                 "</html>"
+                        );
+
+                        bw.close();                         
+                        Desktop.getDesktop().browse(f.toURI());
+                    break;
+                case "Laporan 4":
+                        htmlContent = new StringBuilder();
+                        htmlContent.append(                             
+                            "<tr class='isi'>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Nomor RM</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Pasien</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>&nbsp;&nbsp;Tgl.Masuk&nbsp;&nbsp;</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>&nbsp;&nbsp;Tgl.Keluar&nbsp;&nbsp;</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Nama Dokter</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anestesi</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%'>Dokter Anak</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Kode</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%'>Kategori</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Nama Unit</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='9%'>Ruangan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='12%'>Nama Tindakan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Frekuensi (Jumlah)</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Sarana</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jasa Pelayanan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Tarif</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Sarana</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total Jasa Pelayanan</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Total</td>"+
+                                "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Tgl.Transaksi</td>"+
+                            "</tr>"
+                        ); 
+                        for(i=0;i<tabMode.getRowCount();i++){  
+                            try {
+                                js=tabMode.getValueAt(i,13).toString();
+                            } catch (Exception e) {
+                                js="";
+                            }
+                            try {
+                                jm=tabMode.getValueAt(i,14).toString();
+                            } catch (Exception e) {
+                                jm="";
+                            }
+                            try {
+                                tarif=tabMode.getValueAt(i,15).toString();
+                            } catch (Exception e) {
+                                tarif="";
+                            }
+                            try {
+                                totalsaranas=tabMode.getValueAt(i,16).toString();
+                            } catch (Exception e) {
+                                totalsaranas="";
+                            }
+                            try {
+                                totaljms=tabMode.getValueAt(i,17).toString();
+                            } catch (Exception e) {
+                                totaljms="";
+                            }
+                            try {
+                                totalbayars=tabMode.getValueAt(i,18).toString();
+                            } catch (Exception e) {
+                                totalbayars="";
+                            }
+
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,0).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,1).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,2).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,3).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,4).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,5).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,6).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,7).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,8).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,9).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,10).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top'>"+tabMode.getValueAt(i,11).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,12).toString().replaceAll("'","`")+"</td>"+
+                                    "<td valign='top' align='right'>"+js+"</td>"+
+                                    "<td valign='top' align='right'>"+jm+"</td>"+
+                                    "<td valign='top' align='right'>"+tarif+"</td>"+
+                                    "<td valign='top' align='right'>"+totalsaranas+"</td>"+
+                                    "<td valign='top' align='right'>"+totaljms+"</td>"+
+                                    "<td valign='top' align='right'>"+totalbayars+"</td>"+
+                                    "<td valign='top' align='center'>"+tabMode.getValueAt(i,19).toString().replaceAll("'","`")+"</td>"+
+                                "</tr>"
+                            ); 
+                        }            
+
+                        f = new File("DetailJMDokter2.doc");            
+                        bw = new BufferedWriter(new FileWriter(f));            
+                        bw.write("<html>"+
+                                    "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                    "<body>"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td valign='top' align='center'>"+
+                                                    "<font size='4' face='Tahoma'>"+var.getnamars()+"</font><br>"+
+                                                    var.getalamatrs()+", "+var.getkabupatenrs()+", "+var.getpropinsirs()+"<br>"+
+                                                    var.getkontakrs()+", E-mail : "+var.getemailrs()+"<br><br>"+
+                                                    "<font size='2' face='Tahoma'>DETAIL JM DOKTER PERIODE "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                "</td>"+
+                                           "</tr>"+
+                                        "</table>"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            htmlContent.toString()+
+                                        "</table>"+
+                                    "</body>"+                   
+                                 "</html>"
+                        );
+
+                        bw.close();                         
+                        Desktop.getDesktop().browse(f.toURI());
+                    break;  
+            }                 
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }     
