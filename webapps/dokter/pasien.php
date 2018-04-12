@@ -126,7 +126,70 @@ if(isset($_GET['id'])) {
                                 <dd><?php echo $umur; ?></dd>
                             </dl>
                         </div>
-                   	    <form method="post" action="">
+                        <div class="header">
+                            <h2>
+                                Catatan Medis
+                            </h2>
+                        </div>
+                        <div class="body">                          
+                            <table id="riwayatmedis" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Poliklinik</th>
+                                        <th>Keluhan</th>
+                                        <th>Pemeriksaan</th>
+                                        <th>Diagnosa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php 
+                                $q_kunj = query ("SELECT a.tgl_registrasi, b.nm_poli, c.keluhan, c.pemeriksaan, a.no_rawat FROM reg_periksa a, poliklinik b, pemeriksaan_ralan c WHERE a.no_rkm_medis = '$no_rkm_medis' AND a.kd_poli = b.kd_poli AND a.no_rawat = c.no_rawat ORDER BY a.tgl_registrasi DESC");
+
+                                if(num_rows($q_kunj) >= 1) {
+                                    while ($data_kunj = fetch_array($q_kunj)) { 
+                                        $tanggal   = $data_kunj[0];
+                                        $nama_poli = $data_kunj[1];
+                                        $keluhan = $data_kunj[2];
+                                        $pemeriksaan = $data_kunj[3];
+                                        $no_rawat = $data_kunj[4];
+                                ?>
+                                    <tr>
+                                        <td><?php echo $tanggal; ?></td>
+                                        <td><?php echo $nama_poli; ?></td>
+                                        <td><?php echo $keluhan; ?></td>
+                                        <td><?php echo $pemeriksaan; ?></td>
+                                        <td>
+                                            <ul style="list-style:none;">
+                                            <?php 
+                                            $sql_dx = query("SELECT a.kd_penyakit, a.nm_penyakit FROM penyakit a, diagnosa_pasien b WHERE a.kd_penyakit = b.kd_penyakit AND b.no_rawat = '$no_rawat'");
+                	                        $no=1;
+                                            while ($row_dx = fetch_array($sql_dx)) { 
+                                                echo '<li>'.$no.'. '.$row_dx[1].' ('.$row_dx[0].')</li>';
+		                                        $no++;
+                                            }              
+                                            ?>     
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                <?php 
+                                    }
+                                } else { 
+                                ?>
+                                    <tr>
+                                        <td>Blank..!!</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <?php
+                                } 
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    	<form method="post" action="">
                         <div class="header">
                             <h2>
                                 Detail e-Diagnosa

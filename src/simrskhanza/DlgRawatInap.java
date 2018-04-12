@@ -3432,7 +3432,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     public void setNoRm(String norwt,Date awal,Date akhir) {
         TNoRw.setText(norwt);
-        KdDok.setText(Sequel.cariIsi("select kd_dokter from reg_periksa where dpjp_ranap=?",norwt));
+        KdDok.setText(Sequel.cariIsi("select kd_dokter from dpjp_ranap where no_rawat=?",norwt));
+        if(KdDok.getText().equals("")){
+            KdDok.setText(Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",norwt));
+        }
         isRawat();
         isPsien();
         DTPCari1.setDate(awal);
