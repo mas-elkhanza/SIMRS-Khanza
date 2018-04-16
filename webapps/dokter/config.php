@@ -68,10 +68,9 @@ $getSettings = query("SELECT * FROM setting");
 $dataSettings = fetch_assoc($getSettings);
 
 // Get jenis poli
-$jenispoli=isset($_SESSION['jenis_poli'])?$_SESSION['jenis_poli']:NULL;
-$query_poli = query("SELECT * from poliklinik WHERE kd_poli = '".$jenispoli."'");
+$query_poli = query("SELECT * from poliklinik WHERE kd_poli = 'ANA'");
 $data_poli = fetch_array($query_poli);
-if ($jenispoli == $data_poli['0']) {
+if ('ANA' == $data_poli['0']) {
     $nmpoli = $data_poli['1'];
 }
 
@@ -82,7 +81,7 @@ function clean($string) {
 
 // redirect to another page
 function redirect($location) {
-    return header("Location:".$location);
+    return header("Location: {$location}");
 }
 
 // add message to session
