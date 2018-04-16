@@ -437,6 +437,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
+        scrollPane1.setComponentPopupMenu(jPopupMenu1);
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
@@ -452,6 +453,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
             }
         ));
         tbDetail.setToolTipText("");
+        tbDetail.setComponentPopupMenu(jPopupMenu1);
         tbDetail.setName("tbDetail"); // NOI18N
         scrollPane1.setViewportView(tbDetail);
 
