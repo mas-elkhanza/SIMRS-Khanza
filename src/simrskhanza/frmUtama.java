@@ -275,6 +275,7 @@ import laporan.DlgRl36;
 import laporan.DlgRl37;
 import laporan.DlgRl38;
 import laporan.DlgSensusHarianPoli;
+import laporan.frmPengaduan;
 import parkir.DlgParkirBarcode;
 import parkir.DlgParkirJenis;
 import parkir.DlgParkirMasuk;
@@ -765,6 +766,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnStokKeluarMedis = new widget.ButtonBig();
         btnGrafikRadRalanPerBulan = new widget.ButtonBig();
         btnJMDetailDokter2 = new widget.ButtonBig();
+        btnPengaduan = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4742,6 +4744,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnJMDetailDokter2);
 
+        btnPengaduan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_message_add_17398.png"))); // NOI18N
+        btnPengaduan.setText("Pengaduan/Chat");
+        btnPengaduan.setIconTextGap(0);
+        btnPengaduan.setName("btnPengaduan"); // NOI18N
+        btnPengaduan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPengaduan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPengaduanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPengaduan);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4750,7 +4764,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05/04/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16/04/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -10061,6 +10075,14 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnJMDetailDokter2ActionPerformed
 
+    private void btnPengaduanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPengaduanActionPerformed
+        frmPengaduan pengaduan=new frmPengaduan();
+        pengaduan.setSize(590,650);
+        pengaduan.setLocationRelativeTo(null);
+        pengaduan.setVisible(true);
+        DlgHome.dispose();
+    }//GEN-LAST:event_btnPengaduanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10273,6 +10295,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPembelianIpsrs;
     private widget.ButtonBig btnPemesanan;
     private widget.ButtonBig btnPengadaanIPSRSPerTanggal;
+    private widget.ButtonBig btnPengaduan;
     private widget.ButtonBig btnPengambilanPenunjangUTD;
     private widget.ButtonBig btnPengambilanPenunjangUTD2;
     private widget.ButtonBig btnPengambilanUTD;
@@ -12006,6 +12029,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnBerkasDigitalPerawatan);
                 jmlmenu++;
             } 
+            
+            if(var.getpengaduan_pasien()==true){
+                Panelmenu.add(btnPengaduan);
+                jmlmenu++;
+            } 
         }else if(cmbMenu.getSelectedIndex()==12){  
             jmlmenu=0;
             if(var.getpengambilan_utd2()==true){
@@ -13535,6 +13563,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getberkas_digital_perawatan()==true){
             Panelmenu.add(btnBerkasDigitalPerawatan);
+            jmlmenu++;
+        } 
+        
+        if(var.getpengaduan_pasien()==true){
+            Panelmenu.add(btnPengaduan);
             jmlmenu++;
         } 
 
@@ -15561,6 +15594,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getberkas_digital_perawatan()==true){
             if(btnBerkasDigitalPerawatan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBerkasDigitalPerawatan);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(var.getpengaduan_pasien()==true){
+            if(btnPengaduan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPengaduan);
                 jmlmenu++;
             }                
         } 
