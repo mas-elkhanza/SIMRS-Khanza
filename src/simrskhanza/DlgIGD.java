@@ -5736,13 +5736,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnHapusTagihanOperasi.setEnabled(var.getoperasi());
         MnHapusObatOperasi.setEnabled(var.getoperasi());  
         ppCatatanPasien.setEnabled(var.getcatatan_pasien());
-        ppBerkas.setEnabled(var.getkasir_ralan());
-        MnSudah.setEnabled(var.gettindakan_ralan());
-        MnBelum.setEnabled(var.gettindakan_ralan());
-        MnBatal.setEnabled(var.getregistrasi());
-        MnDirujuk.setEnabled(var.getrujukan_keluar());
-        MnDIrawat.setEnabled(var.getregistrasi());
-        MnMeninggal.setEnabled(var.getpasien_meninggal());
            
         ppBerkasDigital.setEnabled(var.getberkas_digital_perawatan()); 
     }

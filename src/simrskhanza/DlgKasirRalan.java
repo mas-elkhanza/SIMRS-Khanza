@@ -6004,14 +6004,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         ppBerkasDigital.setEnabled(var.getberkas_digital_perawatan());        
         ppBerkasDigital1.setEnabled(var.getberkas_digital_perawatan());        
         
-        ppBerkas.setEnabled(var.getkasir_ralan());
-        MnSudah.setEnabled(var.gettindakan_ralan());
-        MnBelum.setEnabled(var.gettindakan_ralan());
-        MnBatal.setEnabled(var.getregistrasi());
-        MnDirujuk.setEnabled(var.getrujukan_keluar());
-        MnDIrawat.setEnabled(var.getregistrasi());
-        MnMeninggal.setEnabled(var.getpasien_meninggal());
-        
         if(var.getkode().equals("Admin Utama")){
             MnHapusData.setEnabled(true);
         }else{
