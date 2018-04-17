@@ -4980,6 +4980,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void MnViaDukcapilNikAcehActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnViaDukcapilNikAcehActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         cekViaDukcapilAceh.tampil(TKtp.getText());
+        //System.out.println("Nama : "+cekViaDukcapilAceh.NAMA_LGKP);
         TNm.setText(cekViaDukcapilAceh.NAMA_LGKP);
         Kabupaten.setText(cekViaDukcapilAceh.KAB_NAME);
         KabupatenPj.setText(cekViaDukcapilAceh.KAB_NAME);
