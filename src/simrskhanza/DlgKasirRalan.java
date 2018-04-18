@@ -54,7 +54,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private Date cal=new Date();
     private DlgRujukanPoliInternal dlgrjk=new DlgRujukanPoliInternal(null,false);
-    private String bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),nonota="",
+    private String caripenjab="",filter="no",bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),nonota="",
             sqlpsotomatis2="insert into rawat_jl_dr values (?,?,?,?,?,?,?,?,?,?,?)",
             sqlpsotomatis2petugas="insert into rawat_jl_pr values (?,?,?,?,?,?,?,?,?,?,?)",
             sqlpsotomatis2dokterpetugas="insert into rawat_jl_drpr values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
@@ -292,8 +292,13 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(var.getform().equals("DlgKasirRalan")){
                     if(billing.penjab.getTable().getSelectedRow()!= -1){
-                        kdpenjab.setText(billing.penjab.getTable().getValueAt(billing.penjab.getTable().getSelectedRow(),1).toString());
-                        nmpenjab.setText(billing.penjab.getTable().getValueAt(billing.penjab.getTable().getSelectedRow(),2).toString());
+                        if(filter=="no"){
+                            kdpenjab.setText(billing.penjab.getTable().getValueAt(billing.penjab.getTable().getSelectedRow(),1).toString());
+                            nmpenjab.setText(billing.penjab.getTable().getValueAt(billing.penjab.getTable().getSelectedRow(),2).toString());
+                        }else if(filter=="yes"){
+                            caripenjab=billing.penjab.getTable().getValueAt(billing.penjab.getTable().getSelectedRow(),1).toString();
+                            TabRawatMouseClicked(null);
+                        }                            
                     } 
                     kdpenjab.requestFocus();
                 }
@@ -449,6 +454,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnUrutRegAsc1 = new javax.swing.JMenuItem();
         ppBerkasDigital = new javax.swing.JMenuItem();
         ppRiwayat = new javax.swing.JMenuItem();
+        ppTampilkanSeleksi = new javax.swing.JMenuItem();
         TNoRw = new widget.TextBox();
         WindowObatBhp = new javax.swing.JDialog();
         internalFrame2 = new widget.InternalFrame();
@@ -2141,6 +2147,23 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppRiwayat);
 
+        ppTampilkanSeleksi.setBackground(new java.awt.Color(255, 255, 255));
+        ppTampilkanSeleksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppTampilkanSeleksi.setForeground(new java.awt.Color(90, 120, 80));
+        ppTampilkanSeleksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppTampilkanSeleksi.setText("Tampilkan Per Jenis Bayar");
+        ppTampilkanSeleksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppTampilkanSeleksi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppTampilkanSeleksi.setIconTextGap(5);
+        ppTampilkanSeleksi.setName("ppTampilkanSeleksi"); // NOI18N
+        ppTampilkanSeleksi.setPreferredSize(new java.awt.Dimension(360, 25));
+        ppTampilkanSeleksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppTampilkanSeleksiBtnPrintActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppTampilkanSeleksi);
+
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
         TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -3171,7 +3194,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel15);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-04-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3190,7 +3213,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel17);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-04-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3360,6 +3383,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         }
         
         TCari.setText("");
+        caripenjab="";
+        filter="no";
         if(TabRawat.getSelectedIndex()==0){
             tampilkasir();
         }else if(TabRawat.getSelectedIndex()==1){
@@ -4168,6 +4193,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     }//GEN-LAST:event_MnHapusObatOperasiActionPerformed
 
     private void MnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenjabActionPerformed
+        filter="no";
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();
@@ -5457,6 +5483,16 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppBerkasDigital1BtnPrintActionPerformed
 
+    private void ppTampilkanSeleksiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTampilkanSeleksiBtnPrintActionPerformed
+        var.setform("DlgKasirRalan");
+        filter="yes";
+        billing.penjab.emptTeks();
+        billing.penjab.isCek();
+        billing.penjab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        billing.penjab.setLocationRelativeTo(internalFrame1);
+        billing.penjab.setVisible(true);
+    }//GEN-LAST:event_ppTampilkanSeleksiBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -5678,6 +5714,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem ppCatatanPasien;
     private javax.swing.JMenuItem ppRiwayat;
     private javax.swing.JMenuItem ppRiwayat1;
+    private javax.swing.JMenuItem ppTampilkanSeleksi;
     private widget.Table tbKasirRalan;
     private widget.Table tbKasirRalan2;
     // End of variables declaration//GEN-END:variables
@@ -5691,98 +5728,111 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 "reg_periksa.status_bayar from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "+
                 "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_poli=poliklinik.kd_poli  where  "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_reg like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.no_rawat like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.tgl_registrasi like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.kd_dokter like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  dokter.nm_dokter like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.no_rkm_medis like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  pasien.nm_pasien like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  poliklinik.nm_poli like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.p_jawab like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  penjab.png_jawab like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.almt_pj like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.status_bayar like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.hubunganpj like ? order by "+order);
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_reg like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.no_rawat like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.tgl_registrasi like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.kd_dokter like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  dokter.nm_dokter like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.no_rkm_medis like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  pasien.nm_pasien like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  poliklinik.nm_poli like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.p_jawab like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  penjab.png_jawab like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.almt_pj like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.status_bayar like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.hubunganpj like ? order by "+order);
             try{
-                pskasir.setString(1,"%"+CrPoli.getText()+"%");
-                pskasir.setString(2,"%"+CrPtg.getText()+"%");
-                pskasir.setString(3,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(6,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(7,"%"+CrPoli.getText()+"%");
-                pskasir.setString(8,"%"+CrPtg.getText()+"%");
-                pskasir.setString(9,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(12,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(13,"%"+CrPoli.getText()+"%");
-                pskasir.setString(14,"%"+CrPtg.getText()+"%");
-                pskasir.setString(15,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(18,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(19,"%"+CrPoli.getText()+"%");
-                pskasir.setString(20,"%"+CrPtg.getText()+"%");
-                pskasir.setString(21,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(24,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(25,"%"+CrPoli.getText()+"%");
-                pskasir.setString(26,"%"+CrPtg.getText()+"%");
-                pskasir.setString(27,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(30,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(31,"%"+CrPoli.getText()+"%");
-                pskasir.setString(32,"%"+CrPtg.getText()+"%");
-                pskasir.setString(33,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(34,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(35,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(36,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(1,"%"+caripenjab+"%");
+                pskasir.setString(2,"%"+CrPoli.getText()+"%");
+                pskasir.setString(3,"%"+CrPtg.getText()+"%");
+                pskasir.setString(4,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(7,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(8,"%"+caripenjab+"%");
+                pskasir.setString(9,"%"+CrPoli.getText()+"%");
+                pskasir.setString(10,"%"+CrPtg.getText()+"%");
+                pskasir.setString(11,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(12,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(13,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(14,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(15,"%"+caripenjab+"%");
+                pskasir.setString(16,"%"+CrPoli.getText()+"%");
+                pskasir.setString(17,"%"+CrPtg.getText()+"%");
+                pskasir.setString(18,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(21,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(22,"%"+caripenjab+"%");
+                pskasir.setString(23,"%"+CrPoli.getText()+"%");
+                pskasir.setString(24,"%"+CrPtg.getText()+"%");
+                pskasir.setString(25,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(26,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(27,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(28,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(29,"%"+caripenjab+"%");
+                pskasir.setString(30,"%"+CrPoli.getText()+"%");
+                pskasir.setString(31,"%"+CrPtg.getText()+"%");
+                pskasir.setString(32,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(33,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(34,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(35,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(36,"%"+caripenjab+"%");
                 pskasir.setString(37,"%"+CrPoli.getText()+"%");
                 pskasir.setString(38,"%"+CrPtg.getText()+"%");
                 pskasir.setString(39,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 pskasir.setString(40,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 pskasir.setString(41,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 pskasir.setString(42,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(43,"%"+CrPoli.getText()+"%");
-                pskasir.setString(44,"%"+CrPtg.getText()+"%");
-                pskasir.setString(45,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(46,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(47,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(48,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(49,"%"+CrPoli.getText()+"%");
-                pskasir.setString(50,"%"+CrPtg.getText()+"%");
-                pskasir.setString(51,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(52,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(53,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(54,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(55,"%"+CrPoli.getText()+"%");
-                pskasir.setString(56,"%"+CrPtg.getText()+"%");
-                pskasir.setString(57,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(58,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(59,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(60,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(61,"%"+CrPoli.getText()+"%");
-                pskasir.setString(62,"%"+CrPtg.getText()+"%");
-                pskasir.setString(63,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(64,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(65,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(66,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(67,"%"+CrPoli.getText()+"%");
-                pskasir.setString(68,"%"+CrPtg.getText()+"%");
-                pskasir.setString(69,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(70,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(71,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(72,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(73,"%"+CrPoli.getText()+"%");
-                pskasir.setString(74,"%"+CrPtg.getText()+"%");
-                pskasir.setString(75,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(76,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(77,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(78,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(43,"%"+caripenjab+"%");
+                pskasir.setString(44,"%"+CrPoli.getText()+"%");
+                pskasir.setString(45,"%"+CrPtg.getText()+"%");
+                pskasir.setString(46,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(47,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(48,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(49,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(50,"%"+caripenjab+"%");
+                pskasir.setString(51,"%"+CrPoli.getText()+"%");
+                pskasir.setString(52,"%"+CrPtg.getText()+"%");
+                pskasir.setString(53,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(54,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(55,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(56,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(57,"%"+caripenjab+"%");
+                pskasir.setString(58,"%"+CrPoli.getText()+"%");
+                pskasir.setString(59,"%"+CrPtg.getText()+"%");
+                pskasir.setString(60,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(61,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(62,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(63,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(64,"%"+caripenjab+"%");
+                pskasir.setString(65,"%"+CrPoli.getText()+"%");
+                pskasir.setString(66,"%"+CrPtg.getText()+"%");
+                pskasir.setString(67,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(68,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(69,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(70,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(71,"%"+caripenjab+"%");
+                pskasir.setString(72,"%"+CrPoli.getText()+"%");
+                pskasir.setString(73,"%"+CrPtg.getText()+"%");
+                pskasir.setString(74,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(75,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(76,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(77,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(78,"%"+caripenjab+"%");
+                pskasir.setString(79,"%"+CrPoli.getText()+"%");
+                pskasir.setString(80,"%"+CrPtg.getText()+"%");
+                pskasir.setString(81,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(82,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(83,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(84,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(85,"%"+caripenjab+"%");
+                pskasir.setString(86,"%"+CrPoli.getText()+"%");
+                pskasir.setString(87,"%"+CrPtg.getText()+"%");
+                pskasir.setString(88,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(89,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(90,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(91,"%"+TCari.getText().trim()+"%");
                 rskasir=pskasir.executeQuery();
                 while(rskasir.next()){
                     tabModekasir.addRow(new String[] {rskasir.getString(5),
@@ -5826,91 +5876,103 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 "on rujukan_internal_poli.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
                 "and rujukan_internal_poli.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "and rujukan_internal_poli.kd_poli=poliklinik.kd_poli  where  "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_reg like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.no_rawat like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.tgl_registrasi like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  rujukan_internal_poli.kd_dokter like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  dokter.nm_dokter like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.no_rkm_medis like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  pasien.nm_pasien like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  poliklinik.nm_poli like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.p_jawab like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  penjab.png_jawab like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.almt_pj like ? or "+
-                " reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.hubunganpj like ? order by "+order);
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and reg_periksa.no_reg like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.no_rawat like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.tgl_registrasi like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  rujukan_internal_poli.kd_dokter like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  dokter.nm_dokter like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.no_rkm_medis like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  pasien.nm_pasien like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  poliklinik.nm_poli like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.p_jawab like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  penjab.png_jawab like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.almt_pj like ? or "+
+                " reg_periksa.kd_pj like ? and reg_periksa.status_lanjut='Ralan' and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.tgl_registrasi between ? and ? and  reg_periksa.hubunganpj like ? order by "+order);
             try{
-                pskasir.setString(1,"%"+CrPoli.getText()+"%");
-                pskasir.setString(2,"%"+CrPtg.getText()+"%");
-                pskasir.setString(3,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(4,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(5,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(6,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(7,"%"+CrPoli.getText()+"%");
-                pskasir.setString(8,"%"+CrPtg.getText()+"%");
-                pskasir.setString(9,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(10,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(11,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(12,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(13,"%"+CrPoli.getText()+"%");
-                pskasir.setString(14,"%"+CrPtg.getText()+"%");
-                pskasir.setString(15,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(16,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(17,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(18,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(19,"%"+CrPoli.getText()+"%");
-                pskasir.setString(20,"%"+CrPtg.getText()+"%");
-                pskasir.setString(21,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(24,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(25,"%"+CrPoli.getText()+"%");
-                pskasir.setString(26,"%"+CrPtg.getText()+"%");
-                pskasir.setString(27,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(30,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(31,"%"+CrPoli.getText()+"%");
-                pskasir.setString(32,"%"+CrPtg.getText()+"%");
-                pskasir.setString(33,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(34,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(35,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(36,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(1,"%"+caripenjab+"%");
+                pskasir.setString(2,"%"+CrPoli.getText()+"%");
+                pskasir.setString(3,"%"+CrPtg.getText()+"%");
+                pskasir.setString(4,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(5,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(6,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(7,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(8,"%"+caripenjab+"%");
+                pskasir.setString(9,"%"+CrPoli.getText()+"%");
+                pskasir.setString(10,"%"+CrPtg.getText()+"%");
+                pskasir.setString(11,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(12,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(13,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(14,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(15,"%"+caripenjab+"%");
+                pskasir.setString(16,"%"+CrPoli.getText()+"%");
+                pskasir.setString(17,"%"+CrPtg.getText()+"%");
+                pskasir.setString(18,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(19,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(20,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(21,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(22,"%"+caripenjab+"%");
+                pskasir.setString(23,"%"+CrPoli.getText()+"%");
+                pskasir.setString(24,"%"+CrPtg.getText()+"%");
+                pskasir.setString(25,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(26,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(27,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(28,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(29,"%"+caripenjab+"%");
+                pskasir.setString(30,"%"+CrPoli.getText()+"%");
+                pskasir.setString(31,"%"+CrPtg.getText()+"%");
+                pskasir.setString(32,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(33,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(34,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(35,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(36,"%"+caripenjab+"%");
                 pskasir.setString(37,"%"+CrPoli.getText()+"%");
                 pskasir.setString(38,"%"+CrPtg.getText()+"%");
                 pskasir.setString(39,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 pskasir.setString(40,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 pskasir.setString(41,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 pskasir.setString(42,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(43,"%"+CrPoli.getText()+"%");
-                pskasir.setString(44,"%"+CrPtg.getText()+"%");
-                pskasir.setString(45,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(46,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(47,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(48,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(49,"%"+CrPoli.getText()+"%");
-                pskasir.setString(50,"%"+CrPtg.getText()+"%");
-                pskasir.setString(51,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(52,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(53,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(54,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(55,"%"+CrPoli.getText()+"%");
-                pskasir.setString(56,"%"+CrPtg.getText()+"%");
-                pskasir.setString(57,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(58,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(59,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(60,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(61,"%"+CrPoli.getText()+"%");
-                pskasir.setString(62,"%"+CrPtg.getText()+"%");
-                pskasir.setString(63,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(64,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(65,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(66,"%"+TCari.getText().trim()+"%");
-                pskasir.setString(67,"%"+CrPoli.getText()+"%");
-                pskasir.setString(68,"%"+CrPtg.getText()+"%");
-                pskasir.setString(69,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                pskasir.setString(70,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                pskasir.setString(71,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                pskasir.setString(72,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(43,"%"+caripenjab+"%");
+                pskasir.setString(44,"%"+CrPoli.getText()+"%");
+                pskasir.setString(45,"%"+CrPtg.getText()+"%");
+                pskasir.setString(46,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(47,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(48,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(49,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(50,"%"+caripenjab+"%");
+                pskasir.setString(51,"%"+CrPoli.getText()+"%");
+                pskasir.setString(52,"%"+CrPtg.getText()+"%");
+                pskasir.setString(53,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(54,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(55,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(56,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(57,"%"+caripenjab+"%");
+                pskasir.setString(58,"%"+CrPoli.getText()+"%");
+                pskasir.setString(59,"%"+CrPtg.getText()+"%");
+                pskasir.setString(60,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(61,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(62,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(63,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(64,"%"+caripenjab+"%");
+                pskasir.setString(65,"%"+CrPoli.getText()+"%");
+                pskasir.setString(66,"%"+CrPtg.getText()+"%");
+                pskasir.setString(67,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(68,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(69,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(70,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(71,"%"+caripenjab+"%");
+                pskasir.setString(72,"%"+CrPoli.getText()+"%");
+                pskasir.setString(73,"%"+CrPtg.getText()+"%");
+                pskasir.setString(74,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(75,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(76,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(77,"%"+TCari.getText().trim()+"%");
+                pskasir.setString(78,"%"+caripenjab+"%");
+                pskasir.setString(79,"%"+CrPoli.getText()+"%");
+                pskasir.setString(80,"%"+CrPtg.getText()+"%");
+                pskasir.setString(81,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                pskasir.setString(82,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                pskasir.setString(83,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                pskasir.setString(84,"%"+TCari.getText().trim()+"%");
                 rskasir=pskasir.executeQuery();
                 while(rskasir.next()){
                     tabModekasir2.addRow(new String[] {
