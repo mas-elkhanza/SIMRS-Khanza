@@ -204,8 +204,10 @@ import grafikanalisa.GrafikKunjunganPerTanggal;
 import grafikanalisa.GrafikKunjunganPoli;
 import grafikanalisa.GrafikKunjunganRanapPerTahun;
 import grafikanalisa.GrafikLabRalanPerBulan;
+import grafikanalisa.GrafikLabRalanPerHari;
 import grafikanalisa.GrafikLabRalanPerTahun;
 import grafikanalisa.GrafikRadRalanPerBulan;
+import grafikanalisa.GrafikRadRalanPerHari;
 import grafikanalisa.GrafikRadRalanPerTahun;
 import grafikanalisa.GrafikStatusBatalRegPerBulan;
 import grafikanalisa.GrafikStatusBatalRegPerTahun;
@@ -767,6 +769,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikRadRalanPerBulan = new widget.ButtonBig();
         btnJMDetailDokter2 = new widget.ButtonBig();
         btnPengaduan = new widget.ButtonBig();
+        btnGrafikLabRalanPerHari = new widget.ButtonBig();
+        btnGrafikRadRalanPerHari = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4756,6 +4760,30 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPengaduan);
 
+        btnGrafikLabRalanPerHari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikLabRalanPerHari.setText("Kunjungan Lab Ralan Per Tanggal");
+        btnGrafikLabRalanPerHari.setIconTextGap(0);
+        btnGrafikLabRalanPerHari.setName("btnGrafikLabRalanPerHari"); // NOI18N
+        btnGrafikLabRalanPerHari.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikLabRalanPerHari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikLabRalanPerHariActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikLabRalanPerHari);
+
+        btnGrafikRadRalanPerHari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikRadRalanPerHari.setText("Kunjungan Rad Ralan Per Tanggal");
+        btnGrafikRadRalanPerHari.setIconTextGap(0);
+        btnGrafikRadRalanPerHari.setName("btnGrafikRadRalanPerHari"); // NOI18N
+        btnGrafikRadRalanPerHari.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikRadRalanPerHari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikRadRalanPerHariActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikRadRalanPerHari);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4764,7 +4792,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16/04/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/04/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -10084,6 +10112,28 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
     }//GEN-LAST:event_btnPengaduanActionPerformed
 
+    private void btnGrafikLabRalanPerHariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikLabRalanPerHariActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikLabRalanPerHari aplikasi=new GrafikLabRalanPerHari(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikLabRalanPerHariActionPerformed
+
+    private void btnGrafikRadRalanPerHariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikRadRalanPerHariActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikRadRalanPerHari aplikasi=new GrafikRadRalanPerHari(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikRadRalanPerHariActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10214,9 +10264,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikKunjunganPoli;
     private widget.ButtonBig btnGrafikKunjunganRanapPerTahun;
     private widget.ButtonBig btnGrafikLabRalanPerBulan;
+    private widget.ButtonBig btnGrafikLabRalanPerHari;
     private widget.ButtonBig btnGrafikLabRalanPerTahun;
     private widget.ButtonBig btnGrafikPerPerujuk;
     private widget.ButtonBig btnGrafikRadRalanPerBulan;
+    private widget.ButtonBig btnGrafikRadRalanPerHari;
     private widget.ButtonBig btnGrafikRadRalanPerTahun;
     private widget.ButtonBig btnGrafikStatusRegBatalPerBulan;
     private widget.ButtonBig btnGrafikStatusRegBatalPerTahun;
@@ -12207,6 +12259,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikRadRalanPerBulan);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_lab_ralanhari()==true){
+                Panelmenu.add(btnGrafikLabRalanPerHari);
+                jmlmenu++;
+            }
+            
+            if(var.getgrafik_rad_ralanhari()==true){
+                Panelmenu.add(btnGrafikRadRalanPerHari);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -13739,6 +13801,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getgrafik_rad_ralanbulan()==true){
             Panelmenu.add(btnGrafikRadRalanPerBulan);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_lab_ralanhari()==true){
+            Panelmenu.add(btnGrafikLabRalanPerHari);
+            jmlmenu++;
+        }
+
+        if(var.getgrafik_rad_ralanhari()==true){
+            Panelmenu.add(btnGrafikRadRalanPerHari);
             jmlmenu++;
         }
 
@@ -15840,6 +15912,20 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_rad_ralanbulan()==true){
             if(btnGrafikRadRalanPerBulan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikRadRalanPerBulan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_lab_ralanhari()==true){
+            if(btnGrafikLabRalanPerHari.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikLabRalanPerHari);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_rad_ralanhari()==true){
+            if(btnGrafikRadRalanPerHari.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikRadRalanPerHari);
                 jmlmenu++;
             }                
         }

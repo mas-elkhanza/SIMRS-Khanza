@@ -71,7 +71,7 @@ public final class var {
             bpjs_cek_spesialistik=false,bpjs_cek_ruangrawat=false,bpjs_cek_carakeluar=false,bpjs_cek_pasca_pulang=false,detail_tindakan_okvk=false,
             billing_parsial=false,bpjs_cek_nomor_rujukan_rs=false,bpjs_cek_rujukan_kartu_pcare=false,bpjs_cek_rujukan_kartu_rs=false,akses_depo_obat=false,
             bpjs_rujukan_keluar=false,grafik_lab_ralanbulan=false,pengeluaran_stok_apotek=false,grafik_rad_ralanbulan=false,detailjmdokter2=false,
-            pengaduan_pasien=false;
+            pengaduan_pasien=false,grafik_lab_ralanhari=false,grafik_rad_ralanhari=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -402,6 +402,8 @@ public final class var {
                         var.grafik_rad_ralanbulan=true;
                         var.detailjmdokter2=true;
                         var.pengaduan_pasien=true;
+                        var.grafik_lab_ralanhari=true;
+                        var.grafik_rad_ralanhari=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -716,6 +718,8 @@ public final class var {
                         var.grafik_rad_ralanbulan=rs2.getBoolean("grafik_rad_ralanbulan");
                         var.detailjmdokter2=rs2.getBoolean("detailjmdokter2");
                         var.pengaduan_pasien=rs2.getBoolean("pengaduan_pasien");
+                        var.grafik_lab_ralanhari=rs2.getBoolean("grafik_lab_ralanhari");
+                        var.grafik_rad_ralanhari=rs2.getBoolean("grafik_rad_ralanhari");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1028,6 +1032,8 @@ public final class var {
                         var.grafik_rad_ralanbulan=false;
                         var.detailjmdokter2=false;
                         var.pengaduan_pasien=false;
+                        var.grafik_lab_ralanhari=false;
+                        var.grafik_rad_ralanhari=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1387,4 +1393,6 @@ public final class var {
     public static boolean getgrafik_rad_ralanbulan(){return var.grafik_rad_ralanbulan;}
     public static boolean getdetailjmdokter2(){return var.detailjmdokter2;}
     public static boolean getpengaduan_pasien(){return var.pengaduan_pasien;}
+    public static boolean getgrafik_lab_ralanhari(){return var.grafik_lab_ralanhari;}
+    public static boolean getgrafik_rad_ralanhari(){return var.grafik_rad_ralanhari;}
 }   
