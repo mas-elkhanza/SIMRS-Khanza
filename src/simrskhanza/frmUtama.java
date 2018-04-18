@@ -10077,8 +10077,9 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
     private void btnPengaduanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPengaduanActionPerformed
         frmPengaduan pengaduan=new frmPengaduan();
-        pengaduan.setSize(590,650);
+        pengaduan.setSize(850,650);
         pengaduan.setLocationRelativeTo(null);
+        pengaduan.isCek();
         pengaduan.setVisible(true);
         DlgHome.dispose();
     }//GEN-LAST:event_btnPengaduanActionPerformed

@@ -5,17 +5,119 @@
  */
 package laporan;
 
+import fungsi.WarnaTable;
+import fungsi.batasInput;
+import fungsi.koneksiDB;
+import fungsi.sekuel;
+import fungsi.validasi;
+import fungsi.var;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.Timer;
+import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
+
 /**
  *
  * @author khanzamedia
  */
 public class frmPengaduan extends javax.swing.JFrame {
-
+    private final DefaultTableModel tabMode;
+    private Connection koneksi=koneksiDB.condb();
+    private sekuel Sequel=new sekuel();
+    private validasi Valid=new validasi();
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private int i=0;
+    private StringBuilder htmlContent;
+    
     /**
      * Creates new form frmPengaduan
      */
     public frmPengaduan() {
         initComponents();
+        
+        tabMode=new DefaultTableModel(null,new Object[]{
+            "P","Id","Tanggal","Username","Message"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class,java.lang.Object.class, java.lang.Object.class, java.lang.Object.class 
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbPengaduan.setModel(tabMode);
+        tbPengaduan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPengaduan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 5; i++) {
+            TableColumn column = tbPengaduan.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(35);
+            }else if(i==2){
+                column.setPreferredWidth(125);
+            }else if(i==3){
+                column.setPreferredWidth(90);
+            }else if(i==4){
+                column.setPreferredWidth(800);
+            }
+        }
+        tbPengaduan.setDefaultRenderer(Object.class, new WarnaTable());
+
+        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        Pesan.setDocument(new batasInput((int)255).getKata(Pesan));
+        if(koneksiDB.cariCepat().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {tampil();}
+                @Override
+                public void removeUpdate(DocumentEvent e) {tampil();}
+                @Override
+                public void changedUpdate(DocumentEvent e) {tampil();}
+            });
+        } 
+        
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{padding-top:5px;padding-bottom:5px;font: 8.5px tahoma;height:12px;background: #ffffff;color:#5a7850;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#5a7850;}"+
+                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
+        jam(); 
     }
 
     /**
@@ -31,8 +133,12 @@ public class frmPengaduan extends javax.swing.JFrame {
         TabRawat = new javax.swing.JTabbedPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
-        tbKamar = new widget.Table();
+        tbPengaduan = new widget.Table();
         panelisi3 = new widget.panelisi();
+        label11 = new widget.Label();
+        Tgl1 = new widget.Tanggal();
+        label18 = new widget.Label();
+        Tgl2 = new widget.Tanggal();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -40,13 +146,25 @@ public class frmPengaduan extends javax.swing.JFrame {
         label10 = new widget.Label();
         LCount = new widget.Label();
         BtnHapus = new widget.Button();
-        BtnHapus1 = new widget.Button();
+        BtnPrint = new widget.Button();
+        BtnHapusTotal = new widget.Button();
         BtnKeluar = new widget.Button();
         internalFrame3 = new widget.InternalFrame();
-        LoadHTML1 = new widget.editorpane();
+        LoadHTML = new widget.editorpane();
+        panelisi4 = new widget.panelisi();
+        label13 = new widget.Label();
+        Pesan = new widget.TextBox();
+        BtnCari1 = new widget.Button();
+        label14 = new widget.Label();
+        BtnKeluar1 = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("::[ Pengaduan/Chat ]::");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengaduan/Chat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -67,30 +185,51 @@ public class frmPengaduan extends javax.swing.JFrame {
 
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbPengaduan.setAutoCreateRowSorter(true);
+        tbPengaduan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPengaduan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbKamarMouseClicked(evt);
+                tbPengaduanMouseClicked(evt);
             }
         });
-        tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbPengaduan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbKamarKeyPressed(evt);
+                tbPengaduanKeyPressed(evt);
             }
         });
-        Scroll.setViewportView(tbKamar);
+        Scroll.setViewportView(tbPengaduan);
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelisi3.setPreferredSize(new java.awt.Dimension(100, 43));
         panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
+        label11.setText("Tanggal :");
+        label11.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelisi3.add(label11);
+
+        Tgl1.setBackground(new java.awt.Color(245, 250, 240));
+        Tgl1.setEditable(false);
+        Tgl1.setDisplayFormat("dd-MM-yyyy");
+        Tgl1.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelisi3.add(Tgl1);
+
+        label18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label18.setText("s.d.");
+        label18.setPreferredSize(new java.awt.Dimension(25, 23));
+        panelisi3.add(label18);
+
+        Tgl2.setBackground(new java.awt.Color(245, 250, 240));
+        Tgl2.setEditable(false);
+        Tgl2.setDisplayFormat("dd-MM-yyyy");
+        Tgl2.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelisi3.add(Tgl2);
+
         label9.setText("Key Word :");
         label9.setPreferredSize(new java.awt.Dimension(68, 23));
         panelisi3.add(label9);
 
-        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(150, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -141,7 +280,7 @@ public class frmPengaduan extends javax.swing.JFrame {
 
         BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnHapus.setMnemonic('H');
-        BtnHapus.setToolTipText("Alt+H");
+        BtnHapus.setToolTipText("Hapus Yang DIpilih");
         BtnHapus.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,25 +294,41 @@ public class frmPengaduan extends javax.swing.JFrame {
         });
         panelisi3.add(BtnHapus);
 
-        BtnHapus1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
-        BtnHapus1.setMnemonic('H');
-        BtnHapus1.setToolTipText("Alt+H");
-        BtnHapus1.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnHapus1.addActionListener(new java.awt.event.ActionListener() {
+        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
+        BtnPrint.setMnemonic('T');
+        BtnPrint.setToolTipText("Cetak");
+        BtnPrint.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapus1ActionPerformed(evt);
+                BtnPrintActionPerformed(evt);
             }
         });
-        BtnHapus1.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnPrint.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnHapus1KeyPressed(evt);
+                BtnPrintKeyPressed(evt);
             }
         });
-        panelisi3.add(BtnHapus1);
+        panelisi3.add(BtnPrint);
+
+        BtnHapusTotal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
+        BtnHapusTotal.setMnemonic('B');
+        BtnHapusTotal.setToolTipText("Bersihkan Semua");
+        BtnHapusTotal.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnHapusTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHapusTotalActionPerformed(evt);
+            }
+        });
+        BtnHapusTotal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnHapusTotalKeyPressed(evt);
+            }
+        });
+        panelisi3.add(BtnHapusTotal);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
-        BtnKeluar.setMnemonic('4');
-        BtnKeluar.setToolTipText("Alt+4");
+        BtnKeluar.setMnemonic('K');
+        BtnKeluar.setToolTipText("Keluar");
         BtnKeluar.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,8 +345,55 @@ public class frmPengaduan extends javax.swing.JFrame {
         internalFrame3.setBorder(null);
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
-        LoadHTML1.setBorder(null);
-        internalFrame3.add(LoadHTML1, java.awt.BorderLayout.CENTER);
+        LoadHTML.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
+        internalFrame3.add(LoadHTML, java.awt.BorderLayout.CENTER);
+
+        panelisi4.setPreferredSize(new java.awt.Dimension(100, 43));
+        panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
+
+        label13.setText("Pesan :");
+        label13.setPreferredSize(new java.awt.Dimension(48, 23));
+        panelisi4.add(label13);
+
+        Pesan.setPreferredSize(new java.awt.Dimension(643, 23));
+        Pesan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PesanKeyPressed(evt);
+            }
+        });
+        panelisi4.add(Pesan);
+
+        BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari1.setMnemonic('1');
+        BtnCari1.setToolTipText("Alt+1");
+        BtnCari1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCari1ActionPerformed(evt);
+            }
+        });
+        BtnCari1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCari1KeyPressed(evt);
+            }
+        });
+        panelisi4.add(BtnCari1);
+
+        label14.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelisi4.add(label14);
+
+        BtnKeluar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
+        BtnKeluar1.setMnemonic('K');
+        BtnKeluar1.setToolTipText("Keluar");
+        BtnKeluar1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnKeluar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKeluar1ActionPerformed(evt);
+            }
+        });
+        panelisi4.add(BtnKeluar1);
+
+        internalFrame3.add(panelisi4, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.addTab("Ikutan Ngobrol", internalFrame3);
 
@@ -204,26 +406,34 @@ public class frmPengaduan extends javax.swing.JFrame {
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==0){
-           // prosesCari();
+           tampil();
         }else if(TabRawat.getSelectedIndex()==1){
-           // prosesCari2();
+           tampil2();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
-    private void tbKamarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseClicked
+    private void tbPengaduanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPengaduanMouseClicked
         
-    }//GEN-LAST:event_tbKamarMouseClicked
+    }//GEN-LAST:event_tbPengaduanMouseClicked
 
-    private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
+    private void tbPengaduanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPengaduanKeyPressed
         
-    }//GEN-LAST:event_tbKamarKeyPressed
+    }//GEN-LAST:event_tbPengaduanKeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
-        
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            BtnCariActionPerformed(null);
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            BtnCari.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            BtnKeluar.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            tbPengaduan.requestFocus();
+        }
     }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        
+        tampil();
     }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -231,7 +441,8 @@ public class frmPengaduan extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-        
+        TCari.setText("");
+        tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -243,20 +454,89 @@ public class frmPengaduan extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        
+        for(i=0;i<tbPengaduan.getRowCount();i++){ 
+            if(tbPengaduan.getValueAt(i,0).toString().equals("true")){
+                Sequel.queryu2("delete from pengaduan where id=?",1,new String[]{tbPengaduan.getValueAt(i,1).toString()});
+            }
+        }        
+        BtnCariActionPerformed(evt);
     }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
         
     }//GEN-LAST:event_BtnHapusKeyPressed
 
-    private void BtnHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapus1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnHapus1ActionPerformed
+    private void BtnHapusTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusTotalActionPerformed
+        i=JOptionPane.showConfirmDialog(null, "Yakin semua data chat mau dihapus ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
+        if(i==JOptionPane.YES_OPTION){
+            Sequel.queryu("truncate table pengaduan");
+            tampil();
+        }
+    }//GEN-LAST:event_BtnHapusTotalActionPerformed
 
-    private void BtnHapus1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapus1KeyPressed
+    private void BtnHapusTotalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusTotalKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnHapus1KeyPressed
+    }//GEN-LAST:event_BtnHapusTotalKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        TabRawatMouseClicked(null);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void PesanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PesanKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            BtnCari1ActionPerformed(null);
+        }
+    }//GEN-LAST:event_PesanKeyPressed
+
+    private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
+        if(Pesan.getText().trim().equals("")){
+            Valid.textKosong(Pesan,"Pesan");
+        }else{
+            Sequel.menyimpan("pengaduan","?,?,?,?",4,new String[]{
+                "0",Sequel.cariIsi("select now()"),var.getkode(),Pesan.getText()
+            });
+            Pesan.setText("");
+            tampil2();
+        }            
+    }//GEN-LAST:event_BtnCari1ActionPerformed
+
+    private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCari1KeyPressed
+
+    private void BtnKeluar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluar1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_BtnKeluar1ActionPerformed
+
+    private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+        }else if(tabMode.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();   
+                param.put("namars",var.getnamars());
+                param.put("alamatrs",var.getalamatrs());
+                param.put("kotars",var.getkabupatenrs());
+                param.put("propinsirs",var.getpropinsirs());
+                param.put("kontakrs",var.getkontakrs());
+                param.put("emailrs",var.getemailrs());   
+                param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReport("rptPengaduan.jrxml","report","::[ Data Pengaduan ]::",
+                        "select id, date_time, username, message from pengaduan where "+
+                        "date_time between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 00:00:00' and id like '%"+TCari.getText().trim()+"%' or "+
+                        "date_time between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 00:00:00' and username like '%"+TCari.getText().trim()+"%' or "+
+                        "date_time between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 00:00:00' and message like '%"+TCari.getText().trim()+"%' order by id ",param);
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_BtnPrintActionPerformed
+
+    private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnPrintActionPerformed(null);
+        }else{
+            Valid.pindah(evt,Tgl2,BtnKeluar);
+        }
+    }//GEN-LAST:event_BtnPrintKeyPressed
 
     /**
      * @param args the command line arguments
@@ -296,20 +576,159 @@ public class frmPengaduan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
+    private widget.Button BtnCari1;
     private widget.Button BtnHapus;
-    private widget.Button BtnHapus1;
+    private widget.Button BtnHapusTotal;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKeluar1;
+    private widget.Button BtnPrint;
     private widget.Label LCount;
-    private widget.editorpane LoadHTML1;
+    private widget.editorpane LoadHTML;
+    private widget.TextBox Pesan;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private javax.swing.JTabbedPane TabRawat;
+    private widget.Tanggal Tgl1;
+    private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.Label label10;
+    private widget.Label label11;
+    private widget.Label label13;
+    private widget.Label label14;
+    private widget.Label label18;
     private widget.Label label9;
     private widget.panelisi panelisi3;
-    private widget.Table tbKamar;
+    private widget.panelisi panelisi4;
+    private widget.Table tbPengaduan;
     // End of variables declaration//GEN-END:variables
+    private void tampil() {
+        Valid.tabelKosong(tabMode);
+        try{   
+            ps=koneksi.prepareStatement(
+                "select id, date_time, username, message from pengaduan where "+
+                "date_time between ? and ? and id like ? or "+
+                "date_time between ? and ? and username like ? or "+
+                "date_time between ? and ? and message like ? order by id ");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4) 
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                
+        }catch(SQLException e){
+            System.out.println("Notifikasi : "+e);
+        }
+        LCount.setText(""+tabMode.getRowCount());
+    }
+    
+    private void tampil2() {
+        try{   
+            htmlContent = new StringBuilder();
+            ps=koneksi.prepareStatement(
+                "select id, date_time, username, message from pengaduan order by id limit 2000");
+            try {
+                rs=ps.executeQuery();
+                i=1;
+                while(rs.next()){
+                    if(i%2==0){
+                        if(rs.getString("username").equals(var.getkode())){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td align='right' valign='top' bgcolor='#ffffff'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                "</tr>");
+                        }else{
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td align='left' valign='top' bgcolor='#ffffff'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                "</tr>");
+                        }                            
+                    }else if(i%2==1){
+                        if(rs.getString("username").equals(var.getkode())){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td align='right' valign='top' bgcolor='#f7fcf2'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                "</tr>");
+                        }else{
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td align='left' valign='top' bgcolor='#f7fcf2'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                "</tr>");
+                        }
+                    }                        
+                    i++;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            } 
+            LoadHTML.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        }catch(SQLException e){
+            System.out.println("Notifikasi : "+e);
+        }
+        LCount.setText(""+tabMode.getRowCount());
+    }
+    
+    public void isCek(){
+        if(var.getkode().equals("Admin Utama")){
+            BtnHapusTotal.setEnabled(true);
+        }else{
+            BtnHapusTotal.setEnabled(false);
+        }  
+    }
+    
+    private void jam(){
+        ActionListener taskPerformer = new ActionListener(){
+            private int nilai_detik;
+            public void actionPerformed(ActionEvent e) {
+                String nol_detik = "";                
+                Date now = Calendar.getInstance().getTime();
+                nilai_detik = now.getSeconds();
+                if (nilai_detik <= 9) {
+                    nol_detik = "0";
+                }
+                
+                String detik = nol_detik + Integer.toString(nilai_detik);
+                if(detik.equals("10")||detik.equals("20")||detik.equals("30")||detik.equals("40")||detik.equals("50")||detik.equals("00")){                    
+                    if(TabRawat.getSelectedIndex()==1){
+                        tampil2();
+                    }                                            
+                }
+            }
+        };
+        // Timer
+        new Timer(1000, taskPerformer).start();
+    }
 }
