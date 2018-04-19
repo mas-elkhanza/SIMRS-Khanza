@@ -160,7 +160,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                autoNomor();
+                Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,6),signed)),0) from penjualan ","PJ",6,NoNota); 
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -1105,7 +1105,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         if(notapenjualan.equals("Yes")){
                             BtnNotaActionPerformed(null);
                         }
-                        autoNomor();
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,6),signed)),0) from penjualan ","PJ",6,NoNota);                             
                         Sequel.AutoComitTrue();
                         row=tabMode.getRowCount();
                         for(int r=0;r<row;r++){ 
@@ -1827,7 +1827,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     public void isCek(){
-        autoNomor();
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,6),signed)),0) from penjualan ","PJ",6,NoNota); 
         TCari.requestFocus();
         Sequel.cariIsi("select kd_bangsal from set_lokasi",kdgudang);
         Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",nmgudang,kdgudang.getText());
@@ -1848,11 +1848,6 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 BtnNota.setVisible(false);
             }            
         }
-    }
-    
-    public void autoNomor(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_jual,3),signed)),0) from penjualan where tgl_jual='"+Valid.SetTgl(Tgl.getSelectedItem()+"")+"' ",
-                "PJ"+Tgl.getSelectedItem().toString().substring(8,10)+Tgl.getSelectedItem().toString().substring(3,5)+Tgl.getSelectedItem().toString().substring(0,2),3,NoNota); 
     }
     
     public void setPasien(String norm){

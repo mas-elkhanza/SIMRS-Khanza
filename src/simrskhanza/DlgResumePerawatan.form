@@ -827,54 +827,6 @@
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="widget.InternalFrame" name="internalFrame13">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="eb" green="ff" red="eb" type="rgb"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="internalFrame13" noResource="true"/>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Berkas Digital Perawatan">
-                    <Property name="tabTitle" type="java.lang.String" value="Berkas Digital Perawatan"/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
-                <Property name="horizontalGap" type="int" value="1"/>
-                <Property name="verticalGap" type="int" value="1"/>
-              </Layout>
-              <SubComponents>
-                <Container class="widget.ScrollPane" name="Scroll11">
-                  <Properties>
-                    <Property name="name" type="java.lang.String" value="Scroll11" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="true"/>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="Center"/>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="widget.editorpane" name="LoadHTML12">
-                      <Properties>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="null"/>
-                        </Property>
-                        <Property name="name" type="java.lang.String" value="LoadHTML12" noResource="true"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-              </SubComponents>
-            </Container>
           </SubComponents>
         </Container>
       </SubComponents>

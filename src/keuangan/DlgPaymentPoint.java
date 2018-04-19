@@ -620,7 +620,17 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                         ps.setString(6,"%"+TCari.getText().trim()+"%");
                         rs=ps.executeQuery();
                         i=1;
-                        while(rs.next()){                            
+                        while(rs.next()){
+                            if(rsjamshift.getString("shift").equals("Pagi")){
+                                pagi=pagi+rs.getDouble("jumlah_bayar");
+                            }else if(rsjamshift.getString("shift").equals("Siang")){
+                                siang=siang+rs.getDouble("jumlah_bayar");
+                            }else if(rsjamshift.getString("shift").equals("Sore")){
+                                sore=sore+rs.getDouble("jumlah_bayar");
+                            }else if(rsjamshift.getString("shift").equals("Malam")){
+                                malam=malam+rs.getDouble("jumlah_bayar");
+                            }
+                            all=all+rs.getDouble("jumlah_bayar");
                             petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select nama from pegawai where nik=?",rs.getString("petugas"));
                             if(CmbStatus.getSelectedItem().toString().equals("Semua")){
                                 nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
@@ -631,16 +641,6 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                                     }
                                 }
                                 if(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim())){
-                                    if(rsjamshift.getString("shift").equals("Pagi")){
-                                        pagi=pagi+rs.getDouble("jumlah_bayar");
-                                    }else if(rsjamshift.getString("shift").equals("Siang")){
-                                        siang=siang+rs.getDouble("jumlah_bayar");
-                                    }else if(rsjamshift.getString("shift").equals("Sore")){
-                                        sore=sore+rs.getDouble("jumlah_bayar");
-                                    }else if(rsjamshift.getString("shift").equals("Malam")){
-                                        malam=malam+rs.getDouble("jumlah_bayar");
-                                    }
-                                    all=all+rs.getDouble("jumlah_bayar");
                                     tabMode.addRow(new Object[]{
                                         i,rs.getString("tgl_bayar"),rsjamshift.getString("shift"),nonota,rs.getString("nama_pasien"),rs.getDouble("jumlah_bayar"),petugas
                                     });
@@ -654,16 +654,6 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                                     }
                                 }
                                 if(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim())){
-                                    if(rsjamshift.getString("shift").equals("Pagi")){
-                                        pagi=pagi+rs.getDouble("jumlah_bayar");
-                                    }else if(rsjamshift.getString("shift").equals("Siang")){
-                                        siang=siang+rs.getDouble("jumlah_bayar");
-                                    }else if(rsjamshift.getString("shift").equals("Sore")){
-                                        sore=sore+rs.getDouble("jumlah_bayar");
-                                    }else if(rsjamshift.getString("shift").equals("Malam")){
-                                        malam=malam+rs.getDouble("jumlah_bayar");
-                                    }
-                                    all=all+rs.getDouble("jumlah_bayar");
                                     tabMode.addRow(new Object[]{
                                         i,rs.getString("tgl_bayar"),rsjamshift.getString("shift"),nonota,rs.getString("nama_pasien"),rs.getDouble("jumlah_bayar"),petugas
                                     });

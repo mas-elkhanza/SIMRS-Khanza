@@ -82,6 +82,13 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
             });
         } 
         
+        try {
+            ps=koneksi.prepareStatement("select kd_jbtn, nm_jbtn "+
+                " from jabatan where  kd_jbtn like ? or "+
+                " nm_jbtn like ? order by nm_jbtn");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }    
     private DlgJabatan jabatan=new DlgJabatan(null,false);
 
@@ -339,31 +346,17 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select kd_jbtn, nm_jbtn "+
-                " from jabatan where  kd_jbtn like ? or "+
-                " nm_jbtn like ? order by nm_jbtn");   
-            try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                rs=ps.executeQuery();
-                while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString(1),rs.getString(2)
-                    });
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
+            ps.setString(1,"%"+TCari.getText().trim()+"%");
+            ps.setString(2,"%"+TCari.getText().trim()+"%");
+            rs=ps.executeQuery();
+            while(rs.next()){
+                String[] data={rs.getString(1),
+                               rs.getString(2)};
+                tabMode.addRow(data);
             }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
-        }  
+        }
         LCount.setText(""+tabMode.getRowCount());
     }
 

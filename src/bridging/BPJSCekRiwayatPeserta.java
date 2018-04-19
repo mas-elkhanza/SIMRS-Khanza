@@ -50,8 +50,7 @@ public final class BPJSCekRiwayatPeserta extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private DlgPasien pasien=new DlgPasien(null,false);
-    private BPJSApi api=new BPJSApi();
-        
+
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -126,12 +125,7 @@ public final class BPJSCekRiwayatPeserta extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        }); 
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
-        } catch (Exception e) {
-            System.out.println("E : "+e);
-        }
+        });       
     }
     
     
@@ -392,7 +386,9 @@ public final class BPJSCekRiwayatPeserta extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String nomorpeserta) {
+        BPJSApi api=new BPJSApi();
         try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/sep/peserta/"+nomorpeserta;	
 
 	    HttpHeaders headers = new HttpHeaders();

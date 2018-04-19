@@ -31,7 +31,7 @@ if (!isset($_COOKIE['username']) && !isset($_COOKIE['password'])) {
 }
 
 ?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -96,7 +96,7 @@ if (!isset($_COOKIE['username']) && !isset($_COOKIE['password'])) {
                     </div>
                 </div>
             </div>
-            <p>Memproses data ke server.....</p>
+            <p>Please wait...</p>
         </div>
     </div>
     <!-- #END# Page Loader -->

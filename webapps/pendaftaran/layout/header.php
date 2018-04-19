@@ -16,7 +16,7 @@ session_start();
 
 require_once('config.php');
 
-$data=fetch_array(query("SELECT no_rkm_medis as username, no_ktp as password FROM pasien WHERE no_rkm_medis = '{$_COOKIE['username']}' AND no_ktp = '{$_COOKIE['password']}'")); 
+$data=fetch_array(query("SELECT no_rkm_medis as username, no_ktp as password FROM pasien WHERE no_rkm_medis = '".$_COOKIE["username"]."' AND no_ktp = '".$_COOKIE["password"]."'")); 
 
 $user = $data[0];
 $pass = $data[1];
@@ -75,10 +75,10 @@ if (!isset($_COOKIE['username']) && !isset($_COOKIE['password'])) {
     <link href="css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="css/theme-green.css" rel="stylesheet" />
+    <link href="css/themes/theme-blue.css" rel="stylesheet" />
 </head>
 
-<body class="theme-green">
+<body class="theme-blue">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">

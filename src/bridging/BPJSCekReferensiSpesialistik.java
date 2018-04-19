@@ -48,8 +48,7 @@ public final class BPJSCekReferensiSpesialistik extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private BPJSApi api=new BPJSApi();
-        
+
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -93,11 +92,6 @@ public final class BPJSCekReferensiSpesialistik extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil(Poli.getText());}
             });
         } 
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
-        } catch (Exception e) {
-            System.out.println("E : "+e);
-        }
               
     }
     
@@ -272,7 +266,9 @@ public final class BPJSCekReferensiSpesialistik extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String poli) {
+        BPJSApi api=new BPJSApi();
         try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/referensi/spesialistik";	
 
 	    HttpHeaders headers = new HttpHeaders();

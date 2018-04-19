@@ -1,4 +1,4 @@
-
+﻿
     <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>
 
@@ -81,23 +81,6 @@
             });
 
             $('.count-to').countTo();
-          
-            $('#riwayatmedis').dataTable( {
-                "responsive": {
-                   "details": {
-                       "display": $.fn.dataTable.Responsive.display.modal( {
-                            "header": function ( row ) {
-                                var data = row.data();
-                                return '<h3>Riwayat Medis</h3><br>';
-                            }
-                        } ),
-                        "renderer": $.fn.dataTable.Responsive.renderer.tableAll()
-                    }
-                }
-            } );
-
-
-
 
         } );
 	</script>
