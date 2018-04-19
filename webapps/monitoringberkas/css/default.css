@@ -429,6 +429,15 @@ color: #65795b;
         width:170px;
 }
 
+.text6 {
+	background: #f8fdf3;
+        font-size: 11px;
+        font: Tahoma;
+	padding: 3px 0 3px 5px;
+	border: 1px solid #f8fdf3;
+	color: #65795b;
+}
+
 .caption{
         height: 22px;
 	padding: 0px 0 0 3px;

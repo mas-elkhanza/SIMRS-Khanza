@@ -364,6 +364,9 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
                 if(rs!=null){
                     rs.close();
                 }
+                if(ps!=null){
+                    ps.close();
+                }
             }                
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
