@@ -48,7 +48,6 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
     private ResultSet rstanggal,rspoli,rsreg,rspenyakit;
     private int i=0,jmllama=0,jmlbaru=0,jmllaki=0,jmlper=0;
     private String lama="",baru="",rujukandari="",alamatrujukandari="",dirujukke="";
-    private StringBuilder htmlContent;
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -689,7 +688,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
             jmllama=0;jmlbaru=0;jmllaki=0;jmlper=0;
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             pstanggal=koneksi.prepareStatement("select tgl_registrasi,DATE_FORMAT(tgl_registrasi,'%d-%m-%Y') as tanggal from reg_periksa where tgl_registrasi between ? and ? group by tgl_registrasi order by tgl_registrasi ");
             try {
                 pstanggal.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
@@ -727,21 +726,21 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                     "<td valign='top' colspan='2'>Tanggal</td><td valign='top' colspan='10'>: "+rstanggal.getString("tanggal")+"</td>"+
                                 "</tr>"+
                                 "<tr class='isi3'>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%' rowspan='2'>No.</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%' rowspan='2'>No.RM</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='13%' rowspan='2'>Nama Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='13%' rowspan='2'>Alamat</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%' rowspan='2'>L/P</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%' rowspan='2'>Umur</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%' colspan='2'>Pengunjung</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%' rowspan='2'>Cara Pembayaran</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='14%' rowspan='2'>Asal Rujukan &<br>Alamatnya</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='14%' rowspan='2'>Golongan Penyakit/<br>Sebab Penyakit</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%' rowspan='2'>Dirujuk Ke</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='3%' rowspan='2'>No.</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='6%' rowspan='2'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='13%' rowspan='2'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='13%' rowspan='2'>Alamat</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='3%' rowspan='2'>L/P</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='3%' rowspan='2'>Umur</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='6%' colspan='2'>Pengunjung</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='10%' rowspan='2'>Cara Pembayaran</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='14%' rowspan='2'>Asal Rujukan &<br>Alamatnya</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='14%' rowspan='2'>Golongan Penyakit/<br>Sebab Penyakit</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='10%' rowspan='2'>Dirujuk Ke</td>"+
                                 "</tr>"+
                                 "<tr class='isi3'>"+                                        
-                                    "<td valign='top' bgcolor='#f7fcf2' align='center' width='3%'>Lama</td>"+
-                                    "<td valign='top' bgcolor='#f7fcf2' align='center' width='3%'>Baru</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='3%'>Lama</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='3%'>Baru</td>"+
                                 "</tr>" 
                             );
                             psreg=koneksi.prepareStatement(
@@ -917,7 +916,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
             jmllama=0;jmlbaru=0;jmllaki=0;jmlper=0;
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             pstanggal=koneksi.prepareStatement("select tgl_registrasi,DATE_FORMAT(tgl_registrasi,'%d-%m-%Y') as tanggal from reg_periksa where stts<>'Batal' and tgl_registrasi between ? and ? group by tgl_registrasi order by tgl_registrasi ");
             try {
                 pstanggal.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
@@ -955,21 +954,21 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                     "<td valign='top' colspan='2'>Tanggal</td><td valign='top' colspan='10'>: "+rstanggal.getString("tanggal")+"</td>"+
                                 "</tr>"+
                                 "<tr class='isi3'>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%' rowspan='2'>No.</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%' rowspan='2'>No.RM</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='13%' rowspan='2'>Nama Pasien</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='13%' rowspan='2'>Alamat</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%' rowspan='2'>L/P</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%' rowspan='2'>Umur</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%' colspan='2'>Pengunjung</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%' rowspan='2'>Cara Pembayaran</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='14%' rowspan='2'>Asal Rujukan &<br>Alamatnya</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='19%' rowspan='2'>Golongan Penyakit/<br>Sebab Penyakit</td>"+
-                                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='10%' rowspan='2'>Dirujuk Ke</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='3%' rowspan='2'>No.</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='6%' rowspan='2'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='13%' rowspan='2'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='13%' rowspan='2'>Alamat</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='3%' rowspan='2'>L/P</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='3%' rowspan='2'>Umur</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='6%' colspan='2'>Pengunjung</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='10%' rowspan='2'>Cara Pembayaran</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='14%' rowspan='2'>Asal Rujukan &<br>Alamatnya</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='19%' rowspan='2'>Golongan Penyakit/<br>Sebab Penyakit</td>"+
+                                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='10%' rowspan='2'>Dirujuk Ke</td>"+
                                 "</tr>"+
                                 "<tr class='isi3'>"+                                        
-                                    "<td valign='top' bgcolor='#f7fcf2' align='center' width='3%'>Lama</td>"+
-                                    "<td valign='top' bgcolor='#f7fcf2' align='center' width='3%'>Baru</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='3%'>Lama</td>"+
+                                    "<td valign='top' bgcolor='#f8fdf3' align='center' width='3%'>Baru</td>"+
                                 "</tr>" 
                             );
                             psreg=koneksi.prepareStatement(

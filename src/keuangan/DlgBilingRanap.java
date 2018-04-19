@@ -196,7 +196,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                          "on operasi.kode_paket=paket_operasi.kode_paket where "+
                          "operasi.no_rawat=? and operasi.status like ?",
             sqlpsnota="insert into nota_inap values(?,?,?,?,?)",
-            sqlpsbiling="insert into billing values(?,?,?,?,?,?,?,?,?,?,?)",
+            sqlpsbiling="insert into billing values('0',?,?,?,?,?,?,?,?,?,?)",
             sqlpssudahmasuk="select no,nm_perawatan, if(biaya<>0,biaya,null) as satu, if(jumlah<>0,jumlah,null) as dua,"+
                                            "if(tambahan<>0,tambahan,null) as tiga, if(totalbiaya<>0,totalbiaya,null) as empat,pemisah,status "+
                                            "from billing where no_rawat=?  order by noindex",
@@ -2736,7 +2736,7 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
         }
         if(i>0){
             Sequel.AutoComitFalse();
-            Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Belum Bayar'");
+            Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"stts='Sudah'");
             
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             
@@ -4244,12 +4244,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         ttlretur=0;
         try{
             pscariobat=koneksi.prepareStatement(
-                    "select databarang.nama_brng,jenis.nama,detail_pemberian_obat.biaya_obat,"+
+                    "select databarang.nama_brng,detail_pemberian_obat.biaya_obat,"+
                     "sum(detail_pemberian_obat.jml) as jml,sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah) as tambahan,"+
                     "(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total "+
-                    "from detail_pemberian_obat inner join databarang inner join jenis "+
-                    "on detail_pemberian_obat.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns where "+
-                    "detail_pemberian_obat.no_rawat=? and detail_pemberian_obat.status like ? group by databarang.kode_brng,detail_pemberian_obat.biaya_obat order by jenis.nama");
+                    "from detail_pemberian_obat inner join databarang "+
+                    "on detail_pemberian_obat.kode_brng=databarang.kode_brng where "+
+                    "detail_pemberian_obat.no_rawat=? and detail_pemberian_obat.status like ? group by databarang.nama_brng,detail_pemberian_obat.biaya_obat");
             try {
                 pscariobat.setString(1,norawat);
                 if((chkRalan.isSelected()==true)&&(chkRanap.isSelected()==true)){
@@ -4263,7 +4263,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
                 rscariobat=pscariobat.executeQuery();
                 while(rscariobat.next()){
-                    tabModeRwJlDr.addRow(new Object[]{false,"                           ",rscariobat.getString("nama_brng")+" ("+rscariobat.getString("nama")+")",":",
+                    tabModeRwJlDr.addRow(new Object[]{false,"                           ",rscariobat.getString("nama_brng"),":",
                                    rscariobat.getDouble("biaya_obat"),rscariobat.getDouble("jml"),rscariobat.getDouble("tambahan"),
                                    (rscariobat.getDouble("total")+rscariobat.getDouble("tambahan")),"Obat"});
                     subttl=subttl+rscariobat.getDouble("total")+rscariobat.getDouble("tambahan");
@@ -5911,31 +5911,30 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             for(i=0;i<tbBilling.getRowCount();i++){  
                 psbiling=koneksi.prepareStatement(sqlpsbiling);
                 try {
-                    psbiling.setInt(1,i);
-                    psbiling.setString(2,TNoRw.getText());
-                    psbiling.setString(3,Valid.SetTgl(DTPTgl.getSelectedItem()+""));
-                    psbiling.setString(4,tbBilling.getValueAt(i,1).toString());
-                    psbiling.setString(5,tbBilling.getValueAt(i,2).toString().replaceAll("'","`"));
-                    psbiling.setString(6,tbBilling.getValueAt(i,3).toString());
+                    psbiling.setString(1,TNoRw.getText());
+                    psbiling.setString(2,Valid.SetTgl(DTPTgl.getSelectedItem()+""));
+                    psbiling.setString(3,tbBilling.getValueAt(i,1).toString());
+                    psbiling.setString(4,tbBilling.getValueAt(i,2).toString().replaceAll("'","`"));
+                    psbiling.setString(5,tbBilling.getValueAt(i,3).toString());
                     try {                        
-                        psbiling.setDouble(7,Valid.SetAngka(tbBilling.getValueAt(i,4).toString()));
+                        psbiling.setDouble(6,Valid.SetAngka(tbBilling.getValueAt(i,4).toString()));
                     } catch (Exception e) {
-                        psbiling.setDouble(7,0);
+                        psbiling.setDouble(6,0);
                     }
                     try {
-                        psbiling.setDouble(8,Valid.SetAngka(tbBilling.getValueAt(i,5).toString()));
+                        psbiling.setDouble(7,Valid.SetAngka(tbBilling.getValueAt(i,5).toString()));
                     } catch (Exception e) {
-                        psbiling.setDouble(8,0);
+                        psbiling.setDouble(7,0);
                     }
                     subttl=0;
                     try {
                         if((!tbBilling.getValueAt(i,8).toString().equals("Laborat"))&&(!tbBilling.getValueAt(i,8).toString().equals("Obat"))&&(!tbBilling.getValueAt(i,8).toString().equals("Operasi"))){
                             subttl=Valid.SetAngka(tbBilling.getValueAt(i,6).toString());
                         }
-                        psbiling.setDouble(9,Valid.SetAngka(tbBilling.getValueAt(i,6).toString()));                        
+                        psbiling.setDouble(8,Valid.SetAngka(tbBilling.getValueAt(i,6).toString()));                        
                     } catch (Exception e) {
                         subttl=0;
-                        psbiling.setDouble(9,0);   
+                        psbiling.setDouble(8,0);   
                     }
                     if(subttl>0){
                         Sequel.queryu2("delete from tambahan_biaya where no_rawat=? and nama_biaya=?",2,new String[]{
@@ -5952,11 +5951,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 "','"+tbBilling.getValueAt(i,6).toString()+"'","Potongan Biaya");                        
                     }
                     try {
-                        psbiling.setDouble(10,Valid.SetAngka(tbBilling.getValueAt(i,7).toString())); 
+                        psbiling.setDouble(9,Valid.SetAngka(tbBilling.getValueAt(i,7).toString())); 
                     } catch (Exception e) {
-                        psbiling.setDouble(10,0);
+                        psbiling.setDouble(9,0);
                     }   
-                    psbiling.setString(11,tbBilling.getValueAt(i,8).toString());
+                    psbiling.setString(10,tbBilling.getValueAt(i,8).toString());
                     psbiling.executeUpdate();
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -6114,7 +6113,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "',' ',CURTIME()),'Pelunasan','"+total+"','"+total+"','Sudah','"+var.getkode()+"'","No.Rawat");
             }
 
-            Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Sudah Bayar'");
+            Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"stts='Bayar'");
             Sequel.meghapus("temporary_tambahan_potongan","no_rawat",TNoRw.getText());
             koneksi.setAutoCommit(true);
             JOptionPane.showMessageDialog(null,"Proses simpan selesai...!"); 

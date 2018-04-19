@@ -336,28 +336,28 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
             StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%' rowspan='2'>No.</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='5%' rowspan='2'>No.R.M</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='15%' rowspan='2'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='5%' rowspan='2'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='20%' colspan='4'>Hari Pemasangan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='20%' colspan='4'>Infeksi</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='5%' rowspan='2'>Deku</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='20%' colspan='3'>Hasil Kultur</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='8%' rowspan='2'>Antibiotik</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='2%' rowspan='2'>No.</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='2'>No.R.M</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='15%' rowspan='2'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='2'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='20%' colspan='4'>Hari Pemasangan</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='20%' colspan='4'>Infeksi</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='2'>Deku</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='20%' colspan='3'>Hasil Kultur</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='8%' rowspan='2'>Antibiotik</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center'>ETT</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center'>CVL</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center'>IVL</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center'>UC</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center'>VAP</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center'>IAD</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center'>PLEB</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center'>ISK</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center'>Sputum</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center'>Darah</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center'>Urine</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>ETT</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>CVL</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>IVL</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>UC</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>VAP</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>IAD</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>PLEB</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>ISK</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>Sputum</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>Darah</td>"+
+                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>Urine</td>"+
                 "</tr>"
             );     
             ps=koneksi.prepareStatement(

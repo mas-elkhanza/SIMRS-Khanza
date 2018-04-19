@@ -1731,10 +1731,10 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         Taspen="3,";
                     }
                     if(ChkAsa.isSelected()==true){
-                        Asabri="4,";
+                        Taspen="4,";
                     }
                     if((ChkJasaRaharja.isSelected()==true)||(ChkBPJSTenaga.isSelected()==true)||(ChkTaspen.isSelected()==true)||(ChkAsa.isSelected()==true)){
-                        penjamin=jasaraharja+BPJS+Taspen+Asabri+penjamin;
+                        penjamin=jasaraharja+BPJS+Taspen+penjamin;
                     }else{
                         penjamin="";
                     }
@@ -2917,10 +2917,10 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 Taspen="3,";
             }
             if(ChkAsa.isSelected()==true){
-                Asabri="4,";
+                Taspen="4,";
             }
             if((ChkJasaRaharja.isSelected()==true)||(ChkBPJSTenaga.isSelected()==true)||(ChkTaspen.isSelected()==true)||(ChkAsa.isSelected()==true)){
-                penjamin=jasaraharja+BPJS+Taspen+Asabri+penjamin;
+                penjamin=jasaraharja+BPJS+Taspen+penjamin;
             }else{
                 penjamin="";
             }

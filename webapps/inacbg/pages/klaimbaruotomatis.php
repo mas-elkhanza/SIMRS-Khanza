@@ -72,13 +72,13 @@ if(empty($tahunawal)){
                         if(getOne("select count(no_sep) from inacbg_data_terkirim where no_sep='".$baris["no_sep"]."'")>0){
                             $status="Terkirim INACBG";
                         }
-                        $gender = "";
-                        if($baris["jkel"]=="L"){
+                        $gender="";
+                        if($baris["jkel"]=="LAKI-LAKI"){
                             $gender="1";
                         }else{
                             $gender="2";
                         }
-
+                        
                         $prosedur="";
                         $a=1;
                         $hasilprosedur=bukaquery("select kode from prosedur_pasien where no_rawat='".$baris["no_rawat"]."' order by prioritas asc");
@@ -102,13 +102,9 @@ if(empty($tahunawal)){
                             }                
                             $a++;
                         } 
-
+                        
                         $discharge_status="5";
-                        if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Sembuh' and no_rawat='".$baris["no_rawat"]."'")>0){
-                            $discharge_status="1";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Sehat' and no_rawat='".$baris["no_rawat"]."'")>0){
-                            $discharge_status="1";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Rujuk' and no_rawat='".$baris["no_rawat"]."'")>0){
+                        if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Rujuk' and no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="2";
                         }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='APS' and no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="3";
@@ -118,15 +114,7 @@ if(empty($tahunawal)){
                             $discharge_status="4";
                         }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='+' and no_rawat='".$baris["no_rawat"]."'")>0){
                             $discharge_status="4";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Atas Persetujuan Dokter' and no_rawat='".$baris["no_rawat"]."'")>0){
-                            $discharge_status="1";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Atas Permintaan Sendiri' and no_rawat='".$baris["no_rawat"]."'")>0){
-                            $discharge_status="3";
-                        }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Lain-lain' and no_rawat='".$baris["no_rawat"]."'")>0){
-                            $discharge_status="5";
-                        }else{
-                            $discharge_status="1";
-                        }                     
+                        }                        
                         
                         echo "<tr class='isi' title='".$baris["no_rawat"].", ".$baris["no_sep"].", ".$baris["tglsep"].", ".$baris["no_kartu"].", ".$baris["nomr"].", ".$baris["nama_pasien"]."'>
                                 <td valign='top'>".$baris["no_rawat"]."</td>

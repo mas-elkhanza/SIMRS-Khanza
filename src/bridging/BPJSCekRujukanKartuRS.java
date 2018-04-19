@@ -553,11 +553,6 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         } catch (Exception e) {
             user=var.getkode();
         }
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
-        } catch (Exception e) {
-            System.out.println("E : "+e);
-        }
     }
     
     
@@ -2804,7 +2799,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
     private void ppPengajuanBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuanBtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tbKamar.getRowCount()>0){
+        if(tbKamar.getSelectedRow()!= -1){
             try {
                 URL = prop.getProperty("URLAPIBPJS")+"/Sep/pengajuanSEP";
 
@@ -2844,7 +2839,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dimapping transaksinya...!!!!");
             NoKartu.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -2852,7 +2847,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
     private void ppPengajuan1BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuan1BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tbKamar.getRowCount()>0){
+        if(tbKamar.getSelectedRow()!= -1){
             try {
                 URL = prop.getProperty("URLAPIBPJS")+"/Sep/aprovalSEP";
 
@@ -2892,7 +2887,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan data yang mau dimapping transaksinya...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data SEP yang mau dimapping transaksinya...!!!!");
             NoKartu.requestFocus();
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -3069,6 +3064,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
     public void tampil(String nomorrujukan) {
         try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/RS/Peserta/"+nomorrujukan;	
 
 	    HttpHeaders headers = new HttpHeaders();
@@ -3644,13 +3640,14 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 Taspen="3,";
             }
             if(ChkAsa.isSelected()==true){
-                Asabri="4,";
+                Taspen="4,";
             }
             if((ChkJasaRaharja.isSelected()==true)||(ChkBPJSTenaga.isSelected()==true)||(ChkTaspen.isSelected()==true)||(ChkAsa.isSelected()==true)){
-                penjamin=jasaraharja+BPJS+Taspen+Asabri+penjamin;
+                penjamin=jasaraharja+BPJS+Taspen+penjamin;
             }else{
                 penjamin="";
             }
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             URL = prop.getProperty("URLAPIBPJS")+"/SEP/insert";	
 
             HttpHeaders headers = new HttpHeaders();
@@ -3718,6 +3715,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 })==true){
                     if(JenisPelayanan.getSelectedIndex()==1){
                         try {
+                            prop.loadFromXML(new FileInputStream("setting/database.xml"));
                             URL = prop.getProperty("URLAPIBPJS")+"/Sep/updtglplg";	
 
                             HttpHeaders headers2 = new HttpHeaders();

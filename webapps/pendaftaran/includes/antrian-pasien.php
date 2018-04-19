@@ -19,8 +19,7 @@ $table = <<<EOT
     LEFT JOIN dokter c ON a.kd_dokter = c.kd_dokter 
     LEFT JOIN penjab d ON a.kd_pj = d.kd_pj 
     LEFT JOIN pasien f ON a.no_rkm_medis = f.no_rkm_medis 
-    WHERE a.tgl_registrasi='$date' AND a.kd_poli = '$get_id_poli[1]'
-    ORDER BY a.no_reg ASC
+    WHERE a.tgl_registrasi='$date' AND a.kd_poli = '$get_id_poli[1]' 
  ) temp
 EOT;
 

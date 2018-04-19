@@ -46,8 +46,7 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
-    private BPJSApi api=new BPJSApi();
-        
+
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -237,6 +236,7 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String sep) {
+        BPJSApi api=new BPJSApi();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/SEP/"+sep;	
