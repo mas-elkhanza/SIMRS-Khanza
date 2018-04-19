@@ -645,8 +645,8 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
         }else if(kdjenis.getText().trim().equals("")||nmjenis.getText().trim().equals("")){
             Valid.textKosong(kdjenis,"Jenis Barang");
         }else {
-            Sequel.menyimpan("ipsrsbarang","?,?,?,?,?,?","Kode Barang",6,new String[]{
-                kode_brng.getText(),nama_brng.getText(),kode_sat.getText(),kdjenis.getText(),stok.getText(),harga.getText()
+            Sequel.menyimpan("ipsrsbarang","?,?,?,?,?,?,?","Kode Barang",7,new String[]{
+                kode_brng.getText(),nama_brng.getText(),kode_sat.getText(),kdjenis.getText(),stok.getText(),harga.getText(),"1"
             });
             kode_brng.requestFocus();
             tampil();

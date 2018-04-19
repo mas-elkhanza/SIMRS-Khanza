@@ -48,7 +48,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('inde
     <link href="css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="css/themes/theme-blue.css" rel="stylesheet" />
+    <link href="css/theme-blue.css" rel="stylesheet" />
 </head>
 
 <body class="login-page">
@@ -157,6 +157,12 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('inde
                             <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
                         </div>
                     </div>
+
+                    <?php if(SIGNUP == 'ENABLE') { ?>
+                    <div class="m-t-25 m-b--5 align-center">
+                        <a href="signup.php">Belum terdaftar sebagai pasien?</a>
+                    </div>
+                    <?php } ?>
                 </form>
             </div>
 

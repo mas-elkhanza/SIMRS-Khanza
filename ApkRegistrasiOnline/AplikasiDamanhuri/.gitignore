@@ -1,0 +1,20 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+
+# Android
+google-services.json
+
+# Keystore files
+*.jks
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
+.DS_Store

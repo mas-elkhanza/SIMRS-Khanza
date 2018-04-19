@@ -354,7 +354,7 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         panelisi3.setPreferredSize(new java.awt.Dimension(100, 103));
         panelisi3.setLayout(null);
 
-        label11.setText("Tgl.Pulang :");
+        label11.setText("Tgl.SEP :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
@@ -833,9 +833,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                   "select DATE_FORMAT(bridging_sep.tglpulang, '%Y-%m-%d') as tanggal from bridging_sep where "+
-                   "bridging_sep.tglpulang between ? and ? group by DATE_FORMAT(bridging_sep.tglpulang, '%y-%m-%d') "+
-                   "order by bridging_sep.tglpulang");
+                   "select DATE_FORMAT(bridging_sep.tglsep, '%Y-%m-%d') as tanggal from bridging_sep where "+
+                   "bridging_sep.tglsep between ? and ? group by DATE_FORMAT(bridging_sep.tglsep, '%Y-%m-%d') "+
+                   "order by bridging_sep.tglsep");
             try {
                 ps.setString(1,Valid.SetTgl(TglSEP1.getSelectedItem()+"")+" 00:00:00");
                 ps.setString(2,Valid.SetTgl(TglSEP2.getSelectedItem()+"")+" 23:59:59");

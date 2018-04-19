@@ -66,18 +66,6 @@
                             </div>
                         </div>
                         <div class="body">
-						<?php $dates = 'Tanggal : '.date("d-m-Y "); ?>
-                        <?php
-						$jumlah=array();
-						$poli=array();
-						$date = date("Y-m-d"); 
-						$sql = "select poliklinik.nm_poli, count(*) as jumlah from reg_periksa INNER JOIN poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli WHERE reg_periksa.tgl_registrasi='$date' and poliklinik.nm_poli !='-' group by reg_periksa.kd_poli  order by count(*) desc ";
-						$hasil=query($sql);
-						while ($data = fetch_array ($hasil)){
-                            $jumlah[]=intval($data['jumlah']);
-                            $poli[]= $data['nm_poli'];
-                        }
-						?>
                                 <div id="kunjungan">
                                 </div>
                         </div>
