@@ -66,7 +66,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                    Kso_Radiologi_Ralan=0,Persediaan_Radiologi_Rawat_Jalan=0,Obat_Rawat_Jalan=0,
                    Jasa_Medik_Dokter_Operasi_Ralan=0,Jasa_Medik_Paramedis_Operasi_Ralan=0,Obat_Operasi_Ralan=0,kekurangan=0;
     private int i,r,cek,row2,countbayar=0,z=0,jml=0;
-    private String status="",biaya="",tambahan="",totals="",kdptg="",nmptg="",kd_pj="",notaralan="",centangdokterralan="",
+    private String umur="",status="",biaya="",tambahan="",totals="",kdptg="",nmptg="",kd_pj="",notaralan="",centangdokterralan="",
             rinciandokterralan="",Tindakan_Ralan="",Laborat_Ralan="",Radiologi_Ralan="",
             Obat_Ralan="",Registrasi_Ralan="",Tambahan_Ralan="",Potongan_Ralan="",
             Beban_Jasa_Medik_Dokter_Tindakan_Ralan="", Utang_Jasa_Medik_Dokter_Tindakan_Ralan="", 
@@ -85,9 +85,10 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             Operasi_Ralan="",tampilkan_ppnobat_ralan="",rincianoperasi="",centangobatralan="No",
             sqlpscekbilling="select count(billing.no_rawat) from billing where billing.no_rawat=?",
             sqlpscarirm="select no_rkm_medis from reg_periksa where no_rawat=?",
-            sqlpscaripasien="select nm_pasien,umur from pasien where no_rkm_medis=? ",
+            sqlpscaripasien="select nm_pasien from pasien where no_rkm_medis=? ",
             sqlpsreg="select reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,"+
-                    "reg_periksa.kd_poli,reg_periksa.no_rawat,reg_periksa.biaya_reg,current_time() as jam "+
+                    "reg_periksa.kd_poli,reg_periksa.no_rawat,reg_periksa.biaya_reg,current_time() as jam,"+
+                    "reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from reg_periksa where reg_periksa.no_rawat=?",
             sqlpscaripoli="select nm_poli from poliklinik where kd_poli=?",
             sqlpscarialamat="select concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) from pasien "+
@@ -3751,7 +3752,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 pscaripasien.setString(1,TNoRM.getText());
                 rscaripasien=pscaripasien.executeQuery();
                 if(rscaripasien.next()){
-                    TPasien.setText(rscaripasien.getString(1)+" ( "+rscaripasien.getString(2)+" )");
+                    TPasien.setText(rscaripasien.getString(1));
                 }
 	    }catch (Exception e) {
                 TPasien.setText("");
@@ -4054,7 +4055,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                         
                     tabModeRwJlDr.addRow(new Object[]{true,"Tanggal & Jam",": "+rsreg.getString("tgl_registrasi")+" "+rsreg.getString("jam"),"",null,null,null,null,"-"});
                     tabModeRwJlDr.addRow(new Object[]{true,"No.RM",": "+TNoRM.getText(),"",null,null,null,null,"-"});
-                    tabModeRwJlDr.addRow(new Object[]{true,"Nama Pasien",": "+TPasien.getText(),"",null,null,null,null,"-"});
+                    tabModeRwJlDr.addRow(new Object[]{true,"Nama Pasien",": "+TPasien.getText()+" ("+rsreg.getString("umurdaftar")+rsreg.getString("sttsumur")+")","",null,null,null,null,"-"});
                     pscarialamat=koneksi.prepareStatement(sqlpscarialamat); 
                     try{
                         pscarialamat.setString(1,TNoRM.getText());
