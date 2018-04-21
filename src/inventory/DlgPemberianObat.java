@@ -37,7 +37,6 @@ import javax.swing.table.TableColumn;
 import inventory.DlgCariKonversi;
 import inventory.DlgCariObat;
 import inventory.DlgCariObat2;
-import inventory.DlgCariObat3;
 import inventory.riwayatobat;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;

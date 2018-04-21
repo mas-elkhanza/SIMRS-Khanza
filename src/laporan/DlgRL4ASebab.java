@@ -207,7 +207,7 @@ public class DlgRL4ASebab extends javax.swing.JDialog {
         LoadHTML.setName("LoadHTML"); // NOI18N
         internalFrame2.add(LoadHTML, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Berdasar Tanggal Masuk  ", internalFrame2);
+        TabRawat.addTab("Berdasar Tanggal Masuk", internalFrame2);
 
         internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame3.setBorder(null);
@@ -218,7 +218,7 @@ public class DlgRL4ASebab extends javax.swing.JDialog {
         LoadHTML1.setName("LoadHTML1"); // NOI18N
         internalFrame3.add(LoadHTML1, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Berdasar Tanggal Keluar  ", internalFrame3);
+        TabRawat.addTab("Berdasar Tanggal Keluar", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
