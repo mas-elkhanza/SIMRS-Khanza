@@ -983,13 +983,13 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                             "<td valign='top'>"+
                                 "<table width='100%' border='0'>");
                         pstindakan=koneksi.prepareStatement(
-                                "select jns_perawatan.nm_perawatan from rawat_jl_dr inner join jns_perawatan "+
-                                "on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw where rawat_jl_dr.no_rawat=?");
+                                "select icd9.deskripsi_panjang from icd9 inner join prosedur_pasien "+
+                                "on icd9.kode=prosedur_pasien.kode where prosedur_pasien.no_rawat=?");
                         try {
                             pstindakan.setString(1,rs.getString("no_rawat"));
                             rstindakan=pstindakan.executeQuery();
                             while(rstindakan.next()){
-                                htmlContent.append("<tr class='isi4'><td width='100%'>"+rstindakan.getString("nm_perawatan")+"</td></tr>");
+                                htmlContent.append("<tr class='isi4'><td width='100%'>"+rstindakan.getString("deskripsi_panjang")+"</td></tr>");
                             }
                         } catch (Exception e) {
                             System.out.println("Note : "+e);
@@ -1126,13 +1126,13 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                             "<td valign='top'>"+
                                 "<table width='100%' border='0'>");
                         pstindakan=koneksi.prepareStatement(
-                                "select jns_perawatan.nm_perawatan from rawat_jl_dr inner join jns_perawatan "+
-                                "on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw where rawat_jl_dr.no_rawat=?");
+                                "select icd9.deskripsi_panjang from icd9 inner join prosedur_pasien "+
+                                "on icd9.kode=prosedur_pasien.kode where prosedur_pasien.no_rawat=?");
                         try {
                             pstindakan.setString(1,rs.getString("no_rawat"));
                             rstindakan=pstindakan.executeQuery();
                             while(rstindakan.next()){
-                                htmlContent.append("<tr class='isi4'><td width='100%'>"+rstindakan.getString("nm_perawatan")+"</td></tr>");
+                                htmlContent.append("<tr class='isi4'><td width='100%'>"+rstindakan.getString("deskripsi_panjang")+"</td></tr>");
                             }
                         } catch (Exception e) {
                             System.out.println("Note : "+e);

@@ -34,7 +34,7 @@ import javax.swing.table.TableColumn;
  *
  * @author dosen
  */
-public final class DlgSatuan extends javax.swing.JDialog {
+public final class DlgMetodeRacik extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -45,13 +45,13 @@ public final class DlgSatuan extends javax.swing.JDialog {
     /** Creates new form DlgPenyakit
      *@param parent
      *@param modal */
-    public DlgSatuan(java.awt.Frame parent, boolean modal) {
+    public DlgMetodeRacik(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"P","Kode Satuan","Nama Satuan"};
+        Object[] row={"P","Kode","Metode Racik"};
         tabMode=new DefaultTableModel(null,row){
             @Override 
              public boolean isCellEditable(int rowIndex, int colIndex){
@@ -85,7 +85,7 @@ public final class DlgSatuan extends javax.swing.JDialog {
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
-        Kd.setDocument(new batasInput((byte)4).getKata(Kd));
+        Kd.setDocument(new batasInput((byte)3).getKata(Kd));
         Nm.setDocument(new batasInput((byte)30).getKata(Nm));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.cariCepat().equals("aktif")){
@@ -97,14 +97,7 @@ public final class DlgSatuan extends javax.swing.JDialog {
                 @Override
                 public void changedUpdate(DocumentEvent e) {tampil();}
             });
-        }  
-        try {
-            ps=koneksi.prepareStatement("select kode_sat,satuan  "+
-                " from kodesatuan where  kode_sat like ? or "+
-                " satuan like ? order by satuan ");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        }          
     }
 
 
@@ -150,7 +143,7 @@ public final class DlgSatuan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Satuan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Metode Racik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -178,7 +171,7 @@ public final class DlgSatuan extends javax.swing.JDialog {
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 47));
         panelisi4.setLayout(null);
 
-        label34.setText("Kode Satuan :");
+        label34.setText("Kode Racik :");
         label34.setName("label34"); // NOI18N
         label34.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label34);
@@ -194,7 +187,7 @@ public final class DlgSatuan extends javax.swing.JDialog {
         panelisi4.add(Kd);
         Kd.setBounds(89, 12, 80, 23);
 
-        label36.setText("Nama Satuan :");
+        label36.setText("Metode Racik :");
         label36.setName("label36"); // NOI18N
         label36.setPreferredSize(new java.awt.Dimension(35, 23));
         panelisi4.add(label36);
@@ -408,11 +401,11 @@ public final class DlgSatuan extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(Kd.getText().trim().equals("")){
-            Valid.textKosong(Kd,"Kode Satuan");
+            Valid.textKosong(Kd,"Kode Racik");
         }else if(Nm.getText().trim().equals("")){
-            Valid.textKosong(Nm,"Nama Satuan");
+            Valid.textKosong(Nm,"Nama Racik");
         }else{
-            Sequel.menyimpan("kodesatuan","'"+Kd.getText()+"','"+Nm.getText()+"'","Kode Satuan");
+            Sequel.menyimpan("metode_racik","'"+Kd.getText()+"','"+Nm.getText()+"'","Kode Racik");
             BtnCariActionPerformed(evt);
             emptTeks();
         }
@@ -439,7 +432,7 @@ public final class DlgSatuan extends javax.swing.JDialog {
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         for(i=0;i<tbKamar.getRowCount();i++){ 
             if(tbKamar.getValueAt(i,0).toString().equals("true")){
-                Sequel.meghapus("kodesatuan","kode_sat",tbKamar.getValueAt(i,1).toString());
+                Sequel.meghapus("metode_racik","kd_racik",tbKamar.getValueAt(i,1).toString());
             }
         } 
         BtnCariActionPerformed(evt);
@@ -456,11 +449,11 @@ public final class DlgSatuan extends javax.swing.JDialog {
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(Kd.getText().trim().equals("")){
-            Valid.textKosong(Kd,"Kode Satuan");
+            Valid.textKosong(Kd,"Kode Racik");
         }else if(Nm.getText().trim().equals("")){
-            Valid.textKosong(Nm,"Nama Satuan");
+            Valid.textKosong(Nm,"Nama Racik");
         }else{
-            Valid.editTable(tabMode,"kodesatuan","kode_sat","?","satuan=?,kode_sat=?",3,new String[]{
+            Valid.editTable(tabMode,"metode_racik","kd_racik","?","nm_racik=?,kd_racik=?",3,new String[]{
                 Nm.getText(),Kd.getText(),tbKamar.getValueAt(tbKamar.getSelectedRow(),1).toString()
             });
             if(tabMode.getRowCount()!=0){BtnCariActionPerformed(evt);}
@@ -493,9 +486,9 @@ public final class DlgSatuan extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){            
-            Valid.MyReport("rptSatuan.jrxml","report","::[ Data Satuan ]::","select kode_sat, satuan "+
-                " from kodesatuan where  kode_sat like '%"+TCari.getText().trim()+"%' or "+
-                " satuan like '%"+TCari.getText().trim()+"%' order by kode_sat");
+            Valid.MyReport("rptMetodeRacik.jrxml","report","::[ Data Racik ]::","select kd_racik, nm_racik "+
+                " from metode_racik where  kd_racik like '%"+TCari.getText().trim()+"%' or "+
+                " nm_racik like '%"+TCari.getText().trim()+"%' order by kd_racik");
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -576,7 +569,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgSatuan dialog = new DlgSatuan(new javax.swing.JFrame(), true);
+            DlgMetodeRacik dialog = new DlgMetodeRacik(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -615,16 +608,30 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{            
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                Object[] data={false,rs.getString(1),
-                               rs.getString(2)};
-                tabMode.addRow(data);
+        try{  
+            ps=koneksi.prepareStatement("select kd_racik,nm_racik  "+
+                    " from metode_racik where  kd_racik like ? or "+
+                    " nm_racik like ? order by nm_racik ");
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString(1),rs.getString(2)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
-        }catch(SQLException e){
+        }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
@@ -634,7 +641,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         Kd.setText("");
         Nm.setText("");
         Kd.requestFocus();        
-        Valid.autoNomer("kodesatuan","S",2,Kd);
+        Valid.autoNomer("metode_racik","R",2,Kd);
     }
 
     private void getData() {
@@ -650,10 +657,10 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getsatuan_barang());
-        BtnHapus.setEnabled(var.getsatuan_barang());
-        BtnEdit.setEnabled(var.getsatuan_barang());
-        BtnPrint.setEnabled(var.getsatuan_barang());
+        BtnSimpan.setEnabled(var.getmetode_racik());
+        BtnHapus.setEnabled(var.getmetode_racik());
+        BtnEdit.setEnabled(var.getmetode_racik());
+        BtnPrint.setEnabled(var.getmetode_racik());
     }
     
 }
