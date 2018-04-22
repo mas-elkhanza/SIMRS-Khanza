@@ -60,7 +60,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         initComponents();
 
         TabModeDiagnosaPasien=new DefaultTableModel(null,new Object[]{
-            "P","Tgl.Rawat","No.Rawat","No.R.M.","Nama Pasien","Kode","Nama Penyakit","Status"}){
+            "P","Tgl.Rawat","No.Rawat","No.R.M.","Nama Pasien","Kode","Nama Penyakit","Status","Kasus"}){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -70,7 +70,8 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
              }
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -81,7 +82,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         tbDiagnosaPasien.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbDiagnosaPasien.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbDiagnosaPasien.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -99,6 +100,8 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             }else if(i==7){
                 column.setPreferredWidth(100);
+            }else if(i==8){
+                column.setPreferredWidth(70);
             }
         }
         tbDiagnosaPasien.setDefaultRenderer(Object.class, new WarnaTable());
@@ -897,9 +900,22 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
                 koneksi.setAutoCommit(false);
                 for(i=0;i<tbDiagnosa.getRowCount();i++){ 
                     if(tbDiagnosa.getValueAt(i,0).toString().equals("true")){
-                        Sequel.menyimpan("diagnosa_pasien","?,?,?,?","Penyakit",4,new String[]{
-                            TNoRw.getText(),tbDiagnosa.getValueAt(i,1).toString(),Status.getSelectedItem().toString(),Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from diagnosa_pasien where no_rawat=? and status='"+Status.getSelectedItem().toString()+"'",TNoRw.getText())
-                        });
+                        if(Sequel.cariInteger(
+                                "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
+                                "inner join reg_periksa inner join pasien on "+
+                                "diagnosa_pasien.no_rawat=reg_periksa.no_rawat and "+
+                                "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                                "pasien.no_rkm_medis='"+TNoRM.getText()+"' and diagnosa_pasien.kd_penyakit='"+tbDiagnosa.getValueAt(i,1).toString()+"'")>0){
+                            Sequel.menyimpan("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{
+                                TNoRw.getText(),tbDiagnosa.getValueAt(i,1).toString(),Status.getSelectedItem().toString(),
+                                Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from diagnosa_pasien where no_rawat=? and status='"+Status.getSelectedItem().toString()+"'",TNoRw.getText()),"Lama"
+                            });
+                        }else{
+                            Sequel.menyimpan("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{
+                                TNoRw.getText(),tbDiagnosa.getValueAt(i,1).toString(),Status.getSelectedItem().toString(),
+                                Sequel.cariIsi("select ifnull(MAX(prioritas)+1,1) from diagnosa_pasien where no_rawat=? and status='"+Status.getSelectedItem().toString()+"'",TNoRw.getText()),"Baru"
+                            });
+                        }                            
                     }                    
                 }
                 koneksi.setAutoCommit(true);  
@@ -1355,7 +1371,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Valid.tabelKosong(TabModeDiagnosaPasien);
         try{            
             psdiagnosapasien=koneksi.prepareStatement("select reg_periksa.tgl_registrasi,diagnosa_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                    "diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit, diagnosa_pasien.status "+
+                    "diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit, diagnosa_pasien.status,diagnosa_pasien.status_penyakit "+
                     "from diagnosa_pasien inner join reg_periksa inner join pasien inner join penyakit "+
                     "on diagnosa_pasien.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "and diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit "+
@@ -1404,7 +1420,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                    rs.getString(4),
                                    rs.getString(5),
                                    rs.getString(6),
-                                   rs.getString(7)});
+                                   rs.getString(7),
+                                   rs.getString(8)});
                 }            
                 LCount.setText(""+TabModeDiagnosaPasien.getRowCount());
             } catch (Exception e) {
