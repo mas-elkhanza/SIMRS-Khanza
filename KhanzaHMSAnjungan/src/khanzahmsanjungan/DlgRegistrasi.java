@@ -663,11 +663,11 @@ public class DlgRegistrasi extends javax.swing.JDialog {
     }//GEN-LAST:event_NmBayarKeyPressed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,
+        if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",18,
             new String[]{LblNoReg.getText(),LblNoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),LblJam.getText(),
             LblKdDokter.getText(),LblNoRm.getText(),LblKdPoli.getText(),PngJawab.getText(),
             AlamatPngJawab.getText(),HubunganPngJawab.getText(),Biaya.getText(),"Belum",
-            Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur})==true){
+            Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur,"Belum Bayar"})==true){
                 UpdateUmur();
                 DlgCetak cetak=new DlgCetak(null,true);
                 cetak.setSize(this.getWidth(),this.getHeight());
@@ -683,11 +683,11 @@ public class DlgRegistrasi extends javax.swing.JDialog {
             LblNoRawat.setText(NoRawat.getText());
             LblTanggal.setText(Tanggal.getSelectedItem().toString());
             LblJam.setText(Sequel.cariIsi("select current_time()"));
-            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,
+            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",18,
                 new String[]{LblNoReg.getText(),LblNoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),LblJam.getText(),
                 LblKdDokter.getText(),LblNoRm.getText(),LblKdPoli.getText(),PngJawab.getText(),
                 AlamatPngJawab.getText(),HubunganPngJawab.getText(),Biaya.getText(),"Belum",
-                Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur})==true){
+                Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur,"Belum Bayar"})==true){
                     UpdateUmur();
                     DlgCetak cetak=new DlgCetak(null,true);
                     cetak.setSize(this.getWidth(),this.getHeight());

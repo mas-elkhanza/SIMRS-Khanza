@@ -437,6 +437,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
+        scrollPane1.setComponentPopupMenu(jPopupMenu1);
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
@@ -452,6 +453,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
             }
         ));
         tbDetail.setToolTipText("");
+        tbDetail.setComponentPopupMenu(jPopupMenu1);
         tbDetail.setName("tbDetail"); // NOI18N
         scrollPane1.setViewportView(tbDetail);
 
@@ -573,7 +575,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             ); 
                         }            
 
-                        f = new File("DetailJMDokter2.html");            
+                        f = new File("DetailJMDokter1.html");            
                         bw = new BufferedWriter(new FileWriter(f));            
                         bw.write("<html>"+
                                     "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
@@ -800,7 +802,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             ); 
                         }            
 
-                        f = new File("DetailJMDokter2.wps");            
+                        f = new File("DetailJMDokter.wps");            
                         bw = new BufferedWriter(new FileWriter(f));            
                         bw.write("<html>"+
                                     "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
@@ -980,7 +982,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             ); 
                         }            
 
-                        f = new File("DetailJMDokter2.csv");            
+                        f = new File("DetailJMDokter.csv");            
                         bw = new BufferedWriter(new FileWriter(f));            
                         bw.write(htmlContent.toString());
 
