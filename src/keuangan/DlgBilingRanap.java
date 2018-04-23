@@ -81,7 +81,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
             rskamarin,rsbiayasekali,rsbiayaharian,rsreseppulang,rstambahanbiaya,rspotonganbiaya,
             rsralandokter,rsralandrpr,rsranapdokter,rsoperasi,rsralanperawat,rsranapperawat,rsperiksalab,rskategori,
             rsperiksarad,rsanak,rstamkur,rsrekening,rsservice,rsakunbayar,rsakunpiutang;
-    private String biaya="",tambahan="",totals="",norawatbayi="",centangdokterranap="",kd_pj="",
+    private String umur="",biaya="",tambahan="",totals="",norawatbayi="",centangdokterranap="",kd_pj="",
             rinciandokterranap="",rincianoperasi="",hariawal="",notaranap="",tampilkan_administrasi_di_billingranap="",
             Tindakan_Ranap="",Laborat_Ranap="",Radiologi_Ranap="",Obat_Ranap="",Registrasi_Ranap="",
             Tambahan_Ranap="",Potongan_Ranap="",Retur_Obat_Ranap="",Resep_Pulang_Ranap="",Kamar_Inap="",Operasi_Ranap="",
@@ -2736,7 +2736,7 @@ private void MnHapusTagihanActionPerformed(java.awt.event.ActionEvent evt) {//GE
         }
         if(i>0){
             Sequel.AutoComitFalse();
-            Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"stts='Sudah'");
+            Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Belum Bayar'");
             
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             
@@ -3923,12 +3923,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
             }
             
-            pscaripasien=koneksi.prepareStatement("select nm_pasien,umur from pasien where no_rkm_medis=? ");
+            pscaripasien=koneksi.prepareStatement("select nm_pasien from pasien where no_rkm_medis=? ");
             try {
                 pscaripasien.setString(1,TNoRM.getText());
                 rscaripasien=pscaripasien.executeQuery();
                 if(rscaripasien.next()){
-                    TPasien.setText(rscaripasien.getString(1)+" ( "+rscaripasien.getString(2)+" )");
+                    TPasien.setText(rscaripasien.getString(1));
                 } 
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -4056,7 +4056,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try{  
             psreg=koneksi.prepareStatement(
                     "select reg_periksa.no_rkm_medis,concat(DATE_FORMAT(reg_periksa.tgl_registrasi, '%e %M %Y'),' ',reg_periksa.jam_reg) as registrasi,kamar_inap.kd_kamar,concat(if(kamar_inap.tgl_keluar='0000-00-00',DATE_FORMAT(CURDATE(), '%e %M %Y'),DATE_FORMAT(kamar_inap.tgl_keluar, '%e %M %Y')),' ',kamar_inap.jam_keluar) as keluar,  "+
-                    "(select sum(kamar_inap.lama) from kamar_inap where kamar_inap.no_rawat=reg_periksa.no_rawat ) as lama,reg_periksa.biaya_reg "+
+                    "(select sum(kamar_inap.lama) from kamar_inap where kamar_inap.no_rawat=reg_periksa.no_rawat ) as lama,reg_periksa.biaya_reg,reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from reg_periksa inner join kamar_inap on reg_periksa.no_rawat=kamar_inap.no_rawat where reg_periksa.no_rawat=? "+
                     "order by kamar_inap.tgl_keluar desc limit 1");
             try {
@@ -4100,7 +4100,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             tabModeRwJlDr.addRow(new Object[]{true,"Nama Bayi",": "+rsanak.getString("nm_pasien"),"",null,null,null,null,"-"});
                         }else{
                             tabModeRwJlDr.addRow(new Object[]{true,"No.R.M.",": "+TNoRM.getText(),"",null,null,null,null,"-"});
-                            tabModeRwJlDr.addRow(new Object[]{true,"Nama Pasien",": "+TPasien.getText(),"",null,null,null,null,"-"});
+                            tabModeRwJlDr.addRow(new Object[]{true,"Nama Pasien",": "+TPasien.getText()+" ("+rsreg.getString("umurdaftar")+rsreg.getString("sttsumur")+")","",null,null,null,null,"-"});
                             norawatbayi="";
                         }
                     } catch (Exception e) {
@@ -6114,7 +6114,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "',' ',CURTIME()),'Pelunasan','"+total+"','"+total+"','Sudah','"+var.getkode()+"'","No.Rawat");
             }
 
-            Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"stts='Bayar'");
+            Valid.editTable(tabModeRwJlDr,"reg_periksa","no_rawat",TNoRw,"status_bayar='Sudah Bayar'");
             Sequel.meghapus("temporary_tambahan_potongan","no_rawat",TNoRw.getText());
             koneksi.setAutoCommit(true);
             JOptionPane.showMessageDialog(null,"Proses simpan selesai...!"); 
