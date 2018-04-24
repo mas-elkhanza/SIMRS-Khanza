@@ -19,7 +19,7 @@ require_once('config.php');
 if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('index.php'); }
 
 ?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -69,7 +69,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('inde
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <div class="login-box" style="margin: 20px;">
+    <div class="login-box">
         <div class="logo">
             <a href="index.php"><?php echo $dataSettings['nama_instansi']; ?></a>
             <small><?php echo $dataSettings['alamat_instansi']; ?> - <?php echo $dataSettings['kabupaten']; ?></small>
@@ -85,19 +85,15 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('inde
 
             if ($_POST['username'] !=="" || $_POST['password'] !=="") { 
 
-                $sql = "SELECT AES_DECRYPT(id_user,'nur') as id_user, AES_DECRYPT(password,'windi') as password FROM user WHERE id_user = AES_ENCRYPT('{$_POST['username']}','nur')";
+                $sql = "SELECT * FROM user WHERE AES_DECRYPT(id_user,'nur') = '".$_POST["username"]."' and AES_DECRYPT(password,'windi')='".$_POST["password"]."'";
                 $found = query($sql);
-            
+                
+                echo "user : ".$_POST['username'] ;
+                echo "password : ".$_POST['password'] ;
+                echo "Data : ".num_rows($found);
                 if(num_rows($found) !== 1) {
                     $errors[] = 'Kode dokter tidak terdaftar atau tidak aktif.';
-                }    
-
-                if(num_rows($found) == 1) { 
-                    $user = fetch_assoc($found);
-        		    if($user['password'] !== $_POST['password']) {
-                        $errors[] = 'Kata kunci tidak valid.';
-                    }    
-                }    
+                }       
 
             }
 
@@ -153,7 +149,7 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('inde
                             <label for="rememberme">Ingat saya</label>
                         </div>
                         <div class="col-xs-4">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit">Login</button>
+                            <button class="btn btn-block bg-pink waves-effect" type="submit">Log Masuk</button>
                         </div>
                     </div>
                 </form>
