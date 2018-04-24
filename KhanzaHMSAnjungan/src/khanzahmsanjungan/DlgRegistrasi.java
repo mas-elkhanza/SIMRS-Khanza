@@ -37,6 +37,7 @@ public class DlgRegistrasi extends javax.swing.JDialog {
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private String umur="0",sttsumur="Th";
     private DlgPilihBayar pilihbayar=new DlgPilihBayar(null,true);
+    private String status="Baru";
 
     /** Creates new form DlgAdmin
      * @param parent
@@ -663,11 +664,12 @@ public class DlgRegistrasi extends javax.swing.JDialog {
     }//GEN-LAST:event_NmBayarKeyPressed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,
+        status=Sequel.cariIsi("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='"+LblNoRm.getText()+"' and kd_poli='"+LblKdPoli.getText()+"')>0,'Lama','Baru' )");
+        if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
             new String[]{LblNoReg.getText(),LblNoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),LblJam.getText(),
             LblKdDokter.getText(),LblNoRm.getText(),LblKdPoli.getText(),PngJawab.getText(),
             AlamatPngJawab.getText(),HubunganPngJawab.getText(),Biaya.getText(),"Belum",
-            Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur})==true){
+            Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                 UpdateUmur();
                 DlgCetak cetak=new DlgCetak(null,true);
                 cetak.setSize(this.getWidth(),this.getHeight());
@@ -683,11 +685,11 @@ public class DlgRegistrasi extends javax.swing.JDialog {
             LblNoRawat.setText(NoRawat.getText());
             LblTanggal.setText(Tanggal.getSelectedItem().toString());
             LblJam.setText(Sequel.cariIsi("select current_time()"));
-            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,
+            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                 new String[]{LblNoReg.getText(),LblNoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),LblJam.getText(),
                 LblKdDokter.getText(),LblNoRm.getText(),LblKdPoli.getText(),PngJawab.getText(),
                 AlamatPngJawab.getText(),HubunganPngJawab.getText(),Biaya.getText(),"Belum",
-                Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur})==true){
+                Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                     UpdateUmur();
                     DlgCetak cetak=new DlgCetak(null,true);
                     cetak.setSize(this.getWidth(),this.getHeight());
