@@ -142,10 +142,9 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(kabupaten.getTable().getSelectedRow()!= -1){
-                    kdkabupaten.setText(kabupaten.getTable().getValueAt(kabupaten.getTable().getSelectedRow(),1).toString());
-                    nmkabupaten.setText(kabupaten.getTable().getValueAt(kabupaten.getTable().getSelectedRow(),2).toString());
+                    nmkabupaten.setText(kabupaten.getTable().getValueAt(kabupaten.getTable().getSelectedRow(),0).toString());
                 }      
-                kdkabupaten.requestFocus();
+                nmkabupaten.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -178,8 +177,8 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(dokter.getTable().getSelectedRow()!= -1){
-                    kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                    nmdokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),2).toString());
+                    kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                    nmdokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
                 }      
                 kddokter.requestFocus();
             }
@@ -260,7 +259,6 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         nmdokter = new widget.TextBox();
         BtnSeek4 = new widget.Button();
         label21 = new widget.Label();
-        kdkabupaten = new widget.TextBox();
         nmkabupaten = new widget.TextBox();
         BtnSeek5 = new widget.Button();
         TabRawat = new javax.swing.JTabbedPane();
@@ -539,22 +537,11 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         panelisi4.add(label21);
         label21.setBounds(379, 40, 100, 23);
 
-        kdkabupaten.setEditable(false);
-        kdkabupaten.setName("kdkabupaten"); // NOI18N
-        kdkabupaten.setPreferredSize(new java.awt.Dimension(75, 23));
-        kdkabupaten.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdkabupatenKeyPressed(evt);
-            }
-        });
-        panelisi4.add(kdkabupaten);
-        kdkabupaten.setBounds(484, 40, 75, 23);
-
         nmkabupaten.setEditable(false);
         nmkabupaten.setName("nmkabupaten"); // NOI18N
         nmkabupaten.setPreferredSize(new java.awt.Dimension(215, 23));
         panelisi4.add(nmkabupaten);
-        nmkabupaten.setBounds(564, 40, 215, 23);
+        nmkabupaten.setBounds(484, 40, 295, 23);
 
         BtnSeek5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeek5.setMnemonic('3');
@@ -789,6 +776,9 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         nmpoli.setText("");
         kdpenjab.setText("");
         nmpenjab.setText("");
+        kddokter.setText("");
+        nmdokter.setText("");
+        nmkabupaten.setText("");
         if(TabRawat.getSelectedIndex()==0){
             tampil();
         }else if(TabRawat.getSelectedIndex()==1){
@@ -815,19 +805,22 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     }//GEN-LAST:event_kddokterKeyPressed
 
     private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek4ActionPerformed
-        // TODO add your handling code here:
+        dokter.isCek();
+        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setAlwaysOnTop(false);
+        dokter.setVisible(true);
     }//GEN-LAST:event_BtnSeek4ActionPerformed
 
     private void BtnSeek4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek4KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnSeek4KeyPressed
 
-    private void kdkabupatenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdkabupatenKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kdkabupatenKeyPressed
-
     private void BtnSeek5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek5ActionPerformed
-        // TODO add your handling code here:
+        kabupaten.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        kabupaten.setLocationRelativeTo(internalFrame1);
+        kabupaten.setAlwaysOnTop(false);
+        kabupaten.setVisible(true);
     }//GEN-LAST:event_BtnSeek5ActionPerformed
 
     private void BtnSeek5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek5KeyPressed
@@ -874,7 +867,6 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private widget.Label jLabel8;
     private widget.TextBox kddokter;
-    private widget.TextBox kdkabupaten;
     private widget.TextBox kdpenjab;
     private widget.TextBox kdpoli;
     private widget.Label label11;
