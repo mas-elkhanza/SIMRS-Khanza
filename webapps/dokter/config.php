@@ -13,9 +13,9 @@
 
 if (preg_match ('/config.php/', basename($_SERVER['PHP_SELF']))) die ('Unable to access this script directly from browser!');
 
-define('DB_HOST', 'localhost');
+define('DB_HOST', '10.1.1.45');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'password');
 define('DB_NAME', 'sik');
 
 $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME); 
@@ -57,7 +57,7 @@ function num_rows($result) {
 
 // Get date and time
 
-date_default_timezone_set('Asia/Makassar');
+date_default_timezone_set('Asia/Jakarta');
 $month      = date('Y-m');
 $date       = date('Y-m-d');
 $time       = date('H:i:s');
@@ -68,9 +68,10 @@ $getSettings = query("SELECT * FROM setting");
 $dataSettings = fetch_assoc($getSettings);
 
 // Get jenis poli
-$query_poli = query("SELECT * from poliklinik WHERE kd_poli = 'ANA'");
+$jenispoli=isset($_SESSION['jenis_poli'])?$_SESSION['jenis_poli']:NULL;
+$query_poli = query("SELECT * from poliklinik WHERE kd_poli = '".$jenispoli."'");
 $data_poli = fetch_array($query_poli);
-if ('ANA' == $data_poli['0']) {
+if ($jenispoli == $data_poli['0']) {
     $nmpoli = $data_poli['1'];
 }
 
@@ -81,7 +82,7 @@ function clean($string) {
 
 // redirect to another page
 function redirect($location) {
-    return header("Location: {$location}");
+    return header("Location:".$location);
 }
 
 // add message to session
