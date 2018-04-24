@@ -926,7 +926,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                        "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,"+
                        "pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli,"+
                        "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,"+
-                       "reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_tlp,reg_periksa.stts,kecamatan.nm_kec,kabupaten.nm_kab "+
+                       "reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_tlp,reg_periksa.stts,kecamatan.nm_kec,kabupaten.nm_kab,reg_periksa.status_poli "+
                        "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "+
                        "inner join kecamatan inner join kabupaten "+
                        "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1006,7 +1006,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                             "</td>"+
                             "<td valign='top'>"+rs.getString("stts")+"</td>"+
                             "<td valign='top'>"+rs.getString("stts_daftar")+"</td>"+
-                            "<td valign='top'>-</td>"+
+                            "<td valign='top'>"+rs.getString("status_poli")+"</td>"+
                             "<td valign='top'>"+Sequel.cariIsi("select status_penyakit from diagnosa_pasien where prioritas='1' and status='Ralan' and no_rawat=?",rs.getString("no_rawat"))+"</td>"+
                         "</tr>"
                     );  
@@ -1069,7 +1069,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                        "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,"+
                        "pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,poliklinik.nm_poli,"+
                        "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,"+
-                       "reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_tlp,reg_periksa.stts,kecamatan.nm_kec,kabupaten.nm_kab "+
+                       "reg_periksa.stts_daftar,penjab.png_jawab,pasien.no_tlp,reg_periksa.stts,kecamatan.nm_kec,kabupaten.nm_kab,reg_periksa.status_poli "+
                        "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "+
                        "inner join kecamatan inner join kabupaten "+
                        "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
@@ -1149,7 +1149,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                             "</td>"+
                             "<td valign='top'>"+rs.getString("stts")+"</td>"+
                             "<td valign='top'>"+rs.getString("stts_daftar")+"</td>"+
-                            "<td valign='top'>-</td>"+
+                            "<td valign='top'>"+rs.getString("status_poli")+"</td>"+
                             "<td valign='top'>"+Sequel.cariIsi("select status_penyakit from diagnosa_pasien where prioritas='1' and status='Ralan' and no_rawat=?",rs.getString("no_rawat"))+"</td>"+
                         "</tr>"
                     );  
