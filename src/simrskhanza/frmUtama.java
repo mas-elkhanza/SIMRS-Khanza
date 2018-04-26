@@ -221,6 +221,7 @@ import grafikanalisa.GrafikStatusRegPerTanggal2;
 import inventory.DlgDaftarPermintaanResep;
 import inventory.DlgGolongan;
 import inventory.DlgKategori;
+import inventory.DlgMetodeRacik;
 import inventory.DlgObatPerTanggal;
 import inventory.DlgPengeluaranApotek;
 import inventory.DlgPenjualanPerTanggal;
@@ -277,6 +278,7 @@ import laporan.DlgRl36;
 import laporan.DlgRl37;
 import laporan.DlgRl38;
 import laporan.DlgSensusHarianPoli;
+import laporan.DlgSensusHarianRalan;
 import laporan.frmPengaduan;
 import parkir.DlgParkirBarcode;
 import parkir.DlgParkirJenis;
@@ -771,6 +773,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnPengaduan = new widget.ButtonBig();
         btnGrafikLabRalanPerHari = new widget.ButtonBig();
         btnGrafikRadRalanPerHari = new widget.ButtonBig();
+        btnSensusHarianRalan = new widget.ButtonBig();
+        btnMetodeRacik = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4784,6 +4788,30 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnGrafikRadRalanPerHari);
 
+        btnSensusHarianRalan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/custom-reports.png"))); // NOI18N
+        btnSensusHarianRalan.setText("Sensus Harian Ralan");
+        btnSensusHarianRalan.setIconTextGap(0);
+        btnSensusHarianRalan.setName("btnSensusHarianRalan"); // NOI18N
+        btnSensusHarianRalan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSensusHarianRalan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSensusHarianRalanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSensusHarianRalan);
+
+        btnMetodeRacik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_document-new_23212.png"))); // NOI18N
+        btnMetodeRacik.setText("Metode Racik");
+        btnMetodeRacik.setIconTextGap(0);
+        btnMetodeRacik.setName("btnMetodeRacik"); // NOI18N
+        btnMetodeRacik.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMetodeRacik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMetodeRacikActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnMetodeRacik);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4792,7 +4820,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/04/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/04/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -10134,6 +10162,31 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikRadRalanPerHariActionPerformed
 
+    private void btnSensusHarianRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSensusHarianRalanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSensusHarianRalan aplikasi=new DlgSensusHarianRalan(this,false);
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSensusHarianRalanActionPerformed
+
+    private void btnMetodeRacikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMetodeRacikActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgMetodeRacik racik=new DlgMetodeRacik(this,false);
+        racik.isCek();
+        racik.emptTeks();
+        racik.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        racik.setLocationRelativeTo(PanelUtama);
+        racik.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnMetodeRacikActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10324,6 +10377,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnLamaPelayananRalan;
     private widget.ButtonBig btnLihatPiutang;
     private widget.ButtonBig btnMerkInventaris;
+    private widget.ButtonBig btnMetodeRacik;
     private widget.ButtonBig btnMonitoringKlaim;
     private widget.ButtonBig btnMutasiBarang;
     private widget.ButtonBig btnMutasiBerkas;
@@ -10437,6 +10491,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnSMS;
     private widget.ButtonBig btnSatuan;
     private widget.ButtonBig btnSensusHarianPoli;
+    private widget.ButtonBig btnSensusHarianRalan;
     private widget.ButtonBig btnSetBiayaHarian;
     private widget.ButtonBig btnSetBiayaMasukSekali;
     private widget.ButtonBig btnSetHargaKamar;
@@ -11010,6 +11065,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getsatuan_barang()==true){
                 Panelmenu.add(btnSatuan); 
+                jmlmenu++;
+            }
+            
+            if(var.getmetode_racik()==true){
+                Panelmenu.add(btnMetodeRacik); 
                 jmlmenu++;
             }
 
@@ -11611,6 +11671,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getsensus_harian_poli()==true){  
                 Panelmenu.add(btnSensusHarianPoli);  
+                jmlmenu++;
+            }
+            
+            if(var.getsensus_harian_ralan()==true){  
+                Panelmenu.add(btnSensusHarianRalan);  
                 jmlmenu++;
             }
 
@@ -12572,6 +12637,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             Panelmenu.add(btnSatuan); 
             jmlmenu++;
         }
+        
+        if(var.getmetode_racik()==true){
+            Panelmenu.add(btnMetodeRacik); 
+            jmlmenu++;
+        }
 
         if(var.getkonversi_satuan()==true){
             Panelmenu.add(btnKonversi); 
@@ -13160,6 +13230,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getsensus_harian_poli()==true){  
             Panelmenu.add(btnSensusHarianPoli);  
+            jmlmenu++;
+        }
+
+        if(var.getsensus_harian_ralan()==true){  
+            Panelmenu.add(btnSensusHarianRalan);  
             jmlmenu++;
         }
 
@@ -14193,6 +14268,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }                
         }
+        
+        if(var.getmetode_racik()==true){
+            if(btnMetodeRacik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMetodeRacik); 
+                jmlmenu++;
+            }                
+        }
 
         if(var.getkonversi_satuan()==true){
             if(btnKonversi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -15016,6 +15098,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getsensus_harian_poli()==true){  
             if(btnSensusHarianPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSensusHarianPoli);  
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getsensus_harian_ralan()==true){  
+            if(btnSensusHarianRalan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSensusHarianRalan);  
                 jmlmenu++;
             }                
         }

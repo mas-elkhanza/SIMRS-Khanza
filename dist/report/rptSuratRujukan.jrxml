@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="61"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="html" class="java.lang.String"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
@@ -16,7 +16,7 @@
 	<parameter name="terpi" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select rujuk.rujuk_ke,rujuk.no_rujuk,reg_periksa.no_rawat,pasien.alamat,dokter.nm_dokter, reg_periksa.no_rkm_medis,pasien.jk,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,pasien.nm_pasien,
-reg_periksa.almt_pj,pasien.umur,reg_periksa.tgl_registrasi from reg_periksa inner join pasien inner join rujuk inner join dokter  on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=rujuk.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter]]>
+reg_periksa.almt_pj,pasien.umur,reg_periksa.tgl_registrasi,rujuk.tgl_rujuk from reg_periksa inner join pasien inner join rujuk inner join dokter  on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=rujuk.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter]]>
 	</queryString>
 	<field name="rujuk_ke" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -58,6 +58,9 @@ reg_periksa.almt_pj,pasien.umur,reg_periksa.tgl_registrasi from reg_periksa inne
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tgl_registrasi" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_rujuk" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<variable name="jkel" class="java.lang.String">
@@ -161,7 +164,7 @@ reg_periksa.almt_pj,pasien.umur,reg_periksa.tgl_registrasi from reg_periksa inne
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
-				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{tgl_rujuk}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="106" y="421" width="0" height="14"/>

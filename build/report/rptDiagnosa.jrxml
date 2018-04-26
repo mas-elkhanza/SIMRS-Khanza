@@ -12,7 +12,7 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[select reg_periksa.tgl_registrasi,diagnosa_pasien.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,
-diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit, diagnosa_pasien.status from diagnosa_pasien inner join reg_periksa inner join pasien inner join penyakit 
+diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit, diagnosa_pasien.status,diagnosa_pasien.status_penyakit from diagnosa_pasien inner join reg_periksa inner join pasien inner join penyakit 
 on diagnosa_pasien.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
 and diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit]]>
 	</queryString>
@@ -35,6 +35,9 @@ and diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit]]>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_penyakit" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -95,6 +98,13 @@ and diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit]]>
 	<columnHeader>
 		<band height="18" splitType="Stretch">
 			<staticText>
+				<reportElement mode="Opaque" x="755" y="0" width="47" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[BARU/LAMA]]></text>
+			</staticText>
+			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="61" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
@@ -123,21 +133,21 @@ and diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit]]>
 				<text><![CDATA[NAMA PASIEN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="393" y="0" width="50" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="393" y="0" width="36" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[KODE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="443" y="0" width="283" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="429" y="0" width="283" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[NAMA PENYAKIT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="726" y="0" width="76" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="712" y="0" width="43" height="17" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
@@ -174,7 +184,7 @@ and diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit]]>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="393" y="0" width="43" height="10"/>
+				<reportElement x="393" y="0" width="36" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
@@ -195,18 +205,25 @@ and diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit]]>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_rawat}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="443" y="0" width="280" height="10"/>
+				<reportElement x="429" y="0" width="280" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nm_penyakit}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="726" y="0" width="72" height="10"/>
+				<reportElement x="712" y="0" width="40" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="755" y="0" width="47" height="10"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{status_penyakit}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
