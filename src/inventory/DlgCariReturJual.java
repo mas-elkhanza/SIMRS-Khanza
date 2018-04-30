@@ -916,7 +916,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         tanggal=" returjual.tgl_retur between '"+Valid.SetTgl(TglRetur1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglRetur2.getSelectedItem()+"")+"' ";
         noret="";ptg="";sat="";bar="";     
         if(!NoRetur.getText().equals("")){
-            noret=" and returjual.no_retur_jual='"+NoNota.getText()+"' ";
+            noret=" and returjual.no_retur_jual='"+NoRetur.getText()+"' ";
         } 
         if(!Nmptg.getText().equals("")){
             ptg=" and petugas.nama='"+Nmptg.getText()+"' ";

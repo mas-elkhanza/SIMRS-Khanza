@@ -4344,6 +4344,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }else{
             Sequel.queryu("delete from detail_pemberian_obat where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from tagihan_obat_langsung where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from detail_obat_racikan where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from obat_racikan where no_rawat='"+TNoRw.getText()+"'");
         }
     }//GEN-LAST:event_MnHapusObatActionPerformed
 
@@ -4621,6 +4623,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             Sequel.queryu("delete from detail_piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from mutasi_berkas where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from reg_periksa where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from detail_obat_racikan where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from obat_racikan where no_rawat='"+TNoRw.getText()+"'");
             Sequel.AutoComitTrue();
             tampilkasir();
         }

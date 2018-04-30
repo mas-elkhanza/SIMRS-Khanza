@@ -8302,7 +8302,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
 
     private void getData() {
         if(tbPetugas.getSelectedRow()!= -1){
-            TNoReg.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),1).toString());                        
             Kd2.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString());
             Valid.SetTgl(DTPReg,tbPetugas.getValueAt(tbPetugas.getSelectedRow(),3).toString());
             CmbJam.setSelectedItem(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),4).toString().substring(0,2));
@@ -8323,6 +8322,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?", kdpoli,tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString());
             Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?", AsalRujukan,tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString());
             TNoRw.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),2).toString());
+            TNoReg.setText(tbPetugas.getValueAt(tbPetugas.getSelectedRow(),1).toString());                       
+            
         }
     }
 
@@ -8382,7 +8383,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
 
     private void isPas(){
         if(validasiregistrasi.equals("Yes")){
-            if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis=? and status_bayar='Belum Bayar' ",TNoRM.getText())>0){
+            if(Sequel.cariInteger("select count(no_rkm_medis) from reg_periksa where no_rkm_medis=? and status_bayar='Belum Bayar' and stts<>'Batal'",TNoRM.getText())>0){
                 JOptionPane.showMessageDialog(rootPane,"Maaf, pasien pada kunjungan sebelumnya memiliki tagihan yang belum di closing.\nSilahkan konfirmasi dengan pihak kasir.. !!");
             }else{
                 if(validasicatatan.equals("Yes")){
