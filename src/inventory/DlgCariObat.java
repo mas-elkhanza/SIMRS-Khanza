@@ -2412,9 +2412,6 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         " databarang.status='1' and golongan_barang.nama like ? or "+
                         " databarang.status='1' and jenis.nama like ? order by databarang.nama_brng");
             try{    
-                /*"No","Kode Barang","Nama Barang","Satuan","Harga(Rp)","H.Beli",
-                "Jenis Obat","Stok","Kps","Kandungan","Jml",
-                "Embalase","Tuslah","Aturan Pakai","I.F.","Kategori","Golongan"*/
                 if(kenaikan>0){
                     psobatasuransi.setDouble(1,kenaikan);
                     psobatasuransi.setString(2,"%"+TCari.getText().trim()+"%");
