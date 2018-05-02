@@ -137,8 +137,8 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(faskes.getTable().getSelectedRow()!= -1){                   
-                    KdPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),3).toString());
-                    NmPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),4).toString());
+                    KdPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),1).toString());
+                    NmPpkRujukan.setText(faskes.getTable().getValueAt(faskes.getTable().getSelectedRow(),2).toString());
                 }  
                 KdPpkRujukan.requestFocus();
             }
