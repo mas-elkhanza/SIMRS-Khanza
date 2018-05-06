@@ -1178,7 +1178,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 rs3=koneksi.prepareStatement(
                                         "select pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
                                         "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, "+
-                                        "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi from pemeriksaan_ralan where "+
+                                        "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,pemeriksaan_ralan.rtl from pemeriksaan_ralan where "+
                                         "pemeriksaan_ralan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
                                 if(rs3.next()){
                                     htmlContent.append(
@@ -1189,17 +1189,15 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
                                                 "<td valign='top' width='5%' bgcolor='#f7fcf2'>No.</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Tanggal</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Suhu(C)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Tensi</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#f7fcf2'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Suhu(C)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Tensi</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#f7fcf2'>Nadi(/menit)</td>"+
                                                 "<td valign='top' width='10%' bgcolor='#f7fcf2'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f7fcf2'>GCS(E,V,M)</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#f7fcf2'>Keluhan</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#f7fcf2'>Pemeriksaan</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Alergi</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#f7fcf2'>Imunisasi Ke</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -1216,10 +1214,48 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top'>"+rs3.getString("tinggi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("berat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("gcs")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("keluhan")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("pemeriksaan")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("alergi")+"</td>"+
-                                             "</tr>");                                        
+                                                "<td valign='top'>"+rs3.getString("imun_ke")+"</td>"+
+                                             "</tr>"); 
+                                        if(!rs3.getString("keluhan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Keluhan</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("keluhan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("pemeriksaan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Pemeriksaan</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("pemeriksaan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("alergi").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Alergi</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("alergi")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("rtl").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Tindak Lanjut</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("rtl")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                            
                                         w++;
                                     }
                                     htmlContent.append(

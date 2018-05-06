@@ -1,4 +1,4 @@
-
+﻿
     <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>
 
@@ -81,23 +81,6 @@
             });
 
             $('.count-to').countTo();
-          
-            $('#riwayatmedis').dataTable( {
-                "responsive": {
-                   "details": {
-                       "display": $.fn.dataTable.Responsive.display.modal( {
-                            "header": function ( row ) {
-                                var data = row.data();
-                                return '<h3>Riwayat Medis</h3><br>';
-                            }
-                        } ),
-                        "renderer": $.fn.dataTable.Responsive.renderer.tableAll()
-                    }
-                }
-            } );
-
-
-
 
         } );
 	</script>
@@ -189,6 +172,23 @@
     	minimumInputLength: 3
       });
 
+      $('.kd_prosedur').select2({
+        placeholder: 'Pilih Tindakan',
+        ajax: {
+          url: 'includes/select-prosedur.php',
+          dataType: 'json',
+          delay: 250,
+          processResults: function (data) {
+            return {
+              results: data
+            };
+          },
+          cache: true
+        },
+        templateResult: formatData,
+      minimumInputLength: 3
+      });
+
       $('.prioritas').select2({
           placeholder: 'Pilih prioritas diagnosa'
       });
@@ -212,6 +212,10 @@
 
       $('.aturan_pakai').select2({
           placeholder: 'Pilih aturan pakai'
+      });
+
+       $('.anamnesa').select2({
+          placeholder: 'anamnesa'
       });
 
       $('.pasien').select2({

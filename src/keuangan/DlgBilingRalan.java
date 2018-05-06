@@ -30,9 +30,6 @@ import simrskhanza.DlgCariPeriksaRadiologi;
 import simrskhanza.DlgCariPoli;
 import inventory.DlgPemberianObat;
 import javax.swing.event.DocumentEvent;
-import keuangan.DlgLhtBiaya;
-import keuangan.DlgLhtPiutang;
-import keuangan.Jurnal;
 import simrskhanza.DlgPenanggungJawab;
 import simrskhanza.DlgPeriksaLaboratorium;
 import simrskhanza.DlgPeriksaRadiologi;
@@ -66,7 +63,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                    Kso_Radiologi_Ralan=0,Persediaan_Radiologi_Rawat_Jalan=0,Obat_Rawat_Jalan=0,
                    Jasa_Medik_Dokter_Operasi_Ralan=0,Jasa_Medik_Paramedis_Operasi_Ralan=0,Obat_Operasi_Ralan=0,kekurangan=0;
     private int i,r,cek,row2,countbayar=0,z=0,jml=0;
-    private String status="",biaya="",tambahan="",totals="",kdptg="",nmptg="",kd_pj="",notaralan="",centangdokterralan="",
+    private String dokterrujukan="",polirujukan="",umur="",status="",biaya="",tambahan="",totals="",kdptg="",nmptg="",kd_pj="",notaralan="",centangdokterralan="",
             rinciandokterralan="",Tindakan_Ralan="",Laborat_Ralan="",Radiologi_Ralan="",
             Obat_Ralan="",Registrasi_Ralan="",Tambahan_Ralan="",Potongan_Ralan="",
             Beban_Jasa_Medik_Dokter_Tindakan_Ralan="", Utang_Jasa_Medik_Dokter_Tindakan_Ralan="", 
@@ -85,9 +82,10 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             Operasi_Ralan="",tampilkan_ppnobat_ralan="",rincianoperasi="",centangobatralan="No",
             sqlpscekbilling="select count(billing.no_rawat) from billing where billing.no_rawat=?",
             sqlpscarirm="select no_rkm_medis from reg_periksa where no_rawat=?",
-            sqlpscaripasien="select nm_pasien,umur from pasien where no_rkm_medis=? ",
+            sqlpscaripasien="select nm_pasien from pasien where no_rkm_medis=? ",
             sqlpsreg="select reg_periksa.no_rkm_medis,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,"+
-                    "reg_periksa.kd_poli,reg_periksa.no_rawat,reg_periksa.biaya_reg,current_time() as jam "+
+                    "reg_periksa.kd_poli,reg_periksa.no_rawat,reg_periksa.biaya_reg,current_time() as jam,"+
+                    "reg_periksa.umurdaftar,reg_periksa.sttsumur "+
                     "from reg_periksa where reg_periksa.no_rawat=?",
             sqlpscaripoli="select nm_poli from poliklinik where kd_poli=?",
             sqlpscarialamat="select concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) from pasien "+
@@ -97,7 +95,13 @@ public class DlgBilingRalan extends javax.swing.JDialog {
             sqlpsrekening="select * from set_akun_ralan",
             sqlpsdokterralan="select dokter.nm_dokter from reg_periksa "+
                             "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter "+
-                            "where no_rawat=? group by reg_periksa.kd_dokter",
+                            "where no_rawat=?",
+            sqlpsdokterralan2="select dokter.nm_dokter from rujukan_internal_poli "+
+                            "inner join dokter on rujukan_internal_poli.kd_dokter=dokter.kd_dokter "+
+                            "where no_rawat=?",
+            sqlpscaripoli2="select poliklinik.nm_poli from rujukan_internal_poli "+
+                            "inner join poliklinik on rujukan_internal_poli.kd_poli=poliklinik.kd_poli "+
+                            "where no_rawat=?",
             sqlpscariralandokter="select jns_perawatan.nm_perawatan,rawat_jl_dr.biaya_rawat as total_byrdr,"+
                     "count(rawat_jl_dr.kd_jenis_prw) as jml, "+
                     "sum(rawat_jl_dr.biaya_rawat) as biaya,"+
@@ -191,14 +195,14 @@ public class DlgBilingRalan extends javax.swing.JDialog {
     private String[] Nama_Akun_Piutang,Kode_Rek_Piutang,Kd_PJ,Besar_Piutang,Jatuh_Tempo,
             Nama_Akun_Bayar,Kode_Rek_Bayar,Bayar,PPN_Persen,PPN_Besar;
             
-    private PreparedStatement pscekbilling,pscarirm,pscaripasien,psreg,pscaripoli,pscarialamat,psrekening,
-            psdokterralan,pscariralandokter,pscariralanperawat,pscariralandrpr,pscarilab,pscariobat,psdetaillab,
+    private PreparedStatement pscaripoli2,pscekbilling,pscarirm,pscaripasien,psreg,pscaripoli,pscarialamat,psrekening,
+            psdokterralan,psdokterralan2,pscariralandokter,pscariralanperawat,pscariralandrpr,pscarilab,pscariobat,psdetaillab,
             psobatlangsung,psreturobat,pstambahan,psbiling,pstemporary,pspotongan,psbilling,pscariradiologi,
             pstamkur,psnota,psoperasi,psobatoperasi,psceknota,psakunbayar,psakunpiutang;
     private ResultSet rscekbilling,rscarirm,rscaripasien,rsreg,rscaripoli,rscarialamat,rsrekening,rsobatoperasi,
-            rsdokterralan,rscariralandokter,rscariralanperawat,rscariralandrpr,rscarilab,rscariobat,rsdetaillab,
+            rsdokterralan,rsdokterralan2,rscariralandokter,rscariralanperawat,rscariralandrpr,rscarilab,rscariobat,rsdetaillab,
             rsobatlangsung,rsreturobat,rstambahan,rspotongan,rsbilling,rscariradiologi,rstamkur,rsoperasi,rsceknota,
-            rsakunbayar,rsakunpiutang;
+            rsakunbayar,rsakunpiutang,rscaripoli2;
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
 
@@ -3751,7 +3755,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 pscaripasien.setString(1,TNoRM.getText());
                 rscaripasien=pscaripasien.executeQuery();
                 if(rscaripasien.next()){
-                    TPasien.setText(rscaripasien.getString(1)+" ( "+rscaripasien.getString(2)+" )");
+                    TPasien.setText(rscaripasien.getString(1));
                 }
 	    }catch (Exception e) {
                 TPasien.setText("");
@@ -4031,14 +4035,31 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 psreg.setString(1,TNoRw.getText());
                 rsreg=psreg.executeQuery();            
                 if(rsreg.next()){
-                    //DTPTgl.setDate(rsreg.getDate("tgl_registrasi"));
                     tabModeRwJlDr.addRow(new Object[]{true,"No.Nota",": "+Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7).replaceAll("-","/")+"/RJ/",6),"",null,null,null,null,"-"});                
                     pscaripoli=koneksi.prepareStatement(sqlpscaripoli);
                     try{
                         pscaripoli.setString(1,rsreg.getString("kd_poli"));
                         rscaripoli=pscaripoli.executeQuery();
                         if(rscaripoli.next()){
-                            tabModeRwJlDr.addRow(new Object[]{true,"Unit/Instansi",": "+rscaripoli.getString(1),"",null,null,null,null,"-"});
+                            polirujukan="";
+                            pscaripoli2=koneksi.prepareStatement(sqlpscaripoli2);
+                            try {
+                                pscaripoli2.setString(1,TNoRw.getText());
+                                rscaripoli2=pscaripoli2.executeQuery();
+                                while(rscaripoli2.next()){
+                                    polirujukan=polirujukan+", "+rscaripoli2.getString("nm_poli");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Dokter : "+e);
+                            } finally{
+                                if(rscaripoli2!=null){
+                                    rscaripoli2.close();
+                                }
+                                if(pscaripoli2!=null){
+                                    pscaripoli2.close();
+                                }
+                            }
+                            tabModeRwJlDr.addRow(new Object[]{true,"Unit/Instansi",": "+rscaripoli.getString(1)+polirujukan,"",null,null,null,null,"-"});
                         }
                     }catch (Exception e) {
                         tabModeRwJlDr.addRow(new Object[]{true,"Unit/Instansi",": ","",null,null,null,null,"-"});
@@ -4054,7 +4075,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                                         
                     tabModeRwJlDr.addRow(new Object[]{true,"Tanggal & Jam",": "+rsreg.getString("tgl_registrasi")+" "+rsreg.getString("jam"),"",null,null,null,null,"-"});
                     tabModeRwJlDr.addRow(new Object[]{true,"No.RM",": "+TNoRM.getText(),"",null,null,null,null,"-"});
-                    tabModeRwJlDr.addRow(new Object[]{true,"Nama Pasien",": "+TPasien.getText(),"",null,null,null,null,"-"});
+                    tabModeRwJlDr.addRow(new Object[]{true,"Nama Pasien",": "+TPasien.getText()+" ("+rsreg.getString("umurdaftar")+rsreg.getString("sttsumur")+")","",null,null,null,null,"-"});
                     pscarialamat=koneksi.prepareStatement(sqlpscarialamat); 
                     try{
                         pscarialamat.setString(1,TNoRM.getText());
@@ -4075,51 +4096,74 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     }
                     //cari dokter yang menangandi  
 
-                    if(centangdokterralan.equals("Yes")){
-                        psdokterralan=koneksi.prepareStatement(sqlpsdokterralan);
-                        try{
-                            psdokterralan.setString(1,TNoRw.getText());
-                            rsdokterralan=psdokterralan.executeQuery();
+                    psdokterralan=koneksi.prepareStatement(sqlpsdokterralan);
+                    try{
+                        psdokterralan.setString(1,TNoRw.getText());
+                        rsdokterralan=psdokterralan.executeQuery();
+                        if(centangdokterralan.equals("Yes")){
                             if(rsdokterralan.next()){
                                 tabModeRwJlDr.addRow(new Object[]{true,"Dokter ",":","",null,null,null,null,"-"});  
                             }
                             rsdokterralan.beforeFirst();
-                            while(rsdokterralan.next()){
-                                tabModeRwJlDr.addRow(new Object[]{true,"",rsdokterralan.getString("nm_dokter"),"",null,null,null,null,"Dokter"});   
+                            if(rsdokterralan.next()){
+                                dokterrujukan="";
+                                psdokterralan2=koneksi.prepareStatement(sqlpsdokterralan2);
+                                try {
+                                    psdokterralan2.setString(1,TNoRw.getText());
+                                    rsdokterralan2=psdokterralan2.executeQuery();
+                                    while(rsdokterralan2.next()){
+                                        dokterrujukan=dokterrujukan+", "+rsdokterralan2.getString("nm_dokter");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Dokter : "+e);
+                                } finally{
+                                    if(rsdokterralan2!=null){
+                                        rsdokterralan2.close();
+                                    }
+                                    if(psdokterralan2!=null){
+                                        psdokterralan2.close();
+                                    }
+                                }
+                                tabModeRwJlDr.addRow(new Object[]{true,"",rsdokterralan.getString("nm_dokter")+dokterrujukan,"",null,null,null,null,"Dokter"});   
                             }
-                        } catch (Exception e) {
-                            System.out.println("Notifikasi : "+e);
-                        } finally{
-                            if(rsdokterralan != null){
-                                rsdokterralan.close();
-                            }
-                            if(psdokterralan != null){
-                                psdokterralan.close();
-                            }
-                        }
-                    }else{
-                        psdokterralan=koneksi.prepareStatement(sqlpsdokterralan);
-                        try{
-                            psdokterralan.setString(1,TNoRw.getText());
-                            rsdokterralan=psdokterralan.executeQuery();
+                        }else{
                             if(rsdokterralan.next()){
                                 tabModeRwJlDr.addRow(new Object[]{false,"Dokter ",":","",null,null,null,null,"-"});  
                             }
                             rsdokterralan.beforeFirst();
-                            while(rsdokterralan.next()){
-                                tabModeRwJlDr.addRow(new Object[]{false,"",rsdokterralan.getString("nm_dokter"),"",null,null,null,null,"Dokter"});   
+                            if(rsdokterralan.next()){
+                                dokterrujukan="";
+                                psdokterralan2=koneksi.prepareStatement(sqlpsdokterralan2);
+                                try {
+                                    psdokterralan2.setString(1,TNoRw.getText());
+                                    rsdokterralan2=psdokterralan2.executeQuery();
+                                    while(rsdokterralan2.next()){
+                                        dokterrujukan=dokterrujukan+", "+rsdokterralan2.getString("nm_dokter");
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Dokter : "+e);
+                                } finally{
+                                    if(rsdokterralan2!=null){
+                                        rsdokterralan2.close();
+                                    }
+                                    if(psdokterralan2!=null){
+                                        psdokterralan2.close();
+                                    }
+                                }
+                                tabModeRwJlDr.addRow(new Object[]{false,"",rsdokterralan.getString("nm_dokter")+dokterrujukan,"",null,null,null,null,"Dokter"});   
                             }
-                        }catch (Exception e) {
-                            System.out.println("Notifikasi : "+e);
-                        } finally{
-                            if(rsdokterralan != null){
-                                rsdokterralan.close();
-                            }
-                            if(psdokterralan != null){
-                                psdokterralan.close();
-                            }
+                        }   
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rsdokterralan != null){
+                            rsdokterralan.close();
+                        }
+                        if(psdokterralan != null){
+                            psdokterralan.close();
                         }
                     }
+                    
 
                     if(chkAdministrasi.isSelected()==true){
                         tabModeRwJlDr.addRow(new Object[]{true,"Registrasi",":","",null,null,null,rsreg.getDouble("biaya_reg"),"Registrasi"});

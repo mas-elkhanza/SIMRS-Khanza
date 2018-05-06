@@ -42,4 +42,8 @@
     <entry key="USERDUKCAPILACEH">rsia</entry>
     <entry key="PASSDUKCAPILACEH">123</entry>
     <entry key="IPUSERDUKCAPILACEH">10.160.57.2</entry>
+    <entry key="URLDUKCAPILBATAM">http://172.16.160.128:8000/dukcapil/get_json/rsembongfat</entry>
+    <entry key="USERDUKCAPILBATAM">rsia</entry>
+    <entry key="PASSDUKCAPILBATAM">123</entry>
+    <entry key="IPUSERDUKCAPILBATAM">10.160.57.2</entry>
 </properties>

@@ -575,7 +575,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             ); 
                         }            
 
-                        f = new File("DetailJMDokter2.html");            
+                        f = new File("DetailJMDokter1.html");            
                         bw = new BufferedWriter(new FileWriter(f));            
                         bw.write("<html>"+
                                     "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
@@ -802,7 +802,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             ); 
                         }            
 
-                        f = new File("DetailJMDokter2.wps");            
+                        f = new File("DetailJMDokter.wps");            
                         bw = new BufferedWriter(new FileWriter(f));            
                         bw.write("<html>"+
                                     "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
@@ -982,7 +982,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             ); 
                         }            
 
-                        f = new File("DetailJMDokter2.csv");            
+                        f = new File("DetailJMDokter.csv");            
                         bw = new BufferedWriter(new FileWriter(f));            
                         bw.write(htmlContent.toString());
 
@@ -1287,7 +1287,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     rsreg.getString("no_rawat"),rsreg.getString("no_rkm_medis"),rsreg.getString("nm_pasien"),
                                     rsreg.getString("tgl_registrasi"),tglkeluar,
                                     dpjp,rstindakan.getString("nm_dokter"),"","",
-                                    rsreg.getString("kd_pj"),rsreg.getString("png_jawab"),"Poli",
+                                    rsreg.getString("kd_pj"),rsreg.getString("png_jawab"),"Ralan",
                                     namaruangan,rstindakan.getString("nm_perawatan"),
                                     rstindakan.getString("jumlah"),rstindakan.getDouble("sarana"),
                                     rstindakan.getDouble("tarif_tindakandr"),
@@ -1330,7 +1330,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     rsreg.getString("no_rawat"),rsreg.getString("no_rkm_medis"),rsreg.getString("nm_pasien"),
                                     rsreg.getString("tgl_registrasi"),tglkeluar,
                                     dpjp,rstindakan.getString("nm_dokter"),"","",
-                                    rsreg.getString("kd_pj"),rsreg.getString("png_jawab"),"Poli",
+                                    rsreg.getString("kd_pj"),rsreg.getString("png_jawab"),"Ralan",
                                     namaruangan,rstindakan.getString("nm_perawatan"),
                                     rstindakan.getString("jumlah"),rstindakan.getDouble("sarana"),
                                     rstindakan.getDouble("tarif_tindakandr"),
@@ -1488,7 +1488,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     //operasi
                     if(chkOperasi.isSelected()==true){
                         pstindakan=koneksi.prepareStatement(
-                                "select paket_operasi.nm_perawatan,dokter.nm_dokter,operasi.dokter_anestesi,operasi.dokter_anak, "+
+                                "select paket_operasi.nm_perawatan,dokter.nm_dokter,operasi.dokter_anestesi,operasi.dokter_anak,operasi.status, "+
                                 "DATE_FORMAT(tgl_operasi, '%Y-%m-%d') as tgl_operasi,count(operasi.no_rawat) as jumlah, "+
                                 "(operasi.biayaoperator1+biayadokter_anestesi+biayadokter_anak) as biayaoperator1,sum(operasi.biayaoperator1+biayadokter_anestesi+biayadokter_anak) as totaljm,"+
                                 "(operasi.biayaoperator2+operasi.biayaoperator3+operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayaasisten_operator3+operasi.biayainstrumen+operasi.biayaperawaat_resusitas+operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+operasi.biayasarpras+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum) as sarana,"+
@@ -1504,21 +1504,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 totalsarana=totalsarana+rstindakan.getDouble("totalsarana");
                                 totaljm=totaljm+rstindakan.getDouble("totaljm");
                                 totalbayar=totalbayar+rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana");
-                                tabMode.addRow(new Object[]{
-                                    rsreg.getString("no_rawat"),rsreg.getString("no_rkm_medis"),rsreg.getString("nm_pasien"),
-                                    rsreg.getString("tgl_registrasi"),tglkeluar,
-                                    dpjp,rstindakan.getString("nm_dokter"),
-                                    Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anestesi")),
-                                    Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anak")),
-                                    rsreg.getString("kd_pj"),rsreg.getString("png_jawab"),"Operasi",
-                                    namaruangan,rstindakan.getString("nm_perawatan"),
-                                    rstindakan.getString("jumlah"),rstindakan.getDouble("sarana"),
-                                    rstindakan.getDouble("biayaoperator1"),
-                                    (rstindakan.getDouble("sarana")+rstindakan.getDouble("biayaoperator1")),
-                                    rstindakan.getDouble("totalsarana"),rstindakan.getDouble("totaljm"),
-                                    (rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana")),
-                                    rstindakan.getString("tgl_operasi")
-                                });    
+                                if(rstindakan.getString("status").equals("Ralan")){
+                                    tabMode.addRow(new Object[]{
+                                        rsreg.getString("no_rawat"),rsreg.getString("no_rkm_medis"),rsreg.getString("nm_pasien"),
+                                        rsreg.getString("tgl_registrasi"),tglkeluar,
+                                        dpjp,rstindakan.getString("nm_dokter"),
+                                        Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anestesi")),
+                                        Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anak")),
+                                        rsreg.getString("kd_pj"),rsreg.getString("png_jawab"),rsreg.getString("nm_poli"),
+                                        namaruangan,rstindakan.getString("nm_perawatan"),
+                                        rstindakan.getString("jumlah"),rstindakan.getDouble("sarana"),
+                                        rstindakan.getDouble("biayaoperator1"),
+                                        (rstindakan.getDouble("sarana")+rstindakan.getDouble("biayaoperator1")),
+                                        rstindakan.getDouble("totalsarana"),rstindakan.getDouble("totaljm"),
+                                        (rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana")),
+                                        rstindakan.getString("tgl_operasi")
+                                    });   
+                                }else{
+                                    tabMode.addRow(new Object[]{
+                                        rsreg.getString("no_rawat"),rsreg.getString("no_rkm_medis"),rsreg.getString("nm_pasien"),
+                                        rsreg.getString("tgl_registrasi"),tglkeluar,
+                                        dpjp,rstindakan.getString("nm_dokter"),
+                                        Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anestesi")),
+                                        Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rstindakan.getString("dokter_anak")),
+                                        rsreg.getString("kd_pj"),rsreg.getString("png_jawab"),"Operasi",
+                                        namaruangan,rstindakan.getString("nm_perawatan"),
+                                        rstindakan.getString("jumlah"),rstindakan.getDouble("sarana"),
+                                        rstindakan.getDouble("biayaoperator1"),
+                                        (rstindakan.getDouble("sarana")+rstindakan.getDouble("biayaoperator1")),
+                                        rstindakan.getDouble("totalsarana"),rstindakan.getDouble("totaljm"),
+                                        (rstindakan.getDouble("totaljm")+rstindakan.getDouble("totalsarana")),
+                                        rstindakan.getString("tgl_operasi")
+                                    });   
+                                }                                     
                             }                           
                         } catch (Exception e) {
                             System.out.println("Notif Ralan dr : "+e);
