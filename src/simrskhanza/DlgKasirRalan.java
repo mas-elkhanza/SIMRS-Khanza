@@ -54,7 +54,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private Date cal=new Date();
     private DlgRujukanPoliInternal dlgrjk=new DlgRujukanPoliInternal(null,false);
-    private String caripenjab="",filter="no",bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),nonota="",
+    private String kamar_inap_kasir_ralan=Sequel.cariIsi("select kamar_inap_kasir_ralan from set_jam_minimal"),caripenjab="",filter="no",bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),nonota="",
             sqlpsotomatis2="insert into rawat_jl_dr values (?,?,?,?,?,?,?,?,?,?,?)",
             sqlpsotomatis2petugas="insert into rawat_jl_pr values (?,?,?,?,?,?,?,?,?,?,?)",
             sqlpsotomatis2dokterpetugas="insert into rawat_jl_drpr values (?,?,?,?,?,?,?,?,?,?,?,?,?)",
@@ -6104,8 +6104,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnRawatJalan1.setEnabled(var.gettindakan_ralan());
         MnPemberianObat.setEnabled(var.getberi_obat());
         MnPemberianObat1.setEnabled(var.getberi_obat());
-        MnKamarInap.setEnabled(var.getkamar_inap());
-        MnKamarInap1.setEnabled(var.getkamar_inap());
         MnPeriksaLab.setEnabled(var.getperiksa_lab());
         MnPeriksaLab1.setEnabled(var.getperiksa_lab());
         MnResepDOkter.setEnabled(var.getresep_dokter());
@@ -6148,6 +6146,19 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }else{
             MnHapusData.setEnabled(false);
         } 
+        
+        if(var.getkode().equals("Admin Utama")){
+            MnKamarInap.setEnabled(true);
+            MnKamarInap1.setEnabled(true); 
+        }else{
+            if(kamar_inap_kasir_ralan.equals("Yes")){
+                MnKamarInap.setEnabled(var.getkamar_inap());
+                MnKamarInap1.setEnabled(var.getkamar_inap());
+            }else{
+                MnKamarInap.setEnabled(false);
+                MnKamarInap1.setEnabled(false);
+            }
+        }
         
         if(!namadokter.equals("")){
             if(var.getkode().equals("Admin Utama")){
