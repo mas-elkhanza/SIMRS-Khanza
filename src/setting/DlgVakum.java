@@ -2711,6 +2711,7 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD104ActionPerformed
 
     private void BtnICD105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD105ActionPerformed
+        hapus("Jual Bebas BHP/Obat","lain","penjualan");
         hapus("Akun Bayar","Pengadaan Barang, Billing, Penjualan, Pemesanan, dll","akun_bayar");
     }//GEN-LAST:event_BtnICD105ActionPerformed
 

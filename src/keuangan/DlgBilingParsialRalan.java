@@ -3203,7 +3203,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     }
     
     private void tampilBayar() {        
-        try {
+        /*try {
             switch (TabRawat.getSelectedIndex()) {
                 case 0:
                     Valid.tabelKosong(tabModeDrBayar);
@@ -3365,7 +3365,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     
         } catch (Exception e) {
             System.out.println("keuangan.DlgBilingParsialRalan.tampilBayar() : "+e);
-        } 
+        } */
     }
 
     private void tampilbilling() {
