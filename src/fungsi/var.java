@@ -71,7 +71,7 @@ public final class var {
             bpjs_cek_spesialistik=false,bpjs_cek_ruangrawat=false,bpjs_cek_carakeluar=false,bpjs_cek_pasca_pulang=false,detail_tindakan_okvk=false,
             billing_parsial=false,bpjs_cek_nomor_rujukan_rs=false,bpjs_cek_rujukan_kartu_pcare=false,bpjs_cek_rujukan_kartu_rs=false,akses_depo_obat=false,
             bpjs_rujukan_keluar=false,grafik_lab_ralanbulan=false,pengeluaran_stok_apotek=false,grafik_rad_ralanbulan=false,detailjmdokter2=false,
-            pengaduan_pasien=false,grafik_lab_ralanhari=false,grafik_rad_ralanhari=false,sensus_harian_ralan=false,metode_racik=false;
+            pengaduan_pasien=false,grafik_lab_ralanhari=false,grafik_rad_ralanhari=false,sensus_harian_ralan=false,metode_racik=false,pembayaran_akun_bayar=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -406,6 +406,7 @@ public final class var {
                         var.grafik_rad_ralanhari=true;
                         var.sensus_harian_ralan=true;
                         var.metode_racik=true;
+                        var.pembayaran_akun_bayar=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -724,6 +725,7 @@ public final class var {
                         var.grafik_rad_ralanhari=rs2.getBoolean("grafik_rad_ralanhari");
                         var.sensus_harian_ralan=rs2.getBoolean("sensus_harian_ralan");
                         var.metode_racik=rs2.getBoolean("metode_racik");
+                        var.pembayaran_akun_bayar=rs2.getBoolean("pembayaran_akun_bayar");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1040,6 +1042,7 @@ public final class var {
                         var.grafik_rad_ralanhari=false;
                         var.sensus_harian_ralan=false;
                         var.metode_racik=false;
+                        var.pembayaran_akun_bayar=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1403,4 +1406,5 @@ public final class var {
     public static boolean getgrafik_rad_ralanhari(){return var.grafik_rad_ralanhari;}
     public static boolean getsensus_harian_ralan(){return var.sensus_harian_ralan;}
     public static boolean getmetode_racik(){return var.metode_racik;}
+    public static boolean getpembayaran_akun_bayar(){return var.pembayaran_akun_bayar;}
 }   

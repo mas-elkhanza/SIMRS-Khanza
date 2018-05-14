@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="56" pageHeight="708" columnWidth="50" leftMargin="3" rightMargin="3" topMargin="3" bottomMargin="3">
 	<property name="ireport.zoom" value="1.4363522962149822"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="509"/>
+	<property name="ireport.y" value="431"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -124,14 +124,14 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 				<textElement verticalAlignment="Middle" rotation="Left" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Tanggal Dirawat:"+$P{tanggal}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA["Tanggal Dirawat : "+$P{tanggal}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
 				<reportElement mode="Opaque" x="38" y="295" width="12" height="205"/>
 				<textElement verticalAlignment="Middle" rotation="Left" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["DPJP :"+$P{dpjp}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA["DPJP : "+$P{dpjp}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

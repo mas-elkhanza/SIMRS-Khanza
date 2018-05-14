@@ -48,7 +48,7 @@
         if (empty($awal)) $awal=0;
         $_sql = "select id,nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,
                 npwp, pendidikan, gapok,tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,
-                indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak from pegawai
+                indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak,photo from pegawai
                  where
                  nik like '%".$keyword."%' or
                  nama like '%".$keyword."%' or
@@ -102,6 +102,7 @@
                                  <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Stts Aktif</strong></font></div></td>
                                  <td width='70px'><div align='center'><font size='2' face='Tahoma'><strong>Wajib Masuk</strong></font></div></td>
                                  <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Mulai Kontrak</strong></font></div></td>
+                                 <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Photo</strong></font></div></td>
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                          $_sql2         = "SELECT normal-$jumlahlibur,jmlhr FROM set_tahun";
@@ -117,6 +118,12 @@
 			 }else if(!($baris[23]==0)){
 			     $jmlmsk=$baris2[0];
 			 }
+                         $gb="-";
+                         if($baris["photo"]=="pages/pegawai/photo/"){
+                            $gb="-";                            
+                         }else{
+                            $gb="<img src='".$baris["photo"]."' width='120px' height='120px'>";
+                         }
                         echo "<tr class='isi'>
                                  <td>$baris[1]</td>
                                  <td>$baris[2]</td>
@@ -141,6 +148,7 @@
                                   <td>$baris[22]</td>
                                   <td>$jmlmsk</td>
                                   <td>$baris[24]</td>
+                                  <td>$gb</td>
                               </tr>";
                     }
             echo "</table>";
