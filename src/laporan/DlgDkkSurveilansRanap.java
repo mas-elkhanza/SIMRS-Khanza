@@ -303,7 +303,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 245, 245)));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(236, 250, 235)));
         TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N

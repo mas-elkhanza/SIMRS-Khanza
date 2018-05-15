@@ -233,8 +233,8 @@ public class DlgLabaRugi extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(236, 250, 235)));
         TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -352,6 +352,20 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,0).toString()+"','"+
                                 tabMode.getValueAt(i,1).toString()+"','"+
                                 tabMode.getValueAt(i,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
+            }
+            int row2=tabMode2.getRowCount();
+            for(int i=0;i<row2;i++){  
+                Sequel.menyimpan("temporary","'0','"+
+                                tabMode2.getValueAt(i,0).toString()+"','"+
+                                tabMode2.getValueAt(i,1).toString()+"','"+
+                                tabMode2.getValueAt(i,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
+            }
+            int row3=tabMode3.getRowCount();
+            for(int i=0;i<row3;i++){  
+                Sequel.menyimpan("temporary","'0','"+
+                                tabMode3.getValueAt(i,0).toString()+"','"+
+                                tabMode3.getValueAt(i,1).toString()+"','"+
+                                tabMode3.getValueAt(i,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>();    
