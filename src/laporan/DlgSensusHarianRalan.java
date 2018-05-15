@@ -562,8 +562,8 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 245, 245)));
         TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -888,27 +888,27 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='1%'>No.</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Nomor RM</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='8%'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Tgl.Lahir</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Tgl.Daftar</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='7%'>Poliklinik</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='8%'>Dokter</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='1%'>J.K.</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='8%'>Rujukan Faskes Lain</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Umur</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%'>Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='7%'>Kecamatan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='8%'>Diagnosa Utama</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='8%'>Diagnosa Tambahan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>ICD X Utama</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>ICD X Tambahan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='9%'>Tindakan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Hasil Akhir</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Pengunjung</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jenis Kunjungan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jenis Kasus</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='1%'>No.</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Nomor RM</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Tgl.Lahir</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Tgl.Daftar</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>Poliklinik</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Dokter</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='1%'>J.K.</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Rujukan Faskes Lain</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>Umur</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='6%'>Cara Bayar</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>Kecamatan</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Diagnosa Utama</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Diagnosa Tambahan</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>ICD X Utama</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>ICD X Tambahan</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='9%'>Tindakan</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Hasil Akhir</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Pengunjung</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Jenis Kunjungan</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Jenis Kasus</td>"+
                 "</tr>"
             );     
             
@@ -1066,27 +1066,27 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='1%'>No.</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Nomor RM</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='8%'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Tgl.Lahir</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Tgl.Daftar</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='7%'>Poliklinik</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='8%'>Dokter</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='1%'>J.K.</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='8%'>Rujukan Faskes Lain</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='2%'>Umur</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='6%'>Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='7%'>Kecamatan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='8%'>Diagnosa Utama</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='8%'>Diagnosa Tambahan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>ICD X Utama</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>ICD X Tambahan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='9%'>Tindakan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Hasil Akhir</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Pengunjung</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jenis Kunjungan</td>"+
-                    "<td valign='middle' bgcolor='#f7fcf2' align='center' width='3%'>Jenis Kasus</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='1%'>No.</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Nomor RM</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Tgl.Lahir</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Tgl.Daftar</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>Poliklinik</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Dokter</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='1%'>J.K.</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Rujukan Faskes Lain</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>Umur</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='6%'>Cara Bayar</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>Kecamatan</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Diagnosa Utama</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Diagnosa Tambahan</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>ICD X Utama</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>ICD X Tambahan</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='9%'>Tindakan</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Hasil Akhir</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Pengunjung</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Jenis Kunjungan</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Jenis Kasus</td>"+
                 "</tr>"
             );     
             
