@@ -24,9 +24,9 @@ public class Desktop extends JDesktopPane {
     private BufferedImage gradientImage;
     /*private Color black =Color.lightGray.darker().darker().darker();
     private Color warna = new Color(150,140,130);*/
-    private final Color black = new Color(255,200,255);
+    private final Color black = new Color(255,205,255);
     //private Color warna = new Color(245,101,163).brighter().brighter();
-    private final Color warna = new Color(255,200,255);
+    private final Color warna = new Color(255,205,255);
 
     public Desktop() {
         super();

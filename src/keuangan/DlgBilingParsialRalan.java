@@ -1270,7 +1270,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-03-2018 11:32:41" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2018 20:45:09" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setOpaque(false);
         DTPTgl.setPreferredSize(new java.awt.Dimension(135, 23));
@@ -1521,7 +1521,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(236, 250, 235)));
         TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -3203,7 +3203,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     }
     
     private void tampilBayar() {        
-        try {
+        /*try {
             switch (TabRawat.getSelectedIndex()) {
                 case 0:
                     Valid.tabelKosong(tabModeDrBayar);
@@ -3365,7 +3365,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     
         } catch (Exception e) {
             System.out.println("keuangan.DlgBilingParsialRalan.tampilBayar() : "+e);
-        } 
+        } */
     }
 
     private void tampilbilling() {

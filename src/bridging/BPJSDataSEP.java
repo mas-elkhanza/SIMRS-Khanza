@@ -1793,6 +1793,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         penjamin="";
                     }
                     
+                    if(penjamin.endsWith(",")){
+                        penjamin = penjamin.substring(0,penjamin.length() - 1);
+                    }
                     URL = prop.getProperty("URLAPIBPJS")+"/Sep/Update";	
 
                     HttpHeaders headers = new HttpHeaders();
@@ -3095,10 +3098,15 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             if(ChkAsa.isSelected()==true){
                 Asabri="4,";
             }
+            
             if((ChkJasaRaharja.isSelected()==true)||(ChkBPJSTenaga.isSelected()==true)||(ChkTaspen.isSelected()==true)||(ChkAsa.isSelected()==true)){
                 penjamin=jasaraharja+BPJS+Taspen+Asabri+penjamin;
             }else{
                 penjamin="";
+            }
+            
+            if(penjamin.endsWith(",")){
+                penjamin = penjamin.substring(0,penjamin.length() - 1);
             }
             URL = prop.getProperty("URLAPIBPJS")+"/SEP/insert";	
 

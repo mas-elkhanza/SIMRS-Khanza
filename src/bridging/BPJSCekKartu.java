@@ -3543,6 +3543,9 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                 penjamin="";
             }
             
+            if(penjamin.endsWith(",")){
+                penjamin = penjamin.substring(0,penjamin.length() - 1);
+            }
             URL = prop.getProperty("URLAPIBPJS")+"/SEP/insert";	
 
             HttpHeaders headers = new HttpHeaders();
