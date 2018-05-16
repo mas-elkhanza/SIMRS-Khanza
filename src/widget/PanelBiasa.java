@@ -35,7 +35,7 @@ public class PanelBiasa extends JPanel{
 
     public PanelBiasa(){
         super();
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(245,245,245)));
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(236,250,235)));
     }
 
     public PanelBiasa(LayoutManager layout) {

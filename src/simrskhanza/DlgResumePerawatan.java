@@ -491,8 +491,8 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(236, 250, 235)));
         TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1179,7 +1179,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //menampilkan riwayat pemeriksaan ralan
                             try {
                                 rs3=koneksi.prepareStatement(
-                                        "select pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
+                                        "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
                                         "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, "+
                                         "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,pemeriksaan_ralan.rtl from pemeriksaan_ralan where "+
                                         "pemeriksaan_ralan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
@@ -1209,7 +1209,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("suhu_tubuh")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tensi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nadi")+"</td>"+
@@ -1256,6 +1256,132 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Tindak Lanjut</td>"+
                                                     "<td valign='top' colspan='6'> : "+rs3.getString("rtl")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                            
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //menampilkan riwayat pemeriksaan obstetri ralan
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select pemeriksaan_obstetri_ralan.tgl_perawatan,pemeriksaan_obstetri_ralan.jam_rawat,pemeriksaan_obstetri_ralan.tinggi_uteri,pemeriksaan_obstetri_ralan.janin,pemeriksaan_obstetri_ralan.letak, " +
+                                        "pemeriksaan_obstetri_ralan.panggul,pemeriksaan_obstetri_ralan.denyut,pemeriksaan_obstetri_ralan.kontraksi, " +
+                                        "pemeriksaan_obstetri_ralan.kualitas_mnt,pemeriksaan_obstetri_ralan.kualitas_dtk,pemeriksaan_obstetri_ralan.fluksus,pemeriksaan_obstetri_ralan.albus, " +
+                                        "pemeriksaan_obstetri_ralan.vulva,pemeriksaan_obstetri_ralan.portio,pemeriksaan_obstetri_ralan.dalam, pemeriksaan_obstetri_ralan.tebal, pemeriksaan_obstetri_ralan.arah, pemeriksaan_obstetri_ralan.pembukaan," +
+                                        "pemeriksaan_obstetri_ralan.penurunan, pemeriksaan_obstetri_ralan.denominator, pemeriksaan_obstetri_ralan.ketuban, pemeriksaan_obstetri_ralan.feto " +
+                                        "from pasien inner join reg_periksa inner join pemeriksaan_obstetri_ralan "+
+                                        "on pemeriksaan_obstetri_ralan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                                        "pemeriksaan_obstetri_ralan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pemeriksaan Obstetri Rawat Jalan</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                             "<tr align='center'>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tinggi Fundus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Janin</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Letak</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Panggul</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Denyut</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kontraksi</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Mnt</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Detik</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Fluksus</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Albus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Dalam</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tebal</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Arah</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Ketuban</td>"+
+                                                "<td valign='top' width='7%' bgcolor='#fafff5'>Feto</td>"+
+                                             "</tr>"
+                                    );
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tinggi_uteri")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("janin")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("letak")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("panggul")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("denyut")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kontraksi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kualitas_mnt")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kualitas_dtk")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("fluksus")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("albus")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("dalam")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tebal")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("arah")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("ketuban")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("feto")+"</td>"+
+                                             "</tr>"); 
+                                        if(!rs3.getString("vulva").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Vulva</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("vulva")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("portio").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Portio</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("portio")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("pembukaan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Pembukaan</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("pembukaan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("penurunan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Penurunan</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("penurunan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("denominator").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Denominator</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("denominator")+"</td>"+
                                                  "</tr>");
                                         }
                                             

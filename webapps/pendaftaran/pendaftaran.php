@@ -18,7 +18,7 @@
 
         if($_SERVER['REQUEST_METHOD'] == "POST") { 
             if($_POST['tgl_registrasi'] == $date && $time > LIMITJAM) {
-                echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Jam pendaftaran anda sudah lewat jam '.LIMITJAM.' WITA. Silahkan pilih tanggal periksa yang lain.</div>';
+                echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Jam pendaftaran anda sudah lewat jam '.LIMITJAM.' WIB. Silahkan pilih tanggal periksa yang lain.</div>';
             } else if($_POST['tgl_registrasi'] < $date) {
                 echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Tanggal pendaftaran anda sudah lewat. Silahkan pilih tanggal periksa yang lain.</div>';
             } else if($_POST['tgl_registrasi'] > $date_next) {
@@ -76,8 +76,7 @@
     <?php
     //edit
     if($action == "pilih-poli"){
-
-        $tanggal=$_GET['tgl_registrasi'];
+        @$tanggal=$_GET['tgl_registrasi'];
         $tentukan_hari=date('D',strtotime($tanggal));
 		 $day = array(
 			'Sun' => 'AKHAD',
@@ -115,28 +114,28 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 	        }
         } else {					  
 
-		$get_pasien = fetch_array(query("SELECT * FROM pasien WHERE no_rkm_medis = '{$_SESSION['username']}'"));
+        $get_pasien = fetch_array(query("SELECT * FROM pasien WHERE no_rkm_medis = '{$_SESSION['username']}'"));
 
-	    $tgl_reg = date('Y/m/d', strtotime($_POST['tgl_registrasi']));
+	$tgl_reg = date('Y/m/d', strtotime($_POST['tgl_registrasi']));
 
         //mencari no rawat terakhir
-	    $no_rawat_akhir = fetch_array(query("SELECT max(no_rawat) FROM reg_periksa WHERE tgl_registrasi='$_POST[tgl_registrasi]'"));
+	$no_rawat_akhir = fetch_array(query("SELECT max(no_rawat) FROM reg_periksa WHERE tgl_registrasi='$_POST[tgl_registrasi]'"));
         $no_urut_rawat = substr($no_rawat_akhir[0], 11, 6);
         $no_rawat = $tgl_reg.'/'.sprintf('%06s', ($no_urut_rawat + 1)); 
 
-	    //mencari no reg terakhir
-	    $no_reg_akhir = fetch_array(query("SELECT max(no_reg) FROM reg_periksa WHERE kd_dokter='$_POST[kd_dokter]' and tgl_registrasi='$_POST[tgl_registrasi]'"));
+	//mencari no reg terakhir
+	$no_reg_akhir = fetch_array(query("SELECT max(no_reg) FROM reg_periksa WHERE kd_dokter='$_POST[kd_dokter]' and tgl_registrasi='$_POST[tgl_registrasi]'"));
         $no_urut_reg = substr($no_reg_akhir[0], 0, 3);
         $no_reg = sprintf('%03s', ($no_urut_reg + 1)); 
 
         $biaya_reg=fetch_array(query("SELECT registrasilama FROM poliklinik WHERE kd_poli='{$_POST['kd_poli']}'"));
-
-        $kode_berkas = KODE_BERKAS;
+        $statuspoli= fetch_array(query("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='".$_SESSION['username']."' and kd_poli='".$_POST['kd_poli']."')>0,'Lama','Baru' )"));
+        $kode_berkas = "001";
         $photo_rujukan=fetch_array(query("SELECT lokasi_file FROM berkas_digital_perawatan WHERE kode = '{$kode_berkas}' AND no_rawat='{$no_rawat}'"));
 
         //menentukan umur sekarang
         list($cY, $cm, $cd) = explode('-', date('Y-m-d'));
-        list($Y, $m, $d) = explode('-', date('Y-m-d', strtotime($pasien[tgl_lahir])));
+        list($Y, $m, $d) = explode('-', date('Y-m-d', strtotime($get_pasien["tgl_lahir"])));
         $umurdaftar = $cY - $Y;
 
         if($_FILES['file']['name']!='') {
@@ -167,8 +166,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 stts_daftar     = 'Lama', 
                 status_lanjut   = 'Ralan', 
                 kd_pj           = '{$_POST['kd_pj']}', 
-                umurdaftar      = '$umurdaftar', 
-                sttsumur        = 'Th'
+                umurdaftar      = '$umurdaftar',
+                sttsumur        = 'Th', 
+                status_bayar    = 'Belum Bayar',
+                status_poli     = '$statuspoli'
         ");
 
 	    $insert_berkas = query("INSERT INTO berkas_digital_perawatan VALUES('$no_rawat', '$kode_berkas', '$lokasi_berkas')"); 
@@ -179,7 +180,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         }
 } else {
-    echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Anda sudah terdaftar untuk tanggal '.$_POST[tgl_registrasi].'. Silahkan pilih tanggal periksa yang lain.</div>';
+    echo '<div class="alert bg-pink alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Anda sudah terdaftar untuk tanggal '.$tanggal.'. Silahkan pilih tanggal periksa yang lain.</div>';
 }	
 }
 
