@@ -91,7 +91,7 @@ if (!isset($_COOKIE['username']) && !isset($_COOKIE['password'])) {
 </head>
 
 <body class="theme-green">
-    <!-- Page Loader -->
+    <!-- Page Loader 
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -106,7 +106,7 @@ if (!isset($_COOKIE['username']) && !isset($_COOKIE['password'])) {
             </div>
             <p>Please wait...</p>
         </div>
-    </div>
+    </div>-->
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>

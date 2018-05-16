@@ -111,16 +111,16 @@ h1 {
 	width: 100%;
         border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: #E6EBE1;
+	border-bottom-color: #ecfaeb;
         border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: #E6EBE1;
+	border-top-color: #ecfaeb;
         border-right-width: 1px;
 	border-right-style: solid;
-	border-right-color: #E6EBE1;
+	border-right-color: #ecfaeb;
         border-left-width: 1px;
 	border-left-style: solid;
-	border-left-color: #E6EBE1;        
+	border-left-color: #ecfaeb;        
 }
 
 #navcontainer table tr td {
@@ -153,16 +153,16 @@ h1 {
     height: 99.5%;
     border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: #E6EBE1;
+	border-bottom-color: #ecfaeb;
         border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: #E6EBE1;
+	border-top-color: #ecfaeb;
         border-right-width: 1px;
 	border-right-style: solid;
-	border-right-color: #E6EBE1;
+	border-right-color: #ecfaeb;
         border-left-width: 1px;
 	border-left-style: solid;
-	border-left-color: #E6EBE1; 
+	border-left-color: #ecfaeb; 
 }
 
 
@@ -256,7 +256,7 @@ color: #65795b;
 .head td{
 	color:#65795b;
 	font: 11px  tahoma;
-	background: #f8fdf3;
+	background: #fafff5;
 	border-bottom: 1px solid #f2f7ed;
         border-right: 1px solid #777777;
 	letter-spacing: 1px;
@@ -266,7 +266,7 @@ color: #65795b;
 .head3 td{
 	color:#65795b;
 	font: 25px  tahoma;
-	background: #f8fdf3;
+	background: #fafff5;
 	border-bottom: 1px solid #f2f7ed;
 	border-top: 1px solid #f2f7ed;
 	letter-spacing: 1px;
@@ -276,7 +276,7 @@ color: #65795b;
 .head2 td{
 	color:#65795b;
 	font: 11px  tahoma;
-	background: #f8fdf3;
+	background: #fafff5;
 	border-bottom: 1px solid #f2f7ed;
         border-right: 1px solid #f0f5eb;
 	letter-spacing: 1px;
@@ -467,7 +467,7 @@ background:#7bbcc7; color:#aaceaf;background-position:5px 5px;font: 11px  Tahoma
     font: 11px  Tahoma;
 	height:28px;
         display:inline;
-        background:url(images/65.png) no-repeat left #e6ebe1;
+        background:url(images/65.png) no-repeat left #ecfaeb;
         background-position:4px 5px;
         border-bottom:1px #fffff9 solid;
         color:#65795b;
