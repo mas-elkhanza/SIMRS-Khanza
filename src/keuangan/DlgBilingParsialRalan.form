@@ -147,7 +147,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="15-05-2018 20:33:21"/>
+                    <StringItem index="0" value="17-05-2018 03:13:13"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -524,12 +524,12 @@
         <Container class="javax.swing.JTabbedPane" name="TabRawat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f5" green="ff" red="fa" type="rgb"/>
+              <Color blue="fd" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
-                  <Color PropertyName="color" blue="eb" green="fa" red="ec" type="rgb"/>
+                  <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -653,7 +653,7 @@
                         <TitledBorder title=" Daftar Tindakan ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -696,7 +696,7 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -833,7 +833,7 @@
                         <TitledBorder title=" Daftar Tindakan ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -873,7 +873,7 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -1065,7 +1065,7 @@
                         <TitledBorder title=" Daftar Tindakan ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -1105,7 +1105,7 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -1166,7 +1166,7 @@
                         <TitledBorder title=" Daftar Pemeriksaan ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -1206,7 +1206,7 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -1413,7 +1413,7 @@
                         <TitledBorder title=" Daftar Pemeriksaan ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -1436,12 +1436,12 @@
                     <Container class="javax.swing.JTabbedPane" name="TabRawatLaborat">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="f5" green="ff" red="fa" type="rgb"/>
+                          <Color blue="fd" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e1" green="eb" red="e6" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -1535,7 +1535,7 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -1558,12 +1558,12 @@
                     <Container class="javax.swing.JTabbedPane" name="TabRawatLaborat1">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="f5" green="ff" red="fa" type="rgb"/>
+                          <Color blue="fd" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e1" green="eb" red="e6" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
@@ -1681,7 +1681,7 @@
                         <TitledBorder title=" Daftar Obat ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -1724,7 +1724,7 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
