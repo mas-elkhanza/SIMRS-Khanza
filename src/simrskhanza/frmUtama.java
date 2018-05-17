@@ -1045,7 +1045,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelMenu.setWarnaBawah(new java.awt.Color(255, 255, 255));
         panelMenu.setLayout(new java.awt.BorderLayout(1, 1));
 
-        panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(242, 247, 232)));
+        panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 245, 223)));
         panelisi2.setName("panelisi2"); // NOI18N
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 40));
         panelisi2.setWarnaBawah(new java.awt.Color(254, 253, 250));
@@ -1120,7 +1120,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelMenu.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
         scrollPane2.setBackground(new java.awt.Color(255, 255, 250));
-        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(242, 247, 232)));
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 245, 223)));
         scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane2.setName("scrollPane2"); // NOI18N
 
@@ -4834,7 +4834,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10/05/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/05/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
