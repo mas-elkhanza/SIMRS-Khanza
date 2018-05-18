@@ -111,16 +111,16 @@ h1 {
 	width: 100%;
         border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: #ecfaeb;
+	border-bottom-color: #eafae9;
         border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: #ecfaeb;
+	border-top-color: #eafae9;
         border-right-width: 1px;
 	border-right-style: solid;
-	border-right-color: #ecfaeb;
+	border-right-color: #eafae9;
         border-left-width: 1px;
 	border-left-style: solid;
-	border-left-color: #ecfaeb;        
+	border-left-color: #eafae9;        
 }
 
 #navcontainer table tr td {
@@ -153,16 +153,16 @@ h1 {
     height: 99.5%;
     border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: #ecfaeb;
+	border-bottom-color: #eafae9;
         border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: #ecfaeb;
+	border-top-color: #eafae9;
         border-right-width: 1px;
 	border-right-style: solid;
-	border-right-color: #ecfaeb;
+	border-right-color: #eafae9;
         border-left-width: 1px;
 	border-left-style: solid;
-	border-left-color: #ecfaeb; 
+	border-left-color: #eafae9; 
 }
 
 
@@ -436,7 +436,7 @@ background:#7bbcc7; color:#aaceaf;background-position:5px 5px;font: 11px  Tahoma
     font: 11px  Tahoma;
 	height:28px;
         display:inline;
-        background:url(images/65.png) no-repeat left #ecfaeb;
+        background:url(images/65.png) no-repeat left #eafae9;
         background-position:4px 5px;
         border-bottom:1px #fffff9 solid;
         color:#65795b;
