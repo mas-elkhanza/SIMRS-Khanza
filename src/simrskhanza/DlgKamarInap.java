@@ -3819,7 +3819,6 @@ private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                           billing.rawatinap.setLocationRelativeTo(internalFrame1);  
                           billing.rawatinap.isCek();
                           billing.rawatinap.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),DTPCari2.getDate());   
-                          billing.rawatinap.tampilDr();
                           billing.rawatinap.setVisible(true);
                     }else{
                           JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -3839,13 +3838,12 @@ private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
               System.out.println(e);
           }                
       }else{
-                var.setform("DlgKamarInap");
-                billing.rawatinap.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                billing.rawatinap.setLocationRelativeTo(internalFrame1);  
-                billing.rawatinap.isCek();
-                billing.rawatinap.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate());   
-                billing.rawatinap.tampilDr();
-                billing.rawatinap.setVisible(true);
+            var.setform("DlgKamarInap");
+            billing.rawatinap.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            billing.rawatinap.setLocationRelativeTo(internalFrame1);  
+            billing.rawatinap.isCek();
+            billing.rawatinap.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate());   
+            billing.rawatinap.setVisible(true);
                 //this.dispose();
       }
            
