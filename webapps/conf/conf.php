@@ -181,7 +181,7 @@
      function hapusinput($sql){
         bukakoneksi();
         $result=mysqli_query(bukakoneksi(),$sql)
-        or die(mysqli_error()."<font color=red><b>Gagal</b>, Data masih dipakai di tabel lain !");
+        or die("<font color=red><b>Gagal</b>, Data masih dipakai di tabel lain !");
         mysqli_close(bukakoneksi());
         return $result;
      }

@@ -111,16 +111,16 @@ h1 {
 	width: 100%;
         border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: #E6EBE1;
+	border-bottom-color: #eafae9;
         border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: #E6EBE1;
+	border-top-color: #eafae9;
         border-right-width: 1px;
 	border-right-style: solid;
-	border-right-color: #E6EBE1;
+	border-right-color: #eafae9;
         border-left-width: 1px;
 	border-left-style: solid;
-	border-left-color: #E6EBE1;        
+	border-left-color: #eafae9;        
 }
 
 #navcontainer table tr td {
@@ -153,16 +153,16 @@ h1 {
     height: 99.5%;
     border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: #E6EBE1;
+	border-bottom-color: #eafae9;
         border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: #E6EBE1;
+	border-top-color: #eafae9;
         border-right-width: 1px;
 	border-right-style: solid;
-	border-right-color: #E6EBE1;
+	border-right-color: #eafae9;
         border-left-width: 1px;
 	border-left-style: solid;
-	border-left-color: #E6EBE1; 
+	border-left-color: #eafae9; 
 }
 
 
@@ -256,7 +256,7 @@ color: #65795b;
 .head td{
 	color:#65795b;
 	font: 11px  tahoma;
-	background: #f8fdf3;
+	background: #fafff5;
 	border-bottom: 1px solid #f2f7ed;
         border-right: 1px solid #f2f7ed;
 	border-top: 1px solid #f2f7ed;
@@ -267,7 +267,7 @@ color: #65795b;
 .head3 td{
 	color:#65795b;
 	font: 11px  tahoma;
-	background: #f8fdf3;
+	background: #fafff5;
 	border-bottom: 1px solid #f2f7ed;
 	border-top: 1px solid #f2f7ed;
 	letter-spacing: 1px;
@@ -277,7 +277,7 @@ color: #65795b;
 .head4 td{
 	color:#65795b;
 	font: 11px  tahoma;
-	background: #f8fdf3;
+	background: #fafff5;
 	border-bottom: 1px solid #f2f7ed;
 	letter-spacing: 1px;
 	padding: 4px 2px 4px 10px;
@@ -286,7 +286,7 @@ color: #65795b;
 .head2 td{
 	color:#65795b;
 	font: 11px  tahoma;
-	background: #f8fdf3;
+	background: #fafff5;
 	border-bottom: 1px solid #f2f7ed;
         border-right: 1px solid #777777;
 	letter-spacing: 1px;
@@ -430,11 +430,11 @@ color: #65795b;
 }
 
 .text6 {
-	background: #f8fdf3;
+	background: #fafff5;
         font-size: 11px;
         font: Tahoma;
 	padding: 3px 0 3px 5px;
-	border: 1px solid #f8fdf3;
+	border: 1px solid #fafff5;
 	color: #65795b;
 }
 
@@ -483,7 +483,7 @@ background:#7bbcc7; color:#aaceaf;background-position:5px 5px;font: 11px  Tahoma
     font: 11px  Tahoma;
 	height:28px;
         display:inline;
-        background:url(images/65.png) no-repeat left #e6ebe1;
+        background:url(images/65.png) no-repeat left #eafae9;
         background-position:4px 5px;
         border-bottom:1px #fffff9 solid;
         color:#65795b;

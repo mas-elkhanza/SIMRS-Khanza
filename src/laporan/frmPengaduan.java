@@ -169,8 +169,8 @@ public class frmPengaduan extends javax.swing.JFrame {
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengaduan/Chat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 250, 233)));
         TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -668,12 +668,12 @@ public class frmPengaduan extends javax.swing.JFrame {
                         if(rs.getString("username").equals(var.getkode())){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td align='right' valign='top' bgcolor='#f7fcf2'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                    "<td align='right' valign='top' bgcolor='#fafff5'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
                                 "</tr>");
                         }else{
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td align='left' valign='top' bgcolor='#f7fcf2'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
+                                    "<td align='left' valign='top' bgcolor='#fafff5'>"+rs.getString("date_time")+" "+rs.getString("username")+" : "+rs.getString("message")+"</td>"+
                                 "</tr>");
                         }
                     }                        

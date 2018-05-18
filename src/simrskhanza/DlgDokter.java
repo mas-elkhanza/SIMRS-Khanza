@@ -904,7 +904,7 @@ public class DlgDokter extends javax.swing.JDialog {
                 Sequel.menyimpan("stts_kerja","'-','-','0'");
                 Sequel.menyimpan("pendidikan","'-','0','0','0','0'");
                 Sequel.menyimpan("pegawai","'0','"+TKd.getText()+"','"+TNm.getText()+"','"+CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria")+"',"+
-                        "'-','-','-','-','-','-','-','-','0','"+TTmp.getText()+"','"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"','"+TAlmt.getText()+"','-','1900-01-01','<1','-','T','-','AKTIF','0','0','0','1900-01-01','0','0'");        
+                        "'-','-','-','-','-','-','-','-','0','"+TTmp.getText()+"','"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"','"+TAlmt.getText()+"','-','1900-01-01','<1','-','T','-','AKTIF','0','0','0','1900-01-01','0','0','pages/pegawai/photo/'");        
                 Sequel.menyimpan("dokter","'"+TKd.getText()+"','"+
                         TNm.getText()+"','"+
                         CmbJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim()+"','"+

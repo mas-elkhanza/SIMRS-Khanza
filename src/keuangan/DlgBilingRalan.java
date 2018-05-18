@@ -63,7 +63,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                    Kso_Radiologi_Ralan=0,Persediaan_Radiologi_Rawat_Jalan=0,Obat_Rawat_Jalan=0,
                    Jasa_Medik_Dokter_Operasi_Ralan=0,Jasa_Medik_Paramedis_Operasi_Ralan=0,Obat_Operasi_Ralan=0,kekurangan=0;
     private int i,r,cek,row2,countbayar=0,z=0,jml=0;
-    private String dokterrujukan="",polirujukan="",umur="",status="",biaya="",tambahan="",totals="",kdptg="",nmptg="",kd_pj="",notaralan="",centangdokterralan="",
+    private String nota_jalan="",dokterrujukan="",polirujukan="",umur="",status="",biaya="",tambahan="",totals="",kdptg="",nmptg="",kd_pj="",notaralan="",centangdokterralan="",
             rinciandokterralan="",Tindakan_Ralan="",Laborat_Ralan="",Radiologi_Ralan="",
             Obat_Ralan="",Registrasi_Ralan="",Tambahan_Ralan="",Potongan_Ralan="",
             Beban_Jasa_Medik_Dokter_Tindakan_Ralan="", Utang_Jasa_Medik_Dokter_Tindakan_Ralan="", 
@@ -1662,7 +1662,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-12-2017 09:13:15" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-05-2018 20:34:35" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1676,8 +1676,8 @@ public class DlgBilingRalan extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass1, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 250, 233)));
         TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -5210,10 +5210,11 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     psnota.setDouble(19,Obat_Operasi_Ralan);
                     psnota.executeUpdate();
                 } catch (Exception e) {
+                    nota_jalan=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7).replaceAll("-","/")+"/RJ/",6);
                     Sequel.meghapus("nota_jalan","no_rawat",TNoRw.getText());               
-                    tbBilling.setValueAt(": "+Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7).replaceAll("-","/")+"/RJ/",6),0,2);
+                    tbBilling.setValueAt(": "+nota_jalan,0,2);
                     psnota.setString(1,TNoRw.getText());
-                    psnota.setString(2,Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7).replaceAll("-","/")+"/RJ/",6));
+                    psnota.setString(2,nota_jalan);
                     psnota.setString(3,Valid.SetTgl(DTPTgl.getSelectedItem()+""));
                     psnota.setString(4,DTPTgl.getSelectedItem().toString().substring(11,19));
                     psnota.setDouble(5,Jasa_Medik_Dokter_Tindakan_Ralan);
