@@ -2245,7 +2245,10 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Detail Obat Racikan","lain","detail_obat_racikan");  
         hapus("Resep Obat","lain","resep_obat");         
         hapus("Billing","lain","billing");             
-        hapus("Pemeriksaan Obstetri Ralan","lain","pemeriksaan_obstetri_ralan");         
+        hapus("Pemeriksaan Obstetri Ralan","lain","pemeriksaan_obstetri_ralan"); 
+        hapus("Pemeriksaan Obstetri Ranap","lain","pemeriksaan_obstetri_ranap"); 
+        hapus("Pemeriksaan Ginekologi Ralan","lain","pemeriksaan_ginekologi_ralan"); 
+        hapus("Pemeriksaan Ginekologi Ranap","lain","pemeriksaan_ginekologi_ranap");         
         hapus("Registrasi","Rawat Jalan,\nKamar Inap, Diagnosa Pasien, Tagihan Masuk, Pemberian Obat, Resep Obat, Rujukan Masuk,\n"+
                 "Rujukan Keluar, Stok Obat Pasien, Diagnosa Pasien, Resep Pulang, Potongan Biaya, Tambahan Biaya,\nDPJP Ranap, Diet Pasien","reg_periksa");
     }//GEN-LAST:event_BtnICD4ActionPerformed

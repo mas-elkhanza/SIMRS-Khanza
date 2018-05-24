@@ -35,7 +35,7 @@ public class InternalFrame extends JPanel{
     
     public InternalFrame(){
         super();
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(240,245,235)));
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(241,246,236)));
     }
 
     public InternalFrame(LayoutManager layout) {
