@@ -21,7 +21,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="28-12-2017"/>
+            <StringItem index="0" value="23-05-2018"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -301,7 +301,7 @@
                                 <TitledBorder title="::[ Kelengkapan Data Pasien ]::">
                                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                     <LineBorder>
-                                      <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                                      <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                                     </LineBorder>
                                   </Border>
                                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -577,7 +577,7 @@
                                 </Property>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="28-12-2017"/>
+                                    <StringItem index="0" value="23-05-2018"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1246,7 +1246,7 @@
                                 <TitledBorder title="::[ Kelengkapan Data SJP, Registrasi &amp; Kamar Inap ]::">
                                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                     <LineBorder>
-                                      <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                                      <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                                     </LineBorder>
                                   </Border>
                                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -1313,7 +1313,7 @@
                                 </Property>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="28-12-2017 14:21:40"/>
+                                    <StringItem index="0" value="23-05-2018 00:58:54"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1353,7 +1353,7 @@
                                 </Property>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="28-12-2017 14:21:40"/>
+                                    <StringItem index="0" value="23-05-2018 00:58:54"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
