@@ -19,7 +19,7 @@ public class ScrollPane extends JScrollPane {
         setOpaque(false);
         //setBorder(new LineBorder(new Color(235,140,235)));
         //setBackground(new Color(255,235,255));
-        setBorder(new LineBorder(new Color(234,250,233)));
+        setBorder(new LineBorder(new Color(241,246,236)));
         setBackground(new Color(255,255,255));
     }
 }

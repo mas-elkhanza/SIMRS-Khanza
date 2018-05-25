@@ -27,7 +27,7 @@ public class BackCari extends JPanel {
 
     public BackCari() {
         super();
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(234,250,233)));
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(241,246,236)));
     }
 
     @Override

@@ -130,7 +130,7 @@
                     <TitledBorder title=" Tindakan ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
+                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
@@ -286,7 +286,7 @@
                     <TitledBorder title=" Obat &amp; BHP ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
+                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
