@@ -69,7 +69,9 @@ public final class var {
             permintaan_medis=false,rekap_permintaan_medis=false,surat_pemesanan_medis=false,permintaan_non_medis=false,rekap_permintaan_non_medis=false,
             surat_pemesanan_non_medis=false,grafik_per_perujuk=false,bpjs_cek_prosedur=false,bpjs_cek_kelas_rawat=false,bpjs_cek_dokter=false,
             bpjs_cek_spesialistik=false,bpjs_cek_ruangrawat=false,bpjs_cek_carakeluar=false,bpjs_cek_pasca_pulang=false,detail_tindakan_okvk=false,
-            billing_parsial=false,bpjs_cek_nomor_rujukan_rs=false;
+            billing_parsial=false,bpjs_cek_nomor_rujukan_rs=false,bpjs_cek_rujukan_kartu_pcare=false,bpjs_cek_rujukan_kartu_rs=false,akses_depo_obat=false,
+            bpjs_rujukan_keluar=false,grafik_lab_ralanbulan=false,pengeluaran_stok_apotek=false,grafik_rad_ralanbulan=false,detailjmdokter2=false,
+            pengaduan_pasien=false,grafik_lab_ralanhari=false,grafik_rad_ralanhari=false,sensus_harian_ralan=false,metode_racik=false,pembayaran_akun_bayar=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -391,6 +393,20 @@ public final class var {
                         var.detail_tindakan_okvk=true;
                         var.billing_parsial=true;
                         var.bpjs_cek_nomor_rujukan_rs=true;
+                        var.bpjs_cek_rujukan_kartu_pcare=true;
+                        var.bpjs_cek_rujukan_kartu_rs=true;
+                        var.akses_depo_obat=true;
+                        var.bpjs_rujukan_keluar=true;
+                        var.grafik_lab_ralanbulan=true;
+                        var.pengeluaran_stok_apotek=true;
+                        var.grafik_rad_ralanbulan=true;
+                        var.detailjmdokter2=true;
+                        var.pengaduan_pasien=true;
+                        var.grafik_lab_ralanhari=true;
+                        var.grafik_rad_ralanhari=true;
+                        var.sensus_harian_ralan=true;
+                        var.metode_racik=true;
+                        var.pembayaran_akun_bayar=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -696,6 +712,20 @@ public final class var {
                         var.detail_tindakan_okvk=rs2.getBoolean("detail_tindakan_okvk");
                         var.billing_parsial=rs2.getBoolean("billing_parsial");
                         var.bpjs_cek_nomor_rujukan_rs=rs2.getBoolean("bpjs_cek_nomor_rujukan_rs");
+                        var.bpjs_cek_rujukan_kartu_pcare=rs2.getBoolean("bpjs_cek_rujukan_kartu_pcare");
+                        var.bpjs_cek_rujukan_kartu_rs=rs2.getBoolean("bpjs_cek_rujukan_kartu_rs");
+                        var.akses_depo_obat=rs2.getBoolean("akses_depo_obat");
+                        var.bpjs_rujukan_keluar=rs2.getBoolean("bpjs_rujukan_keluar");
+                        var.grafik_lab_ralanbulan=rs2.getBoolean("grafik_lab_ralanbulan");
+                        var.pengeluaran_stok_apotek=rs2.getBoolean("pengeluaran_stok_apotek");
+                        var.grafik_rad_ralanbulan=rs2.getBoolean("grafik_rad_ralanbulan");
+                        var.detailjmdokter2=rs2.getBoolean("detailjmdokter2");
+                        var.pengaduan_pasien=rs2.getBoolean("pengaduan_pasien");
+                        var.grafik_lab_ralanhari=rs2.getBoolean("grafik_lab_ralanhari");
+                        var.grafik_rad_ralanhari=rs2.getBoolean("grafik_rad_ralanhari");
+                        var.sensus_harian_ralan=rs2.getBoolean("sensus_harian_ralan");
+                        var.metode_racik=rs2.getBoolean("metode_racik");
+                        var.pembayaran_akun_bayar=rs2.getBoolean("pembayaran_akun_bayar");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -999,6 +1029,20 @@ public final class var {
                         var.detail_tindakan_okvk=false;
                         var.billing_parsial=false;
                         var.bpjs_cek_nomor_rujukan_rs=false;
+                        var.bpjs_cek_rujukan_kartu_pcare=false;
+                        var.bpjs_cek_rujukan_kartu_rs=false;
+                        var.akses_depo_obat=false;
+                        var.bpjs_rujukan_keluar=false;
+                        var.grafik_lab_ralanbulan=false;
+                        var.pengeluaran_stok_apotek=false;
+                        var.grafik_rad_ralanbulan=false;
+                        var.detailjmdokter2=false;
+                        var.pengaduan_pasien=false;
+                        var.grafik_lab_ralanhari=false;
+                        var.grafik_rad_ralanhari=false;
+                        var.sensus_harian_ralan=false;
+                        var.metode_racik=false;
+                        var.pembayaran_akun_bayar=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1349,5 +1393,18 @@ public final class var {
     public static boolean getdetail_tindakan_okvk(){return var.detail_tindakan_okvk;}
     public static boolean getbilling_parsial(){return var.billing_parsial;}
     public static boolean getbpjs_cek_nomor_rujukan_rs(){return var.bpjs_cek_nomor_rujukan_rs;}
-
-}
+    public static boolean getbpjs_cek_rujukan_kartu_pcare(){return var.bpjs_cek_rujukan_kartu_pcare;}
+    public static boolean getbpjs_cek_rujukan_kartu_rs(){return var.bpjs_cek_rujukan_kartu_rs;}
+    public static boolean getakses_depo_obat(){return var.akses_depo_obat;}
+    public static boolean getbpjs_rujukan_keluar(){return var.bpjs_rujukan_keluar;}
+    public static boolean getgrafik_lab_ralanbulan(){return var.grafik_lab_ralanbulan;}
+    public static boolean getpengeluaran_stok_apotek(){return var.pengeluaran_stok_apotek;}
+    public static boolean getgrafik_rad_ralanbulan(){return var.grafik_rad_ralanbulan;}
+    public static boolean getdetailjmdokter2(){return var.detailjmdokter2;}
+    public static boolean getpengaduan_pasien(){return var.pengaduan_pasien;}
+    public static boolean getgrafik_lab_ralanhari(){return var.grafik_lab_ralanhari;}
+    public static boolean getgrafik_rad_ralanhari(){return var.grafik_rad_ralanhari;}
+    public static boolean getsensus_harian_ralan(){return var.sensus_harian_ralan;}
+    public static boolean getmetode_racik(){return var.metode_racik;}
+    public static boolean getpembayaran_akun_bayar(){return var.pembayaran_akun_bayar;}
+}   

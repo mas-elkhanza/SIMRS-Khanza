@@ -52,7 +52,7 @@
                 if(bridging_sep.jnspelayanan='1','1. Rawat Inap','2. Rawat Jalan') as jenispelayanan,bridging_sep.catatan,bridging_sep.diagawal,
                 bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,
                 if(bridging_sep.klsrawat='1','1. Kelas 1',if(bridging_sep.klsrawat='2','2. Kelas 2','3. Kelas 3')) as kelas,
-                if(bridging_sep.lakalantas='1','1. Kasus Kecelakaan','2. Bukan Kasus Kecelakaan') as lakalantas,bridging_sep.lokasilaka,bridging_sep.user, 
+                if(bridging_sep.lakalantas='0','2. Bukan Kasus Kecelakaan','1. Kasus Kecelakaan') as lakalantas,bridging_sep.lokasilaka,bridging_sep.user, 
                 bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.tglpulang from bridging_sep where 
                 bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep.no_sep like '%".$keyword."%' or
                 bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep.nomr like '%".$keyword."%' or
@@ -61,8 +61,8 @@
                 bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep.no_kartu like '%".$keyword."%' 
                 order by bridging_sep.tglsep";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
-        if(mysql_num_rows($hasil)!=0) {
+        $jumlah=mysqli_num_rows($hasil);
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head2'>
                         <td width='10%'><div align='center'>No.Rawat</div></td>
@@ -76,7 +76,7 @@
                         <td width='9%'><div align='center'>Peserta</div></td>
                         <td width='13%'><div align='center'>Status Data</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $status="<a href='?act=KlaimBaruManual&action=Kirim&no_sep=".$baris["no_sep"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>[Kirim]</a>";
                         if(getOne("select count(no_sep) from inacbg_klaim_baru where no_sep='".$baris["no_sep"]."'")>0){
                             $status="Terkirim INACBG<br><a href='?act=KlaimBaruManual&action=Kirim&no_sep=".$baris["no_sep"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>[Kirim Ulang]</a>";
@@ -115,9 +115,9 @@
         if($action=="Kirim") {
             $_sql   = "select no_kartu,no_sep,nomr,nama_pasien,tanggal_lahir,jkel,tglsep,if(tglpulang='0000-00-00 00:00:00',now(),tglpulang) as tglpulang,jnspelayanan,klsrawat,no_rawat from bridging_sep where no_sep='".$no_sep."'";
             $hasil  = bukaquery($_sql);
-            $baris  = mysql_fetch_array($hasil);
+            $baris  = mysqli_fetch_array($hasil);
             $gender = "";
-            if($baris["jkel"]=="LAKI-LAKI"){
+            if($baris["jkel"]=="L"){
                 $gender="1";
             }else{
                 $gender="2";
@@ -126,7 +126,7 @@
             $prosedur="";
             $a=1;
             $hasilprosedur=bukaquery("select kode from prosedur_pasien where no_rawat='".$baris["no_rawat"]."' order by prioritas asc");
-            while($barisprosedur = mysql_fetch_array($hasilprosedur)) {
+            while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
                 if($a==1){
                     $prosedur=$barisprosedur["kode"];
                 }else{
@@ -138,7 +138,7 @@
             $penyakit="";
             $a=1;
             $hasilpenyakit=bukaquery("select kd_penyakit from diagnosa_pasien where no_rawat='".$baris["no_rawat"]."' order by prioritas asc");
-            while($barispenyakit = mysql_fetch_array($hasilpenyakit)) {
+            while($barispenyakit = mysqli_fetch_array($hasilpenyakit)) {
                 if($a==1){
                     $penyakit=$barispenyakit["kd_penyakit"];
                 }else{
@@ -148,7 +148,11 @@
             } 
             
             $discharge_status="5";
-            if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Rujuk' and no_rawat='".$baris["no_rawat"]."'")>0){
+            if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Sembuh' and no_rawat='".$baris["no_rawat"]."'")>0){
+                $discharge_status="1";
+            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Sehat' and no_rawat='".$baris["no_rawat"]."'")>0){
+                $discharge_status="1";
+            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Rujuk' and no_rawat='".$baris["no_rawat"]."'")>0){
                 $discharge_status="2";
             }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='APS' and no_rawat='".$baris["no_rawat"]."'")>0){
                 $discharge_status="3";
@@ -158,8 +162,16 @@
                 $discharge_status="4";
             }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='+' and no_rawat='".$baris["no_rawat"]."'")>0){
                 $discharge_status="4";
+            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Atas Persetujuan Dokter' and no_rawat='".$baris["no_rawat"]."'")>0){
+                $discharge_status="1";
+            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Atas Permintaan Sendiri' and no_rawat='".$baris["no_rawat"]."'")>0){
+                $discharge_status="3";
+            }else if(getOne("select count(no_rawat) from kamar_inap where stts_pulang='Lain-lain' and no_rawat='".$baris["no_rawat"]."'")>0){
+                $discharge_status="5";
+            }else{
+                $discharge_status="1";
             }
-            
+                            
             BuatKlaimBaru($baris["no_kartu"],$baris["no_sep"],$baris["nomr"],$baris["nama_pasien"],$baris["tanggal_lahir"]." 00:00:00", $gender);
             EditUlangKlaim($baris["no_sep"]);
             UpdateDataKlaim($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"],$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","","","","","",getOne("select berat_badan from pasien_bayi where no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), getOne("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),getKelasRS(),"","","#",$codernik,$baris["no_rawat"]);

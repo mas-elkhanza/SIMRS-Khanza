@@ -2,7 +2,7 @@
  include '../../../conf/conf.php';
  $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun        = $baris[0];
    $bulan        = $baris[1];
 ?>
@@ -17,10 +17,10 @@
         $_sql 		= "SELECT pendapatan_akte,persen_rs,bagian_rs,persen_kry,bagian_kry
 						FROM set_akte WHERE tahun='$tahun' and bulan='$bulan' ORDER BY pendapatan_akte";
         $hasil		= bukaquery($_sql);
-        $jumlah		= mysql_num_rows($hasil);
+        $jumlah		= mysqli_num_rows($hasil);
         $total_akte =0;
         $no			= 1;
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='10%'><div align='center'>No.</strong></div></td>
@@ -30,7 +30,7 @@
                         <td width='7%'><div align='center'>% Kry</div></td>
                         <td width='25%'><div align='center'>Bagian Kry</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $total_akte=$baris[4];			
                         echo "<tr class='isi'>
 								<td>$no</td>  
@@ -50,11 +50,11 @@
         $_sql 		= "SELECT pembagian_akte.id,pegawai.nama,persen FROM pembagian_akte inner join pegawai
 						on pembagian_akte.id=pegawai.id where pegawai.nama like '%".$keyword."%' ORDER BY persen desc";
         $hasil		= bukaquery($_sql);
-        $jumlah		= mysql_num_rows($hasil);
+        $jumlah		= mysqli_num_rows($hasil);
 		$ttl		= 0;
 		$prosen		= 0;
         $no			= 1;
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='10%'><div align='center'>No.</strong></div></td>
@@ -63,7 +63,7 @@
 						<td width='25%'><div align='center'>Bagian Karyawan</div></td>
                     </tr>";                    
 					$bagiankry=0;
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
 						$bagiankry=($baris[2]/100)*$total_akte;
 						$ttl=$ttl+$bagiankry;
 						$prosen=$prosen+$baris[2];

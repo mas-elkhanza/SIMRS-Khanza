@@ -37,7 +37,6 @@ import javax.swing.table.TableColumn;
 import inventory.DlgCariKonversi;
 import inventory.DlgCariObat;
 import inventory.DlgCariObat2;
-import inventory.DlgCariObat3;
 import inventory.riwayatobat;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -1989,29 +1988,32 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Valid.tabelKosong(tabModePO);
         try{
             ps=koneksi.prepareStatement(sql);
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            ps.setString(4,"%"+TCari.getText().trim()+"%");
-            ps.setString(5,"%"+TCari.getText().trim()+"%");
-            ps.setString(6,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                Object[] data={rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               rs.getString(5),
-                               rs.getString(6),
-                               rs.getString(7),
-                               rs.getDouble(8),
-                               rs.getDouble(9),
-                               rs.getDouble(10),
-                               rs.getDouble(11),
-                               rs.getDouble(12),
-                               rs.getDouble(13),
-                               rs.getString(14)};
-                tabModePO.addRow(data);
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModePO.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getString(5),rs.getString(6),
+                        rs.getString(7),rs.getDouble(8),rs.getDouble(9),
+                        rs.getDouble(10),rs.getDouble(11),rs.getDouble(12),
+                        rs.getDouble(13),rs.getString(14)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);

@@ -9,30 +9,30 @@
                 $action      =isset($_GET['action'])?$_GET['action']:NULL; 
                 $_sql = "SELECT id,koperasi,jamsostek,bpjs FROM keanggotaan WHERE id='$id'";
                 $hasil=bukaquery($_sql);
-                if(mysql_num_rows($hasil)!=0) {
+                if(mysqli_num_rows($hasil)!=0) {
                     $action = "UBAH";
-                }else if(mysql_num_rows($hasil)==0) {
+                }else if(mysqli_num_rows($hasil)==0) {
                     $action = "TAMBAH";
                 }
                 
-                $baris     = mysql_fetch_row($hasil);
+                $baris     = mysqli_fetch_row($hasil);
                 $koperasi  = $baris[1];
                 $jamsostek = $baris[2];
                 $bpjs      = $baris[3];
                 
                 $_sql2 = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil2=bukaquery($_sql2);
-                $baris2 = mysql_fetch_row($hasil2);                
+                $baris2 = mysqli_fetch_row($hasil2);                
                 echo"<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
 
                     $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
-                    $barisnext        	= mysql_fetch_row($hasilnext);
+                    $barisnext        	= mysqli_fetch_row($hasilnext);
                     $next               = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
-                    $barisprev        	= mysql_fetch_row($hasilprev);
+                    $barisprev        	= mysqli_fetch_row($hasilprev);
                     $prev               = $barisprev[0];
                     
                     if(empty($prev)){
@@ -68,7 +68,7 @@
                                 $_sql = "SELECT stts,wajib FROM koperasi  ORDER BY stts";
                                 $hasil=bukaquery($_sql);
                                 echo "<option id='TxtIsi1' value='$koperasi'>$koperasi</option>";
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi1' value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>
@@ -85,7 +85,7 @@
                                 $_sql = "SELECT stts,biaya FROM jamsostek  ORDER BY stts";
                                 $hasil=bukaquery($_sql);
                                 echo "<option id='TxtIsi2' value='$jamsostek'>$jamsostek</option>";
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi2' value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>
@@ -102,7 +102,7 @@
                                 $_sql = "SELECT stts,biaya FROM bpjs ORDER BY stts";
                                 $hasil=bukaquery($_sql);
                                 echo "<option id='TxtIsi3' value='$bpjs'>$bpjs</option>";
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi3' value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>

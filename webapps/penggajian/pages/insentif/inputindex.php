@@ -3,7 +3,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baristh        = mysql_fetch_row($hasil);
+   $baristh        = mysqli_fetch_row($hasil);
    $tahun         = $baristh[0];
    $bulan          = $baristh[1];
 ?>
@@ -27,7 +27,7 @@
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT dep_id,persen FROM indexins WHERE dep_id='$dep_id' ";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $dep_id       = $baris[0];
                     $persen       = $baris[1];
                 }
@@ -43,14 +43,14 @@
                                 if($action == "UBAH"){
                                     $_sql2 = "SELECT dep_id,nama FROM departemen where dep_id='$dep_id' ORDER BY dep_id";
                                     $hasil2=bukaquery($_sql2);
-                                    while($baris2 = mysql_fetch_array($hasil2)) {
+                                    while($baris2 = mysqli_fetch_array($hasil2)) {
                                         echo "<option id='TxtIsi1' value='$baris2[0]'>$baris2[0] $baris2[1]</option>";
                                     }
                                 }
                                 if($action == "TAMBAH"){
                                     $_sql = "SELECT dep_id,nama FROM  departemen ORDER BY dep_id";
                                 $hasildep=bukaquery($_sql);
-                                    while($barisdep = mysql_fetch_array($hasildep)) {
+                                    while($barisdep = mysqli_fetch_array($hasildep)) {
                                         echo "<option id='TxtIsi1' value='$barisdep[0]'>$barisdep[0]  $barisdep[1]</option>";
                                     }
                                 }                                
@@ -72,7 +72,7 @@
 
 		$_sql         = "SELECT * FROM set_tahun";
 		$hasil        = bukaquery($_sql);
-		$baris        = mysql_fetch_row($hasil);
+		$baris        = mysqli_fetch_row($hasil);
 		$tahun        = $baris[0];
 		$bulan        = $baris[1];
 

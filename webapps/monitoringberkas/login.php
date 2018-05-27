@@ -4,7 +4,7 @@
             if(($_GET['usere']=="admin")&&($_GET['passwordte']=="akusayangsamakamu")) {
                 session_start();
                 $_SESSION['ses_admin']="admin";
-                $url = "index.php?act=List";			
+                $url = "index.php?act=List&statusdata=Semua";			
             }else{
                     session_start();
                     session_destroy();

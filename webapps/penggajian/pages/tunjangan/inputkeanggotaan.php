@@ -13,19 +13,19 @@
                 $action      =$_GET['action']; 
                 $_sql = "SELECT id,koperasi,jamsostek FROM keanggotaan WHERE id='$id'";
                 $hasil=bukaquery($_sql);
-                if(mysql_num_rows($hasil)!=0) {
+                if(mysqli_num_rows($hasil)!=0) {
                     $action = "UBAH";
-                }else if(mysql_num_rows($hasil)==0) {
+                }else if(mysqli_num_rows($hasil)==0) {
                     $action = "TAMBAH";
                 }
                 
-                $baris     = mysql_fetch_row($hasil);
+                $baris     = mysqli_fetch_row($hasil);
                 $koperasi  = $baris[1];
                 $jamsostek = $baris[2];
                 
                 $_sql2 = "SELECT nik,nama FROM pegawai where id='$id'";
                 $hasil2=bukaquery($_sql2);
-                $baris2 = mysql_fetch_row($hasil2);                
+                $baris2 = mysqli_fetch_row($hasil2);                
                 echo"<input type=hidden name=id  value=$id><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
@@ -45,7 +45,7 @@
                             <?php
                                 $_sql = "SELECT stts,wajib FROM koperasi  ORDER BY stts";
                                 $hasil=bukaquery($_sql);
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi1' value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>
@@ -61,7 +61,7 @@
                             <?php
                                 $_sql = "SELECT stts,biaya FROM jamsostek  ORDER BY stts";
                                 $hasil=bukaquery($_sql);
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi2' value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>

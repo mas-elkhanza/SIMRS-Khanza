@@ -33,6 +33,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import restore.DlgRestoreIPSRSBarang;
 
 /**
  *
@@ -60,7 +61,21 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
 
         Object[] row={"Kode Barang","Nama Barang","Satuan","Jenis","Stok","Harga"};
         tabMode=new DefaultTableModel(null,row){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                boolean a = false;
+                return a;
+            }
+            Class[] types = new Class[]{
+                java.lang.Object.class,java.lang.Object.class,
+                java.lang.Object.class,java.lang.Object.class,java.lang.Double.class,
+                java.lang.Double.class
+            };
+
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
         };
         tbJnsPerawatan.setModel(tabMode);
 
@@ -170,6 +185,8 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Popup = new javax.swing.JPopupMenu();
+        MnRestore = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbJnsPerawatan = new widget.Table();
@@ -208,6 +225,25 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
         btnJenis = new widget.Button();
         ChkInput = new widget.CekBox();
 
+        Popup.setName("Popup"); // NOI18N
+
+        MnRestore.setBackground(new java.awt.Color(255, 255, 255));
+        MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRestore.setForeground(new java.awt.Color(60, 80, 50));
+        MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnRestore.setText("Data Sampah");
+        MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnRestore.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnRestore.setIconTextGap(8);
+        MnRestore.setName("MnRestore"); // NOI18N
+        MnRestore.setPreferredSize(new java.awt.Dimension(200, 28));
+        MnRestore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRestoreActionPerformed(evt);
+            }
+        });
+        Popup.add(MnRestore);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -221,11 +257,13 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(Popup);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbJnsPerawatan.setAutoCreateRowSorter(true);
         tbJnsPerawatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbJnsPerawatan.setComponentPopupMenu(Popup);
         tbJnsPerawatan.setName("tbJnsPerawatan"); // NOI18N
         tbJnsPerawatan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -607,8 +645,8 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
         }else if(kdjenis.getText().trim().equals("")||nmjenis.getText().trim().equals("")){
             Valid.textKosong(kdjenis,"Jenis Barang");
         }else {
-            Sequel.menyimpan("ipsrsbarang","?,?,?,?,?,?","Kode Barang",6,new String[]{
-                kode_brng.getText(),nama_brng.getText(),kode_sat.getText(),kdjenis.getText(),stok.getText(),harga.getText()
+            Sequel.menyimpan("ipsrsbarang","?,?,?,?,?,?,?","Kode Barang",7,new String[]{
+                kode_brng.getText(),nama_brng.getText(),kode_sat.getText(),kdjenis.getText(),stok.getText(),harga.getText(),"1"
             });
             kode_brng.requestFocus();
             tampil();
@@ -637,7 +675,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        Valid.hapusTable(tabMode,kode_brng,"ipsrsbarang","kode_brng");
+        Sequel.mengedit("ipsrsbarang","kode_brng='"+kode_brng.getText()+"'","status='0'");
         BtnCariActionPerformed(evt);
         emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -712,10 +750,10 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
                    "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, kodesatuan.satuan, ipsrsjenisbarang.nm_jenis as jenis, "+
                     "ipsrsbarang.stok,ipsrsbarang.harga from ipsrsbarang inner join kodesatuan inner join ipsrsjenisbarang "+
                     "on ipsrsbarang.kode_sat=kodesatuan.kode_sat and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                    "where ipsrsbarang.kode_brng like '%"+TCari.getText().trim()+"%' "+
-                    "or ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' "+
-                    "or kodesatuan.satuan like '%"+TCari.getText().trim()+"%' "+
-                    "or ipsrsjenisbarang.nm_jenis like '%"+TCari.getText().trim()+"%' order by ipsrsbarang.kode_brng",param);
+                    "where ipsrsbarang.status='1' and ipsrsbarang.kode_brng like '%"+TCari.getText().trim()+"%' "+
+                    "or ipsrsbarang.status='1' and ipsrsbarang.nama_brng like '%"+TCari.getText().trim()+"%' "+
+                    "or ipsrsbarang.status='1' and kodesatuan.satuan like '%"+TCari.getText().trim()+"%' "+
+                    "or ipsrsbarang.status='1' and ipsrsjenisbarang.nm_jenis like '%"+TCari.getText().trim()+"%' order by ipsrsbarang.kode_brng",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -759,8 +797,8 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
             TCari.setText("");
+            tampil();
         }else{
             Valid.pindah(evt, BtnPrint,BtnKeluar);
         }
@@ -853,6 +891,13 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         jenis.setVisible(true);
     }//GEN-LAST:event_btnJenisActionPerformed
 
+    private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
+        DlgRestoreIPSRSBarang restore=new DlgRestoreIPSRSBarang(null,true);
+        restore.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        restore.setLocationRelativeTo(internalFrame1);
+        restore.setVisible(true);
+    }//GEN-LAST:event_MnRestoreActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -881,7 +926,9 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.CekBox ChkInput;
     private widget.PanelBiasa FormInput;
     private widget.Label LCount;
+    private javax.swing.JMenuItem MnRestore;
     private javax.swing.JPanel PanelInput;
+    private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Button btnJenis;
@@ -916,10 +963,10 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, kodesatuan.satuan, ipsrsjenisbarang.nm_jenis, "+
                         "ipsrsbarang.stok,ipsrsbarang.harga from ipsrsbarang inner join kodesatuan inner join ipsrsjenisbarang "+
                         "on ipsrsbarang.kode_sat=kodesatuan.kode_sat and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                        "where ipsrsbarang.kode_brng like ? "+
-                        "or ipsrsbarang.nama_brng like ? "+
-                        "or kodesatuan.satuan like ? "+
-                        "or ipsrsjenisbarang.nm_jenis like ? order by ipsrsbarang.kode_brng");
+                        "where ipsrsbarang.status='1' and ipsrsbarang.kode_brng like ? "+
+                        "or ipsrsbarang.status='1' and ipsrsbarang.nama_brng like ? "+
+                        "or ipsrsbarang.status='1' and kodesatuan.satuan like ? "+
+                        "or ipsrsbarang.status='1' and ipsrsjenisbarang.nm_jenis like ? order by ipsrsbarang.kode_brng");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -928,7 +975,7 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("nm_jenis"),rs.getString("stok"),Valid.SetAngka(rs.getDouble("harga"))
+                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("nm_jenis"),rs.getDouble("stok"),rs.getDouble("harga")
                     });
                 }
             } catch (Exception e) {
@@ -1003,6 +1050,11 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         BtnHapus.setEnabled(var.getipsrs_barang());
         BtnEdit.setEnabled(var.getipsrs_barang());
         BtnPrint.setEnabled(var.getipsrs_barang());
+        if(var.getkode().equals("Admin Utama")){
+            MnRestore.setEnabled(true);
+        }else{
+            MnRestore.setEnabled(false);
+        }
         TCari.requestFocus();
     }
     

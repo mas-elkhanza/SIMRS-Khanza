@@ -247,7 +247,7 @@
      function deletegb($sql){
           $_sql         = $sql;
           $hasil        = bukaquery($_sql);
-          $baris        = mysql_fetch_row($hasil);
+          $baris        = mysqli_fetch_row($hasil);
           $gb           = $baris[0];
           $hapus=unlink($gb);
      }
@@ -325,17 +325,17 @@
 	}
 
     function JumlahBaris($result) {
-  		return mysql_num_rows($result);
+  		return mysqli_num_rows($result);
 	}
 
      function getOne($sql) {
      $hasil=bukaquery($sql);
-     list($result) =mysql_fetch_array($hasil);
+     list($result) =mysqli_fetch_array($hasil);
      return $result;
      }
 
      function cekKosong($sql) {
-		$jum = mysql_num_rows($sql);
+		$jum = mysqli_num_rows($sql);
 		if ($jum==0) return true;
 		else return false;
 	}
@@ -506,7 +506,7 @@
         
         function autonomer($table,$strawal,$pnj){
             $hasil        = bukaquery($table);
-            $s            = mysql_num_rows($hasil)+1;
+            $s            = mysqli_num_rows($hasil)+1;
             $j            = strlen($s);         
             $s1           = "";
             for($i=1;$i<=$pnj-$j;$i++){

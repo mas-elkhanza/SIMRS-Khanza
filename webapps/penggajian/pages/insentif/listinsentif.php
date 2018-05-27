@@ -3,7 +3,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun        = $baris[0];
    $bulan        = $baris[1];
 ?>
@@ -19,9 +19,9 @@
     <?php
         $_sql   = "SELECT pendapatan,persen,total_insentif FROM set_insentif WHERE tahun='$tahun' and bulan='$bulan' ORDER BY pendapatan";
         $hasil   =bukaquery($_sql);
-        $jumlah  =mysql_num_rows($hasil);
+        $jumlah  =mysqli_num_rows($hasil);
         $total_insentif="0";
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='12%'><div align='center'>Proses</div></td>
@@ -29,7 +29,7 @@
                         <td width='20%'><div align='center'>Prosentase</div></td>
 						<td width='34%'><div align='center'>Total Insentif</div></td>
                     </tr>";					
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $total_insentif=$baris[2];						
                         echo "<tr class='isi'>
 				<td>
@@ -73,10 +73,10 @@
 		$keyword =trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
         $_sql    = "SELECT dep_id,persen FROM indexins where dep_id like '%".$keyword."%' ORDER BY persen desc";
         $hasil   =bukaquery($_sql);
-        $jumlah  =mysql_num_rows($hasil);
+        $jumlah  =mysqli_num_rows($hasil);
 		$ttl=0;
 		$prosen=0;
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='12%'><div align='center'>Proses</div></td>
@@ -85,7 +85,7 @@
 			<td width='38%'><div align='center'>Total Insentif</div></td>
                     </tr>";
 		    $insentifindex=0;
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $insentifindex=($baris[1]/100)*$total_insentif;
 			$ttl=$ttl+$insentifindex;
 			$prosen=$prosen+$baris[1];
@@ -116,7 +116,7 @@
        if ($aksi=="HAPUSINDEX") {
             Hapus(" indexins "," dep_id ='".$_GET['dep_id']."'","?act=ListInsentif");
        }
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah, Ttl Prosen : ".$prosen."%, Ttl Insentif : ".formatDuit($ttl)." | <a target=_blank href=../penggajian/pages/insentif/LaporanInsentif.php?&keyword=$keyword>Laporan</a> | <a target=_blank href=../penggajian/pages/insentif/LaporanInsentifExel.php?&keyword=$keyword>Excel</a> |</div></td>                        

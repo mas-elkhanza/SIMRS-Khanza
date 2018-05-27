@@ -102,7 +102,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "[D]Permintaan Obat & BHP","[D]Rekap Permintaan Obat & BHP","[D]Surat Pemesanan Obat & BHP","[E]Permintaan Barang Non Medis","[E]Rekap Permintaan Barang Non Medis",
                     "[E]Surat Pemesanan Barang Non Medis","[N]Kunjungan Per Perujuk","[K]Referensi Prosedur VClaim","[K]Referensi Kelas Rawat VClaim","[K]Referensi Dokter VClaim",
                     "[K]Referensi Spesialistik VClaim","[K]Referensi Ruang Rawat VClaim","[K]Referensi Cara Keluar VClaim","[K]Referensi Pasca Pulang VClaim","[H]Detail VK/OK","[A]Billing Parsial",
-                    "[K]Cek No.Rujukan RS di VClaim"
+                    "[K]Cek No.Rujukan RS di VClaim","[K]Cek Rujukan Kartu PCare di VClaim","[K]Cek Rujukan Kartu RS di VClaim","[A]Akses Depo Obat/BHP","[K]Pembuatan Rujukan VClaim",
+                    "[N]Kunjungan Lab Ralan Per Bulan","[D]Stok Keluar Medis","[N]Kunjungan Rad Ralan Per Bulan","[H]Detail JM Dokter 2","[L]Pengaduan/Chat","[N]Kunjungan Lab Ralan Per Tanggal",
+                    "[N]Kunjungan Rad Ralan Per Tanggal","[I]Sensus Harian Ralan","[D]Metode Racik","[H]Pembayaran Per Akun Bayar"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -192,6 +194,11 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -205,7 +212,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 301;i++) {
+        for (i = 0; i < 315;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -443,8 +450,36 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(81);
             }else if(i==300){
                 column.setPreferredWidth(158);
+            }else if(i==301){
+                column.setPreferredWidth(186);
+            }else if(i==302){
+                column.setPreferredWidth(170);
+            }else if(i==303){
+                column.setPreferredWidth(127);
+            }else if(i==304){
+                column.setPreferredWidth(150);
+            }else if(i==305){
+                column.setPreferredWidth(170);
+            }else if(i==306){
+                column.setPreferredWidth(105);
+            }else if(i==307){
+                column.setPreferredWidth(172);
+            }else if(i==308){
+                column.setPreferredWidth(108);
+            }else if(i==309){
+                column.setPreferredWidth(100);
+            }else if(i==310){
+                column.setPreferredWidth(182);
+            }else if(i==311){
+                column.setPreferredWidth(185);
+            }else if(i==312){
+                column.setPreferredWidth(116);
+            }else if(i==313){
+                column.setPreferredWidth(85);
+            }else if(i==314){
+                column.setPreferredWidth(158);
             }else{
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(130);
             }
         }
         tbUser.setDefaultRenderer(Object.class, new WarnaTable());
@@ -877,7 +912,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1220,7 +1255,21 @@ public class DlgUser extends javax.swing.JDialog {
                     "bpjs_cek_pasca_pulang='"+tbUser.getValueAt(i,297).toString()+"',"+
                     "detail_tindakan_okvk='"+tbUser.getValueAt(i,298).toString()+"',"+
                     "billing_parsial='"+tbUser.getValueAt(i,299).toString()+"',"+
-                    "bpjs_cek_nomor_rujukan_rs='"+tbUser.getValueAt(i,300).toString()+"'");
+                    "bpjs_cek_nomor_rujukan_rs='"+tbUser.getValueAt(i,300).toString()+"',"+
+                    "bpjs_cek_rujukan_kartu_pcare='"+tbUser.getValueAt(i,301).toString()+"',"+
+                    "bpjs_cek_rujukan_kartu_rs='"+tbUser.getValueAt(i,302).toString()+"',"+
+                    "akses_depo_obat='"+tbUser.getValueAt(i,303).toString()+"',"+
+                    "bpjs_rujukan_keluar='"+tbUser.getValueAt(i,304).toString()+"',"+
+                    "grafik_lab_ralanbulan='"+tbUser.getValueAt(i,305).toString()+"',"+
+                    "pengeluaran_stok_apotek='"+tbUser.getValueAt(i,306).toString()+"',"+
+                    "grafik_rad_ralanbulan='"+tbUser.getValueAt(i,307).toString()+"',"+
+                    "detailjmdokter2='"+tbUser.getValueAt(i,308).toString()+"',"+
+                    "pengaduan_pasien='"+tbUser.getValueAt(i,309).toString()+"',"+
+                    "grafik_lab_ralanhari='"+tbUser.getValueAt(i,310).toString()+"',"+
+                    "grafik_rad_ralanhari='"+tbUser.getValueAt(i,311).toString()+"',"+
+                    "sensus_harian_ralan='"+tbUser.getValueAt(i,312).toString()+"',"+
+                    "metode_racik='"+tbUser.getValueAt(i,313).toString()+"',"+
+                    "pembayaran_akun_bayar='"+tbUser.getValueAt(i,314).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1497,7 +1546,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "permintaan_medis,rekap_permintaan_medis,surat_pemesanan_medis,permintaan_non_medis,rekap_permintaan_non_medis, "+
                         "surat_pemesanan_non_medis,grafik_per_perujuk,bpjs_cek_prosedur,bpjs_cek_kelas_rawat,bpjs_cek_dokter, "+
                         "bpjs_cek_spesialistik,bpjs_cek_ruangrawat,bpjs_cek_carakeluar,bpjs_cek_pasca_pulang,detail_tindakan_okvk, "+
-                        "billing_parsial,bpjs_cek_nomor_rujukan_rs from user order by AES_DECRYPT(id_user,'nur')");
+                        "billing_parsial,bpjs_cek_nomor_rujukan_rs,bpjs_cek_rujukan_kartu_pcare,bpjs_cek_rujukan_kartu_rs,akses_depo_obat,"+
+                        "bpjs_rujukan_keluar,grafik_lab_ralanbulan,pengeluaran_stok_apotek,grafik_rad_ralanbulan,detailjmdokter2,"+
+                        "pengaduan_pasien,grafik_lab_ralanhari,grafik_rad_ralanhari,sensus_harian_ralan,metode_racik,pembayaran_akun_bayar "+
+                        "from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1809,7 +1861,21 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("bpjs_cek_pasca_pulang"),
                                rs.getBoolean("detail_tindakan_okvk"),
                                rs.getBoolean("billing_parsial"),
-                               rs.getBoolean("bpjs_cek_nomor_rujukan_rs")
+                               rs.getBoolean("bpjs_cek_nomor_rujukan_rs"),
+                               rs.getBoolean("bpjs_cek_rujukan_kartu_pcare"),
+                               rs.getBoolean("bpjs_cek_rujukan_kartu_rs"),
+                               rs.getBoolean("akses_depo_obat"),
+                               rs.getBoolean("bpjs_rujukan_keluar"),
+                               rs.getBoolean("grafik_lab_ralanbulan"),
+                               rs.getBoolean("pengeluaran_stok_apotek"),
+                               rs.getBoolean("grafik_rad_ralanbulan"),
+                               rs.getBoolean("detailjmdokter2"),
+                               rs.getBoolean("pengaduan_pasien"),
+                               rs.getBoolean("grafik_lab_ralanhari"),
+                               rs.getBoolean("grafik_rad_ralanhari"),
+                               rs.getBoolean("sensus_harian_ralan"),
+                               rs.getBoolean("metode_racik"),
+                               rs.getBoolean("pembayaran_akun_bayar")
                             });
                         }   
                     } catch (Exception e) {
@@ -2111,7 +2177,21 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("bpjs_cek_pasca_pulang"),
                            rs.getBoolean("detail_tindakan_okvk"),
                            rs.getBoolean("billing_parsial"),
-                           rs.getBoolean("bpjs_cek_nomor_rujukan_rs") 
+                           rs.getBoolean("bpjs_cek_nomor_rujukan_rs"),
+                           rs.getBoolean("bpjs_cek_rujukan_kartu_pcare"),
+                           rs.getBoolean("bpjs_cek_rujukan_kartu_rs"),
+                           rs.getBoolean("akses_depo_obat"),
+                           rs.getBoolean("bpjs_rujukan_keluar"),
+                           rs.getBoolean("grafik_lab_ralanbulan"),
+                           rs.getBoolean("pengeluaran_stok_apotek"),
+                           rs.getBoolean("grafik_rad_ralanbulan"),
+                           rs.getBoolean("detailjmdokter2"),
+                           rs.getBoolean("pengaduan_pasien"),
+                           rs.getBoolean("grafik_lab_ralanhari"),
+                           rs.getBoolean("grafik_rad_ralanhari") ,
+                           rs.getBoolean("sensus_harian_ralan"),
+                           rs.getBoolean("metode_racik"),
+                           rs.getBoolean("pembayaran_akun_bayar")
                         });
                     }                                             
                  }

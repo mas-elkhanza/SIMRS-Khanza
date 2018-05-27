@@ -12,7 +12,7 @@
 
         $_sql2  = "SELECT nik,nama FROM pegawai where id='$id'";
         $hasil2 = bukaquery($_sql2);
-        $baris2 = mysql_fetch_row($hasil2);
+        $baris2 = mysqli_fetch_row($hasil2);
 
    ?>
 
@@ -33,11 +33,11 @@
         $_sql = "select id,tanggal,pinjaman,banyak_angsur,pokok, jasa, status from peminjaman_koperasi
                     where id='$id' order by tanggal ";
                 $hasil=bukaquery($_sql);
-                $jumlah=mysql_num_rows($hasil);
+                $jumlah=mysqli_num_rows($hasil);
                 $ttllembur=0;
                 $ttlhr=0;
 
-                if(mysql_num_rows($hasil)!=0) {
+                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='10%'><div align='center'>Tgl.Pinjam</div></td>
@@ -48,7 +48,7 @@
                                 <td width='14%'><div align='center'>Angsuran</div></td>
                                 <td width='13%'><div align='center'>Status</div></td>
                             </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                       echo "<tr class='isi' title='$baris[1], $baris[2], $baris[3], $baris[4], $baris[5], $baris[6]'>
                                 <td>$baris[1]</td>
                                 <td>".formatDuit($baris[2])."</td>
