@@ -139,10 +139,6 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         }
         tbPemberianObat.setDefaultRenderer(Object.class, new WarnaTable());
 
-
-        this.setLocation(8,1);
-        setSize(885,674);
-
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         TKdOb.setDocument(new batasInput((byte)15).getKata(TKdOb));
         TJumlah.setDocument(new batasInput((byte)25).getKata(TJumlah));

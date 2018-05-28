@@ -224,6 +224,7 @@ import inventory.DlgKategori;
 import inventory.DlgMetodeRacik;
 import inventory.DlgObatPerTanggal;
 import inventory.DlgPengeluaranApotek;
+import inventory.DlgPenggunaObat;
 import inventory.DlgPenjualanPerTanggal;
 import inventory.DlgPermintaan;
 import inventory.DlgRekapPermintaan;
@@ -777,6 +778,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnSensusHarianRalan = new widget.ButtonBig();
         btnMetodeRacik = new widget.ButtonBig();
         btnPembayaranAkunBayar = new widget.ButtonBig();
+        btnPenggunaObatResep = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4827,6 +4829,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPembayaranAkunBayar);
 
+        btnPenggunaObatResep.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/family.png"))); // NOI18N
+        btnPenggunaObatResep.setText("Pengguna Obat/Alkes/BHP Resep");
+        btnPenggunaObatResep.setIconTextGap(0);
+        btnPenggunaObatResep.setName("btnPenggunaObatResep"); // NOI18N
+        btnPenggunaObatResep.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenggunaObatResep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenggunaObatResepActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPenggunaObatResep);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4835,7 +4849,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/05/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27/05/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -10252,6 +10266,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         btnResepObatActionPerformed(evt);
     }//GEN-LAST:event_btnResepObatDepanActionPerformed
 
+    private void btnPenggunaObatResepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenggunaObatResepActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPenggunaObat penggunaobat=new DlgPenggunaObat(this,false);
+        penggunaobat.isCek();
+        penggunaobat.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        penggunaobat.setLocationRelativeTo(PanelUtama);
+        penggunaobat.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPenggunaObatResepActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10478,6 +10504,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPengeluaran;
     private widget.ButtonBig btnPengeluaranIpsrs;
     private widget.ButtonBig btnPenggajian;
+    private widget.ButtonBig btnPenggunaObatResep;
     private widget.ButtonBig btnPenjualan;
     private widget.ButtonBig btnPenjualanPerTanggal;
     private widget.ButtonBig btnPenyakitPD3I;
@@ -11297,7 +11324,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             if(var.getdarurat_stok()==true){
                 Panelmenu.add(btnDaruratStok);
                 jmlmenu++;
-            }         
+            }  
+            
+            if(var.getpengguna_obat_resep()==true){
+                Panelmenu.add(btnPenggunaObatResep);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==4){  
             jmlmenu=0;
             if(var.getsatuan_barang()==true){
@@ -12873,6 +12905,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             Panelmenu.add(btnDaruratStok);
             jmlmenu++;
         }         
+
+        if(var.getpengguna_obat_resep()==true){
+            Panelmenu.add(btnPenggunaObatResep);
+            jmlmenu++;
+        }
 
         if(var.getsatuan_barang()==true){
             Panelmenu.add(btnSatuan);  
@@ -14572,7 +14609,14 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnDaruratStok);
                 jmlmenu++;
             }                
-        }         
+        }    
+        
+        if(var.getpengguna_obat_resep()==true){
+            if(btnPenggunaObatResep.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenggunaObatResep);
+                jmlmenu++;
+            }                
+        }  
 
         if(var.getsatuan_barang()==true){
             if(btnSatuan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
