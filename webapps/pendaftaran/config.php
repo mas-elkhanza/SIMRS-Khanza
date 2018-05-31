@@ -1,8 +1,8 @@
 <?php 
 
 /***
-* e-Dokter from version 0.1 Beta
-* Last modified: 02 Pebruari 2018
+* e-Pasien from version 0.1 Beta
+* Last modified: 06 April 2018
 * Author : drg. Faisol Basoro
 * Email : drg.faisol@basoro.org
 *
@@ -20,9 +20,15 @@ define('DB_NAME', 'sik');
 
 $connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME); 
 
-define('VERSION', '0.1 Beta');
+define('VERSION', '1.5 Beta');
 define('URL', '');
 define('DIR', '');
+define('HARIDAFTAR', '03'); // Batasi hari pendaftaran 3 hari kedepan
+define('LIMITJAM', '12:00:00'); // Batasi jam pendaftaran
+define('SIGNUP', 'ENABLE'); // ENABLE atau DISABLE pendaftaran pasien baru
+define('KODE_BERKAS', '002'); // Kode katergori berkas digital
+define('UKURAN_BERKAS', '5000000'); // Ukuran berkas digital dalam byte
+define('PENGADUAN', 'ENABLE'); // ENABLE atau DISABLE fitur pengaduan pasien. Lihat file includes/pengaduan.php untuk membuat tabel pengaduannya.
 
 function escape($string) {
     global $connection;
@@ -56,7 +62,7 @@ function num_rows($result) {
 }
 
 // Get date and time
-date_default_timezone_set('Asia/Makassar');
+date_default_timezone_set('Asia/Jakarta');
 $month      = date('Y-m');
 $date       = date('Y-m-d');
 $time       = date('H:i:s');
@@ -118,5 +124,14 @@ function validation_errors($error) {
     return $errors;
 }
 
-
-
+// check if nik exits
+function nik_exits($no_ktp) {
+    $sql = "SELECT no_ktp FROM pasien WHERE no_ktp = '$no_ktp' ";
+    $result = query($sql);
+    // check if we found something
+    if(num_rows($result) == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}

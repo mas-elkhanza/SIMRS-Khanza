@@ -172,6 +172,23 @@
     	minimumInputLength: 3
       });
 
+      $('.kd_prosedur').select2({
+        placeholder: 'Pilih Tindakan',
+        ajax: {
+          url: 'includes/select-prosedur.php',
+          dataType: 'json',
+          delay: 250,
+          processResults: function (data) {
+            return {
+              results: data
+            };
+          },
+          cache: true
+        },
+        templateResult: formatData,
+      minimumInputLength: 3
+      });
+
       $('.prioritas').select2({
           placeholder: 'Pilih prioritas diagnosa'
       });
@@ -195,6 +212,10 @@
 
       $('.aturan_pakai').select2({
           placeholder: 'Pilih aturan pakai'
+      });
+
+       $('.anamnesa').select2({
+          placeholder: 'anamnesa'
       });
 
       $('.pasien').select2({

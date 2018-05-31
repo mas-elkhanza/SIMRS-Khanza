@@ -53,7 +53,7 @@
         if (empty($awal)) $awal=0;
         $_sql = "select id,nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,
                 npwp, pendidikan, gapok,tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,
-                indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak from pegawai
+                indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak,photo from pegawai
                  where
                  nik like '%".$keyword."%' or
                  nama like '%".$keyword."%' or
@@ -82,9 +82,9 @@
         $jumlah=mysqli_num_rows($hasil);
 
         if(mysqli_num_rows($hasil)!=0) {            
-            echo "<table width='2800px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+            echo "<table width='2920px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
-                                 <td width='110px'><div align='center'>Proses</div></td>
+                                 <td width='100px'><div align='center'>Proses</div></td>
                                  <td width='80px'><div align='center'>NIP</div></td>
                                  <td width='200px'><div align='center'>Nama</div></td>
                                  <td width='50px'><div align='center'>J.K.</div></td>
@@ -108,6 +108,7 @@
                                  <td width='80px'><div align='center'>Stts Aktif</div></td>
                                  <td width='70px'><div align='center'>Wajib Masuk</div></td>
                                  <td width='100px'><div align='center'>Mulai Kontrak</div></td>
+                                 <td width='120px'><div align='center'>Photo</div></td>
                     </tr>";					
 					
                     while($baris = mysqli_fetch_array($hasil)) {
@@ -136,37 +137,44 @@
 			 }else if(!($baris[23]==0)){
 			     $jmlmsk=$baris2[0];
 			 }
+                         $gb="-";
+                         if($baris["photo"]=="pages/pegawai/photo/"){
+                            $gb="-";                            
+                         }else{
+                            $gb="<img src='".$baris["photo"]."' width='120px' height='120px'>";
+                         }
                         echo "<tr class='isi' title='$baris[1] $baris[2]'>
-								  <td>
+				<td valign='top'>
                                         <center>
                                         <a href=?act=InputPegawai&action=UBAH&id=$baris[0]>[edit]</a>"; ?>
                                         <a href="?act=ListCariPegawai&action=HAPUS&id=<?php print $baris[0] ?>" >[hapus]</a>
                             <?php
                            echo "       </center>
                                 </td>								
-                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[1]</a></td>
-                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[2]</a></td>
-                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[3]</a></td>
-                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[4]</a></td>
-                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[5]</a></td>
-                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[6]</a></td>
-                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[7]</a></td>
-                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[8]</a></td>
-                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[9]</a></td>
-                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[10]</a></td>
-                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[11]</a></td>
-                                  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[13]</a></td>
-                                  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[14]</a></td>
-                                  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[15]</a></td>
-				  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[16]</a></td>
-                                  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[17]</a></td>
-                                  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[18]</a></td>
-                                  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[19]</a></td>
-                                  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[20]</a></td>
-                                  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[21]</a></td>
-                                  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[22]</a></td>
-                                  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$jmlmsk</a></td>
-                                  <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[24]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[1]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[2]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[3]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[4]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[5]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[6]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[7]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[8]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[9]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[10]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[11]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[13]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[14]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[15]</a></td>
+				 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[16]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[17]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[18]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[19]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[20]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[21]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[22]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$jmlmsk</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$baris[24]</a></td>
+                                 <td valign='top'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$gb</a></td>
                                </tr>";
                     }
             echo "</table>";

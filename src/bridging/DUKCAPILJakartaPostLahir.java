@@ -41,7 +41,6 @@ public class DUKCAPILJakartaPostLahir {
                        String almtplpr,String krjplpr,String niks1,String nms1,String almts1,String krjs1,String niks2,
                        String nms2,String almts2,String krjs2,String umribu,String umrayah,String umrplpr,String umrs1,
                        String umrs2) {
-        BPJSApi api=new BPJSApi();
         status=false;
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -51,7 +50,7 @@ public class DUKCAPILJakartaPostLahir {
             headers.setContentType(MediaType.APPLICATION_XML);
 	    HttpEntity requestEntity = new HttpEntity(headers);
 	    RestTemplate rest = new RestTemplate();            
-             System.out.println(URL);
+            System.out.println(URL);
             String data=rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody();
             JSONObject xmlJSONObj = XML.toJSONObject(data);
             String jsonPrettyPrintString = xmlJSONObj.toString(4);

@@ -2204,6 +2204,9 @@ public class DlgVakum extends javax.swing.JDialog {
 
     private void BtnICD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD3ActionPerformed
         hapus("Catatan Pasien","lain","catatan_pasien"); 
+        hapus("Pasien Meninggal","lain","pasien_mati");  
+        hapus("Peminjaman Berkas","lain","peminjaman_berkas"); 
+        hapus("Piutang Obat Pasien","lain","piutang"); 
         hapus("Pasien","Registrasi Periksa, Pasien Meninggal, Peminjaman Berkas, Piutang Obat,\nPenjualan Obat, Piutang Pasien, Catatan Pasien","pasien");
     }//GEN-LAST:event_BtnICD3ActionPerformed
 
@@ -2219,7 +2222,33 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Nota Rawat Jalan","lain","nota_jalan");
         hapus("Detail Piutang Pasien","lain","detail_piutang_pasien");
         hapus("Detail Nota Rawat Inap","lain","detail_nota_inap");
-        hapus("Nota Rawat Inap","lain","nota_inap");
+        hapus("Nota Rawat Inap","lain","nota_inap");        
+        hapus("Tindakan Rawat Jalan Dokter","lain","rawat_jl_dr");  
+        hapus("Tindakan Rawat Jalan Paramedis","lain","rawat_jl_pr"); 
+        hapus("Tindakan Rawat Jalan Dokter & Paramedis","lain","rawat_jl_drpr"); 
+        hapus("Tindakan Rawat Inap Dokter","lain","rawat_inap_dr");  
+        hapus("Tindakan Rawat Inap Paramedis","lain","rawat_inap_pr"); 
+        hapus("Tindakan Rawat Inap Dokter & Paramedis","lain","rawat_inap_drpr");         
+        hapus("Berkas Digital Perawata","lain","berkas_digital_perawatan");       
+        hapus("Pemeriksaan Radiologi","lain","periksa_radiologi");            
+        hapus("Beri BHP Radiologi","lain","beri_bhp_radiologi");            
+        hapus("Gambar Radiologi","lain","gambar_radiologi");      
+        hapus("Pemeriksaan Laborat","lain","periksa_lab");     
+        hapus("Detail Pemeriksaan Laborat","lain","detail_periksa_lab"); 
+        hapus("Diagnosa Pasien","lain","diagnosa_pasien"); 
+        hapus("Diet Pasien","lain","detail_beri_diet"); 
+        hapus("Ranap Gabung","lain","ranap_gabung"); 
+        hapus("Stok Obat Pasien Ranap","lain","stok_obat_pasien"); 
+        hapus("Resep Pulang Pasien","lain","resep_pulang"); 
+        hapus("Operasi","lain","operasi"); 
+        hapus("Obat Racikan","lain","obat_racikan"); 
+        hapus("Detail Obat Racikan","lain","detail_obat_racikan");  
+        hapus("Resep Obat","lain","resep_obat");         
+        hapus("Billing","lain","billing");             
+        hapus("Pemeriksaan Obstetri Ralan","lain","pemeriksaan_obstetri_ralan"); 
+        hapus("Pemeriksaan Obstetri Ranap","lain","pemeriksaan_obstetri_ranap"); 
+        hapus("Pemeriksaan Ginekologi Ralan","lain","pemeriksaan_ginekologi_ralan"); 
+        hapus("Pemeriksaan Ginekologi Ranap","lain","pemeriksaan_ginekologi_ranap");         
         hapus("Registrasi","Rawat Jalan,\nKamar Inap, Diagnosa Pasien, Tagihan Masuk, Pemberian Obat, Resep Obat, Rujukan Masuk,\n"+
                 "Rujukan Keluar, Stok Obat Pasien, Diagnosa Pasien, Resep Pulang, Potongan Biaya, Tambahan Biaya,\nDPJP Ranap, Diet Pasien","reg_periksa");
     }//GEN-LAST:event_BtnICD4ActionPerformed
@@ -2263,6 +2292,8 @@ public class DlgVakum extends javax.swing.JDialog {
     private void BtnICD13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD13ActionPerformed
         hapus("Pemberian Obat","lain","detail_pemberian_obat");
         hapus("Tagihan Obat Langsung","lain","tagihan_obat_langsung");
+        hapus("Obat Racikan","lain","obat_racikan");
+        hapus("Detail Obat Racikan","lain","_detail_obat_racikan");
     }//GEN-LAST:event_BtnICD13ActionPerformed
 
     private void BtnICD14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD14ActionPerformed
@@ -2397,16 +2428,19 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Dokter","Jadwal Praktek, Ranap Dokter, Ralan Dokter\nPeriksa Lab, Periksa Radiologi, Registrasi, DPJP Ranap","dokter");
         hapus("Pendapatan Warung","lain","set_warung");
         hapus("Pembagian Warung","lain","pembagian_warung");
+        hapus("Pembagian Tuslah","lain","pembagian_tuslah");
         hapus("Presensi Pegawai","lain","presensi");
         hapus("Presensi Pegawai","lain","temporary_presensi");
         hapus("Presensi Pegawai","lain","rekap_presensi");
         hapus("Jadwal Pegawai","lain","jadwal_pegawai");
+        hapus("Jadwal Tambahan Pegawai","lain","jadwal_tambahan");
         hapus("Barcode Presensi","lain","barcode");
         hapus("Ketidakhadiran Pegawai","lain","ketidakhadiran");
         hapus("Tambahan Rawat Jalan","lain","rawatjalan");
         hapus("Ambil Dana Kesehatan","lain","ambil_dankes");
         hapus("Tambahan Tindakan","lain","tindakan");
         hapus("Tambahan Jaga","lain","tambahjaga");
+        hapus("Jasa Lain","lain","jasa_lain");
         hapus("Potongan Gaji","lain","potongan");
         hapus("Jaga Malam","lain","jgmlm");
         hapus("Jumlah Pasien Ditangani Dokter","lain","jumpasien");
@@ -2708,6 +2742,7 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD104ActionPerformed
 
     private void BtnICD105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD105ActionPerformed
+        hapus("Jual Bebas BHP/Obat","lain","penjualan");
         hapus("Akun Bayar","Pengadaan Barang, Billing, Penjualan, Pemesanan, dll","akun_bayar");
     }//GEN-LAST:event_BtnICD105ActionPerformed
 

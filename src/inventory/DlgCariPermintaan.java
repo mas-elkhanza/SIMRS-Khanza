@@ -41,6 +41,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
     private DlgMutasiBarang aplikasi=new DlgMutasiBarang(null,false);
+    private DlgPengeluaranApotek aplikasi2=new DlgPengeluaranApotek(null,false);
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -220,6 +221,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         ppHapus = new javax.swing.JMenuItem();
         ppDisetujui = new javax.swing.JMenuItem();
+        ppDisetujui1 = new javax.swing.JMenuItem();
         ppTidakDisetujui = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
@@ -282,7 +284,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
         ppDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppDisetujui.setForeground(new java.awt.Color(102, 51, 0));
         ppDisetujui.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppDisetujui.setText("Disetujui");
+        ppDisetujui.setText("Disetujui ( Mutasi )");
         ppDisetujui.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppDisetujui.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ppDisetujui.setIconTextGap(5);
@@ -294,6 +296,23 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(ppDisetujui);
+
+        ppDisetujui1.setBackground(new java.awt.Color(255, 255, 255));
+        ppDisetujui1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDisetujui1.setForeground(new java.awt.Color(102, 51, 0));
+        ppDisetujui1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppDisetujui1.setText("Disetujui ( Stok Keluar )");
+        ppDisetujui1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppDisetujui1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppDisetujui1.setIconTextGap(5);
+        ppDisetujui1.setName("ppDisetujui1"); // NOI18N
+        ppDisetujui1.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppDisetujui1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppDisetujui1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppDisetujui1);
 
         ppTidakDisetujui.setBackground(new java.awt.Color(255, 255, 255));
         ppTidakDisetujui.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -905,6 +924,23 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         } 
     }//GEN-LAST:event_ppTidakDisetujuiActionPerformed
 
+    private void ppDisetujui1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDisetujui1ActionPerformed
+        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+            Valid.textKosong(TCari,"pilihan data");
+        }else{
+            Sequel.queryu("update permintaan_medis set status='Disetujui' where no_permintaan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            aplikasi2.tampilkanpermintaan=false;
+            aplikasi2.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+            aplikasi2.isCek();
+            aplikasi2.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            aplikasi2.setLocationRelativeTo(internalFrame1);
+            aplikasi2.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+            tampil();
+        }
+    }//GEN-LAST:event_ppDisetujui1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -959,6 +995,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
     private javax.swing.JMenuItem ppDisetujui;
+    private javax.swing.JMenuItem ppDisetujui1;
     private javax.swing.JMenuItem ppHapus;
     private javax.swing.JMenuItem ppTidakDisetujui;
     private widget.ScrollPane scrollPane1;

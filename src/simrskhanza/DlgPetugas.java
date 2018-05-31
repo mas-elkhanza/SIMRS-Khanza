@@ -638,7 +638,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
         jLabel13.setBounds(0, 102, 105, 23);
 
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-12-2017" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-05-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -857,11 +857,10 @@ public final class DlgPetugas extends javax.swing.JDialog {
                 Sequel.menyimpan("stts_wp","?,?",2,new String[]{"-","-"});
                 Sequel.menyimpan("stts_kerja","?,?,?",3,new String[]{"-","-","0"});
                 Sequel.menyimpan("pendidikan","?,?,?,?,?",5,new String[]{"-","0","0","0","0"});
-                Sequel.menyimpan("pegawai","");
-                Sequel.menyimpan("pegawai","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",29,new String[]{
+                Sequel.menyimpan("pegawai","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",30,new String[]{
                     "0",TNip.getText(),TNm.getText(),CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria"),
                     "-","-","-","-","-","-","-","-","0",TTmp.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),TAlmt.getText(),"-","1900-01-01","<1",
-                    "-","T","-","AKTIF","0","0","0","1900-01-01","0","0"
+                    "-","T","-","AKTIF","0","0","0","1900-01-01","0","0","pages/pegawai/photo/"
                 });
                 
                 Sequel.menyimpan("petugas","?,?,?,?,?,?,?,?,?,?,?,?","NIP",12,new String[]{

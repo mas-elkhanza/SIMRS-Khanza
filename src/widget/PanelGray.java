@@ -24,8 +24,8 @@ public class PanelGray extends JPanel {
     //private Color black = new Color(0,91,142);
     // Color warna = new Color(0,91,142);
 
-    private Color black = new Color(255,255,250);
-    private Color warna = new Color(250,250,245);
+    private Color black = new Color(255,255,255);
+    private Color warna = new Color(255,255,253);
 
     public PanelGray() {
         super();

@@ -57,7 +57,7 @@ function num_rows($result) {
 
 // Get date and time
 
-date_default_timezone_set('Asia/Makassar');
+date_default_timezone_set('Asia/Jakarta');
 $month      = date('Y-m');
 $date       = date('Y-m-d');
 $time       = date('H:i:s');

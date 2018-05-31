@@ -1,4 +1,33 @@
-﻿
+    <div class="modal fade" id="ICTRSHD" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="smallModalLabel">Instalasi ICT RSHD Barabai</h4>
+                </div>
+                <div class="modal-body">
+                    Ditetapkan sebagai Instalasi ICT dengan Surat Keputusan Direktur Rumah Sakit Umum Daerah H. Damanhuri pada tanggal 1 November 2017. 
+                    <ul style="list-style:none;margin-left:0;padding-left:0;"><br>
+                        <li><b>Kepala Instalasi : <br>MasBas (drg. Faisol Basoro)</b></li><br>
+                        <li>Anggota : 
+                            <ul style="list-style:none;margin-left:0;padding-left:0;">
+                                <li>- Amat (Muhammad Ma'ruf, S.Kom)</li>
+                                <li>- Aruf (Ma'ruf, S.Kom)</li>
+                                <li>- Didi (Didi Andriawan, S.Kom)</li>
+                                <li>- Adly (M. Adly Hidayat, S.Kom)</li>
+                                <li>- Ridho (M. Alfian Ridho, S.Kom)</li>
+                                <li>- Ijai (Zailani)</li>
+                                <li>- Ina (Inarotut Darojah)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">TUTUP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>
 
@@ -279,16 +308,31 @@
         } );
 	</script>
 
+                        <?php
+						$jumlah=array();
+						$poli=array();
+						$date = date("Y-m-d"); 
+						$sql = "select poliklinik.nm_poli, count(*) as jumlah from reg_periksa INNER JOIN poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli WHERE reg_periksa.tgl_registrasi='$date' and poliklinik.nm_poli !='-' group by reg_periksa.kd_poli  order by count(*) desc ";
+						$hasil=query($sql);
+						while ($data = fetch_array ($hasil)){
+                            $jumlah[]=intval($data['jumlah']);
+                            $poli[]= $data['nm_poli'];
+                        }
+						?>
+
 	<script type="text/javascript">
         Highcharts.chart('kunjungan', {
 		    chart: {
-			    type: 'area'
+			    type: 'column'
 			},
+            exporting: { 
+                enabled: false 
+            },
 		    title: {
 			    text: 'Grafik Kunjungan'
 			},
 			subtitle: {
-				text: <?=json_encode($dates);?>
+				text: <?=json_encode('Tanggal : '.date("d-m-Y "));?>
 			},
 		    xAxis: {
 		        categories: <?=json_encode($poli);?> ,
@@ -328,7 +372,75 @@
 			}]
 		});		
 	</script>
+    <script type="text/javascript">
+function admSelectCheck(nameSelect)
+{
+    if(nameSelect){
+        admOptionValue = document.getElementById("BPJS").value;
+        if(admOptionValue == nameSelect.value){
+            document.getElementById("admDivCheck").style.display = "block";
+        }
+        else{
+            document.getElementById("admDivCheck").style.display = "none";
+        }
+    }
+    else{
+        document.getElementById("admDivCheck").style.display = "none";
+    }
+}
 
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image_upload_preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#inputFile").change(function () {
+        readURL(this);
+    });
+
+    function upload_rujukan(){
+    document.getElementById("inputFile").click();
+    }
+
+    </script>
+<script type="text/javascript">  
+ 
+function update()
+{
+    $.post("includes/pengaduan.php", {}, function(data){ $("#screen").val(data);});  
+ 
+    setTimeout('update()', 1000);
+}
+ 
+$(document).ready(
+ 
+    function() 
+    {
+        update();
+ 
+        $("#button").click(function() 
+        {         
+            $.post("includes/pengaduan.php",
+            { 
+                message: $("#message").val()
+            },
+            function(data) 
+            { 
+                $("#screen").val(data); 
+                $("#message").val("");
+            });
+        });
+    }
+);
+ 
+</script>
 </body>
 
 </html>
