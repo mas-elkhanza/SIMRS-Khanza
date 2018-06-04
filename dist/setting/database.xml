@@ -32,7 +32,7 @@
     <entry key="URLAPIINHEALTH">http://dummy.inhealth.co.id/pelkesws2</entry>
     <entry key="TOKENINHEALTH">inh_aba40329b828c943e91f2e5c7f9f1f1b</entry>
     <entry key="PEMBULATANHARGAOBAT">no</entry>
-    <entry key="CETAKRINCIANOBAT">yes</entry>
+    <entry key="CETAKRINCIANOBAT">no</entry>
     <entry key="URLDUKCAPILJAKARTA">http://kependudukan.jakarta.go.id/rsudxxx/xml.jsp</entry>
     <entry key="USERDUKCAPILJAKARTA">WSRSIABK</entry>
     <entry key="PASSDUKCAPILJAKARTA">R8ud!KSW5</entry>
