@@ -12,6 +12,7 @@
 
 package simrskhanza;
 
+import kepegawaian.DlgPenggajian;
 import laporan.DlgMutasiBerkas;
 import laporan.DlgBerkasRawat;
 import laporan.DlgRetensi;
@@ -71,7 +72,7 @@ import setting.DlgBiayaSekaliMasuk;
 import setting.DlgAdmin;
 import setting.DlgBiayaHarian;
 import inventory.DlgSuplier;
-import presensi.DlgBarcode;
+import kepegawaian.DlgBarcode;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -286,18 +287,19 @@ import laporan.frmPengaduan;
 import parkir.DlgParkirBarcode;
 import parkir.DlgParkirJenis;
 import parkir.DlgParkirMasuk;
-import presensi.DlgBelum;
-import presensi.DlgBulanan;
-import presensi.DlgBulanan2;
-import presensi.DlgHarian;
-import presensi.DlgJadwalPegawai;
-import presensi.DlgJadwalTambahan;
-import presensi.DlgJamMasuk;
-import presensi.DlgKehadiran;
-import presensi.DlgKehadiran2;
-import presensi.DlgPulang;
-import presensi.DlgSidikJari;
-import presensi.DlgTemporaryPresensi;
+import kepegawaian.DlgBelum;
+import kepegawaian.DlgBulanan;
+import kepegawaian.DlgBulanan2;
+import kepegawaian.DlgHarian;
+import kepegawaian.DlgJadwalPegawai;
+import kepegawaian.DlgJadwalTambahan;
+import kepegawaian.DlgJamMasuk;
+import kepegawaian.DlgKehadiran;
+import kepegawaian.DlgKehadiran2;
+import kepegawaian.DlgMasterBerkasPegawai;
+import kepegawaian.DlgPulang;
+import kepegawaian.DlgSidikJari;
+import kepegawaian.DlgTemporaryPresensi;
 import setting.DlgClosingKasir;
 import setting.DlgSetEmbalase;
 import setting.DlgSetHargaKamar;
@@ -781,6 +783,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPembayaranAkunBayar = new widget.ButtonBig();
         btnPenggunaObatResep = new widget.ButtonBig();
         btnRekapPenerimaanObat = new widget.ButtonBig();
+        btnMasterBerkasPegawai = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4855,6 +4858,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRekapPenerimaanObat);
 
+        btnMasterBerkasPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/folder.png"))); // NOI18N
+        btnMasterBerkasPegawai.setText("Master Berkas Pegawai");
+        btnMasterBerkasPegawai.setIconTextGap(0);
+        btnMasterBerkasPegawai.setName("btnMasterBerkasPegawai"); // NOI18N
+        btnMasterBerkasPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterBerkasPegawai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasterBerkasPegawaiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnMasterBerkasPegawai);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4863,7 +4878,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29/05/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/06/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -10305,6 +10320,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRekapPenerimaanObatActionPerformed
 
+    private void btnMasterBerkasPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasterBerkasPegawaiActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgMasterBerkasPegawai form=new DlgMasterBerkasPegawai(null,false);
+        form.emptTeks();        
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnMasterBerkasPegawaiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10495,6 +10522,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnLamaPelayananApotek;
     private widget.ButtonBig btnLamaPelayananRalan;
     private widget.ButtonBig btnLihatPiutang;
+    private widget.ButtonBig btnMasterBerkasPegawai;
     private widget.ButtonBig btnMerkInventaris;
     private widget.ButtonBig btnMetodeRacik;
     private widget.ButtonBig btnMonitoringKlaim;
@@ -11170,6 +11198,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if((var.getpegawai_admin()==true)||(var.getpegawai_user()==true)){                
                 Panelmenu.add(btnPenggajian); 
+                jmlmenu++;
+            }
+            
+            if(var.getmaster_berkas_pegawai()==true){                
+                Panelmenu.add(btnMasterBerkasPegawai); 
                 jmlmenu++;
             }
 
@@ -12756,6 +12789,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if((var.getpegawai_admin()==true)||(var.getpegawai_user()==true)){                
             Panelmenu.add(btnPenggajian); 
+            jmlmenu++;
+        }
+        
+        if(var.getmaster_berkas_pegawai()==true){                
+            Panelmenu.add(btnMasterBerkasPegawai); 
             jmlmenu++;
         }
 
@@ -14396,6 +14434,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
 
+        if(var.getmaster_berkas_pegawai()==true){    
+            if(btnMasterBerkasPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterBerkasPegawai);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getsms()==true){    
             if(btnSMS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSMS);

@@ -23,8 +23,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
-import simrskhanza.DlgCariPegawai;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPegawai;
+import kepegawaian.DlgCariPetugas;
 
 public class DlgCariSuratPemesanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;

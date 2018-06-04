@@ -11,7 +11,7 @@
 
 package bridging;
 
-import simrskhanza.DlgCariPegawai;
+import kepegawaian.DlgCariPegawai;
 import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
