@@ -12,6 +12,8 @@
 
 package simrskhanza;
 
+import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariDokter2;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;

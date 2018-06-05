@@ -37,7 +37,6 @@ import javax.swing.table.TableColumn;
 import inventory.DlgCariKonversi;
 import inventory.DlgCariObat;
 import inventory.DlgCariObat2;
-import inventory.DlgCariObat3;
 import inventory.riwayatobat;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -139,10 +138,6 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             }
         }
         tbPemberianObat.setDefaultRenderer(Object.class, new WarnaTable());
-
-
-        this.setLocation(8,1);
-        setSize(885,674);
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         TKdOb.setDocument(new batasInput((byte)15).getKata(TKdOb));

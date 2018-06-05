@@ -39,7 +39,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 
 /**
  *
@@ -764,7 +764,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
                         koderekening,nama_bayar.getSelectedItem().toString(),"0",besar_bayar.getText()
                     });    
                     jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BAYAR PELUNASAN HUTANG OBAT/BHP/ALKES NO.FAKTUR "+no_faktur.getText());
-                    if(sisahutang==Double.parseDouble(besar_bayar.getText())){
+                    if((sisahutang<=Double.parseDouble(besar_bayar.getText()))||(sisahutang<=-Double.parseDouble(besar_bayar.getText()))){
                         Sequel.mengedit("pemesanan","no_faktur=?","status='Sudah Dibayar'",1,new String[]{no_faktur.getText()});
                     }else{
                         Sequel.mengedit("pemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
@@ -775,7 +775,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
                         no_bukti.getText()
                     });
                 }else{
-                    Sequel.mengedit("pemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
+                    //Sequel.mengedit("pemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
                     JOptionPane.showMessageDialog(rootPane,"Maaf sudah dilakukan pembayaran..!!!");
                     TCari.requestFocus();
                 }                   
@@ -1220,8 +1220,8 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void setData(String nofaktur){
         no_faktur.setText(nofaktur);
         TCari.setText(nofaktur);
-        sisahutang=Sequel.cariIsiAngka("SELECT tagihan FROM pemesanan where no_faktur=?",nofaktur)
-                   -Sequel.cariIsiAngka("SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan where no_faktur=?",nofaktur);
+        sisahutang=Math.round(Sequel.cariIsiAngka("SELECT tagihan FROM pemesanan where no_faktur=?",nofaktur)
+                   -Sequel.cariIsiAngka("SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan where no_faktur=?",nofaktur));
         sisa_hutang.setText(Valid.SetAngka(sisahutang));
         besar_bayar.setText("0");
     }
@@ -1234,7 +1234,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             //setData(no_faktur.getText());
             nama_bayar.setSelectedItem(tbKamar.getValueAt(row,6).toString());
             no_bukti.setText(tbKamar.getValueAt(row,7).toString());
-            besar_bayar.setText(tbKamar.getValueAt(row,8).toString());
+            besar_bayar.setText(Valid.SetAngka5(Double.parseDouble(tbKamar.getValueAt(row,8).toString())));
             keterangan.setText(tbKamar.getValueAt(row,9).toString());
         }
     }

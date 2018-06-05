@@ -1,5 +1,4 @@
 package ipsrs;
-import inventory.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -8,12 +7,10 @@ import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -904,14 +901,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getsuplier());
-        BtnHapus.setEnabled(var.getsuplier());
-        BtnEdit.setEnabled(var.getsuplier());
-        BtnPrint.setEnabled(var.getsuplier());
+        BtnSimpan.setEnabled(var.getsuplier_penunjang());
+        BtnHapus.setEnabled(var.getsuplier_penunjang());
+        BtnEdit.setEnabled(var.getsuplier_penunjang());
+        BtnPrint.setEnabled(var.getsuplier_penunjang());
         
-        ppGanti.setEnabled(var.getsuplier());        
-        ppHapus.setEnabled(var.getsuplier());
-        ppCetak.setEnabled(var.getsuplier());
+        ppGanti.setEnabled(var.getsuplier_penunjang());        
+        ppHapus.setEnabled(var.getsuplier_penunjang());
+        ppCetak.setEnabled(var.getsuplier_penunjang());
     }
     
     private void isForm(){

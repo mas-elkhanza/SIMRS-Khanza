@@ -10,6 +10,7 @@
  */
 
 package simrskhanza;
+import kepegawaian.DlgCariDokter;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;

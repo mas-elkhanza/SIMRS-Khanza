@@ -21,7 +21,7 @@ public class TextArea extends JTextArea {
         setSelectionColor(new Color(255,255,255));
         setSelectedTextColor(new Color(255,0,0));
         setForeground(new Color(90,120,80));
-        setBackground(new Color(255,255,250));
+        setBackground(new Color(255,255,253));
         setSize(WIDTH,23);
         setSize(WIDTH,23);
     }

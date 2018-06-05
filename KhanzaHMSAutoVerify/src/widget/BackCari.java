@@ -23,7 +23,7 @@ public class BackCari extends JPanel {
     private static final long serialVersionUID = -1;
     private BufferedImage gradientImage;
     private final Color black = new Color(250,255,245);
-    private final Color warna = new Color(245,250,240);
+    private final Color warna = new Color(241,246,236);
 
     public BackCari() {
         super();
