@@ -25,7 +25,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 
 public class UTDPenyerahanDarah extends javax.swing.JDialog {
     private final DefaultTableModel tabModeMedis,tabModeNonMedis,tabMode;

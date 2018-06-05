@@ -12,6 +12,8 @@
 
 package simrskhanza;
 
+import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariPetugas;
 import inventory.DlgPemberianObat;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
