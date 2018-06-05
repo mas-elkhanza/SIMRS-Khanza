@@ -26,8 +26,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgBayarPemesanan;
 import keuangan.Jurnal;
-import simrskhanza.DlgCariPegawai;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPegawai;
+import kepegawaian.DlgCariPetugas;
 
 public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;

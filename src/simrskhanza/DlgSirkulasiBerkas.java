@@ -1,6 +1,7 @@
 
 
 package simrskhanza;
+import kepegawaian.DlgCariPetugas;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;

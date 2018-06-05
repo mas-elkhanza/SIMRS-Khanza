@@ -22,7 +22,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 
 public class UTDPemisahanDarah extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabModeMedis,tabModeNonMedis,tabModeKomponen;
