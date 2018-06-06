@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 import simrskhanza.DlgPenanggungJawab;
 
 public class DlgRBJmParamedis extends javax.swing.JDialog {

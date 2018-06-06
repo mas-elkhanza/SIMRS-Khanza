@@ -10,7 +10,6 @@
  */
 
 package setting;
-import presensi.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
