@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariDokter;
+import kepegawaian.DlgCariDokter;
 
 public class DlgFeeVisitDokter extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;

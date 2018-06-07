@@ -11,6 +11,7 @@
 
 package simrskhanza;
 
+import kepegawaian.DlgDokter;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;

@@ -31,7 +31,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import simrskhanza.DlgCariDokter;
+import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgPenanggungJawab;
 

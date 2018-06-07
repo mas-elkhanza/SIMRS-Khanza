@@ -661,7 +661,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-06-2018" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -829,6 +829,11 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
                 tbObatMouseClicked(evt);
             }
         });
+        tbObat.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tbObatPropertyChange(evt);
+            }
+        });
         tbObat.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tbObatKeyPressed(evt);
@@ -869,6 +874,11 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
         tbDetailObatRacikan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbDetailObatRacikanMouseClicked(evt);
+            }
+        });
+        tbDetailObatRacikan.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tbDetailObatRacikanPropertyChange(evt);
             }
         });
         tbDetailObatRacikan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1006,41 +1016,8 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
             }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                 i=tbObat.getSelectedColumn();
                 if(i==2){
-                    try {                        
-                        stokbarang=0;     
-                        psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
-                        try {
-                            psstok.setString(1,kdgudang.getText());
-                            psstok.setString(2,tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-                            rsstok=psstok.executeQuery();
-                            if(rsstok.next()){
-                                stokbarang=rsstok.getDouble(1);
-                            }
-                        } catch (Exception e) {
-                            stokbarang=0;
-                            System.out.println("Notifikasi : "+e);
-                        }finally{
-                            if(rsstok != null){
-                                rsstok.close();
-                            }
-                            if(psstok != null){
-                                psstok.close();
-                            }
-                        }
-                            
-                        tbObat.setValueAt(stokbarang,tbObat.getSelectedRow(),10);
-                        
-                        y=0;
-                        try {
-                            y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-                        } catch (Exception e) {
-                            y=0;
-                        }
-                        
-                        if(stokbarang<y){
-                            JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
-                            tbObat.setValueAt("",tbObat.getSelectedRow(),1);
-                        }
+                    try {      
+                        getData();
                         
                         try {
                             if(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString().equals("0")||tbObat.getValueAt(tbObat.getSelectedRow(),8).toString().equals("")||tbObat.getValueAt(tbObat.getSelectedRow(),8).toString().equals("0.0")||tbObat.getValueAt(tbObat.getSelectedRow(),8).toString().equals("0,0")) {
@@ -1516,46 +1493,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 i=tbDetailObatRacikan.getSelectedColumn();
                 if((i==9)||(i==10)){
                     try {
-                        tbDetailObatRacikan.setValueAt(
-                            Math.ceil((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
-                                *Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString()))
-                            /Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),8).toString()))
-                        ,tbDetailObatRacikan.getSelectedRow(),10);
-
-                        stokbarang=0;
-                        psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
-                        try {
-                            psstok.setString(1,kdgudang.getText());
-                            psstok.setString(2,tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),1).toString());
-                            rsstok=psstok.executeQuery();
-                            if(rsstok.next()){
-                                stokbarang=rsstok.getDouble(1);
-                            }
-                        } catch (Exception e) {
-                            stokbarang=0;
-                            System.out.println("Notifikasi : "+e);
-                        }finally{
-                            if(rsstok != null){
-                                rsstok.close();
-                            }
-                            if(psstok != null){
-                                psstok.close();
-                            }
-                        }
-                        tbDetailObatRacikan.setValueAt(stokbarang,tbDetailObatRacikan.getSelectedRow(),7);
-
-                        y=0;
-                        try {
-                            y=Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),10).toString());
-                        } catch (Exception e) {
-                            y=0;
-                        }
-                        if(stokbarang<y){
-                            JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
-                            tbDetailObatRacikan.setValueAt("",tbDetailObatRacikan.getSelectedRow(),9);
-                            tbDetailObatRacikan.setValueAt(0,tbDetailObatRacikan.getSelectedRow(),10);
-                        }
-
+                        getDatadetailobatracikan();
+                        
                         try {
                             if(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("0")||tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("")||tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("0.0")||tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),11).toString().equals("0,0")) {
                                 tbDetailObatRacikan.setValueAt(embalase,tbDetailObatRacikan.getSelectedRow(),11);
@@ -1610,6 +1549,18 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
 
     }//GEN-LAST:event_BtnHapusActionPerformed
+
+    private void tbObatPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbObatPropertyChange
+        if(this.isVisible()==true){
+            getData();
+        }
+    }//GEN-LAST:event_tbObatPropertyChange
+
+    private void tbDetailObatRacikanPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbDetailObatRacikanPropertyChange
+        if(this.isVisible()==true){
+            getDatadetailobatracikan();
+        }
+    }//GEN-LAST:event_tbDetailObatRacikanPropertyChange
 
     /**
     * @param args the command line arguments
@@ -2054,6 +2005,12 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private void getDatadetailobatracikan() {
         if(tbDetailObatRacikan.getSelectedRow()!= -1){
             try {
+                tbDetailObatRacikan.setValueAt(
+                            Math.ceil((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
+                                *Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString()))
+                            /Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),8).toString()))
+                        ,tbDetailObatRacikan.getSelectedRow(),10);
+                
                 stokbarang=0;  
                 psstok=koneksi.prepareStatement("select ifnull(stok,'0') from gudangbarang where kd_bangsal=? and kode_brng=?");
                 try {

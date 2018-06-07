@@ -636,6 +636,7 @@ public class DlgPasien extends javax.swing.JDialog {
         KartuPasien.setText("Kartu Pasien");
         KartuPasien.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         KartuPasien.setName("KartuPasien"); // NOI18N
+        KartuPasien.setOpaque(true);
         KartuPasien.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnKartu1.setBackground(new java.awt.Color(255, 255, 255));
@@ -716,6 +717,7 @@ public class DlgPasien extends javax.swing.JDialog {
         Barcode.setText("Label Rekam Medis");
         Barcode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         Barcode.setName("Barcode"); // NOI18N
+        Barcode.setOpaque(true);
         Barcode.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnBarcodeRM.setBackground(new java.awt.Color(255, 255, 255));
@@ -867,6 +869,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MenuIdentitas.setText("Identitas Pasien");
         MenuIdentitas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MenuIdentitas.setName("MenuIdentitas"); // NOI18N
+        MenuIdentitas.setOpaque(true);
         MenuIdentitas.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnIdentitas.setBackground(new java.awt.Color(255, 255, 255));
@@ -947,6 +950,7 @@ public class DlgPasien extends javax.swing.JDialog {
         MenuBPJS.setText("BPJS");
         MenuBPJS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MenuBPJS.setName("MenuBPJS"); // NOI18N
+        MenuBPJS.setOpaque(true);
         MenuBPJS.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnCekKepesertaan.setBackground(new java.awt.Color(255, 255, 255));
@@ -1001,6 +1005,7 @@ public class DlgPasien extends javax.swing.JDialog {
         jMenu1.setText("Berkas Rekam Medis");
         jMenu1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jMenu1.setName("jMenu1"); // NOI18N
+        jMenu1.setOpaque(true);
         jMenu1.setPreferredSize(new java.awt.Dimension(220, 26));
 
         MnLaporanRM.setBackground(new java.awt.Color(255, 255, 255));
@@ -1235,6 +1240,7 @@ public class DlgPasien extends javax.swing.JDialog {
         jMenu2.setText("Grafik Analisa");
         jMenu2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jMenu2.setName("jMenu2"); // NOI18N
+        jMenu2.setOpaque(true);
         jMenu2.setPreferredSize(new java.awt.Dimension(220, 26));
 
         ppGrafikPerAgama.setBackground(new java.awt.Color(255, 255, 255));
@@ -2007,7 +2013,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-05-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -2142,7 +2148,7 @@ public class DlgPasien extends javax.swing.JDialog {
         TKtp.setBounds(712, 132, 130, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-05-2018" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);

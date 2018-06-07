@@ -47,7 +47,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
-import simrskhanza.DlgCariDokter;
+import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPenyakit;
 import simrskhanza.DlgKabupaten;
 import simrskhanza.DlgKecamatan;
