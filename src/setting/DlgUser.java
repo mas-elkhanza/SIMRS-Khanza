@@ -105,7 +105,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Cek No.Rujukan RS di VClaim","[K]Cek Rujukan Kartu PCare di VClaim","[K]Cek Rujukan Kartu RS di VClaim","[A]Akses Depo Obat/BHP","[K]Pembuatan Rujukan VClaim",
                     "[N]Kunjungan Lab Ralan Per Bulan","[D]Stok Keluar Medis","[N]Kunjungan Rad Ralan Per Bulan","[H]Detail JM Dokter 2","[L]Pengaduan/Chat","[N]Kunjungan Lab Ralan Per Tanggal",
                     "[N]Kunjungan Rad Ralan Per Tanggal","[I]Sensus Harian Ralan","[D]Metode Racik","[H]Pembayaran Per Akun Bayar","[D]Pengguna Obat/Alkes/BHP Resep","[D]Rekap Penerimaan Obat & BHP",
-                    "[C]Master Berkas Pegawai","[C]Berkas Kepegawaian"
+                    "[C]Master Berkas Pegawai","[C]Berkas Kepegawaian","[C]Riwayat Jabatan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -215,7 +215,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 319;i++) {
+        for (i = 0; i < 320;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -489,6 +489,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(132);
             }else if(i==318){
                 column.setPreferredWidth(120);
+            }else if(i==319){
+                column.setPreferredWidth(102);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -923,7 +925,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1284,7 +1286,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "pengguna_obat_resep='"+tbUser.getValueAt(i,315).toString()+"',"+
                     "rekap_pemesanan='"+tbUser.getValueAt(i,316).toString()+"',"+
                     "master_berkas_pegawai='"+tbUser.getValueAt(i,317).toString()+"',"+
-                    "berkas_kepegawaian='"+tbUser.getValueAt(i,318).toString()+"'");
+                    "berkas_kepegawaian='"+tbUser.getValueAt(i,318).toString()+"',"+
+                    "riwayat_jabatan='"+tbUser.getValueAt(i,319).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1564,7 +1567,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "billing_parsial,bpjs_cek_nomor_rujukan_rs,bpjs_cek_rujukan_kartu_pcare,bpjs_cek_rujukan_kartu_rs,akses_depo_obat,"+
                         "bpjs_rujukan_keluar,grafik_lab_ralanbulan,pengeluaran_stok_apotek,grafik_rad_ralanbulan,detailjmdokter2,"+
                         "pengaduan_pasien,grafik_lab_ralanhari,grafik_rad_ralanhari,sensus_harian_ralan,metode_racik,pembayaran_akun_bayar, "+
-                        "pengguna_obat_resep,rekap_pemesanan,master_berkas_pegawai,berkas_kepegawaian from user order by AES_DECRYPT(id_user,'nur')");
+                        "pengguna_obat_resep,rekap_pemesanan,master_berkas_pegawai,berkas_kepegawaian,riwayat_jabatan from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1894,7 +1897,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("pengguna_obat_resep"),
                                rs.getBoolean("rekap_pemesanan"),
                                rs.getBoolean("master_berkas_pegawai"),
-                               rs.getBoolean("berkas_kepegawaian")
+                               rs.getBoolean("berkas_kepegawaian"),
+                               rs.getBoolean("riwayat_jabatan")
                             });
                         }   
                     } catch (Exception e) {
@@ -2214,7 +2218,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("pengguna_obat_resep"),
                            rs.getBoolean("rekap_pemesanan"),
                            rs.getBoolean("master_berkas_pegawai"),
-                           rs.getBoolean("berkas_kepegawaian")
+                           rs.getBoolean("berkas_kepegawaian"),
+                           rs.getBoolean("riwayat_jabatan")
                         });
                     }                                             
                  }

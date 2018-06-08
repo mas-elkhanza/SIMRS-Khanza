@@ -72,7 +72,7 @@ public final class var {
             billing_parsial=false,bpjs_cek_nomor_rujukan_rs=false,bpjs_cek_rujukan_kartu_pcare=false,bpjs_cek_rujukan_kartu_rs=false,akses_depo_obat=false,
             bpjs_rujukan_keluar=false,grafik_lab_ralanbulan=false,pengeluaran_stok_apotek=false,grafik_rad_ralanbulan=false,detailjmdokter2=false,
             pengaduan_pasien=false,grafik_lab_ralanhari=false,grafik_rad_ralanhari=false,sensus_harian_ralan=false,metode_racik=false,pembayaran_akun_bayar=false,
-            pengguna_obat_resep=false,rekap_pemesanan=false,master_berkas_pegawai=false,berkas_kepegawaian=false;
+            pengguna_obat_resep=false,rekap_pemesanan=false,master_berkas_pegawai=false,berkas_kepegawaian=false,riwayat_jabatan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -412,6 +412,7 @@ public final class var {
                         var.rekap_pemesanan=true;
                         var.master_berkas_pegawai=true;
                         var.berkas_kepegawaian=true;
+                        var.riwayat_jabatan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -735,6 +736,7 @@ public final class var {
                         var.rekap_pemesanan=rs2.getBoolean("rekap_pemesanan");
                         var.master_berkas_pegawai=rs2.getBoolean("master_berkas_pegawai");
                         var.berkas_kepegawaian=rs2.getBoolean("berkas_kepegawaian");
+                        var.riwayat_jabatan=rs2.getBoolean("riwayat_jabatan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1056,6 +1058,7 @@ public final class var {
                         var.rekap_pemesanan=false;
                         var.master_berkas_pegawai=false;
                         var.berkas_kepegawaian=false;
+                        var.riwayat_jabatan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1424,4 +1427,5 @@ public final class var {
     public static boolean getrekap_pemesanan(){return var.rekap_pemesanan;}
     public static boolean getmaster_berkas_pegawai(){return var.master_berkas_pegawai;}
     public static boolean getberkas_kepegawaian(){return var.berkas_kepegawaian;}
+    public static boolean getriwayat_jabatan(){return var.riwayat_jabatan;}
 }   
