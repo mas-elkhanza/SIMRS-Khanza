@@ -1834,19 +1834,19 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan dokter ralan
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,rawat_jl_dr.biaya_rawat "+
-                                        "from rawat_jl_dr inner join jns_perawatan inner join dokter "+
+                                        "select rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,rawat_jl_dr.biaya_rawat, "+
+                                        "rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat from rawat_jl_dr inner join jns_perawatan inner join dokter "+
                                         "on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                                        "and rawat_jl_dr.kd_dokter=dokter.kd_dokter where rawat_jl_dr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_dr.kd_dokter=dokter.kd_dokter where rawat_jl_dr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
                                           "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
                                           "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
                                           "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
@@ -1856,7 +1856,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+" </td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
@@ -1878,19 +1878,19 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan paramedis ralan
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,petugas.nama,rawat_jl_pr.biaya_rawat "+
-                                        "from rawat_jl_pr inner join jns_perawatan inner join petugas "+
+                                        "select rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,petugas.nama,rawat_jl_pr.biaya_rawat, "+
+                                        "rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat from rawat_jl_pr inner join jns_perawatan inner join petugas "+
                                         "on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                                        "and rawat_jl_pr.nip=petugas.nip where rawat_jl_pr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_pr.nip=petugas.nip where rawat_jl_pr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+                                        
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+      
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
                                           "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
                                           "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
                                           "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
@@ -1900,7 +1900,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama")+"</td>"+
@@ -1922,21 +1922,21 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan ralan dokter dan paramedis
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_jl_drpr.biaya_rawat "+
-                                        "from rawat_jl_drpr inner join jns_perawatan inner join dokter inner join petugas "+
+                                        "select rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_jl_drpr.biaya_rawat, "+
+                                        "rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat from rawat_jl_drpr inner join jns_perawatan inner join dokter inner join petugas "+
                                         "on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and rawat_jl_drpr.nip=petugas.nip "+
-                                        "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter where rawat_jl_drpr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter where rawat_jl_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Jalan Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
                                           "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='25%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Paramedis</td>"+
                                           "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
@@ -1945,7 +1945,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
@@ -1973,7 +1973,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "dokter.nm_dokter,rawat_inap_dr.biaya_rawat "+
                                         "from rawat_inap_dr inner join jns_perawatan_inap inner join dokter "+
                                         "on rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "and rawat_inap_dr.kd_dokter=dokter.kd_dokter where rawat_inap_dr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_dr.kd_dokter=dokter.kd_dokter where rawat_inap_dr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_dr.tgl_perawatan,rawat_inap_dr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -2019,7 +2019,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "petugas.nama,rawat_inap_pr.biaya_rawat "+
                                         "from rawat_inap_pr inner join jns_perawatan_inap inner join petugas "+
                                         "on rawat_inap_pr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "and rawat_inap_pr.nip=petugas.nip where rawat_inap_pr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_pr.nip=petugas.nip where rawat_inap_pr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_pr.tgl_perawatan,rawat_inap_pr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -2064,7 +2064,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat "+
                                         "from rawat_inap_drpr inner join jns_perawatan_inap inner join dokter inner join petugas "+
                                         "on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and rawat_inap_drpr.nip=petugas.nip "+
-                                        "and rawat_inap_drpr.kd_dokter=dokter.kd_dokter where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_drpr.kd_dokter=dokter.kd_dokter where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -3410,19 +3410,19 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan dokter ralan
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,rawat_jl_dr.biaya_rawat "+
-                                        "from rawat_jl_dr inner join jns_perawatan inner join dokter "+
+                                        "select rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,rawat_jl_dr.biaya_rawat, "+
+                                        "rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat from rawat_jl_dr inner join jns_perawatan inner join dokter "+
                                         "on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                                        "and rawat_jl_dr.kd_dokter=dokter.kd_dokter where rawat_jl_dr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_dr.kd_dokter=dokter.kd_dokter where rawat_jl_dr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
                                           "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
                                           "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
                                           "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
@@ -3432,7 +3432,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
@@ -3454,19 +3454,19 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan paramedis ralan
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,petugas.nama,rawat_jl_pr.biaya_rawat "+
-                                        "from rawat_jl_pr inner join jns_perawatan inner join petugas "+
+                                        "select rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,petugas.nama,rawat_jl_pr.biaya_rawat, "+
+                                        "rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat from rawat_jl_pr inner join jns_perawatan inner join petugas "+
                                         "on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                                        "and rawat_jl_pr.nip=petugas.nip where rawat_jl_pr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_pr.nip=petugas.nip where rawat_jl_pr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+                                        
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+      
                                         "<tr align='center'>"+
                                           "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
                                           "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
                                           "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
                                           "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
@@ -3476,7 +3476,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama")+"</td>"+
@@ -3498,10 +3498,10 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan ralan dokter dan paramedis
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_jl_drpr.biaya_rawat "+
-                                        "from rawat_jl_drpr inner join jns_perawatan inner join dokter inner join petugas "+
+                                        "select rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_jl_drpr.biaya_rawat, "+
+                                        "rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat from rawat_jl_drpr inner join jns_perawatan inner join dokter inner join petugas "+
                                         "on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and rawat_jl_drpr.nip=petugas.nip "+
-                                        "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter where rawat_jl_drpr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter where rawat_jl_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -3521,7 +3521,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
@@ -3742,7 +3742,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "dokter.nm_dokter,rawat_inap_dr.biaya_rawat "+
                                         "from rawat_inap_dr inner join jns_perawatan_inap inner join dokter "+
                                         "on rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "and rawat_inap_dr.kd_dokter=dokter.kd_dokter where rawat_inap_dr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_dr.kd_dokter=dokter.kd_dokter where rawat_inap_dr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_dr.tgl_perawatan,rawat_inap_dr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -3788,7 +3788,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "petugas.nama,rawat_inap_pr.biaya_rawat "+
                                         "from rawat_inap_pr inner join jns_perawatan_inap inner join petugas "+
                                         "on rawat_inap_pr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "and rawat_inap_pr.nip=petugas.nip where rawat_inap_pr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_pr.nip=petugas.nip where rawat_inap_pr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_pr.tgl_perawatan,rawat_inap_pr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
@@ -3833,7 +3833,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat "+
                                         "from rawat_inap_drpr inner join jns_perawatan_inap inner join dokter inner join petugas "+
                                         "on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and rawat_inap_drpr.nip=petugas.nip "+
-                                        "and rawat_inap_drpr.kd_dokter=dokter.kd_dokter where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_drpr.kd_dokter=dokter.kd_dokter where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+

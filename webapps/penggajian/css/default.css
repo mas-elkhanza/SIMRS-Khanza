@@ -148,6 +148,14 @@ h1 {
         font-size: 11px;
 }
 
+#entry a{
+        text-decoration:none;
+        color:#65795b;
+        padding:0 0 0 0px;
+        font-family: Tahoma;
+        font-size: 11px;
+}
+
 #post{
     width: 99.8%;
     height: 99.5%;
@@ -264,6 +272,26 @@ color: #65795b;
 	padding: 4px 2px 4px 2px;
 }
 
+.head2 td{
+	color:#65795b;
+	font: 11px  tahoma;
+	background: #fafff5;
+	border-bottom: 1px solid #f2f7ed;
+        border-right: 1px solid #777777;
+	letter-spacing: 1px;
+	padding: 2px 2px 2px 2px;
+}
+
+.head3 td{
+	color:#65795b;
+	font: 11px  tahoma;
+	background: #fafff5;
+	border-bottom: 1px solid #f2f7ed;
+        border-top: 1px solid #f2f7ed;
+        border-right: 1px solid #777777;
+	letter-spacing: 1px;
+	padding: 2px 2px 2px 2px;
+}
 
 .isi td{
 	border-right: 1px solid #f2f7ed;
@@ -285,8 +313,8 @@ color: #65795b;
 }
 
 .isi2 td{
-	padding-top:3px;
-	padding-bottom:3px;
+	padding-top:5px;
+	padding-bottom:5px;
 	padding-left:8px;
 	padding-right:8px;
         font-family: Tahoma;

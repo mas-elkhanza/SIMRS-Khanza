@@ -6,6 +6,7 @@
                 echo "";
                 $action       = isset($_GET['action'])?$_GET['action']:NULL;
                 $nik          = str_replace("_"," ",isset($_GET['nik']))?str_replace("_"," ",$_GET['nik']):NULL;
+                $keyword      = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
                 $kategori     = str_replace("_"," ",isset($_GET['kategori']))?str_replace("_"," ",$_GET['kategori']):NULL;
                 $_sql         = "select nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_kerja,
                                 pendidikan from pegawai where nik='$nik' ";
@@ -51,7 +52,7 @@
                                 $hasil=bukaquery($_sql);
 
                                 while($baris = mysqli_fetch_array($hasil)) {
-                                    echo "<option id='TxtIsi1' value='$baris[0]'>$baris[1]</option>";
+                                    echo "<option value='$baris[0]'>$baris[1]</option>";
                                 }
                             ?>
                         </select>
@@ -93,7 +94,7 @@
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" berkas_pegawai "," '$nik','$tgl_uploud','$kode','$dokumen'", " Berkas Pegawai " );
-                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailBerkasPegawai&action=TAMBAH&nik=$nik&kategori=".str_replace(" ","_",$kategori)."'>";
+                                echo"<meta http-equiv='refresh' content='1;URL=?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori)."'>";
                                 break;
                         }
                     }else if ((empty($nik))||(empty($kode))||(empty($dokumen))){
@@ -106,7 +107,7 @@
                         master_berkas_pegawai.nama_berkas,berkas_pegawai.berkas from berkas_pegawai inner join 
                         master_berkas_pegawai on berkas_pegawai.kode_berkas=master_berkas_pegawai.kode 
                         where berkas_pegawai.nik='$nik' and master_berkas_pegawai.kategori='$kategori' 
-                        order by master_berkas_pegawai.no_urut";
+                        and master_berkas_pegawai.nama_berkas like '%$keyword%' order by master_berkas_pegawai.no_urut";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
 
@@ -121,15 +122,15 @@
                     $i=1;
                     while($baris = mysqli_fetch_array($hasil)) { 
                         $gb="-";
-                        if($baris["berkas"]=="pages/berkas/"){
+                        if($baris["berkas"]=="pages/berkaspegawai/berkas"){
                             $gb="-";                            
                         }else{
-                            $gb="<img src='".$baris["berkas"]."' width='750px' height='800px'>";
+                            $gb="<img src='".$baris["berkas"]."' width='850px' height='950px'>";
                         }
                         echo "<tr class='isi'>
                                 <td valign='top'>
                                     <center>
-                                    <a href='?act=DetailBerkasPegawai&action=HAPUS&nik=".$baris["nik"]."&kode=".$baris["kode_berkas"]."&kategori=".str_replace(" ","_",$kategori)."&berkas=".$baris["berkas"]."'>[hapus]</a>
+                                    <a href='?act=DetailBerkasPegawai&action=HAPUS&nik=".str_replace(" ","_",$baris["nik"])."&kode=".str_replace(" ","_",$baris["kode_berkas"])."&kategori=".str_replace(" ","_",$kategori)."&berkas=".$baris["berkas"]."'>[hapus]</a>
                                    </center>
                                 </td>
                                 <td valign='top'>".$i."</td>
@@ -157,7 +158,7 @@
         <?php
             if ($action=="HAPUS") {      
                 unlink($_GET['berkas']);
-                Hapus(" berkas_pegawai "," nik ='".$_GET['nik']."' and kode_berkas ='".$_GET['kode']."' ","?act=DetailBerkasPegawai&action=TAMBAH&nik=$nik&kategori=".str_replace(" ","_",$kategori));
+                Hapus(" berkas_pegawai "," nik ='".$_GET['nik']."' and kode_berkas ='".$_GET['kode']."' ","?act=DetailBerkasPegawai&action=TAMBAH&nik=".str_replace(" ","_",$nik)."&kategori=".str_replace(" ","_",$kategori));
             }
                  
         ?>       
