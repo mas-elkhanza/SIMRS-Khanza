@@ -7,8 +7,8 @@
    $bulan        = $baris[1];
 
 ?>
-<div id="post">
-    <div class="entry">        
+
+    <div id="entry">        
         <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
             <?php
                 echo "";
@@ -41,27 +41,25 @@
                     echo "<div align='center' class='link'>
                           <a href=?act=InputRiwayatPangkat&action=TAMBAH&id=$prev><<--</a>
                           <a href=?act=ListRiwayatPangkat&action=LIHAT>| List Riwayat Pangkat |</a>
-                          <a href=?act=HomeAdmin>| Menu Utama |</a>
                           <a href=?act=InputRiwayatPangkat&action=TAMBAH&id=$next>-->></a>
                           </div>";
-            ?>
-            <div style="width: 100%; height: 40%; overflow: auto;">
-            <table width="100%" align="center">
-                <tr class="head">
+            ?>            
+            <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" class="tbl_form">
+                <tr class="isi2">
                     <td width="31%" >NIP</td><td width="">:</td>
                     <td width="67%"><?php echo $baris[0];?></td>
                 </tr>
-		<tr class="head">
+		<tr class="isi2">
                     <td width="31%">Nama</td><td width="">:</td>
                     <td width="67%"><?php echo $baris[1];?></td>
                 </tr>
-                <tr class="head">
+                <tr class="isi2">
                     <td width="31%" >Jabatan</td><td width="">:</td>
                     <td width="67%"><input name="jabatan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo isset($jabatan)?$jabatan:NULL;?>" size="50" maxlength="50">
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
-                <tr class="head">
+                <tr class="isi2">
                     <td width="31%" >TMT Jabatan</td><td width="">:</td>
                     <td width="67%">
                         <select name="TglJabatan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2">
@@ -69,7 +67,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi2' value=$TglJabatan>$TglJabatan</option>";
                                 }
-                                loadTgl();
+                                loadTglnow();
                              ?>
                         </select>
 			<select name="BlnJabatan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2">
@@ -77,7 +75,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi2' value=$BlnJabatan>$BlnJabatan</option>";
                                 }
-                                loadBln();
+                                loadBlnnow();
                              ?>
                         </select>
 			<select name="ThnJabatan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" id="TxtIsi2">
@@ -85,13 +83,13 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi2' value=$ThnJabatan>$ThnJabatan</option>";
                                 }
-                                loadThn();
+                                loadThnnow();
                              ?>
                         </select>
                         <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
-                <tr class="head">
+                <tr class="isi2">
                     <td width="31%" >TMT Jabatan YAD</td><td width="">:</td>
                     <td width="67%">
                         <select name="TglJabatanYad" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
@@ -99,7 +97,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi3' value=$TglJabatanYad>$TglJabatanYad</option>";
                                 }
-                                loadTgl();
+                                loadTglnow();
                              ?>
                         </select>
 			<select name="BlnJabatanYad" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
@@ -107,7 +105,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi3' value=$BlnJabatanYad>$BlnJabatanYad</option>";
                                 }
-                                loadBln();
+                                loadBlnnow();
                              ?>
                         </select>
 			<select name="ThnJabatanYad" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
@@ -115,25 +113,25 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi3' value=$ThnJabatanYad>$ThnJabatanYad</option>";
                                 }
-                                loadThn();
+                                loadThnnow();
                              ?>
                         </select>
                         <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>                
-                <tr class="head">
+                <tr class="isi2">
                     <td width="31%" >Pejabat Penetap</td><td width="">:</td>
                     <td width="67%"><input name="pejabat_penetap" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" type=text id="TxtIsi4" class="inputbox" value="<?php echo isset($pejabat_penetap)?$pejabat_penetap:NULL;?>" size="50" maxlength="50">
                     <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>             
-                <tr class="head">
+                <tr class="isi2">
                     <td width="31%" >Nomor S.K.</td><td width="">:</td>
                     <td width="67%"><input name="nomor_sk" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type=text id="TxtIsi5" class="inputbox" value="<?php echo isset($nomor_sk)?$nomor_sk:NULL;?>" size="25" maxlength="25">
                     <span id="MsgIsi5" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
-                <tr class="head">
+                <tr class="isi2">
                     <td width="31%" >Tanggal S.K.</td><td width="">:</td>
                     <td width="67%">
                         <select name="TglSK" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
@@ -141,7 +139,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi6' value=$TglSK>$TglSK</option>";
                                 }
-                                loadTgl();
+                                loadTglnow();
                              ?>
                         </select>
 			<select name="BlnSK" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
@@ -149,7 +147,7 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi6' value=$BlnSK>$BlnSK</option>";
                                 }
-                                loadBln();
+                                loadBlnnow();
                              ?>
                         </select>
 			<select name="ThnSK" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
@@ -157,19 +155,19 @@
                                 if($action == "UBAH"){
                                     echo "<option id='TxtIsi6' value=$ThnSK>$ThnSK</option>";
                                 }
-                                loadThn();
+                                loadThnnow();
                              ?>
                         </select>
                         <span id="MsgIsi6" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr> 
-                <tr class="head">
+                <tr class="isi2">
                     <td width="31%" >Dasar Peraturan</td><td width="">:</td>
                     <td width="67%"><input name="dasar_peraturan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi7'));" type=text id="TxtIsi7" class="inputbox" value="<?php echo isset($dasar_peraturan)?$dasar_peraturan:NULL;?>" size="50" maxlength="50">
                     <span id="MsgIsi7" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr> 
-                <tr class="head">
+                <tr class="isi2">
                     <td width="31%" >Masa Kerja</td><td width="">:</td>
                     <td width="67%">
                         <input name="masa_kerja" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi8'));" type=text id="TxtIsi8" class="inputbox" value="<?php echo isset($masa_kerja)?$masa_kerja:NULL;?>" size="10" maxlength="5">Tahun
@@ -178,9 +176,15 @@
                         <span id="MsgIsi9" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr> 
-            </table>
-            </div>
-            <div align="center"><input name=BtnSimpan type=submit class="button" value="SIMPAN">&nbsp<input name=BtnKosong type=reset class="button" value="KOSONG"></div><br>
+                <tr class="isi2">
+                    <td width="31%" >Berkas Pengangkatan</td><td width="">:</td>
+                    <td width="67%">
+                        <input name="dokumen" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi10'));" type=file id="TxtIsi10" value="<?php echo $dokumen;?>" size="50" maxlength="255" />
+                        <span id="MsgIsi10" style="color:#CC0000; font-size:10px;"></span>
+                    </td>
+                </tr>
+            </table>           
+            <div align="center"><input name=BtnSimpan type=submit class="button" value="&nbsp;&nbsp;SIMPAN&nbsp;&nbsp;">&nbsp<input name=BtnKosong type=reset class="button" value="&nbsp;&nbsp;KOSONG&nbsp;&nbsp;"></div><br>
             <?php
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
@@ -194,11 +198,14 @@
                     $dasar_peraturan    =trim($_POST['dasar_peraturan']);
                     $masa_kerja         =trim($_POST['masa_kerja']);
                     $bln_kerja          =trim($_POST['bln_kerja']);
+                    $dokumen        = str_replace(" ","_","pages/riwayatpangkat/berkas/".$_FILES['dokumen']['name']);
+                    move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                    
                     if ((!empty($id))&&(!empty($jabatan))) {
                         switch($action) {
                             case "TAMBAH":
                                 Tambah(" riwayat_jabatan "," '$id','$jabatan','$tmt_pangkat','$tmt_pangkat_yad','$pejabat_penetap',
-                                        '$nomor_sk','$tgl_sk','$dasar_peraturan','$masa_kerja','$bln_kerja'", " Riwayat Jabatan " );
+                                        '$nomor_sk','$tgl_sk','$dasar_peraturan','$masa_kerja','$bln_kerja','$dokumen'", " Riwayat Jabatan " );
                                 echo"<meta http-equiv='refresh' content='1;URL=?act=InputRiwayatPangkat&action=TAMBAH&id=$id'>";
                                 break;
                         }
@@ -206,19 +213,17 @@
                         echo 'Semua field harus isi..!!!';
                     }
                 }
-            ?>
-            <div style="width: 100%; height: 42%; overflow: auto;">
-            <?php
-                $_sql = "SELECT jabatan,tmt_pangkat,tmt_pangkat_yad,pejabat_penetap,nomor_sk,tgl_sk,dasar_peraturan,masa_kerja,bln_kerja 
-                        from riwayat_jabatan where id='$id' ORDER BY jabatan ASC ";
+         
+                $_sql = "SELECT jabatan,tmt_pangkat,tmt_pangkat_yad,pejabat_penetap,nomor_sk,tgl_sk,dasar_peraturan,masa_kerja,bln_kerja, 
+                        berkas from riwayat_jabatan where id='$id' ORDER BY jabatan ASC ";
                 $hasil=bukaquery($_sql);
                 $jumlah=mysqli_num_rows($hasil);
                 $ttllembur=0;
                 $ttlhr=0;
 
                 if(mysqli_num_rows($hasil)!=0) {
-                    echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                            <tr class='head'>
+                    echo "<table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head3'>
                                 <td width='5%'><div align='center'>Proses</div></td>
                                 <td width='15%'><div align='center'>Jabatan</div></td>
                                 <td width='10%'><div align='center'>TMT Jabatan</div></td>
@@ -229,11 +234,17 @@
                                 <td width='15%'><div align='center'>Dasar Peraturan</div></td>
                                 <td width='10%'><div align='center'>Masa Kerja</div></td>
                             </tr>";
-                    while($baris = mysqli_fetch_array($hasil)) {                        
+                    while($baris = mysqli_fetch_array($hasil)) {  
+                        $gb="-";
+                        if($baris["berkas"]=="pages/riwayatpangkat/berkas"){
+                            $gb="-";                            
+                        }else{
+                            $gb="<img src='".$baris["berkas"]."' width='850px' height='950px'>";
+                        }
                       echo "<tr class='isi'>
                                 <td width='70'>
                                     <center>"; ?>
-                                    <a href="?act=InputRiwayatPangkat&action=HAPUS&jabatan=<?php print $baris[0] ?>&id=<?php echo $id ?>" >[hapus]</a>
+                                    <a href="?act=InputRiwayatPangkat&action=HAPUS&jabatan=<?php print $baris[0] ?>&id=<?php echo $id ?>&berkas=<?php print $baris["berkas"];?>" >[hapus]</a>
                             <?php
                             echo "</center>
                                 </td>
@@ -246,25 +257,36 @@
                                 <td>$baris[6]</td>
                                 <td>$baris[7] Tahun $baris[8] Bulan</td>
                            </tr>";
+                        echo "<tr class='isi'>
+                                <td width='70'></td>
+                                <td valign='top' align='center' colspan='10'><a target=_blank href=../penggajian/".$baris["berkas"].">".$gb."</a></td>
+                           </tr>";
                     }
                 echo "</table>";
 
-            } else {echo "Data riwayat jabatan masih kosong !";}
-        ?>
-        </div>
+            } else {
+                echo "<table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                            <tr class='head3'>
+                                <td width='5%'><div align='center'>Proses</div></td>
+                                <td width='15%'><div align='center'>Jabatan</div></td>
+                                <td width='10%'><div align='center'>TMT Jabatan</div></td>
+                                <td width='10%'><div align='center'>TMT Jabatan YAD</div></td>
+                                <td width='15%'><div align='center'>Pejabat Penetap</div></td>
+                                <td width='10%'><div align='center'>Nomor S.K.</div></td>
+                                <td width='10%'><div align='center'>Tanggal S.K.</div></td>
+                                <td width='15%'><div align='center'>Dasar Peraturan</div></td>
+                                <td width='10%'><div align='center'>Masa Kerja</div></td>
+                            </tr>
+                      </table>";
+            
+            }
+        ?>     
         </form>
         <?php
             if ($action=="HAPUS") {
+                unlink($_GET['berkas']);
                 Hapus(" riwayat_jabatan "," id ='".$_GET['id']."' and jabatan ='".$_GET['jabatan']."'","?act=InputRiwayatPangkat&action=TAMBAH&id=$id");
             }
-
-  
-            echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                    <tr class='head'>
-                        <td><div align='left'>Data : $jumlah</div></td>                        
-                    </tr>     
-                 </table>");
         ?>
     </div>
 
-</div>
