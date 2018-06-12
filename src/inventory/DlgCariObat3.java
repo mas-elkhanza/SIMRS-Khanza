@@ -17,6 +17,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
+import inventory.riwayatobat;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -46,8 +47,9 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
     private ResultSet rstampilbarang,rsstokmasuk,rspemberian,rskeluar,rsretur,rscariharga,rspasien;
     private PreparedStatement pstampilbarang,psstokmasuk,pspemberian,pskeluar,psretur,psimpanretur,pscariharga,
                               pshapusobat,pshapusretur,psobatsimpan,psupdategudang,psupdategudang2,pspasien;
-    private double stokmasuk=0,pagi=0,siang=0,sore=0,malam=0,keluar=0,retur=0,harga=0,kapasitas=0,embalase=0,
-                    kenaikan=0,tuslah=0,returshs=0,hilang=0,beli=0;
+    private double stokmasuk=0,pagi=0,siang=0,sore=0,malam=0,keluar=0,retur=0,harga=0,kapasitas=0,
+                    kenaikan=0,returshs=0,hilang=0,beli=0,embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),
+                    tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
     private String bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
     /** Creates new form DlgPenyakit
      * @param parent
@@ -130,12 +132,10 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
         TNoRw.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
-        TNoRw.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         Kd2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Kd2.setHighlighter(null);
         Kd2.setName("Kd2"); // NOI18N
-        Kd2.setSelectionColor(new java.awt.Color(255, 255, 255));
         Kd2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 Kd2KeyPressed(evt);
@@ -144,7 +144,6 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
 
         KdPj.setHighlighter(null);
         KdPj.setName("KdPj"); // NOI18N
-        KdPj.setSelectionColor(new java.awt.Color(255, 255, 255));
         KdPj.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KdPjKeyPressed(evt);
@@ -153,7 +152,6 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
 
         kelas.setHighlighter(null);
         kelas.setName("kelas"); // NOI18N
-        kelas.setSelectionColor(new java.awt.Color(255, 255, 255));
         kelas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 kelasKeyPressed(evt);
@@ -176,7 +174,7 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -261,7 +259,7 @@ public final class DlgCariObat3 extends javax.swing.JDialog {
 
         Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-08-2017" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-01-2018" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -688,8 +686,6 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     }//GEN-LAST:event_Kd2KeyPressed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase");
-        tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
         tbObat.requestFocus();
     }//GEN-LAST:event_formWindowActivated
 

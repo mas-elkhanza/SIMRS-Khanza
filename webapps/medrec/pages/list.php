@@ -2,7 +2,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bln_leng=strlen($baris[1]);
    $bulan="0";
@@ -22,7 +22,7 @@
                 $keyword     =isset($_GET['keyword'])?$_GET['keyword']:NULL;
                 echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
         ?>
-    <div style="width: 100%; height: 90%; overflow: auto;">
+    <div style="width: 100%; height: 91%; overflow: auto;">
     <?php
         
 	$keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;        
@@ -30,8 +30,8 @@
         $_sql = "SELECT no_rkm_medis, nm_pasien, jk, tgl_lahir, nm_ibu from pasien where no_rkm_medis like '%".$keyword."%' or 
 		       nm_pasien like '%".$keyword."%' or tgl_lahir like '%".$keyword."%' or nm_ibu like '%".$keyword."%' order by no_rkm_medis DESC limit 1000";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
-        if(mysql_num_rows($hasil)!=0) {
+        $jumlah=mysqli_num_rows($hasil);
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head2'>
                         <td width='5%'><div align='center'>Proses</div></td>
@@ -42,7 +42,7 @@
                         <td width='15%'><div align='center'>Nama Ibu</div></td>
                         <td width='46%'><div align='center'>Riwayat Retensi</div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi' title='$baris[0] $baris[1]'>
                                 <td valign='top'>
                                     <center>
@@ -58,7 +58,7 @@
                                    <table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>";
                                         $_sql2 = "SELECT terakhir_daftar, tgl_retensi, lokasi_pdf from retensi_pasien where no_rkm_medis='$baris[0]' ORDER BY tgl_retensi ASC ";
                                         $hasil2=bukaquery($_sql2);
-                                        if(mysql_num_rows($hasil2)!=0) {
+                                        if(mysqli_num_rows($hasil2)!=0) {
                                             echo "<tr class='isi4'>
                                                     <td width='5%'><div align='center'>NO.</div></td>
                                                     <td width='20%'><div align='center'>Terakhir Daftar</div></td>
@@ -67,7 +67,7 @@
                                                   </tr>";
                                         }
                                         $no=1;
-                                        while($baris2 = mysql_fetch_array($hasil2)) { 
+                                        while($baris2 = mysqli_fetch_array($hasil2)) { 
                                             echo "<tr> 
                                                     <td>$no</td>
                                                     <td>$baris2[0]</td>

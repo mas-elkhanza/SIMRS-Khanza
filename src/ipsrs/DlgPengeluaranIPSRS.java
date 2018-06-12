@@ -1,7 +1,7 @@
 package ipsrs;
 
 
-import fungsi.WarnaTable;
+import fungsi.WarnaTable2;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -37,6 +37,8 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
     private int jml=0,i=0,row=0,index=0;
     private double ttl,keluar;
     private String[] kodebarang,namabarang,satuan,jumlah,stok,harga,total;
+    private WarnaTable2 warna=new WarnaTable2();
+    public boolean tampilkanpermintaan=true;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -63,7 +65,7 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
         for (i = 0; i < 7; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(42);
             }else if(i==1){
                 column.setPreferredWidth(110);
             }else if(i==2){
@@ -78,7 +80,8 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
                 column.setPreferredWidth(100);
             }
         }
-        tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        warna.kolom=0;
+        tbDokter.setDefaultRenderer(Object.class,warna);
 
         NoKeluar.setDocument(new batasInput((byte)15).getKata(NoKeluar));
         Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
@@ -102,8 +105,7 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,4),signed)),0) from ipsrspengeluaran ",
-                TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5),4,NoKeluar); 
+                autoNomor();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -138,16 +140,8 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {}
             @Override
             public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        try{            
-            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),ipsrsbarang.kode_sat,stok, "+
-                " ipsrsbarang.harga from ipsrsbarang where ipsrsbarang.kode_brng like ? or "+
-                " ipsrsbarang.nama_brng like ? or "+
-                " ipsrsbarang.jenis like ? order by ipsrsbarang.nama_brng");
-        }catch(SQLException e){
-            System.out.println(e);
-        }           
+        });        
+                  
     }
 
     /** This method is called from within the constructor to
@@ -219,7 +213,7 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Stok Keluar Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -394,6 +388,11 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
         TglKeluar.setEditable(false);
         TglKeluar.setDisplayFormat("dd-MM-yyyy");
         TglKeluar.setName("TglKeluar"); // NOI18N
+        TglKeluar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TglKeluarItemStateChanged(evt);
+            }
+        });
         TglKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglKeluarKeyPressed(evt);
@@ -640,7 +639,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        if(tampilkanpermintaan==true){
+            tampil();
+        }            
     }//GEN-LAST:event_formWindowOpened
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
@@ -659,6 +660,13 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         barang.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnTambahActionPerformed
+
+    private void TglKeluarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TglKeluarItemStateChanged
+        try {
+            autoNomor();
+        } catch (Exception e) {
+        }        
+    }//GEN-LAST:event_TglKeluarItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -740,22 +748,36 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],stok[i],harga[i],total[i]});
         }
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{"",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),"0"});
-            }                 
+            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),ipsrsbarang.kode_sat,stok, "+
+                    " ipsrsbarang.harga from ipsrsbarang where ipsrsbarang.kode_brng like ? or "+
+                    " ipsrsbarang.nama_brng like ? or "+
+                    " ipsrsbarang.jenis like ? order by ipsrsbarang.nama_brng");
+            
+            try{  
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{"",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),"0"});
+                } 
+            }catch(Exception e){
+                System.out.println(e);
+            }finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                                
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
-        }
-        
+        }        
     }
     
     public void isCek(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,4),signed)),0) from ipsrspengeluaran ",
-                TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5),4,NoKeluar); 
+        autoNomor();
         TCari.requestFocus();
         if(var.getjml2()>=1){
             kdptg.setEditable(false);
@@ -785,5 +807,42 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
     }
 
- 
+    private void autoNomor() {
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,3),signed)),0) from ipsrspengeluaran where tanggal='"+Valid.SetTgl(TglKeluar.getSelectedItem()+"")+"' ",
+                "SKNM"+TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5)+TglKeluar.getSelectedItem().toString().substring(0,2),3,NoKeluar); 
+    }
+
+    public void tampil(String nopermintaan) {
+        
+        Valid.tabelKosong(tabMode);        
+        try{
+            ps=koneksi.prepareStatement("select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),"+
+                    " ipsrsbarang.kode_sat,stok, ipsrsbarang.harga,detail_permintaan_non_medis.jumlah "+
+                    " from ipsrsbarang inner join detail_permintaan_non_medis "+
+                    " on ipsrsbarang.kode_brng=detail_permintaan_non_medis.kode_brng "+
+                    " where detail_permintaan_non_medis.no_permintaan=? order by ipsrsbarang.nama_brng");
+            
+            try{  
+                ps.setString(1,nopermintaan);
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString("jumlah"),rs.getString(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getString(5),(rs.getDouble("jumlah")*rs.getDouble("harga"))
+                    });
+                } 
+            }catch(Exception e){
+                System.out.println(e);
+            }finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                                
+        }catch(SQLException e){
+            System.out.println("Notifikasi : "+e);
+        }        
+    }
 }

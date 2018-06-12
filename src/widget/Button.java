@@ -17,8 +17,8 @@ public class Button extends usu.widget.ButtonGlass {
     public Button() {
         super();
         setFont(new java.awt.Font("Tahoma", 1, 11));
-        setForeground(new Color(60,80,50));
-        setGlassColor(new Color(235,240,230));
+        setForeground(new Color(90,120,80));
+        setGlassColor(new Color(245,245,240));
         setMargin(new Insets(2, 7, 2, 7));
         setIconTextGap(4);
         setRoundRect(true);

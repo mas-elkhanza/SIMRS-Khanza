@@ -63,6 +63,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD17 = new usu.widget.ButtonGlass();
         BtnICD25 = new usu.widget.ButtonGlass();
         BtnICD104 = new usu.widget.ButtonGlass();
+        BtnICD115 = new usu.widget.ButtonGlass();
         BtnICD111 = new usu.widget.ButtonGlass();
         BtnICD35 = new usu.widget.ButtonGlass();
         BtnICD76 = new usu.widget.ButtonGlass();
@@ -79,6 +80,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD80 = new usu.widget.ButtonGlass();
         BtnICD110 = new usu.widget.ButtonGlass();
         BtnICD9 = new usu.widget.ButtonGlass();
+        BtnICD114 = new usu.widget.ButtonGlass();
         BtnICD71 = new usu.widget.ButtonGlass();
         BtnICD42 = new usu.widget.ButtonGlass();
         BtnICD18 = new usu.widget.ButtonGlass();
@@ -167,7 +169,7 @@ public class DlgVakum extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), ".: Silahkan klik tombol untuk menghapus isi table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), ".: Silahkan klik tombol untuk menghapus isi table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setToolTipText("");
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -498,6 +500,23 @@ public class DlgVakum extends javax.swing.JDialog {
         });
         panelBiasa1.add(BtnICD104);
 
+        BtnICD115.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD115.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD115.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD115.setText("Golongan Barang");
+        BtnICD115.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD115.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD115.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD115.setName("BtnICD115"); // NOI18N
+        BtnICD115.setRoundRect(true);
+        BtnICD115.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD115ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD115);
+
         BtnICD111.setBackground(new java.awt.Color(195, 205, 185));
         BtnICD111.setForeground(new java.awt.Color(153, 0, 51));
         BtnICD111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
@@ -769,6 +788,23 @@ public class DlgVakum extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnICD9);
+
+        BtnICD114.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD114.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD114.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD114.setText("Kategori Barang");
+        BtnICD114.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD114.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD114.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD114.setName("BtnICD114"); // NOI18N
+        BtnICD114.setRoundRect(true);
+        BtnICD114.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD114ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD114);
 
         BtnICD71.setBackground(new java.awt.Color(195, 205, 185));
         BtnICD71.setForeground(new java.awt.Color(153, 0, 51));
@@ -2168,6 +2204,9 @@ public class DlgVakum extends javax.swing.JDialog {
 
     private void BtnICD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD3ActionPerformed
         hapus("Catatan Pasien","lain","catatan_pasien"); 
+        hapus("Pasien Meninggal","lain","pasien_mati");  
+        hapus("Peminjaman Berkas","lain","peminjaman_berkas"); 
+        hapus("Piutang Obat Pasien","lain","piutang"); 
         hapus("Pasien","Registrasi Periksa, Pasien Meninggal, Peminjaman Berkas, Piutang Obat,\nPenjualan Obat, Piutang Pasien, Catatan Pasien","pasien");
     }//GEN-LAST:event_BtnICD3ActionPerformed
 
@@ -2179,9 +2218,37 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Piutang Pasien","lain","piutang_pasien");
         hapus("Bayar Piutang Pasien","lain","bayar_piutang");
         hapus("DPJP Ranap","lain","dpjp_ranap");
+        hapus("Detail Nota Rawat Jalan","lain","detail_nota_jalan");
         hapus("Nota Rawat Jalan","lain","nota_jalan");
         hapus("Detail Piutang Pasien","lain","detail_piutang_pasien");
-        hapus("Nota Rawat Inap","lain","nota_inap");
+        hapus("Detail Nota Rawat Inap","lain","detail_nota_inap");
+        hapus("Nota Rawat Inap","lain","nota_inap");        
+        hapus("Tindakan Rawat Jalan Dokter","lain","rawat_jl_dr");  
+        hapus("Tindakan Rawat Jalan Paramedis","lain","rawat_jl_pr"); 
+        hapus("Tindakan Rawat Jalan Dokter & Paramedis","lain","rawat_jl_drpr"); 
+        hapus("Tindakan Rawat Inap Dokter","lain","rawat_inap_dr");  
+        hapus("Tindakan Rawat Inap Paramedis","lain","rawat_inap_pr"); 
+        hapus("Tindakan Rawat Inap Dokter & Paramedis","lain","rawat_inap_drpr");         
+        hapus("Berkas Digital Perawata","lain","berkas_digital_perawatan");       
+        hapus("Pemeriksaan Radiologi","lain","periksa_radiologi");            
+        hapus("Beri BHP Radiologi","lain","beri_bhp_radiologi");            
+        hapus("Gambar Radiologi","lain","gambar_radiologi");      
+        hapus("Pemeriksaan Laborat","lain","periksa_lab");     
+        hapus("Detail Pemeriksaan Laborat","lain","detail_periksa_lab"); 
+        hapus("Diagnosa Pasien","lain","diagnosa_pasien"); 
+        hapus("Diet Pasien","lain","detail_beri_diet"); 
+        hapus("Ranap Gabung","lain","ranap_gabung"); 
+        hapus("Stok Obat Pasien Ranap","lain","stok_obat_pasien"); 
+        hapus("Resep Pulang Pasien","lain","resep_pulang"); 
+        hapus("Operasi","lain","operasi"); 
+        hapus("Obat Racikan","lain","obat_racikan"); 
+        hapus("Detail Obat Racikan","lain","detail_obat_racikan");  
+        hapus("Resep Obat","lain","resep_obat");         
+        hapus("Billing","lain","billing");             
+        hapus("Pemeriksaan Obstetri Ralan","lain","pemeriksaan_obstetri_ralan"); 
+        hapus("Pemeriksaan Obstetri Ranap","lain","pemeriksaan_obstetri_ranap"); 
+        hapus("Pemeriksaan Ginekologi Ralan","lain","pemeriksaan_ginekologi_ralan"); 
+        hapus("Pemeriksaan Ginekologi Ranap","lain","pemeriksaan_ginekologi_ranap");         
         hapus("Registrasi","Rawat Jalan,\nKamar Inap, Diagnosa Pasien, Tagihan Masuk, Pemberian Obat, Resep Obat, Rujukan Masuk,\n"+
                 "Rujukan Keluar, Stok Obat Pasien, Diagnosa Pasien, Resep Pulang, Potongan Biaya, Tambahan Biaya,\nDPJP Ranap, Diet Pasien","reg_periksa");
     }//GEN-LAST:event_BtnICD4ActionPerformed
@@ -2225,6 +2292,8 @@ public class DlgVakum extends javax.swing.JDialog {
     private void BtnICD13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD13ActionPerformed
         hapus("Pemberian Obat","lain","detail_pemberian_obat");
         hapus("Tagihan Obat Langsung","lain","tagihan_obat_langsung");
+        hapus("Obat Racikan","lain","obat_racikan");
+        hapus("Detail Obat Racikan","lain","_detail_obat_racikan");
     }//GEN-LAST:event_BtnICD13ActionPerformed
 
     private void BtnICD14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD14ActionPerformed
@@ -2359,16 +2428,19 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Dokter","Jadwal Praktek, Ranap Dokter, Ralan Dokter\nPeriksa Lab, Periksa Radiologi, Registrasi, DPJP Ranap","dokter");
         hapus("Pendapatan Warung","lain","set_warung");
         hapus("Pembagian Warung","lain","pembagian_warung");
+        hapus("Pembagian Tuslah","lain","pembagian_tuslah");
         hapus("Presensi Pegawai","lain","presensi");
         hapus("Presensi Pegawai","lain","temporary_presensi");
         hapus("Presensi Pegawai","lain","rekap_presensi");
         hapus("Jadwal Pegawai","lain","jadwal_pegawai");
+        hapus("Jadwal Tambahan Pegawai","lain","jadwal_tambahan");
         hapus("Barcode Presensi","lain","barcode");
         hapus("Ketidakhadiran Pegawai","lain","ketidakhadiran");
         hapus("Tambahan Rawat Jalan","lain","rawatjalan");
         hapus("Ambil Dana Kesehatan","lain","ambil_dankes");
         hapus("Tambahan Tindakan","lain","tindakan");
         hapus("Tambahan Jaga","lain","tambahjaga");
+        hapus("Jasa Lain","lain","jasa_lain");
         hapus("Potongan Gaji","lain","potongan");
         hapus("Jaga Malam","lain","jgmlm");
         hapus("Jumlah Pasien Ditangani Dokter","lain","jumpasien");
@@ -2588,6 +2660,8 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Akun Piutang","Jurnal Akuntansi","akun_piutang");
         hapus("Rekening Tahun","Jurnal Akuntansi","rekeningtahun");        
         hapus("Subrekening","Lain","subrekening");
+        hapus("Kategori Pemasukan Lain-Lain","Rekening Tahun","kategori_pemasukan_lain");
+        hapus("Kategori Pengeluaran Harian","Rekening Tahun","kategori_pengeluaran_harian");
         hapus("Akun Rekening","Rekening Tahun","rekening");
     }//GEN-LAST:event_BtnICD86ActionPerformed
 
@@ -2668,6 +2742,7 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD104ActionPerformed
 
     private void BtnICD105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD105ActionPerformed
+        hapus("Jual Bebas BHP/Obat","lain","penjualan");
         hapus("Akun Bayar","Pengadaan Barang, Billing, Penjualan, Pemesanan, dll","akun_bayar");
     }//GEN-LAST:event_BtnICD105ActionPerformed
 
@@ -2702,6 +2777,14 @@ public class DlgVakum extends javax.swing.JDialog {
     private void BtnICD113ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD113ActionPerformed
         hapus("Catatan Pasien","lain","catatan_pasien"); 
     }//GEN-LAST:event_BtnICD113ActionPerformed
+
+    private void BtnICD114ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD114ActionPerformed
+        hapus("Kategori Barang","Data Obat/Alkes/BHP","kategori_barang");
+    }//GEN-LAST:event_BtnICD114ActionPerformed
+
+    private void BtnICD115ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD115ActionPerformed
+        hapus("Golongan Barang","Data Obat/Alkes/BHP","golongan_barang");
+    }//GEN-LAST:event_BtnICD115ActionPerformed
 
     /**
     * @param args the command line arguments
@@ -2738,6 +2821,8 @@ public class DlgVakum extends javax.swing.JDialog {
     private usu.widget.ButtonGlass BtnICD111;
     private usu.widget.ButtonGlass BtnICD112;
     private usu.widget.ButtonGlass BtnICD113;
+    private usu.widget.ButtonGlass BtnICD114;
+    private usu.widget.ButtonGlass BtnICD115;
     private usu.widget.ButtonGlass BtnICD12;
     private usu.widget.ButtonGlass BtnICD13;
     private usu.widget.ButtonGlass BtnICD14;

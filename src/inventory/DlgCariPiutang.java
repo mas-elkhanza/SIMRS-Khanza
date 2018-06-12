@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.DlgBayarPiutang;
 import keuangan.Jurnal;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 import simrskhanza.DlgPasien;
 
 public class DlgCariPiutang extends javax.swing.JDialog {
@@ -118,8 +118,8 @@ public class DlgCariPiutang extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        NoNota.setDocument(new batasInput((byte)8).getKata(NoNota));
-        kdmem.setDocument(new batasInput((byte)10).getKata(kdmem));
+        NoNota.setDocument(new batasInput((byte)25).getKata(NoNota));
+        kdmem.setDocument(new batasInput((byte)15).getKata(kdmem));
         nmmem.setDocument(new batasInput((byte)70).getKata(nmmem));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));
         kdbar.setDocument(new batasInput((byte)15).getKata(kdbar));
@@ -383,7 +383,7 @@ public class DlgCariPiutang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Piutang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Piutang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

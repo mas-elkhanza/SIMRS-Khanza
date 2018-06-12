@@ -6,7 +6,9 @@
         <link href="css/default.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-
+        <script type="text/javascript">
+            window.onload = function() { window.print(); }
+        </script>
     <?php
     reportsqlinjection();      
         $noretur    = str_replace("_"," ",isset($_GET['noretur'])?$_GET['noretur']:NULL);  
@@ -18,9 +20,9 @@
         $_sql = "select  nama_brng, h_retur, jml_retur, subtotal from  tampreturpiutang ";            
         $hasil=bukaquery($_sql);
         
-        $setting=  mysql_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+        $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
         
-        if(mysql_num_rows($hasil)!=0) { 
+        if(mysqli_num_rows($hasil)!=0) { 
           echo "<table width='".getOne("select notaapotek from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <tr class='isi14'>
                        <td colspan=6 align=center>
@@ -90,7 +92,7 @@
                                </tr>";
                                       $ttlpesan=0;
                                       $i=1;
-                                      while($barispesan = mysql_fetch_array($hasil)) { 
+                                      while($barispesan = mysqli_fetch_array($hasil)) { 
                                           $ttlpesan=$ttlpesan+$barispesan[3];
                                           echo "
                                             <tr class='isi15'>

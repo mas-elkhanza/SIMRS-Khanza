@@ -17,8 +17,8 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
-            <StringItem index="0" value="LAKI-LAKI"/>
-            <StringItem index="1" value="PEREMPUAN"/>
+            <StringItem index="0" value="L"/>
+            <StringItem index="1" value="P"/>
           </StringArray>
         </Property>
         <Property name="name" type="java.lang.String" value="CmbJk" noResource="true"/>
@@ -36,7 +36,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="07-10-2017"/>
+            <StringItem index="0" value="23-05-2018"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -131,12 +131,15 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="40" green="40" id="darkGray" palette="1" red="40" type="palette"/>
+              <Color blue="0" green="33" red="66" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cetak Document"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="horizontalTextPosition" type="int" value="4"/>
+            <Property name="iconTextGap" type="int" value="6"/>
             <Property name="name" type="java.lang.String" value="MnDocument" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[250, 28]"/>
@@ -144,6 +147,60 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnDocumentActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="ppPengajuan">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="33" red="66" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/picture/category.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Pengajuan SEP"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="horizontalTextPosition" type="int" value="4"/>
+            <Property name="iconTextGap" type="int" value="6"/>
+            <Property name="name" type="java.lang.String" value="ppPengajuan" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[200, 25]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppPengajuanBtnPrintActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="ppPengajuan1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="33" red="66" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/picture/category.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Aproval SEP"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="horizontalTextPosition" type="int" value="4"/>
+            <Property name="iconTextGap" type="int" value="6"/>
+            <Property name="name" type="java.lang.String" value="ppPengajuan1" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[200, 25]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppPengajuan1BtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>
@@ -186,7 +243,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,41,0,0,3,-4"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-128,0,0,3,-4"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -202,7 +259,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -252,7 +309,7 @@
             <Property name="name" type="java.lang.String" value="PanelInput" noResource="true"/>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 517]"/>
+              <Dimension value="[200, 577]"/>
             </Property>
           </Properties>
           <Constraints>
@@ -324,11 +381,11 @@
                                 <TitledBorder title="::[ Kelengkapan Data Pasien ]::">
                                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                     <LineBorder>
-                                      <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                                      <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                                     </LineBorder>
                                   </Border>
                                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                                 </TitledBorder>
                               </Border>
                             </Property>
@@ -594,12 +651,9 @@
                             <Component class="widget.Tanggal" name="DTPDaftar">
                               <Properties>
                                 <Property name="editable" type="boolean" value="false"/>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="32" green="46" red="32" type="rgb"/>
-                                </Property>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="07-10-2017"/>
+                                    <StringItem index="0" value="23-05-2018"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1213,18 +1267,18 @@
                                 <TitledBorder title="::[ Kelengkapan Data SEP, Registrasi &amp; Kamar Inap ]::">
                                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                                     <LineBorder>
-                                      <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                                      <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                                     </LineBorder>
                                   </Border>
                                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                                 </TitledBorder>
                               </Border>
                             </Property>
                             <Property name="name" type="java.lang.String" value="FormKelengkapanSEP" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[1000, 187]"/>
+                              <Dimension value="[1000, 247]"/>
                             </Property>
                           </Properties>
 
@@ -1275,12 +1329,9 @@
                             </Component>
                             <Component class="widget.Tanggal" name="TanggalSEP">
                               <Properties>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="32" green="46" red="32" type="rgb"/>
-                                </Property>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="07-10-2017 17:00:58"/>
+                                    <StringItem index="0" value="23-05-2018 00:48:24"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1315,12 +1366,9 @@
                             </Component>
                             <Component class="widget.Tanggal" name="TanggalRujuk">
                               <Properties>
-                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                  <Color blue="32" green="46" red="32" type="rgb"/>
-                                </Property>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="07-10-2017 17:00:58"/>
+                                    <StringItem index="0" value="23-05-2018 00:48:24"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1429,7 +1477,7 @@
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="387" y="85" width="28" height="23"/>
+                                  <AbsoluteConstraints x="387" y="115" width="28" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1440,7 +1488,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="3" y="85" width="100" height="23"/>
+                                  <AbsoluteConstraints x="3" y="115" width="100" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1457,7 +1505,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="107" y="85" width="80" height="23"/>
+                                  <AbsoluteConstraints x="107" y="115" width="80" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1474,7 +1522,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="189" y="85" width="196" height="23"/>
+                                  <AbsoluteConstraints x="189" y="115" width="196" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1485,7 +1533,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="3" y="115" width="100" height="23"/>
+                                  <AbsoluteConstraints x="3" y="145" width="100" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1502,7 +1550,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="107" y="115" width="80" height="23"/>
+                                  <AbsoluteConstraints x="107" y="145" width="80" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1519,7 +1567,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="189" y="115" width="196" height="23"/>
+                                  <AbsoluteConstraints x="189" y="145" width="196" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1538,7 +1586,7 @@
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="387" y="115" width="28" height="23"/>
+                                  <AbsoluteConstraints x="387" y="145" width="28" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1557,7 +1605,7 @@
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="387" y="145" width="28" height="23"/>
+                                  <AbsoluteConstraints x="387" y="175" width="28" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1574,7 +1622,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="189" y="145" width="196" height="23"/>
+                                  <AbsoluteConstraints x="189" y="175" width="196" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1591,7 +1639,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="107" y="145" width="80" height="23"/>
+                                  <AbsoluteConstraints x="107" y="175" width="80" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1602,7 +1650,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="3" y="145" width="100" height="23"/>
+                                  <AbsoluteConstraints x="3" y="175" width="100" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1712,11 +1760,10 @@
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="2">
-                                    <StringItem index="0" value="1. Kasus Kecelakaan"/>
-                                    <StringItem index="1" value="2. Bukan Kasus Kecelakaan"/>
+                                    <StringItem index="0" value="0. Tidak"/>
+                                    <StringItem index="1" value="1. Ya"/>
                                   </StringArray>
                                 </Property>
-                                <Property name="selectedIndex" type="int" value="1"/>
                                 <Property name="name" type="java.lang.String" value="LakaLantas" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
                               </Properties>
@@ -1790,7 +1837,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="430" y="145" width="100" height="23"/>
+                                  <AbsoluteConstraints x="430" y="175" width="100" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1806,7 +1853,7 @@
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="534" y="145" width="130" height="23"/>
+                                  <AbsoluteConstraints x="534" y="175" width="130" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1817,7 +1864,7 @@
                               </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="666" y="145" width="228" height="23"/>
+                                  <AbsoluteConstraints x="666" y="175" width="228" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1835,7 +1882,175 @@
                               </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="896" y="145" width="28" height="23"/>
+                                  <AbsoluteConstraints x="896" y="175" width="28" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.Label" name="jLabel37">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Asal Rujukan :"/>
+                                <Property name="name" type="java.lang.String" value="jLabel37" noResource="true"/>
+                              </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="3" y="85" width="100" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.ComboBox" name="AsalRujukan">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="2">
+                                    <StringItem index="0" value="1. Faskes 1"/>
+                                    <StringItem index="1" value="2. Faskes 2(RS)"/>
+                                  </StringArray>
+                                </Property>
+                                <Property name="name" type="java.lang.String" value="AsalRujukan" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AsalRujukanKeyPressed"/>
+                              </Events>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="107" y="85" width="308" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.Label" name="jLabel38">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Eksekutif :"/>
+                                <Property name="name" type="java.lang.String" value="jLabel38" noResource="true"/>
+                              </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="430" y="145" width="100" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.ComboBox" name="Eksekutif">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="2">
+                                    <StringItem index="0" value="0. Tidak"/>
+                                    <StringItem index="1" value="1.Ya"/>
+                                  </StringArray>
+                                </Property>
+                                <Property name="name" type="java.lang.String" value="Eksekutif" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="EksekutifKeyPressed"/>
+                              </Events>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="534" y="145" width="140" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.Label" name="LabelKelas1">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="COB :"/>
+                                <Property name="name" type="java.lang.String" value="LabelKelas1" noResource="true"/>
+                              </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="675" y="145" width="80" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.ComboBox" name="COB">
+                              <Properties>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="2">
+                                    <StringItem index="0" value="0. Tidak "/>
+                                    <StringItem index="1" value="1.Ya"/>
+                                  </StringArray>
+                                </Property>
+                                <Property name="name" type="java.lang.String" value="COB" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="COBKeyPressed"/>
+                              </Events>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="759" y="145" width="165" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.Label" name="jLabel39">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Penjamin Laka :"/>
+                                <Property name="name" type="java.lang.String" value="jLabel39" noResource="true"/>
+                              </Properties>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="0" y="205" width="100" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.CekBox" name="ChkJasaRaharja">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Jasa raharja PT"/>
+                                <Property name="horizontalAlignment" type="int" value="2"/>
+                                <Property name="name" type="java.lang.String" value="ChkJasaRaharja" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChkJasaRaharjaActionPerformed"/>
+                              </Events>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="107" y="205" width="110" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.CekBox" name="ChkBPJSTenaga">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="BPJS Ketenagakerjaan"/>
+                                <Property name="horizontalAlignment" type="int" value="2"/>
+                                <Property name="name" type="java.lang.String" value="ChkBPJSTenaga" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChkBPJSTenagaActionPerformed"/>
+                              </Events>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="222" y="205" width="140" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.CekBox" name="ChkTaspen">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="TASPEN PT"/>
+                                <Property name="horizontalAlignment" type="int" value="2"/>
+                                <Property name="name" type="java.lang.String" value="ChkTaspen" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChkTaspenActionPerformed"/>
+                              </Events>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="370" y="205" width="80" height="23"/>
+                                </Constraint>
+                              </Constraints>
+                            </Component>
+                            <Component class="widget.CekBox" name="ChkAsa">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="ASABRI PT"/>
+                                <Property name="horizontalAlignment" type="int" value="2"/>
+                                <Property name="name" type="java.lang.String" value="ChkAsa" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChkAsaActionPerformed"/>
+                              </Events>
+                              <Constraints>
+                                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                                  <AbsoluteConstraints x="463" y="205" width="80" height="23"/>
                                 </Constraint>
                               </Constraints>
                             </Component>
@@ -1996,6 +2211,24 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnSimpanActionPerformed"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnSimpanKeyPressed"/>
+                  </Events>
+                </Component>
+                <Component class="widget.Button" name="BtnCari1">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/Search-16x16.png"/>
+                    </Property>
+                    <Property name="mnemonic" type="int" value="69"/>
+                    <Property name="text" type="java.lang.String" value="Cari"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Alt+E"/>
+                    <Property name="name" type="java.lang.String" value="BtnCari1" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnCari1ActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnCari1KeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="widget.Button" name="BtnKeluar">

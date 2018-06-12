@@ -1,56 +1,123 @@
-<div id="post">
-    <form name="frm_aturadmin" onsubmit="return validasiIsi();" method="post" action="" enctype=multipart/form-data>
-        <?php
-                echo "";
-                $action      =isset($_GET['action'])?$_GET['action']:NULL;
-                $keyword     =isset($_GET['keyword'])?$_GET['keyword']:NULL;
-                $norm        =isset($_GET['Pasien'])?$_GET['Pasien']:NULL;
-                echo "<input type=hidden name=keyword value=$keyword>"
-                        . "<input type=hidden name=norm value=$norm>";
-        ?>
-            <table width="770px" align="center">
-                <tr class="head">
-                    <td width="25%" >No.RM</td><td width="">:</td>
-                    <td width="82%"><?php echo$norm;?></td>
-                </tr>
-                <tr class="head">
-                    <td width="25%" >Nama</td><td width="">:</td>
-                    <td width="82%"><?php echo getOne("select nm_pasien from pasien where no_rkm_medis='$norm'");?></td>
-                </tr>
-            </table>
-            <br>
-            <table width="770px" align="center">
-                <tr class="head">
-                    <td width="25%" >Keyword</td><td width="">:</td>
-                    <td width="82%"><input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="35" maxlength="250" autofocus/>
-                        <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
-                    </td>
-                </tr>
-            </table><br>
-    </form>
-    <div align="center">
-    <div style="width: 770px; height: 75%; overflow: auto;">
-    <?php
-        $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
-        $_sql = "SELECT * FROM poliklinik where nm_poli like '%".$keyword."%' ORDER BY nm_poli ASC ";
-        $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
-        
-        if(mysql_num_rows($hasil)!=0) {            
-            
-            echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                    <tr class='head'>
-                        <td width='90%'><div align='center'>Silahkan Pilih Unit/Poliklinik</strong></div></td>
-                    </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
-                        echo "<tr class='isi' align='center'>
-                                <td><a href='index.php?page=PilihDokter&Pasien=$norm&Poli=$baris[0]'><font size='5' color='#ff5555'>$baris[1]</font></a></td>                                
-                             </tr>";
-                    }
-            echo "</table>";            
-        } else {echo "Data Poliklinik masih kosong !";}
-    ?>
-    </div>   
-    </div>
-</div>
+<?php
+ session_start();
+ require_once('conf/conf.php');
+ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
+ header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); 
+ header("Cache-Control: no-store, no-cache, must-revalidate"); 
+ header("Cache-Control: post-check=0, pre-check=0", false);
+ header("Pragma: no-cache"); // HTTP/1.0
+ $tanggal= mktime(date("m"),date("d"),date("Y"));
+ date_default_timezone_set('Asia/Jakarta');
+ $jam=date("H:i");
+?>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/default.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="conf/validator.js"></script>
+    <meta http-equiv="refresh" content="60"/>
+    <title>Jadwal Praktek Dokter</title>
+    <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+    <script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
+	<style type="text/css">
+	<!--
+	body {
+		background-image: url();
+		background-repeat: no-repeat;
+		background-color: #FFFFCC;
+	}
+	-->
+	</style>
+</head>
+<body>
 
+<div align="left">
+	<script type="text/javascript">
+		AC_AX_RunContent( 'width','32','height','32' ); //end AC code
+	</script>
+	<noscript>
+       <object width="32" height="32">
+         <embed width="32" height="32"></embed>
+       </object>
+     </noscript>
+     <?php
+		$setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+		echo "   
+		   <table width='100%' align='center' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>
+			  <tr>
+				<td  width='10%' align='right' valign='center'>
+					<img width='90' height='90' src='data:image/jpeg;base64,". base64_encode($setting['logo']). "'/>
+				</td>
+				<td>
+				   <center>
+					  <font size='7' color='#AA00AA' face='Tahoma'>".$setting["nama_instansi"]."</font><br>
+					  <font size='5' color='#AA00AA' face='Tahoma'>
+						  ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br>   
+					  </font> 
+					  <font size='5' color='#AAAA00' face='Tahoma' >".date("d-M-Y", $tanggal)."  ". $jam."</font>
+					  <br><br>
+				   </center>
+				</td>   
+				<td  width='10%' align='left'>
+					&nbsp;
+				</td>  
+				<td  width='10%' align='left' valign='top'>
+					<img width='180' height='130' src='header-kanan.jpg'/>
+				</td>                                                          
+			 </tr>
+		  </table> "; 
+	?>
+	<table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>
+	     <tr class='head5'>
+              <td width='100%'><div align='center'></div></td>
+         </tr>
+    </table>
+	<table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>
+	     <tr class='head4'>
+              <td width='30%'><div align='center'><font size='5'><b>NAMA DOKTER</b></font></div></td>
+              <td width='30%'><div align='center'><font size='5'><b>POLIKLINIK</b></font></div></td>
+              <td width='15%'><div align='center'><font size='5'><b>JAM MULAI</b></font></div></td>
+              <td width='15%'><div align='center'><font size='5'><b>JAM SELESAI</b></font></div></td>
+              <td width='10%'><div align='center'><font size='5'><b>REGISTER</b></font></div></td>
+         </tr>
+
+	<?php  
+	    $hari=getOne("select DAYNAME(current_date())");
+	    $namahari="";
+	    if($hari=="Sunday"){
+			$namahari="AKHAD";
+		}else if($hari=="Monday"){
+			$namahari="SENIN";
+		}else if($hari=="Tuesday"){
+			$namahari="SELASA";
+		}else if($hari=="Wednesday"){
+			$namahari="RABU";
+		}else if($hari=="Thursday"){
+			$namahari="KAMIS";
+		}else if($hari=="Friday"){
+			$namahari="JUMAT";
+		}else if($hari=="Saturday"){
+			$namahari="SABTU";
+		}
+		$_sql="Select dokter.nm_dokter,poliklinik.nm_poli,jadwal.jam_mulai,jadwal.jam_selesai,poliklinik.kd_poli, 
+		       dokter.kd_dokter from jadwal inner join dokter inner join poliklinik on dokter.kd_dokter=jadwal.kd_dokter 
+		       and jadwal.kd_poli=poliklinik.kd_poli where jadwal.hari_kerja='$namahari'" ;  
+		$hasil=bukaquery($_sql);
+
+		while ($data = mysqli_fetch_array ($hasil)){
+			echo "<tr class='isi7' >
+                                <td align='left'><font size='5' color='#BB00BB' face='Tahoma'><a href='antrian.php?kd_poli=".str_replace(" ","_",$data['kd_poli'])."&kd_dokter=".str_replace(" ","_",$data['kd_dokter'])."'>".$data['nm_dokter']."</a></font></td>
+                                <td align='center'><font size='5' color='gray' face='Tahoma'>".$data['nm_poli']."</font></td>
+                                <td align='center'><font color='#DDDD00' size='5'  face='Tahoma'>".$data['jam_mulai']."</font></td>
+                                <td align='center'><font color='gren' size='5'  face='Tahoma'>".$data['jam_selesai']."</font></td>
+                                <td align='center'><font color='#555555' size='5'  face='Tahoma'>". getOne("select count(*) from reg_periksa where kd_poli='".$data['kd_poli']."' and kd_dokter='".$data['kd_dokter']."' and tgl_registrasi='".date("Y-m-d", $tanggal)."'")."</font></td>
+			    </tr> ";
+		}
+	?>
+	</table>
+	<table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>
+	     <tr class='head5'>
+              <td width='100%'><div align='center'></div></td>
+         </tr>
+    </table>
+	<img src="ft-2.jpg" alt="bar-pic" width="100%" height="83">
+</body>

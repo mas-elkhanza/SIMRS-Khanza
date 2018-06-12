@@ -1,7 +1,7 @@
 <?php
 	function title(){
  		$judul ="Digital Payrol Khanza HMS --)(*!!@#$%";
-		$judul = ereg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);
+		$judul = preg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);
 		$judul = str_replace(array('.','-','/',',')," ",$judul);
 		$judul = trim($judul);
 		echo "$judul";	
@@ -75,7 +75,7 @@
                                       'DetailPresensi','ListKS','InputJasLa','ListJasLa','InputPasien','ListRj','ListPinjam',
                                       'DetailPinjam','BayarPinjam','ListJam','SisaDankes','ListKoperasi','InputRiwayatPangkat','ListRiwayatPangkat',
                                       'InputRiwayatPendidikan','ListRiwayatPendidikan','InputRiwayatSeminar','ListRiwayatSeminar','ListRiwayatGaji',
-                                      'InputBank','ListBank','DetailBpjs','DetailHarianBulanan');
+                                      'InputBank','ListBank','DetailBpjs','DetailHarianBulanan','DetailBerkasPegawai');
 				foreach ($form as $page) {
 					if ($aksi==$page) {
 						echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -205,7 +205,9 @@
                         case 'InputRiwayatGaji'         : include_once('pages/riwayatgaji/detail.php'); break;
                         case 'ListRiwayatGaji'          : include_once('pages/riwayatgaji/list.php'); break;
 
-                        default			        : include_once('pages/kontak.php');
+                        case 'DetailBerkasPegawai'      : include_once('pages/berkaspegawai/detail.php'); break;
+                        
+                    default			        : include_once('pages/kontak.php');
 			
 		}
 	}

@@ -1,4 +1,6 @@
 package simrskhanza;
+import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariPetugas;
 import keuangan.DlgJnsPerawatanOperasi;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -28,15 +30,15 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement pstindakan,pstindakan2,psobat,psset_tarif,psrekening;
+    private PreparedStatement pstindakan,pstindakan2,pstindakan3,pstindakan4,psobat,psset_tarif,psrekening;
     private ResultSet rs,rsset_tarif,rsrekening;
     private DlgCariPetugas petugas=new DlgCariPetugas( null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private String cara_bayar_operasi="Yes",kd_pj="",status="";
+    private String kelas_operasi="Yes",kelas="",cara_bayar_operasi="Yes",kd_pj="",status="";
     private double ttljmdokter=0,ttljmpetugas=0,ttlpendapatan=0,ttlbhp=0;
     private String Suspen_Piutang_Operasi_Ranap="",Operasi_Ranap="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",
             Utang_Jasa_Medik_Dokter_Operasi_Ranap="",Beban_Jasa_Medik_Paramedis_Operasi_Ranap="",
-            Utang_Jasa_Medik_Paramedis_Operasi_Ranap="",HPP_Obat_Operasi_Ranap="",Persediaan_Obat_Kamar_Operasi_Ranap="";
+            Utang_Jasa_Medik_Paramedis_Operasi_Ranap="",HPP_Obat_Operasi_Ranap="",Persediaan_Obat_Kamar_Operasi_Ranap="",norawatibu="";
     private double y=0,biayatindakan=0,biayaobat=0;
     private int jml=0,pilihan=0,i=0,index=0;
     private boolean[] pilih; 
@@ -370,6 +372,31 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
             System.out.println(e);
         } 
         
+        try {
+            psset_tarif=koneksi.prepareStatement("select * from set_tarif");
+            try {
+                rsset_tarif=psset_tarif.executeQuery();
+                if(rsset_tarif.next()){
+                    cara_bayar_operasi=rsset_tarif.getString("cara_bayar_operasi");
+                    kelas_operasi=rsset_tarif.getString("kelas_operasi");
+                }else{
+                    cara_bayar_operasi="Yes";
+                    kelas_operasi="Yes";
+                }  
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rsset_tarif != null){
+                    rsset_tarif.close();
+                }
+                if(psset_tarif != null){
+                    psset_tarif.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        } 
+        
     }
     
     /** This method is called from within the constructor to
@@ -546,7 +573,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tagihan Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tagihan Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -555,7 +582,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(816, 102));
         jPanel1.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
@@ -629,7 +656,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
 
         jPanel3.add(panelisi5, java.awt.BorderLayout.PAGE_END);
 
-        Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 255, 235)));
+        Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)));
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
@@ -651,7 +678,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
 
         jPanel1.add(jPanel3);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Obat & BHP ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Obat & BHP ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setOpaque(false);
         jPanel2.setPreferredSize(new java.awt.Dimension(350, 102));
@@ -725,7 +752,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
 
         jPanel2.add(panelisi4, java.awt.BorderLayout.PAGE_END);
 
-        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 255, 235)));
+        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 253)));
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
@@ -3073,17 +3100,52 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                    "from paket_operasi "+
                    "where status='1' and kode_paket like ? or "+
                    "status='1' and nm_perawatan like ? order by nm_perawatan ");
+            pstindakan3=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
+                   "asisten_operator1, asisten_operator2,asisten_operator3, instrumen, dokter_anak,perawaat_resusitas,"+
+                   "dokter_anestesi, asisten_anestesi, asisten_anestesi2, bidan, bidan2, bidan3, perawat_luar, alat,"+
+                   "sewa_ok,akomodasi,bagian_rs,omloop,omloop2,omloop3,omloop4,omloop5,sarpras,dokter_pjanak,dokter_umum,(operator1+operator2+operator3+"+
+                   "asisten_operator1+asisten_operator2+asisten_operator3+instrumen+dokter_anak+perawaat_resusitas+"+
+                   "alat+dokter_anestesi+asisten_anestesi+asisten_anestesi2+bidan+bidan2+bidan3+perawat_luar+sewa_ok+"+
+                   "akomodasi+bagian_rs+omloop+omloop2+omloop3+omloop4+omloop5+sarpras+dokter_pjanak+dokter_umum) as jumlah "+
+                   "from paket_operasi "+
+                   "where status='1' and (kd_pj=? or kd_pj='-') and (kelas=? or kelas='-') and kode_paket like ? or "+
+                   "status='1' and (kd_pj=? or kd_pj='-') and (kelas=? or kelas='-') and nm_perawatan like ? order by nm_perawatan ");
+            pstindakan4=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
+                   "asisten_operator1, asisten_operator2,asisten_operator3, instrumen, dokter_anak,perawaat_resusitas,"+
+                   "dokter_anestesi, asisten_anestesi, asisten_anestesi2, bidan, bidan2, bidan3, perawat_luar, alat,"+
+                   "sewa_ok,akomodasi,bagian_rs,omloop,omloop2,omloop3,omloop4,omloop5,sarpras,dokter_pjanak,dokter_umum,(operator1+operator2+operator3+"+
+                   "asisten_operator1+asisten_operator2+asisten_operator3+instrumen+dokter_anak+perawaat_resusitas+"+
+                   "alat+dokter_anestesi+asisten_anestesi+asisten_anestesi2+bidan+bidan2+bidan3+perawat_luar+sewa_ok+"+
+                   "akomodasi+bagian_rs+omloop+omloop2+omloop3+omloop4+omloop5+sarpras+dokter_pjanak+dokter_umum) as jumlah "+
+                   "from paket_operasi "+
+                   "where status='1' and (kelas=? or kelas='-') and kode_paket like ? or "+
+                   "status='1' and (kelas=? or kelas='-') and nm_perawatan like ? order by nm_perawatan ");
+            
             try {
-                if(cara_bayar_operasi.equals("Yes")){
+                if(cara_bayar_operasi.equals("Yes")&&kelas_operasi.equals("No")){
                     pstindakan.setString(1,kd_pj.trim());
                     pstindakan.setString(2,"%"+TCariPaket.getText()+"%");
                     pstindakan.setString(3,kd_pj.trim());
                     pstindakan.setString(4,"%"+TCariPaket.getText()+"%");
                     rs=pstindakan.executeQuery();
-                }else if(cara_bayar_operasi.equals("No")){
+                }else if(cara_bayar_operasi.equals("No")&&kelas_operasi.equals("No")){
                     pstindakan2.setString(1,"%"+TCariPaket.getText()+"%");
                     pstindakan2.setString(2,"%"+TCariPaket.getText()+"%");
                     rs=pstindakan2.executeQuery();
+                }else if(cara_bayar_operasi.equals("Yes")&&kelas_operasi.equals("Yes")){
+                    pstindakan3.setString(1,kd_pj.trim());
+                    pstindakan3.setString(2,kelas.trim());
+                    pstindakan3.setString(3,"%"+TCariPaket.getText()+"%");
+                    pstindakan3.setString(4,kd_pj.trim());
+                    pstindakan3.setString(5,kelas.trim());
+                    pstindakan3.setString(6,"%"+TCariPaket.getText()+"%");
+                    rs=pstindakan3.executeQuery();
+                }else if(cara_bayar_operasi.equals("No")&&kelas_operasi.equals("Yes")){
+                    pstindakan4.setString(1,kelas.trim());
+                    pstindakan4.setString(2,"%"+TCariPaket.getText()+"%");
+                    pstindakan4.setString(3,kelas.trim());
+                    pstindakan4.setString(4,"%"+TCariPaket.getText()+"%");
+                    rs=pstindakan4.executeQuery();
                 }
                 
                 while(rs.next()){
@@ -3321,29 +3383,24 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         TNoRw.setText(norm);
         TPasien.setText(nama);
         this.status=posisi;
-        this.kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norm);
-        try {
-            psset_tarif=koneksi.prepareStatement("select * from set_tarif");
-            try {
-                rsset_tarif=psset_tarif.executeQuery();
-                if(rsset_tarif.next()){
-                    cara_bayar_operasi=rsset_tarif.getString("cara_bayar_operasi");
-                }else{
-                    cara_bayar_operasi="Yes";
-                }  
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            }finally{
-                if(rsset_tarif != null){
-                    rsset_tarif.close();
-                }
-                if(psset_tarif != null){
-                    psset_tarif.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
-        } 
+        this.kd_pj=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norm);        
+        if(status.equals("Ranap")){
+            norawatibu=Sequel.cariIsi("select no_rawat from ranap_gabung where no_rawat2=?",TNoRw.getText());
+        
+            if(!norawatibu.equals("")){
+                kelas=Sequel.cariIsi(
+                    "select kamar.kelas from kamar inner join kamar_inap "+
+                    "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
+                    "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norawatibu);
+            }else{
+                kelas=Sequel.cariIsi(
+                    "select kamar.kelas from kamar inner join kamar_inap "+
+                    "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
+                    "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
+            } 
+        }else if(status.equals("Ralan")){
+            kelas="Rawat Jalan";
+        }
     }
     
     

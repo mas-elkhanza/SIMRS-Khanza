@@ -171,7 +171,7 @@ public final class DlgLhtBiaya extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Data Tagihan Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Data Tagihan Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -488,6 +488,7 @@ public final class DlgLhtBiaya extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         KdRw.setText("");
+        TPasien.setText("");
         tampil();
 
 }//GEN-LAST:event_BtnAllActionPerformed
@@ -617,7 +618,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             rstampil=pstampil.executeQuery();
             while(rstampil.next()){
                 if((!rstampil.getString("no").contains("Tagihan + PPN"))&&(!rstampil.getString("no").contains("Total Tagihan"))){
-                    if(rstampil.getString("no").contains("PPN(")){
+                    if(rstampil.getString("no").contains("No.Nota")){                        
+                        tabMode.addRow(new Object[]{"","","",null,null,null,null});
                         tabMode.addRow(new Object[]{rstampil.getString("no"),
                                             rstampil.getString("nm_perawatan"),
                                             rstampil.getString("pemisah"),
@@ -625,7 +627,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             rstampil.getObject("dua"),
                                             rstampil.getObject("tiga"),
                                             rstampil.getObject("empat")});
-                        tabMode.addRow(new Object[]{"","","",null,null,null,null});
                     }else{
                         tabMode.addRow(new Object[]{rstampil.getString("no"),
                                         rstampil.getString("nm_perawatan"),

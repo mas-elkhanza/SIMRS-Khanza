@@ -6,13 +6,16 @@
         <link href="css/default.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+        <script type="text/javascript">
+            window.onload = function() { window.print(); }
+        </script>
 
     <?php
     reportsqlinjection();      
         $nonota    =str_replace("_"," ",$_GET['nonota']); 
         
         $_sql = "SELECT tgl_jual,nip,no_rkm_medis,nm_pasien,keterangan,ongkir from penjualan where nota_jual='$nonota'";            
-        $hasil=mysql_fetch_array(bukaquery($_sql));
+        $hasil=mysqli_fetch_array(bukaquery($_sql));
         
         $tanggal   =$hasil["tgl_jual"]; 
         $catatan   = $hasil["keterangan"];
@@ -23,7 +26,7 @@
 
         $_sql = "select detailjual.kode_brng,databarang.nama_brng, detailjual.kode_sat,
                  kodesatuan.satuan,detailjual.h_jual, detailjual.jumlah, 
-                 detailjual.subtotal, detailjual.dis, detailjual.bsr_dis,detailjual.tambahan,detailjual.total from 
+                 detailjual.subtotal, detailjual.dis, detailjual.bsr_dis,detailjual.tambahan,detailjual.total,detailjual.aturan_pakai from 
                  detailjual inner join databarang inner join kodesatuan inner join jenis 
                  on detailjual.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns 
                  and detailjual.kode_sat=kodesatuan.kode_sat where 
@@ -31,7 +34,7 @@
         $hasil=bukaquery($_sql);
         
         
-          $setting=  mysql_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+          $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
           echo "<table width='".getOne("select notaapotek from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <tr class='isi14'>
                        <td width=50% colspan=4 align=left>
@@ -117,12 +120,13 @@
                                <tr class=isi15>
                                    <td width='5%' align=center><font color='000000' size='2'  face='Tahoma'>No</font></td>
                                    <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Jml</font></td>
-                                   <td width='55%' align=center><font color='000000' size='2'  face='Tahoma'>Nama Barang</font></td>
+                                   <td width='35%' align=center><font color='000000' size='2'  face='Tahoma'>Nama Barang</font></td>
                                    <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Total</font></td>
+                                   <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Aturan Pakai</font></td>
                                </tr>";
                                       $ttlpesan=0;
                                       $i=1;
-                                      while($barispesan = mysql_fetch_array($hasil)) { 
+                                      while($barispesan = mysqli_fetch_array($hasil)) { 
                                           $ttlpesan=$ttlpesan+$barispesan["total"];
                                           echo "
                                             <tr class='isi15'>
@@ -130,22 +134,26 @@
                                                 <td><font color='000000' size='2'  face='Tahoma'>".$barispesan["jumlah"]." ".$barispesan["satuan"]."</font></td>
                                                 <td><font color='000000' size='2'  face='Tahoma'>".$barispesan["nama_brng"]."</font></td>
                                                 <td align=right><font color='000000' size='2'  face='Tahoma'>".formatDuit2($barispesan["total"])."</font></td>
+                                                <td><font color='000000' size='2'  face='Tahoma'>".$barispesan["aturan_pakai"]."</font></td>
                                            </tr>";$i++;
                                       }    
                              echo " <tr class='isi14'>
                                       <td colspan=2></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>Tagihan</font></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($ttlpesan)."</font></td>
+                                      <td></td>
                                     </tr>     
                                     <tr class='isi14'>
                                       <td colspan=2></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>PPN</font></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($ongkir)."</font></td>
+                                      <td></td>
                                     </tr>    
                                     <tr class='isi14'>
                                       <td colspan=2></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>Tagihan+PPN</font></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2(($ongkir+$ttlpesan))."</font></td>
+                                      <td></td>
                                     </tr> 
                           </table>
                       </td>

@@ -20,7 +20,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="33" red="66" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/stop_f2.png"/>
@@ -47,7 +47,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="33" red="66" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/inventaris.png"/>
@@ -74,7 +74,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="33" red="66" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/inventaris.png"/>
@@ -101,7 +101,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="33" red="66" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/inventaris.png"/>
@@ -127,18 +127,12 @@
           <ComponentRef name="null"/>
         </Property>
         <Property name="name" type="java.lang.String" value="TNoRw" noResource="true"/>
-        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="widget.TextBox" name="TSuhu">
       <Properties>
         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
         <Property name="name" type="java.lang.String" value="TSuhu" noResource="true"/>
-        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="widget.TextBox" name="TTensi">
@@ -147,9 +141,6 @@
           <ComponentRef name="null"/>
         </Property>
         <Property name="name" type="java.lang.String" value="TTensi" noResource="true"/>
-        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="widget.TextBox" name="TKeluhan">
@@ -158,9 +149,6 @@
           <ComponentRef name="null"/>
         </Property>
         <Property name="name" type="java.lang.String" value="TKeluhan" noResource="true"/>
-        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="widget.TextBox" name="TPemeriksaan">
@@ -169,9 +157,6 @@
           <ComponentRef name="null"/>
         </Property>
         <Property name="name" type="java.lang.String" value="TPemeriksaan" noResource="true"/>
-        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="widget.TextBox" name="TBerat">
@@ -240,9 +225,6 @@
           <ComponentRef name="null"/>
         </Property>
         <Property name="name" type="java.lang.String" value="TPasien" noResource="true"/>
-        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
     </Component>
   </NonVisualComponents>
@@ -268,7 +250,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-120,0,0,3,68"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-120,0,0,3,77"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -284,7 +266,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -352,6 +334,62 @@
             <Property name="verticalGap" type="int" value="9"/>
           </Layout>
           <SubComponents>
+            <Component class="widget.Label" name="jLabel4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Kategori :"/>
+                <Property name="name" type="java.lang.String" value="jLabel4" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[55, 23]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="widget.TextBox" name="KdKtg">
+              <Properties>
+                <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="null"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="KdKtg" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[50, 23]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="KdKtgActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KdKtgKeyPressed"/>
+              </Events>
+            </Component>
+            <Component class="widget.TextBox" name="NmKtg">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="null"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="NmKtg" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[140, 23]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NmKtgKeyPressed"/>
+              </Events>
+            </Component>
+            <Component class="widget.Button" name="btnKategori">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/190.png"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="49"/>
+                <Property name="toolTipText" type="java.lang.String" value="Alt+1"/>
+                <Property name="name" type="java.lang.String" value="btnKategori" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[28, 23]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKategoriActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnKategoriKeyPressed"/>
+              </Events>
+            </Component>
             <Component class="widget.Label" name="label9">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Key Word :"/>
@@ -365,7 +403,7 @@
               <Properties>
                 <Property name="name" type="java.lang.String" value="TCari" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[450, 23]"/>
+                  <Dimension value="[200, 23]"/>
                 </Property>
               </Properties>
               <Events>
@@ -443,7 +481,7 @@
                 <Property name="text" type="java.lang.String" value="Record :"/>
                 <Property name="name" type="java.lang.String" value="label10" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[60, 23]"/>
+                  <Dimension value="[50, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -453,7 +491,7 @@
                 <Property name="text" type="java.lang.String" value="0"/>
                 <Property name="name" type="java.lang.String" value="LCount" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[50, 23]"/>
+                  <Dimension value="[30, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -503,7 +541,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="09-07-2017"/>
+                    <StringItem index="0" value="23-05-2018"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

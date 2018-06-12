@@ -8,7 +8,7 @@ print isset($header)?$header:NULL;*/
  include '../../../conf/conf.php';
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bln_leng=strlen($baris[1]);
    $hari          =$baris[2];
@@ -24,7 +24,7 @@ print isset($header)?$header:NULL;*/
                         from set_hari_libur
                         where tanggal like '%".$tahun."-".$bulan."%' ORDER BY tanggal";
                 $hasillibur=bukaquery($_sqllibur);
-                $jumlahlibur=mysql_num_rows($hasillibur);
+                $jumlahlibur=mysqli_num_rows($hasillibur);
 ?>
 <html>
     <head>
@@ -72,11 +72,11 @@ print isset($header)?$header:NULL;*/
                 where ".$say." and pegawai.id ='".$id."' 
                 order by pegawai.nik ASC ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
         $hasilcari=bukaquery($_sql);
               //untuk mencari nilai referensinya
 		//hapusinput("delete from  indekref");
-		while($baris = mysql_fetch_array($hasilcari)) {
+		while($baris = mysqli_fetch_array($hasilcari)) {
 			$masa_kerja=0;
                           if($baris[9]<1){
                              $masa_kerja=0;
@@ -107,7 +107,7 @@ print isset($header)?$header:NULL;*/
 
                          $_sql2         = "SELECT normal-$jumlahlibur,jmlhr FROM set_tahun";
 			 $hasil2        = bukaquery($_sql2);
-			 $baris2        = mysql_fetch_row($hasil2);
+			 $baris2        = mysqli_fetch_row($hasil2);
 			 $jmlmsk         = $baris2[0];
 			 if($baris[13]==-1){
 			     $jmlmsk=0;
@@ -125,7 +125,7 @@ print isset($header)?$header:NULL;*/
                             from jgmlm  where id='$id'
                             and tgl like '%".$tahun."-".$bulan."%' group by id";
                             $hasil3   = bukaquery($_sql3);
-                            $baris3   = mysql_fetch_row($hasil3);
+                            $baris3   = mysqli_fetch_row($hasil3);
                             $jgmlm    = $baris3[0];
                             $sisamlm  =0;
                             if($baris3[0]<=7){
@@ -140,7 +140,7 @@ print isset($header)?$header:NULL;*/
                             from ketidakhadiran  where id='$id'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='A' group by id";
                             $hasil4   = bukaquery($_sql4);
-                            $baris4   = mysql_fetch_row($hasil4);
+                            $baris4   = mysqli_fetch_row($hasil4);
                             $ttla     = $baris4[0];
                             if(empty ($baris4[0])){
                                 $ttla=0;
@@ -150,7 +150,7 @@ print isset($header)?$header:NULL;*/
                             from ketidakhadiran  where id='$id'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='S' group by id";
                             $hasil5   = bukaquery($_sql5);
-                            $baris5   = mysql_fetch_row($hasil5);
+                            $baris5   = mysqli_fetch_row($hasil5);
                             $ttls     = $baris5[0];
                             if(empty ($baris5[0])){
                                 $ttls=0;
@@ -160,7 +160,7 @@ print isset($header)?$header:NULL;*/
                             from ketidakhadiran  where id='$id'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='C' group by id";
                             $hasil6   = bukaquery($_sql6);
-                            $baris6   = mysql_fetch_row($hasil6);
+                            $baris6   = mysqli_fetch_row($hasil6);
                             $ttlc     = $baris6[0];
                             if(empty ($baris6[0])){
                                 $ttlc=0;
@@ -170,7 +170,7 @@ print isset($header)?$header:NULL;*/
                             from ketidakhadiran  where id='$id'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='I' group by id";
                             $hasil7   = bukaquery($_sql7);
-                            $baris7   = mysql_fetch_row($hasil7);
+                            $baris7   = mysqli_fetch_row($hasil7);
                             $ttli     = $baris7[0];
                             if(empty ($baris7[0])){
                                 $ttli=0;
@@ -180,7 +180,7 @@ print isset($header)?$header:NULL;*/
                             from tambahjaga  where id='$id'
                             and tgl like '%".$tahun."-".$bulan."%' group by id";
                             $hasil8   = bukaquery($_sql8);
-                            $baris8   = mysql_fetch_row($hasil8);
+                            $baris8   = mysqli_fetch_row($hasil8);
                             $ttltmb   = $baris8[0];
                             if(empty ($baris8[0])){
                                 $ttltmb=0;
@@ -202,10 +202,10 @@ print isset($header)?$header:NULL;*/
 		$hasilindex=bukaquery("select kdindex,n,ttl from indekref");
 		//untuk mencari nilai referensinya
 		//hapusinput("delete from  indextotal");
-		while($barisindex = mysql_fetch_array($hasilindex)) {
+		while($barisindex = mysqli_fetch_array($hasilindex)) {
 		    $_sql22  ="SELECT ($barisindex[1]/sum(n))*100 from indekref where kdindex='$barisindex[0]'";
 		    $hasil22 =bukaquery($_sql22);
-		    $baris22 = mysql_fetch_array($hasil22);
+		    $baris22 = mysqli_fetch_array($hasil22);
 		    $indexjaga=$baris22[0];
 
 		    $ttlindex=$barisindex[2]+$indexjaga;
@@ -237,12 +237,12 @@ print isset($header)?$header:NULL;*/
                 $ttlpribadi=0;
                 $ttllain=0;
                 $ttlttlditerima=0;
-        if(mysql_num_rows($hasil)!=0) {	
-                    while($baris = mysql_fetch_array($hasil)) {
+        if(mysqli_num_rows($hasil)!=0) {	
+                    while($baris = mysqli_fetch_array($hasil)) {
                         $_sqlgp    = "SELECT `gapok1`, `kenaikan`, `maksimal`
                           from pendidikan  where tingkat='$baris[16]' ";
                           $hasilgp    = bukaquery($_sqlgp);
-                          $barisgp    = mysql_fetch_array($hasilgp);
+                          $barisgp    = mysqli_fetch_array($hasilgp);
                           $gapokgp    = 0;
                           @$gapok1    = $barisgp["gapok1"];
                           @$kenaikan  = $barisgp["kenaikan"];
@@ -282,7 +282,7 @@ print isset($header)?$header:NULL;*/
 
                          $_sql2         = "SELECT normal-$jumlahlibur,jmlhr FROM set_tahun";
 			 $hasil2        = bukaquery($_sql2);
-			 $baris2        = mysql_fetch_row($hasil2);
+			 $baris2        = mysqli_fetch_row($hasil2);
 			 $jmlmsk         = $baris2[0];
 			 if($baris[13]==-1){
 			     $jmlmsk=0;
@@ -300,7 +300,7 @@ print isset($header)?$header:NULL;*/
                             from jgmlm  where id='$id'
                             and tgl like '%".$tahun."-".$bulan."%' group by id";
                             $hasil3   = bukaquery($_sql3);
-                            $baris3   = mysql_fetch_row($hasil3);
+                            $baris3   = mysqli_fetch_row($hasil3);
                             $jgmlm    = $baris3[0];
                             $sisamlm  =0;
                             if($baris3[0]<=7){
@@ -315,7 +315,7 @@ print isset($header)?$header:NULL;*/
                             from ketidakhadiran  where id='$id'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='A' group by id";
                             $hasil4   = bukaquery($_sql4);
-                            $baris4   = mysql_fetch_row($hasil4);
+                            $baris4   = mysqli_fetch_row($hasil4);
                             $ttla     = $baris4[0];
                             if(empty ($baris4[0])){
                                 $ttla=0;
@@ -325,7 +325,7 @@ print isset($header)?$header:NULL;*/
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='S' group by id";
                             $hasil5   = bukaquery($_sql5);
-                            $baris5   = mysql_fetch_row($hasil5);
+                            $baris5   = mysqli_fetch_row($hasil5);
                             $ttls     = $baris5[0];
                             if(empty ($baris5[0])){
                                 $ttls=0;
@@ -335,7 +335,7 @@ print isset($header)?$header:NULL;*/
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='C' group by id";
                             $hasil6   = bukaquery($_sql6);
-                            $baris6   = mysql_fetch_row($hasil6);
+                            $baris6   = mysqli_fetch_row($hasil6);
                             $ttlc     = $baris6[0];
                             if(empty ($baris6[0])){
                                 $ttlc=0;
@@ -345,7 +345,7 @@ print isset($header)?$header:NULL;*/
                             from ketidakhadiran  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' and jns='I' group by id";
                             $hasil7   = bukaquery($_sql7);
-                            $baris7   = mysql_fetch_row($hasil7);
+                            $baris7   = mysqli_fetch_row($hasil7);
                             $ttli     = $baris7[0];
                             if(empty ($baris7[0])){
                                 $ttli=0;
@@ -355,7 +355,7 @@ print isset($header)?$header:NULL;*/
                             from tambahjaga  where id='$baris[0]'
                             and tgl like '%".$tahun."-".$bulan."%' group by id";
                             $hasil8   = bukaquery($_sql8);
-                            $baris8   = mysql_fetch_row($hasil8);
+                            $baris8   = mysqli_fetch_row($hasil8);
                             $ttltmb   = $baris8[0];
                             if(empty ($baris8[0])){
                                 $ttltmb=0;
@@ -367,7 +367,7 @@ print isset($header)?$header:NULL;*/
 
 			    $_sql9    = "SELECT id,jmlks,bsr from kasift  where id='$baris[0]'";
                             $hasil9   = bukaquery($_sql9);
-                            $baris9   = mysql_fetch_row($hasil9);
+                            $baris9   = mysqli_fetch_row($hasil9);
                             $ks   = $baris9[1];
                             $bsrkasift=$baris9[2];
                             if($baris9[1]!=0){
@@ -383,7 +383,7 @@ print isset($header)?$header:NULL;*/
                                 and presensi.jns='HB'
                                 group by presensi.id";
 			    $hasil10=bukaquery($_sql10);
-			    $baris10 = mysql_fetch_array($hasil10);
+			    $baris10 = mysqli_fetch_array($hasil10);
 			    $hb   = $baris10[0];
 			    if(empty ($baris10[0])){
                                 $hb=0;
@@ -397,7 +397,7 @@ print isset($header)?$header:NULL;*/
                                 and presensi.jns='HR'
                                 group by presensi.id";
 			    $hasil11=bukaquery($_sql11);
-			    $baris11 = mysql_fetch_array($hasil11);
+			    $baris11 = mysqli_fetch_array($hasil11);
 			    $hr   = $baris11[0];
 			    if(empty ($baris11[0])){
                                 $hr=0;
@@ -423,13 +423,13 @@ print isset($header)?$header:NULL;*/
 
                             $_sql17  ="SELECT tnj from set_jgmlm ";
 			    $hasil17 =bukaquery($_sql17);
-			    $baris17 = mysql_fetch_array($hasil17);
+			    $baris17 = mysqli_fetch_array($hasil17);
 			    $tmbhjgmlm = $sisamlm*$baris17[0];
                             $ttltmbhjgmlm=$ttltmbhjgmlm+$tmbhjgmlm;
 
 			    $_sql18  ="SELECT tnj from set_jgtambah where pendidikan='$baris[16]'";
 			    $hasil18 =bukaquery($_sql18);
-			    $baris18 = mysql_fetch_array($hasil18);
+			    $baris18 = mysqli_fetch_array($hasil18);
 			    $tmbahanjg =0;
                             $alpha=$baris18[0]*$ttla;
 			    if(($tmbh>0)){
@@ -439,7 +439,7 @@ print isset($header)?$header:NULL;*/
 
 			    $_sql19  ="SELECT tnj from set_hadir ";
 			    $hasil19 =bukaquery($_sql19);
-			    $baris19 = mysql_fetch_array($hasil19);
+			    $baris19 = mysqli_fetch_array($hasil19);
 			    $tnjhadir =0;
 			    if(($ttln>=$jmlmsk)&&($jmlmsk!=0)){
 				 $tnjhadir=$baris19[0];
@@ -454,13 +454,13 @@ print isset($header)?$header:NULL;*/
 
                             $_sql20  ="SELECT tnj from set_lemburhb";
 			    $hasil20 =bukaquery($_sql20);
-			    $baris20 = mysql_fetch_array($hasil20);
+			    $baris20 = mysqli_fetch_array($hasil20);
 			    $lemburhb=$hb*$baris20[0];
                             $ttllemburhb=$ttllemburhb+$lemburhb;
 
                             $_sql21  ="SELECT tnj from set_lemburhr";
 			    $hasil21 =bukaquery($_sql21);
-			    $baris21 = mysql_fetch_array($hasil21);
+			    $baris21 = mysqli_fetch_array($hasil21);
 			    $lemburhr=$hr*$baris21[0];
                             $ttllemburhr=$ttllemburhr+$lemburhr;
 
@@ -472,7 +472,7 @@ print isset($header)?$header:NULL;*/
                             }
                             
 			    $hasil22 =bukaquery($_sql22);
-			    $baris22 = mysql_fetch_array($hasil22);
+			    $baris22 = mysqli_fetch_array($hasil22);
 			    $indexjaga=$baris22[0];
 
                             if($baris[0]=="1"){
@@ -484,7 +484,7 @@ print isset($header)?$header:NULL;*/
 			    $_sqlpassum  ="select sum(jumpasien.jml) from jumpasien  
                                  where thn='".$tahun."' and bln='".$bulanindex."'";
                             $hasilpassum =bukaquery($_sqlpassum);
-                            $barispassum = mysql_fetch_array($hasilpassum);
+                            $barispassum = mysqli_fetch_array($hasilpassum);
                             $indexpassum=$barispassum[0];
                             
                             if(!empty ($indexpassum)){
@@ -492,7 +492,7 @@ print isset($header)?$header:NULL;*/
                                 from jumpasien  where id='$baris[0]' 
 			        and thn='".$tahun."' and bln='".$bulanindex."'";
                                 $hasilpas =bukaquery($_sqlpas);
-                                $barispas = mysql_fetch_array($hasilpas);
+                                $barispas = mysqli_fetch_array($hasilpas);
                                 $indexpas=$barispas[0];
                             }  
 				
@@ -503,7 +503,7 @@ print isset($header)?$header:NULL;*/
                                 where tindakan.id='$baris[0]' and tindakan.tgl like '%".$tahun."-".$bulan."%'
                                 group by tindakan.id";
 			    $hasil24=bukaquery($_sql24);
-			    $baris24 = mysql_fetch_array($hasil24);
+			    $baris24 = mysqli_fetch_array($hasil24);
 			    $jm   = $baris24[0];
 			    if(empty ($baris24[0])){
                                 $jm=0;
@@ -517,32 +517,32 @@ print isset($header)?$header:NULL;*/
 			        and thn='".$tahun."' and bln='".$bulanindex."'
                                 group by jasa_lain.id";
 			    $hasil26=bukaquery($_sql26);
-			    $baris26 = mysql_fetch_array($hasil26);
+			    $baris26 = mysqli_fetch_array($hasil26);
 
                             $_sql27="select (pembagian_akte.persen/100)*set_akte.bagian_kry
                                 from pembagian_akte,set_akte  where pembagian_akte.id='$baris[0]'
 			        and set_akte.tahun='".$tahun."' and set_akte.bulan='".$bulanindex."'";
 			    $hasil27=bukaquery($_sql27);
-			    $baris27 = mysql_fetch_array($hasil27);
+			    $baris27 = mysqli_fetch_array($hasil27);
 
                             $_sql28="select (pembagian_resume.persen/100)*set_resume.pendapatan_resume
                                 from pembagian_resume,set_resume  where pembagian_resume.id='$baris[0]'
 			        and set_resume.tahun='".$tahun."' and set_resume.bulan='".$bulanindex."'";
 			    $hasil28=bukaquery($_sql28);
-			    $baris28 = mysql_fetch_array($hasil28);
+			    $baris28 = mysqli_fetch_array($hasil28);
 
                             $_sql29="select (pembagian_tuslah.persen/100)*set_tuslah.bagian_kry
                                 from pembagian_tuslah,set_tuslah  where pembagian_tuslah.id='$baris[0]'
 			        and set_tuslah.tahun='".$tahun."' and set_tuslah.bulan='".$bulanindex."'";
 			    $hasil29=bukaquery($_sql29);
-			    $baris29 = mysql_fetch_array($hasil29);
+			    $baris29 = mysqli_fetch_array($hasil29);
 
                             $_sql31="SELECT ($ttlindex/sum(indextotal.ttl))*set_warung.bagian_kry
                                 from indextotal,set_warung,pembagian_warung where pembagian_warung.id='$baris[0]'
                                 and set_warung.tahun='$tahun' and set_warung.bulan='$bulanindex'
                                 and indextotal.kdindex='$baris[6]'";
 			    $hasil31=bukaquery($_sql31);
-			    $baris31 = mysql_fetch_array($hasil31);
+			    $baris31 = mysqli_fetch_array($hasil31);
                             
 
 			    $jl   = $baris26[0]+$baris27[0]+$baris28[0]+$baris29[0]+$baris31[0];
@@ -569,7 +569,7 @@ print isset($header)?$header:NULL;*/
                                                  </tr>";
 				         $hasil30=bukaquery($_sql30);
                                          $x=1;
-				         while($baris30 = mysql_fetch_array($hasil30)) {
+				         while($baris30 = mysqli_fetch_array($hasil30)) {
 					     echo "<TR class='isi6'>
                                                    <td>$x</td>
                                                    <td>".substr($baris30[0],0,10)."</td>
@@ -592,7 +592,7 @@ print isset($header)?$header:NULL;*/
 					 and pnm_tnj_harian.id='$baris[0]'";
 					 $hasil16=bukaquery($_sql16);
                                          $tnjtnj=0;
-                                         while($baris16 = mysql_fetch_array($hasil16)) {
+                                         while($baris16 = mysqli_fetch_array($hasil16)) {
                                                 $tnjtnj=$tnjtnj+($ttln*$baris16[1]);
                                          }
                                          
@@ -607,7 +607,7 @@ print isset($header)?$header:NULL;*/
 					     and pnm_tnj_bulanan.id='$baris[0]'";
                                             $hasil50=bukaquery($_sql50);
                                             $tnjtnjbln=0;
-                                            while($baris50 = mysql_fetch_array($hasil50)) {
+                                            while($baris50 = mysqli_fetch_array($hasil50)) {
                                                 $tnjtnjbln=$tnjtnjbln+$baris50[1];
                                                 echo "<tr class='isi6'>
                                                 <td width='130px'>$baris50[0]</td><td width='3px'>:</td><td width='140px'> ".formatDuit($baris50[1])."</td></tr>";
@@ -640,7 +640,7 @@ print isset($header)?$header:NULL;*/
 
                                             }
                                             $hasil23=bukaquery($_sql23);
-                                            $baris23 = mysql_fetch_array($hasil23);
+                                            $baris23 = mysqli_fetch_array($hasil23);
                                             $ttlinsentif=$baris23[0];
                                             $ttlttlinsentif=$ttlttlinsentif+$ttlinsentif;
                                             $jmltmb=$ttlinsentif+$jm+$jl;
@@ -656,7 +656,7 @@ print isset($header)?$header:NULL;*/
                                               and tgl like '%".$tahun."-".$bulan."%'
                                               group by tindakan.tnd ";
 				         $hasil30=bukaquery($_sql30);
-				         while($baris30 = mysql_fetch_array($hasil30)) {
+				         while($baris30 = mysqli_fetch_array($hasil30)) {
 					     //echo "<tr class='isi6'><td width='130px'>&nbsp;&nbsp;- $baris30[0]</td><td width='3px'>:</td><td width='140px'>&nbsp;$baris30[2]&nbsp; ".formatDuit($baris30[1])."</td></tr>";
 				         }
                                 echo" <TR class='isi6'>
@@ -680,7 +680,7 @@ print isset($header)?$header:NULL;*/
                                                 where potongan.id='$baris[0]' and
                                                 potongan.tahun='$tahun' and potongan.bulan='$bulanindex' ";
                                         $hasil25=bukaquery($_sql25);
-                                        $baris25 = mysql_fetch_array($hasil25);
+                                        $baris25 = mysqli_fetch_array($hasil25);
                                         $jamsostek   = $baris25[0];
                                         $dansos      = $baris25[1];
                                         $simwajib    = $baris25[2];
@@ -833,7 +833,7 @@ print isset($header)?$header:NULL;*/
 				         $hasil30=bukaquery($_sql30);
                                          $x=1;
                                          $jmrj=0;
-				         while($baris30 = mysql_fetch_array($hasil30)) {
+				         while($baris30 = mysqli_fetch_array($hasil30)) {
 					     echo "<TR class='isi6'>
                                                    <td>$x</td>
                                                    <td>".substr($baris30[0],0,10)."</td>

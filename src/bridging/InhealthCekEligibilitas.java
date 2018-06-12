@@ -47,7 +47,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
-import simrskhanza.DlgCariDokter;
+import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPenyakit;
 import simrskhanza.DlgKabupaten;
 import simrskhanza.DlgKecamatan;
@@ -85,7 +85,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",
-            kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="";
+            kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",status="Baru";
     private PreparedStatement ps,pskelengkapan,pscariumur;
     private ResultSet rs;
     private double biaya=0;
@@ -717,7 +717,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2017" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -806,7 +806,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Eligibilitas Peserta Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Eligibilitas Peserta Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -842,7 +842,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(560, 168));
         FormInput.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
-        FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        FormKelengkapanPasien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         FormKelengkapanPasien.setName("FormKelengkapanPasien"); // NOI18N
         FormKelengkapanPasien.setOpaque(false);
         FormKelengkapanPasien.setPreferredSize(new java.awt.Dimension(1000, 275));
@@ -989,7 +989,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
 
         DTPDaftar.setEditable(false);
         DTPDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2017" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -1426,7 +1426,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
 
         FormInput.add(FormKelengkapanPasien);
 
-        FormKelengkapanSEP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), "::[ Kelengkapan Data SJP, Registrasi & Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        FormKelengkapanSEP.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), "::[ Kelengkapan Data SJP, Registrasi & Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         FormKelengkapanSEP.setName("FormKelengkapanSEP"); // NOI18N
         FormKelengkapanSEP.setOpaque(false);
         FormKelengkapanSEP.setPreferredSize(new java.awt.Dimension(1000, 217));
@@ -1450,7 +1450,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         jLabel23.setBounds(430, 55, 100, 23);
 
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2017 10:31:49" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018 00:58:54" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -1470,7 +1470,7 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         jLabel30.setBounds(430, 25, 100, 23);
 
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-08-2017 10:31:49" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018 00:58:54" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -3404,33 +3404,72 @@ public final class InhealthCekEligibilitas extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
+        
+        status=Sequel.cariIsi("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='"+TNo.getText()+"' and kd_poli='"+kdpoli.getText()+"')>0,'Lama','Baru' )");
         if((JenisPelayanan.getSelectedIndex()==0)||(JenisPelayanan.getSelectedIndex()==2)){
             isNumber();
-            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,
+            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                     new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),TanggalSEP.getSelectedItem().toString().substring(11,19),
                     kddokter.getText(),TNo.getText(),kdpoli.getText(),Saudara.getText(),AlamatPj.getText()+", "+KelurahanPj.getText()+", "+KecamatanPj.getText()+", "+KabupatenPj.getText(),
-                    klg,TBiaya.getText(),"Belum","Lama","Ralan",Kdpnj.getText(),umur,sttsumur
+                    klg,TBiaya.getText(),"Belum","Lama","Ralan",Kdpnj.getText(),umur,sttsumur,"Belum Bayar",status
                 })==true){
                     UpdateUmur();
                     Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");             
                     Sequel.menyimpan2("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
-                    Sequel.menyimpan2("diagnosa_pasien","?,?,?,?","Penyakit",4,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1"});
-                    Sequel.menyimpan2("diagnosa_pasien","?,?,?,?","Penyakit",4,new String[]{TNoRw.getText(),KdPenyakit2.getText(),"Ralan","2"});
+                    if(Sequel.cariInteger(
+                            "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
+                            "inner join reg_periksa inner join pasien on "+
+                            "diagnosa_pasien.no_rawat=reg_periksa.no_rawat and "+
+                            "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                            "pasien.no_rkm_medis='"+TNo.getText()+"' and diagnosa_pasien.kd_penyakit='"+KdPenyakit.getText()+"'")>0){
+                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Lama"});
+                    }else{
+                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Baru"});
+                    }
+                    if(Sequel.cariInteger(
+                            "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
+                            "inner join reg_periksa inner join pasien on "+
+                            "diagnosa_pasien.no_rawat=reg_periksa.no_rawat and "+
+                            "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                            "pasien.no_rkm_medis='"+TNo.getText()+"' and diagnosa_pasien.kd_penyakit='"+KdPenyakit2.getText()+"'")>0){
+                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit2.getText(),"Ralan","2","Lama"});
+                    }else{
+                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit2.getText(),"Ralan","2","Baru"});
+                    }
                     insertSJP();
             }
         }else if((JenisPelayanan.getSelectedIndex()==1)||(JenisPelayanan.getSelectedIndex()==3)){
             isNumber();
             Sequel.menyimpan("poliklinik","?,?,?,?",4,new String[]{"IGDK","Unit IGD","0","0"});
-            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,
+            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                     new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),TanggalSEP.getSelectedItem().toString().substring(11,19),
                     kddokter.getText(),TNo.getText(),"IGDK",Saudara.getText(),AlamatPj.getText()+", "+KelurahanPj.getText()+", "+KecamatanPj.getText()+", "+KabupatenPj.getText(),
-                    klg,Sequel.cariIsi("select registrasilama from poliklinik where kd_poli='IGDK'"),"Belum","Lama","Ralan",Kdpnj.getText(),umur,sttsumur
+                    klg,Sequel.cariIsi("select registrasilama from poliklinik where kd_poli='IGDK'"),"Belum","Lama","Ralan",Kdpnj.getText(),umur,sttsumur,"Belum Bayar",status
                 })==true){
                     UpdateUmur();
                     Sequel.menyimpan2("rujuk_masuk","'"+TNoRw.getText()+"','"+NmPpkRujukan.getText()+"','"+Kabupaten.getText()+"','"+NoRujukan.getText()+"','0','"+NmPPK.getText()+"','"+KdPenyakit.getText()+"','-','-','"+NoBalasan.getText()+"'","No.Rujuk");                                     
                     Sequel.menyimpan2("penyakit","?,?,?,?,?,?","Penyakit",6,new String[]{KdPenyakit.getText(),NmPenyakit.getText(),NmPenyakit.getText(),"-","-","Tidak Menular"});
-                    Sequel.menyimpan2("diagnosa_pasien","?,?,?,?","Penyakit",4,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1"});
-                    Sequel.menyimpan2("diagnosa_pasien","?,?,?,?","Penyakit",4,new String[]{TNoRw.getText(),KdPenyakit2.getText(),"Ralan","2"});                            
+                    if(Sequel.cariInteger(
+                            "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
+                            "inner join reg_periksa inner join pasien on "+
+                            "diagnosa_pasien.no_rawat=reg_periksa.no_rawat and "+
+                            "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                            "pasien.no_rkm_medis='"+TNo.getText()+"' and diagnosa_pasien.kd_penyakit='"+KdPenyakit.getText()+"'")>0){
+                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Lama"});
+                    }else{
+                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit.getText(),"Ralan","1","Baru"});
+                    }
+                    if(Sequel.cariInteger(
+                            "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien "+
+                            "inner join reg_periksa inner join pasien on "+
+                            "diagnosa_pasien.no_rawat=reg_periksa.no_rawat and "+
+                            "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                            "pasien.no_rkm_medis='"+TNo.getText()+"' and diagnosa_pasien.kd_penyakit='"+KdPenyakit2.getText()+"'")>0){
+                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit2.getText(),"Ralan","2","Lama"});
+                    }else{
+                        Sequel.menyimpan2("diagnosa_pasien","?,?,?,?,?","Penyakit",5,new String[]{TNoRw.getText(),KdPenyakit2.getText(),"Ralan","2","Baru"});
+                    }
+                    
                     if(Sequel.menyimpantf2("kamar_inap","'"+TNoRw.getText()+"','"+kdpoli.getText()+"','"+TBiaya.getText()+"','"+
                             KdPenyakit.getText()+"','-','"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"','"+
                             TanggalSEP.getSelectedItem().toString().substring(11,19)+"','0000-00-00',"+

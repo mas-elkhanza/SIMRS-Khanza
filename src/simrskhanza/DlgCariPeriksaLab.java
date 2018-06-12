@@ -1,4 +1,5 @@
 package simrskhanza;
+import kepegawaian.DlgCariPetugas;
 import keuangan.Jurnal;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -171,7 +172,8 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
                     "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
                     "and petugas.nip like ? and petugas.nama like ? or "+
                     "periksa_lab.tgl_periksa between ? and ? and periksa_lab.no_rawat like ? and reg_periksa.no_rkm_medis like ? "+
-                    "and petugas.nip like ? and reg_periksa.no_rkm_medis like ? group by concat(periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam)");
+                    "and petugas.nip like ? and reg_periksa.no_rkm_medis like ? group by concat(periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam) "+
+                    "order by periksa_lab.tgl_periksa,periksa_lab.jam");
             ps2=koneksi.prepareStatement(
                     "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,periksa_lab.biaya from periksa_lab inner join jns_perawatan_lab "+
                     "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw where periksa_lab.no_rawat=? and periksa_lab.tgl_periksa=? "+
@@ -182,9 +184,10 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
                     "where detail_periksa_lab.no_rawat=? and detail_periksa_lab.kd_jenis_prw=? and detail_periksa_lab.tgl_periksa=? and detail_periksa_lab.jam=?");
             ps4=koneksi.prepareStatement(
                     "select periksa_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,petugas.nama,DATE_FORMAT(periksa_lab.tgl_periksa,'%d-%m-%Y') as tgl_periksa,periksa_lab.jam,"+
-                    "periksa_lab.dokter_perujuk,periksa_lab.kd_dokter,pasien.alamat,dokter.nm_dokter,DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    " from periksa_lab inner join reg_periksa inner join pasien inner join petugas  inner join dokter "+
-                    "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.nip=petugas.nip and periksa_lab.kd_dokter=dokter.kd_dokter where "+
+                    "periksa_lab.dokter_perujuk,periksa_lab.kd_dokter,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,dokter.nm_dokter,DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    " from periksa_lab inner join reg_periksa inner join pasien inner join petugas  inner join dokter inner join kelurahan inner join kecamatan inner join kabupaten "+
+                    "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.nip=petugas.nip and periksa_lab.kd_dokter=dokter.kd_dokter "+
+                    "and pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where "+
                     "periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.no_rawat=? group by concat(periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam)");
         } catch (Exception e) {
             System.out.println(e);
@@ -239,6 +242,11 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         MnCetakHasilLab3 = new javax.swing.JMenuItem();
         MnCetakHasilLab4 = new javax.swing.JMenuItem();
         MnCetakHasilLab5 = new javax.swing.JMenuItem();
+        MnCetakHasilLab6 = new javax.swing.JMenuItem();
+        MnCetakHasilLab7 = new javax.swing.JMenuItem();
+        MnCetakHasilLab8 = new javax.swing.JMenuItem();
+        MnCetakHasilLab9 = new javax.swing.JMenuItem();
+        MnCetakHasilLab10 = new javax.swing.JMenuItem();
         MnCetakNota = new javax.swing.JMenuItem();
         MnUbah = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
@@ -276,7 +284,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab.setForeground(java.awt.Color.darkGray);
+        MnCetakHasilLab.setForeground(new java.awt.Color(90, 120, 80));
         MnCetakHasilLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab.setText("Cetak Hasil Lab Model 1");
         MnCetakHasilLab.setName("MnCetakHasilLab"); // NOI18N
@@ -290,7 +298,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab1.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab1.setForeground(java.awt.Color.darkGray);
+        MnCetakHasilLab1.setForeground(new java.awt.Color(90, 120, 80));
         MnCetakHasilLab1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab1.setText("Cetak Hasil Lab Model 2");
         MnCetakHasilLab1.setName("MnCetakHasilLab1"); // NOI18N
@@ -304,7 +312,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab2.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab2.setForeground(java.awt.Color.darkGray);
+        MnCetakHasilLab2.setForeground(new java.awt.Color(90, 120, 80));
         MnCetakHasilLab2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab2.setText("Cetak Hasil Lab Model 3");
         MnCetakHasilLab2.setName("MnCetakHasilLab2"); // NOI18N
@@ -318,7 +326,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab3.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab3.setForeground(java.awt.Color.darkGray);
+        MnCetakHasilLab3.setForeground(new java.awt.Color(90, 120, 80));
         MnCetakHasilLab3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab3.setText("Cetak Hasil Lab Model 4");
         MnCetakHasilLab3.setName("MnCetakHasilLab3"); // NOI18N
@@ -332,7 +340,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab4.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab4.setForeground(java.awt.Color.darkGray);
+        MnCetakHasilLab4.setForeground(new java.awt.Color(90, 120, 80));
         MnCetakHasilLab4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab4.setText("Cetak Hasil Lab Model 5");
         MnCetakHasilLab4.setName("MnCetakHasilLab4"); // NOI18N
@@ -346,7 +354,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab5.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab5.setForeground(java.awt.Color.darkGray);
+        MnCetakHasilLab5.setForeground(new java.awt.Color(90, 120, 80));
         MnCetakHasilLab5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab5.setText("Cetak Hasil Lab Model 6");
         MnCetakHasilLab5.setName("MnCetakHasilLab5"); // NOI18N
@@ -358,9 +366,79 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnCetakHasilLab5);
 
+        MnCetakHasilLab6.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakHasilLab6.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakHasilLab6.setText("Cetak Hasil Lab Model 7");
+        MnCetakHasilLab6.setName("MnCetakHasilLab6"); // NOI18N
+        MnCetakHasilLab6.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnCetakHasilLab6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakHasilLab6ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnCetakHasilLab6);
+
+        MnCetakHasilLab7.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakHasilLab7.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakHasilLab7.setText("Cetak Hasil Lab Model 8");
+        MnCetakHasilLab7.setName("MnCetakHasilLab7"); // NOI18N
+        MnCetakHasilLab7.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnCetakHasilLab7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakHasilLab7ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnCetakHasilLab7);
+
+        MnCetakHasilLab8.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab8.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakHasilLab8.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakHasilLab8.setText("Cetak Hasil Lab Model 9");
+        MnCetakHasilLab8.setName("MnCetakHasilLab8"); // NOI18N
+        MnCetakHasilLab8.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnCetakHasilLab8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakHasilLab8ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnCetakHasilLab8);
+
+        MnCetakHasilLab9.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakHasilLab9.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakHasilLab9.setText("Cetak Hasil Lab Model 10");
+        MnCetakHasilLab9.setName("MnCetakHasilLab9"); // NOI18N
+        MnCetakHasilLab9.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnCetakHasilLab9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakHasilLab9ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnCetakHasilLab9);
+
+        MnCetakHasilLab10.setBackground(new java.awt.Color(255, 255, 255));
+        MnCetakHasilLab10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakHasilLab10.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakHasilLab10.setText("Cetak Hasil Lab Model 11");
+        MnCetakHasilLab10.setName("MnCetakHasilLab10"); // NOI18N
+        MnCetakHasilLab10.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnCetakHasilLab10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakHasilLab10ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnCetakHasilLab10);
+
         MnCetakNota.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakNota.setForeground(java.awt.Color.darkGray);
+        MnCetakNota.setForeground(new java.awt.Color(90, 120, 80));
         MnCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakNota.setText("Cetak Nota Lab");
         MnCetakNota.setName("MnCetakNota"); // NOI18N
@@ -374,7 +452,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnUbah.setBackground(new java.awt.Color(255, 255, 255));
         MnUbah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUbah.setForeground(java.awt.Color.darkGray);
+        MnUbah.setForeground(new java.awt.Color(90, 120, 80));
         MnUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUbah.setText("Ubah Periksa Lab");
         MnUbah.setName("MnUbah"); // NOI18N
@@ -395,7 +473,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1037,7 +1115,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
         }else if(Kd2.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Gagal mencteak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mencetak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
         }else if(!(Kd2.getText().trim().equals(""))){    
             try {                
                 ps4.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
@@ -1067,7 +1145,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1117,7 +1195,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
-        }else {
+        }else if(Kd2.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mencetak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
+        }else if(!(Kd2.getText().trim().equals(""))){  
             try {
                 Sequel.AutoComitFalse();
                 ps4.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
@@ -1164,7 +1244,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
-        }else {
+        }else if(Kd2.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mengubah. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
+        }else if(!(Kd2.getText().trim().equals(""))){  
             DlgUbahPeriksaLab ubah=new DlgUbahPeriksaLab(null,false);
             ubah.setSize(this.getWidth()-40,this.getHeight()-40);
             ubah.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),
@@ -1212,7 +1294,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1289,7 +1371,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1367,7 +1449,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1445,7 +1527,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1523,7 +1605,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1564,6 +1646,396 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnCetakHasilLab5ActionPerformed
 
+    private void MnCetakHasilLab6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakHasilLab6ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(Kd2.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mencteak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
+        }else if(!(Kd2.getText().trim().equals(""))){    
+            try {                
+                ps4.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                ps4.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                ps4.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                rs=ps4.executeQuery();
+                while(rs.next()){
+                    Sequel.AutoComitFalse();
+                    kamar=Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat='"+rs.getString("no_rawat")+"' order by tgl_masuk desc limit 1");
+                    if(!kamar.equals("")){
+                        namakamar=kamar+", "+Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar on bangsal.kd_bangsal=kamar.kd_bangsal "+
+                                " where kamar.kd_kamar='"+kamar+"' ");            
+                        kamar="Kamar";
+                    }else if(kamar.equals("")){
+                        kamar="Poli";
+                        namakamar=Sequel.cariIsi("select nm_poli from poliklinik inner join reg_periksa on poliklinik.kd_poli=reg_periksa.kd_poli "+
+                                "where reg_periksa.no_rawat='"+rs.getString("no_rawat")+"'");
+                    }
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("noperiksa",rs.getString("no_rawat"));
+                    param.put("norm",rs.getString("no_rkm_medis"));
+                    param.put("namapasien",rs.getString("nm_pasien"));
+                    param.put("jkel",rs.getString("jk"));
+                    param.put("diagnosa",Sequel.cariIsi("select diagnosa_awal from kamar_inap where no_rawat=?",rs.getString("no_rawat")));
+                    param.put("umur",rs.getString("umur"));
+                    param.put("lahir",rs.getString("lahir"));
+                    param.put("pengirim",Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("dokter_perujuk")));
+                    param.put("tanggal",rs.getString("tgl_periksa"));
+                    param.put("penjab",rs.getString("nm_dokter"));
+                    param.put("petugas",rs.getString("nama"));
+                    param.put("jam",rs.getString("jam"));
+                    param.put("alamat",rs.getString("alamat"));
+                    param.put("kamar",kamar);
+                    param.put("namakamar",namakamar);
+                    
+                    Sequel.queryu("delete from temporary");
+                    
+                    ps2.setString(1,rs.getString("no_rawat"));
+                    ps2.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                    ps2.setString(3,rs.getString("jam"));
+                    rs2=ps2.executeQuery();
+                    while(rs2.next()){
+                        Sequel.menyimpan("temporary","'0','"+rs2.getString("nm_perawatan")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
+                        ps3.setString(1,rs.getString("no_rawat"));
+                        ps3.setString(2,rs2.getString("kd_jenis_prw"));
+                        ps3.setString(3,Valid.SetTgl(rs.getString("tgl_periksa")));
+                        ps3.setString(4,rs.getString("jam"));
+                        rs3=ps3.executeQuery();
+                        while(rs3.next()){
+                            Sequel.menyimpan("temporary","'0','  "+rs3.getString("Pemeriksaan")+"','"+rs3.getString("nilai")+"','"+rs3.getString("satuan")
+                                    +"','"+rs3.getString("nilai_rujukan")+"','"+rs3.getString("keterangan")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
+                        }
+                    }
+                    Sequel.AutoComitTrue();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    Valid.MyReport("rptPeriksaLab7.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
+                                   "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc",param);            
+                    
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }            
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnCetakHasilLab6ActionPerformed
+
+    private void MnCetakHasilLab7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakHasilLab7ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(Kd2.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mencteak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
+        }else if(!(Kd2.getText().trim().equals(""))){    
+            try {                
+                ps4.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                ps4.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                ps4.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                rs=ps4.executeQuery();
+                while(rs.next()){
+                    Sequel.AutoComitFalse();
+                    kamar=Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat='"+rs.getString("no_rawat")+"' order by tgl_masuk desc limit 1");
+                    if(!kamar.equals("")){
+                        namakamar=kamar+", "+Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar on bangsal.kd_bangsal=kamar.kd_bangsal "+
+                                " where kamar.kd_kamar='"+kamar+"' ");            
+                        kamar="Kamar";
+                    }else if(kamar.equals("")){
+                        kamar="Poli";
+                        namakamar=Sequel.cariIsi("select nm_poli from poliklinik inner join reg_periksa on poliklinik.kd_poli=reg_periksa.kd_poli "+
+                                "where reg_periksa.no_rawat='"+rs.getString("no_rawat")+"'");
+                    }
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("noperiksa",rs.getString("no_rawat"));
+                    param.put("norm",rs.getString("no_rkm_medis"));
+                    param.put("namapasien",rs.getString("nm_pasien"));
+                    param.put("jkel",rs.getString("jk"));
+                    param.put("umur",rs.getString("umur"));
+                    param.put("pekerjaan",Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?",rs.getString("no_rkm_medis")));
+                    param.put("noktp",Sequel.cariIsi("select no_ktp from pasien where no_rkm_medis=?",rs.getString("no_rkm_medis")));
+                    param.put("lahir",rs.getString("lahir"));
+                    param.put("pengirim",Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("dokter_perujuk")));
+                    param.put("tanggal",rs.getString("tgl_periksa"));
+                    param.put("penjab",rs.getString("nm_dokter"));
+                    param.put("petugas",rs.getString("nama"));
+                    param.put("jam",rs.getString("jam"));
+                    param.put("alamat",rs.getString("alamat"));
+                    param.put("kamar",kamar);
+                    param.put("namakamar",namakamar);
+                    
+                    Sequel.queryu("delete from temporary");
+                    
+                    ps2.setString(1,rs.getString("no_rawat"));
+                    ps2.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                    ps2.setString(3,rs.getString("jam"));
+                    rs2=ps2.executeQuery();
+                    while(rs2.next()){
+                        Sequel.menyimpan("temporary","'0','"+rs2.getString("nm_perawatan")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
+                        ps3.setString(1,rs.getString("no_rawat"));
+                        ps3.setString(2,rs2.getString("kd_jenis_prw"));
+                        ps3.setString(3,Valid.SetTgl(rs.getString("tgl_periksa")));
+                        ps3.setString(4,rs.getString("jam"));
+                        rs3=ps3.executeQuery();
+                        while(rs3.next()){
+                            Sequel.menyimpan("temporary","'0','  "+rs3.getString("Pemeriksaan")+"','"+rs3.getString("nilai")+"','"+rs3.getString("satuan")
+                                    +"','"+rs3.getString("nilai_rujukan")+"','"+rs3.getString("keterangan")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
+                        }
+                    }
+                    Sequel.AutoComitTrue();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    Valid.MyReport("rptPeriksaLab8.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
+                                   "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc",param);            
+                    
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }            
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnCetakHasilLab7ActionPerformed
+
+    private void MnCetakHasilLab8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakHasilLab8ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(Kd2.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mencetak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
+        }else if(!(Kd2.getText().trim().equals(""))){    
+            try {                
+                ps4.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                ps4.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                ps4.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                rs=ps4.executeQuery();
+                while(rs.next()){
+                    Sequel.AutoComitFalse();
+                    kamar=Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat='"+rs.getString("no_rawat")+"' order by tgl_masuk desc limit 1");
+                    if(!kamar.equals("")){
+                        namakamar=kamar+", "+Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar on bangsal.kd_bangsal=kamar.kd_bangsal "+
+                                " where kamar.kd_kamar='"+kamar+"' ");            
+                        kamar="Kamar";
+                    }else if(kamar.equals("")){
+                        kamar="Poli";
+                        namakamar=Sequel.cariIsi("select nm_poli from poliklinik inner join reg_periksa on poliklinik.kd_poli=reg_periksa.kd_poli "+
+                                "where reg_periksa.no_rawat='"+rs.getString("no_rawat")+"'");
+                    }
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("noperiksa",rs.getString("no_rawat"));
+                    param.put("norm",rs.getString("no_rkm_medis"));
+                    param.put("namapasien",rs.getString("nm_pasien"));
+                    param.put("jkel",rs.getString("jk"));
+                    param.put("umur",rs.getString("umur"));
+                    param.put("pengirim",Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("dokter_perujuk")));
+                    param.put("tanggal",rs.getString("tgl_periksa"));
+                    param.put("penjab",rs.getString("nm_dokter"));
+                    param.put("petugas",rs.getString("nama"));
+                    param.put("jam",rs.getString("jam"));
+                    param.put("alamat",rs.getString("alamat"));
+                    param.put("kamar",kamar);
+                    param.put("namakamar",namakamar);
+                    
+                    Sequel.queryu("delete from temporary");
+                    
+                    ps2.setString(1,rs.getString("no_rawat"));
+                    ps2.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                    ps2.setString(3,rs.getString("jam"));
+                    rs2=ps2.executeQuery();
+                    while(rs2.next()){
+                        Sequel.menyimpan("temporary","'0','"+rs2.getString("nm_perawatan")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
+                        ps3.setString(1,rs.getString("no_rawat"));
+                        ps3.setString(2,rs2.getString("kd_jenis_prw"));
+                        ps3.setString(3,Valid.SetTgl(rs.getString("tgl_periksa")));
+                        ps3.setString(4,rs.getString("jam"));
+                        rs3=ps3.executeQuery();
+                        while(rs3.next()){
+                            Sequel.menyimpan("temporary","'0','  "+rs3.getString("Pemeriksaan")+"','"+rs3.getString("nilai")+"','"+rs3.getString("satuan")
+                                    +"','"+rs3.getString("nilai_rujukan")+"','"+rs3.getString("keterangan")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
+                        }
+                    }
+                    Sequel.AutoComitTrue();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    Valid.MyReport("rptPeriksaLab9.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
+                                   "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc",param);            
+                    
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }            
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnCetakHasilLab8ActionPerformed
+
+    private void MnCetakHasilLab9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakHasilLab9ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(Kd2.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mencteak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
+        }else if(!(Kd2.getText().trim().equals(""))){    
+            try {                
+                ps4.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                ps4.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                ps4.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                rs=ps4.executeQuery();
+                while(rs.next()){
+                    Sequel.AutoComitFalse();
+                    kamar=Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat='"+rs.getString("no_rawat")+"' order by tgl_masuk desc limit 1");
+                    if(!kamar.equals("")){
+                        namakamar=kamar+", "+Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar on bangsal.kd_bangsal=kamar.kd_bangsal "+
+                                " where kamar.kd_kamar='"+kamar+"' ");            
+                        kamar="Kamar";
+                    }else if(kamar.equals("")){
+                        kamar="Poli";
+                        namakamar=Sequel.cariIsi("select nm_poli from poliklinik inner join reg_periksa on poliklinik.kd_poli=reg_periksa.kd_poli "+
+                                "where reg_periksa.no_rawat='"+rs.getString("no_rawat")+"'");
+                    }
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("noperiksa",rs.getString("no_rawat"));
+                    param.put("norm",rs.getString("no_rkm_medis"));
+                    param.put("namapasien",rs.getString("nm_pasien"));
+                    param.put("jkel",rs.getString("jk"));
+                    param.put("umur",rs.getString("umur"));
+                    param.put("pengirim",Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("dokter_perujuk")));
+                    param.put("tanggal",rs.getString("tgl_periksa"));
+                    param.put("penjab",rs.getString("nm_dokter"));
+                    param.put("petugas",rs.getString("nama"));
+                    param.put("jam",rs.getString("jam"));
+                    param.put("alamat",rs.getString("alamat"));
+                    param.put("kamar",kamar);
+                    param.put("namakamar",namakamar);
+                    
+                    Sequel.queryu("delete from temporary");
+                    
+                    ps2.setString(1,rs.getString("no_rawat"));
+                    ps2.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                    ps2.setString(3,rs.getString("jam"));
+                    rs2=ps2.executeQuery();
+                    while(rs2.next()){
+                        Sequel.menyimpan("temporary","'0','"+rs2.getString("nm_perawatan")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
+                        ps3.setString(1,rs.getString("no_rawat"));
+                        ps3.setString(2,rs2.getString("kd_jenis_prw"));
+                        ps3.setString(3,Valid.SetTgl(rs.getString("tgl_periksa")));
+                        ps3.setString(4,rs.getString("jam"));
+                        rs3=ps3.executeQuery();
+                        while(rs3.next()){
+                            Sequel.menyimpan("temporary","'0','  "+rs3.getString("Pemeriksaan")+"','"+rs3.getString("nilai")+"','"+rs3.getString("satuan")
+                                    +"','"+rs3.getString("nilai_rujukan")+"','"+rs3.getString("keterangan")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
+                        }
+                    }
+                    Sequel.AutoComitTrue();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    Valid.MyReport("rptPeriksaLab10.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
+                                   "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc",param);            
+                    
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }            
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnCetakHasilLab9ActionPerformed
+
+    private void MnCetakHasilLab10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakHasilLab10ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+            TCari.requestFocus();
+        }else if(Kd2.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mencteak. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
+        }else if(!(Kd2.getText().trim().equals(""))){    
+            try {                
+                ps4.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                ps4.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                ps4.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                rs=ps4.executeQuery();
+                while(rs.next()){
+                    Sequel.AutoComitFalse();
+                    kamar=Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat='"+rs.getString("no_rawat")+"' order by tgl_masuk desc limit 1");
+                    if(!kamar.equals("")){
+                        namakamar=kamar+", "+Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar on bangsal.kd_bangsal=kamar.kd_bangsal "+
+                                " where kamar.kd_kamar='"+kamar+"' ");            
+                        kamar="Kamar";
+                    }else if(kamar.equals("")){
+                        kamar="Poli";
+                        namakamar=Sequel.cariIsi("select nm_poli from poliklinik inner join reg_periksa on poliklinik.kd_poli=reg_periksa.kd_poli "+
+                                "where reg_periksa.no_rawat='"+rs.getString("no_rawat")+"'");
+                    }
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("noperiksa",rs.getString("no_rawat"));
+                    param.put("norm",rs.getString("no_rkm_medis"));
+                    param.put("namapasien",rs.getString("nm_pasien"));
+                    param.put("jkel",rs.getString("jk"));
+                    param.put("umur",rs.getString("umur"));
+                    param.put("pengirim",Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs.getString("dokter_perujuk")));
+                    param.put("tanggal",rs.getString("tgl_periksa"));
+                    param.put("penjab",rs.getString("nm_dokter"));
+                    param.put("petugas",rs.getString("nama"));
+                    param.put("jam",rs.getString("jam"));
+                    param.put("alamat",rs.getString("alamat"));
+                    param.put("kamar",kamar);
+                    param.put("namakamar",namakamar);
+                    
+                    Sequel.queryu("delete from temporary");
+                    
+                    ps2.setString(1,rs.getString("no_rawat"));
+                    ps2.setString(2,Valid.SetTgl(rs.getString("tgl_periksa")));
+                    ps2.setString(3,rs.getString("jam"));
+                    rs2=ps2.executeQuery();
+                    while(rs2.next()){
+                        Sequel.menyimpan("temporary","'0','"+rs2.getString("nm_perawatan")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
+                        ps3.setString(1,rs.getString("no_rawat"));
+                        ps3.setString(2,rs2.getString("kd_jenis_prw"));
+                        ps3.setString(3,Valid.SetTgl(rs.getString("tgl_periksa")));
+                        ps3.setString(4,rs.getString("jam"));
+                        rs3=ps3.executeQuery();
+                        while(rs3.next()){
+                            Sequel.menyimpan("temporary","'0','  "+rs3.getString("Pemeriksaan")+"','"+rs3.getString("nilai")+"','"+rs3.getString("satuan")
+                                    +"','"+rs3.getString("nilai_rujukan")+"','"+rs3.getString("keterangan")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Data User"); 
+                        }
+                    }
+                    Sequel.AutoComitTrue();
+                    param.put("namars",var.getnamars());
+                    param.put("alamatrs",var.getalamatrs());
+                    param.put("kotars",var.getkabupatenrs());
+                    param.put("propinsirs",var.getpropinsirs());
+                    param.put("kontakrs",var.getkontakrs());
+                    param.put("emailrs",var.getemailrs());   
+                    param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    Valid.MyReport("rptPeriksaLab11.jrxml","report","::[ Pemeriksaan Laboratorium ]::",
+                                   "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary order by no asc",param);            
+                    
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }            
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnCetakHasilLab10ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1589,10 +2061,15 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.TextBox Kd2;
     private javax.swing.JMenuItem MnCetakHasilLab;
     private javax.swing.JMenuItem MnCetakHasilLab1;
+    private javax.swing.JMenuItem MnCetakHasilLab10;
     private javax.swing.JMenuItem MnCetakHasilLab2;
     private javax.swing.JMenuItem MnCetakHasilLab3;
     private javax.swing.JMenuItem MnCetakHasilLab4;
     private javax.swing.JMenuItem MnCetakHasilLab5;
+    private javax.swing.JMenuItem MnCetakHasilLab6;
+    private javax.swing.JMenuItem MnCetakHasilLab7;
+    private javax.swing.JMenuItem MnCetakHasilLab8;
+    private javax.swing.JMenuItem MnCetakHasilLab9;
     private javax.swing.JMenuItem MnCetakNota;
     private javax.swing.JMenuItem MnUbah;
     private widget.TextBox NoRawat;

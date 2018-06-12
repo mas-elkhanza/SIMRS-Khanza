@@ -34,11 +34,6 @@ import javax.swing.JTable;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import inventory.DlgCariKonversi;
-import inventory.DlgCariObat;
-import inventory.DlgCariObat2;
-import inventory.DlgCariObat3;
-import inventory.riwayatobat;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -48,9 +43,9 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.event.DocumentEvent;
 import keuangan.Jurnal;
+import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgCariObatPenyakit;
 import simrskhanza.DlgPasien;
-import simrskhanza.DlgResepObat;
 
 /**
  *
@@ -70,14 +65,15 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private DlgPasien pasien=new DlgPasien(null,false);
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private Date date = new Date();
-    private String now=dateFormat.format(date),bangsal="",tgl="",pas="",sql="",status="",statussimpan="";
+    private String now=dateFormat.format(date),bangsal="",lokasi="",tgl="",pas="",sql="",status="",statussimpan="";
     private PreparedStatement ps,psrekening;
     private ResultSet rs,rsrekening;
     private double embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),ttljual,ttlhpp;
     private double tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
-    private String statusberi="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
+    private String kodedokter="",namadokter="",statusberi="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
     private Jurnal jur=new Jurnal();
-
+    private DlgCariBangsal depo = new DlgCariBangsal(null, false);
+    
     /** Creates new form DlgPemberianObat
      * @param parent
      * @param modal */
@@ -140,10 +136,6 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             }
         }
         tbPemberianObat.setDefaultRenderer(Object.class, new WarnaTable());
-
-
-        this.setLocation(8,1);
-        setSize(885,674);
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         TKdOb.setDocument(new batasInput((byte)15).getKata(TKdOb));
@@ -288,7 +280,6 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-       
         
         pasien.addWindowListener(new WindowListener() {
             @Override
@@ -328,6 +319,36 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         }); 
+        
+        depo.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+
+            @Override
+            public void windowClosing(WindowEvent e) {}
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (depo.getTable().getSelectedRow() != -1) {
+                    lokasi=depo.getTable().getValueAt(depo.getTable().getSelectedRow(),0).toString();
+                    tampilPO2();
+                }
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                depo.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         
         ChkInput.setSelected(false);
         isForm(); 
@@ -373,6 +394,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         Popup2 = new javax.swing.JPopupMenu();
         ppResepObat = new javax.swing.JMenuItem();
         ppNoRawat = new javax.swing.JMenuItem();
+        ppLokasi = new javax.swing.JMenuItem();
         THBeli = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -437,7 +459,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         ppResepObat.setBackground(new java.awt.Color(255, 255, 255));
         ppResepObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppResepObat.setForeground(new java.awt.Color(102, 51, 0));
+        ppResepObat.setForeground(new java.awt.Color(90, 120, 80));
         ppResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppResepObat.setText("Buat Nomor Resep Obat");
         ppResepObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -454,7 +476,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         ppNoRawat.setBackground(new java.awt.Color(255, 255, 255));
         ppNoRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppNoRawat.setForeground(new java.awt.Color(102, 51, 0));
+        ppNoRawat.setForeground(new java.awt.Color(90, 120, 80));
         ppNoRawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppNoRawat.setText("Rekap Per No.Rawat");
         ppNoRawat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -469,6 +491,23 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         });
         Popup2.add(ppNoRawat);
 
+        ppLokasi.setBackground(new java.awt.Color(255, 255, 255));
+        ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppLokasi.setForeground(new java.awt.Color(90, 120, 80));
+        ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppLokasi.setText("Tampilkan Per Asal Stok");
+        ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppLokasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppLokasi.setIconTextGap(8);
+        ppLokasi.setName("ppLokasi"); // NOI18N
+        ppLokasi.setPreferredSize(new java.awt.Dimension(180, 25));
+        ppLokasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppLokasiBtnPrintActionPerformed(evt);
+            }
+        });
+        Popup2.add(ppLokasi);
+
         THBeli.setText("0");
         THBeli.setHighlighter(null);
         THBeli.setName("THBeli"); // NOI18N
@@ -477,7 +516,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Pemberian Obat/Barang/Alkes/Perlengkapan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Pemberian Obat/Barang/Alkes/Perlengkapan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -661,7 +700,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-09-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -675,7 +714,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-09-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -815,7 +854,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-09-2017" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-06-2018" }));
         DTPBeri.setDisplayFormat("dd-MM-yyyy");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -941,7 +980,6 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(605, 102, 90, 23);
 
-        ChkJln.setBackground(new java.awt.Color(235, 255, 235));
         ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
         ChkJln.setForeground(new java.awt.Color(153, 0, 51));
         ChkJln.setSelected(true);
@@ -1108,9 +1146,12 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                     dlgobt.setLocationRelativeTo(internalFrame1);
                     dlgobt.setVisible(true);
                 }else if(status.equals("ralan")){
-                    dlgobtjalan.setNoRm(TNoRw.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
+                    dlgobtjalan.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
                                         Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
                     dlgobtjalan.isCek();
+                    if(!namadokter.equals("")){
+                        dlgobtjalan.setDokter(kodedokter, namadokter);
+                    }
                     dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     dlgobtjalan.tampilobat();
                     dlgobtjalan.setLocationRelativeTo(internalFrame1);
@@ -1131,10 +1172,13 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                         dlgobt.setLocationRelativeTo(internalFrame1);
                         dlgobt.setVisible(true);
                     }else if(status.equals("ralan")){
-                        dlgobtjalan.setNoRm(TNoRw.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
+                        dlgobtjalan.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
                                             Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
                         dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                         dlgobtjalan.isCek();
+                        if(!namadokter.equals("")){
+                            dlgobtjalan.setDokter(kodedokter, namadokter);
+                        }
                         dlgobtjalan.tampilobat();
                         dlgobtjalan.setLocationRelativeTo(internalFrame1);
                         dlgobtjalan.setVisible(true);
@@ -1878,6 +1922,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppNoRawatActionPerformed
 
+    private void ppLokasiBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppLokasiBtnPrintActionPerformed
+        depo.isCek();
+        depo.setSize(internalFrame1.getWidth() - 40, internalFrame1.getHeight() - 40);
+        depo.setLocationRelativeTo(internalFrame1);
+        depo.setVisible(true);
+    }//GEN-LAST:event_ppLokasiBtnPrintActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1954,6 +2005,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private javax.swing.JSeparator jSeparator5;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
+    private javax.swing.JMenuItem ppLokasi;
     private javax.swing.JMenuItem ppNoRawat;
     private javax.swing.JMenuItem ppResepObat;
     private widget.Table tbPemberianObat;
@@ -1984,29 +2036,90 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Valid.tabelKosong(tabModePO);
         try{
             ps=koneksi.prepareStatement(sql);
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            ps.setString(4,"%"+TCari.getText().trim()+"%");
-            ps.setString(5,"%"+TCari.getText().trim()+"%");
-            ps.setString(6,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                Object[] data={rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               rs.getString(5),
-                               rs.getString(6),
-                               rs.getString(7),
-                               rs.getDouble(8),
-                               rs.getDouble(9),
-                               rs.getDouble(10),
-                               rs.getDouble(11),
-                               rs.getDouble(12),
-                               rs.getDouble(13),
-                               rs.getString(14)};
-                tabModePO.addRow(data);
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModePO.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getString(5),rs.getString(6),
+                        rs.getString(7),rs.getDouble(8),rs.getDouble(9),
+                        rs.getDouble(10),rs.getDouble(11),rs.getDouble(12),
+                        rs.getDouble(13),rs.getString(14)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        LCount.setText(""+tabModePO.getRowCount());
+    }
+    
+    public void tampilPO2() {
+        pas="";
+        if(!TCariPasien.getText().equals("")){
+           pas=" and reg_periksa.no_rkm_medis='"+TCariPasien.getText()+"' "; 
+        }
+        tgl=" detail_pemberian_obat.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and detail_pemberian_obat.kd_bangsal='"+lokasi+"' "+pas;        
+        sql="select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
+                   "detail_pemberian_obat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                   "detail_pemberian_obat.kode_brng,databarang.nama_brng,detail_pemberian_obat.embalase,detail_pemberian_obat.tuslah,"+
+                   "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.total,detail_pemberian_obat.h_beli,detail_pemberian_obat.kd_bangsal "+
+                   "from detail_pemberian_obat inner join reg_periksa inner join pasien inner join databarang "+
+                   "on detail_pemberian_obat.no_rawat=reg_periksa.no_rawat "+
+                   "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                   "and detail_pemberian_obat.kode_brng=databarang.kode_brng "+
+                   "where "+tgl+" and tgl_perawatan like ? or "+
+                   tgl+"and detail_pemberian_obat.no_rawat like ? or "+
+                   tgl+"and reg_periksa.no_rkm_medis like ? or "+
+                   tgl+"and pasien.nm_pasien like ? or "+
+                   tgl+"and detail_pemberian_obat.kode_brng like ? or "+
+                   tgl+"and databarang.nama_brng like ? "+
+                   "order by detail_pemberian_obat.tgl_perawatan";
+        
+        Valid.tabelKosong(tabModePO);
+        try{
+            ps=koneksi.prepareStatement(sql);
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModePO.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),
+                        rs.getString(4),rs.getString(5),rs.getString(6),
+                        rs.getString(7),rs.getDouble(8),rs.getDouble(9),
+                        rs.getDouble(10),rs.getDouble(11),rs.getDouble(12),
+                        rs.getDouble(13),rs.getString(14)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
@@ -2158,5 +2271,9 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         new Timer(1000, taskPerformer).start();
     }
 
+    public void setDokter(String kodedokter,String namadokter){
+        this.kodedokter=kodedokter;
+        this.namadokter=namadokter;
+    }
 
 }

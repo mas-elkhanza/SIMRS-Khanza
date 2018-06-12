@@ -15,7 +15,6 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.event.KeyEvent;
@@ -24,12 +23,12 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JOptionPane;
+import java.util.Properties;
+import javax.swing.event.HyperlinkEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -41,9 +40,11 @@ import javax.swing.text.html.StyleSheet;
 public final class DlgResumePerawatan extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
+    private final Properties prop = new Properties(); 
     private validasi Valid=new validasi();
     private ResultSet rs,rs2,rs3,rs4,rshal;
     private String sql;
+    private StringBuilder htmlContent;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -92,17 +93,12 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
-        LoadHTML.setEditable(true);
-        LoadHTML2.setEditable(true);
-        LoadHTML3.setEditable(true);        
-        LoadHTML4.setEditable(true);        
-        LoadHTML5.setEditable(true);        
-        LoadHTML6.setEditable(true);        
-        LoadHTML7.setEditable(true);        
-        LoadHTML8.setEditable(true);        
-        LoadHTML9.setEditable(true);        
-        LoadHTML10.setEditable(true);       
-        LoadHTML11.setEditable(true);
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+        } catch (Exception e) {
+            System.out.println("Resume : "+e);
+        }
+        
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditorKit(kit);
         LoadHTML2.setEditorKit(kit);
@@ -115,8 +111,10 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         LoadHTML9.setEditorKit(kit);
         LoadHTML10.setEditorKit(kit);
         LoadHTML11.setEditorKit(kit);
+        LoadHTML12.setEditorKit(kit);
+        
         StyleSheet styleSheet = kit.getStyleSheet();
-        styleSheet.addRule(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}");
+        styleSheet.addRule(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         LoadHTML2.setDocument(doc);
@@ -129,6 +127,142 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         LoadHTML9.setDocument(doc);
         LoadHTML10.setDocument(doc);
         LoadHTML11.setDocument(doc);
+        LoadHTML12.setDocument(doc);
+        LoadHTML.setEditable(false);
+        LoadHTML2.setEditable(false);
+        LoadHTML3.setEditable(false);
+        LoadHTML4.setEditable(false);
+        LoadHTML5.setEditable(false);
+        LoadHTML6.setEditable(false);
+        LoadHTML7.setEditable(false);
+        LoadHTML8.setEditable(false);
+        LoadHTML9.setEditable(false);
+        LoadHTML10.setEditable(false);
+        LoadHTML11.setEditable(false);
+        LoadHTML12.setEditable(false);
+        
+        LoadHTML.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML2.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML3.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              System.out.println(e.getURL());
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML4.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML5.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML6.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML7.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML8.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML9.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML10.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
+        LoadHTML11.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });  
+        
+        LoadHTML12.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        }); 
     }
     
     DlgPasien pasien=new DlgPasien(null,false);
@@ -193,25 +327,26 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         internalFrame12 = new widget.InternalFrame();
         Scroll10 = new widget.ScrollPane();
         LoadHTML11 = new widget.editorpane();
+        internalFrame13 = new widget.InternalFrame();
+        Scroll11 = new widget.ScrollPane();
+        LoadHTML12 = new widget.editorpane();
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
-        TKd.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume/Rincian Tindakan/Terapi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume/Rincian Tindakan/Terapi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelGlass5.setName("panelGlass5"); // NOI18N
         panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
-        panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         ChkTanggal.setBorder(null);
-        ChkTanggal.setForeground(new java.awt.Color(153, 0, 51));
         ChkTanggal.setText("Tgl.Rawat :");
         ChkTanggal.setBorderPainted(true);
         ChkTanggal.setBorderPaintedFlat(true);
@@ -352,9 +487,9 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -540,6 +675,22 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
 
         TabRawat.addTab("Riwayat Resep Pulang", internalFrame12);
 
+        internalFrame13.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame13.setBorder(null);
+        internalFrame13.setName("internalFrame13"); // NOI18N
+        internalFrame13.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll11.setName("Scroll11"); // NOI18N
+        Scroll11.setOpaque(true);
+
+        LoadHTML12.setBorder(null);
+        LoadHTML12.setName("LoadHTML12"); // NOI18N
+        Scroll11.setViewportView(LoadHTML12);
+
+        internalFrame13.add(Scroll11, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("Berkas Digital Perawatan", internalFrame13);
+
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -600,7 +751,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         try {
             File g = new File("file.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-            bg.write(".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}");
+            bg.write(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
             bg.close();
             
             File f = new File("resumemedis.html");            
@@ -720,6 +871,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             case 10:
                 tampil11();
                 break;
+            case 11:
+                tampil12();
+                break;
             default:
                 break;
         }
@@ -751,6 +905,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML10;
     private widget.editorpane LoadHTML11;
+    private widget.editorpane LoadHTML12;
     private widget.editorpane LoadHTML2;
     private widget.editorpane LoadHTML3;
     private widget.editorpane LoadHTML4;
@@ -762,6 +917,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll10;
+    private widget.ScrollPane Scroll11;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
@@ -779,6 +935,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.InternalFrame internalFrame10;
     private widget.InternalFrame internalFrame11;
     private widget.InternalFrame internalFrame12;
+    private widget.InternalFrame internalFrame13;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
@@ -797,7 +954,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             try {
                 rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -959,7 +1116,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td><td valign='top' width='24%' bgcolor='#f8fdf3'>Kode</td><td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#f8fdf3'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#fafff5'>No.</td><td valign='top' width='24%' bgcolor='#fafff5'>Kode</td><td valign='top' width='50%' bgcolor='#fafff5'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#fafff5'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -994,7 +1151,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td><td valign='top' width='24%' bgcolor='#f8fdf3'>Kode</td><td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#f8fdf3'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#fafff5'>No.</td><td valign='top' width='24%' bgcolor='#fafff5'>Kode</td><td valign='top' width='50%' bgcolor='#fafff5'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#fafff5'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -1018,9 +1175,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //menampilkan riwayat pemeriksaan ralan
                             try {
                                 rs3=koneksi.prepareStatement(
-                                        "select pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
+                                        "select pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,"+
                                         "pemeriksaan_ralan.tinggi,pemeriksaan_ralan.berat,pemeriksaan_ralan.gcs,pemeriksaan_ralan.keluhan, "+
-                                        "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi from pemeriksaan_ralan where "+
+                                        "pemeriksaan_ralan.pemeriksaan,pemeriksaan_ralan.alergi,pemeriksaan_ralan.imun_ke,pemeriksaan_ralan.rtl from pemeriksaan_ralan where "+
                                         "pemeriksaan_ralan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
                                 if(rs3.next()){
                                     htmlContent.append(
@@ -1030,18 +1187,16 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Suhu(C)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Tensi</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>GCS(E,V,M)</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#f8fdf3'>Keluhan</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#f8fdf3'>Pemeriksaan</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Alergi</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Suhu(C)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tensi</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>GCS(E,V,M)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Imunisasi Ke</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -1050,7 +1205,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("suhu_tubuh")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tensi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nadi")+"</td>"+
@@ -1058,10 +1213,278 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top'>"+rs3.getString("tinggi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("berat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("gcs")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("keluhan")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("pemeriksaan")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("alergi")+"</td>"+
-                                             "</tr>");                                        
+                                                "<td valign='top'>"+rs3.getString("imun_ke")+"</td>"+
+                                             "</tr>"); 
+                                        if(!rs3.getString("keluhan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Keluhan</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("keluhan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("pemeriksaan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Pemeriksaan</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("pemeriksaan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("alergi").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Alergi</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("alergi")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("rtl").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Tindak Lanjut</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("rtl")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                            
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //menampilkan riwayat pemeriksaan obstetri ralan
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select pemeriksaan_obstetri_ralan.tgl_perawatan,pemeriksaan_obstetri_ralan.jam_rawat,pemeriksaan_obstetri_ralan.tinggi_uteri,pemeriksaan_obstetri_ralan.janin,pemeriksaan_obstetri_ralan.letak, " +
+                                        "pemeriksaan_obstetri_ralan.panggul,pemeriksaan_obstetri_ralan.denyut,pemeriksaan_obstetri_ralan.kontraksi, " +
+                                        "pemeriksaan_obstetri_ralan.kualitas_mnt,pemeriksaan_obstetri_ralan.kualitas_dtk,pemeriksaan_obstetri_ralan.fluksus,pemeriksaan_obstetri_ralan.albus, " +
+                                        "pemeriksaan_obstetri_ralan.vulva,pemeriksaan_obstetri_ralan.portio,pemeriksaan_obstetri_ralan.dalam, pemeriksaan_obstetri_ralan.tebal, pemeriksaan_obstetri_ralan.arah, pemeriksaan_obstetri_ralan.pembukaan," +
+                                        "pemeriksaan_obstetri_ralan.penurunan, pemeriksaan_obstetri_ralan.denominator, pemeriksaan_obstetri_ralan.ketuban, pemeriksaan_obstetri_ralan.feto " +
+                                        "from pasien inner join reg_periksa inner join pemeriksaan_obstetri_ralan "+
+                                        "on pemeriksaan_obstetri_ralan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                                        "pemeriksaan_obstetri_ralan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pemeriksaan Obstetri Rawat Jalan</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                             "<tr align='center'>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tinggi Fundus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Janin</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Letak</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Panggul</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Denyut</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kontraksi</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Mnt</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Detik</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Fluksus</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Albus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Dalam</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tebal</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Arah</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Ketuban</td>"+
+                                                "<td valign='top' width='7%' bgcolor='#fafff5'>Feto</td>"+
+                                             "</tr>"
+                                    );
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tinggi_uteri")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("janin")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("letak")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("panggul")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("denyut")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kontraksi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kualitas_mnt")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kualitas_dtk")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("fluksus")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("albus")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("dalam")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tebal")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("arah")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("ketuban")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("feto")+"</td>"+
+                                             "</tr>"); 
+                                        if(!rs3.getString("vulva").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Vulva</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("vulva")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("portio").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Portio</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("portio")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("pembukaan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Pembukaan</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("pembukaan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("penurunan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Penurunan</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("penurunan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("denominator").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Denominator</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("denominator")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                            
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //menampilkan riwayat pemeriksaan genekologi ralan
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select pemeriksaan_ginekologi_ralan.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                        "pemeriksaan_ginekologi_ralan.tgl_perawatan,pemeriksaan_ginekologi_ralan.jam_rawat,pemeriksaan_ginekologi_ralan.inspeksi,pemeriksaan_ginekologi_ralan.inspeksi_vulva,pemeriksaan_ginekologi_ralan.inspekulo_gine, " +
+                                        "pemeriksaan_ginekologi_ralan.fluxus_gine,pemeriksaan_ginekologi_ralan.fluor_gine,pemeriksaan_ginekologi_ralan.vulva_inspekulo, " +
+                                        "pemeriksaan_ginekologi_ralan.portio_inspekulo,pemeriksaan_ginekologi_ralan.sondage,pemeriksaan_ginekologi_ralan.portio_dalam,pemeriksaan_ginekologi_ralan.bentuk, " +
+                                        "pemeriksaan_ginekologi_ralan.cavum_uteri,pemeriksaan_ginekologi_ralan.mobilitas,pemeriksaan_ginekologi_ralan.ukuran, pemeriksaan_ginekologi_ralan.nyeri_tekan, pemeriksaan_ginekologi_ralan.adnexa_kanan, pemeriksaan_ginekologi_ralan.adnexa_kiri," +
+                                        "pemeriksaan_ginekologi_ralan.cavum_douglas " +
+                                        "from pasien inner join reg_periksa inner join pemeriksaan_ginekologi_ralan "+
+                                        "on pemeriksaan_ginekologi_ralan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                                        "pemeriksaan_ginekologi_ralan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pemeriksaan Ginekologi Rawat Jalan</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                             "<tr align='center'>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                                "<td valign='top' width='80%' bgcolor='#fafff5'>Pemeriksaan</td>"+
+                                             "</tr>"
+                                    );
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
+                                                "<td valign='top'>"+
+                                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>Inspeksi</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("inspeksi")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Vulva/Uretra/Vagina</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("inspeksi_vulva")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>Inspekulo</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("inspekulo_gine")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Fluxus</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("fluxus_gine")+",&nbsp;&nbsp;Fluor Albus : "+rs3.getString("fluor_gine")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Vulva/Vagina</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("vulva_inspekulo")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Portio</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("portio_inspekulo")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Sondage</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("sondage")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>Pemeriksaan Dalam</td>"+
+                                                           "<td border='0' valign='top' width='70%'>:</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Portio</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("portio_dalam")+",&nbsp;&nbsp;Bentuk : "+rs3.getString("bentuk")+"</td>"+
+                                                        "</tr>"+   
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Cavum Uteri</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("cavum_uteri")+",&nbsp;&nbsp;Mobilitas : "+rs3.getString("mobilitas")+"</td>"+
+                                                        "</tr>"+ 
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;</td>"+
+                                                           "<td border='0' valign='top' width='70%'>&nbsp;&nbsp;&nbsp;Ukuran : "+rs3.getString("ukuran")+",&nbsp;&nbsp;Nyeri Tekan : "+rs3.getString("nyeri_tekan")+"</td>"+
+                                                        "</tr>"+ 
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Adnexa/Parametrium</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: Kanan : "+rs3.getString("adnexa_kanan")+",&nbsp;&nbsp;Kiri : "+rs3.getString("adnexa_kiri")+"</td>"+
+                                                        "</tr>"+ 
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Cavum Douglas</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("cavum_douglas")+"</td>"+
+                                                        "</tr>"+ 
+                                                    "</table>"+
+                                                "</td>"+
+                                             "</tr>");                                                                                     
                                         w++;
                                     }
                                     htmlContent.append(
@@ -1091,18 +1514,15 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                              "<tr align='center'>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Suhu(C)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Tensi</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Nadi(/menit)</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Respirasi(/menit)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Tinggi(Cm)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>Berat(Kg)</td>"+
-                                                "<td valign='top' width='5%' bgcolor='#f8fdf3'>GCS(E,V,M)</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#f8fdf3'>Keluhan</td>"+
-                                                "<td valign='top' width='15%' bgcolor='#f8fdf3'>Pemeriksaan</td>"+
-                                                "<td valign='top' width='10%' bgcolor='#f8fdf3'>Alergi</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Suhu(C)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tensi</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Nadi(/menit)</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Respirasi(/menit)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Tinggi(Cm)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Berat(Kg)</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>GCS(E,V,M)</td>"+
                                              "</tr>"
                                     );
                                     rs3.beforeFirst();
@@ -1119,10 +1539,38 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top'>"+rs3.getString("tinggi")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("berat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("gcs")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("keluhan")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("pemeriksaan")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("alergi")+"</td>"+
-                                             "</tr>");                                        
+                                             "</tr>");   
+                                        
+                                        if(!rs3.getString("keluhan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Keluhan</td>"+
+                                                    "<td valign='top' colspan='5'> : "+rs3.getString("keluhan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("pemeriksaan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Pemeriksaan</td>"+
+                                                    "<td valign='top' colspan='5'> : "+rs3.getString("pemeriksaan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("alergi").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Alergi</td>"+
+                                                    "<td valign='top' colspan='5'> : "+rs3.getString("alergi")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
                                         w++;
                                     }
                                     htmlContent.append(
@@ -1130,6 +1578,236 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "</td>"+
                                       "</tr>");
                                 }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //menampilkan riwayat pemeriksaan obstetri ranap
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select pemeriksaan_obstetri_ranap.tgl_perawatan,pemeriksaan_obstetri_ranap.jam_rawat,pemeriksaan_obstetri_ranap.tinggi_uteri,pemeriksaan_obstetri_ranap.janin,pemeriksaan_obstetri_ranap.letak, " +
+                                        "pemeriksaan_obstetri_ranap.panggul,pemeriksaan_obstetri_ranap.denyut,pemeriksaan_obstetri_ranap.kontraksi, " +
+                                        "pemeriksaan_obstetri_ranap.kualitas_mnt,pemeriksaan_obstetri_ranap.kualitas_dtk,pemeriksaan_obstetri_ranap.fluksus,pemeriksaan_obstetri_ranap.albus, " +
+                                        "pemeriksaan_obstetri_ranap.vulva,pemeriksaan_obstetri_ranap.portio,pemeriksaan_obstetri_ranap.dalam, pemeriksaan_obstetri_ranap.tebal, pemeriksaan_obstetri_ranap.arah, pemeriksaan_obstetri_ranap.pembukaan," +
+                                        "pemeriksaan_obstetri_ranap.penurunan, pemeriksaan_obstetri_ranap.denominator, pemeriksaan_obstetri_ranap.ketuban, pemeriksaan_obstetri_ranap.feto " +
+                                        "from pasien inner join reg_periksa inner join pemeriksaan_obstetri_ranap "+
+                                        "on pemeriksaan_obstetri_ranap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                                        "pemeriksaan_obstetri_ranap.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pemeriksaan Obstetri Rawat Inap</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                             "<tr align='center'>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tinggi Fundus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Janin</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Letak</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Panggul</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Denyut</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kontraksi</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Mnt</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Kualitas Detik</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Fluksus</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Albus</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Dalam</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Tebal</td>"+
+                                                "<td valign='top' width='6%' bgcolor='#fafff5'>Arah</td>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>Ketuban</td>"+
+                                                "<td valign='top' width='7%' bgcolor='#fafff5'>Feto</td>"+
+                                             "</tr>"
+                                    );
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tinggi_uteri")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("janin")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("letak")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("panggul")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("denyut")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kontraksi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kualitas_mnt")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kualitas_dtk")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("fluksus")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("albus")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("dalam")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tebal")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("arah")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("ketuban")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("feto")+"</td>"+
+                                             "</tr>"); 
+                                        if(!rs3.getString("vulva").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Vulva</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("vulva")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("portio").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Portio</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("portio")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("pembukaan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Pembukaan</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("pembukaan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("penurunan").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Penurunan</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("penurunan")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                        
+                                        if(!rs3.getString("denominator").equals("")){
+                                            htmlContent.append(
+                                                 "<tr>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' align='center'></td>"+
+                                                    "<td valign='top' colspan='2'>Denominator</td>"+
+                                                    "<td valign='top' colspan='13'> : "+rs3.getString("denominator")+"</td>"+
+                                                 "</tr>");
+                                        }
+                                            
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //menampilkan riwayat pemeriksaan genekologi ranap
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select pemeriksaan_ginekologi_ranap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                        "pemeriksaan_ginekologi_ranap.tgl_perawatan,pemeriksaan_ginekologi_ranap.jam_rawat,pemeriksaan_ginekologi_ranap.inspeksi,pemeriksaan_ginekologi_ranap.inspeksi_vulva,pemeriksaan_ginekologi_ranap.inspekulo_gine, " +
+                                        "pemeriksaan_ginekologi_ranap.fluxus_gine,pemeriksaan_ginekologi_ranap.fluor_gine,pemeriksaan_ginekologi_ranap.vulva_inspekulo, " +
+                                        "pemeriksaan_ginekologi_ranap.portio_inspekulo,pemeriksaan_ginekologi_ranap.sondage,pemeriksaan_ginekologi_ranap.portio_dalam,pemeriksaan_ginekologi_ranap.bentuk, " +
+                                        "pemeriksaan_ginekologi_ranap.cavum_uteri,pemeriksaan_ginekologi_ranap.mobilitas,pemeriksaan_ginekologi_ranap.ukuran, pemeriksaan_ginekologi_ranap.nyeri_tekan, pemeriksaan_ginekologi_ranap.adnexa_kanan, pemeriksaan_ginekologi_ranap.adnexa_kiri," +
+                                        "pemeriksaan_ginekologi_ranap.cavum_douglas " +
+                                        "from pasien inner join reg_periksa inner join pemeriksaan_ginekologi_ranap "+
+                                        "on pemeriksaan_ginekologi_ranap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where "+
+                                        "pemeriksaan_ginekologi_ranap.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pemeriksaan Ginekologi Rawat Inap</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                             "<tr align='center'>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                                "<td valign='top' width='80%' bgcolor='#fafff5'>Pemeriksaan</td>"+
+                                             "</tr>"
+                                    );
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
+                                                "<td valign='top'>"+
+                                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>Inspeksi</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("inspeksi")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Vulva/Uretra/Vagina</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("inspeksi_vulva")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>Inspekulo</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("inspekulo_gine")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Fluxus</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("fluxus_gine")+",&nbsp;&nbsp;Fluor Albus : "+rs3.getString("fluor_gine")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Vulva/Vagina</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("vulva_inspekulo")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Portio</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("portio_inspekulo")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Sondage</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("sondage")+"</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>Pemeriksaan Dalam</td>"+
+                                                           "<td border='0' valign='top' width='70%'>:</td>"+
+                                                        "</tr>"+
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Portio</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("portio_dalam")+",&nbsp;&nbsp;Bentuk : "+rs3.getString("bentuk")+"</td>"+
+                                                        "</tr>"+   
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Cavum Uteri</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("cavum_uteri")+",&nbsp;&nbsp;Mobilitas : "+rs3.getString("mobilitas")+"</td>"+
+                                                        "</tr>"+ 
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;</td>"+
+                                                           "<td border='0' valign='top' width='70%'>&nbsp;&nbsp;&nbsp;Ukuran : "+rs3.getString("ukuran")+",&nbsp;&nbsp;Nyeri Tekan : "+rs3.getString("nyeri_tekan")+"</td>"+
+                                                        "</tr>"+ 
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Adnexa/Parametrium</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: Kanan : "+rs3.getString("adnexa_kanan")+",&nbsp;&nbsp;Kiri : "+rs3.getString("adnexa_kiri")+"</td>"+
+                                                        "</tr>"+ 
+                                                        "<tr align='left'>"+
+                                                           "<td border='0' valign='top' width='30%'>&nbsp;&nbsp;&nbsp;Cavum Douglas</td>"+
+                                                           "<td border='0' valign='top' width='70%'>: "+rs3.getString("cavum_douglas")+"</td>"+
+                                                        "</tr>"+ 
+                                                    "</table>"+
+                                                "</td>"+
+                                             "</tr>");                                                                                     
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }                                
                             } catch (Exception e) {
                                 System.out.println("Notifikasi : "+e);
                             } finally{
@@ -1156,21 +1834,21 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan dokter ralan
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,rawat_jl_dr.biaya_rawat "+
-                                        "from rawat_jl_dr inner join jns_perawatan inner join dokter "+
+                                        "select rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,rawat_jl_dr.biaya_rawat, "+
+                                        "rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat from rawat_jl_dr inner join jns_perawatan inner join dokter "+
                                         "on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                                        "and rawat_jl_dr.kd_dokter=dokter.kd_dokter where rawat_jl_dr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_dr.kd_dokter=dokter.kd_dokter where rawat_jl_dr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1178,7 +1856,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+" </td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
@@ -1200,21 +1878,21 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan paramedis ralan
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,petugas.nama,rawat_jl_pr.biaya_rawat "+
-                                        "from rawat_jl_pr inner join jns_perawatan inner join petugas "+
+                                        "select rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,petugas.nama,rawat_jl_pr.biaya_rawat, "+
+                                        "rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat from rawat_jl_pr inner join jns_perawatan inner join petugas "+
                                         "on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                                        "and rawat_jl_pr.nip=petugas.nip where rawat_jl_pr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_pr.nip=petugas.nip where rawat_jl_pr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+                                        
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+      
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1222,7 +1900,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama")+"</td>"+
@@ -1244,22 +1922,22 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan ralan dokter dan paramedis
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_jl_drpr.biaya_rawat "+
-                                        "from rawat_jl_drpr inner join jns_perawatan inner join dokter inner join petugas "+
+                                        "select rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_jl_drpr.biaya_rawat, "+
+                                        "rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat from rawat_jl_drpr inner join jns_perawatan inner join dokter inner join petugas "+
                                         "on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and rawat_jl_drpr.nip=petugas.nip "+
-                                        "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter where rawat_jl_drpr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter where rawat_jl_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Jalan Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='25%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1267,7 +1945,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
@@ -1295,18 +1973,18 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "dokter.nm_dokter,rawat_inap_dr.biaya_rawat "+
                                         "from rawat_inap_dr inner join jns_perawatan_inap inner join dokter "+
                                         "on rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "and rawat_inap_dr.kd_dokter=dokter.kd_dokter where rawat_inap_dr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_dr.kd_dokter=dokter.kd_dokter where rawat_inap_dr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_dr.tgl_perawatan,rawat_inap_dr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1341,18 +2019,18 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "petugas.nama,rawat_inap_pr.biaya_rawat "+
                                         "from rawat_inap_pr inner join jns_perawatan_inap inner join petugas "+
                                         "on rawat_inap_pr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "and rawat_inap_pr.nip=petugas.nip where rawat_inap_pr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_pr.nip=petugas.nip where rawat_inap_pr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_pr.tgl_perawatan,rawat_inap_pr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1386,19 +2064,19 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat "+
                                         "from rawat_inap_drpr inner join jns_perawatan_inap inner join dokter inner join petugas "+
                                         "on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and rawat_inap_drpr.nip=petugas.nip "+
-                                        "and rawat_inap_drpr.kd_dokter=dokter.kd_dokter where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_drpr.kd_dokter=dokter.kd_dokter where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Inap Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1439,13 +2117,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Penggunaan Kamar</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal Masuk</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggak Keluar</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Lama Inap</td>"+
-                                          "<td valign='top' width='35%' bgcolor='#f8fdf3'>Kamar</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Status</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal Masuk</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggak Keluar</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Lama Inap</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#fafff5'>Kamar</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Status</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1477,33 +2155,33 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             try{
                                 rs3=koneksi.prepareStatement(
                                         "select operasi.tgl_operasi,operasi.jenis_anasthesi,operasi.operator1, operasi.operator2, operasi.operator3, operasi.asisten_operator1,"+
-										"operasi.asisten_operator2, operasi.instrumen, operasi.dokter_anak, operasi.perawaat_resusitas, "+
-										"operasi.dokter_anestesi, operasi.asisten_anestesi, operasi.bidan, operasi.bidan2, operasi.bidan3, operasi.perawat_luar, operasi.omloop,"+
-                                                                                "operasi.omloop2,operasi.omloop3,operasi.dokter_pjanak,operasi.dokter_umum, "+
-										"operasi.kode_paket,paket_operasi.nm_perawatan, operasi.biayaoperator1, operasi.biayaoperator2, operasi.biayaoperator3, "+
-										"operasi.biayaasisten_operator1, operasi.biayaasisten_operator2, operasi.biayainstrumen, "+
-										"operasi.biayadokter_anak, operasi.biayaperawaat_resusitas, operasi.biayadokter_anestesi, "+
-										"operasi.biayaasisten_anestesi, operasi.biayabidan,operasi.biayabidan2,operasi.biayabidan3, operasi.biayaperawat_luar, operasi.biayaalat,"+
-										"operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biaya_omloop,operasi.biaya_omloop2,operasi.biaya_omloop3,"+
-                                                                                "operasi.biayasarpras,operasi.biaya_dokter_pjanak,operasi.biaya_dokter_umum,"+
-										"(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"+
-										"operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"+
-										"operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"+
-										"operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+"+
-										"operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+"+
-                                                                                "operasi.biayasarpras+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum) as total from operasi inner join paket_operasi "+
-										"on operasi.kode_paket=paket_operasi.kode_paket where operasi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "operasi.asisten_operator2,operasi.asisten_operator3,operasi.biayaasisten_operator3, operasi.instrumen, operasi.dokter_anak, operasi.perawaat_resusitas, "+
+                                        "operasi.dokter_anestesi, operasi.asisten_anestesi, operasi.asisten_anestesi2,operasi.asisten_anestesi2, operasi.bidan, operasi.bidan2, operasi.bidan3, operasi.perawat_luar, operasi.omloop,"+
+                                        "operasi.omloop2,operasi.omloop3,operasi.omloop4,operasi.omloop5,operasi.dokter_pjanak,operasi.dokter_umum, "+
+                                        "operasi.kode_paket,paket_operasi.nm_perawatan, operasi.biayaoperator1, operasi.biayaoperator2, operasi.biayaoperator3, "+
+                                        "operasi.biayaasisten_operator1, operasi.biayaasisten_operator2, operasi.biayaasisten_operator3, operasi.biayainstrumen, "+
+                                        "operasi.biayadokter_anak, operasi.biayaperawaat_resusitas, operasi.biayadokter_anestesi, "+
+                                        "operasi.biayaasisten_anestesi,operasi.biayaasisten_anestesi2, operasi.biayabidan,operasi.biayabidan2,operasi.biayabidan3, operasi.biayaperawat_luar, operasi.biayaalat,"+
+                                        "operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biaya_omloop,operasi.biaya_omloop2,operasi.biaya_omloop3,operasi.biaya_omloop4,operasi.biaya_omloop5,"+
+                                        "operasi.biayasarpras,operasi.biaya_dokter_pjanak,operasi.biaya_dokter_umum,"+
+                                        "(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"+
+                                        "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayaasisten_operator3+operasi.biayainstrumen+"+
+                                        "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"+
+                                        "operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+"+
+                                        "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+"+
+                                        "operasi.biayasarpras+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum) as total from operasi inner join paket_operasi "+
+                                        "on operasi.kode_paket=paket_operasi.kode_paket where operasi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Operasi/VK</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Tindakan</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Anastesi</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Tindakan</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Anastesi</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1529,6 +2207,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         if(rs3.getDouble("biayaasisten_operator2")>0){
                                             htmlContent.append("Asisten Operator 2 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("asisten_operator2"))+", ");
                                         }
+                                        if(rs3.getDouble("biayaasisten_operator3")>0){
+                                            htmlContent.append("Asisten Operator 3 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("asisten_operator3"))+", ");
+                                        }
                                         if(rs3.getDouble("biayainstrumen")>0){
                                             htmlContent.append("Instrumen : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("instrumen"))+", ");
                                         }
@@ -1543,6 +2224,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         }
                                         if(rs3.getDouble("biayaasisten_anestesi")>0){
                                             htmlContent.append("Asisten Anestesi : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("asisten_anestesi"))+", ");
+                                        }
+                                        if(rs3.getDouble("biayaasisten_anestesi2")>0){
+                                            htmlContent.append("Asisten Anestesi 2 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("asisten_anestesi2"))+", ");
                                         }
                                         if(rs3.getDouble("biayabidan")>0){
                                             htmlContent.append("Bidan 1 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("bidan"))+", ");
@@ -1564,6 +2248,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         }
                                         if(rs3.getDouble("biaya_omloop3")>0){
                                             htmlContent.append("Onloop 3 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("omloop3"))+", ");
+                                        }
+                                        if(rs3.getDouble("biaya_omloop4")>0){
+                                            htmlContent.append("Onloop 4 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("omloop4"))+", ");
+                                        }
+                                        if(rs3.getDouble("biaya_omloop5")>0){
+                                            htmlContent.append("Onloop 5 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("omloop5"))+", ");
                                         }
                                         if(rs3.getDouble("biaya_dokter_pjanak")>0){
                                             htmlContent.append("Dokter Pj Anak : "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs3.getString("dokter_pjanak"))+", ");
@@ -1602,13 +2292,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Radiologi</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1643,11 +2333,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='5'>Bacaan/Hasil Radiologi</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
+                                        "<tr><td valign='top' colspan='3'>Bacaan/Hasil Radiologi</td></tr>"+  
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#f8fdf3'>Hasil Pemeriksaan</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#fafff5'>Hasil Pemeriksaan</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1657,6 +2347,41 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("hasil")+"</td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //gambar pemeriksaan radiologi
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                     "select tgl_periksa,jam, lokasi_gambar from gambar_radiologi where no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Gambar Radiologi</td></tr>"+  
+                                        "<tr align='center'>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#fafff5'>Gambar Radiologi</td>"+
+                                        "</tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -1684,13 +2409,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1722,9 +2447,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                        "<td valign='top' align='center'></td>"+
                                                        "<td valign='top'></td>"+
                                                        "<td valign='top'></td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Detail Pemeriksaan</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Hasil</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Nilai Rujukan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Detail Pemeriksaan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Hasil</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Nilai Rujukan</td>"+
                                                        "<td valign='top' align='right'></td>"+
                                                     "</tr>");
                                                 rs4.beforeFirst();
@@ -1772,14 +2497,15 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='4'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
+                                        "<tr><td valign='top' colspan='5'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Aturan Pakai</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1791,6 +2517,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top'>"+rs3.getString("kode_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getDouble("jml")+" "+rs3.getString("kode_sat")+"</td>"+
+                                                "<td valign='top'>"+Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rs3.getString("tgl_perawatan")+"' and jam='"+rs3.getString("jam")+"' and no_rawat='"+rs2.getString("no_rawat")+"' and kode_brng='"+rs3.getString("kode_brng")+"'")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
                                              "</tr>"); 
                                         w++;
@@ -1818,12 +2545,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Penggunaan Obat/BHP Operasi</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Obat/BHP</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1862,12 +2589,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Resep Pulang</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Dosis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Dosis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1906,11 +2633,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Retur Obat</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='65%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='65%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1945,10 +2672,10 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='2'>Tambahan Biaya</td><td valign='top' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='84%' bgcolor='#f8fdf3'>Nama Tambahan</td>"+
-                                          "<td valign='top' width='1%' bgcolor='#f8fdf3'></td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='84%' bgcolor='#fafff5'>Nama Tambahan</td>"+
+                                          "<td valign='top' width='1%' bgcolor='#fafff5'></td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1982,10 +2709,10 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='2'>Potongan Biaya</td><td valign='top' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='84%' bgcolor='#f8fdf3'>Nama Potongan</td>"+
-                                          "<td valign='top' width='1%' bgcolor='#f8fdf3'></td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='84%' bgcolor='#fafff5'>Nama Potongan</td>"+
+                                          "<td valign='top' width='1%' bgcolor='#fafff5'></td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -1996,6 +2723,42 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top'>"+rs3.getString("nama_pengurangan")+"</td>"+
                                                 "<td valign='top'></td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("besar_pengurangan"))+"</td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //berkas digital perawatan
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                    "select master_berkas_digital.nama,berkas_digital_perawatan.lokasi_file "+
+				    "from berkas_digital_perawatan inner join master_berkas_digital "+
+                                    "on berkas_digital_perawatan.kode=master_berkas_digital.kode "+
+                                    "where berkas_digital_perawatan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Berkas Digital Perawatan</td></tr>"+  
+                                        "<tr align='center'>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='95%' bgcolor='#fafff5'>Berkas Digital</td>"+
+                                        "</tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/berkasrawat/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -2048,7 +2811,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil2(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             try {
                 rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -2210,7 +2973,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td><td valign='top' width='24%' bgcolor='#f8fdf3'>Kode</td><td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#f8fdf3'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#fafff5'>No.</td><td valign='top' width='24%' bgcolor='#fafff5'>Kode</td><td valign='top' width='50%' bgcolor='#fafff5'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#fafff5'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -2269,7 +3032,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil3(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             try {
                 rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -2431,7 +3194,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "<td valign='top' width='1%' align='center'>:</td>"+
                                         "<td valign='top' width='79%'>"+
                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td><td valign='top' width='24%' bgcolor='#f8fdf3'>Kode</td><td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#f8fdf3'>Status</td></tr>"
+                                             "<tr align='center'><td valign='top' width='5%' bgcolor='#fafff5'>No.</td><td valign='top' width='24%' bgcolor='#fafff5'>Kode</td><td valign='top' width='50%' bgcolor='#fafff5'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#fafff5'>Status</td></tr>"
                                     );
                                     rs3.beforeFirst();
                                     w=1;
@@ -2490,7 +3253,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil4(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             try {
                 rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -2647,21 +3410,21 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan dokter ralan
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,rawat_jl_dr.biaya_rawat "+
-                                        "from rawat_jl_dr inner join jns_perawatan inner join dokter "+
+                                        "select rawat_jl_dr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,rawat_jl_dr.biaya_rawat, "+
+                                        "rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat from rawat_jl_dr inner join jns_perawatan inner join dokter "+
                                         "on rawat_jl_dr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                                        "and rawat_jl_dr.kd_dokter=dokter.kd_dokter where rawat_jl_dr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_dr.kd_dokter=dokter.kd_dokter where rawat_jl_dr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_dr.tgl_perawatan,rawat_jl_dr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2669,7 +3432,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
@@ -2691,21 +3454,21 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan paramedis ralan
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,petugas.nama,rawat_jl_pr.biaya_rawat "+
-                                        "from rawat_jl_pr inner join jns_perawatan inner join petugas "+
+                                        "select rawat_jl_pr.kd_jenis_prw,jns_perawatan.nm_perawatan,petugas.nama,rawat_jl_pr.biaya_rawat, "+
+                                        "rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat from rawat_jl_pr inner join jns_perawatan inner join petugas "+
                                         "on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw "+
-                                        "and rawat_jl_pr.nip=petugas.nip where rawat_jl_pr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_pr.nip=petugas.nip where rawat_jl_pr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_pr.tgl_perawatan,rawat_jl_pr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+                                        
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Jalan Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+      
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='45%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2713,7 +3476,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama")+"</td>"+
@@ -2735,22 +3498,22 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             //tindakan ralan dokter dan paramedis
                             try{
                                 rs3=koneksi.prepareStatement(
-                                        "select rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_jl_drpr.biaya_rawat "+
-                                        "from rawat_jl_drpr inner join jns_perawatan inner join dokter inner join petugas "+
+                                        "select rawat_jl_drpr.kd_jenis_prw,jns_perawatan.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_jl_drpr.biaya_rawat, "+
+                                        "rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat from rawat_jl_drpr inner join jns_perawatan inner join dokter inner join petugas "+
                                         "on rawat_jl_drpr.kd_jenis_prw=jns_perawatan.kd_jenis_prw and rawat_jl_drpr.nip=petugas.nip "+
-                                        "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter where rawat_jl_drpr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_jl_drpr.kd_dokter=dokter.kd_dokter where rawat_jl_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_jl_drpr.tgl_perawatan,rawat_jl_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Jalan Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='25%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='25%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -2758,7 +3521,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         htmlContent.append(
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
-                                                "<td valign='top'>"+rs2.getString("tgl_registrasi")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_perawatan")+" "+rs3.getString("jam_rawat")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("kd_jenis_prw")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_perawatan")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
@@ -2816,7 +3579,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil5(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             try {
                 rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -2979,18 +3742,18 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "dokter.nm_dokter,rawat_inap_dr.biaya_rawat "+
                                         "from rawat_inap_dr inner join jns_perawatan_inap inner join dokter "+
                                         "on rawat_inap_dr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "and rawat_inap_dr.kd_dokter=dokter.kd_dokter where rawat_inap_dr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_dr.kd_dokter=dokter.kd_dokter where rawat_inap_dr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_dr.tgl_perawatan,rawat_inap_dr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Dokter</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Dokter</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3025,18 +3788,18 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "petugas.nama,rawat_inap_pr.biaya_rawat "+
                                         "from rawat_inap_pr inner join jns_perawatan_inap inner join petugas "+
                                         "on rawat_inap_pr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw "+
-                                        "and rawat_inap_pr.nip=petugas.nip where rawat_inap_pr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_pr.nip=petugas.nip where rawat_inap_pr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_pr.tgl_perawatan,rawat_inap_pr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Tindakan Rawat Inap Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='40%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='20%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='40%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='20%' bgcolor='#fafff5'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3070,19 +3833,19 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "jns_perawatan_inap.nm_perawatan,dokter.nm_dokter,petugas.nama,rawat_inap_drpr.biaya_rawat "+
                                         "from rawat_inap_drpr inner join jns_perawatan_inap inner join dokter inner join petugas "+
                                         "on rawat_inap_drpr.kd_jenis_prw=jns_perawatan_inap.kd_jenis_prw and rawat_inap_drpr.nip=petugas.nip "+
-                                        "and rawat_inap_drpr.kd_dokter=dokter.kd_dokter where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "and rawat_inap_drpr.kd_dokter=dokter.kd_dokter where rawat_inap_drpr.no_rawat='"+rs2.getString("no_rawat")+"' order by rawat_inap_drpr.tgl_perawatan,rawat_inap_drpr.jam_rawat").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Tindakan Rawat Inap Dokter & Paramedis</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Tindakan/Perawatan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Paramedis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Tindakan/Perawatan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Paramedis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3148,7 +3911,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil6(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             try {
                 rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -3307,33 +4070,33 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             try{
                                 rs3=koneksi.prepareStatement(
                                         "select operasi.tgl_operasi,operasi.jenis_anasthesi,operasi.operator1, operasi.operator2, operasi.operator3, operasi.asisten_operator1,"+
-										"operasi.asisten_operator2, operasi.instrumen, operasi.dokter_anak, operasi.perawaat_resusitas, "+
-										"operasi.dokter_anestesi, operasi.asisten_anestesi, operasi.bidan, operasi.bidan2, operasi.bidan3, operasi.perawat_luar, operasi.omloop,"+
-                                                                                "operasi.omloop2,operasi.omloop3,operasi.dokter_pjanak,operasi.dokter_umum, "+
-										"operasi.kode_paket,paket_operasi.nm_perawatan, operasi.biayaoperator1, operasi.biayaoperator2, operasi.biayaoperator3, "+
-										"operasi.biayaasisten_operator1, operasi.biayaasisten_operator2, operasi.biayainstrumen, "+
-										"operasi.biayadokter_anak, operasi.biayaperawaat_resusitas, operasi.biayadokter_anestesi, "+
-										"operasi.biayaasisten_anestesi, operasi.biayabidan,operasi.biayabidan2,operasi.biayabidan3, operasi.biayaperawat_luar, operasi.biayaalat,"+
-										"operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biaya_omloop,operasi.biaya_omloop2,operasi.biaya_omloop3,"+
-                                                                                "operasi.biayasarpras,operasi.biaya_dokter_pjanak,operasi.biaya_dokter_umum,"+
-										"(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"+
-										"operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayainstrumen+"+
-										"operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"+
-										"operasi.biayaasisten_anestesi+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+"+
-										"operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+"+
-                                                                                "operasi.biayasarpras+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum) as total from operasi inner join paket_operasi "+
-										"on operasi.kode_paket=paket_operasi.kode_paket where operasi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                        "operasi.asisten_operator2,operasi.asisten_operator3, operasi.instrumen, operasi.dokter_anak, operasi.perawaat_resusitas, "+
+                                        "operasi.dokter_anestesi, operasi.asisten_anestesi, operasi.asisten_anestesi2, operasi.bidan, operasi.bidan2, operasi.bidan3, operasi.perawat_luar, operasi.omloop,"+
+                                        "operasi.omloop2,operasi.omloop3,operasi.omloop4,operasi.omloop5,operasi.dokter_pjanak,operasi.dokter_umum, "+
+                                        "operasi.kode_paket,paket_operasi.nm_perawatan, operasi.biayaoperator1, operasi.biayaoperator2, operasi.biayaoperator3, "+
+                                        "operasi.biayaasisten_operator1, operasi.biayaasisten_operator2, operasi.biayaasisten_operator3, operasi.biayainstrumen, "+
+                                        "operasi.biayadokter_anak, operasi.biayaperawaat_resusitas, operasi.biayadokter_anestesi, "+
+                                        "operasi.biayaasisten_anestesi,operasi.biayaasisten_anestesi2, operasi.biayabidan,operasi.biayabidan2,operasi.biayabidan3, operasi.biayaperawat_luar, operasi.biayaalat,"+
+                                        "operasi.biayasewaok,operasi.akomodasi,operasi.bagian_rs,operasi.biaya_omloop,operasi.biaya_omloop2,operasi.biaya_omloop3,operasi.biaya_omloop4,operasi.biaya_omloop5,"+
+                                        "operasi.biayasarpras,operasi.biaya_dokter_pjanak,operasi.biaya_dokter_umum,"+
+                                        "(operasi.biayaoperator1+operasi.biayaoperator2+operasi.biayaoperator3+"+
+                                        "operasi.biayaasisten_operator1+operasi.biayaasisten_operator2+operasi.biayaasisten_operator3+operasi.biayainstrumen+"+
+                                        "operasi.biayadokter_anak+operasi.biayaperawaat_resusitas+operasi.biayadokter_anestesi+"+
+                                        "operasi.biayaasisten_anestesi+operasi.biayaasisten_anestesi2+operasi.biayabidan+operasi.biayabidan2+operasi.biayabidan3+operasi.biayaperawat_luar+operasi.biayaalat+"+
+                                        "operasi.biayasewaok+operasi.akomodasi+operasi.bagian_rs+operasi.biaya_omloop+operasi.biaya_omloop2+operasi.biaya_omloop3+operasi.biaya_omloop4+operasi.biaya_omloop5+"+
+                                        "operasi.biayasarpras+operasi.biaya_dokter_pjanak+operasi.biaya_dokter_umum) as total from operasi inner join paket_operasi "+
+                                        "on operasi.kode_paket=paket_operasi.kode_paket where operasi.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Operasi/VK</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Tindakan</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Anastesi</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Tindakan</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Anastesi</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3359,6 +4122,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         if(rs3.getDouble("biayaasisten_operator2")>0){
                                             htmlContent.append("Asisten Operator 2 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("asisten_operator2"))+", ");
                                         }
+                                        if(rs3.getDouble("biayaasisten_operator3")>0){
+                                            htmlContent.append("Asisten Operator 3 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("asisten_operator3"))+", ");
+                                        }
                                         if(rs3.getDouble("biayainstrumen")>0){
                                             htmlContent.append("Instrumen : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("instrumen"))+", ");
                                         }
@@ -3373,6 +4139,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         }
                                         if(rs3.getDouble("biayaasisten_anestesi")>0){
                                             htmlContent.append("Asisten Anestesi : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("asisten_anestesi"))+", ");
+                                        }
+                                        if(rs3.getDouble("biayaasisten_anestesi2")>0){
+                                            htmlContent.append("Asisten Anestesi 2 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("asisten_anestesi2"))+", ");
                                         }
                                         if(rs3.getDouble("biayabidan")>0){
                                             htmlContent.append("Bidan 1 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("bidan"))+", ");
@@ -3394,6 +4163,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         }
                                         if(rs3.getDouble("biaya_omloop3")>0){
                                             htmlContent.append("Onloop 3 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("omloop3"))+", ");
+                                        }
+                                        if(rs3.getDouble("biaya_omloop4")>0){
+                                            htmlContent.append("Onloop 4 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("omloop4"))+", ");
+                                        }
+                                        if(rs3.getDouble("biaya_omloop5")>0){
+                                            htmlContent.append("Onloop 5 : "+Sequel.cariIsi("select nama from petugas where nip=?",rs3.getString("omloop5"))+", ");
                                         }
                                         if(rs3.getDouble("biaya_dokter_pjanak")>0){
                                             htmlContent.append("Dokter Pj Anak : "+Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rs3.getString("dokter_pjanak"))+", ");
@@ -3457,7 +4232,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil7(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             try {
                 rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -3625,13 +4400,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Radiologi</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3666,11 +4441,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='5'>Bacaan/Hasil Radiologi</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
+                                        "<tr><td valign='top' colspan='3'>Bacaan/Hasil Radiologi</td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='80%' bgcolor='#f8fdf3'>Hasil Pemeriksaan</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#fafff5'>Hasil Pemeriksaan</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3680,6 +4455,41 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("hasil")+"</td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //gambar pemeriksaan radiologi
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                     "select tgl_periksa,jam, lokasi_gambar from gambar_radiologi where no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Gambar Radiologi</td></tr>"+  
+                                        "<tr align='center'>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='80%' bgcolor='#fafff5'>Gambar Radiologi</td>"+
+                                        "</tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_gambar")+"'>"+rs3.getString("lokasi_gambar").replaceAll("pages/upload/","")+"</a></td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -3732,7 +4542,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil8(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             try {
                 rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -3900,13 +4710,13 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='26%' bgcolor='#f8fdf3'>Nama Pemeriksaan</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Dokter PJ</td>"+
-                                          "<td valign='top' width='17%' bgcolor='#f8fdf3'>Petugas</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='26%' bgcolor='#fafff5'>Nama Pemeriksaan</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Dokter PJ</td>"+
+                                          "<td valign='top' width='17%' bgcolor='#fafff5'>Petugas</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -3938,9 +4748,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                        "<td valign='top' align='center'></td>"+
                                                        "<td valign='top'></td>"+
                                                        "<td valign='top'></td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Detail Pemeriksaan</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Hasil</td>"+
-                                                       "<td valign='top' align='center' bgcolor='#f8fdf3'>Nilai Rujukan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Detail Pemeriksaan</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Hasil</td>"+
+                                                       "<td valign='top' align='center' bgcolor='#fafff5'>Nilai Rujukan</td>"+
                                                        "<td valign='top' align='right'></td>"+
                                                     "</tr>");
                                                 rs4.beforeFirst();
@@ -4015,7 +4825,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil9(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             try {
                 rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4181,14 +4991,15 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if(rs3.next()){                                    
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                        "<tr><td valign='top' colspan='4'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
+                                        "<tr><td valign='top' colspan='5'>Pemberian Obat/BHP/Alkes</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='35%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Aturan Pakai</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4200,6 +5011,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "<td valign='top'>"+rs3.getString("kode_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("nama_brng")+"</td>"+
                                                 "<td valign='top'>"+rs3.getDouble("jml")+" "+rs3.getString("kode_sat")+"</td>"+
+                                                "<td valign='top'>"+Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rs3.getString("tgl_perawatan")+"' and jam='"+rs3.getString("jam")+"' and no_rawat='"+rs2.getString("no_rawat")+"' and kode_brng='"+rs3.getString("kode_brng")+"'")+"</td>"+
                                                 "<td valign='top' align='right'>"+Valid.SetAngka(rs3.getDouble("total"))+"</td>"+
                                              "</tr>"); 
                                         w++;
@@ -4227,11 +5039,11 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='3'>Retur Obat</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='65%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='65%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4295,7 +5107,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil10(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             try {
                 rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4462,12 +5274,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Penggunaan Obat/BHP Operasi</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Tanggal</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Obat/BHP</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4532,7 +5344,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void tampil11(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             try {
                 rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
                    "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
@@ -4699,12 +5511,12 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='4'>Resep Pulang</td><td valign='top' colspan='1' align='right'>:</td><td></td></tr>"+            
                                         "<tr align='center'>"+
-                                          "<td valign='top' width='5%' bgcolor='#f8fdf3'>No.</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Kode</td>"+
-                                          "<td valign='top' width='50%' bgcolor='#f8fdf3'>Nama Obat/BHP/Alkes</td>"+
-                                          "<td valign='top' width='15%' bgcolor='#f8fdf3'>Dosis</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Jumlah</td>"+
-                                          "<td valign='top' width='10%' bgcolor='#f8fdf3'>Biaya</td>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Kode</td>"+
+                                          "<td valign='top' width='50%' bgcolor='#fafff5'>Nama Obat/BHP/Alkes</td>"+
+                                          "<td valign='top' width='15%' bgcolor='#fafff5'>Dosis</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Jumlah</td>"+
+                                          "<td valign='top' width='10%' bgcolor='#fafff5'>Biaya</td>"+
                                         "</tr>");
                                     rs3.beforeFirst();
                                     w=1;
@@ -4747,6 +5559,235 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     y++;
                 }
                 LoadHTML11.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    public void tampil12(){     
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try{
+            htmlContent = new StringBuilder();
+            try {
+                rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
+                   "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
+                   "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and "+
+                   "pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+KdRw.getText()+"' order by pasien.no_rkm_medis desc ").executeQuery();
+                y=1;
+                while(rs.next()){   
+                    htmlContent.append(
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>No.RM</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("no_rkm_medis")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Nama Pasien</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("nm_pasien")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Alamat</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("alamat")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Umur</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("umur")+" ("+rs.getString("jk").replaceAll("L","Laki-Laki").replaceAll("P","Perempuan")+")</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Tempat & Tanggal Lahir</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("tmp_lahir")+" "+rs.getString("tgl_lahir")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Ibu Kandung</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("nm_ibu")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Golongan Darah</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("gol_darah")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Status Nikah</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("stts_nikah")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Agama</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("agama")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Pendidikan Terakhir</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("pnd")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Pertama Daftar</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("tgl_daftar")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Riwayat Perawatan</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'></td>"+
+                        "</tr>"
+                    );
+                    try {
+                        if(ChkTanggal.isSelected()==true){
+                            rs2=koneksi.prepareStatement(
+                                   "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                                   "reg_periksa.kd_dokter,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.p_jawab,reg_periksa.almt_pj,"+
+                                   "reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.status_lanjut,penjab.png_jawab "+
+                                   "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
+                                   "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
+                                   "reg_periksa.tgl_registrasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"'").executeQuery();
+                        }else{
+                            rs2=koneksi.prepareStatement(
+                                   "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                                   "reg_periksa.kd_dokter,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.p_jawab,reg_periksa.almt_pj,"+
+                                   "reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.status_lanjut,penjab.png_jawab "+
+                                   "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
+                                   "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                        }
+                            
+                        urut=1;
+                        while(rs2.next()){      
+                            htmlContent.append(
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;"+urut+". No.Rawat</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("no_rawat")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No.Registrasi</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("no_reg")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tanggal Registrasi</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("tgl_registrasi")+" "+rs2.getString("jam_reg")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unit/Poliklinik</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("nm_poli")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dokter</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cara Bayar</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("png_jawab")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Penanggung Jawab</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("p_jawab")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alamat P.J.</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("almt_pj")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hubungan P.J.</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("hubunganpj")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("status_lanjut")+"</td>"+
+                              "</tr>"
+                            );                            
+                            urut++;
+                            
+                            htmlContent.append(
+                               "<tr class='isi'>"+ 
+                                 "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Biaya & Perawatan</td>"+
+                                 "<td valign='top' width='1%' align='center'>:</td>"+
+                                 "<td valign='top' width='79%'>"
+                            );                            
+                            
+                            //berkas digital perawatan
+                            try{
+                                rs3=koneksi.prepareStatement(
+                                     "select master_berkas_digital.nama,berkas_digital_perawatan.lokasi_file "+
+                                        "from berkas_digital_perawatan inner join master_berkas_digital "+
+                                        "on berkas_digital_perawatan.kode=master_berkas_digital.kode "+
+                                        "where berkas_digital_perawatan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){                                    
+                                    htmlContent.append(  
+                                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                        "<tr><td valign='top' colspan='3'>Berkas Digital Perawatan</td></tr>"+  
+                                        "<tr align='center'>"+
+                                          "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                          "<td valign='top' width='95%' bgcolor='#fafff5'>Berkas Digital</td>"+
+                                        "</tr>");
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'><a href='http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/radiologi/"+rs3.getString("lokasi_file")+"'>"+rs3.getString("nama").replaceAll("pages/upload/","")+"</a></td>"+
+                                             "</tr>"); 
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                      "</table>");
+                                }                                
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            htmlContent.append(                                    
+                                 "</td>"+
+                               "</tr>"                               
+                            );
+                            htmlContent.append("<tr class='isi'><td colspan='3'>&nbsp;</td></tr>");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                    y++;
+                }
+                LoadHTML12.setText(
                     "<html>"+
                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+

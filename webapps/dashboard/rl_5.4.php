@@ -26,7 +26,7 @@
 		$ppkkode="SELECT * FROM setting";
 		$ppk_kode=bukaquery($ppkkode);
 		
-		 while($ppk = mysql_fetch_array($ppk_kode)) { 
+		 while($ppk = mysqli_fetch_array($ppk_kode)) { 
 			$k_ppk=$ppk['kode_ppk'];
 			$n_ppk=$ppk['nama_ppk'];
 		 }
@@ -47,7 +47,7 @@
 				 diagnosa_pasien.status = 'Ralan' AND reg_periksa.tgl_registrasi BETWEEN '$tanggal1' AND '$tanggal2'
 				 GROUP BY diagnosa_pasien.kd_penyakit";
 		$hasil=bukaquery($_sql);
-        while($baris = mysql_fetch_array($hasil)) {
+        while($baris = mysqli_fetch_array($hasil)) {
 				$kode_penyakit=$baris['kd_penyakit'];
 				$nama_penyakit=$baris['nm_penyakit'];
 				$jml_pasien=$baris['jumlah_pasien'];
@@ -75,7 +75,7 @@
 				 diagnosa_pasien.status = 'Ralan' AND reg_periksa.tgl_registrasi BETWEEN '$tanggal1' AND '$tanggal2' 
 				 GROUP BY diagnosa_pasien.kd_penyakit";
 		$hasil=bukaquery($_sql);
-		while($baris = mysql_fetch_array($hasil)) {
+		while($baris = mysqli_fetch_array($hasil)) {
 				$kode_penyakit=$baris['kd_penyakit'];
 				$nama_penyakit=$baris['nm_penyakit'];
 				$jml_pasien=$baris['jumlah_pasien'];
@@ -103,7 +103,7 @@
 				 reg_periksa.tgl_registrasi BETWEEN '$tanggal1' AND '$tanggal2' 
 				 GROUP BY diagnosa_pasien.kd_penyakit ";
 		$hasil=bukaquery($_sql);
-		while($baris = mysql_fetch_array($hasil)) {
+		while($baris = mysqli_fetch_array($hasil)) {
 				$kode_penyakit=$baris['kd_penyakit'];
 				$nama_penyakit=$baris['nm_penyakit'];
 				$jml_pasien=$baris['jumlah_pasien'];

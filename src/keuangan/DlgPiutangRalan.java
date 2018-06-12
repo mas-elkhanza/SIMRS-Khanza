@@ -33,7 +33,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.DlgBilingRalan;
 import simrskhanza.DlgPenanggungJawab;
 
 /**
@@ -181,13 +180,12 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
-        TKd.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         MnBilling.setBackground(new java.awt.Color(255, 255, 255));
         MnBilling.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnBilling.setForeground(java.awt.Color.darkGray);
+        MnBilling.setForeground(new java.awt.Color(90, 120, 80));
         MnBilling.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBilling.setText("Billing/Pembayaran Pasien");
         MnBilling.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -210,7 +208,7 @@ public final class DlgPiutangRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Piutang Pasien Ralan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Piutang Pasien Ralan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -541,8 +539,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }else{
             DlgBilingRalan billing=new DlgBilingRalan(null,false);
             billing.TNoRw.setText(Sequel.cariIsi("select no_rawat from nota_jalan where no_nota=?",TKd.getText()));
-            billing.isRawat();
             billing.isCek();
+            billing.isRawat();
             if(Sequel.cariInteger("select count(no_rawat) from piutang_pasien where no_rawat=?",billing.TNoRw.getText())>0){
                 billing.setPiutang();
             }

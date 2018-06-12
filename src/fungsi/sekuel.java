@@ -12,6 +12,8 @@
 
 package fungsi;
 
+import fungsi.koneksiDB;
+import fungsi.var;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -541,6 +543,26 @@ public final class sekuel {
         }    
     }
     
+    public void mengedit3(String table,String acuan_field,String update,int i,String[] a){
+        try {
+            ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
+            try{
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                } 
+                ps.executeUpdate();       
+             }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }    
+    }
+    
     public boolean mengedittf(String table,String acuan_field,String update,int i,String[] a){
         bool=true;
         try {
@@ -743,6 +765,24 @@ public final class sekuel {
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    public void queryu4(String qry,int i,String[] a){
+        try {
+            try{            
+                ps=connect.prepareStatement(qry);
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                } 
+                ps.executeUpdate(); 
+             }catch(Exception e){
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
         }
     }
     
@@ -1078,6 +1118,33 @@ public final class sekuel {
                 }else{
                     angka=0;
                 } 
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rs != null){
+                    rs.close();
+                }
+                
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+            
+        return angka;
+    }
+    
+    public Integer cariIntegerCount(String sql){
+        angka=0;
+        try {
+            ps=connect.prepareStatement(sql);
+            try{            
+                rs=ps.executeQuery();            
+                while(rs.next()){
+                    angka=angka+rs.getInt(1);
+                }
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
             }finally{

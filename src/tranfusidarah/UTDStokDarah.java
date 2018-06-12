@@ -24,7 +24,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 
 public class UTDStokDarah extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -234,7 +234,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -369,7 +369,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         Resus.setBounds(294, 72, 60, 23);
 
         Aftap.setEditable(false);
-        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2017" }));
+        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2017" }));
         Aftap.setDisplayFormat("dd-MM-yyyy");
         Aftap.setName("Aftap"); // NOI18N
         Aftap.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -387,7 +387,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         label32.setBounds(0, 72, 85, 23);
 
         Kadaluarsa.setEditable(false);
-        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2017" }));
+        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2017" }));
         Kadaluarsa.setDisplayFormat("dd-MM-yyyy");
         Kadaluarsa.setName("Kadaluarsa"); // NOI18N
         Kadaluarsa.addKeyListener(new java.awt.event.KeyAdapter() {

@@ -279,7 +279,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Piutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Piutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -618,28 +618,21 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         }else if(Nmmem.getText().trim().equals("")){
             Valid.textKosong(Kdmem,"Member");
         }else{            
-            try {
-                koderekening=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",nama_bayar.getSelectedItem().toString());
-                Sequel.menyimpan("bayar_piutang","?,?,?,?,?,?",6,new String[]{
+            koderekening=Sequel.cariIsi("select kd_rek from akun_bayar where nama_bayar=?",nama_bayar.getSelectedItem().toString());
+            if(Sequel.menyimpantf("bayar_piutang","?,?,?,?,?,?","Pembayaran",6,new String[]{
                     Valid.SetTgl(Tanggal.getSelectedItem()+""),Kdmem.getText(),Cicilan.getText(),
                     Keterangan.getText(),NoRawat.getText(),koderekening
-                });
-                
-                if(Double.parseDouble(Sisa.getText())<=1){
-                    Sequel.mengedit("piutang_pasien","no_rawat='"+NoRawat.getText()+"'","status='Lunas'");
-                }                            
-                Sequel.queryu("delete from tampjurnal");                    
-                Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Bayar_Piutang_Pasien from set_akun")+"','BAYAR PIUTANG','0','"+Cicilan.getText()+"'","Rekening");    
-                Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+nama_bayar.getSelectedItem()+"','"+Cicilan.getText()+"','0'","Rekening"); 
-                jur.simpanJurnal(NoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","BAYAR PIUTANG");                   
-                                  
-            } catch (Exception ex) {
-                System.out.println(ex);
-                JOptionPane.showMessageDialog(null,"Maaf, gagal menyimpan data. Kemungkinan ada No.Bayar yang sama dimasukkan sebelumnya...!");
-            }
-                    
-            BtnCariActionPerformed(evt);
-            emptTeks();
+                })==true){
+                    if(sisapiutang-Double.parseDouble(Cicilan.getText())<=1){
+                        Sequel.mengedit("piutang_pasien","no_rawat='"+NoRawat.getText()+"'","status='Lunas'");
+                    }                            
+                    Sequel.queryu("delete from tampjurnal");                    
+                    Sequel.menyimpan("tampjurnal","'"+Sequel.cariIsi("select Bayar_Piutang_Pasien from set_akun")+"','BAYAR PIUTANG','0','"+Cicilan.getText()+"'","Rekening");    
+                    Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+nama_bayar.getSelectedItem()+"','"+Cicilan.getText()+"','0'","Rekening"); 
+                    jur.simpanJurnal(NoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),"U","BAYAR PIUTANG");                   
+                    BtnCariActionPerformed(evt);
+                    emptTeks();
+            }       
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 

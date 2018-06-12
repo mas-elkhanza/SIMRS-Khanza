@@ -35,8 +35,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariPetugas;
-import tranfusidarah.UTDCekalDarah;
+import kepegawaian.DlgCariPetugas;
 
 /**
  *
@@ -537,13 +536,13 @@ public final class UTDDonor extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Donor Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Donor Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -561,7 +560,7 @@ public final class UTDDonor extends javax.swing.JDialog {
         panelisi5.setPreferredSize(new java.awt.Dimension(450, 77));
         panelisi5.setLayout(new java.awt.GridLayout(2, 0));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
@@ -645,7 +644,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         panelisi5.add(jPanel3);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Non Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Penggunaan BHP Non Medis ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         jPanel4.setName("jPanel4"); // NOI18N
         jPanel4.setOpaque(false);
         jPanel4.setPreferredSize(new java.awt.Dimension(300, 202));
@@ -777,7 +776,7 @@ public final class UTDDonor extends javax.swing.JDialog {
         label32.setBounds(230, 12, 57, 23);
 
         Tanggal.setEditable(false);
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2017" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2018" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1152,7 +1151,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         internalFrame2.add(scrollPane1, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Input Pendonor Darah  ", internalFrame2);
+        TabRawat.addTab("Input Pendonor Darah", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -1180,7 +1179,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         internalFrame3.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Daftar Pendonor Darah  ", internalFrame3);
+        TabRawat.addTab("Daftar Pendonor Darah", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -1332,7 +1331,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         TanggalCari1.setEditable(false);
         TanggalCari1.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2017" }));
+        TanggalCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2018" }));
         TanggalCari1.setDisplayFormat("dd-MM-yyyy");
         TanggalCari1.setName("TanggalCari1"); // NOI18N
         TanggalCari1.setOpaque(false);
@@ -1347,7 +1346,7 @@ public final class UTDDonor extends javax.swing.JDialog {
 
         TanggalCari2.setEditable(false);
         TanggalCari2.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-02-2017" }));
+        TanggalCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-05-2018" }));
         TanggalCari2.setDisplayFormat("dd-MM-yyyy");
         TanggalCari2.setName("TanggalCari2"); // NOI18N
         TanggalCari2.setOpaque(false);

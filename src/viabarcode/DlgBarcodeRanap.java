@@ -247,7 +247,7 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Tindakan & Obat di Rawat Inap Via Barcode No.Rawat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Tindakan & Obat di Rawat Inap Via Barcode No.Rawat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -343,8 +343,8 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(816, 102));
         jPanel1.setLayout(new java.awt.GridLayout(2, 1));
 
-        jPanel3.setBackground(new java.awt.Color(250, 255, 245));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Tindakan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        jPanel3.setBackground(new java.awt.Color(255, 255, 253));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), ".: Tindakan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
         jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
@@ -406,8 +406,8 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
 
         jPanel1.add(jPanel3);
 
-        jPanel2.setBackground(new java.awt.Color(250, 255, 245));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), ".: Obat & BHP", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(255, 255, 253));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), ".: Obat & BHP", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setPreferredSize(new java.awt.Dimension(350, 102));
         jPanel2.setLayout(new java.awt.BorderLayout(1, 1));
@@ -919,12 +919,17 @@ public final class DlgBarcodeRanap extends javax.swing.JDialog {
                 "select kamar.kelas from kamar inner join kamar_inap on kamar.kd_kamar=kamar_inap.kd_kamar "+
                 "where no_rawat=? and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norwt);
         this.kd_dokter=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",norwt);
-        
-        if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
-            lokasistok=this.kd_bangsal;
+        lokasistok=Sequel.cariIsi("select kd_depo from set_depo_ranap where kd_bangsal=?",Sequel.cariIsi("select kd_bangsal from kamar where kd_kamar=?",this.kd_bangsal));
+        if(lokasistok.equals("")){
+            if(Sequel.cariIsi("select asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                lokasistok=this.kd_bangsal;
+            }else{
+                lokasistok=Sequel.cariIsi("select kd_bangsal from set_lokasi");
+            }
         }else{
-            lokasistok=Sequel.cariIsi("select kd_bangsal from set_lokasi");
+            var.setkdbangsal(this.kd_bangsal);
         }
+            
         TCariTindakan.requestFocus();
         kenaikan=Sequel.cariIsiAngka("select (hargajual/100) from set_harga_obat_ranap where kd_pj='"+this.kd_pj+"' and kelas='"+this.kelas+"'");
         try {

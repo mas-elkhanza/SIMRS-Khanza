@@ -26,7 +26,7 @@
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -768,7 +768,7 @@
             <Component class="widget.ComboBox" name="cmbStatus">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="10">
+                  <StringArray count="14">
                     <StringItem index="0" value="Sehat"/>
                     <StringItem index="1" value="Rujuk"/>
                     <StringItem index="2" value="APS"/>
@@ -778,7 +778,11 @@
                     <StringItem index="6" value="Membaik"/>
                     <StringItem index="7" value="Pulang Paksa"/>
                     <StringItem index="8" value="-"/>
-                    <StringItem index="9" value="Status Belum Lengkap"/>
+                    <StringItem index="9" value="Pindah Kamar"/>
+                    <StringItem index="10" value="Status Belum Lengkap"/>
+                    <StringItem index="11" value="Atas Persetujuan Dokter"/>
+                    <StringItem index="12" value="Atas Permintaan Sendiri"/>
+                    <StringItem index="13" value="Lain-lain"/>
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="cmbStatus" noResource="true"/>
@@ -836,9 +840,6 @@
           <ComponentRef name="null"/>
         </Property>
         <Property name="name" type="java.lang.String" value="TOut" noResource="true"/>
-        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TOutKeyPressed"/>
@@ -854,9 +855,6 @@
           <ComponentRef name="null"/>
         </Property>
         <Property name="name" type="java.lang.String" value="TIn" noResource="true"/>
-        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TInKeyPressed"/>
@@ -882,15 +880,15 @@
         <Menu class="javax.swing.JMenu" name="MnTindakan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f3" green="fd" red="f8" type="rgb"/>
+              <Color blue="fa" green="ff" red="fc" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tindakan"/>
+            <Property name="text" type="java.lang.String" value="Tindakan &amp; Pemeriksaan"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
@@ -904,6 +902,33 @@
             </Property>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="MnRawatJalan">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/category.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Data Tagihan/Tindakan Rawat Jalan"/>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
+                <Property name="name" type="java.lang.String" value="MnRawatJalan" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[250, 28]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnRawatJalanActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MnRawatInap">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -913,7 +938,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -940,7 +965,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -967,7 +992,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -994,7 +1019,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1017,10 +1042,10 @@
         <Menu class="javax.swing.JMenu" name="MnObat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f3" green="fd" red="f8" type="rgb"/>
+              <Color blue="fa" green="ff" red="fc" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -1048,7 +1073,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1075,7 +1100,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1102,7 +1127,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1129,7 +1154,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1156,7 +1181,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1183,7 +1208,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1212,7 +1237,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -1239,7 +1264,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -1266,7 +1291,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -1293,7 +1318,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -1320,7 +1345,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -1347,7 +1372,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -1374,7 +1399,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -1392,13 +1417,40 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnRanapGabungActionPerformed"/>
           </Events>
         </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="MnGabungkanRanap">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="50" green="78" red="5a" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/picture/category.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Gabungkan Ke Kamar Ibu"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="horizontalTextPosition" type="int" value="4"/>
+            <Property name="iconTextGap" type="int" value="5"/>
+            <Property name="name" type="java.lang.String" value="MnGabungkanRanap" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[220, 26]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnGabungkanRanapActionPerformed"/>
+          </Events>
+        </MenuItem>
         <Menu class="javax.swing.JMenu" name="MnHapusData">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f3" green="fd" red="f8" type="rgb"/>
+              <Color blue="fa" green="ff" red="fc" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -1426,7 +1478,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1434,6 +1486,7 @@
                 <Property name="text" type="java.lang.String" value="Hapus Tagihan Operasi"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnHapusTagihanOperasi" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1452,7 +1505,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1460,6 +1513,7 @@
                 <Property name="text" type="java.lang.String" value="Hapus Obat Operasi"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnHapusObatOperasi" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1478,7 +1532,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1486,6 +1540,7 @@
                 <Property name="text" type="java.lang.String" value="Hapus Data Salah"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnHapusDataSalah" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1500,10 +1555,10 @@
         <Menu class="javax.swing.JMenu" name="SetStatus">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f3" green="fd" red="f8" type="rgb"/>
+              <Color blue="fa" green="ff" red="fc" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -1531,7 +1586,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1539,6 +1594,7 @@
                 <Property name="text" type="java.lang.String" value="Sehat"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnSehat" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1557,7 +1613,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1565,6 +1621,7 @@
                 <Property name="text" type="java.lang.String" value="Rujuk"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnStatusRujuk" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1583,7 +1640,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1591,6 +1648,7 @@
                 <Property name="text" type="java.lang.String" value="APS"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnStatusAPS" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1609,7 +1667,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1617,6 +1675,7 @@
                 <Property name="text" type="java.lang.String" value="+"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnStatusPlus" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1635,7 +1694,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1643,6 +1702,7 @@
                 <Property name="text" type="java.lang.String" value="Meninggal"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnStatusMeninggal" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1661,7 +1721,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1669,6 +1729,7 @@
                 <Property name="text" type="java.lang.String" value="Sembuh"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnStatusSembuh" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1687,7 +1748,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1695,6 +1756,7 @@
                 <Property name="text" type="java.lang.String" value="Membaik"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnStatusMembaik" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1713,7 +1775,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1721,6 +1783,7 @@
                 <Property name="text" type="java.lang.String" value="Pulang Paksa"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnStatusPulangPaksa" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1739,7 +1802,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1747,6 +1810,7 @@
                 <Property name="text" type="java.lang.String" value="-"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnStatusMin" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1765,7 +1829,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1773,6 +1837,7 @@
                 <Property name="text" type="java.lang.String" value="Status Belum Lengkap"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnStatusBelumLengkap" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1791,7 +1856,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1799,6 +1864,7 @@
                 <Property name="text" type="java.lang.String" value="Belum Pulang"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnStatusBelumPulang" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1813,15 +1879,15 @@
         <Menu class="javax.swing.JMenu" name="MnLaporan">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f3" green="fd" red="f8" type="rgb"/>
+              <Color blue="fa" green="ff" red="fc" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Laporan"/>
+            <Property name="text" type="java.lang.String" value="Laporan &amp; Surat"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
@@ -1844,7 +1910,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1852,6 +1918,7 @@
                 <Property name="text" type="java.lang.String" value="Rincian Penggunaan Obat"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnRincianObat" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1870,7 +1937,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1878,6 +1945,7 @@
                 <Property name="text" type="java.lang.String" value="Asesment Pasien IGD"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnRM2D" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1896,7 +1964,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1904,6 +1972,7 @@
                 <Property name="text" type="java.lang.String" value="Sensus Harian Ranap"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnSensusRanap" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1922,7 +1991,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1930,6 +1999,7 @@
                 <Property name="text" type="java.lang.String" value="Rekapitulasi Sensus Ranap"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnRekapitulasiRanap" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1948,7 +2018,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1956,6 +2026,7 @@
                 <Property name="text" type="java.lang.String" value="Daftar Tilik Keselamatan Bedah"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnTilikBedah" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -1974,7 +2045,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -1982,6 +2053,7 @@
                 <Property name="text" type="java.lang.String" value="Assesment Gizi"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnAsuhanGizi" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -2000,7 +2072,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -2008,6 +2080,7 @@
                 <Property name="text" type="java.lang.String" value="Penggunaan Kamar"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
                 <Property name="name" type="java.lang.String" value="MnPenggunaanKamar" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 26]"/>
@@ -2015,6 +2088,33 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnPenggunaanKamarActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MnPengantarPulang">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/category.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Surat Pengantar Pulang"/>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
+                <Property name="name" type="java.lang.String" value="MnPengantarPulang" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[200, 26]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnPengantarPulangActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -2028,7 +2128,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -2055,7 +2155,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -2082,7 +2182,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -2109,7 +2209,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -2130,10 +2230,10 @@
         <Menu class="javax.swing.JMenu" name="MnGelang">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f3" green="fd" red="f8" type="rgb"/>
+              <Color blue="fa" green="ff" red="fc" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -2161,7 +2261,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -2188,7 +2288,7 @@
                   <Font name="Tahoma" size="11" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="32" green="50" red="3c" type="rgb"/>
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/picture/category.png"/>
@@ -2206,62 +2306,164 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnGelang2ActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MnGelang3">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/category.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Gelang Pasien Anak"/>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
+                <Property name="name" type="java.lang.String" value="MnGelang3" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[200, 26]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnGelang3ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MnGelang4">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/category.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Gelang Pasien Dewasa"/>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
+                <Property name="name" type="java.lang.String" value="MnGelang4" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[200, 26]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnGelang4ActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
-        <MenuItem class="javax.swing.JMenuItem" name="MnSEP">
+        <Menu class="javax.swing.JMenu" name="MenuBPJS">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
+              <Color blue="fa" green="ff" red="fc" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Bridging SEP"/>
-            <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="horizontalTextPosition" type="int" value="4"/>
-            <Property name="iconTextGap" type="int" value="5"/>
-            <Property name="name" type="java.lang.String" value="MnSEP" noResource="true"/>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[220, 26]"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnSEPActionPerformed"/>
-          </Events>
-        </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="ppRiwayat">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="BPJS"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/picture/category.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Riwayat Perawatan"/>
-            <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="iconTextGap" type="int" value="5"/>
-            <Property name="name" type="java.lang.String" value="ppRiwayat" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="MenuBPJS" noResource="true"/>
+            <Property name="opaque" type="boolean" value="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppRiwayatBtnPrintActionPerformed"/>
-          </Events>
-        </MenuItem>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="MnCekKepesertaan">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/category.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Pencarian Peserta Berdasarkan Nomor Kepesertaan"/>
+                <Property name="iconTextGap" type="int" value="5"/>
+                <Property name="name" type="java.lang.String" value="MnCekKepesertaan" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[300, 26]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnCekKepesertaanActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MnCekNIK">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/category.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Pencarian Peserta Berdasarkan NIK/No.KTP"/>
+                <Property name="iconTextGap" type="int" value="5"/>
+                <Property name="name" type="java.lang.String" value="MnCekNIK" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[300, 26]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnCekNIKActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MnSEP">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="50" green="78" red="5a" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/category.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Bridging SEP"/>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="horizontalTextPosition" type="int" value="4"/>
+                <Property name="iconTextGap" type="int" value="5"/>
+                <Property name="name" type="java.lang.String" value="MnSEP" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[220, 26]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnSEPActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <MenuItem class="javax.swing.JMenuItem" name="ppCatatanPasien">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -2271,7 +2473,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -2298,7 +2500,7 @@
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="32" green="50" red="3c" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
@@ -2316,6 +2518,60 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppDataHAIsBtnPrintActionPerformed"/>
           </Events>
         </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="ppBerkasDigital">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="50" green="78" red="5a" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/picture/category.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Berkas Digital Perawatan"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="horizontalTextPosition" type="int" value="4"/>
+            <Property name="iconTextGap" type="int" value="5"/>
+            <Property name="name" type="java.lang.String" value="ppBerkasDigital" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[240, 26]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppBerkasDigitalBtnPrintActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="ppRiwayat">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="50" green="78" red="5a" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/picture/category.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Riwayat Perawatan"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
+            <Property name="horizontalTextPosition" type="int" value="4"/>
+            <Property name="iconTextGap" type="int" value="5"/>
+            <Property name="name" type="java.lang.String" value="ppRiwayat" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[220, 26]"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ppRiwayatBtnPrintActionPerformed"/>
+          </Events>
+        </MenuItem>
       </SubComponents>
     </Container>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
@@ -2330,9 +2586,6 @@
           <ComponentRef name="null"/>
         </Property>
         <Property name="name" type="java.lang.String" value="JamMasuk" noResource="true"/>
-        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JamMasukKeyPressed"/>
@@ -2362,7 +2615,7 @@
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -3051,7 +3304,7 @@
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -3125,9 +3378,6 @@
                   <ComponentRef name="null"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="kdpenjab" noResource="true"/>
-                <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
               </Properties>
               <Events>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdpenjabKeyPressed"/>
@@ -3142,9 +3392,6 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="nmpenjab" noResource="true"/>
-                <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -3195,7 +3442,7 @@
                     </LineBorder>
                   </Border>
                   <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                  <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+                  <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
                 </TitledBorder>
               </Border>
             </Property>
@@ -3269,9 +3516,6 @@
                   <ComponentRef name="null"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="NoRmBayi" noResource="true"/>
-                <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
               </Properties>
               <Events>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NoRmBayiKeyPressed"/>
@@ -3286,9 +3530,6 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="NmBayi" noResource="true"/>
-                <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -3395,7 +3636,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,123,0,0,3,-57"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,123,0,0,3,33"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -3411,7 +3652,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -3691,7 +3932,7 @@
                     <Property name="text" type="java.lang.String" value="Record :"/>
                     <Property name="name" type="java.lang.String" value="jLabel7" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[55, 30]"/>
+                      <Dimension value="[55, 23]"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -3701,7 +3942,7 @@
                     <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="name" type="java.lang.String" value="LCount" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[75, 30]"/>
+                      <Dimension value="[75, 23]"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -3741,9 +3982,6 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroup1"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="32" green="46" red="32" type="rgb"/>
-                    </Property>
                     <Property name="selected" type="boolean" value="true"/>
                     <Property name="text" type="java.lang.String" value="Belum Pulang"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
@@ -3769,9 +4007,6 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroup1"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="32" green="46" red="32" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Tgl.Masuk :"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
@@ -3784,12 +4019,9 @@
                 <Component class="widget.Tanggal" name="DTPCari1">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="32" green="46" red="32" type="rgb"/>
-                    </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="03-10-2017"/>
+                        <StringItem index="0" value="11-06-2018"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3817,12 +4049,9 @@
                 <Component class="widget.Tanggal" name="DTPCari2">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="32" green="46" red="32" type="rgb"/>
-                    </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="03-10-2017"/>
+                        <StringItem index="0" value="11-06-2018"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3852,9 +4081,6 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroup1"/>
                     </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="32" green="46" red="32" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Pulang :"/>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
@@ -3867,12 +4093,9 @@
                 <Component class="widget.Tanggal" name="DTPCari3">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="32" green="46" red="32" type="rgb"/>
-                    </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="03-10-2017"/>
+                        <StringItem index="0" value="11-06-2018"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3900,12 +4123,9 @@
                 <Component class="widget.Tanggal" name="DTPCari4">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="32" green="46" red="32" type="rgb"/>
-                    </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="03-10-2017"/>
+                        <StringItem index="0" value="11-06-2018"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3953,6 +4173,89 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbKamInMouseClicked"/>
                 <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbKamInKeyPressed"/>
               </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="widget.panelisi" name="panelGlass9">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="panelGlass9" noResource="true"/>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[44, 44]"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+              <BorderConstraints direction="First"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+            <Property name="alignment" type="int" value="0"/>
+            <Property name="verticalGap" type="int" value="9"/>
+          </Layout>
+          <SubComponents>
+            <Component class="widget.Label" name="jLabel5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="No. Rawat :"/>
+                <Property name="name" type="java.lang.String" value="jLabel5" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[70, 23]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="widget.TextBox" name="TNoRw1">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="null"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="TNoRw1" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[140, 23]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="widget.Label" name="jLabel9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="No.R.M. :"/>
+                <Property name="name" type="java.lang.String" value="jLabel9" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[65, 23]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="widget.TextBox" name="TNoRM1">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="null"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="TNoRM1" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[90, 23]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="widget.Label" name="jLabel36">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nama Pasien :"/>
+                <Property name="name" type="java.lang.String" value="jLabel36" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[85, 23]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="widget.TextBox" name="TPasien1">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="null"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="TPasien1" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[250, 23]"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

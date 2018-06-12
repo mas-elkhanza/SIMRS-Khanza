@@ -82,13 +82,6 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
             });
         } 
         
-        try {
-            ps=koneksi.prepareStatement("select kd_jbtn, nm_jbtn "+
-                " from jabatan where  kd_jbtn like ? or "+
-                " nm_jbtn like ? order by nm_jbtn");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
     }    
     private DlgJabatan jabatan=new DlgJabatan(null,false);
 
@@ -126,7 +119,7 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Jabatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Jabatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -346,17 +339,31 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                String[] data={rs.getString(1),
-                               rs.getString(2)};
-                tabMode.addRow(data);
+            ps=koneksi.prepareStatement("select kd_jbtn, nm_jbtn "+
+                " from jabatan where  kd_jbtn like ? or "+
+                " nm_jbtn like ? order by nm_jbtn");   
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new String[]{
+                        rs.getString(1),rs.getString(2)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
             }
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
-        }
+        }  
         LCount.setText(""+tabMode.getRowCount());
     }
 

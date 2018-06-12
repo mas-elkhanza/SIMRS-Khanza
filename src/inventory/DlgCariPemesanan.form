@@ -25,7 +25,7 @@
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Hapus Data Pemesanan"/>
+            <Property name="text" type="java.lang.String" value="Hapus Data Penerimaan"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="iconTextGap" type="int" value="8"/>
@@ -79,7 +79,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ubah Pemesanan"/>
+            <Property name="text" type="java.lang.String" value="Ubah Penerimaan"/>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="iconTextGap" type="int" value="8"/>
@@ -126,14 +126,14 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Cari Pemesanan Obat, Alkes &amp; BHP Medis ]::">
+            <TitledBorder title="::[ Cari Penerimaan Obat, Alkes &amp; BHP Medis ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>

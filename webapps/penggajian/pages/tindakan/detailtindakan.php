@@ -79,9 +79,9 @@
             <?php
                 $_sql = "SELECT id,nama,jm,jns from master_tindakan where jns like '%$jns%'ORDER BY nama,jns ASC ";
                 $hasil=bukaquery($_sql);
-                $jumlah=mysql_num_rows($hasil);
+                $jumlah=mysqli_num_rows($hasil);
 
-                if(mysql_num_rows($hasil)!=0) {
+                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='12%'><div align='center'>Proses</div></td>
@@ -89,7 +89,7 @@
                                 <td width='25%'><div align='center'>JM Tindakan</div></td>
                                 <td width='25%'><div align='center'>Jns.Tindakan</div></td>
                             </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                       echo "<tr class='isi'>
                                 <td>
                                     <center>
@@ -114,9 +114,9 @@
                 Hapus(" master_tindakan "," id ='".$_GET['id']."' ","?act=DetailTindakan&action=TAMBAH&nama=$nama");
             }
 
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
 		        $hasil1=bukaquery("SELECT id,nama,jm from master_tindakan ORDER BY nama ASC ");
-                $jumladiv=mysql_num_rows($hasil1);
+                $jumladiv=mysqli_num_rows($hasil1);
                 $i=$jumladiv/19;
                 $i=ceil($i);
                 echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>

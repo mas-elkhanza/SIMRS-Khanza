@@ -6,6 +6,9 @@
         <link href="css/default.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+        <script type="text/javascript">
+            window.onload = function() { window.print(); }
+        </script>
 
     <?php
     reportsqlinjection();      
@@ -17,11 +20,11 @@
         $pasien = str_replace("_"," ",$_GET['pasien']); 
         $besarppn = str_replace("_"," ",$_GET['besarppn']); 
 
-        $_sql = "SELECT no,temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9 from temporary order by no asc";            
+        $_sql = "SELECT no,temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13 from temporary order by no asc";            
         $hasil=bukaquery($_sql);
         
-        if(mysql_num_rows($hasil)!=0) { 
-          $setting=  mysql_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+        if(mysqli_num_rows($hasil)!=0) { 
+          $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
           echo "<table width='".getOne("select notaapotek from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <tr class='isi14'>
                        <td width=50% colspan=4 align=left>
@@ -107,35 +110,40 @@
                                <tr class=isi15>
                                    <td width='5%' align=center><font color='000000' size='2'  face='Tahoma'>No</font></td>
                                    <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Jml</font></td>
-                                   <td width='55%' align=center><font color='000000' size='2'  face='Tahoma'>Nama Barang</font></td>
+                                   <td width='35%' align=center><font color='000000' size='2'  face='Tahoma'>Nama Barang</font></td>
                                    <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Total</font></td>
+                                   <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Aturan Pakai</font></td>
                                </tr>";
                                       $ttlpesan=0;
                                       $i=1;
-                                      while($barispesan = mysql_fetch_array($hasil)) { 
-                                          $ttlpesan=$ttlpesan+$barispesan[9];
+                                      while($barispesan = mysqli_fetch_array($hasil)) { 
+                                          $ttlpesan=$ttlpesan+$barispesan["temp13"];
                                           echo "
                                             <tr class='isi15'>
                                                 <td><font color='000000' size='2'  face='Tahoma'>$i</font></td>
                                                 <td><font color='000000' size='2'  face='Tahoma'>$barispesan[1] $barispesan[5]</font></td>
                                                 <td><font color='000000' size='2'  face='Tahoma'>$barispesan[3] </font></td>
-                                                <td align=right><font color='000000' size='2'  face='Tahoma'>".formatDuit2($barispesan[9])."</font></td>
+                                                <td align=right><font color='000000' size='2'  face='Tahoma'>".formatDuit2($barispesan["temp13"])."</font></td>
+                                                    <td><font color='000000' size='2'  face='Tahoma'>".$barispesan["temp12"]."</font></td>
                                            </tr>";$i++;
                                       }    
                              echo " <tr class='isi14'>
                                       <td colspan=2></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>Tagihan</font></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($ttlpesan)."</font></td>
+                                      <td></td>
                                     </tr>  
                                     <tr class='isi14'>
                                       <td colspan=2></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>PPN</font></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($besarppn)."</font></td>
+                                      <td></td>
                                     </tr>   
                                     <tr class='isi14'>
                                       <td colspan=2></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>Tagihan+PPN</font></td>
                                       <td align='right'><font color='000000' size='2'  face='Tahoma'>".formatDuit2($ttlpesan+$besarppn)."</font></td>
+                                      <td></td>
                                     </tr>  
                           </table>
                       </td>

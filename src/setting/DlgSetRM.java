@@ -32,7 +32,7 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public class DlgSetRM extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5;
+    private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5,tabMode6;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -126,7 +126,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         tbKelengkapan.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabMode5=new DefaultTableModel(null,new Object[]{"No.Rekam Medis Terakhir Digunakan"}){
+        tabMode5=new DefaultTableModel(null,new Object[]{"Wajib closing kasir terlebih dahulu untuk perawatan sebelumnya"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -142,6 +142,23 @@ public class DlgSetRM extends javax.swing.JDialog {
         }
 
         tbValidasiRegistrasi.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabMode6=new DefaultTableModel(null,new Object[]{"Tampilkan catatan pasien saat Registrasi Poli/Unit/IGD"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+
+        tbValidasiCatatan.setModel(tabMode6);
+        tbValidasiCatatan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbValidasiCatatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 1; i++) {
+            TableColumn column = tbValidasiCatatan.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(350);
+            }
+        }
+
+        tbValidasiCatatan.setDefaultRenderer(Object.class, new WarnaTable());
         
         norm.setDocument(new batasInput((byte)10).getKata(norm));
         PanjangKTP.setDocument(new batasInput((byte)3).getOnlyAngka(PanjangKTP));
@@ -288,6 +305,12 @@ public class DlgSetRM extends javax.swing.JDialog {
         panelGlass10 = new widget.panelisi();
         jLabel12 = new widget.Label();
         ValidasiRegistrasi = new widget.ComboBox();
+        internalFrame7 = new widget.InternalFrame();
+        Scroll6 = new widget.ScrollPane();
+        tbValidasiCatatan = new widget.Table();
+        panelGlass11 = new widget.panelisi();
+        jLabel13 = new widget.Label();
+        ValidasiCatatan = new widget.ComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -298,7 +321,7 @@ public class DlgSetRM extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -363,9 +386,9 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -403,7 +426,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbNoRM.setAutoCreateRowSorter(true);
         tbNoRM.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbNoRM.setName("tbNoRM"); // NOI18N
         tbNoRM.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -420,7 +442,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: No.R.M. Terakhir  ", internalFrame2);
+        TabRawat.addTab("No.R.M. Terakhir", internalFrame2);
 
         internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame3.setBorder(null);
@@ -430,7 +452,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbNoUrut.setAutoCreateRowSorter(true);
         tbNoUrut.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbNoUrut.setName("tbNoUrut"); // NOI18N
         tbNoUrut.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -521,7 +542,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         internalFrame3.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Pengurutan No.R.M  ", internalFrame3);
+        TabRawat.addTab("Pengurutan No.R.M", internalFrame3);
 
         internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame4.setBorder(null);
@@ -531,7 +552,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
-        tbAlamat.setAutoCreateRowSorter(true);
         tbAlamat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbAlamat.setName("tbAlamat"); // NOI18N
         tbAlamat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -605,7 +625,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Pengaturan Alamat  ", internalFrame4);
+        TabRawat.addTab("Pengaturan Alamat", internalFrame4);
 
         internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame5.setBorder(null);
@@ -615,7 +635,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
 
-        tbKelengkapan.setAutoCreateRowSorter(true);
         tbKelengkapan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKelengkapan.setName("tbKelengkapan"); // NOI18N
         tbKelengkapan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1226,7 +1245,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         internalFrame5.add(PanelInput, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Pengaturan Kelengkapan Data  ", internalFrame5);
+        TabRawat.addTab("Pengaturan Kelengkapan Data", internalFrame5);
 
         internalFrame6.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame6.setBorder(null);
@@ -1236,7 +1255,6 @@ public class DlgSetRM extends javax.swing.JDialog {
         Scroll5.setName("Scroll5"); // NOI18N
         Scroll5.setOpaque(true);
 
-        tbValidasiRegistrasi.setAutoCreateRowSorter(true);
         tbValidasiRegistrasi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbValidasiRegistrasi.setName("tbValidasiRegistrasi"); // NOI18N
         tbValidasiRegistrasi.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1276,7 +1294,56 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         internalFrame6.add(panelGlass10, java.awt.BorderLayout.PAGE_START);
 
-        TabRawat.addTab(".: Pengaturan Registrasi ", internalFrame6);
+        TabRawat.addTab("Pengaturan Registrasi", internalFrame6);
+
+        internalFrame7.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame7.setBorder(null);
+        internalFrame7.setName("internalFrame7"); // NOI18N
+        internalFrame7.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll6.setName("Scroll6"); // NOI18N
+        Scroll6.setOpaque(true);
+
+        tbValidasiCatatan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbValidasiCatatan.setName("tbValidasiCatatan"); // NOI18N
+        tbValidasiCatatan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbValidasiCatatanMouseClicked(evt);
+            }
+        });
+        tbValidasiCatatan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbValidasiCatatanKeyPressed(evt);
+            }
+        });
+        Scroll6.setViewportView(tbValidasiCatatan);
+
+        internalFrame7.add(Scroll6, java.awt.BorderLayout.CENTER);
+
+        panelGlass11.setName("panelGlass11"); // NOI18N
+        panelGlass11.setPreferredSize(new java.awt.Dimension(44, 47));
+        panelGlass11.setLayout(null);
+
+        jLabel13.setText("Tampilkan catatan pasien saat Registrasi Poli/Unit/IGD :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        panelGlass11.add(jLabel13);
+        jLabel13.setBounds(0, 12, 275, 23);
+
+        ValidasiCatatan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
+        ValidasiCatatan.setName("ValidasiCatatan"); // NOI18N
+        ValidasiCatatan.setOpaque(false);
+        ValidasiCatatan.setPreferredSize(new java.awt.Dimension(55, 28));
+        ValidasiCatatan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ValidasiCatatanKeyPressed(evt);
+            }
+        });
+        panelGlass11.add(ValidasiCatatan);
+        ValidasiCatatan.setBounds(278, 12, 60, 23);
+
+        internalFrame7.add(panelGlass11, java.awt.BorderLayout.PAGE_START);
+
+        TabRawat.addTab("Pengaturan Catatan Pasien", internalFrame7);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -1379,7 +1446,17 @@ public class DlgSetRM extends javax.swing.JDialog {
                 tampilvalidasiregistrasi();
             }else if(tabMode5.getRowCount()>0){
                 JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu pengaturan ...!!!!");
-                cmburut.requestFocus();
+                ValidasiRegistrasi.requestFocus();
+            }
+        }else if(TabRawat.getSelectedIndex()==5){
+            if(tabMode6.getRowCount()==0){
+                Sequel.menyimpan("set_validasi_catatan",
+                        "'"+ValidasiCatatan.getSelectedItem().toString()+"'","Pengaturan Validasi Catatan"
+                );
+                tampilvalidasicatatan();
+            }else if(tabMode6.getRowCount()>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu pengaturan ...!!!!");
+                ValidasiCatatan.requestFocus();
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -1419,6 +1496,9 @@ public class DlgSetRM extends javax.swing.JDialog {
         }else if(TabRawat.getSelectedIndex()==4){
             Sequel.queryu("delete from set_validasi_registrasi");
             tampilvalidasiregistrasi();
+        }else if(TabRawat.getSelectedIndex()==5){
+            Sequel.queryu("delete from set_validasi_catatan");
+            tampilvalidasicatatan();
         }
         
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -1496,6 +1576,8 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
            tampilkelengkapan();
         }else if(TabRawat.getSelectedIndex()==4){
             tampilvalidasiregistrasi();
+        }else if(TabRawat.getSelectedIndex()==5){
+            tampilvalidasicatatan();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
@@ -1739,6 +1821,18 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
         Valid.pindah(evt, BtnKeluar,BtnSimpan);
     }//GEN-LAST:event_ValidasiRegistrasiKeyPressed
 
+    private void tbValidasiCatatanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbValidasiCatatanMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbValidasiCatatanMouseClicked
+
+    private void tbValidasiCatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbValidasiCatatanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbValidasiCatatanKeyPressed
+
+    private void ValidasiCatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ValidasiCatatanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ValidasiCatatanKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1787,7 +1881,9 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
     private widget.ScrollPane Scroll5;
+    private widget.ScrollPane Scroll6;
     private javax.swing.JTabbedPane TabRawat;
+    private widget.ComboBox ValidasiCatatan;
     private widget.ComboBox ValidasiRegistrasi;
     private widget.ComboBox YesNoAlamat;
     private widget.ComboBox YesNoAlamatPJ;
@@ -1816,9 +1912,11 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.InternalFrame internalFrame4;
     private widget.InternalFrame internalFrame5;
     private widget.InternalFrame internalFrame6;
+    private widget.InternalFrame internalFrame7;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
+    private widget.Label jLabel13;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
@@ -1861,6 +1959,7 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.Label jLabel9;
     private widget.TextBox norm;
     private widget.panelisi panelGlass10;
+    private widget.panelisi panelGlass11;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelGlass7;
     private widget.panelisi panelGlass8;
@@ -1869,6 +1968,7 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.Table tbKelengkapan;
     private widget.Table tbNoRM;
     private widget.Table tbNoUrut;
+    private widget.Table tbValidasiCatatan;
     private widget.Table tbValidasiRegistrasi;
     // End of variables declaration//GEN-END:variables
 
@@ -2156,6 +2256,37 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
         int row=tbValidasiRegistrasi.getSelectedRow();
         if(row!= -1){
             ValidasiRegistrasi.setSelectedItem(tbValidasiRegistrasi.getValueAt(row,0).toString());
+        }
+    }
+
+    private void tampilvalidasicatatan() {
+        Valid.tabelKosong(tabMode6);
+        try{   
+            ps5=koneksi.prepareStatement("select * from set_validasi_catatan ");
+            try {
+                rs=ps5.executeQuery();
+                while(rs.next()){
+                    tabMode6.addRow(new Object[]{rs.getString(1)});
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps5!=null){
+                    ps5.close();
+                }
+            }
+        }catch(SQLException e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void getDataValidasiCatatan() {
+        int row=tbValidasiCatatan.getSelectedRow();
+        if(row!= -1){
+            ValidasiCatatan.setSelectedItem(tbValidasiCatatan.getValueAt(row,0).toString());
         }
     }
     

@@ -23,7 +23,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
-import simrskhanza.DlgCariDokter;
+import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgPenanggungJawab;
 
 public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
@@ -133,8 +133,8 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
                      "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
                      "detail_pemberian_obat.no_rawat,pasien.nm_pasien,reg_periksa.kd_pj,databarang.nama_brng,"+
                      "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.embalase,"+
-                     "detail_pemberian_obat.tuslah,(detail_pemberian_obat.total-(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total "+
-                     "from reg_periksa inner join pasien inner join "+
+                     "detail_pemberian_obat.tuslah,(detail_pemberian_obat.total-(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total, "+
+                     "databarang.kode_brng from reg_periksa inner join pasien inner join "+
                      "detail_pemberian_obat inner join databarang "+
                      "on detail_pemberian_obat.kode_brng=databarang.kode_brng and detail_pemberian_obat.no_rawat=reg_periksa.no_rawat and "+
                      "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.kd_pj=? and detail_pemberian_obat.tgl_perawatan between ? and ? order by detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam");             
@@ -142,8 +142,8 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
                      "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,"+
                      "detail_pemberian_obat.no_rawat,pasien.nm_pasien,reg_periksa.kd_pj,databarang.nama_brng,"+
                      "detail_pemberian_obat.jml,detail_pemberian_obat.biaya_obat,detail_pemberian_obat.embalase,"+
-                     "detail_pemberian_obat.tuslah,(detail_pemberian_obat.total-(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total "+
-                     "from reg_periksa inner join pasien inner join "+
+                     "detail_pemberian_obat.tuslah,(detail_pemberian_obat.total-(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total, "+
+                     "databarang.kode_brng from reg_periksa inner join pasien inner join "+
                      "detail_pemberian_obat inner join databarang "+
                      "on detail_pemberian_obat.kode_brng=databarang.kode_brng and detail_pemberian_obat.no_rawat=reg_periksa.no_rawat and "+
                      "reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.kd_pj=? and detail_pemberian_obat.tgl_perawatan between ? and ? order by detail_pemberian_obat.no_rawat");             
@@ -193,7 +193,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
 
         MnUrut1.setBackground(new java.awt.Color(255, 255, 255));
         MnUrut1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUrut1.setForeground(java.awt.Color.darkGray);
+        MnUrut1.setForeground(new java.awt.Color(90, 120, 80));
         MnUrut1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUrut1.setText("Urutkan Berdasar Tanggal Pemberian");
         MnUrut1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -209,7 +209,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
 
         MnUrut2.setBackground(new java.awt.Color(255, 255, 255));
         MnUrut2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUrut2.setForeground(java.awt.Color.darkGray);
+        MnUrut2.setForeground(new java.awt.Color(90, 120, 80));
         MnUrut2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUrut2.setText("Urutkan Berdasar Nama Pasien");
         MnUrut2.setActionCommand("Urutkan Berdasar Nomor Perawatan");
@@ -233,7 +233,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Penggunaan Obat Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Penggunaan Obat Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -642,7 +642,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    ttltuslah=ttltuslah+rsresep.getDouble("tuslah");
                    tabMode.addRow(new Object[]{
                        "","   "+a+". ("+rsresep.getString("no_rawat")+") "+rsresep.getString("nm_pasien"),
-                       rsresep.getString("tgl_perawatan")+" "+rsresep.getString("jam"),rsresep.getString("nama_brng"),
+                       rsresep.getString("tgl_perawatan")+" "+rsresep.getString("jam"),rsresep.getString("kode_brng")+" "+rsresep.getString("nama_brng"),
                        rsresep.getDouble("jml"),rsresep.getDouble("total"),rsresep.getDouble("embalase"),rsresep.getDouble("tuslah")
                    });
                    a++;
@@ -689,7 +689,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                    ttltuslah=ttltuslah+rsresep.getDouble("tuslah");
                    tabMode.addRow(new Object[]{
                        "","   "+a+". ("+rsresep.getString("no_rawat")+") "+rsresep.getString("nm_pasien"),
-                       rsresep.getString("tgl_perawatan")+" "+rsresep.getString("jam"),rsresep.getString("nama_brng"),
+                       rsresep.getString("tgl_perawatan")+" "+rsresep.getString("jam"),rsresep.getString("kode_brng")+" "+rsresep.getString("nama_brng"),
                        rsresep.getDouble("jml"),rsresep.getDouble("total"),rsresep.getDouble("embalase"),rsresep.getDouble("tuslah")
                    });
                    a++;

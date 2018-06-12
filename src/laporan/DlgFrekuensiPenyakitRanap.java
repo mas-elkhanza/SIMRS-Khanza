@@ -165,10 +165,8 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         label9 = new widget.Label();
         BtnKeluar = new widget.Button();
         TabRawat = new javax.swing.JTabbedPane();
-        internalFrame2 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
-        internalFrame3 = new widget.InternalFrame();
         scrollPane2 = new widget.ScrollPane();
         tbDokter2 = new widget.Table();
 
@@ -178,7 +176,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         ppGrafikTerbanyakBatang.setBackground(new java.awt.Color(242, 242, 242));
-        ppGrafikTerbanyakBatang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ppGrafikTerbanyakBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerbanyakBatang.setForeground(new java.awt.Color(102, 51, 0));
         ppGrafikTerbanyakBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakBatang.setText("Grafik Batang 10 Penyakit Terbanyak");
@@ -195,7 +193,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         jPopupMenu1.add(ppGrafikTerbanyakBatang);
 
         ppGrafikTerbanyakPie.setBackground(new java.awt.Color(242, 242, 242));
-        ppGrafikTerbanyakPie.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ppGrafikTerbanyakPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerbanyakPie.setForeground(new java.awt.Color(102, 51, 0));
         ppGrafikTerbanyakPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakPie.setText("Grafik Pie 10 Penyakit Terbanyak");
@@ -212,7 +210,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         jPopupMenu1.add(ppGrafikTerbanyakPie);
 
         ppGrafikTerkecilBatang.setBackground(new java.awt.Color(242, 242, 242));
-        ppGrafikTerkecilBatang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ppGrafikTerkecilBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerkecilBatang.setForeground(new java.awt.Color(102, 51, 0));
         ppGrafikTerkecilBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilBatang.setText("Grafik Batang 10 Penyakit Tersedikit");
@@ -229,7 +227,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         jPopupMenu1.add(ppGrafikTerkecilBatang);
 
         ppGrafikTerkecilPie.setBackground(new java.awt.Color(242, 242, 242));
-        ppGrafikTerkecilPie.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ppGrafikTerkecilPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         ppGrafikTerkecilPie.setForeground(new java.awt.Color(102, 51, 0));
         ppGrafikTerkecilPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilPie.setText("Grafik Pie 10 Penyakit Tersedikit");
@@ -254,7 +252,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Frekuensi Penyakit Di Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Frekuensi Penyakit Di Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -405,9 +403,9 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -415,11 +413,6 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
                 TabRawatMouseClicked(evt);
             }
         });
-
-        internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
-        internalFrame2.setBorder(null);
-        internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
         scrollPane1.setComponentPopupMenu(jPopupMenu1);
         scrollPane1.setName("scrollPane1"); // NOI18N
@@ -442,14 +435,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         tbDokter.setName("tbDokter"); // NOI18N
         scrollPane1.setViewportView(tbDokter);
 
-        internalFrame2.add(scrollPane1, java.awt.BorderLayout.CENTER);
-
-        TabRawat.addTab(".: Berdasar Tanggal Masuk  ", internalFrame2);
-
-        internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
-        internalFrame3.setBorder(null);
-        internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
+        TabRawat.addTab("Berdasar Tanggal Masuk", scrollPane1);
 
         scrollPane2.setComponentPopupMenu(jPopupMenu1);
         scrollPane2.setName("scrollPane2"); // NOI18N
@@ -472,9 +458,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         tbDokter2.setName("tbDokter2"); // NOI18N
         scrollPane2.setViewportView(tbDokter2);
 
-        internalFrame3.add(scrollPane2, java.awt.BorderLayout.CENTER);
-
-        TabRawat.addTab(".: Berdasar Tanggal Keluar  ", internalFrame3);
+        TabRawat.addTab("Berdasar Tanggal Keluar", scrollPane2);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -490,12 +474,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tbDokter.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            //TCari.requestFocus();
-        }else if(tbDokter.getRowCount()!=0){
-            Sequel.queryu("delete from temporary");
-            if(TabRawat.getSelectedIndex()==0){
+        if(TabRawat.getSelectedIndex()==0){
+            if(tbDokter.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                //TCari.requestFocus();
+            }else if(tbDokter.getRowCount()!=0){
+                Sequel.queryu("delete from temporary");        
                 int row=tbDokter.getRowCount();
                 for(int r=0;r<row;r++){  
                     Sequel.menyimpan("temporary","'0','"+
@@ -504,7 +488,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     tbDokter.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
                                     tbDokter.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Frekuensi Penyakit"); 
                 }
-            }else if(TabRawat.getSelectedIndex()==1){
+                Valid.MyReport("rptFrekuensiPenyakitRanap.jrxml","report","[ Frekuensi Penyakit Di Rawat Inap ]",
+                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc");
+            }
+        }else if(TabRawat.getSelectedIndex()==1){
+            if(tbDokter2.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                //TCari.requestFocus();
+            }else if(tbDokter2.getRowCount()!=0){
+                Sequel.queryu("delete from temporary");        
                 int row=tbDokter2.getRowCount();
                 for(int r=0;r<row;r++){  
                     Sequel.menyimpan("temporary","'0','"+
@@ -513,10 +505,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     tbDokter2.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
                                     tbDokter2.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Frekuensi Penyakit"); 
                 }
+                Valid.MyReport("rptFrekuensiPenyakitRanap.jrxml","report","[ Frekuensi Penyakit Di Rawat Inap ]",
+                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc");
             }
-            Valid.MyReport("rptFrekuensiPenyakitRanap.jrxml","report","[ Frekuensi Penyakit Di Rawat Inap ]",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc");
-        }
+        }        
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
@@ -2200,8 +2192,6 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Button btnCari;
     private widget.Button btnPenyakit;
     private widget.InternalFrame internalFrame1;
-    private widget.InternalFrame internalFrame2;
-    private widget.InternalFrame internalFrame3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdpenyakit;
     private widget.Label label11;

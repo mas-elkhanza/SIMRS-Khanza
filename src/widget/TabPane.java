@@ -14,8 +14,8 @@ import javax.swing.JTabbedPane;
 public class TabPane extends JTabbedPane {
     public TabPane(){
         super();
-        setBackground(new Color(250,255,245));    
-        setForeground(new Color(60,80,50));    
+        setBackground(new Color(255,255,253));    
+        setForeground(new Color(90,120,80));    
         //this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(245,140,245)));       
     }
 }

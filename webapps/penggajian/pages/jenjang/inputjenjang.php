@@ -19,7 +19,7 @@
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT * FROM jnj_jabatan WHERE kode='$kode'";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $kode         = $baris[0];
                     $nama         = $baris[1];
                     $tnj          = $baris[2];

@@ -39,7 +39,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -136,17 +136,17 @@
         <Container class="javax.swing.JTabbedPane" name="TabRawat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f5" green="ff" red="fa" type="rgb"/>
+              <Color blue="fd" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
-                  <Color PropertyName="color" blue="e1" green="eb" red="e6" type="rgb"/>
+                  <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="28" green="46" red="32" type="rgb"/>
+              <Color blue="50" green="78" red="5a" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -176,8 +176,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: No.R.M. Terakhir  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: No.R.M. Terakhir  "/>
+                  <JTabbedPaneConstraints tabName="No.R.M. Terakhir">
+                    <Property name="tabTitle" type="java.lang.String" value="No.R.M. Terakhir"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -248,7 +248,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbNoRM">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbNoRM" noResource="true"/>
                       </Properties>
@@ -273,8 +272,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pengurutan No.R.M  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pengurutan No.R.M  "/>
+                  <JTabbedPaneConstraints tabName="Pengurutan No.R.M">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengurutan No.R.M"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -299,7 +298,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbNoUrut">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbNoUrut" noResource="true"/>
                       </Properties>
@@ -480,8 +478,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pengaturan Alamat  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pengaturan Alamat  "/>
+                  <JTabbedPaneConstraints tabName="Pengaturan Alamat">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengaturan Alamat"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -506,7 +504,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbAlamat">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbAlamat" noResource="true"/>
                       </Properties>
@@ -652,8 +649,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pengaturan Kelengkapan Data  ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pengaturan Kelengkapan Data  "/>
+                  <JTabbedPaneConstraints tabName="Pengaturan Kelengkapan Data">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengaturan Kelengkapan Data"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -678,7 +675,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbKelengkapan">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbKelengkapan" noResource="true"/>
                       </Properties>
@@ -1830,8 +1826,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName=".: Pengaturan Registrasi ">
-                    <Property name="tabTitle" type="java.lang.String" value=".: Pengaturan Registrasi "/>
+                  <JTabbedPaneConstraints tabName="Pengaturan Registrasi">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengaturan Registrasi"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -1856,7 +1852,6 @@
                   <SubComponents>
                     <Component class="widget.Table" name="tbValidasiRegistrasi">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="name" type="java.lang.String" value="tbValidasiRegistrasi" noResource="true"/>
                       </Properties>
@@ -1915,6 +1910,109 @@
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="328" y="12" width="60" height="23"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="widget.InternalFrame" name="internalFrame7">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="eb" green="ff" red="eb" type="rgb"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="internalFrame7" noResource="true"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Pengaturan Catatan Pasien">
+                    <Property name="tabTitle" type="java.lang.String" value="Pengaturan Catatan Pasien"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout">
+                <Property name="horizontalGap" type="int" value="1"/>
+                <Property name="verticalGap" type="int" value="1"/>
+              </Layout>
+              <SubComponents>
+                <Container class="widget.ScrollPane" name="Scroll6">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="Scroll6" noResource="true"/>
+                    <Property name="opaque" type="boolean" value="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                      <BorderConstraints direction="Center"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="widget.Table" name="tbValidasiCatatan">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="name" type="java.lang.String" value="tbValidasiCatatan" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbValidasiCatatanMouseClicked"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbValidasiCatatanKeyPressed"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="widget.panelisi" name="panelGlass11">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="panelGlass11" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[44, 47]"/>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                      <BorderConstraints direction="First"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                    <Property name="useNullLayout" type="boolean" value="true"/>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="widget.Label" name="jLabel13">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Tampilkan catatan pasien saat Registrasi Poli/Unit/IGD :"/>
+                        <Property name="name" type="java.lang.String" value="jLabel13" noResource="true"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="0" y="12" width="275" height="23"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="widget.ComboBox" name="ValidasiCatatan">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="2">
+                            <StringItem index="0" value="Yes"/>
+                            <StringItem index="1" value="No"/>
+                          </StringArray>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="ValidasiCatatan" noResource="true"/>
+                        <Property name="opaque" type="boolean" value="false"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[55, 28]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ValidasiCatatanKeyPressed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="278" y="12" width="60" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>

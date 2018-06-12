@@ -13,7 +13,7 @@
                 }else if($action == "UBAH"){
                     $_sql         	= "SELECT id,nik,nama,indek,pengurang, cuti_diambil,dankes FROM pegawai WHERE id='$id'";
                     $hasil        	= bukaquery($_sql);
-                    $baris        	= mysql_fetch_row($hasil);
+                    $baris        	= mysqli_fetch_row($hasil);
                     $id                 = $baris[0];
                     $nik                = $baris[1];
                     $nama               = $baris[2];
@@ -46,12 +46,12 @@
                 
                     $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
                     $hasilnext        	= bukaquery($_sqlnext);
-                    $barisnext        	= mysql_fetch_row($hasilnext);
+                    $barisnext        	= mysqli_fetch_row($hasilnext);
                     $next               = $barisnext[0];
 
                     $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
                     $hasilprev        	= bukaquery($_sqlprev);
-                    $barisprev        	= mysql_fetch_row($hasilprev);
+                    $barisprev        	= mysqli_fetch_row($hasilprev);
                     $prev               = $barisprev[0];
                     
                     if(empty($next)){
