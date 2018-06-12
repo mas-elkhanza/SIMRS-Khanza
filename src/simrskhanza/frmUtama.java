@@ -1061,7 +1061,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelMenu.setWarnaBawah(new java.awt.Color(255, 255, 255));
         panelMenu.setLayout(new java.awt.BorderLayout(1, 1));
 
-        panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 245, 223)));
+        panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 250, 228)));
         panelisi2.setName("panelisi2"); // NOI18N
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 40));
         panelisi2.setWarnaBawah(new java.awt.Color(254, 253, 250));
@@ -1136,7 +1136,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelMenu.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
         scrollPane2.setBackground(new java.awt.Color(255, 255, 250));
-        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 245, 223)));
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 250, 228)));
         scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane2.setName("scrollPane2"); // NOI18N
 
