@@ -1,17 +1,4 @@
-
 <?php
-   $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $bulan="0";
-   if ($bln_leng==1){
-    	$bulan="0".$baris[1];
-   }else{
-	$bulan=$baris[1];
-   }
-
     $action      =isset($_GET['action'])?$_GET['action']:NULL;
     $keyword      = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
     echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
