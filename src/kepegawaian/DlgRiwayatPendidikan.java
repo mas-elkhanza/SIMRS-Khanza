@@ -11,6 +11,7 @@
 
 package kepegawaian;
 
+import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
 import java.awt.BorderLayout;
@@ -46,12 +47,11 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
 import simrskhanza.DlgPilihanCetakDokumen;
-import widget.panelisi;
 
 /**
  *
@@ -77,6 +77,18 @@ public class DlgRiwayatPendidikan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         initComponents2();
+        
+        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        if(koneksiDB.cariCepat().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {BtnCariActionPerformed(null);}
+                @Override
+                public void removeUpdate(DocumentEvent e) {BtnCariActionPerformed(null);}
+                @Override
+                public void changedUpdate(DocumentEvent e) {BtnCariActionPerformed(null);}
+            });
+        }
     }
     
     private void initComponents2() {           
@@ -156,9 +168,9 @@ public class DlgRiwayatPendidikan extends javax.swing.JDialog {
                         if (newState == State.SUCCEEDED) {
                             try {
                                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
+                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOST()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
+                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOST()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
                                 }
@@ -369,7 +381,7 @@ public class DlgRiwayatPendidikan extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         try {
             if(engine.getLocation().contains("ListRiwayatPendidikan")){
-                loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/index.php?act=ListRiwayatPendidikan&action=LIHAT&keyword="+TCari.getText().replaceAll(" ","_"));
+                loadURL("http://" +koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/index.php?act=ListRiwayatPendidikan&action=LIHAT&keyword="+TCari.getText().replaceAll(" ","_"));
             }                
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);

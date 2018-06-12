@@ -60,25 +60,16 @@
                 <td width="67%">
                     <select name="TglBerkala" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi3' value=$TglBerkala>$TglBerkala</option>";
-                            }
                             loadTglnow();
                          ?>
                     </select>
                     <select name="BlnBerkala" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi3' value=$BlnBerkala>$BlnBerkala</option>";
-                            }
                             loadBlnnow();
                          ?>
                     </select>
                     <select name="ThnBerkala" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi3' value=$ThnBerkala>$ThnBerkala</option>";
-                            }
                             loadThnnow();
                          ?>
                     </select>
@@ -90,25 +81,16 @@
                 <td width="67%">
                     <select name="TglBerkalaYad" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi4' value=$TglBerkalaYad>$TglBerkalaYad</option>";
-                            }
                             loadTglnow();
                          ?>
                     </select>
                     <select name="BlnBerkalaYad" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi4' value=$BlnBerkalaYad>$BlnBerkalaYad</option>";
-                            }
                             loadBlnnow();
                          ?>
                     </select>
                     <select name="ThnBerkalaYad" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi4' value=$ThnBerkalaYad>$ThnBerkalaYad</option>";
-                            }
                             loadThnnow();
                          ?>
                     </select>
@@ -126,25 +108,16 @@
                 <td width="67%">
                     <select name="TglSK" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi6' value=$TglSK>$TglSK</option>";
-                            }
                             loadTglnow();
                          ?>
                     </select>
                     <select name="BlnSK" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi6' value=$BlnSK>$BlnSK</option>";
-                            }
                             loadBlnnow();
                          ?>
                     </select>
                     <select name="ThnSK" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi6' value=$ThnSK>$ThnSK</option>";
-                            }
                             loadThnnow();
                          ?>
                     </select>

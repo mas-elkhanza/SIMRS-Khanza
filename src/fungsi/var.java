@@ -73,7 +73,7 @@ public final class var {
             bpjs_rujukan_keluar=false,grafik_lab_ralanbulan=false,pengeluaran_stok_apotek=false,grafik_rad_ralanbulan=false,detailjmdokter2=false,
             pengaduan_pasien=false,grafik_lab_ralanhari=false,grafik_rad_ralanhari=false,sensus_harian_ralan=false,metode_racik=false,pembayaran_akun_bayar=false,
             pengguna_obat_resep=false,rekap_pemesanan=false,master_berkas_pegawai=false,berkas_kepegawaian=false,riwayat_jabatan=false,riwayat_pendidikan=false,
-            riwayat_naik_gaji=false;
+            riwayat_naik_gaji=false,kegiatan_ilmiah=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -416,6 +416,7 @@ public final class var {
                         var.riwayat_jabatan=true;
                         var.riwayat_pendidikan=true;
                         var.riwayat_naik_gaji=true;
+                        var.kegiatan_ilmiah=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -742,6 +743,7 @@ public final class var {
                         var.riwayat_jabatan=rs2.getBoolean("riwayat_jabatan");
                         var.riwayat_pendidikan=rs2.getBoolean("riwayat_pendidikan");
                         var.riwayat_naik_gaji=rs2.getBoolean("riwayat_naik_gaji");
+                        var.kegiatan_ilmiah=rs2.getBoolean("kegiatan_ilmiah");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1066,6 +1068,7 @@ public final class var {
                         var.riwayat_jabatan=false;
                         var.riwayat_pendidikan=false;
                         var.riwayat_naik_gaji=false;
+                        var.kegiatan_ilmiah=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1437,4 +1440,5 @@ public final class var {
     public static boolean getriwayat_jabatan(){return var.riwayat_jabatan;}
     public static boolean getriwayat_pendidikan(){return var.riwayat_pendidikan;}
     public static boolean getriwayat_naik_gaji(){return var.riwayat_naik_gaji;}
+    public static boolean getkegiatan_ilmiah(){return var.kegiatan_ilmiah;}
 }   

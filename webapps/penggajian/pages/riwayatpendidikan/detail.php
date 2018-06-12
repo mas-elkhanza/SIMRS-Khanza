@@ -81,11 +81,7 @@
                 <td width="67%">                        
                     <select name="thn_lulus" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4">
                          <?php                               
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi4' value=$thn_lulus>$thn_lulus</option>";
-                            }
-
-                            loadThn();
+                            loadThnnow();
                          ?>
                     </select>
                     <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>

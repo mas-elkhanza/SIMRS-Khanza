@@ -859,9 +859,9 @@ public final class validasi {
             Properties prop = new Properties();
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             if(os.contains("win")) {
-                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
+                rt.exec( "rundll32 url.dll,FileProtocolHandler " + "http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
             }else if (os.contains("mac")) {
-                rt.exec( "open " + "http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
+                rt.exec( "open " + "http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+url);
             }else if (os.contains("nix") || os.contains("nux")) {
                 String[] browsers = {"epiphany", "firefox", "mozilla", "konqueror","chrome","chromium","netscape","opera","links","lynx","midori"};
                 // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
