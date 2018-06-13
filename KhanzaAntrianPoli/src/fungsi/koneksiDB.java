@@ -80,6 +80,16 @@ public final class koneksiDB {
         return var;
     }
     
+    public static String HOST2(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=EnkripsiAES.decrypt(prop.getProperty("HOSTHYBRIDWEB"));
+        }catch(Exception e){
+            var="localhost"; 
+        }
+        return var;
+    }
+    
     public static String PORT(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));

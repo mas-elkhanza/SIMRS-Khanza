@@ -3782,12 +3782,40 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                             var.setkdbangsal(bangsal);
                                         }
 
-                                        billing.beriobat.dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                        billing.beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
-                                        billing.beriobat.dlgobt.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
-                                        billing.beriobat.dlgobt.isCek();
-                                        billing.beriobat.dlgobt.tampil();
-                                        billing.beriobat.dlgobt.setVisible(true);
+                                        if(var.getkode().equals("Admin Utama")){
+                                            if(Sequel.cariInteger("select count(no_rawat) from stok_obat_pasien where no_rawat=? ",rs2.getString("no_rawat2"))>0){
+                                                billing.beriobat.dlgobt2.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate());
+                                                billing.beriobat.dlgobt2.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                                                billing.beriobat.dlgobt2.setLocationRelativeTo(internalFrame1);
+                                                billing.beriobat.dlgobt2.setVisible(true); 
+                                            }else{
+                                                billing.beriobat.dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                                                billing.beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
+                                                billing.beriobat.dlgobt.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
+                                                billing.beriobat.dlgobt.isCek();
+                                                billing.beriobat.dlgobt.tampil();
+                                                billing.beriobat.dlgobt.setVisible(true);
+                                            }  
+                                        }else{
+                                            if(Sequel.cariRegistrasi(tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString())>0){
+                                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                                TCari.requestFocus();
+                                            }else{
+                                                if(Sequel.cariInteger("select count(no_rawat) from stok_obat_pasien where no_rawat=? ",rs2.getString("no_rawat2"))>0){
+                                                    billing.beriobat.dlgobt2.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate());
+                                                    billing.beriobat.dlgobt2.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                                                    billing.beriobat.dlgobt2.setLocationRelativeTo(internalFrame1);
+                                                    billing.beriobat.dlgobt2.setVisible(true); 
+                                                }else{
+                                                    billing.beriobat.dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                                                    billing.beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
+                                                    billing.beriobat.dlgobt.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
+                                                    billing.beriobat.dlgobt.isCek();
+                                                    billing.beriobat.dlgobt.tampil();
+                                                    billing.beriobat.dlgobt.setVisible(true);
+                                                }  
+                                            }
+                                        }                                          
                                     }else{
                                         JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
                                         tbKamIn.requestFocus();
@@ -3817,12 +3845,40 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             }else{
                                 var.setkdbangsal(bangsal);
                             }
-                            billing.beriobat.dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                            billing.beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
-                            billing.beriobat.dlgobt.setNoRm(norawat.getText(),DTPCari1.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
-                            billing.beriobat.dlgobt.isCek();
-                            billing.beriobat.dlgobt.tampil();
-                            billing.beriobat.dlgobt.setVisible(true);
+                            if(var.getkode().equals("Admin Utama")){
+                                if(Sequel.cariInteger("select count(no_rawat) from stok_obat_pasien where no_rawat=? ",norawat.getText())>0){
+                                    billing.beriobat.dlgobt2.setNoRm(norawat.getText(),DTPCari1.getDate());
+                                    billing.beriobat.dlgobt2.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                                    billing.beriobat.dlgobt2.setLocationRelativeTo(internalFrame1);
+                                    billing.beriobat.dlgobt2.setVisible(true); 
+                                }else{
+                                    billing.beriobat.dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                                    billing.beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
+                                    billing.beriobat.dlgobt.setNoRm(norawat.getText(),DTPCari1.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
+                                    billing.beriobat.dlgobt.isCek();
+                                    billing.beriobat.dlgobt.tampil();
+                                    billing.beriobat.dlgobt.setVisible(true);
+                                }
+                            }else{
+                                if(Sequel.cariRegistrasi(norawat.getText())>0){
+                                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                    TCari.requestFocus();
+                                }else{
+                                    if(Sequel.cariInteger("select count(no_rawat) from stok_obat_pasien where no_rawat=? ",norawat.getText())>0){
+                                        billing.beriobat.dlgobt2.setNoRm(norawat.getText(),DTPCari1.getDate());
+                                        billing.beriobat.dlgobt2.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                                        billing.beriobat.dlgobt2.setLocationRelativeTo(internalFrame1);
+                                        billing.beriobat.dlgobt2.setVisible(true); 
+                                    }else{
+                                        billing.beriobat.dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                                        billing.beriobat.dlgobt.setLocationRelativeTo(internalFrame1);
+                                        billing.beriobat.dlgobt.setNoRm(norawat.getText(),DTPCari1.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
+                                        billing.beriobat.dlgobt.isCek();
+                                        billing.beriobat.dlgobt.tampil();
+                                        billing.beriobat.dlgobt.setVisible(true);
+                                    }
+                                }
+                            }
                             //this.dispose();
                           }
                     }                    
@@ -6308,7 +6364,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         DlgBerkasRawat berkas=new DlgBerkasRawat(null,true);
                         berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
                         try {
-                            berkas.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+rs2.getString("no_rawat2"));
+                            berkas.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+rs2.getString("no_rawat2"));
                         } catch (Exception ex) {
                             System.out.println("Notifikasi : "+ex);
                         }
@@ -6339,7 +6395,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             DlgBerkasRawat berkas=new DlgBerkasRawat(null,true);
             berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
             try {
-                berkas.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+norawat.getText());
+                berkas.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+norawat.getText());
             } catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);
             }

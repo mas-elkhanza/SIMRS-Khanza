@@ -296,7 +296,7 @@ color: #65795b;
 .isi td{
 	border-right: 1px solid #f2f7ed;
 	border-bottom: 1px solid #f2f7ed;
-	background: #fffff9;
+	background: #ffffff;
 	padding-top:4px;
 	padding-bottom:4px;
 	padding-left:2px;
@@ -366,6 +366,17 @@ color: #65795b;
 	padding-right:0px;
 	color:#65795b;
 	font: 9px Tahoma;
+}
+
+.isi7 td{
+	border-right: 1px solid #f2f7ed;
+	border-bottom: 1px solid #f2f7ed;
+	background: #fdfff9;
+	padding-top:4px;
+	padding-bottom:4px;
+	padding-left:2px;
+	color:#65795b;
+	font: 11px  tahoma;
 }
 
 .button {
