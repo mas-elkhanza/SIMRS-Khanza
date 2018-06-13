@@ -73,7 +73,7 @@ public final class var {
             bpjs_rujukan_keluar=false,grafik_lab_ralanbulan=false,pengeluaran_stok_apotek=false,grafik_rad_ralanbulan=false,detailjmdokter2=false,
             pengaduan_pasien=false,grafik_lab_ralanhari=false,grafik_rad_ralanhari=false,sensus_harian_ralan=false,metode_racik=false,pembayaran_akun_bayar=false,
             pengguna_obat_resep=false,rekap_pemesanan=false,master_berkas_pegawai=false,berkas_kepegawaian=false,riwayat_jabatan=false,riwayat_pendidikan=false,
-            riwayat_naik_gaji=false,kegiatan_ilmiah=false,riwayat_penghargaan=false;
+            riwayat_naik_gaji=false,kegiatan_ilmiah=false,riwayat_penghargaan=false,riwayat_penelitian=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -418,6 +418,7 @@ public final class var {
                         var.riwayat_naik_gaji=true;
                         var.kegiatan_ilmiah=true;
                         var.riwayat_penghargaan=true;
+                        var.riwayat_penelitian=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -746,6 +747,7 @@ public final class var {
                         var.riwayat_naik_gaji=rs2.getBoolean("riwayat_naik_gaji");
                         var.kegiatan_ilmiah=rs2.getBoolean("kegiatan_ilmiah");
                         var.riwayat_penghargaan=rs2.getBoolean("riwayat_penghargaan");
+                        var.riwayat_penelitian=rs2.getBoolean("riwayat_penelitian");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1072,6 +1074,7 @@ public final class var {
                         var.riwayat_naik_gaji=false;
                         var.kegiatan_ilmiah=false;
                         var.riwayat_penghargaan=false;
+                        var.riwayat_penelitian=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1445,4 +1448,5 @@ public final class var {
     public static boolean getriwayat_naik_gaji(){return var.riwayat_naik_gaji;}
     public static boolean getkegiatan_ilmiah(){return var.kegiatan_ilmiah;}
     public static boolean getriwayat_penghargaan(){return var.riwayat_penghargaan;}
+    public static boolean getriwayat_penelitian(){return var.riwayat_penelitian;}
 }   

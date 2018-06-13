@@ -21,14 +21,14 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi' title='$baris[1] $baris[2]'>
-                                <td>
+                                <td valign='top'>
                                     <center>
                                         <a href=?act=InputRiwayatGaji&action=TAMBAH&id=$baris[0]>[Detail]</a>
                                     </center>
                                </td>
-                                <td><a href=?act=InputRiwayatGaji&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
-                                <td><a href=?act=InputRiwayatGaji&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
-                                <td>
+                                <td valign='top'><a href=?act=InputRiwayatGaji&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
+                                <td valign='top'><a href=?act=InputRiwayatGaji&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
+                                <td valign='top'>
                                    <table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>";
                                         $_sql2 = "SELECT pangkatjabatan,gapok,tmt_berkala,tmt_berkala_yad
                                                 from riwayat_naik_gaji where id='$baris[0]' ORDER BY tmt_berkala ASC ";

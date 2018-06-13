@@ -76,7 +76,7 @@
                                       'DetailPinjam','BayarPinjam','ListJam','SisaDankes','ListKoperasi','InputRiwayatPangkat','ListRiwayatPangkat',
                                       'InputRiwayatPendidikan','ListRiwayatPendidikan','InputRiwayatSeminar','ListRiwayatSeminar','ListRiwayatGaji',
                                       'InputBank','ListBank','DetailBpjs','DetailHarianBulanan','DetailBerkasPegawai','InputRiwayatPenghargaan',
-                                      'ListRiwayatPenghargaan');
+                                      'ListRiwayatPenghargaan','InputRiwayatPenelitian','ListRiwayatPenelitian');
 				foreach ($form as $page) {
 					if ($aksi==$page) {
 						echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -209,7 +209,10 @@
                         case 'InputRiwayatPenghargaan'  : include_once('pages/riwayatpenghargaan/detail.php'); break;
                         case 'ListRiwayatPenghargaan'   : include_once('pages/riwayatpenghargaan/list.php'); break;
                         
-                    case 'DetailBerkasPegawai'      : include_once('pages/berkaspegawai/detail.php'); break;
+                        case 'InputRiwayatPenelitian'   : include_once('pages/riwayatpenelitian/detail.php'); break;
+                        case 'ListRiwayatPenelitian'    : include_once('pages/riwayatpenelitian/list.php'); break;
+                        
+                        case 'DetailBerkasPegawai'      : include_once('pages/berkaspegawai/detail.php'); break;
                         
                     default			        : include_once('pages/kontak.php');
 			

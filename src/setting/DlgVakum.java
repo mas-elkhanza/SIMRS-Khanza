@@ -2448,6 +2448,7 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Riwayat Kenaikan Gaji","lain","riwayat_naik_gaji");
         hapus("Riwayat Pendidikan","lain","riwayat_pendidikan");
         hapus("Riwayat Penghargaan","lain","riwayat_penghargaan");
+        hapus("Riwayat Penelitian","lain","riwayat_penelitian");
         hapus("Angsuran Koperasi","lain","angsuran_koperasi");
         hapus("Riwayat Kegiatan Ilmiah & Pelatihan","lain","riwayat_seminar");
         hapus("Peminjaman Koperasi","lain","peminjaman_koperasi");

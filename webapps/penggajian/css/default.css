@@ -2,7 +2,7 @@
 body  {
 	font-family:Tahoma;
 	font-size:11px;
-	background: #fffff9;
+	background: #ffffff;
 	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
 	padding: 0;
 	color: #65795b;
@@ -39,7 +39,8 @@ h1 {
 }
 
 #mainContent {
-	margin: auto 0; /* the right margin on this div element creates the column down the right side of the page - no matter how much content the sidebar1 div contains, the column space will remain. You can remove this margin if you want the #mainContent div's text to fill the #sidebar1 space when the content in #sidebar1 ends. */
+    background: #ffffff;
+   margin: auto 0; /* the right margin on this div element creates the column down the right side of the page - no matter how much content the sidebar1 div contains, the column space will remain. You can remove this margin if you want the #mainContent div's text to fill the #sidebar1 space when the content in #sidebar1 ends. */
 }
 
 #mainContent h1 {
@@ -146,6 +147,10 @@ h1 {
 	color: #879B7D;
         font-family:Tahoma;
         font-size: 11px;
+}
+
+#entry{
+     background: #ffffff;
 }
 
 #entry a{
@@ -313,10 +318,10 @@ color: #65795b;
 }
 
 .isi2 td{
-	padding-top:5px;
-	padding-bottom:5px;
-	padding-left:8px;
-	padding-right:8px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-left:10px;
+	padding-right:2px;
         font-family: Tahoma;
 	font-size: 11px;
 	font-style: italic;
@@ -390,43 +395,46 @@ color: #65795b;
 }
 
 .text {
-	background: #fffff9;
+	background: #ffffff;
         font-size: 11px;
         font: Tahoma;
-	padding: 3px 0 3px 5px;
+	padding: 3px 3px 3px 3px;
 	border: 1px solid #e2e7de;
 	color: #65795b;
+        height: 22px;
 }
 
 .text2 {
-	background: #fffff9;
+	background: #ffffff;
         font-size: 11px;
         font: Tahoma;
-	padding: 3px 0 3px 5px;
+	padding: 3px 3px 3px 3px;
 	border: 1px solid #e2e7de;
 	color: #65795b;
         width:210px;
+        height: 22px;
 }
 
 .text3 {
-	background: #fffff9;
+	background: #ffffff;
         font-size: 11px;
         font: Tahoma;
-	padding: 3px 0 3px 5px;
+	padding: 3px 3px 3px 3px;
 	border: 1px solid #e2e7de;
 	color: #65795b;
         width:90px;
+        height: 22px;
 }
 
 .text4 {
-	background: #fffff9;
+	background: #ffffff;
         font-size: 11px;
         font: Tahoma;
-	padding: 3px 0 3px 5px;
+	padding: 3px 3px 3px 3px;
 	border: 1px solid #e2e7de;
 	color: #65795b;
         width:180px;
-        height: 24px;
+        height: 22px;
 }
 
 .caption{
