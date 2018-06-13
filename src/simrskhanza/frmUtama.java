@@ -303,6 +303,7 @@ import kepegawaian.DlgPulang;
 import kepegawaian.DlgRiwayatJabatan;
 import kepegawaian.DlgRiwayatNaikGaji;
 import kepegawaian.DlgRiwayatPendidikan;
+import kepegawaian.DlgRiwayatPenghargaan;
 import kepegawaian.DlgSidikJari;
 import kepegawaian.DlgTemporaryPresensi;
 import setting.DlgClosingKasir;
@@ -794,6 +795,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnRiwayatPendidikan = new widget.ButtonBig();
         btnRiwayatNaikGaji = new widget.ButtonBig();
         btnKegiatanIlmiah = new widget.ButtonBig();
+        btnRiwayatPenghargaan = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4940,6 +4942,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKegiatanIlmiah);
 
+        btnRiwayatPenghargaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_folder_images_61610.png"))); // NOI18N
+        btnRiwayatPenghargaan.setText("Riwayat Penghargaan");
+        btnRiwayatPenghargaan.setIconTextGap(0);
+        btnRiwayatPenghargaan.setName("btnRiwayatPenghargaan"); // NOI18N
+        btnRiwayatPenghargaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatPenghargaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatPenghargaanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRiwayatPenghargaan);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4948,7 +4962,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/06/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13/06/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -10481,6 +10495,23 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnKegiatanIlmiahActionPerformed
 
+    private void btnRiwayatPenghargaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatPenghargaanActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRiwayatPenghargaan form=new DlgRiwayatPenghargaan(this,false);
+        try {
+            form.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpenghargaan.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);        
+        form.setVisible(true);        
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRiwayatPenghargaanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10779,6 +10810,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRiwayatJabatan;
     private widget.ButtonBig btnRiwayatNaikGaji;
     private widget.ButtonBig btnRiwayatPendidikan;
+    private widget.ButtonBig btnRiwayatPenghargaan;
     private widget.ButtonBig btnRl32;
     private widget.ButtonBig btnRl33;
     private widget.ButtonBig btnRl34;
@@ -11385,6 +11417,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getkegiatan_ilmiah()==true){                
                 Panelmenu.add(btnKegiatanIlmiah); 
+                jmlmenu++;
+            }
+            
+            if(var.getriwayat_penghargaan()==true){                
+                Panelmenu.add(btnRiwayatPenghargaan); 
                 jmlmenu++;
             }
 
@@ -13001,6 +13038,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getkegiatan_ilmiah()==true){                
             Panelmenu.add(btnKegiatanIlmiah); 
+            jmlmenu++;
+        }
+        
+        if(var.getriwayat_penghargaan()==true){                
+            Panelmenu.add(btnRiwayatPenghargaan); 
             jmlmenu++;
         }
 
@@ -14679,6 +14721,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getkegiatan_ilmiah()==true){    
             if(btnKegiatanIlmiah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKegiatanIlmiah);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getriwayat_penghargaan()==true){    
+            if(btnRiwayatPenghargaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRiwayatPenghargaan);
                 jmlmenu++;
             }                
         }

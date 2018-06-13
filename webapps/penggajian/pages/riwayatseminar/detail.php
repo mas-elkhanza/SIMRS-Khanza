@@ -170,7 +170,7 @@
                             } 
                             break;
                     }
-                }else if ((empty($id))||(empty($jabatan))){
+                }else if ((empty($id))||(empty($nama_seminar))){
                     echo 'Semua field harus isi..!!!';
                 }
             }
