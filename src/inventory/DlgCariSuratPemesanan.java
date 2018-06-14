@@ -1348,7 +1348,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     public void isCek(){
         BtnPrint.setEnabled(var.getsurat_pemesanan_medis());
         ppHapus.setEnabled(var.getsurat_pemesanan_medis());
-        ppDatang.setEnabled(var.getsurat_pemesanan_medis());
+        ppDatang.setEnabled(var.getpemesanan_obat());
         ppProses.setEnabled(var.getsurat_pemesanan_medis());
     }
     

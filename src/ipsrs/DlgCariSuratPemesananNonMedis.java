@@ -43,7 +43,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
-    private DlgPemesanan aplikasi=new DlgPemesanan(null,false);
+    private DlgPemesananIPSRS aplikasi=new DlgPemesananIPSRS(null,false);
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -940,7 +940,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
             Valid.textKosong(TCari,"pilihan data");
         }else{
-            Sequel.queryu("update surat_pemesanan_non_medis set status='Sudah Datang' where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+            Sequel.queryu("update surat_pemesanan_medis set status='Sudah Datang' where no_pemesanan=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            aplikasi.tampikan=false;
+            aplikasi.isCek();
+            aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim());
+            aplikasi.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            aplikasi.setLocationRelativeTo(internalFrame1);
+            aplikasi.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
             tampil();
         }
     }//GEN-LAST:event_ppDatangActionPerformed
@@ -1204,7 +1212,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     public void isCek(){
         BtnPrint.setEnabled(var.getsurat_pemesanan_non_medis());
         ppHapus.setEnabled(var.getsurat_pemesanan_non_medis());
-        ppDatang.setEnabled(var.getsurat_pemesanan_non_medis());
+        ppDatang.setEnabled(var.getpenerimaan_non_medis());
         ppProses.setEnabled(var.getsurat_pemesanan_non_medis());
     }
     

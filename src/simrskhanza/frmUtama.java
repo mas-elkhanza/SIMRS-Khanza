@@ -232,6 +232,7 @@ import inventory.DlgRekapPenerimaan;
 import inventory.DlgRekapPermintaan;
 import inventory.DlgRiwayatBarangMedis;
 import inventory.DlgSuratPemesanan;
+import ipsrs.DlgPemesananIPSRS;
 import ipsrs.DlgPengadaanIPSRSPerTanggal;
 import ipsrs.DlgPermintaanNonMedis;
 import ipsrs.DlgRekapPermintaanNonMedis;
@@ -798,6 +799,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnKegiatanIlmiah = new widget.ButtonBig();
         btnRiwayatPenghargaan = new widget.ButtonBig();
         btnRiwayatPenelitian = new widget.ButtonBig();
+        btnPenerimaanNonMedis = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4968,6 +4970,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRiwayatPenelitian);
 
+        btnPenerimaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038192_market.png"))); // NOI18N
+        btnPenerimaanNonMedis.setText("Penerimaan Barang Non Medis");
+        btnPenerimaanNonMedis.setIconTextGap(0);
+        btnPenerimaanNonMedis.setName("btnPenerimaanNonMedis"); // NOI18N
+        btnPenerimaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenerimaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenerimaanNonMedisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPenerimaanNonMedis);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4976,7 +4990,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13/06/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/06/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -10543,6 +10557,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRiwayatPenelitianActionPerformed
 
+    private void btnPenerimaanNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaanNonMedisActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPemesananIPSRS pembelian=new DlgPemesananIPSRS(this,false);
+        pembelian.isCek();
+        pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pembelian.setLocationRelativeTo(PanelUtama);
+        pembelian.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPenerimaanNonMedisActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10762,6 +10788,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPembelian;
     private widget.ButtonBig btnPembelianIpsrs;
     private widget.ButtonBig btnPemesanan;
+    private widget.ButtonBig btnPenerimaanNonMedis;
     private widget.ButtonBig btnPengadaanIPSRSPerTanggal;
     private widget.ButtonBig btnPengaduan;
     private widget.ButtonBig btnPengambilanPenunjangUTD;
@@ -11691,6 +11718,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getipsrs_pengadaan_barang()==true){
                 Panelmenu.add(btnPembelianIpsrs);  
+                jmlmenu++;
+            }
+            
+            if(var.getpenerimaan_non_medis()==true){
+                Panelmenu.add(btnPenerimaanNonMedis);  
                 jmlmenu++;
             }
 
@@ -13314,6 +13346,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getipsrs_pengadaan_barang()==true){
             Panelmenu.add(btnPembelianIpsrs);  
+            jmlmenu++;
+        }
+
+        if(var.getpenerimaan_non_medis()==true){
+            Panelmenu.add(btnPenerimaanNonMedis);  
             jmlmenu++;
         }
 
@@ -15099,6 +15136,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getipsrs_pengadaan_barang()==true){
             if(btnPembelianIpsrs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembelianIpsrs);  
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpenerimaan_non_medis()==true){
+            if(btnPenerimaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenerimaanNonMedis);  
                 jmlmenu++;
             }                
         }

@@ -575,9 +575,9 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
 
         label24.setText("Jenis :");
         label24.setName("label24"); // NOI18N
-        label24.setPreferredSize(new java.awt.Dimension(68, 23));
+        label24.setPreferredSize(new java.awt.Dimension(48, 23));
         panelisi4.add(label24);
-        label24.setBounds(0, 10, 75, 23);
+        label24.setBounds(0, 10, 45, 23);
 
         kdsat.setName("kdsat"); // NOI18N
         kdsat.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -587,7 +587,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(kdsat);
-        kdsat.setBounds(80, 10, 53, 23);
+        kdsat.setBounds(48, 10, 53, 23);
 
         btnSatuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnSatuan.setMnemonic('3');
@@ -600,7 +600,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(btnSatuan);
-        btnSatuan.setBounds(253, 10, 28, 23);
+        btnSatuan.setBounds(273, 10, 28, 23);
 
         nmsat.setName("nmsat"); // NOI18N
         nmsat.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -610,7 +610,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(nmsat);
-        nmsat.setBounds(135, 10, 115, 23);
+        nmsat.setBounds(103, 10, 167, 23);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -1422,7 +1422,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else{
             ppHapus.setEnabled(false);
         }        
-        ppBayar.setEnabled(var.getpemesanan_obat());
+        ppBayar.setEnabled(var.getbayar_pemesanan_obat());
     }
     
 }
