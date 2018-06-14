@@ -98,6 +98,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD106 = new usu.widget.ButtonGlass();
         BtnICD13 = new usu.widget.ButtonGlass();
         BtnICD60 = new usu.widget.ButtonGlass();
+        BtnICD117 = new usu.widget.ButtonGlass();
         BtnICD23 = new usu.widget.ButtonGlass();
         BtnICD61 = new usu.widget.ButtonGlass();
         BtnICD36 = new usu.widget.ButtonGlass();
@@ -1095,6 +1096,23 @@ public class DlgVakum extends javax.swing.JDialog {
             }
         });
         panelBiasa1.add(BtnICD60);
+
+        BtnICD117.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD117.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD117.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD117.setText("Pemesanan Non Medis");
+        BtnICD117.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD117.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD117.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD117.setName("BtnICD117"); // NOI18N
+        BtnICD117.setRoundRect(true);
+        BtnICD117.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD117ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD117);
 
         BtnICD23.setBackground(new java.awt.Color(195, 205, 185));
         BtnICD23.setForeground(new java.awt.Color(153, 0, 51));
@@ -2363,6 +2381,7 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Surat Pemesanan Medis","lain","surat_pemesanan_medis");
         hapus("Pemesanan Barang Non Medis","lain ","ipsrspemesanan");
         hapus("Pengadaan Barang Non Medis","lain ","ipsrspembelian");
+        hapus("Bayar Pemesanan Obat/Alkes/BHP","lain ","bayar_pemesanan");
         hapus("Pemesanan Barang Medis","lain ","pemesanan");
         hapus("Pengadaan Barang Medis","lain ","pembelian");
         hapus("Petugas","Sirkulasi Inventaris, Ralan Paramedis, Ranap Paramedis,\nPeriksa Radiologi, Periksa Laboratorium, Pengadaan & Stok Keluar Barang Non Medis"+
@@ -2573,6 +2592,7 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD59ActionPerformed
 
     private void BtnICD60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD60ActionPerformed
+        hapus("Bayar Pemesanan Obat/Alkes/BHP","lain ","bayar_pemesanan");
         hapus("Pemesanan Obat & BHP","lain","detailpesan");
         hapus("Pemesanan Obat & BHP","lain","pemesanan");
     }//GEN-LAST:event_BtnICD60ActionPerformed
@@ -2687,6 +2707,7 @@ public class DlgVakum extends javax.swing.JDialog {
 
     private void BtnICD86ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD86ActionPerformed
         hapus("Akun Piutang","Jurnal Akuntansi","akun_piutang");
+        hapus("Akun Bayar","Jurnal Akuntansi","akun_bayar");
         hapus("Rekening Tahun","Jurnal Akuntansi","rekeningtahun");        
         hapus("Subrekening","Lain","subrekening");
         hapus("Kategori Pemasukan Lain-Lain","Rekening Tahun","kategori_pemasukan_lain");
@@ -2822,6 +2843,12 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Data Suplier Non Medis","lain","ipsrssuplier");
     }//GEN-LAST:event_BtnICD116ActionPerformed
 
+    private void BtnICD117ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD117ActionPerformed
+        hapus("Bayar Pemesanan Non Medis","lain ","bayar_pemesanan_non_medis");
+        hapus("Pemesanan Non Medis","lain","ipsrsdetailpesan");
+        hapus("Pemesanan Non Medis","lain","ipsrspemesanan");
+    }//GEN-LAST:event_BtnICD117ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2860,6 +2887,7 @@ public class DlgVakum extends javax.swing.JDialog {
     private usu.widget.ButtonGlass BtnICD114;
     private usu.widget.ButtonGlass BtnICD115;
     private usu.widget.ButtonGlass BtnICD116;
+    private usu.widget.ButtonGlass BtnICD117;
     private usu.widget.ButtonGlass BtnICD12;
     private usu.widget.ButtonGlass BtnICD13;
     private usu.widget.ButtonGlass BtnICD14;

@@ -27,6 +27,7 @@ import javax.swing.table.TableColumn;
 import keuangan.DlgBayarPemesanan;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
+import keuangan.DlgBayarPemesananNonMedis;
 
 public class DlgCariPemesananIpsrs extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -947,11 +948,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_formWindowOpened
 
     private void ppBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBayarActionPerformed
-        if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString().trim().equals("")){
+        if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().trim().equals("")){
             Valid.textKosong(TCari,"No.Faktur");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgBayarPemesanan bayarpesan=new DlgBayarPemesanan(null,false);
+            DlgBayarPemesananNonMedis bayarpesan=new DlgBayarPemesananNonMedis(null,false);
             bayarpesan.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
             bayarpesan.tampil();
             bayarpesan.isCek();
@@ -1220,7 +1221,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else{
             ppHapus.setEnabled(false);
         }        
-        ppBayar.setEnabled(var.getpenerimaan_non_medis());
+        ppBayar.setEnabled(var.getbayar_pesan_non_medis());
     }
     
 }
