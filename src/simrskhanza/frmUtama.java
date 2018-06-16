@@ -309,6 +309,7 @@ import kepegawaian.DlgRiwayatPenghargaan;
 import kepegawaian.DlgSidikJari;
 import kepegawaian.DlgTemporaryPresensi;
 import keuangan.DlgBayarPemesananNonMedis;
+import keuangan.DlgHutangNonMedisBelumLunas;
 import setting.DlgClosingKasir;
 import setting.DlgSetEmbalase;
 import setting.DlgSetHargaKamar;
@@ -802,6 +803,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnRiwayatPenelitian = new widget.ButtonBig();
         btnPenerimaanNonMedis = new widget.ButtonBig();
         btnBayarPesanNonMedis = new widget.ButtonBig();
+        btnHutangNonMedis = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4995,6 +4997,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnBayarPesanNonMedis);
+
+        btnHutangNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487067_calculator.png"))); // NOI18N
+        btnHutangNonMedis.setText("Hutang Non Medis");
+        btnHutangNonMedis.setIconTextGap(0);
+        btnHutangNonMedis.setName("btnHutangNonMedis"); // NOI18N
+        btnHutangNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHutangNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHutangNonMedisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnHutangNonMedis);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -10595,6 +10609,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnBayarPesanNonMedisActionPerformed
 
+    private void btnHutangNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHutangNonMedisActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgHutangNonMedisBelumLunas form=new DlgHutangNonMedisBelumLunas(this,false);
+        form.tampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnHutangNonMedisActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10747,6 +10773,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnHarianKamar;
     private widget.ButtonBig btnHitungAlos;
     private widget.ButtonBig btnHitungBor;
+    private widget.ButtonBig btnHutangNonMedis;
     private widget.ButtonBig btnHutangObat;
     private widget.ButtonBig btnICD;
     private widget.ButtonBig btnICD9;
@@ -12369,6 +12396,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.gethutang_barang_non_medis()==true){
+                Panelmenu.add(btnHutangNonMedis);
+                jmlmenu++;
+            }
+            
             if(var.getbayar_pesan_non_medis()==true){
                 Panelmenu.add(btnBayarPesanNonMedis);
                 jmlmenu++;
@@ -13988,6 +14020,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getbayar_pemesanan_obat()==true){
             Panelmenu.add(btnbayar_pemesanan);
+            jmlmenu++;
+        }
+        
+        if(var.gethutang_barang_non_medis()==true){
+            Panelmenu.add(btnHutangNonMedis);
             jmlmenu++;
         }
 
@@ -16027,6 +16064,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getbayar_pemesanan_obat()==true){
             if(btnbayar_pemesanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnbayar_pemesanan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.gethutang_barang_non_medis()==true){
+            if(btnHutangNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHutangNonMedis);
                 jmlmenu++;
             }                
         }
