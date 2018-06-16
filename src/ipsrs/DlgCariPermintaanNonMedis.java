@@ -624,7 +624,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         pegawai.emptTeks();
-        pegawai.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        pegawai.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
         pegawai.setVisible(true);
@@ -637,7 +637,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);
@@ -803,7 +803,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             aplikasi.tampilkanpermintaan=false;
             aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
             aplikasi.isCek();
-            aplikasi.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            aplikasi.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             aplikasi.setLocationRelativeTo(internalFrame1);
             aplikasi.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());

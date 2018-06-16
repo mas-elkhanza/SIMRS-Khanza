@@ -738,7 +738,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPiutang");
         member.emptTeks();
         member.tampil();
-        member.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        member.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         member.setLocationRelativeTo(internalFrame1);
         member.setAlwaysOnTop(false);
         member.setVisible(true);
@@ -747,7 +747,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
         var.setform("DlgCariPiutang");
         petugas.emptTeks();
-        petugas.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -810,7 +810,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBarangActionPerformed
         var.setform("DlgCariPiutang");
         barang.emptTeks();
-        barang.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);
@@ -833,7 +833,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuanActionPerformed
         var.setform("DlgCariPiutang");
         barang.jenis.emptTeks();
-        barang.jenis.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.jenis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.jenis.setLocationRelativeTo(internalFrame1);
         barang.jenis.setAlwaysOnTop(false);
         barang.jenis.setVisible(true);

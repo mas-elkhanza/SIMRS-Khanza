@@ -706,7 +706,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPemesananIPSRS");
         suplier.emptTeks();
         suplier.isCek();
-        suplier.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        suplier.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         suplier.setLocationRelativeTo(internalFrame1);
         suplier.setAlwaysOnTop(false);
         suplier.setVisible(true);
@@ -716,7 +716,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPemesananIPSRS");
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -730,7 +730,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPemesananIPSRS");
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);
@@ -740,7 +740,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPemesananIPSRS");
         barang.jenis.emptTeks();
         barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.jenis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.jenis.setLocationRelativeTo(internalFrame1);
         barang.jenis.setAlwaysOnTop(false);
         barang.jenis.setVisible(true);
@@ -794,12 +794,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void kdjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdjenisKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nmjenis,kdjenis.getText());         
+            Sequel.cariIsi("select nm_jenis from ipsrsjenisbarang  where kd_jenis=?", nmjenis,kdjenis.getText());         
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nmjenis,kdjenis.getText());
+            Sequel.cariIsi("select nm_jenis from ipsrsjenisbarang  where kd_jenis=?", nmjenis,kdjenis.getText());
             kdptg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nmjenis,kdjenis.getText());
+            Sequel.cariIsi("select nm_jenis from ipsrsjenisbarang  where kd_jenis=?", nmjenis,kdjenis.getText());
             kdbar.requestFocus();   
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSatuanActionPerformed(null);
@@ -956,7 +956,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             bayarpesan.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
             bayarpesan.tampil();
             bayarpesan.isCek();
-            bayarpesan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            bayarpesan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             bayarpesan.setLocationRelativeTo(internalFrame1);
             bayarpesan.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
