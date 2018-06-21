@@ -2251,6 +2251,7 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Bridging SEP","lain","bridging_sep");   
         hapus("Bridging Inhealth","lain","bridging_inhealth");
         hapus("Rujukan Masuk","lain","rujuk_masuk");
+        hapus("Insiden Keselamatan Pasien","lain ","insiden_keselamatan_pasien");
         hapus("Piutang Pasien","lain","piutang_pasien");
         hapus("Bayar Piutang Pasien","lain","bayar_piutang");
         hapus("DPJP Ranap","lain","dpjp_ranap");
@@ -2380,6 +2381,7 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Surat Pemesanan Non Medis","lain","surat_pemesanan_non_medis");
         hapus("Surat Pemesanan Medis","lain","surat_pemesanan_medis");
         hapus("Pemesanan Barang Non Medis","lain ","ipsrspemesanan");
+        hapus("Insiden Keselamatan Pasien","lain ","insiden_keselamatan_pasien");
         hapus("Pengadaan Barang Non Medis","lain ","ipsrspembelian");
         hapus("Bayar Pemesanan Obat/Alkes/BHP","lain ","bayar_pemesanan");
         hapus("Pemesanan Barang Medis","lain ","pemesanan");
