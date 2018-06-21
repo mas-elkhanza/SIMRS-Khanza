@@ -761,7 +761,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelian");
         suplier.emptTeks();
         suplier.isCek();
-        suplier.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        suplier.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         suplier.setLocationRelativeTo(internalFrame1);
         suplier.setAlwaysOnTop(false);
         suplier.setVisible(true);
@@ -771,7 +771,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelian");
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -784,7 +784,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
         var.setform("DlgCariPembelian");
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);
@@ -794,7 +794,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelian");
         barang.jenis.emptTeks();
         barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.jenis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.jenis.setLocationRelativeTo(internalFrame1);
         barang.jenis.setAlwaysOnTop(false);
         barang.jenis.setVisible(true);
@@ -1045,7 +1045,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         var.setform("DlgCariPembelian");
         barang.industri.emptTeks();
         barang.industri.isCek();
-        barang.industri.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.industri.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.industri.setLocationRelativeTo(internalFrame1);
         barang.industri.setAlwaysOnTop(false);
         barang.industri.setVisible(true);

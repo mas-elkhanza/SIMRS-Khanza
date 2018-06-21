@@ -170,9 +170,9 @@ public class DlgKegiatanIlmiah extends javax.swing.JDialog {
                         if (newState == State.SUCCEEDED) {
                             try {
                                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
+                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOST()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
+                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOST()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
                                 }
@@ -383,7 +383,7 @@ public class DlgKegiatanIlmiah extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         try {
             if(engine.getLocation().contains("ListRiwayatSeminar")){
-                loadURL("http://" +koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/index.php?act=ListRiwayatSeminar&action=LIHAT&keyword="+TCari.getText().replaceAll(" ","_"));
+                loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/index.php?act=ListRiwayatSeminar&action=LIHAT&keyword="+TCari.getText().replaceAll(" ","_"));
             }                
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);

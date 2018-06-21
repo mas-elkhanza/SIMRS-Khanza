@@ -35,18 +35,35 @@
                       <a href=?act=InputRiwayatPendidikan&action=TAMBAH&id=$next>-->></a>
                       </div>";
         ?>
-        <table width="100%" align="center">
+        <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" class="tbl_form">
             <tr class="isi2">
-                <td width="31%" >NIP</td><td width="">:</td>
-                <td width="67%"><?php echo $baris[0];?></td>
+                <td width="17%" >NIP</td><td width="">:</td>
+                <td width="31%"><?php echo $baris[0];?></td>
+                <td width="17%" >Kepala/Rektor</td><td width="">:</td>
+                <td width="31%"><input name="kepala" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type=text id="TxtIsi5" class="inputbox" value="<?php echo isset($kepala)?$kepala:NULL;?>" size="40" maxlength="50">
+                <span id="MsgIsi5" style="color:#CC0000; font-size:10px;"></span>
+                </td>
             </tr>
             <tr class="isi2">
-                <td width="31%">Nama</td><td width="">:</td>
-                <td width="67%"><?php echo $baris[1];?></td>
+                <td width="17%">Nama</td><td width="">:</td>
+                <td width="31%"><?php echo $baris[1];?></td>
+                <td width="17%" >Asal Pendanaan</td><td width="">:</td>
+                <td width="31%">
+                    <select name="pendanaan" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
+                        <option id='TxtIsi6' value='Biaya Sendiri'>Biaya Sendiri</option>
+                        <option id='TxtIsi6' value='Biaya Instansi Sendiri'>Biaya Instansi Sendiri</option>
+                        <option id='TxtIsi6' value='Lembaga Swasta Kerjasama'>Lembaga Swasta Kerjasama</option>
+                        <option id='TxtIsi6' value='Lembaga Swasta Kompetisi'>Lembaga Swasta Kompetisi</option>
+                        <option id='TxtIsi6' value='Lembaga Pemerintah Kerjasama'>Lembaga Pemerintah Kerjasama</option>
+                        <option id='TxtIsi6' value='Lembaga Pemerintah Kompetisi'>Lembaga Pemerintah Kompetisi</option>
+                        <option id='TxtIsi6' value='Lembaga Internasional'>Lembaga Internasional</option>
+                    </select>
+                    <span id="MsgIsi6" style="color:#CC0000; font-size:10px;"></span>
+                </td>
             </tr>
             <tr class="isi2">
-                <td width="31%" >Tingkat Pendidikan</td><td width="">:</td>
-                <td width="67%">
+                <td width="17%" >Tingkat Pendidikan</td><td width="">:</td>
+                <td width="31%">
                     <select name="pendidikan" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
                         <option id='TxtIsi1' value='SD'>SD</option>
                         <option id='TxtIsi1' value='SMP'>SMP</option>
@@ -63,22 +80,35 @@
                     </select>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                 </td>
+                <td width="17%" >Keterangan</td><td width="">:</td>
+                <td width="31%"><input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi7'));" type=text id="TxtIsi7" class="inputbox" value="<?php echo isset($keterangan)?$keterangan:NULL;?>" size="40" maxlength="50">
+                <span id="MsgIsi7" style="color:#CC0000; font-size:10px;"></span>
+                </td>
             </tr>
             <tr class="isi2">
-                <td width="31%" >Sekolah/Kampus</td><td width="">:</td>
-                <td width="67%"><input name="sekolah" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo isset($sekolah)?$sekolah:NULL;?>" size="50" maxlength="50">
+                <td width="17%" >Sekolah/Kampus</td><td width="">:</td>
+                <td width="31%"><input name="sekolah" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo isset($sekolah)?$sekolah:NULL;?>" size="40" maxlength="50">
                 <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                 </td>
-            </tr>
-            <tr class="isi2">
-                <td width="31%" >Jurusan</td><td width="">:</td>
-                <td width="67%"><input name="jurusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="<?php echo isset($jurusan)?$jurusan:NULL;?>" size="50" maxlength="40">
-                <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
+                <td width="17%" >Status Pendidikan</td><td width="">:</td>
+                <td width="31%"><input name="status" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi8'));" type=text id="TxtIsi8" class="inputbox" value="<?php echo isset($status)?$status:NULL;?>" size="40" maxlength="40">
+                <span id="MsgIsi8" style="color:#CC0000; font-size:10px;"></span>
                 </td>
             </tr>
             <tr class="isi2">
-                <td width="31%" >Tahun Lulus </td><td width="">:</td>
-                <td width="67%">                        
+                <td width="17%" >Jurusan</td><td width="">:</td>
+                <td width="31%"><input name="jurusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" type=text id="TxtIsi3" class="inputbox" value="<?php echo isset($jurusan)?$jurusan:NULL;?>" size="40" maxlength="40">
+                <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
+                </td>
+                <td width="17%" >Berkas Ijazah</td><td width="">:</td>
+                <td width="31%">
+                    <input name="dokumen" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" type=file id="TxtIsi9" value="<?php echo $dokumen;?>" size="40" maxlength="255" />
+                    <span id="MsgIsi9" style="color:#CC0000; font-size:10px;"></span>
+                </td>
+            </tr>
+            <tr class="isi2">
+                <td width="17%" >Tahun Lulus </td><td width="">:</td>
+                <td width="31%" colspan="4">                        
                     <select name="thn_lulus" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4">
                          <?php                               
                             loadThnnow();
@@ -86,47 +116,7 @@
                     </select>
                     <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
                 </td>
-            </tr>	
-            <tr class="isi2">
-                <td width="31%" >Kepala/Rektor</td><td width="">:</td>
-                <td width="67%"><input name="kepala" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type=text id="TxtIsi5" class="inputbox" value="<?php echo isset($kepala)?$kepala:NULL;?>" size="50" maxlength="50">
-                <span id="MsgIsi5" style="color:#CC0000; font-size:10px;"></span>
-                </td>
-            </tr>
-            <tr class="isi2">
-                <td width="31%" >Asal Pendanaan</td><td width="">:</td>
-                <td width="67%">
-                    <select name="pendanaan" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
-                        <option id='TxtIsi6' value='Biaya Sendiri'>Biaya Sendiri</option>
-                        <option id='TxtIsi6' value='Biaya Instansi Sendiri'>Biaya Instansi Sendiri</option>
-                        <option id='TxtIsi6' value='Lembaga Swasta Kerjasama'>Lembaga Swasta Kerjasama</option>
-                        <option id='TxtIsi6' value='Lembaga Swasta Kompetisi'>Lembaga Swasta Kompetisi</option>
-                        <option id='TxtIsi6' value='Lembaga Pemerintah Kerjasama'>Lembaga Pemerintah Kerjasama</option>
-                        <option id='TxtIsi6' value='Lembaga Pemerintah Kompetisi'>Lembaga Pemerintah Kompetisi</option>
-                        <option id='TxtIsi6' value='Lembaga Internasional'>Lembaga Internasional</option>
-                    </select>
-                    <span id="MsgIsi6" style="color:#CC0000; font-size:10px;"></span>
-                </td>
-            </tr>
-            <tr class="isi2">
-                <td width="31%" >Keterangan</td><td width="">:</td>
-                <td width="67%"><input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi7'));" type=text id="TxtIsi7" class="inputbox" value="<?php echo isset($keterangan)?$keterangan:NULL;?>" size="50" maxlength="50">
-                <span id="MsgIsi7" style="color:#CC0000; font-size:10px;"></span>
-                </td>
-            </tr>
-            <tr class="isi2">
-                <td width="31%" >Status Pendidikan</td><td width="">:</td>
-                <td width="67%"><input name="status" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi8'));" type=text id="TxtIsi8" class="inputbox" value="<?php echo isset($status)?$status:NULL;?>" size="50" maxlength="40">
-                <span id="MsgIsi8" style="color:#CC0000; font-size:10px;"></span>
-                </td>
-            </tr>
-            <tr class="isi2">
-                <td width="31%" >Berkas Ijazah</td><td width="">:</td>
-                <td width="67%">
-                    <input name="dokumen" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" type=file id="TxtIsi9" value="<?php echo $dokumen;?>" size="50" maxlength="255" />
-                    <span id="MsgIsi9" style="color:#CC0000; font-size:10px;"></span>
-                </td>
-            </tr>
+            </tr>            
         </table>
         <div align="center"><input name=BtnSimpan type=submit class="button" value="&nbsp;&nbsp;SIMPAN&nbsp;&nbsp;">&nbsp<input name=BtnKosong type=reset class="button" value="&nbsp;&nbsp;KOSONG&nbsp;&nbsp;"></div><br>
         <?php

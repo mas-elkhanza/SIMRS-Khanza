@@ -5513,7 +5513,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         DlgBerkasRawat berkas=new DlgBerkasRawat(null,true);
         berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
         try {
-            berkas.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+TNoRw.getText());
+            berkas.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+TNoRw.getText());
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -5529,7 +5529,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         DlgBerkasRawat berkas=new DlgBerkasRawat(null,true);
         berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
         try {
-            berkas.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());
+            berkas.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login2.php?act=login&usere=admin&passwordte=akusayangsamakamu&no_rawat="+tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }

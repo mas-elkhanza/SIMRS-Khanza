@@ -232,8 +232,10 @@ import inventory.DlgRekapPenerimaan;
 import inventory.DlgRekapPermintaan;
 import inventory.DlgRiwayatBarangMedis;
 import inventory.DlgSuratPemesanan;
+import ipsrs.DlgPemesananIPSRS;
 import ipsrs.DlgPengadaanIPSRSPerTanggal;
 import ipsrs.DlgPermintaanNonMedis;
+import ipsrs.DlgRekapPenerimaanNonMedis;
 import ipsrs.DlgRekapPermintaanNonMedis;
 import ipsrs.DlgStokKeluarIPSRSPerTanggal;
 import ipsrs.DlgSuratPemesananNonMedis;
@@ -303,9 +305,12 @@ import kepegawaian.DlgPulang;
 import kepegawaian.DlgRiwayatJabatan;
 import kepegawaian.DlgRiwayatNaikGaji;
 import kepegawaian.DlgRiwayatPendidikan;
+import kepegawaian.DlgRiwayatPenelitian;
 import kepegawaian.DlgRiwayatPenghargaan;
 import kepegawaian.DlgSidikJari;
 import kepegawaian.DlgTemporaryPresensi;
+import keuangan.DlgBayarPemesananNonMedis;
+import keuangan.DlgHutangNonMedisBelumLunas;
 import setting.DlgClosingKasir;
 import setting.DlgSetEmbalase;
 import setting.DlgSetHargaKamar;
@@ -381,7 +386,7 @@ public class frmUtama extends javax.swing.JFrame {
                         isTutup();
                         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         try {
-                            inacbgklaim.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page="+pilihpage+"&codernik="+coder_nik);                    
+                            inacbgklaim.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page="+pilihpage+"&codernik="+coder_nik);                    
                         } catch (Exception ex) {
                             System.out.println("Notifikasi : "+ex);
                         }
@@ -796,6 +801,11 @@ public class frmUtama extends javax.swing.JFrame {
         btnRiwayatNaikGaji = new widget.ButtonBig();
         btnKegiatanIlmiah = new widget.ButtonBig();
         btnRiwayatPenghargaan = new widget.ButtonBig();
+        btnRiwayatPenelitian = new widget.ButtonBig();
+        btnPenerimaanNonMedis = new widget.ButtonBig();
+        btnBayarPesanNonMedis = new widget.ButtonBig();
+        btnHutangNonMedis = new widget.ButtonBig();
+        btnRekapPenerimaanNonMedis = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4954,6 +4964,66 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRiwayatPenghargaan);
 
+        btnRiwayatPenelitian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_research_87460.png"))); // NOI18N
+        btnRiwayatPenelitian.setText("Riwayat Penelitian");
+        btnRiwayatPenelitian.setIconTextGap(0);
+        btnRiwayatPenelitian.setName("btnRiwayatPenelitian"); // NOI18N
+        btnRiwayatPenelitian.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRiwayatPenelitian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRiwayatPenelitianActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRiwayatPenelitian);
+
+        btnPenerimaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481038192_market.png"))); // NOI18N
+        btnPenerimaanNonMedis.setText("Penerimaan Barang Non Medis");
+        btnPenerimaanNonMedis.setIconTextGap(0);
+        btnPenerimaanNonMedis.setName("btnPenerimaanNonMedis"); // NOI18N
+        btnPenerimaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenerimaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenerimaanNonMedisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPenerimaanNonMedis);
+
+        btnBayarPesanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487067_calculator.png"))); // NOI18N
+        btnBayarPesanNonMedis.setText("Bayar Pesan Non Medis");
+        btnBayarPesanNonMedis.setIconTextGap(0);
+        btnBayarPesanNonMedis.setName("btnBayarPesanNonMedis"); // NOI18N
+        btnBayarPesanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBayarPesanNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBayarPesanNonMedisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnBayarPesanNonMedis);
+
+        btnHutangNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487067_calculator.png"))); // NOI18N
+        btnHutangNonMedis.setText("Hutang Non Medis");
+        btnHutangNonMedis.setIconTextGap(0);
+        btnHutangNonMedis.setName("btnHutangNonMedis"); // NOI18N
+        btnHutangNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHutangNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHutangNonMedisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnHutangNonMedis);
+
+        btnRekapPenerimaanNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_TextEdit_37595.png"))); // NOI18N
+        btnRekapPenerimaanNonMedis.setText("Rekap Penerimaan Non Medis");
+        btnRekapPenerimaanNonMedis.setIconTextGap(0);
+        btnRekapPenerimaanNonMedis.setName("btnRekapPenerimaanNonMedis"); // NOI18N
+        btnRekapPenerimaanNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapPenerimaanNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapPenerimaanNonMedisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRekapPenerimaanNonMedis);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -4962,7 +5032,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13/06/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16/06/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7352,9 +7422,9 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgPenggajian penggajian=new DlgPenggajian(this,false);
         try {
             if(var.getpegawai_admin()==true){
-                penggajian.loadURL("http://" +koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");
+                penggajian.loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");
             }else if(var.getpegawai_user()==true){
-                penggajian.loadURL("http://" +koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=paijo&passwordte=mumet");
+                penggajian.loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/login.php?act=login&usere=paijo&passwordte=mumet");
             }            
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
@@ -8548,7 +8618,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRetensi retensi=new DlgRetensi(this,false);
         try {
-            retensi.loadURL("http://" +koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            retensi.loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"medrec/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -9160,7 +9230,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 isTutup();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try {
-                    inacbgklaim.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruOtomatis&codernik="+coder_nik);                    
+                    inacbgklaim.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruOtomatis&codernik="+coder_nik);                    
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }
@@ -9194,7 +9264,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 isTutup();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try {
-                    inacbgklaim.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruManual&codernik="+coder_nik);                    
+                    inacbgklaim.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruManual&codernik="+coder_nik);                    
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }
@@ -9232,7 +9302,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgMutasiBerkas mutasiberkas=new DlgMutasiBerkas(this,false);
         mutasiberkas.setJudul("::[ Mutasi Berkas Rekam Medis ]::","monitoringberkas/pages");
         try {
-            mutasiberkas.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"monitoringberkas/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            mutasiberkas.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"monitoringberkas/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -9646,7 +9716,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgBerkasRawat berkas=new DlgBerkasRawat(this,false);
         berkas.setJudul("::[ Berkas Digital Perawatan ]::","berkasrawat/pages");
         try {
-            berkas.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            berkas.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"berkasrawat/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -10019,7 +10089,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 isTutup();
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 try {
-                    inacbgklaim.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruManual2&codernik="+coder_nik);                    
+                    inacbgklaim.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"inacbg/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&page=KlaimBaruManual2&codernik="+coder_nik);                    
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }
@@ -10432,7 +10502,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRiwayatJabatan form=new DlgRiwayatJabatan(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatjabatan.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatjabatan.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -10449,7 +10519,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRiwayatPendidikan form=new DlgRiwayatPendidikan(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpendidikan.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpendidikan.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -10466,7 +10536,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRiwayatNaikGaji form=new DlgRiwayatNaikGaji(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatgaji.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatgaji.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -10483,7 +10553,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgKegiatanIlmiah form=new DlgKegiatanIlmiah(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatseminar.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatseminar.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -10500,7 +10570,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgRiwayatPenghargaan form=new DlgRiwayatPenghargaan(this,false);
         try {
-            form.loadURL("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpenghargaan.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+            form.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpenghargaan.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
@@ -10511,6 +10581,72 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRiwayatPenghargaanActionPerformed
+
+    private void btnRiwayatPenelitianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatPenelitianActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRiwayatPenelitian form=new DlgRiwayatPenelitian(this,false);
+        try {
+            form.loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginriwayatpenelitian.php?act=login&usere=admin&passwordte=akusayangsamakamu");                    
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : "+ex);
+        }
+
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);        
+        form.setVisible(true);        
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRiwayatPenelitianActionPerformed
+
+    private void btnPenerimaanNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenerimaanNonMedisActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPemesananIPSRS pembelian=new DlgPemesananIPSRS(this,false);
+        pembelian.isCek();
+        pembelian.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        pembelian.setLocationRelativeTo(PanelUtama);
+        pembelian.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPenerimaanNonMedisActionPerformed
+
+    private void btnBayarPesanNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBayarPesanNonMedisActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBayarPemesananNonMedis bayarpesan=new DlgBayarPemesananNonMedis(this,false);
+        bayarpesan.tampil();
+        bayarpesan.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        bayarpesan.setLocationRelativeTo(PanelUtama);
+        bayarpesan.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnBayarPesanNonMedisActionPerformed
+
+    private void btnHutangNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHutangNonMedisActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgHutangNonMedisBelumLunas form=new DlgHutangNonMedisBelumLunas(this,false);
+        form.tampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnHutangNonMedisActionPerformed
+
+    private void btnRekapPenerimaanNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekapPenerimaanNonMedisActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRekapPenerimaanNonMedis form=new DlgRekapPenerimaanNonMedis(null,false);
+        form.emptTeks();    
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRekapPenerimaanNonMedisActionPerformed
 
     /**
     * @param args the command line arguments
@@ -10585,6 +10721,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnBarcodeParkir;
     private widget.ButtonBig btnBarcodeRalan;
     private widget.ButtonBig btnBarcodeRanap;
+    private widget.ButtonBig btnBayarPesanNonMedis;
     private widget.ButtonBig btnBayarPiutang;
     private widget.ButtonBig btnBeriObat;
     private widget.ButtonBig btnBerkasDigitalPerawatan;
@@ -10663,6 +10800,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnHarianKamar;
     private widget.ButtonBig btnHitungAlos;
     private widget.ButtonBig btnHitungBor;
+    private widget.ButtonBig btnHutangNonMedis;
     private widget.ButtonBig btnHutangObat;
     private widget.ButtonBig btnICD;
     private widget.ButtonBig btnICD9;
@@ -10731,6 +10869,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPembelian;
     private widget.ButtonBig btnPembelianIpsrs;
     private widget.ButtonBig btnPemesanan;
+    private widget.ButtonBig btnPenerimaanNonMedis;
     private widget.ButtonBig btnPengadaanIPSRSPerTanggal;
     private widget.ButtonBig btnPengaduan;
     private widget.ButtonBig btnPengambilanPenunjangUTD;
@@ -10785,6 +10924,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRekapBulanan;
     private widget.ButtonBig btnRekapHarian;
     private widget.ButtonBig btnRekapPembayaranPerUnit;
+    private widget.ButtonBig btnRekapPenerimaanNonMedis;
     private widget.ButtonBig btnRekapPenerimaanObat;
     private widget.ButtonBig btnRekapPermintaanMedis;
     private widget.ButtonBig btnRekapPermintaanNonMedis;
@@ -10810,6 +10950,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRiwayatJabatan;
     private widget.ButtonBig btnRiwayatNaikGaji;
     private widget.ButtonBig btnRiwayatPendidikan;
+    private widget.ButtonBig btnRiwayatPenelitian;
     private widget.ButtonBig btnRiwayatPenghargaan;
     private widget.ButtonBig btnRl32;
     private widget.ButtonBig btnRl33;
@@ -11424,6 +11565,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnRiwayatPenghargaan); 
                 jmlmenu++;
             }
+            
+            if(var.getriwayat_penelitian()==true){                
+                Panelmenu.add(btnRiwayatPenelitian); 
+                jmlmenu++;
+            }
 
             if(var.getsms()==true){                
                 Panelmenu.add(btnSMS);
@@ -11656,6 +11802,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnPembelianIpsrs);  
                 jmlmenu++;
             }
+            
+            if(var.getpenerimaan_non_medis()==true){
+                Panelmenu.add(btnPenerimaanNonMedis);  
+                jmlmenu++;
+            }
 
             if(var.getipsrs_stok_keluar()==true){
                 Panelmenu.add(btnPengeluaranIpsrs); 
@@ -11691,6 +11842,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnStokKeluarIPSRSPerTanggal);
                 jmlmenu++;
             } 
+            
+            if(var.getrekap_pemesanan_non_medis()==true){
+                Panelmenu.add(btnRekapPenerimaanNonMedis);
+                jmlmenu++;
+            }
 
         }else if(cmbMenu.getSelectedIndex()==5){ 
             jmlmenu=0;
@@ -12270,6 +12426,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getbayar_pemesanan_obat()==true){
                 Panelmenu.add(btnbayar_pemesanan);
+                jmlmenu++;
+            }
+            
+            if(var.gethutang_barang_non_medis()==true){
+                Panelmenu.add(btnHutangNonMedis);
+                jmlmenu++;
+            }
+            
+            if(var.getbayar_pesan_non_medis()==true){
+                Panelmenu.add(btnBayarPesanNonMedis);
                 jmlmenu++;
             }
 
@@ -13046,6 +13212,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
+        if(var.getriwayat_penelitian()==true){                
+            Panelmenu.add(btnRiwayatPenelitian); 
+            jmlmenu++;
+        }
+
         if(var.getsms()==true){                
             Panelmenu.add(btnSMS);
             jmlmenu++;
@@ -13275,6 +13446,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
+        if(var.getpenerimaan_non_medis()==true){
+            Panelmenu.add(btnPenerimaanNonMedis);  
+            jmlmenu++;
+        }
+
         if(var.getipsrs_stok_keluar()==true){
             Panelmenu.add(btnPengeluaranIpsrs); 
             jmlmenu++;
@@ -13309,6 +13485,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             Panelmenu.add(btnStokKeluarIPSRSPerTanggal);
             jmlmenu++;
         } 
+        
+        if(var.getrekap_pemesanan_non_medis()==true){
+            Panelmenu.add(btnRekapPenerimaanNonMedis);
+            jmlmenu++;
+        }
 
         if(var.getinventaris_jenis()==true){
             Panelmenu.add(btnJenisInventaris);  
@@ -13879,7 +14060,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             Panelmenu.add(btnbayar_pemesanan);
             jmlmenu++;
         }
+        
+        if(var.gethutang_barang_non_medis()==true){
+            Panelmenu.add(btnHutangNonMedis);
+            jmlmenu++;
+        }
 
+        if(var.getbayar_pesan_non_medis()==true){
+            Panelmenu.add(btnBayarPesanNonMedis);
+            jmlmenu++;
+        }
+        
         if(var.getposting_jurnal()==true){
             Panelmenu.add(btnPostingJurnal); 
             jmlmenu++;
@@ -14732,6 +14923,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
         
+        if(var.getriwayat_penelitian()==true){    
+            if(btnRiwayatPenelitian.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRiwayatPenelitian);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getsms()==true){    
             if(btnSMS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSMS);
@@ -15053,6 +15251,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }                
         }
+        
+        if(var.getpenerimaan_non_medis()==true){
+            if(btnPenerimaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenerimaanNonMedis);  
+                jmlmenu++;
+            }                
+        }
 
         if(var.getipsrs_stok_keluar()==true){
             if(btnPengeluaranIpsrs.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -15099,6 +15304,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getipsrs_stokkeluar_pertanggal()==true){
             if(btnStokKeluarIPSRSPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnStokKeluarIPSRSPerTanggal);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(var.getrekap_pemesanan_non_medis()==true){
+            if(btnRekapPenerimaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapPenerimaanNonMedis);
                 jmlmenu++;
             }                
         } 
@@ -15897,6 +16109,20 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getbayar_pemesanan_obat()==true){
             if(btnbayar_pemesanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnbayar_pemesanan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.gethutang_barang_non_medis()==true){
+            if(btnHutangNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHutangNonMedis);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbayar_pesan_non_medis()==true){
+            if(btnBayarPesanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBayarPesanNonMedis);
                 jmlmenu++;
             }                
         }
