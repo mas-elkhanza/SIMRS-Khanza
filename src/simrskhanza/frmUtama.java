@@ -288,7 +288,6 @@ import parkir.DlgParkirBarcode;
 import parkir.DlgParkirJenis;
 import parkir.DlgParkirMasuk;
 import kepegawaian.DlgBelum;
-import kepegawaian.DlgBerkasKepegawaian;
 import kepegawaian.DlgBulanan;
 import kepegawaian.DlgBulanan2;
 import kepegawaian.DlgHarian;
@@ -785,7 +784,6 @@ public class frmUtama extends javax.swing.JFrame {
         btnPenggunaObatResep = new widget.ButtonBig();
         btnRekapPenerimaanObat = new widget.ButtonBig();
         btnMasterBerkasPegawai = new widget.ButtonBig();
-        btnBerkasPegawai = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -4871,18 +4869,6 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnMasterBerkasPegawai);
-
-        btnBerkasPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1481002437_partners.png"))); // NOI18N
-        btnBerkasPegawai.setText("Berkas Kepegawaian");
-        btnBerkasPegawai.setIconTextGap(0);
-        btnBerkasPegawai.setName("btnBerkasPegawai"); // NOI18N
-        btnBerkasPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnBerkasPegawai.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBerkasPegawaiActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(btnBerkasPegawai);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -10346,17 +10332,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnMasterBerkasPegawaiActionPerformed
 
-    private void btnBerkasPegawaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBerkasPegawaiActionPerformed
-        isTutup();
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgBerkasKepegawaian form=new DlgBerkasKepegawaian(null,false);
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        form.setLocationRelativeTo(PanelUtama);
-        form.setVisible(true);
-        DlgHome.dispose();
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_btnBerkasPegawaiActionPerformed
-
     /**
     * @param args the command line arguments
     */
@@ -10433,7 +10408,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnBayarPiutang;
     private widget.ButtonBig btnBeriObat;
     private widget.ButtonBig btnBerkasDigitalPerawatan;
-    private widget.ButtonBig btnBerkasPegawai;
     private widget.ButtonBig btnBubes;
     private widget.ButtonBig btnBulananHAIs;
     private widget.ButtonBig btnCashFlow;
@@ -11229,11 +11203,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getmaster_berkas_pegawai()==true){                
                 Panelmenu.add(btnMasterBerkasPegawai); 
-                jmlmenu++;
-            }
-            
-            if(var.getberkas_kepegawaian()==true){                
-                Panelmenu.add(btnBerkasPegawai); 
                 jmlmenu++;
             }
 
@@ -12825,11 +12794,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getmaster_berkas_pegawai()==true){                
             Panelmenu.add(btnMasterBerkasPegawai); 
-            jmlmenu++;
-        }
-
-        if(var.getberkas_kepegawaian()==true){                
-            Panelmenu.add(btnBerkasPegawai); 
             jmlmenu++;
         }
 
@@ -14473,13 +14437,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getmaster_berkas_pegawai()==true){    
             if(btnMasterBerkasPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMasterBerkasPegawai);
-                jmlmenu++;
-            }                
-        }
-        
-        if(var.getberkas_kepegawaian()==true){    
-            if(btnBerkasPegawai.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnBerkasPegawai);
                 jmlmenu++;
             }                
         }

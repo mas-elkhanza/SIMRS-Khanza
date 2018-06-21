@@ -135,18 +135,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         //menentukan umur sekarang
         list($cY, $cm, $cd) = explode('-', date('Y-m-d'));
-		//menentukan tanggal_lahir pasien sesuai dengan no rekam medis
-                                        $pasien = fetch_array(query("
-                                            SELECT 
-                                                tgl_lahir 
-                                            FROM 
-                                                pasien 
-                                            WHERE 
-                                                no_rkm_medis = '{$_SESSION['username']}'
-                                        "));
-         //end query   
-        list($Y, $m, $d) = explode('-', date('Y-m-d', strtotime($pasien[tgl_lahir])));
-        $umurdaftar = $cY-$Y;
+        list($Y, $m, $d) = explode('-', date('Y-m-d', strtotime($get_pasien["tgl_lahir"])));
+        $umurdaftar = $cY - $Y;
 
         if($_FILES['file']['name']!='') {
             $file='../berkasrawat/'.$photo_rujukan;

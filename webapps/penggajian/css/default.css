@@ -111,16 +111,16 @@ h1 {
 	width: 100%;
         border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: #f1f6ec;
+	border-bottom-color: #eafae9;
         border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: #f1f6ec;
+	border-top-color: #eafae9;
         border-right-width: 1px;
 	border-right-style: solid;
-	border-right-color: #f1f6ec;
+	border-right-color: #eafae9;
         border-left-width: 1px;
 	border-left-style: solid;
-	border-left-color: #f1f6ec;        
+	border-left-color: #eafae9;        
 }
 
 #navcontainer table tr td {
@@ -153,16 +153,16 @@ h1 {
     height: 99.5%;
     border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: #f1f6ec;
+	border-bottom-color: #eafae9;
         border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: #f1f6ec;
+	border-top-color: #eafae9;
         border-right-width: 1px;
 	border-right-style: solid;
-	border-right-color: #f1f6ec;
+	border-right-color: #eafae9;
         border-left-width: 1px;
 	border-left-style: solid;
-	border-left-color: #f1f6ec; 
+	border-left-color: #eafae9; 
 }
 
 
@@ -276,14 +276,6 @@ color: #65795b;
 	font: 11px  tahoma;
 }
 
-.isi a{
-	text-decoration:none;
-        color:#65795b;
-        padding:0 0 0 0px;
-        font-family: Tahoma;
-        font-size: 11px;
-}
-
 .isi2 td{
 	padding-top:3px;
 	padding-bottom:3px;
@@ -344,10 +336,10 @@ color: #65795b;
 	margin-left: 10px;
 	padding: 4px 4px;
 	border: none;
-	background: #f2f7eb;
+	background: #C11212;
 	font-size: 11px;
         font: Tahoma;
-	color: #65795b;
+	color: #ffffff;
 }
 
 .text {
@@ -377,17 +369,6 @@ color: #65795b;
 	border: 1px solid #e2e7de;
 	color: #65795b;
         width:90px;
-}
-
-.text4 {
-	background: #fffff9;
-        font-size: 11px;
-        font: Tahoma;
-	padding: 3px 0 3px 5px;
-	border: 1px solid #e2e7de;
-	color: #65795b;
-        width:180px;
-        height: 24px;
 }
 
 .caption{
@@ -435,7 +416,7 @@ background:#7bbcc7; color:#aaceaf;background-position:5px 5px;font: 11px  Tahoma
     font: 11px  Tahoma;
 	height:28px;
         display:inline;
-        background:url(images/65.png) no-repeat left #f1f6ec;
+        background:url(images/65.png) no-repeat left #eafae9;
         background-position:4px 5px;
         border-bottom:1px #fffff9 solid;
         color:#65795b;

@@ -36,7 +36,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"NIP","Nama","J.K.","Jabatan","Kode Jenjang","Departemen","Bidang","Status","Status Karyawan",
+        Object[] row={"NIP","Nama","J.K.","Jabatan","Kode Jenjang","Departemen","Bagian","Status","Status Karyawan",
                       "NPWP","Pendidikan","Tmp.Lahir","Tgl.Lahir","Alamat","Kota","Mulai Kerja","Kode Ms Kerja",
                       "Kode Index","BPD","Rekening","Stts Aktif","Wajib Masuk","Mulai Kontrak"};
         tabMode=new DefaultTableModel(null,row){

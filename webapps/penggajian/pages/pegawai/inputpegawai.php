@@ -13,13 +13,13 @@
                     $nik        ='';
                     $goto       =isset($_GET['id'])?$_GET['id']:NULL;
                 }else if($action == "UBAH"){
-                    $_sql           = "SELECT `id`, `nik`, `nama`, `jk`, `jbtn`, `jnj_jabatan`, `departemen`, `bidang`, `stts_wp`, `stts_kerja`, `npwp`, `pendidikan`, `gapok`, `tmp_lahir`, `tgl_lahir`, `alamat`, `kota`, `mulai_kerja`, `ms_kerja`, `indexins`, `bpd`, `rekening`, `stts_aktif`, `wajibmasuk`, `pengurang`, `indek`, `mulai_kontrak`, `cuti_diambil`,`photo` FROM pegawai WHERE id='$id'";
-                    $hasil          = bukaquery($_sql);
-                    $baris          = mysqli_fetch_row($hasil);                    
+                    $_sql         	= "SELECT `id`, `nik`, `nama`, `jk`, `jbtn`, `jnj_jabatan`, `departemen`, `bidang`, `stts_wp`, `stts_kerja`, `npwp`, `pendidikan`, `gapok`, `tmp_lahir`, `tgl_lahir`, `alamat`, `kota`, `mulai_kerja`, `ms_kerja`, `indexins`, `bpd`, `rekening`, `stts_aktif`, `wajibmasuk`, `pengurang`, `indek`, `mulai_kontrak`, `cuti_diambil`,`photo` FROM pegawai WHERE id='$id'";
+                    $hasil        	= bukaquery($_sql);
+                    $baris        	= mysqli_fetch_row($hasil);                    
 
-                    $id             = $baris[0];
-                    $nik            = $baris[1];
-                    $nik2           = $baris[1];
+                    $id               = $baris[0];
+                    $nik              = $baris[1];
+                    $nik2              = $baris[1];
                     $nama           = $baris[2];
                     $jk             = $baris[3];
                     $jbtn           = $baris[4];
