@@ -74,7 +74,8 @@ public final class var {
             pengaduan_pasien=false,grafik_lab_ralanhari=false,grafik_rad_ralanhari=false,sensus_harian_ralan=false,metode_racik=false,pembayaran_akun_bayar=false,
             pengguna_obat_resep=false,rekap_pemesanan=false,master_berkas_pegawai=false,berkas_kepegawaian=false,riwayat_jabatan=false,riwayat_pendidikan=false,
             riwayat_naik_gaji=false,kegiatan_ilmiah=false,riwayat_penghargaan=false,riwayat_penelitian=false,penerimaan_non_medis=false,bayar_pesan_non_medis=false,
-            hutang_barang_non_medis=false,rekap_pemesanan_non_medis=false,insiden_keselamatan=false,insiden_keselamatan_pasien=false;
+            hutang_barang_non_medis=false,rekap_pemesanan_non_medis=false,insiden_keselamatan=false,insiden_keselamatan_pasien=false,grafik_ikp_pertahun=false,
+            grafik_ikp_perbulan=false,grafik_ikp_pertanggal=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -426,6 +427,9 @@ public final class var {
                         var.rekap_pemesanan_non_medis=true;
                         var.insiden_keselamatan=true;
                         var.insiden_keselamatan_pasien=true;
+                        var.grafik_ikp_pertahun=true;
+                        var.grafik_ikp_perbulan=true;
+                        var.grafik_ikp_pertanggal=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -761,6 +765,9 @@ public final class var {
                         var.rekap_pemesanan_non_medis=rs2.getBoolean("rekap_pemesanan_non_medis");                        
                         var.insiden_keselamatan=rs2.getBoolean("insiden_keselamatan");
                         var.insiden_keselamatan_pasien=rs2.getBoolean("insiden_keselamatan_pasien");
+                        var.grafik_ikp_pertahun=rs2.getBoolean("grafik_ikp_pertahun");
+                        var.grafik_ikp_perbulan=rs2.getBoolean("grafik_ikp_perbulan");
+                        var.grafik_ikp_pertanggal=rs2.getBoolean("grafik_ikp_pertanggal");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1094,6 +1101,9 @@ public final class var {
                         var.rekap_pemesanan_non_medis=false;                      
                         var.insiden_keselamatan=false;
                         var.insiden_keselamatan_pasien=false;
+                        var.grafik_ikp_pertahun=false;
+                        var.grafik_ikp_perbulan=false;
+                        var.grafik_ikp_pertanggal=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1474,4 +1484,7 @@ public final class var {
     public static boolean getrekap_pemesanan_non_medis(){return var.rekap_pemesanan_non_medis;}
     public static boolean getinsiden_keselamatan(){return var.insiden_keselamatan;}
     public static boolean getinsiden_keselamatan_pasien(){return var.insiden_keselamatan_pasien;}
+    public static boolean getgrafik_ikp_pertahun(){return var.grafik_ikp_pertahun;}
+    public static boolean getgrafik_ikp_perbulan(){return var.grafik_ikp_perbulan;}
+    public static boolean getgrafik_ikp_pertanggal(){return var.grafik_ikp_pertanggal;}
 }   
