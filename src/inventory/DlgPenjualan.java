@@ -924,7 +924,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
             }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                 kolom=tbDokter.getSelectedColumn();
                 if(kolom==12){
-                    aturan_pakai.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                    aturan_pakai.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     aturan_pakai.setLocationRelativeTo(internalFrame1);
                     aturan_pakai.setVisible(true);
                 }

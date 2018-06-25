@@ -92,7 +92,8 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         kdsup.setDocument(new batasInput((byte)5).getKata(kdsup));
         kdptg.setDocument(new batasInput((byte)25).getKata(kdptg));
         kdbar.setDocument(new batasInput((byte)15).getKata(kdbar));
-        kdsat.setDocument(new batasInput((byte)4).getKata(kdsat));
+        KdIF.setDocument(new batasInput((byte)15).getKata(KdIF));
+        kdjenis.setDocument(new batasInput((byte)4).getKata(kdjenis));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
         
         if(koneksiDB.cariCepat().equals("aktif")){
@@ -155,10 +156,10 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(var.getform().equals("DlgCariPemesanan")){
                     if(barang.jenis.getTable().getSelectedRow()!= -1){                          
-                        kdsat.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());                    
-                        nmsat.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());                        
+                        kdjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());                    
+                        nmjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());                        
                     }                    
-                    kdsat.requestFocus();
+                    kdjenis.requestFocus();
                 }                   
             }
             @Override
@@ -316,9 +317,9 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
         nmbar = new widget.TextBox();
         btnBarang = new widget.Button();
         label24 = new widget.Label();
-        kdsat = new widget.TextBox();
+        kdjenis = new widget.TextBox();
         btnSatuan = new widget.Button();
-        nmsat = new widget.TextBox();
+        nmjenis = new widget.TextBox();
         panelisi3 = new widget.panelisi();
         label15 = new widget.Label();
         NoFaktur = new widget.TextBox();
@@ -575,19 +576,19 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
 
         label24.setText("Jenis :");
         label24.setName("label24"); // NOI18N
-        label24.setPreferredSize(new java.awt.Dimension(68, 23));
+        label24.setPreferredSize(new java.awt.Dimension(48, 23));
         panelisi4.add(label24);
-        label24.setBounds(0, 10, 75, 23);
+        label24.setBounds(0, 10, 45, 23);
 
-        kdsat.setName("kdsat"); // NOI18N
-        kdsat.setPreferredSize(new java.awt.Dimension(80, 23));
-        kdsat.addKeyListener(new java.awt.event.KeyAdapter() {
+        kdjenis.setName("kdjenis"); // NOI18N
+        kdjenis.setPreferredSize(new java.awt.Dimension(80, 23));
+        kdjenis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdsatKeyPressed(evt);
+                kdjenisKeyPressed(evt);
             }
         });
-        panelisi4.add(kdsat);
-        kdsat.setBounds(80, 10, 53, 23);
+        panelisi4.add(kdjenis);
+        kdjenis.setBounds(48, 10, 53, 23);
 
         btnSatuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnSatuan.setMnemonic('3');
@@ -600,17 +601,17 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
             }
         });
         panelisi4.add(btnSatuan);
-        btnSatuan.setBounds(253, 10, 28, 23);
+        btnSatuan.setBounds(273, 10, 28, 23);
 
-        nmsat.setName("nmsat"); // NOI18N
-        nmsat.setPreferredSize(new java.awt.Dimension(80, 23));
-        nmsat.addKeyListener(new java.awt.event.KeyAdapter() {
+        nmjenis.setName("nmjenis"); // NOI18N
+        nmjenis.setPreferredSize(new java.awt.Dimension(80, 23));
+        nmjenis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                nmsatKeyPressed(evt);
+                nmjenisKeyPressed(evt);
             }
         });
-        panelisi4.add(nmsat);
-        nmsat.setBounds(135, 10, 115, 23);
+        panelisi4.add(nmjenis);
+        nmjenis.setBounds(103, 10, 167, 23);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -807,7 +808,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPemesanan");
         suplier.emptTeks();
         suplier.isCek();
-        suplier.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        suplier.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         suplier.setLocationRelativeTo(internalFrame1);
         suplier.setAlwaysOnTop(false);
         suplier.setVisible(true);
@@ -817,7 +818,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPemesanan");
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -831,7 +832,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPemesanan");
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);
@@ -841,7 +842,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPemesanan");
         barang.jenis.emptTeks();
         barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.jenis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.jenis.setLocationRelativeTo(internalFrame1);
         barang.jenis.setAlwaysOnTop(false);
         barang.jenis.setVisible(true);
@@ -884,7 +885,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Sequel.cariIsi("select nama_brng from databarang where kode_brng=?", nmbar,kdbar.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){            
             Sequel.cariIsi("select nama_brng from databarang where kode_brng=?", nmbar,kdbar.getText());
-            kdsat.requestFocus();
+            kdjenis.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){            
             Sequel.cariIsi("select nama_brng from databarang where kode_brng=?", nmbar,kdbar.getText());
             TCari.requestFocus();
@@ -893,19 +894,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_kdbarKeyPressed
 
-    private void kdsatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsatKeyPressed
+    private void kdjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdjenisKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nmsat,kdsat.getText());         
+            Sequel.cariIsi("select nama from jenis  where kdjns=?", nmjenis,kdjenis.getText());         
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nmsat,kdsat.getText());
+            Sequel.cariIsi("select nama from jenis  where kdjns=?", nmjenis,kdjenis.getText());
             kdptg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select satuan from kodesatuan where kode_sat=?", nmsat,kdsat.getText());
+            Sequel.cariIsi("select nama from jenis  where kdjns=?", nmjenis,kdjenis.getText());
             kdbar.requestFocus();   
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSatuanActionPerformed(null);
         }
-    }//GEN-LAST:event_kdsatKeyPressed
+    }//GEN-LAST:event_kdjenisKeyPressed
 
     private void TglBeli2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglBeli2KeyPressed
         // TODO add your handling code here:
@@ -940,8 +941,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         NoFaktur.setText("");
         kdbar.setText("");
         nmbar.setText("");
-        kdsat.setText("");
-        nmsat.setText("");
+        kdjenis.setText("");
+        nmjenis.setText("");
         kdsup.setText("");
         nmsup.setText("");
         kdptg.setText("");
@@ -1004,9 +1005,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
-    private void nmsatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nmsatKeyPressed
+    private void nmjenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nmjenisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nmsatKeyPressed
+    }//GEN-LAST:event_nmjenisKeyPressed
 
 private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
   if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString().trim().equals("")){
@@ -1056,7 +1057,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             bayarpesan.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
             bayarpesan.tampil();
             bayarpesan.isCek();
-            bayarpesan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            bayarpesan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             bayarpesan.setLocationRelativeTo(internalFrame1);
             bayarpesan.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
@@ -1070,7 +1071,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             DlgUbahPemesanan ubahpesan=new DlgUbahPemesanan(null,false);
             ubahpesan.isCek(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            ubahpesan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            ubahpesan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             ubahpesan.setLocationRelativeTo(internalFrame1);
             ubahpesan.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
@@ -1095,7 +1096,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         var.setform("DlgCariPemesanan");
         barang.industri.emptTeks();
         barang.industri.isCek();
-        barang.industri.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.industri.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.industri.setLocationRelativeTo(internalFrame1);
         barang.industri.setAlwaysOnTop(false);
         barang.industri.setVisible(true);
@@ -1138,8 +1139,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdbar;
+    private widget.TextBox kdjenis;
     private widget.TextBox kdptg;
-    private widget.TextBox kdsat;
     private widget.TextBox kdsup;
     private widget.Label label10;
     private widget.Label label11;
@@ -1152,8 +1153,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label label24;
     private widget.Label label9;
     private widget.TextBox nmbar;
+    private widget.TextBox nmjenis;
     private widget.TextBox nmptg;
-    private widget.TextBox nmsat;
     private widget.TextBox nmsup;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
@@ -1203,7 +1204,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(3,"%"+NoFaktur.getText()+"%");
                 ps.setString(4,"%"+nmsup.getText()+"%");
                 ps.setString(5,"%"+nmptg.getText()+"%");
-                ps.setString(6,"%"+nmsat.getText()+"%");
+                ps.setString(6,"%"+nmjenis.getText()+"%");
                 ps.setString(7,"%"+nmbar.getText()+"%");
                 ps.setString(8,"%"+NmIF.getText()+"%");
                 ps.setString(9,"%"+TCari.getText()+"%");
@@ -1212,7 +1213,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(12,"%"+NoFaktur.getText()+"%");
                 ps.setString(13,"%"+nmsup.getText()+"%");
                 ps.setString(14,"%"+nmptg.getText()+"%");
-                ps.setString(15,"%"+nmsat.getText()+"%");
+                ps.setString(15,"%"+nmjenis.getText()+"%");
                 ps.setString(16,"%"+nmbar.getText()+"%");
                 ps.setString(17,"%"+NmIF.getText()+"%");
                 ps.setString(18,"%"+TCari.getText()+"%");
@@ -1221,7 +1222,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(21,"%"+NoFaktur.getText()+"%");
                 ps.setString(22,"%"+nmsup.getText()+"%");
                 ps.setString(23,"%"+nmptg.getText()+"%");
-                ps.setString(24,"%"+nmsat.getText()+"%");
+                ps.setString(24,"%"+nmjenis.getText()+"%");
                 ps.setString(25,"%"+nmbar.getText()+"%");
                 ps.setString(26,"%"+NmIF.getText()+"%");
                 ps.setString(27,"%"+TCari.getText()+"%");
@@ -1230,7 +1231,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(30,"%"+NoFaktur.getText()+"%");
                 ps.setString(31,"%"+nmsup.getText()+"%");
                 ps.setString(32,"%"+nmptg.getText()+"%");
-                ps.setString(33,"%"+nmsat.getText()+"%");
+                ps.setString(33,"%"+nmjenis.getText()+"%");
                 ps.setString(34,"%"+nmbar.getText()+"%");
                 ps.setString(35,"%"+NmIF.getText()+"%");
                 ps.setString(36,"%"+TCari.getText()+"%");
@@ -1239,7 +1240,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(39,"%"+NoFaktur.getText()+"%");
                 ps.setString(40,"%"+nmsup.getText()+"%");
                 ps.setString(41,"%"+nmptg.getText()+"%");
-                ps.setString(42,"%"+nmsat.getText()+"%");
+                ps.setString(42,"%"+nmjenis.getText()+"%");
                 ps.setString(43,"%"+nmbar.getText()+"%");
                 ps.setString(44,"%"+NmIF.getText()+"%");
                 ps.setString(45,"%"+TCari.getText()+"%");
@@ -1248,7 +1249,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(48,"%"+NoFaktur.getText()+"%");
                 ps.setString(49,"%"+nmsup.getText()+"%");
                 ps.setString(50,"%"+nmptg.getText()+"%");
-                ps.setString(51,"%"+nmsat.getText()+"%");
+                ps.setString(51,"%"+nmjenis.getText()+"%");
                 ps.setString(52,"%"+nmbar.getText()+"%");
                 ps.setString(53,"%"+NmIF.getText()+"%");
                 ps.setString(54,"%"+TCari.getText()+"%");
@@ -1257,7 +1258,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(57,"%"+NoFaktur.getText()+"%");
                 ps.setString(58,"%"+nmsup.getText()+"%");
                 ps.setString(59,"%"+nmptg.getText()+"%");
-                ps.setString(60,"%"+nmsat.getText()+"%");
+                ps.setString(60,"%"+nmjenis.getText()+"%");
                 ps.setString(61,"%"+nmbar.getText()+"%");
                 ps.setString(62,"%"+NmIF.getText()+"%");
                 ps.setString(63,"%"+TCari.getText()+"%");
@@ -1266,7 +1267,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(66,"%"+NoFaktur.getText()+"%");
                 ps.setString(67,"%"+nmsup.getText()+"%");
                 ps.setString(68,"%"+nmptg.getText()+"%");
-                ps.setString(69,"%"+nmsat.getText()+"%");
+                ps.setString(69,"%"+nmjenis.getText()+"%");
                 ps.setString(70,"%"+nmbar.getText()+"%");
                 ps.setString(71,"%"+NmIF.getText()+"%");
                 ps.setString(72,"%"+TCari.getText()+"%");
@@ -1275,7 +1276,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(75,"%"+NoFaktur.getText()+"%");
                 ps.setString(76,"%"+nmsup.getText()+"%");
                 ps.setString(77,"%"+nmptg.getText()+"%");
-                ps.setString(78,"%"+nmsat.getText()+"%");
+                ps.setString(78,"%"+nmjenis.getText()+"%");
                 ps.setString(79,"%"+nmbar.getText()+"%");
                 ps.setString(80,"%"+NmIF.getText()+"%");
                 ps.setString(81,"%"+TCari.getText()+"%");
@@ -1284,7 +1285,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(84,"%"+NoFaktur.getText()+"%");
                 ps.setString(85,"%"+nmsup.getText()+"%");
                 ps.setString(86,"%"+nmptg.getText()+"%");
-                ps.setString(87,"%"+nmsat.getText()+"%");
+                ps.setString(87,"%"+nmjenis.getText()+"%");
                 ps.setString(88,"%"+nmbar.getText()+"%");
                 ps.setString(89,"%"+NmIF.getText()+"%");
                 ps.setString(90,"%"+TCari.getText()+"%");
@@ -1293,7 +1294,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(93,"%"+NoFaktur.getText()+"%");
                 ps.setString(94,"%"+nmsup.getText()+"%");
                 ps.setString(95,"%"+nmptg.getText()+"%");
-                ps.setString(96,"%"+nmsat.getText()+"%");
+                ps.setString(96,"%"+nmjenis.getText()+"%");
                 ps.setString(97,"%"+nmbar.getText()+"%");
                 ps.setString(98,"%"+NmIF.getText()+"%");
                 ps.setString(99,"%"+TCari.getText()+"%");
@@ -1302,7 +1303,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(102,"%"+NoFaktur.getText()+"%");
                 ps.setString(103,"%"+nmsup.getText()+"%");
                 ps.setString(104,"%"+nmptg.getText()+"%");
-                ps.setString(105,"%"+nmsat.getText()+"%");
+                ps.setString(105,"%"+nmjenis.getText()+"%");
                 ps.setString(106,"%"+nmbar.getText()+"%");
                 ps.setString(107,"%"+NmIF.getText()+"%");
                 ps.setString(108,"%"+TCari.getText()+"%");
@@ -1311,7 +1312,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ps.setString(111,"%"+NoFaktur.getText()+"%");
                 ps.setString(112,"%"+nmsup.getText()+"%");
                 ps.setString(113,"%"+nmptg.getText()+"%");
-                ps.setString(114,"%"+nmsat.getText()+"%");
+                ps.setString(114,"%"+nmjenis.getText()+"%");
                 ps.setString(115,"%"+nmbar.getText()+"%");
                 ps.setString(116,"%"+NmIF.getText()+"%");
                 ps.setString(117,"%"+TCari.getText()+"%");
@@ -1338,32 +1339,32 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     
                     try {
                         ps2.setString(1,rs.getString(2));
-                        ps2.setString(2,"%"+nmsat.getText()+"%");
+                        ps2.setString(2,"%"+nmjenis.getText()+"%");
                         ps2.setString(3,"%"+nmbar.getText()+"%");
                         ps2.setString(4,"%"+NmIF.getText()+"%");
                         ps2.setString(5,"%"+TCari.getText()+"%");
                         ps2.setString(6,rs.getString(2));
-                        ps2.setString(7,"%"+nmsat.getText()+"%");
+                        ps2.setString(7,"%"+nmjenis.getText()+"%");
                         ps2.setString(8,"%"+nmbar.getText()+"%");
                         ps2.setString(9,"%"+NmIF.getText()+"%");
                         ps2.setString(10,"%"+TCari.getText()+"%");
                         ps2.setString(11,rs.getString(2));
-                        ps2.setString(12,"%"+nmsat.getText()+"%");
+                        ps2.setString(12,"%"+nmjenis.getText()+"%");
                         ps2.setString(13,"%"+nmbar.getText()+"%");
                         ps2.setString(14,"%"+NmIF.getText()+"%");
                         ps2.setString(15,"%"+TCari.getText()+"%");
                         ps2.setString(16,rs.getString(2));
-                        ps2.setString(17,"%"+nmsat.getText()+"%");
+                        ps2.setString(17,"%"+nmjenis.getText()+"%");
                         ps2.setString(18,"%"+nmbar.getText()+"%");
                         ps2.setString(19,"%"+NmIF.getText()+"%");
                         ps2.setString(20,"%"+TCari.getText()+"%");
                         ps2.setString(21,rs.getString(2));
-                        ps2.setString(22,"%"+nmsat.getText()+"%");
+                        ps2.setString(22,"%"+nmjenis.getText()+"%");
                         ps2.setString(23,"%"+nmbar.getText()+"%");
                         ps2.setString(24,"%"+NmIF.getText()+"%");
                         ps2.setString(25,"%"+TCari.getText()+"%");
                         ps2.setString(26,rs.getString(2));
-                        ps2.setString(27,"%"+nmsat.getText()+"%");
+                        ps2.setString(27,"%"+nmjenis.getText()+"%");
                         ps2.setString(28,"%"+nmbar.getText()+"%");
                         ps2.setString(29,"%"+NmIF.getText()+"%");
                         ps2.setString(30,"%"+TCari.getText()+"%");
@@ -1411,7 +1412,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     public void emptTeks() {
         kdbar.setText("");
         nmbar.setText("");
-        kdsat.setText("");
+        kdjenis.setText("");
         kdbar.requestFocus();        
     }
     
@@ -1422,7 +1423,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else{
             ppHapus.setEnabled(false);
         }        
-        ppBayar.setEnabled(var.getpemesanan_obat());
+        ppBayar.setEnabled(var.getbayar_pemesanan_obat());
     }
     
 }

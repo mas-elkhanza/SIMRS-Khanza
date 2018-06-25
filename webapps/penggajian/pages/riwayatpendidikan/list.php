@@ -3,7 +3,7 @@
     $keyword      = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
     echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
 ?>
-    <div style="width: 100%; height: 99%; overflow: auto;">
+<div style="width: 100%; height: 99%; overflow: auto;">
     <?php
         $_sql = "SELECT pegawai.id,pegawai.nik,pegawai.nama FROM  pegawai
 		 where  pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or 
@@ -21,19 +21,19 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi' title='$baris[1] $baris[2]'>
-                                <td>
+                                <td valign='top'>
                                     <center>
                                         <a href=?act=InputRiwayatPendidikan&action=TAMBAH&id=$baris[0]>[Detail]</a>
                                     </center>
                                </td>
-                                <td><a href=?act=InputRiwayatPendidikan&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
-                                <td><a href=?act=InputRiwayatPendidikan&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
-                                <td>
-                                   <table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>";
+                                <td valign='top'><a href=?act=InputRiwayatPendidikan&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
+                                <td valign='top'><a href=?act=InputRiwayatPendidikan&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
+                                <td valign='top'>
+                                   <table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>";
                                         $_sql2 = "SELECT pendidikan, sekolah, thn_lulus from riwayat_pendidikan  where id='$baris[0]' ORDER BY thn_lulus ASC ";
                                         $hasil2=bukaquery($_sql2);
                                         if(mysqli_num_rows($hasil2)!=0) {
-                                            echo "<tr class='isi4'>
+                                            echo "<tr class='isi7'>
                                                     <td width='5%'><div align='center'>NO.</div></td>
                                                     <td width='30%'><div align='center'>Pendidikan</div></td>
                                                     <td width='55%'><div align='center'>Sekolah</div></td>
@@ -65,6 +65,5 @@
                   </table>";
         
         }
-
     ?>
 </div>

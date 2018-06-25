@@ -21,20 +21,20 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi' title='$baris[1] $baris[2]'>
-                                <td>
+                                <td valign='top'>
                                     <center>
                                         <a href=?act=InputRiwayatGaji&action=TAMBAH&id=$baris[0]>[Detail]</a>
                                     </center>
                                </td>
-                                <td><a href=?act=InputRiwayatGaji&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
-                                <td><a href=?act=InputRiwayatGaji&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
-                                <td>
-                                   <table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>";
+                                <td valign='top'><a href=?act=InputRiwayatGaji&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
+                                <td valign='top'><a href=?act=InputRiwayatGaji&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
+                                <td valign='top'>
+                                   <table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>";
                                         $_sql2 = "SELECT pangkatjabatan,gapok,tmt_berkala,tmt_berkala_yad
                                                 from riwayat_naik_gaji where id='$baris[0]' ORDER BY tmt_berkala ASC ";
                                         $hasil2=bukaquery($_sql2);
                                         if(mysqli_num_rows($hasil2)!=0) {
-                                            echo "<tr class='isi4'>
+                                            echo "<tr class='isi7'>
                                                     <td width='5%'><div align='center'>NO.</div></td>
                                                     <td width='40%'><div align='center'>Jabatan/Pangkat</div></td>
                                                     <td width='15%'><div align='center'>Gapok</div></td>

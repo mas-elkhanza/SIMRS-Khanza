@@ -113,8 +113,8 @@
             $jumlah=mysqli_num_rows($hasil);
 
             if(mysqli_num_rows($hasil)!=0) {
-                echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                        <tr class='head'>
+                echo "<table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                        <tr class='head3'>
                             <td width='4%'><div align='center'>Proses</div></td>
                             <td width='2%'><div align='center'>No.</div></td>
                             <td width='6%'><div align='center'>Tgl.Uploud</div></td>
@@ -147,8 +147,8 @@
                 }
             echo "</table>";
 
-        } else {echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
-                        <tr class='head'>
+        } else {echo "<table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
+                        <tr class='head3'>
                             <td width='4%'><div align='center'>Proses</div></td>
                             <td width='2%'><div align='center'>No.</div></td>
                             <td width='6%'><div align='center'>Tgl.Uploud</div></td>

@@ -10,163 +10,126 @@
             $hasil=bukaquery($_sql);
             $baris = mysqli_fetch_row($hasil);   
 
-             $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
-                $hasilnext        	= bukaquery($_sqlnext);
-                $barisnext        	= mysqli_fetch_row($hasilnext);
-                $next               = $barisnext[0];
+            $_sqlnext         	= "SELECT id FROM pegawai WHERE id>'$id' order by id asc limit 1";
+            $hasilnext        	= bukaquery($_sqlnext);
+            $barisnext        	= mysqli_fetch_row($hasilnext);
+            $next               = $barisnext[0];
 
-                $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
-                $hasilprev        	= bukaquery($_sqlprev);
-                $barisprev        	= mysqli_fetch_row($hasilprev);
-                $prev               = $barisprev[0];
+            $_sqlprev         	= "SELECT id FROM pegawai WHERE id<'$id' order by id desc limit 1";
+            $hasilprev        	= bukaquery($_sqlprev);
+            $barisprev        	= mysqli_fetch_row($hasilprev);
+            $prev               = $barisprev[0];
 
-                if(empty($prev)){
-                    $prev=$next;
-                }
+            if(empty($prev)){
+                $prev=$next;
+            }
 
-                if(empty($next)){
-                    $next=$prev;
-                }
+            if(empty($next)){
+                $next=$prev;
+            }
 
-                echo "<div align='center' class='link'>
-                      <a href=?act=InputRiwayatGaji&action=TAMBAH&id=$prev><<--</a>
-                      <a href=?act=ListRiwayatGaji&action=LIHAT>| List Riwayat Gaji |</a>
-                      <a href=?act=InputRiwayatGaji&action=TAMBAH&id=$next>-->></a>
-                      </div>";
+            echo "<div align='center' class='link'>
+                  <a href=?act=InputRiwayatGaji&action=TAMBAH&id=$prev><<--</a>
+                  <a href=?act=ListRiwayatGaji&action=LIHAT>| List Riwayat Gaji |</a>
+                  <a href=?act=InputRiwayatGaji&action=TAMBAH&id=$next>-->></a>
+                  </div>";
         ?>
-        <table width="100%" align="center">
+        <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" class="tbl_form">
             <tr class="isi2">
-                <td width="31%" >NIP</td><td width="">:</td>
-                <td width="67%"><?php echo $baris[0];?></td>
-            </tr>
-            <tr class="isi2">
-                <td width="31%">Nama</td><td width="">:</td>
-                <td width="67%"><?php echo $baris[1];?></td>
-            </tr>
-            <tr class="isi2">
-                <td width="31%" >Jabatan/Pangkat</td><td width="">:</td>
-                <td width="67%"><input name="jabatan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo isset($jabatan)?$jabatan:NULL;?>" size="50" maxlength="50">
-                <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
-                </td>
-            </tr>
-            <tr class="isi2">
-                <td width="31%" >Gaji Pokok Baru</td><td width="">:</td>
-                <td width="67%"><input name="gapok" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo isset($gapok)?$gapok:NULL;?>" size="20" maxlength="20">
-                <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
-                </td>
-            </tr>
-            <tr class="isi2">
-                <td width="31%" >TMT Berkala</td><td width="">:</td>
-                <td width="67%">
-                    <select name="TglBerkala" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
-                         <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi3' value=$TglBerkala>$TglBerkala</option>";
-                            }
-                            loadTglnow();
-                         ?>
-                    </select>
-                    <select name="BlnBerkala" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
-                         <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi3' value=$BlnBerkala>$BlnBerkala</option>";
-                            }
-                            loadBlnnow();
-                         ?>
-                    </select>
-                    <select name="ThnBerkala" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
-                         <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi3' value=$ThnBerkala>$ThnBerkala</option>";
-                            }
-                            loadThnnow();
-                         ?>
-                    </select>
-                    <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
-                </td>
-            </tr>
-            <tr class="isi2">
-                <td width="31%" >TMT Berkala YAD</td><td width="">:</td>
-                <td width="67%">
+                <td width="17%" >NIP</td><td width="">:</td>
+                <td width="31%"><?php echo $baris[0];?></td>
+                <td width="17%" >TMT Berkala YAD</td><td width="">:</td>
+                <td width="31%">
                     <select name="TglBerkalaYad" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi4' value=$TglBerkalaYad>$TglBerkalaYad</option>";
-                            }
                             loadTglnow();
                          ?>
                     </select>
                     <select name="BlnBerkalaYad" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi4' value=$BlnBerkalaYad>$BlnBerkalaYad</option>";
-                            }
                             loadBlnnow();
                          ?>
                     </select>
                     <select name="ThnBerkalaYad" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi4'));" id="TxtIsi4">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi4' value=$ThnBerkalaYad>$ThnBerkalaYad</option>";
-                            }
                             loadThnnow();
                          ?>
                     </select>
                     <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
                 </td>
-            </tr>                
+            </tr>
             <tr class="isi2">
-                <td width="31%" >Nomor S.K.</td><td width="">:</td>
-                <td width="67%"><input name="no_sk" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type=text id="TxtIsi5" class="inputbox" value="<?php echo isset($no_sk)?$no_sk:NULL;?>" size="25" maxlength="25">
+                <td width="17%">Nama</td><td width="">:</td>
+                <td width="31%"><?php echo $baris[1];?></td>
+                <td width="17%" >Nomor S.K.</td><td width="">:</td>
+                <td width="31%"><input name="no_sk" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi5'));" type=text id="TxtIsi5" class="inputbox" value="<?php echo isset($no_sk)?$no_sk:NULL;?>" size="25" maxlength="25">
                 <span id="MsgIsi5" style="color:#CC0000; font-size:10px;"></span>
                 </td>
             </tr>
             <tr class="isi2">
-                <td width="31%" >Tanggal S.K.</td><td width="">:</td>
-                <td width="67%">
+                <td width="17%" >Jabatan/Pangkat</td><td width="">:</td>
+                <td width="31%"><input name="jabatan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo isset($jabatan)?$jabatan:NULL;?>" size="40" maxlength="50">
+                <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
+                </td>
+                <td width="17%" >Tanggal S.K.</td><td width="">:</td>
+                <td width="31%">
                     <select name="TglSK" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi6' value=$TglSK>$TglSK</option>";
-                            }
                             loadTglnow();
                          ?>
                     </select>
                     <select name="BlnSK" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi6' value=$BlnSK>$BlnSK</option>";
-                            }
                             loadBlnnow();
                          ?>
                     </select>
                     <select name="ThnSK" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi6'));" id="TxtIsi6">
                          <?php
-                            if($action == "UBAH"){
-                                echo "<option id='TxtIsi6' value=$ThnSK>$ThnSK</option>";
-                            }
                             loadThnnow();
                          ?>
                     </select>
                     <span id="MsgIsi6" style="color:#CC0000; font-size:10px;"></span>
                 </td>
-            </tr> 
+            </tr>
             <tr class="isi2">
-                <td width="31%" >Masa Kerja</td><td width="">:</td>
-                <td width="67%">
+                <td width="17%" >Gaji Pokok Baru</td><td width="">:</td>
+                <td width="31%"><input name="gapok" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=text id="TxtIsi2" class="inputbox" value="<?php echo isset($gapok)?$gapok:NULL;?>" size="20" maxlength="20">
+                <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
+                </td>
+                <td width="17%" >Masa Kerja</td><td width="">:</td>
+                <td width="31%">
                     <input name="masa_kerja" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi7'));" type=text id="TxtIsi7" class="inputbox" value="<?php echo isset($masa_kerja)?$masa_kerja:NULL;?>" size="10" maxlength="5">Tahun
                     <span id="MsgIsi7" style="color:#CC0000; font-size:10px;"></span>
                     <input name="bulan_kerja" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi8'));" type=text id="TxtIsi8" class="inputbox" value="<?php echo isset($bulan_kerja)?$bulan_kerja:NULL;?>" size="5" maxlength="2">Bulan
                     <span id="MsgIsi8" style="color:#CC0000; font-size:10px;"></span>
                 </td>
-            </tr> 
+            </tr>
             <tr class="isi2">
-                <td width="31%" >Berkas Naik Gaji</td><td width="">:</td>
-                <td width="67%">
-                    <input name="dokumen" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" type=file id="TxtIsi9" value="<?php echo $dokumen;?>" size="50" maxlength="255" />
+                <td width="17%" >TMT Berkala</td><td width="">:</td>
+                <td width="31%">
+                    <select name="TglBerkala" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
+                         <?php
+                            loadTglnow();
+                         ?>
+                    </select>
+                    <select name="BlnBerkala" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
+                         <?php
+                            loadBlnnow();
+                         ?>
+                    </select>
+                    <select name="ThnBerkala" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3">
+                         <?php
+                            loadThnnow();
+                         ?>
+                    </select>
+                    <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
+                </td>
+                <td width="17%" >Berkas Naik Gaji</td><td width="">:</td>
+                <td width="31%">
+                    <input name="dokumen" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi9'));" type=file id="TxtIsi9" value="<?php echo $dokumen;?>" size="40" maxlength="255" />
                     <span id="MsgIsi9" style="color:#CC0000; font-size:10px;"></span>
                 </td>
-            </tr>
+            </tr>            
         </table>
         <div align="center"><input name=BtnSimpan type=submit class="button" value="&nbsp;&nbsp;SIMPAN&nbsp;&nbsp;">&nbsp<input name=BtnKosong type=reset class="button" value="&nbsp;&nbsp;KOSONG&nbsp;&nbsp;"></div><br>
         <?php
