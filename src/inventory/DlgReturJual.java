@@ -158,7 +158,12 @@ public class DlgReturJual extends javax.swing.JDialog {
                            Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),14).toString()); 
                         }else if(Jenisjual.getSelectedItem().equals("Harga Beli")){
                            Hargaretur.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),6).toString()); 
-                        }                        
+                        }         
+                        
+                        if(aktifkanbatch.equals("yes")){
+                            NoBatch.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),28).toString());
+                            Kadaluwarsa.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),21).toString());
+                        }
                     }                
                     Kdbar.requestFocus();
                 }
@@ -1162,6 +1167,9 @@ private void KdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kdb
 
 private void BtnBrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBrgActionPerformed
         var.setform("DlgReturJual");
+        if(aktifkanbatch.equals("yes")){
+            form.barang.aktifkanbatch="yes";
+        }
         form.barang.emptTeks();
         form.barang.isCek();
         form.barang.tampil4(NoRetur.getText());
