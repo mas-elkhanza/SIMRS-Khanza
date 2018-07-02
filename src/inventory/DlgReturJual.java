@@ -62,8 +62,17 @@ public class DlgReturJual extends javax.swing.JDialog {
         
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.Nota","Kode Barang","Nama Barang","Satuan","Hrg.Retur(Rp)","Jml.Retur","Total Retur(Rp)","No.Batch","Kadaluarsa"
-            }){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            }){           
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            Class[] types = new Class[] {
+                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.String.class,
+                java.lang.String.class
+            };  
+            @Override
+            public Class getColumnClass(int columnIndex) {
+               return types [columnIndex];
+            }            
         };
         tbDokter.setModel(tabMode);
 
@@ -89,7 +98,7 @@ public class DlgReturJual extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(90);
             }else if(i==8){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(70);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1390,8 +1399,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     ttlretur=ttlretur+rs.getDouble(9);
                     tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),
-                        rs.getString(4),Valid.SetAngka(rs.getDouble(7)),
-                        rs.getString(8),Valid.SetAngka(rs.getDouble(9)),
+                        rs.getString(4),rs.getDouble(7),
+                        rs.getDouble(8),rs.getDouble(9),
                         rs.getString(10),rs.getString(11)
                     });
                 }                 
@@ -1431,7 +1440,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
              Kdbar.setText(tabMode.getValueAt(row,1).toString());
              nmbar.setText(tabMode.getValueAt(row,2).toString());
              Satuanbar.setText(tabMode.getValueAt(row,3).toString());
-             Hargaretur.setText(tabMode.getValueAt(row,4).toString().replaceAll(",",""));
+             Hargaretur.setText(tabMode.getValueAt(row,4).toString());
              Jmlretur.setText(tabMode.getValueAt(row,5).toString());
              NoBatch.setText(tabMode.getValueAt(row,7).toString());
              Kadaluwarsa.setText(tabMode.getValueAt(row,8).toString());

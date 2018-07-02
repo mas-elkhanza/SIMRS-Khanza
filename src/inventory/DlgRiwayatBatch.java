@@ -469,7 +469,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td valign='top' colspan='2' align='right'>Riwayat Penjualan :</td>"+
+                                    "<td valign='top' colspan='2' align='left'>&nbsp;&nbsp;&nbsp;&nbsp;Riwayat Penjualan </td>"+
                                     "<td valign='top' colspan='19'>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
                                            "<tr class='isi'>"+
@@ -487,7 +487,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                 "<tr>"+
                                                    "<td valign='top'>"+rs2.getString("nota_jual")+"</td>"+
                                                    "<td valign='top' align='center'>"+rs2.getString("tgl_jual")+"</td>"+
-                                                   "<td valign='top' align='center'>"+rs2.getDouble("jumlah")+"</td>"+
+                                                   "<td valign='top' align='center'>(-) "+rs2.getDouble("jumlah")+"</td>"+
                                                    "<td valign='top'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
                                                    "<td valign='top'>"+rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+"</td>"+
                                                    "<td valign='top'>"+rs2.getString("kd_bangsal")+" "+rs2.getString("nm_bangsal")+"</td>"+
@@ -519,7 +519,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td valign='top' colspan='2' align='right'>Riwayat Retur Jual :</td>"+
+                                    "<td valign='top' colspan='2' align='left'>&nbsp;&nbsp;&nbsp;&nbsp;Riwayat Retur Jual </td>"+
                                     "<td valign='top' colspan='19'>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
                                            "<tr class='isi'>"+
@@ -537,11 +537,61 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                 "<tr>"+
                                                    "<td valign='top'>"+rs2.getString("no_retur_jual")+"</td>"+
                                                    "<td valign='top' align='center'>"+rs2.getString("tgl_retur")+"</td>"+
-                                                   "<td valign='top' align='center'>"+rs2.getDouble("jml_retur")+"</td>"+
+                                                   "<td valign='top' align='center'>(+) "+rs2.getDouble("jml_retur")+"</td>"+
                                                    "<td valign='top'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
                                                    "<td valign='top'>"+rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+"</td>"+
                                                    "<td valign='top'>"+rs2.getString("kd_bangsal")+" "+rs2.getString("nm_bangsal")+"</td>"+
                                                    "<td valign='top'>"+rs2.getString("nota_jual")+"</td>"+
+                                                "</tr>");
+                                           }
+                            htmlContent.append(
+                                        "</table>"+
+                                    "</td>"+
+                                "</tr>");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                    
+                    //piutang
+                    try {
+                        rs2=koneksi.prepareStatement(
+                                "select detailpiutang.nota_piutang,detailpiutang.jumlah,piutang.tgl_piutang,piutang.nip,petugas.nama, "+
+                                "piutang.no_rkm_medis,piutang.nm_pasien,piutang.kd_bangsal,bangsal.nm_bangsal,piutang.catatan "+
+                                "from piutang inner join detailpiutang inner join databarang inner join bangsal inner join petugas "+
+                                "on piutang.nota_piutang=detailpiutang.nota_piutang and databarang.kode_brng=detailpiutang.kode_brng "+
+                                "and piutang.kd_bangsal=bangsal.kd_bangsal and piutang.nip=petugas.nip "+
+                                "where detailpiutang.no_batch='"+rs.getString("no_batch")+"'").executeQuery();
+                        if(rs2.next()){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td valign='top' colspan='2' align='left'>&nbsp;&nbsp;&nbsp;&nbsp;Riwayat Piutang </td>"+
+                                    "<td valign='top' colspan='19'>"+
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
+                                           "<tr class='isi'>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No.Nota</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>Tgl.Piutang</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='5%'>Jumlah</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='21%'>Petugas</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='21%'>Pasien/Penghutang</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='21%'>Asal Stok</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='18%'>Catatan</td>"+
+                                           "</tr>");
+                                           rs2.beforeFirst();
+                                           while(rs2.next()){
+                                               htmlContent.append(
+                                                "<tr>"+
+                                                   "<td valign='top'>"+rs2.getString("nota_piutang")+"</td>"+
+                                                   "<td valign='top' align='center'>"+rs2.getString("tgl_piutang")+"</td>"+
+                                                   "<td valign='top' align='center'>(-) "+rs2.getDouble("jumlah")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("kd_bangsal")+" "+rs2.getString("nm_bangsal")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("catatan")+"</td>"+
                                                 "</tr>");
                                            }
                             htmlContent.append(
