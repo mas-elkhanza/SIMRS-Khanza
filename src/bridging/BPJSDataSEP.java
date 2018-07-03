@@ -1847,14 +1847,14 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     if(nameNode.path("code").asText().equals("200")){
                         Sequel.mengedit("bridging_sep",
                              "no_sep=?","no_sep=?,no_rawat=?,tglsep=?,tglrujukan=?,no_rujukan=?,kdppkrujukan=?,"+
-                             "nmppkrujukan=?,kdppkpelayanan=?,nmppkpelayanan=?,jnspelayanan=?,catatan=?,diagawal=?,"+
-                             "nmdiagnosaawal=?,kdpolitujuan=?,nmpolitujuan=?,klsrawat=?,lakalantas=?,lokasilaka=?,"+
-                             "user=?,nomr=?,nama_pasien=?,tanggal_lahir=?,peserta=?,jkel=?,no_kartu=?,asal_rujukan=?,eksekutif=?,cob=?,penjamin=?,notelep=?",31,new String[]{
+                             "nmppkrujukan=?,kdppkpelayanan=?,nmppkpelayanan=?,catatan=?,diagawal=?,"+
+                             "nmdiagnosaawal=?,klsrawat=?,lakalantas=?,lokasilaka=?,"+
+                             "user=?,nomr=?,nama_pasien=?,tanggal_lahir=?,peserta=?,jkel=?,no_kartu=?,asal_rujukan=?,eksekutif=?,cob=?,penjamin=?,notelep=?",28,new String[]{
                              response.asText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
                              Valid.SetTgl(TanggalRujuk.getSelectedItem()+"")+" "+TanggalRujuk.getSelectedItem().toString().substring(11,19), 
                              NoRujukan.getText(),KdPpkRujukan.getText(), NmPpkRujukan.getText(),KdPPK.getText(), NmPPK.getText(), 
-                             JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
-                             NmPenyakit.getText(),KdPoli.getText(),NmPoli.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
+                             Catatan.getText(),KdPenyakit.getText(), 
+                             NmPenyakit.getText(), Kelas.getSelectedItem().toString().substring(0,1), 
                              LakaLantas.getSelectedItem().toString().substring(0,1),LokasiLaka.getText(),user, 
                              TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JenisPeserta.getText(),JK.getText(),NoKartu.getText(),
                              AsalRujukan.getSelectedItem().toString(),Eksekutif.getSelectedItem().toString(),

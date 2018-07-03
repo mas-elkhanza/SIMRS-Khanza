@@ -35,7 +35,7 @@
     <entry key="PEMBULATANHARGAOBAT">no</entry>
     <entry key="AKTIFKANBATCHOBAT">yes</entry>
     <entry key="CETAKRINCIANOBAT">no</entry>
-    <entry key="URLDUKCAPILJAKARTA">http://kependudukan.jakarta.go.id/rsudxxx/xml.jsp</entry>
+    <entry key="URLDUKCAPILJAKARTA">http://kependudukan.jakarta.go.id/wsrs/xml.jsp</entry>
     <entry key="USERDUKCAPILJAKARTA">WSRSIABK</entry>
     <entry key="PASSDUKCAPILJAKARTA">R8ud!KSW5</entry>
     <entry key="VAR1DUKCAPILJAKARTA">RSIABK</entry>

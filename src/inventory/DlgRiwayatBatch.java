@@ -469,7 +469,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td valign='top' colspan='2' align='left'>&nbsp;&nbsp;&nbsp;&nbsp;Riwayat Penjualan </td>"+
+                                    "<td valign='top' colspan='2' align='right'>Penjualan :</td>"+
                                     "<td valign='top' colspan='19'>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
                                            "<tr class='isi'>"+
@@ -519,7 +519,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td valign='top' colspan='2' align='left'>&nbsp;&nbsp;&nbsp;&nbsp;Riwayat Retur Jual </td>"+
+                                    "<td valign='top' colspan='2' align='right'>Retur Jual :</td>"+
                                     "<td valign='top' colspan='19'>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
                                            "<tr class='isi'>"+
@@ -569,7 +569,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td valign='top' colspan='2' align='left'>&nbsp;&nbsp;&nbsp;&nbsp;Riwayat Piutang </td>"+
+                                    "<td valign='top' colspan='2' align='right'>Piutang :</td>"+
                                     "<td valign='top' colspan='19'>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
                                            "<tr class='isi'>"+
