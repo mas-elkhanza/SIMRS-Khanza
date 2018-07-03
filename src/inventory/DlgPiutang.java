@@ -116,7 +116,8 @@ public class DlgPiutang extends javax.swing.JDialog {
         Tambah.setDocument(new batasInput((byte)14).getKata(Tambah));
         Kurang.setDocument(new batasInput((byte)14).getKata(Kurang));
         Disc.setDocument(new batasInput((byte)14).getKata(Disc));   
-        Jmljual.setDocument(new batasInput((byte)13).getKata(Jmljual));       
+        Jmljual.setDocument(new batasInput((byte)13).getKata(Jmljual));  
+        NoBatch.setDocument(new batasInput((byte)20).getKata(NoBatch));     
         
         
         Jmljual.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -1375,7 +1376,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         Sequel.queryu("delete from tamppiutang");
         tampil();
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_piutang,6),signed)),0) from piutang ","PD",6,NoNota); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_piutang,3),signed)),0) from piutang where tgl_piutang='"+Valid.SetTgl(TglJual.getSelectedItem()+"")+"' ",
+                "PD"+TglJual.getSelectedItem().toString().substring(8,10)+TglJual.getSelectedItem().toString().substring(3,5)+TglJual.getSelectedItem().toString().substring(0,2),3,NoNota); 
         Ongkir.setText("0");
         UangMuka.setText("0");        
     }//GEN-LAST:event_BtnBatalActionPerformed
@@ -1783,7 +1785,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
    
     public void isCek(){
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_piutang,6),signed)),0) from piutang ","PD",6,NoNota);         
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(nota_piutang,3),signed)),0) from piutang where tgl_piutang='"+Valid.SetTgl(TglJual.getSelectedItem()+"")+"' ",
+                "PD"+TglJual.getSelectedItem().toString().substring(8,10)+TglJual.getSelectedItem().toString().substring(3,5)+TglJual.getSelectedItem().toString().substring(0,2),3,NoNota); 
         
         Ongkir.setText("0");
         UangMuka.setText("0");

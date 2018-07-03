@@ -111,6 +111,7 @@ public class DlgReturJual extends javax.swing.JDialog {
         Kdbar.setDocument(new batasInput((byte)15).getKata(Kdbar));
         //Jmlbeli.setDocument(new batasInput((byte)13).getKata(Jmlbeli));
         Jmlretur.setDocument(new batasInput((byte)13).getKata(Jmlretur));
+        NoBatch.setDocument(new batasInput((byte)20).getKata(NoBatch));
         Hargaretur.setDocument(new batasInput((byte)13).getKata(Hargaretur));
         
         Jmlretur.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -1117,7 +1118,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         Sequel.queryu("delete from  tampreturjual");
         tampil();
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_jual,6),signed)),0) from returjual ","RJ",6,NoRetur); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_jual,3),signed)),0) from returjual where tgl_retur='"+Valid.SetTgl(TglRetur.getSelectedItem()+"")+"' ",
+                "RJ"+TglRetur.getSelectedItem().toString().substring(8,10)+TglRetur.getSelectedItem().toString().substring(3,5)+TglRetur.getSelectedItem().toString().substring(0,2),3,NoRetur); 
+        
     }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed

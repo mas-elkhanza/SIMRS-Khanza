@@ -2005,13 +2005,6 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 }//GEN-LAST:event_KapasitasKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(!var.getform().equals("DlgReturJual")){
-            if(var.getform().equals("tampil3")){
-                tampil3();
-            }else{
-                tampil();
-            }   
-        }
         if(aktifkanbatch.equals("yes")){
             tabMode = new DefaultTableModel(null,new Object[]{
                 "P", "Kode Barang", "Nama Barang", "Kode Satuan", "Nama Satuan", "Letak Barang",
@@ -2119,6 +2112,14 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
             }
             tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
+        }
+        
+        if(!var.getform().equals("DlgReturJual")){
+            if(var.getform().equals("tampil3")){
+                tampil3();
+            }else{
+                tampil();
+            }   
         }
     }//GEN-LAST:event_formWindowOpened
 

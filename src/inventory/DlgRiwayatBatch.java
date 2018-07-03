@@ -607,6 +607,56 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         }
                     }
                     
+                    //retur piutang
+                    try {
+                        rs2=koneksi.prepareStatement(
+                                "select detreturpiutang.no_retur_piutang,detreturpiutang.jml_retur,returpiutang.tgl_retur,returpiutang.nip,petugas.nama, "+
+                                "returpiutang.no_rkm_medis,pasien.nm_pasien,returpiutang.kd_bangsal,bangsal.nm_bangsal,detreturpiutang.nota_piutang "+
+                                "from returpiutang inner join detreturpiutang inner join databarang inner join bangsal inner join petugas inner join pasien "+
+                                "on returpiutang.no_retur_piutang=detreturpiutang.no_retur_piutang and databarang.kode_brng=detreturpiutang.kode_brng "+
+                                "and returpiutang.kd_bangsal=bangsal.kd_bangsal and returpiutang.nip=petugas.nip and returpiutang.no_rkm_medis=pasien.no_rkm_medis "+
+                                "where detreturpiutang.no_batch='"+rs.getString("no_batch")+"'").executeQuery();
+                        if(rs2.next()){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td valign='top' colspan='2' align='right'>Retur Piutang :</td>"+
+                                    "<td valign='top' colspan='19'>"+
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
+                                           "<tr class='isi'>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No.Retur</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>Tgl.Retur</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='5%'>Jumlah</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='25%'>Petugas</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='25%'>Pasien/Penghutang</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='24%'>Retur Ke</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No/Nota</td>"+
+                                           "</tr>");
+                                           rs2.beforeFirst();
+                                           while(rs2.next()){
+                                               htmlContent.append(
+                                                "<tr>"+
+                                                   "<td valign='top'>"+rs2.getString("no_retur_piutang")+"</td>"+
+                                                   "<td valign='top' align='center'>"+rs2.getString("tgl_retur")+"</td>"+
+                                                   "<td valign='top' align='center'>(+) "+rs2.getDouble("jml_retur")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("kd_bangsal")+" "+rs2.getString("nm_bangsal")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("nota_piutang")+"</td>"+
+                                                "</tr>");
+                                           }
+                            htmlContent.append(
+                                        "</table>"+
+                                    "</td>"+
+                                "</tr>");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                    
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
