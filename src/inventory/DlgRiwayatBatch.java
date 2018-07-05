@@ -469,8 +469,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td valign='top' colspan='2' align='right'>Penjualan :</td>"+
-                                    "<td valign='top' colspan='19'>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top' align='right'>Penjualan :</td>"+
+                                    "<td valign='top' colspan='18'>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
                                            "<tr class='isi'>"+
                                               "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No.Nota</td>"+
@@ -519,8 +521,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td valign='top' colspan='2' align='right'>Retur Pasien/Pembeli :</td>"+
-                                    "<td valign='top' colspan='19'>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top' align='right'>Retur Pasien/Pembeli :</td>"+
+                                    "<td valign='top' colspan='18'>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
                                            "<tr class='isi'>"+
                                               "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No.Retur</td>"+
@@ -569,8 +573,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td valign='top' colspan='2' align='right'>Piutang :</td>"+
-                                    "<td valign='top' colspan='19'>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top' align='right'>Piutang :</td>"+
+                                    "<td valign='top' colspan='18'>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
                                            "<tr class='isi'>"+
                                               "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No.Nota</td>"+
@@ -619,8 +625,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td valign='top' colspan='2' align='right'>Retur Piutang :</td>"+
-                                    "<td valign='top' colspan='19'>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top' align='right'>Retur Piutang :</td>"+
+                                    "<td valign='top' colspan='18'>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
                                            "<tr class='isi'>"+
                                               "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No.Retur</td>"+
@@ -669,8 +677,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td valign='top' colspan='2' align='right'>Retur Ke Suplier :</td>"+
-                                    "<td valign='top' colspan='19'>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top'></td>"+
+                                    "<td valign='top' align='right'>Retur Ke Suplier :</td>"+
+                                    "<td valign='top' colspan='18'>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
                                            "<tr class='isi'>"+
                                               "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No.Retur</td>"+
