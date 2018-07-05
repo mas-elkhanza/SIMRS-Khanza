@@ -519,7 +519,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                         if(rs2.next()){
                             htmlContent.append(
                                 "<tr class='isi'>"+
-                                    "<td valign='top' colspan='2' align='right'>Retur Jual :</td>"+
+                                    "<td valign='top' colspan='2' align='right'>Retur Pasien/Pembeli :</td>"+
                                     "<td valign='top' colspan='19'>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
                                            "<tr class='isi'>"+
@@ -529,7 +529,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                               "<td valign='middle' bgcolor='#fdfff9' align='center' width='25%'>Petugas</td>"+
                                               "<td valign='middle' bgcolor='#fdfff9' align='center' width='25%'>Pembeli/Pasien</td>"+
                                               "<td valign='middle' bgcolor='#fdfff9' align='center' width='24%'>Retur Ke</td>"+
-                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No/Nota</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No.Nota</td>"+
                                            "</tr>");
                                            rs2.beforeFirst();
                                            while(rs2.next()){
@@ -629,7 +629,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                               "<td valign='middle' bgcolor='#fdfff9' align='center' width='25%'>Petugas</td>"+
                                               "<td valign='middle' bgcolor='#fdfff9' align='center' width='25%'>Pasien/Penghutang</td>"+
                                               "<td valign='middle' bgcolor='#fdfff9' align='center' width='24%'>Retur Ke</td>"+
-                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No/Nota</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No.Nota</td>"+
                                            "</tr>");
                                            rs2.beforeFirst();
                                            while(rs2.next()){
@@ -642,6 +642,56 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                                    "<td valign='top'>"+rs2.getString("no_rkm_medis")+" "+rs2.getString("nm_pasien")+"</td>"+
                                                    "<td valign='top'>"+rs2.getString("kd_bangsal")+" "+rs2.getString("nm_bangsal")+"</td>"+
                                                    "<td valign='top'>"+rs2.getString("nota_piutang")+"</td>"+
+                                                "</tr>");
+                                           }
+                            htmlContent.append(
+                                        "</table>"+
+                                    "</td>"+
+                                "</tr>");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                    
+                    //retur suplier
+                    try {
+                        rs2=koneksi.prepareStatement(
+                                "select detreturbeli.no_retur_beli,detreturbeli.jml_retur,returbeli.tgl_retur,returbeli.nip,petugas.nama, "+
+                                "returbeli.kode_suplier,datasuplier.nama_suplier,returbeli.kd_bangsal,bangsal.nm_bangsal,detreturbeli.no_faktur "+
+                                "from returbeli inner join detreturbeli inner join databarang inner join bangsal inner join petugas inner join datasuplier "+
+                                "on returbeli.no_retur_beli=detreturbeli.no_retur_beli and databarang.kode_brng=detreturbeli.kode_brng "+
+                                "and returbeli.kd_bangsal=bangsal.kd_bangsal and returbeli.nip=petugas.nip and returbeli.kode_suplier=datasuplier.kode_suplier "+
+                                "where detreturbeli.no_batch='"+rs.getString("no_batch")+"'").executeQuery();
+                        if(rs2.next()){
+                            htmlContent.append(
+                                "<tr class='isi'>"+
+                                    "<td valign='top' colspan='2' align='right'>Retur Ke Suplier :</td>"+
+                                    "<td valign='top' colspan='19'>"+
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0'>"+
+                                           "<tr class='isi'>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No.Retur</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>Tgl.Retur</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='5%'>Jumlah</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='25%'>Petugas</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='25%'>Suplier</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='24%'>Asal Stok</td>"+
+                                              "<td valign='middle' bgcolor='#fdfff9' align='center' width='7%'>No.Faktur</td>"+
+                                           "</tr>");
+                                           rs2.beforeFirst();
+                                           while(rs2.next()){
+                                               htmlContent.append(
+                                                "<tr>"+
+                                                   "<td valign='top'>"+rs2.getString("no_retur_beli")+"</td>"+
+                                                   "<td valign='top' align='center'>"+rs2.getString("tgl_retur")+"</td>"+
+                                                   "<td valign='top' align='center'>(-) "+rs2.getDouble("jml_retur")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("kode_suplier")+" "+rs2.getString("nama_suplier")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("kd_bangsal")+" "+rs2.getString("nm_bangsal")+"</td>"+
+                                                   "<td valign='top'>"+rs2.getString("no_faktur")+"</td>"+
                                                 "</tr>");
                                            }
                             htmlContent.append(

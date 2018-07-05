@@ -1213,7 +1213,7 @@ public class DlgPiutang extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,kdbar,"tamppiutang","kode_brng");
+            Valid.hapusTable(tabMode,kdbar,"tamppiutang","no_batch='"+NoBatch.getText()+"' and kode_brng");
             tampil();
             emptTeks();
         }

@@ -956,7 +956,7 @@ public class DlgReturPiutang extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,Kdbar," tampreturpiutang","nota_piutang='"+NoFaktur.getText()+"' and kode_brng");
+            Valid.hapusTable(tabMode,Kdbar," tampreturpiutang","no_batch='"+NoBatch.getText()+"' and nota_piutang='"+NoFaktur.getText()+"' and kode_brng");
             tampil();
             emptTeks();
         }

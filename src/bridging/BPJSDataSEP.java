@@ -1846,11 +1846,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     JsonNode response = root.path("response");
                     if(nameNode.path("code").asText().equals("200")){
                         Sequel.mengedit("bridging_sep",
-                             "no_sep=?","no_sep=?,no_rawat=?,tglsep=?,tglrujukan=?,no_rujukan=?,kdppkrujukan=?,"+
+                             "no_sep=?","no_sep=?,no_rawat=?,tglrujukan=?,no_rujukan=?,kdppkrujukan=?,"+
                              "nmppkrujukan=?,kdppkpelayanan=?,nmppkpelayanan=?,catatan=?,diagawal=?,"+
                              "nmdiagnosaawal=?,klsrawat=?,lakalantas=?,lokasilaka=?,"+
-                             "user=?,nomr=?,nama_pasien=?,tanggal_lahir=?,peserta=?,jkel=?,no_kartu=?,asal_rujukan=?,eksekutif=?,cob=?,penjamin=?,notelep=?",28,new String[]{
-                             response.asText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+" "+TanggalSEP.getSelectedItem().toString().substring(11,19),
+                             "user=?,nomr=?,nama_pasien=?,tanggal_lahir=?,peserta=?,jkel=?,no_kartu=?,asal_rujukan=?,eksekutif=?,cob=?,penjamin=?,notelep=?",27,new String[]{
+                             response.asText(),TNoRw.getText(),
                              Valid.SetTgl(TanggalRujuk.getSelectedItem()+"")+" "+TanggalRujuk.getSelectedItem().toString().substring(11,19), 
                              NoRujukan.getText(),KdPpkRujukan.getText(), NmPpkRujukan.getText(),KdPPK.getText(), NmPPK.getText(), 
                              Catatan.getText(),KdPenyakit.getText(), 
