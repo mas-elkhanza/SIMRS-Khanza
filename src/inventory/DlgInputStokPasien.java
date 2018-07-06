@@ -769,7 +769,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgStokPasien opname=new DlgStokPasien(null,false);
         opname.isCek();
-        opname.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        opname.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         opname.setLocationRelativeTo(internalFrame1);
         opname.setAlwaysOnTop(false);
         opname.setVisible(true);

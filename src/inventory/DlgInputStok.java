@@ -538,7 +538,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         DlgStokOpname opname=new DlgStokOpname(null,true);
         opname.isCek(); 
         opname.emptTeks();
-        opname.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        opname.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         opname.setLocationRelativeTo(internalFrame1);
         opname.setAlwaysOnTop(false);
         opname.setVisible(true);

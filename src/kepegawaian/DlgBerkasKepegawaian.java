@@ -108,7 +108,6 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                 if(pegawai.getTable().getSelectedRow()!= -1){                   
                     TKd.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
                     TNm.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
- 
                     try {
                         loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
                     } catch (Exception ex) {
@@ -141,8 +140,6 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
-                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
-                ".isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}"+
                 ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#5a7850;}"+
                 ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
                 ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"
@@ -408,7 +405,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         panelGlass5.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(460, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(415, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 TCariKeyTyped(evt);
@@ -454,7 +451,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         panelGlass5.add(BtnAll);
 
         jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(30, 23));
+        jLabel7.setPreferredSize(new java.awt.Dimension(70, 23));
         panelGlass5.add(jLabel7);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
@@ -502,7 +499,6 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         jLabel3.setBounds(0, 10, 60, 23);
 
         TKd.setEditable(false);
-        TKd.setBackground(new java.awt.Color(245, 250, 240));
         TKd.setHighlighter(null);
         TKd.setName("TKd"); // NOI18N
         TKd.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -526,7 +522,6 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         BtnCariPegawai.setBounds(408, 10, 28, 23);
 
         TNm.setEditable(false);
-        TNm.setBackground(new java.awt.Color(245, 250, 240));
         TNm.setHighlighter(null);
         TNm.setName("TNm"); // NOI18N
         TNm.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -671,15 +666,6 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         switch (TabRawat.getSelectedIndex()) {
-            case 0:
-                if(!TKd.getText().equals("")){
-                    try {
-                        loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/index.php?act=DetailBerkasPegawai&action=TAMBAH&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));
-                    } catch (Exception ex) {
-                        System.out.println("Notifikasi : "+ex);
-                    }
-                } 
-                break;
             case 1:
                 tampil();
                 break;
@@ -836,7 +822,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         try {
             htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='head'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>No.</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>NIP</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='23%'>Nama Pegawai</td>"+
@@ -944,7 +930,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             }
             LoadHTML1.setText(
                     "<html>"+
-                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='1100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
@@ -959,7 +945,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         try {
             htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='head'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>No.</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>NIP</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='23%'>Nama Pegawai</td>"+
@@ -1067,7 +1053,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             }
             LoadHTML2.setText(
                     "<html>"+
-                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='1100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
@@ -1082,7 +1068,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         try {
             htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='head'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>No.</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>NIP</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='23%'>Nama Pegawai</td>"+
@@ -1190,7 +1176,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             }
             LoadHTML3.setText(
                     "<html>"+
-                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='1100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
@@ -1205,7 +1191,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         try {
             htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='head'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>No.</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>NIP</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='23%'>Nama Pegawai</td>"+
@@ -1313,7 +1299,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             }
             LoadHTML4.setText(
                     "<html>"+
-                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='1100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
@@ -1328,7 +1314,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         try {
             htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='head'>"+
+                "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='2%'>No.</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%'>NIP</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='23%'>Nama Pegawai</td>"+
@@ -1436,7 +1422,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             }
             LoadHTML5.setText(
                     "<html>"+
-                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='1100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
@@ -1445,4 +1431,5 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         } 
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
 }

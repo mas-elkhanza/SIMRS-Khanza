@@ -12,14 +12,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -40,9 +38,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private double ttlretur=0,subtotal=0;
-    private String tanggal,noret="",ptg="",sat="",bar="",nofak="";
-    private String aktifkanbatch="no";
-    private final Properties prop = new Properties();  
+    private String tanggal,noret="",ptg="",sat="",bar="",nofak="";  
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -51,14 +47,6 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));   
-            aktifkanbatch = prop.getProperty("AKTIFKANBATCHOBAT");
-        } catch (Exception e) {
-            System.out.println("E : "+e);
-            aktifkanbatch = "no";
-        }
-        
         Object[] row={"No.Retur",
                     "Tgl.Retur",
                     "Petugas",
@@ -619,7 +607,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
         petugas.setAlwaysOnTop(false);
@@ -768,7 +756,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         var.setform("DlgCariReturBeli");
         barang.satuan.emptTeks();
         barang.satuan.isCek();
-        barang.satuan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.satuan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         barang.satuan.setLocationRelativeTo(internalFrame1);
         barang.satuan.setAlwaysOnTop(false);
         barang.satuan.setVisible(true);
@@ -792,7 +780,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         var.setform("DlgCariReturBeli");
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);
@@ -817,7 +805,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
              rs=ps.executeQuery();
              if(rs.next()){
                 ps2=koneksi.prepareStatement(
-                     "select kode_brng,jml_retur2,no_batch from detreturbeli where no_retur_beli=? ");
+                     "select kode_brng,jml_retur2 from detreturbeli where no_retur_beli=? ");
                 try {
                     ps2.setString(1,rs.getString(1));
                     rs2=ps2.executeQuery();
@@ -825,11 +813,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jml_retur2"),0,"Retur Beli",var.getkode(),rs.getString("kd_bangsal"),"Hapus");
                         Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','"+rs2.getString("jml_retur2") +"'", 
                                                "stok=stok+'"+rs2.getString("jml_retur2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
-                        if(aktifkanbatch.equals("yes")){
-                            Sequel.mengedit("data_batch","no_batch=? and kode_brng=?","sisa=sisa+?",3,new String[]{
-                                rs2.getString("jml_retur2"),rs2.getString("no_batch"),rs2.getString("kode_brng")
-                            });
-                        } 
                     } 
                 } catch (Exception e) {
                     System.out.println("Notif Detail Retur : "+e);

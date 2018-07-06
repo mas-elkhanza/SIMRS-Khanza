@@ -32,15 +32,15 @@
                                               <img src='images/family.png'/><br>
                                               Status WP                                                  
                                            </a>
-                                        </td>                                        
-                                     </tr>     
-                                     <tr width='100%' height='20%' align='center'>
+                                        </td>
                                         <td width='16%' align='center'>
                                            <a href='index.php?act=ListJenjang'>                                                  
                                               <img src='images/edit-female-user.png'/><br>
                                               Jenjang Jabatan                                                  
                                            </a>
                                         </td>
+                                     </tr>     
+                                     <tr width='100%' height='20%' align='center'>
                                         <td width='16%' align='center'>
                                             <a href='index.php?act=ListDepartemen'>
                                                 <img src='images/Home.png'/><br>
@@ -64,9 +64,7 @@
                                                 <img src='images/coins.png'/><br>
                                                 Pendapatan Akte
                                             </a>
-                                        </td>                                                                                                                       
-                                     </tr>
-                                     <tr width='100%' height='20%' align='center'>
+                                        </td>
                                         <td width='16%' align='center'>
                                             <a href='index.php?act=ListResume'>
                                                 <img src='images/1404047007_02.png'/><br>
@@ -78,7 +76,9 @@
                                                 <img src='images/1404046800_Cash_register.png'/><br>
                                                 Pendapatan Tuslah
                                             </a>
-                                        </td> 
+                                        </td>                                                                                
+                                     </tr>
+                                     <tr width='100%' height='20%' align='center'>
                                         <td width='16%' align='center'>
                                             <a href='index.php?act=ListWarung'>
                                                 <img src='images/1360487067_calculator.png'/><br>
@@ -96,9 +96,7 @@
                                                      <img src='images/1404047834_application-vnd.ms-excel.png'/><br>
                                                      Lembur Pegawai                                                  
                                             </a>
-                                        </td>                                        
-                                     </tr>
-                                     <tr width='100%' height='20%' align='center'>  
+                                        </td>
                                         <td width='16%' align='center'>
                                             <a href='index.php?act=ListKeanggotaan'>
                                                  <img src='images/user-group-new.png'/><br>
@@ -117,6 +115,8 @@
                                                      Tindakan Medis                                                  
                                             </a>
                                         </td>
+                                     </tr>
+                                     <tr width='100%' height='20%' align='center'>                                        
                                         <td width='16%' align='center'>
                                             <a href='index.php?act=ListTunjangan'>                                                  
                                                      <img src='images/Money.png'/><br>
@@ -128,9 +128,7 @@
                                                      <img src='images/checklist_pencil-o.png'/><br>
                                                      Jasa Lain                                                  
                                             </a>
-                                        </td>                                                                               
-                                     </tr>
-                                     <tr width='100%' height='20%' align='center'>
+                                        </td>
                                         <td width='16%' align='center'>
                                             <a href='index.php?act=ListKS&action=TAMBAH'>                                                  
                                                      <img src='images/administrator.png'/><br>
@@ -154,11 +152,37 @@
                                                      <img src='images/Time.png'/><br>
                                                      Jam Jaga Departemen                                                  
                                             </a>
-                                        </td> 
+                                        </td>                                        
+                                     </tr>
+                                     <tr width='100%' height='20%' align='center'>
                                         <td width='16%' align='center'>
                                             <a href='index.php?act=ListLampiran&action=LIHAT'>                                                  
                                                      <img src='images/checklist.png'/><br>
                                                      Penggajian                                                  
+                                            </a>
+                                        </td>
+                                        <td width='16%' align='center'>
+                                            <a href='index.php?act=ListRiwayatPangkat'>                                                  
+                                                     <img src='images/folder.png'/><br>
+                                                     Riwayat Jabatan                                                  
+                                            </a>
+                                        </td>
+                                        <td width='16%' align='center'>
+                                            <a href='index.php?act=ListRiwayatPendidikan'>                                                  
+                                                     <img src='images/teacher.png'/><br>
+                                                     Riwayat Pendidikan                                                 
+                                            </a>
+                                        </td>
+                                        <td width='16%' align='center'>
+                                            <a href='index.php?act=ListRiwayatSeminar'>                                                  
+                                                     <img src='images/1360485642_edit-notes.png'/><br>
+                                                     Keg.Ilmiah & Pelatihan                                                 
+                                            </a>
+                                        </td>
+                                        <td width='16%' align='center'>
+                                            <a href='index.php?act=ListRiwayatGaji'>                                                  
+                                                     <img src='images/taxes.png'/><br>
+                                                     Kenaikan Gaji                                                 
                                             </a>
                                         </td>
                                      </tr>

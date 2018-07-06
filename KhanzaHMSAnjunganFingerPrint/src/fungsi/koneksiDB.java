@@ -73,7 +73,7 @@ public final class koneksiDB {
     public static String HOST(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=EnkripsiAES.decrypt(prop.getProperty("HOSTHYBRIDWEB"));
+            var=EnkripsiAES.decrypt(prop.getProperty("HOST"));
         }catch(Exception e){
             var="localhost"; 
         }
