@@ -195,6 +195,7 @@ import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
 import grafikanalisa.GrafikDemografiRegistrasi;
 import grafikanalisa.GrafikKejadianIKPPerBulan;
+import grafikanalisa.GrafikKejadianIKPPerJenis;
 import grafikanalisa.GrafikKejadianIKPPerTahun;
 import grafikanalisa.GrafikKejadianIKPPerTanggal;
 import grafikanalisa.GrafikKunjunganPerBulan;
@@ -818,6 +819,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikKejadianIKPPerBulan = new widget.ButtonBig();
         btnGrafikKejadianIKPPerTanggal = new widget.ButtonBig();
         btnRiwayatBatch = new widget.ButtonBig();
+        btnGrafikKejadianIKPPerJenis = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5108,6 +5110,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnRiwayatBatch);
 
+        btnGrafikKejadianIKPPerJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikKejadianIKPPerJenis.setText("Kejadian IKP Per Jenis");
+        btnGrafikKejadianIKPPerJenis.setIconTextGap(0);
+        btnGrafikKejadianIKPPerJenis.setName("btnGrafikKejadianIKPPerJenis"); // NOI18N
+        btnGrafikKejadianIKPPerJenis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKejadianIKPPerJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKejadianIKPPerJenisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikKejadianIKPPerJenis);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5116,7 +5130,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24/06/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/07/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -5608,7 +5622,7 @@ public class frmUtama extends javax.swing.JFrame {
         FlayMenu.setOpaqueImage(false);
         FlayMenu.setPreferredSize(new java.awt.Dimension(200, 110));
         FlayMenu.setRound(false);
-        FlayMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
+        FlayMenu.setLayout(new java.awt.GridLayout(1, 0, 4, 5));
         PanelWall.add(FlayMenu, java.awt.BorderLayout.PAGE_START);
 
         scrollPane1.setViewportView(PanelWall);
@@ -8880,7 +8894,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
     private void BtnToolJualObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnToolJualObatActionPerformed
         isTutup();
-        FlayMenu.removeAll();
+        FlayMenu.removeAll();        
         FlayMenu.add(btnInputPenjualan);
         FlayMenu.add(btnDataPenjualan);
         FlayMenu.add(btnDataPenyerahanDarah);
@@ -10801,6 +10815,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRiwayatBatchActionPerformed
 
+    private void btnGrafikKejadianIKPPerJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikKejadianIKPPerJenisActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKejadianIKPPerJenis aplikasi=new GrafikKejadianIKPPerJenis(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikKejadianIKPPerJenisActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10925,6 +10950,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGolonganBarang;
     private widget.ButtonBig btnGrafikDemografiRegistrasi;
     private widget.ButtonBig btnGrafikKejadianIKPPerBulan;
+    private widget.ButtonBig btnGrafikKejadianIKPPerJenis;
     private widget.ButtonBig btnGrafikKejadianIKPPerTahun;
     private widget.ButtonBig btnGrafikKejadianIKPPerTanggal;
     private widget.ButtonBig btnGrafikKunjunganPerBulan;
@@ -13094,6 +13120,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikKejadianIKPPerTanggal);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_ikp_jenis()==true){
+                Panelmenu.add(btnGrafikKejadianIKPPerJenis);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -14751,6 +14782,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getgrafik_ikp_pertanggal()==true){
             Panelmenu.add(btnGrafikKejadianIKPPerTanggal);
+            jmlmenu++;
+        }
+
+        if(var.getgrafik_ikp_jenis()==true){
+            Panelmenu.add(btnGrafikKejadianIKPPerJenis);
             jmlmenu++;
         }
 
@@ -17027,6 +17063,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_ikp_pertanggal()==true){
             if(btnGrafikKejadianIKPPerTanggal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKejadianIKPPerTanggal);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_ikp_jenis()==true){
+            if(btnGrafikKejadianIKPPerJenis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikKejadianIKPPerJenis);
                 jmlmenu++;
             }                
         }
