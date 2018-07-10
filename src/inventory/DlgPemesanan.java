@@ -1037,7 +1037,7 @@ private void tbDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         if(tbDokter.getRowCount()!=0){
             try {
                 if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==5)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==10)){                       
-                    setKonversi();
+                    setKonversi(tbDokter.getSelectedRow());
                     getData();  
                 }else if(tbDokter.getSelectedColumn()==9){
                     try {
@@ -1058,7 +1058,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                 try {                  
                    if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==10)){                       
-                        setKonversi();
+                        setKonversi(tbDokter.getSelectedRow());
                         getData();  
                         TCari.setText("");
                         TCari.requestFocus();                                                
@@ -1174,7 +1174,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                        }
                        getData();  
                    }else if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==10)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==13)){
-                       setKonversi();
+                       setKonversi(tbDokter.getSelectedRow());
                        getData();
                    }
             }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -1471,12 +1471,12 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         vvip=new double[jml];
         beliluar=new double[jml];
         jualbebas=new double[jml];
-        karyawan=new double[jml];
+        karyawan=new double[jml];        
         
         index=0;        
         for(i=0;i<row;i++){
             try {
-                if(Double.parseDouble(tbDokter.getValueAt(i,0).toString())>0){
+                if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
                     jumlah[index]=Double.parseDouble(tbDokter.getValueAt(i,0).toString());
                     satuanbeli[index]=tbDokter.getValueAt(i,1).toString();
                     kodebarang[index]=tbDokter.getValueAt(i,2).toString();
@@ -1504,6 +1504,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     index++;
                 }
             } catch (Exception e) {
+                System.out.println("e "+e);
             }
         }
         Valid.tabelKosong(tabMode);
@@ -1658,7 +1659,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("jumlah"),rs.getString(3),rs.getString(1),
+                        rs.getDouble("jumlah"),rs.getString(3),rs.getString(1),
                         rs.getString(2),rs.getString(3),true,rs.getString(5),
                         rs.getDouble(4),rs.getDouble("subtotal"),rs.getDouble("dis"),
                         rs.getDouble("besardis"),rs.getDouble("total"),rs.getDouble("jumlah2"),"",
@@ -1675,7 +1676,11 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 if(ps!=null){
                     ps.close();
                 }
-            }         
+            }  
+            jml=tbDokter.getRowCount();
+            for(i=0;i<jml;i++){   
+                setKonversi(i);
+            }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -1718,73 +1723,73 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             
     }
     
-    private void setKonversi(){
+    private void setKonversi(int baris){
         try {
             try{
                 rs=koneksi.prepareStatement("select * from setpenjualan where kdjns='"+
                         Sequel.cariIsi("select kdjns from databarang where kode_brng='"+
-                                tbDokter.getValueAt(tbDokter.getSelectedRow(),2).toString()+
+                                tbDokter.getValueAt(baris,2).toString()+
                                 "'")+"'").executeQuery();
                 if(rs.next()){
-                    if(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().equals(tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString())){
+                    if(tbDokter.getValueAt(baris,1).toString().equals(tbDokter.getValueAt(baris,4).toString())){
                         try {
-                            jmlkonversi=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                            jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString());
                         } catch (Exception e) {
                             jmlkonversi=0;
                         }
-                        tbDokter.setValueAt(jmlkonversi,tbDokter.getSelectedRow(),12);
+                        tbDokter.setValueAt(jmlkonversi,baris,12);
                         hargappn=0;
                         
                         try {
-                            hargappn=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())+((Double.parseDouble(tppn.getText())/100)*Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString()));
+                            hargappn=Double.parseDouble(tbDokter.getValueAt(baris,7).toString())+((Double.parseDouble(tppn.getText())/100)*Double.parseDouble(tbDokter.getValueAt(baris,7).toString()));
                         } catch (Exception e) {
                             hargappn=0;
                         }
-                        tbDokter.setValueAt(Math.round(hargappn),tbDokter.getSelectedRow(),24);
-                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("ralan")/100)),100),tbDokter.getSelectedRow(),14);
-                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas1")/100)),100),tbDokter.getSelectedRow(),15);
-                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas2")/100)),100),tbDokter.getSelectedRow(),16);
-                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas3")/100)),100),tbDokter.getSelectedRow(),17);
-                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("utama")/100)),100),tbDokter.getSelectedRow(),18);
-                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("vip")/100)),100),tbDokter.getSelectedRow(),19);
-                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("vvip")/100)),100),tbDokter.getSelectedRow(),20);
-                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("beliluar")/100)),100),tbDokter.getSelectedRow(),21);
-                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("jualbebas")/100)),100),tbDokter.getSelectedRow(),22);
-                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("karyawan")/100)),100),tbDokter.getSelectedRow(),23);
+                        tbDokter.setValueAt(Math.round(hargappn),baris,24);
+                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("ralan")/100)),100),baris,14);
+                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas1")/100)),100),baris,15);
+                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas2")/100)),100),baris,16);
+                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas3")/100)),100),baris,17);
+                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("utama")/100)),100),baris,18);
+                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("vip")/100)),100),baris,19);
+                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("vvip")/100)),100),baris,20);
+                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("beliluar")/100)),100),baris,21);
+                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("jualbebas")/100)),100),baris,22);
+                        tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("karyawan")/100)),100),baris,23);
                     }else{ 
                         pskonversi=koneksi.prepareStatement("select nilai,nilai_konversi from konver_sat where kode_sat=? and sat_konversi=?");
                         try{
-                            pskonversi.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
-                            pskonversi.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
+                            pskonversi.setString(1,tbDokter.getValueAt(baris,4).toString());
+                            pskonversi.setString(2,tbDokter.getValueAt(baris,1).toString());
                             rskonversi=pskonversi.executeQuery();
                             if(rskonversi.next()){
                                 try {
-                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
+                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
                                 } catch (Exception e) {
                                     jmlkonversi=0;
                                 }
-                                tbDokter.setValueAt(jmlkonversi,tbDokter.getSelectedRow(),12);
+                                tbDokter.setValueAt(jmlkonversi,baris,12);
                                 hargappn=0;
                                 try {
-                                    hargappn=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())+((Double.parseDouble(tppn.getText())/100)*Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString()));
+                                    hargappn=Double.parseDouble(tbDokter.getValueAt(baris,7).toString())+((Double.parseDouble(tppn.getText())/100)*Double.parseDouble(tbDokter.getValueAt(baris,7).toString()));
                                 } catch (Exception e) {
                                     hargappn=0;
                                 }
                                 
                                 hargakonversi=hargappn/jmlkonversi;
-                                tbDokter.setValueAt(Math.round(hargakonversi),tbDokter.getSelectedRow(),24);
-                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("ralan")/100)),tbDokter.getSelectedRow(),14);
-                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas1")/100)),tbDokter.getSelectedRow(),15);
-                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas2")/100)),tbDokter.getSelectedRow(),16);
-                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas3")/100)),tbDokter.getSelectedRow(),17);
-                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("utama")/100)),tbDokter.getSelectedRow(),18);
-                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("vip")/100)),tbDokter.getSelectedRow(),19);
-                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("vvip")/100)),tbDokter.getSelectedRow(),20);
-                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("beliluar")/100)),tbDokter.getSelectedRow(),21);
-                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("jualbebas")/100)),tbDokter.getSelectedRow(),22);
-                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("karyawan")/100)),tbDokter.getSelectedRow(),23);
+                                tbDokter.setValueAt(Math.round(hargakonversi),baris,24);
+                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("ralan")/100)),baris,14);
+                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas1")/100)),baris,15);
+                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas2")/100)),baris,16);
+                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas3")/100)),baris,17);
+                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("utama")/100)),baris,18);
+                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("vip")/100)),baris,19);
+                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("vvip")/100)),baris,20);
+                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("beliluar")/100)),baris,21);
+                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("jualbebas")/100)),baris,22);
+                                tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("karyawan")/100)),baris,23);
                             }else if(!rskonversi.next()){
-                                tbDokter.setValueAt(tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString(),tbDokter.getSelectedRow(),1 );
+                                tbDokter.setValueAt(tbDokter.getValueAt(baris,4).toString(),baris,1 );
                                 int reply = JOptionPane.showConfirmDialog(rootPane,"Maaf, konversi satuan tidak ditemukan. Apa anda ingin menambahkan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                                 if (reply == JOptionPane.YES_OPTION) {
                                     DlgKonversi konv=new DlgKonversi(null,false);
@@ -1808,66 +1813,66 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }else{
                     rs=koneksi.prepareStatement("select * from setpenjualan where kdjns='-'").executeQuery();
                     if(rs.next()){
-                        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().equals(tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString())){
+                        if(tbDokter.getValueAt(baris,1).toString().equals(tbDokter.getValueAt(baris,4).toString())){
                             try {
-                                jmlkonversi=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                                jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString());
                             } catch (Exception e) {
                                 jmlkonversi=0;
                             }
-                            tbDokter.setValueAt(jmlkonversi,tbDokter.getSelectedRow(),12);
+                            tbDokter.setValueAt(jmlkonversi,baris,12);
                             hargappn=0;
                             
                             try {
-                                hargappn=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())+((Double.parseDouble(tppn.getText())/100)*Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString()));
+                                hargappn=Double.parseDouble(tbDokter.getValueAt(baris,7).toString())+((Double.parseDouble(tppn.getText())/100)*Double.parseDouble(tbDokter.getValueAt(baris,7).toString()));
                             } catch (Exception e) {
                                 hargappn=0;
                             }
 
-                            tbDokter.setValueAt(Math.round(hargappn),tbDokter.getSelectedRow(),24);
-                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("ralan")/100)),100),tbDokter.getSelectedRow(),14);
-                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas1")/100)),100),tbDokter.getSelectedRow(),15);
-                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas2")/100)),100),tbDokter.getSelectedRow(),16);
-                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas3")/100)),100),tbDokter.getSelectedRow(),17);
-                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("utama")/100)),100),tbDokter.getSelectedRow(),18);
-                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("vip")/100)),100),tbDokter.getSelectedRow(),19);
-                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("vvip")/100)),100),tbDokter.getSelectedRow(),20);
-                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("beliluar")/100)),100),tbDokter.getSelectedRow(),21);
-                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("jualbebas")/100)),100),tbDokter.getSelectedRow(),22);
-                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("karyawan")/100)),100),tbDokter.getSelectedRow(),23);
+                            tbDokter.setValueAt(Math.round(hargappn),baris,24);
+                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("ralan")/100)),100),baris,14);
+                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas1")/100)),100),baris,15);
+                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas2")/100)),100),baris,16);
+                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("kelas3")/100)),100),baris,17);
+                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("utama")/100)),100),baris,18);
+                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("vip")/100)),100),baris,19);
+                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("vvip")/100)),100),baris,20);
+                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("beliluar")/100)),100),baris,21);
+                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("jualbebas")/100)),100),baris,22);
+                            tbDokter.setValueAt(Valid.roundUp(hargappn+(hargappn*(rs.getDouble("karyawan")/100)),100),baris,23);
                         }else{ 
                             pskonversi=koneksi.prepareStatement("select nilai,nilai_konversi from konver_sat where kode_sat=? and sat_konversi=?");
                             try{
-                                pskonversi.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
-                                pskonversi.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
+                                pskonversi.setString(1,tbDokter.getValueAt(baris,4).toString());
+                                pskonversi.setString(2,tbDokter.getValueAt(baris,1).toString());
                                 rskonversi=pskonversi.executeQuery();
                                 if(rskonversi.next()){
                                     try {
-                                        jmlkonversi=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
+                                        jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
                                     } catch (Exception e) {
                                         jmlkonversi=0;
                                     }
-                                    tbDokter.setValueAt(jmlkonversi,tbDokter.getSelectedRow(),12);
+                                    tbDokter.setValueAt(jmlkonversi,baris,12);
                                     hargappn=0;
                                     try {
-                                        hargappn=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())+((Double.parseDouble(tppn.getText())/100)*Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString()));
+                                        hargappn=Double.parseDouble(tbDokter.getValueAt(baris,7).toString())+((Double.parseDouble(tppn.getText())/100)*Double.parseDouble(tbDokter.getValueAt(baris,7).toString()));
                                     } catch (Exception e) {
                                         hargappn=0;
                                     }
                                     
                                     hargakonversi=hargappn/jmlkonversi;
-                                    tbDokter.setValueAt(Math.round(hargakonversi),tbDokter.getSelectedRow(),24);
-                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("ralan")/100)),tbDokter.getSelectedRow(),14);
-                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas1")/100)),tbDokter.getSelectedRow(),15);
-                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas2")/100)),tbDokter.getSelectedRow(),16);
-                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas3")/100)),tbDokter.getSelectedRow(),17);
-                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("utama")/100)),tbDokter.getSelectedRow(),18);
-                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("vip")/100)),tbDokter.getSelectedRow(),19);
-                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("vvip")/100)),tbDokter.getSelectedRow(),20);
-                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("beliluar")/100)),tbDokter.getSelectedRow(),21);
-                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("jualbebas")/100)),tbDokter.getSelectedRow(),22);
-                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("karyawan")/100)),tbDokter.getSelectedRow(),23);
+                                    tbDokter.setValueAt(Math.round(hargakonversi),baris,24);
+                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("ralan")/100)),baris,14);
+                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas1")/100)),baris,15);
+                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas2")/100)),baris,16);
+                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("kelas3")/100)),baris,17);
+                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("utama")/100)),baris,18);
+                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("vip")/100)),baris,19);
+                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("vvip")/100)),baris,20);
+                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("beliluar")/100)),baris,21);
+                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("jualbebas")/100)),baris,22);
+                                    tbDokter.setValueAt(hargakonversi+(hargakonversi*(rs.getDouble("karyawan")/100)),baris,23);
                                 }else if(!rskonversi.next()){
-                                    tbDokter.setValueAt(tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString(),tbDokter.getSelectedRow(),1 );
+                                    tbDokter.setValueAt(tbDokter.getValueAt(baris,4).toString(),baris,1 );
                                     int reply = JOptionPane.showConfirmDialog(rootPane,"Maaf, konversi satuan tidak ditemukan. Apa anda ingin menambahkan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
                                     if (reply == JOptionPane.YES_OPTION) {
                                         DlgKonversi konv=new DlgKonversi(null,false);

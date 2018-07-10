@@ -3475,7 +3475,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        BangsalCari.setText("");
+        if(namakamar.equals("")){
+            BangsalCari.setText("");
+        }
+            
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
