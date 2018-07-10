@@ -106,13 +106,13 @@ $bulanList = array(
 	'03' => 'Maret',
 	'04' => 'April',
 	'05' => 'Mei',
-	'06' => 'Jumat',
-	'07' => 'Jumat',
-	'08' => 'Jumat',
-	'09' => 'Jumat',
-	'10' => 'Jumat',
-	'11' => 'Jumat',
-	'12' => 'Sabtu'
+	'06' => 'Juni',
+	'07' => 'Juli',
+	'08' => 'Agustus',
+	'09' => 'September',
+	'10' => 'Oktober',
+	'11' => 'November',
+	'12' => 'Desember'
 );
 
 // Get settings
