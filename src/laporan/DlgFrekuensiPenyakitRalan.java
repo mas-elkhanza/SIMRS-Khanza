@@ -531,7 +531,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -559,7 +559,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(8,7).toString()),tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
            
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -585,7 +585,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,7).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
             
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -609,7 +609,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,7).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
              
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -631,7 +631,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
               
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -651,7 +651,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
               
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -669,7 +669,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
               
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -685,7 +685,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
                
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -699,7 +699,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
                
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -954,7 +954,7 @@ private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent ev
 
 
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -982,7 +982,7 @@ private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent ev
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(8,7).toString()),tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
            
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1008,7 +1008,7 @@ private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent ev
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,7).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
             
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1032,7 +1032,7 @@ private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent ev
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,7).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
              
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1054,7 +1054,7 @@ private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent ev
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
               
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1074,7 +1074,7 @@ private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent ev
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
               
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1092,7 +1092,7 @@ private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent ev
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
               
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1108,7 +1108,7 @@ private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent ev
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
                
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1122,7 +1122,7 @@ private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent ev
             dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
                
             JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Jalan","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-            ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
+            ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Jalan",freeChart);
 
             cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1377,6 +1377,7 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
     // End of variables declaration//GEN-END:variables
 
     private void prosesCari() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
        Valid.tabelKosong(tabMode);      
        try{   
             ps.setString(1,"%"+kdpenyakit.getText()+"%");
@@ -1453,6 +1454,7 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
         }catch(SQLException e){
             System.out.println("Catatan  "+e);
         }
+       this.setCursor(Cursor.getDefaultCursor());
         
     }
     
