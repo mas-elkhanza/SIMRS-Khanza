@@ -2,7 +2,7 @@
 body  {
 	font-family:Tahoma;
 	font-size:11px;
-	background: #fffff9;
+	background: #ffffff;
 	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
 	padding: 0;
 	color: #65795b;
@@ -39,7 +39,8 @@ h1 {
 }
 
 #mainContent {
-	margin: auto 0; /* the right margin on this div element creates the column down the right side of the page - no matter how much content the sidebar1 div contains, the column space will remain. You can remove this margin if you want the #mainContent div's text to fill the #sidebar1 space when the content in #sidebar1 ends. */
+    background: #ffffff;
+   margin: auto 0; /* the right margin on this div element creates the column down the right side of the page - no matter how much content the sidebar1 div contains, the column space will remain. You can remove this margin if you want the #mainContent div's text to fill the #sidebar1 space when the content in #sidebar1 ends. */
 }
 
 #mainContent h1 {
@@ -111,16 +112,16 @@ h1 {
 	width: 100%;
         border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: #eafae9;
+	border-bottom-color: #f1f6ec;
         border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: #eafae9;
+	border-top-color: #f1f6ec;
         border-right-width: 1px;
 	border-right-style: solid;
-	border-right-color: #eafae9;
+	border-right-color: #f1f6ec;
         border-left-width: 1px;
 	border-left-style: solid;
-	border-left-color: #eafae9;        
+	border-left-color: #f1f6ec;        
 }
 
 #navcontainer table tr td {
@@ -148,21 +149,33 @@ h1 {
         font-size: 11px;
 }
 
+#entry{
+     background: #ffffff;
+}
+
+#entry a{
+        text-decoration:none;
+        color:#65795b;
+        padding:0 0 0 0px;
+        font-family: Tahoma;
+        font-size: 11px;
+}
+
 #post{
     width: 99.8%;
     height: 99.5%;
     border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: #eafae9;
+	border-bottom-color: #f1f6ec;
         border-top-width: 1px;
 	border-top-style: solid;
-	border-top-color: #eafae9;
+	border-top-color: #f1f6ec;
         border-right-width: 1px;
 	border-right-style: solid;
-	border-right-color: #eafae9;
+	border-right-color: #f1f6ec;
         border-left-width: 1px;
 	border-left-style: solid;
-	border-left-color: #eafae9; 
+	border-left-color: #f1f6ec; 
 }
 
 
@@ -264,11 +277,31 @@ color: #65795b;
 	padding: 4px 2px 4px 2px;
 }
 
+.head2 td{
+	color:#65795b;
+	font: 11px  tahoma;
+	background: #fafff5;
+	border-bottom: 1px solid #f2f7ed;
+        border-right: 1px solid #777777;
+	letter-spacing: 1px;
+	padding: 2px 2px 2px 2px;
+}
+
+.head3 td{
+	color:#65795b;
+	font: 11px  tahoma;
+	background: #fafff5;
+	border-bottom: 1px solid #f2f7ed;
+        border-top: 1px solid #f2f7ed;
+        border-right: 1px solid #777777;
+	letter-spacing: 1px;
+	padding: 2px 2px 2px 2px;
+}
 
 .isi td{
 	border-right: 1px solid #f2f7ed;
 	border-bottom: 1px solid #f2f7ed;
-	background: #fffff9;
+	background: #ffffff;
 	padding-top:4px;
 	padding-bottom:4px;
 	padding-left:2px;
@@ -276,11 +309,19 @@ color: #65795b;
 	font: 11px  tahoma;
 }
 
+.isi a{
+	text-decoration:none;
+        color:#65795b;
+        padding:0 0 0 0px;
+        font-family: Tahoma;
+        font-size: 11px;
+}
+
 .isi2 td{
 	padding-top:3px;
 	padding-bottom:3px;
-	padding-left:8px;
-	padding-right:8px;
+	padding-left:10px;
+	padding-right:2px;
         font-family: Tahoma;
 	font-size: 11px;
 	font-style: italic;
@@ -332,43 +373,68 @@ color: #65795b;
 	font: 9px Tahoma;
 }
 
+.isi7 td{
+	border-right: 1px solid #f2f7ed;
+	border-bottom: 1px solid #f2f7ed;
+	background: #fdfff9;
+	padding-top:4px;
+	padding-bottom:4px;
+	padding-left:2px;
+	color:#65795b;
+	font: 11px  tahoma;
+}
+
 .button {
 	margin-left: 10px;
 	padding: 4px 4px;
 	border: none;
-	background: #C11212;
+	background: #f2f7eb;
 	font-size: 11px;
         font: Tahoma;
-	color: #ffffff;
+	color: #65795b;
 }
 
 .text {
-	background: #fffff9;
+	background: #ffffff;
         font-size: 11px;
         font: Tahoma;
-	padding: 3px 0 3px 5px;
+	padding: 3px 3px 3px 3px;
 	border: 1px solid #e2e7de;
 	color: #65795b;
+        height: 22px;
 }
 
 .text2 {
-	background: #fffff9;
+	background: #ffffff;
         font-size: 11px;
         font: Tahoma;
-	padding: 3px 0 3px 5px;
+	padding: 3px 3px 3px 3px;
 	border: 1px solid #e2e7de;
 	color: #65795b;
         width:210px;
+        height: 22px;
 }
 
 .text3 {
-	background: #fffff9;
+	background: #ffffff;
         font-size: 11px;
         font: Tahoma;
-	padding: 3px 0 3px 5px;
+	padding: 3px 3px 3px 3px;
 	border: 1px solid #e2e7de;
 	color: #65795b;
         width:90px;
+        height: 22px;
+}
+
+.text4 {
+	background: #ffffff;
+        font-size: 11px;
+        font: Tahoma;
+	padding: 3px 3px 3px 3px;
+	border: 1px solid #e2e7de;
+	color: #65795b;
+        width:180px;
+        height: 22px;
 }
 
 .caption{
@@ -416,7 +482,7 @@ background:#7bbcc7; color:#aaceaf;background-position:5px 5px;font: 11px  Tahoma
     font: 11px  Tahoma;
 	height:28px;
         display:inline;
-        background:url(images/65.png) no-repeat left #eafae9;
+        background:url(images/65.png) no-repeat left #f1f6ec;
         background-position:4px 5px;
         border-bottom:1px #fffff9 solid;
         color:#65795b;

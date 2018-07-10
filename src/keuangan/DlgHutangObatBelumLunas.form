@@ -81,7 +81,7 @@
           <SubComponents>
             <Component class="widget.Table" name="tbBangsal">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silahkan centang di depan untuk memilih data hutang yang mau dibayar"/>
                 <Property name="name" type="java.lang.String" value="tbBangsal" noResource="true"/>
               </Properties>
               <Events>
