@@ -1,25 +1,30 @@
-<?php 
+<?php
 
 /***
-* e-Dokter from version 0.1 Beta
-* Last modified: 02 Pebruari 2018
+* e-Pasien from version 0.1 Beta
+* Last modified: 05 July 2018
 * Author : drg. Faisol Basoro
-* Email : drg.faisol@basoro.org
+* Email : dentix.id@gmail.com
 *
 * File : login.php
 * Description : Login, cookie and session process
 * Licence under GPL
-***/ 
+***/
 
 ob_start();
 session_start();
 
 require_once('config.php');
 
+if(PRODUCTION == 'YES') {
+  ini_set('display_errors', 0);
+  error_reporting(E_ERROR | E_WARNING | E_PARSE);
+}
+
 if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('index.php'); }
 
 ?>
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -71,49 +76,50 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('inde
     <!-- #END# Page Loader -->
     <div class="login-box" style="margin: 20px;">
         <div class="logo">
+            <p  class="align-center"><img src="images/logo.png"></p>
             <a href="index.php"><?php echo $dataSettings['nama_instansi']; ?></a>
             <small><?php echo $dataSettings['alamat_instansi']; ?> - <?php echo $dataSettings['kabupaten']; ?></small>
         </div>
 
-    <?php if(!isset($_GET['action'])){ 
+    <?php if(!isset($_GET['action'])){
 
-        if($_SERVER['REQUEST_METHOD'] == "POST") { 
+        if($_SERVER['REQUEST_METHOD'] == "POST") {
 
             if (empty ($_POST['username']) || empty ($_POST['password'])) {
-                $errors[] = 'Username or password empty'; 
+                $errors[] = 'Username or password empty';
             }
 
-            if ($_POST['username'] !=="" || $_POST['password'] !=="") { 
+            if ($_POST['username'] !=="" || $_POST['password'] !=="") {
 
                 $sql = "SELECT no_rkm_medis as username, no_ktp as password FROM pasien WHERE no_rkm_medis = '{$_POST['username']}'";
                 $found = query($sql);
-            
+
                 if(num_rows($found) !== 1) {
                     $errors[] = 'Pasien tidak terdaftar.';
-                }    
+                }
 
-                if(num_rows($found) == 1) { 
+                if(num_rows($found) == 1) {
                     $user = fetch_assoc($found);
         		    if($user['password'] !== $_POST['password']) {
                         $errors[] = 'NIK tidak valid.';
-                    }    
-                }    
+                    }
+                }
 
             }
 
-            if(!empty($errors)) { 
+            if(!empty($errors)) {
 
                 foreach($errors as $error) {
                     echo validation_errors($error);
                 }
 
-            } else { 
+            } else {
 
                 if (isset($_POST['remember'])) {
                     /* Set cookie to last 1 year */
                     setcookie('username', $_POST['username'], time()+60*60*24*365);
                     setcookie('password', $_POST['password'], time()+60*60*24*365);
-        
+
                 } else {
                     /* Cookie expires when browser closes */
                     setcookie('username', $_POST['username'], false);
@@ -123,12 +129,12 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('inde
                 redirect('index.php');
 
             }
-        
+
         }
         ?>
 
-        <div class="card"> 
-        
+        <div class="card">
+
             <div class="body">
                 <form id="sign_in" method="POST">
                     <div class="msg">Silahkan login dulu untuk memulai</div>
@@ -170,20 +176,20 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('inde
 
     <?php
     //logout
-    if(isset($_GET['action']) == "logout"){ 
+    if(isset($_GET['action']) == "logout"){
 
         setcookie('username', '', time()-60*60*24*365);
         setcookie('password', '', time()-60*60*24*365);
 
-        unset($_SESSION['username']); 
+        unset($_SESSION['username']);
         unset($_SESSION['level']);
         unset($_SESSION['jenis_poli']);
-        $_SESSION = array(); 
-        session_destroy(); 
+        $_SESSION = array();
+        session_destroy();
 
-        redirect('login.php'); 
+        redirect('login.php');
 
-    } 
+    }
     ?>
         </div>
     </div>
@@ -202,7 +208,6 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('inde
 
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
-    <script src="js/pages/examples/sign-in.js"></script>
 </body>
 
 </html>

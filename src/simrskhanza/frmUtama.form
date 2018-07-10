@@ -6847,7 +6847,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
-              <Color PropertyName="color" blue="cd" green="eb" red="e1" type="rgb"/>
+              <Color PropertyName="color" blue="da" green="e8" red="f3" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
@@ -6857,10 +6857,10 @@
         </Property>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d7" green="f5" red="eb" type="rgb"/>
+          <Color blue="e4" green="f2" red="fd" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cd" green="eb" red="e1" type="rgb"/>
+          <Color blue="da" green="e8" red="f3" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -7291,7 +7291,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
-              <Color PropertyName="color" blue="cd" green="eb" red="e1" type="rgb"/>
+              <Color PropertyName="color" blue="da" green="e8" red="f3" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
@@ -7300,10 +7300,10 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cd" green="eb" red="e1" type="rgb"/>
+          <Color blue="da" green="e8" red="f3" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d7" green="f5" red="eb" type="rgb"/>
+          <Color blue="e4" green="f2" red="fd" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>

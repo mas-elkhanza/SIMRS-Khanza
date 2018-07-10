@@ -26,7 +26,6 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -104,7 +103,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         }         
     }
     private DlgBarang barang=new DlgBarang(null,false);
-    private String bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
     private double x=0,y=0,z=0,stokbarang=0,kenaikan=0;
     private int jml=0,i=0,index;
     private double[] jumlah,harga;
@@ -481,20 +479,21 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TKdPny.getText().trim().equals("")){
             Valid.textKosong(TCari,"Data");
-        }else if(bangsal.equals("")){
+        }else if(var.getkdbangsal().equals("")){
             Valid.textKosong(TCari,"Lokasi");
         }else{    
             Sequel.AutoComitFalse();
             for(i=0;i<tbKamar.getRowCount();i++){ 
                 if(Valid.SetAngka(tbKamar.getValueAt(i,0).toString())>0){
-                    if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?","data",6,new String[]{
+                    if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?","data",9,new String[]{
                             TNoRw.getText(),tbKamar.getValueAt(i,1).toString(),tbKamar.getValueAt(i,0).toString(),
                             tbKamar.getValueAt(i,6).toString(),""+Double.parseDouble(tbKamar.getValueAt(i,6).toString())*Double.parseDouble(tbKamar.getValueAt(i,0).toString()),
-                            tbKamar.getValueAt(i,4).toString()
+                            tbKamar.getValueAt(i,4).toString(),Sequel.cariIsi("select current_date()"),
+                            Sequel.cariIsi("select current_time()"),var.getkdbangsal()
                         })==true){
-                            Trackobat.catatRiwayat(tbKamar.getValueAt(i,1).toString(),0,Valid.SetAngka(tbKamar.getValueAt(i,0).toString()),"Resep Pulang",var.getkode(),bangsal,"Simpan");
-                            Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(i,1).toString()+"','"+bangsal+"','-"+tbKamar.getValueAt(i,0).toString()+"'", 
-                                                 "stok=stok-'"+tbKamar.getValueAt(i,0).toString()+"'","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' and kd_bangsal='"+bangsal+"'");                               
+                            Trackobat.catatRiwayat(tbKamar.getValueAt(i,1).toString(),0,Valid.SetAngka(tbKamar.getValueAt(i,0).toString()),"Resep Pulang",var.getkode(),var.getkdbangsal(),"Simpan");
+                            Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(i,1).toString()+"','"+var.getkdbangsal()+"','-"+tbKamar.getValueAt(i,0).toString()+"'", 
+                                                 "stok=stok-'"+tbKamar.getValueAt(i,0).toString()+"'","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' and kd_bangsal='"+var.getkdbangsal()+"'");                               
                     }
                 }
             }  
@@ -522,14 +521,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 private void ppHapusObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusObatActionPerformed
            try{
                 i=tbKamar.getSelectedRow();
-                if(bangsal.equals("")){
+                if(var.getkdbangsal().equals("")){
                     Valid.textKosong(TCari,"Lokasi");
                 }else if(i!= -1){
                     if(!tbKamar.getValueAt(i,0).toString().equals("")){
                         Sequel.queryu("delete from resep_pulang where no_rawat='"+TNoRw.getText()+"' and kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' ");
                        // Sequel.mengedit("databarang","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"'","stok=stok+"+tbKamar.getValueAt(i,0).toString()+"");                    
-                        Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(i,1).toString()+"','"+bangsal+"','"+Double.parseDouble(tbKamar.getValueAt(i,0).toString())+"'", 
-                                        "stok=stok+'"+Double.parseDouble(tbKamar.getValueAt(i,0).toString())+"'","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' and kd_bangsal='"+bangsal+"'");
+                        Sequel.menyimpan("gudangbarang","'"+tbKamar.getValueAt(i,1).toString()+"','"+var.getkdbangsal()+"','"+Double.parseDouble(tbKamar.getValueAt(i,0).toString())+"'", 
+                                        "stok=stok+'"+Double.parseDouble(tbKamar.getValueAt(i,0).toString())+"'","kode_brng='"+tbKamar.getValueAt(i,1).toString()+"' and kd_bangsal='"+var.getkdbangsal()+"'");
                         setObatPasien();
                         tampil();                          
                     }                    
@@ -823,7 +822,6 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         TKdPny.setText(penyakit);
         TNoRw.setText(norwt);
         setObatPasien();
-        bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
         Tanggal.setText(tanggal);
         Jam.setText(jam);
         KdPj.setText(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norwt));
