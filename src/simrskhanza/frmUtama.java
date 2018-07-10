@@ -195,6 +195,7 @@ import bridging.ReklasifikasiRalan;
 import bridging.ReklasifikasiRanap;
 import grafikanalisa.GrafikDemografiRegistrasi;
 import grafikanalisa.GrafikKejadianIKPPerBulan;
+import grafikanalisa.GrafikKejadianIKPPerDampak;
 import grafikanalisa.GrafikKejadianIKPPerJenis;
 import grafikanalisa.GrafikKejadianIKPPerTahun;
 import grafikanalisa.GrafikKejadianIKPPerTanggal;
@@ -820,6 +821,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikKejadianIKPPerTanggal = new widget.ButtonBig();
         btnRiwayatBatch = new widget.ButtonBig();
         btnGrafikKejadianIKPPerJenis = new widget.ButtonBig();
+        btnGrafikKejadianIKPPerDampak = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5122,6 +5124,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnGrafikKejadianIKPPerJenis);
 
+        btnGrafikKejadianIKPPerDampak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKejadianIKPPerDampak.setText("Kejadian IKP Per Dampak");
+        btnGrafikKejadianIKPPerDampak.setIconTextGap(0);
+        btnGrafikKejadianIKPPerDampak.setName("btnGrafikKejadianIKPPerDampak"); // NOI18N
+        btnGrafikKejadianIKPPerDampak.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKejadianIKPPerDampak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKejadianIKPPerDampakActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikKejadianIKPPerDampak);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5130,7 +5144,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09/07/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10/07/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -5207,12 +5221,12 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 215)));
+        internalFrame1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 235, 205)));
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(245, 245, 225));
-        internalFrame1.setWarnaBawah(new java.awt.Color(235, 235, 215));
+        internalFrame1.setWarnaAtas(new java.awt.Color(235, 245, 215));
+        internalFrame1.setWarnaBawah(new java.awt.Color(225, 235, 205));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
 
         BtnMenu.setForeground(new java.awt.Color(110, 130, 100));
@@ -5498,11 +5512,11 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.PAGE_START);
 
-        internalFrame4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(235, 235, 215)));
+        internalFrame4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 235, 205)));
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(235, 235, 215));
-        internalFrame4.setWarnaBawah(new java.awt.Color(245, 245, 225));
+        internalFrame4.setWarnaAtas(new java.awt.Color(225, 235, 205));
+        internalFrame4.setWarnaBawah(new java.awt.Color(235, 245, 215));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -10826,6 +10840,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikKejadianIKPPerJenisActionPerformed
 
+    private void btnGrafikKejadianIKPPerDampakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikKejadianIKPPerDampakActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKejadianIKPPerDampak aplikasi=new GrafikKejadianIKPPerDampak(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikKejadianIKPPerDampakActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -10950,6 +10975,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGolonganBarang;
     private widget.ButtonBig btnGrafikDemografiRegistrasi;
     private widget.ButtonBig btnGrafikKejadianIKPPerBulan;
+    private widget.ButtonBig btnGrafikKejadianIKPPerDampak;
     private widget.ButtonBig btnGrafikKejadianIKPPerJenis;
     private widget.ButtonBig btnGrafikKejadianIKPPerTahun;
     private widget.ButtonBig btnGrafikKejadianIKPPerTanggal;
@@ -13125,6 +13151,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikKejadianIKPPerJenis);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_ikp_dampak()==true){
+                Panelmenu.add(btnGrafikKejadianIKPPerDampak);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -14787,6 +14818,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getgrafik_ikp_jenis()==true){
             Panelmenu.add(btnGrafikKejadianIKPPerJenis);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_ikp_dampak()==true){
+            Panelmenu.add(btnGrafikKejadianIKPPerDampak);
             jmlmenu++;
         }
 
@@ -17070,6 +17106,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_ikp_jenis()==true){
             if(btnGrafikKejadianIKPPerJenis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKejadianIKPPerJenis);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_ikp_dampak()==true){
+            if(btnGrafikKejadianIKPPerDampak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikKejadianIKPPerDampak);
                 jmlmenu++;
             }                
         }
