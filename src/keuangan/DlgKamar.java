@@ -240,7 +240,7 @@ public final class DlgKamar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Nomor Kamar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Nomor Kamar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -504,7 +504,7 @@ public final class DlgKamar extends javax.swing.JDialog {
         jLabel11.setPreferredSize(new java.awt.Dimension(85, 23));
         panelCari.add(jLabel11);
 
-        CmbCrIsi.setForeground(new java.awt.Color(153, 0, 51));
+        CmbCrIsi.setForeground(new java.awt.Color(160,130,130));
         CmbCrIsi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "ISI", "KOSONG" }));
         CmbCrIsi.setName("CmbCrIsi"); // NOI18N
         CmbCrIsi.setOpaque(false);
@@ -602,7 +602,7 @@ public final class DlgKamar extends javax.swing.JDialog {
         panelGlass4.add(jLabel9);
         jLabel9.setBounds(440, 12, 90, 23);
 
-        CmbStatus.setForeground(new java.awt.Color(153, 0, 51));
+        CmbStatus.setForeground(new java.awt.Color(160,130,130));
         CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ISI", "KOSONG" }));
         CmbStatus.setName("CmbStatus"); // NOI18N
         CmbStatus.setOpaque(false);
@@ -646,7 +646,7 @@ public final class DlgKamar extends javax.swing.JDialog {
         panelGlass4.add(jLabel5);
         jLabel5.setBounds(440, 42, 90, 23);
 
-        Kelas.setForeground(new java.awt.Color(153, 0, 51));
+        Kelas.setForeground(new java.awt.Color(160,130,130));
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kelas 1", "Kelas 2", "Kelas 3", "Kelas Utama", "Kelas VIP", "Kelas VVIP" }));
         Kelas.setName("Kelas"); // NOI18N
         Kelas.setOpaque(false);
