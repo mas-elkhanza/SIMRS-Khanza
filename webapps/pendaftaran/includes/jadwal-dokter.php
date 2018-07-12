@@ -1,5 +1,16 @@
 <?php
 
+/***
+* e-Pasien from version 0.1 Beta
+* Last modified: 05 July 2018
+* Author : drg. Faisol Basoro
+* Email : dentix.id@gmail.com
+*
+* File : includes/jadwal-dokter.php
+* Description : Datatable ajax file for dokter schedule
+* Licence under GPL
+***/
+
 ob_start();
 session_start();
 
@@ -7,15 +18,15 @@ include ('../config.php');
 
 $table = <<<EOT
  (
-    SELECT 
-        dokter.nm_dokter, 
-        poliklinik.nm_poli, 
-        DATE_FORMAT(jadwal.jam_mulai, '%H:%i') AS jam_mulai, 
-        DATE_FORMAT(jadwal.jam_selesai, '%H:%i') AS jam_selesai  
-    FROM jadwal 
-    INNER JOIN dokter 
-    INNER JOIN poliklinik on dokter.kd_dokter=jadwal.kd_dokter 
-    AND jadwal.kd_poli=poliklinik.kd_poli 
+    SELECT
+        dokter.nm_dokter,
+        poliklinik.nm_poli,
+        DATE_FORMAT(jadwal.jam_mulai, '%H:%i') AS jam_mulai,
+        DATE_FORMAT(jadwal.jam_selesai, '%H:%i') AS jam_selesai
+    FROM jadwal
+    INNER JOIN dokter
+    INNER JOIN poliklinik on dokter.kd_dokter=jadwal.kd_dokter
+    AND jadwal.kd_poli=poliklinik.kd_poli
     WHERE jadwal.hari_kerja='$namahari'
  ) temp
 EOT;

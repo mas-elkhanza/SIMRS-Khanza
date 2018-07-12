@@ -75,7 +75,7 @@ public final class var {
             pengguna_obat_resep=false,rekap_pemesanan=false,master_berkas_pegawai=false,berkas_kepegawaian=false,riwayat_jabatan=false,riwayat_pendidikan=false,
             riwayat_naik_gaji=false,kegiatan_ilmiah=false,riwayat_penghargaan=false,riwayat_penelitian=false,penerimaan_non_medis=false,bayar_pesan_non_medis=false,
             hutang_barang_non_medis=false,rekap_pemesanan_non_medis=false,insiden_keselamatan=false,insiden_keselamatan_pasien=false,grafik_ikp_pertahun=false,
-            grafik_ikp_perbulan=false,grafik_ikp_pertanggal=false,riwayat_data_batch=false,grafik_ikp_jenis=false;
+            grafik_ikp_perbulan=false,grafik_ikp_pertanggal=false,riwayat_data_batch=false,grafik_ikp_jenis=false,grafik_ikp_dampak=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -432,6 +432,7 @@ public final class var {
                         var.grafik_ikp_pertanggal=true;
                         var.riwayat_data_batch=true;
                         var.grafik_ikp_jenis=true;
+                        var.grafik_ikp_dampak=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -772,6 +773,7 @@ public final class var {
                         var.grafik_ikp_pertanggal=rs2.getBoolean("grafik_ikp_pertanggal");
                         var.riwayat_data_batch=rs2.getBoolean("riwayat_data_batch");
                         var.grafik_ikp_jenis=rs2.getBoolean("grafik_ikp_jenis");
+                        var.grafik_ikp_dampak=rs2.getBoolean("grafik_ikp_dampak");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1110,6 +1112,7 @@ public final class var {
                         var.grafik_ikp_pertanggal=false;
                         var.riwayat_data_batch=false;
                         var.grafik_ikp_jenis=false;
+                        var.grafik_ikp_dampak=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1495,4 +1498,5 @@ public final class var {
     public static boolean getgrafik_ikp_pertanggal(){return var.grafik_ikp_pertanggal;}
     public static boolean getriwayat_data_batch(){return var.riwayat_data_batch;}
     public static boolean getgrafik_ikp_jenis(){return var.grafik_ikp_jenis;}
+    public static boolean getgrafik_ikp_dampak(){return var.grafik_ikp_dampak;}
 }   

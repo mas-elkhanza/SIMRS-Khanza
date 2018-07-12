@@ -1,6 +1,16 @@
 Fitur-fitur:
 
-Versi 1.7 
+Versi 1.8.1
+- Minor bug fixed pada file includes/get-antrian.php
+- Penambahan fitur konfigurasi URUTNOREG berdasarkan DOKTER atau POLI. Lihat file config.php.
+
+Versi 1.8
+- Penambahan fitur auto refresh pada data antrian pasien
+- Penambahan fitur hitung sisa antrian
+- Penambahan fitur PRODUCTION mode untuk menampilkan dan menyembunyikan error pada halaman
+- Cleanup code
+
+Versi 1.7
 - Penambahan fitur upload berkas rujukan FKTP untuk pasien BPJS
 - Pengaturan ukuran upload berkas rujukan
 - Penambahan fitur pengaduan pasien (Chatbox)
@@ -47,4 +57,3 @@ demo:
 https://demo.rshdbarabai.com/pasien/
 User: 000007
 Pass: 6307060704920001
-

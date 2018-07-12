@@ -14,8 +14,8 @@
     <entry key="ANTRIAN">sender</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="URLAPIBPJS">http://dvlp.bpjs-kesehatan.go.id:8081/VClaim-rest</entry>
-    <entry key="SECRETKEYAPIBPJS">6vJ72B83D5</entry>
-    <entry key="CONSIDAPIBPJS">20257</entry>
+    <entry key="SECRETKEYAPIBPJS">2wE3D865DE</entry>
+    <entry key="CONSIDAPIBPJS">30349</entry>
     <entry key="URLAPIAPLICARE">http://dvlp.bpjs-kesehatan.go.id:8888/aplicaresws</entry>
     <entry key="SECRETKEYAPIAPLICARE">1112</entry>
     <entry key="CONSIDAPIAPLICARE">1000</entry>

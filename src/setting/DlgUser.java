@@ -107,7 +107,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "[N]Kunjungan Rad Ralan Per Tanggal","[I]Sensus Harian Ralan","[D]Metode Racik","[H]Pembayaran Per Akun Bayar","[D]Pengguna Obat/Alkes/BHP Resep","[D]Rekap Penerimaan Obat & BHP",
                     "[C]Master Berkas Pegawai","[C]Berkas Kepegawaian","[C]Riwayat Jabatan","[C]Riwayat Pendidikan","[C]Riwayat Naik Gaji","[C]Kegiatan Ilmiah & Pelatihan","[C]Riwayat Penghargaan",
                     "[C]Riwayat Penelitian","[E]Penerimaan Barang Non Medis","[J]Bayar Pesan Non Medis","[J]Hutang Barang Non Medis","[E]Rekap Penerimaan Non Medis","[I]Insiden Keselamatan",
-                    "[L]Insiden Keselamatan Pasien","[N]Kejadian IKP Per Tahun","[N]Kejadian IKP Per Bulan","[N]Kejadian IKP Per Tanggal","[D]Riwayat Batch","[N]Kejadian IKP Per Jenis"
+                    "[L]Insiden Keselamatan Pasien","[N]Kejadian IKP Per Tahun","[N]Kejadian IKP Per Bulan","[N]Kejadian IKP Per Tanggal","[D]Riwayat Batch","[N]Kejadian IKP Per Jenis",
+                    "[N]Kejadian IKP Per Dampak"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -221,7 +222,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 336;i++) {
+        for (i = 0; i < 337;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -528,7 +529,9 @@ public class DlgUser extends javax.swing.JDialog {
             }else if(i==334){
                 column.setPreferredWidth(90);
             }else if(i==335){
-                column.setPreferredWidth(116);
+                column.setPreferredWidth(127);
+            }else if(i==336){
+                column.setPreferredWidth(140);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -964,7 +967,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1342,7 +1345,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_ikp_perbulan='"+tbUser.getValueAt(i,332).toString()+"',"+
                     "grafik_ikp_pertanggal='"+tbUser.getValueAt(i,333).toString()+"',"+
                     "riwayat_data_batch='"+tbUser.getValueAt(i,334).toString()+"',"+
-                    "grafik_ikp_jenis='"+tbUser.getValueAt(i,335).toString()+"'");
+                    "grafik_ikp_jenis='"+tbUser.getValueAt(i,335).toString()+"',"+
+                    "grafik_ikp_dampak='"+tbUser.getValueAt(i,336).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1625,7 +1629,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "pengguna_obat_resep,rekap_pemesanan,master_berkas_pegawai,berkas_kepegawaian,riwayat_jabatan,riwayat_pendidikan,"+
                         "riwayat_naik_gaji,kegiatan_ilmiah,riwayat_penghargaan,riwayat_penelitian,penerimaan_non_medis,bayar_pesan_non_medis,"+
                         "hutang_barang_non_medis,rekap_pemesanan_non_medis,insiden_keselamatan,insiden_keselamatan_pasien,grafik_ikp_pertahun,"+
-                        "grafik_ikp_perbulan,grafik_ikp_pertanggal,riwayat_data_batch,grafik_ikp_jenis from user order by AES_DECRYPT(id_user,'nur')");
+                        "grafik_ikp_perbulan,grafik_ikp_pertanggal,riwayat_data_batch,grafik_ikp_jenis,grafik_ikp_dampak "+
+                        "from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1972,7 +1977,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_ikp_perbulan"),
                                rs.getBoolean("grafik_ikp_pertanggal"),
                                rs.getBoolean("riwayat_data_batch"),
-                               rs.getBoolean("grafik_ikp_jenis")
+                               rs.getBoolean("grafik_ikp_jenis"),
+                               rs.getBoolean("grafik_ikp_dampak")
                             });
                         }   
                     } catch (Exception e) {
@@ -2309,7 +2315,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_ikp_perbulan"),
                            rs.getBoolean("grafik_ikp_pertanggal"),
                            rs.getBoolean("riwayat_data_batch"),
-                           rs.getBoolean("grafik_ikp_jenis")
+                           rs.getBoolean("grafik_ikp_jenis"),
+                           rs.getBoolean("grafik_ikp_dampak")
                         });
                     }                                             
                  }
