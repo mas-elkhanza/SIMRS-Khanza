@@ -467,7 +467,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         ppSEP.setBackground(new java.awt.Color(242, 242, 242));
         ppSEP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSEP.setForeground(new java.awt.Color(102, 51, 0));
+        ppSEP.setForeground(new java.awt.Color(160,130,130));
         ppSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP.setText("Print SJP");
         ppSEP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -484,7 +484,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         ppPulang.setBackground(new java.awt.Color(242, 242, 242));
         ppPulang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPulang.setForeground(new java.awt.Color(102, 51, 0));
+        ppPulang.setForeground(new java.awt.Color(160,130,130));
         ppPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPulang.setText("Update Tanggal Pulang");
         ppPulang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -501,7 +501,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         ppMapping.setBackground(new java.awt.Color(242, 242, 242));
         ppMapping.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppMapping.setForeground(new java.awt.Color(102, 51, 0));
+        ppMapping.setForeground(new java.awt.Color(160,130,130));
         ppMapping.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppMapping.setText("Mapping Transaksi SJP");
         ppMapping.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -518,7 +518,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         ppDetailSEPPeserta.setBackground(new java.awt.Color(242, 242, 242));
         ppDetailSEPPeserta.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDetailSEPPeserta.setForeground(new java.awt.Color(102, 51, 0));
+        ppDetailSEPPeserta.setForeground(new java.awt.Color(160,130,130));
         ppDetailSEPPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDetailSEPPeserta.setText("Detail SJP Peserta");
         ppDetailSEPPeserta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

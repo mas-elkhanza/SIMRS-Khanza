@@ -199,6 +199,7 @@ import grafikanalisa.GrafikKejadianIKPPerDampak;
 import grafikanalisa.GrafikKejadianIKPPerJenis;
 import grafikanalisa.GrafikKejadianIKPPerTahun;
 import grafikanalisa.GrafikKejadianIKPPerTanggal;
+import grafikanalisa.GrafikKunjunganPerAgama;
 import grafikanalisa.GrafikKunjunganPerBulan;
 import grafikanalisa.GrafikKunjunganPerCaraBayar;
 import grafikanalisa.GrafikKunjunganPerDokter;
@@ -824,6 +825,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikKejadianIKPPerJenis = new widget.ButtonBig();
         btnGrafikKejadianIKPPerDampak = new widget.ButtonBig();
         btnPiutangPerAkunPiutang = new widget.ButtonBig();
+        btnGrafikKunjunganPerAgama = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5150,6 +5152,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPiutangPerAkunPiutang);
 
+        btnGrafikKunjunganPerAgama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582080_6.png"))); // NOI18N
+        btnGrafikKunjunganPerAgama.setText("Kunjungan Reg Per Agama");
+        btnGrafikKunjunganPerAgama.setIconTextGap(0);
+        btnGrafikKunjunganPerAgama.setName("btnGrafikKunjunganPerAgama"); // NOI18N
+        btnGrafikKunjunganPerAgama.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerAgama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerAgamaActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikKunjunganPerAgama);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5158,7 +5172,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/07/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13/07/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -10875,6 +10889,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPiutangPerAkunPiutangActionPerformed
 
+    private void btnGrafikKunjunganPerAgamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikKunjunganPerAgamaActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKunjunganPerAgama aplikasi=new GrafikKunjunganPerAgama(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikKunjunganPerAgamaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11003,6 +11028,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikKejadianIKPPerJenis;
     private widget.ButtonBig btnGrafikKejadianIKPPerTahun;
     private widget.ButtonBig btnGrafikKejadianIKPPerTanggal;
+    private widget.ButtonBig btnGrafikKunjunganPerAgama;
     private widget.ButtonBig btnGrafikKunjunganPerBulan;
     private widget.ButtonBig btnGrafikKunjunganPerCarabayar;
     private widget.ButtonBig btnGrafikKunjunganPerDokter;
@@ -13186,6 +13212,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikKejadianIKPPerDampak);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_kunjungan_per_agama()==true){
+                Panelmenu.add(btnGrafikKunjunganPerAgama);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -14858,6 +14889,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getgrafik_ikp_dampak()==true){
             Panelmenu.add(btnGrafikKejadianIKPPerDampak);
+            jmlmenu++;
+        }
+
+        if(var.getgrafik_kunjungan_per_agama()==true){
+            Panelmenu.add(btnGrafikKunjunganPerAgama);
             jmlmenu++;
         }
 
@@ -17155,6 +17191,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_ikp_dampak()==true){
             if(btnGrafikKejadianIKPPerDampak.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKejadianIKPPerDampak);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_kunjungan_per_agama()==true){
+            if(btnGrafikKunjunganPerAgama.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikKunjunganPerAgama);
                 jmlmenu++;
             }                
         }

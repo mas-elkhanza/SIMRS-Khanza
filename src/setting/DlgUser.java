@@ -108,7 +108,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[C]Master Berkas Pegawai","[C]Berkas Kepegawaian","[C]Riwayat Jabatan","[C]Riwayat Pendidikan","[C]Riwayat Naik Gaji","[C]Kegiatan Ilmiah & Pelatihan","[C]Riwayat Penghargaan",
                     "[C]Riwayat Penelitian","[E]Penerimaan Barang Non Medis","[J]Bayar Pesan Non Medis","[J]Hutang Barang Non Medis","[E]Rekap Penerimaan Non Medis","[I]Insiden Keselamatan",
                     "[L]Insiden Keselamatan Pasien","[N]Kejadian IKP Per Tahun","[N]Kejadian IKP Per Bulan","[N]Kejadian IKP Per Tanggal","[D]Riwayat Batch","[N]Kejadian IKP Per Jenis",
-                    "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang"
+                    "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang","[N]Kunjungan Reg Per Agama"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -223,7 +223,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 338;i++) {
+        for (i = 0; i < 339;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -535,6 +535,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(140);
             }else if(i==337){
                 column.setPreferredWidth(142);
+            }else if(i==338){
+                column.setPreferredWidth(148);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -970,7 +972,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1350,7 +1352,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "riwayat_data_batch='"+tbUser.getValueAt(i,334).toString()+"',"+
                     "grafik_ikp_jenis='"+tbUser.getValueAt(i,335).toString()+"',"+
                     "grafik_ikp_dampak='"+tbUser.getValueAt(i,336).toString()+"',"+
-                    "piutang_akun_piutang='"+tbUser.getValueAt(i,337).toString()+"'");
+                    "piutang_akun_piutang='"+tbUser.getValueAt(i,337).toString()+"',"+
+                    "grafik_kunjungan_per_agama='"+tbUser.getValueAt(i,338).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1634,7 +1637,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "riwayat_naik_gaji,kegiatan_ilmiah,riwayat_penghargaan,riwayat_penelitian,penerimaan_non_medis,bayar_pesan_non_medis,"+
                         "hutang_barang_non_medis,rekap_pemesanan_non_medis,insiden_keselamatan,insiden_keselamatan_pasien,grafik_ikp_pertahun,"+
                         "grafik_ikp_perbulan,grafik_ikp_pertanggal,riwayat_data_batch,grafik_ikp_jenis,grafik_ikp_dampak,"+
-                        "piutang_akun_piutang from user order by AES_DECRYPT(id_user,'nur')");
+                        "piutang_akun_piutang,grafik_kunjungan_per_agama from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1983,7 +1986,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("riwayat_data_batch"),
                                rs.getBoolean("grafik_ikp_jenis"),
                                rs.getBoolean("grafik_ikp_dampak"),
-                               rs.getBoolean("piutang_akun_piutang")
+                               rs.getBoolean("piutang_akun_piutang"),
+                               rs.getBoolean("grafik_kunjungan_per_agama")
                             });
                         }   
                     } catch (Exception e) {
@@ -2322,7 +2326,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("riwayat_data_batch"),
                            rs.getBoolean("grafik_ikp_jenis"),
                            rs.getBoolean("grafik_ikp_dampak"),
-                           rs.getBoolean("piutang_akun_piutang")
+                           rs.getBoolean("piutang_akun_piutang"),
+                           rs.getBoolean("grafik_kunjungan_per_agama")
                         });
                     }                                             
                  }

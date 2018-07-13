@@ -148,7 +148,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
         Popup.setName("Popup"); // NOI18N
 
         ppOrder.setBackground(new java.awt.Color(242, 242, 242));
-        ppOrder.setForeground(new java.awt.Color(102, 51, 0));
+        ppOrder.setForeground(new java.awt.Color(160,130,130));
         ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrder.setText("Urutkan Berdasar");
         ppOrder.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -158,7 +158,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         ppOrderKode.setBackground(new java.awt.Color(255, 255, 255));
         ppOrderKode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppOrderKode.setForeground(new java.awt.Color(102, 51, 0));
+        ppOrderKode.setForeground(new java.awt.Color(160,130,130));
         ppOrderKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrderKode.setText("Kode Obat");
         ppOrderKode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -175,7 +175,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         ppOrderNama.setBackground(new java.awt.Color(255, 255, 255));
         ppOrderNama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppOrderNama.setForeground(new java.awt.Color(102, 51, 0));
+        ppOrderNama.setForeground(new java.awt.Color(160,130,130));
         ppOrderNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrderNama.setText("Nama Obat");
         ppOrderNama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -194,7 +194,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(102, 51, 0));
+        ppBersihkan.setForeground(new java.awt.Color(160,130,130));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -211,7 +211,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
 
         ppHapusObat.setBackground(new java.awt.Color(255, 255, 255));
         ppHapusObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusObat.setForeground(new java.awt.Color(102, 51, 0));
+        ppHapusObat.setForeground(new java.awt.Color(160,130,130));
         ppHapusObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapusObat.setText("Hapus Obat Terpilih");
         ppHapusObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

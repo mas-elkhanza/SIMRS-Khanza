@@ -309,7 +309,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
 
         ppDatang.setBackground(new java.awt.Color(255, 255, 255));
         ppDatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDatang.setForeground(new java.awt.Color(102, 51, 0));
+        ppDatang.setForeground(new java.awt.Color(160,130,130));
         ppDatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDatang.setText("Sudah Datang");
         ppDatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -326,7 +326,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
 
         ppProses.setBackground(new java.awt.Color(255, 255, 255));
         ppProses.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppProses.setForeground(new java.awt.Color(102, 51, 0));
+        ppProses.setForeground(new java.awt.Color(160,130,130));
         ppProses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppProses.setText("Proses Pesan");
         ppProses.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
