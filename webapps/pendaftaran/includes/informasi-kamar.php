@@ -1,5 +1,16 @@
 <?php
 
+/***
+* e-Pasien from version 0.1 Beta
+* Last modified: 05 July 2018
+* Author : drg. Faisol Basoro
+* Email : dentix.id@gmail.com
+*
+* File : includes/informasi-kamar.php
+* Description : Datatable ajax file for room information
+* Licence under GPL
+***/
+
 ob_start();
 session_start();
 
@@ -21,7 +32,7 @@ $table = <<<EOT
             AND statusdata='1'
             AND status='ISI'
         ) AS isi
-    ,   (    
+    ,   (
             SELECT COUNT(*)
             FROM   kamar
             WHERE  kelas = nama.kelas
@@ -31,7 +42,7 @@ $table = <<<EOT
     FROM    (
             SELECT DISTINCT kelas
             FROM   kamar
-            WHERE statusdata='1' 
+            WHERE statusdata='1'
         ) AS nama
  ) temp
 EOT;

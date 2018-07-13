@@ -133,7 +133,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+              <Color PropertyName="color" blue="82" green="82" red="a0" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -419,28 +419,28 @@
                     <Property name="text" type="java.lang.String" value="Jenis :"/>
                     <Property name="name" type="java.lang.String" value="label24" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[68, 23]"/>
+                      <Dimension value="[48, 23]"/>
                     </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="0" y="10" width="75" height="23"/>
+                      <AbsoluteConstraints x="0" y="10" width="45" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextBox" name="kdsat">
+                <Component class="widget.TextBox" name="kdjenis">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="kdsat" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="kdjenis" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[80, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdsatKeyPressed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdjenisKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="80" y="10" width="53" height="23"/>
+                      <AbsoluteConstraints x="48" y="10" width="53" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -461,23 +461,23 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="253" y="10" width="-1" height="23"/>
+                      <AbsoluteConstraints x="273" y="10" width="-1" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextBox" name="nmsat">
+                <Component class="widget.TextBox" name="nmjenis">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="nmsat" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="nmjenis" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[80, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nmsatKeyPressed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nmjenisKeyPressed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="135" y="10" width="115" height="23"/>
+                      <AbsoluteConstraints x="103" y="10" width="167" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>

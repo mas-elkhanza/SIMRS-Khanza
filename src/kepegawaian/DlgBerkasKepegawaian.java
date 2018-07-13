@@ -110,7 +110,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                     TNm.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
  
                     try {
-                        loadURL("http://" +koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
+                        loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : "+ex);
                     }
@@ -140,12 +140,12 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         LoadHTML5.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
-                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
+                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#a08282;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#a08282;}"+
                 ".isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#5a7850;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#a08282;}"+
+                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#a08282;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#a08282;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML1.setDocument(doc);
@@ -287,12 +287,12 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                     public void changed(ObservableValue ov, Worker.State oldState, Worker.State newState) {
                         if (newState == Worker.State.SUCCEEDED) {
                             try {
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
+                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOST()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
+                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOST()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
                                     engine.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
                                     dispose();    
                                 }
                             } catch (Exception ex) {
@@ -394,7 +394,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Berkas Kepegawaian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Berkas Kepegawaian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160, 130, 130))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -479,7 +479,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
+        TabRawat.setForeground(new java.awt.Color(160,130,130));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -537,7 +537,6 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         panelGlass6.add(TNm);
         TNm.setBounds(176, 10, 230, 23);
 
-        CmbKategori.setForeground(new java.awt.Color(153, 0, 51));
         CmbKategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tenaga klinis Dokter Umum", "Tenaga klinis Dokter Spesialis", "Tenaga klinis Perawat dan Bidan", "Tenaga klinis Profesi Lain", "Tenaga Non Klinis" }));
         CmbKategori.setName("CmbKategori"); // NOI18N
         CmbKategori.setOpaque(false);
@@ -674,7 +673,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             case 0:
                 if(!TKd.getText().equals("")){
                     try {
-                        loadURL("http://" +koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/index.php?act=DetailBerkasPegawai&action=TAMBAH&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));
+                        loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/index.php?act=DetailBerkasPegawai&action=TAMBAH&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));
                     } catch (Exception ex) {
                         System.out.println("Notifikasi : "+ex);
                     }
@@ -772,7 +771,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
     private void CmbKategoriItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbKategoriItemStateChanged
         if(!TKd.getText().equals("")){
             try {
-                loadURL("http://" +koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
+                loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
             } catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);
             }
@@ -912,7 +911,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                                 "<tr class='isi'>"+
                                     "<td valign='middle' align='center'>"+i2+"</td>"+
                                     "<td valign='middle' align='center'>"+rs2.getString("tgl_uploud")+"</td>"+
-                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
+                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
                                 "</tr>");
                             i2++;
                         }
@@ -1035,7 +1034,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                                 "<tr class='isi'>"+
                                     "<td valign='middle' align='center'>"+i2+"</td>"+
                                     "<td valign='middle' align='center'>"+rs2.getString("tgl_uploud")+"</td>"+
-                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
+                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
                                 "</tr>");
                             i2++;
                         }
@@ -1158,7 +1157,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                                 "<tr class='isi'>"+
                                     "<td valign='middle' align='center'>"+i2+"</td>"+
                                     "<td valign='middle' align='center'>"+rs2.getString("tgl_uploud")+"</td>"+
-                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
+                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
                                 "</tr>");
                             i2++;
                         }
@@ -1281,7 +1280,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                                 "<tr class='isi'>"+
                                     "<td valign='middle' align='center'>"+i2+"</td>"+
                                     "<td valign='middle' align='center'>"+rs2.getString("tgl_uploud")+"</td>"+
-                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
+                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
                                 "</tr>");
                             i2++;
                         }
@@ -1404,7 +1403,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                                 "<tr class='isi'>"+
                                     "<td valign='middle' align='center'>"+i2+"</td>"+
                                     "<td valign='middle' align='center'>"+rs2.getString("tgl_uploud")+"</td>"+
-                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST2()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
+                                    "<td valign='middle'><a href='http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/penggajian/"+rs2.getString("berkas")+"'>"+rs2.getString("nama_berkas")+"</a></td>"+
                                 "</tr>");
                             i2++;
                         }

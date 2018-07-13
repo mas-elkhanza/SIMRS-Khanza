@@ -50,7 +50,6 @@ public final class DlgResepPulang extends javax.swing.JDialog {
     public DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
     private double total=0,jumlahtotal=0;
     private riwayatobat Trackobat=new riwayatobat();
-    private String bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1");
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -210,7 +209,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Resep Pulang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -375,7 +374,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-12-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-07-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -390,7 +389,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-12-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-07-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -618,12 +617,14 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         }else if(Total.getText().trim().equals("")){
             Valid.textKosong(Jml,"Total");
         }else{
-            if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?","No.Rawat dan Obat",6,new String[]{
-                    TNoRw.getText(),KdBarang.getText(),Jml.getText(),HrgaObat.getText(),Total.getText(),Dosis.getText()
+            if(Sequel.menyimpantf("resep_pulang","?,?,?,?,?,?,?,?,?","No.Rawat dan Obat",9,new String[]{
+                    TNoRw.getText(),KdBarang.getText(),Jml.getText(),HrgaObat.getText(),Total.getText(),
+                    Dosis.getText(),Sequel.cariIsi("select current_date()"),
+                    Sequel.cariIsi("select current_time()"),var.getkdbangsal()
                 })==true){
-                Trackobat.catatRiwayat(KdBarang.getText(),0,Valid.SetAngka(Jml.getText()),"Resep Pulang",var.getkode(),bangsal,"Simpan");
-                Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+bangsal+"','-"+Jml.getText()+"'", 
-                                 "stok=stok-'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+bangsal+"'");                               
+                Trackobat.catatRiwayat(KdBarang.getText(),0,Valid.SetAngka(Jml.getText()),"Resep Pulang",var.getkode(),var.getkdbangsal(),"Simpan");
+                Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+var.getkdbangsal()+"','-"+Jml.getText()+"'", 
+                                 "stok=stok-'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+var.getkdbangsal()+"'");                               
                 tampil();
                 BtnBatalActionPerformed(evt);
             }                
@@ -667,9 +668,9 @@ public final class DlgResepPulang extends javax.swing.JDialog {
            Sequel.queryu2("delete from resep_pulang where no_rawat=? and kode_brng=?",2,new String[]{
                TNoRw.getText(),KdBarang.getText()
            });
-           Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(Jml.getText()),0,"Resep Pulang",var.getkode(),bangsal,"Hapus");
-           Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+bangsal+"','"+Jml.getText()+"'", 
-                            "stok=stok+'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+bangsal+"'");                               
+           Trackobat.catatRiwayat(KdBarang.getText(),Valid.SetAngka(Jml.getText()),0,"Resep Pulang",var.getkode(),var.getkdbangsal(),"Hapus");
+           Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+var.getkdbangsal()+"','"+Jml.getText()+"'", 
+                            "stok=stok+'"+Jml.getText()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+var.getkdbangsal()+"'");                               
            tampil();
         }
 
@@ -848,6 +849,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isHitung();
         }else{
+            isHitung();
             Valid.pindah(evt,KdBarang,Dosis);
         }
     }//GEN-LAST:event_JmlKeyPressed

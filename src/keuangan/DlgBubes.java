@@ -35,14 +35,10 @@ public class DlgBubes extends javax.swing.JDialog {
     public DlgBubes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        Object[] row={"Tgl.Jurnal",
-                      "No.Jurnal",
-                      "Saldo Awal",
-                      "Debet",
-                      "Kredit",
-                      "Saldo Akhir"};
-        tabMode=new DefaultTableModel(null,row){
+        
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "Tgl.Jurnal","No.Jurnal","No.Bukti","Keterangan","Saldo Awal","Debet","Kredit","Saldo Akhir"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbDokter.setModel(tabMode);
@@ -50,14 +46,18 @@ public class DlgBubes extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 8; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(65);
             }else if(i==1){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(110);
+            }else if(i==2){
+                column.setPreferredWidth(120);
+            }else if(i==3){
+                column.setPreferredWidth(360);
             }else{
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(130);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());  
@@ -134,7 +134,6 @@ public class DlgBubes extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         panelisi1 = new widget.panelisi();
         BtnPrint = new widget.Button();
-        label9 = new widget.Label();
         BtnKeluar = new widget.Button();
 
         Kd2.setName("Kd2"); // NOI18N
@@ -149,7 +148,7 @@ public class DlgBubes extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Buku Besar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(60,80,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Buku Besar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -268,10 +267,6 @@ public class DlgBubes extends javax.swing.JDialog {
         });
         panelisi1.add(BtnPrint);
 
-        label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(365, 30));
-        panelisi1.add(label9);
-
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
         BtnKeluar.setText("Keluar");
@@ -320,7 +315,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,3).toString()+"','"+
                                 tabMode.getValueAt(i,4).toString()+"','"+
                                 tabMode.getValueAt(i,5).toString()+"','"+
-                                kdrek.getText()+", "+nmrek.getText()+"','"+Tahun.getSelectedItem()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
+                                tabMode.getValueAt(i,6).toString()+"','"+
+                                tabMode.getValueAt(i,7).toString()+"','"+
+                                kdrek.getText()+", "+nmrek.getText()+"','"+Tahun.getSelectedItem()+"','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Keuangan"); 
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>(); 
@@ -428,7 +425,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label label17;
     private widget.Label label19;
     private widget.Label label32;
-    private widget.Label label9;
     private widget.TextBox nmrek;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi4;
@@ -441,7 +437,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
        String thn=" rekeningtahun.thn='"+Tahun.getSelectedItem()+"' ";               
        try{
             
-            ResultSet rs=koneksi.prepareStatement("select jurnal.tgl_jurnal,jurnal.no_jurnal,detailjurnal.debet,detailjurnal.kredit "+
+            ResultSet rs=koneksi.prepareStatement("select jurnal.tgl_jurnal,jurnal.no_jurnal,detailjurnal.debet,detailjurnal.kredit,jurnal.no_bukti,jurnal.keterangan "+
                             "from jurnal inner join detailjurnal on jurnal.no_jurnal=detailjurnal.no_jurnal  where "+
                             "detailjurnal.kd_rek='"+kdrek.getText()+"' and jurnal.tgl_jurnal like '%"+Tahun.getSelectedItem()+"%' ").executeQuery();
             
@@ -472,7 +468,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
                 
                 tabMode.addRow(new Object[]{rs.getString(1),
-                               rs.getString(2),
+                               rs.getString(2),rs.getString("no_bukti"),rs.getString("keterangan"),
                                df2.format(saldoawal),
                                df2.format(rs.getDouble("debet")),
                                df2.format(rs.getDouble("kredit")),
