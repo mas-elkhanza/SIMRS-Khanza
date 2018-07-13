@@ -76,7 +76,7 @@ public final class var {
             riwayat_naik_gaji=false,kegiatan_ilmiah=false,riwayat_penghargaan=false,riwayat_penelitian=false,penerimaan_non_medis=false,bayar_pesan_non_medis=false,
             hutang_barang_non_medis=false,rekap_pemesanan_non_medis=false,insiden_keselamatan=false,insiden_keselamatan_pasien=false,grafik_ikp_pertahun=false,
             grafik_ikp_perbulan=false,grafik_ikp_pertanggal=false,riwayat_data_batch=false,grafik_ikp_jenis=false,grafik_ikp_dampak=false,piutang_akun_piutang=false,
-            grafik_kunjungan_per_agama=false;
+            grafik_kunjungan_per_agama=false,grafik_kunjungan_per_umur=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -436,6 +436,7 @@ public final class var {
                         var.grafik_ikp_dampak=true;
                         var.piutang_akun_piutang=true;
                         var.grafik_kunjungan_per_agama=true;
+                        var.grafik_kunjungan_per_umur=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -779,6 +780,7 @@ public final class var {
                         var.grafik_ikp_dampak=rs2.getBoolean("grafik_ikp_dampak");
                         var.piutang_akun_piutang=rs2.getBoolean("piutang_akun_piutang");
                         var.grafik_kunjungan_per_agama=rs2.getBoolean("grafik_kunjungan_per_agama");
+                        var.grafik_kunjungan_per_umur=rs2.getBoolean("grafik_kunjungan_per_umur");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1120,6 +1122,7 @@ public final class var {
                         var.grafik_ikp_dampak=false;
                         var.piutang_akun_piutang=false;
                         var.grafik_kunjungan_per_agama=false;
+                        var.grafik_kunjungan_per_umur=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1509,4 +1512,5 @@ public final class var {
     public static boolean getpiutang_akun_piutang(){return var.piutang_akun_piutang;}
     public static void setresep_obatfalse(){var.resep_obat=false;} 
     public static boolean getgrafik_kunjungan_per_agama(){return var.grafik_kunjungan_per_agama;}
+    public static boolean getgrafik_kunjungan_per_umur(){return var.grafik_kunjungan_per_umur;}
 }   

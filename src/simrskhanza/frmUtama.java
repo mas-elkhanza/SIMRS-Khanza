@@ -208,6 +208,7 @@ import grafikanalisa.GrafikKunjunganPerPendidikan;
 import grafikanalisa.GrafikKunjunganPerPerujuk;
 import grafikanalisa.GrafikKunjunganPerTahun;
 import grafikanalisa.GrafikKunjunganPerTanggal;
+import grafikanalisa.GrafikKunjunganPerUmur;
 import grafikanalisa.GrafikKunjunganPoli;
 import grafikanalisa.GrafikKunjunganRanapPerTahun;
 import grafikanalisa.GrafikLabRalanPerBulan;
@@ -826,6 +827,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikKejadianIKPPerDampak = new widget.ButtonBig();
         btnPiutangPerAkunPiutang = new widget.ButtonBig();
         btnGrafikKunjunganPerAgama = new widget.ButtonBig();
+        btnGrafikKunjunganPerUmur = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5163,6 +5165,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnGrafikKunjunganPerAgama);
+
+        btnGrafikKunjunganPerUmur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1491582015_11.png"))); // NOI18N
+        btnGrafikKunjunganPerUmur.setText("Kunjungan Reg Per Umur");
+        btnGrafikKunjunganPerUmur.setIconTextGap(0);
+        btnGrafikKunjunganPerUmur.setName("btnGrafikKunjunganPerUmur"); // NOI18N
+        btnGrafikKunjunganPerUmur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGrafikKunjunganPerUmur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrafikKunjunganPerUmurActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGrafikKunjunganPerUmur);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -10900,6 +10914,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikKunjunganPerAgamaActionPerformed
 
+    private void btnGrafikKunjunganPerUmurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrafikKunjunganPerUmurActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        GrafikKunjunganPerUmur aplikasi=new GrafikKunjunganPerUmur(this,true);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGrafikKunjunganPerUmurActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11036,6 +11061,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnGrafikKunjunganPerPendidikan;
     private widget.ButtonBig btnGrafikKunjunganPerTahun;
     private widget.ButtonBig btnGrafikKunjunganPerTanggal;
+    private widget.ButtonBig btnGrafikKunjunganPerUmur;
     private widget.ButtonBig btnGrafikKunjunganPoli;
     private widget.ButtonBig btnGrafikKunjunganRanapPerTahun;
     private widget.ButtonBig btnGrafikLabRalanPerBulan;
@@ -13217,6 +13243,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnGrafikKunjunganPerAgama);
                 jmlmenu++;
             }
+            
+            if(var.getgrafik_kunjungan_per_umur()==true){
+                Panelmenu.add(btnGrafikKunjunganPerUmur);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==14){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -14894,6 +14925,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getgrafik_kunjungan_per_agama()==true){
             Panelmenu.add(btnGrafikKunjunganPerAgama);
+            jmlmenu++;
+        }
+        
+        if(var.getgrafik_kunjungan_per_umur()==true){
+            Panelmenu.add(btnGrafikKunjunganPerUmur);
             jmlmenu++;
         }
 
@@ -17198,6 +17234,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgrafik_kunjungan_per_agama()==true){
             if(btnGrafikKunjunganPerAgama.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGrafikKunjunganPerAgama);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgrafik_kunjungan_per_umur()==true){
+            if(btnGrafikKunjunganPerUmur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGrafikKunjunganPerUmur);
                 jmlmenu++;
             }                
         }
