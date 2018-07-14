@@ -94,7 +94,7 @@ public class PanelIndikator extends javax.swing.JPanel {
         jPanel1.setOpaque(false);
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
-        jLabel1.setForeground(new java.awt.Color(140,120,120));
+        jLabel1.setForeground(new java.awt.Color(130,100,100));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smsimage/signal.png"))); // NOI18N
         jLabel1.setToolTipText("Signal");
         jLabel1.setName("jLabel1"); // NOI18N
@@ -113,7 +113,7 @@ public class PanelIndikator extends javax.swing.JPanel {
         jLabel3.setName("jLabel3"); // NOI18N
         jPanel1.add(jLabel3);
 
-        jLabel4.setForeground(new java.awt.Color(140,120,120));
+        jLabel4.setForeground(new java.awt.Color(130,100,100));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/smsimage/baterai.png"))); // NOI18N
         jLabel4.setToolTipText("Baterai");
         jLabel4.setName("jLabel4"); // NOI18N

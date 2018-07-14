@@ -193,7 +193,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
 
         MnUrut1.setBackground(new java.awt.Color(255, 255, 255));
         MnUrut1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUrut1.setForeground(new java.awt.Color(140,120,120));
+        MnUrut1.setForeground(new java.awt.Color(130,100,100));
         MnUrut1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUrut1.setText("Urutkan Berdasar Tanggal Pemberian");
         MnUrut1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -209,7 +209,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
 
         MnUrut2.setBackground(new java.awt.Color(255, 255, 255));
         MnUrut2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUrut2.setForeground(new java.awt.Color(140,120,120));
+        MnUrut2.setForeground(new java.awt.Color(130,100,100));
         MnUrut2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUrut2.setText("Urutkan Berdasar Nama Pasien");
         MnUrut2.setActionCommand("Urutkan Berdasar Nomor Perawatan");
@@ -233,7 +233,7 @@ public class DlgRBObatPercaraBayar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Penggunaan Obat Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(140,120,120))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Penggunaan Obat Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
