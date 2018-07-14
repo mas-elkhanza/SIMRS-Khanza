@@ -368,7 +368,7 @@ public class DlgReturJual extends javax.swing.JDialog {
 
         ppTambah.setBackground(new java.awt.Color(255, 255, 255));
         ppTambah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTambah.setForeground(new java.awt.Color(160,130,130));
+        ppTambah.setForeground(new java.awt.Color(140,120,120));
         ppTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
         ppTambah.setText("Tambah");
         ppTambah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -385,7 +385,7 @@ public class DlgReturJual extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(160,130,130));
+        ppHapus.setForeground(new java.awt.Color(140,120,120));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -402,7 +402,7 @@ public class DlgReturJual extends javax.swing.JDialog {
 
         ppCetakNota.setBackground(new java.awt.Color(255, 255, 255));
         ppCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppCetakNota.setForeground(new java.awt.Color(160,130,130));
+        ppCetakNota.setForeground(new java.awt.Color(140,120,120));
         ppCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
         ppCetakNota.setText("Cetak Nota");
         ppCetakNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -426,7 +426,7 @@ public class DlgReturJual extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Retur Obat, Alkes & BHP Medis Dari Pasien/Pembeli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Retur Obat, Alkes & BHP Medis Dari Pasien/Pembeli ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(140,120,120))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

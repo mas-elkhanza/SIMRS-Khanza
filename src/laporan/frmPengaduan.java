@@ -110,10 +110,10 @@ public class frmPengaduan extends javax.swing.JFrame {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{padding-top:5px;padding-bottom:5px;font: 8.5px tahoma;height:12px;background: #ffffff;color:#a08282;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#a08282;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#a08282;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#a08282;}"
+                ".isi td{padding-top:5px;padding-bottom:5px;font: 8.5px tahoma;height:12px;background: #ffffff;color:#8c7878;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#8c7878;}"+
+                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#8c7878;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#8c7878;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -166,12 +166,12 @@ public class frmPengaduan extends javax.swing.JFrame {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengaduan/Chat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pengaduan/Chat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(140,120,120))); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(160,130,130));
+        TabRawat.setForeground(new java.awt.Color(140,120,120));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -654,7 +654,7 @@ public class DlgBarang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(140,120,120))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1349,7 +1349,7 @@ public class DlgBarang extends javax.swing.JDialog {
 
         ChkKadaluarsa.setBackground(new java.awt.Color(235, 255, 235));
         ChkKadaluarsa.setBorder(null);
-        ChkKadaluarsa.setForeground(new java.awt.Color(160,130,130));
+        ChkKadaluarsa.setForeground(new java.awt.Color(140,120,120));
         ChkKadaluarsa.setSelected(true);
         ChkKadaluarsa.setText("Tanggal Kadaluwarsa :");
         ChkKadaluarsa.setBorderPainted(true);
