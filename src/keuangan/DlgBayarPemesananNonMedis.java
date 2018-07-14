@@ -285,7 +285,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Pemesanan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Pemesanan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(140,120,120))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -422,7 +422,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         panelisi4.add(jLabel10);
         jLabel10.setBounds(0, 70, 77, 23);
 
-        nama_bayar.setForeground(new java.awt.Color(153, 0, 51));
+        nama_bayar.setForeground(new java.awt.Color(140,120,120));
         nama_bayar.setName("nama_bayar"); // NOI18N
         nama_bayar.setOpaque(false);
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {

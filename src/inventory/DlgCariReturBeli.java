@@ -12,12 +12,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -38,7 +40,9 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private double ttlretur=0,subtotal=0;
-    private String tanggal,noret="",ptg="",sat="",bar="",nofak="";  
+    private String tanggal,noret="",ptg="",sat="",bar="",nofak="";
+    private String aktifkanbatch="no";
+    private final Properties prop = new Properties();  
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -47,6 +51,14 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));   
+            aktifkanbatch = prop.getProperty("AKTIFKANBATCHOBAT");
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+            aktifkanbatch = "no";
+        }
+        
         Object[] row={"No.Retur",
                     "Tgl.Retur",
                     "Petugas",
@@ -273,7 +285,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(140,120,120))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -805,7 +817,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
              rs=ps.executeQuery();
              if(rs.next()){
                 ps2=koneksi.prepareStatement(
-                     "select kode_brng,jml_retur2 from detreturbeli where no_retur_beli=? ");
+                     "select kode_brng,jml_retur2,no_batch from detreturbeli where no_retur_beli=? ");
                 try {
                     ps2.setString(1,rs.getString(1));
                     rs2=ps2.executeQuery();
@@ -813,6 +825,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jml_retur2"),0,"Retur Beli",var.getkode(),rs.getString("kd_bangsal"),"Hapus");
                         Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','"+rs2.getString("jml_retur2") +"'", 
                                                "stok=stok+'"+rs2.getString("jml_retur2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
+                        if(aktifkanbatch.equals("yes")){
+                            Sequel.mengedit("data_batch","no_batch=? and kode_brng=?","sisa=sisa+?",3,new String[]{
+                                rs2.getString("jml_retur2"),rs2.getString("no_batch"),rs2.getString("kode_brng")
+                            });
+                        } 
                     } 
                 } catch (Exception e) {
                     System.out.println("Notif Detail Retur : "+e);

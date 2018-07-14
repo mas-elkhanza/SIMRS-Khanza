@@ -295,7 +295,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Insiden Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Insiden Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(140,120,120))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -652,7 +652,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         DetikKejadian.setBounds(291, 40, 45, 23);
 
         ChkKejadian.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
-        ChkKejadian.setForeground(new java.awt.Color(153, 0, 51));
+        ChkKejadian.setForeground(new java.awt.Color(140,120,120));
         ChkKejadian.setSelected(true);
         ChkKejadian.setBorderPainted(true);
         ChkKejadian.setBorderPaintedFlat(true);
@@ -717,7 +717,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
         DetikLapor.setBounds(651, 40, 45, 23);
 
         ChkLapor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
-        ChkLapor.setForeground(new java.awt.Color(153, 0, 51));
+        ChkLapor.setForeground(new java.awt.Color(140,120,120));
         ChkLapor.setSelected(true);
         ChkLapor.setBorderPainted(true);
         ChkLapor.setBorderPaintedFlat(true);

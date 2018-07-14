@@ -7,19 +7,19 @@ import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -50,7 +50,8 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             Penjualan_Obat=Sequel.cariIsi("select Penjualan_Obat from set_akun"),
             HPP_Obat_Jual_Bebas=Sequel.cariIsi("select HPP_Obat_Jual_Bebas from set_akun"),
             Persediaan_Obat_Jual_Bebas=Sequel.cariIsi("select Persediaan_Obat_Jual_Bebas from set_akun");
-   
+    private String aktifkanbatch="no";
+    private final Properties prop = new Properties();
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
@@ -58,6 +59,14 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));   
+            aktifkanbatch = prop.getProperty("AKTIFKANBATCHOBAT");
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+            aktifkanbatch = "no";
+        }
+        
         Object[] row={"No.Nota","Tanggal","Petugas","Pasien","Keterangan","Jns.Jual","PPN","Barang","Satuan",
                     "Harga(Rp)","Jml","Subtotal(Rp)","Ptg(%)","Potongan(Rp)","Tambahan(Rp)","Embalase(Rp)",
                     "Tuslah(Rp)","Aturan Pakai","Total(Rp)"};
@@ -333,7 +342,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         ppCetakNota.setBackground(new java.awt.Color(255, 255, 255));
         ppCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppCetakNota.setForeground(new java.awt.Color(90, 120, 80));
+        ppCetakNota.setForeground(new java.awt.Color(140,120,120));
         ppCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppCetakNota.setText("Cetak Ulang Nota");
         ppCetakNota.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -350,7 +359,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(90, 120, 80));
+        ppHapus.setForeground(new java.awt.Color(140,120,120));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Penjualan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -367,7 +376,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         ppVerif.setBackground(new java.awt.Color(255, 255, 255));
         ppVerif.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerif.setForeground(new java.awt.Color(90, 120, 80));
+        ppVerif.setForeground(new java.awt.Color(140,120,120));
         ppVerif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerif.setText("Verifikasi");
         ppVerif.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -391,7 +400,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Penjualan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Penjualan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(140,120,120))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1016,7 +1025,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                   if(rs.next()){
                       if(rs.getString("status").equals("Sudah Dibayar")){
                           psdetailjual=koneksi.prepareStatement(
-                               "select kode_brng,jumlah from detailjual where nota_jual=? ");
+                               "select kode_brng,jumlah,no_batch from detailjual where nota_jual=? ");
                           try {
                               psdetailjual.setString(1,rs.getString(1));                
                               rs2=psdetailjual.executeQuery();
@@ -1024,6 +1033,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                   Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Penjualan",var.getkode(),rs.getString("kd_bangsal"),"Hapus");
                                   Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal")+"','"+rs2.getString("jumlah") +"'", 
                                                          "stok=stok+'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
+                                  if(aktifkanbatch.equals("yes")){
+                                        Sequel.mengedit("data_batch","no_batch=? and kode_brng=?","sisa=sisa+?",3,new String[]{
+                                            rs2.getString("jumlah"),rs2.getString("no_batch"),rs2.getString("kode_brng")
+                                        });
+                                  } 
                               }
                           } catch (Exception e) {
                               System.out.println("Notifikasi : "+e);
@@ -1091,7 +1105,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                               JOptionPane.showMessageDialog(rootPane,"Maaf transaksi penjualan sudah diverifikasi..!!");
                           }else{
                              psdetailjual=koneksi.prepareStatement(
-                                 "select kode_brng,jumlah from detailjual where nota_jual=? ");
+                                 "select kode_brng,jumlah,no_batch from detailjual where nota_jual=? ");
                              try {
                                 psdetailjual.setString(1,rs.getString(1));                
                                 rs2=psdetailjual.executeQuery();
@@ -1099,6 +1113,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah") ,"Penjualan",var.getkode(),rs.getString("kd_bangsal"),"Simpan");
                                     Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','"+rs2.getString("jumlah") +"'", 
                                                            "stok=stok-'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
+                                    if(aktifkanbatch.equals("yes")){
+                                        Sequel.mengedit("data_batch","no_batch=? and kode_brng=?","sisa=sisa-?",3,new String[]{
+                                            rs2.getString("jumlah"),rs2.getString("no_batch"),rs2.getString("kode_brng")
+                                        });
+                                    } 
                                 }
                              } catch (Exception e) {
                                 System.out.println("Notifikasi 1 : "+e);
@@ -1270,7 +1289,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             " kodesatuan.satuan,detailjual.h_jual, detailjual.jumlah, "+
                             " detailjual.subtotal, detailjual.dis, detailjual.bsr_dis,"+
                             " detailjual.tambahan,detailjual.embalase,detailjual.tuslah,"+
-                            " detailjual.aturan_pakai,detailjual.total from "+
+                            " detailjual.aturan_pakai,detailjual.total,detailjual.no_batch from "+
                             " detailjual inner join databarang inner join kodesatuan inner join jenis "+
                             " on detailjual.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
                             " and detailjual.kode_sat=kodesatuan.kode_sat where "+
@@ -1301,7 +1320,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ttljual=ttljual+rs2.getDouble(14);
                             subttljual=subttljual+rs2.getDouble(14);
                             tabMode.addRow(new String[]{
-                                "","","","","","","",no+". "+rs2.getString(1)+", "+rs2.getString(2),
+                                "","","","","","",no+". "+rs2.getString("no_batch"),rs2.getString(1)+", "+rs2.getString(2),
                                 rs2.getString(3)+", "+rs2.getString(4),df2.format(rs2.getDouble(5)),
                                 rs2.getString(6),df2.format(rs2.getDouble(7)),df2.format(rs2.getDouble(8)),
                                 df2.format(rs2.getDouble(9)),df2.format(rs2.getDouble(10)),

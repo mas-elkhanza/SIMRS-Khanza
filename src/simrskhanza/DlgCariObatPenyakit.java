@@ -224,7 +224,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Obat Penyakit/Alkes Dibutuhkan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Obat Penyakit/Alkes Dibutuhkan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(140,120,120))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -412,7 +412,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2017-12-17" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018-05-23" }));
         DTPBeri.setDisplayFormat("yyyy-MM-dd");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -459,7 +459,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         ChkJln.setBackground(new java.awt.Color(234, 255, 235));
         ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        ChkJln.setForeground(new java.awt.Color(153, 0, 51));
+        ChkJln.setForeground(new java.awt.Color(140,120,120));
         ChkJln.setSelected(true);
         ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
         ChkJln.setBorderPainted(true);
