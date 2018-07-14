@@ -76,7 +76,7 @@ public final class var {
             riwayat_naik_gaji=false,kegiatan_ilmiah=false,riwayat_penghargaan=false,riwayat_penelitian=false,penerimaan_non_medis=false,bayar_pesan_non_medis=false,
             hutang_barang_non_medis=false,rekap_pemesanan_non_medis=false,insiden_keselamatan=false,insiden_keselamatan_pasien=false,grafik_ikp_pertahun=false,
             grafik_ikp_perbulan=false,grafik_ikp_pertanggal=false,riwayat_data_batch=false,grafik_ikp_jenis=false,grafik_ikp_dampak=false,piutang_akun_piutang=false,
-            grafik_kunjungan_per_agama=false,grafik_kunjungan_per_umur=false,suku_bangsa=false;
+            grafik_kunjungan_per_agama=false,grafik_kunjungan_per_umur=false,suku_bangsa=false,bahasa_pasien=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -438,6 +438,7 @@ public final class var {
                         var.grafik_kunjungan_per_agama=true;
                         var.grafik_kunjungan_per_umur=true;
                         var.suku_bangsa=true;
+                        var.bahasa_pasien=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -783,6 +784,7 @@ public final class var {
                         var.grafik_kunjungan_per_agama=rs2.getBoolean("grafik_kunjungan_per_agama");
                         var.grafik_kunjungan_per_umur=rs2.getBoolean("grafik_kunjungan_per_umur");
                         var.suku_bangsa=rs2.getBoolean("suku_bangsa");
+                        var.bahasa_pasien=rs2.getBoolean("bahasa_pasien");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1126,6 +1128,7 @@ public final class var {
                         var.grafik_kunjungan_per_agama=false;
                         var.grafik_kunjungan_per_umur=false;
                         var.suku_bangsa=false;
+                        var.bahasa_pasien=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1517,4 +1520,5 @@ public final class var {
     public static boolean getgrafik_kunjungan_per_agama(){return var.grafik_kunjungan_per_agama;}
     public static boolean getgrafik_kunjungan_per_umur(){return var.grafik_kunjungan_per_umur;}
     public static boolean getsuku_bangsa(){return var.suku_bangsa;}
+    public static boolean getbahasa_pasien(){return var.bahasa_pasien;}
 }   

@@ -829,6 +829,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikKunjunganPerAgama = new widget.ButtonBig();
         btnGrafikKunjunganPerUmur = new widget.ButtonBig();
         btnSuku = new widget.ButtonBig();
+        btnBahasa = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5190,6 +5191,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnSuku);
+
+        btnBahasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Orange forum_54521.png"))); // NOI18N
+        btnBahasa.setText("Bahasa Pasien");
+        btnBahasa.setIconTextGap(0);
+        btnBahasa.setName("btnBahasa"); // NOI18N
+        btnBahasa.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBahasa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBahasaActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnBahasa);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -10950,6 +10963,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSukuActionPerformed
 
+    private void btnBahasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBahasaActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgBahasa form=new DlgBahasa(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnBahasaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11017,6 +11042,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnAplicareKetersediaanKamar;
     private widget.ButtonBig btnAplicareReferensiKamar;
     private widget.ButtonBig btnBPJSSEP;
+    private widget.ButtonBig btnBahasa;
     private widget.ButtonBig btnBarangInventaris;
     private widget.ButtonBig btnBarangIpsrs;
     private widget.ButtonBig btnBarcode;
@@ -12993,6 +13019,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getbahasa_pasien()==true){
+                Panelmenu.add(btnBahasa);
+                jmlmenu++;
+            }
+            
             if(var.getpasien()==true){
                 Panelmenu.add(btnPasien);
                 jmlmenu++;
@@ -14681,6 +14712,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getsuku_bangsa()==true){
             Panelmenu.add(btnSuku);
+            jmlmenu++;
+        }
+        
+        if(var.getbahasa_pasien()==true){
+            Panelmenu.add(btnBahasa);
             jmlmenu++;
         }
 
@@ -16885,6 +16921,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getsuku_bangsa()==true){
             if(btnSuku.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuku);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbahasa_pasien()==true){
+            if(btnBahasa.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBahasa);
                 jmlmenu++;
             }                
         }
