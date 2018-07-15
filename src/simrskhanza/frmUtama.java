@@ -831,6 +831,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnSuku = new widget.ButtonBig();
         btnBahasa = new widget.ButtonBig();
         btnGolonganTNI = new widget.ButtonBig();
+        btnSatuanTNI = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5217,6 +5218,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnGolonganTNI);
 
+        btnSatuanTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_17_2959846.png"))); // NOI18N
+        btnSatuanTNI.setText("Satuan TNI");
+        btnSatuanTNI.setIconTextGap(0);
+        btnSatuanTNI.setName("btnSatuanTNI"); // NOI18N
+        btnSatuanTNI.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSatuanTNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSatuanTNIActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSatuanTNI);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5225,7 +5238,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/07/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/07/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -11000,6 +11013,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGolonganTNIActionPerformed
 
+    private void btnSatuanTNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuanTNIActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgSatuanTNI form=new DlgSatuanTNI(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSatuanTNIActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11333,6 +11358,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRujukanKeluarBPJS;
     private widget.ButtonBig btnSMS;
     private widget.ButtonBig btnSatuan;
+    private widget.ButtonBig btnSatuanTNI;
     private widget.ButtonBig btnSensusHarianPoli;
     private widget.ButtonBig btnSensusHarianRalan;
     private widget.ButtonBig btnSetBiayaHarian;
@@ -13055,6 +13081,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getsatuan_tni()==true){
+                Panelmenu.add(btnSatuanTNI);
+                jmlmenu++;
+            }
+            
             if(var.getpasien()==true){
                 Panelmenu.add(btnPasien);
                 jmlmenu++;
@@ -14753,6 +14784,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getgolongan_tni()==true){
             Panelmenu.add(btnGolonganTNI);
+            jmlmenu++;
+        }
+
+        if(var.getsatuan_tni()==true){
+            Panelmenu.add(btnSatuanTNI);
             jmlmenu++;
         }
 
@@ -16971,6 +17007,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getgolongan_tni()==true){
             if(btnGolonganTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnGolonganTNI);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getsatuan_tni()==true){
+            if(btnSatuanTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSatuanTNI);
                 jmlmenu++;
             }                
         }
