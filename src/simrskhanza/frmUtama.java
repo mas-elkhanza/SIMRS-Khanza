@@ -833,6 +833,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGolonganTNI = new widget.ButtonBig();
         btnSatuanTNI = new widget.ButtonBig();
         btnJabatanTNI = new widget.ButtonBig();
+        btnPangkatTNI = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5242,6 +5243,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnJabatanTNI);
+
+        btnPangkatTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_23_Page_Rank_Badge_1688850.png"))); // NOI18N
+        btnPangkatTNI.setText("Pangkat TNI");
+        btnPangkatTNI.setIconTextGap(0);
+        btnPangkatTNI.setName("btnPangkatTNI"); // NOI18N
+        btnPangkatTNI.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPangkatTNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPangkatTNIActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPangkatTNI);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -11050,6 +11063,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnJabatanTNIActionPerformed
 
+    private void btnPangkatTNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPangkatTNIActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgPangkatTNI form=new DlgPangkatTNI(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPangkatTNIActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11271,6 +11296,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnObatPerTanggal;
     private widget.ButtonBig btnOpname;
     private widget.ButtonBig btnPaketOperasi;
+    private widget.ButtonBig btnPangkatTNI;
     private widget.ButtonBig btnParkirMasuk;
     private widget.ButtonBig btnPasien;
     private widget.ButtonBig btnPasienMati;
@@ -13126,6 +13152,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpangkat_tni()==true){
+                Panelmenu.add(btnPangkatTNI);
+                jmlmenu++;
+            }
+            
             if(var.getpasien()==true){
                 Panelmenu.add(btnPasien);
                 jmlmenu++;
@@ -14834,6 +14865,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getjabatan_tni()==true){
             Panelmenu.add(btnJabatanTNI);
+            jmlmenu++;
+        }
+        
+        if(var.getpangkat_tni()==true){
+            Panelmenu.add(btnPangkatTNI);
             jmlmenu++;
         }
 
@@ -17066,6 +17102,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getjabatan_tni()==true){
             if(btnJabatanTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJabatanTNI);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpangkat_tni()==true){
+            if(btnPangkatTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPangkatTNI);
                 jmlmenu++;
             }                
         }
