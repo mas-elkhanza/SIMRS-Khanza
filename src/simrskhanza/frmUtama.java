@@ -834,6 +834,10 @@ public class frmUtama extends javax.swing.JFrame {
         btnSatuanTNI = new widget.ButtonBig();
         btnJabatanTNI = new widget.ButtonBig();
         btnPangkatTNI = new widget.ButtonBig();
+        btnGolonganPolri = new widget.ButtonBig();
+        btnSatuanPolri = new widget.ButtonBig();
+        btnJabatanPolri = new widget.ButtonBig();
+        btnPangkatPolri = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5255,6 +5259,55 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPangkatTNI);
+
+        btnGolonganPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_advantage_teamwork_1034367.png"))); // NOI18N
+        btnGolonganPolri.setText("Golongan POLRI");
+        btnGolonganPolri.setIconTextGap(0);
+        btnGolonganPolri.setName("btnGolonganPolri"); // NOI18N
+        btnGolonganPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnGolonganPolri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGolonganPolriActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnGolonganPolri);
+
+        btnSatuanPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_17_2959846.png"))); // NOI18N
+        btnSatuanPolri.setText("Satuan POLRI");
+        btnSatuanPolri.setToolTipText("");
+        btnSatuanPolri.setIconTextGap(0);
+        btnSatuanPolri.setName("btnSatuanPolri"); // NOI18N
+        btnSatuanPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSatuanPolri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSatuanPolriActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSatuanPolri);
+
+        btnJabatanPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_kitchen_table_1378836.png"))); // NOI18N
+        btnJabatanPolri.setText("Jabatan POLRI");
+        btnJabatanPolri.setIconTextGap(0);
+        btnJabatanPolri.setName("btnJabatanPolri"); // NOI18N
+        btnJabatanPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJabatanPolri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJabatanPolriActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnJabatanPolri);
+
+        btnPangkatPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_23_Page_Rank_Badge_1688850.png"))); // NOI18N
+        btnPangkatPolri.setText("Pangkat POLRI");
+        btnPangkatPolri.setIconTextGap(0);
+        btnPangkatPolri.setName("btnPangkatPolri"); // NOI18N
+        btnPangkatPolri.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPangkatPolri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPangkatPolriActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPangkatPolri);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -11075,6 +11128,54 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPangkatTNIActionPerformed
 
+    private void btnGolonganPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGolonganPolriActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgGolonganPolri form=new DlgGolonganPolri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnGolonganPolriActionPerformed
+
+    private void btnSatuanPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuanPolriActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgSatuanPolri form=new DlgSatuanPolri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSatuanPolriActionPerformed
+
+    private void btnJabatanPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJabatanPolriActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgJabatanPolri form=new DlgJabatanPolri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnJabatanPolriActionPerformed
+
+    private void btnPangkatPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPangkatPolriActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgPangkatPolri form=new DlgPangkatPolri(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPangkatPolriActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11198,6 +11299,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnFrekuensiRalan;
     private widget.ButtonBig btnFrekuensiRanap;
     private widget.ButtonBig btnGolonganBarang;
+    private widget.ButtonBig btnGolonganPolri;
     private widget.ButtonBig btnGolonganTNI;
     private widget.ButtonBig btnGrafikDemografiRegistrasi;
     private widget.ButtonBig btnGrafikKejadianIKPPerBulan;
@@ -11253,6 +11355,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnInventaris;
     private widget.ButtonBig btnJMDetailDokter;
     private widget.ButtonBig btnJMDetailDokter2;
+    private widget.ButtonBig btnJabatanPolri;
     private widget.ButtonBig btnJabatanTNI;
     private widget.ButtonBig btnJadwalPegawai;
     private widget.ButtonBig btnJadwalTambahan;
@@ -11296,6 +11399,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnObatPerTanggal;
     private widget.ButtonBig btnOpname;
     private widget.ButtonBig btnPaketOperasi;
+    private widget.ButtonBig btnPangkatPolri;
     private widget.ButtonBig btnPangkatTNI;
     private widget.ButtonBig btnParkirMasuk;
     private widget.ButtonBig btnPasien;
@@ -11410,6 +11514,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRujukanKeluarBPJS;
     private widget.ButtonBig btnSMS;
     private widget.ButtonBig btnSatuan;
+    private widget.ButtonBig btnSatuanPolri;
     private widget.ButtonBig btnSatuanTNI;
     private widget.ButtonBig btnSensusHarianPoli;
     private widget.ButtonBig btnSensusHarianRalan;
@@ -13157,6 +13262,26 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getgolongan_polri()==true){
+                Panelmenu.add(btnGolonganPolri);
+                jmlmenu++;
+            }
+            
+            if(var.getsatuan_polri()==true){
+                Panelmenu.add(btnSatuanPolri);
+                jmlmenu++;
+            }
+            
+            if(var.getjabatan_polri()==true){
+                Panelmenu.add(btnJabatanPolri);
+                jmlmenu++;
+            }
+            
+            if(var.getpangkat_polri()==true){
+                Panelmenu.add(btnPangkatPolri);
+                jmlmenu++;
+            }
+            
             if(var.getpasien()==true){
                 Panelmenu.add(btnPasien);
                 jmlmenu++;
@@ -14870,6 +14995,26 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpangkat_tni()==true){
             Panelmenu.add(btnPangkatTNI);
+            jmlmenu++;
+        }
+        
+        if(var.getgolongan_polri()==true){
+            Panelmenu.add(btnGolonganPolri);
+            jmlmenu++;
+        }
+
+        if(var.getsatuan_polri()==true){
+            Panelmenu.add(btnSatuanPolri);
+            jmlmenu++;
+        }
+
+        if(var.getjabatan_polri()==true){
+            Panelmenu.add(btnJabatanPolri);
+            jmlmenu++;
+        }
+
+        if(var.getpangkat_polri()==true){
+            Panelmenu.add(btnPangkatPolri);
             jmlmenu++;
         }
 
@@ -17109,6 +17254,34 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpangkat_tni()==true){
             if(btnPangkatTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPangkatTNI);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getgolongan_polri()==true){
+            if(btnGolonganPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnGolonganPolri);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getsatuan_polri()==true){
+            if(btnSatuanPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSatuanPolri);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getjabatan_polri()==true){
+            if(btnJabatanPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnJabatanPolri);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpangkat_polri()==true){
+            if(btnPangkatPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPangkatPolri);
                 jmlmenu++;
             }                
         }

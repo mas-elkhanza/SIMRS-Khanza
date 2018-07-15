@@ -77,7 +77,7 @@ public final class var {
             hutang_barang_non_medis=false,rekap_pemesanan_non_medis=false,insiden_keselamatan=false,insiden_keselamatan_pasien=false,grafik_ikp_pertahun=false,
             grafik_ikp_perbulan=false,grafik_ikp_pertanggal=false,riwayat_data_batch=false,grafik_ikp_jenis=false,grafik_ikp_dampak=false,piutang_akun_piutang=false,
             grafik_kunjungan_per_agama=false,grafik_kunjungan_per_umur=false,suku_bangsa=false,bahasa_pasien=false,golongan_tni=false,satuan_tni=false,
-            jabatan_tni=false,pangkat_tni=false;
+            jabatan_tni=false,pangkat_tni=false,golongan_polri=false,satuan_polri=false,jabatan_polri=false,pangkat_polri=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -444,6 +444,10 @@ public final class var {
                         var.satuan_tni=true;
                         var.jabatan_tni=true;
                         var.pangkat_tni=true;
+                        var.golongan_polri=true;
+                        var.satuan_polri=true;
+                        var.jabatan_polri=true;
+                        var.pangkat_polri=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -794,6 +798,10 @@ public final class var {
                         var.satuan_tni=rs2.getBoolean("satuan_tni");
                         var.jabatan_tni=rs2.getBoolean("jabatan_tni");
                         var.pangkat_tni=rs2.getBoolean("pangkat_tni");
+                        var.golongan_polri=rs2.getBoolean("golongan_polri");
+                        var.satuan_polri=rs2.getBoolean("satuan_polri");
+                        var.jabatan_polri=rs2.getBoolean("jabatan_polri");
+                        var.pangkat_polri=rs2.getBoolean("pangkat_polri");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1142,6 +1150,10 @@ public final class var {
                         var.satuan_tni=false;
                         var.jabatan_tni=false;
                         var.pangkat_tni=false;
+                        var.golongan_polri=false;
+                        var.satuan_polri=false;
+                        var.jabatan_polri=false;
+                        var.pangkat_polri=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1538,4 +1550,8 @@ public final class var {
     public static boolean getsatuan_tni(){return var.satuan_tni;}
     public static boolean getjabatan_tni(){return var.jabatan_tni;}
     public static boolean getpangkat_tni(){return var.pangkat_tni;}
+    public static boolean getgolongan_polri(){return var.golongan_polri;}
+    public static boolean getsatuan_polri(){return var.satuan_polri;}
+    public static boolean getjabatan_polri(){return var.jabatan_polri;}
+    public static boolean getpangkat_polri(){return var.pangkat_polri;}
 }   
