@@ -832,6 +832,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnBahasa = new widget.ButtonBig();
         btnGolonganTNI = new widget.ButtonBig();
         btnSatuanTNI = new widget.ButtonBig();
+        btnJabatanTNI = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5229,6 +5230,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnSatuanTNI);
+
+        btnJabatanTNI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_kitchen_table_1378836.png"))); // NOI18N
+        btnJabatanTNI.setText("Jabatan TNI");
+        btnJabatanTNI.setIconTextGap(0);
+        btnJabatanTNI.setName("btnJabatanTNI"); // NOI18N
+        btnJabatanTNI.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJabatanTNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJabatanTNIActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnJabatanTNI);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -11025,6 +11038,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSatuanTNIActionPerformed
 
+    private void btnJabatanTNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJabatanTNIActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgJabatanTNI form=new DlgJabatanTNI(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnJabatanTNIActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11203,6 +11228,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnInventaris;
     private widget.ButtonBig btnJMDetailDokter;
     private widget.ButtonBig btnJMDetailDokter2;
+    private widget.ButtonBig btnJabatanTNI;
     private widget.ButtonBig btnJadwalPegawai;
     private widget.ButtonBig btnJadwalTambahan;
     private widget.ButtonBig btnJamPresensi;
@@ -11704,6 +11730,15 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }else if(jmlmenu<=355){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*67)));
+        }else if(jmlmenu<=360){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*68)));
+        }else if(jmlmenu<=365){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*69)));
+        }else if(jmlmenu<=370){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*70)));
         }                                           
         Panelmenu.repaint(); 
         DlgHome.setVisible(true);               
@@ -13083,6 +13118,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getsatuan_tni()==true){
                 Panelmenu.add(btnSatuanTNI);
+                jmlmenu++;
+            }
+            
+            if(var.getjabatan_tni()==true){
+                Panelmenu.add(btnJabatanTNI);
                 jmlmenu++;
             }
             
@@ -14789,6 +14829,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getsatuan_tni()==true){
             Panelmenu.add(btnSatuanTNI);
+            jmlmenu++;
+        }
+        
+        if(var.getjabatan_tni()==true){
+            Panelmenu.add(btnJabatanTNI);
             jmlmenu++;
         }
 
@@ -17014,6 +17059,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getsatuan_tni()==true){
             if(btnSatuanTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSatuanTNI);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getjabatan_tni()==true){
+            if(btnJabatanTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnJabatanTNI);
                 jmlmenu++;
             }                
         }
