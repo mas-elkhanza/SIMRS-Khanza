@@ -24,7 +24,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 
 public class UTDStokDarah extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -210,7 +210,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         ppCetak.setBackground(new java.awt.Color(242, 242, 242));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(102, 51, 0));
+        ppCetak.setForeground(new java.awt.Color(130,100,100));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -234,7 +234,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -464,7 +464,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         jLabel14.setPreferredSize(new java.awt.Dimension(55, 23));
         panelCari.add(jLabel14);
 
-        CmbCrStatus.setForeground(new java.awt.Color(153, 0, 51));
+        CmbCrStatus.setForeground(new java.awt.Color(130,100,100));
         CmbCrStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ada", "Diambil", "Dimusnahkan" }));
         CmbCrStatus.setName("CmbCrStatus"); // NOI18N
         CmbCrStatus.setOpaque(false);

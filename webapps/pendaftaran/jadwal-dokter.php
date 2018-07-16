@@ -1,4 +1,19 @@
-<?php include_once ('layout/header.php'); ?>
+<?php
+
+/***
+* e-Pasien from version 0.1 Beta
+* Last modified: 05 July 2018
+* Author : drg. Faisol Basoro
+* Email : dentix.id@gmail.com
+*
+* File : jadwal-dokter.php
+* Description : Dokter schedule
+* Licence under GPL
+***/
+
+include_once ('layout/header.php');
+
+?>
 
     <section class="content">
         <div class="container-fluid">
@@ -12,7 +27,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Tanggal : <?php echo $date; ?>
+                                <?php echo $dayList[$day].", ".date('d')." ".$bulanList[$bulan]." ".date('Y'); ?>
                             </h2>
                         </div>
                         <div class="body">

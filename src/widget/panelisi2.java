@@ -35,7 +35,7 @@ public class panelisi2 extends JPanel{
 
     public panelisi2(){
         super();
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(236,250,235)));
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(241,246,236)));
     }
 
     public panelisi2(LayoutManager layout) {

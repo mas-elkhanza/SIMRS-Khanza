@@ -1,4 +1,5 @@
 package simrskhanza;
+import kepegawaian.DlgCariPetugas;
 import keuangan.Jurnal;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -183,9 +184,10 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
                     "where detail_periksa_lab.no_rawat=? and detail_periksa_lab.kd_jenis_prw=? and detail_periksa_lab.tgl_periksa=? and detail_periksa_lab.jam=?");
             ps4=koneksi.prepareStatement(
                     "select periksa_lab.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur,petugas.nama,DATE_FORMAT(periksa_lab.tgl_periksa,'%d-%m-%Y') as tgl_periksa,periksa_lab.jam,"+
-                    "periksa_lab.dokter_perujuk,periksa_lab.kd_dokter,pasien.alamat,dokter.nm_dokter,DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
-                    " from periksa_lab inner join reg_periksa inner join pasien inner join petugas  inner join dokter "+
-                    "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.nip=petugas.nip and periksa_lab.kd_dokter=dokter.kd_dokter where "+
+                    "periksa_lab.dokter_perujuk,periksa_lab.kd_dokter,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,dokter.nm_dokter,DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') as lahir "+
+                    " from periksa_lab inner join reg_periksa inner join pasien inner join petugas  inner join dokter inner join kelurahan inner join kecamatan inner join kabupaten "+
+                    "on periksa_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and periksa_lab.nip=petugas.nip and periksa_lab.kd_dokter=dokter.kd_dokter "+
+                    "and pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab where "+
                     "periksa_lab.tgl_periksa=? and periksa_lab.jam=? and periksa_lab.no_rawat=? group by concat(periksa_lab.no_rawat,periksa_lab.tgl_periksa,periksa_lab.jam)");
         } catch (Exception e) {
             System.out.println(e);
@@ -282,7 +284,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab.setForeground(new java.awt.Color(130,100,100));
         MnCetakHasilLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab.setText("Cetak Hasil Lab Model 1");
         MnCetakHasilLab.setName("MnCetakHasilLab"); // NOI18N
@@ -296,7 +298,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab1.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab1.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab1.setForeground(new java.awt.Color(130,100,100));
         MnCetakHasilLab1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab1.setText("Cetak Hasil Lab Model 2");
         MnCetakHasilLab1.setName("MnCetakHasilLab1"); // NOI18N
@@ -310,7 +312,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab2.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab2.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab2.setForeground(new java.awt.Color(130,100,100));
         MnCetakHasilLab2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab2.setText("Cetak Hasil Lab Model 3");
         MnCetakHasilLab2.setName("MnCetakHasilLab2"); // NOI18N
@@ -324,7 +326,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab3.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab3.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab3.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab3.setForeground(new java.awt.Color(130,100,100));
         MnCetakHasilLab3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab3.setText("Cetak Hasil Lab Model 4");
         MnCetakHasilLab3.setName("MnCetakHasilLab3"); // NOI18N
@@ -338,7 +340,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab4.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab4.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab4.setForeground(new java.awt.Color(130,100,100));
         MnCetakHasilLab4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab4.setText("Cetak Hasil Lab Model 5");
         MnCetakHasilLab4.setName("MnCetakHasilLab4"); // NOI18N
@@ -352,7 +354,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab5.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab5.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab5.setForeground(new java.awt.Color(130,100,100));
         MnCetakHasilLab5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab5.setText("Cetak Hasil Lab Model 6");
         MnCetakHasilLab5.setName("MnCetakHasilLab5"); // NOI18N
@@ -366,7 +368,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab6.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab6.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab6.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab6.setForeground(new java.awt.Color(130,100,100));
         MnCetakHasilLab6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab6.setText("Cetak Hasil Lab Model 7");
         MnCetakHasilLab6.setName("MnCetakHasilLab6"); // NOI18N
@@ -380,7 +382,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab7.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab7.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab7.setForeground(new java.awt.Color(130,100,100));
         MnCetakHasilLab7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab7.setText("Cetak Hasil Lab Model 8");
         MnCetakHasilLab7.setName("MnCetakHasilLab7"); // NOI18N
@@ -394,7 +396,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab8.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab8.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab8.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab8.setForeground(new java.awt.Color(130,100,100));
         MnCetakHasilLab8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab8.setText("Cetak Hasil Lab Model 9");
         MnCetakHasilLab8.setName("MnCetakHasilLab8"); // NOI18N
@@ -408,7 +410,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab9.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab9.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab9.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab9.setForeground(new java.awt.Color(130,100,100));
         MnCetakHasilLab9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab9.setText("Cetak Hasil Lab Model 10");
         MnCetakHasilLab9.setName("MnCetakHasilLab9"); // NOI18N
@@ -422,7 +424,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakHasilLab10.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab10.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakHasilLab10.setForeground(new java.awt.Color(130,100,100));
         MnCetakHasilLab10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab10.setText("Cetak Hasil Lab Model 11");
         MnCetakHasilLab10.setName("MnCetakHasilLab10"); // NOI18N
@@ -436,7 +438,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnCetakNota.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakNota.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakNota.setForeground(new java.awt.Color(90, 120, 80));
+        MnCetakNota.setForeground(new java.awt.Color(130,100,100));
         MnCetakNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakNota.setText("Cetak Nota Lab");
         MnCetakNota.setName("MnCetakNota"); // NOI18N
@@ -450,7 +452,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
 
         MnUbah.setBackground(new java.awt.Color(255, 255, 255));
         MnUbah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUbah.setForeground(new java.awt.Color(90, 120, 80));
+        MnUbah.setForeground(new java.awt.Color(130,100,100));
         MnUbah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUbah.setText("Ubah Periksa Lab");
         MnUbah.setName("MnUbah"); // NOI18N
@@ -471,7 +473,7 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pemeriksaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1143,7 +1145,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1292,7 +1294,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1369,7 +1371,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1447,7 +1449,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1525,7 +1527,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1603,7 +1605,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1682,7 +1684,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1762,7 +1764,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1839,7 +1841,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1916,7 +1918,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     
@@ -1993,7 +1995,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     param.put("penjab",rs.getString("nm_dokter"));
                     param.put("petugas",rs.getString("nama"));
                     param.put("jam",rs.getString("jam"));
-                    param.put("alamat",rs.getString("Alamat"));
+                    param.put("alamat",rs.getString("alamat"));
                     param.put("kamar",kamar);
                     param.put("namakamar",namakamar);
                     

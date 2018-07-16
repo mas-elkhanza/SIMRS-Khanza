@@ -10,7 +10,6 @@ import fungsi.validasi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  *
@@ -22,9 +21,12 @@ public class Jurnal {
     private final Connection koneksi=koneksiDB.condb(); 
     private ResultSet rs;
     private PreparedStatement ps2,ps;
+    private String nojur="";
     public void simpanJurnal(String nobukti,String tanggal,String jenis,String keterangan){            
         if(Sequel.cariInteger("select count(*) from tampjurnal")>0){
-            String nojur=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_jurnal,8),signed)),0) from jurnal","JR",10);            
+            nojur=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_jurnal,7),signed)),0) from jurnal where tgl_jurnal='"+tanggal+"' ",
+                "JR"+tanggal.substring(2,10).replaceAll("-",""),7);
+            System.out.println("Jr : "+nojur);
             try {
                  koneksi.setAutoCommit(false);
                  ps=koneksi.prepareStatement("insert into jurnal values(?,?,?,?,?)");

@@ -1,27 +1,32 @@
-<?php 
+<?php
 
 /***
-* e-Dokter from version 0.1 Beta
-* Last modified: 02 Pebruari 2018
+* e-Pasien from version 0.1 Beta
+* Last modified: 05 July 2018
 * Author : drg. Faisol Basoro
-* Email : drg.faisol@basoro.org
+* Email : dentix.id@gmail.com
 *
-* File : login.php
-* Description : Login, cookie and session process
+* File : signup.php
+* Description : Registration process
 * Licence under GPL
-***/ 
+***/
 
 ob_start();
 session_start();
 
 require_once('config.php');
 
-if(SIGNUP !== 'ENABLE') { 
+if(SIGNUP !== 'ENABLE') {
     redirect ('login.php');
 }
 
+if(PRODUCTION == 'YES') {
+  ini_set('display_errors', 0);
+  error_reporting(E_ERROR | E_WARNING | E_PARSE);
+}
+
 ?>
-﻿<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html>
 
 <head>
@@ -54,7 +59,7 @@ if(SIGNUP !== 'ENABLE') {
 
     <!-- Jquery UI Css -->
     <link href="plugins/jquery-ui/jquery-ui.css" rel="stylesheet">
-        
+
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
 
@@ -66,7 +71,7 @@ if(SIGNUP !== 'ENABLE') {
     <?php
     $get_rm = fetch_array(query("SELECT max(no_rkm_medis) FROM pasien"));
     $lastRM = substr($get_rm[0], 0, 6);
-    $no_rm_next = sprintf('%06s', ($lastRM + 1)); 
+    $no_rm_next = sprintf('%06s', ($lastRM + 1));
     ?>
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
@@ -93,7 +98,7 @@ if(SIGNUP !== 'ENABLE') {
 
 
 <?php
-if($_SERVER['REQUEST_METHOD'] == "POST") { 
+if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if(empty($_POST['no_ktp'])) {
 	$errors[] = 'Kolom No KTP tidak boleh kosong';
@@ -109,53 +114,53 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 	foreach($errors as $error) {
 	    echo validation_errors($error);
 	}
-    } else {					  
+    } else {
 	$insert = query("INSERT INTO pasien VALUES(
-        '$no_rm_next', 
-        '{$_POST['nm_pasien']}', 
-        '{$_POST['no_ktp']}', 
-        '{$_POST['jk']}', 
-        '-', 
-        '{$_POST['tgl_lahir']}', 
-        '-', 
-        '{$_POST['alamat']}', 
-        '-', 
-        '-', 
-        '-', 
-        '-', 
-        '$date', 
-        '{$_POST['no_tlp']}', 
-        '-', 
-        '-', 
-        '-', 
-        '-', 
-        'A01', 
-        '-', 
-        '{$_POST['kd_kel']}', 
-        '{$_POST['kd_kec']}', 
-        '{$_POST['kd_kab']}', 
-        '-', 
-        '-', 
-        '-', 
-        '-', 
+        '$no_rm_next',
+        '{$_POST['nm_pasien']}',
+        '{$_POST['no_ktp']}',
+        '{$_POST['jk']}',
+        '-',
+        '{$_POST['tgl_lahir']}',
+        '-',
+        '{$_POST['alamat']}',
+        '-',
+        '-',
+        '-',
+        '-',
+        '$date',
+        '{$_POST['no_tlp']}',
+        '-',
+        '-',
+        '-',
+        '-',
+        'A01',
+        '-',
+        '{$_POST['kd_kel']}',
+        '{$_POST['kd_kec']}',
+        '{$_POST['kd_kab']}',
+        '-',
+        '-',
+        '-',
+        '-',
         '-'
-    )"); 
+    )");
 
-	if($insert) { 
-	    set_message('Selamat..!! Anda telah melakukan pendaftaran On-Line.'); 
+	if($insert) {
+	    set_message('Selamat..!! Anda telah melakukan pendaftaran On-Line.');
 	    redirect('signup.php?action=success');
 	}
 
     }
-	
+
 }
 ?>
 
 <?php
         $action      =isset($_GET['action'])?$_GET['action']:null;
-        if(!$action){  
+        if(!$action){
 ?>
-        <div class="card">         
+        <div class="card">
             <div class="body">
                 <form id="sign_up" method="POST">
                     <div class="msg">Pendaftaran Pasien Baru</div>
@@ -263,9 +268,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         <?php display_message(); ?>
 
-        <div class="card">         
+        <div class="card">
             <div class="body text-center">
-            <h5>Username (No.RM):</h5><h2><?php echo $no_rm_next; ?></h2><br> 
+            <h5>Username (No.RM):</h5><h2><?php echo $no_rm_next; ?></h2><br>
             <p>Gunakan No. KTP anda sebagai password.</p>
             <p>Silahkan klik tombol login dibawah</p><br>
             <a href="login.php"><button type="button" class="btn bg-green btn-lg waves-effect">LOGIN</button></a>
@@ -325,36 +330,36 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <script>
         $(function() {
-            var kelurahan = 
-                <?php 
+            var kelurahan =
+                <?php
                 $result = query("SELECT * FROM kelurahan");
                 while ($row = fetch_array($result)) {
                     $kd_kel = $row['kd_kel'];
-                    $nm_kel = $row['nm_kel'];    
+                    $nm_kel = $row['nm_kel'];
                     $kelurahan[] = array( 'key' => "$kd_kel", 'value' => "$nm_kel" );
                 }
                 echo json_encode($kelurahan);
                 ?>
             ;
 
-            var kecamatan = 
-                <?php 
+            var kecamatan =
+                <?php
                 $result = query("SELECT * FROM kecamatan");
                 while ($row = fetch_array($result)) {
                     $kd_kec = $row['kd_kec'];
-                    $nm_kec = $row['nm_kec'];    
+                    $nm_kec = $row['nm_kec'];
                     $kecamatan[] = array( 'key' => "$kd_kec", 'value' => "$nm_kec" );
                 }
                 echo json_encode($kecamatan);
                 ?>
             ;
 
-            var kabupaten = 
-                <?php 
+            var kabupaten =
+                <?php
                 $result = query("SELECT * FROM kabupaten");
                 while ($row = fetch_array($result)) {
                     $kd_kab = $row['kd_kab'];
-                    $nm_kab = $row['nm_kab'];    
+                    $nm_kab = $row['nm_kab'];
                     $kabupaten[] = array( 'key' => "$kd_kab", 'value' => "$nm_kab" );
                 }
                 echo json_encode($kabupaten);

@@ -1,4 +1,6 @@
 package simrskhanza;
+import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariPetugas;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -7,7 +9,6 @@ import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -19,7 +20,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -40,7 +40,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
     private ResultSet rsrekening,rs,rs2,rs3;
     private int pilihan=0;
     private double ttljmdokter=0,ttljmpetugas=0,ttlpendapatan=0,ttlbhp=0;
-    private String Suspen_Piutang_Operasi_Ranap="",Operasi_Ranap="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",
+    private String norm="",kamar="",namakamar="",Suspen_Piutang_Operasi_Ranap="",Operasi_Ranap="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",
             Utang_Jasa_Medik_Dokter_Operasi_Ranap="",Beban_Jasa_Medik_Paramedis_Operasi_Ranap="",
             Utang_Jasa_Medik_Paramedis_Operasi_Ranap="",HPP_Obat_Operasi_Ranap="",Persediaan_Obat_Kamar_Operasi_Ranap="",status="";
 
@@ -441,11 +441,11 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
 
         MnHapusObatOperasi.setBackground(new java.awt.Color(255, 255, 255));
         MnHapusObatOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnHapusObatOperasi.setForeground(new java.awt.Color(90, 120, 80));
+        MnHapusObatOperasi.setForeground(new java.awt.Color(130,100,100));
         MnHapusObatOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnHapusObatOperasi.setText("Hapus Obat Operasi");
         MnHapusObatOperasi.setName("MnHapusObatOperasi"); // NOI18N
-        MnHapusObatOperasi.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusObatOperasi.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusObatOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusObatOperasiActionPerformed(evt);
@@ -455,11 +455,11 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
 
         MnHapusTagihanOperasi.setBackground(new java.awt.Color(255, 255, 255));
         MnHapusTagihanOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnHapusTagihanOperasi.setForeground(new java.awt.Color(90, 120, 80));
+        MnHapusTagihanOperasi.setForeground(new java.awt.Color(130,100,100));
         MnHapusTagihanOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnHapusTagihanOperasi.setText("Hapus Tagihan Operasi");
         MnHapusTagihanOperasi.setName("MnHapusTagihanOperasi"); // NOI18N
-        MnHapusTagihanOperasi.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusTagihanOperasi.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusTagihanOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusTagihanOperasiActionPerformed(evt);
@@ -469,11 +469,11 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
 
         MnUbahOperatorPetugas.setBackground(new java.awt.Color(255, 255, 255));
         MnUbahOperatorPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUbahOperatorPetugas.setForeground(new java.awt.Color(90, 120, 80));
+        MnUbahOperatorPetugas.setForeground(new java.awt.Color(130,100,100));
         MnUbahOperatorPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUbahOperatorPetugas.setText("Ubah Operator & Paramedis");
         MnUbahOperatorPetugas.setName("MnUbahOperatorPetugas"); // NOI18N
-        MnUbahOperatorPetugas.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnUbahOperatorPetugas.setPreferredSize(new java.awt.Dimension(220, 26));
         MnUbahOperatorPetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnUbahOperatorPetugasActionPerformed(evt);
@@ -486,7 +486,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         WindowGantiDokterParamedis.setUndecorated(true);
         WindowGantiDokterParamedis.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Operator & Paramedis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Operator & Paramedis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setWarnaBawah(new java.awt.Color(240, 245, 235));
         internalFrame5.setLayout(new java.awt.BorderLayout());
@@ -1344,7 +1344,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Tagihan Operasi/VK ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Tagihan Operasi/VK ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

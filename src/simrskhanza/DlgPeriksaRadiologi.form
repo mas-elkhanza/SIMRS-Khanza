@@ -76,7 +76,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+              <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -438,7 +438,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="18-02-2018"/>
+                        <StringItem index="0" value="12-07-2018"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -656,7 +656,7 @@
                       </Border>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="0" red="99" type="rgb"/>
+                      <Color blue="64" green="64" red="82" type="rgb"/>
                     </Property>
                     <Property name="selected" type="boolean" value="true"/>
                     <Property name="borderPainted" type="boolean" value="true"/>
@@ -817,11 +817,11 @@
                     <TitledBorder title=" Pemeriksaan ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                      <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -975,11 +975,11 @@
                     <TitledBorder title=" BHP Radiologi ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                      <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -1132,11 +1132,11 @@
                     <TitledBorder title=" Hasil Pemeriksaan ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                      <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>

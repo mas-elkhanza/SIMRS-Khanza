@@ -40,7 +40,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+              <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -218,11 +218,11 @@
                     <TitledBorder title=".: Tindakan">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                      <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -345,11 +345,11 @@
                     <TitledBorder title=".: Obat &amp; BHP">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                      <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>

@@ -31,23 +31,23 @@
                 echo "<input type=hidden name=no_rawat  value=$no_rawat>
                       <input type=hidden name=action value=$action>";
             ?>
-            <div style="width: 100%; height: 30%; overflow: auto;">
+            <div style="width: 100%; height: 27%; overflow: auto;">
             <table width="100%" align="center">
-                <tr class="head">
-                    <td width="25%" >No.Rawat</td><td width="">:</td>
-                    <td width="75%"><?php echo $no_rawat;?></td>
+                <tr class="isi2">
+                    <td width="25%" valign="top">No.Rawat</td><td width="" valign="top">:</td>
+                    <td width="75%" valign="top"><?php echo $no_rawat;?></td>
                 </tr>
-                <tr class="head">
-                    <td width="25%" >No.RM</td><td width="">:</td>
-                    <td width="75%"><?php echo $no_rkm_medis;?></td>
+                <tr class="isi2">
+                    <td width="25%" valign="top">No.RM</td><td width="" valign="top">:</td>
+                    <td width="75%" valign="top"><?php echo $no_rkm_medis;?></td>
                 </tr>
-		<tr class="head">
-                    <td width="25%">Nama Pasien</td><td width="">:</td>
-                    <td width="75%"><?php echo $nm_pasien.", ".$umurdaftar." ".$sttsumur;?></td>
+		<tr class="isi2">
+                    <td width="25%" valign="top">Nama Pasien</td><td width="" valign="top">:</td>
+                    <td width="75%" valign="top"><?php echo $nm_pasien.", ".$umurdaftar." ".$sttsumur;?></td>
                 </tr>                
-                <tr class="head">
-                    <td width="25%" >Berkas Digital</td><td width="">:</td>
-                    <td width="75%">
+                <tr class="isi2">
+                    <td width="25%" valign="top">Berkas Digital</td><td width="" valign="top">:</td>
+                    <td width="75%" valign="top">
                         <select name="kode" class="text2" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
                             <?php
                                 $_sql = "SELECT kode,nama FROM master_berkas_digital ORDER BY nama";
@@ -61,9 +61,9 @@
                         <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
-                <tr class="head">
-                    <td width="25%" >File Berkas(PDF/JPG)</td><td width="">:</td>
-                    <td width="75%"><input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=file id="TxtIsi2" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
+                <tr class="isi2">
+                    <td width="25%" valign="top">File Berkas(PDF/JPG)</td><td width="" valign="top">:</td>
+                    <td width="75%" valign="top"><input name="dokumen" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi2'));" type=file id="TxtIsi2" value="<?php echo $dokumen;?>" size="30" maxlength="255" />
                     </td>
                 </tr>        
             </table>
@@ -89,7 +89,7 @@
                     }
                 }
             ?>
-            <div style="width: 100%; height: 53%; overflow: auto;">
+            <div style="width: 100%; height: 56%; overflow: auto;">
             <?php
                 $_sql = "SELECT berkas_digital_perawatan.no_rawat,berkas_digital_perawatan.kode, 
                         master_berkas_digital.nama,berkas_digital_perawatan.lokasi_file 
@@ -112,7 +112,7 @@
                       echo "<tr class='isi'>
                                 <td>
                                     <center>
-                                    <a href='?act=Detail2&action=HAPUS&no_rawat=".$baris["no_rawat"]."&kode=".$baris["kode"]."'>[hapus]</a>
+                                    <a href='?act=Detail2&action=HAPUS&no_rawat=".$baris["no_rawat"]."&kode=".$baris["kode"]."&lokasi_file=".$baris["lokasi_file"]."'>[hapus]</a>
                                    </center>
                                 </td>
                                 <td>".$baris["nama"]."</td>
@@ -132,6 +132,7 @@
         </div>
         <?php
             if ($action=="HAPUS") {
+                unlink($_GET['lokasi_file']);
                 Hapus(" berkas_digital_perawatan "," no_rawat ='".$_GET['no_rawat']."' and kode ='".$_GET['kode']."' ","?act=Detail2&action=TAMBAH&no_rawat=$no_rawat");
             }
             

@@ -46,10 +46,11 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
                    ttltotalpesan=0,totalpesan=0,jumlahpesan=0,jumlahutd,totalutd,ttltotalutd,jumlahkeluar,totalkeluar,ttltotalkeluar,
                    ttltotalpiutang=0,totalpiutang=0,jumlahpiutang=0,ttltotalretbeli=0,totalretbeli=0,jumlahretbeli=0,
                    ttltotalretjual=0,totalretjual=0,jumlahretjual=0,ttltotalretpiut=0,totalretpiut=0,jumlahretpiut=0,
-                   jumlahpasin=0,totalpasien=0,ttltotalpasien=0,stok=0,aset=0,ttlaset=0;
+                   jumlahpasin=0,totalpasien=0,ttltotalpasien=0,stok=0,aset=0,ttlaset=0,jumlahrespulang=0,totalrespulang=0,
+                   ttltotalrespulang=0;
     private DlgBarang barang=new DlgBarang(null,false);
-    private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,ps7,ps8,psstok,ps9,ps10,ps11;
-    private ResultSet rs,rs2,rs3,rs4,rs5,rs6,rs7,rs8,rsstok,rs9,rs10,rs11;
+    private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,ps7,ps8,psstok,ps9,ps10,ps11,ps12;
+    private ResultSet rs,rs2,rs3,rs4,rs5,rs6,rs7,rs8,rsstok,rs9,rs10,rs11,rs12;
 
     /** 
      * @param parent
@@ -59,7 +60,8 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         initComponents();
 
         Object[] row={"Kode Barang","Nama Barang","Satuan","Stok","Pengadaan","Penerimaan","Penjualan",
-                      "Ke Pasien","Piutang Jual","Retur Beli","Retur Jual","Retur Piutang","Pengambilan UTD","Stok Keluar Medis"};
+                      "Ke Pasien","Piutang Jual","Retur Beli","Retur Jual","Retur Piutang","Pengambilan UTD",
+                      "Stok Keluar Medis","Resep Pulang"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -68,7 +70,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 15; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -380,7 +382,7 @@ public class DlgSirkulasiBarang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Obat, Alkes & BHP Medis Keluar Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Obat, Alkes & BHP Medis Keluar Masuk ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -595,7 +597,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,10).toString()+"','"+
                                 tabMode.getValueAt(i,11).toString()+"','"+
                                 tabMode.getValueAt(i,12).toString()+"','"+
-                                tabMode.getValueAt(i,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','',''","Sirkulasi Barang Keluar Masuk"); 
+                                tabMode.getValueAt(i,13).toString()+"','"+
+                                tabMode.getValueAt(i,14).toString()+"','','','','','','','','','','','','','','','','','','','','','',''","Sirkulasi Barang Keluar Masuk"); 
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>(); 
@@ -609,11 +612,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if(lokasi.equals("")){
                 Valid.MyReport("rptSirkulasi.jrxml","report","::[ Sirkulasi Barang ]::",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp15 from temporary order by no asc",param);
             }else if(!lokasi.equals("")){
                 param.put("bangsal",lokasi);  
                 Valid.MyReport("rptSirkulasi3.jrxml","report","::[ Sirkulasi Barang ]::",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
+                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp15 from temporary order by no asc",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }        
@@ -851,7 +854,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ttltotaljual=0;ttltotalbeli=0;ttltotalpesan=0;
                 ttltotalpiutang=0;ttltotalretbeli=0;ttltotalretjual=0;
                 ttltotalretpiut=0;ttltotalpasien=0;ttlaset=0;
-                ttltotalutd=0;ttltotalkeluar=0;
+                ttltotalutd=0;ttltotalkeluar=0;ttltotalrespulang=0;
                 ps.setString(1,"%"+nmbar.getText()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+nmbar.getText()+"%");
@@ -861,9 +864,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();            
                 while(rs.next()){
                     totaljual=0;jumlahjual=0;totalbeli=0;jumlahbeli=0;totalpiutang=0;jumlahpiutang=0;
-                    totalpesan=0;jumlahpesan=0;
+                    totalpesan=0;jumlahpesan=0;jumlahrespulang=0;
                     totalretbeli=0;jumlahretbeli=0;totalretjual=0;jumlahretjual=0;totalretpiut=0;jumlahretpiut=0;
-                    jumlahpasin=0;stok=0;aset=0;
+                    jumlahpasin=0;stok=0;aset=0;totalrespulang=0;
                     jumlahutd=0;jumlahkeluar=0;totalkeluar=0;totalutd=0;
 
                     psstok=koneksi.prepareStatement("select sum(stok),(sum(stok)*h_beli) as aset "+
@@ -1141,8 +1144,31 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                     
+                    ps12=koneksi.prepareStatement("select sum(resep_pulang.jml_barang), sum(resep_pulang.total) "+
+                        " from resep_pulang where resep_pulang.kode_brng=? and "+
+                        " resep_pulang.tanggal between ? and ?");
+                    try {
+                        ps12.setString(1,rs.getString(1));
+                        ps12.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps12.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        rs12=ps12.executeQuery();
+                        if(rs12.next()){                    
+                            jumlahrespulang=rs12.getDouble(1);
+                            totalrespulang=rs12.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikas Resep Pulang : "+e);
+                    } finally{
+                        if(rs12!=null){
+                            rs12.close();
+                        }
+                        if(ps12!=null){
+                            ps12.close();
+                        }
+                    }
+                    
                     if((aset>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||
-                            (jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(jumlahutd>0)||(jumlahkeluar>0)){
+                            (jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(jumlahutd>0)||(jumlahkeluar>0)||(jumlahrespulang>0)){
                         tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),
                                    rs.getString(3),Valid.SetAngka(stok)+" ("+Valid.SetAngka(aset)+")",
                                    Valid.SetAngka(jumlahbeli)+" ("+Valid.SetAngka(totalbeli)+")",
@@ -1154,7 +1180,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                    Valid.SetAngka(jumlahretjual)+" ("+Valid.SetAngka(totalretjual)+")",
                                    Valid.SetAngka(jumlahretpiut)+" ("+Valid.SetAngka(totalretpiut)+")",
                                    Valid.SetAngka(jumlahutd)+" ("+Valid.SetAngka(totalutd)+")",
-                                   Valid.SetAngka(jumlahkeluar)+" ("+Valid.SetAngka(totalkeluar)+")"
+                                   Valid.SetAngka(jumlahkeluar)+" ("+Valid.SetAngka(totalkeluar)+")",
+                                   Valid.SetAngka(jumlahrespulang)+" ("+Valid.SetAngka(totalrespulang)+")"
                                   }); 
                         ttltotalbeli=ttltotalbeli+totalbeli;
                         ttltotalpesan=ttltotalpesan+totalpesan;
@@ -1167,17 +1194,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ttltotalretpiut=ttltotalretpiut+totalretpiut;
                         ttltotalutd=ttltotalutd+totalutd;
                         ttltotalkeluar=ttltotalkeluar+totalkeluar;
+                        ttltotalrespulang=ttltotalrespulang+totalrespulang;
                     }
 
                         
                 }   
-                tabMode.addRow(new Object[]{"","","","","","","","","","","","","",""}); 
+                tabMode.addRow(new Object[]{"","","","","","","","","","","","","","",""}); 
                 tabMode.addRow(new Object[]{"<>>","Total :","",Valid.SetAngka(ttlaset),
                                    Valid.SetAngka(ttltotalbeli),Valid.SetAngka(ttltotalpesan),
                                    Valid.SetAngka(ttltotaljual),Valid.SetAngka(ttltotalpasien),
                                    Valid.SetAngka(ttltotalpiutang),Valid.SetAngka(ttltotalretbeli),
                                    Valid.SetAngka(ttltotalretjual),Valid.SetAngka(ttltotalretpiut),
-                                   Valid.SetAngka(ttltotalutd),Valid.SetAngka(ttltotalkeluar)
+                                   Valid.SetAngka(ttltotalutd),Valid.SetAngka(ttltotalkeluar),
+                                   Valid.SetAngka(ttltotalrespulang)
                                   }); 
             } catch (Exception e) {
                 System.out.println("Notifikasi Data Barang : "+e);
@@ -1210,7 +1239,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ttltotaljual=0;ttltotalbeli=0;ttltotalpesan=0;
                 ttltotalpiutang=0;ttltotalretbeli=0;ttltotalretjual=0;
                 ttltotalretpiut=0;ttltotalpasien=0;ttlaset=0;
-                ttltotalutd=0;ttltotalkeluar=0;
+                ttltotalutd=0;ttltotalkeluar=0;ttltotalrespulang=0;
                 ps.setString(1,"%"+nmbar.getText()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 ps.setString(3,"%"+nmbar.getText()+"%");
@@ -1220,9 +1249,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();            
                 while(rs.next()){
                     totaljual=0;jumlahjual=0;totalbeli=0;jumlahbeli=0;totalpiutang=0;jumlahpiutang=0;
-                    totalpesan=0;jumlahpesan=0;
+                    totalpesan=0;jumlahpesan=0;jumlahrespulang=0;
                     totalretbeli=0;jumlahretbeli=0;totalretjual=0;jumlahretjual=0;totalretpiut=0;jumlahretpiut=0;
-                    jumlahpasin=0;stok=0;aset=0;
+                    jumlahpasin=0;stok=0;aset=0;totalrespulang=0;
                     jumlahutd=0;jumlahkeluar=0;totalkeluar=0;totalutd=0;
 
                     psstok=koneksi.prepareStatement("select sum(stok),(sum(stok)*h_beli) as aset "+
@@ -1512,8 +1541,32 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                     
+                    ps12=koneksi.prepareStatement("select sum(resep_pulang.jml_barang), sum(resep_pulang.total) "+
+                        " from resep_pulang where resep_pulang.kode_brng=? and "+
+                        " resep_pulang.tanggal between ? and ? and resep_pulang.kd_bangsal=?");
+                    try {
+                        ps12.setString(1,rs.getString(1));
+                        ps12.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps12.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps12.setString(4,lokasi);
+                        rs12=ps12.executeQuery();
+                        if(rs12.next()){                    
+                            jumlahrespulang=rs12.getDouble(1);
+                            totalrespulang=rs12.getDouble(2);
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikas Resep Pulang : "+e);
+                    } finally{
+                        if(rs12!=null){
+                            rs12.close();
+                        }
+                        if(ps12!=null){
+                            ps12.close();
+                        }
+                    }
+                    
                     if((aset>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||
-                            (jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(jumlahutd>0)||(jumlahkeluar>0)){
+                            (jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(jumlahutd>0)||(jumlahkeluar>0)||(jumlahrespulang>0)){
                         tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),
                                    rs.getString(3),Valid.SetAngka(stok)+" ("+Valid.SetAngka(aset)+")",
                                    Valid.SetAngka(jumlahbeli)+" ("+Valid.SetAngka(totalbeli)+")",
@@ -1525,7 +1578,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                    Valid.SetAngka(jumlahretjual)+" ("+Valid.SetAngka(totalretjual)+")",
                                    Valid.SetAngka(jumlahretpiut)+" ("+Valid.SetAngka(totalretpiut)+")",
                                    Valid.SetAngka(jumlahutd)+" ("+Valid.SetAngka(totalutd)+")",
-                                   Valid.SetAngka(jumlahkeluar)+" ("+Valid.SetAngka(totalkeluar)+")"
+                                   Valid.SetAngka(jumlahkeluar)+" ("+Valid.SetAngka(totalkeluar)+")",
+                                   Valid.SetAngka(jumlahrespulang)+" ("+Valid.SetAngka(totalrespulang)+")"
                                   }); 
                         ttltotalbeli=ttltotalbeli+totalbeli;
                         ttltotalpesan=ttltotalpesan+totalpesan;
@@ -1538,17 +1592,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ttltotalretpiut=ttltotalretpiut+totalretpiut;
                         ttltotalutd=ttltotalutd+totalutd;
                         ttltotalkeluar=ttltotalkeluar+totalkeluar;
+                        ttltotalrespulang=ttltotalrespulang+totalrespulang;
                     }
 
                         
                 }   
-                tabMode.addRow(new Object[]{"","","","","","","","","","","","","",""}); 
+                tabMode.addRow(new Object[]{"","","","","","","","","","","","","","",""}); 
                 tabMode.addRow(new Object[]{"<>>","Total :","",Valid.SetAngka(ttlaset),
                                    Valid.SetAngka(ttltotalbeli),Valid.SetAngka(ttltotalpesan),
                                    Valid.SetAngka(ttltotaljual),Valid.SetAngka(ttltotalpasien),
                                    Valid.SetAngka(ttltotalpiutang),Valid.SetAngka(ttltotalretbeli),
                                    Valid.SetAngka(ttltotalretjual),Valid.SetAngka(ttltotalretpiut),
-                                   Valid.SetAngka(ttltotalutd),Valid.SetAngka(ttltotalkeluar)
+                                   Valid.SetAngka(ttltotalutd),Valid.SetAngka(ttltotalkeluar),Valid.SetAngka(ttltotalrespulang)
                                   }); 
             } catch (Exception e) {
                 System.out.println("Notifikasi Data Barang : "+e);
