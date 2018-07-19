@@ -1031,7 +1031,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         MnResepDOkter.setBackground(new java.awt.Color(255, 255, 255));
         MnResepDOkter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnResepDOkter.setForeground(new java.awt.Color(60, 80, 50));
+        MnResepDOkter.setForeground(new java.awt.Color(130,100,100));
         MnResepDOkter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnResepDOkter.setText("Input Resep Dokter");
         MnResepDOkter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1047,7 +1047,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         MnPemberianObat.setBackground(new java.awt.Color(255, 255, 255));
         MnPemberianObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPemberianObat.setForeground(new java.awt.Color(60, 80, 50));
+        MnPemberianObat.setForeground(new java.awt.Color(130,100,100));
         MnPemberianObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPemberianObat.setText("Pemberian Obat/BHP");
         MnPemberianObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1064,7 +1064,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         MnDiagnosa.setBackground(new java.awt.Color(255, 255, 255));
         MnDiagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnDiagnosa.setForeground(new java.awt.Color(60, 80, 50));
+        MnDiagnosa.setForeground(new java.awt.Color(130,100,100));
         MnDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDiagnosa.setText("Diagnosa Pasien");
         MnDiagnosa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

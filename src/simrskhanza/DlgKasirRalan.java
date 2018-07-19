@@ -573,7 +573,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel8 = new widget.Label();
         TPasien = new widget.TextBox();
 
-        jPopupMenu1.setForeground(new java.awt.Color(60, 80, 50));
+        jPopupMenu1.setForeground(new java.awt.Color(130,100,100));
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
         MnKamarInap.setBackground(new java.awt.Color(255, 255, 255));

@@ -2086,7 +2086,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     private void btnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienActionPerformed
         pasien.emptTeks();
         pasien.isCek();
-        pasien.TutupJendela();
         pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);

@@ -7,7 +7,7 @@
     <Container class="javax.swing.JPopupMenu" name="jPopupMenu1">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="32" green="50" red="3c" type="rgb"/>
+          <Color blue="64" green="64" red="82" type="rgb"/>
         </Property>
         <Property name="name" type="java.lang.String" value="jPopupMenu1" noResource="true"/>
       </Properties>

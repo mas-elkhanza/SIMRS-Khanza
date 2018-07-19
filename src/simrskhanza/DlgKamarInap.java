@@ -1174,7 +1174,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
 
-        jPopupMenu1.setForeground(new java.awt.Color(60, 80, 50));
+        jPopupMenu1.setForeground(new java.awt.Color(130,100,100));
         jPopupMenu1.setAutoscrolls(true);
         jPopupMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPopupMenu1.setFocusTraversalPolicyProvider(true);

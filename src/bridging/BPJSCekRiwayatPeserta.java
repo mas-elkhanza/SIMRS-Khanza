@@ -336,7 +336,6 @@ public final class BPJSCekRiwayatPeserta extends javax.swing.JDialog {
         var.setform("DlgBPJSCekRiwayatPeserta");
         pasien.emptTeks();
         pasien.isCek();
-        pasien.TutupJendela();
         pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);

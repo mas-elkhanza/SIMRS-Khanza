@@ -292,7 +292,7 @@ public class DlgCariSuratPemesananNonMedis extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(60, 80, 50));
+        ppHapus.setForeground(new java.awt.Color(130,100,100));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Data Surat Pemesanan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
