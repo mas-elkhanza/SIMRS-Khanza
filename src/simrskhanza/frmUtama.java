@@ -838,6 +838,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnSatuanPolri = new widget.ButtonBig();
         btnJabatanPolri = new widget.ButtonBig();
         btnPangkatPolri = new widget.ButtonBig();
+        btnCacatFisik = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5309,6 +5310,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPangkatPolri);
 
+        btnCacatFisik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/plaster.png"))); // NOI18N
+        btnCacatFisik.setText("Cacat Fisik");
+        btnCacatFisik.setIconTextGap(0);
+        btnCacatFisik.setName("btnCacatFisik"); // NOI18N
+        btnCacatFisik.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCacatFisik.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCacatFisikActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCacatFisik);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5317,7 +5330,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/07/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20/07/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -11176,6 +11189,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPangkatPolriActionPerformed
 
+    private void btnCacatFisikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCacatFisikActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgCacatFisik form=new DlgCacatFisik(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCacatFisikActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11257,6 +11282,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnBerkasPegawai;
     private widget.ButtonBig btnBubes;
     private widget.ButtonBig btnBulananHAIs;
+    private widget.ButtonBig btnCacatFisik;
     private widget.ButtonBig btnCashFlow;
     private widget.ButtonBig btnCatatanPasien;
     private widget.ButtonBig btnCekBPJSDiagnosa;
@@ -13282,7 +13308,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                     Panelmenu.add(btnPangkatPolri);
                     jmlmenu++;
                 }
-            }                
+            }     
+            
+            if(var.getcacat_fisik()==true){
+                Panelmenu.add(btnCacatFisik);
+                jmlmenu++;
+            }
             
             if(var.getpasien()==true){
                 Panelmenu.add(btnPasien);
@@ -15020,7 +15051,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnPangkatPolri);
                 jmlmenu++;
             }
-        }            
+        }    
+
+        if(var.getcacat_fisik()==true){
+            Panelmenu.add(btnCacatFisik);
+            jmlmenu++;
+        }
 
         if(var.getpasien()==true){
             Panelmenu.add(btnPasien);
@@ -17292,6 +17328,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }
         }            
         
+        if(var.getcacat_fisik()==true){
+            if(btnCacatFisik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCacatFisik);
+                jmlmenu++;
+            }                
+        }
+
         if(var.getpasien()==true){
             if(btnPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPasien);
