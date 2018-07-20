@@ -362,7 +362,7 @@ public class frmUtama extends javax.swing.JFrame {
     private ResultSet rs;
     private final Properties prop = new Properties();     
     private int jmlmenu=0;
-    private String coder_nik="",pilihpage="",judulform="";
+    private String coder_nik="",pilihpage="",judulform="",tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
     /** Creates new form frmUtama */
     private frmUtama() {
         super();
@@ -13242,45 +13242,47 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
-            if(var.getgolongan_tni()==true){
-                Panelmenu.add(btnGolonganTNI);
-                jmlmenu++;
-            }
-            
-            if(var.getsatuan_tni()==true){
-                Panelmenu.add(btnSatuanTNI);
-                jmlmenu++;
-            }
-            
-            if(var.getjabatan_tni()==true){
-                Panelmenu.add(btnJabatanTNI);
-                jmlmenu++;
-            }
-            
-            if(var.getpangkat_tni()==true){
-                Panelmenu.add(btnPangkatTNI);
-                jmlmenu++;
-            }
-            
-            if(var.getgolongan_polri()==true){
-                Panelmenu.add(btnGolonganPolri);
-                jmlmenu++;
-            }
-            
-            if(var.getsatuan_polri()==true){
-                Panelmenu.add(btnSatuanPolri);
-                jmlmenu++;
-            }
-            
-            if(var.getjabatan_polri()==true){
-                Panelmenu.add(btnJabatanPolri);
-                jmlmenu++;
-            }
-            
-            if(var.getpangkat_polri()==true){
-                Panelmenu.add(btnPangkatPolri);
-                jmlmenu++;
-            }
+            if(tampilkantni.equals("Yes")){
+                if(var.getgolongan_tni()==true){
+                    Panelmenu.add(btnGolonganTNI);
+                    jmlmenu++;
+                }
+
+                if(var.getsatuan_tni()==true){
+                    Panelmenu.add(btnSatuanTNI);
+                    jmlmenu++;
+                }
+
+                if(var.getjabatan_tni()==true){
+                    Panelmenu.add(btnJabatanTNI);
+                    jmlmenu++;
+                }
+
+                if(var.getpangkat_tni()==true){
+                    Panelmenu.add(btnPangkatTNI);
+                    jmlmenu++;
+                }
+
+                if(var.getgolongan_polri()==true){
+                    Panelmenu.add(btnGolonganPolri);
+                    jmlmenu++;
+                }
+
+                if(var.getsatuan_polri()==true){
+                    Panelmenu.add(btnSatuanPolri);
+                    jmlmenu++;
+                }
+
+                if(var.getjabatan_polri()==true){
+                    Panelmenu.add(btnJabatanPolri);
+                    jmlmenu++;
+                }
+
+                if(var.getpangkat_polri()==true){
+                    Panelmenu.add(btnPangkatPolri);
+                    jmlmenu++;
+                }
+            }                
             
             if(var.getpasien()==true){
                 Panelmenu.add(btnPasien);
@@ -14978,45 +14980,47 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
-        if(var.getgolongan_tni()==true){
-            Panelmenu.add(btnGolonganTNI);
-            jmlmenu++;
-        }
+        if(tampilkantni.equals("Yes")){
+            if(var.getgolongan_tni()==true){
+                Panelmenu.add(btnGolonganTNI);
+                jmlmenu++;
+            }
 
-        if(var.getsatuan_tni()==true){
-            Panelmenu.add(btnSatuanTNI);
-            jmlmenu++;
-        }
-        
-        if(var.getjabatan_tni()==true){
-            Panelmenu.add(btnJabatanTNI);
-            jmlmenu++;
-        }
-        
-        if(var.getpangkat_tni()==true){
-            Panelmenu.add(btnPangkatTNI);
-            jmlmenu++;
-        }
-        
-        if(var.getgolongan_polri()==true){
-            Panelmenu.add(btnGolonganPolri);
-            jmlmenu++;
-        }
+            if(var.getsatuan_tni()==true){
+                Panelmenu.add(btnSatuanTNI);
+                jmlmenu++;
+            }
 
-        if(var.getsatuan_polri()==true){
-            Panelmenu.add(btnSatuanPolri);
-            jmlmenu++;
-        }
+            if(var.getjabatan_tni()==true){
+                Panelmenu.add(btnJabatanTNI);
+                jmlmenu++;
+            }
 
-        if(var.getjabatan_polri()==true){
-            Panelmenu.add(btnJabatanPolri);
-            jmlmenu++;
-        }
+            if(var.getpangkat_tni()==true){
+                Panelmenu.add(btnPangkatTNI);
+                jmlmenu++;
+            }
 
-        if(var.getpangkat_polri()==true){
-            Panelmenu.add(btnPangkatPolri);
-            jmlmenu++;
-        }
+            if(var.getgolongan_polri()==true){
+                Panelmenu.add(btnGolonganPolri);
+                jmlmenu++;
+            }
+
+            if(var.getsatuan_polri()==true){
+                Panelmenu.add(btnSatuanPolri);
+                jmlmenu++;
+            }
+
+            if(var.getjabatan_polri()==true){
+                Panelmenu.add(btnJabatanPolri);
+                jmlmenu++;
+            }
+
+            if(var.getpangkat_polri()==true){
+                Panelmenu.add(btnPangkatPolri);
+                jmlmenu++;
+            }
+        }            
 
         if(var.getpasien()==true){
             Panelmenu.add(btnPasien);
@@ -17230,61 +17234,63 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
         
-        if(var.getgolongan_tni()==true){
-            if(btnGolonganTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnGolonganTNI);
-                jmlmenu++;
-            }                
-        }
-        
-        if(var.getsatuan_tni()==true){
-            if(btnSatuanTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnSatuanTNI);
-                jmlmenu++;
-            }                
-        }
-        
-        if(var.getjabatan_tni()==true){
-            if(btnJabatanTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnJabatanTNI);
-                jmlmenu++;
-            }                
-        }
-        
-        if(var.getpangkat_tni()==true){
-            if(btnPangkatTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnPangkatTNI);
-                jmlmenu++;
-            }                
-        }
-        
-        if(var.getgolongan_polri()==true){
-            if(btnGolonganPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnGolonganPolri);
-                jmlmenu++;
-            }                
-        }
-        
-        if(var.getsatuan_polri()==true){
-            if(btnSatuanPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnSatuanPolri);
-                jmlmenu++;
-            }                
-        }
-        
-        if(var.getjabatan_polri()==true){
-            if(btnJabatanPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnJabatanPolri);
-                jmlmenu++;
-            }                
-        }
-        
-        if(var.getpangkat_polri()==true){
-            if(btnPangkatPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnPangkatPolri);
-                jmlmenu++;
-            }                
-        }
+        if(tampilkantni.equals("Yes")){
+            if(var.getgolongan_tni()==true){
+                if(btnGolonganTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnGolonganTNI);
+                    jmlmenu++;
+                }                
+            }
+
+            if(var.getsatuan_tni()==true){
+                if(btnSatuanTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnSatuanTNI);
+                    jmlmenu++;
+                }                
+            }
+
+            if(var.getjabatan_tni()==true){
+                if(btnJabatanTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnJabatanTNI);
+                    jmlmenu++;
+                }                
+            }
+
+            if(var.getpangkat_tni()==true){
+                if(btnPangkatTNI.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnPangkatTNI);
+                    jmlmenu++;
+                }                
+            }
+
+            if(var.getgolongan_polri()==true){
+                if(btnGolonganPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnGolonganPolri);
+                    jmlmenu++;
+                }                
+            }
+
+            if(var.getsatuan_polri()==true){
+                if(btnSatuanPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnSatuanPolri);
+                    jmlmenu++;
+                }                
+            }
+
+            if(var.getjabatan_polri()==true){
+                if(btnJabatanPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnJabatanPolri);
+                    jmlmenu++;
+                }                
+            }
+
+            if(var.getpangkat_polri()==true){
+                if(btnPangkatPolri.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                    Panelmenu.add(btnPangkatPolri);
+                    jmlmenu++;
+                }                
+            }
+        }            
         
         if(var.getpasien()==true){
             if(btnPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
