@@ -86,7 +86,7 @@ public class DlgSetRM extends javax.swing.JDialog {
 
         tbNoUrut.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabMode3=new DefaultTableModel(null,new Object[]{"Kelurahan","Kecamatan","Kabupaten"}){
+        tabMode3=new DefaultTableModel(null,new Object[]{"Kelurahan","Kecamatan","Kabupaten","Propinsi"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -94,13 +94,15 @@ public class DlgSetRM extends javax.swing.JDialog {
         tbAlamat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAlamat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             TableColumn column = tbAlamat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(150);
             }else if(i==1){
                 column.setPreferredWidth(150);
             }else if(i==2){
+                column.setPreferredWidth(150);
+            }else if(i==3){
                 column.setPreferredWidth(150);
             }
         }
@@ -195,6 +197,8 @@ public class DlgSetRM extends javax.swing.JDialog {
         PanjangKelurahanPJ.setDocument(new batasInput((byte)3).getOnlyAngka(PanjangKelurahanPJ));
         PanjangKecamatanPJ.setDocument(new batasInput((byte)3).getOnlyAngka(PanjangKecamatanPJ));
         PanjangKabupatenPJ.setDocument(new batasInput((byte)3).getOnlyAngka(PanjangKabupatenPJ));
+        PanjangPropinsi.setDocument(new batasInput((byte)3).getOnlyAngka(PanjangPropinsi));
+        PanjangPropinsiPJ.setDocument(new batasInput((byte)3).getOnlyAngka(PanjangPropinsiPJ));
         ChkInput.setSelected(false);
         isForm();
     }
@@ -242,6 +246,8 @@ public class DlgSetRM extends javax.swing.JDialog {
         jLabel10 = new widget.Label();
         jLabel11 = new widget.Label();
         Kabupaten = new widget.ComboBox();
+        jLabel32 = new widget.Label();
+        Propinsi = new widget.ComboBox();
         internalFrame5 = new widget.InternalFrame();
         Scroll4 = new widget.ScrollPane();
         tbKelengkapan = new widget.Table();
@@ -316,6 +322,14 @@ public class DlgSetRM extends javax.swing.JDialog {
         YesNoKabupatenPJ = new widget.ComboBox();
         jLabel31 = new widget.Label();
         PanjangKabupatenPJ = new widget.TextBox();
+        jLabel50 = new widget.Label();
+        YesNoPropinsi = new widget.ComboBox();
+        PanjangPropinsi = new widget.TextBox();
+        jLabel51 = new widget.Label();
+        YesNoPropinsiPJ = new widget.ComboBox();
+        PanjangPropinsiPJ = new widget.TextBox();
+        jLabel52 = new widget.Label();
+        jLabel53 = new widget.Label();
         internalFrame6 = new widget.InternalFrame();
         Scroll5 = new widget.ScrollPane();
         tbValidasiRegistrasi = new widget.Table();
@@ -645,6 +659,23 @@ public class DlgSetRM extends javax.swing.JDialog {
         });
         panelGlass9.add(Kabupaten);
         Kabupaten.setBounds(488, 12, 60, 23);
+
+        jLabel32.setText("Aktifkan Propinsi :");
+        jLabel32.setName("jLabel32"); // NOI18N
+        panelGlass9.add(jLabel32);
+        jLabel32.setBounds(550, 12, 107, 23);
+
+        Propinsi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
+        Propinsi.setName("Propinsi"); // NOI18N
+        Propinsi.setOpaque(false);
+        Propinsi.setPreferredSize(new java.awt.Dimension(55, 28));
+        Propinsi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PropinsiKeyPressed(evt);
+            }
+        });
+        panelGlass9.add(Propinsi);
+        Propinsi.setBounds(660, 12, 60, 23);
 
         internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
@@ -1264,6 +1295,72 @@ public class DlgSetRM extends javax.swing.JDialog {
         FormInput.add(PanjangKabupatenPJ);
         PanjangKabupatenPJ.setBounds(718, 100, 55, 23);
 
+        jLabel50.setText("Propinsi :");
+        jLabel50.setName("jLabel50"); // NOI18N
+        FormInput.add(jLabel50);
+        jLabel50.setBounds(580, 130, 135, 23);
+
+        YesNoPropinsi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
+        YesNoPropinsi.setName("YesNoPropinsi"); // NOI18N
+        YesNoPropinsi.setOpaque(false);
+        YesNoPropinsi.setPreferredSize(new java.awt.Dimension(55, 28));
+        YesNoPropinsi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                YesNoPropinsiKeyPressed(evt);
+            }
+        });
+        FormInput.add(YesNoPropinsi);
+        YesNoPropinsi.setBounds(718, 130, 55, 23);
+
+        PanjangPropinsi.setText("0");
+        PanjangPropinsi.setHighlighter(null);
+        PanjangPropinsi.setName("PanjangPropinsi"); // NOI18N
+        PanjangPropinsi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PanjangPropinsiKeyPressed(evt);
+            }
+        });
+        FormInput.add(PanjangPropinsi);
+        PanjangPropinsi.setBounds(718, 160, 55, 23);
+
+        jLabel51.setText("Minimal Propinsi :");
+        jLabel51.setName("jLabel51"); // NOI18N
+        FormInput.add(jLabel51);
+        jLabel51.setBounds(580, 160, 135, 23);
+
+        YesNoPropinsiPJ.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
+        YesNoPropinsiPJ.setName("YesNoPropinsiPJ"); // NOI18N
+        YesNoPropinsiPJ.setOpaque(false);
+        YesNoPropinsiPJ.setPreferredSize(new java.awt.Dimension(55, 28));
+        YesNoPropinsiPJ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                YesNoPropinsiPJKeyPressed(evt);
+            }
+        });
+        FormInput.add(YesNoPropinsiPJ);
+        YesNoPropinsiPJ.setBounds(718, 190, 55, 23);
+
+        PanjangPropinsiPJ.setText("0");
+        PanjangPropinsiPJ.setHighlighter(null);
+        PanjangPropinsiPJ.setName("PanjangPropinsiPJ"); // NOI18N
+        PanjangPropinsiPJ.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PanjangPropinsiPJKeyPressed(evt);
+            }
+        });
+        FormInput.add(PanjangPropinsiPJ);
+        PanjangPropinsiPJ.setBounds(718, 220, 55, 23);
+
+        jLabel52.setText("Propinsi P.J. :");
+        jLabel52.setName("jLabel52"); // NOI18N
+        FormInput.add(jLabel52);
+        jLabel52.setBounds(580, 190, 135, 23);
+
+        jLabel53.setText("Minimal Propinsi P.J. :");
+        jLabel53.setName("jLabel53"); // NOI18N
+        FormInput.add(jLabel53);
+        jLabel53.setBounds(580, 220, 135, 23);
+
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         internalFrame5.add(PanelInput, java.awt.BorderLayout.PAGE_START);
@@ -1449,8 +1546,9 @@ public class DlgSetRM extends javax.swing.JDialog {
                 if(tabMode3.getRowCount()==0){
                     Sequel.menyimpan("set_alamat_pasien",
                             "'"+Kelurahan.getSelectedItem().toString().replaceAll("Yes","true").replaceAll("No","false")+"',"+
-                                    "'"+Kecamatan.getSelectedItem().toString().replaceAll("Yes","true").replaceAll("No","false")+"',"+
-                                            "'"+Kabupaten.getSelectedItem().toString().replaceAll("Yes","true").replaceAll("No","false")+"'","Pengaturan Alamat"
+                            "'"+Kecamatan.getSelectedItem().toString().replaceAll("Yes","true").replaceAll("No","false")+"',"+
+                            "'"+Kabupaten.getSelectedItem().toString().replaceAll("Yes","true").replaceAll("No","false")+"',"+
+                            "'"+Propinsi.getSelectedItem().toString().replaceAll("Yes","true").replaceAll("No","false")+"'","Pengaturan Alamat"
                     );
                     tampilalamat();
                 }else if(tabMode3.getRowCount()>0){
@@ -1492,8 +1590,12 @@ public class DlgSetRM extends javax.swing.JDialog {
                     Valid.textKosong(PanjangKecamatanPJ,"Panjang Kecamatan P.J.");
                 }else if(PanjangKabupatenPJ.getText().trim().equals("")){
                     Valid.textKosong(PanjangKabupatenPJ,"Panjang Kabupaten P.J.");
+                }else if(PanjangPropinsi.getText().trim().equals("")){
+                    Valid.textKosong(PanjangPropinsi,"Panjang Propinsi");
+                }else if(PanjangPropinsiPJ.getText().trim().equals("")){
+                    Valid.textKosong(PanjangPropinsiPJ,"Panjang Propinsi P.J.");
                 }else if(tabMode4.getRowCount()==0){
-                    if(Sequel.menyimpantf("set_kelengkapan_data_pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Set Kelengkapan",34,new String[]{
+                    if(Sequel.menyimpantf("set_kelengkapan_data_pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Set Kelengkapan",38,new String[]{
                         YesNoKTP.getSelectedItem().toString(), PanjangKTP.getText(),YesNoTmpLahir.getSelectedItem().toString(),PanjangTmpLahir.getText(),
                         YesNoNamaIbu.getSelectedItem().toString(),PanjangNamaIbu.getText(),YesNoAlamat.getSelectedItem().toString(),PanjangAlamat.getText(),
                         YesNoPekerjaan.getSelectedItem().toString(),PanjangPekerjaan.getText(),YesNoTelp.getSelectedItem().toString(),PanjangTelp.getText(),
@@ -1502,7 +1604,8 @@ public class DlgSetRM extends javax.swing.JDialog {
                         YesNoKecamatan.getSelectedItem().toString(),PanjangKecamatan.getText(),YesNoKabupaten.getSelectedItem().toString(),PanjangKabupaten.getText(),
                         YesNoPekerjaanPJ.getSelectedItem().toString(),PanjangPekerjaanPJ.getText(),YesNoAlamatPJ.getSelectedItem().toString(),PanjangAlamatPJ.getText(),
                         YesNoKelurahanPJ.getSelectedItem().toString(), PanjangKelurahanPJ.getText(),YesNoKecamatanPJ.getSelectedItem().toString(),PanjangKecamatanPJ.getText(),
-                        YesNoKabupatenPJ.getSelectedItem().toString(), PanjangKabupatenPJ.getText()
+                        YesNoKabupatenPJ.getSelectedItem().toString(), PanjangKabupatenPJ.getText(),YesNoPropinsi.getSelectedItem().toString(), PanjangPropinsi.getText(),
+                        YesNoPropinsiPJ.getSelectedItem().toString(), PanjangPropinsiPJ.getText()
                     })==true){
                         tampilkelengkapan();
                         emptTeks2();
@@ -1557,10 +1660,14 @@ public class DlgSetRM extends javax.swing.JDialog {
             }else if(TabRawat.getSelectedIndex()==2){
                 Valid.pindah(evt,Kabupaten,BtnHapus);
             }else if(TabRawat.getSelectedIndex()==3){
-                Valid.pindah(evt,PanjangKabupatenPJ,BtnHapus);
+                Valid.pindah(evt,PanjangPropinsiPJ,BtnHapus);
             }else if(TabRawat.getSelectedIndex()==4){
                 Valid.pindah(evt,ValidasiRegistrasi,BtnHapus);
-            }            
+            }else if(TabRawat.getSelectedIndex()==5){
+                Valid.pindah(evt,ValidasiCatatan,BtnHapus);
+            }else if(TabRawat.getSelectedIndex()==6){
+                Valid.pindah(evt,TampilkanTNI,BtnHapus);
+            }             
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1722,11 +1829,23 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     }//GEN-LAST:event_cmbPosisiKeyPressed
 
     private void tbAlamatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAlamatMouseClicked
-        // TODO add your handling code here:
+        if(tabMode3.getRowCount()!=0){
+            try {
+                getDataAlamat();
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
     }//GEN-LAST:event_tbAlamatMouseClicked
 
     private void tbAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbAlamatKeyPressed
-        // TODO add your handling code here:
+        if(tabMode3.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getDataAlamat();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
     }//GEN-LAST:event_tbAlamatKeyPressed
 
     private void KelurahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelurahanKeyPressed
@@ -1898,7 +2017,7 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     }//GEN-LAST:event_YesNoKabupatenPJKeyPressed
 
     private void PanjangKabupatenPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PanjangKabupatenPJKeyPressed
-        Valid.pindah(evt, YesNoKabupatenPJ,BtnSimpan);
+        Valid.pindah(evt, YesNoKabupatenPJ,YesNoPropinsi);
     }//GEN-LAST:event_PanjangKabupatenPJKeyPressed
 
     private void tbValidasiRegistrasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbValidasiRegistrasiMouseClicked
@@ -1973,6 +2092,26 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
         // TODO add your handling code here:
     }//GEN-LAST:event_TampilkanTNIKeyPressed
 
+    private void PropinsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PropinsiKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PropinsiKeyPressed
+
+    private void YesNoPropinsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_YesNoPropinsiKeyPressed
+        Valid.pindah(evt, PanjangKabupatenPJ,PanjangPropinsi);
+    }//GEN-LAST:event_YesNoPropinsiKeyPressed
+
+    private void PanjangPropinsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PanjangPropinsiKeyPressed
+        Valid.pindah(evt, YesNoPropinsi,YesNoPropinsiPJ);
+    }//GEN-LAST:event_PanjangPropinsiKeyPressed
+
+    private void YesNoPropinsiPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_YesNoPropinsiPJKeyPressed
+        Valid.pindah(evt, PanjangPropinsi,PanjangPropinsiPJ);
+    }//GEN-LAST:event_YesNoPropinsiPJKeyPressed
+
+    private void PanjangPropinsiPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PanjangPropinsiPJKeyPressed
+        Valid.pindah(evt, YesNoPropinsiPJ,BtnSimpan);
+    }//GEN-LAST:event_PanjangPropinsiPJKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2013,9 +2152,12 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.TextBox PanjangNoPeserta;
     private widget.TextBox PanjangPekerjaan;
     private widget.TextBox PanjangPekerjaanPJ;
+    private widget.TextBox PanjangPropinsi;
+    private widget.TextBox PanjangPropinsiPJ;
     private widget.TextBox PanjangTelp;
     private widget.TextBox PanjangTmpLahir;
     private widget.TextBox PanjangUmur;
+    private widget.ComboBox Propinsi;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
@@ -2041,6 +2183,8 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.ComboBox YesNoNoPeserta;
     private widget.ComboBox YesNoPekerjaan;
     private widget.ComboBox YesNoPekerjaanPJ;
+    private widget.ComboBox YesNoPropinsi;
+    private widget.ComboBox YesNoPropinsiPJ;
     private widget.ComboBox YesNoTelp;
     private widget.ComboBox YesNoTmpLahir;
     private widget.ComboBox YesNoUmur;
@@ -2078,6 +2222,7 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.Label jLabel29;
     private widget.Label jLabel30;
     private widget.Label jLabel31;
+    private widget.Label jLabel32;
     private widget.Label jLabel33;
     private widget.Label jLabel34;
     private widget.Label jLabel35;
@@ -2097,6 +2242,10 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
     private widget.Label jLabel48;
     private widget.Label jLabel49;
     private widget.Label jLabel5;
+    private widget.Label jLabel50;
+    private widget.Label jLabel51;
+    private widget.Label jLabel52;
+    private widget.Label jLabel53;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
@@ -2188,7 +2337,11 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
         PanjangKecamatanPJ.setText("0");
         YesNoKecamatanPJ.setSelectedIndex(0);
         PanjangKabupatenPJ.setText("0");
-        YesNoKecamatanPJ.setSelectedIndex(0);
+        YesNoKabupatenPJ.setSelectedIndex(0);
+        PanjangPropinsi.setText("0");
+        YesNoPropinsi.setSelectedIndex(0);
+        PanjangPropinsiPJ.setText("0");
+        YesNoPropinsiPJ.setSelectedIndex(0);
         YesNoKTP.requestFocus();
     }
     
@@ -2236,7 +2389,8 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
                     tabMode3.addRow(new Object[]{
                         rs.getString(1).replaceAll("true","Yes").replaceAll("false","No"),
                         rs.getString(2).replaceAll("true","Yes").replaceAll("false","No"),
-                        rs.getString(3).replaceAll("true","Yes").replaceAll("false","No")
+                        rs.getString(3).replaceAll("true","Yes").replaceAll("false","No"),
+                        rs.getString(4).replaceAll("true","Yes").replaceAll("false","No")
                     });
                 }
             } catch (Exception e) {
@@ -2274,6 +2428,7 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
             Kelurahan.setSelectedItem(tbAlamat.getValueAt(row,0).toString());
             Kecamatan.setSelectedItem(tbAlamat.getValueAt(row,1).toString());
             Kabupaten.setSelectedItem(tbAlamat.getValueAt(row,2).toString());
+            Propinsi.setSelectedItem(tbAlamat.getValueAt(row,3).toString());
         }
     }
     
@@ -2318,6 +2473,10 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
                     tabMode4.addRow(new Object[]{" Minimal Panjang Kecamatan Penanggung Jawab Pasien",rs.getString(32)});
                     tabMode4.addRow(new Object[]{" Kelengkapan Data Kabupaten Penanggung Jawab Pasien",rs.getString(33)});
                     tabMode4.addRow(new Object[]{" Minimal Panjang Kabupaten Penanggung Jawab Pasien",rs.getString(34)});
+                    tabMode4.addRow(new Object[]{" Kelengkapan Data Propinsi Pasien",rs.getString(35)});
+                    tabMode4.addRow(new Object[]{" Minimal Panjang Propinsi Pasien",rs.getString(36)});
+                    tabMode4.addRow(new Object[]{" Kelengkapan Data Propinsi Penanggung Jawab Pasien",rs.getString(37)});
+                    tabMode4.addRow(new Object[]{" Minimal Panjang Propinsi Penanggung Jawab Pasien",rs.getString(38)});
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -2371,6 +2530,10 @@ private void normKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_norm
             PanjangKecamatanPJ.setText(tbKelengkapan.getValueAt(31,1).toString()); 
             YesNoKabupatenPJ.setSelectedItem(tbKelengkapan.getValueAt(32,1).toString());            
             PanjangKabupatenPJ.setText(tbKelengkapan.getValueAt(33,1).toString()); 
+            YesNoPropinsi.setSelectedItem(tbKelengkapan.getValueAt(34,1).toString());            
+            PanjangPropinsi.setText(tbKelengkapan.getValueAt(35,1).toString()); 
+            YesNoPropinsiPJ.setSelectedItem(tbKelengkapan.getValueAt(36,1).toString());            
+            PanjangPropinsiPJ.setText(tbKelengkapan.getValueAt(37,1).toString()); 
         }
     }
     

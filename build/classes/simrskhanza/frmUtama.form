@@ -6168,7 +6168,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="21/07/2018"/>
+            <StringItem index="0" value="23/07/2018"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -7094,7 +7094,7 @@
         <Component class="widget.ButtonBig" name="BtnMenu">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/menu.png"/>
@@ -7139,7 +7139,7 @@
         <Component class="widget.ButtonBig" name="BtnToolReg">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/PatientFile.png"/>
@@ -7168,7 +7168,7 @@
         <Component class="widget.ButtonBig" name="btnToolIGD">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/Doctor.png"/>
@@ -7213,7 +7213,7 @@
         <Component class="widget.ButtonBig" name="btnToolBcdRalan">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/barralan.png"/>
@@ -7242,7 +7242,7 @@
         <Component class="widget.ButtonBig" name="btnToolBcdRanap">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/barranap.png"/>
@@ -7271,7 +7271,7 @@
         <Component class="widget.ButtonBig" name="btnToolLab">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/addressbook-search24.png"/>
@@ -7300,7 +7300,7 @@
         <Component class="widget.ButtonBig" name="btnToolRad">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/Surgeon.png"/>
@@ -7329,7 +7329,7 @@
         <Component class="widget.ButtonBig" name="BtnToolJualObat">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/shopping-cart-insert24.png"/>
@@ -7373,7 +7373,7 @@
         <Component class="widget.ButtonBig" name="BtnToolKamnap">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/home24.png"/>
@@ -7402,7 +7402,7 @@
         <Component class="widget.ButtonBig" name="BtnToolKasir">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/addressbook-edit24.png"/>
@@ -7447,7 +7447,7 @@
         <Component class="widget.ButtonBig" name="BtnLog">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/login2.png"/>
@@ -7475,7 +7475,7 @@
         <Component class="widget.ButtonBig" name="BtnClose">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="6e" green="6e" red="8c" type="rgb"/>
+              <Color blue="78" green="78" red="8c" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/Delete.png"/>

@@ -527,7 +527,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
                 Valid.MyReport("rptTemporaryPresensi.jrxml","report","::[ Temporary Presensi ]::",
                     "SELECT pegawai.id, pegawai.nik, pegawai.nama, temporary_presensi.shift, " +
                     "temporary_presensi.jam_datang, now() as jam_pulang, temporary_presensi.status,  " +
-                    "temporary_presensi.keterlambatan, ((unix_timestamp(now()) - unix_timestamp(jam_datang))/3600) as durasi,photo  from pegawai  " +
+                    "temporary_presensi.keterlambatan, ((unix_timestamp(now()) - unix_timestamp(jam_datang))/3600) as durasi,temporary_presensi.photo  from pegawai  " +
                     "inner join temporary_presensi on pegawai.id=temporary_presensi.id " +
                     "where  pegawai.nik like '%"+TCari.getText().trim()+"%' or " +
                     "pegawai.nama like '%"+TCari.getText().trim()+"%' or " +
@@ -692,7 +692,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                     "SELECT pegawai.id, pegawai.nik, pegawai.nama, temporary_presensi.shift, " +
                     "temporary_presensi.jam_datang, now() as jam_pulang, temporary_presensi.status,  " +
-                    "temporary_presensi.keterlambatan, ((unix_timestamp(now()) - unix_timestamp(jam_datang))/3600) as durasi,photo  from pegawai  " +
+                    "temporary_presensi.keterlambatan, ((unix_timestamp(now()) - unix_timestamp(jam_datang))/3600) as durasi,temporary_presensi.photo  from pegawai  " +
                     "inner join temporary_presensi on pegawai.id=temporary_presensi.id " +
                     "where  pegawai.nik like ? or " +
                     "pegawai.nama like ? or " +
