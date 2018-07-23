@@ -2214,7 +2214,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         nmsukubangsa.setEditable(false);
         nmsukubangsa.setName("nmsukubangsa"); // NOI18N
         FormKelengkapanPasien.add(nmsukubangsa);
-        nmsukubangsa.setBounds(110, 235, 259, 23);
+        nmsukubangsa.setBounds(110, 235, 275, 23);
 
         BtnSuku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSuku.setMnemonic('1');
@@ -2231,7 +2231,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(BtnSuku);
-        BtnSuku.setBounds(370, 235, 28, 23);
+        BtnSuku.setBounds(387, 235, 28, 23);
 
         jLabel41.setText("Bahasa :");
         jLabel41.setName("jLabel41"); // NOI18N
@@ -2241,7 +2241,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         nmbahasa.setEditable(false);
         nmbahasa.setName("nmbahasa"); // NOI18N
         FormKelengkapanPasien.add(nmbahasa);
-        nmbahasa.setBounds(110, 265, 259, 23);
+        nmbahasa.setBounds(110, 265, 275, 23);
 
         BtnBahasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnBahasa.setMnemonic('1');
@@ -2258,7 +2258,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(BtnBahasa);
-        BtnBahasa.setBounds(370, 265, 28, 23);
+        BtnBahasa.setBounds(387, 265, 28, 23);
 
         jLabel42.setText("Cacat Fisik :");
         jLabel42.setName("jLabel42"); // NOI18N
@@ -2268,7 +2268,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         nmcacat.setEditable(false);
         nmcacat.setName("nmcacat"); // NOI18N
         FormKelengkapanPasien.add(nmcacat);
-        nmcacat.setBounds(110, 295, 259, 23);
+        nmcacat.setBounds(110, 295, 275, 23);
 
         BtnCacat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnCacat.setMnemonic('1');
@@ -2285,7 +2285,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             }
         });
         FormKelengkapanPasien.add(BtnCacat);
-        BtnCacat.setBounds(370, 295, 28, 23);
+        BtnCacat.setBounds(387, 295, 28, 23);
 
         jLabel43.setText("Instansi Pasien :");
         jLabel43.setName("jLabel43"); // NOI18N
@@ -3295,6 +3295,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             isForm();
             JOptionPane.showMessageDialog(null,"Maaf, data peserta BPJS masih kosong. Silahkan lakukan pencarian berdasar No.Kartu...!!!!");
         }else{
+            TTmp.requestFocus();
             isForm();
         }            
     }//GEN-LAST:event_ChkCariActionPerformed
@@ -3755,6 +3756,14 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         Valid.pindah(evt, BtnSimpan, BtnKeluar);
     }//GEN-LAST:event_BtnCari1KeyPressed
 
+    private void kdperusahaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdperusahaanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdperusahaanKeyPressed
+
+    private void kdcacatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdcacatKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kdcacatKeyPressed
+
     private void TTmpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TTmpKeyPressed
         Valid.pindah(evt,TNo,CMbGd);
     }//GEN-LAST:event_TTmpKeyPressed
@@ -3800,7 +3809,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             if(Alamat.getText().equals("")){
                 Alamat.setText("ALAMAT");
             }
-            Kdpnj.requestFocus();
+            BtnCacat.requestFocus();
         }
     }//GEN-LAST:event_AlamatKeyPressed
 
@@ -3830,10 +3839,10 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             PekerjaanPj.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            if(Kabupaten.getText().equals("KABUPATEN")){
-                Kabupaten.setText("");
+            if(Propinsi.getText().equals("PROPINSI")){
+                Propinsi.setText("");
             }
-            Kabupaten.requestFocus();
+            Propinsi.requestFocus();
         }
     }//GEN-LAST:event_SaudaraKeyPressed
 
@@ -3843,10 +3852,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnPenjabActionPerformed(null);
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            if(Alamat.getText().equals("ALAMAT")){
-                Alamat.setText("");
-            }
-            Alamat.requestFocus();
+            BtnSuku.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             NmIbu.requestFocus();
         }
@@ -3942,7 +3948,13 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
 
     private void KabupatenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KabupatenKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Saudara.requestFocus();
+            if(Propinsi.getText().equals("PROPINSI")){
+                Propinsi.setText("");
+            }
+            if(Kabupaten.getText().equals("")){
+                Kabupaten.setText("KABUPATEN");
+            }
+            Propinsi.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             if(Kabupaten.getText().equals("")){
                 Kabupaten.setText("KABUPATEN");
@@ -4079,7 +4091,10 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             if(KabupatenPj.getText().equals("")){
                 KabupatenPj.setText("KABUPATEN");
             }
-            TNoReg.requestFocus();
+            if(PropinsiPj.getText().equals("PROPINSI")){
+                PropinsiPj.setText("");
+            }
+            PropinsiPj.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             if(KabupatenPj.getText().equals("")){
                 KabupatenPj.setText("KABUPATEN");
@@ -4166,7 +4181,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSukuActionPerformed(null);
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            PekerjaanPj.requestFocus();
+            Kdpnj.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             BtnBahasa.requestFocus();
         }
@@ -4204,7 +4219,10 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnBahasa.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            cmbAgama.requestFocus();
+            if(Alamat.getText().equals("ALAMAT")){
+                Alamat.setText("");
+            }
+            Alamat.requestFocus();
         }
     }//GEN-LAST:event_BtnCacatKeyPressed
 
@@ -4225,16 +4243,16 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             }
             PropinsiPj.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            NIP.requestFocus();
+            EMail.requestFocus();
         }
     }//GEN-LAST:event_BtnPerusahaanKeyPressed
 
     private void NIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIPKeyPressed
-        Valid.pindah(evt,BtnPerusahaan,BtnSimpan);
+        Valid.pindah(evt,BtnPerusahaan,TNoReg);
     }//GEN-LAST:event_NIPKeyPressed
 
     private void EMailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EMailKeyPressed
-        Valid.pindah(evt,TNoPeserta,TTlp);
+        Valid.pindah(evt,BtnPerusahaan,NIP);
     }//GEN-LAST:event_EMailKeyPressed
 
     private void PropinsiMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PropinsiMouseMoved
@@ -4254,10 +4272,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
             if(Propinsi.getText().equals("")){
                 Propinsi.setText("PROPINSI");
             }
-            if(AlamatPj.getText().equals("ALAMAT")){
-                AlamatPj.setText("");
-            }
-            AlamatPj.requestFocus();
+            Saudara.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             if(Propinsi.getText().equals("")){
                 Propinsi.setText("PROPINSI");
@@ -4425,14 +4440,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         jabatanpolri.setLocationRelativeTo(internalFrame1);
         jabatanpolri.setVisible(true);
     }//GEN-LAST:event_BtnJabatanPolriActionPerformed
-
-    private void kdperusahaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdperusahaanKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kdperusahaanKeyPressed
-
-    private void kdcacatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdcacatKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kdcacatKeyPressed
 
     /**
     * @param args the command line arguments
