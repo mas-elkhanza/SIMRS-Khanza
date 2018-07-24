@@ -213,6 +213,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         styleSheet.addRule(
                 ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
                 ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#5a7850;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
                 ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
                 ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#5a7850;}"
         );
@@ -293,7 +294,6 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setBackground(new java.awt.Color(245, 250, 240));
         Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
@@ -306,7 +306,6 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setBackground(new java.awt.Color(245, 250, 240));
         Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
@@ -619,6 +618,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
                     ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
+                    ".head td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
                     ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#5a7850;}"+                    
                     ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
                     ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#5a7850;}"
@@ -887,7 +887,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         try {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi'>"+
+                "<tr class='head'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='1%'>No.</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Nomor RM</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Nama Pasien</td>"+
@@ -1065,7 +1065,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         try {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi'>"+
+                "<tr class='head'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='1%'>No.</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Nomor RM</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Nama Pasien</td>"+
