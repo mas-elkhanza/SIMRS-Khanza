@@ -410,7 +410,10 @@ public class DlgGolonganPolri extends javax.swing.JDialog {
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
-            }            
+            }    
+            if(evt.getClickCount()==2){
+                dispose();
+            }
         }
 }//GEN-LAST:event_tbkecamatanMouseClicked
 
