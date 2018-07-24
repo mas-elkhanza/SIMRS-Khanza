@@ -34,9 +34,10 @@ public class DlgRHMenejemen extends javax.swing.JDialog {
     private int i=0,z=0;
     double total=0,totaljm=0,detail_lab=0;
     private PreparedStatement ps,psrawatjalandr,psrawatjalandrpr,psrawatjalanpr,psrawatinapdr,psrawatinapdrpr,
-            psrawatinappr,psperiksa_lab,psbagian_rs,psdetail_lab,psperiksa_radiologi;
+            psrawatinappr,psperiksa_lab,
+            psdetail_lab,psperiksa_radiologi;
     private ResultSet rs,rsrawatjalandr,rsrawatjalandrpr,rsrawatjalanpr,rsrawatinapdr,rsrawatinapdrpr,rsrawatinappr,
-            rsperiksa_lab,rsdetail_lab,rsperiksa_radiologi,rsbagian_rs;
+            rsperiksa_lab,rsdetail_lab,rsperiksa_radiologi;
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
@@ -139,7 +140,6 @@ public class DlgRHMenejemen extends javax.swing.JDialog {
         panelisi1 = new widget.panelisi();
         chkRalan = new widget.CekBox();
         chkRanap = new widget.CekBox();
-        chkOperasi = new widget.CekBox();
         chkLaborat = new widget.CekBox();
         chkRadiologi = new widget.CekBox();
         BtnAll = new widget.Button();
@@ -158,7 +158,7 @@ public class DlgRHMenejemen extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Menejemen Rumah Sakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Harian Menejemen Rumah Sakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -283,7 +283,7 @@ public class DlgRHMenejemen extends javax.swing.JDialog {
         chkRalan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkRalan.setName("chkRalan"); // NOI18N
         chkRalan.setOpaque(false);
-        chkRalan.setPreferredSize(new java.awt.Dimension(85, 30));
+        chkRalan.setPreferredSize(new java.awt.Dimension(110, 30));
         chkRalan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkRalanActionPerformed(evt);
@@ -296,7 +296,7 @@ public class DlgRHMenejemen extends javax.swing.JDialog {
         chkRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkRanap.setName("chkRanap"); // NOI18N
         chkRanap.setOpaque(false);
-        chkRanap.setPreferredSize(new java.awt.Dimension(85, 30));
+        chkRanap.setPreferredSize(new java.awt.Dimension(110, 30));
         chkRanap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkRanapActionPerformed(evt);
@@ -304,25 +304,12 @@ public class DlgRHMenejemen extends javax.swing.JDialog {
         });
         panelisi1.add(chkRanap);
 
-        chkOperasi.setSelected(true);
-        chkOperasi.setText("Operasi");
-        chkOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkOperasi.setName("chkOperasi"); // NOI18N
-        chkOperasi.setOpaque(false);
-        chkOperasi.setPreferredSize(new java.awt.Dimension(85, 30));
-        chkOperasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkOperasiActionPerformed(evt);
-            }
-        });
-        panelisi1.add(chkOperasi);
-
         chkLaborat.setSelected(true);
         chkLaborat.setText("Laboratorium");
         chkLaborat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkLaborat.setName("chkLaborat"); // NOI18N
         chkLaborat.setOpaque(false);
-        chkLaborat.setPreferredSize(new java.awt.Dimension(90, 30));
+        chkLaborat.setPreferredSize(new java.awt.Dimension(110, 30));
         chkLaborat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkLaboratActionPerformed(evt);
@@ -335,7 +322,7 @@ public class DlgRHMenejemen extends javax.swing.JDialog {
         chkRadiologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkRadiologi.setName("chkRadiologi"); // NOI18N
         chkRadiologi.setOpaque(false);
-        chkRadiologi.setPreferredSize(new java.awt.Dimension(85, 30));
+        chkRadiologi.setPreferredSize(new java.awt.Dimension(110, 30));
         chkRadiologi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkRadiologiActionPerformed(evt);
@@ -543,10 +530,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         prosesCari();
     }//GEN-LAST:event_chkRanapActionPerformed
 
-    private void chkOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOperasiActionPerformed
-        prosesCari();
-    }//GEN-LAST:event_chkOperasiActionPerformed
-
     /**
     * @param args the command line arguments
     */
@@ -573,7 +556,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Tanggal Tgl2;
     private widget.Button btnDokter;
     private widget.CekBox chkLaborat;
-    private widget.CekBox chkOperasi;
     private widget.CekBox chkRadiologi;
     private widget.CekBox chkRalan;
     private widget.CekBox chkRanap;
@@ -798,44 +780,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             }
                         }
                    }                   
-                              
-                   if(chkOperasi.isSelected()==true){
-                        psbagian_rs=koneksi.prepareStatement("select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.bagian_rs,"+
-                            "operasi.tgl_operasi from operasi inner join reg_periksa inner join pasien inner join paket_operasi "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and operasi.kode_paket=paket_operasi.kode_paket "+
-                            "where operasi.tgl_operasi between ? and ? and reg_periksa.kd_pj=? "+
-                            " and operasi.bagian_rs>0 order by operasi.tgl_operasi,paket_operasi.nm_perawatan  ");
-                        try {
-                            psbagian_rs.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            psbagian_rs.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            psbagian_rs.setString(3,rs.getString("kd_pj"));               
-                            rsbagian_rs=psbagian_rs.executeQuery();
-                            rsbagian_rs.last();
-                            if(rsbagian_rs.getRow()>0){
-                                z++; 
-                                tabMode.addRow(new Object[]{"","",z+". Operasi/VK ","","",""}); 
-                            }
-                            //N.M.S
-                            rsbagian_rs.beforeFirst();
-                            while(rsbagian_rs.next()){
-                                tabMode.addRow(new Object[]{
-                                    "","","     "+rsbagian_rs.getString("tgl_operasi"),rsbagian_rs.getString("nm_pasien"),
-                                    rsbagian_rs.getString("nm_perawatan")+" (N.M.S)",Valid.SetAngka(rsbagian_rs.getDouble("bagian_rs"))
-                                });      
-                                total=total+rsbagian_rs.getDouble("bagian_rs");
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif Operasi : "+e);
-                        } finally{
-                            if(rsbagian_rs!=null){
-                                rsbagian_rs.close();
-                            }
-                            if(psbagian_rs!=null){
-                                psbagian_rs.close();
-                            }                           
-                        }
-                   }
-                   
+                                     
                    //periksa lab
                    if(chkLaborat.isSelected()==true){
                        psperiksa_lab=koneksi.prepareStatement("select periksa_lab.menejemen,pasien.nm_pasien,"+

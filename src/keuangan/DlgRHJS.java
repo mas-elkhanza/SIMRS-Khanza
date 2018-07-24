@@ -34,10 +34,10 @@ public class DlgRHJS extends javax.swing.JDialog {
     private int i=0,z=0;
     double total=0,totaljm=0,detail_lab=0;
     private PreparedStatement ps,psrawatjalandr,psrawatjalandrpr,psrawatjalanpr,psrawatinapdr,psrawatinapdrpr,
-            psrawatinappr,psbiayaalat,psbiayasewaok,psakomodasi,psbiayasarpras,psperiksa_lab,
+            psrawatinappr,psbiayaalat,psbiayasewaok,psakomodasi,psbagian_rs,psbiayasarpras,psperiksa_lab,
             psdetail_lab,psperiksa_radiologi;
     private ResultSet rs,rsrawatjalandr,rsrawatjalandrpr,rsrawatjalanpr,rsrawatinapdr,rsrawatinapdrpr,rsrawatinappr,
-            rsbiayaalat,rsbiayasewaok,rsakomodasi,rsbiayasarpras,rsperiksa_lab,
+            rsbiayaalat,rsbiayasewaok,rsakomodasi,rsbagian_rs,rsbiayasarpras,rsperiksa_lab,
             rsdetail_lab,rsperiksa_radiologi;
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -818,6 +818,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and operasi.kode_paket=paket_operasi.kode_paket "+
                             "where operasi.tgl_operasi between ? and ? and reg_periksa.kd_pj=? "+
                             " and operasi.akomodasi>0 order by operasi.tgl_operasi,paket_operasi.nm_perawatan  ");
+                       psbagian_rs=koneksi.prepareStatement("select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.bagian_rs,"+
+                            "operasi.tgl_operasi from operasi inner join reg_periksa inner join pasien inner join paket_operasi "+
+                            "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and operasi.kode_paket=paket_operasi.kode_paket "+
+                            "where operasi.tgl_operasi between ? and ? and reg_periksa.kd_pj=? "+
+                            " and operasi.bagian_rs>0 order by operasi.tgl_operasi,paket_operasi.nm_perawatan  ");
                        psbiayasarpras=koneksi.prepareStatement("select pasien.nm_pasien,paket_operasi.nm_perawatan,operasi.biayasarpras,"+
                             "operasi.tgl_operasi from operasi inner join reg_periksa inner join pasien inner join paket_operasi "+
                             "on operasi.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and operasi.kode_paket=paket_operasi.kode_paket "+
@@ -842,13 +847,20 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                            rsakomodasi=psakomodasi.executeQuery();
                            rsakomodasi.last();
                            
+                           psbagian_rs.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                           psbagian_rs.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                           psbagian_rs.setString(3,rs.getString("kd_pj"));               
+                           rsbagian_rs=psbagian_rs.executeQuery();
+                           rsbagian_rs.last();
+                           
                            psbiayasarpras.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
                            psbiayasarpras.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                            psbiayasarpras.setString(3,rs.getString("kd_pj"));               
                            rsbiayasarpras=psbiayasarpras.executeQuery();
                            rsbiayasarpras.last();
                            
-                           if((rsbiayaalat.getRow()>0)||(rsbiayasewaok.getRow()>0)||(rsakomodasi.getRow()>0)||(rsbiayasarpras.getRow()>0)){
+                           if((rsbiayaalat.getRow()>0)||(rsbiayasewaok.getRow()>0)||(rsakomodasi.getRow()>0)
+                                   ||(rsbagian_rs.getRow()>0)||(rsbiayasarpras.getRow()>0)){
                                z++; 
                                tabMode.addRow(new Object[]{"","",z+". Operasi/VK ","","",""});   
                            }
@@ -883,6 +895,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                total=total+rsakomodasi.getDouble("akomodasi");
                            }
                            
+                           //N.M.S
+                           rsbagian_rs.beforeFirst();
+                           while(rsbagian_rs.next()){
+                               tabMode.addRow(new Object[]{
+                                   "","","     "+rsbagian_rs.getString("tgl_operasi"),rsbagian_rs.getString("nm_pasien"),
+                                   rsbagian_rs.getString("nm_perawatan")+" (N.M.S)",Valid.SetAngka(rsbagian_rs.getDouble("bagian_rs"))
+                               });      
+                               total=total+rsbagian_rs.getDouble("bagian_rs");
+                           }
                            //Sarpras
                            rsbiayasarpras.beforeFirst();
                            while(rsbiayasarpras.next()){
@@ -912,6 +933,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                            }
                            if(psakomodasi!=null){
                                psakomodasi.close();
+                           }
+                           if(rsbagian_rs!=null){
+                               rsbagian_rs.close();
+                           }
+                           if(psbagian_rs!=null){
+                               psbagian_rs.close();
                            }
                            if(rsbiayasarpras!=null){
                                rsbiayasarpras.close();

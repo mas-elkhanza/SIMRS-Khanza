@@ -173,7 +173,7 @@
      function bukainput($sql){
         bukakoneksi();
         $result=mysqli_query(bukakoneksi(),$sql)
-        or die("<font color=red><b>Gagal</b>, Ada data dengan primary key yang sama !");
+        or die(mysqli_error()."<font color=red><b>Gagal</b>, Ada data dengan primary key yang sama !");
         mysqli_close(bukakoneksi());
         return $result;
      }
