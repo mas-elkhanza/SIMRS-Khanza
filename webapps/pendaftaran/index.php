@@ -1,4 +1,19 @@
-<?php include_once ('layout/header.php'); ?>
+<?php
+
+/***
+* e-Pasien from version 0.1 Beta
+* Last modified: 05 July 2018
+* Author : drg. Faisol Basoro
+* Email : dentix.id@gmail.com
+*
+* File : index.php
+* Description : Main page
+* Licence under GPL
+***/
+
+include_once ('layout/header.php');
+
+?>
 
     <section class="content">
         <div class="container-fluid">
@@ -74,8 +89,8 @@
             </div>
             <!-- #END# CPU Usage -->
 
-            <?php 
-    $get_poli = fetch_array(query("SELECT a.nm_poli, b.kd_poli FROM poliklinik a, reg_periksa b WHERE a.kd_poli = b.kd_poli AND b.no_rkm_medis = '$_SESSION[username]' AND b.tgl_registrasi='$date'"));
+            <?php
+    		    $get_poli = fetch_array(query("SELECT a.nm_poli, b.kd_poli FROM poliklinik a, reg_periksa b WHERE a.kd_poli = b.kd_poli AND b.no_rkm_medis = '$_SESSION[username]' AND b.tgl_registrasi='$date'"));
             ?>
             <div class="row clearfix">
                 <!-- Task Info -->
@@ -84,15 +99,14 @@
                         <div class="header">
                             <h2>ANTRIAN <?php echo $get_poli['0']; ?></h2>
                         </div>
-                        <div class="body">
-                            <table id="antrian_pasien" class="table table-bordered table-striped table-hover display nowrap dashboard-task-infos" width="100%">
+                        <div class="body table-responsive">
+                            <table id="antrian" class="table table-bordered table-striped table-hover display nowrap dashboard-task-infos" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Nama Pasien</th>
-                                        <th>Nama Dokter</th>
-                                        <th>No. Antri</th>
+                                        <th>Antrian</th>
                                         <th>Status</th>
+                                        <th>Pasien</th>
+                                        <th>Dokter</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -108,28 +122,28 @@
                         </div>
                         <?php
                         $antri=fetch_array(query("
-                            SELECT 
+                            SELECT
                                 a.tgl_registrasi,
-                                a.jam_reg, 
-                                b.nm_poli, 
-                                f.nm_pasien,   
-                                c.nm_dokter,   
-                                a.no_reg,   
-                                a.stts  
-                            FROM 
+                                a.jam_reg,
+                                b.nm_poli,
+                                f.nm_pasien,
+                                c.nm_dokter,
+                                a.no_reg,
+                                a.stts
+                            FROM
                                 reg_periksa a
-                            LEFT JOIN 
-                                poliklinik b ON a.kd_poli = b.kd_poli 
-                            LEFT JOIN 
-                                dokter c ON a.kd_dokter = c.kd_dokter 
-                            LEFT JOIN 
-                                penjab d ON a.kd_pj = d.kd_pj 
-                            LEFT JOIN 
-                                pasien f ON a.no_rkm_medis = f.no_rkm_medis 
-                            WHERE 
-                                a.tgl_registrasi='$date' 
-                            AND 
-                                a.no_rkm_medis = '$_SESSION[username]' 
+                            LEFT JOIN
+                                poliklinik b ON a.kd_poli = b.kd_poli
+                            LEFT JOIN
+                                dokter c ON a.kd_dokter = c.kd_dokter
+                            LEFT JOIN
+                                penjab d ON a.kd_pj = d.kd_pj
+                            LEFT JOIN
+                                pasien f ON a.no_rkm_medis = f.no_rkm_medis
+                            WHERE
+                                a.tgl_registrasi='$date'
+                            AND
+                                a.no_rkm_medis = '$_SESSION[username]'
                         "));
                         ?>
                         <div class="body align-center">
@@ -138,7 +152,7 @@
                             echo '<div class="font-20">Anda belum terdaftar dalam antrian Poliklinik</div>';
                             echo '<br><a href="pendaftaran.php"><button type="button" class="btn bg-green btn-lg waves-effect">Daftar</button></a><br><br>';
                             echo '<div class="font-15">Silahkan klik tombol diatas untuk mendaftar antrian On-Line</div>';
-                        } else { 
+                        } else {
                         ?>
                         <div class="font-20"><?php echo $antri[3]; ?></div>
                         <div class="font-50"><?php echo $antri[5]; ?></div>
@@ -146,6 +160,8 @@
                         <div class="font-20"><?php echo $antri[2]; ?></div>
                         <div class="font-20"><?php echo $antri[4]; ?></div>
                         <div class="font-24"><?php echo $antri[6]; ?></div>
+                        <hr>
+                        <div class="font-24"><span class="getantrian"></span> Antrian Lagi</div>
                         <?php } ?>
                         </div>
                     </div>

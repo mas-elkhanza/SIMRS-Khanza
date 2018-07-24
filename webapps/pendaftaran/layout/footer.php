@@ -1,3 +1,18 @@
+<?php
+
+/***
+* e-Pasien from version 0.1 Beta
+* Last modified: 05 July 2018
+* Author : drg. Faisol Basoro
+* Email : dentix.id@gmail.com
+*
+* File : layout/footer.php
+* Description : Footer
+* Licence under GPL
+***/
+
+?>
+
     <div class="modal fade" id="ICTRSHD" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
@@ -5,10 +20,10 @@
                     <h4 class="modal-title" id="smallModalLabel">Instalasi ICT RSHD Barabai</h4>
                 </div>
                 <div class="modal-body">
-                    Ditetapkan sebagai Instalasi ICT dengan Surat Keputusan Direktur Rumah Sakit Umum Daerah H. Damanhuri pada tanggal 1 November 2017. 
+                    Ditetapkan sebagai Instalasi ICT dengan Surat Keputusan Direktur Rumah Sakit Umum Daerah H. Damanhuri pada tanggal 1 November 2017.
                     <ul style="list-style:none;margin-left:0;padding-left:0;"><br>
                         <li><b>Kepala Instalasi : <br>MasBas (drg. Faisol Basoro)</b></li><br>
-                        <li>Anggota : 
+                        <li>Anggota :
                             <ul style="list-style:none;margin-left:0;padding-left:0;">
                                 <li>- Amat (Muhammad Ma'ruf, S.Kom)</li>
                                 <li>- Aruf (Ma'ruf, S.Kom)</li>
@@ -89,19 +104,18 @@
 
             $('.menu li a').each(function () { //looks in each link item within the primary-nav list
                 var linkPage = this.href.substring(this.href.lastIndexOf('/') + 1); //sets the variable "linkPage" as the substring of the url path in each &lt;a&gt;
- 
+
                 if (activePage == linkPage) { //compares the path of the current window to the path of the linked page in the nav item
                     $(this).parent().addClass('active'); //if the above is true, add the "active" class to the parent of the &lt;a&gt; which is the &lt;li&gt; in the nav list
                 }
             });
 
 
-            $('#antrian_pasien').dataTable( {
-        		"scrollX": true,
-        		"pagingType": "full",
-                "processing": true,
-                "serverSide": true,
-                "ordering": false,
+          	var table = $('#antrian').DataTable( {
+				"ajax": "includes/antrian-pasien.php",
+				"bPaginate":true,
+				"bProcessing": true,
+				"pageLength": 10,
                 "responsive": {
                    "details": {
                        "display": $.fn.dataTable.Responsive.display.modal( {
@@ -113,27 +127,28 @@
                         "renderer": $.fn.dataTable.Responsive.renderer.tableAll()
                     }
                 },
-                "order": [[ 0, "desc" ]],
-                "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-                "ajax": "includes/antrian-pasien.php?start=0",
-                "oLanguage": {
-                    "sProcessing":   "Sedang memproses...",
-                    "sLengthMenu":   "Tampilkan _MENU_ entri",
-                    "sZeroRecords":  "Tidak ditemukan data yang sesuai",
-                    "sInfo":         "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
-                    "sInfoEmpty":    "Menampilkan 0 sampai 0 dari 0 entri",
-                    "sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
-                    "sInfoPostFix":  "",
-                    "sSearch":       "Cari:",
-                    "sUrl":          "",
-                    "oPaginate": {
-                        "sFirst":    "«",
-                        "sPrevious": "‹",
-                        "sNext":     "›",
-                        "sLast":     "»"
-                    }
-                } 
-            } );
+				"columns": [
+					{ mData: 'Antrian' },
+          { mData: 'Status' },
+					{ mData: 'Pasien' },
+					{ mData: 'Dokter' }
+
+				]
+			});
+
+			setInterval( function () { table.ajax.reload(null, false); }, 5000 );
+
+    		function getAntrian() {
+      			$.ajax({
+      				url: 'includes/get-antrian.php',
+      				type: 'post',
+      				success: function(data) {
+        				$('.getantrian').html(data);
+      				}
+      			});
+    		};
+
+            setInterval(function(){ getAntrian(); }, 1000);
 
             $('#riwayat_periksa').dataTable( {
         		"scrollX": true,
@@ -145,7 +160,7 @@
                        "display": $.fn.dataTable.Responsive.display.modal( {
                             "header": function ( row ) {
                                 var data = row.data();
-                                return '<h3>Antrian Poliklinik</h3><br>';
+                                return '<h3>Antrian Poliklinik</h3><br><h4>No. RM: <?php echo $_SESSION['username']; ?></h4>';
                             }
                         } ),
                         "renderer": $.fn.dataTable.Responsive.renderer.tableAll()
@@ -169,7 +184,7 @@
                         "sNext":     "›",
                         "sLast":     "»"
                     }
-                } 
+                }
             } );
 
 
@@ -210,7 +225,7 @@
                         "sNext":     "›",
                         "sLast":     "»"
                     }
-                } 
+                }
             } );
 
             $('#informasi_kamar').dataTable( {
@@ -250,7 +265,7 @@
                         "sNext":     "›",
                         "sLast":     "»"
                     }
-                } 
+                }
             } );
 
             $('#informasi_bangsal').dataTable( {
@@ -290,7 +305,7 @@
                         "sNext":     "›",
                         "sLast":     "»"
                     }
-                } 
+                }
             } );
 
             //Textare auto growth
@@ -311,7 +326,7 @@
                         <?php
 						$jumlah=array();
 						$poli=array();
-						$date = date("Y-m-d"); 
+						$date = date("Y-m-d");
 						$sql = "select poliklinik.nm_poli, count(*) as jumlah from reg_periksa INNER JOIN poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli WHERE reg_periksa.tgl_registrasi='$date' and poliklinik.nm_poli !='-' group by reg_periksa.kd_poli  order by count(*) desc ";
 						$hasil=query($sql);
 						while ($data = fetch_array ($hasil)){
@@ -325,8 +340,8 @@
 		    chart: {
 			    type: 'column'
 			},
-            exporting: { 
-                enabled: false 
+            exporting: {
+                enabled: false
             },
 		    title: {
 			    text: 'Grafik Kunjungan'
@@ -336,7 +351,7 @@
 			},
 		    xAxis: {
 		        categories: <?=json_encode($poli);?> ,
-								
+
 				title: {
 				    enabled: false
 				}
@@ -370,7 +385,7 @@
 				name: 'Poliklinik dan Rawat Jalan',
 				data: <?=json_encode($jumlah);?>
 			}]
-		});		
+		});
 	</script>
     <script type="text/javascript">
 function admSelectCheck(nameSelect)
@@ -410,37 +425,39 @@ function admSelectCheck(nameSelect)
     }
 
     </script>
-<script type="text/javascript">  
- 
+
+<script type="text/javascript">
+
 function update()
 {
-    $.post("includes/pengaduan.php", {}, function(data){ $("#screen").val(data);});  
- 
+    $.post("includes/pengaduan.php", {}, function(data){ $("#screen").val(data);});
+
     setTimeout('update()', 1000);
 }
- 
+
 $(document).ready(
- 
-    function() 
+
+    function()
     {
         update();
- 
-        $("#button").click(function() 
-        {         
+
+        $("#button").click(function()
+        {
             $.post("includes/pengaduan.php",
-            { 
+            {
                 message: $("#message").val()
             },
-            function(data) 
-            { 
-                $("#screen").val(data); 
+            function(data)
+            {
+                $("#screen").val(data);
                 $("#message").val("");
             });
         });
     }
 );
- 
+
 </script>
+
 </body>
 
 </html>

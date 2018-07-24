@@ -35,8 +35,8 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps,ps2,ps3,ps4;
-    private ResultSet rs,rs2,rs3,rs4;
+    private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,ps7,ps8;
+    private ResultSet rs,rs2,rs3,rs4,rs5,rs6,rs7,rs8;
     private String diagnosa="";
     
     /** Creates new form DlgProgramStudi
@@ -46,10 +46,11 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         
-        tabMode=new DefaultTableModel(null,new Object[]{"Kode Penyakit","Nama Penyakit","Diagnosa Lain","Jumlah"}){
+        tabMode=new DefaultTableModel(null,new Object[]{"Kode Penyakit","Nama Penyakit","Diagnosa Lain","Lk2(Hidup)","Pr(Hidup)","Lk2(Mati)","Pr(Mati)","Jumlah"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
               Class[] types = new Class[] {
-                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, java.lang.Integer.class, 
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -61,7 +62,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int m = 0; m < 4; m++) {
+        for (int m = 0; m < 8; m++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(m);
             if(m==0){
                 column.setPreferredWidth(100);
@@ -69,16 +70,17 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
                 column.setPreferredWidth(300);
             }else if(m==2){
                 column.setPreferredWidth(400);
-            }else if(m==3){
+            }else{
                 column.setPreferredWidth(100);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());   
         
-        tabMode2=new DefaultTableModel(null,new Object[]{"Kode Penyakit","Nama Penyakit","Diagnosa Lain","Jumlah"}){
+        tabMode2=new DefaultTableModel(null,new Object[]{"Kode Penyakit","Nama Penyakit","Diagnosa Lain","Lk2(Hidup)","Pr(Hidup)","Lk2(Mati)","Pr(Mati)","Jumlah"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
               Class[] types = new Class[] {
-                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, java.lang.Integer.class, 
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -90,7 +92,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
         tbDokter2.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int m = 0; m < 4; m++) {
+        for (int m = 0; m < 8; m++) {
             TableColumn column = tbDokter2.getColumnModel().getColumn(m);
             if(m==0){
                 column.setPreferredWidth(100);
@@ -98,11 +100,11 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
                 column.setPreferredWidth(300);
             }else if(m==2){
                 column.setPreferredWidth(400);
-            }else if(m==3){
+            }else{
                 column.setPreferredWidth(100);
             }
         }
-        tbDokter2.setDefaultRenderer(Object.class, new WarnaTable());   
+        tbDokter2.setDefaultRenderer(Object.class, new WarnaTable());    
         
         kdpenyakit.setDocument(new batasInput((byte)20).getKata(kdpenyakit));
                 
@@ -131,7 +133,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
     }
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
-    private int i=0;
+    private int i=0,a=0,b=0,c=0,d=0;
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -177,7 +179,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerbanyakBatang.setBackground(new java.awt.Color(242, 242, 242));
         ppGrafikTerbanyakBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerbanyakBatang.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikTerbanyakBatang.setForeground(new java.awt.Color(130,100,100));
         ppGrafikTerbanyakBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakBatang.setText("Grafik Batang 10 Penyakit Terbanyak");
         ppGrafikTerbanyakBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -194,7 +196,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerbanyakPie.setBackground(new java.awt.Color(242, 242, 242));
         ppGrafikTerbanyakPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerbanyakPie.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikTerbanyakPie.setForeground(new java.awt.Color(130,100,100));
         ppGrafikTerbanyakPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerbanyakPie.setText("Grafik Pie 10 Penyakit Terbanyak");
         ppGrafikTerbanyakPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -211,7 +213,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerkecilBatang.setBackground(new java.awt.Color(242, 242, 242));
         ppGrafikTerkecilBatang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerkecilBatang.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikTerkecilBatang.setForeground(new java.awt.Color(130,100,100));
         ppGrafikTerkecilBatang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilBatang.setText("Grafik Batang 10 Penyakit Tersedikit");
         ppGrafikTerkecilBatang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -228,7 +230,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         ppGrafikTerkecilPie.setBackground(new java.awt.Color(242, 242, 242));
         ppGrafikTerkecilPie.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppGrafikTerkecilPie.setForeground(new java.awt.Color(102, 51, 0));
+        ppGrafikTerkecilPie.setForeground(new java.awt.Color(130,100,100));
         ppGrafikTerkecilPie.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppGrafikTerkecilPie.setText("Grafik Pie 10 Penyakit Tersedikit");
         ppGrafikTerkecilPie.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -252,7 +254,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Frekuensi Penyakit Di Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Frekuensi Penyakit Di Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -405,7 +407,7 @@ public class DlgFrekuensiPenyakitRanap extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
+        TabRawat.setForeground(new java.awt.Color(130,100,100));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -479,34 +481,40 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tbDokter.getRowCount()!=0){
-                Sequel.queryu("delete from temporary");        
+                Sequel.queryu("delete from temporary");
                 int row=tbDokter.getRowCount();
                 for(int r=0;r<row;r++){  
                     Sequel.menyimpan("temporary","'0','"+
                                     tbDokter.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                     tbDokter.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                     tbDokter.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                    tbDokter.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Frekuensi Penyakit"); 
+                                    tbDokter.getValueAt(r,3).toString()+"','"+
+                                    tbDokter.getValueAt(r,4).toString()+"','"+
+                                    tbDokter.getValueAt(r,5).toString()+"','"+
+                                    tbDokter.getValueAt(r,6).toString()+"','"+
+                                    tbDokter.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Frekuensi Penyakit"); 
                 }
-                Valid.MyReport("rptFrekuensiPenyakitRanap.jrxml","report","[ Frekuensi Penyakit Di Rawat Inap ]",
-                "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc");
+                Valid.panggilUrl("billing/LaporanPenyakitRanap.php?tanggal1="+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"&tanggal2="+Valid.SetTgl(Tgl2.getSelectedItem()+""));                       
             }
         }else if(TabRawat.getSelectedIndex()==1){
             if(tbDokter2.getRowCount()==0){
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
                 //TCari.requestFocus();
             }else if(tbDokter2.getRowCount()!=0){
-                Sequel.queryu("delete from temporary");        
+                Sequel.queryu("delete from temporary");
                 int row=tbDokter2.getRowCount();
                 for(int r=0;r<row;r++){  
                     Sequel.menyimpan("temporary","'0','"+
                                     tbDokter2.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
                                     tbDokter2.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
                                     tbDokter2.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                    tbDokter2.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Frekuensi Penyakit"); 
+                                    tbDokter2.getValueAt(r,3).toString()+"','"+
+                                    tbDokter2.getValueAt(r,4).toString()+"','"+
+                                    tbDokter2.getValueAt(r,5).toString()+"','"+
+                                    tbDokter2.getValueAt(r,6).toString()+"','"+
+                                    tbDokter2.getValueAt(r,7).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Frekuensi Penyakit"); 
                 }
-                Valid.MyReport("rptFrekuensiPenyakitRanap.jrxml","report","[ Frekuensi Penyakit Di Rawat Inap ]",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc");
+                Valid.panggilUrl("billing/LaporanPenyakitRanap.php?tanggal1="+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"&tanggal2="+Valid.SetTgl(Tgl2.getSelectedItem()+""));                       
             }
         }        
         this.setCursor(Cursor.getDefaultCursor());
@@ -564,399 +572,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void ppGrafikTerbanyakBatangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikTerbanyakBatangActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            if((tbDokter.getRowCount()>9)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(7,3).toString())>=Integer.parseInt(tbDokter.getValueAt(8,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(8,3).toString())>=Integer.parseInt(tbDokter.getValueAt(9,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,3).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,3).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,3).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(8,3).toString()),tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(9,3).toString()),tbDokter.getValueAt(9,0).toString()+", "+tbDokter.getValueAt(9,1).toString()+", "+tbDokter.getValueAt(9,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter.getRowCount()>8)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(7,3).toString())>=Integer.parseInt(tbDokter.getValueAt(8,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,3).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,3).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,3).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(8,3).toString()),tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter.getRowCount()>7)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,3).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,3).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,3).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter.getRowCount()>6)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,3).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,3).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter.getRowCount()>5)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,3).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter.getRowCount()>4)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter.getRowCount()>3)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);          
-
-            }else if((tbDokter.getRowCount()>2)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);           
-
-            }else if((tbDokter.getRowCount()>1)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);            
-
-            }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
-            }
-        }else if(TabRawat.getSelectedIndex()==1){
-            if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(7,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(8,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(8,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(9,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,3).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,3).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,3).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(8,3).toString()),tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(9,3).toString()),tbDokter2.getValueAt(9,0).toString()+", "+tbDokter2.getValueAt(9,1).toString()+", "+tbDokter2.getValueAt(9,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter2.getRowCount()>8)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(7,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(8,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,3).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,3).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,3).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(8,3).toString()),tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter2.getRowCount()>7)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,3).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,3).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,3).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter2.getRowCount()>6)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,3).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,3).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter2.getRowCount()>5)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,3).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter2.getRowCount()>4)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter2.getRowCount()>3)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);          
-
-            }else if((tbDokter2.getRowCount()>2)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);           
-
-            }else if((tbDokter2.getRowCount()>1)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))){
-                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);            
-
-            }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
-            }
-        }        
-        
-    }//GEN-LAST:event_ppGrafikTerbanyakBatangActionPerformed
-
 private void btnPenyakitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenyakitActionPerformed
         penyakit.isCek();
         penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
@@ -984,1175 +599,6 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         }
 }//GEN-LAST:event_btnCariKeyPressed
 
-private void ppGrafikTerbanyakPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikTerbanyakPieActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            if((tbDokter.getRowCount()>9)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(7,3).toString())>=Integer.parseInt(tbDokter.getValueAt(8,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(8,3).toString())>=Integer.parseInt(tbDokter.getValueAt(9,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Integer.parseInt(tbDokter.getValueAt(5,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Integer.parseInt(tbDokter.getValueAt(6,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Integer.parseInt(tbDokter.getValueAt(7,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,3).toString(),Integer.parseInt(tbDokter.getValueAt(8,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(9,0).toString()+", "+tbDokter.getValueAt(9,1).toString()+", "+tbDokter.getValueAt(9,3).toString(),Integer.parseInt(tbDokter.getValueAt(9,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-               }else if((tbDokter.getRowCount()>8)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(7,3).toString())>=Integer.parseInt(tbDokter.getValueAt(8,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Integer.parseInt(tbDokter.getValueAt(5,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Integer.parseInt(tbDokter.getValueAt(6,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Integer.parseInt(tbDokter.getValueAt(7,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,3).toString(),Integer.parseInt(tbDokter.getValueAt(8,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-
-               }else if((tbDokter.getRowCount()>7)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Integer.parseInt(tbDokter.getValueAt(5,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Integer.parseInt(tbDokter.getValueAt(6,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Integer.parseInt(tbDokter.getValueAt(7,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-
-               }else if((tbDokter.getRowCount()>6)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Integer.parseInt(tbDokter.getValueAt(5,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Integer.parseInt(tbDokter.getValueAt(6,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-
-               }else if((tbDokter.getRowCount()>5)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Integer.parseInt(tbDokter.getValueAt(5,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-
-               }else if((tbDokter.getRowCount()>4)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-
-               }else if((tbDokter.getRowCount()>3)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);       
-
-               }else if((tbDokter.getRowCount()>2)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);          
-
-               }else if((tbDokter.getRowCount()>1)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);        
-
-               }else{
-                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
-               }
-        }else if(TabRawat.getSelectedIndex()==1){
-            if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(7,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(8,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(8,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(9,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Integer.parseInt(tbDokter2.getValueAt(5,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Integer.parseInt(tbDokter2.getValueAt(6,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Integer.parseInt(tbDokter2.getValueAt(7,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,3).toString(),Integer.parseInt(tbDokter2.getValueAt(8,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(9,0).toString()+", "+tbDokter2.getValueAt(9,1).toString()+", "+tbDokter2.getValueAt(9,3).toString(),Integer.parseInt(tbDokter2.getValueAt(9,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-               }else if((tbDokter2.getRowCount()>8)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(7,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(8,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Integer.parseInt(tbDokter2.getValueAt(5,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Integer.parseInt(tbDokter2.getValueAt(6,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Integer.parseInt(tbDokter2.getValueAt(7,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,3).toString(),Integer.parseInt(tbDokter2.getValueAt(8,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-
-               }else if((tbDokter2.getRowCount()>7)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Integer.parseInt(tbDokter2.getValueAt(5,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Integer.parseInt(tbDokter2.getValueAt(6,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Integer.parseInt(tbDokter2.getValueAt(7,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-
-               }else if((tbDokter2.getRowCount()>6)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Integer.parseInt(tbDokter2.getValueAt(5,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Integer.parseInt(tbDokter2.getValueAt(6,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-
-               }else if((tbDokter2.getRowCount()>5)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Integer.parseInt(tbDokter2.getValueAt(5,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-
-               }else if((tbDokter2.getRowCount()>4)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);
-
-               }else if((tbDokter2.getRowCount()>3)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);       
-
-               }else if((tbDokter2.getRowCount()>2)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                       && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);          
-
-               }else if((tbDokter2.getRowCount()>1)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))){
-                   DefaultPieDataset dpd = new DefaultPieDataset();
-                   dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                   dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-
-                   JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                   ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                   cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                   cf.setLocationRelativeTo(internalFrame1);
-                   cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                   cf.setVisible(true);        
-
-               }else{
-                   JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
-               }
-        }
-     
-                
-}//GEN-LAST:event_ppGrafikTerbanyakPieActionPerformed
-
-private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikTerkecilBatangActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            if((tbDokter.getRowCount()>9)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(7,3).toString())<=Integer.parseInt(tbDokter.getValueAt(8,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(8,3).toString())<=Integer.parseInt(tbDokter.getValueAt(9,3).toString()))){
-                    /*DefaultPieDataset dpd = new DefaultPieDataset();
-                    dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                    dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                    dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                    dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                    dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-                    dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString(),Integer.parseInt(tbDokter.getValueAt(5,3).toString()));
-                    dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString(),Integer.parseInt(tbDokter.getValueAt(6,3).toString()));
-                    dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString(),Integer.parseInt(tbDokter.getValueAt(7,3).toString()));
-                    dpd.setValue(tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString(),Integer.parseInt(tbDokter.getValueAt(8,3).toString()));
-                    dpd.setValue(tbDokter.getValueAt(9,0).toString()+", "+tbDokter.getValueAt(9,1).toString(),Integer.parseInt(tbDokter.getValueAt(9,3).toString()));
-
-                    JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                    ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                    cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setVisible(true);*/
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,3).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,3).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,3).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(8,3).toString()),tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(9,3).toString()),tbDokter.getValueAt(9,0).toString()+", "+tbDokter.getValueAt(9,1).toString()+", "+tbDokter.getValueAt(9,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter.getRowCount()>8)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(7,3).toString())<=Integer.parseInt(tbDokter.getValueAt(8,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,3).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,3).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,3).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(8,3).toString()),tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter.getRowCount()>7)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,3).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,3).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,3).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter.getRowCount()>6)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,3).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,3).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter.getRowCount()>5)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,3).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter.getRowCount()>4)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,3).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter.getRowCount()>3)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,3).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);          
-
-                }else if((tbDokter.getRowCount()>2)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,3).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);           
-
-                }else if((tbDokter.getRowCount()>1)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,3).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,3).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);            
-
-                }else{
-                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
-                }
-        }else if(TabRawat.getSelectedIndex()==1){
-            if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(7,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(8,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(8,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(9,3).toString()))){
-                    /*DefaultPieDataset dpd = new DefaultPieDataset();
-                    dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                    dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                    dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                    dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                    dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-                    dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString(),Integer.parseInt(tbDokter2.getValueAt(5,3).toString()));
-                    dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString(),Integer.parseInt(tbDokter2.getValueAt(6,3).toString()));
-                    dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString(),Integer.parseInt(tbDokter2.getValueAt(7,3).toString()));
-                    dpd.setValue(tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString(),Integer.parseInt(tbDokter2.getValueAt(8,3).toString()));
-                    dpd.setValue(tbDokter2.getValueAt(9,0).toString()+", "+tbDokter2.getValueAt(9,1).toString(),Integer.parseInt(tbDokter2.getValueAt(9,3).toString()));
-
-                    JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                    ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                    cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setVisible(true);*/
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,3).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,3).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,3).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(8,3).toString()),tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(9,3).toString()),tbDokter2.getValueAt(9,0).toString()+", "+tbDokter2.getValueAt(9,1).toString()+", "+tbDokter2.getValueAt(9,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter2.getRowCount()>8)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(7,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(8,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,3).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,3).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,3).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(8,3).toString()),tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter2.getRowCount()>7)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,3).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,3).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,3).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter2.getRowCount()>6)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,3).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,3).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter2.getRowCount()>5)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,3).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter2.getRowCount()>4)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,3).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);
-
-                }else if((tbDokter2.getRowCount()>3)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,3).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);          
-
-                }else if((tbDokter2.getRowCount()>2)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                        && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,3).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);           
-
-                }else if((tbDokter2.getRowCount()>1)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))){
-                    DefaultCategoryDataset dcd = new DefaultCategoryDataset();
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,3).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,3).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
-
-                    JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
-                    ChartFrame cf = new ChartFrame("Frafik 10 Besar Penyakit Di Rawat Inap",freeChart);
-
-                    cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
-                    cf.setLocationRelativeTo(internalFrame1);
-                    cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                    cf.setVisible(true);            
-
-                }else{
-                    JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
-                }
-        }
-                     
-}//GEN-LAST:event_ppGrafikTerkecilBatangActionPerformed
-
-private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikTerkecilPieActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            if((tbDokter.getRowCount()>9)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(7,3).toString())<=Integer.parseInt(tbDokter.getValueAt(8,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(8,3).toString())<=Integer.parseInt(tbDokter.getValueAt(9,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Integer.parseInt(tbDokter.getValueAt(5,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Integer.parseInt(tbDokter.getValueAt(6,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Integer.parseInt(tbDokter.getValueAt(7,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,3).toString(),Integer.parseInt(tbDokter.getValueAt(8,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(9,0).toString()+", "+tbDokter.getValueAt(9,1).toString()+", "+tbDokter.getValueAt(9,3).toString(),Integer.parseInt(tbDokter.getValueAt(9,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-            }else if((tbDokter.getRowCount()>8)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(7,3).toString())<=Integer.parseInt(tbDokter.getValueAt(8,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Integer.parseInt(tbDokter.getValueAt(5,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Integer.parseInt(tbDokter.getValueAt(6,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Integer.parseInt(tbDokter.getValueAt(7,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,3).toString(),Integer.parseInt(tbDokter.getValueAt(8,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter.getRowCount()>7)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter.getValueAt(7,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Integer.parseInt(tbDokter.getValueAt(5,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Integer.parseInt(tbDokter.getValueAt(6,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,3).toString(),Integer.parseInt(tbDokter.getValueAt(7,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter.getRowCount()>6)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter.getValueAt(6,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Integer.parseInt(tbDokter.getValueAt(5,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,3).toString(),Integer.parseInt(tbDokter.getValueAt(6,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter.getRowCount()>5)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter.getValueAt(5,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,3).toString(),Integer.parseInt(tbDokter.getValueAt(5,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter.getRowCount()>4)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter.getValueAt(4,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,3).toString(),Integer.parseInt(tbDokter.getValueAt(4,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter.getRowCount()>3)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter.getValueAt(3,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,3).toString(),Integer.parseInt(tbDokter.getValueAt(3,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);      
-
-            }else if((tbDokter.getRowCount()>2)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter.getValueAt(2,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,3).toString(),Integer.parseInt(tbDokter.getValueAt(2,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);          
-
-            }else if((tbDokter.getRowCount()>1)&&(Integer.parseInt(tbDokter.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter.getValueAt(1,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,3).toString(),Integer.parseInt(tbDokter.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,3).toString(),Integer.parseInt(tbDokter.getValueAt(1,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);         
-
-            }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
-            }
-        }else if(TabRawat.getSelectedIndex()==1){
-            if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(7,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(8,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(8,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(9,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Integer.parseInt(tbDokter2.getValueAt(5,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Integer.parseInt(tbDokter2.getValueAt(6,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Integer.parseInt(tbDokter2.getValueAt(7,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,3).toString(),Integer.parseInt(tbDokter2.getValueAt(8,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(9,0).toString()+", "+tbDokter2.getValueAt(9,1).toString()+", "+tbDokter2.getValueAt(9,3).toString(),Integer.parseInt(tbDokter2.getValueAt(9,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-            }else if((tbDokter2.getRowCount()>8)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(7,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(8,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Integer.parseInt(tbDokter2.getValueAt(5,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Integer.parseInt(tbDokter2.getValueAt(6,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Integer.parseInt(tbDokter2.getValueAt(7,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,3).toString(),Integer.parseInt(tbDokter2.getValueAt(8,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter2.getRowCount()>7)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(6,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Integer.parseInt(tbDokter2.getValueAt(5,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Integer.parseInt(tbDokter2.getValueAt(6,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,3).toString(),Integer.parseInt(tbDokter2.getValueAt(7,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter2.getRowCount()>6)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(5,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Integer.parseInt(tbDokter2.getValueAt(5,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,3).toString(),Integer.parseInt(tbDokter2.getValueAt(6,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter2.getRowCount()>5)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(4,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,3).toString(),Integer.parseInt(tbDokter2.getValueAt(5,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter2.getRowCount()>4)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(3,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,3).toString(),Integer.parseInt(tbDokter2.getValueAt(4,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);
-
-            }else if((tbDokter2.getRowCount()>3)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(2,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,3).toString(),Integer.parseInt(tbDokter2.getValueAt(3,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);      
-
-            }else if((tbDokter2.getRowCount()>2)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))
-                    && (Integer.parseInt(tbDokter2.getValueAt(1,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,3).toString(),Integer.parseInt(tbDokter2.getValueAt(2,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);          
-
-            }else if((tbDokter2.getRowCount()>1)&&(Integer.parseInt(tbDokter2.getValueAt(0,3).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,3).toString()))){
-                DefaultPieDataset dpd = new DefaultPieDataset();
-                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,3).toString(),Integer.parseInt(tbDokter2.getValueAt(0,3).toString()));
-                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,3).toString(),Integer.parseInt(tbDokter2.getValueAt(1,3).toString()));
-
-                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
-                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
-                cf.setLocationRelativeTo(internalFrame1);
-                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
-                cf.setVisible(true);         
-
-            }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
-            }
-        }    
-}//GEN-LAST:event_ppGrafikTerkecilPieActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         prosesCari();
     }//GEN-LAST:event_formWindowOpened
@@ -2164,6 +610,1599 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
             prosesCari2();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
+
+    private void ppGrafikTerbanyakBatangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikTerbanyakBatangActionPerformed
+        if(TabRawat.getSelectedIndex()==0){
+            if((tbDokter.getRowCount()>9)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(7,7).toString())>=Integer.parseInt(tbDokter.getValueAt(8,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(8,7).toString())>=Integer.parseInt(tbDokter.getValueAt(9,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,7).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,7).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(8,7).toString()),tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(9,7).toString()),tbDokter.getValueAt(9,0).toString()+", "+tbDokter.getValueAt(9,1).toString()+", "+tbDokter.getValueAt(9,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>8)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(7,7).toString())>=Integer.parseInt(tbDokter.getValueAt(8,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,7).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,7).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(8,7).toString()),tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>7)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,7).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,7).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>6)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,7).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>5)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>4)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>3)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>2)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>1)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            }
+        }else if(TabRawat.getSelectedIndex()==1){
+            if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(7,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(8,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(8,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(9,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,7).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,7).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,7).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(8,7).toString()),tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(9,7).toString()),tbDokter2.getValueAt(9,0).toString()+", "+tbDokter2.getValueAt(9,1).toString()+", "+tbDokter2.getValueAt(9,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>8)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(7,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(8,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,7).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,7).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,7).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(8,7).toString()),tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>7)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,7).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,7).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,7).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>6)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,7).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,7).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>5)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,7).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>4)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>3)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>2)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>1)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            }
+        }
+    }//GEN-LAST:event_ppGrafikTerbanyakBatangActionPerformed
+
+    private void ppGrafikTerbanyakPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikTerbanyakPieActionPerformed
+        if(TabRawat.getSelectedIndex()==0){
+            if((tbDokter.getRowCount()>9)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(7,7).toString())>=Integer.parseInt(tbDokter.getValueAt(8,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(8,7).toString())>=Integer.parseInt(tbDokter.getValueAt(9,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Integer.parseInt(tbDokter.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Integer.parseInt(tbDokter.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Integer.parseInt(tbDokter.getValueAt(7,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,7).toString(),Integer.parseInt(tbDokter.getValueAt(8,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(9,0).toString()+", "+tbDokter.getValueAt(9,1).toString()+", "+tbDokter.getValueAt(9,7).toString(),Integer.parseInt(tbDokter.getValueAt(9,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+            }else if((tbDokter.getRowCount()>8)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(7,7).toString())>=Integer.parseInt(tbDokter.getValueAt(8,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Integer.parseInt(tbDokter.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Integer.parseInt(tbDokter.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Integer.parseInt(tbDokter.getValueAt(7,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,7).toString(),Integer.parseInt(tbDokter.getValueAt(8,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>7)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Integer.parseInt(tbDokter.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Integer.parseInt(tbDokter.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Integer.parseInt(tbDokter.getValueAt(7,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>6)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Integer.parseInt(tbDokter.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Integer.parseInt(tbDokter.getValueAt(6,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>5)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Integer.parseInt(tbDokter.getValueAt(5,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>4)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>3)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>2)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>1)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            }
+        }else if(TabRawat.getSelectedIndex()==1){
+            if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(7,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(8,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(8,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(9,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Integer.parseInt(tbDokter2.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Integer.parseInt(tbDokter2.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Integer.parseInt(tbDokter2.getValueAt(7,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,7).toString(),Integer.parseInt(tbDokter2.getValueAt(8,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(9,0).toString()+", "+tbDokter2.getValueAt(9,1).toString()+", "+tbDokter2.getValueAt(9,7).toString(),Integer.parseInt(tbDokter2.getValueAt(9,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+            }else if((tbDokter2.getRowCount()>8)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(7,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(8,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Integer.parseInt(tbDokter2.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Integer.parseInt(tbDokter2.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Integer.parseInt(tbDokter2.getValueAt(7,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,7).toString(),Integer.parseInt(tbDokter2.getValueAt(8,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>7)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Integer.parseInt(tbDokter2.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Integer.parseInt(tbDokter2.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Integer.parseInt(tbDokter2.getValueAt(7,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>6)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Integer.parseInt(tbDokter2.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Integer.parseInt(tbDokter2.getValueAt(6,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>5)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Integer.parseInt(tbDokter2.getValueAt(5,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>4)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>3)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>2)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>1)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())>=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            }
+        }
+            
+    }//GEN-LAST:event_ppGrafikTerbanyakPieActionPerformed
+
+    private void ppGrafikTerkecilBatangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikTerkecilBatangActionPerformed
+        if(TabRawat.getSelectedIndex()==0){
+            if((tbDokter.getRowCount()>9)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(7,7).toString())<=Integer.parseInt(tbDokter.getValueAt(8,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(8,7).toString())<=Integer.parseInt(tbDokter.getValueAt(9,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,7).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,7).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(8,7).toString()),tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(9,7).toString()),tbDokter.getValueAt(9,0).toString()+", "+tbDokter.getValueAt(9,1).toString()+", "+tbDokter.getValueAt(9,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>8)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(7,7).toString())<=Integer.parseInt(tbDokter.getValueAt(8,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,7).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,7).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(8,7).toString()),tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>7)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,7).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(7,7).toString()),tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>6)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(6,7).toString()),tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>5)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(5,7).toString()),tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>4)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(4,7).toString()),tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>3)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(3,7).toString()),tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>2)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(2,7).toString()),tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>1)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(0,7).toString()),tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter.getValueAt(1,7).toString()),tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            }
+        }else if(TabRawat.getSelectedIndex()==1){
+            if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(7,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(8,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(8,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(9,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,7).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,7).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,7).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(8,7).toString()),tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(9,7).toString()),tbDokter2.getValueAt(9,0).toString()+", "+tbDokter2.getValueAt(9,1).toString()+", "+tbDokter2.getValueAt(9,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>8)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(7,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(8,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,7).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,7).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,7).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(8,7).toString()),tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>7)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,7).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,7).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(7,7).toString()),tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>6)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,7).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(6,7).toString()),tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>5)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(5,7).toString()),tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>4)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(4,7).toString()),tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>3)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(3,7).toString()),tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>2)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(2,7).toString()),tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>1)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))){
+                DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(0,7).toString()),tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                dcd.setValue(Integer.parseInt(tbDokter2.getValueAt(1,7).toString()),tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""));
+
+                JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
+
+                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setVisible(true);
+
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            }
+        }            
+    }//GEN-LAST:event_ppGrafikTerkecilBatangActionPerformed
+
+    private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikTerkecilPieActionPerformed
+        if(TabRawat.getSelectedIndex()==0){
+            if((tbDokter.getRowCount()>9)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(7,7).toString())<=Integer.parseInt(tbDokter.getValueAt(8,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(8,7).toString())<=Integer.parseInt(tbDokter.getValueAt(9,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Integer.parseInt(tbDokter.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Integer.parseInt(tbDokter.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Integer.parseInt(tbDokter.getValueAt(7,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,7).toString(),Integer.parseInt(tbDokter.getValueAt(8,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(9,0).toString()+", "+tbDokter.getValueAt(9,1).toString()+", "+tbDokter.getValueAt(9,7).toString(),Integer.parseInt(tbDokter.getValueAt(9,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+            }else if((tbDokter.getRowCount()>8)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(7,7).toString())<=Integer.parseInt(tbDokter.getValueAt(8,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Integer.parseInt(tbDokter.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Integer.parseInt(tbDokter.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Integer.parseInt(tbDokter.getValueAt(7,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(8,0).toString()+", "+tbDokter.getValueAt(8,1).toString()+", "+tbDokter.getValueAt(8,7).toString(),Integer.parseInt(tbDokter.getValueAt(8,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>7)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter.getValueAt(7,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Integer.parseInt(tbDokter.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Integer.parseInt(tbDokter.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(7,0).toString()+", "+tbDokter.getValueAt(7,1).toString()+", "+tbDokter.getValueAt(7,7).toString(),Integer.parseInt(tbDokter.getValueAt(7,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>6)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter.getValueAt(6,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Integer.parseInt(tbDokter.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(6,0).toString()+", "+tbDokter.getValueAt(6,1).toString()+", "+tbDokter.getValueAt(6,7).toString(),Integer.parseInt(tbDokter.getValueAt(6,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>5)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter.getValueAt(5,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(5,0).toString()+", "+tbDokter.getValueAt(5,1).toString()+", "+tbDokter.getValueAt(5,7).toString(),Integer.parseInt(tbDokter.getValueAt(5,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>4)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter.getValueAt(4,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(4,0).toString()+", "+tbDokter.getValueAt(4,1).toString()+", "+tbDokter.getValueAt(4,7).toString(),Integer.parseInt(tbDokter.getValueAt(4,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>3)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter.getValueAt(3,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(3,0).toString()+", "+tbDokter.getValueAt(3,1).toString()+", "+tbDokter.getValueAt(3,7).toString(),Integer.parseInt(tbDokter.getValueAt(3,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>2)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter.getValueAt(2,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(2,0).toString()+", "+tbDokter.getValueAt(2,1).toString()+", "+tbDokter.getValueAt(2,7).toString(),Integer.parseInt(tbDokter.getValueAt(2,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter.getRowCount()>1)&&(Integer.parseInt(tbDokter.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter.getValueAt(1,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter.getValueAt(0,0).toString()+", "+tbDokter.getValueAt(0,1).toString()+", "+tbDokter.getValueAt(0,7).toString(),Integer.parseInt(tbDokter.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter.getValueAt(1,0).toString()+", "+tbDokter.getValueAt(1,1).toString()+", "+tbDokter.getValueAt(1,7).toString(),Integer.parseInt(tbDokter.getValueAt(1,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            }
+        }else if(TabRawat.getSelectedIndex()==1){
+            if((tbDokter2.getRowCount()>9)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(7,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(8,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(8,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(9,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Integer.parseInt(tbDokter2.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Integer.parseInt(tbDokter2.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Integer.parseInt(tbDokter2.getValueAt(7,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,7).toString(),Integer.parseInt(tbDokter2.getValueAt(8,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(9,0).toString()+", "+tbDokter2.getValueAt(9,1).toString()+", "+tbDokter2.getValueAt(9,7).toString(),Integer.parseInt(tbDokter2.getValueAt(9,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+            }else if((tbDokter2.getRowCount()>8)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(7,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(8,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Integer.parseInt(tbDokter2.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Integer.parseInt(tbDokter2.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Integer.parseInt(tbDokter2.getValueAt(7,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(8,0).toString()+", "+tbDokter2.getValueAt(8,1).toString()+", "+tbDokter2.getValueAt(8,7).toString(),Integer.parseInt(tbDokter2.getValueAt(8,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>7)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(6,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(7,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Integer.parseInt(tbDokter2.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Integer.parseInt(tbDokter2.getValueAt(6,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(7,0).toString()+", "+tbDokter2.getValueAt(7,1).toString()+", "+tbDokter2.getValueAt(7,7).toString(),Integer.parseInt(tbDokter2.getValueAt(7,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>6)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(5,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(6,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Integer.parseInt(tbDokter2.getValueAt(5,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(6,0).toString()+", "+tbDokter2.getValueAt(6,1).toString()+", "+tbDokter2.getValueAt(6,7).toString(),Integer.parseInt(tbDokter2.getValueAt(6,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>5)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(4,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(5,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(5,0).toString()+", "+tbDokter2.getValueAt(5,1).toString()+", "+tbDokter2.getValueAt(5,7).toString(),Integer.parseInt(tbDokter2.getValueAt(5,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>4)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(3,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(4,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(4,0).toString()+", "+tbDokter2.getValueAt(4,1).toString()+", "+tbDokter2.getValueAt(4,7).toString(),Integer.parseInt(tbDokter2.getValueAt(4,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>3)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(2,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(3,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(3,0).toString()+", "+tbDokter2.getValueAt(3,1).toString()+", "+tbDokter2.getValueAt(3,7).toString(),Integer.parseInt(tbDokter2.getValueAt(3,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>2)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))
+                && (Integer.parseInt(tbDokter2.getValueAt(1,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(2,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(2,0).toString()+", "+tbDokter2.getValueAt(2,1).toString()+", "+tbDokter2.getValueAt(2,7).toString(),Integer.parseInt(tbDokter2.getValueAt(2,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else if((tbDokter2.getRowCount()>1)&&(Integer.parseInt(tbDokter2.getValueAt(0,7).toString())<=Integer.parseInt(tbDokter2.getValueAt(1,7).toString()))){
+                DefaultPieDataset dpd = new DefaultPieDataset();
+                dpd.setValue(tbDokter2.getValueAt(0,0).toString()+", "+tbDokter2.getValueAt(0,1).toString()+", "+tbDokter2.getValueAt(0,7).toString(),Integer.parseInt(tbDokter2.getValueAt(0,7).toString()));
+                dpd.setValue(tbDokter2.getValueAt(1,0).toString()+", "+tbDokter2.getValueAt(1,1).toString()+", "+tbDokter2.getValueAt(1,7).toString(),Integer.parseInt(tbDokter2.getValueAt(1,7).toString()));
+
+                JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
+                ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
+                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setLocationRelativeTo(internalFrame1);
+                cf.setAlwaysOnTop(false);
+                cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
+                cf.setVisible(true);
+
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan urutkan secara Descanding/Besar Ke Kecil dengan menklik pada kolom jumlah..!!!!");
+            }
+        }            
+    }//GEN-LAST:event_ppGrafikTerkecilPieActionPerformed
 
     /**
     * @param args the command line arguments
@@ -2212,95 +2251,182 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
     // End of variables declaration//GEN-END:variables
 
     private void prosesCari() {
+       this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
        Valid.tabelKosong(tabMode);      
-       try{  
-            ps=koneksi.prepareStatement(
-                    "select penyakit.kd_penyakit,SUBSTRING(penyakit.nm_penyakit,1,80) as penyakit "+
-                    "from penyakit inner join diagnosa_pasien inner join reg_periksa "+
+       try{   
+            ps=koneksi.prepareStatement("select penyakit.kd_penyakit,SUBSTRING(penyakit.nm_penyakit,1,80) as penyakit from penyakit inner join diagnosa_pasien inner join reg_periksa "+
                     "on penyakit.kd_penyakit=diagnosa_pasien.kd_penyakit and reg_periksa.no_rawat=diagnosa_pasien.no_rawat "+
-                    "where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and "+
-                    "penyakit.kd_penyakit like ? and reg_periksa.tgl_registrasi between ? and ? "+
-                    "group by penyakit.kd_penyakit order by penyakit.kd_penyakit");
+                    "where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and penyakit.kd_penyakit like ? and reg_periksa.tgl_registrasi between ? and ? group by penyakit.kd_penyakit order by penyakit.kd_penyakit");
             try {
                 ps.setString(1,"%"+kdpenyakit.getText()+"%");
                 ps.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs=ps.executeQuery();
+                rs=ps.executeQuery();            
                 while(rs.next()){
-                    i=0;
-                    ps2=koneksi.prepareStatement(
-                        "select diagnosa_pasien.no_rawat from pasien inner join reg_periksa inner join diagnosa_pasien "+
-                        "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=diagnosa_pasien.no_rawat where "+
-                        "diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and reg_periksa.tgl_registrasi between ? and ? "+
-                        "and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat");
-                    try {
+                   i=0;
+                   ps2=koneksi.prepareStatement("select diagnosa_pasien.no_rawat as jumlah from diagnosa_pasien inner join reg_periksa on reg_periksa.no_rawat=diagnosa_pasien.no_rawat "+
+                       "where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and reg_periksa.tgl_registrasi between ? and ? and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat");    
+                   try {
                         ps2.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                         ps2.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(3,rs.getString("kd_penyakit"));
                         rs2=ps2.executeQuery();
                         Sequel.queryu("delete from temporary_surveilens_penyakit");
                         while(rs2.next()){
-                            ps3=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.prioritas<>'1' and diagnosa_pasien.status='Ranap' and diagnosa_pasien.no_rawat=?");    
+                            ps7=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.prioritas<>'1' and diagnosa_pasien.status='Ranap' and diagnosa_pasien.no_rawat=?");    
                             try {
-                                ps3.setString(1,rs2.getString(1));
-                                rs3=ps3.executeQuery();
-                                while(rs3.next()){
+                                ps7.setString(1,rs2.getString(1));
+                                rs7=ps7.executeQuery();
+                                while(rs7.next()){
                                     Sequel.menyimpan("temporary_surveilens_penyakit","?,?",2,new String[]{
-                                        rs.getString("kd_penyakit"),rs3.getString("kd_penyakit")
+                                        rs.getString("kd_penyakit"),rs7.getString("kd_penyakit")
                                     });
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notifikasi : "+e);
+                                System.out.println("Notif : "+e);
                             } finally{
-                                if(rs3!=null){
-                                    rs3.close();
+                                if(rs7!=null){
+                                    rs7.close();
                                 }
-                                if(ps3!=null){
-                                    ps3.close();
+                                if(ps7!=null){
+                                    ps7.close();
                                 }
-                            }                            
+                            }                                
                         }
                         diagnosa="";
                         rs2.last();
                         if(rs2.getRow()>0){
-                            ps4=koneksi.prepareStatement("select temporary_surveilens_penyakit.kd_penyakit2 from temporary_surveilens_penyakit where temporary_surveilens_penyakit.kd_penyakit=? group by temporary_surveilens_penyakit.kd_penyakit2");    
-                            try {                                    
-                                ps4.setString(1,rs.getString("kd_penyakit"));
-                                rs4=ps4.executeQuery();
-                                while(rs4.next()){
+                            ps8=koneksi.prepareStatement("select temporary_surveilens_penyakit.kd_penyakit2 from temporary_surveilens_penyakit where temporary_surveilens_penyakit.kd_penyakit=? group by temporary_surveilens_penyakit.kd_penyakit2");    
+                            try {
+                                ps8.setString(1,rs.getString("kd_penyakit"));
+                                rs8=ps8.executeQuery();
+                                while(rs8.next()){
                                     if(diagnosa.equals("")){
-                                        diagnosa=rs4.getString(1);
+                                        diagnosa=rs8.getString(1);
                                     }else{
-                                        diagnosa=diagnosa+", "+rs4.getString(1);
+                                        diagnosa=diagnosa+", "+rs8.getString(1);
                                     }
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notifikasi : "+e);
+                                System.out.println("Notif : "+e);
                             } finally{
-                                if(rs4!=null){
-                                    rs4.close();
+                                if(rs8!=null){
+                                    rs8.close();
                                 }
-                                if(ps4!=null){
-                                    ps4.close();
+                                if(ps8!=null){
+                                    ps8.close();
                                 }
-                            }                                                        
+                            }                                
+                            i=rs2.getRow();
                         }
-                        i=rs2.getRow();
-                    } catch (Exception e) {
-                        System.out.println("Notifikasi : "+e);
-                    } finally{
-                        if(rs2!=null){
-                            rs2.close();
-                        }
-                        if(ps2!=null){
-                            ps2.close();
-                        }
-                    }
-                    tabMode.addRow(new Object[]{rs.getString("kd_penyakit"),rs.getString("penyakit"),diagnosa,i});                  
-                } 
-                label9.setText("      Record : "+tabMode.getRowCount());   
+                   } catch (Exception e) {
+                       System.out.println("Notif : "+e);
+                   } finally{
+                       if(rs2!=null){
+                           rs2.close();
+                       }
+                       if(ps2!=null){
+                           ps2.close();
+                       }
+                   }
+                        
+
+                   a=0;
+                   ps3=koneksi.prepareStatement("select diagnosa_pasien.no_rawat as jumlah from diagnosa_pasien inner join reg_periksa inner join pasien_mati "+
+                       "inner join pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "and pasien_mati.no_rkm_medis=pasien.no_rkm_medis where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and pasien.jk='L' and reg_periksa.tgl_registrasi between ? and ? "+
+                       "and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat");  
+                   try {
+                        ps3.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps3.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps3.setString(3,rs.getString("kd_penyakit"));
+                        rs3=ps3.executeQuery();
+                        rs3.last();
+                        if(rs3.getRow()>0) a=rs3.getRow();
+                   } catch (Exception e) {
+                       System.out.println("Notif : "+e);
+                   } finally{
+                       if(rs3!=null){
+                           rs3.close();
+                       }
+                       if(ps3!=null){
+                           ps3.close();
+                       }
+                   }                        
+
+                   b=0;
+                   ps4=koneksi.prepareStatement("select diagnosa_pasien.no_rawat as jumlah from diagnosa_pasien inner join reg_periksa inner join pasien_mati "+
+                       "inner join pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "and pasien_mati.no_rkm_medis=pasien.no_rkm_medis where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and pasien.jk='P' and reg_periksa.tgl_registrasi between ? and ? "+
+                       "and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat"); 
+                   try {
+                        ps4.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps4.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps4.setString(3,rs.getString("kd_penyakit"));
+                        rs4=ps4.executeQuery();
+                        rs4.last();       
+                        if(rs4.getRow()>0) b=rs4.getRow();
+                   } catch (Exception e) {
+                       System.out.println("Notif : "+e);
+                   } finally{
+                       if(rs4!=null){
+                           rs4.close();
+                       }
+                       if(ps4!=null){
+                           ps4.close();
+                       }
+                   }                        
+
+                   c=0;
+                   ps5=koneksi.prepareStatement("select diagnosa_pasien.no_rawat as jumlah from diagnosa_pasien inner join reg_periksa "+
+                       "inner join pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and pasien.jk='L' and reg_periksa.tgl_registrasi between ? and ? "+
+                       "and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat");
+                   try {
+                        ps5.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps5.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps5.setString(3,rs.getString("kd_penyakit"));
+                        rs5=ps5.executeQuery();
+                        rs5.last();
+                        if(rs5.getRow()>0)  c=rs5.getRow()-a;
+                   } catch (Exception e) {
+                       System.out.println("Notif : "+e);
+                   } finally{
+                       if(rs5!=null){
+                           rs5.close();
+                       }
+                       if(ps5!=null){
+                           ps5.close();
+                       }
+                   }                        
+
+                   d=0;
+                   ps6=koneksi.prepareStatement("select diagnosa_pasien.no_rawat as jumlah from diagnosa_pasien inner join reg_periksa "+
+                       "inner join pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and pasien.jk='P' and reg_periksa.tgl_registrasi between ? and ? "+
+                       "and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat");
+                   try{
+                       ps6.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps6.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps6.setString(3,rs.getString("kd_penyakit"));
+                        rs6=ps6.executeQuery();
+                        rs6.last();
+                        if(rs6.getRow()>0) d=rs6.getRow()-b;
+                   } catch (Exception e) {
+                       System.out.println("Notif : "+e);
+                   } finally{
+                       if(rs6!=null){
+                           rs6.close();
+                       }
+                       if(ps6!=null){
+                           ps6.close();
+                       }
+                   }                        
+
+                   tabMode.addRow(new Object[]{rs.getString("kd_penyakit"),rs.getString("penyakit"),diagnosa,c,d,a,b,i});                  
+                }
             } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
+                System.out.println("Notif : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -2308,18 +2434,22 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
                 if(ps!=null){
                     ps.close();
                 }
-            }         
-        }catch(Exception e){
+            }
+                 
+            //rs.close();
+            label9.setText("      Record : "+tabMode.getRowCount());                        
+        }catch(SQLException e){
             System.out.println("Catatan  "+e);
         }
+       this.setCursor(Cursor.getDefaultCursor());
         
     }
     
     private void prosesCari2() {
+       this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
        Valid.tabelKosong(tabMode2);      
-       try{  
-            ps=koneksi.prepareStatement(
-                    "select penyakit.kd_penyakit,SUBSTRING(penyakit.nm_penyakit,1,80) as penyakit "+
+       try{   
+            ps=koneksi.prepareStatement("select penyakit.kd_penyakit,SUBSTRING(penyakit.nm_penyakit,1,80) as penyakit "+
                     "from penyakit inner join diagnosa_pasien inner join reg_periksa inner join kamar_inap "+
                     "on penyakit.kd_penyakit=diagnosa_pasien.kd_penyakit and reg_periksa.no_rawat=diagnosa_pasien.no_rawat "+
                     "and reg_periksa.no_rawat=kamar_inap.no_rawat where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and "+
@@ -2329,82 +2459,176 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
                 ps.setString(1,"%"+kdpenyakit.getText()+"%");
                 ps.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                rs=ps.executeQuery();
+                rs=ps.executeQuery();            
                 while(rs.next()){
-                    i=0;
-                    ps2=koneksi.prepareStatement(
-                        "select diagnosa_pasien.no_rawat from pasien inner join reg_periksa inner join diagnosa_pasien inner join kamar_inap "+
+                   i=0;
+                   ps2=koneksi.prepareStatement("select diagnosa_pasien.no_rawat from pasien inner join reg_periksa inner join diagnosa_pasien inner join kamar_inap "+
                         "on pasien.no_rkm_medis=reg_periksa.no_rkm_medis and reg_periksa.no_rawat=diagnosa_pasien.no_rawat and reg_periksa.no_rawat=kamar_inap.no_rawat where "+
                         "diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and kamar_inap.tgl_keluar between ? and ? "+
-                        "and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat");
-                    try {
+                        "and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat");    
+                   try {
                         ps2.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                         ps2.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(3,rs.getString("kd_penyakit"));
                         rs2=ps2.executeQuery();
                         Sequel.queryu("delete from temporary_surveilens_penyakit");
                         while(rs2.next()){
-                            ps3=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.prioritas<>'1' and diagnosa_pasien.status='Ranap' and diagnosa_pasien.no_rawat=?");    
+                            ps7=koneksi.prepareStatement("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.prioritas<>'1' and diagnosa_pasien.status='Ranap' and diagnosa_pasien.no_rawat=?");    
                             try {
-                                ps3.setString(1,rs2.getString(1));
-                                rs3=ps3.executeQuery();
-                                while(rs3.next()){
+                                ps7.setString(1,rs2.getString(1));
+                                rs7=ps7.executeQuery();
+                                while(rs7.next()){
                                     Sequel.menyimpan("temporary_surveilens_penyakit","?,?",2,new String[]{
-                                        rs.getString("kd_penyakit"),rs3.getString("kd_penyakit")
+                                        rs.getString("kd_penyakit"),rs7.getString("kd_penyakit")
                                     });
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notifikasi : "+e);
+                                System.out.println("Notif : "+e);
                             } finally{
-                                if(rs3!=null){
-                                    rs3.close();
+                                if(rs7!=null){
+                                    rs7.close();
                                 }
-                                if(ps3!=null){
-                                    ps3.close();
+                                if(ps7!=null){
+                                    ps7.close();
                                 }
-                            }                            
+                            }                                
                         }
                         diagnosa="";
                         rs2.last();
                         if(rs2.getRow()>0){
-                            ps4=koneksi.prepareStatement("select temporary_surveilens_penyakit.kd_penyakit2 from temporary_surveilens_penyakit where temporary_surveilens_penyakit.kd_penyakit=? group by temporary_surveilens_penyakit.kd_penyakit2");    
-                            try {                                    
-                                ps4.setString(1,rs.getString("kd_penyakit"));
-                                rs4=ps4.executeQuery();
-                                while(rs4.next()){
+                            ps8=koneksi.prepareStatement("select temporary_surveilens_penyakit.kd_penyakit2 from temporary_surveilens_penyakit where temporary_surveilens_penyakit.kd_penyakit=? group by temporary_surveilens_penyakit.kd_penyakit2");    
+                            try {
+                                ps8.setString(1,rs.getString("kd_penyakit"));
+                                rs8=ps8.executeQuery();
+                                while(rs8.next()){
                                     if(diagnosa.equals("")){
-                                        diagnosa=rs4.getString(1);
+                                        diagnosa=rs8.getString(1);
                                     }else{
-                                        diagnosa=diagnosa+", "+rs4.getString(1);
+                                        diagnosa=diagnosa+", "+rs8.getString(1);
                                     }
                                 }
                             } catch (Exception e) {
-                                System.out.println("Notifikasi : "+e);
+                                System.out.println("Notif : "+e);
                             } finally{
-                                if(rs4!=null){
-                                    rs4.close();
+                                if(rs8!=null){
+                                    rs8.close();
                                 }
-                                if(ps4!=null){
-                                    ps4.close();
+                                if(ps8!=null){
+                                    ps8.close();
                                 }
-                            }                                                        
+                            }                                
+                            i=rs2.getRow();
                         }
-                        i=rs2.getRow();
-                    } catch (Exception e) {
-                        System.out.println("Notifikasi : "+e);
-                    } finally{
-                        if(rs2!=null){
-                            rs2.close();
-                        }
-                        if(ps2!=null){
-                            ps2.close();
-                        }
-                    }
-                    tabMode2.addRow(new Object[]{rs.getString("kd_penyakit"),rs.getString("penyakit"),diagnosa,i});                  
-                } 
-                label9.setText("      Record : "+tabMode2.getRowCount());   
+                   } catch (Exception e) {
+                       System.out.println("Notif : "+e);
+                   } finally{
+                       if(rs2!=null){
+                           rs2.close();
+                       }
+                       if(ps2!=null){
+                           ps2.close();
+                       }
+                   }
+                        
+
+                   a=0;
+                   ps3=koneksi.prepareStatement("select diagnosa_pasien.no_rawat as jumlah from diagnosa_pasien inner join reg_periksa inner join pasien_mati "+
+                       "inner join pasien inner join kamar_inap on reg_periksa.no_rawat=diagnosa_pasien.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "and pasien_mati.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where diagnosa_pasien.status='Ranap' and "+
+                       "diagnosa_pasien.prioritas='1' and pasien.jk='L' and kamar_inap.tgl_keluar between ? and ? "+
+                       "and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat");  
+                   try {
+                        ps3.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps3.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps3.setString(3,rs.getString("kd_penyakit"));
+                        rs3=ps3.executeQuery();
+                        rs3.last();
+                        if(rs3.getRow()>0) a=rs3.getRow();
+                   } catch (Exception e) {
+                       System.out.println("Notif : "+e);
+                   } finally{
+                       if(rs3!=null){
+                           rs3.close();
+                       }
+                       if(ps3!=null){
+                           ps3.close();
+                       }
+                   }                        
+
+                   b=0;
+                   ps4=koneksi.prepareStatement("select diagnosa_pasien.no_rawat as jumlah from diagnosa_pasien inner join reg_periksa inner join pasien_mati "+
+                       "inner join pasien inner join kamar_inap on reg_periksa.no_rawat=diagnosa_pasien.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "and pasien_mati.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat where diagnosa_pasien.status='Ranap' and "+
+                       "diagnosa_pasien.prioritas='1' and pasien.jk='P' and kamar_inap.tgl_keluar between ? and ? "+
+                       "and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat"); 
+                   try {
+                        ps4.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps4.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps4.setString(3,rs.getString("kd_penyakit"));
+                        rs4=ps4.executeQuery();
+                        rs4.last();       
+                        if(rs4.getRow()>0) b=rs4.getRow();
+                   } catch (Exception e) {
+                       System.out.println("Notif : "+e);
+                   } finally{
+                       if(rs4!=null){
+                           rs4.close();
+                       }
+                       if(ps4!=null){
+                           ps4.close();
+                       }
+                   }                        
+
+                   c=0;
+                   ps5=koneksi.prepareStatement("select diagnosa_pasien.no_rawat as jumlah from diagnosa_pasien inner join reg_periksa "+
+                       "inner join pasien inner join kamar_inap on reg_periksa.no_rawat=diagnosa_pasien.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "and reg_periksa.no_rawat=kamar_inap.no_rawat where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and pasien.jk='L' "+
+                       "and kamar_inap.tgl_keluar between ? and ? and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat");
+                   try {
+                        ps5.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps5.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps5.setString(3,rs.getString("kd_penyakit"));
+                        rs5=ps5.executeQuery();
+                        rs5.last();
+                        if(rs5.getRow()>0)  c=rs5.getRow()-a;
+                   } catch (Exception e) {
+                       System.out.println("Notif : "+e);
+                   } finally{
+                       if(rs5!=null){
+                           rs5.close();
+                       }
+                       if(ps5!=null){
+                           ps5.close();
+                       }
+                   }                        
+
+                   d=0;
+                   ps6=koneksi.prepareStatement("select diagnosa_pasien.no_rawat as jumlah from diagnosa_pasien inner join reg_periksa "+
+                       "inner join pasien inner join kamar_inap on reg_periksa.no_rawat=diagnosa_pasien.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                       "and reg_periksa.no_rawat=kamar_inap.no_rawat where diagnosa_pasien.status='Ranap' and diagnosa_pasien.prioritas='1' and pasien.jk='P' "+
+                       "and kamar_inap.tgl_keluar between ? and ? and diagnosa_pasien.kd_penyakit=? group by diagnosa_pasien.no_rawat");
+                   try{
+                       ps6.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps6.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        ps6.setString(3,rs.getString("kd_penyakit"));
+                        rs6=ps6.executeQuery();
+                        rs6.last();
+                        if(rs6.getRow()>0) d=rs6.getRow()-b;
+                   } catch (Exception e) {
+                       System.out.println("Notif : "+e);
+                   } finally{
+                       if(rs6!=null){
+                           rs6.close();
+                       }
+                       if(ps6!=null){
+                           ps6.close();
+                       }
+                   }                        
+
+                   tabMode2.addRow(new Object[]{rs.getString("kd_penyakit"),rs.getString("penyakit"),diagnosa,c,d,a,b,i});                  
+                }
             } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
+                System.out.println("Notif : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -2412,10 +2636,14 @@ private void ppGrafikTerkecilPieActionPerformed(java.awt.event.ActionEvent evt) 
                 if(ps!=null){
                     ps.close();
                 }
-            }         
-        }catch(Exception e){
+            }
+                 
+            //rs.close();
+            label9.setText("      Record : "+tabMode2.getRowCount());                        
+        }catch(SQLException e){
             System.out.println("Catatan  "+e);
         }
+       this.setCursor(Cursor.getDefaultCursor());
         
     }
     

@@ -1,4 +1,17 @@
+<?php
 
+/***
+* e-Pasien from version 0.1 Beta
+* Last modified: 05 July 2018
+* Author : drg. Faisol Basoro
+* Email : dentix.id@gmail.com
+*
+* File : layout/sidebar.php
+* Description : Sidebar menu
+* Licence under GPL
+***/
+
+?>
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
@@ -7,9 +20,9 @@
                 <?php $dataGet = fetch_array(query("SELECT nm_pasien, jk FROM pasien WHERE no_rkm_medis='{$_SESSION['username']}'")); ?>
                 <div class="image">
                 <?php
-                if ($dataGet['1'] == 'L') { 
+                if ($dataGet['1'] == 'L') {
                     echo '<img src="images/pria.png" width="48" height="48" alt="User" />';
-                } else if ($dataGet['1'] == 'P') { 
+                } else if ($dataGet['1'] == 'P') {
                     echo '<img src="images/wanita.png" width="48" height="48" alt="User" />';
                 }
                 ?>
@@ -62,7 +75,7 @@
                             <span>Informasi Kamar</span>
                         </a>
                     </li>
-                    <?php if(PENGADUAN == 'ENABLE') { ?>                    
+                    <?php if(PENGADUAN == 'ENABLE') { ?>
                     <li>
                         <a href="pengaduan.php">
                             <i class="material-icons">add_alert</i>
@@ -83,4 +96,3 @@
         </aside>
         <!-- #END# Left Sidebar -->
     </section>
-
