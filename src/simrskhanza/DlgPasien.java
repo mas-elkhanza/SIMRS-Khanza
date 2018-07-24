@@ -2951,7 +2951,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-07-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-07-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3086,7 +3086,7 @@ public class DlgPasien extends javax.swing.JDialog {
         TKtp.setBounds(712, 132, 130, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-07-2018" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-07-2018" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -5414,7 +5414,7 @@ private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 }//GEN-LAST:event_BtnKabupatenActionPerformed
 
 private void ppGrafikDemografiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikDemografiActionPerformed
-        DlgDemografi.setSize(550,180);
+        DlgDemografi.setSize(550,210);
         DlgDemografi.setLocationRelativeTo(internalFrame1);
         DlgDemografi.setVisible(true);
 }//GEN-LAST:event_ppGrafikDemografiActionPerformed
@@ -5437,8 +5437,8 @@ private void BtnPrint2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             if(!Kelurahan2.getText().equals("")){
                 DlgDemografi.dispose();   
                 grafiksql kas=new grafiksql("::[ Data Demografi Per Area Kelurahan "+Kelurahan2.getText()+", Kecamatan "+Kecamatan2.getText()+", Kabupaten "+Kabupaten2.getText()+" ]::",
-                        " pasien inner join kabupaten inner join kecamatan inner join kelurahan on pasien.kd_kab=kabupaten.kd_kab and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kel=kelurahan.kd_kel "+
-                        " where kabupaten.nm_kab='"+Kabupaten2.getText()+"' and kecamatan.nm_kec='"+Kecamatan2.getText()+"' and kelurahan.nm_kel='"+Kelurahan2.getText()+"'", 
+                        " pasien inner join kabupaten inner join kecamatan inner join kelurahan inner join propinsi on pasien.kd_kab=kabupaten.kd_kab and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kel=kelurahan.kd_kel "+
+                        " and pasien.kd_prop=propinsi.kd_prop where kabupaten.nm_kab='"+Kabupaten2.getText()+"' and kecamatan.nm_kec='"+Kecamatan2.getText()+"' and kelurahan.nm_kel='"+Kelurahan2.getText()+"' and propinsi.nm_prop='"+Propinsi2.getText()+"' ", 
                         "pasien.alamat","Area");
                 kas.setSize(this.getWidth(), this.getHeight());        
                 kas.setLocationRelativeTo(this);
@@ -5446,9 +5446,9 @@ private void BtnPrint2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }else if(!Kecamatan2.getText().equals("")){
                 DlgDemografi.dispose();   
                 grafiksql kas=new grafiksql("::[ Data Demografi Per Kelurahan Kecamatan "+Kecamatan2.getText()+" Kabupaten "+Kabupaten2.getText()+" ]::",
-                        " pasien inner join kabupaten inner join kecamatan inner join kelurahan on pasien.kd_kab=kabupaten.kd_kab "+
+                        " pasien inner join kabupaten inner join kecamatan inner join kelurahan inner join propinsi on pasien.kd_kab=kabupaten.kd_kab "+
                          "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kel=kelurahan.kd_kel "+
-                         "where kabupaten.nm_kab='"+Kabupaten2.getText()+"' and kecamatan.nm_kec='"+Kecamatan2.getText()+"'", 
+                         "and propinsi.kd_prop=pasien.kd_prop where kabupaten.nm_kab='"+Kabupaten2.getText()+"' and kecamatan.nm_kec='"+Kecamatan2.getText()+"' and propinsi.nm_prop='"+Propinsi2.getText()+"' ", 
                          "kelurahan.nm_kel","Kelurahan");
                 kas.setSize(this.getWidth(), this.getHeight());        
                 kas.setLocationRelativeTo(this);
@@ -5456,21 +5456,29 @@ private void BtnPrint2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }else if(!Kabupaten2.getText().equals("")){
                 DlgDemografi.dispose();   
                 grafiksql kas=new grafiksql("::[ Data Per Kecamatan Kabupaten "+Kabupaten2.getText()+" ]::",
-                         " pasien inner join kabupaten inner join kecamatan on pasien.kd_kab=kabupaten.kd_kab "+
-                         "and pasien.kd_kec=kecamatan.kd_kec where kabupaten.nm_kab='"+Kabupaten2.getText()+"'", 
+                         " pasien inner join kabupaten inner join kecamatan inner join propinsi on pasien.kd_kab=kabupaten.kd_kab "+
+                         "and pasien.kd_kec=kecamatan.kd_kec and propinsi.kd_prop=pasien.kd_prop where kabupaten.nm_kab='"+Kabupaten2.getText()+"' and propinsi.nm_prop='"+Propinsi2.getText()+"' ", 
                          "kecamatan.nm_kec","Kecamatan");
                 kas.setSize(this.getWidth(), this.getHeight());        
                 kas.setLocationRelativeTo(this);
                 kas.setVisible(true);
-            }else if(Kabupaten2.getText().equals("")){
+            }else if(!Propinsi2.getText().equals("")){
                 DlgDemografi.dispose();   
-                grafiksql kas=new grafiksql("::[ Data Demografi Per Kabupaten ]::",
-                         " pasien inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab", 
-                          "kabupaten.nm_kab","Kabupaten");
+                grafiksql kas=new grafiksql("::[ Data Demografi Per Propinsi ]::",
+                         " pasien inner join propinsi on pasien.kd_prop=propinsi.kd_prop where propinsi.nm_prop='"+Propinsi2.getText()+"' ", 
+                          "propinsi.nm_prop","Propinsi");
                 kas.setSize(this.getWidth(), this.getHeight());        
                 kas.setLocationRelativeTo(this);
                 kas.setVisible(true);
-            } 
+            }else if(Propinsi2.getText().equals("")){
+                DlgDemografi.dispose();   
+                grafiksql kas=new grafiksql("::[ Data Demografi Per Propinsi ]::",
+                         " pasien inner join propinsi on pasien.kd_prop=propinsi.kd_prop ", 
+                          "propinsi.nm_prop","Propinsi");
+                kas.setSize(this.getWidth(), this.getHeight());        
+                kas.setLocationRelativeTo(this);
+                kas.setVisible(true);
+            }  
 }//GEN-LAST:event_BtnPrint2ActionPerformed
 
 private void BtnKeluar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluar2ActionPerformed
@@ -5504,12 +5512,16 @@ private void BtnSeek9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_BtnSeek9ActionPerformed
 
 private void BtnSeek10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek10ActionPerformed
+    if(Propinsi2.getText().equals("")){
+       Valid.textKosong(Propinsi2,"Propinsi");
+    }else{    
         var.setform("DlgPasien");
         pilih=2;
         kab.emptTeks();
         kab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kab.setLocationRelativeTo(internalFrame1);
-        kab.setVisible(true);   
+        kab.setVisible(true);
+    }           
 }//GEN-LAST:event_BtnSeek10ActionPerformed
 
 private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint3ActionPerformed
@@ -5532,10 +5544,12 @@ private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 data.put("logo",Sequel.cariGambar("select logo from setting")); 
                 Valid.MyReport("rptDemografi.jrxml","report","::[ Data Demografi Per Area Kelurahan "+Kelurahan2.getText()+", Kecamatan "+Kecamatan2.getText()+", Kabupaten "+Kabupaten2.getText()+" ]::",
                    "select  pasien.alamat as area,count(pasien.alamat) as jumlah from pasien "+
-                   "inner join kabupaten inner join kecamatan inner join kelurahan on pasien.kd_kab=kabupaten.kd_kab "+
+                   "inner join kabupaten inner join kecamatan inner join kelurahan inner join propinsi "+
+                   "on pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop "+
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kel=kelurahan.kd_kel "+
                    "where kabupaten.nm_kab='"+Kabupaten2.getText()+"' and kecamatan.nm_kec='"+Kecamatan2.getText()+"' "+
-                   "and kelurahan.nm_kel='"+Kelurahan2.getText()+"' group by pasien.alamat order by pasien.alamat",data);
+                   "and kelurahan.nm_kel='"+Kelurahan2.getText()+"' and propinsi.nm_prop='"+Propinsi2.getText()+"' "+
+                   "group by pasien.alamat order by pasien.alamat",data);
             }else if(!Kecamatan2.getText().equals("")){
                 DlgDemografi.dispose();   
                 Map<String, Object> data = new HashMap<>();
@@ -5550,9 +5564,11 @@ private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 data.put("logo",Sequel.cariGambar("select logo from setting")); 
                 Valid.MyReport("rptDemografi.jrxml","report","::[ Data Demografi Per Kelurahan Kecamatan "+Kecamatan2.getText()+" Kabupaten "+Kabupaten2.getText()+" ]::",
                    "select kelurahan.nm_kel as area,count(kelurahan.nm_kel) as jumlah from pasien "+
-                   "inner join kabupaten inner join kecamatan inner join kelurahan on pasien.kd_kab=kabupaten.kd_kab "+
+                   "inner join kabupaten inner join kecamatan inner join kelurahan inner join propinsi "+
+                   "on pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop "+
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kel=kelurahan.kd_kel "+
-                   "where kabupaten.nm_kab='"+Kabupaten2.getText()+"' and kecamatan.nm_kec='"+Kecamatan2.getText()+"' group by kelurahan.nm_kel order by kelurahan.nm_kel",data);
+                   "where kabupaten.nm_kab='"+Kabupaten2.getText()+"' and kecamatan.nm_kec='"+Kecamatan2.getText()+"' "+
+                   "and propinsi.nm_prop='"+Propinsi2.getText()+"' group by kelurahan.nm_kel order by kelurahan.nm_kel",data);
             }else if(!Kabupaten2.getText().equals("")){
                 DlgDemografi.dispose();   
                 Map<String, Object> data = new HashMap<>();
@@ -5567,13 +5583,15 @@ private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 data.put("logo",Sequel.cariGambar("select logo from setting")); 
                 Valid.MyReport("rptDemografi.jrxml","report","::[ Data Per Kecamatan Kabupaten "+Kabupaten2.getText()+" ]::",
                    "select kecamatan.nm_kec as area,count(kecamatan.nm_kec) as jumlah from pasien "+
-                   "inner join kabupaten inner join kecamatan on pasien.kd_kab=kabupaten.kd_kab "+
-                   "and pasien.kd_kec=kecamatan.kd_kec where kabupaten.nm_kab='"+Kabupaten2.getText()+"' group by kecamatan.nm_kec order by kecamatan.nm_kec",data);
-            }else if(Kabupaten2.getText().equals("")){
+                   "inner join kabupaten inner join kecamatan inner join propinsi "+
+                   "on pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop "+
+                   "and pasien.kd_kec=kecamatan.kd_kec where kabupaten.nm_kab='"+Kabupaten2.getText()+"' "+
+                   "and propinsi.nm_prop='"+Propinsi2.getText()+"' group by kecamatan.nm_kec order by kecamatan.nm_kec",data);
+            }else if(!Propinsi2.getText().equals("")){
                 DlgDemografi.dispose();   
                 Map<String, Object> data = new HashMap<>();
-                data.put("judul","Data Demografi Per Kabupaten");
-                data.put("area","Kabupaten");
+                data.put("judul","Data Demografi Per Propinsi");
+                data.put("area","Propinsi");
                 data.put("namars",var.getnamars());
                 data.put("alamatrs",var.getalamatrs());
                 data.put("kotars",var.getkabupatenrs());
@@ -5581,9 +5599,23 @@ private void BtnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 data.put("kontakrs",var.getkontakrs());
                 data.put("emailrs",var.getemailrs());
                 data.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDemografi.jrxml","report","::[ Data Demografi Per Kabupaten ]::","select kabupaten.nm_kab as area,count(kabupaten.nm_kab) as jumlah from pasien "+
-                   "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab group by kabupaten.nm_kab order by kabupaten.nm_kab",data);
-            }                        
+                Valid.MyReport("rptDemografi.jrxml","report","::[ Data Demografi Per Propinsi ]::","select propinsi.nm_prop as area,count(propinsi.nm_prop) as jumlah from pasien "+
+                   "inner join propinsi on pasien.kd_prop=propinsi.kd_prop where propinsi.nm_prop='"+Propinsi2.getText()+"' group by propinsi.nm_prop order by propinsi.nm_prop",data);
+            }else if(Propinsi2.getText().equals("")){
+                DlgDemografi.dispose();   
+                Map<String, Object> data = new HashMap<>();
+                data.put("judul","Data Demografi Per Propinsi");
+                data.put("area","Propinsi");
+                data.put("namars",var.getnamars());
+                data.put("alamatrs",var.getalamatrs());
+                data.put("kotars",var.getkabupatenrs());
+                data.put("propinsirs",var.getpropinsirs());
+                data.put("kontakrs",var.getkontakrs());
+                data.put("emailrs",var.getemailrs());
+                data.put("logo",Sequel.cariGambar("select logo from setting")); 
+                Valid.MyReport("rptDemografi.jrxml","report","::[ Data Demografi Per Propinsi ]::","select propinsi.nm_prop as area,count(propinsi.nm_prop) as jumlah from pasien "+
+                   "inner join propinsi on pasien.kd_prop=propinsi.kd_prop group by propinsi.nm_prop order by propinsi.nm_prop",data);
+            }                         
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrint3ActionPerformed
@@ -7210,7 +7242,12 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_kdcacatKeyPressed
 
     private void BtnSeek11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek11ActionPerformed
-        // TODO add your handling code here:
+        var.setform("DlgPasien");
+        pilih=2;
+        prop.emptTeks();
+        prop.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        prop.setLocationRelativeTo(internalFrame1);
+        prop.setVisible(true); 
     }//GEN-LAST:event_BtnSeek11ActionPerformed
 
     /**
