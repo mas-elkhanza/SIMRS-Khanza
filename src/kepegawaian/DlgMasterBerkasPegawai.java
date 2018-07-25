@@ -159,7 +159,7 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 255));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(60, 80, 50));
+        MnRestore.setForeground(new java.awt.Color(130,100,100));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -184,7 +184,7 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Berkas Pegawai ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Berkas Pegawai ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -438,7 +438,7 @@ public final class DlgMasterBerkasPegawai extends javax.swing.JDialog {
         panelGlass8.add(jLabel9);
         jLabel9.setBounds(216, 10, 110, 23);
 
-        CmbKategori.setForeground(new java.awt.Color(153, 0, 51));
+        CmbKategori.setForeground(new java.awt.Color(130,100,100));
         CmbKategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tenaga klinis Dokter Umum", "Tenaga klinis Dokter Spesialis", "Tenaga klinis Perawat dan Bidan", "Tenaga klinis Profesi Lain", "Tenaga Non Klinis" }));
         CmbKategori.setName("CmbKategori"); // NOI18N
         CmbKategori.setOpaque(false);
