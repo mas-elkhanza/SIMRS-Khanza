@@ -1248,6 +1248,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     }
                 }
                 
+                Valid.tabelKosong(tabModeObatRacikan);
+                
                 for(i=0;i<tbDetailObatRacikan.getRowCount();i++){ 
                     if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,10).toString())>0){
                         if(Sequel.menyimpantf2("detail_obat_racikan","?,?,?,?,?","Data",5,new String[]{
@@ -1271,6 +1273,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }   
                     }
                 }
+                
+                Valid.tabelKosong(tabModeDetailObatRacikan);
                 
                 if(!noresep.equals("")){
                     Sequel.mengedit("resep_obat","no_resep='"+noresep+"'","tgl_perawatan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"',jam='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"'");

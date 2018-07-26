@@ -7,6 +7,8 @@ package bridging;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.sekuel;
+import fungsi.var;
 import java.io.FileInputStream;
 import java.util.Properties;
 import javax.swing.JOptionPane;
@@ -27,6 +29,7 @@ public class DUKCAPILAcehCekNIK {
             PROP_NAME="",NO_KAB="",KEL_NAME="",JENIS_KLMIN="",TGL_LHR="",
             requestJson="",stringbalik="";
     private final Properties prop = new Properties();
+    private sekuel Sequel=new sekuel();
     
     public DUKCAPILAcehCekNIK(){
         super();
@@ -92,6 +95,7 @@ public class DUKCAPILAcehCekNIK {
                             KEL_NAME=list.path("KEL_NAME").asText();
                             JENIS_KLMIN=list.path("JENIS_KLMIN").asText();
                             TGL_LHR=list.path("TGL_LHR").asText();
+                            Sequel.queryu("insert into log_dukcapil_aceh values('"+NIK+"',now(),'"+var.getkode()+"')");
                         }
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null,e+" "+list.path("RESPON").asText());
