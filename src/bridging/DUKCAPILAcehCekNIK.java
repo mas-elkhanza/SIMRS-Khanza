@@ -95,7 +95,7 @@ public class DUKCAPILAcehCekNIK {
                             KEL_NAME=list.path("KEL_NAME").asText();
                             JENIS_KLMIN=list.path("JENIS_KLMIN").asText();
                             TGL_LHR=list.path("TGL_LHR").asText();
-                            Sequel.queryu("insert into log_dukcapil_aceh values('"+NIK+"',now(),'"+var.getkode()+"')");
+                            Sequel.queryu2("insert into log_dukcapil_aceh values('"+NIK+"',now(),'"+var.getkode()+"')");
                         }
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(null,e+" "+list.path("RESPON").asText());
