@@ -234,7 +234,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(140,120,120));
+        ppBersihkan.setForeground(new java.awt.Color(130,100,100));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -265,7 +265,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(140,120,120))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -551,7 +551,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         cmbDtk.setBounds(324, 42, 50, 23);
 
         ChkRM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(175, 180, 170)));
-        ChkRM.setForeground(new java.awt.Color(140,120,120));
+        ChkRM.setForeground(new java.awt.Color(130,100,100));
         ChkRM.setSelected(true);
         ChkRM.setBorderPainted(true);
         ChkRM.setBorderPaintedFlat(true);
@@ -568,7 +568,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         ChkRM.setBounds(661, 42, 23, 23);
 
         ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
-        ChkJln.setForeground(new java.awt.Color(140,120,120));
+        ChkJln.setForeground(new java.awt.Color(130,100,100));
         ChkJln.setSelected(true);
         ChkJln.setBorderPainted(true);
         ChkJln.setBorderPaintedFlat(true);

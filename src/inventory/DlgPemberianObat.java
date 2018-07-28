@@ -459,7 +459,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         ppResepObat.setBackground(new java.awt.Color(255, 255, 255));
         ppResepObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppResepObat.setForeground(new java.awt.Color(140,120,120));
+        ppResepObat.setForeground(new java.awt.Color(130,100,100));
         ppResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppResepObat.setText("Buat Nomor Resep Obat");
         ppResepObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -476,7 +476,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         ppNoRawat.setBackground(new java.awt.Color(255, 255, 255));
         ppNoRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppNoRawat.setForeground(new java.awt.Color(140,120,120));
+        ppNoRawat.setForeground(new java.awt.Color(130,100,100));
         ppNoRawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppNoRawat.setText("Rekap Per No.Rawat");
         ppNoRawat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -493,7 +493,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
 
         ppLokasi.setBackground(new java.awt.Color(255, 255, 255));
         ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppLokasi.setForeground(new java.awt.Color(140,120,120));
+        ppLokasi.setForeground(new java.awt.Color(130,100,100));
         ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppLokasi.setText("Tampilkan Per Asal Stok");
         ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -516,7 +516,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Pemberian Obat/Barang/Alkes/Perlengkapan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(140,120,120))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail Pemberian Obat/Barang/Alkes/Perlengkapan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -981,7 +981,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         jLabel18.setBounds(605, 102, 90, 23);
 
         ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
-        ChkJln.setForeground(new java.awt.Color(140,120,120));
+        ChkJln.setForeground(new java.awt.Color(130,100,100));
         ChkJln.setSelected(true);
         ChkJln.setBorderPainted(true);
         ChkJln.setBorderPaintedFlat(true);
