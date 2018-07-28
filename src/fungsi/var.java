@@ -78,7 +78,7 @@ public final class var {
             grafik_ikp_perbulan=false,grafik_ikp_pertanggal=false,riwayat_data_batch=false,grafik_ikp_jenis=false,grafik_ikp_dampak=false,piutang_akun_piutang=false,
             grafik_kunjungan_per_agama=false,grafik_kunjungan_per_umur=false,suku_bangsa=false,bahasa_pasien=false,golongan_tni=false,satuan_tni=false,
             jabatan_tni=false,pangkat_tni=false,golongan_polri=false,satuan_polri=false,jabatan_polri=false,pangkat_polri=false,cacat_fisik=false,
-            grafik_kunjungan_suku=false;
+            grafik_kunjungan_suku=false,grafik_kunjungan_bahasa=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -451,6 +451,7 @@ public final class var {
                         var.pangkat_polri=true;
                         var.cacat_fisik=true;
                         var.grafik_kunjungan_suku=true;
+                        var.grafik_kunjungan_bahasa=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -807,6 +808,7 @@ public final class var {
                         var.pangkat_polri=rs2.getBoolean("pangkat_polri");
                         var.cacat_fisik=rs2.getBoolean("cacat_fisik");
                         var.grafik_kunjungan_suku=rs2.getBoolean("grafik_kunjungan_suku");
+                        var.grafik_kunjungan_bahasa=rs2.getBoolean("grafik_kunjungan_bahasa");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1161,6 +1163,7 @@ public final class var {
                         var.pangkat_polri=false;
                         var.cacat_fisik=false;
                         var.grafik_kunjungan_suku=false;
+                        var.grafik_kunjungan_bahasa=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1563,4 +1566,5 @@ public final class var {
     public static boolean getpangkat_polri(){return var.pangkat_polri;}
     public static boolean getcacat_fisik(){return var.cacat_fisik;}
     public static boolean getgrafik_kunjungan_suku(){return var.grafik_kunjungan_suku;}
+    public static boolean getgrafik_kunjungan_bahasa(){return var.grafik_kunjungan_bahasa;}
 }   
