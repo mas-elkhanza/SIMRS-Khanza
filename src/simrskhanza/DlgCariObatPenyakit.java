@@ -224,7 +224,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Obat Penyakit/Alkes Dibutuhkan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Obat Penyakit/Alkes Dibutuhkan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -459,7 +459,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         ChkJln.setBackground(new java.awt.Color(234, 255, 235));
         ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        ChkJln.setForeground(new java.awt.Color(160,130,130));
+        ChkJln.setForeground(new java.awt.Color(130,100,100));
         ChkJln.setSelected(true);
         ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
         ChkJln.setBorderPainted(true);

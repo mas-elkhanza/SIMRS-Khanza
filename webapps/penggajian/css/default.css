@@ -5,7 +5,7 @@ body  {
 	background: #ffffff;
 	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
 	padding: 0;
-	color: #a08282;
+	color: #8c7878;
 }
 h1 {    
 	color:#54684A;
@@ -27,13 +27,13 @@ h1 {
 #header h1 {
 	margin: 0; /* zeroing the margin of the last element in the #header div will avoid margin collapse - an unexplainable space between divs. If the div has a border around it, this is not necessary as that also avoids the margin collapse */
 	padding: 100px 40px 0 0; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
-	color:#a08282;
+	color:#8c7878;
 	text-align:right;
 }
 #header h3 {
 	margin: 0; /* zeroing the margin of the last element in the #header div will avoid margin collapse - an unexplainable space between divs. If the div has a border around it, this is not necessary as that also avoids the margin collapse */
 	padding: 5px 40px 0 0; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
-	color:#a08282;
+	color:#8c7878;
 	text-align:right;
 	font-size:11px;
 }
@@ -86,11 +86,11 @@ h1 {
 	padding-top:15px;
 	margin:0 240px 0 0;
 	text-align:center;
-        color:#a08282;;
+        color:#8c7878;;
         font-style: italic;
 } 
 .footerLink  {
-	color:#a08282;
+	color:#8c7878;
 	text-decoration:underline;
 }
 .clearfloat { 
@@ -125,12 +125,12 @@ h1 {
 }
 
 #navcontainer table tr td {
-	color:#a08282;
+	color:#8c7878;
 	text-decoration: none;
 	font-size:11px;
 }
 #navcontainer table tr td a{
-	color:#a08282;
+	color:#8c7878;
 	text-decoration: none;
 	font-size:11px;
 }
@@ -140,7 +140,7 @@ h1 {
 }
 #navcontainer table tr td #current {
 	background: #babb65;
-	color: #a08282;
+	color: #8c7878;
 }
 
 #post b {
@@ -155,7 +155,7 @@ h1 {
 
 #entry a{
         text-decoration:none;
-        color:#a08282;
+        color:#8c7878;
         padding:0 0 0 0px;
         font-family: Tahoma;
         font-size: 11px;
@@ -185,7 +185,7 @@ h1 {
         background-position:5px 5px;
         border-bottom:1px #fffff9 solid;
         text-decoration:none;
-        color:#a08282;
+        color:#8c7878;
         padding:0 0 0 30px;
         line-height:25px;
         list-style: none;
@@ -198,7 +198,7 @@ h1 {
         background-position:5px 5px;
         border-bottom:1px #fffff9 solid;
         text-decoration:none;
-        color:#a08282;
+        color:#8c7878;
         padding:0 0 0 10px;
         line-height:25px;
         list-style: none;
@@ -207,7 +207,7 @@ h1 {
 
 #post a{
         text-decoration:none;
-        color:#a08282;
+        color:#8c7878;
         padding:0 0 0 0px;
         font-family: Tahoma;
         font-size: 11px;
@@ -218,7 +218,7 @@ h1 {
 input.teks_input{
     height:18px;
     background-color:#fff;
-    color:#a08282;
+    color:#8c7878;
     border:1px #DFDFDF solid;
     float:left;
 }
@@ -227,7 +227,7 @@ textarea.teks_textarea{
     height:120px;
     font-family:Tahoma;
     font-size:11px;
-    color: #a08282;
+    color: #8c7878;
     background-color:#fff;
     border:1px #DFDFDF solid;
     float:left;
@@ -238,7 +238,7 @@ input.register{
     border:none;
     cursor:pointer;
     text-align:center;
-    color:#a08282;
+    color:#8c7878;
     background:url(images/register_bt.gif) no-repeat center;
 }
 
@@ -255,7 +255,7 @@ position:relative;
 width:335px;
 clear:both;
 padding:10px 0 10px 0;
-color:#a08282;
+color:#8c7878;
 }
 label.contact{
 width:75px;
@@ -263,11 +263,11 @@ float:left;
 font-size:11px;
 text-align:right;
 padding:4px 5px 0 0;
-color: #a08282;
+color: #8c7878;
 }
 
 .head td{
-	color:#a08282;
+	color:#8c7878;
 	font: 11px  tahoma;
 	background: #fafff5;
 	border-bottom: 1px solid #f2f7ed;
@@ -278,7 +278,7 @@ color: #a08282;
 }
 
 .head2 td{
-	color:#a08282;
+	color:#8c7878;
 	font: 11px  tahoma;
 	background: #fafff5;
 	border-bottom: 1px solid #f2f7ed;
@@ -288,7 +288,7 @@ color: #a08282;
 }
 
 .head3 td{
-	color:#a08282;
+	color:#8c7878;
 	font: 11px  tahoma;
 	background: #fafff5;
 	border-bottom: 1px solid #f2f7ed;
@@ -305,13 +305,13 @@ color: #a08282;
 	padding-top:4px;
 	padding-bottom:4px;
 	padding-left:2px;
-	color:#a08282;
+	color:#8c7878;
 	font: 11px  tahoma;
 }
 
 .isi a{
 	text-decoration:none;
-        color:#a08282;
+        color:#8c7878;
         padding:0 0 0 0px;
         font-family: Tahoma;
         font-size: 11px;
@@ -325,7 +325,7 @@ color: #a08282;
         font-family: Tahoma;
 	font-size: 11px;
 	font-style: italic;
-	color:#a08282;
+	color:#8c7878;
 }
 
 .isi3 td{
@@ -334,13 +334,13 @@ color: #a08282;
 	background: #fffff9;
 	padding-left:2px;
 	padding-right:0px;
-	color:#a08282;
+	color:#8c7878;
 	font: 11px  tahoma, Tahoma, Helvetica, sans-serif;
 }
 
 .isi4 td{
         font: 11px  Tahoma;
-	color: #a08282;
+	color: #8c7878;
 	border-right: 1px solid #f2f7ed;
 	border-bottom: 1px solid #f2f7ed;
 	border-top: 1px solid #f2f7ed;
@@ -357,7 +357,7 @@ color: #a08282;
 	padding-bottom:3px;
 	padding-left:8px;
 	padding-right:8px;
-	color:#a08282;
+	color:#8c7878;
 	font: 11px  Tahoma;
 }
 
@@ -369,7 +369,7 @@ color: #a08282;
 	padding-bottom:0px;
 	padding-left:1px;
 	padding-right:0px;
-	color:#a08282;
+	color:#8c7878;
 	font: 9px Tahoma;
 }
 
@@ -380,7 +380,7 @@ color: #a08282;
 	padding-top:4px;
 	padding-bottom:4px;
 	padding-left:2px;
-	color:#a08282;
+	color:#8c7878;
 	font: 11px  tahoma;
 }
 
@@ -391,7 +391,7 @@ color: #a08282;
 	background: #f2f7eb;
 	font-size: 11px;
         font: Tahoma;
-	color: #a08282;
+	color: #8c7878;
 }
 
 .text {
@@ -400,7 +400,7 @@ color: #a08282;
         font: Tahoma;
 	padding: 3px 3px 3px 3px;
 	border: 1px solid #e2e7de;
-	color: #a08282;
+	color: #8c7878;
         height: 22px;
 }
 
@@ -410,7 +410,7 @@ color: #a08282;
         font: Tahoma;
 	padding: 3px 3px 3px 3px;
 	border: 1px solid #e2e7de;
-	color: #a08282;
+	color: #8c7878;
         width:210px;
         height: 22px;
 }
@@ -421,7 +421,7 @@ color: #a08282;
         font: Tahoma;
 	padding: 3px 3px 3px 3px;
 	border: 1px solid #e2e7de;
-	color: #a08282;
+	color: #8c7878;
         width:90px;
         height: 22px;
 }
@@ -432,7 +432,7 @@ color: #a08282;
         font: Tahoma;
 	padding: 3px 3px 3px 3px;
 	border: 1px solid #e2e7de;
-	color: #a08282;
+	color: #8c7878;
         width:180px;
         height: 22px;
 }
@@ -440,14 +440,14 @@ color: #a08282;
 .caption{
         height: 22px;
 	padding: 0px 0 0 3px;
-	color: #a08282;
+	color: #8c7878;
         font-family:Tahoma;
         font-size: 11px;
 }
 
 .link {        
         text-decoration:none;
-        color:#a08282;
+        color:#8c7878;
         padding:0 0 0 0px;
         line-height:26px;
         list-style: none;
@@ -468,11 +468,11 @@ list-style:none;
 }
 ul.left_menu li.odd a{
 width:166px;height:25px;display:block;background:#f9fef4; font: 11px  Tahoma;
-text-decoration:none;color:#a08282;padding:0 0 0 31px; line-height:25px;
+text-decoration:none;color:#8c7878;padding:0 0 0 31px; line-height:25px;
 }
 ul.left_menu li.even a{
 width:166px;height:25px;display:block;background:#f5faf0;font: 11px  Tahoma;
-text-decoration:none;color:#a08282;padding:0 0 0 31px; line-height:25px;
+text-decoration:none;color:#8c7878;padding:0 0 0 31px; line-height:25px;
 }
 ul.left_menu li.even a:hover, ul.left_menu li.odd a:hover{
 background:#7bbcc7; color:#aaceaf;background-position:5px 5px;font: 11px  Tahoma;
@@ -485,5 +485,5 @@ background:#7bbcc7; color:#aaceaf;background-position:5px 5px;font: 11px  Tahoma
         background:url(images/65.png) no-repeat left #f1f6ec;
         background-position:4px 5px;
         border-bottom:1px #fffff9 solid;
-        color:#a08282;
+        color:#8c7878;
 }

@@ -149,7 +149,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 
         ppGanti.setBackground(new java.awt.Color(242, 242, 242));
         ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppGanti.setForeground(new java.awt.Color(160,130,130));
+        ppGanti.setForeground(new java.awt.Color(130,100,100));
         ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
         ppGanti.setText("Ganti");
         ppGanti.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -166,7 +166,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(242, 242, 242));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(160,130,130));
+        ppHapus.setForeground(new java.awt.Color(130,100,100));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -183,7 +183,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
 
         ppCetak.setBackground(new java.awt.Color(242, 242, 242));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(160,130,130));
+        ppCetak.setForeground(new java.awt.Color(130,100,100));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -207,7 +207,7 @@ public class UTDKomponenDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Komponen Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Komponen Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

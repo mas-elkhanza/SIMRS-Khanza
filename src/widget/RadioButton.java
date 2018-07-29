@@ -23,7 +23,7 @@ public class RadioButton extends JRadioButton{
         //setForeground(new Color(90,90,90));
         //setBackground(new Color(245,170,245));
         setBackground(new Color(255,255,253));
-        setForeground(new Color(160,130,130));
+        setForeground(new Color(130,100,100));
         setFocusPainted(false);
         setBorder(new EmptyBorder(1,1,1,1));
         setOpaque(false);

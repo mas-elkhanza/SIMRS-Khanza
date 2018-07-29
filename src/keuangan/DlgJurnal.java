@@ -181,7 +181,7 @@ public class DlgJurnal extends javax.swing.JDialog {
 
         ppTambah.setBackground(new java.awt.Color(242, 242, 242));
         ppTambah.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppTambah.setForeground(new java.awt.Color(160,130,130));
+        ppTambah.setForeground(new java.awt.Color(130,100,100));
         ppTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
         ppTambah.setText("Tambah");
         ppTambah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -198,7 +198,7 @@ public class DlgJurnal extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(242, 242, 242));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(160,130,130));
+        ppHapus.setForeground(new java.awt.Color(130,100,100));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -222,7 +222,7 @@ public class DlgJurnal extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Posting Jurnal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Posting Jurnal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

@@ -108,7 +108,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "[C]Master Berkas Pegawai","[C]Berkas Kepegawaian","[C]Riwayat Jabatan","[C]Riwayat Pendidikan","[C]Riwayat Naik Gaji","[C]Kegiatan Ilmiah & Pelatihan","[C]Riwayat Penghargaan",
                     "[C]Riwayat Penelitian","[E]Penerimaan Barang Non Medis","[J]Bayar Pesan Non Medis","[J]Hutang Barang Non Medis","[E]Rekap Penerimaan Non Medis","[I]Insiden Keselamatan",
                     "[L]Insiden Keselamatan Pasien","[N]Kejadian IKP Per Tahun","[N]Kejadian IKP Per Bulan","[N]Kejadian IKP Per Tanggal","[D]Riwayat Batch","[N]Kejadian IKP Per Jenis",
-                    "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang","[N]Kunjungan Reg Per Agama","[N]Kunjungan Reg Per Umur"
+                    "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang","[N]Kunjungan Reg Per Agama","[N]Kunjungan Reg Per Umur","[L]Suku/Bangsa Pasien","[L]Bahasa Pasien","[L]Golongan TNI",
+                    "[L]Satuan TNI","[L]Jabatan TNI","[L]Pangkat TNI","[L]Golongan POLRI","[L]Satuan POLRI","[L]Jabatan POLRI","[L]Pangkat POLRI","[L]Cacat Fisik","[N]Kunjungan Reg Per Suku/Bangsa",
+                    "[N]Kunjungan Reg Per Bahasa"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -210,6 +212,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class,
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -223,7 +226,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 340;i++) {
+        for (i = 0; i < 353;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -539,6 +542,32 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(148);
             }else if(i==339){
                 column.setPreferredWidth(140);
+            }else if(i==340){
+                column.setPreferredWidth(115);
+            }else if(i==341){
+                column.setPreferredWidth(88);
+            }else if(i==342){
+                column.setPreferredWidth(85);
+            }else if(i==343){
+                column.setPreferredWidth(73);
+            }else if(i==344){
+                column.setPreferredWidth(79);
+            }else if(i==345){
+                column.setPreferredWidth(79);
+            }else if(i==346){
+                column.setPreferredWidth(96);
+            }else if(i==347){
+                column.setPreferredWidth(86);
+            }else if(i==348){
+                column.setPreferredWidth(90);
+            }else if(i==349){
+                column.setPreferredWidth(90);
+            }else if(i==350){
+                column.setPreferredWidth(70);
+            }else if(i==351){
+                column.setPreferredWidth(178);
+            }else if(i==352){
+                column.setPreferredWidth(150);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -664,7 +693,7 @@ public class DlgUser extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup User ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -974,7 +1003,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1356,7 +1385,20 @@ public class DlgUser extends javax.swing.JDialog {
                     "grafik_ikp_dampak='"+tbUser.getValueAt(i,336).toString()+"',"+
                     "piutang_akun_piutang='"+tbUser.getValueAt(i,337).toString()+"',"+
                     "grafik_kunjungan_per_agama='"+tbUser.getValueAt(i,338).toString()+"',"+
-                    "grafik_kunjungan_per_umur='"+tbUser.getValueAt(i,339).toString()+"'");
+                    "grafik_kunjungan_per_umur='"+tbUser.getValueAt(i,339).toString()+"',"+
+                    "suku_bangsa='"+tbUser.getValueAt(i,340).toString()+"',"+
+                    "bahasa_pasien='"+tbUser.getValueAt(i,341).toString()+"',"+
+                    "golongan_tni='"+tbUser.getValueAt(i,342).toString()+"',"+
+                    "satuan_tni='"+tbUser.getValueAt(i,343).toString()+"',"+
+                    "jabatan_tni='"+tbUser.getValueAt(i,344).toString()+"',"+
+                    "pangkat_tni='"+tbUser.getValueAt(i,345).toString()+"',"+
+                    "golongan_polri='"+tbUser.getValueAt(i,346).toString()+"',"+
+                    "satuan_polri='"+tbUser.getValueAt(i,347).toString()+"',"+
+                    "jabatan_polri='"+tbUser.getValueAt(i,348).toString()+"',"+
+                    "pangkat_polri='"+tbUser.getValueAt(i,349).toString()+"',"+
+                    "cacat_fisik='"+tbUser.getValueAt(i,350).toString()+"',"+
+                    "grafik_kunjungan_suku='"+tbUser.getValueAt(i,351).toString()+"',"+
+                    "grafik_kunjungan_bahasa='"+tbUser.getValueAt(i,352).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1640,7 +1682,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "riwayat_naik_gaji,kegiatan_ilmiah,riwayat_penghargaan,riwayat_penelitian,penerimaan_non_medis,bayar_pesan_non_medis,"+
                         "hutang_barang_non_medis,rekap_pemesanan_non_medis,insiden_keselamatan,insiden_keselamatan_pasien,grafik_ikp_pertahun,"+
                         "grafik_ikp_perbulan,grafik_ikp_pertanggal,riwayat_data_batch,grafik_ikp_jenis,grafik_ikp_dampak,"+
-                        "piutang_akun_piutang,grafik_kunjungan_per_agama,grafik_kunjungan_per_umur from user order by AES_DECRYPT(id_user,'nur')");
+                        "piutang_akun_piutang,grafik_kunjungan_per_agama,grafik_kunjungan_per_umur,suku_bangsa,bahasa_pasien,"+
+                        "golongan_tni,satuan_tni,jabatan_tni,pangkat_tni,golongan_polri,satuan_polri,jabatan_polri,pangkat_polri, "+
+                        "cacat_fisik,grafik_kunjungan_suku,grafik_kunjungan_bahasa from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1991,7 +2035,20 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("grafik_ikp_dampak"),
                                rs.getBoolean("piutang_akun_piutang"),
                                rs.getBoolean("grafik_kunjungan_per_agama"),
-                               rs.getBoolean("grafik_kunjungan_per_umur")
+                               rs.getBoolean("grafik_kunjungan_per_umur"),
+                               rs.getBoolean("suku_bangsa"),
+                               rs.getBoolean("bahasa_pasien"),
+                               rs.getBoolean("golongan_tni"),
+                               rs.getBoolean("satuan_tni"),
+                               rs.getBoolean("jabatan_tni"),
+                               rs.getBoolean("pangkat_tni"),
+                               rs.getBoolean("golongan_polri"),
+                               rs.getBoolean("satuan_polri"),
+                               rs.getBoolean("jabatan_polri"),
+                               rs.getBoolean("pangkat_polri"),
+                               rs.getBoolean("cacat_fisik"),
+                               rs.getBoolean("grafik_kunjungan_suku"),
+                               rs.getBoolean("grafik_kunjungan_bahasa")
                             });
                         }   
                     } catch (Exception e) {
@@ -2332,7 +2389,20 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("grafik_ikp_dampak"),
                            rs.getBoolean("piutang_akun_piutang"),
                            rs.getBoolean("grafik_kunjungan_per_agama"),
-                           rs.getBoolean("grafik_kunjungan_per_umur")
+                           rs.getBoolean("grafik_kunjungan_per_umur"),
+                           rs.getBoolean("suku_bangsa"),
+                           rs.getBoolean("bahasa_pasien"),
+                           rs.getBoolean("golongan_tni"),
+                           rs.getBoolean("satuan_tni"),
+                           rs.getBoolean("jabatan_tni"),
+                           rs.getBoolean("pangkat_tni"),
+                           rs.getBoolean("golongan_polri"),
+                           rs.getBoolean("satuan_polri"),
+                           rs.getBoolean("jabatan_polri"),
+                           rs.getBoolean("pangkat_polri"),
+                           rs.getBoolean("cacat_fisik"),
+                           rs.getBoolean("grafik_kunjungan_suku"),
+                           rs.getBoolean("grafik_kunjungan_bahasa")
                         });
                     }                                             
                  }

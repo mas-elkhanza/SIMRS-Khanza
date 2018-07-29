@@ -442,7 +442,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(160,130,130));
+        ppBersihkan.setForeground(new java.awt.Color(130,100,100));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -459,7 +459,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
 
         ppStok.setBackground(new java.awt.Color(255, 255, 255));
         ppStok.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppStok.setForeground(new java.awt.Color(160,130,130));
+        ppStok.setForeground(new java.awt.Color(130,100,100));
         ppStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppStok.setText("Tampilkan Semua Stok");
         ppStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -503,7 +503,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -711,7 +711,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
         cmbDtk.setBounds(284, 10, 50, 23);
 
         ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
-        ChkJln.setForeground(new java.awt.Color(160,130,130));
+        ChkJln.setForeground(new java.awt.Color(130,100,100));
         ChkJln.setBorderPainted(true);
         ChkJln.setBorderPaintedFlat(true);
         ChkJln.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -750,7 +750,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
         Jeniskelas.setBounds(415, 10, 100, 23);
 
         ChkNoResep.setBorder(null);
-        ChkNoResep.setForeground(new java.awt.Color(160,130,130));
+        ChkNoResep.setForeground(new java.awt.Color(130,100,100));
         ChkNoResep.setSelected(true);
         ChkNoResep.setText("No.Resep   ");
         ChkNoResep.setBorderPainted(true);
@@ -808,7 +808,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(160,130,130));
+        TabRawat.setForeground(new java.awt.Color(130,100,100));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1175,6 +1175,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     }
                 }
                 
+                Valid.tabelKosong(tabModeObatRacikan);
+                
                 for(i=0;i<tbDetailObatRacikan.getRowCount();i++){ 
                     if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,10).toString())>0){
                         if(Sequel.menyimpantf2("detail_obat_racikan","?,?,?,?,?","Data",5,new String[]{
@@ -1204,6 +1206,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }   
                     }
                 }
+                
+                Valid.tabelKosong(tabModeDetailObatRacikan);
                 
                 Sequel.queryu("delete from tampjurnal");    
                 if(ttljual>0){

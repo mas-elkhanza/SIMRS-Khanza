@@ -345,7 +345,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(160,130,130));
+        ppBersihkan.setForeground(new java.awt.Color(130,100,100));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Pilihan");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -362,7 +362,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
 
         ppSemua.setBackground(new java.awt.Color(255, 255, 255));
         ppSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemua.setForeground(new java.awt.Color(160,130,130));
+        ppSemua.setForeground(new java.awt.Color(130,100,100));
         ppSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemua.setText("Pilih Semua");
         ppSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -381,7 +381,7 @@ public final class DlgUbahPeriksaLab extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Data Hasil Periksa Laboratorium & Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Data Hasil Periksa Laboratorium & Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

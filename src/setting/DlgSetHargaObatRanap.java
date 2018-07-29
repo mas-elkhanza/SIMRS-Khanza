@@ -178,7 +178,7 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat, Alkes & BHP Medis di Rawat Inap Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(160,130,130))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat, Alkes & BHP Medis di Rawat Inap Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -425,7 +425,7 @@ public final class DlgSetHargaObatRanap extends javax.swing.JDialog {
         panelGlass2.add(jLabel7);
         jLabel7.setBounds(309, 42, 90, 23);
 
-        Kelas.setForeground(new java.awt.Color(160,130,130));
+        Kelas.setForeground(new java.awt.Color(130,100,100));
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kelas 1", "Kelas 2", "Kelas 3", "Kelas Utama", "Kelas VIP", "Kelas VVIP" }));
         Kelas.setName("Kelas"); // NOI18N
         Kelas.setOpaque(false);
