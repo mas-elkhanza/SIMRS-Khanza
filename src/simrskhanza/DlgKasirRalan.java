@@ -197,11 +197,11 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampilkasir();}
+                public void insertUpdate(DocumentEvent e) {TabRawatMouseClicked(null);}
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampilkasir();}
+                public void removeUpdate(DocumentEvent e) {TabRawatMouseClicked(null);}
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampilkasir();}
+                public void changedUpdate(DocumentEvent e) {TabRawatMouseClicked(null);}
             });
         }         
          
@@ -220,7 +220,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                             kddokter.requestFocus();
                         }else if(pilihan==2){
                             CrPtg.setText(billing.dokter.getTable().getValueAt(billing.dokter.getTable().getSelectedRow(),1).toString());
-                            tampilkasir();
+                            TabRawatMouseClicked(null);
                             CrPtg.requestFocus();
                         } 
                     }                
@@ -252,7 +252,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                             kdpoli.requestFocus();
                         }else if(pilihan==2){
                             CrPoli.setText(billing.poli.getTable().getValueAt(billing.poli.getTable().getSelectedRow(),1).toString());
-                            CrPoli.requestFocus();                            
+                            CrPoli.requestFocus();   
+                            TabRawatMouseClicked(null);
                         }                        
                     }                      
                 }
@@ -3526,17 +3527,13 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         TCari.setText("");
         caripenjab="";
         filter="no";
-        if(TabRawat.getSelectedIndex()==0){
-            tampilkasir();
-        }else if(TabRawat.getSelectedIndex()==1){
-            tampilkasir2();
-        }
+        TabRawatMouseClicked(null);
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampilkasir();
             TCari.setText("");
+            TabRawatMouseClicked(null);
         }else{
             Valid.pindah(evt, TCari, BtnKeluar);
         }
@@ -3553,11 +3550,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            tampilkasir();
-        }else if(TabRawat.getSelectedIndex()==1){
-            tampilkasir2();
-        }
+        TabRawatMouseClicked(null);
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -4095,7 +4088,7 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 }//GEN-LAST:event_MnKamarInapActionPerformed
 
 private void cmbStatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbStatusItemStateChanged
-    tampilkasir();
+    TabRawatMouseClicked(null);
 }//GEN-LAST:event_cmbStatusItemStateChanged
 
 private void Kd2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kd2KeyPressed

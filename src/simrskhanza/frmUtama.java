@@ -5351,7 +5351,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnGrafikKunjunganPerBahasa);
 
-        btnJadwalOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_preferences-system-time_8810.png"))); // NOI18N
+        btnJadwalOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Alarm_132148.png"))); // NOI18N
         btnJadwalOperasi.setText("Jadwal Operasi");
         btnJadwalOperasi.setIconTextGap(0);
         btnJadwalOperasi.setName("btnJadwalOperasi"); // NOI18N
