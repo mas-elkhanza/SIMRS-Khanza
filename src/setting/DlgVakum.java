@@ -2247,7 +2247,8 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD3ActionPerformed
 
     private void BtnICD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD4ActionPerformed
-        hapus("Rujukan Keluar","lain","rujuk");        
+        hapus("Rujukan Keluar","lain","rujuk");   
+        hapus("Booking Operasi","lain","booking_operasi");   
         hapus("Bridging SEP","lain","bridging_sep");   
         hapus("Bridging Inhealth","lain","bridging_inhealth");
         hapus("Rujukan Masuk","lain","rujuk_masuk");
