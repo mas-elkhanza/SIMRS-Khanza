@@ -3424,8 +3424,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
-    public void SetCariOperasi(String Operasi){
+    public void SetCariOperasi(String Operasi,String kodedokter,String namadokter){
         TCariPaket.setText(Operasi);
+        kdoperator1.setText(kodedokter);
+        nmoperator1.setText(namadokter);
     }
  
 }

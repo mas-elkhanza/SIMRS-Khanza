@@ -1196,7 +1196,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else{
             if(var.getkode().equals("Admin Utama")){
                 DlgTagihanOperasi dlgro=new DlgTagihanOperasi(null,false);
-                dlgro.SetCariOperasi(KdOperasi.getText());
+                dlgro.SetCariOperasi(KdOperasi.getText(),KdDokter.getText(),NmDokter.getText());
                 dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 dlgro.setLocationRelativeTo(internalFrame1);
                 dlgro.setNoRm(TNoRw.getText(),TPasien.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
@@ -1207,7 +1207,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     TCari.requestFocus();
                 }else{ 
                     DlgTagihanOperasi dlgro=new DlgTagihanOperasi(null,false);
-                    dlgro.SetCariOperasi(KdOperasi.getText());
+                    dlgro.SetCariOperasi(KdOperasi.getText(),KdDokter.getText(),NmDokter.getText());
                     dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     dlgro.setLocationRelativeTo(internalFrame1);
                     dlgro.setNoRm(TNoRw.getText(),TPasien.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
