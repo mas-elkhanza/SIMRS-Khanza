@@ -3423,5 +3423,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             ChkInput.setVisible(true);
         }
     }
+    
+    public void SetCariOperasi(String Operasi){
+        TCariPaket.setText(Operasi);
+    }
  
 }
