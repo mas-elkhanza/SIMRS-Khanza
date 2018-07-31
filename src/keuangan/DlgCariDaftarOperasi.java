@@ -169,12 +169,9 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Kamar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Daftar Tindakan Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -369,10 +366,6 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
         emptTeks();
     }//GEN-LAST:event_formWindowActivated
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
-
     /**
     * @param args the command line arguments
     */
@@ -404,7 +397,7 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    private void tampil() {  
+    public void tampil() {  
         Valid.tabelKosong(tabMode);
         
         try{
@@ -543,6 +536,10 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
         return tbKamar;
     }
     
+    public void setBayar(String penjab,String kelasoperasi){
+        this.kd_pj=penjab;
+        this.kelas=kelasoperasi;
+    }
     public void isCek(){        
        BtnTambah.setEnabled(var.gettarif_operasi());
     }
