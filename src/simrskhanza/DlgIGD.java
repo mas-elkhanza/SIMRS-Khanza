@@ -560,6 +560,8 @@ public final class DlgIGD extends javax.swing.JDialog {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        MnPermintaan = new javax.swing.JMenu();
+        MnJadwalOperasi = new javax.swing.JMenuItem();
         MnKamarInap = new javax.swing.JMenuItem();
         MnTindakan = new javax.swing.JMenu();
         MnRawatJalan = new javax.swing.JMenuItem();
@@ -753,6 +755,37 @@ public final class DlgIGD extends javax.swing.JDialog {
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
+
+        MnPermintaan.setBackground(new java.awt.Color(252, 255, 250));
+        MnPermintaan.setForeground(new java.awt.Color(130, 100, 100));
+        MnPermintaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPermintaan.setText("Permintaan");
+        MnPermintaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPermintaan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPermintaan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPermintaan.setIconTextGap(5);
+        MnPermintaan.setName("MnPermintaan"); // NOI18N
+        MnPermintaan.setOpaque(true);
+        MnPermintaan.setPreferredSize(new java.awt.Dimension(240, 26));
+
+        MnJadwalOperasi.setBackground(new java.awt.Color(255, 255, 255));
+        MnJadwalOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnJadwalOperasi.setForeground(new java.awt.Color(130, 100, 100));
+        MnJadwalOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnJadwalOperasi.setText("Jadwal Operasi");
+        MnJadwalOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnJadwalOperasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnJadwalOperasi.setIconTextGap(5);
+        MnJadwalOperasi.setName("MnJadwalOperasi"); // NOI18N
+        MnJadwalOperasi.setPreferredSize(new java.awt.Dimension(150, 26));
+        MnJadwalOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnJadwalOperasiActionPerformed(evt);
+            }
+        });
+        MnPermintaan.add(MnJadwalOperasi);
+
+        jPopupMenu1.add(MnPermintaan);
 
         MnKamarInap.setBackground(new java.awt.Color(255, 255, 255));
         MnKamarInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -5461,6 +5494,24 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnPoliInternalActionPerformed
 
+    private void MnJadwalOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnJadwalOperasiActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{
+            if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+            }else {
+                DlgBookingOperasi form=new DlgBookingOperasi(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"IGD");
+                form.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_MnJadwalOperasiActionPerformed
+
     /**
     * @data args the command line arguments
     */
@@ -5553,6 +5604,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnHapusObatOperasi;
     private javax.swing.JMenuItem MnHapusTagihanOperasi;
     private javax.swing.JMenuItem MnJKRA;
+    private javax.swing.JMenuItem MnJadwalOperasi;
     private javax.swing.JMenuItem MnKamarInap;
     private javax.swing.JMenuItem MnLabelTracker;
     private javax.swing.JMenuItem MnLabelTracker1;
@@ -5575,6 +5627,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnPemberianObat;
     private javax.swing.JMenuItem MnPeriksaLab;
     private javax.swing.JMenuItem MnPeriksaRadiologi;
+    private javax.swing.JMenu MnPermintaan;
     private javax.swing.JMenuItem MnPersetujuanMedis;
     private javax.swing.JMenuItem MnPoliInternal;
     private javax.swing.JMenuItem MnRawatJalan;
@@ -5947,7 +6000,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnHapusObatOperasi.setEnabled(var.getoperasi());  
         ppCatatanPasien.setEnabled(var.getcatatan_pasien());
         ppIKP.setEnabled(var.getinsiden_keselamatan_pasien());
-        ppBerkasDigital.setEnabled(var.getberkas_digital_perawatan()); 
+        ppBerkasDigital.setEnabled(var.getberkas_digital_perawatan());   
+        MnJadwalOperasi.setEnabled(var.getbooking_operasi());   
     }
     
     private void isNumber(){
