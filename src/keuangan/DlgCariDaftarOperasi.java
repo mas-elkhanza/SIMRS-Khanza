@@ -399,7 +399,6 @@ public final class DlgCariDaftarOperasi extends javax.swing.JDialog {
 
     public void tampil() {  
         Valid.tabelKosong(tabMode);
-        
         try{
             pstindakan=koneksi.prepareStatement("select kode_paket, nm_perawatan,kategori, operator1, operator2, operator3, "+
                    "asisten_operator1, asisten_operator2,asisten_operator3, instrumen, dokter_anak,perawaat_resusitas,"+

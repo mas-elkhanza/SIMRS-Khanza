@@ -37,7 +37,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String status="",kamar="",diagnosa="",order="",kelas="",penjab="",norawatibu="";
+    private String status="",kamar="",diagnosa="",order="",kelas="",penjab="",norawatibu="",posisi="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariDaftarOperasi operasi=new DlgCariDaftarOperasi(null,false);
     private DlgKamarInap kamarinap=new DlgKamarInap(null,false);
@@ -1117,8 +1117,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_StatusKeyPressed
 
     private void BtnOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOperasiActionPerformed
-        this.penjab=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText());        
-        if(status.equals("Ranap")){
+        penjab=Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText());        
+        if(posisi.equals("Ranap")){
             norawatibu=Sequel.cariIsi("select no_rawat from ranap_gabung where no_rawat2=?",TNoRw.getText());
         
             if(!norawatibu.equals("")){
@@ -1132,7 +1132,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
                     "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
             } 
-        }else if(status.equals("Ralan")){
+        }else if(posisi.equals("Ralan")){
             kelas="Rawat Jalan";
         }
     
@@ -1433,10 +1433,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
-    public void setNoRm(String norwt,String norm,String nama,String lokasi) {
+    public void setNoRm(String norwt,String norm,String nama,String lokasi,String posisi) {
         TNoRw.setText(norwt);
         TPasien.setText(norm+" "+nama);
         Kamar.setText(lokasi);
+        this.posisi=posisi;
         TCari.setText(norwt);
         ChkInput.setSelected(true);
         isForm();
