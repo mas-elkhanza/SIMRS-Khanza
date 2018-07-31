@@ -3194,6 +3194,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if(pstindakan2!=null){
                     pstindakan2.close();
                 }
+                if(pstindakan3!=null){
+                    pstindakan3.close();
+                }
+                if(pstindakan4!=null){
+                    pstindakan4.close();
+                }
             }                  
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
@@ -3416,6 +3422,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             FormInput.setVisible(false);      
             ChkInput.setVisible(true);
         }
+    }
+    
+    public void SetCariOperasi(String Operasi,String kodedokter,String namadokter){
+        TCariPaket.setText(Operasi);
+        kdoperator1.setText(kodedokter);
+        nmoperator1.setText(namadokter);
     }
  
 }

@@ -3058,9 +3058,6 @@
             </Component>
             <Component class="widget.Label" name="jLabel12">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="64" green="64" red="82" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="berelasi juga ikut terhapus. Lakukan backup data terlebih dulu sebelum menghapus isi table"/>
                 <Property name="name" type="java.lang.String" value="jLabel12" noResource="true"/>
               </Properties>
@@ -3072,9 +3069,6 @@
             </Component>
             <Component class="widget.Label" name="jLabel11">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="64" green="64" red="82" type="rgb"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Berhati-hatilah dalam menghapus isi table. Terdapat relasi antar table, ketika Anda menghapus suatu table maka di table yang"/>
                 <Property name="name" type="java.lang.String" value="jLabel11" noResource="true"/>
               </Properties>

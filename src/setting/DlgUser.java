@@ -109,7 +109,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "[C]Riwayat Penelitian","[E]Penerimaan Barang Non Medis","[J]Bayar Pesan Non Medis","[J]Hutang Barang Non Medis","[E]Rekap Penerimaan Non Medis","[I]Insiden Keselamatan",
                     "[L]Insiden Keselamatan Pasien","[N]Kejadian IKP Per Tahun","[N]Kejadian IKP Per Bulan","[N]Kejadian IKP Per Tanggal","[D]Riwayat Batch","[N]Kejadian IKP Per Jenis",
                     "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang","[N]Kunjungan Reg Per Agama","[N]Kunjungan Reg Per Umur","[L]Suku/Bangsa Pasien","[L]Bahasa Pasien","[L]Golongan TNI",
-                    "[L]Satuan TNI","[L]Jabatan TNI","[L]Pangkat TNI","[L]Golongan POLRI","[L]Satuan POLRI","[L]Jabatan POLRI","[L]Pangkat POLRI","[L]Cacat Fisik"
+                    "[L]Satuan TNI","[L]Jabatan TNI","[L]Pangkat TNI","[L]Golongan POLRI","[L]Satuan POLRI","[L]Jabatan POLRI","[L]Pangkat POLRI","[L]Cacat Fisik","[N]Kunjungan Reg Per Suku/Bangsa",
+                    "[N]Kunjungan Reg Per Bahasa","[A]Jadwal Operasi"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -225,7 +226,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 351;i++) {
+        for (i = 0; i < 354;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -563,6 +564,12 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(90);
             }else if(i==350){
                 column.setPreferredWidth(70);
+            }else if(i==351){
+                column.setPreferredWidth(178);
+            }else if(i==352){
+                column.setPreferredWidth(150);
+            }else if(i==353){
+                column.setPreferredWidth(95);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -998,7 +1005,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1391,7 +1398,10 @@ public class DlgUser extends javax.swing.JDialog {
                     "satuan_polri='"+tbUser.getValueAt(i,347).toString()+"',"+
                     "jabatan_polri='"+tbUser.getValueAt(i,348).toString()+"',"+
                     "pangkat_polri='"+tbUser.getValueAt(i,349).toString()+"',"+
-                    "cacat_fisik='"+tbUser.getValueAt(i,350).toString()+"'");
+                    "cacat_fisik='"+tbUser.getValueAt(i,350).toString()+"',"+
+                    "grafik_kunjungan_suku='"+tbUser.getValueAt(i,351).toString()+"',"+
+                    "grafik_kunjungan_bahasa='"+tbUser.getValueAt(i,352).toString()+"',"+
+                    "booking_operasi='"+tbUser.getValueAt(i,353).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1677,7 +1687,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "grafik_ikp_perbulan,grafik_ikp_pertanggal,riwayat_data_batch,grafik_ikp_jenis,grafik_ikp_dampak,"+
                         "piutang_akun_piutang,grafik_kunjungan_per_agama,grafik_kunjungan_per_umur,suku_bangsa,bahasa_pasien,"+
                         "golongan_tni,satuan_tni,jabatan_tni,pangkat_tni,golongan_polri,satuan_polri,jabatan_polri,pangkat_polri, "+
-                        "cacat_fisik from user order by AES_DECRYPT(id_user,'nur')");
+                        "cacat_fisik,grafik_kunjungan_suku,grafik_kunjungan_bahasa,booking_operasi from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2039,7 +2049,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("satuan_polri"),
                                rs.getBoolean("jabatan_polri"),
                                rs.getBoolean("pangkat_polri"),
-                               rs.getBoolean("cacat_fisik")
+                               rs.getBoolean("cacat_fisik"),
+                               rs.getBoolean("grafik_kunjungan_suku"),
+                               rs.getBoolean("grafik_kunjungan_bahasa"),
+                               rs.getBoolean("booking_operasi")
                             });
                         }   
                     } catch (Exception e) {
@@ -2391,7 +2404,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("satuan_polri"),
                            rs.getBoolean("jabatan_polri"),
                            rs.getBoolean("pangkat_polri"),
-                           rs.getBoolean("cacat_fisik")
+                           rs.getBoolean("cacat_fisik"),
+                           rs.getBoolean("grafik_kunjungan_suku"),
+                           rs.getBoolean("grafik_kunjungan_bahasa"),
+                           rs.getBoolean("booking_operasi")
                         });
                     }                                             
                  }

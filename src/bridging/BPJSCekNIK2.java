@@ -99,6 +99,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     public  DlgSatuanPolri satuanpolri=new DlgSatuanPolri(null,false);
     public  DlgPangkatPolri pangkatpolri=new DlgPangkatPolri(null,false);
     public  DlgJabatanPolri jabatanpolri=new DlgJabatanPolri(null,false);
+    private DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
     private BPJSApi api=new BPJSApi();
     private int pilih=0,p_no_ktp=0,p_tmp_lahir=0,p_nm_ibu=0,p_alamat=0,
             p_pekerjaan=0,p_no_tlp=0,p_umur=0,p_namakeluarga=0,p_no_peserta=0,
@@ -1447,7 +1448,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-07-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1646,7 +1647,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         PanelInput.setBorder(null);
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(200, 577));
+        PanelInput.setPreferredSize(new java.awt.Dimension(200, 807));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelCari.setName("panelCari"); // NOI18N
@@ -1808,7 +1809,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         TNo.setBounds(107, 25, 160, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2018" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-07-2018" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -2209,12 +2210,12 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         jLabel40.setText("Suku/Bangsa :");
         jLabel40.setName("jLabel40"); // NOI18N
         FormKelengkapanPasien.add(jLabel40);
-        jLabel40.setBounds(10, 235, 95, 23);
+        jLabel40.setBounds(3, 235, 100, 23);
 
         nmsukubangsa.setEditable(false);
         nmsukubangsa.setName("nmsukubangsa"); // NOI18N
         FormKelengkapanPasien.add(nmsukubangsa);
-        nmsukubangsa.setBounds(110, 235, 275, 23);
+        nmsukubangsa.setBounds(107, 235, 278, 23);
 
         BtnSuku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSuku.setMnemonic('1');
@@ -2236,12 +2237,12 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         jLabel41.setText("Bahasa :");
         jLabel41.setName("jLabel41"); // NOI18N
         FormKelengkapanPasien.add(jLabel41);
-        jLabel41.setBounds(10, 265, 95, 23);
+        jLabel41.setBounds(3, 265, 100, 23);
 
         nmbahasa.setEditable(false);
         nmbahasa.setName("nmbahasa"); // NOI18N
         FormKelengkapanPasien.add(nmbahasa);
-        nmbahasa.setBounds(110, 265, 275, 23);
+        nmbahasa.setBounds(107, 265, 278, 23);
 
         BtnBahasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnBahasa.setMnemonic('1');
@@ -2263,12 +2264,12 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         jLabel42.setText("Cacat Fisik :");
         jLabel42.setName("jLabel42"); // NOI18N
         FormKelengkapanPasien.add(jLabel42);
-        jLabel42.setBounds(10, 295, 95, 23);
+        jLabel42.setBounds(3, 295, 100, 23);
 
         nmcacat.setEditable(false);
         nmcacat.setName("nmcacat"); // NOI18N
         FormKelengkapanPasien.add(nmcacat);
-        nmcacat.setBounds(110, 295, 275, 23);
+        nmcacat.setBounds(107, 295, 278, 23);
 
         BtnCacat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnCacat.setMnemonic('1');
@@ -2643,7 +2644,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel23);
         jLabel23.setBounds(430, 55, 100, 23);
 
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2018 04:37:57" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-07-2018 06:57:49" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -2662,7 +2663,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel30);
         jLabel30.setBounds(430, 25, 100, 23);
 
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-07-2018 04:37:57" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-07-2018 06:57:49" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -3211,6 +3212,26 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        kab.dispose();
+        kec.dispose();
+        kel.dispose();
+        dokter.dispose();
+        kamar.dispose();
+        penjab.dispose();
+        propin.dispose();
+        perusahaan.dispose();
+        bahasa.dispose();
+        cacat.dispose();
+        suku.dispose();
+        golongantni.dispose();
+        satuantni.dispose();
+        pangkattni.dispose();
+        jabatantni.dispose();
+        golonganpolri.dispose();
+        satuanpolri.dispose();
+        pangkatpolri.dispose();
+        jabatanpolri.dispose();
+        pilihan.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -3624,7 +3645,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
 
     private void MnDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDocumentActionPerformed
         if(!nosep.equals("")){
-            DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,true);
             pilihan.tampil();
             if(JenisPelayanan.getSelectedIndex()==1){
                 pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(),
@@ -5346,7 +5366,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                     }    
                     JOptionPane.showMessageDialog(null,"Proses Selesai...!");
                     if(!nosep.equals("")){
-                        DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,true);
                         pilihan.tampil();
                         if(JenisPelayanan.getSelectedIndex()==0){
                             pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 

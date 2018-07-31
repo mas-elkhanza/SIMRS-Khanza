@@ -89,6 +89,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     private DlgKecamatan kec=new DlgKecamatan(null,false);
     private DlgKelurahan kel=new DlgKelurahan(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
     private DlgKamar kamar=new DlgKamar(null,false);
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     public  DlgPropinsi propin=new DlgPropinsi(null,false);
@@ -2260,12 +2261,12 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         jLabel40.setText("Suku/Bangsa :");
         jLabel40.setName("jLabel40"); // NOI18N
         FormKelengkapanPasien.add(jLabel40);
-        jLabel40.setBounds(10, 235, 95, 23);
+        jLabel40.setBounds(3, 235, 100, 23);
 
         nmsukubangsa.setEditable(false);
         nmsukubangsa.setName("nmsukubangsa"); // NOI18N
         FormKelengkapanPasien.add(nmsukubangsa);
-        nmsukubangsa.setBounds(110, 235, 275, 23);
+        nmsukubangsa.setBounds(107, 235, 278, 23);
 
         BtnSuku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSuku.setMnemonic('1');
@@ -2287,12 +2288,12 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         jLabel41.setText("Bahasa :");
         jLabel41.setName("jLabel41"); // NOI18N
         FormKelengkapanPasien.add(jLabel41);
-        jLabel41.setBounds(10, 265, 95, 23);
+        jLabel41.setBounds(3, 265, 100, 23);
 
         nmbahasa.setEditable(false);
         nmbahasa.setName("nmbahasa"); // NOI18N
         FormKelengkapanPasien.add(nmbahasa);
-        nmbahasa.setBounds(110, 265, 275, 23);
+        nmbahasa.setBounds(107, 265, 278, 23);
 
         BtnBahasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnBahasa.setMnemonic('1');
@@ -2314,12 +2315,12 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         jLabel42.setText("Cacat Fisik :");
         jLabel42.setName("jLabel42"); // NOI18N
         FormKelengkapanPasien.add(jLabel42);
-        jLabel42.setBounds(10, 295, 95, 23);
+        jLabel42.setBounds(3, 295, 100, 23);
 
         nmcacat.setEditable(false);
         nmcacat.setName("nmcacat"); // NOI18N
         FormKelengkapanPasien.add(nmcacat);
-        nmcacat.setBounds(110, 295, 275, 23);
+        nmcacat.setBounds(107, 295, 278, 23);
 
         BtnCacat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnCacat.setMnemonic('1');
@@ -3306,6 +3307,26 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        kab.dispose();
+        kec.dispose();
+        kel.dispose();
+        dokter.dispose();
+        kamar.dispose();
+        penjab.dispose();
+        propin.dispose();
+        perusahaan.dispose();
+        bahasa.dispose();
+        cacat.dispose();
+        suku.dispose();
+        golongantni.dispose();
+        satuantni.dispose();
+        pangkattni.dispose();
+        jabatantni.dispose();
+        golonganpolri.dispose();
+        satuanpolri.dispose();
+        pangkatpolri.dispose();
+        jabatanpolri.dispose();
+        pilihan.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -3513,7 +3534,6 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
 
     private void MnDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDocumentActionPerformed
         if(!nosep.equals("")){
-            DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,true);
             pilihan.tampil();
             if(JenisPelayanan.getSelectedIndex()==1){
                 pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(),
@@ -5474,7 +5494,6 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                     }    
                     JOptionPane.showMessageDialog(null,"Proses Selesai...!");
                     if(!nosep.equals("")){
-                        DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,true);
                         pilihan.tampil();
                         if(JenisPelayanan.getSelectedIndex()==0){
                             pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
