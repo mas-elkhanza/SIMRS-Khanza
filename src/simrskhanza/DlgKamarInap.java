@@ -7153,7 +7153,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 form.isCek();
                 form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 form.setLocationRelativeTo(internalFrame1);
-                form.setNoRm(norawat.getText(),TNoRM.getText(),TPasien.getText(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),7).toString());
+                form.setNoRm(norawat.getText(),TNoRM.getText(),TPasien.getText(),tbKamIn.getValueAt(tbKamIn.getSelectedRow(),7).toString(),"Ranap");
                 form.setVisible(true);
         }
         
