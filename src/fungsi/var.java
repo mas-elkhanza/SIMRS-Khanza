@@ -75,7 +75,10 @@ public final class var {
             pengguna_obat_resep=false,rekap_pemesanan=false,master_berkas_pegawai=false,berkas_kepegawaian=false,riwayat_jabatan=false,riwayat_pendidikan=false,
             riwayat_naik_gaji=false,kegiatan_ilmiah=false,riwayat_penghargaan=false,riwayat_penelitian=false,penerimaan_non_medis=false,bayar_pesan_non_medis=false,
             hutang_barang_non_medis=false,rekap_pemesanan_non_medis=false,insiden_keselamatan=false,insiden_keselamatan_pasien=false,grafik_ikp_pertahun=false,
-            grafik_ikp_perbulan=false,grafik_ikp_pertanggal=false,riwayat_data_batch=false,grafik_ikp_jenis=false,grafik_ikp_dampak=false;
+            grafik_ikp_perbulan=false,grafik_ikp_pertanggal=false,riwayat_data_batch=false,grafik_ikp_jenis=false,grafik_ikp_dampak=false,piutang_akun_piutang=false,
+            grafik_kunjungan_per_agama=false,grafik_kunjungan_per_umur=false,suku_bangsa=false,bahasa_pasien=false,golongan_tni=false,satuan_tni=false,
+            jabatan_tni=false,pangkat_tni=false,golongan_polri=false,satuan_polri=false,jabatan_polri=false,pangkat_polri=false,cacat_fisik=false,
+            grafik_kunjungan_suku=false,grafik_kunjungan_bahasa=false,booking_operasi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -433,6 +436,23 @@ public final class var {
                         var.riwayat_data_batch=true;
                         var.grafik_ikp_jenis=true;
                         var.grafik_ikp_dampak=true;
+                        var.piutang_akun_piutang=true;
+                        var.grafik_kunjungan_per_agama=true;
+                        var.grafik_kunjungan_per_umur=true;
+                        var.suku_bangsa=true;
+                        var.bahasa_pasien=true;
+                        var.golongan_tni=true;
+                        var.satuan_tni=true;
+                        var.jabatan_tni=true;
+                        var.pangkat_tni=true;
+                        var.golongan_polri=true;
+                        var.satuan_polri=true;
+                        var.jabatan_polri=true;
+                        var.pangkat_polri=true;
+                        var.cacat_fisik=true;
+                        var.grafik_kunjungan_suku=true;
+                        var.grafik_kunjungan_bahasa=true;
+                        var.booking_operasi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -774,6 +794,23 @@ public final class var {
                         var.riwayat_data_batch=rs2.getBoolean("riwayat_data_batch");
                         var.grafik_ikp_jenis=rs2.getBoolean("grafik_ikp_jenis");
                         var.grafik_ikp_dampak=rs2.getBoolean("grafik_ikp_dampak");
+                        var.piutang_akun_piutang=rs2.getBoolean("piutang_akun_piutang");
+                        var.grafik_kunjungan_per_agama=rs2.getBoolean("grafik_kunjungan_per_agama");
+                        var.grafik_kunjungan_per_umur=rs2.getBoolean("grafik_kunjungan_per_umur");
+                        var.suku_bangsa=rs2.getBoolean("suku_bangsa");
+                        var.bahasa_pasien=rs2.getBoolean("bahasa_pasien");
+                        var.golongan_tni=rs2.getBoolean("golongan_tni");
+                        var.satuan_tni=rs2.getBoolean("satuan_tni");
+                        var.jabatan_tni=rs2.getBoolean("jabatan_tni");
+                        var.pangkat_tni=rs2.getBoolean("pangkat_tni");
+                        var.golongan_polri=rs2.getBoolean("golongan_polri");
+                        var.satuan_polri=rs2.getBoolean("satuan_polri");
+                        var.jabatan_polri=rs2.getBoolean("jabatan_polri");
+                        var.pangkat_polri=rs2.getBoolean("pangkat_polri");
+                        var.cacat_fisik=rs2.getBoolean("cacat_fisik");
+                        var.grafik_kunjungan_suku=rs2.getBoolean("grafik_kunjungan_suku");
+                        var.grafik_kunjungan_bahasa=rs2.getBoolean("grafik_kunjungan_bahasa");
+                        var.booking_operasi=rs2.getBoolean("booking_operasi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1113,6 +1150,23 @@ public final class var {
                         var.riwayat_data_batch=false;
                         var.grafik_ikp_jenis=false;
                         var.grafik_ikp_dampak=false;
+                        var.piutang_akun_piutang=false;
+                        var.grafik_kunjungan_per_agama=false;
+                        var.grafik_kunjungan_per_umur=false;
+                        var.suku_bangsa=false;
+                        var.bahasa_pasien=false;
+                        var.golongan_tni=false;
+                        var.satuan_tni=false;
+                        var.jabatan_tni=false;
+                        var.pangkat_tni=false;
+                        var.golongan_polri=false;
+                        var.satuan_polri=false;
+                        var.jabatan_polri=false;
+                        var.pangkat_polri=false;
+                        var.cacat_fisik=false;
+                        var.grafik_kunjungan_suku=false;
+                        var.grafik_kunjungan_bahasa=false;
+                        var.booking_operasi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1499,4 +1553,22 @@ public final class var {
     public static boolean getriwayat_data_batch(){return var.riwayat_data_batch;}
     public static boolean getgrafik_ikp_jenis(){return var.grafik_ikp_jenis;}
     public static boolean getgrafik_ikp_dampak(){return var.grafik_ikp_dampak;}
+    public static boolean getpiutang_akun_piutang(){return var.piutang_akun_piutang;}
+    public static void setresep_obatfalse(){var.resep_obat=false;} 
+    public static boolean getgrafik_kunjungan_per_agama(){return var.grafik_kunjungan_per_agama;}
+    public static boolean getgrafik_kunjungan_per_umur(){return var.grafik_kunjungan_per_umur;}
+    public static boolean getsuku_bangsa(){return var.suku_bangsa;}
+    public static boolean getbahasa_pasien(){return var.bahasa_pasien;}
+    public static boolean getgolongan_tni(){return var.golongan_tni;}
+    public static boolean getsatuan_tni(){return var.satuan_tni;}
+    public static boolean getjabatan_tni(){return var.jabatan_tni;}
+    public static boolean getpangkat_tni(){return var.pangkat_tni;}
+    public static boolean getgolongan_polri(){return var.golongan_polri;}
+    public static boolean getsatuan_polri(){return var.satuan_polri;}
+    public static boolean getjabatan_polri(){return var.jabatan_polri;}
+    public static boolean getpangkat_polri(){return var.pangkat_polri;}
+    public static boolean getcacat_fisik(){return var.cacat_fisik;}
+    public static boolean getgrafik_kunjungan_suku(){return var.grafik_kunjungan_suku;}
+    public static boolean getgrafik_kunjungan_bahasa(){return var.grafik_kunjungan_bahasa;}
+    public static boolean getbooking_operasi(){return var.booking_operasi;}
 }   
