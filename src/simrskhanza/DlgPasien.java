@@ -4897,7 +4897,23 @@ private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bt
 }//GEN-LAST:event_BtnAllKeyPressed
 
 private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-    DlgDemografi.dispose();
+        kab.dispose();
+        kec.dispose();
+        kel.dispose();
+        penjab.dispose();
+        perusahaan.dispose();
+        bahasa.dispose();
+        cacat.dispose();
+        suku.dispose();
+        golongantni.dispose();
+        satuantni.dispose();
+        pangkattni.dispose();
+        jabatantni.dispose();
+        golonganpolri.dispose();
+        satuanpolri.dispose();
+        pangkatpolri.dispose();
+        jabatanpolri.dispose();
+        DlgDemografi.dispose();
     dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 

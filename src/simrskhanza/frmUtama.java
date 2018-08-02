@@ -843,6 +843,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCacatFisik = new widget.ButtonBig();
         btnGrafikKunjunganPerSuku = new widget.ButtonBig();
         btnGrafikKunjunganPerBahasa = new widget.ButtonBig();
+        btnJadwalOperasi = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -907,6 +908,7 @@ public class frmUtama extends javax.swing.JFrame {
         MnInfoBed1 = new javax.swing.JMenuItem();
         MnInfoBed3 = new javax.swing.JMenuItem();
         MnInfoBed4 = new javax.swing.JMenuItem();
+        MnInfoBed5 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         MnAnjungan = new javax.swing.JMenuItem();
         MnRekapHadir3 = new javax.swing.JMenuItem();
@@ -2097,7 +2099,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnTagihanPoli);
 
-        btnRujukMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404047834_application-vnd.ms-excel.png"))); // NOI18N
+        btnRujukMasuk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_vector_65_13_473800.png"))); // NOI18N
         btnRujukMasuk.setText("Rujukan Masuk");
         btnRujukMasuk.setIconTextGap(0);
         btnRujukMasuk.setName("btnRujukMasuk"); // NOI18N
@@ -5350,6 +5352,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnGrafikKunjunganPerBahasa);
 
+        btnJadwalOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Alarm_132148.png"))); // NOI18N
+        btnJadwalOperasi.setText("Jadwal Operasi");
+        btnJadwalOperasi.setIconTextGap(0);
+        btnJadwalOperasi.setName("btnJadwalOperasi"); // NOI18N
+        btnJadwalOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJadwalOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJadwalOperasiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnJadwalOperasi);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5358,7 +5372,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/07/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30/07/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6219,6 +6233,21 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         jMenu6.add(MnInfoBed4);
+
+        MnInfoBed5.setBackground(new java.awt.Color(255, 255, 255));
+        MnInfoBed5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnInfoBed5.setForeground(new java.awt.Color(90, 120, 80));
+        MnInfoBed5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Preview.png"))); // NOI18N
+        MnInfoBed5.setText("Dashboard Jadwal Operasi");
+        MnInfoBed5.setIconTextGap(6);
+        MnInfoBed5.setName("MnInfoBed5"); // NOI18N
+        MnInfoBed5.setPreferredSize(new java.awt.Dimension(250, 35));
+        MnInfoBed5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnInfoBed5ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(MnInfoBed5);
 
         MenuBar.add(jMenu6);
 
@@ -11239,6 +11268,23 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnGrafikKunjunganPerBahasaActionPerformed
 
+    private void btnJadwalOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJadwalOperasiActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBookingOperasi form=new DlgBookingOperasi(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnJadwalOperasiActionPerformed
+
+    private void MnInfoBed5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnInfoBed5ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Valid.panggilUrl("jadwaloperasi.php");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_MnInfoBed5ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11277,6 +11323,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private javax.swing.JMenuItem MnInfoBed2;
     private javax.swing.JMenuItem MnInfoBed3;
     private javax.swing.JMenuItem MnInfoBed4;
+    private javax.swing.JMenuItem MnInfoBed5;
     private javax.swing.JMenuItem MnLogin;
     private javax.swing.JMenuItem MnRekapBulanan;
     private javax.swing.JMenuItem MnRekapBulanan1;
@@ -11423,6 +11470,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnJMDetailDokter2;
     private widget.ButtonBig btnJabatanPolri;
     private widget.ButtonBig btnJabatanTNI;
+    private widget.ButtonBig btnJadwalOperasi;
     private widget.ButtonBig btnJadwalPegawai;
     private widget.ButtonBig btnJadwalTambahan;
     private widget.ButtonBig btnJamPresensi;
@@ -12033,6 +12081,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
 
+            if(var.getbooking_operasi()==true){
+                Panelmenu.add(btnJadwalOperasi);
+                jmlmenu++;
+            }
+            
             if(var.getdpjp_ranap()==true){
                 Panelmenu.add(BtnDpjp);
                 jmlmenu++;
@@ -13796,6 +13849,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             Panelmenu.add(btnKamarInap);
             jmlmenu++;
         }
+        
+        if(var.getbooking_operasi()==true){
+            Panelmenu.add(btnJadwalOperasi);
+            jmlmenu++;
+        }
 
         if(var.getdpjp_ranap()==true){
             Panelmenu.add(BtnDpjp);
@@ -15554,6 +15612,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getkamar_inap()==true){
             if(btnKamarInap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKamarInap);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbooking_operasi()==true){
+            if(btnJadwalOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnJadwalOperasi);
                 jmlmenu++;
             }                
         }

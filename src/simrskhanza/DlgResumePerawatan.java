@@ -43,7 +43,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
     private final Properties prop = new Properties(); 
     private validasi Valid=new validasi();
     private ResultSet rs,rs2,rs3,rs4,rshal;
-    private String sql;
+    private String sql,tanggal="",jam="";
     private StringBuilder htmlContent;
 
     /** Creates new form DlgLhtBiaya
@@ -68,6 +68,14 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
                     KdRw.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
                     TPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),2).toString());
                 }    
+                if(pasien.getTable2().getSelectedRow()!= -1){                   
+                    KdRw.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
+                    TPasien.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),2).toString());
+                } 
+                if(pasien.getTable3().getSelectedRow()!= -1){                   
+                    KdRw.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
+                    TPasien.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),2).toString());
+                } 
                 KdRw.requestFocus();
             }
             @Override
@@ -81,6 +89,32 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         
         pasien.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        pasien.getTable2().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        pasien.getTable3().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
@@ -2404,7 +2438,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                      "from periksa_lab inner join jns_perawatan_lab inner join petugas inner join dokter "+
                                      "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and periksa_lab.kd_dokter=dokter.kd_dokter "+
                                      "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
-                                if(rs3.next()){                                    
+                                if(rs3.next()){
+                                    tanggal=rs3.getString("tgl_periksa");
+                                    jam=rs3.getString("jam");
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
@@ -2475,6 +2511,32 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         }
                                         w++;
                                     }
+                                    
+                                    try {
+                                        rs4=koneksi.prepareStatement("select saran,kesan from saran_kesan_lab where no_rawat='"+rs2.getString("no_rawat")+"' and tgl_periksa='"+tanggal+"' and jam='"+jam+"'").executeQuery();
+                                        if(rs4.next()){      
+                                            htmlContent.append(
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Kesan</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("kesan")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Saran</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("saran")+"</td>"+
+                                                    "</tr>");
+                                        } 
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs4!=null){
+                                            rs4.close();
+                                        }
+                                    }
+                                    
                                     htmlContent.append(
                                       "</table>");
                                 }                                
@@ -4705,7 +4767,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                      "from periksa_lab inner join jns_perawatan_lab inner join petugas inner join dokter "+
                                      "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and periksa_lab.kd_dokter=dokter.kd_dokter "+
                                      "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
-                                if(rs3.next()){                                    
+                                if(rs3.next()){ 
+                                    tanggal=rs3.getString("tgl_periksa");
+                                    jam=rs3.getString("jam");
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
@@ -4776,6 +4840,32 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         }
                                         w++;
                                     }
+                                    
+                                    try {
+                                        rs4=koneksi.prepareStatement("select saran,kesan from saran_kesan_lab where no_rawat='"+rs2.getString("no_rawat")+"' and tgl_periksa='"+tanggal+"' and jam='"+jam+"'").executeQuery();
+                                        if(rs4.next()){      
+                                            htmlContent.append(
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Kesan</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("kesan")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Saran</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("saran")+"</td>"+
+                                                    "</tr>");
+                                        } 
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs4!=null){
+                                            rs4.close();
+                                        }
+                                    }
+                                    
                                     htmlContent.append(
                                       "</table>");
                                 }                                

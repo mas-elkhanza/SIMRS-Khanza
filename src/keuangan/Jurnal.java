@@ -26,7 +26,6 @@ public class Jurnal {
         if(Sequel.cariInteger("select count(*) from tampjurnal")>0){
             nojur=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_jurnal,7),signed)),0) from jurnal where tgl_jurnal='"+tanggal+"' ",
                 "JR"+tanggal.substring(2,10).replaceAll("-",""),7);
-            System.out.println("Jr : "+nojur);
             try {
                  koneksi.setAutoCommit(false);
                  ps=koneksi.prepareStatement("insert into jurnal values(?,?,?,?,?)");

@@ -89,6 +89,7 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     private DlgKecamatan kec=new DlgKecamatan(null,false);
     private DlgKelurahan kel=new DlgKelurahan(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,false);
     private DlgKamar kamar=new DlgKamar(null,false);
     private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     public  DlgPropinsi propin=new DlgPropinsi(null,false);
@@ -3306,6 +3307,26 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        kab.dispose();
+        kec.dispose();
+        kel.dispose();
+        dokter.dispose();
+        kamar.dispose();
+        penjab.dispose();
+        propin.dispose();
+        perusahaan.dispose();
+        bahasa.dispose();
+        cacat.dispose();
+        suku.dispose();
+        golongantni.dispose();
+        satuantni.dispose();
+        pangkattni.dispose();
+        jabatantni.dispose();
+        golonganpolri.dispose();
+        satuanpolri.dispose();
+        pangkatpolri.dispose();
+        jabatanpolri.dispose();
+        pilihan.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -3513,7 +3534,6 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
 
     private void MnDocumentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDocumentActionPerformed
         if(!nosep.equals("")){
-            DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,true);
             pilihan.tampil();
             if(JenisPelayanan.getSelectedIndex()==1){
                 pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(),
@@ -5474,7 +5494,6 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
                     }    
                     JOptionPane.showMessageDialog(null,"Proses Selesai...!");
                     if(!nosep.equals("")){
-                        DlgPilihanCetakDokumen pilihan=new DlgPilihanCetakDokumen(null,true);
                         pilihan.tampil();
                         if(JenisPelayanan.getSelectedIndex()==0){
                             pilihan.setNoRm(TNoRw.getText(),TNo.getText(),nosep,TNoReg.getText(),TPoli.getText(),nmpnj.getText(), 
