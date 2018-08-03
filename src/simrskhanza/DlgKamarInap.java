@@ -7804,21 +7804,22 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         
         Valid.tabelKosong(tabMode);
         try{
+            ps=koneksi.prepareStatement(
+               "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab),reg_periksa.p_jawab,reg_periksa.hubunganpj,"+
+               "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal),kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir," +
+               "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar),"+
+               "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar),kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj "+
+               "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal inner join kelurahan inner join kecamatan inner join kabupaten inner join dokter inner join penjab " +
+               "on kamar_inap.no_rawat=reg_periksa.no_rawat " +
+               "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
+               "and reg_periksa.kd_dokter=dokter.kd_dokter " +
+               "and reg_periksa.kd_pj=penjab.kd_pj " +
+               "and kamar_inap.kd_kamar=kamar.kd_kamar " +
+               "and kamar.kd_bangsal=bangsal.kd_bangsal and pasien.kd_kel=kelurahan.kd_kel "+
+               "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab " +
+               "where "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk");
             try {
-                rs=koneksi.prepareStatement(
-                       "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab),reg_periksa.p_jawab,reg_periksa.hubunganpj,"+
-                       "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal),kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir," +
-                       "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar),"+
-                       "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar),kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj "+
-                       "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal inner join kelurahan inner join kecamatan inner join kabupaten inner join dokter inner join penjab " +
-                       "on kamar_inap.no_rawat=reg_periksa.no_rawat " +
-                       "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
-                       "and reg_periksa.kd_dokter=dokter.kd_dokter " +
-                       "and reg_periksa.kd_pj=penjab.kd_pj " +
-                       "and kamar_inap.kd_kamar=kamar.kd_kamar " +
-                       "and kamar.kd_bangsal=bangsal.kd_bangsal and pasien.kd_kel=kelurahan.kd_kel "+
-                       "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab " +
-                       "where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk").executeQuery();
+                rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{rs.getString(1),
                                    rs.getString(2),
@@ -7886,6 +7887,9 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             } finally{
                 if(rs != null){
                     rs.close();
+                }
+                if(ps != null){
+                    ps.close();
                 }
             }
         }catch(Exception e){
