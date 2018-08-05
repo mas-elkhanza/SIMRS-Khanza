@@ -937,7 +937,6 @@ public class DlgCariPeriksaLab extends javax.swing.JDialog {
             }
         ));
         tbDokter2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbDokter2.setComponentPopupMenu(jPopupMenu1);
         tbDokter2.setName("tbDokter2"); // NOI18N
         tbDokter2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
