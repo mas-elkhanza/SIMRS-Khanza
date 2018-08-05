@@ -83,7 +83,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private BPJSCekReferensiFaskes faskes=new BPJSCekReferensiFaskes(null,false);
     private BPJSCekReferensiPenyakit penyakit=new BPJSCekReferensiPenyakit(null,false);
-    private BPJSCekReferensiPoli poli=new BPJSCekReferensiPoli(null,false);
+    private BPJSCekMappingPoli poli=new BPJSCekMappingPoli(null,false);
     private DlgKabupaten kab=new DlgKabupaten(null,false);
     private DlgKecamatan kec=new DlgKecamatan(null,false);
     private DlgKelurahan kel=new DlgKelurahan(null,false);
@@ -238,8 +238,10 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(poli.getTable().getSelectedRow()!= -1){                   
-                    KdPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
-                    NmPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),2).toString());
+                    kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                    TPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                    KdPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),2).toString());
+                    NmPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),3).toString());
                     isNumber();
                     isPoli();
                     KdPoli.requestFocus();
@@ -3435,6 +3437,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             kamar.setLocationRelativeTo(internalFrame1);
             kamar.setVisible(true);
         }else{
+            poli.isCek();
             poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             poli.setLocationRelativeTo(internalFrame1);
             poli.setVisible(true);
@@ -5039,24 +5042,16 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
     
     private void isPoli(){
         try {
-            ps=koneksi.prepareStatement("select kd_poli, nm_poli, registrasi, registrasilama "+
-                " from poliklinik where kd_poli like ? order by nm_poli");
+            ps=koneksi.prepareStatement("select registrasi, registrasilama "+
+                " from poliklinik where kd_poli=? order by nm_poli");
             try{            
-                ps.setString(1,"%"+KdPoli.getText().trim()+"%");
+                ps.setString(1,kdpoli.getText().trim());
                 rs=ps.executeQuery();
                 if(rs.next()){
-                    kdpoli.setText(rs.getString("kd_poli"));
-                    TPoli.setText(rs.getString("nm_poli"));
                     if(statuspasien.equals("Lama")){
                         TBiaya.setText(rs.getString("registrasilama"));
                     }else if(statuspasien.equals("Baru")){
                         TBiaya.setText(rs.getString("registrasi"));
-                    }
-                }else{
-                    if(Sequel.menyimpantf2("poliklinik","?,?,?,?","Poli",4,new String[]{KdPoli.getText(),NmPoli.getText(),"0","0"})==true){
-                        kdpoli.setText(KdPoli.getText());
-                        TPoli.setText(NmPoli.getText());
-                        TBiaya.setText("0");
                     }
                 }
             }catch(Exception e){
