@@ -38,6 +38,7 @@ import bridging.BPJSCekReferensiSpesialistik;
 import bridging.BPJSCekRujukanKartuPCare;
 import bridging.BPJSCekRujukanKartuRS;
 import bridging.BPJSDataSEP;
+import bridging.BPJSMapingPoli;
 import bridging.BPJSMonitoringKlaim;
 import bridging.BPJSRujukanKeluar;
 import bridging.INACBGCariCoderNIK;
@@ -844,6 +845,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikKunjunganPerSuku = new widget.ButtonBig();
         btnGrafikKunjunganPerBahasa = new widget.ButtonBig();
         btnJadwalOperasi = new widget.ButtonBig();
+        btnMapingPoliBPJS = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5364,6 +5366,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnJadwalOperasi);
 
+        btnMapingPoliBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Pink_Time_Machine_B_66659.png"))); // NOI18N
+        btnMapingPoliBPJS.setText("Mapping Poli RS & BPJS");
+        btnMapingPoliBPJS.setIconTextGap(0);
+        btnMapingPoliBPJS.setName("btnMapingPoliBPJS"); // NOI18N
+        btnMapingPoliBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMapingPoliBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMapingPoliBPJSActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnMapingPoliBPJS);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5372,7 +5386,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30/07/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/08/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -11285,6 +11299,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnInfoBed5ActionPerformed
 
+    private void btnMapingPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMapingPoliBPJSActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSMapingPoli form=new BPJSMapingPoli(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnMapingPoliBPJSActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11498,6 +11523,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnLamaPelayananApotek;
     private widget.ButtonBig btnLamaPelayananRalan;
     private widget.ButtonBig btnLihatPiutang;
+    private widget.ButtonBig btnMapingPoliBPJS;
     private widget.ButtonBig btnMasterBerkasPegawai;
     private widget.ButtonBig btnMerkInventaris;
     private widget.ButtonBig btnMetodeRacik;
@@ -13207,6 +13233,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getbpjs_referensi_poli()==true){
                 Panelmenu.add(btnCekBPJSPoli);
+                jmlmenu++;
+            }
+            
+            if(var.getmapping_poli_bpjs()==true){
+                Panelmenu.add(btnMapingPoliBPJS);
                 jmlmenu++;
             }
 
@@ -14966,6 +14997,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getbpjs_referensi_poli()==true){
             Panelmenu.add(btnCekBPJSPoli);
+            jmlmenu++;
+        }
+
+        if(var.getmapping_poli_bpjs()==true){
+            Panelmenu.add(btnMapingPoliBPJS);
             jmlmenu++;
         }
 
@@ -17181,6 +17217,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getbpjs_referensi_poli()==true){
             if(btnCekBPJSPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekBPJSPoli);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getmapping_poli_bpjs()==true){
+            if(btnMapingPoliBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMapingPoliBPJS);
                 jmlmenu++;
             }                
         }
