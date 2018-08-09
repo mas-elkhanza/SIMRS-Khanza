@@ -1887,6 +1887,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                                 y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
                             }
                         } catch (Exception e) {
+                            y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
                             System.out.println("Kapasitasmu masih kosong broooh : "+e);
                         } finally{
                             if(carikapasitas!=null){
@@ -1902,6 +1903,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 } catch (Exception e) {
                     y=0;
                 }
+                
                 if(stokbarang<y){
                     JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
                     tbObat.setValueAt("",tbObat.getSelectedRow(),1);

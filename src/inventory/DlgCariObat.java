@@ -2103,7 +2103,8 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                 y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
                             }
                         } catch (Exception e) {
-                            System.out.println("Notifikasi Kapasitas : "+e);
+                            y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                            System.out.println("Kapasitasmu masih kosong broooh : "+e);
                         } finally{
                             if(carikapasitas!=null){
                                 carikapasitas.close();
