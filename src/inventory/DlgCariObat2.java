@@ -1876,7 +1876,29 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 tbObat.setValueAt(stokbarang,tbObat.getSelectedRow(),10);
                 y=0;
                 try {
-                    y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                    if(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString().equals("true")){
+                        pscarikapasitas= koneksi.prepareStatement("select IFNULL(kapasitas,1) from databarang where kode_brng=?");                                      
+                        try {
+                            pscarikapasitas.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+                            carikapasitas=pscarikapasitas.executeQuery();
+                            if(carikapasitas.next()){ 
+                                y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString())/carikapasitas.getDouble(1);
+                            }else{
+                                y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Kapasitasmu masih kosong broooh : "+e);
+                        } finally{
+                            if(carikapasitas!=null){
+                                carikapasitas.close();
+                            }
+                            if(pscarikapasitas!=null){
+                                pscarikapasitas.close();
+                            }
+                        }
+                    }else{
+                        y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                    }                        
                 } catch (Exception e) {
                     y=0;
                 }
