@@ -7576,7 +7576,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.Table tbPasien3;
     // End of variables declaration//GEN-END:variables
     
-    public void tampil() {     
+    private void tampil() {     
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
@@ -7768,7 +7768,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         LCount.setText(""+tabMode.getRowCount());
     }
     
-    public void tampiltni() {     
+    private void tampiltni() {     
         Valid.tabelKosong(tabMode2);
         try{
             ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
@@ -7997,7 +7997,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         LCount.setText(""+tabMode2.getRowCount());
     }
     
-    public void tampilpolri() {     
+    private void tampilpolri() {     
         Valid.tabelKosong(tabMode3);
         try{
             ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+

@@ -1566,9 +1566,9 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             try {
                 if(Valid.SetAngka(tbDokter.getValueAt(row,0).toString())>0){                        
                     if(tbDokter.getValueAt(row,1).toString().equals(tbDokter.getValueAt(row,4).toString())){
-                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,12).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);    
-                    }else{                        
                         tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);  
+                    }else{   
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,12).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);    
                     }                   
                     tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,8).toString())-Double.parseDouble(tbDokter.getValueAt(row,10).toString()), row,11);    
                 } 
@@ -1650,7 +1650,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 "ifnull(date_format(databarang.expire,'%d-%m-%Y'),'00-00-0000'),"+
                 "detail_surat_pemesanan_medis.jumlah,detail_surat_pemesanan_medis.subtotal,"+
                 "detail_surat_pemesanan_medis.dis,detail_surat_pemesanan_medis.besardis,"+
-                "detail_surat_pemesanan_medis.total,detail_surat_pemesanan_medis.jumlah2 "+
+                "detail_surat_pemesanan_medis.total,detail_surat_pemesanan_medis.jumlah2,databarang.kode_sat as satbar "+
                 "from databarang inner join jenis inner join detail_surat_pemesanan_medis "+
                 "on databarang.kdjns=jenis.kdjns and detail_surat_pemesanan_medis.kode_brng=databarang.kode_brng "+
                 " where detail_surat_pemesanan_medis.no_pemesanan=? order by databarang.nama_brng");
@@ -1660,7 +1660,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getDouble("jumlah"),rs.getString(3),rs.getString(1),
-                        rs.getString(2),rs.getString(3),true,rs.getString(5),
+                        rs.getString(2),rs.getString("satbar"),true,rs.getString(5),
                         rs.getDouble(4),rs.getDouble("subtotal"),rs.getDouble("dis"),
                         rs.getDouble("besardis"),rs.getDouble("total"),rs.getDouble("jumlah2"),"",
                         null,null,null,null,null,null,null,null,null,null,null

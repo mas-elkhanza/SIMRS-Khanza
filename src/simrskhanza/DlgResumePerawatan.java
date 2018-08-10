@@ -2437,7 +2437,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                      "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
                                      "from periksa_lab inner join jns_perawatan_lab inner join petugas inner join dokter "+
                                      "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.kd_jenis_prw").executeQuery();
                                 if(rs3.next()){
                                     tanggal=rs3.getString("tgl_periksa");
                                     jam=rs3.getString("jam");
@@ -2476,7 +2476,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "where detail_periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' and "+
                                                 "detail_periksa_lab.kd_jenis_prw='"+rs3.getString("kd_jenis_prw")+"' and "+
                                                 "detail_periksa_lab.tgl_periksa='"+rs3.getString("tgl_periksa")+"' and "+
-                                                "detail_periksa_lab.jam='"+rs3.getString("jam")+"'").executeQuery();
+                                                "detail_periksa_lab.jam='"+rs3.getString("jam")+"' order by detail_periksa_lab.kd_jenis_prw,template_laboratorium.urut ").executeQuery();
                                             if(rs4.next()){ 
                                                 htmlContent.append(
                                                     "<tr>"+
@@ -4766,7 +4766,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                      "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
                                      "from periksa_lab inner join jns_perawatan_lab inner join petugas inner join dokter "+
                                      "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.kd_jenis_prw").executeQuery();
                                 if(rs3.next()){ 
                                     tanggal=rs3.getString("tgl_periksa");
                                     jam=rs3.getString("jam");
@@ -4805,7 +4805,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "where detail_periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' and "+
                                                 "detail_periksa_lab.kd_jenis_prw='"+rs3.getString("kd_jenis_prw")+"' and "+
                                                 "detail_periksa_lab.tgl_periksa='"+rs3.getString("tgl_periksa")+"' and "+
-                                                "detail_periksa_lab.jam='"+rs3.getString("jam")+"'").executeQuery();
+                                                "detail_periksa_lab.jam='"+rs3.getString("jam")+"' order by detail_periksa_lab.kd_jenis_prw,template_laboratorium.urut").executeQuery();
                                             if(rs4.next()){ 
                                                 htmlContent.append(
                                                     "<tr>"+
