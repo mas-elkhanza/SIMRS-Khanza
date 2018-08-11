@@ -1457,7 +1457,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1960,7 +1960,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         TNo.setBounds(107, 25, 160, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2018" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2018" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -2795,7 +2795,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel23);
         jLabel23.setBounds(430, 55, 100, 23);
 
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2018 18:52:08" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2018 10:19:50" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -2814,7 +2814,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
         FormKelengkapanSEP.add(jLabel30);
         jLabel30.setBounds(430, 25, 100, 23);
 
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-08-2018 18:52:08" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-08-2018 10:19:50" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -4854,10 +4854,22 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                         NmIbu.setText(rs.getString("nm_ibu"));
                         Kelurahan.setText(rs.getString("nm_kel"));      
                         Kecamatan.setText(rs.getString("nm_kec"));      
-                        Kabupaten.setText(rs.getString("nm_kab")); 
+                        Kabupaten.setText(rs.getString("nm_kab"));      
+                        Propinsi.setText(rs.getString("nm_prop")); 
                         KelurahanPj.setText(rs.getString("kelurahanpj"));      
                         KecamatanPj.setText(rs.getString("kecamatanpj"));      
-                        KabupatenPj.setText(rs.getString("kabupatenpj")); 
+                        KabupatenPj.setText(rs.getString("kabupatenpj"));      
+                        PropinsiPj.setText(rs.getString("propinsipj")); 
+                        EMail.setText(rs.getString("email"));
+                        NIP.setText(rs.getString("nip"));
+                        kdsuku.setText(rs.getString("suku_bangsa"));
+                        nmsukubangsa.setText(rs.getString("nama_suku_bangsa"));
+                        kdbahasa.setText(rs.getString("bahasa_pasien"));
+                        nmbahasa.setText(rs.getString("nama_bahasa"));
+                        kdcacat.setText(rs.getString("cacat_fisik"));
+                        nmcacat.setText(rs.getString("nama_cacat"));
+                        kdperusahaan.setText(rs.getString("kode_perusahaan"));
+                        nmperusahaan.setText(rs.getString("nama_perusahaan")); 
                         switch (rs.getString("namakeluarga")) {
                             case "AYAH":
                                 R1.setSelected(true);
