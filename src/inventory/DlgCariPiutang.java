@@ -787,7 +787,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void btnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienActionPerformed
         var.setform("DlgCariPiutang");
         member.emptTeks();
-        member.tampil();
         member.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         member.setLocationRelativeTo(internalFrame1);
         member.setAlwaysOnTop(false);
