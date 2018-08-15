@@ -4732,6 +4732,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             TCari.requestFocus();
         }else{
             Sequel.queryu("delete from detail_periksa_lab where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from saran_kesan_lab where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from periksa_lab where no_rawat='"+TNoRw.getText()+"'");
         }
     }//GEN-LAST:event_MnHapusLabActionPerformed
@@ -4805,6 +4806,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             TCari.requestFocus();
         }else{
             Sequel.queryu("delete from beri_bhp_radiologi where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from hasil_radiologi where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from gambar_radiologi where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from periksa_radiologi where no_rawat='"+TNoRw.getText()+"'");
         }
     }//GEN-LAST:event_MnHapusRadiologiActionPerformed
@@ -4960,8 +4963,10 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }else{
             Sequel.AutoComitFalse();
             Sequel.queryu("delete from operasi where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from saran_kesan_lab where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from beri_obat_operasi where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from billing where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from pengurangan_biaya where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from nota_inap where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from nota_jalan where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from deposit where no_rawat='"+TNoRw.getText()+"'");
@@ -4999,9 +5004,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             Sequel.queryu("delete from detail_nota_jalan where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from detail_piutang_pasien where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from mutasi_berkas where no_rawat='"+TNoRw.getText()+"'");
-            Sequel.queryu("delete from reg_periksa where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from gambar_radiologi where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from hasil_radiologi where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from detail_obat_racikan where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from obat_racikan where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from reg_periksa where no_rawat='"+TNoRw.getText()+"'");
             Sequel.AutoComitTrue();
             tampilkasir();
         }
@@ -6650,7 +6657,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Table tbKasirRalan2;
     // End of variables declaration//GEN-END:variables
 
-    public void tampilkasir() {                   
+    private void tampilkasir() {                   
         Valid.tabelKosong(tabModekasir);
         try{   
             pskasir=koneksi.prepareStatement("select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -6797,7 +6804,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         LCount.setText(""+tabModekasir.getRowCount());
     }
     
-    public void tampilkasir2() {                   
+    private void tampilkasir2() {                   
         Valid.tabelKosong(tabModekasir2);
         try{   
             pskasir=koneksi.prepareStatement("select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -7341,5 +7348,13 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     
     public void setCariKosong() {
       TCari.setText("");
+    }
+    
+    public void tampil(){
+        if(TabRawat.getSelectedIndex()==0){
+            tampilkasir();
+        }else if(TabRawat.getSelectedIndex()==1){
+            tampilkasir2();
+        }
     }
 }
