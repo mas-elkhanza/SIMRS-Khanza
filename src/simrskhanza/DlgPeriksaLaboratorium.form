@@ -408,7 +408,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="95" y="12" width="148" height="23"/>
+                      <AbsoluteConstraints x="95" y="12" width="128" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -422,7 +422,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="245" y="12" width="125" height="23"/>
+                      <AbsoluteConstraints x="225" y="12" width="105" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -436,7 +436,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="372" y="12" width="400" height="23"/>
+                      <AbsoluteConstraints x="332" y="12" width="358" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -550,7 +550,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="12-07-2018"/>
+                        <StringItem index="0" value="16-08-2018"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -766,9 +766,6 @@
                           <Color PropertyName="color" blue="c3" green="d7" red="c3" type="rgb"/>
                         </LineBorder>
                       </Border>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="64" green="64" red="82" type="rgb"/>
                     </Property>
                     <Property name="selected" type="boolean" value="true"/>
                     <Property name="borderPainted" type="boolean" value="true"/>
@@ -1019,6 +1016,20 @@
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="359" y="42" width="28" height="23"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
+                <Component class="widget.TextBox" name="TUmur">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="TUmur" noResource="true"/>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="692" y="12" width="80" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>

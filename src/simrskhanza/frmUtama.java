@@ -12,6 +12,7 @@
 
 package simrskhanza;
 
+import bridging.DlgSKDPBPJS;
 import kepegawaian.DlgPenggajian;
 import laporan.DlgMutasiBerkas;
 import laporan.DlgBerkasRawat;
@@ -850,6 +851,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnMapingPoliBPJS = new widget.ButtonBig();
         btnGrafikKunjunganPerCacat = new widget.ButtonBig();
         btnBarangCSSD = new widget.ButtonBig();
+        btnSKDPBPJS = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5405,6 +5407,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnBarangCSSD);
+
+        btnSKDPBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kde-document-open_23426.png"))); // NOI18N
+        btnSKDPBPJS.setText("SKDP BPJS");
+        btnSKDPBPJS.setIconTextGap(0);
+        btnSKDPBPJS.setName("btnSKDPBPJS"); // NOI18N
+        btnSKDPBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSKDPBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSKDPBPJSActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSKDPBPJS);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -11357,6 +11371,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnBarangCSSDActionPerformed
 
+    private void btnSKDPBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSKDPBPJSActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSKDPBPJS form=new DlgSKDPBPJS(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSKDPBPJSActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11701,6 +11726,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRujukMasuk;
     private widget.ButtonBig btnRujukPasien;
     private widget.ButtonBig btnRujukanKeluarBPJS;
+    private widget.ButtonBig btnSKDPBPJS;
     private widget.ButtonBig btnSMS;
     private widget.ButtonBig btnSatuan;
     private widget.ButtonBig btnSatuanPolri;
@@ -13350,6 +13376,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
 
+            if(var.getskdp_bpjs()==true){
+                Panelmenu.add(btnSKDPBPJS);
+                jmlmenu++;
+            }
+            
             if(var.getreklasifikasi_ralan()==true){
                 Panelmenu.add(btnReklasifikasiRalan);
                 jmlmenu++;
@@ -15121,6 +15152,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getbpjs_monitoring_klaim()==true){
             Panelmenu.add(btnMonitoringKlaim);
+            jmlmenu++;
+        }
+        
+        if(var.getskdp_bpjs()==true){
+            Panelmenu.add(btnSKDPBPJS);
             jmlmenu++;
         }
 
@@ -17377,6 +17413,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getbpjs_monitoring_klaim()==true){
             if(btnMonitoringKlaim.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMonitoringKlaim);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getskdp_bpjs()==true){
+            if(btnSKDPBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSKDPBPJS);
                 jmlmenu++;
             }                
         }

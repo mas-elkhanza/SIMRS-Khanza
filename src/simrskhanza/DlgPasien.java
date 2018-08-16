@@ -4354,7 +4354,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             emptTeks(); 
                         }else{
                             autoNomor();
-                            if(Sequel.menyimpantf2("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
+                            if(Sequel.menyimpantf("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
                                     TNo.getText(),TNm.getText(),TKtp.getText(),CmbJk.getSelectedItem().toString().substring(0,1),TTmp.getText(),
                                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),NmIbu.getText(),
                                     Alamat.getText().replaceAll("ALAMAT",""),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
@@ -6840,7 +6840,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         NmIbu.setText(cekViaDukcapilAceh.NAMA_LGKP_IBU);
         Kelurahan.setText(cekViaDukcapilAceh.KEL_NAME);
         KelurahanPj.setText(cekViaDukcapilAceh.KEL_NAME);
-        CmbJk.setSelectedItem(cekViaDukcapilAceh.JENIS_KLMIN.replaceAll("Laki-Laki","LAKI-LAKI").replaceAll("Perempuan","PEREMPUANG"));
+        CmbJk.setSelectedItem(cekViaDukcapilAceh.JENIS_KLMIN.replaceAll("Laki-Laki","LAKI-LAKI").replaceAll("Perempuan","PEREMPUAN"));
         Valid.SetTgl(DTPLahir,cekViaDukcapilAceh.TGL_LHR);   
         DTPLahirItemStateChanged(null);    
         jPopupMenu2.setVisible(false);
@@ -6870,7 +6870,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         NmIbu.setText(cekViaDukcapilBatam.NAMA_LGKP_IBU);
         Kelurahan.setText(cekViaDukcapilBatam.KEL_NAME);
         KelurahanPj.setText(cekViaDukcapilBatam.KEL_NAME);
-        CmbJk.setSelectedItem(cekViaDukcapilBatam.JENIS_KLMIN.replaceAll("Laki-Laki","LAKI-LAKI").replaceAll("Perempuan","PEREMPUANG"));
+        CmbJk.setSelectedItem(cekViaDukcapilBatam.JENIS_KLMIN.replaceAll("Laki-Laki","LAKI-LAKI").replaceAll("Perempuan","PEREMPUAN"));
         Valid.SetTgl(DTPLahir,cekViaDukcapilBatam.TGL_LHR);   
         DTPLahirItemStateChanged(null);    
         jPopupMenu2.setVisible(false);

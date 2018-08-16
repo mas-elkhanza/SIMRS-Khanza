@@ -79,7 +79,7 @@ public final class var {
             grafik_kunjungan_per_agama=false,grafik_kunjungan_per_umur=false,suku_bangsa=false,bahasa_pasien=false,golongan_tni=false,satuan_tni=false,
             jabatan_tni=false,pangkat_tni=false,golongan_polri=false,satuan_polri=false,jabatan_polri=false,pangkat_polri=false,cacat_fisik=false,
             grafik_kunjungan_suku=false,grafik_kunjungan_bahasa=false,booking_operasi=false,mapping_poli_bpjs=false,grafik_kunjungan_per_cacat=false,
-            barang_cssd=false;
+            barang_cssd=false,skdp_bpjs=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -457,6 +457,7 @@ public final class var {
                         var.mapping_poli_bpjs=true;
                         var.grafik_kunjungan_per_cacat=true;
                         var.barang_cssd=true;
+                        var.skdp_bpjs=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -818,6 +819,7 @@ public final class var {
                         var.mapping_poli_bpjs=rs2.getBoolean("mapping_poli_bpjs");
                         var.grafik_kunjungan_per_cacat=rs2.getBoolean("grafik_kunjungan_per_cacat");
                         var.barang_cssd=rs2.getBoolean("barang_cssd");
+                        var.skdp_bpjs=rs2.getBoolean("skdp_bpjs");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1177,6 +1179,7 @@ public final class var {
                         var.mapping_poli_bpjs=false;
                         var.grafik_kunjungan_per_cacat=false;
                         var.barang_cssd=false;
+                        var.skdp_bpjs=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1584,4 +1587,5 @@ public final class var {
     public static boolean getmapping_poli_bpjs(){return var.mapping_poli_bpjs;}
     public static boolean getgrafik_kunjungan_per_cacat(){return var.grafik_kunjungan_per_cacat;}
     public static boolean getbarang_cssd(){return var.barang_cssd;}
+    public static boolean getskdp_bpjs(){return var.skdp_bpjs;}
 }   
