@@ -3767,7 +3767,6 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             dlgki.emptTeks();
             dlgki.isCek();
             dlgki.setNoRm(TNoRw.getText());   
-            dlgki.tampil();
             dlgki.setVisible(true);
         }
 }//GEN-LAST:event_MnKamarInapActionPerformed
@@ -3973,8 +3972,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 dlgro.emptTeks();
                 dlgro.isCek();
                 dlgro.setNoRm(TNoRw.getText(),"Ralan");  
-                dlgro.tampiltarif();
-                dlgro.tampil();
                 dlgro.setVisible(true);
             }                
         }
@@ -5765,7 +5762,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private widget.Table tbPetugas;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);   
         try{  
             ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
@@ -6040,7 +6037,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         ppCatatanPasien.setEnabled(var.getcatatan_pasien());
         ppIKP.setEnabled(var.getinsiden_keselamatan_pasien());
         ppBerkasDigital.setEnabled(var.getberkas_digital_perawatan());   
-        MnJadwalOperasi.setEnabled(var.getbooking_operasi());   
+        MnJadwalOperasi.setEnabled(var.getbooking_operasi());     
+        MnSKDPBPJS.setEnabled(var.getskdp_bpjs());
     }
     
     private void isNumber(){

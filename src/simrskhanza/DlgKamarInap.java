@@ -4738,8 +4738,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         billing.periksalab.setLocationRelativeTo(internalFrame1);
                         billing.periksalab.emptTeks();
                         billing.periksalab.setNoRm(rs2.getString("no_rawat2"),"Ranap");  
-                        billing.periksalab.tampiltarif();
-                        billing.periksalab.tampil();
                         billing.periksalab.isCek();
                         billing.periksalab.setVisible(true);
                     }else{
@@ -4765,8 +4763,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             billing.periksalab.setLocationRelativeTo(internalFrame1);
             billing.periksalab.emptTeks();
             billing.periksalab.setNoRm(norawat.getText(),"Ranap");  
-            billing.periksalab.tampiltarif();
-            billing.periksalab.tampil();
             billing.periksalab.isCek();
             billing.periksalab.setVisible(true);
         }
@@ -7834,7 +7830,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private widget.TextBox ttlbiayapindah;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         if(R1.isSelected()==true){
             kmr=" stts_pulang='-' ";
             if(!BangsalCari.getText().equals("")){
@@ -8242,7 +8238,8 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         MnSEP.setEnabled(var.getbpjs_sep());
         ppBerkasDigital.setEnabled(var.getberkas_digital_perawatan());    
         ppIKP.setEnabled(var.getinsiden_keselamatan_pasien());
-        MnJadwalOperasi.setEnabled(var.getbooking_operasi());
+        MnJadwalOperasi.setEnabled(var.getbooking_operasi());  
+        MnSKDPBPJS.setEnabled(var.getskdp_bpjs());
         if(var.getkode().equals("Admin Utama")){
             MnHapusDataSalah.setEnabled(true);
         }else{

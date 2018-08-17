@@ -5253,8 +5253,7 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 dlgki.setLocationRelativeTo(internalFrame1);
                 dlgki.emptTeks();
                 dlgki.isCek();
-                dlgki.setNoRm(TNoRw.getText());   
-                dlgki.tampil();
+                dlgki.setNoRm(TNoRw.getText());  
                 dlgki.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
@@ -5269,7 +5268,6 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     dlgki.emptTeks();
                     dlgki.isCek();
                     dlgki.setNoRm(TNoRw.getText());   
-                    dlgki.tampil();
                     dlgki.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 } 
@@ -5500,9 +5498,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 dlgro.setLocationRelativeTo(internalFrame1);
                 dlgro.emptTeks();
                 dlgro.isCek();
-                dlgro.setNoRm(TNoRw.getText(),"Ralan");  
-                dlgro.tampiltarif();
-                dlgro.tampil();
+                dlgro.setNoRm(TNoRw.getText(),"Ralan"); 
                 dlgro.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }                
@@ -7277,7 +7273,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     dlgki.emptTeks();
                     dlgki.isCek();
                     dlgki.setNoRm(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString());   
-                    dlgki.tampil();
                     dlgki.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }else{
@@ -7292,7 +7287,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         dlgki.emptTeks();
                         dlgki.isCek();
                         dlgki.setNoRm(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),1).toString());   
-                        dlgki.tampil();
                         dlgki.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }
@@ -7360,8 +7354,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),4).toString(),
                         tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),5).toString()
                     );
-                    dlgro.tampiltarif();
-                    dlgro.tampil();
                     dlgro.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -8345,7 +8337,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private widget.Table tbPetugas2;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);   
         try {
             ps=koneksi.prepareStatement("select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -8473,7 +8465,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         LCount.setText(""+tabMode.getRowCount());
     }
 
-    public void tampil2() {
+    private void tampil2() {
         Valid.tabelKosong(tabMode2);   
         try {
             ps=koneksi.prepareStatement("select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -8852,6 +8844,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         ppBerkasDigital.setEnabled(var.getberkas_digital_perawatan());        
         ppBerkasDigital1.setEnabled(var.getberkas_digital_perawatan());  
         MnJadwalOperasi.setEnabled(var.getbooking_operasi());   
+        MnSKDPBPJS.setEnabled(var.getskdp_bpjs());
     }
     
     private void isNumber(){  

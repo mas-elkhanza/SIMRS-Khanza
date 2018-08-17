@@ -1210,7 +1210,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 kamarinap.emptTeks();
                 kamarinap.isCek();
                 kamarinap.setNoRm(TNoRw.getText());
-                kamarinap.tampil();
                 kamarinap.setVisible(true);
             }else{
                 if(Sequel.cariRegistrasi(TNoRw.getText())>0){
@@ -1223,7 +1222,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     kamarinap.emptTeks();
                     kamarinap.isCek();
                     kamarinap.setNoRm(TNoRw.getText());
-                    kamarinap.tampil();
                     kamarinap.setVisible(true);
                 }
             }

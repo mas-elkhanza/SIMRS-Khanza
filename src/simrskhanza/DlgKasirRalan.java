@@ -4359,8 +4359,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 kamarinap.billing.periksalab.setLocationRelativeTo(internalFrame1);
                 kamarinap.billing.periksalab.emptTeks();
                 kamarinap.billing.periksalab.setNoRm(TNoRw.getText(),"Ralan"); 
-                kamarinap.billing.periksalab.tampiltarif();
-                kamarinap.billing.periksalab.tampil(); 
                 kamarinap.billing.periksalab.isCek();
                 kamarinap.billing.periksalab.setVisible(true);
             }            
@@ -4381,8 +4379,7 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 kamarinap.setLocationRelativeTo(internalFrame1);
                 kamarinap.emptTeks();
                 kamarinap.isCek();
-                kamarinap.setNoRm(TNoRw.getText());   
-                kamarinap.tampil();
+                kamarinap.setNoRm(TNoRw.getText());  
                 kamarinap.setVisible(true);
             }else{
                 if(Sequel.cariRegistrasi(TNoRw.getText())>0){
@@ -4393,8 +4390,7 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     kamarinap.setLocationRelativeTo(internalFrame1);
                     kamarinap.emptTeks();
                     kamarinap.isCek();
-                    kamarinap.setNoRm(TNoRw.getText());   
-                    kamarinap.tampil();
+                    kamarinap.setNoRm(TNoRw.getText()); 
                     kamarinap.setVisible(true);                    
                 }
             }                
@@ -5395,7 +5391,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                     kamarinap.emptTeks();
                     kamarinap.isCek();
                     kamarinap.setNoRm(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());   
-                    kamarinap.tampil();
                     kamarinap.setVisible(true);
                 }else{
                     if(Sequel.cariRegistrasi(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString())>0){
@@ -5407,7 +5402,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         kamarinap.emptTeks();
                         kamarinap.isCek();
                         kamarinap.setNoRm(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString());   
-                        kamarinap.tampil();
                         kamarinap.setVisible(true);                    
                     }
                 } 
@@ -5588,8 +5582,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),0).toString(),
                         tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),1).toString()
                     );
-                    kamarinap.billing.periksalab.tampiltarif();
-                    kamarinap.billing.periksalab.tampil(); 
                     kamarinap.billing.periksalab.isCek();
                     kamarinap.billing.periksalab.setVisible(true);
                 } 
@@ -6696,7 +6688,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Table tbKasirRalan2;
     // End of variables declaration//GEN-END:variables
 
-    private void tampilkasir() {                   
+    private void tampilkasir() {                
         Valid.tabelKosong(tabModekasir);
         try{   
             pskasir=koneksi.prepareStatement("select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
@@ -7042,7 +7034,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         ppBerkasDigital1.setEnabled(var.getberkas_digital_perawatan());      
         ppIKP.setEnabled(var.getinsiden_keselamatan_pasien());
         ppIKP1.setEnabled(var.getinsiden_keselamatan_pasien());    
-        MnJadwalOperasi.setEnabled(var.getbooking_operasi());     
+        MnJadwalOperasi.setEnabled(var.getbooking_operasi());      
+        MnSKDPBPJS.setEnabled(var.getskdp_bpjs()); 
         
         if(var.getkode().equals("Admin Utama")){
             MnHapusData.setEnabled(true);
@@ -7389,11 +7382,4 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
       TCari.setText("");
     }
     
-    public void tampil(){
-        if(TabRawat.getSelectedIndex()==0){
-            tampilkasir();
-        }else if(TabRawat.getSelectedIndex()==1){
-            tampilkasir2();
-        }
-    }
 }

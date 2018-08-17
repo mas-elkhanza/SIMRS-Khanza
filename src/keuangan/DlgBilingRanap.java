@@ -2885,8 +2885,6 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             periksalab.setLocationRelativeTo(internalFrame1);
             periksalab.emptTeks();
             periksalab.setNoRm(TNoRw.getText(),"Ranap");  
-            periksalab.tampiltarif();
-            periksalab.tampil();
             periksalab.isCek();
             periksalab.setVisible(true);
         }
@@ -3474,7 +3472,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             periksalab.setLocationRelativeTo(internalFrame1);
             periksalab.emptTeks();
             periksalab.setNoRm(norawatbayi,"Ranap");
-            periksalab.tampil();
             periksalab.setAlwaysOnTop(false);
             periksalab.setVisible(true);
         }
@@ -3557,8 +3554,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             periksalab.setLocationRelativeTo(internalFrame1);
             periksalab.emptTeks();
             periksalab.setNoRm(norawatbayi,"Ranap");
-            periksalab.tampiltarif();
-            periksalab.tampil();
             periksalab.setVisible(true);
         }
     }//GEN-LAST:event_MnPeriksaLab1ActionPerformed

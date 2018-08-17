@@ -1735,7 +1735,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Table tbTarif;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {        
+    private void tampil() { 
         try {
             jml2=0;
             for(i2=0;i2<tbPemeriksaan.getRowCount();i2++){
@@ -1962,7 +1962,6 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         NmPtg.setText("");
         Pemeriksaan.setText("");
         KodePj.requestFocus();  
-        isReset();
     }
     
     public void onCari(){
@@ -2022,7 +2021,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             tbTarif.setValueAt(false,i,0);
         }
         Valid.tabelKosong(tabMode);
-        tampil();
+        tampiltarif();
     }
     
     private void jam(){
@@ -2106,7 +2105,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
 
         isRawat();
-        isPsien();  
+        isPsien();
         isReset();
     }
     
@@ -2138,7 +2137,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
     
-    public void tampiltarif() {          
+    private void tampiltarif() {          
         try{
             jml=0;
             for(i=0;i<tbTarif.getRowCount();i++){
