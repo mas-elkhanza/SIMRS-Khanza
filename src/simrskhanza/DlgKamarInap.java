@@ -6871,7 +6871,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         dlgrwjl.setLocationRelativeTo(internalFrame1);
 
                         dlgrwjl.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),new Date());
-                        dlgrwjl.tampilDr();
                         dlgrwjl.setVisible(true);
                     }else{
                         JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -6897,7 +6896,6 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             dlgrwjl.setLocationRelativeTo(internalFrame1);
 
             dlgrwjl.setNoRm(norawat.getText(),DTPCari1.getDate(),new Date());
-            dlgrwjl.tampilDr();
             dlgrwjl.setVisible(true);
       }
         

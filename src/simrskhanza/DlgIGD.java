@@ -3787,8 +3787,7 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                 dlgrwjl.setLocationRelativeTo(internalFrame1);
 
-                dlgrwjl.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());    
-                dlgrwjl.tampilDr();
+                dlgrwjl.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
                 dlgrwjl.setVisible(true);
             }                
         }

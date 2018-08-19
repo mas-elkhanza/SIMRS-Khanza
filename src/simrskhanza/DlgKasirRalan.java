@@ -4182,7 +4182,6 @@ private void MnDataRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 dlgrwjl2.setLocationRelativeTo(internalFrame1);
             
                 dlgrwjl2.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());    
-                dlgrwjl2.tampilDr();
                 dlgrwjl2.setVisible(true);
             }                
         }
@@ -5486,7 +5485,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),1).toString()
                     );    
                     dlgrwjl2.SetPoli(tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),13).toString());
-                    dlgrwjl2.tampilDr();
                     dlgrwjl2.setVisible(true);
                 } 
             }                               

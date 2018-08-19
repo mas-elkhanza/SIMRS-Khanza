@@ -5294,7 +5294,6 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 dlgrwjl.setLocationRelativeTo(internalFrame1);
 
                 dlgrwjl.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());    
-                dlgrwjl.tampilDr();
                 dlgrwjl.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }                
@@ -7326,7 +7325,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                         tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),5).toString()
                     );   
                     dlgrwjl.SetPoli(tbPetugas2.getValueAt(tbPetugas2.getSelectedRow(),18).toString());
-                    dlgrwjl.tampilDr();
                     dlgrwjl.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }  

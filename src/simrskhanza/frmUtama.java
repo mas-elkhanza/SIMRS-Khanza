@@ -852,6 +852,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnGrafikKunjunganPerCacat = new widget.ButtonBig();
         btnBarangCSSD = new widget.ButtonBig();
         btnSKDPBPJS = new widget.ButtonBig();
+        btnBookingRegistrasi = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5420,6 +5421,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSKDPBPJS);
 
+        btnBookingRegistrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Address Book_32590.png"))); // NOI18N
+        btnBookingRegistrasi.setText("Booking Registrasi");
+        btnBookingRegistrasi.setIconTextGap(0);
+        btnBookingRegistrasi.setName("btnBookingRegistrasi"); // NOI18N
+        btnBookingRegistrasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBookingRegistrasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookingRegistrasiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnBookingRegistrasi);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5428,7 +5441,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/08/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/08/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6587,9 +6600,9 @@ private void BtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         isTutup();
         DlgHome.setSize(PanelUtama.getWidth()-45, PanelUtama.getHeight()-45);
-        isTampil();
         DlgHome.setLocationRelativeTo(PanelUtama);
         DlgHome.setVisible(true);
+        isTampil();
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnMenuActionPerformed
 
@@ -6801,7 +6814,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private void btnRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRalanActionPerformed
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        kasirralan.billing.dlgrwjl.tampilDr();
         kasirralan.billing.dlgrwjl.isCek();
         kasirralan.billing.dlgrwjl.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         kasirralan.billing.dlgrwjl.setLocationRelativeTo(PanelUtama);
@@ -11380,6 +11392,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSKDPBPJSActionPerformed
 
+    private void btnBookingRegistrasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingRegistrasiActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBookingRegistrasi form=new DlgBookingRegistrasi(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnBookingRegistrasiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11461,6 +11484,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnBeriObat;
     private widget.ButtonBig btnBerkasDigitalPerawatan;
     private widget.ButtonBig btnBerkasPegawai;
+    private widget.ButtonBig btnBookingRegistrasi;
     private widget.ButtonBig btnBubes;
     private widget.ButtonBig btnBulananHAIs;
     private widget.ButtonBig btnCacatFisik;
@@ -12083,7 +12107,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }else if(jmlmenu<=370){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*70)));
-        }                                           
+        }else if(jmlmenu<=375){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*71)));
+        }else if(jmlmenu<=380){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*72)));
+        }else if(jmlmenu<=385){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*73)));
+        }                                              
         Panelmenu.repaint(); 
         DlgHome.setVisible(true);               
     }
@@ -12165,6 +12198,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
 
+            if(var.getbooking_registrasi()==true){
+                Panelmenu.add(btnBookingRegistrasi);
+                jmlmenu++;
+            }
+            
             if(var.getigd()==true){
                 Panelmenu.add(btnIGD);  
                 jmlmenu++;
@@ -13954,6 +13992,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
+        if(var.getbooking_registrasi()==true){
+            Panelmenu.add(btnBookingRegistrasi);
+            jmlmenu++;
+        }
+
         if(var.getigd()==true){
             Panelmenu.add(btnIGD);  
             jmlmenu++;
@@ -15730,6 +15773,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getregistrasi()==true){
             if(btnRegistrasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRegistrasi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbooking_registrasi()==true){
+            if(btnBookingRegistrasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBookingRegistrasi);
                 jmlmenu++;
             }                
         }

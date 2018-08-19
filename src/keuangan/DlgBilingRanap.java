@@ -40,9 +40,6 @@ import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaRadiologi;
 import simrskhanza.DlgDeposit;
 import inventory.DlgPemberianObat;
-import keuangan.DlgLhtBiaya;
-import keuangan.DlgLhtPiutang;
-import keuangan.Jurnal;
 import simrskhanza.DlgPenanggungJawab;
 import simrskhanza.DlgPeriksaLaboratorium;
 import simrskhanza.DlgPeriksaRadiologi;
@@ -2657,8 +2654,7 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             dlgrwjl.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             dlgrwjl.setLocationRelativeTo(internalFrame1);
         
-            dlgrwjl.setNoRm(TNoRw.getText(),DTPTgl.getDate(),new Date());    
-            dlgrwjl.tampilDr();
+            dlgrwjl.setNoRm(TNoRw.getText(),DTPTgl.getDate(),new Date());  
             dlgrwjl.setVisible(true);
         }
 }//GEN-LAST:event_MnRawatJalanActionPerformed
@@ -3503,7 +3499,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             dlgrwjl.setLocationRelativeTo(internalFrame1);
 
             dlgrwjl.setNoRm(norawatbayi,DTPTgl.getDate(),new Date());
-            dlgrwjl.tampilDr();
             dlgrwjl.setVisible(true);
         }
     }//GEN-LAST:event_MnRawatJalan1ActionPerformed

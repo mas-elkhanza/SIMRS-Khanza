@@ -2609,7 +2609,6 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             dlgrwjl.setLocationRelativeTo(internalFrame1);
         
             dlgrwjl.setNoRm(TNoRw.getText(),DTPTgl.getDate(),new Date());    
-            dlgrwjl.tampilDr();
             dlgrwjl.setAlwaysOnTop(false);
             dlgrwjl.setVisible(true);
         }

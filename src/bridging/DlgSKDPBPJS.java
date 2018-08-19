@@ -1554,6 +1554,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Alasan2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             Rtl1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             Rtl2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Valid.SetTgl(TanggalPeriksa,tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Valid.SetTgl(TanggalSurat,tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             NoSurat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             NoReg.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
@@ -1561,8 +1563,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             KdPoli.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
             NmPoli.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             Status.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Valid.SetTgl(TanggalPeriksa,tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Valid.SetTgl(TanggalSurat,tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
         }
     }
     
