@@ -68,10 +68,10 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 3; i++) {
+        for (i = 0; i < 3; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(30);
             }else if(i==1){
                 column.setPreferredWidth(100);
             }else if(i==2){
@@ -135,7 +135,6 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         Scroll.setViewportView(tbKamar);
@@ -146,13 +145,13 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
         panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel16.setText("Kode/Nama Propinsi :");
+        jLabel16.setText("Propinsi :");
         jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(115, 23));
+        jLabel16.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass6.add(jLabel16);
 
         Propinsi.setName("Propinsi"); // NOI18N
-        Propinsi.setPreferredSize(new java.awt.Dimension(250, 23));
+        Propinsi.setPreferredSize(new java.awt.Dimension(300, 23));
         Propinsi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PropinsiKeyPressed(evt);
