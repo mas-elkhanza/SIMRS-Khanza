@@ -6840,7 +6840,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         NmIbu.setText(cekViaDukcapilAceh.NAMA_LGKP_IBU);
         Kelurahan.setText(cekViaDukcapilAceh.KEL_NAME);
         KelurahanPj.setText(cekViaDukcapilAceh.KEL_NAME);
-        CmbJk.setSelectedItem(cekViaDukcapilAceh.JENIS_KLMIN.replaceAll("Laki-Laki","LAKI-LAKI").replaceAll("Perempuan","PEREMPUAN"));
+        CmbJk.setSelectedItem(cekViaDukcapilAceh.JENIS_KLMIN.toUpperCase());
         Valid.SetTgl(DTPLahir,cekViaDukcapilAceh.TGL_LHR);   
         DTPLahirItemStateChanged(null);    
         jPopupMenu2.setVisible(false);
@@ -6870,7 +6870,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         NmIbu.setText(cekViaDukcapilBatam.NAMA_LGKP_IBU);
         Kelurahan.setText(cekViaDukcapilBatam.KEL_NAME);
         KelurahanPj.setText(cekViaDukcapilBatam.KEL_NAME);
-        CmbJk.setSelectedItem(cekViaDukcapilBatam.JENIS_KLMIN.replaceAll("Laki-Laki","LAKI-LAKI").replaceAll("Perempuan","PEREMPUAN"));
+        CmbJk.setSelectedItem(cekViaDukcapilBatam.JENIS_KLMIN.toUpperCase());
         Valid.SetTgl(DTPLahir,cekViaDukcapilBatam.TGL_LHR);   
         DTPLahirItemStateChanged(null);    
         jPopupMenu2.setVisible(false);

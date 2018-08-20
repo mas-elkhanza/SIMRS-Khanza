@@ -111,7 +111,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang","[N]Kunjungan Reg Per Agama","[N]Kunjungan Reg Per Umur","[L]Suku/Bangsa Pasien","[L]Bahasa Pasien","[L]Golongan TNI",
                     "[L]Satuan TNI","[L]Jabatan TNI","[L]Pangkat TNI","[L]Golongan POLRI","[L]Satuan POLRI","[L]Jabatan POLRI","[L]Pangkat POLRI","[L]Cacat Fisik","[N]Kunjungan Reg Per Suku/Bangsa",
                     "[N]Kunjungan Reg Per Bahasa","[A]Jadwal Operasi","[K]Mapping Poli RS & BPJS","[N]Kunjungan Reg Per Cacat Fisik","[F]Barang CSSD","[K]SKDP BPJS","[A]Booking Registrasi",
-                    "[K]Referensi Propinsi VClaim"
+                    "[K]Referensi Propinsi VClaim","[K]Referensi Kabupaten VClaim"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -228,7 +228,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 360;i++) {
+        for (i = 0; i < 361;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -583,7 +583,9 @@ public class DlgUser extends javax.swing.JDialog {
             }else if(i==358){
                 column.setPreferredWidth(109);
             }else if(i==359){
-                column.setPreferredWidth(136);
+                column.setPreferredWidth(140);
+            }else if(i==360){
+                column.setPreferredWidth(155);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1019,7 +1021,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1421,7 +1423,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "barang_cssd='"+tbUser.getValueAt(i,356).toString()+"',"+
                     "skdp_bpjs='"+tbUser.getValueAt(i,357).toString()+"',"+
                     "booking_registrasi='"+tbUser.getValueAt(i,358).toString()+"',"+
-                    "bpjs_cek_propinsi='"+tbUser.getValueAt(i,359).toString()+"'");
+                    "bpjs_cek_propinsi='"+tbUser.getValueAt(i,359).toString()+"',"+
+                    "bpjs_cek_kabupaten='"+tbUser.getValueAt(i,360).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1708,7 +1711,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "piutang_akun_piutang,grafik_kunjungan_per_agama,grafik_kunjungan_per_umur,suku_bangsa,bahasa_pasien,"+
                         "golongan_tni,satuan_tni,jabatan_tni,pangkat_tni,golongan_polri,satuan_polri,jabatan_polri,pangkat_polri, "+
                         "cacat_fisik,grafik_kunjungan_suku,grafik_kunjungan_bahasa,booking_operasi,mapping_poli_bpjs,grafik_kunjungan_per_cacat, "+
-                        "barang_cssd,skdp_bpjs,booking_registrasi,bpjs_cek_propinsi from user order by AES_DECRYPT(id_user,'nur')");
+                        "barang_cssd,skdp_bpjs,booking_registrasi,bpjs_cek_propinsi,bpjs_cek_kabupaten from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2079,7 +2082,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("barang_cssd"),
                                rs.getBoolean("skdp_bpjs"),
                                rs.getBoolean("booking_registrasi"),
-                               rs.getBoolean("bpjs_cek_propinsi")
+                               rs.getBoolean("bpjs_cek_propinsi"),
+                               rs.getBoolean("bpjs_cek_kabupaten")
                             });
                         }   
                     } catch (Exception e) {
@@ -2440,7 +2444,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("barang_cssd"),
                            rs.getBoolean("skdp_bpjs"),
                            rs.getBoolean("booking_registrasi"),
-                           rs.getBoolean("bpjs_cek_propinsi")
+                           rs.getBoolean("bpjs_cek_propinsi"),
+                           rs.getBoolean("bpjs_cek_kabupaten")
                         });
                     }                                             
                  }

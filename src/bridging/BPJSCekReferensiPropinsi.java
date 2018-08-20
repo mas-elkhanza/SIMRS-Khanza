@@ -218,14 +218,13 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
 
     private void PropinsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PropinsiKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil(Propinsi.getText());
-            Propinsi.requestFocus();
+            BtnCariActionPerformed(null);
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            tampil(Propinsi.getText());
+            BtnCariActionPerformed(null);
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnCariActionPerformed(null);
+            tbKamar.requestFocus();
         }
     }//GEN-LAST:event_PropinsiKeyPressed
 
