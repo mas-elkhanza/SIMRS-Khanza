@@ -79,7 +79,7 @@ public final class var {
             grafik_kunjungan_per_agama=false,grafik_kunjungan_per_umur=false,suku_bangsa=false,bahasa_pasien=false,golongan_tni=false,satuan_tni=false,
             jabatan_tni=false,pangkat_tni=false,golongan_polri=false,satuan_polri=false,jabatan_polri=false,pangkat_polri=false,cacat_fisik=false,
             grafik_kunjungan_suku=false,grafik_kunjungan_bahasa=false,booking_operasi=false,mapping_poli_bpjs=false,grafik_kunjungan_per_cacat=false,
-            barang_cssd=false,skdp_bpjs=false,booking_registrasi=false;
+            barang_cssd=false,skdp_bpjs=false,booking_registrasi=false,bpjs_cek_propinsi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -459,6 +459,7 @@ public final class var {
                         var.barang_cssd=true;
                         var.skdp_bpjs=true;
                         var.booking_registrasi=true;
+                        var.bpjs_cek_propinsi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -822,6 +823,7 @@ public final class var {
                         var.barang_cssd=rs2.getBoolean("barang_cssd");
                         var.skdp_bpjs=rs2.getBoolean("skdp_bpjs");
                         var.booking_registrasi=rs2.getBoolean("booking_registrasi");
+                        var.bpjs_cek_propinsi=rs2.getBoolean("bpjs_cek_propinsi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1183,6 +1185,7 @@ public final class var {
                         var.barang_cssd=false;
                         var.skdp_bpjs=false;
                         var.booking_registrasi=false;
+                        var.bpjs_cek_propinsi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1592,4 +1595,5 @@ public final class var {
     public static boolean getbarang_cssd(){return var.barang_cssd;}
     public static boolean getskdp_bpjs(){return var.skdp_bpjs;}
     public static boolean getbooking_registrasi(){return var.booking_registrasi;}
+    public static boolean getbpjs_cek_propinsi(){return var.bpjs_cek_propinsi;}
 }   
