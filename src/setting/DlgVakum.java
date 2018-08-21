@@ -2247,7 +2247,8 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD3ActionPerformed
 
     private void BtnICD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD4ActionPerformed
-        hapus("Rujukan Keluar","lain","rujuk");        
+        hapus("Rujukan Keluar","lain","rujuk");   
+        hapus("Booking Operasi","lain","booking_operasi");   
         hapus("Bridging SEP","lain","bridging_sep");   
         hapus("Bridging Inhealth","lain","bridging_inhealth");
         hapus("Rujukan Masuk","lain","rujuk_masuk");
@@ -2269,7 +2270,10 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Berkas Digital Perawata","lain","berkas_digital_perawatan");       
         hapus("Pemeriksaan Radiologi","lain","periksa_radiologi");            
         hapus("Beri BHP Radiologi","lain","beri_bhp_radiologi");            
-        hapus("Gambar Radiologi","lain","gambar_radiologi");      
+        hapus("Gambar Radiologi","lain","gambar_radiologi");              
+        hapus("Hasil Radiologi","lain","hasil_radiologi");             
+        hapus("Tambahan Biaya","lain","tambahan_biaya");              
+        hapus("Potongan Biaya","lain","pengurangan_biaya");  
         hapus("Pemeriksaan Laborat","lain","periksa_lab");     
         hapus("Detail Pemeriksaan Laborat","lain","detail_periksa_lab"); 
         hapus("Diagnosa Pasien","lain","diagnosa_pasien"); 
@@ -2285,7 +2289,8 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Pemeriksaan Obstetri Ralan","lain","pemeriksaan_obstetri_ralan"); 
         hapus("Pemeriksaan Obstetri Ranap","lain","pemeriksaan_obstetri_ranap"); 
         hapus("Pemeriksaan Ginekologi Ralan","lain","pemeriksaan_ginekologi_ralan"); 
-        hapus("Pemeriksaan Ginekologi Ranap","lain","pemeriksaan_ginekologi_ranap");         
+        hapus("Pemeriksaan Ginekologi Ranap","lain","pemeriksaan_ginekologi_ranap");  
+        hapus("Saran Kesan Lab","lain","saran_kesan_lab");         
         hapus("Registrasi","Rawat Jalan,\nKamar Inap, Diagnosa Pasien, Tagihan Masuk, Pemberian Obat, Resep Obat, Rujukan Masuk,\n"+
                 "Rujukan Keluar, Stok Obat Pasien, Diagnosa Pasien, Resep Pulang, Potongan Biaya, Tambahan Biaya,\nDPJP Ranap, Diet Pasien","reg_periksa");
     }//GEN-LAST:event_BtnICD4ActionPerformed

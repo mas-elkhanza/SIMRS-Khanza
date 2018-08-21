@@ -12,6 +12,7 @@
 
 package simrskhanza;
 
+import keuangan.DlgCariPerawatanRalan;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import inventory.DlgPemberianObat;
@@ -626,7 +627,13 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 if(var.getform().equals("DlgRawatJalan")){
                     if(pasien.getTable().getSelectedRow()!= -1){                   
                         TCariPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
-                    }    
+                    } 
+                    if(pasien.getTable2().getSelectedRow()!= -1){                   
+                        TCariPasien.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
+                    } 
+                    if(pasien.getTable3().getSelectedRow()!= -1){                   
+                        TCariPasien.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
+                    } 
                     TCariPasien.requestFocus();
                 }
             }
@@ -641,6 +648,36 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
         
         pasien.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(var.getform().equals("DlgRawatJalan")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        pasien.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        pasien.getTable2().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(var.getform().equals("DlgRawatJalan")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        pasien.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        pasien.getTable3().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
@@ -1031,7 +1068,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         MnResepDOkter.setBackground(new java.awt.Color(255, 255, 255));
         MnResepDOkter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnResepDOkter.setForeground(new java.awt.Color(60, 80, 50));
+        MnResepDOkter.setForeground(new java.awt.Color(130,100,100));
         MnResepDOkter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnResepDOkter.setText("Input Resep Dokter");
         MnResepDOkter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1047,7 +1084,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         MnPemberianObat.setBackground(new java.awt.Color(255, 255, 255));
         MnPemberianObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPemberianObat.setForeground(new java.awt.Color(60, 80, 50));
+        MnPemberianObat.setForeground(new java.awt.Color(130,100,100));
         MnPemberianObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPemberianObat.setText("Pemberian Obat/BHP");
         MnPemberianObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1064,7 +1101,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         MnDiagnosa.setBackground(new java.awt.Color(255, 255, 255));
         MnDiagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnDiagnosa.setForeground(new java.awt.Color(60, 80, 50));
+        MnDiagnosa.setForeground(new java.awt.Color(130,100,100));
         MnDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDiagnosa.setText("Diagnosa Pasien");
         MnDiagnosa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -4694,7 +4731,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbRawatPr;
     // End of variables declaration//GEN-END:variables
 
-    public void tampilDr() {
+    private void tampilDr() {
         Valid.tabelKosong(tabModeDr);
         try{
             ps=koneksi.prepareStatement("select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
@@ -5349,6 +5386,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         KdDok2.setText(kodedokter);
         TDokter.setText(namadokter);
         TDokter2.setText(namadokter);
+        TabRawatMouseClicked(null);
     }
     
     public void SetPoli(String KodePoli){

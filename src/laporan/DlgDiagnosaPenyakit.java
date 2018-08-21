@@ -270,6 +270,12 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
                 if(pasien.getTable().getSelectedRow()!= -1){                   
                     TCariPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
                 } 
+                if(pasien.getTable2().getSelectedRow()!= -1){                   
+                    TCariPasien.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
+                }
+                if(pasien.getTable3().getSelectedRow()!= -1){                   
+                    TCariPasien.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
+                } 
                 TCariPasien.requestFocus();
             }
             @Override
@@ -293,7 +299,33 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });        
+        });  
+        
+        pasien.getTable2().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
+        pasien.getTable3().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
     }
 
     //private DlgCariObatPenyakit dlgobtpny=new DlgCariObatPenyakit(null,false);
@@ -367,7 +399,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 
         MnStatusBaru.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusBaru.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusBaru.setForeground(new java.awt.Color(60, 80, 50));
+        MnStatusBaru.setForeground(new java.awt.Color(130,100,100));
         MnStatusBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusBaru.setText("Status Penyakit Baru");
         MnStatusBaru.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -383,7 +415,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
 
         MnStatusLama.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusLama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusLama.setForeground(new java.awt.Color(60, 80, 50));
+        MnStatusLama.setForeground(new java.awt.Color(130,100,100));
         MnStatusLama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusLama.setText("Status Penyakit Lama");
         MnStatusLama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

@@ -269,7 +269,7 @@ public class DlgObatPerTanggal extends javax.swing.JDialog {
 
         ppLokasi.setBackground(new java.awt.Color(255, 255, 255));
         ppLokasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppLokasi.setForeground(new java.awt.Color(60, 80, 50));
+        ppLokasi.setForeground(new java.awt.Color(130,100,100));
         ppLokasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Create-Ticket24.png"))); // NOI18N
         ppLokasi.setText("Tampilkan Per Lokasi");
         ppLokasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

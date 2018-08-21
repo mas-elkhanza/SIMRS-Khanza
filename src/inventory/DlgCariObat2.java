@@ -1175,6 +1175,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     }
                 }
                 
+                Valid.tabelKosong(tabModeObatRacikan);
+                
                 for(i=0;i<tbDetailObatRacikan.getRowCount();i++){ 
                     if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,10).toString())>0){
                         if(Sequel.menyimpantf2("detail_obat_racikan","?,?,?,?,?","Data",5,new String[]{
@@ -1204,6 +1206,8 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         }   
                     }
                 }
+                
+                Valid.tabelKosong(tabModeDetailObatRacikan);
                 
                 Sequel.queryu("delete from tampjurnal");    
                 if(ttljual>0){
@@ -1872,10 +1876,34 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 tbObat.setValueAt(stokbarang,tbObat.getSelectedRow(),10);
                 y=0;
                 try {
-                    y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                    if(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString().equals("true")){
+                        pscarikapasitas= koneksi.prepareStatement("select IFNULL(kapasitas,1) from databarang where kode_brng=?");                                      
+                        try {
+                            pscarikapasitas.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+                            carikapasitas=pscarikapasitas.executeQuery();
+                            if(carikapasitas.next()){ 
+                                y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString())/carikapasitas.getDouble(1);
+                            }else{
+                                y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                            }
+                        } catch (Exception e) {
+                            y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                            System.out.println("Kapasitasmu masih kosong broooh : "+e);
+                        } finally{
+                            if(carikapasitas!=null){
+                                carikapasitas.close();
+                            }
+                            if(pscarikapasitas!=null){
+                                pscarikapasitas.close();
+                            }
+                        }
+                    }else{
+                        y=Double.parseDouble(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+                    }                        
                 } catch (Exception e) {
                     y=0;
                 }
+                
                 if(stokbarang<y){
                     JOptionPane.showMessageDialog(rootPane,"Maaf stok tidak mencukupi..!!");
                     tbObat.setValueAt("",tbObat.getSelectedRow(),1);

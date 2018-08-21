@@ -1,6 +1,8 @@
 
 package simrskhanza;
 
+import keuangan.DlgCariPerawatanRanap;
+import keuangan.DlgCariPerawatanRanap2;
 import inventory.DlgPemberianObat;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -599,6 +601,12 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                     if(pasien.getTable().getSelectedRow()!= -1){                   
                         TCariPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
                     }    
+                    if(pasien.getTable2().getSelectedRow()!= -1){                   
+                        TCariPasien.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
+                    }
+                    if(pasien.getTable3().getSelectedRow()!= -1){                   
+                        TCariPasien.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
+                    }
                     TCariPasien.requestFocus();
                 }
             }
@@ -626,6 +634,36 @@ public final class DlgRawatInap extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });  
+        
+        pasien.getTable2().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(var.getform().equals("DlgRawatInap")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        pasien.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        pasien.getTable3().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(var.getform().equals("DlgRawatInap")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        pasien.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         
         perawatan.dokter.addWindowListener(new WindowListener() {
             @Override
@@ -1084,7 +1122,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         MnPemberianObat.setBackground(new java.awt.Color(255, 255, 255));
         MnPemberianObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPemberianObat.setForeground(new java.awt.Color(60, 80, 50));
+        MnPemberianObat.setForeground(new java.awt.Color(130,100,100));
         MnPemberianObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnPemberianObat.setText("Pemberian Obat/BHP");
         MnPemberianObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1101,7 +1139,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         MnDiagnosa.setBackground(new java.awt.Color(255, 255, 255));
         MnDiagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnDiagnosa.setForeground(new java.awt.Color(60, 80, 50));
+        MnDiagnosa.setForeground(new java.awt.Color(130,100,100));
         MnDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnDiagnosa.setText("Diagnosa Pasien");
         MnDiagnosa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

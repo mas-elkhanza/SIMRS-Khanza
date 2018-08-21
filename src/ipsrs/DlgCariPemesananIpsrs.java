@@ -295,7 +295,7 @@ public class DlgCariPemesananIpsrs extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(60, 80, 50));
+        ppHapus.setForeground(new java.awt.Color(130,100,100));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Data Penerimaan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -312,7 +312,7 @@ public class DlgCariPemesananIpsrs extends javax.swing.JDialog {
 
         ppBayar.setBackground(new java.awt.Color(255, 255, 255));
         ppBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBayar.setForeground(new java.awt.Color(60, 80, 50));
+        ppBayar.setForeground(new java.awt.Color(130,100,100));
         ppBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBayar.setText("Bayar Tagihan");
         ppBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);

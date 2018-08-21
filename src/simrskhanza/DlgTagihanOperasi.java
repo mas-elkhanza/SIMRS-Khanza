@@ -549,7 +549,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(130,100,100));
+        ppBersihkan.setForeground(new java.awt.Color(130, 100, 100));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -567,13 +567,8 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tagihan Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tagihan Operasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -582,7 +577,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(816, 102));
         jPanel1.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 102));
@@ -678,7 +673,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
 
         jPanel1.add(jPanel3);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Obat & BHP ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Obat & BHP ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setOpaque(false);
         jPanel2.setPreferredSize(new java.awt.Dimension(350, 102));
@@ -1352,7 +1347,6 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         FormInput.add(jLabel5);
         jLabel5.setBounds(0, 40, 82, 23);
 
-        Kategori.setForeground(new java.awt.Color(130,100,100));
         Kategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Khusus", "Besar", "Sedang", "Kecil" }));
         Kategori.setName("Kategori"); // NOI18N
         Kategori.setOpaque(false);
@@ -2207,11 +2201,6 @@ private void btnPrwLuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
    isForm();  
 }//GEN-LAST:event_ChkInputActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-        tampil2();
-    }//GEN-LAST:event_formWindowOpened
 
     private void KategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KategoriKeyPressed
         Valid.pindah(evt,TCariPaket,jenis);
@@ -3194,6 +3183,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if(pstindakan2!=null){
                     pstindakan2.close();
                 }
+                if(pstindakan3!=null){
+                    pstindakan3.close();
+                }
+                if(pstindakan4!=null){
+                    pstindakan4.close();
+                }
             }                  
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
@@ -3401,6 +3396,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(status.equals("Ralan")){
             kelas="Rawat Jalan";
         }
+        tampil();
+        tampil2();
     }
     
     
@@ -3416,6 +3413,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             FormInput.setVisible(false);      
             ChkInput.setVisible(true);
         }
+    }
+    
+    public void SetCariOperasi(String Operasi,String kodedokter,String namadokter){
+        TCariPaket.setText(Operasi);
+        kdoperator1.setText(kodedokter);
+        nmoperator1.setText(namadokter);
     }
  
 }

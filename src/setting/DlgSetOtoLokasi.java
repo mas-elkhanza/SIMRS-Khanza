@@ -253,7 +253,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Otomatis Lokasi Stok Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Otomatis Lokasi Stok Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -357,7 +357,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(130,100,100));
+        TabRawat.setForeground(new java.awt.Color(130, 100, 100));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -422,7 +422,7 @@ public class DlgSetOtoLokasi extends javax.swing.JDialog {
         panelGlass7.add(jLabel5);
         jLabel5.setBounds(0, 42, 142, 23);
 
-        cmbstok.setBackground(new java.awt.Color(245, 250, 240));
+        cmbstok.setBackground(new java.awt.Color(255, 255, 254));
         cmbstok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gunakan Stok Utama Obat", "Gunakan Stok Bangsal" }));
         cmbstok.setName("cmbstok"); // NOI18N
         cmbstok.setOpaque(false);

@@ -1821,12 +1821,12 @@ private void TOmloop1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_MnRestoreActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if(FormInput.getHeight()<350){   
+        if(FormInput.getHeight()<390){   
             Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-            FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,350));
+            FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,390));
             if(FormInput.getWidth()<740){
                 Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                FormInput.setPreferredSize(new Dimension(740,350));
+                FormInput.setPreferredSize(new Dimension(740,390));
             }else{
                 Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
             }
