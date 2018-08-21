@@ -501,7 +501,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metaData");
-            if(nameNode.path("message").asText().equals("Sukses")){
+            if(nameNode.path("code").asText().equals("200")){
                 tabMode.addRow(new Object[]{
                     "","",""
                 });
