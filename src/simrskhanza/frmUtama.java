@@ -31,6 +31,7 @@ import bridging.BPJSCekNoRujukanPCare;
 import bridging.BPJSCekNoRujukanRS;
 import bridging.BPJSCekReferensiCaraKeluar;
 import bridging.BPJSCekReferensiDokter;
+import bridging.BPJSCekReferensiDokterDPJP;
 import bridging.BPJSCekReferensiKabupaten;
 import bridging.BPJSCekReferensiKecamatan;
 import bridging.BPJSCekReferensiKelasRawat;
@@ -859,6 +860,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekReferensiPropinsiBPJS = new widget.ButtonBig();
         btnCekReferensiKabupatenBPJS = new widget.ButtonBig();
         btnCekReferensiKecamatanBPJS = new widget.ButtonBig();
+        btnCekReferensiDokterDPJPBPJS = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5474,6 +5476,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnCekReferensiKecamatanBPJS);
+
+        btnCekReferensiDokterDPJPBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor_assistant.png"))); // NOI18N
+        btnCekReferensiDokterDPJPBPJS.setText("Referensi Dokter DPJP VClaim");
+        btnCekReferensiDokterDPJPBPJS.setIconTextGap(0);
+        btnCekReferensiDokterDPJPBPJS.setName("btnCekReferensiDokterDPJPBPJS"); // NOI18N
+        btnCekReferensiDokterDPJPBPJS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekReferensiDokterDPJPBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekReferensiDokterDPJPBPJSActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnCekReferensiDokterDPJPBPJS);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -11478,6 +11492,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCekReferensiKecamatanBPJSActionPerformed
 
+    private void btnCekReferensiDokterDPJPBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekReferensiDokterDPJPBPJSActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSCekReferensiDokterDPJP form=new BPJSCekReferensiDokterDPJP(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnCekReferensiDokterDPJPBPJSActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11584,6 +11609,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnCekPCareRujukan;
     private widget.ButtonBig btnCekReferensiCaraKeluarBPJS;
     private widget.ButtonBig btnCekReferensiDokterBPJS;
+    private widget.ButtonBig btnCekReferensiDokterDPJPBPJS;
     private widget.ButtonBig btnCekReferensiKabupatenBPJS;
     private widget.ButtonBig btnCekReferensiKecamatanBPJS;
     private widget.ButtonBig btnCekReferensiKelasRawatBPJS;
@@ -13490,6 +13516,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getbpjs_cek_dokterdpjp()==true){
+                Panelmenu.add(btnCekReferensiDokterDPJPBPJS);
+                jmlmenu++;
+            }
+            
             if(var.getbpjs_sep()==true){
                 Panelmenu.add(btnBPJSSEP);
                 jmlmenu++;
@@ -15286,6 +15317,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getbpjs_cek_kecamatan()==true){
             Panelmenu.add(btnCekReferensiKecamatanBPJS);
+            jmlmenu++;
+        }
+        
+        if(var.getbpjs_cek_dokterdpjp()==true){
+            Panelmenu.add(btnCekReferensiDokterDPJPBPJS);
             jmlmenu++;
         }
 
@@ -17569,6 +17605,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getbpjs_cek_kecamatan()==true){
             if(btnCekReferensiKecamatanBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCekReferensiKecamatanBPJS);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbpjs_cek_dokterdpjp()==true){
+            if(btnCekReferensiDokterDPJPBPJS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnCekReferensiDokterDPJPBPJS);
                 jmlmenu++;
             }                
         }
