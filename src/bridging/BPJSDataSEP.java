@@ -2326,8 +2326,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                             kamarinap.setLocationRelativeTo(internalFrame1);
                             kamarinap.emptTeks();
                             kamarinap.isCek();
-                            kamarinap.setNoRm(TNoRw.getText());   
-                            kamarinap.tampil();
+                            kamarinap.setNoRm(TNoRw.getText());  
                             kamarinap.setVisible(true);
                         }else{
                             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
@@ -2337,8 +2336,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                 kamarinap.setLocationRelativeTo(internalFrame1);
                                 kamarinap.emptTeks();
                                 kamarinap.isCek();
-                                kamarinap.setNoRm(TNoRw.getText());   
-                                kamarinap.tampil();
+                                kamarinap.setNoRm(TNoRw.getText()); 
                                 kamarinap.setVisible(true);                    
                             }
                         }      

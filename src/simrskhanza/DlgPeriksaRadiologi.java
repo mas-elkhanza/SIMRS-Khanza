@@ -1621,7 +1621,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     // End of variables declaration//GEN-END:variables
     
     
-    public void tampil() {          
+    public void tampil() {         
         try{
             jml=0;
             for(i=0;i<tbPemeriksaan.getRowCount();i++){
