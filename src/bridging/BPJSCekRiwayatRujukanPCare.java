@@ -301,8 +301,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
                 Sequel.menyimpan("temporary","'0','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','"+
-                                tabMode.getValueAt(r,2).toString()+"','"+
-                                tabMode.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
+                                tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>();                 
@@ -314,7 +313,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariBPJS10RiwayatPeserta.jrxml","report","[ Pencarian Riwayat Peserta ]",
+            Valid.MyReport("rptCariBPJS10RiwayatPeserta.jrxml","report","[ Pencarian Riwayat Rujukan Peserta ]",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
@@ -392,7 +391,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
 
     public void tampil(String nomorrujukan) {
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/Peserta/"+nomorrujukan;	
+            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/List/Peserta/"+nomorrujukan;	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

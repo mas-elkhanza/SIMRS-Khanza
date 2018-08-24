@@ -111,7 +111,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "[N]Kejadian IKP Per Dampak","[H]Piutang Per Akun Piutang","[N]Kunjungan Reg Per Agama","[N]Kunjungan Reg Per Umur","[L]Suku/Bangsa Pasien","[L]Bahasa Pasien","[L]Golongan TNI",
                     "[L]Satuan TNI","[L]Jabatan TNI","[L]Pangkat TNI","[L]Golongan POLRI","[L]Satuan POLRI","[L]Jabatan POLRI","[L]Pangkat POLRI","[L]Cacat Fisik","[N]Kunjungan Reg Per Suku/Bangsa",
                     "[N]Kunjungan Reg Per Bahasa","[A]Jadwal Operasi","[K]Mapping Poli RS & BPJS","[N]Kunjungan Reg Per Cacat Fisik","[F]Barang CSSD","[K]SKDP BPJS","[A]Booking Registrasi",
-                    "[K]Referensi Propinsi VClaim","[K]Referensi Kabupaten VClaim","[K]Referensi Kecamatan VClaim","[K]Referensi Dokter DPJP VClaim"
+                    "[K]Referensi Propinsi VClaim","[K]Referensi Kabupaten VClaim","[K]Referensi Kecamatan VClaim","[K]Referensi Dokter DPJP VClaim","[K]Riwayat Rujukan RS di VClaim",
+                    "[K]Tanggal Rujukan di VClaim"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -230,7 +231,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 363;i++) {
+        for (i = 0; i < 365;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -592,6 +593,10 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(157);
             }else if(i==362){
                 column.setPreferredWidth(163);
+            }else if(i==363){
+                column.setPreferredWidth(163);
+            }else if(i==364){
+                column.setPreferredWidth(144);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1027,7 +1032,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1432,7 +1437,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "bpjs_cek_propinsi='"+tbUser.getValueAt(i,359).toString()+"',"+
                     "bpjs_cek_kabupaten='"+tbUser.getValueAt(i,360).toString()+"',"+
                     "bpjs_cek_kecamatan='"+tbUser.getValueAt(i,361).toString()+"',"+
-                    "bpjs_cek_dokterdpjp='"+tbUser.getValueAt(i,362).toString()+"'");
+                    "bpjs_cek_dokterdpjp='"+tbUser.getValueAt(i,362).toString()+"',"+
+                    "bpjs_cek_riwayat_rujukanrs='"+tbUser.getValueAt(i,363).toString()+"',"+
+                    "bpjs_cek_tanggal_rujukan='"+tbUser.getValueAt(i,364).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1720,7 +1727,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "golongan_tni,satuan_tni,jabatan_tni,pangkat_tni,golongan_polri,satuan_polri,jabatan_polri,pangkat_polri, "+
                         "cacat_fisik,grafik_kunjungan_suku,grafik_kunjungan_bahasa,booking_operasi,mapping_poli_bpjs,grafik_kunjungan_per_cacat, "+
                         "barang_cssd,skdp_bpjs,booking_registrasi,bpjs_cek_propinsi,bpjs_cek_kabupaten,bpjs_cek_kecamatan, "+
-                        "bpjs_cek_dokterdpjp from user order by AES_DECRYPT(id_user,'nur')");
+                        "bpjs_cek_dokterdpjp,bpjs_cek_riwayat_rujukanrs,bpjs_cek_tanggal_rujukan from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2094,7 +2101,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("bpjs_cek_propinsi"),
                                rs.getBoolean("bpjs_cek_kabupaten"),
                                rs.getBoolean("bpjs_cek_kecamatan"),
-                               rs.getBoolean("bpjs_cek_dokterdpjp")
+                               rs.getBoolean("bpjs_cek_dokterdpjp"),
+                               rs.getBoolean("bpjs_cek_riwayat_rujukanrs"),
+                               rs.getBoolean("bpjs_cek_tanggal_rujukan")
                             });
                         }   
                     } catch (Exception e) {
@@ -2458,7 +2467,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("bpjs_cek_propinsi"),
                            rs.getBoolean("bpjs_cek_kabupaten"),
                            rs.getBoolean("bpjs_cek_kecamatan"),
-                           rs.getBoolean("bpjs_cek_dokterdpjp")
+                           rs.getBoolean("bpjs_cek_dokterdpjp"),
+                           rs.getBoolean("bpjs_cek_riwayat_rujukanrs"),
+                           rs.getBoolean("bpjs_cek_tanggal_rujukan")
                         });
                     }                                             
                  }

@@ -43,7 +43,7 @@ import simrskhanza.DlgPasien;
  *
  * @author dosen
  */
-public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
+public final class BPJSCekRiwayatRujukanRS extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private final Properties prop = new Properties();
     private validasi Valid=new validasi();
@@ -56,7 +56,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
-    public BPJSCekRiwayatRujukanPCare(java.awt.Frame parent, boolean modal) {
+    public BPJSCekRiwayatRujukanRS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -164,7 +164,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Riwayat Rujukan PCare di VClaim Berdasarkan Nomor Kepesertaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Riwayat Rujukan RS di VClaim Berdasarkan Nomor Kepesertaan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -301,8 +301,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
                 Sequel.menyimpan("temporary","'0','"+
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','"+
-                                tabMode.getValueAt(r,2).toString()+"','"+
-                                tabMode.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
+                                tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>();                 
@@ -314,7 +313,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());   
             param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariBPJS10RiwayatPeserta.jrxml","report","[ Pencarian Riwayat Peserta ]",
+            Valid.MyReport("rptCariBPJS10RiwayatPeserta.jrxml","report","[ Pencarian Riwayat Rujukan Peserta ]",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
             this.setCursor(Cursor.getDefaultCursor());
         }        
@@ -364,7 +363,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            BPJSCekRiwayatRujukanPCare dialog = new BPJSCekRiwayatRujukanPCare(new javax.swing.JFrame(), true);
+            BPJSCekRiwayatRujukanRS dialog = new BPJSCekRiwayatRujukanRS(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -392,7 +391,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
 
     public void tampil(String nomorrujukan) {
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/Peserta/"+nomorrujukan;	
+            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/RS/List/Peserta/"+nomorrujukan;	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
