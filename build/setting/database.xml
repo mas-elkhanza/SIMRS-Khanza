@@ -13,7 +13,7 @@
     <entry key="PORTWEB">80</entry>
     <entry key="ANTRIAN">player</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
-    <entry key="URLAPIBPJS">http://dvlp.bpjs-kesehatan.go.id:8081/VClaim-rest</entry>
+    <entry key="URLAPIBPJS">https://dvlp.bpjs-kesehatan.go.id/vclaim-rest</entry>
     <entry key="SECRETKEYAPIBPJS">2wE3D865DE</entry>
     <entry key="CONSIDAPIBPJS">30349</entry>
     <entry key="URLAPIAPLICARE">http://dvlp.bpjs-kesehatan.go.id:8888/aplicaresws</entry>

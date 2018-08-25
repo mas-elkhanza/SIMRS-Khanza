@@ -28,6 +28,9 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
 import java.net.URI;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,6 +39,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -43,6 +48,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -1934,9 +1941,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                      "}" +
                                  "}";
                     HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    RestTemplate rest = new RestTemplate();
                     ObjectMapper mapper = new ObjectMapper();
-                    JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
+                    JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
                     JsonNode nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
@@ -2303,9 +2309,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                  "}" +
                              "}";
                 HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                RestTemplate rest = new RestTemplate();
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
+                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
                 JsonNode nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
@@ -2397,9 +2402,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                     "}" +
                                 "}";
                 HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                RestTemplate rest = new RestTemplate();
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 JsonNode nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
@@ -2508,9 +2512,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                     "}" +
                                 "}";
                 HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                RestTemplate rest = new RestTemplate();
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 JsonNode nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
@@ -2592,9 +2595,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                                 "}" +
                             "}";
                 HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                RestTemplate rest = new RestTemplate();
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 JsonNode nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
@@ -2845,11 +2847,10 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
                 headers.add("X-Signature",api.getHmac());
                 HttpEntity requestEntity = new HttpEntity(headers);
-                RestTemplate rest = new RestTemplate();	
-
+                
                 //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
                 JsonNode nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
@@ -3255,7 +3256,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         }
     }
     
-    RestTemplate restTemplate = new RestTemplate();
     public static class HttpEntityEnclosingDeleteRequest extends HttpEntityEnclosingRequestBase {
         public HttpEntityEnclosingDeleteRequest(final URI uri) {
             super();
@@ -3270,7 +3270,20 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     @Test
     public void bodyWithDeleteRequest() throws Exception {
-        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory() {
+        RestTemplate restTemplate = new RestTemplate();
+        SSLContext sslContext = SSLContext.getInstance("SSL");
+        javax.net.ssl.TrustManager[] trustManagers= {
+            new X509TrustManager() {
+                public X509Certificate[] getAcceptedIssuers() {return null;}
+                public void checkServerTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
+                public void checkClientTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
+            }
+        };
+        sslContext.init(null,trustManagers , new SecureRandom());
+        SSLSocketFactory sslFactory=new SSLSocketFactory(sslContext,SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        Scheme scheme=new Scheme("https",443,sslFactory);
+    
+        HttpComponentsClientHttpRequestFactory factory=new HttpComponentsClientHttpRequestFactory(){
             @Override
             protected HttpUriRequest createHttpUriRequest(HttpMethod httpMethod, URI uri) {
                 if (HttpMethod.DELETE == httpMethod) {
@@ -3278,11 +3291,13 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 }
                 return super.createHttpUriRequest(httpMethod, uri);
             }
-        });
+        };
+        factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
+        restTemplate.setRequestFactory(factory);
         
         try {
             URL = prop.getProperty("URLAPIBPJS")+"/SEP/Delete";	
-
+            
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
@@ -3301,7 +3316,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }
-        } catch (Exception e) {            
+        } catch (Exception e) {   
+            System.out.println("Notif : "+e);
         }
     }
     

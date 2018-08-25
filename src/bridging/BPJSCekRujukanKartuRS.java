@@ -49,7 +49,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgBahasa;
 import simrskhanza.DlgCacatFisik;
@@ -3678,9 +3677,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 "}" +
                 "}";
                 HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                RestTemplate rest = new RestTemplate();
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 JsonNode nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
@@ -3726,9 +3724,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 "}" +
                 "}";
                 HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                RestTemplate rest = new RestTemplate();
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 JsonNode nameNode = root.path("metaData");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
@@ -4690,9 +4687,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 	    headers.add("X-Signature",api.getHmac());
             
 	    HttpEntity requestEntity = new HttpEntity(headers);
-	    RestTemplate rest = new RestTemplate();	
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+	    ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metaData");
             if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
@@ -5539,9 +5535,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                              "}" +
                          "}";
             HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-            RestTemplate rest = new RestTemplate();
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
@@ -5581,9 +5576,8 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                                              "}" +
                                          "}";
                             HttpEntity requestEntity2 = new HttpEntity(requestJson,headers2);
-                            RestTemplate rest2 = new RestTemplate();
                             ObjectMapper mapper2 = new ObjectMapper();
-                            JsonNode root2 = mapper2.readTree(rest2.exchange(URL, HttpMethod.PUT, requestEntity2, String.class).getBody());
+                            JsonNode root2 = mapper2.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity2, String.class).getBody());
                             JsonNode nameNode2 = root2.path("metaData");
                             System.out.println("code : "+nameNode2.path("code").asText());
                             System.out.println("message : "+nameNode2.path("message").asText());
