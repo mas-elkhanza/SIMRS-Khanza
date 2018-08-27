@@ -396,4 +396,9 @@ public final class BPJSCekReferensiKabupaten extends javax.swing.JDialog {
     public JTable getTable(){
         return tbKamar;
     }
+    
+    public void setPropinsi(String KdProp,String NmProp){
+        this.KdProp.setText(KdProp);
+        this.NmProp.setText(NmProp);
+    }
 }

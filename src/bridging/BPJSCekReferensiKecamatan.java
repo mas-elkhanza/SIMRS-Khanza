@@ -396,4 +396,9 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
     public JTable getTable(){
         return tbKamar;
     }
+    
+    public void setPropinsi(String KdKab,String NmKab){
+        this.KdKab.setText(KdKab);
+        this.NmKab.setText(NmKab);
+    }
 }

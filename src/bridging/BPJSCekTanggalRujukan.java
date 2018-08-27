@@ -63,14 +63,14 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
         tabMode=new DefaultTableModel(null,new String[]{
-                "No.","Kode Diagnosa","Nama Diagnosa","Keluhan","No.Rujuk/Kunjungan",
-                "Kode Pelayanan","Pelayanan","Nama COB Asuransi","No.COB Asuransi",
+                "No.","Kode Diag","Nama Diagnosa","Keluhan","No.Rujuk/Kunjungan",
+                "Kode Pelayanan","Pelayanan","Nama COB Asuransi","No.COB",
                 "Tgl.TAT COB","Tgl.TMT COB","Kode Kelas","Hak Kelas","Dinsos","No.SKTM Dinsos",
                 "Prolanis PRB","Kode Peserta","Jenis Peserta","No.M.R","No.Telp",
                 "Nama Pasien","NIK","No.Kartu","Pisa","Kode Provider","Nama Provider",
                 "Sex","Kode Status","Status Peserta","Cetak Kartu","Tgl.Lahir","Tgl.TAT",
                 "Tgl.TMT","Umur Saat Pelayanan","Umur Sekarang","Kode Poli","Poli Rujukan",
-                "Kode Perujuk","Nama Perujuk","Tgl.Kunjungan","Status Pasien","SEP Terbit"
+                "Kode Perujuk","Perujuk","Kunjungan","Status Pasien","SEP Terbit"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -85,19 +85,106 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
                 column.setPreferredWidth(35);
             }else if(i==1){
                 column.setPreferredWidth(70);
+            }else if(i==2){
+                column.setPreferredWidth(150);
+            }else if(i==3){
+                column.setPreferredWidth(150);
+            }else if(i==4){
+                column.setPreferredWidth(110);
+            }else if(i==5){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==6){
+                column.setPreferredWidth(110);
+            }else if(i==7){
+                column.setPreferredWidth(150);
+            }else if(i==8){
+                column.setPreferredWidth(80);
+            }else if(i==9){
+                column.setPreferredWidth(80);
+            }else if(i==10){
+                column.setPreferredWidth(80);
+            }else if(i==11){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==12){
+                column.setPreferredWidth(140);
+            }else if(i==13){
+                column.setPreferredWidth(100);
+            }else if(i==14){
+                column.setPreferredWidth(100);
+            }else if(i==15){
+                column.setPreferredWidth(100);
+            }else if(i==16){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==17){
+                column.setPreferredWidth(150);
+            }else if(i==18){
+                column.setPreferredWidth(80);
+            }else if(i==19){
+                column.setPreferredWidth(80);
+            }else if(i==20){
+                column.setPreferredWidth(150);
+            }else if(i==21){
+                column.setPreferredWidth(110);
+            }else if(i==22){
+                column.setPreferredWidth(100);
+            }else if(i==23){
+                column.setPreferredWidth(80);
+            }else if(i==24){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==25){
+                column.setPreferredWidth(150);
+            }else if(i==26){
+                column.setPreferredWidth(30);
+            }else if(i==27){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==28){
+                column.setPreferredWidth(140);
+            }else if(i==29){
+                column.setPreferredWidth(70);
+            }else if(i==30){
+                column.setPreferredWidth(70);
+            }else if(i==31){
+                column.setPreferredWidth(70);
+            }else if(i==32){
+                column.setPreferredWidth(70);
+            }else if(i==33){
+                column.setPreferredWidth(115);
+            }else if(i==34){
+                column.setPreferredWidth(115);
+            }else if(i==35){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==36){
+                column.setPreferredWidth(120);
+            }else if(i==37){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==38){
+                column.setPreferredWidth(150);
+            }else if(i==39){
+                column.setPreferredWidth(70);
+            }else if(i==40){
+                column.setPreferredWidth(90);
+            }else if(i==41){
+                column.setPreferredWidth(120);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabMode2=new DefaultTableModel(null,new String[]{
-                "No.","Kode Diagnosa","Nama Diagnosa","Keluhan","No.Rujuk/Kunjungan",
-                "Kode Pelayanan","Pelayanan","Nama COB Asuransi","No.COB Asuransi",
+                "No.","Kode Diag","Nama Diagnosa","Keluhan","No.Rujuk/Kunjungan",
+                "Kode Pelayanan","Pelayanan","Nama COB Asuransi","No.COB",
                 "Tgl.TAT COB","Tgl.TMT COB","Kode Kelas","Hak Kelas","Dinsos","No.SKTM Dinsos",
                 "Prolanis PRB","Kode Peserta","Jenis Peserta","No.M.R","No.Telp",
                 "Nama Pasien","NIK","No.Kartu","Pisa","Kode Provider","Nama Provider",
                 "Sex","Kode Status","Status Peserta","Cetak Kartu","Tgl.Lahir","Tgl.TAT",
                 "Tgl.TMT","Umur Saat Pelayanan","Umur Sekarang","Kode Poli","Poli Rujukan",
-                "Kode Perujuk","Nama Perujuk","Tgl.Kunjungan","Status Pasien","SEP Terbit"
+                "Kode Perujuk","Perujuk","Kunjungan","Status Pasien","SEP Terbit"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -106,32 +193,99 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         tbBangsal2.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 12; i++) {
+        for (i = 0; i < 42; i++) {
             TableColumn column = tbBangsal2.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(35);
             }else if(i==1){
                 column.setPreferredWidth(70);
             }else if(i==2){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(150);
             }else if(i==3){
-                column.setPreferredWidth(190);
+                column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(110);
             }else if(i==5){
-                column.setPreferredWidth(40);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==6){
-                column.setPreferredWidth(190);
+                column.setPreferredWidth(110);
             }else if(i==7){
-                column.setPreferredWidth(160);
+                column.setPreferredWidth(150);
             }else if(i==8){
-                column.setPreferredWidth(190);
+                column.setPreferredWidth(80);
             }else if(i==9){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==10){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(80);
             }else if(i==11){
-                column.setPreferredWidth(135);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==12){
+                column.setPreferredWidth(140);
+            }else if(i==13){
+                column.setPreferredWidth(100);
+            }else if(i==14){
+                column.setPreferredWidth(100);
+            }else if(i==15){
+                column.setPreferredWidth(100);
+            }else if(i==16){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==17){
+                column.setPreferredWidth(150);
+            }else if(i==18){
+                column.setPreferredWidth(80);
+            }else if(i==19){
+                column.setPreferredWidth(80);
+            }else if(i==20){
+                column.setPreferredWidth(150);
+            }else if(i==21){
+                column.setPreferredWidth(110);
+            }else if(i==22){
+                column.setPreferredWidth(100);
+            }else if(i==23){
+                column.setPreferredWidth(80);
+            }else if(i==24){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==25){
+                column.setPreferredWidth(150);
+            }else if(i==26){
+                column.setPreferredWidth(30);
+            }else if(i==27){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==28){
+                column.setPreferredWidth(140);
+            }else if(i==29){
+                column.setPreferredWidth(70);
+            }else if(i==30){
+                column.setPreferredWidth(70);
+            }else if(i==31){
+                column.setPreferredWidth(70);
+            }else if(i==32){
+                column.setPreferredWidth(70);
+            }else if(i==33){
+                column.setPreferredWidth(115);
+            }else if(i==34){
+                column.setPreferredWidth(115);
+            }else if(i==35){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==36){
+                column.setPreferredWidth(120);
+            }else if(i==37){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==38){
+                column.setPreferredWidth(150);
+            }else if(i==39){
+                column.setPreferredWidth(70);
+            }else if(i==40){
+                column.setPreferredWidth(90);
+            }else if(i==41){
+                column.setPreferredWidth(120);
             }
         }
         tbBangsal2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -342,11 +496,13 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
 }//GEN-LAST:event_tbBangsalKeyPressed
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            tampil();
-        }else if(TabRawat.getSelectedIndex()==1){
-            tampil2();
-        }
+    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));            
+    if(TabRawat.getSelectedIndex()==0){
+        tampil();
+    }else if(TabRawat.getSelectedIndex()==1){
+        tampil2();
+    }
+    this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -414,7 +570,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     public void tampil(){        
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
+            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -544,7 +700,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     public void tampil2(){        
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/RS/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
+            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/RS/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

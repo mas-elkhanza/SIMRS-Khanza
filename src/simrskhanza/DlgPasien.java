@@ -6892,7 +6892,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);            
                 if(this.getWidth()<900){
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                    FormInput.setPreferredSize(new Dimension(890,FormInput.WIDTH));
+                    FormInput.setPreferredSize(new Dimension(890,FormInput.HEIGHT));
                 }else{
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
                 }
@@ -6911,7 +6911,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);            
                 if(this.getWidth()<900){
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                    FormInput.setPreferredSize(new Dimension(890,FormInput.WIDTH));
+                    FormInput.setPreferredSize(new Dimension(890,FormInput.HEIGHT));
                 }else{
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
                 }
