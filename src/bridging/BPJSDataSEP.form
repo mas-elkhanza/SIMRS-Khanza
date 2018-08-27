@@ -1907,6 +1907,7 @@
                                 <StringItem index="2" value="3. Kelas 3"/>
                               </StringArray>
                             </Property>
+                            <Property name="selectedIndex" type="int" value="2"/>
                             <Property name="name" type="java.lang.String" value="Kelas" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
