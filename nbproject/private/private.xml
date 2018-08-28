@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/DlgSKDPBPJS.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/BPJSDataSEP.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/BPJSCekReferensiKecamatan.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/BPJSCekReferensiKabupaten.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/fungsi/validasi.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/BPJSCekReferensiDokterDPJP.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/report/rptBridgingMonitoringSEP.jrxml</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/report/rptBridgingSEP.jrxml</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/BPJSCekNIK2.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/BPJSCekKartu.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/report/rptBridgingSEP2.jrxml</file>
         </group>
     </open-files>
 </project-private>
