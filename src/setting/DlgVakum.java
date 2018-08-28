@@ -2243,6 +2243,8 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Pasien Meninggal","lain","pasien_mati");  
         hapus("Peminjaman Berkas","lain","peminjaman_berkas"); 
         hapus("Piutang Obat Pasien","lain","piutang"); 
+        hapus("Booking Registrasi","lain","booking_registrasi");
+        hapus("SKDP BPJS","lain","skdp_bpjs");
         hapus("Pasien","Registrasi Periksa, Pasien Meninggal, Peminjaman Berkas, Piutang Obat,\nPenjualan Obat, Piutang Pasien, Catatan Pasien","pasien");
     }//GEN-LAST:event_BtnICD3ActionPerformed
 
@@ -2289,7 +2291,8 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Pemeriksaan Obstetri Ralan","lain","pemeriksaan_obstetri_ralan"); 
         hapus("Pemeriksaan Obstetri Ranap","lain","pemeriksaan_obstetri_ranap"); 
         hapus("Pemeriksaan Ginekologi Ralan","lain","pemeriksaan_ginekologi_ralan"); 
-        hapus("Pemeriksaan Ginekologi Ranap","lain","pemeriksaan_ginekologi_ranap");  
+        hapus("Pemeriksaan Ginekologi Ranap","lain","pemeriksaan_ginekologi_ranap"); 
+        hapus("Booking Operasi","lain","booking_operasi");  
         hapus("Saran Kesan Lab","lain","saran_kesan_lab");         
         hapus("Registrasi","Rawat Jalan,\nKamar Inap, Diagnosa Pasien, Tagihan Masuk, Pemberian Obat, Resep Obat, Rujukan Masuk,\n"+
                 "Rujukan Keluar, Stok Obat Pasien, Diagnosa Pasien, Resep Pulang, Potongan Biaya, Tambahan Biaya,\nDPJP Ranap, Diet Pasien","reg_periksa");
@@ -2398,6 +2401,9 @@ public class DlgVakum extends javax.swing.JDialog {
     private void BtnICD25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD25ActionPerformed
         hapus("Resep Obat","lain","resep_obat");
         hapus("Penanggung Jawab Lab & Radiologi","lain","set_pjlab");
+        hapus("Booking Operasi","lain","booking_operasi");
+        hapus("Booking Registrasi","lain","booking_registrasi");
+        hapus("SKDP BPJS","lain","skdp_bpjs");
         hapus("Dokter","Jadwal Praktek, Ranap Dokter, Ralan Dokter\nPeriksa Lab, Periksa Radiologi, Registrasi, DPJP Ranap","dokter");
     }//GEN-LAST:event_BtnICD25ActionPerformed
 
@@ -2474,6 +2480,9 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Pendapatan Akte","Lain","set_akte");
         hapus("Pembagian Akte","Lain","pembagian_akte");
         hapus("Resep Obat","lain","resep_obat");
+        hapus("Booking Operasi","lain","booking_operasi");
+        hapus("Booking Registrasi","lain","booking_registrasi");
+        hapus("SKDP BPJS","lain","skdp_bpjs");
         hapus("Penanggung Jawab Lab & Radiologi","lain","set_pjlab");
         hapus("Dokter","Jadwal Praktek, Ranap Dokter, Ralan Dokter\nPeriksa Lab, Periksa Radiologi, Registrasi, DPJP Ranap","dokter");
         hapus("Pendapatan Warung","lain","set_warung");

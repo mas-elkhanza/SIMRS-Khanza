@@ -429,6 +429,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnHapusRujukKeluar = new javax.swing.JMenuItem();
         MnHapusRujukMasuk = new javax.swing.JMenuItem();
         MnHapusTambahan = new javax.swing.JMenuItem();
+        MnHapusBookingOperasi = new javax.swing.JMenuItem();
         MnTindakan = new javax.swing.JMenu();
         MnHapusTindakanRanapDokter = new javax.swing.JMenuItem();
         MnHapusTindakanRanapDokterParamedis = new javax.swing.JMenuItem();
@@ -1639,6 +1640,23 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         MnHapusData.add(MnHapusTambahan);
+
+        MnHapusBookingOperasi.setBackground(new java.awt.Color(255, 255, 255));
+        MnHapusBookingOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnHapusBookingOperasi.setForeground(new java.awt.Color(130, 100, 100));
+        MnHapusBookingOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnHapusBookingOperasi.setText("Booking Operasi");
+        MnHapusBookingOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnHapusBookingOperasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnHapusBookingOperasi.setIconTextGap(5);
+        MnHapusBookingOperasi.setName("MnHapusBookingOperasi"); // NOI18N
+        MnHapusBookingOperasi.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnHapusBookingOperasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnHapusBookingOperasiActionPerformed(evt);
+            }
+        });
+        MnHapusData.add(MnHapusBookingOperasi);
 
         MnTindakan.setBackground(new java.awt.Color(252, 255, 250));
         MnTindakan.setForeground(new java.awt.Color(130, 100, 100));
@@ -3650,7 +3668,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel15);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-08-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-08-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -3669,7 +3687,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         panelGlass8.add(jLabel17);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-08-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-08-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -5022,6 +5040,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             Sequel.queryu("delete from hasil_radiologi where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from detail_obat_racikan where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from obat_racikan where no_rawat='"+TNoRw.getText()+"'");
+            Sequel.queryu("delete from booking_operasi where no_rawat='"+TNoRw.getText()+"'");
             Sequel.queryu("delete from reg_periksa where no_rawat='"+TNoRw.getText()+"'");
             Sequel.AutoComitTrue();
             tampilkasir();
@@ -6434,6 +6453,15 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }//GEN-LAST:event_MnSKDPBPJSActionPerformed
 
+    private void MnHapusBookingOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnHapusBookingOperasiActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            TCari.requestFocus();
+        }else{
+            Sequel.queryu("delete from booking_operasi where no_rawat='"+TNoRw.getText()+"'");
+        }
+    }//GEN-LAST:event_MnHapusBookingOperasiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6503,6 +6531,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem MnGelang7;
     private javax.swing.JMenuItem MnHapusAturanPkaiObat;
     private javax.swing.JMenuItem MnHapusBilling;
+    private javax.swing.JMenuItem MnHapusBookingOperasi;
     private javax.swing.JMenu MnHapusData;
     private javax.swing.JMenuItem MnHapusDeposit;
     private javax.swing.JMenuItem MnHapusDiagnosa;
