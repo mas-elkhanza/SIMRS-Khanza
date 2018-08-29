@@ -438,7 +438,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="12-07-2018"/>
+                        <StringItem index="0" value="26-08-2018"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -489,7 +489,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="614" y="72" width="42" height="23"/>
+                      <AbsoluteConstraints x="608" y="72" width="45" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -564,7 +564,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="659" y="72" width="42" height="23"/>
+                      <AbsoluteConstraints x="655" y="72" width="45" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -639,24 +639,18 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="704" y="72" width="42" height="23"/>
+                      <AbsoluteConstraints x="702" y="72" width="45" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
                 <Component class="widget.CekBox" name="ChkJln">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="eb" green="ff" red="eb" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
                           <Color PropertyName="color" blue="c3" green="d7" red="c3" type="rgb"/>
                         </LineBorder>
                       </Border>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="64" green="64" red="82" type="rgb"/>
                     </Property>
                     <Property name="selected" type="boolean" value="true"/>
                     <Property name="borderPainted" type="boolean" value="true"/>
@@ -684,7 +678,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="533" y="72" width="78" height="23"/>
+                      <AbsoluteConstraints x="551" y="72" width="54" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>

@@ -998,7 +998,11 @@ public final class validasi {
         JOptionPane.showMessageDialog(null,"Maaf, "+pesan+" tidak boleh kosong...!!!");
         teks.requestFocus();
     }
-
+    
+    public void textKosong(JButton teks,String pesan){
+        JOptionPane.showMessageDialog(null,"Maaf, "+pesan+" tidak boleh kosong...!!!");
+        teks.requestFocus();
+    }
 
     public void tabelKosong(DefaultTableModel tabMode) {
         j=tabMode.getRowCount();

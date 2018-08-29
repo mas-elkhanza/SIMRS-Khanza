@@ -4354,7 +4354,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             emptTeks(); 
                         }else{
                             autoNomor();
-                            if(Sequel.menyimpantf2("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
+                            if(Sequel.menyimpantf("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
                                     TNo.getText(),TNm.getText(),TKtp.getText(),CmbJk.getSelectedItem().toString().substring(0,1),TTmp.getText(),
                                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),NmIbu.getText(),
                                     Alamat.getText().replaceAll("ALAMAT",""),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
@@ -6826,18 +6826,21 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         Kabupaten.setText(cekViaDukcapilAceh.KAB_NAME);
         KabupatenPj.setText(cekViaDukcapilAceh.KAB_NAME);
         cmbAgama.setSelectedItem(cekViaDukcapilAceh.AGAMA);
+        Propinsi.setText(cekViaDukcapilAceh.PROP_NAME);
+        PropinsiPj.setText(cekViaDukcapilAceh.PROP_NAME);
         Kecamatan.setText(cekViaDukcapilAceh.KEC_NAME);
         KecamatanPj.setText(cekViaDukcapilAceh.KEC_NAME);
         Pekerjaan.setText(cekViaDukcapilAceh.JENIS_PKRJN);
         Alamat.setText(cekViaDukcapilAceh.ALAMAT+" RT "+cekViaDukcapilAceh.NO_RT+" RW "+cekViaDukcapilAceh.NO_RW);
         AlamatPj.setText(cekViaDukcapilAceh.ALAMAT+" RT "+cekViaDukcapilAceh.NO_RT+" RW "+cekViaDukcapilAceh.NO_RW);
         TTmp.setText(cekViaDukcapilAceh.TMPT_LHR);
+        CMbGd.setSelectedItem(cekViaDukcapilAceh.GOL_DARAH);
         CMbPnd.setSelectedItem(cekViaDukcapilAceh.PDDK_AKH);
         CmbStts.setSelectedItem(cekViaDukcapilAceh.STATUS_KAWIN.replaceAll("KAWIN","MENIKAH"));
         NmIbu.setText(cekViaDukcapilAceh.NAMA_LGKP_IBU);
         Kelurahan.setText(cekViaDukcapilAceh.KEL_NAME);
         KelurahanPj.setText(cekViaDukcapilAceh.KEL_NAME);
-        CmbJk.setSelectedItem(cekViaDukcapilAceh.JENIS_KLMIN.replaceAll("Laki-Laki","L").replaceAll("Perempuan","P"));
+        CmbJk.setSelectedItem(cekViaDukcapilAceh.JENIS_KLMIN.toUpperCase());
         Valid.SetTgl(DTPLahir,cekViaDukcapilAceh.TGL_LHR);   
         DTPLahirItemStateChanged(null);    
         jPopupMenu2.setVisible(false);
@@ -6852,9 +6855,13 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         Kabupaten.setText(cekViaDukcapilBatam.KAB_NAME);
         KabupatenPj.setText(cekViaDukcapilBatam.KAB_NAME);
         cmbAgama.setSelectedItem(cekViaDukcapilBatam.AGAMA);
+        Propinsi.setText(cekViaDukcapilBatam.PROP_NAME);
+        PropinsiPj.setText(cekViaDukcapilBatam.PROP_NAME);
+        Kecamatan.setText(cekViaDukcapilBatam.KEC_NAME);
         Kecamatan.setText(cekViaDukcapilBatam.KEC_NAME);
         KecamatanPj.setText(cekViaDukcapilBatam.KEC_NAME);
         Pekerjaan.setText(cekViaDukcapilBatam.JENIS_PKRJN);
+        CMbGd.setSelectedItem(cekViaDukcapilBatam.GOL_DARAH);
         Alamat.setText(cekViaDukcapilBatam.ALAMAT+" RT "+cekViaDukcapilBatam.NO_RT+" RW "+cekViaDukcapilBatam.NO_RW);
         AlamatPj.setText(cekViaDukcapilBatam.ALAMAT+" RT "+cekViaDukcapilBatam.NO_RT+" RW "+cekViaDukcapilBatam.NO_RW);
         TTmp.setText(cekViaDukcapilBatam.TMPT_LHR);
@@ -6863,7 +6870,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         NmIbu.setText(cekViaDukcapilBatam.NAMA_LGKP_IBU);
         Kelurahan.setText(cekViaDukcapilBatam.KEL_NAME);
         KelurahanPj.setText(cekViaDukcapilBatam.KEL_NAME);
-        CmbJk.setSelectedItem(cekViaDukcapilBatam.JENIS_KLMIN.replaceAll("Laki-Laki","L").replaceAll("Perempuan","P"));
+        CmbJk.setSelectedItem(cekViaDukcapilBatam.JENIS_KLMIN.toUpperCase());
         Valid.SetTgl(DTPLahir,cekViaDukcapilBatam.TGL_LHR);   
         DTPLahirItemStateChanged(null);    
         jPopupMenu2.setVisible(false);
@@ -6885,7 +6892,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);            
                 if(this.getWidth()<900){
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                    FormInput.setPreferredSize(new Dimension(890,FormInput.WIDTH));
+                    FormInput.setPreferredSize(new Dimension(890,FormInput.HEIGHT));
                 }else{
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
                 }
@@ -6904,7 +6911,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);            
                 if(this.getWidth()<900){
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                    FormInput.setPreferredSize(new Dimension(890,FormInput.WIDTH));
+                    FormInput.setPreferredSize(new Dimension(890,FormInput.HEIGHT));
                 }else{
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
                 }

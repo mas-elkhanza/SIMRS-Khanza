@@ -20,10 +20,6 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
-  <Events>
-    <EventHandler event="windowActivated" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowActivated"/>
-    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
-  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
@@ -121,9 +117,6 @@
             </Component>
             <Component class="widget.Tanggal" name="Tgl1">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f0" green="fa" red="f5" type="rgb"/>
-                </Property>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="Tgl1" noResource="true"/>
@@ -144,9 +137,6 @@
             </Component>
             <Component class="widget.Tanggal" name="Tgl2">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f0" green="fa" red="f5" type="rgb"/>
-                </Property>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="Tgl2" noResource="true"/>

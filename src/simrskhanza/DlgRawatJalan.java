@@ -4731,7 +4731,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbRawatPr;
     // End of variables declaration//GEN-END:variables
 
-    public void tampilDr() {
+    private void tampilDr() {
         Valid.tabelKosong(tabModeDr);
         try{
             ps=koneksi.prepareStatement("select rawat_jl_dr.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
@@ -5386,6 +5386,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         KdDok2.setText(kodedokter);
         TDokter.setText(namadokter);
         TDokter2.setText(namadokter);
+        TabRawatMouseClicked(null);
     }
     
     public void SetPoli(String KodePoli){
