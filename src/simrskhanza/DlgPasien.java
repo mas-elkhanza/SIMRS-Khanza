@@ -4354,7 +4354,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             emptTeks(); 
                         }else{
                             autoNomor();
-                            if(Sequel.menyimpantf2("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
+                            if(Sequel.menyimpantf("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
                                     TNo.getText(),TNm.getText(),TKtp.getText(),CmbJk.getSelectedItem().toString().substring(0,1),TTmp.getText(),
                                     Valid.SetTgl(DTPLahir.getSelectedItem()+""),NmIbu.getText(),
                                     Alamat.getText().replaceAll("ALAMAT",""),CMbGd.getSelectedItem().toString(),Pekerjaan.getText(),CmbStts.getSelectedItem().toString(),cmbAgama.getSelectedItem().toString(),
@@ -4897,7 +4897,23 @@ private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bt
 }//GEN-LAST:event_BtnAllKeyPressed
 
 private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-    DlgDemografi.dispose();
+        kab.dispose();
+        kec.dispose();
+        kel.dispose();
+        penjab.dispose();
+        perusahaan.dispose();
+        bahasa.dispose();
+        cacat.dispose();
+        suku.dispose();
+        golongantni.dispose();
+        satuantni.dispose();
+        pangkattni.dispose();
+        jabatantni.dispose();
+        golonganpolri.dispose();
+        satuanpolri.dispose();
+        pangkatpolri.dispose();
+        jabatanpolri.dispose();
+        DlgDemografi.dispose();
     dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -6810,18 +6826,21 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         Kabupaten.setText(cekViaDukcapilAceh.KAB_NAME);
         KabupatenPj.setText(cekViaDukcapilAceh.KAB_NAME);
         cmbAgama.setSelectedItem(cekViaDukcapilAceh.AGAMA);
+        Propinsi.setText(cekViaDukcapilAceh.PROP_NAME);
+        PropinsiPj.setText(cekViaDukcapilAceh.PROP_NAME);
         Kecamatan.setText(cekViaDukcapilAceh.KEC_NAME);
         KecamatanPj.setText(cekViaDukcapilAceh.KEC_NAME);
         Pekerjaan.setText(cekViaDukcapilAceh.JENIS_PKRJN);
         Alamat.setText(cekViaDukcapilAceh.ALAMAT+" RT "+cekViaDukcapilAceh.NO_RT+" RW "+cekViaDukcapilAceh.NO_RW);
         AlamatPj.setText(cekViaDukcapilAceh.ALAMAT+" RT "+cekViaDukcapilAceh.NO_RT+" RW "+cekViaDukcapilAceh.NO_RW);
         TTmp.setText(cekViaDukcapilAceh.TMPT_LHR);
+        CMbGd.setSelectedItem(cekViaDukcapilAceh.GOL_DARAH);
         CMbPnd.setSelectedItem(cekViaDukcapilAceh.PDDK_AKH);
         CmbStts.setSelectedItem(cekViaDukcapilAceh.STATUS_KAWIN.replaceAll("KAWIN","MENIKAH"));
         NmIbu.setText(cekViaDukcapilAceh.NAMA_LGKP_IBU);
         Kelurahan.setText(cekViaDukcapilAceh.KEL_NAME);
         KelurahanPj.setText(cekViaDukcapilAceh.KEL_NAME);
-        CmbJk.setSelectedItem(cekViaDukcapilAceh.JENIS_KLMIN.replaceAll("Laki-Laki","L").replaceAll("Perempuan","P"));
+        CmbJk.setSelectedItem(cekViaDukcapilAceh.JENIS_KLMIN.toUpperCase());
         Valid.SetTgl(DTPLahir,cekViaDukcapilAceh.TGL_LHR);   
         DTPLahirItemStateChanged(null);    
         jPopupMenu2.setVisible(false);
@@ -6836,9 +6855,13 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         Kabupaten.setText(cekViaDukcapilBatam.KAB_NAME);
         KabupatenPj.setText(cekViaDukcapilBatam.KAB_NAME);
         cmbAgama.setSelectedItem(cekViaDukcapilBatam.AGAMA);
+        Propinsi.setText(cekViaDukcapilBatam.PROP_NAME);
+        PropinsiPj.setText(cekViaDukcapilBatam.PROP_NAME);
+        Kecamatan.setText(cekViaDukcapilBatam.KEC_NAME);
         Kecamatan.setText(cekViaDukcapilBatam.KEC_NAME);
         KecamatanPj.setText(cekViaDukcapilBatam.KEC_NAME);
         Pekerjaan.setText(cekViaDukcapilBatam.JENIS_PKRJN);
+        CMbGd.setSelectedItem(cekViaDukcapilBatam.GOL_DARAH);
         Alamat.setText(cekViaDukcapilBatam.ALAMAT+" RT "+cekViaDukcapilBatam.NO_RT+" RW "+cekViaDukcapilBatam.NO_RW);
         AlamatPj.setText(cekViaDukcapilBatam.ALAMAT+" RT "+cekViaDukcapilBatam.NO_RT+" RW "+cekViaDukcapilBatam.NO_RW);
         TTmp.setText(cekViaDukcapilBatam.TMPT_LHR);
@@ -6847,7 +6870,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         NmIbu.setText(cekViaDukcapilBatam.NAMA_LGKP_IBU);
         Kelurahan.setText(cekViaDukcapilBatam.KEL_NAME);
         KelurahanPj.setText(cekViaDukcapilBatam.KEL_NAME);
-        CmbJk.setSelectedItem(cekViaDukcapilBatam.JENIS_KLMIN.replaceAll("Laki-Laki","L").replaceAll("Perempuan","P"));
+        CmbJk.setSelectedItem(cekViaDukcapilBatam.JENIS_KLMIN.toUpperCase());
         Valid.SetTgl(DTPLahir,cekViaDukcapilBatam.TGL_LHR);   
         DTPLahirItemStateChanged(null);    
         jPopupMenu2.setVisible(false);
@@ -6869,7 +6892,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);            
                 if(this.getWidth()<900){
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                    FormInput.setPreferredSize(new Dimension(890,FormInput.WIDTH));
+                    FormInput.setPreferredSize(new Dimension(890,FormInput.HEIGHT));
                 }else{
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
                 }
@@ -6888,7 +6911,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                 Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);            
                 if(this.getWidth()<900){
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);                                
-                    FormInput.setPreferredSize(new Dimension(890,FormInput.WIDTH));
+                    FormInput.setPreferredSize(new Dimension(890,FormInput.HEIGHT));
                 }else{
                     Scroll1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);                
                 }
@@ -7560,7 +7583,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private widget.Table tbPasien3;
     // End of variables declaration//GEN-END:variables
     
-    public void tampil() {     
+    private void tampil() {     
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
@@ -7601,7 +7624,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                    "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.no_peserta,pasien.pekerjaanpj,"+
                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj),"+
                    "perusahaan_pasien.kode_perusahaan,perusahaan_pasien.nama_perusahaan,pasien.bahasa_pasien,"+
-                   "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat from pasien "+
+                   "bahasa_pasien.nama_bahasa,pasien.suku_bangsa,suku_bangsa.nama_suku_bangsa,pasien.nip,pasien.email,cacat_fisik.nama_cacat,pasien.cacat_fisik from pasien "+
                    "inner join kelurahan inner join kecamatan inner join kabupaten inner join perusahaan_pasien inner join cacat_fisik inner join propinsi "+
                    "inner join bahasa_pasien inner join suku_bangsa inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.cacat_fisik=cacat_fisik.id "+
                    "and pasien.kd_kel=kelurahan.kd_kel and perusahaan_pasien.kode_perusahaan=pasien.perusahaan_pasien and pasien.kd_prop=propinsi.kd_prop "+
@@ -7752,7 +7775,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         LCount.setText(""+tabMode.getRowCount());
     }
     
-    public void tampiltni() {     
+    private void tampiltni() {     
         Valid.tabelKosong(tabMode2);
         try{
             ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
@@ -7981,7 +8004,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         LCount.setText(""+tabMode2.getRowCount());
     }
     
-    public void tampilpolri() {     
+    private void tampilpolri() {     
         Valid.tabelKosong(tabMode3);
         try{
             ps=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+

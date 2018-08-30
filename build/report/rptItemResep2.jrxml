@@ -19,8 +19,7 @@ and reg_periksa.no_rkm_medis=pasien.no_rkm_medis
 and obat_racikan.kd_racik=metode_racik.kd_racik
 and resep_obat.no_rawat=obat_racikan.no_rawat and 
 resep_obat.tgl_perawatan=obat_racikan.tgl_perawatan and
-resep_obat.jam=obat_racikan.jam and resep_obat.no_rawat=obat_racikan.no_rawat 
-]]>
+resep_obat.jam=obat_racikan.jam and resep_obat.no_rawat=obat_racikan.no_rawat]]>
 	</queryString>
 	<field name="no_resep" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>

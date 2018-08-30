@@ -25,7 +25,7 @@ public class DUKCAPILBatamCekNIK {
             NO_RW="",KEC_NAME="",JENIS_PKRJN="",NO_RT="",NO_KEL="",ALAMAT="",NO_KEC="",
             TMPT_LHR="",PDDK_AKH="",STATUS_KAWIN="",NO_PROP="",NAMA_LGKP_IBU="",
             PROP_NAME="",NO_KAB="",KEL_NAME="",JENIS_KLMIN="",TGL_LHR="",
-            requestJson="",stringbalik="";
+            requestJson="",stringbalik="",GOL_DARAH="";
     private final Properties prop = new Properties();
     
     public DUKCAPILBatamCekNIK(){
@@ -91,6 +91,7 @@ public class DUKCAPILBatamCekNIK {
                             NO_KAB=list.path("NO_KAB").asText();
                             KEL_NAME=list.path("KEL_NAME").asText();
                             JENIS_KLMIN=list.path("JENIS_KLMIN").asText();
+                            GOL_DARAH=list.path("GOL_DARAH").asText();
                             TGL_LHR=list.path("TGL_LHR").asText();
                         }
                     } catch (Exception e) {
