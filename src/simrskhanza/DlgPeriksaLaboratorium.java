@@ -709,7 +709,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
 
         Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-08-2018" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -739,7 +739,6 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
         PanelInput.add(CmbDetik);
         CmbDetik.setBounds(702, 72, 45, 23);
 
-        ChkJln.setBackground(new java.awt.Color(235, 255, 235));
         ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
         ChkJln.setSelected(true);
         ChkJln.setBorderPainted(true);

@@ -80,7 +80,7 @@ public final class var {
             jabatan_tni=false,pangkat_tni=false,golongan_polri=false,satuan_polri=false,jabatan_polri=false,pangkat_polri=false,cacat_fisik=false,
             grafik_kunjungan_suku=false,grafik_kunjungan_bahasa=false,booking_operasi=false,mapping_poli_bpjs=false,grafik_kunjungan_per_cacat=false,
             barang_cssd=false,skdp_bpjs=false,booking_registrasi=false,bpjs_cek_propinsi=false,bpjs_cek_kabupaten=false,bpjs_cek_kecamatan=false,
-            bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false;
+            bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false,permintaan_lab=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -466,6 +466,7 @@ public final class var {
                         var.bpjs_cek_dokterdpjp=true;
                         var.bpjs_cek_riwayat_rujukanrs=true;
                         var.bpjs_cek_tanggal_rujukan=true;
+                        var.permintaan_lab=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -835,6 +836,7 @@ public final class var {
                         var.bpjs_cek_dokterdpjp=rs2.getBoolean("bpjs_cek_dokterdpjp");
                         var.bpjs_cek_riwayat_rujukanrs=rs2.getBoolean("bpjs_cek_riwayat_rujukanrs");
                         var.bpjs_cek_tanggal_rujukan=rs2.getBoolean("bpjs_cek_tanggal_rujukan");
+                        var.permintaan_lab=rs2.getBoolean("permintaan_lab");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1202,6 +1204,7 @@ public final class var {
                         var.bpjs_cek_dokterdpjp=false;
                         var.bpjs_cek_riwayat_rujukanrs=false;
                         var.bpjs_cek_tanggal_rujukan=false;
+                        var.permintaan_lab=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1617,4 +1620,5 @@ public final class var {
     public static boolean getbpjs_cek_dokterdpjp(){return var.bpjs_cek_dokterdpjp;}
     public static boolean getbpjs_cek_riwayat_rujukanrs(){return var.bpjs_cek_riwayat_rujukanrs;}
     public static boolean getbpjs_cek_tanggal_rujukan(){return var.bpjs_cek_tanggal_rujukan;}
+    public static boolean getpermintaan_lab(){return var.permintaan_lab;}
 }   
