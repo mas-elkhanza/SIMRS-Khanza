@@ -1621,4 +1621,6 @@ public final class var {
     public static boolean getbpjs_cek_riwayat_rujukanrs(){return var.bpjs_cek_riwayat_rujukanrs;}
     public static boolean getbpjs_cek_tanggal_rujukan(){return var.bpjs_cek_tanggal_rujukan;}
     public static boolean getpermintaan_lab(){return var.permintaan_lab;}
+    public static void setperiksalabfalse(){var.periksa_lab=false;} 
+    public static void setpermintaanlabfalse(){var.permintaan_lab=false;} 
 }   

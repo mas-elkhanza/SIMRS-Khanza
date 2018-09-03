@@ -108,39 +108,39 @@ public class DlgKamarInap extends javax.swing.JDialog {
         for (i = 0; i < 20; i++) {
             TableColumn column = tbKamIn.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(105);
             }else if(i==1){
                 column.setPreferredWidth(70);
             }else if(i==2){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(170);
             }else if(i==3){
                 column.setPreferredWidth(150);
             }else if(i==4){
                 column.setPreferredWidth(120);
             }else if(i==5){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==6){
                 column.setPreferredWidth(80);
             }else if(i==7){
                 column.setPreferredWidth(150);
             }else if(i==8){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(75);
             }else if(i==9){
                 column.setPreferredWidth(90);
             }else if(i==10){
                 column.setPreferredWidth(90);
             }else if(i==11){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(70);
             }else if(i==12){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(60);
             }else if(i==13){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(70);
             }else if(i==14){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(60);
             }else if(i==15){
-                column.setPreferredWidth(100);
-            }else if(i==16){
                 column.setPreferredWidth(80);
+            }else if(i==16){
+                column.setPreferredWidth(75);
             }else if(i==17){
                 column.setPreferredWidth(40);
             }else if(i==18){
@@ -7871,8 +7871,8 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             ps=koneksi.prepareStatement(
                "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab),reg_periksa.p_jawab,reg_periksa.hubunganpj,"+
                "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal),kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir," +
-               "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar),"+
-               "if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar),kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj "+
+               "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar),if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar),"+
+               "kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur "+
                "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal inner join kelurahan inner join kecamatan inner join kabupaten inner join dokter inner join penjab " +
                "on kamar_inap.no_rawat=reg_periksa.no_rawat " +
                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -7887,7 +7887,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 while(rs.next()){
                     tabMode.addRow(new String[]{rs.getString(1),
                                    rs.getString(2),
-                                   rs.getString(3),
+                                   rs.getString(3)+" ("+rs.getString("umur")+")",
                                    rs.getString(4),
                                    rs.getString(5),
                                    rs.getString(6),
@@ -7917,7 +7917,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         if(rs2.next()){
                             tabMode.addRow(new String[]{"",
                                             rs2.getString("no_rkm_medis"),
-                                            rs2.getString("nm_pasien"),
+                                            rs2.getString("nm_pasien")+" ("+rs.getString("umur")+")",
                                             rs.getString(4),
                                             rs.getString(5),
                                             rs.getString(6),
