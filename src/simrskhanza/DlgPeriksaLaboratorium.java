@@ -62,7 +62,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
     private double[] total,bagian_rs,bhp,tarif_perujuk,tarif_tindakan_dokter,tarif_tindakan_petugas,kso,menejemen,
             biaya_item2,bagian_rs2,bhp2,bagian_perujuk2,bagian_dokter2,bagian_laborat2,kso2,menejemen2;
     private int jml=0,i=0,index=0,jml2=0,i2=0,index2=0;
-    private String kelas="",kamar,namakamar,cara_bayar_lab="Yes",kelas_lab="Yes",pilihan="",status="",diagnosa="";
+    private String noorder="",kelas="",kamar,namakamar,cara_bayar_lab="Yes",kelas_lab="Yes",pilihan="",status="",diagnosa="";
     private double ttl=0,item=0;
     private boolean sukses=false;
     private double ttljmdokter=0,ttljmpetugas=0,ttlkso=0,ttlpendapatan=0,ttlbhp=0;
@@ -1093,6 +1093,12 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                             }                        
                         }
                         
+                        if(!noorder.equals("")){
+                            Sequel.mengedit("permintaan_lab","noorder=?","tgl_hasil=?,jam_hasil=?",3,new String[]{
+                                Valid.SetTgl(Tanggal.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),noorder
+                            });
+                        }
+                        
                         if(status.equals("Ranap")){
                             Sequel.queryu("delete from tampjurnal");    
                             if(ttlpendapatan>0){
@@ -1235,6 +1241,13 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                                     }
                                 }                        
                             }
+                            
+                            if(!noorder.equals("")){
+                                Sequel.mengedit("permintaan_lab","noorder=?","tgl_hasil=?,jam_hasil=?",3,new String[]{
+                                    Valid.SetTgl(Tanggal.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),noorder
+                                });
+                            }
+                            
                             if(status.equals("Ranap")){
                                 Sequel.queryu("delete from tampjurnal");    
                                 if(ttlpendapatan>0){
@@ -2082,6 +2095,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
 
     public void setNoRm(String norwt,String posisi) {
+        noorder="";
         TNoRw.setText(norwt);
         this.status=posisi;
         try {
@@ -2293,6 +2307,10 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     public void setDokterPerujuk(String kodeperujuk,String namaperujuk){
         KodePerujuk.setText(kodeperujuk);
         NmPerujuk.setText(namaperujuk);
+    }
+    
+    public void setOrder(String order){
+        noorder=order;
     }
 
 }

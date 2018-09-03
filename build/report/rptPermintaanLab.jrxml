@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="522" leftMargin="56" rightMargin="17" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="44"/>
+	<property name="ireport.y" value="43"/>
 	<parameter name="noperiksa" class="java.lang.String"/>
 	<parameter name="norm" class="java.lang.String"/>
 	<parameter name="namapasien" class="java.lang.String"/>
@@ -297,7 +297,7 @@
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
-				<text><![CDATA[No.Periksa]]></text>
+				<text><![CDATA[No.Permintaan]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="375" y="159" width="10" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
@@ -331,21 +331,21 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="1" y="203" width="289" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="1" y="203" width="219" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Pemeriksaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="367" y="203" width="153" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="298" y="203" width="222" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Nilai Rujukan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="291" y="203" width="75" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="222" y="203" width="75" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 				</textElement>
@@ -370,13 +370,13 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="290" y="204" width="1" height="16"/>
+				<reportElement x="220" y="204" width="1" height="16"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="366" y="204" width="1" height="16"/>
+				<reportElement x="297" y="204" width="1" height="16"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -392,23 +392,23 @@
 	<detail>
 		<band height="14" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="1" width="287" height="13"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="1" width="217" height="13"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="291" y="1" width="75" height="13"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="222" y="1" width="75" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="367" y="1" width="153" height="13"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="299" y="1" width="221" height="13"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
-					<font fontName="Tahoma" size="10"/>
+					<font fontName="Tahoma" size="7"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
@@ -419,13 +419,13 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement stretchType="RelativeToBandHeight" x="290" y="0" width="1" height="14"/>
+				<reportElement stretchType="RelativeToBandHeight" x="220" y="0" width="1" height="14"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement stretchType="RelativeToBandHeight" x="366" y="0" width="1" height="14"/>
+				<reportElement stretchType="RelativeToBandHeight" x="297" y="0" width="1" height="14"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
