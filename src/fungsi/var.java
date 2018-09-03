@@ -78,7 +78,9 @@ public final class var {
             grafik_ikp_perbulan=false,grafik_ikp_pertanggal=false,riwayat_data_batch=false,grafik_ikp_jenis=false,grafik_ikp_dampak=false,piutang_akun_piutang=false,
             grafik_kunjungan_per_agama=false,grafik_kunjungan_per_umur=false,suku_bangsa=false,bahasa_pasien=false,golongan_tni=false,satuan_tni=false,
             jabatan_tni=false,pangkat_tni=false,golongan_polri=false,satuan_polri=false,jabatan_polri=false,pangkat_polri=false,cacat_fisik=false,
-            grafik_kunjungan_suku=false,grafik_kunjungan_bahasa=false,booking_operasi=false;
+            grafik_kunjungan_suku=false,grafik_kunjungan_bahasa=false,booking_operasi=false,mapping_poli_bpjs=false,grafik_kunjungan_per_cacat=false,
+            barang_cssd=false,skdp_bpjs=false,booking_registrasi=false,bpjs_cek_propinsi=false,bpjs_cek_kabupaten=false,bpjs_cek_kecamatan=false,
+            bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false,permintaan_lab=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -453,6 +455,18 @@ public final class var {
                         var.grafik_kunjungan_suku=true;
                         var.grafik_kunjungan_bahasa=true;
                         var.booking_operasi=true;
+                        var.mapping_poli_bpjs=true;
+                        var.grafik_kunjungan_per_cacat=true;
+                        var.barang_cssd=true;
+                        var.skdp_bpjs=true;
+                        var.booking_registrasi=true;
+                        var.bpjs_cek_propinsi=true;
+                        var.bpjs_cek_kabupaten=true;
+                        var.bpjs_cek_kecamatan=true;
+                        var.bpjs_cek_dokterdpjp=true;
+                        var.bpjs_cek_riwayat_rujukanrs=true;
+                        var.bpjs_cek_tanggal_rujukan=true;
+                        var.permintaan_lab=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -811,6 +825,18 @@ public final class var {
                         var.grafik_kunjungan_suku=rs2.getBoolean("grafik_kunjungan_suku");
                         var.grafik_kunjungan_bahasa=rs2.getBoolean("grafik_kunjungan_bahasa");
                         var.booking_operasi=rs2.getBoolean("booking_operasi");
+                        var.mapping_poli_bpjs=rs2.getBoolean("mapping_poli_bpjs");
+                        var.grafik_kunjungan_per_cacat=rs2.getBoolean("grafik_kunjungan_per_cacat");
+                        var.barang_cssd=rs2.getBoolean("barang_cssd");
+                        var.skdp_bpjs=rs2.getBoolean("skdp_bpjs");
+                        var.booking_registrasi=rs2.getBoolean("booking_registrasi");
+                        var.bpjs_cek_propinsi=rs2.getBoolean("bpjs_cek_propinsi");
+                        var.bpjs_cek_kabupaten=rs2.getBoolean("bpjs_cek_kabupaten");
+                        var.bpjs_cek_kecamatan=rs2.getBoolean("bpjs_cek_kecamatan");
+                        var.bpjs_cek_dokterdpjp=rs2.getBoolean("bpjs_cek_dokterdpjp");
+                        var.bpjs_cek_riwayat_rujukanrs=rs2.getBoolean("bpjs_cek_riwayat_rujukanrs");
+                        var.bpjs_cek_tanggal_rujukan=rs2.getBoolean("bpjs_cek_tanggal_rujukan");
+                        var.permintaan_lab=rs2.getBoolean("permintaan_lab");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1167,6 +1193,18 @@ public final class var {
                         var.grafik_kunjungan_suku=false;
                         var.grafik_kunjungan_bahasa=false;
                         var.booking_operasi=false;
+                        var.mapping_poli_bpjs=false;
+                        var.grafik_kunjungan_per_cacat=false;
+                        var.barang_cssd=false;
+                        var.skdp_bpjs=false;
+                        var.booking_registrasi=false;
+                        var.bpjs_cek_propinsi=false;
+                        var.bpjs_cek_kabupaten=false;
+                        var.bpjs_cek_kecamatan=false;
+                        var.bpjs_cek_dokterdpjp=false;
+                        var.bpjs_cek_riwayat_rujukanrs=false;
+                        var.bpjs_cek_tanggal_rujukan=false;
+                        var.permintaan_lab=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1571,4 +1609,18 @@ public final class var {
     public static boolean getgrafik_kunjungan_suku(){return var.grafik_kunjungan_suku;}
     public static boolean getgrafik_kunjungan_bahasa(){return var.grafik_kunjungan_bahasa;}
     public static boolean getbooking_operasi(){return var.booking_operasi;}
+    public static boolean getmapping_poli_bpjs(){return var.mapping_poli_bpjs;}
+    public static boolean getgrafik_kunjungan_per_cacat(){return var.grafik_kunjungan_per_cacat;}
+    public static boolean getbarang_cssd(){return var.barang_cssd;}
+    public static boolean getskdp_bpjs(){return var.skdp_bpjs;}
+    public static boolean getbooking_registrasi(){return var.booking_registrasi;}
+    public static boolean getbpjs_cek_propinsi(){return var.bpjs_cek_propinsi;}
+    public static boolean getbpjs_cek_kabupaten(){return var.bpjs_cek_kabupaten;}
+    public static boolean getbpjs_cek_kecamatan(){return var.bpjs_cek_kecamatan;}
+    public static boolean getbpjs_cek_dokterdpjp(){return var.bpjs_cek_dokterdpjp;}
+    public static boolean getbpjs_cek_riwayat_rujukanrs(){return var.bpjs_cek_riwayat_rujukanrs;}
+    public static boolean getbpjs_cek_tanggal_rujukan(){return var.bpjs_cek_tanggal_rujukan;}
+    public static boolean getpermintaan_lab(){return var.permintaan_lab;}
+    public static void setperiksalabfalse(){var.periksa_lab=false;} 
+    public static void setpermintaanlabfalse(){var.permintaan_lab=false;} 
 }   
