@@ -43,11 +43,10 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         initComponents();
 
         WindowAmbilSampel.setSize(530,80);
-        Object[] row={
+        tabMode=new DefaultTableModel(null,new Object[]{
             "No.Permintaan","No.Rawat","Pasien","Permintaan","Jam",
             "Sampel","Jam","Hasil","Jam","Kode Dokter","Dokter Perujuk"
-        };
-        tabMode=new DefaultTableModel(null,row){
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbDokter.setModel(tabMode);
@@ -84,9 +83,9 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
             tabMode2=new DefaultTableModel(null,new Object[]{
-                "No.Rawat","Pasien","Tgl.Periksa","Jam","Pemeriksaan",
-                "Item Pemeriksaan","Hasil","Satuan","Nilai Rujukan","Keterangan",
-                "Ruang","Petugas","Dokter Perujuk","Penanggung Jawab"
+                "No.Permintaan","No.Rawat","Pasien","Pemeriksaan","Detail Pemeriksaan",
+                "Satuan","Nilai Rujukan","Permintaan","Jam","Sampel","Jam","Hasil",
+                "Jam","Kode Dokter","Dokter Perujuk"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -95,36 +94,39 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         tbDokter2.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 14; i++) {
+        for (i = 0; i < 15; i++) {
             TableColumn column = tbDokter2.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(210);
+                column.setPreferredWidth(105);
             }else if(i==2){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(250);
             }else if(i==3){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(155);
+                column.setPreferredWidth(170);
             }else if(i==5){
-                column.setPreferredWidth(165);
-            }else if(i==6){
-                column.setPreferredWidth(70);
-            }else if(i==7){
                 column.setPreferredWidth(50);
+            }else if(i==6){
+                column.setPreferredWidth(200);
+            }else if(i==7){
+                column.setPreferredWidth(65);
             }else if(i==8){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(50);
             }else if(i==9){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(65);
             }else if(i==10){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(50);
             }else if(i==11){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(65);
             }else if(i==12){
-                column.setPreferredWidth(160);
+                column.setPreferredWidth(50);
             }else if(i==13){
-                column.setPreferredWidth(160);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==14){
+                column.setPreferredWidth(150);
             }
         }
         tbDokter2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -671,7 +673,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptLapPermintaanLab.jrxml","report","::[ Data Pemeriksaan Laboratorium ]::",
+                Valid.MyReport("rptLapPermintaanLab.jrxml","report","::[ Data Permintaan Laboratorium ]::",
                     "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_permintaan_lab order by no asc",param);
             }
         }else if(TabRawat.getSelectedIndex()==1){
@@ -697,7 +699,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     tabMode2.getValueAt(i,10).toString()+"','"+
                                     tabMode2.getValueAt(i,11).toString()+"','"+
                                     tabMode2.getValueAt(i,12).toString()+"','"+
-                                    tabMode2.getValueAt(i,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
+                                    tabMode2.getValueAt(i,13).toString()+"','"+
+                                    tabMode2.getValueAt(i,14).toString()+"','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
                 }
                 Sequel.AutoComitTrue();
                 Map<String, Object> param = new HashMap<>();
@@ -708,7 +711,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",var.getkontakrs());
                 param.put("emailrs",var.getemailrs());
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
-                Valid.MyReport("rptDataLab2.jrxml","report","::[ Data Item Pemeriksaan Laboratorium ]::",
+                Valid.MyReport("rptLapPermintaanLab2.jrxml","report","::[ Data Detail Permintaan Laboratorium ]::",
                     "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp14, temp15, temp16 from temporary_permintaan_lab order by no asc",param);
             }
         }            
@@ -736,15 +739,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
 private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-    if(tbDokter.getSelectedRow()!= -1){
-        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-            Valid.textKosong(TCari,"No.Permintaan");
-        }else{
-            Sequel.meghapus("permintaan_lab","noorder",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            tampil();
+    if(TabRawat.getSelectedIndex()==0){
+        if(tbDokter.getSelectedRow()!= -1){
+            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+                Valid.textKosong(TCari,"No.Permintaan");
+            }else{
+                Sequel.meghapus("permintaan_lab","noorder",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                tampil();
+            }
+        }else{            
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+            TCari.requestFocus();
         }
-    }else{            
-        JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+    }else if(TabRawat.getSelectedIndex()==1){
+        JOptionPane.showMessageDialog(null,"Hanya bisa dilakukan hapus di Data Permintaan..!!!");
+        TabRawat.setSelectedIndex(0);
         TCari.requestFocus();
     }         
 }//GEN-LAST:event_BtnHapusActionPerformed
@@ -918,38 +927,44 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_tbDokter2KeyPressed
 
     private void BtnSampelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSampelActionPerformed
-        if(tbDokter.getSelectedRow()!= -1){
-            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-                Valid.textKosong(TCari,"No.Permintaan");
-            }else{ 
-                if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString())>0){
-                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
-                    dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
-                    dlgro.setLocationRelativeTo(internalFrame1);
-                    dlgro.emptTeks();
-                    dlgro.isCek();
-                    dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ranap"); 
-                    dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                    dlgro.setVisible(true);
-                    this.setCursor(Cursor.getDefaultCursor());
-                }else {
-                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
-                    dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
-                    dlgro.setLocationRelativeTo(internalFrame1);
-                    dlgro.emptTeks();
-                    dlgro.isCek();
-                    dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ralan"); 
-                    dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                    dlgro.setVisible(true);
-                    this.setCursor(Cursor.getDefaultCursor());
+        if(TabRawat.getSelectedIndex()==0){
+            if(tbDokter.getSelectedRow()!= -1){
+                if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+                    Valid.textKosong(TCari,"No.Permintaan");
+                }else{ 
+                    if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString())>0){
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
+                        dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgro.setLocationRelativeTo(internalFrame1);
+                        dlgro.emptTeks();
+                        dlgro.isCek();
+                        dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ranap"); 
+                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        dlgro.setVisible(true);
+                        this.setCursor(Cursor.getDefaultCursor());
+                    }else {
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
+                        dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgro.setLocationRelativeTo(internalFrame1);
+                        dlgro.emptTeks();
+                        dlgro.isCek();
+                        dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ralan"); 
+                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        dlgro.setVisible(true);
+                        this.setCursor(Cursor.getDefaultCursor());
+                    }
                 }
-            }
-        }else{            
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+            }else{            
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                TCari.requestFocus();
+            } 
+        }else if(TabRawat.getSelectedIndex()==1){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih Data Permintaan...!!!!");
+            TabRawat.setSelectedIndex(0);
             TCari.requestFocus();
-        } 
+        }
     }//GEN-LAST:event_BtnSampelActionPerformed
 
     private void BtnSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSampelKeyPressed
@@ -957,20 +972,26 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }//GEN-LAST:event_BtnSampelKeyPressed
 
     private void BtnHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHasilActionPerformed
-        if(tbDokter.getSelectedRow()!= -1){
-            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-                Valid.textKosong(TCari,"No.Permintaan");
-            }else{ 
-                TanggalPulang.setDate(new Date());
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-                WindowAmbilSampel.setLocationRelativeTo(internalFrame1);
-                WindowAmbilSampel.setVisible(true);
-                this.setCursor(Cursor.getDefaultCursor());
-            }
-        }else{            
-            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+        if(TabRawat.getSelectedIndex()==0){
+            if(tbDokter.getSelectedRow()!= -1){
+                if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
+                    Valid.textKosong(TCari,"No.Permintaan");
+                }else{ 
+                    TanggalPulang.setDate(new Date());
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+                    WindowAmbilSampel.setLocationRelativeTo(internalFrame1);
+                    WindowAmbilSampel.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
+            }else{            
+                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
+                TCari.requestFocus();
+            }   
+        }else if(TabRawat.getSelectedIndex()==1){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih Data Permintaan...!!!!");
+            TabRawat.setSelectedIndex(0);
             TCari.requestFocus();
-        }   
+        }            
     }//GEN-LAST:event_BtnHasilActionPerformed
 
     private void BtnHasilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHasilKeyPressed
@@ -1198,6 +1219,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
                     }
                 }
+                rs.last();
+                LCount.setText(""+rs.getRow());
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
@@ -1210,12 +1233,94 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             }
         } catch (Exception e) {
             System.out.println("Notif : "+e);
-        }
-        LCount.setText(""+tabMode.getRowCount());
+        }        
     }
     
     private void tampil2() {
-               
+        Valid.tabelKosong(tabMode2);  
+        try {
+            ps=koneksi.prepareStatement(
+                    "select permintaan_lab.noorder,permintaan_lab.no_rawat,reg_periksa.no_rkm_medis,"+
+                    "pasien.nm_pasien,jns_perawatan_lab.nm_perawatan,template_laboratorium.Pemeriksaan,"+
+                    "template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,"+
+                    "template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,"+
+                    "template_laboratorium.nilai_rujukan_pa,permintaan_lab.tgl_permintaan,"+
+                    "permintaan_lab.jam_permintaan,permintaan_lab.tgl_sampel,permintaan_lab.jam_sampel,"+
+                    "permintaan_lab.tgl_hasil,permintaan_lab.jam_hasil,permintaan_lab.dokter_perujuk,dokter.nm_dokter "+
+                    "from permintaan_lab inner join reg_periksa inner join pasien inner join permintaan_pemeriksaan_lab "+
+                    "inner join permintaan_detail_permintaan_lab inner join jns_perawatan_lab inner join template_laboratorium "+
+                    "inner join dokter on permintaan_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and "+
+                    "permintaan_lab.noorder=permintaan_pemeriksaan_lab.noorder and jns_perawatan_lab.kd_jenis_prw=permintaan_pemeriksaan_lab.kd_jenis_prw "+
+                    "and permintaan_lab.noorder=permintaan_detail_permintaan_lab.noorder and permintaan_lab.dokter_perujuk=dokter.kd_dokter "+
+                    "and permintaan_detail_permintaan_lab.kd_jenis_prw=permintaan_pemeriksaan_lab.kd_jenis_prw and "+
+                    "template_laboratorium.id_template=permintaan_detail_permintaan_lab.id_template where "+
+                    "permintaan_lab.tgl_permintaan between ? and ? and permintaan_lab.noorder like ? or "+
+                    "permintaan_lab.tgl_permintaan between ? and ? and permintaan_lab.no_rawat like ? or "+
+                    "permintaan_lab.tgl_permintaan between ? and ? and reg_periksa.no_rkm_medis like ? or "+
+                    "permintaan_lab.tgl_permintaan between ? and ? and pasien.nm_pasien like ? or "+
+                    "permintaan_lab.tgl_permintaan between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
+                    "permintaan_lab.tgl_permintaan between ? and ? and template_laboratorium.Pemeriksaan like ? or "+
+                    "permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? order by "+
+                    "permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(3,"%"+TCari.getText()+"%");
+                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(6,"%"+TCari.getText()+"%");
+                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(9,"%"+TCari.getText()+"%");
+                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(12,"%"+TCari.getText()+"%");
+                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(15,"%"+TCari.getText()+"%");
+                ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(18,"%"+TCari.getText()+"%");
+                ps.setString(19,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(20,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(21,"%"+TCari.getText()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    la="";ld="";pa="";pd="";
+                    if(!rs.getString("nilai_rujukan_ld").equals("")){
+                        ld="LD : "+rs.getString("nilai_rujukan_ld");
+                    }
+                    if(!rs.getString("nilai_rujukan_la").equals("")){
+                        la=", LA : "+rs.getString("nilai_rujukan_la");
+                    }
+                    if(!rs.getString("nilai_rujukan_pa").equals("")){
+                        pd=", PD : "+rs.getString("nilai_rujukan_pd");
+                    }
+                    if(!rs.getString("nilai_rujukan_pd").equals("")){
+                        pa=" PA : "+rs.getString("nilai_rujukan_pa");
+                    }
+                    tabMode2.addRow(new String[]{
+                        rs.getString("noorder"),rs.getString("no_rawat"),rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),
+                        rs.getString("nm_perawatan"),rs.getString("Pemeriksaan"),rs.getString("satuan"),ld+la+pd+pa,
+                        rs.getString("tgl_permintaan"),rs.getString("jam_permintaan"),
+                        rs.getString("tgl_sampel"),rs.getString("jam_sampel"),rs.getString("tgl_hasil"),
+                        rs.getString("jam_hasil"),rs.getString("dokter_perujuk"),rs.getString("nm_dokter")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LCount.setText(""+tabMode2.getRowCount());
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
+        }            
     }
     
     
