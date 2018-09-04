@@ -7108,6 +7108,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         ppIKP1.setEnabled(var.getinsiden_keselamatan_pasien());    
         MnJadwalOperasi.setEnabled(var.getbooking_operasi());      
         MnSKDPBPJS.setEnabled(var.getskdp_bpjs()); 
+        MnPermintaanLab.setEnabled(var.getpermintaan_lab());
         
         if(var.getkode().equals("Admin Utama")){
             MnHapusData.setEnabled(true);

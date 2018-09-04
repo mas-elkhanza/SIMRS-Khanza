@@ -4394,10 +4394,7 @@ private void MnRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             billing.rawatinap.isCek();
             billing.rawatinap.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate());   
             billing.rawatinap.setVisible(true);
-                //this.dispose();
-      }
-           
-        
+      } 
 }//GEN-LAST:event_MnRawatInapActionPerformed
 
 private void MnResepPulangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnResepPulangActionPerformed
@@ -8313,6 +8310,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         ppIKP.setEnabled(var.getinsiden_keselamatan_pasien());
         MnJadwalOperasi.setEnabled(var.getbooking_operasi());  
         MnSKDPBPJS.setEnabled(var.getskdp_bpjs());
+        MnPermintaanLab.setEnabled(var.getpermintaan_lab());
         if(var.getkode().equals("Admin Utama")){
             MnHapusDataSalah.setEnabled(true);
         }else{

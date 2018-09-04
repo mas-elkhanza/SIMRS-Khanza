@@ -6083,6 +6083,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         ppBerkasDigital.setEnabled(var.getberkas_digital_perawatan());   
         MnJadwalOperasi.setEnabled(var.getbooking_operasi());     
         MnSKDPBPJS.setEnabled(var.getskdp_bpjs());
+        MnPermintaanLab.setEnabled(var.getpermintaan_lab());
     }
     
     private void isNumber(){
