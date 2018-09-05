@@ -12,6 +12,9 @@
 
 package simrskhanza;
 
+import permintaan.DlgCariPermintaanLab;
+import permintaan.DlgBookingRegistrasi;
+import permintaan.DlgBookingOperasi;
 import bridging.DlgSKDPBPJS;
 import kepegawaian.DlgPenggajian;
 import laporan.DlgMutasiBerkas;
@@ -238,6 +241,7 @@ import grafikanalisa.GrafikStatusRegPerTahun2;
 import grafikanalisa.GrafikStatusRegPerTanggal;
 import grafikanalisa.GrafikStatusRegPerTanggal2;
 import inventaris.InventarisBarangCSSD;
+import inventory.DlgCariPermintaan;
 import inventory.DlgDaftarPermintaanResep;
 import inventory.DlgGolongan;
 import inventory.DlgKategori;
@@ -334,6 +338,7 @@ import keuangan.DlgHutangNonMedisBelumLunas;
 import keuangan.DlgPiutangPerAKunPiutang;
 import laporan.DlgDataInsidenKeselamatan;
 import laporan.DlgInsidenKeselamatan;
+import permintaan.DlgPermintaanLaboratorium;
 import setting.DlgClosingKasir;
 import setting.DlgSetEmbalase;
 import setting.DlgSetHargaKamar;
@@ -865,6 +870,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekReferensiDokterDPJPBPJS = new widget.ButtonBig();
         btnCekBPJSRiwayatRujukanRS = new widget.ButtonBig();
         btnCekBPJSTanggalRujukan = new widget.ButtonBig();
+        btnPermintaanLab = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5517,6 +5523,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnCekBPJSTanggalRujukan);
 
+        btnPermintaanLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_laboratory_44676.png"))); // NOI18N
+        btnPermintaanLab.setText("Permintaan Lab");
+        btnPermintaanLab.setIconTextGap(0);
+        btnPermintaanLab.setName("btnPermintaanLab"); // NOI18N
+        btnPermintaanLab.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPermintaanLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPermintaanLabActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPermintaanLab);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5525,7 +5543,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24/08/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01/09/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -5727,7 +5745,6 @@ public class frmUtama extends javax.swing.JFrame {
         btnToolLab.setMnemonic('O');
         btnToolLab.setText("Laborat");
         btnToolLab.setToolTipText("Alt+O");
-        btnToolLab.setEnabled(false);
         btnToolLab.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnToolLab.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnToolLab.setIconTextGap(3);
@@ -6517,23 +6534,24 @@ public class frmUtama extends javax.swing.JFrame {
         }catch(Exception e){            
         }
         FlayMenu.setVisible(false);
-        var.setpenjualan_obatfalse();
-        var.setpenjualan_obatfalse();
-        var.setutd_penyerahan_darahfalse();
-        var.setresep_dokterfalse();
-        var.setresep_obatfalse();
         
         switch (BtnLog.getText().trim()) {
             case "Log Out":
                 BtnToolReg.setEnabled(false);
                 BtnToolKamnap.setEnabled(false);
                 BtnToolKasir.setEnabled(false);
-                btnToolLab.setEnabled(false);
                 btnToolRad.setEnabled(false);
                 btnToolIGD.setEnabled(false);
                 MnGantiPassword.setEnabled(false);
                 btnToolBcdRalan.setEnabled(false);
-                btnToolBcdRanap.setEnabled(false);
+                btnToolBcdRanap.setEnabled(false);                
+                var.setpenjualan_obatfalse();
+                var.setpenjualan_obatfalse();
+                var.setutd_penyerahan_darahfalse();
+                var.setresep_dokterfalse();
+                var.setresep_obatfalse();
+                var.setpermintaanlabfalse();
+                var.setperiksalabfalse();
                 edAdmin.setText("");
                 edPwd.setText("");
                 BtnLog.setText("Log In");
@@ -6580,8 +6598,7 @@ public class frmUtama extends javax.swing.JFrame {
                     BtnMenu.setEnabled(true);
                     BtnToolReg.setEnabled(true);
                     BtnToolKamnap.setEnabled(true);
-                    BtnToolKasir.setEnabled(true);                
-                    btnToolLab.setEnabled(true);   
+                    BtnToolKasir.setEnabled(true); 
                     btnToolIGD.setEnabled(true);
                     btnToolRad.setEnabled(true);
                     btnToolBcdRalan.setEnabled(true);
@@ -6603,8 +6620,7 @@ public class frmUtama extends javax.swing.JFrame {
                     MnGantiPassword.setEnabled(true);
                     BtnToolReg.setEnabled(var.getregistrasi());
                     BtnToolKamnap.setEnabled(var.getkamar_inap());
-                    BtnToolKasir.setEnabled(var.getkasir_ralan());                
-                    btnToolLab.setEnabled(var.getperiksa_lab());  
+                    BtnToolKasir.setEnabled(var.getkasir_ralan());
                     btnToolRad.setEnabled(var.getperiksa_radiologi());
                     btnToolIGD.setEnabled(var.getigd());                    
                     btnToolBcdRalan.setEnabled(var.getbarcoderalan());
@@ -6615,8 +6631,7 @@ public class frmUtama extends javax.swing.JFrame {
                     BtnToolReg.setEnabled(false);
                     BtnToolKamnap.setEnabled(false);
                     BtnToolKasir.setEnabled(false);
-                    MnGantiPassword.setEnabled(false);         
-                    btnToolLab.setEnabled(false);   
+                    MnGantiPassword.setEnabled(false);  
                     btnToolIGD.setEnabled(false);
                     btnToolRad.setEnabled(false);
                     btnToolBcdRalan.setEnabled(false);
@@ -8069,13 +8084,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
     private void btnToolLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToolLabActionPerformed
         isTutup();
-        DlgHome.dispose();
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
-        DlgCariPeriksaLab form=new DlgCariPeriksaLab(null,false);
-        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
-        form.setLocationRelativeTo(PanelUtama);
-        form.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
+        FlayMenu.removeAll();        
+        FlayMenu.add(btnPermintaanLab);
+        FlayMenu.add(btnLaboratorium);
+        btnPermintaanLab.setEnabled(var.getpermintaan_lab());
+        btnLaboratorium.setEnabled(var.getperiksa_lab());
+        FlayMenu.setVisible(true); 
     }//GEN-LAST:event_btnToolLabActionPerformed
 
     private void MnSudahPulang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSudahPulang1ActionPerformed
@@ -11553,6 +11567,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnCekBPJSTanggalRujukanActionPerformed
 
+    private void btnPermintaanLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPermintaanLabActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgCariPermintaanLab form=new DlgCariPermintaanLab(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPermintaanLabActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -11821,6 +11846,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPenjualanPerTanggal;
     private widget.ButtonBig btnPenyakitPD3I;
     private widget.ButtonBig btnPeriksaRadiologi;
+    private widget.ButtonBig btnPermintaanLab;
     private widget.ButtonBig btnPermintaanMedis;
     private widget.ButtonBig btnPermintaanNonMedis;
     private widget.ButtonBig btnPerusahaan;
@@ -12376,6 +12402,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getbooking_operasi()==true){
                 Panelmenu.add(btnJadwalOperasi);
+                jmlmenu++;
+            }
+            
+            if(var.getpermintaan_lab()==true){
+                Panelmenu.add(btnPermintaanLab);
                 jmlmenu++;
             }
             
@@ -14203,6 +14234,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
+        if(var.getpermintaan_lab()==true){
+            Panelmenu.add(btnPermintaanLab);
+            jmlmenu++;
+        }
+
         if(var.getdpjp_ranap()==true){
             Panelmenu.add(BtnDpjp);
             jmlmenu++;
@@ -16024,6 +16060,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getbooking_operasi()==true){
             if(btnJadwalOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJadwalOperasi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpermintaan_lab()==true){
+            if(btnPermintaanLab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPermintaanLab);
                 jmlmenu++;
             }                
         }

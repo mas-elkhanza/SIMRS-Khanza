@@ -68,7 +68,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "Jml","Satuan Beli","Kode Barang","Nama Barang","Satuan","G","Kadaluwarsa",
-            "Harga(Rp)","Subtotal(Rp)","Disk(%)","Diskon(Rp)","Total","Jml.Stok","No.Batch",
+            "Harga(Rp)","Subtotal(Rp)","Disk(%)","Diskon(Rp)","Total","Stok","No.Batch",
             "Ralan", "Kelas 1", "Kelas 2", "Kelas 3", "Utama", "VIP", "VVIP", "Beli Luar", 
             "Jual Bebas", "Karyawan","HPP"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
@@ -124,8 +124,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(85);
             }else if(i==12){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(40);
             }else if(i==13){
                 column.setPreferredWidth(80);
             }else if(i==24){

@@ -124,8 +124,7 @@ public class DlgPembelian extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(85);
             }else if(i==12){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(40);
             }else if(i==13){
                 column.setPreferredWidth(80);
             }else if(i==24){
