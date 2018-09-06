@@ -685,6 +685,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 Sequel.queryu("delete from temporary_permintaan_lab");
                 int row=tabMode2.getRowCount();
                 for(i=0;i<row;i++){  
+                    tglsampel="";
+                    try {
+                        tglsampel=tabMode2.getValueAt(i,9).toString();
+                    } catch (Exception e) {
+                        tglsampel="";
+                    }
+                    tglhasil="";
+                    try {
+                        tglhasil=tabMode2.getValueAt(i,11).toString();
+                    } catch (Exception e) {
+                        tglhasil="";
+                    }
                     Sequel.menyimpan("temporary_permintaan_lab","'0','"+
                                     tabMode2.getValueAt(i,0).toString()+"','"+
                                     tabMode2.getValueAt(i,1).toString()+"','"+
@@ -695,9 +707,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     tabMode2.getValueAt(i,6).toString()+"','"+
                                     tabMode2.getValueAt(i,7).toString()+"','"+
                                     tabMode2.getValueAt(i,8).toString()+"','"+
-                                    tabMode2.getValueAt(i,9).toString()+"','"+
+                                    tglsampel+"','"+
                                     tabMode2.getValueAt(i,10).toString()+"','"+
-                                    tabMode2.getValueAt(i,11).toString()+"','"+
+                                    tglhasil+"','"+
                                     tabMode2.getValueAt(i,12).toString()+"','"+
                                     tabMode2.getValueAt(i,13).toString()+"','"+
                                     tabMode2.getValueAt(i,14).toString()+"','','','','','','','','','','','','','','','','','','','','','',''","Periksa Lab"); 
@@ -1245,8 +1257,10 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "template_laboratorium.satuan,template_laboratorium.nilai_rujukan_ld,"+
                     "template_laboratorium.nilai_rujukan_la,template_laboratorium.nilai_rujukan_pd,"+
                     "template_laboratorium.nilai_rujukan_pa,permintaan_lab.tgl_permintaan,"+
-                    "permintaan_lab.jam_permintaan,permintaan_lab.tgl_sampel,permintaan_lab.jam_sampel,"+
-                    "permintaan_lab.tgl_hasil,permintaan_lab.jam_hasil,permintaan_lab.dokter_perujuk,dokter.nm_dokter "+
+                    "if(permintaan_lab.jam_permintaan='00:00:00','',permintaan_lab.jam_permintaan) as jam_permintaan,permintaan_lab.tgl_sampel,"+
+                    "if(permintaan_lab.jam_sampel='00:00:00','',permintaan_lab.jam_sampel) as jam_sampel, permintaan_lab.tgl_hasil,"+
+                    "if(permintaan_lab.jam_hasil='00:00:00','',permintaan_lab.jam_hasil) as jam_hasil,"+
+                    "permintaan_lab.dokter_perujuk,dokter.nm_dokter "+
                     "from permintaan_lab inner join reg_periksa inner join pasien inner join permintaan_pemeriksaan_lab "+
                     "inner join permintaan_detail_permintaan_lab inner join jns_perawatan_lab inner join template_laboratorium "+
                     "inner join dokter on permintaan_lab.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and "+
@@ -1339,7 +1353,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         BtnPrint.setEnabled(var.getpermintaan_lab());
     }
     
-
+    public void setPasien(String pasien){
+        TCari.setText(pasien);
+    }
 
  
 }
