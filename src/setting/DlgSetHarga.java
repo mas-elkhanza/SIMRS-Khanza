@@ -20,13 +20,12 @@ import fungsi.WarnaTable;
 import inventory.DlgCariJenis;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -37,11 +36,12 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public class DlgSetHarga extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
+    private final DefaultTableModel tabMode,tabModePengaturanUmum;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     public DlgCariJenis jenis = new DlgCariJenis(null, false);
+    private PreparedStatement ps;
     private ResultSet rs;
 
     /** Creates new form DlgAdmin 
@@ -50,13 +50,11 @@ public class DlgSetHarga extends javax.swing.JDialog {
     public DlgSetHarga(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(10,10);
-        setSize(457,249);
-
-        Object[] row={"Ralan(%)","Ranap K1(%)","Ranap K2(%)","Ranap K3(%)","Kelas Utama(%)",
-                      "Ranap VIP(%)","Ranap VVIP(%)","Beli Luar(%)","Jual Bebas(%)","Karyawan(%)",
-                      "Kode Jenis","Nama Jenis"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+              "Ralan(%)","Ranap K1(%)","Ranap K2(%)","Ranap K3(%)","Kelas Utama(%)",
+              "Ranap VIP(%)","Ranap VVIP(%)","Beli Luar(%)","Jual Bebas(%)","Karyawan(%)",
+              "Kode Jenis","Nama Jenis"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -75,6 +73,25 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
 
+        tabModePengaturanUmum=new DefaultTableModel(null,new Object[]{
+              "Pengaturan harga obat yang digunakan"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+
+        tbPengaturanUmum.setModel(tabModePengaturanUmum);
+        tbPengaturanUmum.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPengaturanUmum.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 1; i++) {
+            TableColumn column = tbPengaturanUmum.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(400);
+            }
+        }
+
+        tbPengaturanUmum.setDefaultRenderer(Object.class, new WarnaTable());
+        
         ralan.setDocument(new batasInput((byte)10).getKata(ralan));
         ranapk1.setDocument(new batasInput((byte)10).getKata(ranapk1));
         ranapk2.setDocument(new batasInput((byte)10).getKata(ranapk2));
@@ -125,8 +142,21 @@ public class DlgSetHarga extends javax.swing.JDialog {
         Popup = new javax.swing.JPopupMenu();
         ppUPdate = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
-        Scroll = new widget.ScrollPane();
-        tbAdmin = new widget.Table();
+        panelisi1 = new widget.panelisi();
+        BtnSimpan = new widget.Button();
+        BtnBatal = new widget.Button();
+        BtnHapus = new widget.Button();
+        BtnEdit = new widget.Button();
+        BtnKeluar = new widget.Button();
+        TabSetting = new javax.swing.JTabbedPane();
+        internalFrame3 = new widget.InternalFrame();
+        Scroll2 = new widget.ScrollPane();
+        tbPengaturanUmum = new widget.Table();
+        panelGlass8 = new widget.panelisi();
+        jLabel5 = new widget.Label();
+        cmbPengaturan = new widget.ComboBox();
+        internalFrame4 = new widget.InternalFrame();
+        internalFrame2 = new widget.InternalFrame();
         panelisi2 = new widget.panelisi();
         label35 = new widget.Label();
         ranapvip = new widget.TextBox();
@@ -152,18 +182,15 @@ public class DlgSetHarga extends javax.swing.JDialog {
         kdjns = new widget.TextBox();
         nmjns = new widget.TextBox();
         BtnJenis = new widget.Button();
-        panelisi1 = new widget.panelisi();
-        BtnSimpan = new widget.Button();
-        BtnBatal = new widget.Button();
-        BtnHapus = new widget.Button();
-        BtnEdit = new widget.Button();
-        BtnKeluar = new widget.Button();
+        Scroll = new widget.ScrollPane();
+        tbAdmin = new widget.Table();
+        internalFrame5 = new widget.InternalFrame();
 
         Popup.setName("Popup"); // NOI18N
 
         ppUPdate.setBackground(new java.awt.Color(255, 255, 255));
         ppUPdate.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUPdate.setForeground(new java.awt.Color(130,100,100));
+        ppUPdate.setForeground(new java.awt.Color(130, 100, 100));
         ppUPdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUPdate.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -187,31 +214,177 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat/Barang/Alkes ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat/Barang/Alkes ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setComponentPopupMenu(Popup);
-        Scroll.setDoubleBuffered(true);
-        Scroll.setName("Scroll"); // NOI18N
-        Scroll.setOpaque(true);
+        panelisi1.setName("panelisi1"); // NOI18N
+        panelisi1.setPreferredSize(new java.awt.Dimension(100, 54));
+        panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        tbAdmin.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbAdmin.setComponentPopupMenu(Popup);
-        tbAdmin.setName("tbAdmin"); // NOI18N
-        tbAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbAdminMouseClicked(evt);
+        BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan.setMnemonic('S');
+        BtnSimpan.setText("Simpan");
+        BtnSimpan.setToolTipText("Alt+S");
+        BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpanActionPerformed(evt);
             }
         });
-        tbAdmin.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnSimpan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbAdminKeyPressed(evt);
+                BtnSimpanKeyPressed(evt);
             }
         });
-        Scroll.setViewportView(tbAdmin);
+        panelisi1.add(BtnSimpan);
 
-        internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
+        BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
+        BtnBatal.setMnemonic('B');
+        BtnBatal.setText("Baru");
+        BtnBatal.setToolTipText("Alt+B");
+        BtnBatal.setName("BtnBatal"); // NOI18N
+        BtnBatal.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBatalActionPerformed(evt);
+            }
+        });
+        BtnBatal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnBatalKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnBatal);
+
+        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnHapus.setMnemonic('H');
+        BtnHapus.setText("Hapus");
+        BtnHapus.setToolTipText("Alt+H");
+        BtnHapus.setName("BtnHapus"); // NOI18N
+        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHapusActionPerformed(evt);
+            }
+        });
+        BtnHapus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnHapusKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnHapus);
+
+        BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
+        BtnEdit.setMnemonic('G');
+        BtnEdit.setText("Ganti");
+        BtnEdit.setToolTipText("Alt+G");
+        BtnEdit.setIconTextGap(3);
+        BtnEdit.setName("BtnEdit"); // NOI18N
+        BtnEdit.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditActionPerformed(evt);
+            }
+        });
+        BtnEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnEditKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnEdit);
+
+        BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
+        BtnKeluar.setMnemonic('K');
+        BtnKeluar.setText("Keluar");
+        BtnKeluar.setToolTipText("Alt+K");
+        BtnKeluar.setName("BtnKeluar"); // NOI18N
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKeluarActionPerformed(evt);
+            }
+        });
+        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnKeluarKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnKeluar);
+
+        internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
+
+        TabSetting.setBackground(new java.awt.Color(255, 255, 253));
+        TabSetting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabSetting.setForeground(new java.awt.Color(130, 100, 100));
+        TabSetting.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TabSetting.setName("TabSetting"); // NOI18N
+        TabSetting.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabSettingMouseClicked(evt);
+            }
+        });
+
+        internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame3.setBorder(null);
+        internalFrame3.setName("internalFrame3"); // NOI18N
+        internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll2.setName("Scroll2"); // NOI18N
+        Scroll2.setOpaque(true);
+
+        tbPengaturanUmum.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPengaturanUmum.setName("tbPengaturanUmum"); // NOI18N
+        tbPengaturanUmum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbPengaturanUmumMouseClicked(evt);
+            }
+        });
+        tbPengaturanUmum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbPengaturanUmumKeyPressed(evt);
+            }
+        });
+        Scroll2.setViewportView(tbPengaturanUmum);
+
+        internalFrame3.add(Scroll2, java.awt.BorderLayout.CENTER);
+
+        panelGlass8.setName("panelGlass8"); // NOI18N
+        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 47));
+        panelGlass8.setLayout(null);
+
+        jLabel5.setText("Pengaturan harga obat yang digunakan :");
+        jLabel5.setName("jLabel5"); // NOI18N
+        panelGlass8.add(jLabel5);
+        jLabel5.setBounds(0, 12, 230, 23);
+
+        cmbPengaturan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Umum", "Per Jenis", "Per Barang" }));
+        cmbPengaturan.setName("cmbPengaturan"); // NOI18N
+        cmbPengaturan.setOpaque(false);
+        cmbPengaturan.setPreferredSize(new java.awt.Dimension(55, 28));
+        cmbPengaturan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbPengaturanKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(cmbPengaturan);
+        cmbPengaturan.setBounds(233, 12, 220, 23);
+
+        internalFrame3.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
+
+        TabSetting.addTab("Pegaturan Harga", internalFrame3);
+
+        internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame4.setBorder(null);
+        internalFrame4.setName("internalFrame4"); // NOI18N
+        internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
+        TabSetting.addTab("Pegaturan Harga Umum", internalFrame4);
+
+        internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame2.setBorder(null);
+        internalFrame2.setName("internalFrame2"); // NOI18N
+        internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelisi2.setName("panelisi2"); // NOI18N
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 194));
@@ -514,104 +687,39 @@ public class DlgSetHarga extends javax.swing.JDialog {
         panelisi2.add(BtnJenis);
         BtnJenis.setBounds(575, 162, 25, 23);
 
-        internalFrame1.add(panelisi2, java.awt.BorderLayout.PAGE_START);
+        internalFrame2.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
-        panelisi1.setName("panelisi1"); // NOI18N
-        panelisi1.setPreferredSize(new java.awt.Dimension(100, 54));
-        panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        Scroll.setComponentPopupMenu(Popup);
+        Scroll.setDoubleBuffered(true);
+        Scroll.setName("Scroll"); // NOI18N
+        Scroll.setOpaque(true);
 
-        BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        BtnSimpan.setMnemonic('S');
-        BtnSimpan.setText("Simpan");
-        BtnSimpan.setToolTipText("Alt+S");
-        BtnSimpan.setName("BtnSimpan"); // NOI18N
-        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpanActionPerformed(evt);
+        tbAdmin.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbAdmin.setComponentPopupMenu(Popup);
+        tbAdmin.setName("tbAdmin"); // NOI18N
+        tbAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbAdminMouseClicked(evt);
             }
         });
-        BtnSimpan.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbAdmin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSimpanKeyPressed(evt);
+                tbAdminKeyPressed(evt);
             }
         });
-        panelisi1.add(BtnSimpan);
+        Scroll.setViewportView(tbAdmin);
 
-        BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
-        BtnBatal.setMnemonic('B');
-        BtnBatal.setText("Baru");
-        BtnBatal.setToolTipText("Alt+B");
-        BtnBatal.setName("BtnBatal"); // NOI18N
-        BtnBatal.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnBatal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBatalActionPerformed(evt);
-            }
-        });
-        BtnBatal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnBatalKeyPressed(evt);
-            }
-        });
-        panelisi1.add(BtnBatal);
+        internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnHapus.setMnemonic('H');
-        BtnHapus.setText("Hapus");
-        BtnHapus.setToolTipText("Alt+H");
-        BtnHapus.setName("BtnHapus"); // NOI18N
-        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        BtnHapus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnHapusKeyPressed(evt);
-            }
-        });
-        panelisi1.add(BtnHapus);
+        TabSetting.addTab("Pegaturan Harga Per Jenis Barang", internalFrame2);
 
-        BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
-        BtnEdit.setMnemonic('G');
-        BtnEdit.setText("Ganti");
-        BtnEdit.setToolTipText("Alt+G");
-        BtnEdit.setIconTextGap(3);
-        BtnEdit.setName("BtnEdit"); // NOI18N
-        BtnEdit.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEditActionPerformed(evt);
-            }
-        });
-        BtnEdit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnEditKeyPressed(evt);
-            }
-        });
-        panelisi1.add(BtnEdit);
+        internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame5.setBorder(null);
+        internalFrame5.setName("internalFrame5"); // NOI18N
+        internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
+        TabSetting.addTab("Pegaturan Harga Per Barang", internalFrame5);
 
-        BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
-        BtnKeluar.setMnemonic('K');
-        BtnKeluar.setText("Keluar");
-        BtnKeluar.setToolTipText("Alt+K");
-        BtnKeluar.setName("BtnKeluar"); // NOI18N
-        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnKeluarActionPerformed(evt);
-            }
-        });
-        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnKeluarKeyPressed(evt);
-            }
-        });
-        panelisi1.add(BtnKeluar);
-
-        internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
+        internalFrame1.add(TabSetting, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -627,36 +735,50 @@ public class DlgSetHarga extends javax.swing.JDialog {
 }//GEN-LAST:event_ranapvvipKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(ralan.getText().trim().equals("")){
-            Valid.textKosong(ralan,"Keuntungan di Rawat Jalan");
-        }else if(ranapk1.getText().trim().equals("")){
-            Valid.textKosong(ranapk1,"Keuntungan di Ranap Kelas 1");
-        }else if(ranapk2.getText().trim().equals("")){
-            Valid.textKosong(ranapk2,"Keuntungan di Ranap Kelas 2");
-        }else if(ranapk3.getText().trim().equals("")){
-            Valid.textKosong(ranapk3,"Keuntungan di Ranap Kelas 3");
-        }else if(ranaputama.getText().trim().equals("")){
-            Valid.textKosong(ranaputama,"Keuntungan di Ranap Kelas Utama");
-        }else if(ranapvip.getText().trim().equals("")){
-            Valid.textKosong(ranapvip,"Keuntungan di Ranap Kelas VIP");
-        }else if(ranapvvip.getText().trim().equals("")){
-            Valid.textKosong(ranapvvip,"Keuntungan di Ranap Kelas VVIP");
-        }else if(beliluar.getText().trim().equals("")){
-            Valid.textKosong(beliluar,"Keuntungan Jika Beli dari Apotek Lain");
-        }else if(jualbebas.getText().trim().equals("")){
-            Valid.textKosong(jualbebas,"Keuntungan di Penjualan Bebas");
-        }else if(karyawan.getText().trim().equals("")){
-            Valid.textKosong(karyawan,"Keuntungan Jika Pasien/Pembeli Karyawan");
-        }else if(kdjns.getText().trim().equals("")||nmjns.getText().trim().equals("")){
-            Valid.textKosong(kdjns,"Jenis Barang");
-        }else{            
-            Sequel.menyimpan("setpenjualan","'"+ralan.getText()+"','"+ranapk1.getText()+"','"+
-                    ranapk2.getText()+"','"+ranapk3.getText()+"','"+ranaputama.getText()+"','"+
-                    ranapvip.getText()+"','"+ranapvvip.getText()+"','"+beliluar.getText()+"','"+
-                    jualbebas.getText()+"','"+karyawan.getText()+"','"+kdjns.getText()+"'","Set Harga");
-            tampil();
-            emptTeks();
+        if(TabSetting.getSelectedIndex()==0){
+            if(tabModePengaturanUmum.getRowCount()>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu pengaturan ...!!!!");
+                cmbPengaturan.requestFocus();
+            }else{
+                Sequel.menyimpan("set_harga_obat","?",1,new String[]{
+                    cmbPengaturan.getSelectedItem().toString()
+                });
+                tampilpengaturanumum();
+                emptTeks();
+            }
+        }else if(TabSetting.getSelectedIndex()==2){
+            if(ralan.getText().trim().equals("")){
+                Valid.textKosong(ralan,"Keuntungan di Rawat Jalan");
+            }else if(ranapk1.getText().trim().equals("")){
+                Valid.textKosong(ranapk1,"Keuntungan di Ranap Kelas 1");
+            }else if(ranapk2.getText().trim().equals("")){
+                Valid.textKosong(ranapk2,"Keuntungan di Ranap Kelas 2");
+            }else if(ranapk3.getText().trim().equals("")){
+                Valid.textKosong(ranapk3,"Keuntungan di Ranap Kelas 3");
+            }else if(ranaputama.getText().trim().equals("")){
+                Valid.textKosong(ranaputama,"Keuntungan di Ranap Kelas Utama");
+            }else if(ranapvip.getText().trim().equals("")){
+                Valid.textKosong(ranapvip,"Keuntungan di Ranap Kelas VIP");
+            }else if(ranapvvip.getText().trim().equals("")){
+                Valid.textKosong(ranapvvip,"Keuntungan di Ranap Kelas VVIP");
+            }else if(beliluar.getText().trim().equals("")){
+                Valid.textKosong(beliluar,"Keuntungan Jika Beli dari Apotek Lain");
+            }else if(jualbebas.getText().trim().equals("")){
+                Valid.textKosong(jualbebas,"Keuntungan di Penjualan Bebas");
+            }else if(karyawan.getText().trim().equals("")){
+                Valid.textKosong(karyawan,"Keuntungan Jika Pasien/Pembeli Karyawan");
+            }else if(kdjns.getText().trim().equals("")||nmjns.getText().trim().equals("")){
+                Valid.textKosong(kdjns,"Jenis Barang");
+            }else{            
+                Sequel.menyimpan("setpenjualan","'"+ralan.getText()+"','"+ranapk1.getText()+"','"+
+                        ranapk2.getText()+"','"+ranapk3.getText()+"','"+ranaputama.getText()+"','"+
+                        ranapvip.getText()+"','"+ranapvvip.getText()+"','"+beliluar.getText()+"','"+
+                        jualbebas.getText()+"','"+karyawan.getText()+"','"+kdjns.getText()+"'","Set Harga");
+                tampil();
+                emptTeks();
+            }
         }
+            
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -678,16 +800,20 @@ public class DlgSetHarga extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
-            ranapvip.requestFocus();
-        }else if(ranapvvip.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
-        }else if(! ranapvvip.getText().trim().equals("")){
-            Sequel.queryu("delete from setpenjualan where kdjns='"+kdjns.getText()+"'");
-            tampil();
-            emptTeks();
-        }
+        if(TabSetting.getSelectedIndex()==0){
+            Sequel.queryu("delete from set_harga_obat");
+        }else if(TabSetting.getSelectedIndex()==2){
+            if(tabMode.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+                ranapvip.requestFocus();
+            }else if(ranapvvip.getText().trim().equals("")){
+                JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
+            }else if(! ranapvvip.getText().trim().equals("")){
+                Sequel.queryu("delete from setpenjualan where kdjns='"+kdjns.getText()+"'");
+                tampil();
+                emptTeks();
+            }
+        }            
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -774,41 +900,50 @@ public class DlgSetHarga extends javax.swing.JDialog {
     }//GEN-LAST:event_beliluarMouseMoved
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        TabSettingMouseClicked(null);
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(ralan.getText().trim().equals("")){
-            Valid.textKosong(ralan,"Keuntungan di Rawat Jalan");
-        }else if(ranapk1.getText().trim().equals("")){
-            Valid.textKosong(ranapk1,"Keuntungan di Ranap Kelas 1");
-        }else if(ranapk2.getText().trim().equals("")){
-            Valid.textKosong(ranapk2,"Keuntungan di Ranap Kelas 2");
-        }else if(ranapk3.getText().trim().equals("")){
-            Valid.textKosong(ranapk3,"Keuntungan di Ranap Kelas 3");
-        }else if(ranaputama.getText().trim().equals("")){
-            Valid.textKosong(ranaputama,"Keuntungan di Ranap Kelas Utama");
-        }else if(ranapvip.getText().trim().equals("")){
-            Valid.textKosong(ranapvip,"Keuntungan di Ranap Kelas VIP");
-        }else if(ranapvvip.getText().trim().equals("")){
-            Valid.textKosong(ranapvvip,"Keuntungan di Ranap Kelas VVIP");
-        }else if(beliluar.getText().trim().equals("")){
-            Valid.textKosong(beliluar,"Keuntungan Jika Beli dari Apotek Lain");
-        }else if(jualbebas.getText().trim().equals("")){
-            Valid.textKosong(jualbebas,"Keuntungan di Penjualan Bebas");
-        }else if(karyawan.getText().trim().equals("")){
-            Valid.textKosong(karyawan,"Keuntungan Jika Pasien/Pembeli Karyawan");
-        }else if(kdjns.getText().trim().equals("")||nmjns.getText().trim().equals("")){
-            Valid.textKosong(kdjns,"Jenis Barang");
-        }else{
-            Sequel.queryu("delete from setpenjualan where kdjns='"+kdjns.getText()+"'");
-            Sequel.menyimpan("setpenjualan","'"+ralan.getText()+"','"+ranapk1.getText()+"','"+
-                    ranapk2.getText()+"','"+ranapk3.getText()+"','"+ranaputama.getText()+"','"+
-                    ranapvip.getText()+"','"+ranapvvip.getText()+"','"+beliluar.getText()+"','"+
-                    jualbebas.getText()+"','"+karyawan.getText()+"','"+kdjns.getText()+"'","Set Harga");
-            tampil();
+        if(TabSetting.getSelectedIndex()==0){
+            Sequel.queryu("delete from set_harga_obat");
+            Sequel.menyimpan("set_harga_obat","?",1,new String[]{
+                cmbPengaturan.getSelectedItem().toString()
+            });
+            tampilpengaturanumum();
             emptTeks();
-        }
+        }else if(TabSetting.getSelectedIndex()==2){
+            if(ralan.getText().trim().equals("")){
+                Valid.textKosong(ralan,"Keuntungan di Rawat Jalan");
+            }else if(ranapk1.getText().trim().equals("")){
+                Valid.textKosong(ranapk1,"Keuntungan di Ranap Kelas 1");
+            }else if(ranapk2.getText().trim().equals("")){
+                Valid.textKosong(ranapk2,"Keuntungan di Ranap Kelas 2");
+            }else if(ranapk3.getText().trim().equals("")){
+                Valid.textKosong(ranapk3,"Keuntungan di Ranap Kelas 3");
+            }else if(ranaputama.getText().trim().equals("")){
+                Valid.textKosong(ranaputama,"Keuntungan di Ranap Kelas Utama");
+            }else if(ranapvip.getText().trim().equals("")){
+                Valid.textKosong(ranapvip,"Keuntungan di Ranap Kelas VIP");
+            }else if(ranapvvip.getText().trim().equals("")){
+                Valid.textKosong(ranapvvip,"Keuntungan di Ranap Kelas VVIP");
+            }else if(beliluar.getText().trim().equals("")){
+                Valid.textKosong(beliluar,"Keuntungan Jika Beli dari Apotek Lain");
+            }else if(jualbebas.getText().trim().equals("")){
+                Valid.textKosong(jualbebas,"Keuntungan di Penjualan Bebas");
+            }else if(karyawan.getText().trim().equals("")){
+                Valid.textKosong(karyawan,"Keuntungan Jika Pasien/Pembeli Karyawan");
+            }else if(kdjns.getText().trim().equals("")||nmjns.getText().trim().equals("")){
+                Valid.textKosong(kdjns,"Jenis Barang");
+            }else{
+                Sequel.queryu("delete from setpenjualan where kdjns='"+kdjns.getText()+"'");
+                Sequel.menyimpan("setpenjualan","'"+ralan.getText()+"','"+ranapk1.getText()+"','"+
+                        ranapk2.getText()+"','"+ranapk3.getText()+"','"+ranaputama.getText()+"','"+
+                        ranapvip.getText()+"','"+ranapvvip.getText()+"','"+beliluar.getText()+"','"+
+                        jualbebas.getText()+"','"+karyawan.getText()+"','"+kdjns.getText()+"'","Set Harga");
+                tampil();
+                emptTeks();
+            }
+        }            
     }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -984,6 +1119,36 @@ public class DlgSetHarga extends javax.swing.JDialog {
         jenis.setVisible(true);
     }//GEN-LAST:event_BtnJenisActionPerformed
 
+    private void TabSettingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabSettingMouseClicked
+        if(TabSetting.getSelectedIndex()==0){
+            tampil();
+        }
+    }//GEN-LAST:event_TabSettingMouseClicked
+
+    private void tbPengaturanUmumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPengaturanUmumMouseClicked
+        if(tabModePengaturanUmum.getRowCount()!=0){
+            try {
+                getDataPengaturanUmum();
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+    }//GEN-LAST:event_tbPengaturanUmumMouseClicked
+
+    private void tbPengaturanUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPengaturanUmumKeyPressed
+        if(tabModePengaturanUmum.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getDataPengaturanUmum();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbPengaturanUmumKeyPressed
+
+    private void cmbPengaturanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbPengaturanKeyPressed
+        
+    }//GEN-LAST:event_cmbPengaturanKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1009,8 +1174,16 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.Button BtnSimpan;
     private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
+    private widget.ScrollPane Scroll2;
+    private javax.swing.JTabbedPane TabSetting;
     private widget.TextBox beliluar;
+    private widget.ComboBox cmbPengaturan;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame2;
+    private widget.InternalFrame internalFrame3;
+    private widget.InternalFrame internalFrame4;
+    private widget.InternalFrame internalFrame5;
+    private widget.Label jLabel5;
     private widget.TextBox jualbebas;
     private widget.TextBox karyawan;
     private widget.TextBox kdjns;
@@ -1026,6 +1199,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.Label label42;
     private widget.Label label43;
     private widget.TextBox nmjns;
+    private widget.panelisi panelGlass8;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi2;
     private javax.swing.JMenuItem ppUPdate;
@@ -1037,22 +1211,20 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.TextBox ranapvip;
     private widget.TextBox ranapvvip;
     private widget.Table tbAdmin;
+    private widget.Table tbPengaturanUmum;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        String sql="select setpenjualan.ralan, setpenjualan.kelas1, setpenjualan.kelas2, "+
+        Valid.tabelKosong(tabMode);
+        try{
+            ps=koneksi.prepareStatement(
+                   "select setpenjualan.ralan, setpenjualan.kelas1, setpenjualan.kelas2, "+
                    "setpenjualan.kelas3, setpenjualan.utama, setpenjualan.vip, setpenjualan.vvip, "+
                    "setpenjualan.beliluar, setpenjualan.jualbebas, setpenjualan.karyawan, "+
                    "setpenjualan.kdjns,jenis.nama from setpenjualan inner join jenis on "+
-                   "setpenjualan.kdjns=jenis.kdjns order by jenis.nama";
-        prosesCari(sql);
-    }
-
-    private void prosesCari(String sql) {
-        Valid.tabelKosong(tabMode);
-        try{
+                   "setpenjualan.kdjns=jenis.kdjns order by jenis.nama");
             try {
-                rs=koneksi.prepareStatement(sql).executeQuery();
+                rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
@@ -1065,6 +1237,36 @@ public class DlgSetHarga extends javax.swing.JDialog {
             } finally{
                 if(rs!=null){
                     rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void tampilpengaturanumum() {
+        Valid.tabelKosong(tabModePengaturanUmum);
+        try{
+            ps=koneksi.prepareStatement(
+                   "select * from set_harga_obat");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModePengaturanUmum.addRow(new Object[]{
+                        rs.getString(1)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
                 }
             }
         }catch(Exception e){
@@ -1089,20 +1291,31 @@ public class DlgSetHarga extends javax.swing.JDialog {
             nmjns.setText(tabMode.getValueAt(row,11).toString());
         }
     }
+    
+    private void getDataPengaturanUmum() {
+        int row=tbPengaturanUmum.getSelectedRow();
+        if(row!= -1){
+            cmbPengaturan.setSelectedItem(tabModePengaturanUmum.getValueAt(row,0).toString());
+        }
+    }
 
     public void emptTeks() {
-        ralan.setText("0");
-        ranapk1.setText("0");
-        ranapk2.setText("0");
-        ranapk3.setText("0");
-        ranaputama.setText("0");
-        ranapvip.setText("0");
-        ranapvvip.setText("0");
-        beliluar.setText("0");
-        jualbebas.setText("0");
-        karyawan.setText("0");
-        kdjns.setText("");
-        nmjns.setText("");
-        ralan.requestFocus();
+        if(TabSetting.getSelectedIndex()==0){
+            cmbPengaturan.requestFocus();
+        }else if(TabSetting.getSelectedIndex()==2){
+            ralan.setText("0");
+            ranapk1.setText("0");
+            ranapk2.setText("0");
+            ranapk3.setText("0");
+            ranaputama.setText("0");
+            ranapvip.setText("0");
+            ranapvvip.setText("0");
+            beliluar.setText("0");
+            jualbebas.setText("0");
+            karyawan.setText("0");
+            kdjns.setText("");
+            nmjns.setText("");
+            ralan.requestFocus();
+        }            
     }
 }
