@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/permintaan/DlgCariPermintaanRadiologi.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/DlgPeriksaLaboratorium.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/DlgPeriksaRadiologi.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/setting/DlgSetRM.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/setting/DlgSetHarga.java</file>
         </group>
     </open-files>
 </project-private>
