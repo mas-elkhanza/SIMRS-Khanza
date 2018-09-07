@@ -52,7 +52,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     private int i=0;
     private String URL="";
     private BPJSApi api=new BPJSApi();
-    private BPJSCekReferensiSpesialistik spesialis=new BPJSCekReferensiSpesialistik(null,false);
+    private BPJSCekReferensiPoli spesialis=new BPJSCekReferensiPoli(null,false);
         
     /** Creates new form DlgKamar
      * @param parent
