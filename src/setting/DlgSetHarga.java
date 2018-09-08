@@ -249,6 +249,10 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         Popup = new javax.swing.JPopupMenu();
         ppUPdate = new javax.swing.JMenuItem();
+        Popup1 = new javax.swing.JPopupMenu();
+        ppUPdate1 = new javax.swing.JMenuItem();
+        Popup2 = new javax.swing.JPopupMenu();
+        ppUPdate2 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi1 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -377,6 +381,44 @@ public class DlgSetHarga extends javax.swing.JDialog {
         });
         Popup.add(ppUPdate);
 
+        Popup1.setName("Popup1"); // NOI18N
+
+        ppUPdate1.setBackground(new java.awt.Color(255, 255, 255));
+        ppUPdate1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppUPdate1.setForeground(new java.awt.Color(130, 100, 100));
+        ppUPdate1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppUPdate1.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
+        ppUPdate1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppUPdate1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppUPdate1.setIconTextGap(8);
+        ppUPdate1.setName("ppUPdate1"); // NOI18N
+        ppUPdate1.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppUPdate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppUPdate1ActionPerformed(evt);
+            }
+        });
+        Popup1.add(ppUPdate1);
+
+        Popup2.setName("Popup2"); // NOI18N
+
+        ppUPdate2.setBackground(new java.awt.Color(255, 255, 255));
+        ppUPdate2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppUPdate2.setForeground(new java.awt.Color(130, 100, 100));
+        ppUPdate2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppUPdate2.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
+        ppUPdate2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppUPdate2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppUPdate2.setIconTextGap(8);
+        ppUPdate2.setName("ppUPdate2"); // NOI18N
+        ppUPdate2.setPreferredSize(new java.awt.Dimension(300, 25));
+        ppUPdate2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppUPdate2ActionPerformed(evt);
+            }
+        });
+        Popup2.add(ppUPdate2);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -503,6 +545,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll2.setComponentPopupMenu(Popup1);
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
@@ -820,13 +863,13 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         internalFrame4.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
-        Scroll1.setComponentPopupMenu(Popup);
+        Scroll1.setComponentPopupMenu(Popup1);
         Scroll1.setDoubleBuffered(true);
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
         tbPengaturanHargaUmum.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbPengaturanHargaUmum.setComponentPopupMenu(Popup);
+        tbPengaturanHargaUmum.setComponentPopupMenu(Popup1);
         tbPengaturanHargaUmum.setName("tbPengaturanHargaUmum"); // NOI18N
         tbPengaturanHargaUmum.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1549,11 +1592,13 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         internalFrame5.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
+        Scroll3.setComponentPopupMenu(Popup2);
         Scroll3.setDoubleBuffered(true);
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
         tbPengaturanHargaPerBarang.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPengaturanHargaPerBarang.setComponentPopupMenu(Popup2);
         tbPengaturanHargaPerBarang.setName("tbPengaturanHargaPerBarang"); // NOI18N
         tbPengaturanHargaPerBarang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2141,31 +2186,18 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
     private void ppUPdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppUPdateActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        for (int i = 0; i < tbAdmin.getRowCount(); i++) { 
-            if(tbAdmin.getValueAt(i,10).toString().equals("-")){
-                Sequel.queryu2("update databarang set ralan=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,0).toString()+"/100))),"+
-                    "kelas1=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,1).toString()+"/100))),"+
-                    "kelas2=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,2).toString()+"/100))),"+
-                    "kelas3=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,3).toString()+"/100))),"+
-                    "utama=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,4).toString()+"/100))),"+
-                    "vip=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,5).toString()+"/100))),"+
-                    "vvip=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,6).toString()+"/100))),"+
-                    "beliluar=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,7).toString()+"/100))),"+
-                    "jualbebas=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,8).toString()+"/100))),"+
-                    "karyawan=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,9).toString()+"/100)))");
-            }else{
-                Sequel.queryu2("update databarang set ralan=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,0).toString()+"/100))),"+
-                    "kelas1=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,1).toString()+"/100))),"+
-                    "kelas2=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,2).toString()+"/100))),"+
-                    "kelas3=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,3).toString()+"/100))),"+
-                    "utama=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,4).toString()+"/100))),"+
-                    "vip=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,5).toString()+"/100))),"+
-                    "vvip=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,6).toString()+"/100))),"+
-                    "beliluar=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,7).toString()+"/100))),"+
-                    "jualbebas=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,8).toString()+"/100))),"+
-                    "karyawan=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,9).toString()+"/100))) where "+
-                    "kdjns='"+tbAdmin.getValueAt(i,10).toString()+"'");
-            }                
+        for (int i = 0; i < tbAdmin.getRowCount(); i++) {             
+            Sequel.queryu2("update databarang set ralan=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,0).toString()+"/100))),"+
+                "kelas1=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,1).toString()+"/100))),"+
+                "kelas2=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,2).toString()+"/100))),"+
+                "kelas3=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,3).toString()+"/100))),"+
+                "utama=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,4).toString()+"/100))),"+
+                "vip=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,5).toString()+"/100))),"+
+                "vvip=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,6).toString()+"/100))),"+
+                "beliluar=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,7).toString()+"/100))),"+
+                "jualbebas=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,8).toString()+"/100))),"+
+                "karyawan=round(h_beli+(h_beli*("+tbAdmin.getValueAt(i,9).toString()+"/100))) where "+
+                "kdjns='"+tbAdmin.getValueAt(i,10).toString()+"'");                           
         }            
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppUPdateActionPerformed
@@ -2681,6 +2713,41 @@ public class DlgSetHarga extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnAll1KeyPressed
 
+    private void ppUPdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppUPdate1ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        for (int i = 0; i < tbPengaturanHargaUmum.getRowCount(); i++) {             
+            Sequel.queryu2("update databarang set ralan=round(h_beli+(h_beli*("+tbPengaturanHargaUmum.getValueAt(i,0).toString()+"/100))),"+
+                "kelas1=round(h_beli+(h_beli*("+tbPengaturanHargaUmum.getValueAt(i,1).toString()+"/100))),"+
+                "kelas2=round(h_beli+(h_beli*("+tbPengaturanHargaUmum.getValueAt(i,2).toString()+"/100))),"+
+                "kelas3=round(h_beli+(h_beli*("+tbPengaturanHargaUmum.getValueAt(i,3).toString()+"/100))),"+
+                "utama=round(h_beli+(h_beli*("+tbPengaturanHargaUmum.getValueAt(i,4).toString()+"/100))),"+
+                "vip=round(h_beli+(h_beli*("+tbPengaturanHargaUmum.getValueAt(i,5).toString()+"/100))),"+
+                "vvip=round(h_beli+(h_beli*("+tbPengaturanHargaUmum.getValueAt(i,6).toString()+"/100))),"+
+                "beliluar=round(h_beli+(h_beli*("+tbPengaturanHargaUmum.getValueAt(i,7).toString()+"/100))),"+
+                "jualbebas=round(h_beli+(h_beli*("+tbPengaturanHargaUmum.getValueAt(i,8).toString()+"/100))),"+
+                "karyawan=round(h_beli+(h_beli*("+tbPengaturanHargaUmum.getValueAt(i,9).toString()+"/100)))");                           
+        }            
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppUPdate1ActionPerformed
+
+    private void ppUPdate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppUPdate2ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        for (int i = 0; i < tbPengaturanHargaPerBarang.getRowCount(); i++) {             
+            Sequel.queryu2("update databarang set ralan=round(h_beli+(h_beli*("+tbPengaturanHargaPerBarang.getValueAt(i,0).toString()+"/100))),"+
+                "kelas1=round(h_beli+(h_beli*("+tbPengaturanHargaPerBarang.getValueAt(i,1).toString()+"/100))),"+
+                "kelas2=round(h_beli+(h_beli*("+tbPengaturanHargaPerBarang.getValueAt(i,2).toString()+"/100))),"+
+                "kelas3=round(h_beli+(h_beli*("+tbPengaturanHargaPerBarang.getValueAt(i,3).toString()+"/100))),"+
+                "utama=round(h_beli+(h_beli*("+tbPengaturanHargaPerBarang.getValueAt(i,4).toString()+"/100))),"+
+                "vip=round(h_beli+(h_beli*("+tbPengaturanHargaPerBarang.getValueAt(i,5).toString()+"/100))),"+
+                "vvip=round(h_beli+(h_beli*("+tbPengaturanHargaPerBarang.getValueAt(i,6).toString()+"/100))),"+
+                "beliluar=round(h_beli+(h_beli*("+tbPengaturanHargaPerBarang.getValueAt(i,7).toString()+"/100))),"+
+                "jualbebas=round(h_beli+(h_beli*("+tbPengaturanHargaPerBarang.getValueAt(i,8).toString()+"/100))),"+
+                "karyawan=round(h_beli+(h_beli*("+tbPengaturanHargaPerBarang.getValueAt(i,9).toString()+"/100))) where "+
+                "kode_brng='"+tbPengaturanHargaPerBarang.getValueAt(i,10).toString()+"'");                           
+        }            
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_ppUPdate2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2712,6 +2779,8 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.Label LCount1;
     private javax.swing.JPopupMenu Popup;
+    private javax.swing.JPopupMenu Popup1;
+    private javax.swing.JPopupMenu Popup2;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
@@ -2783,6 +2852,8 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.panelisi panelisi5;
     private widget.panelisi panelisi6;
     private javax.swing.JMenuItem ppUPdate;
+    private javax.swing.JMenuItem ppUPdate1;
+    private javax.swing.JMenuItem ppUPdate2;
     private widget.TextBox ralan;
     private widget.TextBox ralanperbarang;
     private widget.TextBox ralanumum;
