@@ -622,6 +622,10 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnDirujuk = new javax.swing.JMenuItem();
         MnDIrawat = new javax.swing.JMenuItem();
         MnMeninggal = new javax.swing.JMenuItem();
+        MnPulangPaksa = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        MnStatusBaru = new javax.swing.JMenuItem();
+        MnStatusLama = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         MnCheckList = new javax.swing.JMenuItem();
         MnCheckList1 = new javax.swing.JMenuItem();
@@ -1733,6 +1737,71 @@ public final class DlgIGD extends javax.swing.JDialog {
             }
         });
         MnStatus.add(MnMeninggal);
+
+        MnPulangPaksa.setBackground(new java.awt.Color(255, 255, 255));
+        MnPulangPaksa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPulangPaksa.setForeground(new java.awt.Color(130, 100, 100));
+        MnPulangPaksa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPulangPaksa.setText("Pulang Paksa");
+        MnPulangPaksa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPulangPaksa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPulangPaksa.setIconTextGap(5);
+        MnPulangPaksa.setName("MnPulangPaksa"); // NOI18N
+        MnPulangPaksa.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnPulangPaksa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPulangPaksaBtnPrintActionPerformed(evt);
+            }
+        });
+        MnStatus.add(MnPulangPaksa);
+
+        jMenu7.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu7.setForeground(new java.awt.Color(130, 100, 100));
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        jMenu7.setText("Status Poli");
+        jMenu7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jMenu7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jMenu7.setIconTextGap(5);
+        jMenu7.setName("jMenu7"); // NOI18N
+        jMenu7.setOpaque(true);
+        jMenu7.setPreferredSize(new java.awt.Dimension(240, 26));
+
+        MnStatusBaru.setBackground(new java.awt.Color(255, 255, 255));
+        MnStatusBaru.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnStatusBaru.setForeground(new java.awt.Color(130, 100, 100));
+        MnStatusBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnStatusBaru.setText("Status Poli Baru");
+        MnStatusBaru.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnStatusBaru.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnStatusBaru.setIconTextGap(5);
+        MnStatusBaru.setName("MnStatusBaru"); // NOI18N
+        MnStatusBaru.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnStatusBaru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnStatusBaruActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnStatusBaru);
+
+        MnStatusLama.setBackground(new java.awt.Color(255, 255, 255));
+        MnStatusLama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnStatusLama.setForeground(new java.awt.Color(130, 100, 100));
+        MnStatusLama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnStatusLama.setText("Status Poli Lama");
+        MnStatusLama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnStatusLama.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnStatusLama.setIconTextGap(5);
+        MnStatusLama.setName("MnStatusLama"); // NOI18N
+        MnStatusLama.setPreferredSize(new java.awt.Dimension(170, 26));
+        MnStatusLama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnStatusLamaActionPerformed(evt);
+            }
+        });
+        jMenu7.add(MnStatusLama);
+
+        MnStatus.add(jMenu7);
 
         jPopupMenu1.add(MnStatus);
 
@@ -5633,6 +5702,38 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnPermintaanRadiologiActionPerformed
 
+    private void MnPulangPaksaBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPulangPaksaBtnPrintActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"No.Rawat");
+        }else{
+            if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+            }else {
+                Valid.editTable(tabMode,"reg_periksa","no_rawat",TNoRw,"stts='Pulang Paksa'");
+                if(tabMode.getRowCount()!=0){tampil();}
+            }
+
+        }
+    }//GEN-LAST:event_MnPulangPaksaBtnPrintActionPerformed
+
+    private void MnStatusBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnStatusBaruActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"No.Rawat");
+        }else{
+            Valid.editTable(tabMode,"reg_periksa","no_rawat",TNoRw,"status_poli='Baru'");
+            if(tabMode.getRowCount()!=0){tampil();}
+        }
+    }//GEN-LAST:event_MnStatusBaruActionPerformed
+
+    private void MnStatusLamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnStatusLamaActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"No.Rawat");
+        }else{
+            Valid.editTable(tabMode,"reg_periksa","no_rawat",TNoRw,"status_poli='Lama'");
+            if(tabMode.getRowCount()!=0){tampil();}
+        }
+    }//GEN-LAST:event_MnStatusLamaActionPerformed
+
     /**
     * @data args the command line arguments
     */
@@ -5753,6 +5854,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnPermintaanRadiologi;
     private javax.swing.JMenuItem MnPersetujuanMedis;
     private javax.swing.JMenuItem MnPoliInternal;
+    private javax.swing.JMenuItem MnPulangPaksa;
     private javax.swing.JMenuItem MnRawatJalan;
     private javax.swing.JMenuItem MnResepDOkter;
     private javax.swing.JMenuItem MnRujuk;
@@ -5764,6 +5866,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnSPBK;
     private javax.swing.JMenuItem MnSPBK1;
     private javax.swing.JMenu MnStatus;
+    private javax.swing.JMenuItem MnStatusBaru;
+    private javax.swing.JMenuItem MnStatusLama;
     private javax.swing.JMenuItem MnSudah;
     private javax.swing.JMenu MnTindakan;
     private widget.TextBox NoBalasan;
@@ -5822,6 +5926,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kddokter;
