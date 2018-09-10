@@ -26,8 +26,8 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariDokter;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariPetugas;
 
 
 /**
@@ -48,7 +48,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private int i=0,countbayar=0,z=0,jml=0,index=0;
     private String[] Nama_Akun_Bayar,Kode_Rek_Bayar,Bayar,PPN_Persen,PPN_Besar;
     private boolean[] pilih; 
-    private String[] kode,nama,kategori;
+    private String[] kode,nama,kategori,tglpermintaan,jampermintaan;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen,tarif_perujuk;
     private PreparedStatement psakunbayar,pstindakan,pstindakan2,pstindakan3,
             pstindakan4,psset_tarif,psBayarDr,psBayarPr,psBayarDrPr,psreg,
@@ -208,7 +208,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         warna.kolom=2;
         tbAkunBayar.setDefaultRenderer(Object.class,warna);
         
-        TabModeTindakanDr=new DefaultTableModel(null,new Object[]{"P","Kode","Nama Perawatan","Kategori","Tarif","Bagian RS","BHP","JM Dokter","JM Perawat","KSO","Menejemen"}){
+        TabModeTindakanDr=new DefaultTableModel(null,new Object[]{
+                "P","Kode","Nama Perawatan","Kategori","Tarif","Bagian RS","BHP",
+                "JM Dokter","JM Perawat","KSO","Menejemen","Tgl.Permintaan","Jam Permintaan"
+            }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -220,7 +223,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class,  
                 java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Double.class,java.lang.Double.class
+                java.lang.Double.class,java.lang.Double.class, java.lang.Object.class, 
+                java.lang.Object.class
              };
              /*Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -233,7 +237,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         tbRawatDr.setModel(TabModeTindakanDr);
         tbRawatDr.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbRawatDr.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (i = 0; i < 11; i++) {
+        for (i = 0; i < 13; i++) {
             TableColumn column = tbRawatDr.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -267,13 +271,24 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 //column.setMinWidth(0);
                 //column.setMaxWidth(0);
                 column.setPreferredWidth(70);
+            }else if(i==11){
+                //column.setMinWidth(0);
+                //column.setMaxWidth(0);
+                column.setPreferredWidth(70);
+            }else if(i==12){
+                //column.setMinWidth(0);
+                //column.setMaxWidth(0);
+                column.setPreferredWidth(70);
             }else{
                 column.setPreferredWidth(90);
             }
         }
         tbRawatDr.setDefaultRenderer(Object.class, new WarnaTable());
         
-        TabModeTindakanPr=new DefaultTableModel(null,new Object[]{"P","Kode","Nama Perawatan","Kategori","Tarif","Bagian RS","BHP","JM Dokter","JM Perawat","KSO","Menejemen"}){
+        TabModeTindakanPr=new DefaultTableModel(null,new Object[]{
+                "P","Kode","Nama Perawatan","Kategori","Tarif","Bagian RS","BHP",
+                "JM Dokter","JM Perawat","KSO","Menejemen","Tgl.Permintaan","Jam Permintaan"
+            }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -285,7 +300,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class,  
                 java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Double.class,java.lang.Double.class
+                java.lang.Double.class,java.lang.Double.class,java.lang.Object.class,
+                java.lang.Object.class
              };
              /*Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -298,7 +314,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         tbRawatPr.setModel(TabModeTindakanPr);
         tbRawatPr.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbRawatPr.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (i = 0; i < 11; i++) {
+        for (i = 0; i < 13; i++) {
             TableColumn column = tbRawatPr.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -332,13 +348,24 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 //column.setMinWidth(0);
                 //column.setMaxWidth(0);
                 column.setPreferredWidth(70);
+            }else if(i==11){
+                //column.setMinWidth(0);
+                //column.setMaxWidth(0);
+                column.setPreferredWidth(70);
+            }else if(i==12){
+                //column.setMinWidth(0);
+                //column.setMaxWidth(0);
+                column.setPreferredWidth(70);
             }else{
                 column.setPreferredWidth(90);
             }
         }
         tbRawatPr.setDefaultRenderer(Object.class, new WarnaTable());
         
-        TabModeTindakanDrPr=new DefaultTableModel(null,new Object[]{"P","Kode","Nama Perawatan","Kategori","Tarif","Bagian RS","BHP","JM Dokter","JM Perawat","KSO","Menejemen"}){
+        TabModeTindakanDrPr=new DefaultTableModel(null,new Object[]{
+                "P","Kode","Nama Perawatan","Kategori","Tarif","Bagian RS","BHP",
+                "JM Dokter","JM Perawat","KSO","Menejemen","Tgl.Permintaan","Jam Permintaan"
+            }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -350,7 +377,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class,  
                 java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Double.class,java.lang.Double.class
+                java.lang.Double.class,java.lang.Double.class,java.lang.Object.class,
+                java.lang.Object.class
              };
              /*Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -363,7 +391,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         tbRawatDrPr.setModel(TabModeTindakanDrPr);
         tbRawatDrPr.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbRawatDrPr.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (i = 0; i < 11; i++) {
+        for (i = 0; i < 13; i++) {
             TableColumn column = tbRawatDrPr.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -394,6 +422,14 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 //column.setMaxWidth(0);
                 column.setPreferredWidth(70);
             }else if(i==10){
+                //column.setMinWidth(0);
+                //column.setMaxWidth(0);
+                column.setPreferredWidth(70);
+            }else if(i==11){
+                //column.setMinWidth(0);
+                //column.setMaxWidth(0);
+                column.setPreferredWidth(70);
+            }else if(i==13){
                 //column.setMinWidth(0);
                 //column.setMaxWidth(0);
                 column.setPreferredWidth(70);
@@ -1221,7 +1257,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Billing/Pembayaran Parsial Rawat Jalan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Billing/Pembayaran Parsial Rawat Jalan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelGlass1.setPreferredSize(new java.awt.Dimension(100, 45));
@@ -1270,7 +1306,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-03-2018 11:32:41" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018 01:02:19" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setOpaque(false);
         DTPTgl.setPreferredSize(new java.awt.Dimension(135, 23));
@@ -1520,9 +1556,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(130,100,100));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1531,7 +1567,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         });
 
         internalFrame2.setBorder(null);
-        internalFrame2.setForeground(new java.awt.Color(90, 120, 80));
+        internalFrame2.setForeground(new java.awt.Color(130,100,100));
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
         panelGlass7.setPreferredSize(new java.awt.Dimension(44, 44));
@@ -1568,7 +1604,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame2.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
-        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         Scroll3.setOpaque(true);
         Scroll3.setPreferredSize(new java.awt.Dimension(540, 500));
         Scroll3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1593,7 +1629,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll3, java.awt.BorderLayout.WEST);
 
-        Scroll4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        Scroll4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         Scroll4.setOpaque(true);
         Scroll4.setPreferredSize(new java.awt.Dimension(400, 404));
 
@@ -1653,7 +1689,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame3.add(panelGlass10, java.awt.BorderLayout.PAGE_START);
 
-        Scroll5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        Scroll5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         Scroll5.setOpaque(true);
         Scroll5.setPreferredSize(new java.awt.Dimension(540, 500));
 
@@ -1673,7 +1709,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame3.add(Scroll5, java.awt.BorderLayout.WEST);
 
-        Scroll6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        Scroll6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         Scroll6.setOpaque(true);
         Scroll6.setPreferredSize(new java.awt.Dimension(400, 404));
 
@@ -1762,7 +1798,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame4.add(panelGlass11, java.awt.BorderLayout.PAGE_START);
 
-        Scroll7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        Scroll7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Tindakan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         Scroll7.setOpaque(true);
         Scroll7.setPreferredSize(new java.awt.Dimension(540, 500));
 
@@ -1782,7 +1818,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame4.add(Scroll7, java.awt.BorderLayout.WEST);
 
-        Scroll8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        Scroll8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         Scroll8.setOpaque(true);
         Scroll8.setPreferredSize(new java.awt.Dimension(400, 404));
 
@@ -1807,7 +1843,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         internalFrame5.setBorder(null);
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Daftar Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        Scroll10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         Scroll10.setOpaque(true);
         Scroll10.setPreferredSize(new java.awt.Dimension(540, 500));
 
@@ -1827,7 +1863,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame5.add(Scroll10, java.awt.BorderLayout.WEST);
 
-        Scroll11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        Scroll11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         Scroll11.setOpaque(true);
         Scroll11.setPreferredSize(new java.awt.Dimension(400, 404));
 
@@ -1920,12 +1956,12 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame6.add(panelGlass12, java.awt.BorderLayout.PAGE_START);
 
-        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Daftar Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Pemeriksaan ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame7.setLayout(new java.awt.BorderLayout(1, 1));
 
-        TabRawatLaborat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawatLaborat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawatLaborat.setForeground(new java.awt.Color(90, 120, 80));
+        TabRawatLaborat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawatLaborat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 250, 233)));
+        TabRawatLaborat.setForeground(new java.awt.Color(130,100,100));
         TabRawatLaborat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatLaborat.setPreferredSize(new java.awt.Dimension(540, 500));
         TabRawatLaborat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1976,12 +2012,12 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame6.add(internalFrame7, java.awt.BorderLayout.WEST);
 
-        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame8.setLayout(new java.awt.BorderLayout(1, 1));
 
-        TabRawatLaborat1.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawatLaborat1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawatLaborat1.setForeground(new java.awt.Color(90, 120, 80));
+        TabRawatLaborat1.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawatLaborat1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawatLaborat1.setForeground(new java.awt.Color(130,100,100));
         TabRawatLaborat1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatLaborat1.setPreferredSize(new java.awt.Dimension(540, 500));
         TabRawatLaborat1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2035,10 +2071,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         TabRawat.addTab("Laboratorium", internalFrame6);
 
         internalFrame9.setBorder(null);
-        internalFrame9.setForeground(new java.awt.Color(90, 120, 80));
+        internalFrame9.setForeground(new java.awt.Color(130,100,100));
         internalFrame9.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Daftar Obat ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        Scroll13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Obat ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         Scroll13.setOpaque(true);
         Scroll13.setPreferredSize(new java.awt.Dimension(540, 500));
         Scroll13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2063,7 +2099,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame9.add(Scroll13, java.awt.BorderLayout.WEST);
 
-        Scroll17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 242, 232)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        Scroll17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         Scroll17.setOpaque(true);
         Scroll17.setPreferredSize(new java.awt.Dimension(400, 404));
 
@@ -2927,6 +2963,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     kso=new double[jml];
                     menejemen=null;
                     menejemen=new double[jml];
+                    tglpermintaan=null;
+                    tglpermintaan=new String[jml];
+                    jampermintaan=null;
+                    jampermintaan=new String[jml];
 
                     index=0;        
                     for(i=0;i<tbRawatDr.getRowCount();i++){
@@ -2941,7 +2981,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                             jmdokter[index]=Double.parseDouble(tbRawatDr.getValueAt(i,7).toString());
                             jmperawat[index]=Double.parseDouble(tbRawatDr.getValueAt(i,8).toString());  
                             kso[index]=Double.parseDouble(tbRawatDr.getValueAt(i,9).toString());
-                            menejemen[index]=Double.parseDouble(tbRawatDr.getValueAt(i,10).toString());  
+                            menejemen[index]=Double.parseDouble(tbRawatDr.getValueAt(i,10).toString()); 
+                            tglpermintaan[index]=tbRawatDr.getValueAt(i,11).toString();
+                            jampermintaan[index]=tbRawatDr.getValueAt(i,12).toString(); 
                             index++;
                         }
                     }       
@@ -2950,7 +2992,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
                     for(i=0;i<jml;i++){
                         TabModeTindakanDr.addRow(new Object[] {
-                            pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i]
+                            pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i],tglpermintaan[i],jampermintaan[i]
                         });
                     }
                     break;
@@ -2984,6 +3026,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     kso=new double[jml];
                     menejemen=null;
                     menejemen=new double[jml];
+                    tglpermintaan=null;
+                    tglpermintaan=new String[jml];
+                    jampermintaan=null;
+                    jampermintaan=new String[jml];
 
                     index=0;        
                     for(i=0;i<tbRawatPr.getRowCount();i++){
@@ -2999,6 +3045,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                             jmperawat[index]=Double.parseDouble(tbRawatPr.getValueAt(i,8).toString());  
                             kso[index]=Double.parseDouble(tbRawatPr.getValueAt(i,9).toString());
                             menejemen[index]=Double.parseDouble(tbRawatPr.getValueAt(i,10).toString());  
+                            tglpermintaan[index]=tbRawatPr.getValueAt(i,11).toString();
+                            jampermintaan[index]=tbRawatPr.getValueAt(i,12).toString(); 
                             index++;
                         }
                     }       
@@ -3007,7 +3055,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
                     for(i=0;i<jml;i++){
                         TabModeTindakanPr.addRow(new Object[] {
-                            pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i]
+                            pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i],tglpermintaan[i],jampermintaan[i]
                         });
                     }
                     break;
@@ -3041,6 +3089,10 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     kso=new double[jml];
                     menejemen=null;
                     menejemen=new double[jml];
+                    tglpermintaan=null;
+                    tglpermintaan=new String[jml];
+                    jampermintaan=null;
+                    jampermintaan=new String[jml];
 
                     index=0;        
                     for(i=0;i<tbRawatDrPr.getRowCount();i++){
@@ -3056,6 +3108,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                             jmperawat[index]=Double.parseDouble(tbRawatDrPr.getValueAt(i,8).toString());  
                             kso[index]=Double.parseDouble(tbRawatDrPr.getValueAt(i,9).toString());
                             menejemen[index]=Double.parseDouble(tbRawatDrPr.getValueAt(i,10).toString());  
+                            tglpermintaan[index]=tbRawatDrPr.getValueAt(i,11).toString();
+                            jampermintaan[index]=tbRawatDrPr.getValueAt(i,12).toString(); 
                             index++;
                         }
                     }       
@@ -3064,7 +3118,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
                     for(i=0;i<jml;i++){
                         TabModeTindakanDrPr.addRow(new Object[] {
-                            pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i]
+                            pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i],tglpermintaan[i],jampermintaan[i]
                         });
                     }
                     break;
@@ -3142,7 +3196,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                     rstindakan.getDouble("total_byrdr"),rstindakan.getDouble("material"),
                                     rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),
                                     rstindakan.getDouble("tarif_tindakanpr"),rstindakan.getDouble("kso"),
-                                    rstindakan.getDouble("menejemen")
+                                    rstindakan.getDouble("menejemen"),"0000-00-00","00:00:00"
                                 });
                             }                        
                         }
@@ -3155,7 +3209,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                     rstindakan.getDouble("total_byrpr"),rstindakan.getDouble("material"),
                                     rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),
                                     rstindakan.getDouble("tarif_tindakanpr"),rstindakan.getDouble("kso"),
-                                    rstindakan.getDouble("menejemen")
+                                    rstindakan.getDouble("menejemen"),"0000-00-00","00:00:00"
                                 });
                             }                            
                         } 
@@ -3168,7 +3222,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                     rstindakan.getDouble("total_byrdrpr"),rstindakan.getDouble("material"),
                                     rstindakan.getDouble("bhp"),rstindakan.getDouble("tarif_tindakandr"),
                                     rstindakan.getDouble("tarif_tindakanpr"),rstindakan.getDouble("kso"),
-                                    rstindakan.getDouble("menejemen")
+                                    rstindakan.getDouble("menejemen"),"0000-00-00","00:00:00"
                                 });
                             } 
                         }
@@ -3203,7 +3257,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     }
     
     private void tampilBayar() {        
-        try {
+        /*try {
             switch (TabRawat.getSelectedIndex()) {
                 case 0:
                     Valid.tabelKosong(tabModeDrBayar);
@@ -3365,7 +3419,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     
         } catch (Exception e) {
             System.out.println("keuangan.DlgBilingParsialRalan.tampilBayar() : "+e);
-        } 
+        } */
     }
 
     private void tampilbilling() {
@@ -4140,7 +4194,55 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         if(notaralan.equals("Yes")){
             BtnNotaActionPerformed(null);
         }
-        
+        if(ttl<=0){
+            JOptionPane.showMessageDialog(null,"Maaf, silahkan masukkan tagihan ...!!!");
+        }else{
+            int jawab=JOptionPane.showConfirmDialog(null, "Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            if(jawab==JOptionPane.YES_OPTION){
+                for(i=0;i<tbRawatDr.getRowCount();i++){
+                    if(tbRawatDr.getValueAt(i,0).toString().equals("true")){
+                        if(Sequel.menyimpantf2("permintaan_jl_dr","?,?,?,?,?,?,?","Tindakan dokter",7,new String[]{
+                             TNoRw.getText(),tbRawatDr.getValueAt(i,1).toString(),KdDok.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
+                             DTPTgl.getSelectedItem().toString().substring(11,19),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
+                             DTPTgl.getSelectedItem().toString().substring(11,19)
+                          })==false){
+                            tbRawatDr.setValueAt(false,i,0);
+                        }
+                    }
+                }
+                for(i=0;i<tbRawatPr.getRowCount();i++){
+                    if(tbRawatPr.getValueAt(i,0).toString().equals("true")){
+                        if(Sequel.menyimpantf2("permintaan_jl_pr","?,?,?,?,?,?,?","Tindakan paramedis",7,new String[]{
+                             TNoRw.getText(),tbRawatPr.getValueAt(i,1).toString(),kdptg.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
+                             DTPTgl.getSelectedItem().toString().substring(11,19),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
+                             DTPTgl.getSelectedItem().toString().substring(11,19)
+                          })==false){
+                            tbRawatPr.setValueAt(false,i,0);
+                        }
+                    }
+                }
+                for(i=0;i<tbRawatDrPr.getRowCount();i++){
+                    if(tbRawatDrPr.getValueAt(i,0).toString().equals("true")){
+                        jml++;
+                    }
+                }
+                for(i=0;i<tbRadiologi.getRowCount();i++){
+                    if(tbRadiologi.getValueAt(i,0).toString().equals("true")){
+                        jml++;
+                    }
+                }
+                for(i=0;i<tbLaborat.getRowCount();i++){
+                    if(tbLaborat.getValueAt(i,0).toString().equals("true")){
+                        jml++;
+                    }
+                }
+                for(i=0;i<tbSubLaborat.getRowCount();i++){
+                    if(tbSubLaborat.getValueAt(i,0).toString().equals("true")){
+                        jml++;
+                    }
+                }
+            }                
+        }
     }
     
 }

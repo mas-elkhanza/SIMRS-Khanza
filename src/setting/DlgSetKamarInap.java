@@ -48,7 +48,12 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(457,249);
 
-        Object[] row={"Jam Minimal Dihitung di Kamar","Hitung Hari dari Awal Masuk","Fee Perujuk Ranap","Aktifkan Diagnosa Akhir","Biaya Ranap Gabung Bayi"};
+        Object[] row={
+            "Jam Minimal Dihitung di Kamar","Hitung Hari dari Awal Masuk",
+            "Fee Perujuk Ranap","Aktifkan Diagnosa Akhir",
+            "Biaya Ranap Gabung Bayi","Aktifkan Hapus Data Salah",
+            "Aktifkan Kamar Inap di Kasir Ralan"
+        };
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -59,7 +64,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         tbAdmin.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbAdmin.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 7; i++) {
             TableColumn column = tbAdmin.getColumnModel().getColumn(i);
             column.setPreferredWidth(150);            
         }
@@ -69,12 +74,6 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         Jam.setDocument(new batasInput((byte)30).getOnlyAngka(Jam));
         fee.setDocument(new batasInput((byte)15).getOnlyAngka(fee));
         Bayi.setDocument(new batasInput((byte)15).getOnlyAngka(Bayi));
-        try {
-            ps=koneksi.prepareStatement("select * from set_jam_minimal ");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        
     }
 
     /** This method is called from within the constructor to
@@ -102,6 +101,10 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         jLabel9 = new widget.Label();
         Bayi = new widget.TextBox();
         jLabel10 = new widget.Label();
+        jLabel11 = new widget.Label();
+        cmbYes3 = new widget.ComboBox();
+        cmbYes4 = new widget.ComboBox();
+        jLabel12 = new widget.Label();
         panelGlass5 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -118,7 +121,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -144,7 +147,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 107));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 137));
         panelGlass7.setLayout(null);
 
         jLabel4.setText("Jam Minimal Dihitung di Kamar :");
@@ -183,12 +186,12 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(cmbYes);
-        cmbYes.setBounds(455, 12, 60, 23);
+        cmbYes.setBounds(166, 102, 60, 23);
 
         jLabel7.setText("Hitung Hari dari Awal Masuk :");
         jLabel7.setName("jLabel7"); // NOI18N
         panelGlass7.add(jLabel7);
-        jLabel7.setBounds(292, 12, 160, 23);
+        jLabel7.setBounds(0, 102, 163, 23);
 
         fee.setHighlighter(null);
         fee.setName("fee"); // NOI18N
@@ -203,7 +206,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         jLabel8.setText("Aktifkan Diagnosa Akhir :");
         jLabel8.setName("jLabel8"); // NOI18N
         panelGlass7.add(jLabel8);
-        jLabel8.setBounds(292, 42, 160, 23);
+        jLabel8.setBounds(292, 12, 160, 23);
 
         cmbYes2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
         cmbYes2.setName("cmbYes2"); // NOI18N
@@ -215,7 +218,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(cmbYes2);
-        cmbYes2.setBounds(455, 42, 60, 23);
+        cmbYes2.setBounds(455, 12, 60, 23);
 
         jLabel9.setText("Biaya Ranap Gabung Bayi :");
         jLabel9.setName("jLabel9"); // NOI18N
@@ -237,6 +240,40 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         jLabel10.setName("jLabel10"); // NOI18N
         panelGlass7.add(jLabel10);
         jLabel10.setBounds(219, 72, 50, 23);
+
+        jLabel11.setText("Aktifkan Hapus Data Salah :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        panelGlass7.add(jLabel11);
+        jLabel11.setBounds(292, 42, 160, 23);
+
+        cmbYes3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
+        cmbYes3.setName("cmbYes3"); // NOI18N
+        cmbYes3.setOpaque(false);
+        cmbYes3.setPreferredSize(new java.awt.Dimension(55, 28));
+        cmbYes3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbYes3KeyPressed(evt);
+            }
+        });
+        panelGlass7.add(cmbYes3);
+        cmbYes3.setBounds(455, 42, 60, 23);
+
+        cmbYes4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
+        cmbYes4.setName("cmbYes4"); // NOI18N
+        cmbYes4.setOpaque(false);
+        cmbYes4.setPreferredSize(new java.awt.Dimension(55, 28));
+        cmbYes4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbYes4KeyPressed(evt);
+            }
+        });
+        panelGlass7.add(cmbYes4);
+        cmbYes4.setBounds(455, 72, 60, 23);
+
+        jLabel12.setText("Aktifkan Kamar Inap di Kasir Ralan :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        panelGlass7.add(jLabel12);
+        jLabel12.setBounds(242, 72, 210, 23);
 
         internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
@@ -351,11 +388,11 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         }else if(fee.getText().trim().equals("")){
             Valid.textKosong(fee,"Fee Perujuk Ranap");
         }else if(tabMode.getRowCount()==0){
-            Sequel.menyimpan("set_jam_minimal","'"+Jam.getText()+"','"+cmbYes.getSelectedItem()+"','"+fee.getText()+"','"+cmbYes2.getSelectedItem()+"','"+Bayi.getText()+"'","Set Kamar Inap");
+            Sequel.menyimpan("set_jam_minimal","'"+Jam.getText()+"','"+cmbYes.getSelectedItem()+"','"+fee.getText()+"','"+cmbYes2.getSelectedItem()+"','"+Bayi.getText()+"','"+cmbYes3.getSelectedItem()+"','"+cmbYes4.getSelectedItem()+"'","Set Kamar Inap");
             tampil();
             emptTeks();
         }else if(tabMode.getRowCount()>0){
-            JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu setup jam ...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu setup ...!!!!");
             Jam.requestFocus();
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -456,7 +493,7 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
             Valid.textKosong(fee,"Fee Perujuk Ranap");
         }else{
             Sequel.queryu("delete from set_jam_minimal");
-            Sequel.menyimpan("set_jam_minimal","'"+Jam.getText()+"','"+cmbYes.getSelectedItem()+"','"+fee.getText()+"','"+cmbYes2.getSelectedItem()+"','"+Bayi.getText()+"'","Jumlah Jam");
+            Sequel.menyimpan("set_jam_minimal","'"+Jam.getText()+"','"+cmbYes.getSelectedItem()+"','"+fee.getText()+"','"+cmbYes2.getSelectedItem()+"','"+Bayi.getText()+"','"+cmbYes3.getSelectedItem()+"','"+cmbYes4.getSelectedItem()+"'","Set Kamar Inap");
             tampil();
             emptTeks();
         }
@@ -481,6 +518,14 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
     private void BayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BayiKeyPressed
         Valid.pindah(evt, cmbYes2,BtnSimpan);
     }//GEN-LAST:event_BayiKeyPressed
+
+    private void cmbYes3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbYes3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbYes3KeyPressed
+
+    private void cmbYes4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbYes4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbYes4KeyPressed
 
     /**
     * @param args the command line arguments
@@ -509,9 +554,13 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
     private widget.ScrollPane Scroll;
     private widget.ComboBox cmbYes;
     private widget.ComboBox cmbYes2;
+    private widget.ComboBox cmbYes3;
+    private widget.ComboBox cmbYes4;
     private widget.TextBox fee;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
+    private widget.Label jLabel11;
+    private widget.Label jLabel12;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -525,11 +574,28 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
 
     public void tampil() {
         Valid.tabelKosong(tabMode);
-        try{            
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),Valid.SetAngka(rs.getDouble(3)),rs.getString(4),rs.getString(5)});
-             }
+        try{   
+            ps=koneksi.prepareStatement("select * from set_jam_minimal ");
+            try {
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),
+                        Valid.SetAngka(rs.getDouble(3)),
+                        rs.getString(4),rs.getString(5),
+                        rs.getString(6),rs.getString(7)
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }
@@ -543,6 +609,8 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
             fee.setText(tbAdmin.getValueAt(row,2).toString());            
             cmbYes2.setSelectedItem(tbAdmin.getValueAt(row,3).toString());
             Bayi.setText(tbAdmin.getValueAt(row,4).toString());
+            cmbYes3.setSelectedItem(tbAdmin.getValueAt(row,5).toString());
+            cmbYes4.setSelectedItem(tbAdmin.getValueAt(row,6).toString());
         }
     }
 
@@ -552,6 +620,8 @@ private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKe
         Bayi.setText("0");
         cmbYes.setSelectedItem("No");
         cmbYes2.setSelectedItem("No");
+        cmbYes3.setSelectedItem("No");
+        cmbYes4.setSelectedItem("No");
         Jam.requestFocus();
     }
 }

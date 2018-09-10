@@ -35,7 +35,7 @@ public class TextArea extends JTextArea {
         setFont(new java.awt.Font("Tahoma", 0, 11));        
         setSelectionColor(new Color(50,51,0));
         setSelectedTextColor(new Color(255,255,0));
-        setForeground(new Color(60,80,50));
+        setForeground(new Color(130,100,100));
         setBackground(new Color(250,255,245));
         setSize(WIDTH,23);
         setSize(WIDTH,23);

@@ -13,13 +13,13 @@
                     $nik        ='';
                     $goto       =isset($_GET['id'])?$_GET['id']:NULL;
                 }else if($action == "UBAH"){
-                    $_sql         	= "SELECT `id`, `nik`, `nama`, `jk`, `jbtn`, `jnj_jabatan`, `departemen`, `bidang`, `stts_wp`, `stts_kerja`, `npwp`, `pendidikan`, `gapok`, `tmp_lahir`, `tgl_lahir`, `alamat`, `kota`, `mulai_kerja`, `ms_kerja`, `indexins`, `bpd`, `rekening`, `stts_aktif`, `wajibmasuk`, `pengurang`, `indek`, `mulai_kontrak`, `cuti_diambil` FROM pegawai WHERE id='$id'";
-                    $hasil        	= bukaquery($_sql);
-                    $baris        	= mysqli_fetch_row($hasil);                    
+                    $_sql           = "SELECT `id`, `nik`, `nama`, `jk`, `jbtn`, `jnj_jabatan`, `departemen`, `bidang`, `stts_wp`, `stts_kerja`, `npwp`, `pendidikan`, `gapok`, `tmp_lahir`, `tgl_lahir`, `alamat`, `kota`, `mulai_kerja`, `ms_kerja`, `indexins`, `bpd`, `rekening`, `stts_aktif`, `wajibmasuk`, `pengurang`, `indek`, `mulai_kontrak`, `cuti_diambil`,`photo` FROM pegawai WHERE id='$id'";
+                    $hasil          = bukaquery($_sql);
+                    $baris          = mysqli_fetch_row($hasil);                    
 
-                    $id               = $baris[0];
-                    $nik              = $baris[1];
-                    $nik2              = $baris[1];
+                    $id             = $baris[0];
+                    $nik            = $baris[1];
+                    $nik2           = $baris[1];
                     $nama           = $baris[2];
                     $jk             = $baris[3];
                     $jbtn           = $baris[4];
@@ -60,6 +60,7 @@
                     $TglKontrak     =substr($baris[26],8,2);
 
                     $mulai_kontrak  = $ThnKontrak+"-"+$BlnKontrak+"-"+$TglKontrak;
+                    @$photo          = $baris["photo"];
                     
                 }
                 echo"<input type=hidden name=id value=$id><input type=hidden name=nik2 value=$nik2><input type=hidden name=action value=$action>";
@@ -499,6 +500,12 @@
                         <span id="MsgIsi23" style="color:#CC0000; font-size:10px;"></span>
                     </td>
                 </tr>
+                <tr class="head">
+                    <td width="25%" >Photo</td><td width="">:</td>
+                    <td width="75%">
+                        <input name="photo" class="text2"  type=file  value="<?php echo $photo;?>" size="15" maxlength="250" />                                          
+                    </td>
+                </tr>
             </table>
        </div>
             <div align="center"><input name=BtnSimpan type=submit class="button" value="SIMPAN">&nbsp;<input name=BtnKosong type=reset class="button" value="KOSONG"></div>
@@ -532,6 +539,8 @@
 					$wajibmasuk     = trim($_POST['wajibmasuk']);
 
                     $mulai_kontrak   = trim($_POST['ThnKontrak'])."-".trim($_POST['BlnKontrak'])."-".trim($_POST['TglKontrak']);
+                    $photo              = "pages/pegawai/photo/".$_FILES['photo']['name'];
+                    move_uploaded_file($_FILES['photo']['tmp_name'],$photo);
                     
                     if ((!empty($nik))&&(!empty($jnj_jabatan))&&(!empty($departemen))&&(!empty($bidang))&&(!empty($stts_wp))&&(!empty($stts_kerja))&&
 			(!empty($pendidikan))&&(!empty($tgl_lahir))&&(!empty($mulai_kerja))&&(!empty($indexins))&&(!empty($bpd))) {
@@ -540,10 +549,16 @@
                                 Tambah(" pegawai ","'','$nik','$nama','$jk','$jbtn','$jnj_jabatan','$departemen','$bidang','$stts_wp',
 							'$stts_kerja','$npwp','$pendidikan','0','$tmp_lahir','$tgl_lahir','$alamat',
 							'$kota','$mulai_kerja','$ms_kerja','$indexins','$bpd','$rekening','$stts_aktif',
-                                                        '$wajibmasuk','0','0','$mulai_kontrak','0','0'", " pegawai " );
+                                                        '$wajibmasuk','0','0','$mulai_kontrak','0','0','$photo'", " pegawai " );
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='1;URL=?act=InputPegawai&action=TAMBAH'></head><body></body></html>";
                                 break;
                             case "UBAH":
+                                if($photo=="pages/pegawai/photo/"){
+                                    $ph="";
+                                }else if($photo<>"pages/pegawai/photo/"){
+                                    $ph=",photo='$photo'";
+                                }
+                                
                                 Ubah2(" dokter ","nm_dokter='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
                                         tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',almt_tgl='$alamat' where kd_dokter='$nik2'");
                                 Ubah2(" petugas ","nama='$nama',jk='".str_replace("Wanita","P",str_replace("Pria","L",$jk))."',
@@ -552,7 +567,7 @@
 					bidang='$bidang',stts_wp='$stts_wp',stts_kerja='$stts_kerja',npwp='$npwp',pendidikan='$pendidikan',
 					tmp_lahir='$tmp_lahir',tgl_lahir='$tgl_lahir',alamat='$alamat',kota='$kota',mulai_kontrak='$mulai_kontrak',
 					mulai_kerja='$mulai_kerja',ms_kerja='$ms_kerja',indexins='$indexins',bpd='$bpd',
-					rekening='$rekening',stts_aktif='$stts_aktif',wajibmasuk='$wajibmasuk' WHERE id='$id' ", " pegawai ");
+					rekening='$rekening',stts_aktif='$stts_aktif',wajibmasuk='$wajibmasuk' ".$ph." WHERE id='$id' ", " pegawai ");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=InputPegawai&action=UBAH&id=$id'></head><body></body></html>";
                                 break;
                         }
