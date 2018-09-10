@@ -85,9 +85,9 @@ if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) { redirect('inde
 
             if ($_POST['username'] !=="" || $_POST['password'] !=="") { 
 
-                $sql = "SELECT * FROM user WHERE AES_DECRYPT(id_user','nur') = '".$_POST["username"]."' and AES_DECRYPT(password,'windi')='".$_POST["password"]."'";
+                $sql = "SELECT * FROM user WHERE AES_DECRYPT(id_user,'nur') = '".$_POST["username"]."' and AES_DECRYPT(password,'windi')='".$_POST["password"]."'";
                 $found = query($sql);
-            
+                
                 echo "user : ".$_POST['username'] ;
                 echo "password : ".$_POST['password'] ;
                 echo "Data : ".num_rows($found);

@@ -39,7 +39,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+              <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -147,7 +147,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="27-03-2018 22:15:10"/>
+                    <StringItem index="0" value="23-05-2018 01:02:19"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -202,7 +202,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="74" y="10" width="347" height="-1"/>
+                  <AbsoluteConstraints x="74" y="10" width="210" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -223,7 +223,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="424" y="10" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="286" y="10" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -244,7 +244,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="457" y="10" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="317" y="10" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -303,11 +303,11 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="533" y="10" width="110" height="23"/>
+                  <AbsoluteConstraints x="613" y="10" width="110" height="23"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="TtlSemua">
+            <Component class="widget.TextBox" name="TagihanPPN">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="text" type="java.lang.String" value="0"/>
@@ -319,11 +319,11 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TtlSemuaKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TagihanPPNKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="645" y="10" width="230" height="23"/>
+                  <AbsoluteConstraints x="725" y="10" width="150" height="23"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -486,22 +486,55 @@
                 </Constraint>
               </Constraints>
             </Component>
+            <Component class="widget.TextBox" name="TtlSemua">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="0"/>
+                </Property>
+                <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="null"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TtlSemuaKeyPressed"/>
+              </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="460" y="10" width="150" height="23"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="widget.Label" name="jLabel11">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Total Tagihan : Rp."/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[95, 23]"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="350" y="10" width="110" height="23"/>
+                </Constraint>
+              </Constraints>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JTabbedPane" name="TabRawat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f5" green="ff" red="fa" type="rgb"/>
+              <Color blue="fd" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
-                  <Color PropertyName="color" blue="e1" green="eb" red="e6" type="rgb"/>
+                  <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="50" green="78" red="5a" type="rgb"/>
+              <Color blue="64" green="64" red="82" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
@@ -524,7 +557,7 @@
                   <Border info="null"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="50" green="78" red="5a" type="rgb"/>
+                  <Color blue="64" green="64" red="82" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -620,11 +653,11 @@
                         <TitledBorder title=" Daftar Tindakan ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -663,11 +696,11 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -800,11 +833,11 @@
                         <TitledBorder title=" Daftar Tindakan ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -840,11 +873,11 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -1032,11 +1065,11 @@
                         <TitledBorder title=" Daftar Tindakan ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -1072,11 +1105,11 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -1133,11 +1166,11 @@
                         <TitledBorder title=" Daftar Pemeriksaan ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -1173,11 +1206,11 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -1380,11 +1413,11 @@
                         <TitledBorder title=" Daftar Pemeriksaan ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -1403,17 +1436,17 @@
                     <Container class="javax.swing.JTabbedPane" name="TabRawatLaborat">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="f5" green="ff" red="fa" type="rgb"/>
+                          <Color blue="fd" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e1" green="eb" red="e6" type="rgb"/>
+                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="50" green="78" red="5a" type="rgb"/>
+                          <Color blue="64" green="64" red="82" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="11" style="0"/>
@@ -1502,11 +1535,11 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -1525,17 +1558,17 @@
                     <Container class="javax.swing.JTabbedPane" name="TabRawatLaborat1">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="f5" green="ff" red="fa" type="rgb"/>
+                          <Color blue="fd" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e1" green="eb" red="e6" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="50" green="78" red="5a" type="rgb"/>
+                          <Color blue="64" green="64" red="82" type="rgb"/>
                         </Property>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Tahoma" size="11" style="0"/>
@@ -1625,7 +1658,7 @@
                   <Border info="null"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="50" green="78" red="5a" type="rgb"/>
+                  <Color blue="64" green="64" red="82" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1648,11 +1681,11 @@
                         <TitledBorder title=" Daftar Obat ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>
@@ -1691,11 +1724,11 @@
                         <TitledBorder title=" Sudah Dibayar ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder>
-                              <Color PropertyName="color" blue="e8" green="f2" red="ed" type="rgb"/>
+                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                             </LineBorder>
                           </Border>
                           <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                          <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                          <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                         </TitledBorder>
                       </Border>
                     </Property>

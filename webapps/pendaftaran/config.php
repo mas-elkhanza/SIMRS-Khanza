@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 /***
-* e-Dokter from version 0.1 Beta
-* Last modified: 02 Pebruari 2018
+* e-Pasien from version 0.1 Beta
+* Last modified: 06 July 2018
 * Author : drg. Faisol Basoro
-* Email : drg.faisol@basoro.org
+* Email : dentix.id@gmail.com
 *
 * File : config.php
 * Description : Main config, function and helper
@@ -18,11 +18,19 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'sik');
 
-$connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME); 
+$connection = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-define('VERSION', '0.1 Beta');
+define('VERSION', '1.8 Beta');
 define('URL', '');
 define('DIR', '');
+define('HARIDAFTAR', '03'); // Batasi hari pendaftaran 3 hari kedepan
+define('LIMITJAM', '21:00:00'); // Batasi jam pendaftaran
+define('SIGNUP', 'DISABLE'); // ENABLE atau DISABLE pendaftaran pasien baru
+define('KODE_BERKAS', '002'); // Kode katergori berkas digital. Sesuaikan dengan kode yang ada di SIMRS.
+define('UKURAN_BERKAS', '5000000'); // Ukuran berkas digital dalam byte
+define('PENGADUAN', 'ENABLE'); // ENABLE atau DISABLE fitur pengaduan pasien.
+define('PRODUCTION', 'YES'); // YES to hide error page. NO to display error page.
+define('URUTNOREG', 'DOKTER'); // DOKTER or POLI.
 
 function escape($string) {
     global $connection;
@@ -81,7 +89,33 @@ if($hari[0]=="Sunday"){
     $namahari="SABTU";
 }
 
-// Get settings 
+$day = date('D', strtotime($date));
+$dayList = array(
+	'Sun' => 'Minggu',
+	'Mon' => 'Senin',
+	'Tue' => 'Selasa',
+	'Wed' => 'Rabu',
+	'Thu' => 'Kamis',
+	'Fri' => 'Jumat',
+	'Sat' => 'Sabtu'
+);
+$bulan = date('m', strtotime($date));
+$bulanList = array(
+	'01' => 'Januari',
+	'02' => 'Pebruari',
+	'03' => 'Maret',
+	'04' => 'April',
+	'05' => 'Mei',
+	'06' => 'Jumat',
+	'07' => 'Jumat',
+	'08' => 'Jumat',
+	'09' => 'Jumat',
+	'10' => 'Jumat',
+	'11' => 'Jumat',
+	'12' => 'Sabtu'
+);
+
+// Get settings
 $getSettings = query("SELECT * FROM setting");
 $dataSettings = fetch_assoc($getSettings);
 
@@ -118,5 +152,14 @@ function validation_errors($error) {
     return $errors;
 }
 
-
-
+// check if nik exits
+function nik_exits($no_ktp) {
+    $sql = "SELECT no_ktp FROM pasien WHERE no_ktp = '$no_ktp' ";
+    $result = query($sql);
+    // check if we found something
+    if(num_rows($result) == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}

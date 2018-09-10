@@ -126,7 +126,339 @@ if(isset($_GET['id'])) {
                                 <dd><?php echo $umur; ?></dd>
                             </dl>
                         </div>
-                   	    <form method="post" action="">
+                        
+                        <form method="post" action="">
+                        <div class="header">
+                            <h2> Detail e-Sign Vital </h2>
+                        </div>
+
+                         <?php 
+                        if ($_POST['ok_vital']) {
+                            if (($_POST['ok_vital'] <> "") and ($no_rawat <> "")) {
+                                $insert = query("INSERT INTO pemeriksaan_ralan 
+                                                (no_rawat, tgl_perawatan,jam_rawat,
+                                                 suhu_tubuh,tensi,nadi,respirasi,
+                                                tinggi,berat,gcs,keluhan,pemeriksaan,alergi,imun_ke,
+                                                kepala,mata,hidung,gimul,tenggorokan,telinga,leher,
+                                                thoraks,jantung,paru,abdomen,genital_anus,ekstremitas,
+                                                kulit) 
+                                                 VALUES ('{$no_rawat}',
+                                                         '{$_POST['tgl_perawatan']}',
+                                                          '{$_POST['jam_rawat']}',
+                                                         '{$_POST['suhu_tubuh']}',
+                                                         '{$_POST['tensi']}',
+                                                         '{$_POST['nadi']}',
+                                                          '{$_POST['respirasi']}',
+                                                         '{$_POST['tinggi']}',
+                                                         '{$_POST['berat']}',
+                                                          '{$_POST['gcs']}',
+                                                         '{$_POST['keluhan']}',
+                                                         '{$_POST['pemeriksaan']}',
+                                                          '{$_POST['alergi']}',
+                                                         '{$_POST['imun_ke']}',
+                                                         '{$_POST['kepala']}',
+                                                         '{$_POST['mata']}',
+                                                         '{$_POST['hidung']}',
+                                                          '{$_POST['gimul']}',
+                                                         '{$_POST['tenggorokan']}',
+                                                         '{$_POST['telinga']}',
+                                                          '{$_POST['leher']}',
+                                                         '{$_POST['thoraks']}',
+                                                         '{$_POST['jantung']}',
+                                                          '{$_POST['paru']}',
+                                                         '{$_POST['abdomen']}',
+                                                         '{$_POST['genital_anus']}',
+                                                          '{$_POST['ekstremitas']}',
+                                                         '{$_POST['kulit']}'
+                                                     )");
+                                if ($insert) {
+                                    redirect("pasien.php?action=view&id={$id}");
+                                }
+                            }
+                        }
+                        ?>
+                        <div class="body" >
+                            <dl class="dl-horizontal">
+                                <dt>Anamnesa</dt> 
+                                        <dd>
+                                            <input name="keluhan" placeholder="anamnesa" class="form-control" style="width:50%">
+                                        </dd> </br>
+                                <dt>Pemeriksaan</dt>
+                                    <dd>
+                                        <input name="pemeriksaan" placeholder="pemeriksaan" class="
+                                        form-control" style="width:70%">
+
+                                    </dd> </br>
+                                <dt>Suhu </dt>
+                                    <dd>
+                                        <input name="suhu_tubuh" placeholder="suhu" class="form-control" style="width:30%"></br>
+                                    </dd>
+                                <dt>Tensi</dt>
+                                    <dd>
+                                        <input name="tensi" placeholder="tensi" class="form-control" style="width:30%"></br>
+                                    </dd>
+                                <dt>Berat</dt>
+                                    <dd>
+                                        <input name="berat" placeholder="berat" class="form-control" style="width:30%"></br>
+                                    </dd>
+                                <dt>Tinggi</dt>
+                                    <dd>
+                                        <input name="tinggi" placeholder="tinggi" class="form-control" style="width:30%"></br>
+                                    </dd>
+                                 <dt>Nadi</dt>
+                                    <dd>
+                                        <input name="nadi" placeholder="nadi" class="form-control" style="width:30%"></br>
+                                    </dd>
+
+                                <dt>GCS</dt>
+                                    <dd>
+                                        <input name="gcs" placeholder="E,V,M" class="form-control" style="width:30%"></br>
+                                    </dd>
+
+                                <dt>Respirasi</dt>
+                                    <dd>
+                                        <input name="respirasi" placeholder="respirasi" class="form-control" style="width:50%"></br>
+                                    </dd>
+
+                                 <dt>Alergi</dt>
+                                    <dd>
+                                        <input name="alergi" placeholder="alergi" class="form-control" style="width:50%"></br>
+                                    </dd>
+
+                                <dt>Imun ke</dt>
+                                    <dd>
+                                        <input name="imun_ke" placeholder="imun_ke" class="form-control" style="width:30%"></br>
+                                        <input name="tgl_perawatan" type="hidden" 
+                                                value="<? echo date ('Y-m-d'); ?>" >
+                                         <input name="jam_rawat" type="hidden" 
+                                                value="<? echo date ('H:i:s'); ?>" >
+                                    </dd>
+                                 <dt>Kepala</dt>
+                                    <dd>
+                                        <select name="kepala" class="form-control" id="kepala">
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt>Mata</dt>
+                                    <dd>
+                                        <select name="mata" class="form-control" id="mata" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt>Hidung</dt>
+                                    <dd>
+                                        <select name="hidung" class="form-control" id="hidung" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt>Gigi dan Mulut</dt>
+                                    <dd>
+                                        <select name="gimul" class="form-control"  id="gimul" >
+                                            <option selected>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+                                <dt>Tenggorokan</dt>
+                                    <dd>
+                                        <select name="gimul" class="form-control" id="tenggorokan" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+                                 <dt>Telinga</dt>
+                                    <dd>
+                                        <select name="telinga" class="form-control" id="telinga" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt>Leher</dt>
+                                    <dd>
+                                        <select name="leher" class="form-control" id="leher" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt>Thoraks</dt>
+                                    <dd>
+                                        <select name="thoraks" class="form-control" id="thoraks" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt>Jantung</dt>
+                                    <dd>
+                                        <select name="jantung" class="form-control" id="jantung" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt>Paru</dt>
+                                    <dd>
+                                        <select name="paru" class="form-control" id="paru" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt>Abdomen</dt>
+                                    <dd>
+                                        <select name="abdomen" class="form-control" id="abdomen" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt>Genital Anus</dt>
+                                    <dd>
+                                    <select name="genital_anus" class="form-control" id="genital_anus" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt>Ekstremitas</dt>
+                                    <dd>
+                                        <select name="ekstremitas" class="form-control" id="ekstremitas" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt>Kulit</dt>
+                                    <dd>
+                                        <select name="kulit" class="form-control" id="kulit" >
+                                            <option>Normal</option>
+                                            <option>Abnormal</option>
+                                        </select>
+                                    </dd>
+
+                                <dt></dt>
+                                <dd>
+                                    <button type="submit" name="ok_vital" value="ok_vital" class="btn bg-indigo waves-effect" onclick="this.value=\'ok_vital\'">OK</button></dd><br/>
+                                <dt></dt>    
+                            </dl>
+                        </div>
+                      
+            <div class="body table-responsive">
+                <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Anamnesa</th>
+                                <th>Pemeriksaan</th>
+                                <th>Suhu</th>
+                                <th>Tensi</th>
+                                <th>Berat</th>
+                                <th>Tinggi</th>
+                                <th>Nadi</th>
+                                <th>GCS</th>
+                                <th>Respirasi</th>
+                                <th>Alergi</th>
+                                <th>Imun ke</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        <?php 
+                            $query_vital = query("SELECT a.keluhan, a.pemeriksaan, a.suhu_tubuh, a.tensi, 
+                                                         a.berat, a.tinggi, a.nadi, a.gcs, a.respirasi,
+                                                         a.alergi, a.imun_ke
+                                                  FROM pemeriksaan_ralan a, reg_periksa b, dokter c
+                                                  WHERE a.no_rawat = '{$no_rawat}' and
+                                                        a.no_rawat = b.no_rawat    and
+                                                        c.kd_dokter = '{$_SESSION['username']}'");
+                            while ($data_vital = fetch_array($query_vital)) 
+                            {
+                                ?>
+                                <tr>
+                                    <td><?php echo $data_vital['0']; ?></td>
+                                    <td><?php echo $data_vital['1']; ?></td>
+                                    <td><?php echo $data_vital['2']; ?></td>
+                                    <td><?php echo $data_vital['3']; ?></td>
+                                    <td><?php echo $data_vital['4']; ?></td>
+                                    <td><?php echo $data_vital['5']; ?></td>
+                                    <td><?php echo $data_vital['6']; ?></td>
+                                    <td><?php echo $data_vital['7']; ?></td>
+                                    <td><?php echo $data_vital['8']; ?></td>
+                                    <td><?php echo $data_vital['9']; ?></td>
+                                    <td><?php echo $data_vital['10']; ?></td>
+
+
+                                    <td><a href="<?php $_SERVER['PHP_SELF']; ?>?action=delete_obat&kode_obat=<?php echo $data_resep['0']; ?>&no_resep=<?php echo $data_resep['4']; ?>&id=<?php echo $id; ?>">Hapus</a></td>
+                                </tr>
+                                <?php 
+                            }
+                                ?>
+                    </tbody>
+                </table>
+            </div>
+
+             <div class="body table-responsive">
+                <table class="table table-striped">
+                        <thead>
+                            <tr>
+                              <th>Kepala</th>
+                              <th>Mata</th>
+                              <th>Hidung</th>
+                              <th>Gimul</th>
+                              <th>Tenggorokan</th>
+                              <th>Telinga</th>
+                              <th>Leher</th>
+                              <th>Thoraks</th>
+                              <th>Jantung</th>
+                              <th>Paru</th>
+                              <th>Abdomen</th>
+                              <th>Genital_anus</th>
+                              <th>Ekstremitas</th>
+                              <th>Kulit</th> 
+                            </tr>
+                        </thead>
+                    <tbody>
+                        <?php 
+                            $query_vital = query("SELECT a.kepala, a.mata, a.hidung, a.gimul, 
+                                                         a.tenggorokan, a.telinga, a.leher, a.thoraks,
+                                                         a.jantung,a.paru, a.abdomen, a.genital_anus,
+                                                         a.ekstremitas, a.kulit
+                                                  FROM pemeriksaan_ralan a, reg_periksa b, dokter c
+                                                  WHERE a.no_rawat = '{$no_rawat}' and
+                                                        a.no_rawat = b.no_rawat    and
+                                                        c.kd_dokter = '{$_SESSION['username']}'");
+                            while ($data_vital = fetch_array($query_vital)) 
+                            {
+                                ?>
+                                <tr>
+                                    <td><?php echo $data_vital['0']; ?></td>
+                                    <td><?php echo $data_vital['1']; ?></td>
+                                    <td><?php echo $data_vital['2']; ?></td>
+                                    <td><?php echo $data_vital['3']; ?></td>
+                                    <td><?php echo $data_vital['4']; ?></td>
+                                    <td><?php echo $data_vital['5']; ?></td>
+                                    <td><?php echo $data_vital['6']; ?></td>
+                                    <td><?php echo $data_vital['7']; ?></td>
+                                    <td><?php echo $data_vital['8']; ?></td>
+                                    <td><?php echo $data_vital['9']; ?></td>
+                                    <td><?php echo $data_vital['10']; ?></td>
+                                    <td><?php echo $data_vital['11']; ?></td>
+                                    <td><?php echo $data_vital['12']; ?></td>
+                                    <td><?php echo $data_vital['13']; ?></td>
+                                    <td><?php echo $data_vital['14']; ?></td>
+                                </tr>
+                                <?php 
+                            }
+                                ?>
+                    </tbody>
+                </table>
+            </div>
+                   	    
                         <div class="header">
                             <h2>
                                 Detail e-Diagnosa
@@ -154,7 +486,7 @@ if(isset($_GET['id'])) {
                                         <option value="2">Diagnosa Ke-2</option>
                                         <option value="3">Diagnosa Ke-3</option>
                                         <option value="4">Diagnosa Ke-4</option>
-                                        <option value="5">Diagnosa Ke-4</option>
+                                        <option value="5">Diagnosa Ke-5</option>
                                     </select>
                                 </dd><br/>
                                 <dt></dt>
@@ -176,11 +508,67 @@ if(isset($_GET['id'])) {
                                 </dd>
                             </dl>
                         </div>
+
+                        <div class="header">
+                            <h2>
+                                Detail e-Tindakan
+                            </h2>
+                        </div>
+
+                        <?php 
+                        if ($_POST['ok_tindakan']) {
+                            if (($_POST['kode_prosedur'] <> "") and ($no_rawat <> "")) {
+                                $insert = query("INSERT INTO prosedur_pasien VALUES ('{$no_rawat}', '{$_POST['kode_prosedur']}', 'Ralan', '{$_POST['prioritas']}')");
+                                if ($insert) {
+                                    redirect("pasien.php?action=view&id={$id}");
+                                }
+                            }
+                        }
+                        ?>
+
+                        <div class="body">
+                            <dl class="dl-horizontal">
+                                <dt>Tindakan</dt>
+                                <dd><select name="kode_prosedur" class="kd_prosedur" style="width:100%"></select></dd><br/>
+                                <dt>Prioritas</dt>
+                                <dd>
+                                    <select name="prioritas" class="prioritas" style="width:100%">
+                                        <option value="1">Tindakan Ke-1</option>
+                                        <option value="2">Tindakan Ke-2</option>
+                                        <option value="3">Tindakan Ke-3</option>
+                                        <option value="4">Tindakan Ke-4</option>
+                                        <option value="5">Tindakan Ke-5</option>
+                                    </select>
+                                </dd><br/>
+                                <dt></dt>
+                                <dd><button type="submit" name="ok_tindakan" value="ok_tindakan" class="btn bg-indigo waves-effect" onclick="this.value=\'ok_tindakan\'">OK</button></dd><br/>
+                                <dt></dt>
+                                <dd>
+                                    <ul style="list-style:none;margin-left:0;padding-left:0;">
+                                    <?php 
+                                    $query = query("SELECT a.kode, b.deskripsi_panjang, a.prioritas FROM prosedur_pasien a, icd9 b WHERE a.kode = b.kode AND a.no_rawat = '{$no_rawat}' ORDER BY a.prioritas ASC");
+                                    $no=1;
+                                    while ($data = fetch_array($query)) {
+                                    ?>
+                                        <li><?php echo $no; ?>. <?php echo $data['1']; ?> <a href="<?php $_SERVER['PHP_SELF']; ?>?action=delete_tindakan&kode=<?php echo $data['0']; ?>&faktur=<?php echo $no_rawat; ?>&prioritas=<?php echo $data['2']; ?>&id=<?php echo $id; ?>">[Hapus]</a></li>
+                                    <?php 
+                                        $no++;
+                                    }
+                                    ?>
+                                    </ul>
+                                </dd>
+                            </dl>
+                        </div>
+
+
+
+
                         <div class="header">
                             <h2>
                                 Detail e-Resep
                             </h2>
                         </div>
+
             			<?php 
             			if ($_POST['ok_obat']) {
                 			if (($_POST['kode_obat'] <> "") and ($no_rawat <> "")) {
@@ -253,8 +641,52 @@ if(isset($_GET['id'])) {
                 </tbody>
             </table>
             </div>
-                        </div>
+        </div>
+          <div class="header">
+                    <h2>
+                         Detail e-Lab
+                    </h2>
+            </div>
+
+            
+                <div class="body table-responsive">
+                 <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Tgl Periksa</th>
+                        <th>Jam</th>
+                        <th>Pemeriksaan</th>
+                        <th>Biaya</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php 
+                $query_lab = query("SELECT a.tgl_periksa, a.jam, b.nm_perawatan, a.biaya
+                                      FROM periksa_lab a, jns_perawatan_lab b, reg_periksa c 
+                                      WHERE a.no_rawat = c.no_rawat AND a.kd_jenis_prw = b.kd_jenis_prw 
+                                      AND a.no_rawat = '{$no_rawat}' AND
+                                      a.dokter_perujuk = '{$_SESSION['username']}' AND a.status = 'Ralan'");
+                while ($data_lab = fetch_array($query_lab)) {
+                ?>
+                    <tr>
+                        <td><?php echo $data_lab['0']; ?></td>
+                        <td><?php echo $data_lab['1']; ?></td>
+                        <td><?php echo $data_lab['2']; ?></td>
+                        <td><?php echo $data_lab['3']; ?></td>
+                        <td><a href="<?php $_SERVER['PHP_SELF']; ?>?action=delete_obat&kode_obat=<?php echo $data_resep['0']; ?>&no_resep=<?php echo $data_resep['4']; ?>&id=<?php echo $id; ?>">Hapus</a></td>
+                    </tr>
+                <?php 
+                }
+                ?>
+                </tbody>
+            </table>
+            </div>
+
+
+
+
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -271,6 +703,26 @@ if(isset($_GET['id'])) {
 	if (($hasil)) {
 	    redirect("pasien.php?action=view&id={$id}");
 	}
+
+    }
+
+    //delete
+    if($_GET['action'] == "delete_tindakan"){ 
+
+    $hapus = "DELETE FROM prosedur_pasien 
+              WHERE no_rawat='{$_REQUEST['faktur']}' AND 
+                    kode = '{$_REQUEST['kode']}' AND 
+                    prioritas = '{$_REQUEST['prioritas']}'";
+   
+   var_dump($hapus); 
+    $hasil = query($hapus);
+    
+    
+    if (($hasil)) {
+        redirect("pasien.php?action=view&id={$id}");
+    }
+    
+    
 
     }
 

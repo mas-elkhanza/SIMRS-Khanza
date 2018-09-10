@@ -70,7 +70,17 @@ public final class var {
             surat_pemesanan_non_medis=false,grafik_per_perujuk=false,bpjs_cek_prosedur=false,bpjs_cek_kelas_rawat=false,bpjs_cek_dokter=false,
             bpjs_cek_spesialistik=false,bpjs_cek_ruangrawat=false,bpjs_cek_carakeluar=false,bpjs_cek_pasca_pulang=false,detail_tindakan_okvk=false,
             billing_parsial=false,bpjs_cek_nomor_rujukan_rs=false,bpjs_cek_rujukan_kartu_pcare=false,bpjs_cek_rujukan_kartu_rs=false,akses_depo_obat=false,
-            bpjs_rujukan_keluar=false,grafik_lab_ralanbulan=false,pengeluaran_stok_apotek=false,grafik_rad_ralanbulan=false;
+            bpjs_rujukan_keluar=false,grafik_lab_ralanbulan=false,pengeluaran_stok_apotek=false,grafik_rad_ralanbulan=false,detailjmdokter2=false,
+            pengaduan_pasien=false,grafik_lab_ralanhari=false,grafik_rad_ralanhari=false,sensus_harian_ralan=false,metode_racik=false,pembayaran_akun_bayar=false,
+            pengguna_obat_resep=false,rekap_pemesanan=false,master_berkas_pegawai=false,berkas_kepegawaian=false,riwayat_jabatan=false,riwayat_pendidikan=false,
+            riwayat_naik_gaji=false,kegiatan_ilmiah=false,riwayat_penghargaan=false,riwayat_penelitian=false,penerimaan_non_medis=false,bayar_pesan_non_medis=false,
+            hutang_barang_non_medis=false,rekap_pemesanan_non_medis=false,insiden_keselamatan=false,insiden_keselamatan_pasien=false,grafik_ikp_pertahun=false,
+            grafik_ikp_perbulan=false,grafik_ikp_pertanggal=false,riwayat_data_batch=false,grafik_ikp_jenis=false,grafik_ikp_dampak=false,piutang_akun_piutang=false,
+            grafik_kunjungan_per_agama=false,grafik_kunjungan_per_umur=false,suku_bangsa=false,bahasa_pasien=false,golongan_tni=false,satuan_tni=false,
+            jabatan_tni=false,pangkat_tni=false,golongan_polri=false,satuan_polri=false,jabatan_polri=false,pangkat_polri=false,cacat_fisik=false,
+            grafik_kunjungan_suku=false,grafik_kunjungan_bahasa=false,booking_operasi=false,mapping_poli_bpjs=false,grafik_kunjungan_per_cacat=false,
+            barang_cssd=false,skdp_bpjs=false,booking_registrasi=false,bpjs_cek_propinsi=false,bpjs_cek_kabupaten=false,bpjs_cek_kecamatan=false,
+            bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false,permintaan_lab=false,permintaan_radiologi=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -399,6 +409,65 @@ public final class var {
                         var.grafik_lab_ralanbulan=true;
                         var.pengeluaran_stok_apotek=true;
                         var.grafik_rad_ralanbulan=true;
+                        var.detailjmdokter2=true;
+                        var.pengaduan_pasien=true;
+                        var.grafik_lab_ralanhari=true;
+                        var.grafik_rad_ralanhari=true;
+                        var.sensus_harian_ralan=true;
+                        var.metode_racik=true;
+                        var.pembayaran_akun_bayar=true;
+                        var.pengguna_obat_resep=true;
+                        var.rekap_pemesanan=true;
+                        var.master_berkas_pegawai=true;
+                        var.berkas_kepegawaian=true;
+                        var.riwayat_jabatan=true;
+                        var.riwayat_pendidikan=true;
+                        var.riwayat_naik_gaji=true;
+                        var.kegiatan_ilmiah=true;
+                        var.riwayat_penghargaan=true;
+                        var.riwayat_penelitian=true;
+                        var.penerimaan_non_medis=true;
+                        var.bayar_pesan_non_medis=true;
+                        var.hutang_barang_non_medis=true;
+                        var.rekap_pemesanan_non_medis=true;
+                        var.insiden_keselamatan=true;
+                        var.insiden_keselamatan_pasien=true;
+                        var.grafik_ikp_pertahun=true;
+                        var.grafik_ikp_perbulan=true;
+                        var.grafik_ikp_pertanggal=true;
+                        var.riwayat_data_batch=true;
+                        var.grafik_ikp_jenis=true;
+                        var.grafik_ikp_dampak=true;
+                        var.piutang_akun_piutang=true;
+                        var.grafik_kunjungan_per_agama=true;
+                        var.grafik_kunjungan_per_umur=true;
+                        var.suku_bangsa=true;
+                        var.bahasa_pasien=true;
+                        var.golongan_tni=true;
+                        var.satuan_tni=true;
+                        var.jabatan_tni=true;
+                        var.pangkat_tni=true;
+                        var.golongan_polri=true;
+                        var.satuan_polri=true;
+                        var.jabatan_polri=true;
+                        var.pangkat_polri=true;
+                        var.cacat_fisik=true;
+                        var.grafik_kunjungan_suku=true;
+                        var.grafik_kunjungan_bahasa=true;
+                        var.booking_operasi=true;
+                        var.mapping_poli_bpjs=true;
+                        var.grafik_kunjungan_per_cacat=true;
+                        var.barang_cssd=true;
+                        var.skdp_bpjs=true;
+                        var.booking_registrasi=true;
+                        var.bpjs_cek_propinsi=true;
+                        var.bpjs_cek_kabupaten=true;
+                        var.bpjs_cek_kecamatan=true;
+                        var.bpjs_cek_dokterdpjp=true;
+                        var.bpjs_cek_riwayat_rujukanrs=true;
+                        var.bpjs_cek_tanggal_rujukan=true;
+                        var.permintaan_lab=true;
+                        var.permintaan_radiologi=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -711,6 +780,65 @@ public final class var {
                         var.grafik_lab_ralanbulan=rs2.getBoolean("grafik_lab_ralanbulan");
                         var.pengeluaran_stok_apotek=rs2.getBoolean("pengeluaran_stok_apotek");
                         var.grafik_rad_ralanbulan=rs2.getBoolean("grafik_rad_ralanbulan");
+                        var.detailjmdokter2=rs2.getBoolean("detailjmdokter2");
+                        var.pengaduan_pasien=rs2.getBoolean("pengaduan_pasien");
+                        var.grafik_lab_ralanhari=rs2.getBoolean("grafik_lab_ralanhari");
+                        var.grafik_rad_ralanhari=rs2.getBoolean("grafik_rad_ralanhari");
+                        var.sensus_harian_ralan=rs2.getBoolean("sensus_harian_ralan");
+                        var.metode_racik=rs2.getBoolean("metode_racik");
+                        var.pembayaran_akun_bayar=rs2.getBoolean("pembayaran_akun_bayar");
+                        var.pengguna_obat_resep=rs2.getBoolean("pengguna_obat_resep");
+                        var.rekap_pemesanan=rs2.getBoolean("rekap_pemesanan");
+                        var.master_berkas_pegawai=rs2.getBoolean("master_berkas_pegawai");
+                        var.berkas_kepegawaian=rs2.getBoolean("berkas_kepegawaian");
+                        var.riwayat_jabatan=rs2.getBoolean("riwayat_jabatan");
+                        var.riwayat_pendidikan=rs2.getBoolean("riwayat_pendidikan");
+                        var.riwayat_naik_gaji=rs2.getBoolean("riwayat_naik_gaji");
+                        var.kegiatan_ilmiah=rs2.getBoolean("kegiatan_ilmiah");
+                        var.riwayat_penghargaan=rs2.getBoolean("riwayat_penghargaan");
+                        var.riwayat_penelitian=rs2.getBoolean("riwayat_penelitian");
+                        var.penerimaan_non_medis=rs2.getBoolean("penerimaan_non_medis");
+                        var.bayar_pesan_non_medis=rs2.getBoolean("bayar_pesan_non_medis");
+                        var.hutang_barang_non_medis=rs2.getBoolean("hutang_barang_non_medis");
+                        var.rekap_pemesanan_non_medis=rs2.getBoolean("rekap_pemesanan_non_medis");                        
+                        var.insiden_keselamatan=rs2.getBoolean("insiden_keselamatan");
+                        var.insiden_keselamatan_pasien=rs2.getBoolean("insiden_keselamatan_pasien");
+                        var.grafik_ikp_pertahun=rs2.getBoolean("grafik_ikp_pertahun");
+                        var.grafik_ikp_perbulan=rs2.getBoolean("grafik_ikp_perbulan");
+                        var.grafik_ikp_pertanggal=rs2.getBoolean("grafik_ikp_pertanggal");
+                        var.riwayat_data_batch=rs2.getBoolean("riwayat_data_batch");
+                        var.grafik_ikp_jenis=rs2.getBoolean("grafik_ikp_jenis");
+                        var.grafik_ikp_dampak=rs2.getBoolean("grafik_ikp_dampak");
+                        var.piutang_akun_piutang=rs2.getBoolean("piutang_akun_piutang");
+                        var.grafik_kunjungan_per_agama=rs2.getBoolean("grafik_kunjungan_per_agama");
+                        var.grafik_kunjungan_per_umur=rs2.getBoolean("grafik_kunjungan_per_umur");
+                        var.suku_bangsa=rs2.getBoolean("suku_bangsa");
+                        var.bahasa_pasien=rs2.getBoolean("bahasa_pasien");
+                        var.golongan_tni=rs2.getBoolean("golongan_tni");
+                        var.satuan_tni=rs2.getBoolean("satuan_tni");
+                        var.jabatan_tni=rs2.getBoolean("jabatan_tni");
+                        var.pangkat_tni=rs2.getBoolean("pangkat_tni");
+                        var.golongan_polri=rs2.getBoolean("golongan_polri");
+                        var.satuan_polri=rs2.getBoolean("satuan_polri");
+                        var.jabatan_polri=rs2.getBoolean("jabatan_polri");
+                        var.pangkat_polri=rs2.getBoolean("pangkat_polri");
+                        var.cacat_fisik=rs2.getBoolean("cacat_fisik");
+                        var.grafik_kunjungan_suku=rs2.getBoolean("grafik_kunjungan_suku");
+                        var.grafik_kunjungan_bahasa=rs2.getBoolean("grafik_kunjungan_bahasa");
+                        var.booking_operasi=rs2.getBoolean("booking_operasi");
+                        var.mapping_poli_bpjs=rs2.getBoolean("mapping_poli_bpjs");
+                        var.grafik_kunjungan_per_cacat=rs2.getBoolean("grafik_kunjungan_per_cacat");
+                        var.barang_cssd=rs2.getBoolean("barang_cssd");
+                        var.skdp_bpjs=rs2.getBoolean("skdp_bpjs");
+                        var.booking_registrasi=rs2.getBoolean("booking_registrasi");
+                        var.bpjs_cek_propinsi=rs2.getBoolean("bpjs_cek_propinsi");
+                        var.bpjs_cek_kabupaten=rs2.getBoolean("bpjs_cek_kabupaten");
+                        var.bpjs_cek_kecamatan=rs2.getBoolean("bpjs_cek_kecamatan");
+                        var.bpjs_cek_dokterdpjp=rs2.getBoolean("bpjs_cek_dokterdpjp");
+                        var.bpjs_cek_riwayat_rujukanrs=rs2.getBoolean("bpjs_cek_riwayat_rujukanrs");
+                        var.bpjs_cek_tanggal_rujukan=rs2.getBoolean("bpjs_cek_tanggal_rujukan");
+                        var.permintaan_lab=rs2.getBoolean("permintaan_lab");
+                        var.permintaan_radiologi=rs2.getBoolean("permintaan_radiologi");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1021,6 +1149,65 @@ public final class var {
                         var.grafik_lab_ralanbulan=false;
                         var.pengeluaran_stok_apotek=false;
                         var.grafik_rad_ralanbulan=false;
+                        var.detailjmdokter2=false;
+                        var.pengaduan_pasien=false;
+                        var.grafik_lab_ralanhari=false;
+                        var.grafik_rad_ralanhari=false;
+                        var.sensus_harian_ralan=false;
+                        var.metode_racik=false;
+                        var.pembayaran_akun_bayar=false;
+                        var.pengguna_obat_resep=false;
+                        var.rekap_pemesanan=false;
+                        var.master_berkas_pegawai=false;
+                        var.berkas_kepegawaian=false;
+                        var.riwayat_jabatan=false;
+                        var.riwayat_pendidikan=false;
+                        var.riwayat_naik_gaji=false;
+                        var.kegiatan_ilmiah=false;
+                        var.riwayat_penghargaan=false;
+                        var.riwayat_penelitian=false;
+                        var.penerimaan_non_medis=false;
+                        var.bayar_pesan_non_medis=false;
+                        var.hutang_barang_non_medis=false;
+                        var.rekap_pemesanan_non_medis=false;                      
+                        var.insiden_keselamatan=false;
+                        var.insiden_keselamatan_pasien=false;
+                        var.grafik_ikp_pertahun=false;
+                        var.grafik_ikp_perbulan=false;
+                        var.grafik_ikp_pertanggal=false;
+                        var.riwayat_data_batch=false;
+                        var.grafik_ikp_jenis=false;
+                        var.grafik_ikp_dampak=false;
+                        var.piutang_akun_piutang=false;
+                        var.grafik_kunjungan_per_agama=false;
+                        var.grafik_kunjungan_per_umur=false;
+                        var.suku_bangsa=false;
+                        var.bahasa_pasien=false;
+                        var.golongan_tni=false;
+                        var.satuan_tni=false;
+                        var.jabatan_tni=false;
+                        var.pangkat_tni=false;
+                        var.golongan_polri=false;
+                        var.satuan_polri=false;
+                        var.jabatan_polri=false;
+                        var.pangkat_polri=false;
+                        var.cacat_fisik=false;
+                        var.grafik_kunjungan_suku=false;
+                        var.grafik_kunjungan_bahasa=false;
+                        var.booking_operasi=false;
+                        var.mapping_poli_bpjs=false;
+                        var.grafik_kunjungan_per_cacat=false;
+                        var.barang_cssd=false;
+                        var.skdp_bpjs=false;
+                        var.booking_registrasi=false;
+                        var.bpjs_cek_propinsi=false;
+                        var.bpjs_cek_kabupaten=false;
+                        var.bpjs_cek_kecamatan=false;
+                        var.bpjs_cek_dokterdpjp=false;
+                        var.bpjs_cek_riwayat_rujukanrs=false;
+                        var.bpjs_cek_tanggal_rujukan=false;
+                        var.permintaan_lab=false;
+                        var.permintaan_radiologi=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1378,4 +1565,68 @@ public final class var {
     public static boolean getgrafik_lab_ralanbulan(){return var.grafik_lab_ralanbulan;}
     public static boolean getpengeluaran_stok_apotek(){return var.pengeluaran_stok_apotek;}
     public static boolean getgrafik_rad_ralanbulan(){return var.grafik_rad_ralanbulan;}
+    public static boolean getdetailjmdokter2(){return var.detailjmdokter2;}
+    public static boolean getpengaduan_pasien(){return var.pengaduan_pasien;}
+    public static boolean getgrafik_lab_ralanhari(){return var.grafik_lab_ralanhari;}
+    public static boolean getgrafik_rad_ralanhari(){return var.grafik_rad_ralanhari;}
+    public static boolean getsensus_harian_ralan(){return var.sensus_harian_ralan;}
+    public static boolean getmetode_racik(){return var.metode_racik;}
+    public static boolean getpembayaran_akun_bayar(){return var.pembayaran_akun_bayar;}
+    public static boolean getpengguna_obat_resep(){return var.pengguna_obat_resep;}
+    public static boolean getrekap_pemesanan(){return var.rekap_pemesanan;}
+    public static boolean getmaster_berkas_pegawai(){return var.master_berkas_pegawai;}
+    public static boolean getberkas_kepegawaian(){return var.berkas_kepegawaian;}
+    public static boolean getriwayat_jabatan(){return var.riwayat_jabatan;}
+    public static boolean getriwayat_pendidikan(){return var.riwayat_pendidikan;}
+    public static boolean getriwayat_naik_gaji(){return var.riwayat_naik_gaji;}
+    public static boolean getkegiatan_ilmiah(){return var.kegiatan_ilmiah;}
+    public static boolean getriwayat_penghargaan(){return var.riwayat_penghargaan;}
+    public static boolean getriwayat_penelitian(){return var.riwayat_penelitian;}
+    public static boolean getpenerimaan_non_medis(){return var.penerimaan_non_medis;}
+    public static boolean getbayar_pesan_non_medis(){return var.bayar_pesan_non_medis;}
+    public static boolean gethutang_barang_non_medis(){return var.hutang_barang_non_medis;}
+    public static boolean getrekap_pemesanan_non_medis(){return var.rekap_pemesanan_non_medis;}
+    public static boolean getinsiden_keselamatan(){return var.insiden_keselamatan;}
+    public static boolean getinsiden_keselamatan_pasien(){return var.insiden_keselamatan_pasien;}
+    public static boolean getgrafik_ikp_pertahun(){return var.grafik_ikp_pertahun;}
+    public static boolean getgrafik_ikp_perbulan(){return var.grafik_ikp_perbulan;}
+    public static boolean getgrafik_ikp_pertanggal(){return var.grafik_ikp_pertanggal;}
+    public static boolean getriwayat_data_batch(){return var.riwayat_data_batch;}
+    public static boolean getgrafik_ikp_jenis(){return var.grafik_ikp_jenis;}
+    public static boolean getgrafik_ikp_dampak(){return var.grafik_ikp_dampak;}
+    public static boolean getpiutang_akun_piutang(){return var.piutang_akun_piutang;}
+    public static void setresep_obatfalse(){var.resep_obat=false;} 
+    public static boolean getgrafik_kunjungan_per_agama(){return var.grafik_kunjungan_per_agama;}
+    public static boolean getgrafik_kunjungan_per_umur(){return var.grafik_kunjungan_per_umur;}
+    public static boolean getsuku_bangsa(){return var.suku_bangsa;}
+    public static boolean getbahasa_pasien(){return var.bahasa_pasien;}
+    public static boolean getgolongan_tni(){return var.golongan_tni;}
+    public static boolean getsatuan_tni(){return var.satuan_tni;}
+    public static boolean getjabatan_tni(){return var.jabatan_tni;}
+    public static boolean getpangkat_tni(){return var.pangkat_tni;}
+    public static boolean getgolongan_polri(){return var.golongan_polri;}
+    public static boolean getsatuan_polri(){return var.satuan_polri;}
+    public static boolean getjabatan_polri(){return var.jabatan_polri;}
+    public static boolean getpangkat_polri(){return var.pangkat_polri;}
+    public static boolean getcacat_fisik(){return var.cacat_fisik;}
+    public static boolean getgrafik_kunjungan_suku(){return var.grafik_kunjungan_suku;}
+    public static boolean getgrafik_kunjungan_bahasa(){return var.grafik_kunjungan_bahasa;}
+    public static boolean getbooking_operasi(){return var.booking_operasi;}
+    public static boolean getmapping_poli_bpjs(){return var.mapping_poli_bpjs;}
+    public static boolean getgrafik_kunjungan_per_cacat(){return var.grafik_kunjungan_per_cacat;}
+    public static boolean getbarang_cssd(){return var.barang_cssd;}
+    public static boolean getskdp_bpjs(){return var.skdp_bpjs;}
+    public static boolean getbooking_registrasi(){return var.booking_registrasi;}
+    public static boolean getbpjs_cek_propinsi(){return var.bpjs_cek_propinsi;}
+    public static boolean getbpjs_cek_kabupaten(){return var.bpjs_cek_kabupaten;}
+    public static boolean getbpjs_cek_kecamatan(){return var.bpjs_cek_kecamatan;}
+    public static boolean getbpjs_cek_dokterdpjp(){return var.bpjs_cek_dokterdpjp;}
+    public static boolean getbpjs_cek_riwayat_rujukanrs(){return var.bpjs_cek_riwayat_rujukanrs;}
+    public static boolean getbpjs_cek_tanggal_rujukan(){return var.bpjs_cek_tanggal_rujukan;}
+    public static boolean getpermintaan_lab(){return var.permintaan_lab;}
+    public static void setperiksalabfalse(){var.periksa_lab=false;} 
+    public static void setpermintaanlabfalse(){var.permintaan_lab=false;} 
+    public static boolean getpermintaan_radiologi(){return var.permintaan_radiologi;}
+    public static void setperiksaradiologifalse(){var.periksa_radiologi=false;} 
+    public static void setpermintaanradiologifalse(){var.permintaan_radiologi=false;} 
 }   

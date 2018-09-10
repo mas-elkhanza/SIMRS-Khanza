@@ -2,17 +2,17 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "fe1e122d41a4dc5f8dccf9adc68e3570cf59bde0721686294ae06e3acd27efc3";   
+       $keyRS = "bb9c35715b9fb91f3bfc8f921f64301c3af82135a829fa618a688d43e843fb8c";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://192.168.21.200/E-Klaim/ws.php";
+        $UrlWS = "http://192.168.1.142/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "BP";
+        $kelasRS = "CS";
         return $kelasRS;
     }
 
@@ -224,15 +224,15 @@
                                 "konsultasi": "'.$konsultasi.'",
                                 "tenaga_ahli": "'.$tenaga_ahli.'",
                                 "keperawatan": "'.$keperawatan.'",
-                                "penunjang": "'.$penunjang.'",
+                                "penunjang": "0",
                                 "radiologi": "'.$radiologi.'",
                                 "laboratorium": "'.$laboratorium.'",
-                                "pelayanan_darah": "'.$pelayanan_darah.'",
-                                "rehabilitasi": "'.$rehabilitasi.'",
+                                "pelayanan_darah": "0",
+                                "rehabilitasi": "0",
                                 "kamar": "'.$kamar.'",
-                                "rawat_intensif": "'.$rawat_intensif.'",
+                                "rawat_intensif": "0",
                                 "obat": "'.$obat.'",
-                                "alkes": "'.$alkes.'",
+                                "alkes": "0",
                                 "bmhp": "'.$bmhp.'",
                                 "sewa_alat": "'.$sewa_alat.'"
                              },

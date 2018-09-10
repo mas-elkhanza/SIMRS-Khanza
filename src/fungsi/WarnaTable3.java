@@ -20,7 +20,7 @@ public class WarnaTable3 extends DefaultTableCellRenderer {
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column){
         Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         if (row % 2 == 1){
-            component.setBackground(new Color(247,252,242));
+            component.setBackground(new Color(247,255,243));
         }else{
             component.setBackground(new Color(255,255,255));
         } 
@@ -32,7 +32,7 @@ public class WarnaTable3 extends DefaultTableCellRenderer {
                 component.setForeground(new Color(55,55,175));
             }
         }else{
-            component.setForeground(new Color(60,80,50));
+            component.setForeground(new Color(130,100,100));
         }
         return component;
     }

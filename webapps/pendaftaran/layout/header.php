@@ -1,10 +1,10 @@
-<?php 
+<?php
 
 /***
-* e-Dokter from version 0.1 Beta
-* Last modified: 02 Pebruari 2018
+* e-Pasien from version 0.1 Beta
+* Last modified: 05 July 2018
 * Author : drg. Faisol Basoro
-* Email : drg.faisol@basoro.org
+* Email : dentix.id@gmail.com
 *
 * File : layout/header.php
 * Description : Header layout
@@ -16,17 +16,22 @@ session_start();
 
 require_once('config.php');
 
-$data=fetch_array(query("SELECT no_rkm_medis as username, no_ktp as password FROM pasien WHERE no_rkm_medis = '".$_COOKIE["username"]."' AND no_ktp = '".$_COOKIE["password"]."'")); 
+if(PRODUCTION == 'YES') {
+  ini_set('display_errors', 0);
+  error_reporting(E_ERROR | E_WARNING | E_PARSE);
+}
+
+$data=fetch_array(query("SELECT no_rkm_medis as username, no_ktp as password FROM pasien WHERE no_rkm_medis = '{$_COOKIE['username']}' AND no_ktp = '{$_COOKIE['password']}'"));
 
 $user = $data[0];
 $pass = $data[1];
 
-if (!isset($_COOKIE['username']) && !isset($_COOKIE['password'])) { 
-    redirect('login.php'); 
-} else if (($_COOKIE['username'] != $user) || ($_COOKIE['password'] != $pass)) { 
-    redirect('login.php?action=logout'); 
-} else { 
-    $_SESSION['username'] = $_COOKIE['username']; 
+if (!isset($_COOKIE['username']) && !isset($_COOKIE['password'])) {
+    redirect('login.php');
+} else if (($_COOKIE['username'] != $user) || ($_COOKIE['password'] != $pass)) {
+    redirect('login.php?action=logout');
+} else {
+    $_SESSION['username'] = $_COOKIE['username'];
 }
 
 ?>
@@ -75,12 +80,12 @@ if (!isset($_COOKIE['username']) && !isset($_COOKIE['password'])) {
     <link href="css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="css/themes/theme-blue.css" rel="stylesheet" />
+    <link href="css/theme-green.css" rel="stylesheet" />
 </head>
 
-<body class="theme-blue">
+<body class="theme-green">
     <!-- Page Loader -->
-    <div class="page-loader-wrapper">
+   <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
                 <div class="spinner-layer pl-red">

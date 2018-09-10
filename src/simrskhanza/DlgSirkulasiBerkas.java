@@ -1,6 +1,7 @@
 
 
 package simrskhanza;
+import kepegawaian.DlgCariPetugas;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -120,7 +121,41 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
                         RmCari.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
                         RmCari.requestFocus();
                     }
-                }                
+                } 
+                if(pasien.getTable2().getSelectedRow()!= -1){                   
+                    if(pilihan==1){                           
+                           try {
+                                NoRm.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
+                                NmPasien.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),2).toString());
+                                Umur.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),15).toString());
+                                Alamat.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),8).toString());
+                                Pekerjaan.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),10).toString());   
+                                PertamaDaftar.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),13).toString());                       
+                           } catch (Exception z) {
+                           }                           
+                           NoRm.requestFocus();
+                    }else if(pilihan==2){
+                        RmCari.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
+                        RmCari.requestFocus();
+                    }
+                } 
+                if(pasien.getTable3().getSelectedRow()!= -1){                   
+                    if(pilihan==1){                           
+                           try {
+                                NoRm.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
+                                NmPasien.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),2).toString());
+                                Umur.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),15).toString());
+                                Alamat.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),8).toString());
+                                Pekerjaan.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),10).toString());   
+                                PertamaDaftar.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),13).toString());                       
+                           } catch (Exception z) {
+                           }                           
+                           NoRm.requestFocus();
+                    }else if(pilihan==2){
+                        RmCari.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
+                        RmCari.requestFocus();
+                    }
+                } 
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -133,6 +168,30 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         });
         
         pasien.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        pasien.getTable2().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        pasien.getTable3().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
@@ -308,7 +367,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
         WindowInput.setUndecorated(true);
         WindowInput.setResizable(false);
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Transaki Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Transaki Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setWarnaBawah(new java.awt.Color(240, 245, 235));
         internalFrame2.setLayout(null);
@@ -494,7 +553,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
 
         Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2017" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -576,7 +635,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peminjaman & Pengembalian Berkas Rekam Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -806,7 +865,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
 
         TglPinjam1.setEditable(false);
         TglPinjam1.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2017" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -831,7 +890,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
 
         TglPinjam2.setEditable(false);
         TglPinjam2.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2017" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-05-2018" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);

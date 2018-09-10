@@ -80,10 +80,18 @@ if (!isset($_COOKIE['username']) && !isset($_COOKIE['password'])) {
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/all-themes.min.css" rel="stylesheet" />
+
+<script src="js/jquery.min.js" defer></script>
+<script src="js/bootstrap-select.js" defer></script>
+<script src="js/select2.min.js" defer></script>
+
+
+ 
+
 </head>
 
 <body class="theme-green">
-    <!-- Page Loader -->
+    <!-- Page Loader 
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -98,7 +106,7 @@ if (!isset($_COOKIE['username']) && !isset($_COOKIE['password'])) {
             </div>
             <p>Please wait...</p>
         </div>
-    </div>
+    </div>-->
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>

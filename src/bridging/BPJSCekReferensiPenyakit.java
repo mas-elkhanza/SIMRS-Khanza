@@ -36,7 +36,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -48,7 +47,8 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-
+    private BPJSApi api=new BPJSApi();
+        
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -91,6 +91,12 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
             });
         } 
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     }
     
     
@@ -121,7 +127,7 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Diagnosa VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Diagnosa VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -314,9 +320,7 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String diagnosa) {
-        BPJSApi api=new BPJSApi();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIBPJS")+"/referensi/diagnosa/"+diagnosa;	
 
 	    HttpHeaders headers = new HttpHeaders();
@@ -325,13 +329,11 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
 	    headers.add("X-Signature",api.getHmac());
 	    HttpEntity requestEntity = new HttpEntity(headers);
-	    RestTemplate rest = new RestTemplate();	
-            
-            //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metaData");
-            if(nameNode.path("message").asText().equals("Sukses")){
+            if(nameNode.path("code").asText().equals("200")){
                 Valid.tabelKosong(tabMode);
                 JsonNode response = root.path("response");
                 if(response.path("diagnosa").isArray()){
