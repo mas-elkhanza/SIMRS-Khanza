@@ -81,7 +81,7 @@ public final class var {
             grafik_kunjungan_suku=false,grafik_kunjungan_bahasa=false,booking_operasi=false,mapping_poli_bpjs=false,grafik_kunjungan_per_cacat=false,
             barang_cssd=false,skdp_bpjs=false,booking_registrasi=false,bpjs_cek_propinsi=false,bpjs_cek_kabupaten=false,bpjs_cek_kecamatan=false,
             bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false,permintaan_lab=false,permintaan_radiologi=false,
-            surat_indeks=false;
+            surat_indeks=false,surat_map=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -470,6 +470,7 @@ public final class var {
                         var.permintaan_lab=true;
                         var.permintaan_radiologi=true;
                         var.surat_indeks=true;
+                        var.surat_map=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -842,6 +843,7 @@ public final class var {
                         var.permintaan_lab=rs2.getBoolean("permintaan_lab");
                         var.permintaan_radiologi=rs2.getBoolean("permintaan_radiologi");
                         var.surat_indeks=rs2.getBoolean("surat_indeks");
+                        var.surat_map=rs2.getBoolean("surat_map");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1212,6 +1214,7 @@ public final class var {
                         var.permintaan_lab=false;
                         var.permintaan_radiologi=false;
                         var.surat_indeks=false;
+                        var.surat_map=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1634,4 +1637,5 @@ public final class var {
     public static void setperiksaradiologifalse(){var.periksa_radiologi=false;} 
     public static void setpermintaanradiologifalse(){var.permintaan_radiologi=false;} 
     public static boolean getsurat_indeks(){return var.surat_indeks;}
+    public static boolean getsurat_map(){return var.surat_map;}
 }   
