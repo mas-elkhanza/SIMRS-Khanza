@@ -6428,7 +6428,7 @@
                     <Component class="widget.ButtonBig" name="btnSuratMap">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/48x48/if_envelope-2_416374.png"/>
+                          <Image iconType="3" name="/48x48/if_human-folder-mail_25164.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Map Surat"/>
                         <Property name="iconTextGap" type="int" value="0"/>
@@ -6439,6 +6439,22 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuratMapActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="widget.ButtonBig" name="btnSuratAlmari">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/48x48/if_cabinet_49336.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Almari Surat"/>
+                        <Property name="iconTextGap" type="int" value="0"/>
+                        <Property name="name" type="java.lang.String" value="btnSuratAlmari" noResource="true"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[200, 90]"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuratAlmariActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
