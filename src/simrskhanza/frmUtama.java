@@ -350,6 +350,7 @@ import setting.DlgSetNota;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
 import surat.SuratIndeks;
+import surat.SuratKlasifikasi;
 import surat.SuratMap;
 import surat.SuratRak;
 import surat.SuratRuang;
@@ -883,6 +884,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnSuratAlmari = new widget.ButtonBig();
         btnSuratRak = new widget.ButtonBig();
         btnSuratRuang = new widget.ButtonBig();
+        btnSuratKlasifikasi = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5583,7 +5585,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSuratMap);
 
-        btnSuratAlmari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_file-cabinet_87429.png"))); // NOI18N
+        btnSuratAlmari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_filing_cabinet_search-g_86207.png"))); // NOI18N
         btnSuratAlmari.setText("Almari Surat");
         btnSuratAlmari.setIconTextGap(0);
         btnSuratAlmari.setName("btnSuratAlmari"); // NOI18N
@@ -5607,7 +5609,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSuratRak);
 
-        btnSuratRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_library_49592.png"))); // NOI18N
+        btnSuratRuang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kfm_home_18010.png"))); // NOI18N
         btnSuratRuang.setText("Ruang Surat");
         btnSuratRuang.setIconTextGap(0);
         btnSuratRuang.setName("btnSuratRuang"); // NOI18N
@@ -5618,6 +5620,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnSuratRuang);
+
+        btnSuratKlasifikasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_kontact_8762.png"))); // NOI18N
+        btnSuratKlasifikasi.setText("Klasifikasi Surat");
+        btnSuratKlasifikasi.setIconTextGap(0);
+        btnSuratKlasifikasi.setName("btnSuratKlasifikasi"); // NOI18N
+        btnSuratKlasifikasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratKlasifikasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratKlasifikasiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSuratKlasifikasi);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -11737,6 +11751,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSuratRuangActionPerformed
 
+    private void btnSuratKlasifikasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuratKlasifikasiActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        SuratKlasifikasi form=new SuratKlasifikasi(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSuratKlasifikasiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12125,6 +12151,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnSuplierIPSRS;
     private widget.ButtonBig btnSuratAlmari;
     private widget.ButtonBig btnSuratIndeks;
+    private widget.ButtonBig btnSuratKlasifikasi;
     private widget.ButtonBig btnSuratMap;
     private widget.ButtonBig btnSuratPemesananMedis;
     private widget.ButtonBig btnSuratPemesananNonMedis;
@@ -14274,6 +14301,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnSuratRuang);
                 jmlmenu++;
             }
+            
+            if(var.getsurat_klasifikasi()==true){
+                Panelmenu.add(btnSuratKlasifikasi);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==15){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -16118,6 +16150,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getsurat_ruang()==true){
             Panelmenu.add(btnSuratRuang);
+            jmlmenu++;
+        }
+
+        if(var.getsurat_klasifikasi()==true){
+            Panelmenu.add(btnSuratKlasifikasi);
             jmlmenu++;
         }
 
@@ -18655,6 +18692,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getsurat_ruang()==true){
             if(btnSuratRuang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratRuang);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getsurat_klasifikasi()==true){
+            if(btnSuratKlasifikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratKlasifikasi);
                 jmlmenu++;
             }                
         }
