@@ -81,7 +81,7 @@ public final class var {
             grafik_kunjungan_suku=false,grafik_kunjungan_bahasa=false,booking_operasi=false,mapping_poli_bpjs=false,grafik_kunjungan_per_cacat=false,
             barang_cssd=false,skdp_bpjs=false,booking_registrasi=false,bpjs_cek_propinsi=false,bpjs_cek_kabupaten=false,bpjs_cek_kecamatan=false,
             bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false,permintaan_lab=false,permintaan_radiologi=false,
-            surat_indeks=false,surat_map=false,surat_almari=false,surat_rak=false,surat_ruang=false,surat_klasifikasi=false;
+            surat_indeks=false,surat_map=false,surat_almari=false,surat_rak=false,surat_ruang=false,surat_klasifikasi=false,surat_status=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -475,6 +475,7 @@ public final class var {
                         var.surat_rak=true;
                         var.surat_ruang=true;
                         var.surat_klasifikasi=true;
+                        var.surat_status=true;                        
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -852,6 +853,7 @@ public final class var {
                         var.surat_rak=rs2.getBoolean("surat_rak");
                         var.surat_ruang=rs2.getBoolean("surat_ruang");
                         var.surat_klasifikasi=rs2.getBoolean("surat_klasifikasi");
+                        var.surat_status=rs2.getBoolean("surat_status");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1227,6 +1229,7 @@ public final class var {
                         var.surat_rak=false;
                         var.surat_ruang=false;
                         var.surat_klasifikasi=false;
+                        var.surat_status=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1654,4 +1657,5 @@ public final class var {
     public static boolean getsurat_rak(){return var.surat_rak;}
     public static boolean getsurat_ruang(){return var.surat_ruang;}
     public static boolean getsurat_klasifikasi(){return var.surat_klasifikasi;}
+    public static boolean getsurat_status(){return var.surat_status;}
 }   

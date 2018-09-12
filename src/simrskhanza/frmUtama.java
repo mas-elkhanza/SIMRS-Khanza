@@ -354,6 +354,7 @@ import surat.SuratKlasifikasi;
 import surat.SuratMap;
 import surat.SuratRak;
 import surat.SuratRuang;
+import surat.SuratStatus;
 import tranfusidarah.UTDCariPenyerahanDarah;
 import tranfusidarah.UTDDonor;
 import tranfusidarah.UTDMedisRusak;
@@ -885,6 +886,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnSuratRak = new widget.ButtonBig();
         btnSuratRuang = new widget.ButtonBig();
         btnSuratKlasifikasi = new widget.ButtonBig();
+        btnSuratStatus = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5585,7 +5587,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSuratMap);
 
-        btnSuratAlmari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_filing_cabinet_search-g_86207.png"))); // NOI18N
+        btnSuratAlmari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_cabinet_49336.png"))); // NOI18N
         btnSuratAlmari.setText("Almari Surat");
         btnSuratAlmari.setIconTextGap(0);
         btnSuratAlmari.setName("btnSuratAlmari"); // NOI18N
@@ -5632,6 +5634,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnSuratKlasifikasi);
+
+        btnSuratStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_26-Mail_34317.png"))); // NOI18N
+        btnSuratStatus.setText("Status Surat");
+        btnSuratStatus.setIconTextGap(0);
+        btnSuratStatus.setName("btnSuratStatus"); // NOI18N
+        btnSuratStatus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuratStatusActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSuratStatus);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -11763,6 +11777,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSuratKlasifikasiActionPerformed
 
+    private void btnSuratStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuratStatusActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        SuratStatus form=new SuratStatus(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSuratStatusActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12157,6 +12183,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnSuratPemesananNonMedis;
     private widget.ButtonBig btnSuratRak;
     private widget.ButtonBig btnSuratRuang;
+    private widget.ButtonBig btnSuratStatus;
     private widget.ButtonBig btnSurveilansPD3I;
     private widget.ButtonBig btnSurveilansRalan;
     private widget.ButtonBig btnSurveilansRanap;
@@ -14306,6 +14333,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnSuratKlasifikasi);
                 jmlmenu++;
             }
+            
+            if(var.getsurat_status()==true){
+                Panelmenu.add(btnSuratStatus);
+                jmlmenu++;
+            }
         }else if(cmbMenu.getSelectedIndex()==15){   
             jmlmenu=0;
             if(var.getaplikasi()==true){
@@ -16155,6 +16187,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getsurat_klasifikasi()==true){
             Panelmenu.add(btnSuratKlasifikasi);
+            jmlmenu++;
+        }
+        
+        if(var.getsurat_status()==true){
+            Panelmenu.add(btnSuratStatus);
             jmlmenu++;
         }
 
@@ -18699,6 +18736,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getsurat_klasifikasi()==true){
             if(btnSuratKlasifikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratKlasifikasi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getsurat_status()==true){
+            if(btnSuratStatus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratStatus);
                 jmlmenu++;
             }                
         }
