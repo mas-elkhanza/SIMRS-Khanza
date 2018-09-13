@@ -1478,6 +1478,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
     DlgCariPeriksaLab form=new DlgCariPeriksaLab(null,false);
+    form.isCek();
     form.setPasien(TNoRw.getText());
     form.setSize(this.getWidth(),this.getHeight());
     form.setLocationRelativeTo(this);

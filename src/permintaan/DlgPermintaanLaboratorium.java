@@ -49,7 +49,6 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private Jurnal jur=new Jurnal();
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private PreparedStatement pstindakan,pstindakan2,pstindakan3,pstindakan4,pstampil,
             psset_tarif;
@@ -350,7 +349,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Permintaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Permintaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -434,7 +433,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
 
         Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-09-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-09-2018" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -761,9 +760,9 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
         }else if(KodePerujuk.getText().equals("")||NmPerujuk.getText().equals("")){
             Valid.textKosong(KodePerujuk,"Dokter Perujuk");
         }else if(tabMode.getRowCount()==0){
-            Valid.textKosong(Pemeriksaan,"Data Pemeriksaan");
+            Valid.textKosong(Pemeriksaan,"Data Permintaan");
         }else if(jml==0){
-            Valid.textKosong(Pemeriksaan,"Data Pemeriksaan");
+            Valid.textKosong(Pemeriksaan,"Data Permintaan");
         }else{
             if(var.getkode().equals("Admin Utama")){
                 int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
@@ -792,18 +791,18 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
                                 }                        
                             }
                             isReset();
+                            emptTeks();
                         }   
                         
                         koneksi.setAutoCommit(true);                    
                         JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
-                        isReset();
                     } catch (Exception e) {
                         System.out.println(e);
                     }                
                 }
             }else{
                 if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                     Pemeriksaan.requestFocus();
                 }else{
                     int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
@@ -832,11 +831,11 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
                                     }                        
                                 }
                                 isReset();
+                                emptTeks();
                             } 
                             
                             koneksi.setAutoCommit(true);                    
                             JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
-                            isReset();
                         } catch (Exception e) {
                             System.out.println(e);
                         }                  
@@ -882,9 +881,9 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
         }else if(KodePerujuk.getText().equals("")||NmPerujuk.getText().equals("")){
             Valid.textKosong(KodePerujuk,"Dokter Pengirim");
         }else if(tabMode.getRowCount()==0){
-            Valid.textKosong(Pemeriksaan,"Data Pemeriksaan");
+            Valid.textKosong(Pemeriksaan,"Data Permintaan");
         }else if(jml==0){
-            Valid.textKosong(Pemeriksaan,"Data Pemeriksaan");
+            Valid.textKosong(Pemeriksaan,"Data Permintaan");
         }else{
             Sequel.AutoComitFalse();
             Sequel.queryu("delete from temporary_permintaan_lab");
@@ -1066,6 +1065,8 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgCariPermintaanLab form=new DlgCariPermintaanLab(null,false);
+        form.isCek();
+        form.setPasien(TNoRw.getText());
         form.setSize(this.getWidth(),this.getHeight());
         form.setLocationRelativeTo(this);
         form.setVisible(true);
@@ -1242,7 +1243,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         NmPerujuk.setText("");
         Pemeriksaan.setText("");
         TCari.setText("");
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rawat,4),signed)),0) from permintaan_lab where tgl_permintaan='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ","PL"+Valid.SetTgl(Tanggal.getSelectedItem()+"").replaceAll("-",""),4,TNoPermintaan);           
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(noorder,4),signed)),0) from permintaan_lab where tgl_permintaan='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ","PL"+Valid.SetTgl(Tanggal.getSelectedItem()+"").replaceAll("-",""),4,TNoPermintaan);           
     }
     
     public void onCari(){
