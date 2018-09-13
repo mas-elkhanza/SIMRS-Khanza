@@ -13,7 +13,6 @@ package keuangan;
 
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
-import keuangan.DlgJnsPerawatanRanap;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -40,7 +39,6 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.Jurnal;
 import simrskhanza.DlgKtgPerawatan;
 
 /**
@@ -58,7 +56,7 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
     private ResultSet rs,rstarif,rsrekening;
     private String pilihtable="",kd_pj="",kd_bangsal="",ruang_ranap="Yes", cara_bayar_ranap="Yes",kelas_ranap="Yes",kelas="";
     private boolean[] pilih; 
-    private String[] kode,nama,kategori;
+    private String[] kode,nama,kategori,kelastarif;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
     private boolean sukses=false;
     private int jml=0,i=0,index=0;
@@ -82,7 +80,7 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
         setSize(656,250);
 
         Object[] row={"P","Kode","Nama Perawatan","Kategori Perawatan","Tarif/Biaya",
-                      "Bagian RS","BHP","JM Dokter","JM Perawat","KSO","Menejemen"};
+                      "Bagian RS","BHP","JM Dokter","JM Perawat","KSO","Menejemen","Kelas"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -95,7 +93,7 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class,  
                 java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Double.class,java.lang.Double.class
+                java.lang.Double.class,java.lang.Double.class,java.lang.Object.class
              };
              /*Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -109,19 +107,8 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        /*for (i = 0; i < 4; i++) {
-            TableColumn column = tbKamar.getColumnModel().getColumn(i);
-            if(i==0){
-                column.setPreferredWidth(40);
-            }else if(i==1){
-                column.setPreferredWidth(90);
-            }else if(i==2){
-                column.setPreferredWidth(450);
-            }else if(i==3){
-                column.setPreferredWidth(150);
-            }
-        }*/
-        for (i = 0; i < 11; i++) {
+        
+        for (i = 0; i < 12; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -149,6 +136,8 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
             }else if(i==10){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
+            }else if(i==11){
+                column.setPreferredWidth(75);
             }else{
                 column.setPreferredWidth(120);
             }
@@ -1372,7 +1361,9 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             kode=null;
             kode=new String[jml];
             nama=null;
-            nama=new String[jml];
+            nama=new String[jml]; 
+            kelastarif=null;
+            kelastarif=new String[jml];
             kategori=null;
             kategori=new String[jml];
             totaltnd=null;
@@ -1403,7 +1394,8 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     jmdokter[index]=Double.parseDouble(tbKamar.getValueAt(i,7).toString());
                     jmperawat[index]=Double.parseDouble(tbKamar.getValueAt(i,8).toString());  
                     kso[index]=Double.parseDouble(tbKamar.getValueAt(i,9).toString());  
-                    menejemen[index]=Double.parseDouble(tbKamar.getValueAt(i,10).toString());    
+                    menejemen[index]=Double.parseDouble(tbKamar.getValueAt(i,10).toString()); 
+                    kelastarif[index]=tbKamar.getValueAt(i,11).toString();   
                     index++;
                 }
             }       
@@ -1412,62 +1404,62 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
             for(i=0;i<jml;i++){
                 tabMode.addRow(new Object[] {
-                    pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i]
+                    pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i],kelastarif[i]
                 });
             }
             
             pscari=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
-                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,jns_perawatan_inap.kelas from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari2=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
-                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,jns_perawatan_inap.kelas from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari3=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
-                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,jns_perawatan_inap.kelas from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari4=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
-                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,jns_perawatan_inap.kelas from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and jns_perawatan_inap.nm_perawatan like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari5=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
-                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,jns_perawatan_inap.kelas from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari6=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
-                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,jns_perawatan_inap.kelas from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_pj=? or jns_perawatan_inap.kd_pj='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari7=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
-                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,jns_perawatan_inap.kelas from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kd_bangsal=? or jns_perawatan_inap.kd_bangsal='-') and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and kategori_perawatan.nm_kategori like ? order by jns_perawatan_inap.nm_perawatan");
             pscari8=koneksi.prepareStatement("select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
-                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr from jns_perawatan_inap inner join kategori_perawatan "+
+                   "jns_perawatan_inap.tarif_tindakandr,jns_perawatan_inap.tarif_tindakanpr,jns_perawatan_inap.kelas from jns_perawatan_inap inner join kategori_perawatan "+
                    "on jns_perawatan_inap.kd_kategori=kategori_perawatan.kd_kategori  "+
                    "where kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.kd_jenis_prw like ? or "+
                     " kategori_perawatan.nm_kategori like ? and jns_perawatan_inap.status='1' and (jns_perawatan_inap.kelas=? or jns_perawatan_inap.kelas='-') and jns_perawatan_inap.nm_perawatan like ? or "+
@@ -1584,7 +1576,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rs.getDouble("total_byrdr"),rs.getDouble("material"),
                                     rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),
                                     rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
-                                    rs.getDouble("menejemen")
+                                    rs.getDouble("menejemen"),rs.getString("kelas")
                                 });
                             }                        
                         }   
@@ -1597,7 +1589,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rs.getDouble("total_byrpr"),rs.getDouble("material"),
                                     rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),
                                     rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
-                                    rs.getDouble("menejemen")
+                                    rs.getDouble("menejemen"),rs.getString("kelas")
                                 });
                             }                            
                         }   
@@ -1610,7 +1602,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rs.getDouble("total_byrdrpr"),rs.getDouble("material"),
                                     rs.getDouble("bhp"),rs.getDouble("tarif_tindakandr"),
                                     rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
-                                    rs.getDouble("menejemen")
+                                    rs.getDouble("menejemen"),rs.getString("kelas")
                                 });
                             }                        
                         }   

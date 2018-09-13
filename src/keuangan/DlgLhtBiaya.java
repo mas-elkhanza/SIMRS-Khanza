@@ -490,7 +490,6 @@ private void KdRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdRw
 }//GEN-LAST:event_KdRwKeyPressed
 
 private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
-        datareg.tampil();
         datareg.isCek();
         datareg.emptTeks();
         datareg.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());

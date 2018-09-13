@@ -478,8 +478,8 @@ public class InventarisKategori extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariKeyReleased
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
+        TCari.setText("");
         prosesCari("select * from inventaris_kategori order by id_kategori");
-        emptTeks();
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed

@@ -63,6 +63,7 @@ public final class validasi {
     private final DecimalFormat df5 = new DecimalFormat("###,###,###,###,###,###,###.##");  
     private final DecimalFormat df3 = new DecimalFormat("######"); 
     private final DecimalFormat df6 = new DecimalFormat("######.###"); 
+    private final DecimalFormat df7 = new DecimalFormat("######.#"); 
     private PreparedStatement ps;
     private ResultSet rs;
     private final Calendar now = Calendar.getInstance();
@@ -998,7 +999,11 @@ public final class validasi {
         JOptionPane.showMessageDialog(null,"Maaf, "+pesan+" tidak boleh kosong...!!!");
         teks.requestFocus();
     }
-
+    
+    public void textKosong(JButton teks,String pesan){
+        JOptionPane.showMessageDialog(null,"Maaf, "+pesan+" tidak boleh kosong...!!!");
+        teks.requestFocus();
+    }
 
     public void tabelKosong(DefaultTableModel tabMode) {
         j=tabMode.getRowCount();
@@ -1030,6 +1035,10 @@ public final class validasi {
     
     public String SetAngka5(double nilai){        
        return df6.format(nilai);
+    }
+    
+    public String SetAngka6(double nilai){        
+       return df7.format(nilai);
     }
     
     public double SetAngka(String txt){
