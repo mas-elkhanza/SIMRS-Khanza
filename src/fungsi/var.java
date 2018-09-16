@@ -80,7 +80,9 @@ public final class var {
             jabatan_tni=false,pangkat_tni=false,golongan_polri=false,satuan_polri=false,jabatan_polri=false,pangkat_polri=false,cacat_fisik=false,
             grafik_kunjungan_suku=false,grafik_kunjungan_bahasa=false,booking_operasi=false,mapping_poli_bpjs=false,grafik_kunjungan_per_cacat=false,
             barang_cssd=false,skdp_bpjs=false,booking_registrasi=false,bpjs_cek_propinsi=false,bpjs_cek_kabupaten=false,bpjs_cek_kecamatan=false,
-            bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false;
+            bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false,permintaan_lab=false,permintaan_radiologi=false,
+            surat_indeks=false,surat_map=false,surat_almari=false,surat_rak=false,surat_ruang=false,surat_klasifikasi=false,surat_status=false,
+            surat_sifat=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -466,6 +468,16 @@ public final class var {
                         var.bpjs_cek_dokterdpjp=true;
                         var.bpjs_cek_riwayat_rujukanrs=true;
                         var.bpjs_cek_tanggal_rujukan=true;
+                        var.permintaan_lab=true;
+                        var.permintaan_radiologi=true;
+                        var.surat_indeks=true;
+                        var.surat_map=true;
+                        var.surat_almari=true;
+                        var.surat_rak=true;
+                        var.surat_ruang=true;
+                        var.surat_klasifikasi=true;
+                        var.surat_status=true; 
+                        var.surat_sifat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -835,6 +847,16 @@ public final class var {
                         var.bpjs_cek_dokterdpjp=rs2.getBoolean("bpjs_cek_dokterdpjp");
                         var.bpjs_cek_riwayat_rujukanrs=rs2.getBoolean("bpjs_cek_riwayat_rujukanrs");
                         var.bpjs_cek_tanggal_rujukan=rs2.getBoolean("bpjs_cek_tanggal_rujukan");
+                        var.permintaan_lab=rs2.getBoolean("permintaan_lab");
+                        var.permintaan_radiologi=rs2.getBoolean("permintaan_radiologi");
+                        var.surat_indeks=rs2.getBoolean("surat_indeks");
+                        var.surat_map=rs2.getBoolean("surat_map");
+                        var.surat_almari=rs2.getBoolean("surat_almari");
+                        var.surat_rak=rs2.getBoolean("surat_rak");
+                        var.surat_ruang=rs2.getBoolean("surat_ruang");
+                        var.surat_klasifikasi=rs2.getBoolean("surat_klasifikasi");
+                        var.surat_status=rs2.getBoolean("surat_status");
+                        var.surat_sifat=rs2.getBoolean("surat_sifat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1202,6 +1224,16 @@ public final class var {
                         var.bpjs_cek_dokterdpjp=false;
                         var.bpjs_cek_riwayat_rujukanrs=false;
                         var.bpjs_cek_tanggal_rujukan=false;
+                        var.permintaan_lab=false;
+                        var.permintaan_radiologi=false;
+                        var.surat_indeks=false;
+                        var.surat_map=false;
+                        var.surat_almari=false;
+                        var.surat_rak=false;
+                        var.surat_ruang=false;
+                        var.surat_klasifikasi=false;
+                        var.surat_status=false;
+                        var.surat_sifat=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1617,4 +1649,18 @@ public final class var {
     public static boolean getbpjs_cek_dokterdpjp(){return var.bpjs_cek_dokterdpjp;}
     public static boolean getbpjs_cek_riwayat_rujukanrs(){return var.bpjs_cek_riwayat_rujukanrs;}
     public static boolean getbpjs_cek_tanggal_rujukan(){return var.bpjs_cek_tanggal_rujukan;}
+    public static boolean getpermintaan_lab(){return var.permintaan_lab;}
+    public static void setperiksalabfalse(){var.periksa_lab=false;} 
+    public static void setpermintaanlabfalse(){var.permintaan_lab=false;} 
+    public static boolean getpermintaan_radiologi(){return var.permintaan_radiologi;}
+    public static void setperiksaradiologifalse(){var.periksa_radiologi=false;} 
+    public static void setpermintaanradiologifalse(){var.permintaan_radiologi=false;} 
+    public static boolean getsurat_indeks(){return var.surat_indeks;}
+    public static boolean getsurat_map(){return var.surat_map;}
+    public static boolean getsurat_almari(){return var.surat_almari;}
+    public static boolean getsurat_rak(){return var.surat_rak;}
+    public static boolean getsurat_ruang(){return var.surat_ruang;}
+    public static boolean getsurat_klasifikasi(){return var.surat_klasifikasi;}
+    public static boolean getsurat_status(){return var.surat_status;}
+    public static boolean getsurat_sifat(){return var.surat_sifat;}
 }   

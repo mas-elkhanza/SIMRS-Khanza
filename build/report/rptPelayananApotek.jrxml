@@ -21,6 +21,7 @@
 	<parameter name="tigapuluh" class="java.lang.String"/>
 	<parameter name="satujam" class="java.lang.String"/>
 	<parameter name="lebihsatujam" class="java.lang.String"/>
+	<parameter name="rata" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select reg_periksa.no_rkm_medis,pasien.nm_pasien,dokter.nm_dokter,poliklinik.nm_poli,
 resep_obat.tgl_peresepan,resep_obat.jam_peresepan,resep_obat.tgl_perawatan,resep_obat.jam,
@@ -135,14 +136,14 @@ order by resep_obat.tgl_peresepan,resep_obat.jam_peresepan]]>
 				<text><![CDATA[>15 sampai dengan <=30 Menit]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="331" y="79" width="128" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="291" y="79" width="128" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[>30 sampai dengan <=60 Menit]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="331" y="94" width="128" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="291" y="94" width="128" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
@@ -163,14 +164,14 @@ order by resep_obat.tgl_peresepan,resep_obat.jam_peresepan]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="460" y="79" width="5" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="420" y="79" width="5" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="460" y="94" width="5" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Transparent" x="420" y="94" width="5" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
@@ -191,19 +192,40 @@ order by resep_obat.tgl_peresepan,resep_obat.jam_peresepan]]>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{tigapuluh}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement mode="Transparent" x="466" y="79" width="106" height="15"/>
+				<reportElement mode="Transparent" x="426" y="79" width="106" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{satujam}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement mode="Transparent" x="466" y="94" width="106" height="15"/>
+				<reportElement mode="Transparent" x="426" y="94" width="106" height="15"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{lebihsatujam}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="561" y="79" width="128" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Rata-rata Pelayanan (Menit)]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement mode="Transparent" x="696" y="79" width="106" height="15"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{rata}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="690" y="79" width="5" height="15" forecolor="#000000" backcolor="#F0F0DC"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
