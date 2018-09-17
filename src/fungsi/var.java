@@ -82,7 +82,7 @@ public final class var {
             barang_cssd=false,skdp_bpjs=false,booking_registrasi=false,bpjs_cek_propinsi=false,bpjs_cek_kabupaten=false,bpjs_cek_kecamatan=false,
             bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false,permintaan_lab=false,permintaan_radiologi=false,
             surat_indeks=false,surat_map=false,surat_almari=false,surat_rak=false,surat_ruang=false,surat_klasifikasi=false,surat_status=false,
-            surat_sifat=false;
+            surat_sifat=false,surat_balas=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -478,6 +478,7 @@ public final class var {
                         var.surat_klasifikasi=true;
                         var.surat_status=true; 
                         var.surat_sifat=true;
+                        var.surat_balas=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -857,6 +858,7 @@ public final class var {
                         var.surat_klasifikasi=rs2.getBoolean("surat_klasifikasi");
                         var.surat_status=rs2.getBoolean("surat_status");
                         var.surat_sifat=rs2.getBoolean("surat_sifat");
+                        var.surat_balas=rs2.getBoolean("surat_balas");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1234,6 +1236,7 @@ public final class var {
                         var.surat_klasifikasi=false;
                         var.surat_status=false;
                         var.surat_sifat=false;
+                        var.surat_balas=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1663,4 +1666,6 @@ public final class var {
     public static boolean getsurat_klasifikasi(){return var.surat_klasifikasi;}
     public static boolean getsurat_status(){return var.surat_status;}
     public static boolean getsurat_sifat(){return var.surat_sifat;}
+    public static boolean getsurat_balas(){return var.surat_balas;}
+
 }   
