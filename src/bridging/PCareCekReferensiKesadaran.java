@@ -313,7 +313,7 @@ public final class PCareCekReferensiKesadaran extends javax.swing.JDialog {
         PcareApi api=new PcareApi();
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIPCARE")+"/v1/kesadaran";	
+            String URL = prop.getProperty("URLAPIPCARE")+"/kesadaran";	
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
