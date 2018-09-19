@@ -530,6 +530,11 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
             }
         }
     }
+    
+    public void setPoli(String KodePoli,String NamaPoli){
+        KdSep.setText(KodePoli);
+        NmSep.setText(NamaPoli);
+    }
 
     public JTable getTable(){
         return tbKamar;

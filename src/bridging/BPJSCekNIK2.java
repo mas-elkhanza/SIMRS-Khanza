@@ -4801,6 +4801,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkAsaActionPerformed
 
     private void btnDPJPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPActionPerformed
+        dpjp.setPoli(KdPoli.getText(),NmPoli.getText());
         dpjp.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         dpjp.setLocationRelativeTo(internalFrame1);
         dpjp.setVisible(true);
@@ -6017,18 +6018,20 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                         TNo.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+"")
                     });
                 }                     
-            }else{
-                Sequel.meghapus("kamar_inap","no_rawat",TNoRw.getText());
-                Sequel.meghapus("diagnosa_pasien","no_rawat",TNoRw.getText());
-                Sequel.meghapus("rujuk_masuk","no_rawat",TNoRw.getText());
-                Sequel.meghapus("reg_periksa","no_rawat",TNoRw.getText());
+            }else{                
+                Sequel.meghapus3("kamar_inap","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }
-        }catch (Exception ex) {
-            Sequel.meghapus("kamar_inap","no_rawat",TNoRw.getText());
-            Sequel.meghapus("diagnosa_pasien","no_rawat",TNoRw.getText());
-            Sequel.meghapus("rujuk_masuk","no_rawat",TNoRw.getText());
-            Sequel.meghapus("reg_periksa","no_rawat",TNoRw.getText());
+        }catch (Exception ex) {            
+            Sequel.meghapus3("kamar_inap","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
             System.out.println("Notifikasi Bridging : "+ex);
             if(ex.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");

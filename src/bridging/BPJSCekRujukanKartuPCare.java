@@ -4800,6 +4800,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkAsaActionPerformed
 
     private void btnDPJPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPActionPerformed
+        dpjp.setPoli(KdPoli.getText(),NmPoli.getText());
         dpjp.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         dpjp.setLocationRelativeTo(internalFrame1);
         dpjp.setVisible(true);
@@ -5405,7 +5406,13 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                 if(!kdpoli.getText().equals("")){
                     isPoli();
                 }else{
-                    JOptionPane.showMessageDialog(null,"Mapping poli tidak ditemukan.\nSilahkan lakukan mapping terlebih dahulu..!!");
+                    int jawab=JOptionPane.showConfirmDialog(null, "Mapping poli tidak ditemukan.\nSilahkan lakukan mapping terlebih dahulu..!!","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                    if(jawab==JOptionPane.YES_OPTION){
+                        poli.isCek();
+                        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        poli.setLocationRelativeTo(internalFrame1);
+                        poli.setVisible(true);
+                    }
                 }
                 NmPoli.setText(response.path("poliRujukan").path("nama").asText());
                 tabMode.addRow(new Object[]{
@@ -5416,6 +5423,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "Tanggal Kunjungan",": "+response.path("tglKunjungan").asText()
                 }); 
+                Valid.SetTgl(TanggalRujuk,response.path("tglKunjungan").asText());
                 isNumber();
                 isPoli();
                 Kdpnj.setText("BPJ");
@@ -6264,17 +6272,19 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                     });
                 }                     
             }else{
-                Sequel.meghapus("kamar_inap","no_rawat",TNoRw.getText());
-                Sequel.meghapus("diagnosa_pasien","no_rawat",TNoRw.getText());
-                Sequel.meghapus("rujuk_masuk","no_rawat",TNoRw.getText());
-                Sequel.meghapus("reg_periksa","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("kamar_inap","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }
         }catch (Exception ex) {
-            Sequel.meghapus("kamar_inap","no_rawat",TNoRw.getText());
-            Sequel.meghapus("diagnosa_pasien","no_rawat",TNoRw.getText());
-            Sequel.meghapus("rujuk_masuk","no_rawat",TNoRw.getText());
-            Sequel.meghapus("reg_periksa","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("kamar_inap","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
             System.out.println("Notifikasi Bridging : "+ex);
             if(ex.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");

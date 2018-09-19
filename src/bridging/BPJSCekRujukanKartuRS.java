@@ -1671,7 +1671,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -1866,7 +1866,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(200, 777));
+        PanelInput.setPreferredSize(new java.awt.Dimension(200, 877));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
@@ -2174,7 +2174,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         TNo.setBounds(107, 25, 160, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2018" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2018" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -3010,7 +3010,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         jLabel23.setBounds(495, 55, 90, 23);
 
         TanggalSEP.setEditable(false);
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2018 19:23:32" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2018 21:47:55" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -3030,7 +3030,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         jLabel30.setBounds(331, 265, 60, 23);
 
         TanggalRujuk.setEditable(false);
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2018" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2018" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -3468,7 +3468,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2018" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-09-2018" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setName("TanggalKKL"); // NOI18N
         TanggalKKL.setOpaque(false);
@@ -4802,6 +4802,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkAsaActionPerformed
 
     private void btnDPJPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPActionPerformed
+        dpjp.setPoli(KdPoli.getText(),NmPoli.getText());
         dpjp.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         dpjp.setLocationRelativeTo(internalFrame1);
         dpjp.setVisible(true);
@@ -5407,7 +5408,13 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 if(!kdpoli.getText().equals("")){
                     isPoli();
                 }else{
-                    JOptionPane.showMessageDialog(null,"Mapping poli tidak ditemukan.\nSilahkan lakukan mapping terlebih dahulu..!!");
+                    int jawab=JOptionPane.showConfirmDialog(null, "Mapping poli tidak ditemukan.\nSilahkan lakukan mapping terlebih dahulu..!!","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                    if(jawab==JOptionPane.YES_OPTION){
+                        poli.isCek();
+                        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        poli.setLocationRelativeTo(internalFrame1);
+                        poli.setVisible(true);
+                    }
                 }
                 NmPoli.setText(response.path("poliRujukan").path("nama").asText());
                 tabMode.addRow(new Object[]{
@@ -5418,6 +5425,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "Tanggal Kunjungan",": "+response.path("tglKunjungan").asText()
                 }); 
+                Valid.SetTgl(TanggalRujuk,response.path("tglKunjungan").asText());
                 isNumber();
                 isPoli();
                 Kdpnj.setText("BPJ");
@@ -6265,17 +6273,19 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     });
                 }                     
             }else{
-                Sequel.meghapus("kamar_inap","no_rawat",TNoRw.getText());
-                Sequel.meghapus("diagnosa_pasien","no_rawat",TNoRw.getText());
-                Sequel.meghapus("rujuk_masuk","no_rawat",TNoRw.getText());
-                Sequel.meghapus("reg_periksa","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("kamar_inap","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
+                Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
             }
         }catch (Exception ex) {
-            Sequel.meghapus("kamar_inap","no_rawat",TNoRw.getText());
-            Sequel.meghapus("diagnosa_pasien","no_rawat",TNoRw.getText());
-            Sequel.meghapus("rujuk_masuk","no_rawat",TNoRw.getText());
-            Sequel.meghapus("reg_periksa","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("kamar_inap","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("diagnosa_pasien","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("rujuk_masuk","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("reg_periksa","no_rawat",TNoRw.getText());
+            Sequel.meghapus3("pasien","no_rkm_medis",TNo.getText());
             System.out.println("Notifikasi Bridging : "+ex);
             if(ex.toString().contains("UnknownHostException")){
                 JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");

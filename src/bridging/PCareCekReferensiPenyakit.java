@@ -90,6 +90,12 @@ public final class PCareCekReferensiPenyakit extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
             });
         } 
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     }
     
     
@@ -315,7 +321,6 @@ public final class PCareCekReferensiPenyakit extends javax.swing.JDialog {
     public void tampil(String diagnosa) {
         PcareApi api=new PcareApi();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIPCARE")+"/diagnosa/"+diagnosa+"/0/500";	
 
             HttpHeaders headers = new HttpHeaders();

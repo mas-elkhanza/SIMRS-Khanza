@@ -458,7 +458,24 @@ public final class sekuel {
         }
     }
     
-
+    public void meghapus3(String table,String field,String nilai_field) {
+        try {
+            ps=connect.prepareStatement("delete from "+table+" where "+field+"=?");
+            try{       
+                ps.setString(1,nilai_field);
+                ps.executeUpdate(); 
+             }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
     public void mengedit(String table,String acuan_field,String update){
         try {
             ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
