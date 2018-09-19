@@ -64,6 +64,7 @@ import bridging.PCareCekReferensiKesadaran;
 import bridging.PCareCekReferensiPenyakit;
 import bridging.PCareCekReferensiPoli;
 import bridging.PCareCekReferensiProvider;
+import bridging.PCareCekReferensiStatusPulang;
 import bridging.PCareCekRujukan;
 import informasi.InformasiAnalisaKamin;
 import laporan.DlgDkkSurveilansRalan;
@@ -898,6 +899,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareReferensiDokter = new widget.ButtonBig();
         btnPCareReferensiPoli = new widget.ButtonBig();
         btnPCareReferensiProvider = new widget.ButtonBig();
+        btnPCareReferensiStatusPulang = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5729,6 +5731,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPCareReferensiProvider);
+
+        btnPCareReferensiStatusPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/edit-female-user.png"))); // NOI18N
+        btnPCareReferensiStatusPulang.setText("Referensi Stts Pulang PCare");
+        btnPCareReferensiStatusPulang.setToolTipText("");
+        btnPCareReferensiStatusPulang.setIconTextGap(0);
+        btnPCareReferensiStatusPulang.setName("btnPCareReferensiStatusPulang"); // NOI18N
+        btnPCareReferensiStatusPulang.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiStatusPulang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiStatusPulangActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareReferensiStatusPulang);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -11945,6 +11960,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPCareReferensiProviderActionPerformed
 
+    private void btnPCareReferensiStatusPulangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareReferensiStatusPulangActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareCekReferensiStatusPulang form=new PCareCekReferensiStatusPulang(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPCareReferensiStatusPulangActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12185,6 +12211,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPCareReferensiDokter;
     private widget.ButtonBig btnPCareReferensiPoli;
     private widget.ButtonBig btnPCareReferensiProvider;
+    private widget.ButtonBig btnPCareReferensiStatusPulang;
     private widget.ButtonBig btnPaketOperasi;
     private widget.ButtonBig btnPangkatPolri;
     private widget.ButtonBig btnPangkatTNI;
@@ -14110,6 +14137,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_cek_statuspulang()==true){
+                Panelmenu.add(btnPCareReferensiStatusPulang);
+                jmlmenu++;
+            }
+            
             if(var.getpcare_cek_rujukan()==true){
                 Panelmenu.add(btnCekPCareRujukan);
                 jmlmenu++;
@@ -15997,6 +16029,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_cek_provider()==true){
             Panelmenu.add(btnPCareReferensiProvider);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_cek_statuspulang()==true){
+            Panelmenu.add(btnPCareReferensiStatusPulang);
             jmlmenu++;
         }
         
@@ -18424,6 +18461,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_cek_provider()==true){
             if(btnPCareReferensiProvider.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiProvider);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_cek_statuspulang()==true){
+            if(btnPCareReferensiStatusPulang.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareReferensiStatusPulang);
                 jmlmenu++;
             }                
         }
