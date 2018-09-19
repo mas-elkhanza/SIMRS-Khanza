@@ -5401,6 +5401,12 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                     "Poli Rujukan",": "+response.path("poliRujukan").path("kode").asText()+" "+response.path("poliRujukan").path("nama").asText()
                 }); 
                 KdPoli.setText(response.path("poliRujukan").path("kode").asText());
+                kdpoli.setText(Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?",response.path("poliRujukan").path("kode").asText()));
+                if(!kdpoli.getText().equals("")){
+                    isPoli();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Mapping poli tidak ditemukan.\nSilahkan lakukan mapping terlebih dahulu..!!");
+                }
                 NmPoli.setText(response.path("poliRujukan").path("nama").asText());
                 tabMode.addRow(new Object[]{
                     "Provider Perujuk",": "+response.path("provPerujuk").path("kode").asText()+" "+response.path("provPerujuk").path("nama").asText()
