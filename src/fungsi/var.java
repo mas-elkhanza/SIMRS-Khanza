@@ -82,7 +82,7 @@ public final class var {
             barang_cssd=false,skdp_bpjs=false,booking_registrasi=false,bpjs_cek_propinsi=false,bpjs_cek_kabupaten=false,bpjs_cek_kecamatan=false,
             bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false,permintaan_lab=false,permintaan_radiologi=false,
             surat_indeks=false,surat_map=false,surat_almari=false,surat_rak=false,surat_ruang=false,surat_klasifikasi=false,surat_status=false,
-            surat_sifat=false,surat_balas=false,surat_masuk=false,pcare_cek_dokter=false,pcare_cek_poli=false;
+            surat_sifat=false,surat_balas=false,surat_masuk=false,pcare_cek_dokter=false,pcare_cek_poli=false,pcare_cek_provider=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -482,6 +482,7 @@ public final class var {
                         var.surat_masuk=true;
                         var.pcare_cek_dokter=true;
                         var.pcare_cek_poli=true;
+                        var.pcare_cek_provider=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -865,6 +866,7 @@ public final class var {
                         var.surat_masuk=rs2.getBoolean("surat_masuk");
                         var.pcare_cek_dokter=rs2.getBoolean("pcare_cek_dokter");
                         var.pcare_cek_poli=rs2.getBoolean("pcare_cek_poli");
+                        var.pcare_cek_provider=rs2.getBoolean("pcare_cek_provider");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1246,6 +1248,7 @@ public final class var {
                         var.surat_masuk=false;
                         var.pcare_cek_dokter=false;
                         var.pcare_cek_poli=false;
+                        var.pcare_cek_provider=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1679,4 +1682,5 @@ public final class var {
     public static boolean getsurat_masuk(){return var.surat_masuk;}
     public static boolean getpcare_cek_dokter(){return var.pcare_cek_dokter;}
     public static boolean getpcare_cek_poli(){return var.pcare_cek_poli;}
+    public static boolean getpcare_cek_provider(){return var.pcare_cek_provider;}
 }   
