@@ -524,7 +524,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
                         String nama=Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+norm+"'"); 
                         bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);                   
                         bayarpiutang.tampil();  
-                        bayarpiutang.setSize(this.getWidth()-40,this.getHeight()-40);
+                        bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
                         bayarpiutang.setLocationRelativeTo(this);
                         bayarpiutang.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
@@ -536,7 +536,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
                             tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),
                             Sequel.cariIsiAngka("select uangmuka from piutang_pasien where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString())
                     );                    
-                    rincianpiutang.setSize(this.getWidth()-40,this.getHeight()-40);
+                    rincianpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
                     rincianpiutang.setLocationRelativeTo(this);
                     rincianpiutang.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
@@ -558,7 +558,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
                         String nama=Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+norm+"'");
                         bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);
                         bayarpiutang.tampil();  
-                        bayarpiutang.setSize(this.getWidth()-40,this.getHeight()-40);
+                        bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
                         bayarpiutang.setLocationRelativeTo(this);
                         bayarpiutang.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
@@ -570,7 +570,7 @@ public final class DlgLhtPiutang extends javax.swing.JDialog {
                             tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),
                             Sequel.cariIsiAngka("select uangmuka from piutang_pasien where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString())
                     );                    
-                    rincianpiutang.setSize(this.getWidth()-40,this.getHeight()-40);
+                    rincianpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
                     rincianpiutang.setLocationRelativeTo(this);
                     rincianpiutang.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
@@ -612,7 +612,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),
                             Sequel.cariIsiAngka("select uangmuka from piutang_pasien where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString())
                     );                    
-                    rincianpiutang.setSize(this.getWidth()-40,this.getHeight()-40);
+                    rincianpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
                     rincianpiutang.setLocationRelativeTo(this);
                     rincianpiutang.setAlwaysOnTop(false);
                     rincianpiutang.setVisible(true);
@@ -632,7 +632,7 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
                     String nama=Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+norm+"'"); 
                     bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);                   
                     bayarpiutang.tampil();  
-                    bayarpiutang.setSize(this.getWidth()-40,this.getHeight()-40);
+                    bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
                     bayarpiutang.setLocationRelativeTo(this);
                     bayarpiutang.setAlwaysOnTop(false);
                     bayarpiutang.setVisible(true);
@@ -660,7 +660,7 @@ private void MnDetailCicilanActionPerformed(java.awt.event.ActionEvent evt) {//G
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         penjab.isCek();
-        penjab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setAlwaysOnTop(false);
         penjab.setVisible(true);

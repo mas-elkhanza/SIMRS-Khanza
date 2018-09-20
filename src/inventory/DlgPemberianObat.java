@@ -1176,7 +1176,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             if(var.getkode().equals("Admin Utama")){
                 if(status.equals("ranap")){
                     dlgobt.setNoRm(TNoRw.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
-                    dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                    dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     dlgobt.isCek();
                     dlgobt.tampil();
                     dlgobt.setLocationRelativeTo(internalFrame1);
@@ -1188,7 +1188,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                     if(!namadokter.equals("")){
                         dlgobtjalan.setDokter(kodedokter, namadokter);
                     }
-                    dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                    dlgobtjalan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     dlgobtjalan.tampilobat();
                     dlgobtjalan.setLocationRelativeTo(internalFrame1);
                     dlgobtjalan.setVisible(true);
@@ -1202,7 +1202,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                 }else{ 
                     if(status.equals("ranap")){
                         dlgobt.setNoRm(TNoRw.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
-                        dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgobt.isCek();
                         dlgobt.tampil();
                         dlgobt.setLocationRelativeTo(internalFrame1);
@@ -1210,7 +1210,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                     }else if(status.equals("ralan")){
                         dlgobtjalan.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
                                             Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
-                        dlgobtjalan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgobtjalan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgobtjalan.isCek();
                         if(!namadokter.equals("")){
                             dlgobtjalan.setDokter(kodedokter, namadokter);
@@ -1586,7 +1586,7 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         var.setform("DlgPemberianObat");
         pasien.emptTeks();    
         pasien.isCek();
-        pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);
     }//GEN-LAST:event_BtnSeek4ActionPerformed
@@ -1843,7 +1843,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             if(var.getkode().equals("Admin Utama")){
                 var.setform("DlgPemberianObat");
                 dlgobt2.setNoRm(TNoRw.getText(),DTPBeri.getDate());
-                dlgobt2.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 dlgobt2.setLocationRelativeTo(internalFrame1);
                 dlgobt2.setVisible(true);
             }else{
@@ -1853,7 +1853,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }else{ 
                     var.setform("DlgPemberianObat");
                     dlgobt2.setNoRm(TNoRw.getText(),DTPBeri.getDate());
-                    dlgobt2.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                    dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     dlgobt2.setLocationRelativeTo(internalFrame1);
                     dlgobt2.setVisible(true);        
                 }
@@ -1869,7 +1869,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(status.equals("ralan")){
                     var.setform("DlgPemberianObat");
                     dlgobtpny.setNoRm(TNoRw.getText(),Sequel.cariIsi("select kd_penyakit from diagnosa_pasien where no_rawat=? order by prioritas limit 1",TNoRw.getText()));
-                    dlgobtpny.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                    dlgobtpny.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     dlgobtpny.setLocationRelativeTo(internalFrame1);
                     dlgobtpny.setVisible(true);
                 }
@@ -1881,7 +1881,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     if(status.equals("ralan")){
                         var.setform("DlgPemberianObat");
                         dlgobtpny.setNoRm(TNoRw.getText(),Sequel.cariIsi("select kd_penyakit from diagnosa_pasien where no_rawat=? order by prioritas limit 1",TNoRw.getText()));
-                        dlgobtpny.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgobtpny.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgobtpny.setLocationRelativeTo(internalFrame1);
                         dlgobtpny.setVisible(true);
                     }        

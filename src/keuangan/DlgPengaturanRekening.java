@@ -492,7 +492,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 rekening.emptTeks();
                 rekening.tampil();
                 rekening.isCek();
-                rekening.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                rekening.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 rekening.setLocationRelativeTo(internalFrame1);
                 rekening.setVisible(true);
             }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){

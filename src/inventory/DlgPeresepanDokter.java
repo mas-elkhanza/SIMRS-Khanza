@@ -654,7 +654,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
                 i=tbObat.getSelectedColumn();
                 if(i==8){
                     var.setform("DlgCariObat");
-                    aturanpakai.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                    aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     aturanpakai.setLocationRelativeTo(internalFrame1);
                     aturanpakai.setVisible(true);
                 }

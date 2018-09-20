@@ -869,7 +869,7 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
         var.setform("DlgRekeningTahun");
         rekening.emptTeks();
         rekening.tampil();
-        rekening.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        rekening.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         rekening.setLocationRelativeTo(internalFrame1);
         rekening.setVisible(true);
     }//GEN-LAST:event_BtnCari7ActionPerformed

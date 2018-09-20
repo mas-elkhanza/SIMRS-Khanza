@@ -593,7 +593,7 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
 
     private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvActionPerformed
         inventaris.isCek();
-        inventaris.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        inventaris.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         inventaris.setLocationRelativeTo(internalFrame1);
         inventaris.setAlwaysOnTop(false);
         inventaris.setVisible(true);

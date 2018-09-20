@@ -538,7 +538,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         DlgStokOpname opname=new DlgStokOpname(null,true);
         opname.isCek(); 
         opname.emptTeks();
-        opname.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        opname.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         opname.setLocationRelativeTo(internalFrame1);
         opname.setAlwaysOnTop(false);
         opname.setVisible(true);
@@ -675,7 +675,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGudangActionPerformed
     bangsal.isCek();
-    bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     bangsal.setLocationRelativeTo(internalFrame1);
     bangsal.setAlwaysOnTop(false);
     bangsal.setVisible(true);
