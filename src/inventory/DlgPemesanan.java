@@ -857,7 +857,7 @@ public class DlgPemesanan extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         form.emptTeks();    
         form.isCek();
-        form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
         form.setVisible(true);
@@ -1183,7 +1183,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     }
                     if(y>0){
                         satuanbarang.isCek();
-                        satuanbarang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight());
+                        satuanbarang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight());
                         satuanbarang.setLocationRelativeTo(internalFrame1);
                         satuanbarang.setVisible(true);                        
                     }else{
@@ -1234,7 +1234,7 @@ private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         var.setform("DlgPemesanan");
         form.suplier.emptTeks();
         form.suplier.isCek();
-        form.suplier.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        form.suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.suplier.setLocationRelativeTo(internalFrame1);
         form.suplier.setAlwaysOnTop(false);
         form.suplier.setVisible(true);
@@ -1244,7 +1244,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         var.setform("DlgPemesanan");
         form.petugas.emptTeks();
         form.petugas.isCek();
-        form.petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.petugas.setLocationRelativeTo(internalFrame1);
         form.petugas.setAlwaysOnTop(false);
         form.petugas.setVisible(true);
@@ -1268,7 +1268,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         var.setform("DlgPemesanan");
         bangsal.isCek();
         bangsal.emptTeks();        
-        bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setAlwaysOnTop(false);
         bangsal.setVisible(true);
@@ -1309,7 +1309,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }        
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);

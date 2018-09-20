@@ -937,7 +937,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         var.setform("DlgPemasukanLain");
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.isCek();
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
@@ -976,7 +976,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         kategori.emptTeks();
         kategori.tampil();
         kategori.isCek();
-        kategori.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        kategori.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kategori.setLocationRelativeTo(internalFrame1);
         kategori.setVisible(true);
     }//GEN-LAST:event_btnKategoriActionPerformed

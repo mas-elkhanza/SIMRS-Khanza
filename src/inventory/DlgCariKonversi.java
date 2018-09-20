@@ -254,7 +254,7 @@ private void kdsat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                             DlgKonversi form=new DlgKonversi(null,false);
                             form.emptTeks();
-                            form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                             form.setLocationRelativeTo(internalFrame1);
                             form.setAlwaysOnTop(false);
                             form.setVisible(true);

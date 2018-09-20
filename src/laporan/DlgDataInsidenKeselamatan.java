@@ -1194,7 +1194,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
@@ -1210,7 +1210,7 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     private void btnInsidenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsidenActionPerformed
         insiden.emptTeks();
         insiden.isCek();
-        insiden.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        insiden.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         insiden.setLocationRelativeTo(internalFrame1);
         insiden.setVisible(true);
     }//GEN-LAST:event_btnInsidenActionPerformed

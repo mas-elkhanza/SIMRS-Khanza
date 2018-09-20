@@ -1381,7 +1381,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGudangActionPerformed
         caribangsal.isCek();
         caribangsal.emptTeks();
-        caribangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        caribangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         caribangsal.setLocationRelativeTo(internalFrame1);
         caribangsal.setAlwaysOnTop(false);
         caribangsal.setVisible(true);

@@ -646,7 +646,7 @@ public class DlgJadwalTambahan extends javax.swing.JDialog {
         if(tabMode.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 jammasuk.isCek();
-                jammasuk.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight());
+                jammasuk.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight());
                 jammasuk.setLocationRelativeTo(internalFrame1);
                 jammasuk.setVisible(true);
             }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){

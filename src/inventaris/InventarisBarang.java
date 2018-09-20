@@ -1052,7 +1052,7 @@ private void kode_produsenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
 private void btnProdusenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdusenActionPerformed
     produsen.isCek();
-    produsen.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    produsen.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     produsen.setLocationRelativeTo(internalFrame1);
     produsen.setVisible(true);
 }//GEN-LAST:event_btnProdusenActionPerformed
@@ -1073,7 +1073,7 @@ private void id_merkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_i
 
 private void btnMerkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMerkActionPerformed
     merk.isCek();
-    merk.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    merk.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     merk.setLocationRelativeTo(internalFrame1);
     merk.setVisible(true);
 }//GEN-LAST:event_btnMerkActionPerformed
@@ -1094,7 +1094,7 @@ private void id_kategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
 
 private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
     kategori.isCek();
-    kategori.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    kategori.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     kategori.setLocationRelativeTo(internalFrame1);
     kategori.setAlwaysOnTop(false);
     kategori.setVisible(true);
@@ -1116,7 +1116,7 @@ private void id_jenisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
     jenis.isCek();
-    jenis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     jenis.setLocationRelativeTo(internalFrame1);
     jenis.setAlwaysOnTop(false);
     jenis.setVisible(true);

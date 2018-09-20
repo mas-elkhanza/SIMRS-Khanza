@@ -1381,7 +1381,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(!(TPasien.getText().trim().equals(""))){
             NoResepUbah.setText(NoResep.getText());
             tampilresep();
-            WindowInput3.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            WindowInput3.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             WindowInput3.setLocationRelativeTo(internalFrame1);
             WindowInput3.setVisible(true);
         }
@@ -1396,7 +1396,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(!(TPasien.getText().trim().equals(""))){
             NoResepUbah1.setText(NoResep.getText());
             tampilresep2();
-            WindowInput4.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            WindowInput4.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             WindowInput4.setLocationRelativeTo(internalFrame1);
             WindowInput4.setVisible(true);
         }

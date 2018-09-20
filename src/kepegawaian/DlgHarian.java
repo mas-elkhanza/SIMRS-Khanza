@@ -809,7 +809,7 @@ public final class DlgHarian extends javax.swing.JDialog {
         bar.emptTeks();
         bar.tampil();
         bar.isCek();
-        bar.setSize(internalFrame1.getWidth()-40, internalFrame1.getHeight()-40);
+        bar.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
         bar.setLocationRelativeTo(internalFrame1);
         bar.setVisible(true);
     }//GEN-LAST:event_CariActionPerformed
