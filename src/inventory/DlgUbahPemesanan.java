@@ -1087,7 +1087,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     if (reply == JOptionPane.YES_OPTION) {
                                         DlgKonversi konv=new DlgKonversi(null,false);
                                         konv.emptTeks();
-                                        konv.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                                        konv.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                                         konv.setLocationRelativeTo(internalFrame1);
                                         konv.setVisible(true);
                                     }
@@ -1639,7 +1639,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if (reply == JOptionPane.YES_OPTION) {
                                     DlgKonversi konv=new DlgKonversi(null,false);
                                     konv.emptTeks();
-                                    konv.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                                    konv.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                                     konv.setLocationRelativeTo(internalFrame1);
                                     konv.setVisible(true);
                                 }                            
@@ -1722,7 +1722,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     if (reply == JOptionPane.YES_OPTION) {
                                         DlgKonversi konv=new DlgKonversi(null,false);
                                         konv.emptTeks();
-                                        konv.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                                        konv.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                                         konv.setLocationRelativeTo(internalFrame1);
                                         konv.setVisible(true);
                                     }                            

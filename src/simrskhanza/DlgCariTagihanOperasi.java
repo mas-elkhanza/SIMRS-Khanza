@@ -1626,7 +1626,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariTagihanOperasi");
         member.emptTeks();
         member.isCek();
-        member.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         member.setLocationRelativeTo(internalFrame1);
         member.setAlwaysOnTop(false);
         member.setVisible(true);

@@ -674,7 +674,7 @@ public class DlgJurnal extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgCariJurnal form=new DlgCariJurnal(null,false);
         form.emptTeks();        
-        form.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
         form.setVisible(true);

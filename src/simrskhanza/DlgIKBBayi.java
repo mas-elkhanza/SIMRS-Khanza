@@ -2991,7 +2991,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             if(internalFrame1.getWidth()>1015){
                 DlgBridgingLahir.setSize(1015,337);
             }else{
-                DlgBridgingLahir.setSize(internalFrame1.getWidth()-50,345);
+                DlgBridgingLahir.setSize(internalFrame1.getWidth()-20,345);
             }
             
             if(DlgBridgingLahir.getWidth()<1010){
