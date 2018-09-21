@@ -61,6 +61,7 @@ import bridging.InhealthDataSJP;
 import bridging.InhealthReferensiJenpelRuang;
 import bridging.PCareCekReferensiDokter;
 import bridging.PCareCekReferensiKesadaran;
+import bridging.PCareCekReferensiKhusus;
 import bridging.PCareCekReferensiPenyakit;
 import bridging.PCareCekReferensiPoli;
 import bridging.PCareCekReferensiProvider;
@@ -906,6 +907,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareReferensiSpesialis = new widget.ButtonBig();
         btnPCareReferensiSubspesialis = new widget.ButtonBig();
         btnPCareReferensiSarana = new widget.ButtonBig();
+        btnPCareReferensiKhusus = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5751,7 +5753,7 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPCareReferensiStatusPulang);
 
-        btnPCareReferensiSpesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1485357943_guard.png"))); // NOI18N
+        btnPCareReferensiSpesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_surgeon_63160.png"))); // NOI18N
         btnPCareReferensiSpesialis.setText("Referensi Spesialis PCare");
         btnPCareReferensiSpesialis.setToolTipText("");
         btnPCareReferensiSpesialis.setIconTextGap(0);
@@ -5789,6 +5791,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPCareReferensiSarana);
+
+        btnPCareReferensiKhusus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_status_63159.png"))); // NOI18N
+        btnPCareReferensiKhusus.setText("Referensi Khusus PCare");
+        btnPCareReferensiKhusus.setToolTipText("");
+        btnPCareReferensiKhusus.setIconTextGap(0);
+        btnPCareReferensiKhusus.setName("btnPCareReferensiKhusus"); // NOI18N
+        btnPCareReferensiKhusus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiKhusus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiKhususActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareReferensiKhusus);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -12059,6 +12074,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPCareReferensiSaranaActionPerformed
 
+    private void btnPCareReferensiKhususActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareReferensiKhususActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareCekReferensiKhusus form=new PCareCekReferensiKhusus(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPCareReferensiKhususActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12297,6 +12323,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnObatPerTanggal;
     private widget.ButtonBig btnOpname;
     private widget.ButtonBig btnPCareReferensiDokter;
+    private widget.ButtonBig btnPCareReferensiKhusus;
     private widget.ButtonBig btnPCareReferensiPoli;
     private widget.ButtonBig btnPCareReferensiProvider;
     private widget.ButtonBig btnPCareReferensiSarana;
@@ -14248,6 +14275,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_cek_khusus()==true){
+                Panelmenu.add(btnPCareReferensiKhusus);
+                jmlmenu++;
+            }
+            
             if(var.getpcare_cek_rujukan()==true){
                 Panelmenu.add(btnCekPCareRujukan);
                 jmlmenu++;
@@ -16155,6 +16187,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_cek_sarana()==true){
             Panelmenu.add(btnPCareReferensiSarana);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_cek_khusus()==true){
+            Panelmenu.add(btnPCareReferensiKhusus);
             jmlmenu++;
         }
 
@@ -18610,6 +18647,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_cek_sarana()==true){
             if(btnPCareReferensiSarana.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiSarana);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_cek_khusus()==true){
+            if(btnPCareReferensiKhusus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareReferensiKhusus);
                 jmlmenu++;
             }                
         }
