@@ -62,6 +62,7 @@ import bridging.InhealthReferensiJenpelRuang;
 import bridging.PCareCekReferensiDokter;
 import bridging.PCareCekReferensiKesadaran;
 import bridging.PCareCekReferensiKhusus;
+import bridging.PCareCekReferensiObat;
 import bridging.PCareCekReferensiPenyakit;
 import bridging.PCareCekReferensiPoli;
 import bridging.PCareCekReferensiProvider;
@@ -908,6 +909,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareReferensiSubspesialis = new widget.ButtonBig();
         btnPCareReferensiSarana = new widget.ButtonBig();
         btnPCareReferensiKhusus = new widget.ButtonBig();
+        btnPCareReferensiObat = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5804,6 +5806,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPCareReferensiKhusus);
+
+        btnPCareReferensiObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815676_pill.png"))); // NOI18N
+        btnPCareReferensiObat.setText("Referensi Obat PCare");
+        btnPCareReferensiObat.setToolTipText("");
+        btnPCareReferensiObat.setIconTextGap(0);
+        btnPCareReferensiObat.setName("btnPCareReferensiObat"); // NOI18N
+        btnPCareReferensiObat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareReferensiObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareReferensiObatActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareReferensiObat);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -12085,6 +12100,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPCareReferensiKhususActionPerformed
 
+    private void btnPCareReferensiObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareReferensiObatActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareCekReferensiObat form=new PCareCekReferensiObat(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPCareReferensiObatActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12324,6 +12350,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnOpname;
     private widget.ButtonBig btnPCareReferensiDokter;
     private widget.ButtonBig btnPCareReferensiKhusus;
+    private widget.ButtonBig btnPCareReferensiObat;
     private widget.ButtonBig btnPCareReferensiPoli;
     private widget.ButtonBig btnPCareReferensiProvider;
     private widget.ButtonBig btnPCareReferensiSarana;
@@ -14280,6 +14307,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_cek_obat()==true){
+                Panelmenu.add(btnPCareReferensiObat);
+                jmlmenu++;
+            }
+            
             if(var.getpcare_cek_rujukan()==true){
                 Panelmenu.add(btnCekPCareRujukan);
                 jmlmenu++;
@@ -16192,6 +16224,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_cek_khusus()==true){
             Panelmenu.add(btnPCareReferensiKhusus);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_cek_obat()==true){
+            Panelmenu.add(btnPCareReferensiObat);
             jmlmenu++;
         }
 
@@ -18654,6 +18691,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_cek_khusus()==true){
             if(btnPCareReferensiKhusus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareReferensiKhusus);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_cek_obat()==true){
+            if(btnPCareReferensiObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareReferensiObat);
                 jmlmenu++;
             }                
         }
