@@ -84,7 +84,7 @@ public final class var {
             surat_indeks=false,surat_map=false,surat_almari=false,surat_rak=false,surat_ruang=false,surat_klasifikasi=false,surat_status=false,
             surat_sifat=false,surat_balas=false,surat_masuk=false,pcare_cek_dokter=false,pcare_cek_poli=false,pcare_cek_provider=false,
             pcare_cek_statuspulang=false,pcare_cek_spesialis=false,pcare_cek_subspesialis=false,pcare_cek_sarana=false,pcare_cek_khusus=false,
-            pcare_cek_obat=false;
+            pcare_cek_obat=false,pcare_cek_tindakan=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -491,6 +491,7 @@ public final class var {
                         var.pcare_cek_sarana=true;
                         var.pcare_cek_khusus=true;
                         var.pcare_cek_obat=true;
+                        var.pcare_cek_tindakan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -881,6 +882,7 @@ public final class var {
                         var.pcare_cek_sarana=rs2.getBoolean("pcare_cek_sarana");
                         var.pcare_cek_khusus=rs2.getBoolean("pcare_cek_khusus");
                         var.pcare_cek_obat=rs2.getBoolean("pcare_cek_obat");
+                        var.pcare_cek_tindakan=rs2.getBoolean("pcare_cek_tindakan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1269,6 +1271,7 @@ public final class var {
                         var.pcare_cek_sarana=false;
                         var.pcare_cek_khusus=false;
                         var.pcare_cek_obat=false;
+                        var.pcare_cek_tindakan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1709,4 +1712,5 @@ public final class var {
     public static boolean getpcare_cek_sarana(){return var.pcare_cek_sarana;}
     public static boolean getpcare_cek_khusus(){return var.pcare_cek_khusus;}
     public static boolean getpcare_cek_obat(){return var.pcare_cek_obat;}
+    public static boolean getpcare_cek_tindakan(){return var.pcare_cek_tindakan;}
 }   
