@@ -1003,7 +1003,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPeriksaLab");
         member.emptTeks();
         member.isCek();
-        member.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         member.setLocationRelativeTo(internalFrame1);
         member.setAlwaysOnTop(false);
         member.setVisible(true);
@@ -1013,7 +1013,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPeriksaLab");
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -1673,7 +1673,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             JOptionPane.showMessageDialog(null,"Maaf, Gagal mengubah. Pilih dulu data yang mau dicetak.\nKlik No.Rawat pada table untuk memilih...!!!!");
         }else if(!(Kd2.getText().trim().equals(""))){  
             DlgUbahPeriksaLab ubah=new DlgUbahPeriksaLab(null,false);
-            ubah.setSize(this.getWidth()-40,this.getHeight()-40);
+            ubah.setSize(this.getWidth()-20,this.getHeight()-20);
             ubah.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),
                     tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString(), 
                     tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
@@ -3049,7 +3049,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             ps5.close();
                         }
                     }
-                    WindowSaran.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                    WindowSaran.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     WindowSaran.setLocationRelativeTo(internalFrame1);
                     WindowSaran.setVisible(true);
                 } catch (Exception ex) {

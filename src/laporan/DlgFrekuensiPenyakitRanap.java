@@ -574,7 +574,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void btnPenyakitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenyakitActionPerformed
         penyakit.isCek();
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setVisible(true);
 }//GEN-LAST:event_btnPenyakitActionPerformed
@@ -637,7 +637,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -665,7 +665,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -691,7 +691,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -715,7 +715,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -737,7 +737,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -757,7 +757,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -775,7 +775,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -791,7 +791,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -805,7 +805,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -839,7 +839,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -867,7 +867,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -893,7 +893,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -917,7 +917,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -939,7 +939,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -959,7 +959,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -977,7 +977,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -993,7 +993,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1007,7 +1007,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1044,7 +1044,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1070,7 +1070,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1095,7 +1095,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1118,7 +1118,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1139,7 +1139,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1158,7 +1158,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1175,7 +1175,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1190,7 +1190,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1203,7 +1203,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1236,7 +1236,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1262,7 +1262,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1287,7 +1287,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1310,7 +1310,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1331,7 +1331,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1350,7 +1350,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1367,7 +1367,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1382,7 +1382,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1395,7 +1395,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1434,7 +1434,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1462,7 +1462,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1488,7 +1488,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1512,7 +1512,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1534,7 +1534,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1554,7 +1554,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1572,7 +1572,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1588,7 +1588,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1602,7 +1602,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1636,7 +1636,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1664,7 +1664,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1690,7 +1690,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1714,7 +1714,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1736,7 +1736,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1756,7 +1756,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1774,7 +1774,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1790,7 +1790,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1804,7 +1804,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 JFreeChart freeChart = ChartFactory.createBarChart("10 Besar Penyakit Di Rawat Inap","Periode","Jumlah Penyakit", dcd, PlotOrientation.VERTICAL,true, true,true); //String arg0,String arg1,String arg2,Category Datasheet,Plot Orientation,boolean arg4,boolean arg5,boolean arg6
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap",freeChart);
 
-                cf.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
@@ -1841,7 +1841,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1867,7 +1867,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1892,7 +1892,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1915,7 +1915,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1936,7 +1936,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1955,7 +1955,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1972,7 +1972,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -1987,7 +1987,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -2000,7 +2000,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -2033,7 +2033,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -2059,7 +2059,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -2084,7 +2084,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -2107,7 +2107,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -2128,7 +2128,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -2147,7 +2147,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -2164,7 +2164,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -2179,7 +2179,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -2192,7 +2192,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
                 JFreeChart freeChart = ChartFactory.createPieChart("10 Besar Penyakit Di Rawat Inap Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" s.d. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url
                 ChartFrame cf = new ChartFrame("Grafik 10 Besar Penyakit Di Rawat Inap ",freeChart);
-                cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 cf.setLocationRelativeTo(internalFrame1);
                 cf.setAlwaysOnTop(false);
                 cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());

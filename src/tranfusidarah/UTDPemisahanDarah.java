@@ -1186,7 +1186,7 @@ public class UTDPemisahanDarah extends javax.swing.JDialog {
         }else{
             if(!tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
                 NomorDonor.setText(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                DlgInput.setSize(internalFrame1.getWidth()-40, internalFrame1.getHeight()-40);
+                DlgInput.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                 DlgInput.setLocationRelativeTo(internalFrame1);
                 DlgInput.setVisible(true);
                 emptTeks();
@@ -1316,7 +1316,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void btnPetugasAftapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasAftapActionPerformed
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);

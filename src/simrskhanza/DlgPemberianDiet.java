@@ -853,7 +853,7 @@ private void BtnSeek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         var.setform("DlgPemberianObat");        
         diet.emptTeks();
         diet.isCek();
-        diet.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        diet.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         diet.setLocationRelativeTo(internalFrame1);
         diet.setVisible(true);
 }//GEN-LAST:event_BtnSeek1ActionPerformed
@@ -874,7 +874,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         var.setform("DlgPemberianObat");
         bangsal.emptTeks();
         bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setVisible(true);
     }//GEN-LAST:event_BtnSeek2ActionPerformed

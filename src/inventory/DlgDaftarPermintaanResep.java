@@ -466,7 +466,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                     );
                     dlgobt.isCek();
                     dlgobt.tampilobat2(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                    dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                    dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     dlgobt.setLocationRelativeTo(internalFrame1);
                     dlgobt.setVisible(true);
                 }else{
@@ -481,7 +481,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                         );
                         dlgobt.isCek();
                         dlgobt.tampilobat2(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
-                        dlgobt.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgobt.setLocationRelativeTo(internalFrame1);
                         dlgobt.setVisible(true);
                     }

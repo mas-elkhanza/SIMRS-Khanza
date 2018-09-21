@@ -47,6 +47,7 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
+    private PcareApi api=new PcareApi();
 
     /** Creates new form DlgKamar
      * @param parent
@@ -90,6 +91,12 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
             });
         } 
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     }
     
     
@@ -267,11 +274,7 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        /*if(diagnosa.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Silahkan masukkan dokter terlebih dahulu..!!!");
-        }else{*/
-            tampil(diagnosa.getText());
-        //}        
+        tampil(diagnosa.getText());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -313,9 +316,7 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String diagnosa) {
-        PcareApi api=new PcareApi();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIPCARE")+"/dokter/0/500";	
 
             HttpHeaders headers = new HttpHeaders();

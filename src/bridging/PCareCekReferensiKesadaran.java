@@ -48,6 +48,7 @@ public final class PCareCekReferensiKesadaran extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
+    private PcareApi api=new PcareApi();
 
     /** Creates new form DlgKamar
      * @param parent
@@ -91,6 +92,12 @@ public final class PCareCekReferensiKesadaran extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
             });
         } 
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     }
     
     
@@ -310,9 +317,7 @@ public final class PCareCekReferensiKesadaran extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String diagnosa) {
-        PcareApi api=new PcareApi();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
             String URL = prop.getProperty("URLAPIPCARE")+"/kesadaran";	
 
             HttpHeaders headers = new HttpHeaders();

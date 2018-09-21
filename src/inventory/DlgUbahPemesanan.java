@@ -942,7 +942,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         DlgBarang barang=new DlgBarang(null,false);
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);
@@ -1087,7 +1087,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     if (reply == JOptionPane.YES_OPTION) {
                                         DlgKonversi konv=new DlgKonversi(null,false);
                                         konv.emptTeks();
-                                        konv.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                                        konv.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                                         konv.setLocationRelativeTo(internalFrame1);
                                         konv.setVisible(true);
                                     }
@@ -1121,7 +1121,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     }
                     if(y>0){
                         satuanbarang.isCek();
-                        satuanbarang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight());
+                        satuanbarang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight());
                         satuanbarang.setLocationRelativeTo(internalFrame1);
                         satuanbarang.setVisible(true);
                     }else{
@@ -1639,7 +1639,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if (reply == JOptionPane.YES_OPTION) {
                                     DlgKonversi konv=new DlgKonversi(null,false);
                                     konv.emptTeks();
-                                    konv.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                                    konv.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                                     konv.setLocationRelativeTo(internalFrame1);
                                     konv.setVisible(true);
                                 }                            
@@ -1722,7 +1722,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     if (reply == JOptionPane.YES_OPTION) {
                                         DlgKonversi konv=new DlgKonversi(null,false);
                                         konv.emptTeks();
-                                        konv.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                                        konv.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                                         konv.setLocationRelativeTo(internalFrame1);
                                         konv.setVisible(true);
                                     }                            

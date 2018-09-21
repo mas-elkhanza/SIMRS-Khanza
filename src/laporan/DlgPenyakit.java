@@ -796,7 +796,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
 
     private void btnKtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKtgActionPerformed
         ktg.emptTeks();
-        ktg.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        ktg.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         ktg.setLocationRelativeTo(internalFrame1);
         ktg.setVisible(true);
 }//GEN-LAST:event_btnKtgActionPerformed
