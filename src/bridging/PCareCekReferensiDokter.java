@@ -47,6 +47,7 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
+    private PcareApi api=new PcareApi();
 
     /** Creates new form DlgKamar
      * @param parent
@@ -315,7 +316,6 @@ public final class PCareCekReferensiDokter extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String diagnosa) {
-        PcareApi api=new PcareApi();
         try {
             String URL = prop.getProperty("URLAPIPCARE")+"/dokter/0/500";	
 

@@ -83,7 +83,7 @@ public final class var {
             bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false,permintaan_lab=false,permintaan_radiologi=false,
             surat_indeks=false,surat_map=false,surat_almari=false,surat_rak=false,surat_ruang=false,surat_klasifikasi=false,surat_status=false,
             surat_sifat=false,surat_balas=false,surat_masuk=false,pcare_cek_dokter=false,pcare_cek_poli=false,pcare_cek_provider=false,
-            pcare_cek_statuspulang=false,pcare_cek_spesialis=false;
+            pcare_cek_statuspulang=false,pcare_cek_spesialis=false,pcare_cek_subspesialis=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -486,6 +486,7 @@ public final class var {
                         var.pcare_cek_provider=true;
                         var.pcare_cek_statuspulang=true;
                         var.pcare_cek_spesialis=true;
+                        var.pcare_cek_subspesialis=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -872,6 +873,7 @@ public final class var {
                         var.pcare_cek_provider=rs2.getBoolean("pcare_cek_provider");
                         var.pcare_cek_statuspulang=rs2.getBoolean("pcare_cek_statuspulang");
                         var.pcare_cek_spesialis=rs2.getBoolean("pcare_cek_spesialis");
+                        var.pcare_cek_subspesialis=rs2.getBoolean("pcare_cek_subspesialis");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1256,6 +1258,7 @@ public final class var {
                         var.pcare_cek_provider=false;
                         var.pcare_cek_statuspulang=false;
                         var.pcare_cek_spesialis=false;
+                        var.pcare_cek_subspesialis=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1692,4 +1695,5 @@ public final class var {
     public static boolean getpcare_cek_provider(){return var.pcare_cek_provider;}
     public static boolean getpcare_cek_statuspulang(){return var.pcare_cek_statuspulang;}
     public static boolean getpcare_cek_spesialis(){return var.pcare_cek_spesialis;}
+    public static boolean getpcare_cek_subspesialis(){return var.pcare_cek_subspesialis;}
 }   

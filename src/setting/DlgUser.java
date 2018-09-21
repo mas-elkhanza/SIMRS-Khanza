@@ -114,7 +114,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Referensi Propinsi VClaim","[K]Referensi Kabupaten VClaim","[K]Referensi Kecamatan VClaim","[K]Referensi Dokter DPJP VClaim","[K]Riwayat Rujukan RS di VClaim",
                     "[K]Tanggal Rujukan di VClaim","[A]Permintaan Lab","[A]Permintaan Radiologi","[O]Indeks Surat","[O]Map Surat","[O]Almari Surat","[O]Rak Surat","[O]Ruang Surat",
                     "[O]Klasifikasi Surat","[O]Status Surat","[O]Sifat Surat","[O]Stts Balas Surat","[O]Surat Masuk","[K]Referensi Dokter PCare","[K]Referensi Poli PCare",
-                    "[K]Referensi Provider PCare","[K]Referensi Stts Pulang PCare","[K]Referensi Spesialis PCare"
+                    "[K]Referensi Provider PCare","[K]Referensi Stts Pulang PCare","[K]Referensi Spesialis PCare","[K]Referensi Subspesialis PCare"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -239,7 +239,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 382;i++) {
+        for (i = 0; i < 383;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -639,6 +639,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(155);
             }else if(i==381){
                 column.setPreferredWidth(140);
+            }else if(i==382){
+                column.setPreferredWidth(158);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1075,7 +1077,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1499,7 +1501,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "pcare_cek_poli='"+tbUser.getValueAt(i,378).toString()+"',"+
                     "pcare_cek_provider='"+tbUser.getValueAt(i,379).toString()+"',"+
                     "pcare_cek_statuspulang='"+tbUser.getValueAt(i,380).toString()+"',"+
-                    "pcare_cek_spesialis='"+tbUser.getValueAt(i,381).toString()+"'");
+                    "pcare_cek_spesialis='"+tbUser.getValueAt(i,381).toString()+"',"+
+                    "pcare_cek_subspesialis='"+tbUser.getValueAt(i,382).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1789,7 +1792,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "barang_cssd,skdp_bpjs,booking_registrasi,bpjs_cek_propinsi,bpjs_cek_kabupaten,bpjs_cek_kecamatan, "+
                         "bpjs_cek_dokterdpjp,bpjs_cek_riwayat_rujukanrs,bpjs_cek_tanggal_rujukan,permintaan_lab,permintaan_radiologi, "+
                         "surat_indeks,surat_map,surat_almari,surat_rak,surat_ruang,surat_klasifikasi,surat_status,surat_sifat,surat_balas,"+
-                        "surat_masuk,pcare_cek_dokter,pcare_cek_poli,pcare_cek_provider,pcare_cek_statuspulang,pcare_cek_spesialis from user order by AES_DECRYPT(id_user,'nur')");
+                        "surat_masuk,pcare_cek_dokter,pcare_cek_poli,pcare_cek_provider,pcare_cek_statuspulang,pcare_cek_spesialis,"+
+                        "pcare_cek_subspesialis from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2182,7 +2186,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("pcare_cek_poli"),
                                rs.getBoolean("pcare_cek_provider"),
                                rs.getBoolean("pcare_cek_statuspulang"),
-                               rs.getBoolean("pcare_cek_spesialis")
+                               rs.getBoolean("pcare_cek_spesialis"),
+                               rs.getBoolean("pcare_cek_subspesialis")
                             });
                         }   
                     } catch (Exception e) {
@@ -2565,7 +2570,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("pcare_cek_poli"),
                            rs.getBoolean("pcare_cek_provider"),
                            rs.getBoolean("pcare_cek_statuspulang"),
-                           rs.getBoolean("pcare_cek_spesialis")
+                           rs.getBoolean("pcare_cek_spesialis"),
+                           rs.getBoolean("pcare_cek_subspesialis")
                         });
                     }                                             
                  }
