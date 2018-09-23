@@ -59,6 +59,7 @@ import bridging.InhealthCekReferensiFaskes;
 import bridging.InhealthCekReferensiPoli;
 import bridging.InhealthDataSJP;
 import bridging.InhealthReferensiJenpelRuang;
+import bridging.PCareCekFaskesAlihRawat;
 import bridging.PCareCekFaskesSubspesialis;
 import bridging.PCareCekReferensiDokter;
 import bridging.PCareCekReferensiKesadaran;
@@ -947,6 +948,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareReferensiObat = new widget.ButtonBig();
         btnPCareReferensiTindakan = new widget.ButtonBig();
         btnPCareFaskesSubspesialis = new widget.ButtonBig();
+        btnPCareFaskesAlihRawat = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5883,6 +5885,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPCareFaskesSubspesialis);
 
+        btnPCareFaskesAlihRawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Two-storied_house_SH_131526.png"))); // NOI18N
+        btnPCareFaskesAlihRawat.setText("Faskes Alih Rawat PCare");
+        btnPCareFaskesAlihRawat.setToolTipText("");
+        btnPCareFaskesAlihRawat.setIconTextGap(0);
+        btnPCareFaskesAlihRawat.setName("btnPCareFaskesAlihRawat"); // NOI18N
+        btnPCareFaskesAlihRawat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareFaskesAlihRawat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareFaskesAlihRawatActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareFaskesAlihRawat);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5891,7 +5906,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22/09/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23/09/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -12196,6 +12211,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPCareFaskesSubspesialisActionPerformed
 
+    private void btnPCareFaskesAlihRawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareFaskesAlihRawatActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareCekFaskesAlihRawat form=new PCareCekFaskesAlihRawat(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPCareFaskesAlihRawatActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12433,6 +12459,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnObatPerCaraBayar;
     private widget.ButtonBig btnObatPerTanggal;
     private widget.ButtonBig btnOpname;
+    private widget.ButtonBig btnPCareFaskesAlihRawat;
     private widget.ButtonBig btnPCareFaskesSubspesialis;
     private widget.ButtonBig btnPCareReferensiDokter;
     private widget.ButtonBig btnPCareReferensiKhusus;
@@ -14408,6 +14435,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 Panelmenu.add(btnPCareFaskesSubspesialis);
                 jmlmenu++;
             }
+
+            if(var.getpcare_cek_faskesalihrawat()==true){
+                Panelmenu.add(btnPCareFaskesAlihRawat);
+                jmlmenu++;
+            }
             
             if(var.getpcare_cek_rujukan()==true){
                 Panelmenu.add(btnCekPCareRujukan);
@@ -16336,6 +16368,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_cek_faskessubspesialis()==true){
             Panelmenu.add(btnPCareFaskesSubspesialis);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_cek_faskesalihrawat()==true){
+            Panelmenu.add(btnPCareFaskesAlihRawat);
             jmlmenu++;
         }
 
@@ -18819,6 +18856,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_cek_faskessubspesialis()==true){
             if(btnPCareFaskesSubspesialis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareFaskesSubspesialis);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_cek_faskesalihrawat()==true){
+            if(btnPCareFaskesAlihRawat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareFaskesAlihRawat);
                 jmlmenu++;
             }                
         }

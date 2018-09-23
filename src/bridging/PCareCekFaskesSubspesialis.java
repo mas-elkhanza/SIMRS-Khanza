@@ -352,6 +352,7 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         spesialis.dispose();
+        sarana.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -400,7 +401,7 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
             param.put("kontakrs",var.getkontakrs());
             param.put("emailrs",var.getemailrs());
             param.put("logo",Sequel.cariGambar("select logo from setting"));
-            Valid.MyReport("rptCariPCAREFaskesSubspesialis.jrxml","report","[ Pencarian Referensi Subpesialis ]",
+            Valid.MyReport("rptCariPCAREFaskesSubspesialis.jrxml","report","[ Pencarian Referensi Rujukan Subpesialis ]",
                 "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc",param);
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -515,10 +516,5 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
 
     public JTable getTable(){
         return tbKamar;
-    }
-    
-    public void setPropinsi(String KdProp,String NmProp){
-        this.KdSpesialis.setText(KdProp);
-        this.NmSpesialis.setText(NmProp);
-    }
+    }    
 }
