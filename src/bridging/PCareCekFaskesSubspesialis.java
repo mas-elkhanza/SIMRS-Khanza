@@ -472,7 +472,7 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
 
     public void tampil(String spesialistik,String sarana) {        
         try {
-            String URL = prop.getProperty("URLAPIPCARE")+"/spesialis/rujuk/subspesialis/"+KdSpesialis.getText()+"/sarana/"+KdSarana.getText();	
+            String URL = prop.getProperty("URLAPIPCARE")+"/spesialis/rujuk/subspesialis/"+spesialistik+"/sarana/"+sarana;	
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));

@@ -61,6 +61,7 @@ import bridging.InhealthDataSJP;
 import bridging.InhealthReferensiJenpelRuang;
 import bridging.PCareCekFaskesAlihRawat;
 import bridging.PCareCekFaskesSubspesialis;
+import bridging.PCareCekFaskesThalasemia;
 import bridging.PCareCekReferensiDokter;
 import bridging.PCareCekReferensiKesadaran;
 import bridging.PCareCekReferensiKhusus;
@@ -949,6 +950,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareReferensiTindakan = new widget.ButtonBig();
         btnPCareFaskesSubspesialis = new widget.ButtonBig();
         btnPCareFaskesAlihRawat = new widget.ButtonBig();
+        btnPCareFaskesThalasemia = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5897,6 +5899,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPCareFaskesAlihRawat);
+
+        btnPCareFaskesThalasemia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Home_131971.png"))); // NOI18N
+        btnPCareFaskesThalasemia.setText("Faskes Thalasemia & Hemofili PCare");
+        btnPCareFaskesThalasemia.setToolTipText("");
+        btnPCareFaskesThalasemia.setIconTextGap(0);
+        btnPCareFaskesThalasemia.setName("btnPCareFaskesThalasemia"); // NOI18N
+        btnPCareFaskesThalasemia.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareFaskesThalasemia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareFaskesThalasemiaActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareFaskesThalasemia);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -12222,6 +12237,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPCareFaskesAlihRawatActionPerformed
 
+    private void btnPCareFaskesThalasemiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareFaskesThalasemiaActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareCekFaskesThalasemia form=new PCareCekFaskesThalasemia(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPCareFaskesThalasemiaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12461,6 +12487,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnOpname;
     private widget.ButtonBig btnPCareFaskesAlihRawat;
     private widget.ButtonBig btnPCareFaskesSubspesialis;
+    private widget.ButtonBig btnPCareFaskesThalasemia;
     private widget.ButtonBig btnPCareReferensiDokter;
     private widget.ButtonBig btnPCareReferensiKhusus;
     private widget.ButtonBig btnPCareReferensiObat;
@@ -14441,6 +14468,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_cek_faskesthalasemia()==true){
+                Panelmenu.add(btnPCareFaskesThalasemia);
+                jmlmenu++;
+            }
+            
             if(var.getpcare_cek_rujukan()==true){
                 Panelmenu.add(btnCekPCareRujukan);
                 jmlmenu++;
@@ -16373,6 +16405,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_cek_faskesalihrawat()==true){
             Panelmenu.add(btnPCareFaskesAlihRawat);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_cek_faskesthalasemia()==true){
+            Panelmenu.add(btnPCareFaskesThalasemia);
             jmlmenu++;
         }
 
@@ -18863,6 +18900,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_cek_faskesalihrawat()==true){
             if(btnPCareFaskesAlihRawat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareFaskesAlihRawat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_cek_faskesthalasemia()==true){
+            if(btnPCareFaskesThalasemia.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareFaskesThalasemia);
                 jmlmenu++;
             }                
         }
