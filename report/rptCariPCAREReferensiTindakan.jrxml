@@ -68,7 +68,7 @@
 		<band height="100">
 			<staticText>
 				<reportElement mode="Opaque" x="496" y="83" width="59" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
+				<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Maksimal Tarif]]></text>
@@ -190,7 +190,7 @@
 					<printWhenExpression><![CDATA[(!$F{temp1}.equals("No.") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
-				<textElement lineSpacing="Single">
+				<textElement textAlignment="Right" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp4}]]></textFieldExpression>

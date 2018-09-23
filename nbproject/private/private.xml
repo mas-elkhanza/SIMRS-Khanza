@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/PCareCekReferensiSubspesialis.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/PCareCekFaskesSubspesialis.java</file>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/setting/DlgUser.java</file>
             <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
-            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/PCareCekReferensiObat.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/fungsi/var.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/PCareCekReferensiPenyakit.java</file>
+            <file>file:/media/khanzamedia/Data/Source%20Java/SIMRSKhanza/src/bridging/PCareCekReferensiTindakan.java</file>
         </group>
     </open-files>
 </project-private>

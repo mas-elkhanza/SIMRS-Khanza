@@ -59,7 +59,14 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
         tabMode=new DefaultTableModel(null,new String[]{"No.","Kode Tindakan","Nama Tindakan","Maksimal Tarif"}){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+              Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
         };
         tbKamar.setModel(tabMode);
 
@@ -72,9 +79,9 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(40);
             }else if(i==1){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(120);
             }else if(i==2){
-                column.setPreferredWidth(380);
+                column.setPreferredWidth(400);
             }else if(i==3){
                 column.setPreferredWidth(90);
             }
@@ -244,7 +251,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
                                 tabMode.getValueAt(r,0).toString()+"','"+
                                 tabMode.getValueAt(r,1).toString()+"','"+
                                 tabMode.getValueAt(r,2).toString()+"','"+
-                                tabMode.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
+                                Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(r,3).toString()))+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>();                 
@@ -344,7 +351,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
                         if(list.path("kdTindakan").asText().toLowerCase().contains(diagnosa.toLowerCase())||
                                 list.path("nmTindakan").asText().toLowerCase().contains(diagnosa.toLowerCase())){
                             tabMode.addRow(new Object[]{
-                                i+".",list.path("kdTindakan").asText(),list.path("nmTindakan").asText(),list.path("maxTarif").asText()
+                                i+".",list.path("kdTindakan").asText(),list.path("nmTindakan").asText(),list.path("maxTarif").asDouble()
                             });
                             i++;
                         }
