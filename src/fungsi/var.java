@@ -85,7 +85,7 @@ public final class var {
             surat_sifat=false,surat_balas=false,surat_masuk=false,pcare_cek_dokter=false,pcare_cek_poli=false,pcare_cek_provider=false,
             pcare_cek_statuspulang=false,pcare_cek_spesialis=false,pcare_cek_subspesialis=false,pcare_cek_sarana=false,pcare_cek_khusus=false,
             pcare_cek_obat=false,pcare_cek_tindakan=false,pcare_cek_faskessubspesialis=false,pcare_cek_faskesalihrawat=false,
-            pcare_cek_faskesthalasemia=false;
+            pcare_cek_faskesthalasemia=false,pcare_mapping_obat=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -496,6 +496,7 @@ public final class var {
                         var.pcare_cek_faskessubspesialis=true;
                         var.pcare_cek_faskesalihrawat=true;
                         var.pcare_cek_faskesthalasemia=true;
+                        var.pcare_mapping_obat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -890,6 +891,7 @@ public final class var {
                         var.pcare_cek_faskessubspesialis=rs2.getBoolean("pcare_cek_faskessubspesialis");
                         var.pcare_cek_faskesalihrawat=rs2.getBoolean("pcare_cek_faskesalihrawat");
                         var.pcare_cek_faskesthalasemia=rs2.getBoolean("pcare_cek_faskesthalasemia");
+                        var.pcare_mapping_obat=rs2.getBoolean("pcare_mapping_obat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1282,6 +1284,7 @@ public final class var {
                         var.pcare_cek_faskessubspesialis=false;
                         var.pcare_cek_faskesalihrawat=false;
                         var.pcare_cek_faskesthalasemia=false;
+                        var.pcare_mapping_obat=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1726,4 +1729,5 @@ public final class var {
     public static boolean getpcare_cek_faskessubspesialis(){return var.pcare_cek_faskessubspesialis;}
     public static boolean getpcare_cek_faskesalihrawat(){return var.pcare_cek_faskesalihrawat;}
     public static boolean getpcare_cek_faskesthalasemia(){return var.pcare_cek_faskesthalasemia;}
+    public static boolean getpcare_mapping_obat(){return var.pcare_mapping_obat;}
 }   
