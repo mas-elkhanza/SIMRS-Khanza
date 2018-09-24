@@ -240,7 +240,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(130,100,100));
+        ppBersihkan.setForeground(new java.awt.Color(130, 100, 100));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -257,7 +257,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
 
         ppStok.setBackground(new java.awt.Color(255, 255, 255));
         ppStok.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppStok.setForeground(new java.awt.Color(130,100,100));
+        ppStok.setForeground(new java.awt.Color(130, 100, 100));
         ppStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppStok.setText("Tampilkan Semua Stok");
         ppStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -281,7 +281,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Stok Keluar Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Stok Keluar Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -596,7 +596,7 @@ public class DlgPengeluaranApotek extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         form.emptTeks();      
-        form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
         form.setVisible(true);
@@ -742,7 +742,7 @@ private void BtnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         var.setform("DlgPengeluaranApotek");
         form.petugas.emptTeks();
         form.petugas.isCek();
-        form.petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.petugas.setLocationRelativeTo(internalFrame1);
         form.petugas.setAlwaysOnTop(false);
         form.petugas.setVisible(true);
@@ -794,7 +794,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     var.setform("DlgPengeluaranApotek");
     form.bangsal.isCek();
     form.bangsal.emptTeks();
-    form.bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    form.bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     form.bangsal.setLocationRelativeTo(internalFrame1);
     form.bangsal.setAlwaysOnTop(false);
     form.bangsal.setVisible(true);
@@ -810,7 +810,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         form.barang.emptTeks();
         form.barang.isCek();
-        form.barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        form.barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.barang.setLocationRelativeTo(internalFrame1);
         form.barang.setAlwaysOnTop(false);
         form.barang.setVisible(true);

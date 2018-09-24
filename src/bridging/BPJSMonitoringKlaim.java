@@ -646,13 +646,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnPPKRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPKRujukanActionPerformed
-        faskes.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        faskes.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         faskes.setLocationRelativeTo(internalFrame1);        
         faskes.setVisible(true);
     }//GEN-LAST:event_btnPPKRujukanActionPerformed
 
     private void btnPenyakitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenyakitActionPerformed
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);        
         penyakit.setVisible(true);
     }//GEN-LAST:event_btnPenyakitActionPerformed
@@ -757,7 +757,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void btnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliActionPerformed
-        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);        
         poli.setVisible(true);
     }//GEN-LAST:event_btnPoliActionPerformed

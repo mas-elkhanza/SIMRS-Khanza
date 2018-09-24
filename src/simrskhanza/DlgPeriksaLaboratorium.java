@@ -1470,7 +1470,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         var.setform("DlgPeriksaLaboratorium");
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
 }//GEN-LAST:event_btnPetugasActionPerformed
@@ -1522,7 +1522,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         DlgJnsPerawatanLab tariflab=new DlgJnsPerawatanLab(null,false);
         tariflab.emptTeks();
         tariflab.isCek();
-        tariflab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        tariflab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         tariflab.setLocationRelativeTo(internalFrame1);
         tariflab.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
@@ -1617,7 +1617,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         var.setform("DlgPeriksaLaboratorium");
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_btnDokterActionPerformed
@@ -1631,7 +1631,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         var.setform("DlgPeriksaLaboratorium");
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_btnDokterPjActionPerformed

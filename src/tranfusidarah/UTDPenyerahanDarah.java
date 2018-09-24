@@ -1145,7 +1145,7 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         carijual.emptTeks();      
-        carijual.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        carijual.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         carijual.setLocationRelativeTo(internalFrame1);
         carijual.setAlwaysOnTop(false);
         carijual.setVisible(true);
@@ -1389,7 +1389,7 @@ private void btnPtgCrossActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         pilih=1;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -1399,7 +1399,7 @@ private void btnPtgPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilih=2;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -1443,7 +1443,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         UTDStokDarah barang=new UTDStokDarah(null,false);
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);

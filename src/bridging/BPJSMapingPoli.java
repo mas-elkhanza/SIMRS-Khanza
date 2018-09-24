@@ -490,7 +490,7 @@ public final class BPJSMapingPoli extends javax.swing.JDialog {
 
     private void btnPoliRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliRSActionPerformed
         poli.isCek();        
-        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setVisible(true);
 }//GEN-LAST:event_btnPoliRSActionPerformed
@@ -666,7 +666,7 @@ public final class BPJSMapingPoli extends javax.swing.JDialog {
 }//GEN-LAST:event_tbJnsPerawatanKeyPressed
 
 private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliBPJSActionPerformed
-    polibpjs.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    polibpjs.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     polibpjs.setLocationRelativeTo(internalFrame1);
     polibpjs.setVisible(true);
 }//GEN-LAST:event_btnPoliBPJSActionPerformed

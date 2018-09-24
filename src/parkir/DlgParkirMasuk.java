@@ -806,7 +806,7 @@ public class DlgParkirMasuk extends javax.swing.JDialog {
 private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
     petugas.isCek();
     petugas.emptTeks(); 
-    petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     petugas.setLocationRelativeTo(internalFrame1);
     petugas.setVisible(true);
 }//GEN-LAST:event_btnPetugasActionPerformed
@@ -875,7 +875,7 @@ private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
         jenis.isCek();
         jenis.emptTeks();        
-        jenis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         jenis.setLocationRelativeTo(internalFrame1);
         jenis.setVisible(true);
     }//GEN-LAST:event_btnJenisActionPerformed

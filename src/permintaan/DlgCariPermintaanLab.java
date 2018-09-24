@@ -947,7 +947,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString())>0){
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
-                        dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgro.setLocationRelativeTo(internalFrame1);
                         dlgro.emptTeks();
                         dlgro.isCek();
@@ -958,7 +958,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     }else {
                         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         DlgPeriksaLaboratorium dlgro=new DlgPeriksaLaboratorium(null,false);
-                        dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgro.setLocationRelativeTo(internalFrame1);
                         dlgro.emptTeks();
                         dlgro.isCek();

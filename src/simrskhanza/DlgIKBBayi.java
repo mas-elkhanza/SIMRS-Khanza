@@ -2966,7 +2966,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjabActionPerformed
         pegawai.emptTeks();
-        pegawai.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
         pegawai.setAlwaysOnTop(false);
         pegawai.setVisible(true);
@@ -2991,7 +2991,7 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             if(internalFrame1.getWidth()>1015){
                 DlgBridgingLahir.setSize(1015,337);
             }else{
-                DlgBridgingLahir.setSize(internalFrame1.getWidth()-50,345);
+                DlgBridgingLahir.setSize(internalFrame1.getWidth()-20,345);
             }
             
             if(DlgBridgingLahir.getWidth()<1010){

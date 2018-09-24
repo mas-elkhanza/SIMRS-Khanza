@@ -803,7 +803,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
         inputresep.setNoRm(TNoRw.getText(),"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
         inputresep.tampil();
-        inputresep.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         inputresep.setLocationRelativeTo(internalFrame1);
         inputresep.setVisible(true);
     }//GEN-LAST:event_btnBarangActionPerformed

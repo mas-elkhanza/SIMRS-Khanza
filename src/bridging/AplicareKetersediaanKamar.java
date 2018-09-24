@@ -719,7 +719,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
 }//GEN-LAST:event_NmKelasKeyPressed
 
     private void btnKelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKelasActionPerformed
-        referensi.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        referensi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         referensi.setLocationRelativeTo(internalFrame1);
         referensi.setVisible(true);
 }//GEN-LAST:event_btnKelasActionPerformed
@@ -1053,7 +1053,7 @@ private void KdKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_K
 private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKamarActionPerformed
         bangsal.emptTeks();
         bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setVisible(true);
 }//GEN-LAST:event_btnKamarActionPerformed

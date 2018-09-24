@@ -854,7 +854,7 @@ private void nmbangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 private void btnBangsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalActionPerformed
         pilihan=1;
         bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setVisible(true);
 }//GEN-LAST:event_btnBangsalActionPerformed
@@ -941,7 +941,7 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void btnBangsal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsal1ActionPerformed
         poli.isCek();        
-        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setVisible(true);
     }//GEN-LAST:event_btnBangsal1ActionPerformed
@@ -1001,7 +1001,7 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void btnBangsal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsal3ActionPerformed
         pilihan=2;
         bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setVisible(true);
     }//GEN-LAST:event_btnBangsal3ActionPerformed
@@ -1013,7 +1013,7 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void btnBangsal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsal2ActionPerformed
         pilihan=3;
         bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setVisible(true);
     }//GEN-LAST:event_btnBangsal2ActionPerformed
@@ -1041,7 +1041,7 @@ private void btnBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void btnBangsal4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsal4ActionPerformed
         pilihan=4;
         bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setVisible(true);
     }//GEN-LAST:event_btnBangsal4ActionPerformed
