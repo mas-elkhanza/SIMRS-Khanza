@@ -826,7 +826,7 @@ private void KodePetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
 
 private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
 }//GEN-LAST:event_btnDokterActionPerformed

@@ -316,7 +316,7 @@ public final class BPJSCekReferensiKabupaten extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
-        propinsi.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        propinsi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         propinsi.setLocationRelativeTo(internalFrame1);
         propinsi.setVisible(true);
     }//GEN-LAST:event_BtnPropinsiActionPerformed

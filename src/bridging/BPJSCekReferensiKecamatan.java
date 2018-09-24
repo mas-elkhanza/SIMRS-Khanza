@@ -316,7 +316,7 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
-        kabupaten.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        kabupaten.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kabupaten.setLocationRelativeTo(internalFrame1);
         kabupaten.setVisible(true);
     }//GEN-LAST:event_BtnPropinsiActionPerformed

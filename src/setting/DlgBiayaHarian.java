@@ -644,7 +644,7 @@ private void BtnSeek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         kamar.load();
         kamar.isCek();
         kamar.emptTeks();
-        kamar.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        kamar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kamar.setLocationRelativeTo(internalFrame1);
         kamar.setAlwaysOnTop(false);
         kamar.setVisible(true);

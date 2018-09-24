@@ -702,7 +702,7 @@ public class DlgPasienMati extends javax.swing.JDialog {
         var.setform("DlgPasienMati");
         pasien.emptTeks();
         pasien.isCek();
-        pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);
 }//GEN-LAST:event_BtnSeekActionPerformed

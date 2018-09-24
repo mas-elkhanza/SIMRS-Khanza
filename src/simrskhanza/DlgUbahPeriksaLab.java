@@ -989,7 +989,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         DlgJnsPerawatanLab tariflab=new DlgJnsPerawatanLab(null,false);
         tariflab.emptTeks();
         tariflab.isCek();
-        tariflab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        tariflab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         tariflab.setLocationRelativeTo(internalFrame1);
         tariflab.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());

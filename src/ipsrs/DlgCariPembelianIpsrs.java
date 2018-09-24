@@ -711,7 +711,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelianIpsrs");
         suplier.emptTeks();
         suplier.isCek();
-        suplier.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         suplier.setLocationRelativeTo(internalFrame1);
         suplier.setAlwaysOnTop(false);
         suplier.setVisible(true);
@@ -721,7 +721,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelianIpsrs");
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -735,7 +735,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelianIpsrs");
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);
@@ -934,7 +934,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
         var.setform("DlgCariPembelianIpsrs");
         barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.jenis.setLocationRelativeTo(internalFrame1);
         barang.jenis.setVisible(true);
     }//GEN-LAST:event_btnJenisActionPerformed
