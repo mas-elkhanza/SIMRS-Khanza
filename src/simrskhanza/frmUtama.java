@@ -75,6 +75,7 @@ import bridging.PCareCekReferensiStatusPulang;
 import bridging.PCareCekReferensiSubspesialis;
 import bridging.PCareCekReferensiTindakan;
 import bridging.PCareCekRujukan;
+import bridging.PCareClubProlanis;
 import bridging.PCareMapingObat;
 import bridging.PCareMapingTindakan;
 import informasi.InformasiAnalisaKamin;
@@ -955,6 +956,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareFaskesThalasemia = new widget.ButtonBig();
         btnPCareMapingObat = new widget.ButtonBig();
         btnPCareMapingTindakan = new widget.ButtonBig();
+        btnPCareClubProlanis = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5942,6 +5944,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPCareMapingTindakan);
+
+        btnPCareClubProlanis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Teachers-24_103847.png"))); // NOI18N
+        btnPCareClubProlanis.setText("Club Prolanis PCare");
+        btnPCareClubProlanis.setToolTipText("");
+        btnPCareClubProlanis.setIconTextGap(0);
+        btnPCareClubProlanis.setName("btnPCareClubProlanis"); // NOI18N
+        btnPCareClubProlanis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareClubProlanis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareClubProlanisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareClubProlanis);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -12300,6 +12315,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor()); 
     }//GEN-LAST:event_btnPCareMapingTindakanActionPerformed
 
+    private void btnPCareClubProlanisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareClubProlanisActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareClubProlanis form=new PCareClubProlanis(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPCareClubProlanisActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12537,6 +12563,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnObatPerCaraBayar;
     private widget.ButtonBig btnObatPerTanggal;
     private widget.ButtonBig btnOpname;
+    private widget.ButtonBig btnPCareClubProlanis;
     private widget.ButtonBig btnPCareFaskesAlihRawat;
     private widget.ButtonBig btnPCareFaskesSubspesialis;
     private widget.ButtonBig btnPCareFaskesThalasemia;
@@ -14537,6 +14564,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_club_prolanis()==true){
+                Panelmenu.add(btnPCareClubProlanis);
+                jmlmenu++;
+            }
+            
             if(var.getpcare_cek_rujukan()==true){
                 Panelmenu.add(btnCekPCareRujukan);
                 jmlmenu++;
@@ -16484,6 +16516,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_mapping_tindakan()==true){
             Panelmenu.add(btnPCareMapingTindakan);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_club_prolanis()==true){
+            Panelmenu.add(btnPCareClubProlanis);
             jmlmenu++;
         }
 
@@ -18995,6 +19032,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_mapping_tindakan()==true){
             if(btnPCareMapingTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareMapingTindakan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_club_prolanis()==true){
+            if(btnPCareClubProlanis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareClubProlanis);
                 jmlmenu++;
             }                
         }
