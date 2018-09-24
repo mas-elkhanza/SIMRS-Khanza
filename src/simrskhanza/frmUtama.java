@@ -76,6 +76,7 @@ import bridging.PCareCekReferensiSubspesialis;
 import bridging.PCareCekReferensiTindakan;
 import bridging.PCareCekRujukan;
 import bridging.PCareMapingObat;
+import bridging.PCareMapingTindakan;
 import informasi.InformasiAnalisaKamin;
 import laporan.DlgDkkSurveilansRalan;
 import laporan.DlgFrekuensiPenyakitRanap;
@@ -953,6 +954,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareFaskesAlihRawat = new widget.ButtonBig();
         btnPCareFaskesThalasemia = new widget.ButtonBig();
         btnPCareMapingObat = new widget.ButtonBig();
+        btnPCareMapingTindakan = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5927,6 +5929,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPCareMapingObat);
+
+        btnPCareMapingTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_address-book_111220.png"))); // NOI18N
+        btnPCareMapingTindakan.setText("Mapping Tindakan PCare");
+        btnPCareMapingTindakan.setToolTipText("");
+        btnPCareMapingTindakan.setIconTextGap(0);
+        btnPCareMapingTindakan.setName("btnPCareMapingTindakan"); // NOI18N
+        btnPCareMapingTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareMapingTindakan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareMapingTindakanActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareMapingTindakan);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -12274,6 +12289,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor()); 
     }//GEN-LAST:event_btnPCareMapingObatActionPerformed
 
+    private void btnPCareMapingTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareMapingTindakanActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareMapingTindakan form=new PCareMapingTindakan(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    }//GEN-LAST:event_btnPCareMapingTindakanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12515,6 +12541,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPCareFaskesSubspesialis;
     private widget.ButtonBig btnPCareFaskesThalasemia;
     private widget.ButtonBig btnPCareMapingObat;
+    private widget.ButtonBig btnPCareMapingTindakan;
     private widget.ButtonBig btnPCareReferensiDokter;
     private widget.ButtonBig btnPCareReferensiKhusus;
     private widget.ButtonBig btnPCareReferensiObat;
@@ -14505,6 +14532,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_mapping_tindakan()==true){
+                Panelmenu.add(btnPCareMapingTindakan);
+                jmlmenu++;
+            }
+            
             if(var.getpcare_cek_rujukan()==true){
                 Panelmenu.add(btnCekPCareRujukan);
                 jmlmenu++;
@@ -16447,6 +16479,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_mapping_obat()==true){
             Panelmenu.add(btnPCareMapingObat);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_mapping_tindakan()==true){
+            Panelmenu.add(btnPCareMapingTindakan);
             jmlmenu++;
         }
 
@@ -18951,6 +18988,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_mapping_obat()==true){
             if(btnPCareMapingObat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareMapingObat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_mapping_tindakan()==true){
+            if(btnPCareMapingTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareMapingTindakan);
                 jmlmenu++;
             }                
         }
