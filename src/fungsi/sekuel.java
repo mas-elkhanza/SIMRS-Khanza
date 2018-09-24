@@ -12,8 +12,6 @@
 
 package fungsi;
 
-import fungsi.koneksiDB;
-import fungsi.var;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

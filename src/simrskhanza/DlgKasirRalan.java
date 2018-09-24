@@ -7165,6 +7165,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnDataPemberianObat1.setEnabled(var.getberi_obat());
         MnDokter.setEnabled(var.getkasir_ralan());
         MnPenjab.setEnabled(var.getkasir_ralan());
+        MnPoli.setEnabled(var.getkasir_ralan());
         MnPenjualan.setEnabled(var.getpenjualan_obat());
         MnRekapHarianDokter.setEnabled(var.getharian_dokter());
         MnRekapHarianParamedis.setEnabled(var.getharian_paramedis());

@@ -7,7 +7,6 @@ import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -15,7 +14,6 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -147,23 +145,6 @@ public class DlgRBObatDokterRalan extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         }); 
         
-        try {
-             psdokter=koneksi.prepareStatement("select kd_dokter,nm_dokter from dokter where  kd_dokter<>'-' and status='1' and kd_dokter like ?");
-             pstanggal=koneksi.prepareStatement("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                     "reg_periksa.kd_dokter=? and reg_periksa.tgl_registrasi between ? and ? group by reg_periksa.tgl_registrasi");
-             pspasien=koneksi.prepareStatement("select reg_periksa.no_rawat,pasien.nm_pasien from reg_periksa inner join pasien "+
-                     "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat not in(select no_rawat from kamar_inap) and "+
-                     "reg_periksa.kd_dokter=? and reg_periksa.tgl_registrasi=? and reg_periksa.kd_pj like ? ");
-             psobat=koneksi.prepareStatement("select detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,"+
-                    "(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total,"+
-                    "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah "+
-                    "from detail_pemberian_obat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng where "+
-                    "detail_pemberian_obat.no_rawat not in(select no_rawat from kamar_inap) and detail_pemberian_obat.no_rawat=? "+
-                    "and detail_pemberian_obat.tgl_perawatan=? group by detail_pemberian_obat.kode_brng");  
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-     
     }
     
 
@@ -205,7 +186,7 @@ public class DlgRBObatDokterRalan extends javax.swing.JDialog {
 
         ppTampilkanSeleksi.setBackground(new java.awt.Color(255, 255, 255));
         ppTampilkanSeleksi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTampilkanSeleksi.setForeground(new java.awt.Color(130,100,100));
+        ppTampilkanSeleksi.setForeground(new java.awt.Color(130, 100, 100));
         ppTampilkanSeleksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppTampilkanSeleksi.setText("Tampilkan Per Jenis Bayar");
         ppTampilkanSeleksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -229,7 +210,7 @@ public class DlgRBObatDokterRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Penggunaan Obat Dokter Perpasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Penggunaan Obat Dokter Perpasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -633,73 +614,126 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void prosesCari() {             
         try{   
-           this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-           Valid.tabelKosong(tabMode);
-           psdokter.setString(1,"%"+kddokter.getText()+"%"); 
-           rsdokter=psdokter.executeQuery();
-           i=1;
-           ttlbiaya=0;
-           ttlembalase=0;
-           ttltuslah=0;
-           while(rsdokter.next()){
-               tabMode.addRow(new Object[]{i+". ",rsdokter.getString("nm_dokter"),"","",null,null,null,null});
-               pstanggal.setString(1,rsdokter.getString("kd_dokter"));
-               pstanggal.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-               pstanggal.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-               rstanggal=pstanggal.executeQuery();
-               a=1;
-               subtotal=0;
-               embalase=0;
-               tuslah=0;
-               while(rstanggal.next()){
-                   tabMode.addRow(new Object[]{"","       "+a+". "+rstanggal.getDate("tgl_registrasi"),"","",null,null,null,null});
-                   pspasien.setString(1,rsdokter.getString("kd_dokter"));
-                   pspasien.setString(2,rstanggal.getString("tgl_registrasi"));
-                   pspasien.setString(3,"%"+pilihancarabayar+"%");
-                   rspasien=pspasien.executeQuery();
-                   while(rspasien.next()){                       
-                       psobat.setString(1,rspasien.getString("no_rawat"));
-                       psobat.setString(2,rstanggal.getString("tgl_registrasi"));
-                       rsobat=psobat.executeQuery();
-                       rsobat.last();
-                       ttlpasienobat=0;
-                       ttlpasienembalase=0;
-                       ttlpasientuslah=0;
-                       if(rsobat.getRow()>0){
-                           tabMode.addRow(new Object[]{"","",rspasien.getString("no_rawat")+" "+rspasien.getString("nm_pasien"),"",null,null,null,null});                           
-                       }
-                       rsobat.beforeFirst();
-                       while(rsobat.next()){
-                           subtotal=subtotal+rsobat.getDouble("total");
-                           ttlbiaya=ttlbiaya+rsobat.getDouble("total");
-                           ttlpasienobat=ttlpasienobat+rsobat.getDouble("total");
-                           ttlpasienembalase=ttlpasienembalase+rsobat.getDouble("embalase");
-                           embalase=embalase+rsobat.getDouble("embalase");
-                           ttlembalase=ttlembalase+rsobat.getDouble("embalase");
-                           ttlpasientuslah=ttlpasientuslah+rsobat.getDouble("tuslah");
-                           tuslah=tuslah+rsobat.getDouble("tuslah");
-                           ttltuslah=ttltuslah+rsobat.getDouble("tuslah");
-                           tabMode.addRow(new Object[]{"","","",rsobat.getString("kode_brng")+" "+rsobat.getString("nama_brng"),rsobat.getDouble("jml"),rsobat.getDouble("total"),rsobat.getDouble("embalase"),rsobat.getDouble("tuslah")});
-                       }                       
-                       if(ttlpasienobat>0){
-                           tabMode.addRow(new Object[]{"","","Subtotal :","",0,ttlpasienobat,ttlpasienembalase,ttlpasientuslah});
-                       }
-                       
-                   }
-                   a++;
-               }
-               if(subtotal>0){
-                   tabMode.addRow(new Object[]{"","       "+"Subtotal ",":","",null,subtotal,embalase,tuslah});
-               }               
-               i++;
-           }
-           tabMode.addRow(new Object[]{">>","Total ",":","",null,ttlbiaya,ttlembalase,ttltuslah});
-           this.setCursor(Cursor.getDefaultCursor());             
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
+            Valid.tabelKosong(tabMode);
+            psdokter=koneksi.prepareStatement("select kd_dokter,nm_dokter from dokter where  kd_dokter<>'-' and status='1' and kd_dokter like ?");
+            try {
+                psdokter.setString(1,"%"+kddokter.getText()+"%"); 
+                rsdokter=psdokter.executeQuery();
+                i=1;
+                ttlbiaya=0;
+                ttlembalase=0;
+                ttltuslah=0;
+                while(rsdokter.next()){
+                    tabMode.addRow(new Object[]{i+". ",rsdokter.getString("nm_dokter"),"","",null,null,null,null});
+                    pstanggal=koneksi.prepareStatement("select detail_pemberian_obat.tgl_perawatan from reg_periksa inner join detail_pemberian_obat "+
+                        "on reg_periksa.no_rawat=detail_pemberian_obat.no_rawat where detail_pemberian_obat.status='Ralan' and "+
+                        "reg_periksa.kd_dokter=? and detail_pemberian_obat.tgl_perawatan between ? and ? group by detail_pemberian_obat.tgl_perawatan");
+                    try {
+                        pstanggal.setString(1,rsdokter.getString("kd_dokter"));
+                        pstanggal.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        pstanggal.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                        rstanggal=pstanggal.executeQuery();
+                        a=1;
+                        subtotal=0;
+                        embalase=0;
+                        tuslah=0;
+                        while(rstanggal.next()){
+                            tabMode.addRow(new Object[]{"","       "+a+". "+rstanggal.getDate("tgl_perawatan"),"","",null,null,null,null});
+                            pspasien=koneksi.prepareStatement("select reg_periksa.no_rawat,pasien.nm_pasien from reg_periksa inner join pasien inner join detail_pemberian_obat "+
+                                "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=detail_pemberian_obat.no_rawat where detail_pemberian_obat.status='Ralan' and "+
+                                "reg_periksa.kd_dokter=? and detail_pemberian_obat.tgl_perawatan=? and reg_periksa.kd_pj like ? group by reg_periksa.no_rawat");
+                            try {
+                                pspasien.setString(1,rsdokter.getString("kd_dokter"));
+                                pspasien.setString(2,rstanggal.getString("tgl_perawatan"));
+                                pspasien.setString(3,"%"+pilihancarabayar+"%");
+                                rspasien=pspasien.executeQuery();
+                                while(rspasien.next()){  
+                                    psobat=koneksi.prepareStatement("select detail_pemberian_obat.kode_brng,databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,"+
+                                        "(sum(detail_pemberian_obat.total)-sum(detail_pemberian_obat.embalase+detail_pemberian_obat.tuslah)) as total,"+
+                                        "sum(detail_pemberian_obat.embalase) as embalase,sum(detail_pemberian_obat.tuslah) as tuslah "+
+                                        "from detail_pemberian_obat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng where "+
+                                        "detail_pemberian_obat.status='Ralan' and detail_pemberian_obat.no_rawat=? "+
+                                        "and detail_pemberian_obat.tgl_perawatan=? group by detail_pemberian_obat.kode_brng");
+                                    try {
+                                        psobat.setString(1,rspasien.getString("no_rawat"));
+                                        psobat.setString(2,rstanggal.getString("tgl_perawatan"));
+                                        rsobat=psobat.executeQuery();
+                                        rsobat.last();
+                                        ttlpasienobat=0;
+                                        ttlpasienembalase=0;
+                                        ttlpasientuslah=0;
+                                        if(rsobat.getRow()>0){
+                                            tabMode.addRow(new Object[]{"","",rspasien.getString("no_rawat")+" "+rspasien.getString("nm_pasien"),"",null,null,null,null});                           
+                                        }
+                                        rsobat.beforeFirst();
+                                        while(rsobat.next()){
+                                            subtotal=subtotal+rsobat.getDouble("total");
+                                            ttlbiaya=ttlbiaya+rsobat.getDouble("total");
+                                            ttlpasienobat=ttlpasienobat+rsobat.getDouble("total");
+                                            ttlpasienembalase=ttlpasienembalase+rsobat.getDouble("embalase");
+                                            embalase=embalase+rsobat.getDouble("embalase");
+                                            ttlembalase=ttlembalase+rsobat.getDouble("embalase");
+                                            ttlpasientuslah=ttlpasientuslah+rsobat.getDouble("tuslah");
+                                            tuslah=tuslah+rsobat.getDouble("tuslah");
+                                            ttltuslah=ttltuslah+rsobat.getDouble("tuslah");
+                                            tabMode.addRow(new Object[]{"","","",rsobat.getString("kode_brng")+" "+rsobat.getString("nama_brng"),rsobat.getDouble("jml"),rsobat.getDouble("total"),rsobat.getDouble("embalase"),rsobat.getDouble("tuslah")});
+                                        }                       
+                                        if(ttlpasienobat>0){
+                                            tabMode.addRow(new Object[]{"","","Subtotal :","",0,ttlpasienobat,ttlpasienembalase,ttlpasientuslah});
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rsobat!=null){
+                                            rsobat.close();
+                                        }
+                                        if(psobat!=null){
+                                            psobat.close();
+                                        }
+                                    }
+                                }
+                                a++;
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            } finally{
+                                if(rspasien!=null){
+                                    rspasien.close();
+                                }
+                                if(pspasien!=null){
+                                    pspasien.close();
+                                }
+                            }
+                        }
+                        if(subtotal>0){
+                            tabMode.addRow(new Object[]{"","       "+"Subtotal ",":","",null,subtotal,embalase,tuslah});
+                        }               
+                        i++;
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rstanggal!=null){
+                            rstanggal.close();
+                        }
+                        if(pstanggal!=null){
+                            pstanggal.close();
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rsdokter!=null){
+                    rsdokter.close();
+                }
+                if(psdokter!=null){
+                    psdokter.close();
+                }
+            }
+            tabMode.addRow(new Object[]{">>","Total ",":","",null,ttlbiaya,ttlembalase,ttltuslah});
+            this.setCursor(Cursor.getDefaultCursor());             
         }catch(Exception e){
             System.out.println("Catatan  "+e);
         }        
     }
-    
-    
-    
 }

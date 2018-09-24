@@ -83,7 +83,9 @@ public final class var {
             bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false,permintaan_lab=false,permintaan_radiologi=false,
             surat_indeks=false,surat_map=false,surat_almari=false,surat_rak=false,surat_ruang=false,surat_klasifikasi=false,surat_status=false,
             surat_sifat=false,surat_balas=false,surat_masuk=false,pcare_cek_dokter=false,pcare_cek_poli=false,pcare_cek_provider=false,
-            pcare_cek_statuspulang=false,pcare_cek_spesialis=false,pcare_cek_subspesialis=false;
+            pcare_cek_statuspulang=false,pcare_cek_spesialis=false,pcare_cek_subspesialis=false,pcare_cek_sarana=false,pcare_cek_khusus=false,
+            pcare_cek_obat=false,pcare_cek_tindakan=false,pcare_cek_faskessubspesialis=false,pcare_cek_faskesalihrawat=false,
+            pcare_cek_faskesthalasemia=false,pcare_mapping_obat=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -487,6 +489,14 @@ public final class var {
                         var.pcare_cek_statuspulang=true;
                         var.pcare_cek_spesialis=true;
                         var.pcare_cek_subspesialis=true;
+                        var.pcare_cek_sarana=true;
+                        var.pcare_cek_khusus=true;
+                        var.pcare_cek_obat=true;
+                        var.pcare_cek_tindakan=true;
+                        var.pcare_cek_faskessubspesialis=true;
+                        var.pcare_cek_faskesalihrawat=true;
+                        var.pcare_cek_faskesthalasemia=true;
+                        var.pcare_mapping_obat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -874,6 +884,14 @@ public final class var {
                         var.pcare_cek_statuspulang=rs2.getBoolean("pcare_cek_statuspulang");
                         var.pcare_cek_spesialis=rs2.getBoolean("pcare_cek_spesialis");
                         var.pcare_cek_subspesialis=rs2.getBoolean("pcare_cek_subspesialis");
+                        var.pcare_cek_sarana=rs2.getBoolean("pcare_cek_sarana");
+                        var.pcare_cek_khusus=rs2.getBoolean("pcare_cek_khusus");
+                        var.pcare_cek_obat=rs2.getBoolean("pcare_cek_obat");
+                        var.pcare_cek_tindakan=rs2.getBoolean("pcare_cek_tindakan");
+                        var.pcare_cek_faskessubspesialis=rs2.getBoolean("pcare_cek_faskessubspesialis");
+                        var.pcare_cek_faskesalihrawat=rs2.getBoolean("pcare_cek_faskesalihrawat");
+                        var.pcare_cek_faskesthalasemia=rs2.getBoolean("pcare_cek_faskesthalasemia");
+                        var.pcare_mapping_obat=rs2.getBoolean("pcare_mapping_obat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1259,6 +1277,14 @@ public final class var {
                         var.pcare_cek_statuspulang=false;
                         var.pcare_cek_spesialis=false;
                         var.pcare_cek_subspesialis=false;
+                        var.pcare_cek_sarana=false;
+                        var.pcare_cek_khusus=false;
+                        var.pcare_cek_obat=false;
+                        var.pcare_cek_tindakan=false;
+                        var.pcare_cek_faskessubspesialis=false;
+                        var.pcare_cek_faskesalihrawat=false;
+                        var.pcare_cek_faskesthalasemia=false;
+                        var.pcare_mapping_obat=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1696,4 +1722,12 @@ public final class var {
     public static boolean getpcare_cek_statuspulang(){return var.pcare_cek_statuspulang;}
     public static boolean getpcare_cek_spesialis(){return var.pcare_cek_spesialis;}
     public static boolean getpcare_cek_subspesialis(){return var.pcare_cek_subspesialis;}
+    public static boolean getpcare_cek_sarana(){return var.pcare_cek_sarana;}
+    public static boolean getpcare_cek_khusus(){return var.pcare_cek_khusus;}
+    public static boolean getpcare_cek_obat(){return var.pcare_cek_obat;}
+    public static boolean getpcare_cek_tindakan(){return var.pcare_cek_tindakan;}
+    public static boolean getpcare_cek_faskessubspesialis(){return var.pcare_cek_faskessubspesialis;}
+    public static boolean getpcare_cek_faskesalihrawat(){return var.pcare_cek_faskesalihrawat;}
+    public static boolean getpcare_cek_faskesthalasemia(){return var.pcare_cek_faskesthalasemia;}
+    public static boolean getpcare_mapping_obat(){return var.pcare_mapping_obat;}
 }   

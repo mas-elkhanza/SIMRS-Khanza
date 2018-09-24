@@ -1588,7 +1588,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
 
         DTPLahir.setEditable(false);
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-09-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -2074,7 +2074,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
         TNo.setBounds(107, 25, 160, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2018" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-09-2018" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -2910,7 +2910,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
         jLabel23.setBounds(495, 25, 90, 23);
 
         TanggalSEP.setEditable(false);
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2018 18:39:48" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-09-2018 23:03:30" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -2930,7 +2930,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
         jLabel30.setBounds(331, 265, 60, 23);
 
         TanggalRujuk.setEditable(false);
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2018" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-09-2018" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -3091,6 +3091,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
         Catatan.setBounds(107, 295, 378, 23);
 
         JenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Ranap", "2. Ralan" }));
+        JenisPelayanan.setSelectedIndex(1);
         JenisPelayanan.setName("JenisPelayanan"); // NOI18N
         JenisPelayanan.setOpaque(false);
         JenisPelayanan.addItemListener(new java.awt.event.ItemListener() {
@@ -3112,6 +3113,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
         LabelKelas.setBounds(198, 235, 40, 23);
 
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Kelas 1", "2. Kelas 2", "3. kelas 3" }));
+        Kelas.setSelectedIndex(2);
         Kelas.setName("Kelas"); // NOI18N
         Kelas.setOpaque(false);
         Kelas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -3352,7 +3354,7 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2018" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-09-2018" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setName("TanggalKKL"); // NOI18N
         TanggalKKL.setOpaque(false);
@@ -3720,6 +3722,24 @@ public final class BPJSCekNoRujukanRS extends javax.swing.JDialog {
             BtnSimpan.setVisible(false);
         }else if(empt==true){            
             ChkCari.setSelected(true);
+            chkPolri.setSelected(false);
+            chkTNI.setSelected(false);
+            chkTNI.setSelected(false);
+            chkPolri.setSelected(false);     
+            BtnGolonganPolri.setEnabled(false);
+            BtnSatuanPolri.setEnabled(false);
+            BtnJabatanPolri.setEnabled(false);
+            BtnPangkatPolri.setEnabled(false);
+            BtnGolonganTNI.setEnabled(false);
+            BtnSatuanTNI.setEnabled(false);
+            BtnJabatanTNI.setEnabled(false);
+            BtnPangkatTNI.setEnabled(false);
+            R5.setSelected(true);
+            LakaLantas.setSelectedIndex(0);
+            Katarak.setSelectedIndex(0);        
+            Suplesi.setSelectedIndex(0);
+            JenisPelayanan.setSelectedIndex(1);
+            TNo.requestFocus();
             isForm();
         }
     }//GEN-LAST:event_formWindowOpened

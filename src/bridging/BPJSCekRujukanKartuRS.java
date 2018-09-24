@@ -3207,6 +3207,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         Catatan.setBounds(107, 295, 378, 23);
 
         JenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Ranap", "2. Ralan" }));
+        JenisPelayanan.setSelectedIndex(1);
         JenisPelayanan.setName("JenisPelayanan"); // NOI18N
         JenisPelayanan.setOpaque(false);
         JenisPelayanan.addItemListener(new java.awt.event.ItemListener() {
@@ -3228,6 +3229,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         LabelKelas.setBounds(198, 235, 40, 23);
 
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Kelas 1", "2. Kelas 2", "3. kelas 3" }));
+        Kelas.setSelectedIndex(2);
         Kelas.setName("Kelas"); // NOI18N
         Kelas.setOpaque(false);
         Kelas.addKeyListener(new java.awt.event.KeyAdapter() {
