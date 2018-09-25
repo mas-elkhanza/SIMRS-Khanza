@@ -790,10 +790,10 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getmapping_poli_bpjs());
-        BtnHapus.setEnabled(var.getmapping_poli_bpjs());
-        BtnEdit.setEnabled(var.getmapping_poli_bpjs());
-        BtnPrint.setEnabled(var.getmapping_poli_bpjs());
+        BtnSimpan.setEnabled(var.getpcare_mapping_tindakan());
+        BtnHapus.setEnabled(var.getpcare_mapping_tindakan());
+        BtnEdit.setEnabled(var.getpcare_mapping_tindakan());
+        BtnPrint.setEnabled(var.getpcare_mapping_tindakan());
     }
     
     public JTable getTable(){

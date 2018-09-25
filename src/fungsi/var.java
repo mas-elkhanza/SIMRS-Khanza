@@ -85,7 +85,8 @@ public final class var {
             surat_sifat=false,surat_balas=false,surat_masuk=false,pcare_cek_dokter=false,pcare_cek_poli=false,pcare_cek_provider=false,
             pcare_cek_statuspulang=false,pcare_cek_spesialis=false,pcare_cek_subspesialis=false,pcare_cek_sarana=false,pcare_cek_khusus=false,
             pcare_cek_obat=false,pcare_cek_tindakan=false,pcare_cek_faskessubspesialis=false,pcare_cek_faskesalihrawat=false,
-            pcare_cek_faskesthalasemia=false,pcare_mapping_obat=false,pcare_mapping_tindakan=false,pcare_club_prolanis=false;
+            pcare_cek_faskesthalasemia=false,pcare_mapping_obat=false,pcare_mapping_tindakan=false,pcare_club_prolanis=false,
+            pcare_mapping_poli=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -499,6 +500,7 @@ public final class var {
                         var.pcare_mapping_obat=true;
                         var.pcare_mapping_tindakan=true;
                         var.pcare_club_prolanis=true;
+                        var.pcare_mapping_poli=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -896,6 +898,7 @@ public final class var {
                         var.pcare_mapping_obat=rs2.getBoolean("pcare_mapping_obat");
                         var.pcare_mapping_tindakan=rs2.getBoolean("pcare_mapping_tindakan");
                         var.pcare_club_prolanis=rs2.getBoolean("pcare_club_prolanis");
+                        var.pcare_mapping_poli=rs2.getBoolean("pcare_mapping_poli");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1291,6 +1294,7 @@ public final class var {
                         var.pcare_mapping_obat=false;
                         var.pcare_mapping_tindakan=false;
                         var.pcare_club_prolanis=false;
+                        var.pcare_mapping_poli=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1738,4 +1742,5 @@ public final class var {
     public static boolean getpcare_mapping_obat(){return var.pcare_mapping_obat;}
     public static boolean getpcare_mapping_tindakan(){return var.pcare_mapping_tindakan;}
     public static boolean getpcare_club_prolanis(){return var.pcare_club_prolanis;}
+    public static boolean getpcare_mapping_poli(){return var.pcare_mapping_poli;}
 }   

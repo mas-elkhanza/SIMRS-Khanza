@@ -1175,9 +1175,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if(tbPemeriksaan.getValueAt(i2,0).toString().equals("true")){
                     pilih2[index2]=true;
                     pemeriksaan2[index2]=tbPemeriksaan.getValueAt(i2,1).toString();
-                    satuan2[index2]=tbPemeriksaan.getValueAt(i2,3).toString();
-                    nilai_rujukan2[index2]=tbPemeriksaan.getValueAt(i2,4).toString();
-                    idtemplate2[index2]=tbPemeriksaan.getValueAt(i2,6).toString();
+                    satuan2[index2]=tbPemeriksaan.getValueAt(i2,2).toString();
+                    nilai_rujukan2[index2]=tbPemeriksaan.getValueAt(i2,3).toString();
+                    idtemplate2[index2]=tbPemeriksaan.getValueAt(i2,4).toString();
                     index2++;
                 }
             }

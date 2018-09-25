@@ -77,6 +77,7 @@ import bridging.PCareCekReferensiTindakan;
 import bridging.PCareCekRujukan;
 import bridging.PCareClubProlanis;
 import bridging.PCareMapingObat;
+import bridging.PCareMapingPoli;
 import bridging.PCareMapingTindakan;
 import informasi.InformasiAnalisaKamin;
 import laporan.DlgDkkSurveilansRalan;
@@ -957,6 +958,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareMapingObat = new widget.ButtonBig();
         btnPCareMapingTindakan = new widget.ButtonBig();
         btnPCareClubProlanis = new widget.ButtonBig();
+        btnPCareMapingPoli = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5920,7 +5922,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnPCareFaskesThalasemia);
 
         btnPCareMapingObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815295_medical_case.png"))); // NOI18N
-        btnPCareMapingObat.setText("Mapping Obat PCare");
+        btnPCareMapingObat.setText("Mapping Obat RS & PCare");
         btnPCareMapingObat.setToolTipText("");
         btnPCareMapingObat.setIconTextGap(0);
         btnPCareMapingObat.setName("btnPCareMapingObat"); // NOI18N
@@ -5933,7 +5935,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnPCareMapingObat);
 
         btnPCareMapingTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_address-book_111220.png"))); // NOI18N
-        btnPCareMapingTindakan.setText("Mapping Tindakan PCare");
+        btnPCareMapingTindakan.setText("Mapping Tindakan RS & PCare");
         btnPCareMapingTindakan.setToolTipText("");
         btnPCareMapingTindakan.setIconTextGap(0);
         btnPCareMapingTindakan.setName("btnPCareMapingTindakan"); // NOI18N
@@ -5958,6 +5960,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPCareClubProlanis);
 
+        btnPCareMapingPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_home_61629.png"))); // NOI18N
+        btnPCareMapingPoli.setText("Mapping Poli RS & PCare");
+        btnPCareMapingPoli.setToolTipText("");
+        btnPCareMapingPoli.setIconTextGap(0);
+        btnPCareMapingPoli.setName("btnPCareMapingPoli"); // NOI18N
+        btnPCareMapingPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareMapingPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareMapingPoliActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareMapingPoli);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5966,7 +5981,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24/09/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/09/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -12326,6 +12341,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPCareClubProlanisActionPerformed
 
+    private void btnPCareMapingPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareMapingPoliActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareMapingPoli form=new PCareMapingPoli(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    }//GEN-LAST:event_btnPCareMapingPoliActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12568,6 +12594,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPCareFaskesSubspesialis;
     private widget.ButtonBig btnPCareFaskesThalasemia;
     private widget.ButtonBig btnPCareMapingObat;
+    private widget.ButtonBig btnPCareMapingPoli;
     private widget.ButtonBig btnPCareMapingTindakan;
     private widget.ButtonBig btnPCareReferensiDokter;
     private widget.ButtonBig btnPCareReferensiKhusus;
@@ -14564,6 +14591,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_mapping_poli()==true){
+                Panelmenu.add(btnPCareMapingPoli);
+                jmlmenu++;
+            }
+            
             if(var.getpcare_club_prolanis()==true){
                 Panelmenu.add(btnPCareClubProlanis);
                 jmlmenu++;
@@ -16516,6 +16548,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_mapping_tindakan()==true){
             Panelmenu.add(btnPCareMapingTindakan);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_mapping_poli()==true){
+            Panelmenu.add(btnPCareMapingPoli);
             jmlmenu++;
         }
         
@@ -19032,6 +19069,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_mapping_tindakan()==true){
             if(btnPCareMapingTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareMapingTindakan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_mapping_poli()==true){
+            if(btnPCareMapingPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareMapingPoli);
                 jmlmenu++;
             }                
         }
