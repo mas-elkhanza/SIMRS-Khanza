@@ -50,6 +50,7 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
     private PCareCekReferensiSarana sarana=new PCareCekReferensiSarana(null,false);
     private int i=0;
     private PcareApi api=new PcareApi();
+    private String URL="",link="";
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -173,7 +174,8 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -468,7 +470,7 @@ public final class PCareCekFaskesSubspesialis extends javax.swing.JDialog {
 
     public void tampil(String spesialistik,String sarana) {        
         try {
-            String URL = prop.getProperty("URLAPIPCARE")+"/spesialis/rujuk/subspesialis/"+spesialistik+"/sarana/"+sarana;	
+            URL = link+"/spesialis/rujuk/subspesialis/"+spesialistik+"/sarana/"+sarana;	
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));

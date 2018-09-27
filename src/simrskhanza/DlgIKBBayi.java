@@ -2817,6 +2817,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
 private void BtnHapusActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed1
    Valid.hapusTable(tabMode,NoRm,"pasien_bayi","no_rkm_medis");
+   Valid.hapusTable(tabMode,NoRm,"bridging_dukcapil","no_rkm_medis");
    tampil();
    emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed1

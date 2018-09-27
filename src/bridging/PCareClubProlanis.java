@@ -45,6 +45,7 @@ public final class PCareClubProlanis extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private PcareApi api=new PcareApi();
+    private String URL="",link="";
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -94,7 +95,8 @@ public final class PCareClubProlanis extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -309,7 +311,7 @@ public final class PCareClubProlanis extends javax.swing.JDialog {
 
     public void tampil(String kode) {        
         try {
-            String URL = prop.getProperty("URLAPIPCARE")+"/kelompok/club/"+kode;	
+            URL = link+"/kelompok/club/"+kode;	
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));

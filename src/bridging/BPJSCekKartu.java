@@ -116,7 +116,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",
-            kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",penjamin="",
+            kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",penjamin="",link="",
             jasaraharja="",BPJS="",Taspen="",Asabri="",status="Baru",propinsi="",propinsipj="",
             tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
     private PreparedStatement ps,pskelengkapan,pscariumur,pssetalamat,pstni,pspolri;
@@ -1346,6 +1346,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -4562,7 +4563,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(tbKamar.getRowCount()>0){
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Sep/pengajuanSEP";
+                URL = link+"/Sep/pengajuanSEP";
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -4609,7 +4610,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(tbKamar.getRowCount()>0){
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Sep/aprovalSEP";
+                URL = link+"/Sep/aprovalSEP";
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -5878,9 +5879,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
             if(LakaLantas.getSelectedIndex()==1){
                 tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
             }
-            URL = prop.getProperty("URLAPIBPJS")+"/SEP/insert";	
-
-            URL = prop.getProperty("URLAPIBPJS")+"/SEP/1.1/insert";
+            URL = link+"/SEP/1.1/insert";
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
@@ -5967,7 +5966,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                  })==true){
                     if(JenisPelayanan.getSelectedIndex()==1){
                         try {
-                            URL = prop.getProperty("URLAPIBPJS")+"/Sep/updtglplg";	
+                            URL = link+"/Sep/updtglplg";	
 
                             HttpHeaders headers2 = new HttpHeaders();
                             headers2.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

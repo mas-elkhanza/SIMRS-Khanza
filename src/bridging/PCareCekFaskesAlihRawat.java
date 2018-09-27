@@ -45,6 +45,7 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private PcareApi api=new PcareApi();
+    private String URL = "";
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -96,7 +97,8 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            URL=prop.getProperty("URLAPIPCARE")+"/spesialis/rujuk/khusus/";
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -312,8 +314,6 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
 
     public void tampil(String kode) {        
         try {
-            String URL = prop.getProperty("URLAPIPCARE")+"/spesialis/rujuk/khusus/"+kode;	
-
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
@@ -323,7 +323,7 @@ public final class PCareCekFaskesAlihRawat extends javax.swing.JDialog {
 	    HttpEntity requestEntity = new HttpEntity(headers);
 	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            JsonNode root = mapper.readTree(api.getRest().exchange(URL+kode, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metaData");
             //System.out.println("code : "+nameNode.path("code").asText());
             //System.out.println("message : "+nameNode.path("message").asText());

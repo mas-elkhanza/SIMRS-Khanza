@@ -75,7 +75,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     private BPJSCekReferensiFaskes faskes=new BPJSCekReferensiFaskes(null,false);
     private BPJSCekReferensiPenyakit penyakit=new BPJSCekReferensiPenyakit(null,false);
     private BPJSCekReferensiPoli poli=new BPJSCekReferensiPoli(null,false);
-    private String URL="",requestJson,user="";
+    private String URL="",requestJson,user="",link="";
     private final Properties prop = new Properties();
     /** Creates new form DlgRujuk
      * @param parent
@@ -258,9 +258,10 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
-            System.out.println("SEP XML : "+e);
+            System.out.println("E : "+e);
         }
         
         try {
@@ -787,7 +788,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                 Valid.textKosong(KdPoli1, "Poli Tujuan");        
             }else{  
                 try {
-                    URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/update";	
+                    URL = link+"/Rujukan/update";	
                     HttpHeaders headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                     headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
@@ -1260,7 +1261,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         restTemplate.setRequestFactory(factory);
         
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/delete";	
+            URL = link+"/Rujukan/delete";	
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

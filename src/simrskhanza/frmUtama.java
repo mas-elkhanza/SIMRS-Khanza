@@ -76,6 +76,7 @@ import bridging.PCareCekReferensiSubspesialis;
 import bridging.PCareCekReferensiTindakan;
 import bridging.PCareCekRujukan;
 import bridging.PCareClubProlanis;
+import bridging.PCareKegiatanKelompok;
 import bridging.PCareMapingObat;
 import bridging.PCareMapingPoli;
 import bridging.PCareMapingTindakan;
@@ -959,6 +960,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareMapingTindakan = new widget.ButtonBig();
         btnPCareClubProlanis = new widget.ButtonBig();
         btnPCareMapingPoli = new widget.ButtonBig();
+        btnPCareKegiatanKelompok = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5973,6 +5975,19 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPCareMapingPoli);
 
+        btnPCareKegiatanKelompok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Group_Meeting_Light_80844.png"))); // NOI18N
+        btnPCareKegiatanKelompok.setText("Kegiatan Kelompok PCare");
+        btnPCareKegiatanKelompok.setToolTipText("");
+        btnPCareKegiatanKelompok.setIconTextGap(0);
+        btnPCareKegiatanKelompok.setName("btnPCareKegiatanKelompok"); // NOI18N
+        btnPCareKegiatanKelompok.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareKegiatanKelompok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareKegiatanKelompokActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareKegiatanKelompok);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5981,7 +5996,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/09/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/09/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -12352,6 +12367,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor()); 
     }//GEN-LAST:event_btnPCareMapingPoliActionPerformed
 
+    private void btnPCareKegiatanKelompokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareKegiatanKelompokActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareKegiatanKelompok form=new PCareKegiatanKelompok(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    }//GEN-LAST:event_btnPCareKegiatanKelompokActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12593,6 +12619,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPCareFaskesAlihRawat;
     private widget.ButtonBig btnPCareFaskesSubspesialis;
     private widget.ButtonBig btnPCareFaskesThalasemia;
+    private widget.ButtonBig btnPCareKegiatanKelompok;
     private widget.ButtonBig btnPCareMapingObat;
     private widget.ButtonBig btnPCareMapingPoli;
     private widget.ButtonBig btnPCareMapingTindakan;
@@ -14601,6 +14628,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_kegiatan_kelompok()==true){
+                Panelmenu.add(btnPCareKegiatanKelompok);
+                jmlmenu++;
+            }
+            
             if(var.getpcare_cek_rujukan()==true){
                 Panelmenu.add(btnCekPCareRujukan);
                 jmlmenu++;
@@ -16558,6 +16590,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_club_prolanis()==true){
             Panelmenu.add(btnPCareClubProlanis);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_kegiatan_kelompok()==true){
+            Panelmenu.add(btnPCareKegiatanKelompok);
             jmlmenu++;
         }
 
@@ -19083,6 +19120,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_club_prolanis()==true){
             if(btnPCareClubProlanis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareClubProlanis);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_kegiatan_kelompok()==true){
+            if(btnPCareKegiatanKelompok.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareKegiatanKelompok);
                 jmlmenu++;
             }                
         }

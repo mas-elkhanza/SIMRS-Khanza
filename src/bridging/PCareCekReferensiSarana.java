@@ -48,6 +48,7 @@ public final class PCareCekReferensiSarana extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private PcareApi api=new PcareApi();
+    private String URL="",link="";
 
     /** Creates new form DlgKamar
      * @param parent
@@ -93,7 +94,8 @@ public final class PCareCekReferensiSarana extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -317,7 +319,7 @@ public final class PCareCekReferensiSarana extends javax.swing.JDialog {
 
     public void tampil(String diagnosa) {        
         try {
-            String URL = prop.getProperty("URLAPIPCARE")+"/spesialis/sarana";	
+            URL = link+"/spesialis/sarana";	
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
