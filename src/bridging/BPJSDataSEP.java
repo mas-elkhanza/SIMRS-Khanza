@@ -84,7 +84,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private BPJSCekReferensiPropinsi propinsi=new BPJSCekReferensiPropinsi(null,false);
     private BPJSCekReferensiKabupaten kabupaten=new BPJSCekReferensiKabupaten(null,false);
     private BPJSCekReferensiKecamatan kecamatan=new BPJSCekReferensiKecamatan(null,false);
-    private String no_peserta="", requestJson,URL="",jkel="",duplikat="",user="",penjamin="",jasaraharja="",BPJS="",Taspen="",Asabri="",kddokter="",tglkkl="0000-00-00";
+    private String no_peserta="",link="", requestJson,URL="",jkel="",duplikat="",user="",penjamin="",jasaraharja="",BPJS="",Taspen="",Asabri="",kddokter="",tglkkl="0000-00-00";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -563,9 +563,10 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         }
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
-            System.out.println("SEP XML : "+e);
+            System.out.println("E : "+e);
         }
     }
 
@@ -1766,6 +1767,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         Catatan.setBounds(93, 372, 257, 23);
 
         JenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Ranap", "2. Ralan" }));
+        JenisPelayanan.setSelectedIndex(1);
         JenisPelayanan.setName("JenisPelayanan"); // NOI18N
         JenisPelayanan.setOpaque(false);
         JenisPelayanan.addItemListener(new java.awt.event.ItemListener() {
@@ -2320,7 +2322,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 if(NmPoli.getText().toLowerCase().contains("darurat")){
                     if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
                             "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
-                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
+                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"%' and "+
                             "nmpolitujuan like '%darurat%'")>=3){
                         JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
                         TCari.requestFocus();
@@ -2330,7 +2332,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 }else if(!NmPoli.getText().toLowerCase().contains("darurat")){
                     if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
                             "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
-                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
+                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"%' and "+
                             "nmpolitujuan not like '%darurat%'")>=1){
                         JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
                         TCari.requestFocus();
@@ -2444,7 +2446,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
                     }
                     
-                    URL = prop.getProperty("URLAPIBPJS")+"/SEP/1.1/Update";	
+                    URL = link+"/SEP/1.1/Update";	
 
                     HttpHeaders headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -2716,7 +2718,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void btnPPKRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPKRujukanActionPerformed
         pilihan=1;
-        faskes.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        faskes.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         faskes.setLocationRelativeTo(internalFrame1);        
         faskes.setVisible(true);
     }//GEN-LAST:event_btnPPKRujukanActionPerformed
@@ -2727,7 +2729,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void btnDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaActionPerformed
         pilihan=1;
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);        
         penyakit.setVisible(true);
     }//GEN-LAST:event_btnDiagnosaActionPerformed
@@ -2738,7 +2740,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void btnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliActionPerformed
         pilihan=1;
-        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);        
         poli.setVisible(true);
     }//GEN-LAST:event_btnPoliActionPerformed
@@ -2859,7 +2861,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             Valid.textKosong(Catatan, "Catatan");
         }else{
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Sep/updtglplg";	
+                URL = link+"/Sep/updtglplg";	
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -2896,7 +2898,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         var.setstatus(false);
                         DlgKamarInap kamarinap=new DlgKamarInap(null,false);
                         if(var.getkode().equals("Admin Utama")){
-                            kamarinap.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                            kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                             kamarinap.setLocationRelativeTo(internalFrame1);
                             kamarinap.emptTeks();
                             kamarinap.isCek();
@@ -2906,7 +2908,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                             if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi..!!");
                             }else{ 
-                                kamarinap.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                                kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                 kamarinap.setLocationRelativeTo(internalFrame1);
                                 kamarinap.emptTeks();
                                 kamarinap.isCek();
@@ -2952,7 +2954,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         if(!NoKartu.getText().equals("")){
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Sep/pengajuanSEP";	
+                URL = link+"/Sep/pengajuanSEP";	
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -3000,7 +3002,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             BPJSCekDetailSEP detail=new BPJSCekDetailSEP(null,true);
             detail.tampil(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            detail.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            detail.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             detail.setLocationRelativeTo(internalFrame1);
             detail.setVisible(true);
         }else{
@@ -3062,7 +3064,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         if(!NoKartu.getText().equals("")){
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Sep/aprovalSEP";	
+                URL = link+"/Sep/aprovalSEP";	
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -3142,7 +3144,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             Valid.textKosong(KdPoli1, "Poli Tujuan");        
         }else{  
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/insert";	
+                URL = link+"/Rujukan/insert";	
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                 headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
@@ -3210,7 +3212,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void btnPPKRujukan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPKRujukan1ActionPerformed
         pilihan=2;
-        faskes.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        faskes.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         faskes.setLocationRelativeTo(internalFrame1);        
         faskes.setVisible(true);
     }//GEN-LAST:event_btnPPKRujukan1ActionPerformed
@@ -3229,7 +3231,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void btnDiagnosa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosa1ActionPerformed
         pilihan=2;
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);        
         penyakit.setVisible(true);
     }//GEN-LAST:event_btnDiagnosa1ActionPerformed
@@ -3240,7 +3242,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void btnPoli1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoli1ActionPerformed
         pilihan=2;
-        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);        
         poli.setVisible(true);
     }//GEN-LAST:event_btnPoli1ActionPerformed
@@ -3436,7 +3438,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 if(penjamin.endsWith(",")){
                     penjamin = penjamin.substring(0,penjamin.length() - 1);
                 }
-                URL = prop.getProperty("URLAPIBPJS")+"/SEP/1.1/insert";	
+                
+                URL = link+"/SEP/1.1/insert";	
 
                 tglkkl="0000-00-00";
                 if(LakaLantas.getSelectedIndex()==1){
@@ -3467,7 +3470,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
         if(!NoSEP.getText().equals("")){
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/SEP/"+NoSEP.getText();	
+                URL = link+"/SEP/"+NoSEP.getText();	
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -3586,7 +3589,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void btnSKDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSKDPActionPerformed
         skdp.setNoRm(TNoRM.getText(),TPasien.getText());
-        skdp.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        skdp.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         skdp.setLocationRelativeTo(internalFrame1);        
         skdp.setVisible(true);
     }//GEN-LAST:event_btnSKDPActionPerformed
@@ -3596,7 +3599,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSKDPKeyPressed
 
     private void btnDPJPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPActionPerformed
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);        
         dokter.setVisible(true);
     }//GEN-LAST:event_btnDPJPActionPerformed
@@ -3622,7 +3625,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     }//GEN-LAST:event_NoSEPSuplesiKeyPressed
 
     private void btnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPropinsiActionPerformed
-        propinsi.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        propinsi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         propinsi.setLocationRelativeTo(internalFrame1);
         propinsi.setVisible(true);
     }//GEN-LAST:event_btnPropinsiActionPerformed
@@ -3637,7 +3640,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             btnPropinsi.requestFocus();
         }else{
             kabupaten.setPropinsi(KdPropinsi.getText(),NmPropinsi.getText());
-            kabupaten.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            kabupaten.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             kabupaten.setLocationRelativeTo(internalFrame1);
             kabupaten.setVisible(true);
         }
@@ -3653,7 +3656,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             btnKabupaten.requestFocus();
         }else{
             kecamatan.setPropinsi(KdKabupaten.getText(),NmKabupaten.getText());
-            kecamatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            kecamatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             kecamatan.setLocationRelativeTo(internalFrame1);
             kecamatan.setVisible(true);
         }
@@ -4116,7 +4119,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         restTemplate.setRequestFactory(factory);
         
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/SEP/Delete";	
+            URL = link+"/SEP/Delete";	
             
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -4174,7 +4177,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
             }
             
-            URL = prop.getProperty("URLAPIBPJS")+"/SEP/1.1/insert";
+            URL = link+"/SEP/1.1/insert";
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
@@ -4264,7 +4267,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                      });
                      if(JenisPelayanan.getSelectedIndex()==1){
                         try {
-                            URL = prop.getProperty("URLAPIBPJS")+"/Sep/updtglplg";	
+                            URL = link+"/Sep/updtglplg";	
 
                             HttpHeaders headers2 = new HttpHeaders();
                             headers2.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

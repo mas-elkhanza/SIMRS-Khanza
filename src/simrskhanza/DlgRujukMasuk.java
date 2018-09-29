@@ -1226,7 +1226,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
         var.setform("DlgRujukMasuk");
         tampil2();
         TCariPerujuk.requestFocus();
-        WindowPerujuk.setSize(this.getWidth()-40,this.getHeight()-40);
+        WindowPerujuk.setSize(this.getWidth()-20,this.getHeight()-20);
         WindowPerujuk.setLocationRelativeTo(internalFrame1);
         WindowPerujuk.setVisible(true);
     }//GEN-LAST:event_btnCariRujukActionPerformed
@@ -1492,7 +1492,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
         penyakit.isCek();
         penyakit.emptTeks();
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setVisible(true);
     }//GEN-LAST:event_btnDokterActionPerformed

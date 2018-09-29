@@ -439,7 +439,7 @@ public class DlgPengambilanPenunjangUTD extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgCariPengambilanPenunjangUTD pindah=new DlgCariPengambilanPenunjangUTD(null,true);
         pindah.tampil();
-        pindah.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        pindah.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pindah.setLocationRelativeTo(internalFrame1);
         pindah.setAlwaysOnTop(false);
         pindah.setVisible(true);
@@ -578,7 +578,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         var.setform("DlgPengambilanUTD");
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -742,7 +742,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);

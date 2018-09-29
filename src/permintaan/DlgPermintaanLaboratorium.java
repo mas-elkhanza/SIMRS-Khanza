@@ -1021,7 +1021,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_btnDokterActionPerformed
@@ -1175,9 +1175,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if(tbPemeriksaan.getValueAt(i2,0).toString().equals("true")){
                     pilih2[index2]=true;
                     pemeriksaan2[index2]=tbPemeriksaan.getValueAt(i2,1).toString();
-                    satuan2[index2]=tbPemeriksaan.getValueAt(i2,3).toString();
-                    nilai_rujukan2[index2]=tbPemeriksaan.getValueAt(i2,4).toString();
-                    idtemplate2[index2]=tbPemeriksaan.getValueAt(i2,6).toString();
+                    satuan2[index2]=tbPemeriksaan.getValueAt(i2,2).toString();
+                    nilai_rujukan2[index2]=tbPemeriksaan.getValueAt(i2,3).toString();
+                    idtemplate2[index2]=tbPemeriksaan.getValueAt(i2,4).toString();
                     index2++;
                 }
             }

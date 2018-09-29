@@ -261,7 +261,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(130,100,100));
+        ppHapus.setForeground(new java.awt.Color(130, 100, 100));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Retur");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -285,7 +285,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Retur Obat, Alkes & BHP Medis Ke Suplier ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -619,7 +619,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
         petugas.setAlwaysOnTop(false);
@@ -768,7 +768,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         var.setform("DlgCariReturBeli");
         barang.satuan.emptTeks();
         barang.satuan.isCek();
-        barang.satuan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.satuan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.satuan.setLocationRelativeTo(internalFrame1);
         barang.satuan.setAlwaysOnTop(false);
         barang.satuan.setVisible(true);
@@ -792,7 +792,7 @@ public class DlgCariReturBeli extends javax.swing.JDialog {
         var.setform("DlgCariReturBeli");
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);

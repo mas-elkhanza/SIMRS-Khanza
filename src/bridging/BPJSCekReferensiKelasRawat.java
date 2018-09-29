@@ -45,6 +45,7 @@ public final class BPJSCekReferensiKelasRawat extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private BPJSApi api=new BPJSApi();
+    private String URL="",link="";
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -90,7 +91,9 @@ public final class BPJSCekReferensiKelasRawat extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
+            URL = link+"/referensi/kelasrawat";	
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -269,8 +272,6 @@ public final class BPJSCekReferensiKelasRawat extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            String URL = prop.getProperty("URLAPIBPJS")+"/referensi/kelasrawat";	
-
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
