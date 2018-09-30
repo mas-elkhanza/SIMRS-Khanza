@@ -125,7 +125,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         Pembicara.setDocument(new batasInput((byte)50).getKata(Pembicara));
         Lokasi.setDocument(new batasInput((byte)50).getKata(Lokasi));
         Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
-        Biaya.setDocument(new batasInput((byte)15).getOnlyAngka(Biaya));
+        Biaya.setDocument(new batasInput((byte)15).getKata(Biaya));
         
         if(koneksiDB.cariCepat().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -240,6 +240,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         Keterangan = new widget.TextBox();
         jLabel40 = new widget.Label();
         Biaya = new widget.TextBox();
+        btnPoliRS1 = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -533,7 +534,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         NmClub.setHighlighter(null);
         NmClub.setName("NmClub"); // NOI18N
         FormInput.add(NmClub);
-        NmClub.setBounds(177, 10, 310, 23);
+        NmClub.setBounds(177, 10, 279, 23);
 
         btnPoliRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPoliRS.setMnemonic('1');
@@ -550,7 +551,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnPoliRS);
-        btnPoliRS.setBounds(490, 10, 28, 23);
+        btnPoliRS.setBounds(459, 10, 28, 23);
 
         jLabel22.setText("Tgl.Pelayanan :");
         jLabel22.setName("jLabel22"); // NOI18N
@@ -684,6 +685,23 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         });
         FormInput.add(Biaya);
         Biaya.setBounds(620, 40, 95, 23);
+
+        btnPoliRS1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPoliRS1.setMnemonic('1');
+        btnPoliRS1.setToolTipText("Alt+1");
+        btnPoliRS1.setName("btnPoliRS1"); // NOI18N
+        btnPoliRS1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPoliRS1ActionPerformed(evt);
+            }
+        });
+        btnPoliRS1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPoliRS1KeyPressed(evt);
+            }
+        });
+        FormInput.add(btnPoliRS1);
+        btnPoliRS1.setBounds(490, 10, 28, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1000,6 +1018,14 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
+    private void btnPoliRS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliRS1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPoliRS1ActionPerformed
+
+    private void btnPoliRS1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliRS1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPoliRS1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1043,6 +1069,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
     private widget.Button btnPoliRS;
+    private widget.Button btnPoliRS1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
