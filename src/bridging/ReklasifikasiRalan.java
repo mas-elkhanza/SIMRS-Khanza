@@ -615,7 +615,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         penjab.isCek();
-        penjab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setAlwaysOnTop(false);
         penjab.setVisible(true);
@@ -650,7 +650,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             if(Sequel.cariInteger("select count(no_rawat) from piutang_pasien where no_rawat=?",billing.TNoRw.getText())>0){
                 billing.setPiutang();
             }
-            billing.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             billing.setLocationRelativeTo(internalFrame1);
             billing.setVisible(true);         
         }

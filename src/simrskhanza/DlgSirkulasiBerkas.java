@@ -1217,7 +1217,7 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
 private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         pilihan=2;
     pasien.isCek();
-    pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     pasien.setLocationRelativeTo(internalFrame1);
     pasien.setAlwaysOnTop(false);
     pasien.setVisible(true);     
@@ -1262,7 +1262,7 @@ private void peminjamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvActionPerformed
     pilihan=1;
     pasien.isCek();
-    pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     pasien.setLocationRelativeTo(internalFrame1);
     pasien.setAlwaysOnTop(false);
     pasien.setVisible(true);        
@@ -1284,7 +1284,7 @@ private void NipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NipKe
 
 private void btnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPtgActionPerformed
     petugas.isCek();
-    petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     petugas.setLocationRelativeTo(internalFrame1);
     petugas.setAlwaysOnTop(false);
     petugas.setVisible(true);
@@ -1316,7 +1316,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 
     private void btnRuangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuangActionPerformed
         ruang.isCek();
-        ruang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        ruang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         ruang.setLocationRelativeTo(internalFrame1);
         ruang.setAlwaysOnTop(false);
         ruang.setVisible(true);

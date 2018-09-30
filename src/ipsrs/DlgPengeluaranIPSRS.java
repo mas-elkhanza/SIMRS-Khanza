@@ -463,7 +463,7 @@ public class DlgPengeluaranIPSRS extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         form.emptTeks();    
         form.isCek();
-        form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
         form.setVisible(true);
@@ -632,7 +632,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         var.setform("DlgPengeluaranIPSRS");
         form.petugas.emptTeks();
         form.petugas.isCek();
-        form.petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.petugas.setLocationRelativeTo(internalFrame1);
         form.petugas.setAlwaysOnTop(false);
         form.petugas.setVisible(true);
@@ -654,7 +654,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         DlgBarangIPSRS barang=new DlgBarangIPSRS(null,false);
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);

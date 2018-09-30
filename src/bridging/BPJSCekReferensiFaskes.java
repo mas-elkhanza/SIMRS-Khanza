@@ -48,7 +48,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private BPJSApi api=new BPJSApi();
-    private String URL="";
+    private String URL="",link="";
 
     /** Creates new form DlgKamar
      * @param parent
@@ -93,7 +93,8 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
             });
         }   
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -321,7 +322,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     public void tampil(String faskes) {
         try {
             Valid.tabelKosong(tabMode);
-            URL = prop.getProperty("URLAPIBPJS")+"/referensi/faskes/"+faskes+"/1";	
+            URL = link+"/referensi/faskes/"+faskes+"/1";	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -362,7 +363,7 @@ public final class BPJSCekReferensiFaskes extends javax.swing.JDialog {
     public void tampil2(String faskes) {        
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIBPJS")+"/referensi/faskes/"+faskes+"/2";	
+            URL = link+"/referensi/faskes/"+faskes+"/2";	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

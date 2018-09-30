@@ -895,7 +895,7 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
         var.setform("DlgObatPenyakit");
         penyakit.isCek();
         penyakit.emptTeks();
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setVisible(true);
 }//GEN-LAST:event_btnpenyakitActionPerformed
@@ -908,7 +908,7 @@ public final class DlgObatPenyakit extends javax.swing.JDialog {
         var.setform("DlgObatPenyakit");
         barang.isCek();
         barang.emptTeks();
-        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setVisible(true);
 }//GEN-LAST:event_btnobatActionPerformed
@@ -968,7 +968,7 @@ private void KtgCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_K
 private void btnKategoriCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriCariActionPerformed
         var.setform("DlgObatPenyakit");
         ktg.emptTeks();        
-        ktg.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        ktg.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         ktg.setLocationRelativeTo(internalFrame1);
         ktg.setVisible(true);
 }//GEN-LAST:event_btnKategoriCariActionPerformed
@@ -989,7 +989,7 @@ private void btnPenyakitCariActionPerformed(java.awt.event.ActionEvent evt) {//G
         var.setform("DlgObatPenyakit");
         penyakit.emptTeks();
         penyakit.isCek();
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setVisible(true);
 }//GEN-LAST:event_btnPenyakitCariActionPerformed

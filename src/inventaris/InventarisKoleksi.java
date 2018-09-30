@@ -1050,7 +1050,7 @@ private void kode_barangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
 
 private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
     barang.isCek();
-    barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     barang.setLocationRelativeTo(internalFrame1);
     barang.setAlwaysOnTop(false);
     barang.setVisible(true);
@@ -1071,7 +1071,7 @@ private void id_ruangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void btnRuangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuangActionPerformed
     pilihan=1;
     ruang.isCek();
-    ruang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    ruang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     ruang.setLocationRelativeTo(internalFrame1);
     ruang.setAlwaysOnTop(false);
     ruang.setVisible(true);
@@ -1148,7 +1148,7 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     private void btnRuang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuang1ActionPerformed
         pilihan=2;
         ruang.isCek();
-        ruang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        ruang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         ruang.setLocationRelativeTo(internalFrame1);
         ruang.setAlwaysOnTop(false);
         ruang.setVisible(true);
