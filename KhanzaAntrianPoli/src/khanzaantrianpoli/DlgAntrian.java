@@ -966,7 +966,7 @@ private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         pilihan=1;
         poli.emptTeks();
-        poli.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setAlwaysOnTop(false);
         poli.setVisible(true);
@@ -975,7 +975,7 @@ private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
        pilihan=2;
         poli.emptTeks();
-        poli.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setAlwaysOnTop(false);
         poli.setVisible(true);
@@ -985,7 +985,7 @@ private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=3;
         poli.emptTeks();
 
-        poli.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setAlwaysOnTop(false);
         poli.setVisible(true);
@@ -1142,7 +1142,7 @@ private void ppUndo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 private void BtnSeek5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek5ActionPerformed
        pilihan=1;
        dokter.emptTeks();
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setAlwaysOnTop(false);
         dokter.setVisible(true);
@@ -1151,7 +1151,7 @@ private void BtnSeek5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 private void BtnSeek6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek6ActionPerformed
       pilihan=2;
        dokter.emptTeks();
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setAlwaysOnTop(false);
         dokter.setVisible(true);
@@ -1161,7 +1161,7 @@ private void BtnSeek7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
       pilihan=3;
        dokter.emptTeks();
 
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setAlwaysOnTop(false);
         dokter.setVisible(true);

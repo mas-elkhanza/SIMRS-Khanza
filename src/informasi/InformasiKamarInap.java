@@ -553,7 +553,7 @@ public class InformasiKamarInap extends javax.swing.JDialog {
 private void btnBangsalCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalCariActionPerformed
        bangsal.isCek();
         bangsal.emptTeks();        
-        bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setAlwaysOnTop(false);
         bangsal.setVisible(true);

@@ -1759,7 +1759,7 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
         DlgCariTagihanOperasi form=new DlgCariTagihanOperasi(null,false);
         //form.emptTeks();      
         form.setPasien(TNoRw.getText());
-        form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
@@ -1802,7 +1802,7 @@ private void BtnOperator1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         pilihan=1;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
 }//GEN-LAST:event_BtnOperator1ActionPerformed
@@ -1846,7 +1846,7 @@ private void btnAsis1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
    pilihan=1;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
 }//GEN-LAST:event_btnAsis1ActionPerformed
@@ -2022,7 +2022,7 @@ private void BtnOperator2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
       pilihan=2;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
 }//GEN-LAST:event_BtnOperator2ActionPerformed
@@ -2041,7 +2041,7 @@ private void btnInstrumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
   pilihan=3;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
 }//GEN-LAST:event_btnInstrumenActionPerformed
@@ -2060,7 +2060,7 @@ private void BtnAnastesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         pilihan=4;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
 }//GEN-LAST:event_BtnAnastesiActionPerformed
@@ -2079,7 +2079,7 @@ private void btnAnakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         pilihan=5;
         dokter.emptTeks();        
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
 }//GEN-LAST:event_btnAnakActionPerformed
@@ -2088,7 +2088,7 @@ private void btnAsis2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
    pilihan=2;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
 }//GEN-LAST:event_btnAsis2ActionPerformed
@@ -2107,7 +2107,7 @@ private void btnAsis3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
   pilihan=3;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
 }//GEN-LAST:event_btnAsis3ActionPerformed
@@ -2126,7 +2126,7 @@ private void btnPrwResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     pilihan=5;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
 }//GEN-LAST:event_btnPrwResActionPerformed
@@ -2155,7 +2155,7 @@ private void BtnAsnesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
    pilihan=4;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
 }//GEN-LAST:event_BtnAsnesActionPerformed
@@ -2174,7 +2174,7 @@ private void btnBidanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     pilihan=7;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
 }//GEN-LAST:event_btnBidanActionPerformed
@@ -2193,7 +2193,7 @@ private void btnPrwLuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
    pilihan=6;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
 }//GEN-LAST:event_btnPrwLuarActionPerformed
@@ -2210,7 +2210,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=8;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnBidan2ActionPerformed
@@ -2239,7 +2239,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=9;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnBidan3ActionPerformed
@@ -2258,7 +2258,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=10;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnOnloop1ActionPerformed
@@ -2267,7 +2267,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=11;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnOnloop2ActionPerformed
@@ -2286,7 +2286,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=12;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnOnloop3ActionPerformed
@@ -2315,7 +2315,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=6;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_btndrpjanakActionPerformed
@@ -2334,7 +2334,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=7;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_btndrumumActionPerformed
@@ -2746,7 +2746,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=15;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnAsis4ActionPerformed
@@ -2759,7 +2759,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=16;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_BtnAsnes1ActionPerformed
@@ -2772,7 +2772,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=13;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnOnloop4ActionPerformed
@@ -2781,7 +2781,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         pilihan=14;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnOnloop5ActionPerformed

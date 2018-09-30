@@ -648,7 +648,7 @@ public class GrafikDemografiRegistrasi extends javax.swing.JDialog {
 
     private void btnKelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKelActionPerformed
         kel.emptTeks();
-        kel.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kel.setLocationRelativeTo(internalFrame1);
         kel.setVisible(true);
 
@@ -668,14 +668,14 @@ public class GrafikDemografiRegistrasi extends javax.swing.JDialog {
 
     private void btnKecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKecActionPerformed
         kec.emptTeks();
-        kec.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kec.setLocationRelativeTo(internalFrame1);
         kec.setVisible(true);
     }//GEN-LAST:event_btnKecActionPerformed
 
     private void btnKabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKabActionPerformed
         kab.emptTeks();
-        kab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kab.setLocationRelativeTo(internalFrame1);
         kab.setVisible(true);
     }//GEN-LAST:event_btnKabActionPerformed

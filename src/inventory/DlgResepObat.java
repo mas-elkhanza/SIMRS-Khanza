@@ -759,7 +759,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -774,7 +774,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -905,7 +905,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2018" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2018" }));
         DTPBeri.setDisplayFormat("dd-MM-yyyy");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -1201,7 +1201,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_btnDokterKeyPressed
 
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.isCek();
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
@@ -1381,7 +1381,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(!(TPasien.getText().trim().equals(""))){
             NoResepUbah.setText(NoResep.getText());
             tampilresep();
-            WindowInput3.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            WindowInput3.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             WindowInput3.setLocationRelativeTo(internalFrame1);
             WindowInput3.setVisible(true);
         }
@@ -1396,7 +1396,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(!(TPasien.getText().trim().equals(""))){
             NoResepUbah1.setText(NoResep.getText());
             tampilresep2();
-            WindowInput4.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            WindowInput4.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             WindowInput4.setLocationRelativeTo(internalFrame1);
             WindowInput4.setVisible(true);
         }
@@ -1408,7 +1408,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 i=tbTambahan.getSelectedColumn();
                 if(i==5){
                     pilihan=1;
-                    aturanpakai.setSize(internalFrame4.getWidth()-50,internalFrame4.getHeight()-50);
+                    aturanpakai.setSize(internalFrame4.getWidth()-20,internalFrame4.getHeight()-20);
                     aturanpakai.setLocationRelativeTo(internalFrame4);
                     aturanpakai.setVisible(true);
                 }
@@ -1422,7 +1422,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 i=tbTambahan1.getSelectedColumn();
                 if(i==5){
                     pilihan=2;
-                    aturanpakai.setSize(internalFrame5.getWidth()-50,internalFrame5.getHeight()-50);
+                    aturanpakai.setSize(internalFrame5.getWidth()-20,internalFrame5.getHeight()-20);
                     aturanpakai.setLocationRelativeTo(internalFrame5);
                     aturanpakai.setVisible(true);
                 }

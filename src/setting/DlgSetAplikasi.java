@@ -11,6 +11,9 @@
 
 package setting;
 
+import fungsi.batasInput;
+import fungsi.WarnaTable;
+import fungsi.validasi;
 import fungsi.sekuel;
 import fungsi.koneksiDB;
 import fungsi.*;

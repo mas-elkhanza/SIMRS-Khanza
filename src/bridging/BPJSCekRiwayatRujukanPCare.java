@@ -50,7 +50,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
     private int i=0;
     private DlgPasien pasien=new DlgPasien(null,false);
     private BPJSApi api=new BPJSApi();
-    private String URL="";
+    private String URL="",link="";
         
     /** Creates new form DlgKamar
      * @param parent
@@ -127,7 +127,8 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         }); 
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -334,7 +335,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
         var.setform("DlgBPJSCekRiwayatPeserta");
         pasien.emptTeks();
         pasien.isCek();
-        pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);
     }//GEN-LAST:event_btnPasienActionPerformed
@@ -390,7 +391,7 @@ public final class BPJSCekRiwayatRujukanPCare extends javax.swing.JDialog {
 
     public void tampil(String nomorrujukan) {
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/List/Peserta/"+nomorrujukan;	
+            URL = link+"/Rujukan/List/Peserta/"+nomorrujukan;	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

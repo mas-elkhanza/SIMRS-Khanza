@@ -23,12 +23,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.var;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
@@ -48,6 +45,7 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private BPJSApi api=new BPJSApi();
+    private String URL="",link="";
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -93,7 +91,9 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
+            URL = link+"/referensi/propinsi";	
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -270,8 +270,6 @@ public final class BPJSCekReferensiPropinsi extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            String URL = prop.getProperty("URLAPIBPJS")+"/referensi/propinsi";	
-
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));

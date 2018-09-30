@@ -823,7 +823,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void BtnSeekPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeekPetugasActionPerformed
         petugas.isCek();
         petugas.emptTeks();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_BtnSeekPetugasActionPerformed
