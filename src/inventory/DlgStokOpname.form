@@ -76,6 +76,9 @@
           <ComponentRef name="null"/>
         </Property>
         <Property name="name" type="java.lang.String" value="Kd2" noResource="true"/>
+        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Kd2KeyPressed"/>
@@ -137,6 +140,9 @@
               <ComponentRef name="null"/>
             </Property>
             <Property name="name" type="java.lang.String" value="Stok" noResource="true"/>
+            <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="StokKeyPressed"/>
@@ -222,6 +228,9 @@
               <ComponentRef name="null"/>
             </Property>
             <Property name="name" type="java.lang.String" value="Harga" noResource="true"/>
+            <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -255,6 +264,9 @@
               <ComponentRef name="null"/>
             </Property>
             <Property name="name" type="java.lang.String" value="Real" noResource="true"/>
+            <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RealKeyPressed"/>
@@ -275,6 +287,9 @@
               <ComponentRef name="null"/>
             </Property>
             <Property name="name" type="java.lang.String" value="Selisih" noResource="true"/>
+            <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -326,6 +341,9 @@
               <ComponentRef name="null"/>
             </Property>
             <Property name="name" type="java.lang.String" value="Nominal" noResource="true"/>
+            <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NominalKeyPressed"/>
@@ -345,6 +363,9 @@
               <ComponentRef name="null"/>
             </Property>
             <Property name="name" type="java.lang.String" value="Keterangan" noResource="true"/>
+            <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KeteranganKeyPressed"/>

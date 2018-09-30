@@ -75,7 +75,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     private BPJSCekReferensiFaskes faskes=new BPJSCekReferensiFaskes(null,false);
     private BPJSCekReferensiPenyakit penyakit=new BPJSCekReferensiPenyakit(null,false);
     private BPJSCekReferensiPoli poli=new BPJSCekReferensiPoli(null,false);
-    private String URL="",requestJson,user="",link="";
+    private String URL="",requestJson,user="";
     private final Properties prop = new Properties();
     /** Creates new form DlgRujuk
      * @param parent
@@ -258,10 +258,9 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
         } catch (Exception e) {
-            System.out.println("E : "+e);
+            System.out.println("SEP XML : "+e);
         }
         
         try {
@@ -788,7 +787,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                 Valid.textKosong(KdPoli1, "Poli Tujuan");        
             }else{  
                 try {
-                    URL = link+"/Rujukan/update";	
+                    URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/update";	
                     HttpHeaders headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                     headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
@@ -981,7 +980,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     }//GEN-LAST:event_MnSuratRujukanActionPerformed
 
     private void btnPPKRujukan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPKRujukan1ActionPerformed
-        faskes.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        faskes.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         faskes.setLocationRelativeTo(internalFrame1);
         faskes.setVisible(true);
     }//GEN-LAST:event_btnPPKRujukan1ActionPerformed
@@ -999,7 +998,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     }//GEN-LAST:event_JenisPelayanan1KeyPressed
 
     private void btnDiagnosa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosa1ActionPerformed
-        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setVisible(true);
     }//GEN-LAST:event_btnDiagnosa1ActionPerformed
@@ -1009,7 +1008,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDiagnosa1KeyPressed
 
     private void btnPoli1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoli1ActionPerformed
-        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setVisible(true);
     }//GEN-LAST:event_btnPoli1ActionPerformed
@@ -1261,7 +1260,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         restTemplate.setRequestFactory(factory);
         
         try {
-            URL = link+"/Rujukan/delete";	
+            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/delete";	
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

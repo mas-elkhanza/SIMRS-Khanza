@@ -21,27 +21,27 @@ import org.springframework.web.client.RestTemplate;
 
 public class BPJSApiAplicare {        
     private static final Properties prop = new Properties();
-    private String Key,Consid;
-    public BPJSApiAplicare(){
+    public String getHmac() {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
-            Key = prop.getProperty("SECRETKEYAPIAPLICARE");
-            Consid = prop.getProperty("CONSIDAPIAPLICARE");
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
         }
-    }
-    public String getHmac() {        
-        long GetUTCdatetimeAsString = GetUTCdatetimeAsString();        
-        String salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);
+        long GetUTCdatetimeAsString = GetUTCdatetimeAsString();
+        
+	String secretKey = prop.getProperty("SECRETKEYAPIAPLICARE");
+        String Consid = prop.getProperty("CONSIDAPIAPLICARE");
+        String salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);	
+
 	String generateHmacSHA256Signature = null;
 	try {
-	    generateHmacSHA256Signature = generateHmacSHA256Signature(salt,Key);
+	    generateHmacSHA256Signature = generateHmacSHA256Signature(salt,secretKey);
 	} catch (GeneralSecurityException e) {
 	    // TODO Auto-generated catch block
             System.out.println("Error Signature : "+e);
 	    e.printStackTrace();
 	}
+
 	return generateHmacSHA256Signature;
     }
 

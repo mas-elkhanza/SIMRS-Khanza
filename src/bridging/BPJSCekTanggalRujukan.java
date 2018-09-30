@@ -51,7 +51,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String URL="",link="",norm="",statussep="",statuspasien="";
+    private String URL="",norm="",statussep="",statuspasien="";
     private final Properties prop = new Properties();
     private BPJSApi api=new BPJSApi();
     /** Creates new form DlgLhtBiaya
@@ -90,12 +90,12 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(110);
             }else if(i==5){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==6){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(110);
             }else if(i==7){
                 column.setPreferredWidth(150);
             }else if(i==8){
@@ -108,7 +108,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==12){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(140);
             }else if(i==13){
                 column.setPreferredWidth(100);
             }else if(i==14){
@@ -119,19 +119,19 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==17){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(150);
             }else if(i==18){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(80);
             }else if(i==19){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==20){
                 column.setPreferredWidth(150);
             }else if(i==21){
                 column.setPreferredWidth(110);
             }else if(i==22){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(100);
             }else if(i==23){
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(80);
             }else if(i==24){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -143,7 +143,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==28){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(140);
             }else if(i==29){
                 column.setPreferredWidth(70);
             }else if(i==30){
@@ -204,12 +204,12 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(150);
             }else if(i==4){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(110);
             }else if(i==5){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==6){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(110);
             }else if(i==7){
                 column.setPreferredWidth(150);
             }else if(i==8){
@@ -222,7 +222,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==12){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(140);
             }else if(i==13){
                 column.setPreferredWidth(100);
             }else if(i==14){
@@ -233,19 +233,19 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==17){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(150);
             }else if(i==18){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(80);
             }else if(i==19){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==20){
                 column.setPreferredWidth(150);
             }else if(i==21){
                 column.setPreferredWidth(110);
             }else if(i==22){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(100);
             }else if(i==23){
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(80);
             }else if(i==24){
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
@@ -257,7 +257,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==28){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(140);
             }else if(i==29){
                 column.setPreferredWidth(70);
             }else if(i==30){
@@ -291,8 +291,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         tbBangsal2.setDefaultRenderer(Object.class, new WarnaTable());
 
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -322,8 +321,6 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         cmbStatus = new widget.ComboBox();
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
-        BtnEdit = new widget.Button();
-        BtnCari1 = new widget.Button();
         BtnKeluar = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -399,6 +396,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         ChkJln.setPreferredSize(new java.awt.Dimension(75, 23));
         panelGlass5.add(ChkJln);
 
+        Tanggal.setBackground(new java.awt.Color(245, 250, 240));
         Tanggal.setEditable(false);
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
@@ -413,7 +411,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Terbit", "Belum Terbit" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
         cmbStatus.setOpaque(false);
-        cmbStatus.setPreferredSize(new java.awt.Dimension(110, 23));
+        cmbStatus.setPreferredSize(new java.awt.Dimension(150, 23));
         cmbStatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbStatusItemStateChanged(evt);
@@ -441,42 +439,6 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         jLabel7.setName("jLabel7"); // NOI18N
         jLabel7.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass5.add(jLabel7);
-
-        BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
-        BtnEdit.setMnemonic('G');
-        BtnEdit.setText("Regist");
-        BtnEdit.setToolTipText("Alt+G");
-        BtnEdit.setName("BtnEdit"); // NOI18N
-        BtnEdit.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEditActionPerformed(evt);
-            }
-        });
-        BtnEdit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnEditKeyPressed(evt);
-            }
-        });
-        panelGlass5.add(BtnEdit);
-
-        BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnCari1.setMnemonic('E');
-        BtnCari1.setText("Data SEP");
-        BtnCari1.setToolTipText("Alt+E");
-        BtnCari1.setName("BtnCari1"); // NOI18N
-        BtnCari1.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnCari1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCari1ActionPerformed(evt);
-            }
-        });
-        BtnCari1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCari1KeyPressed(evt);
-            }
-        });
-        panelGlass5.add(BtnCari1);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -573,70 +535,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         TabRawatMouseClicked(null);
     }//GEN-LAST:event_cmbStatusItemStateChanged
 
-    private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(TabRawat.getSelectedIndex()==0){
-            if(tbBangsal.getSelectedRow()!= -1){
-                if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),41).toString().equals("")){
-                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    BPJSCekNoRujukanPCare form=new BPJSCekNoRujukanPCare(null,false);
-                    form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
-                    form.setLocationRelativeTo(internalFrame1);
-                    form.SetRujukan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),4).toString());
-                    form.setVisible(true);
-                    this.setCursor(Cursor.getDefaultCursor());
-                }else{
-                    JOptionPane.showMessageDialog(null,"Maaf, SEP telah terbit...!!!!");
-                    BtnCari.requestFocus();
-                }                    
-            }else{            
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
-                BtnCari.requestFocus();
-            }                 
-        }else if(TabRawat.getSelectedIndex()==1){
-            if(tbBangsal2.getSelectedRow()!= -1){
-                if(tbBangsal2.getValueAt(tbBangsal2.getSelectedRow(),41).toString().equals("")){
-                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    BPJSCekNoRujukanRS form=new BPJSCekNoRujukanRS(null,false);
-                    form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
-                    form.setLocationRelativeTo(internalFrame1);
-                    form.SetRujukan(tbBangsal2.getValueAt(tbBangsal2.getSelectedRow(),4).toString());
-                    form.setVisible(true);
-                    this.setCursor(Cursor.getDefaultCursor());
-                }else{
-                    JOptionPane.showMessageDialog(null,"Maaf, SEP telah terbit...!!!!");
-                    BtnCari.requestFocus();
-                }
-            }else{            
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data rujukan...!!!!");
-                BtnCari.requestFocus();
-            } 
-        }
-    }//GEN-LAST:event_BtnEditActionPerformed
-
-    private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnEditActionPerformed(null);
-        }else{
-            Valid.pindah(evt, BtnCari, BtnKeluar);
-        }
-    }//GEN-LAST:event_BtnEditKeyPressed
-
-    private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        BPJSDataSEP form=new BPJSDataSEP(null,false);
-        form.isCek();
-        form.tampil();
-        form.tutupInput();
-        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        form.setLocationRelativeTo(internalFrame1);
-        form.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnCari1ActionPerformed
-
-    private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCari1KeyPressed
-        Valid.pindah(evt, BtnCari, BtnKeluar);
-    }//GEN-LAST:event_BtnCari1KeyPressed
-
     /**
     * @param args the command line arguments
     */
@@ -655,8 +553,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnCari;
-    private widget.Button BtnCari1;
-    private widget.Button BtnEdit;
     private widget.Button BtnKeluar;
     private widget.CekBox ChkJln;
     private widget.ScrollPane Scroll;
@@ -674,7 +570,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     public void tampil(){        
         try {
-            URL = link+"/Rujukan/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
+            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -692,7 +588,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
-                        statussep=Sequel.cariIsi("select no_sep from bridging_sep where no_rujukan=?",list.path("noKunjungan").asText());
+                        statussep=Sequel.cariIsi("select no_sep from bridging_sep where no_kartu=?",list.path("peserta").path("noKartu").asText());
                         if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                             norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
                             statuspasien="Baru";
@@ -713,7 +609,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 list.path("peserta").path("nik").asText(),list.path("peserta").path("noKartu").asText(),
                                 list.path("peserta").path("pisa").asText(),list.path("peserta").path("provUmum").path("kdProvider").asText(),
                                 list.path("peserta").path("provUmum").path("nmProvider").asText(),
-                                list.path("peserta").path("sex").asText(),
+                                list.path("peserta").path("sex").asText().replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"),
                                 list.path("peserta").path("statusPeserta").path("kode").asText(),list.path("peserta").path("statusPeserta").path("keterangan").asText(),
                                 list.path("peserta").path("tglCetakKartu").asText(),list.path("peserta").path("tglLahir").asText(),
                                 list.path("peserta").path("tglTAT").asText(),list.path("peserta").path("tglTMT").asText(),
@@ -744,7 +640,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     list.path("peserta").path("nik").asText(),list.path("peserta").path("noKartu").asText(),
                                     list.path("peserta").path("pisa").asText(),list.path("peserta").path("provUmum").path("kdProvider").asText(),
                                     list.path("peserta").path("provUmum").path("nmProvider").asText(),
-                                    list.path("peserta").path("sex").asText(),
+                                    list.path("peserta").path("sex").asText().replaceAll("L","Laki-Laki").replaceAll("P","Perempuan"),
                                     list.path("peserta").path("statusPeserta").path("kode").asText(),list.path("peserta").path("statusPeserta").path("keterangan").asText(),
                                     list.path("peserta").path("tglCetakKartu").asText(),list.path("peserta").path("tglLahir").asText(),
                                     list.path("peserta").path("tglTAT").asText(),list.path("peserta").path("tglTMT").asText(),
@@ -789,7 +685,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             }
                         }
                     }
-                }                                       
+                }
+                                       
             }else {
                 JOptionPane.showMessageDialog(null,nameNode.path("message").asText());                
             }   
@@ -803,7 +700,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     public void tampil2(){        
         try {
-            URL = link+"/Rujukan/RS/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
+            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/RS/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -821,7 +718,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(response.isArray()){
                     i=1;
                     for(JsonNode list:response){
-                        statussep=Sequel.cariIsi("select no_sep from bridging_sep where no_rujukan=?",list.path("noKunjungan").asText());
+                        statussep=Sequel.cariIsi("select no_sep from bridging_sep where no_kartu=?",list.path("peserta").path("noKartu").asText());
                         if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                             norm=Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta =?",list.path("peserta").path("noKartu").asText());
                             statuspasien="Baru";

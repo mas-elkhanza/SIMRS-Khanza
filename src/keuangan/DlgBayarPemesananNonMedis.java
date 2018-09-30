@@ -285,7 +285,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Pemesanan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Pemesanan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -422,6 +422,7 @@ public final class DlgBayarPemesananNonMedis extends javax.swing.JDialog {
         panelisi4.add(jLabel10);
         jLabel10.setBounds(0, 70, 77, 23);
 
+        nama_bayar.setForeground(new java.awt.Color(130,100,100));
         nama_bayar.setName("nama_bayar"); // NOI18N
         nama_bayar.setOpaque(false);
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -985,7 +986,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -1032,7 +1033,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         suplier.isCek();
-        suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        suplier.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         suplier.setLocationRelativeTo(internalFrame1);
         suplier.setAlwaysOnTop(false);
         suplier.setVisible(true);

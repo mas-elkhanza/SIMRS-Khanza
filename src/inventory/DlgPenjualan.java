@@ -398,7 +398,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(130, 100, 100));
+        ppBersihkan.setForeground(new java.awt.Color(130,100,100));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -415,7 +415,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
 
         ppStok.setBackground(new java.awt.Color(255, 255, 255));
         ppStok.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppStok.setForeground(new java.awt.Color(130, 100, 100));
+        ppStok.setForeground(new java.awt.Color(130,100,100));
         ppStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppStok.setText("Tampilkan Semua Stok");
         ppStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -439,7 +439,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Penjualan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Penjualan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -943,7 +943,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
             }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                 kolom=tbDokter.getSelectedColumn();
                 if(kolom==12){
-                    aturan_pakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    aturan_pakai.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     aturan_pakai.setLocationRelativeTo(internalFrame1);
                     aturan_pakai.setVisible(true);
                 }
@@ -1029,7 +1029,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         carijual.emptTeks();      
-        carijual.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        carijual.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         carijual.setLocationRelativeTo(internalFrame1);
         carijual.setAlwaysOnTop(false);
         carijual.setVisible(true);
@@ -1306,7 +1306,7 @@ private void BtnMemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         var.setform("DlgPenjualan");
         carijual.pasien.isCek();
         carijual.pasien.emptTeks();
-        carijual.pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        carijual.pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         carijual.pasien.setLocationRelativeTo(internalFrame1);
         carijual.pasien.setAlwaysOnTop(false);
         carijual.pasien.setVisible(true);
@@ -1316,7 +1316,7 @@ private void BtnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         var.setform("DlgPenjualan");
         carijual.petugas.emptTeks();
         carijual.petugas.isCek();
-        carijual.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        carijual.petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         carijual.petugas.setLocationRelativeTo(internalFrame1);
         carijual.petugas.setAlwaysOnTop(false);
         carijual.petugas.setVisible(true);
@@ -1382,7 +1382,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     var.setform("DlgPenjualan");
     bangsal.isCek();
     bangsal.emptTeks();
-    bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+    bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
     bangsal.setLocationRelativeTo(internalFrame1);
     bangsal.setAlwaysOnTop(false);
     bangsal.setVisible(true);
@@ -1397,7 +1397,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         DlgBarang barang=new DlgBarang(null,false);
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);

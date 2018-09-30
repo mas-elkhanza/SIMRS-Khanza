@@ -49,7 +49,6 @@ public final class BPJSCekReferensiKabupaten extends javax.swing.JDialog {
     private BPJSCekReferensiPropinsi propinsi=new BPJSCekReferensiPropinsi(null,false);
     private int i=0;
     private BPJSApi api=new BPJSApi();
-    private String URL="",link="";
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -131,8 +130,7 @@ public final class BPJSCekReferensiKabupaten extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -318,7 +316,7 @@ public final class BPJSCekReferensiKabupaten extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
-        propinsi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        propinsi.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         propinsi.setLocationRelativeTo(internalFrame1);
         propinsi.setVisible(true);
     }//GEN-LAST:event_BtnPropinsiActionPerformed
@@ -357,7 +355,7 @@ public final class BPJSCekReferensiKabupaten extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            URL = link+"/referensi/kabupaten/propinsi/"+KdProp.getText();	
+            String URL = prop.getProperty("URLAPIBPJS")+"/referensi/kabupaten/propinsi/"+KdProp.getText();	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

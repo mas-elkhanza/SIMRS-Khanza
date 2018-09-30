@@ -316,7 +316,7 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 255));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(130, 100, 100));
+        MnRestore.setForeground(new java.awt.Color(130,100,100));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -342,7 +342,7 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Paket Tindakan Operasi/VK ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Paket Tindakan Operasi/VK ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -535,7 +535,7 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(130, 100, 100));
+        TabRawat.setForeground(new java.awt.Color(130,100,100));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -875,6 +875,7 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
         FormInput.add(jLabel4);
         jLabel4.setBounds(0, 42, 96, 23);
 
+        Kategori.setForeground(new java.awt.Color(130,100,100));
         Kategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kebidanan", "Operasi" }));
         Kategori.setName("Kategori"); // NOI18N
         Kategori.setOpaque(false);
@@ -1100,6 +1101,7 @@ public final class DlgJnsPerawatanOperasi extends javax.swing.JDialog {
         FormInput.add(jLabel5);
         jLabel5.setBounds(495, 342, 98, 23);
 
+        Kelas.setForeground(new java.awt.Color(130,100,100));
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "Rawat Jalan", "Kelas 1", "Kelas 2", "Kelas 3", "Kelas Utama", "Kelas VIP", "Kelas VVIP" }));
         Kelas.setName("Kelas"); // NOI18N
         Kelas.setOpaque(false);
@@ -1806,14 +1808,14 @@ private void TOmloop1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjabActionPerformed
         penjab.isCek();
         penjab.onCari();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        penjab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setVisible(true);
     }//GEN-LAST:event_BtnPenjabActionPerformed
 
     private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
         DlgRestoreTarifOperasi restore=new DlgRestoreTarifOperasi(null,true);
-        restore.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        restore.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         restore.setLocationRelativeTo(internalFrame1);
         restore.setVisible(true);
     }//GEN-LAST:event_MnRestoreActionPerformed

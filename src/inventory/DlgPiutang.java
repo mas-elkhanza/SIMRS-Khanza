@@ -453,7 +453,7 @@ public class DlgPiutang extends javax.swing.JDialog {
 
         ppTambah.setBackground(new java.awt.Color(255, 255, 255));
         ppTambah.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppTambah.setForeground(new java.awt.Color(130, 100, 100));
+        ppTambah.setForeground(new java.awt.Color(130,100,100));
         ppTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
         ppTambah.setText("Tambah");
         ppTambah.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -470,7 +470,7 @@ public class DlgPiutang extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(130, 100, 100));
+        ppHapus.setForeground(new java.awt.Color(130,100,100));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -499,7 +499,7 @@ public class DlgPiutang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Piutang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Piutang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1230,7 +1230,7 @@ public class DlgPiutang extends javax.swing.JDialog {
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         form.emptTeks();     
-        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
         form.setVisible(true);
@@ -1256,7 +1256,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgPiutang");
         form.member.emptTeks();
         form.member.isCek();
-        form.member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.member.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         form.member.setLocationRelativeTo(internalFrame1);
         form.member.setAlwaysOnTop(false);
         form.member.setVisible(true);
@@ -1266,7 +1266,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgPiutang");
         form.petugas.emptTeks();
         form.petugas.isCek();
-        form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         form.petugas.setLocationRelativeTo(internalFrame1);
         form.petugas.setAlwaysOnTop(false);
         form.petugas.setVisible(true);
@@ -1286,7 +1286,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             var.setform("DlgPiutang");
             form.barang.emptTeks();
             form.barang.isCek();
-            form.barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             form.barang.setLocationRelativeTo(internalFrame1);
             form.barang.setAlwaysOnTop(false);
             form.barang.setVisible(true);
@@ -1558,7 +1558,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     var.setform("DlgPiutang");
     bangsal.isCek();
     bangsal.emptTeks();
-    bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+    bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
     bangsal.setLocationRelativeTo(internalFrame1);
     bangsal.setAlwaysOnTop(false);
     bangsal.setVisible(true);

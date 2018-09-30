@@ -34,28 +34,25 @@ public class BPJSCekNoKartu {
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
     private BPJSApi api=new BPJSApi();
-    private String URL="";
         
     public BPJSCekNoKartu(){
         super();
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIBPJS")+"/Peserta/nokartu/";	
-	} catch (Exception e) {
-            System.out.println("E : "+e);
-        }
     }
     
     public void tampil(String nokartu) {
-        try {            
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            String URL = prop.getProperty("URLAPIBPJS")+"/Peserta/nokartu/"+nokartu+"/tglSEP/"+dateFormat.format(date);	
+
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
 	    headers.add("X-Signature",api.getHmac());
 	    HttpEntity requestEntity = new HttpEntity(headers);
-	    ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL+nokartu+"/tglSEP/"+dateFormat.format(date), HttpMethod.GET, requestEntity, String.class).getBody());
+	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metaData");
             //System.out.println("code : "+nameNode.path("code").asText());
             //System.out.println("message : "+nameNode.path("message").asText());

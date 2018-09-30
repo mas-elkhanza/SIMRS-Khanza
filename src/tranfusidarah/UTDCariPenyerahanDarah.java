@@ -1,5 +1,4 @@
 package tranfusidarah;
-import inventory.riwayatobat;
 import inventory.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;

@@ -3420,7 +3420,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         var.setform("DlgIGD");
         pasien.emptTeks();
         pasien.isCek();
-        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);
 }//GEN-LAST:event_BtnPasienActionPerformed
@@ -3855,7 +3855,7 @@ private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         pilihan=1;
         dokter.isCek();        
         dokter.TCari.requestFocus();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
 }//GEN-LAST:event_BtnDokterActionPerformed
@@ -3965,7 +3965,7 @@ private void MnBillingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                  DlgLhtPiutang piutang=new DlgLhtPiutang(null,false);
                                  piutang.setNoRm(TNoRM.getText(),rs.getDate(1));
                                  piutang.tampil();
-                                 piutang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                 piutang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                                  piutang.setLocationRelativeTo(internalFrame1);
                                  piutang.setVisible(true);
                             }else{                                
@@ -4166,7 +4166,7 @@ private void BtnKeluar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 private void btnKelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKelActionPerformed
         var.setform("DlgIGD");
         pasien.kel.emptTeks();
-        pasien.kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.kel.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pasien.kel.setLocationRelativeTo(internalFrame1);
         pasien.kel.setVisible(true);
      
@@ -4175,7 +4175,7 @@ private void btnKelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 private void btnKecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKecActionPerformed
    var.setform("DlgIGD");
    pasien.kec.emptTeks();
-        pasien.kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.kec.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pasien.kec.setLocationRelativeTo(internalFrame1);
         pasien.kec.setVisible(true);      
 }//GEN-LAST:event_btnKecActionPerformed
@@ -4183,7 +4183,7 @@ private void btnKecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 private void btnKabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKabActionPerformed
         var.setform("DlgIGD");
         pasien.kab.emptTeks();
-        pasien.kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.kab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pasien.kab.setLocationRelativeTo(internalFrame1);
         pasien.kab.setVisible(true);   
 }//GEN-LAST:event_btnKabActionPerformed
@@ -4305,7 +4305,7 @@ private void kdpnjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdp
 private void btnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjabActionPerformed
         var.setform("DlgIGD");
         pasien.penjab.onCari();
-        pasien.penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.penjab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pasien.penjab.setLocationRelativeTo(internalFrame1);
         pasien.penjab.setVisible(true);
 }//GEN-LAST:event_btnPenjabActionPerformed
@@ -4368,7 +4368,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgFrekuensiPenyakitRalan ktginventaris=new DlgFrekuensiPenyakitRalan(null,false);
         ktginventaris.isCek();
-        ktginventaris.setSize(this.getWidth()-20,this.getHeight()-20);
+        ktginventaris.setSize(this.getWidth()-40,this.getHeight()-40);
         ktginventaris.setLocationRelativeTo(this);
         ktginventaris.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
@@ -4508,7 +4508,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         var.setform("DlgReg");
         rujukmasuk.tampil2();
         rujukmasuk.TCariPerujuk.requestFocus();
-        rujukmasuk.WindowPerujuk.setSize(this.getWidth()-20,this.getHeight()-20);
+        rujukmasuk.WindowPerujuk.setSize(this.getWidth()-40,this.getHeight()-40);
         rujukmasuk.WindowPerujuk.setLocationRelativeTo(internalFrame1);
         rujukmasuk.WindowPerujuk.setVisible(true);
     }//GEN-LAST:event_btnPenjab1ActionPerformed
@@ -4611,7 +4611,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         pilihan=3;
         dokter.isCek();
         dokter.TCari.requestFocus();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnSeek5ActionPerformed
@@ -5032,7 +5032,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             DlgResumePerawatan resume=new DlgResumePerawatan(null,true);
             resume.setNoRm(TNoRM.getText(),TPasien.getText());
             resume.tampil();
-            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            resume.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             resume.setLocationRelativeTo(internalFrame1);
             resume.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
@@ -5048,7 +5048,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
             }else {
                 DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
-                resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                resep.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 resep.setLocationRelativeTo(internalFrame1);
                 resep.isCek();
                 resep.setNoRm(TNoRw.getText(),DTPCari1.getDate(),CmbJam.getSelectedItem().toString(),CmbMenit.getSelectedItem().toString(),CmbDetik.getSelectedItem().toString(),
@@ -5153,7 +5153,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }else {
                 Valid.editTable(tabMode,"reg_periksa","no_rawat",TNoRw,"stts='Meninggal'");
                 DlgPasienMati dlgPasienMati=new DlgPasienMati(null,false);
-                dlgPasienMati.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                dlgPasienMati.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 dlgPasienMati.setLocationRelativeTo(internalFrame1);
                 dlgPasienMati.emptTeks();
                 dlgPasienMati.setNoRm(TNoRM.getText());
@@ -5552,7 +5552,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 System.out.println("Notifikasi : "+ex);
             }
 
-            berkas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            berkas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             berkas.setLocationRelativeTo(internalFrame1);
             berkas.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
@@ -5570,7 +5570,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             var.setform("DlgReg");
             InhealthDataSJP dlgki=new InhealthDataSJP(null,false);
-            dlgki.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dlgki.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             dlgki.setLocationRelativeTo(internalFrame1);
             dlgki.isCek();
             dlgki.setNoRm(TNoRw.getText(),DTPReg.getDate(),"1 RJTP RAWAT JALAN TINGKAT PERTAMA","IGDK","Unit IGD/UGD");
@@ -5590,7 +5590,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             DlgDataInsidenKeselamatan aplikasi=new DlgDataInsidenKeselamatan(null,false);
-            aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            aplikasi.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             aplikasi.setLocationRelativeTo(internalFrame1);
             aplikasi.isCek();
             aplikasi.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"Unit Gawat Darurat");
@@ -5627,7 +5627,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }else {
                 DlgBookingOperasi form=new DlgBookingOperasi(null,false);
                 form.isCek();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 form.setLocationRelativeTo(internalFrame1);
                 form.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"IGD","Ralan");
                 form.setVisible(true);
@@ -5645,7 +5645,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }else {
                 DlgSKDPBPJS form=new DlgSKDPBPJS(null,false);
                 form.isCek();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 form.setLocationRelativeTo(internalFrame1);      
                 form.emptTeks();      
                 form.setNoRm(TNoRM.getText(),TPasien.getText()); 
@@ -5667,7 +5667,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }else {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgPermintaanLaboratorium dlgro=new DlgPermintaanLaboratorium(null,false);
-                dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 dlgro.setLocationRelativeTo(internalFrame1);
                 dlgro.emptTeks();
                 dlgro.isCek();
@@ -5691,7 +5691,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }else {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgPermintaanRadiologi dlgro=new DlgPermintaanRadiologi(null,false);
-                dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 dlgro.setLocationRelativeTo(internalFrame1);
                 dlgro.emptTeks();
                 dlgro.isCek();

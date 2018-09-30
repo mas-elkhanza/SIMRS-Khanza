@@ -5104,7 +5104,7 @@ private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         var.setform("DlgPasien");
         penjab.isCek();
         penjab.onCari();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        penjab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setVisible(true);
 }//GEN-LAST:event_BtnPenjabActionPerformed
@@ -5192,7 +5192,7 @@ private void ppKelahiranBayiActionPerformed(java.awt.event.ActionEvent evt) {//G
             resume.setNoRM(TNo.getText(),TNm.getText(),NmIbu.getText(),Alamat.getText()+", "+Kelurahan.getText()+", "+Kecamatan.getText()+", "+Kabupaten.getText(),CmbJk.getSelectedItem().toString(),
                     TUmurTh.getText()+" Th "+TUmurBl.getText()+" Bl "+TUmurHr.getText()+" Hr",DTPLahir.getDate(),DTPDaftar.getDate());
             resume.tampil();
-            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            resume.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             resume.setLocationRelativeTo(internalFrame1);
             resume.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
@@ -5413,7 +5413,7 @@ private void KabupatenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
 private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanActionPerformed
        var.setform("DlgPasien");
        pilih=1;
-        kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kel.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kel.setLocationRelativeTo(internalFrame1);
         kel.setVisible(true);
 }//GEN-LAST:event_BtnKelurahanActionPerformed
@@ -5421,7 +5421,7 @@ private void BtnKelurahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanActionPerformed
         var.setform("DlgPasien");
         pilih=1;
-        kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kec.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kec.setLocationRelativeTo(internalFrame1);
         kec.setVisible(true);
 }//GEN-LAST:event_BtnKecamatanActionPerformed
@@ -5429,7 +5429,7 @@ private void BtnKecamatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 private void BtnKabupatenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenActionPerformed
         var.setform("DlgPasien");
         pilih=1;
-        kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kab.setLocationRelativeTo(internalFrame1);
         kab.setVisible(true);
 }//GEN-LAST:event_BtnKabupatenActionPerformed
@@ -5513,7 +5513,7 @@ private void BtnSeek8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
        var.setform("DlgPasien");
        pilih=2;
         kel.emptTeks();
-        kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kel.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kel.setLocationRelativeTo(internalFrame1);
         kel.setVisible(true);
    }       
@@ -5526,7 +5526,7 @@ private void BtnSeek9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
        var.setform("DlgPasien");
        pilih=2;
         kec.emptTeks();
-        kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kec.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kec.setLocationRelativeTo(internalFrame1);
         kec.setVisible(true);
    }       
@@ -5539,7 +5539,7 @@ private void BtnSeek10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         var.setform("DlgPasien");
         pilih=2;
         kab.emptTeks();
-        kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kab.setLocationRelativeTo(internalFrame1);
         kab.setVisible(true);
     }           
@@ -5841,7 +5841,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnKecamatanPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKecamatanPjActionPerformed
         var.setform("DlgPasien");
         pilih=3;
-        kec.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kec.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kec.setLocationRelativeTo(internalFrame1);
         kec.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_BtnKecamatanPjActionPerformed
@@ -5883,7 +5883,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnKabupatenPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKabupatenPjActionPerformed
         var.setform("DlgPasien");
         pilih=3;
-        kab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kab.setLocationRelativeTo(internalFrame1);
         kab.setVisible(true);
     }//GEN-LAST:event_BtnKabupatenPjActionPerformed
@@ -5891,7 +5891,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnKelurahanPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKelurahanPjActionPerformed
         var.setform("DlgPasien");
         pilih=3;
-        kel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        kel.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         kel.setLocationRelativeTo(internalFrame1);
         kel.setVisible(true);
     }//GEN-LAST:event_BtnKelurahanPjActionPerformed
@@ -6007,7 +6007,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             BPJSPeserta form=new BPJSPeserta(null, true);
             form.tampil(TNoPeserta.getText());
-            form.setSize(640,internalFrame1.getHeight()-20);
+            form.setSize(640,internalFrame1.getHeight()-40);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
@@ -6022,7 +6022,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             BPJSNik form=new BPJSNik(null, true);
             form.tampil(TKtp.getText());
-            form.setSize(640,internalFrame1.getHeight()-20);
+            form.setSize(640,internalFrame1.getHeight()-40);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
@@ -6267,7 +6267,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             DlgResumePerawatan resume=new DlgResumePerawatan(null,true);
             resume.setNoRm(TNo.getText(),TNm.getText());
             resume.tampil();
-            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            resume.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             resume.setLocationRelativeTo(internalFrame1);
             resume.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
@@ -6922,7 +6922,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnSukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSukuActionPerformed
         var.setform("DlgPasien");
         suku.isCek();
-        suku.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        suku.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         suku.setLocationRelativeTo(internalFrame1);
         suku.setVisible(true);
     }//GEN-LAST:event_BtnSukuActionPerformed
@@ -6930,7 +6930,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnBahasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBahasaActionPerformed
         var.setform("DlgPasien");
         bahasa.isCek();
-        bahasa.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        bahasa.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         bahasa.setLocationRelativeTo(internalFrame1);
         bahasa.setVisible(true);
     }//GEN-LAST:event_BtnBahasaActionPerformed
@@ -6942,7 +6942,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnPerusahaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPerusahaanActionPerformed
         var.setform("DlgPasien");
         perusahaan.isCek();
-        perusahaan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        perusahaan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         perusahaan.setLocationRelativeTo(internalFrame1);
         perusahaan.setVisible(true);
     }//GEN-LAST:event_BtnPerusahaanActionPerformed
@@ -6950,7 +6950,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnGolonganTNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGolonganTNIActionPerformed
         var.setform("DlgPasien");
         golongantni.isCek();
-        golongantni.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        golongantni.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         golongantni.setLocationRelativeTo(internalFrame1);
         golongantni.setVisible(true);
     }//GEN-LAST:event_BtnGolonganTNIActionPerformed
@@ -6958,7 +6958,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnSatuanTNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSatuanTNIActionPerformed
         var.setform("DlgPasien");
         satuantni.isCek();
-        satuantni.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        satuantni.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         satuantni.setLocationRelativeTo(internalFrame1);
         satuantni.setVisible(true);
     }//GEN-LAST:event_BtnSatuanTNIActionPerformed
@@ -6966,7 +6966,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnPangkatTNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPangkatTNIActionPerformed
         var.setform("DlgPasien");
         pangkattni.isCek();
-        pangkattni.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pangkattni.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pangkattni.setLocationRelativeTo(internalFrame1);
         pangkattni.setVisible(true);
     }//GEN-LAST:event_BtnPangkatTNIActionPerformed
@@ -6974,7 +6974,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnJabatanTNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJabatanTNIActionPerformed
         var.setform("DlgPasien");
         jabatantni.isCek();
-        jabatantni.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        jabatantni.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         jabatantni.setLocationRelativeTo(internalFrame1);
         jabatantni.setVisible(true);
     }//GEN-LAST:event_BtnJabatanTNIActionPerformed
@@ -6982,7 +6982,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnGolonganPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGolonganPolriActionPerformed
         var.setform("DlgPasien");
         golonganpolri.isCek();
-        golonganpolri.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        golonganpolri.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         golonganpolri.setLocationRelativeTo(internalFrame1);
         golonganpolri.setVisible(true);
     }//GEN-LAST:event_BtnGolonganPolriActionPerformed
@@ -6990,7 +6990,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnSatuanPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSatuanPolriActionPerformed
         var.setform("DlgPasien");
         satuanpolri.isCek();
-        satuanpolri.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        satuanpolri.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         satuanpolri.setLocationRelativeTo(internalFrame1);
         satuanpolri.setVisible(true);
     }//GEN-LAST:event_BtnSatuanPolriActionPerformed
@@ -6998,7 +6998,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnPangkatPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPangkatPolriActionPerformed
         var.setform("DlgPasien");
         pangkatpolri.isCek();
-        pangkatpolri.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pangkatpolri.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pangkatpolri.setLocationRelativeTo(internalFrame1);
         pangkatpolri.setVisible(true);
     }//GEN-LAST:event_BtnPangkatPolriActionPerformed
@@ -7006,7 +7006,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnJabatanPolriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJabatanPolriActionPerformed
         var.setform("DlgPasien");
         jabatanpolri.isCek();
-        jabatanpolri.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        jabatanpolri.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         jabatanpolri.setLocationRelativeTo(internalFrame1);
         jabatanpolri.setVisible(true);
     }//GEN-LAST:event_BtnJabatanPolriActionPerformed
@@ -7171,7 +7171,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
         var.setform("DlgPasien");
         pilih=1;
-        prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        prop.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         prop.setLocationRelativeTo(internalFrame1);
         prop.setVisible(true);
     }//GEN-LAST:event_BtnPropinsiActionPerformed
@@ -7244,7 +7244,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void btnPropinsiPjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPropinsiPjActionPerformed
         var.setform("DlgPasien");
         pilih=3;
-        prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        prop.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         prop.setLocationRelativeTo(internalFrame1);
         prop.setVisible(true); 
     }//GEN-LAST:event_btnPropinsiPjActionPerformed
@@ -7252,7 +7252,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private void BtnCacatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCacatActionPerformed
         var.setform("DlgPasien");
         cacat.isCek();
-        cacat.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        cacat.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         cacat.setLocationRelativeTo(internalFrame1);
         cacat.setVisible(true);
     }//GEN-LAST:event_BtnCacatActionPerformed
@@ -7283,7 +7283,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         var.setform("DlgPasien");
         pilih=2;
         prop.emptTeks();
-        prop.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        prop.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         prop.setLocationRelativeTo(internalFrame1);
         prop.setVisible(true); 
     }//GEN-LAST:event_BtnSeek11ActionPerformed

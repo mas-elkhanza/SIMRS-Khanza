@@ -52,7 +52,7 @@
                 if(bridging_sep.jnspelayanan='1','1. Rawat Inap','2. Rawat Jalan') as jenispelayanan,bridging_sep.catatan,bridging_sep.diagawal,
                 bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,
                 if(bridging_sep.klsrawat='1','1. Kelas 1',if(bridging_sep.klsrawat='2','2. Kelas 2','3. Kelas 3')) as kelas,
-                if(bridging_sep.lakalantas='0','2. Bukan Kasus Kecelakaan','1. Kasus Kecelakaan') as lakalantas,bridging_sep.user, 
+                if(bridging_sep.lakalantas='0','2. Bukan Kasus Kecelakaan','1. Kasus Kecelakaan') as lakalantas,bridging_sep.lokasilaka,bridging_sep.user, 
                 bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.tglpulang from bridging_sep where 
                 bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep.no_sep like '%".$keyword."%' or
                 bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep.nomr like '%".$keyword."%' or

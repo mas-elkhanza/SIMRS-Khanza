@@ -45,7 +45,7 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
     private BPJSCekReferensiPenyakit penyakit=new BPJSCekReferensiPenyakit(null,false);
     private BPJSCekReferensiPoli poli=new BPJSCekReferensiPoli(null,false);
     private int i=0;
-    private String URL="",link="";
+    private String URL="";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper;
@@ -269,10 +269,9 @@ public class BPJSMonitoringKlaim extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));                        
         } catch (Exception e) {
-            System.out.println("E : "+e);
+            System.out.println("Notif : "+e);
         }
                 
     }
@@ -647,13 +646,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnPPKRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPKRujukanActionPerformed
-        faskes.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        faskes.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         faskes.setLocationRelativeTo(internalFrame1);        
         faskes.setVisible(true);
     }//GEN-LAST:event_btnPPKRujukanActionPerformed
 
     private void btnPenyakitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenyakitActionPerformed
-        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         penyakit.setLocationRelativeTo(internalFrame1);        
         penyakit.setVisible(true);
     }//GEN-LAST:event_btnPenyakitActionPerformed
@@ -758,7 +757,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void btnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliActionPerformed
-        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         poli.setLocationRelativeTo(internalFrame1);        
         poli.setVisible(true);
     }//GEN-LAST:event_btnPoliActionPerformed
@@ -890,7 +889,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     
     private void Monitor(String tanggal,String jenispelayanan,String status){
         try {
-            URL = link+"/Monitoring/Klaim/Tanggal/"+tanggal+"/JnsPelayanan/"+jenispelayanan+"/Status/"+1;	
+            URL = prop.getProperty("URLAPIBPJS")+"/Monitoring/Klaim/Tanggal/"+tanggal+"/JnsPelayanan/"+jenispelayanan+"/Status/"+1;	
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));

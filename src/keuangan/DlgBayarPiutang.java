@@ -305,7 +305,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
 
         ppNotaPiutang.setBackground(new java.awt.Color(255, 255, 255));
         ppNotaPiutang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppNotaPiutang.setForeground(new java.awt.Color(130, 100, 100));
+        ppNotaPiutang.setForeground(new java.awt.Color(130,100,100));
         ppNotaPiutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppNotaPiutang.setText("Nota Bayar Piutang");
         ppNotaPiutang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -322,6 +322,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
 
         Kd2.setHighlighter(null);
         Kd2.setName("Kd2"); // NOI18N
+        Kd2.setSelectionColor(new java.awt.Color(255, 255, 255));
         Kd2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 Kd2KeyPressed(evt);
@@ -332,7 +333,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Piutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Piutang ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -482,6 +483,7 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
         panelisi4.add(jLabel10);
         jLabel10.setBounds(0, 70, 77, 23);
 
+        nama_bayar.setForeground(new java.awt.Color(130,100,100));
         nama_bayar.setName("nama_bayar"); // NOI18N
         nama_bayar.setOpaque(false);
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -935,7 +937,7 @@ private void ppNotaPiutangBtnPrintActionPerformed(java.awt.event.ActionEvent evt
 private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeekActionPerformed
         pasien.emptTeks();
         pasien.isCek();
-        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setAlwaysOnTop(false);
         pasien.setVisible(true);

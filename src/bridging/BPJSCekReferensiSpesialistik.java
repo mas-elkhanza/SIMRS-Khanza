@@ -45,7 +45,6 @@ public final class BPJSCekReferensiSpesialistik extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private BPJSApi api=new BPJSApi();
-    private String URL="",link="";
         
     /** Creates new form DlgKamar
      * @param parent
@@ -90,11 +89,8 @@ public final class BPJSCekReferensiSpesialistik extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil(Poli.getText());}
             });
         } 
-        
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
-            link=prop.getProperty("URLAPIBPJS");
-            URL = link+"/referensi/spesialistik";
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -128,7 +124,7 @@ public final class BPJSCekReferensiSpesialistik extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Spesialistik VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Spesialistik VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -273,7 +269,9 @@ public final class BPJSCekReferensiSpesialistik extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            HttpHeaders headers = new HttpHeaders();
+            String URL = prop.getProperty("URLAPIBPJS")+"/referensi/spesialistik";	
+
+	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            

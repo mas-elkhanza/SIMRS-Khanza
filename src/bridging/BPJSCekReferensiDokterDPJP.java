@@ -50,7 +50,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private String URL="",link="";
+    private String URL="";
     private BPJSApi api=new BPJSApi();
     private BPJSCekReferensiPoli spesialis=new BPJSCekReferensiPoli(null,false);
         
@@ -135,8 +135,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
-            link=prop.getProperty("URLAPIBPJS");
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -399,7 +398,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     }//GEN-LAST:event_DTPCari1KeyPressed
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
-        spesialis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        spesialis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         spesialis.setLocationRelativeTo(internalFrame1);
         spesialis.setVisible(true);
     }//GEN-LAST:event_BtnPropinsiActionPerformed
@@ -443,7 +442,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     public void tampil(String poli) {
         try {
             Valid.tabelKosong(tabMode);
-            URL = link+"/referensi/dokter/pelayanan/1/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
+            URL = prop.getProperty("URLAPIBPJS")+"/referensi/dokter/pelayanan/1/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -487,7 +486,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     
     public void tampil2(String poli) {
         try {
-            URL = link+"/referensi/dokter/pelayanan/2/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
+            URL = prop.getProperty("URLAPIBPJS")+"/referensi/dokter/pelayanan/2/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -530,11 +529,6 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane,"Koneksi ke server BPJS terputus...!");
             }
         }
-    }
-    
-    public void setPoli(String KodePoli,String NamaPoli){
-        KdSep.setText(KodePoli);
-        NmSep.setText(NamaPoli);
     }
 
     public JTable getTable(){

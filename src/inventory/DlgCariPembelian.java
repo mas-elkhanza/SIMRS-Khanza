@@ -336,7 +336,7 @@ public class DlgCariPembelian extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(255, 255, 255));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(130, 100, 100));
+        ppHapus.setForeground(new java.awt.Color(130,100,100));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Pengadaan");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -360,7 +360,7 @@ public class DlgCariPembelian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -761,7 +761,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelian");
         suplier.emptTeks();
         suplier.isCek();
-        suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        suplier.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         suplier.setLocationRelativeTo(internalFrame1);
         suplier.setAlwaysOnTop(false);
         suplier.setVisible(true);
@@ -771,7 +771,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelian");
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -784,7 +784,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
         var.setform("DlgCariPembelian");
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);
@@ -794,7 +794,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelian");
         barang.jenis.emptTeks();
         barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        barang.jenis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.jenis.setLocationRelativeTo(internalFrame1);
         barang.jenis.setAlwaysOnTop(false);
         barang.jenis.setVisible(true);
@@ -1048,7 +1048,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         var.setform("DlgCariPembelian");
         barang.industri.emptTeks();
         barang.industri.isCek();
-        barang.industri.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        barang.industri.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.industri.setLocationRelativeTo(internalFrame1);
         barang.industri.setAlwaysOnTop(false);
         barang.industri.setVisible(true);

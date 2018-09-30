@@ -1188,7 +1188,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
     private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeekActionPerformed
         dokter.isCek();
         dokter.emptTeks();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
 }//GEN-LAST:event_BtnSeekActionPerformed
@@ -1199,7 +1199,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
 
     private void BtnSeek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek1ActionPerformed
         datatindakan.isCek();
-        datatindakan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        datatindakan.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
         datatindakan.setLocationRelativeTo(internalFrame1);
         datatindakan.setVisible(true);
 }//GEN-LAST:event_BtnSeek1ActionPerformed
@@ -1265,7 +1265,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjabActionPerformed
         penjab.isCek();
         penjab.emptTeks();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        penjab.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setVisible(true);
     }//GEN-LAST:event_BtnPenjabActionPerformed
@@ -1306,7 +1306,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
         datatindakan.isCek();
-        datatindakan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        datatindakan.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
         datatindakan.setLocationRelativeTo(internalFrame1);
         datatindakan.setVisible(true);
     }//GEN-LAST:event_BtnSeek3ActionPerformed
@@ -1336,7 +1336,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void BtnPenjab1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjab1ActionPerformed
         penjab.isCek();
         penjab.emptTeks();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        penjab.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setVisible(true);
     }//GEN-LAST:event_BtnPenjab1ActionPerformed
@@ -1352,7 +1352,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         dokter.isCek();
         dokter.emptTeks();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnSeek2ActionPerformed
@@ -1363,7 +1363,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek4ActionPerformed
         datatindakan.isCek();
-        datatindakan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        datatindakan.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
         datatindakan.setLocationRelativeTo(internalFrame1);
         datatindakan.setVisible(true);
     }//GEN-LAST:event_BtnSeek4ActionPerformed
@@ -1405,7 +1405,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void BtnPenjab2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjab2ActionPerformed
         penjab.isCek();
         penjab.emptTeks();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        penjab.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setVisible(true);
     }//GEN-LAST:event_BtnPenjab2ActionPerformed

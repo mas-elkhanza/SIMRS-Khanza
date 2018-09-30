@@ -538,7 +538,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         panelCari.add(R2);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -562,7 +562,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         panelCari.add(jLabel22);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -585,7 +585,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         panelCari.add(R3);
 
         DTPCari3.setEditable(false);
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2018" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2018" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -609,7 +609,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         panelCari.add(jLabel25);
 
         DTPCari4.setEditable(false);
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2018" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2018" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -693,7 +693,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2018" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1085,7 +1085,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
 private void BtnOperatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOperatorActionPerformed
     dokter.isCek();
     dokter.TCari.requestFocus();
-    dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+    dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
     dokter.setLocationRelativeTo(internalFrame1);
     dokter.setVisible(true);
 }//GEN-LAST:event_BtnOperatorActionPerformed
@@ -1177,7 +1177,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         operasi.setBayar(penjab, kelas);
         operasi.tampil();
         operasi.isCek();
-        operasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        operasi.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         operasi.setLocationRelativeTo(internalFrame1);
         operasi.setVisible(true);
     }//GEN-LAST:event_BtnOperasiActionPerformed
@@ -1225,7 +1225,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(var.getkode().equals("Admin Utama")){
                 var.setstatus(true);
                 DlgKamarInap kamarinap=new DlgKamarInap(null,false);
-                kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                kamarinap.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 kamarinap.setLocationRelativeTo(internalFrame1);
                 kamarinap.emptTeks();
                 kamarinap.isCek();
@@ -1237,7 +1237,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }else{
                     var.setstatus(true);
                     DlgKamarInap kamarinap=new DlgKamarInap(null,false);
-                    kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    kamarinap.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     kamarinap.setLocationRelativeTo(internalFrame1);
                     kamarinap.emptTeks();
                     kamarinap.isCek();
@@ -1256,7 +1256,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(var.getkode().equals("Admin Utama")){
                 DlgTagihanOperasi dlgro=new DlgTagihanOperasi(null,false);
                 dlgro.SetCariOperasi(KdOperasi.getText(),KdDokter.getText(),NmDokter.getText());
-                dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 dlgro.setLocationRelativeTo(internalFrame1);
                 dlgro.setNoRm(TNoRw.getText(),TPasien.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
                 dlgro.setVisible(true);
@@ -1267,7 +1267,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }else{ 
                     DlgTagihanOperasi dlgro=new DlgTagihanOperasi(null,false);
                     dlgro.SetCariOperasi(KdOperasi.getText(),KdDokter.getText(),NmDokter.getText());
-                    dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     dlgro.setLocationRelativeTo(internalFrame1);
                     dlgro.setNoRm(TNoRw.getText(),TPasien.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
                     dlgro.setVisible(true);
@@ -1304,7 +1304,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             DlgResumePerawatan resume=new DlgResumePerawatan(null,true);
             resume.setNoRm(Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()),tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             resume.tampil();
-            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            resume.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             resume.setLocationRelativeTo(internalFrame1);
             resume.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());

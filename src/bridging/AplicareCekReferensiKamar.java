@@ -48,7 +48,6 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private BPJSApiAplicare api=new BPJSApiAplicare();
-    private String URL="";
 
     /** Creates new form DlgKamar
      * @param parent
@@ -93,13 +92,7 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil();}
             });
         } 
-        
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            URL = prop.getProperty("URLAPIAPLICARE")+"/rest/ref/kelas";	
-        } catch (Exception e) {
-            System.out.println("E : "+e);
-        }     
+              
     }
     
     
@@ -320,7 +313,10 @@ public final class AplicareCekReferensiKamar extends javax.swing.JDialog {
 
     public void tampil() {        
         try {
-            HttpHeaders headers = new HttpHeaders();
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            String URL = prop.getProperty("URLAPIAPLICARE")+"/rest/ref/kelas";	
+
+	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            

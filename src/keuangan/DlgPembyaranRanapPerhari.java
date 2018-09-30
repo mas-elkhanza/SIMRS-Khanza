@@ -125,6 +125,7 @@ public final class DlgPembyaranRanapPerhari extends javax.swing.JDialog {
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
+        TKd.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -135,7 +136,7 @@ public final class DlgPembyaranRanapPerhari extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pembayaran Pasien Ranap Perhari ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pembayaran Pasien Ranap Perhari ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -246,7 +247,7 @@ public final class DlgPembyaranRanapPerhari extends javax.swing.JDialog {
         panelisi4.add(BtnCari1);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(130, 100, 100));
+        jLabel10.setForeground(new java.awt.Color(130,100,100));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Total Pembayaran :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -254,7 +255,7 @@ public final class DlgPembyaranRanapPerhari extends javax.swing.JDialog {
         panelisi4.add(jLabel10);
 
         LCount.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        LCount.setForeground(new java.awt.Color(130, 100, 100));
+        LCount.setForeground(new java.awt.Color(130,100,100));
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N

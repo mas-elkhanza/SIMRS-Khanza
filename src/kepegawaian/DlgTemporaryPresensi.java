@@ -153,7 +153,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppVerify.setBackground(new java.awt.Color(255, 255, 255));
         ppVerify.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerify.setForeground(new java.awt.Color(130, 100, 100));
+        ppVerify.setForeground(new java.awt.Color(130,100,100));
         ppVerify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerify.setText("Verifikasi Presensi Yang Lebih Dari 16 Jam");
         ppVerify.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -170,7 +170,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppVerifySemua.setBackground(new java.awt.Color(255, 255, 255));
         ppVerifySemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerifySemua.setForeground(new java.awt.Color(130, 100, 100));
+        ppVerifySemua.setForeground(new java.awt.Color(130,100,100));
         ppVerifySemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerifySemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppVerifySemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -187,7 +187,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppHapusSemua.setBackground(new java.awt.Color(255, 255, 255));
         ppHapusSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapusSemua.setForeground(new java.awt.Color(130, 100, 100));
+        ppHapusSemua.setForeground(new java.awt.Color(130,100,100));
         ppHapusSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapusSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppHapusSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -204,7 +204,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppPilihSemua.setBackground(new java.awt.Color(255, 255, 255));
         ppPilihSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPilihSemua.setForeground(new java.awt.Color(130, 100, 100));
+        ppPilihSemua.setForeground(new java.awt.Color(130,100,100));
         ppPilihSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPilihSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ppPilihSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -221,7 +221,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppBersihkanSemua.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkanSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkanSemua.setForeground(new java.awt.Color(130, 100, 100));
+        ppBersihkanSemua.setForeground(new java.awt.Color(130,100,100));
         ppBersihkanSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkanSemua.setText("Bersihkan Pilihan");
         ppBersihkanSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -238,7 +238,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
 
         ppVerifyOtomatis.setBackground(new java.awt.Color(255, 255, 255));
         ppVerifyOtomatis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppVerifyOtomatis.setForeground(new java.awt.Color(130, 100, 100));
+        ppVerifyOtomatis.setForeground(new java.awt.Color(130,100,100));
         ppVerifyOtomatis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppVerifyOtomatis.setText("Jalan Verifikasi Otomatis");
         ppVerifyOtomatis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -264,7 +264,7 @@ public final class DlgTemporaryPresensi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Temporary Presensi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Temporary Presensi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));

@@ -13,6 +13,7 @@ package keuangan;
 
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
+import keuangan.DlgJnsPerawatanRanap;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -34,6 +35,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import keuangan.Jurnal;
 import simrskhanza.DlgKtgPerawatan;
 
 /**
@@ -680,7 +682,7 @@ public final class DlgCariPerawatanRanap2 extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-08-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-08-2018" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1822,21 +1824,21 @@ private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         switch (pilihtable) {
             case "rawat_inap_dr":
                 dokter.isCek();
-                dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 dokter.setLocationRelativeTo(internalFrame1);
                 dokter.setAlwaysOnTop(false);
                 dokter.setVisible(true);
                 break;
             case "rawat_inap_pr":
                 petugas.isCek();
-                petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 petugas.setLocationRelativeTo(internalFrame1);
                 petugas.setAlwaysOnTop(false);
                 petugas.setVisible(true);
                 break;
             case "rawat_inap_drpr":
                 dokter.isCek();
-                dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 dokter.setLocationRelativeTo(internalFrame1);
                 dokter.setAlwaysOnTop(false);
                 dokter.setVisible(true);
@@ -1889,7 +1891,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -1952,7 +1954,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
         ktg.emptTeks();
-        ktg.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        ktg.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         ktg.setLocationRelativeTo(internalFrame1);
         ktg.setVisible(true);
     }//GEN-LAST:event_btnKategoriActionPerformed

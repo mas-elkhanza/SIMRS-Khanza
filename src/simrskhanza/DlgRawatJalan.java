@@ -3707,7 +3707,7 @@ private void BtnSeekDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN
         var.setform("DlgRawatJalan");
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
 }//GEN-LAST:event_BtnSeekDokterActionPerformed
@@ -3726,7 +3726,7 @@ private void BtnSeekPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GE
         var.setform("DlgRawatJalan");
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
 }//GEN-LAST:event_BtnSeekPetugasActionPerformed
@@ -3756,7 +3756,7 @@ private void btnTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 perawatan.setPoli(kode_poli);
             }
             perawatan.tampil();
-            perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             perawatan.setLocationRelativeTo(internalFrame1);
             perawatan.setVisible(true);
         }else{
@@ -3772,7 +3772,7 @@ private void btnTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     perawatan.setPoli(kode_poli);
                 }
                 perawatan.tampil();
-                perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 perawatan.setLocationRelativeTo(internalFrame1);
                 perawatan.setVisible(true);
             }
@@ -4071,7 +4071,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         var.setform("DlgRawatJalan");
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_BtnSeekPetugas2ActionPerformed
@@ -4090,7 +4090,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         var.setform("DlgRawatJalan");
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnSeekDokter2ActionPerformed
@@ -4148,7 +4148,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             DlgPemberianObat dlgrwinap=new DlgPemberianObat(null,false);
-            dlgrwinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dlgrwinap.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             dlgrwinap.setLocationRelativeTo(internalFrame1);
             dlgrwinap.isCek();
             dlgrwinap.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"ralan");
@@ -4182,7 +4182,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         var.setform("DlgRawatJalan");
         pasien.emptTeks();
         pasien.isCek();
-        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnPasienActionPerformed
@@ -4202,7 +4202,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
             }else {
                 DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
-                resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                resep.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 resep.setLocationRelativeTo(internalFrame1);
                 resep.isCek();
                 resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),
@@ -4222,7 +4222,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Masukkan diagnosa lewat kamar inap..!!!");
             }else {
                 DlgDiagnosaPenyakit resep=new DlgDiagnosaPenyakit(null,false);
-                resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                resep.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 resep.setLocationRelativeTo(internalFrame1);
                 resep.isCek();
                 resep.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"Ralan");
@@ -4249,7 +4249,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             DlgResumePerawatan resume=new DlgResumePerawatan(null,true);
             resume.setNoRm(TNoRM.getText(),TPasien.getText());
             resume.tampil();
-            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            resume.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             resume.setLocationRelativeTo(internalFrame1);
             resume.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
@@ -4266,7 +4266,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             System.out.println("Notifikasi : "+ex);
         }
 
-        berkas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        berkas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         berkas.setLocationRelativeTo(internalFrame1);
         berkas.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
@@ -4406,7 +4406,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     perawatan.setPoli(kode_poli);
                 }
                 perawatan.tampil();
-                perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 perawatan.setLocationRelativeTo(internalFrame1);
                 perawatan.setVisible(true);
             }else{
@@ -4422,7 +4422,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         perawatan.setPoli(kode_poli);
                     }
                     perawatan.tampil();
-                    perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     perawatan.setLocationRelativeTo(internalFrame1);
                     perawatan.setVisible(true);
                 }
@@ -4461,7 +4461,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     perawatan.setPoli(kode_poli);
                 }
                 perawatan.tampil();
-                perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                 perawatan.setLocationRelativeTo(internalFrame1);
                 perawatan.setVisible(true);
             }else{
@@ -4477,7 +4477,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         perawatan.setPoli(kode_poli);
                     }
                     perawatan.tampil();
-                    perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    perawatan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     perawatan.setLocationRelativeTo(internalFrame1);
                     perawatan.setVisible(true);
                 }
@@ -4596,7 +4596,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }else{            
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             DlgPermintaanLaboratorium dlgro=new DlgPermintaanLaboratorium(null,false);
-            dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             dlgro.setLocationRelativeTo(internalFrame1);
             dlgro.emptTeks();
             dlgro.isCek();
@@ -4613,7 +4613,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }else{            
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             DlgPermintaanRadiologi dlgro=new DlgPermintaanRadiologi(null,false);
-            dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dlgro.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
             dlgro.setLocationRelativeTo(internalFrame1);
             dlgro.emptTeks();
             dlgro.isCek();

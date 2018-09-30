@@ -234,7 +234,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(130, 100, 100));
+        ppBersihkan.setForeground(new java.awt.Color(130,100,100));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -251,6 +251,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
 
         KdPj.setHighlighter(null);
         KdPj.setName("KdPj"); // NOI18N
+        KdPj.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -264,7 +265,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -503,7 +504,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-06-2018" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2017" }));
         DTPBeri.setDisplayFormat("dd-MM-yyyy");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -550,6 +551,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         cmbDtk.setBounds(324, 42, 50, 23);
 
         ChkRM.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(175, 180, 170)));
+        ChkRM.setForeground(new java.awt.Color(130,100,100));
         ChkRM.setSelected(true);
         ChkRM.setBorderPainted(true);
         ChkRM.setBorderPaintedFlat(true);
@@ -566,6 +568,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
         ChkRM.setBounds(661, 42, 23, 23);
 
         ChkJln.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(195, 215, 195)));
+        ChkJln.setForeground(new java.awt.Color(130,100,100));
         ChkJln.setSelected(true);
         ChkJln.setBorderPainted(true);
         ChkJln.setBorderPaintedFlat(true);
@@ -651,7 +654,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
                 i=tbObat.getSelectedColumn();
                 if(i==8){
                     var.setform("DlgCariObat");
-                    aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    aturanpakai.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
                     aturanpakai.setLocationRelativeTo(internalFrame1);
                     aturanpakai.setVisible(true);
                 }
@@ -796,7 +799,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_KdDokterKeyPressed
 
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
         dokter.isCek();
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);

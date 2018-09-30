@@ -2617,7 +2617,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private void BtnbarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnbarangActionPerformed
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);

@@ -201,7 +201,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(242, 242, 242));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(130, 100, 100));
+        ppHapus.setForeground(new java.awt.Color(130,100,100));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -361,7 +361,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Mutasi Antar Gudang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Mutasi Antar Gudang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -402,7 +402,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2016" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -417,7 +417,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-02-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2016" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -690,7 +690,7 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         pilihan=2;
         bangsal.emptTeks();
         bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setAlwaysOnTop(false);
         bangsal.setVisible(true);
@@ -719,7 +719,7 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         var.setform("DlgPindahGudang");
         bangsal.emptTeks();
         bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setAlwaysOnTop(false);
         bangsal.setVisible(true);

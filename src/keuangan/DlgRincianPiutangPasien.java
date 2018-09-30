@@ -194,6 +194,7 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
+        TKd.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -204,7 +205,7 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rincian Piutang Pasien Per Cara Bayar di Pendaftaran ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rincian Piutang Pasien Per Cara Bayar di Pendaftaran ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -280,7 +281,7 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
         panelGlass5.add(BtnAll);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(130, 100, 100));
+        jLabel10.setForeground(new java.awt.Color(130,100,100));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Belum Dibayar :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -288,7 +289,7 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
         panelGlass5.add(jLabel10);
 
         LCount.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        LCount.setForeground(new java.awt.Color(130, 100, 100));
+        LCount.setForeground(new java.awt.Color(130,100,100));
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
@@ -500,7 +501,7 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
                         String nama=Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+norm+"'"); 
                         bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);                   
                         bayarpiutang.tampil();  
-                        bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
+                        bayarpiutang.setSize(this.getWidth()-40,this.getHeight()-40);
                         bayarpiutang.setLocationRelativeTo(this);
                         bayarpiutang.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
@@ -512,7 +513,7 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
                             tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),
                             Sequel.cariIsiAngka("select uangmuka from piutang_pasien where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString())
                     );                    
-                    rincianpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
+                    rincianpiutang.setSize(this.getWidth()-40,this.getHeight()-40);
                     rincianpiutang.setLocationRelativeTo(this);
                     rincianpiutang.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
@@ -534,7 +535,7 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
                         String nama=Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis='"+norm+"'");
                         bayarpiutang.setData(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),norm,nama);
                         bayarpiutang.tampil();  
-                        bayarpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
+                        bayarpiutang.setSize(this.getWidth()-40,this.getHeight()-40);
                         bayarpiutang.setLocationRelativeTo(this);
                         bayarpiutang.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
@@ -546,7 +547,7 @@ public final class DlgRincianPiutangPasien extends javax.swing.JDialog {
                             tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),
                             Sequel.cariIsiAngka("select uangmuka from piutang_pasien where no_rawat=?",tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString())
                     );                    
-                    rincianpiutang.setSize(this.getWidth()-20,this.getHeight()-20);
+                    rincianpiutang.setSize(this.getWidth()-40,this.getHeight()-40);
                     rincianpiutang.setLocationRelativeTo(this);
                     rincianpiutang.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
@@ -597,7 +598,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         penjab.isCek();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        penjab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setAlwaysOnTop(false);
         penjab.setVisible(true);

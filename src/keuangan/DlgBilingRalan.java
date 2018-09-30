@@ -30,6 +30,9 @@ import simrskhanza.DlgCariPeriksaRadiologi;
 import simrskhanza.DlgCariPoli;
 import inventory.DlgPemberianObat;
 import javax.swing.event.DocumentEvent;
+import keuangan.DlgLhtBiaya;
+import keuangan.DlgLhtPiutang;
+import keuangan.Jurnal;
 import simrskhanza.DlgPenanggungJawab;
 import simrskhanza.DlgPeriksaLaboratorium;
 import simrskhanza.DlgPeriksaRadiologi;
@@ -1662,7 +1665,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2018 12:58:37" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-08-2018 20:17:27" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -2931,7 +2934,7 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 private void btnCariDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariDokterActionPerformed
     var.setform("DlgBilingRalan");
     dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setAlwaysOnTop(false);
         dokter.setVisible(true);
@@ -3079,7 +3082,7 @@ private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kd
 private void btnCariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariPoliActionPerformed
         var.setform("DlgBilingRalan");
         poli.isCek();
-        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setAlwaysOnTop(false);
         poli.setVisible(true);
@@ -3439,7 +3442,7 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
     private void btnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjabActionPerformed
         var.setform("DlgBilingRalan");
         penjab.isCek();
-        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        penjab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setAlwaysOnTop(false);
         penjab.setVisible(true);
