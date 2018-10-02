@@ -36,6 +36,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import simrskhanza.DlgPasien;
 
 /**
  *
@@ -50,6 +51,7 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
     private int i=0;
     private PcareApi api=new PcareApi();
     private String URL="",link="";
+    private DlgPasien pasien=new DlgPasien(null,false);
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -62,7 +64,7 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new String[]{
                 "No.","Kode PPK","Nama PPK","Alamat","No.Telp","Kelas",
-                "Cabang","Jarak","Jadwal","Rujuk","Kps"
+                "Cabang","Jarak","Jadwal","Rujuk","Kps","Persentase"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,7 +74,7 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 11; i++) {
+        for (i = 0; i < 12; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(30);
@@ -96,6 +98,8 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
                 column.setPreferredWidth(35);
             }else if(i==10){
                 column.setPreferredWidth(30);
+            }else if(i==11){
+                column.setPreferredWidth(80);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -136,6 +140,84 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         }); 
         
+        pasien.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pasien.getTable().getSelectedRow()!= -1){                   
+                    if(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),20).toString().equals("")){
+                        JOptionPane.showMessageDialog(rootPane,"Maaf pasien tidak punya Nomor Kartu...!");
+                    }else{
+                        NoKartu.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),20).toString());
+                    }                     
+                }  
+                if(pasien.getTable2().getSelectedRow()!= -1){ 
+                    if(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),20).toString().equals("")){
+                        JOptionPane.showMessageDialog(rootPane,"Maaf pasien tidak punya Nomor Kartu...!");
+                    }else{
+                        NoKartu.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),20).toString());
+                    } 
+                }
+                if(pasien.getTable3().getSelectedRow()!= -1){ 
+                    if(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),20).toString().equals("")){
+                        JOptionPane.showMessageDialog(rootPane,"Maaf pasien tidak punya Nomor Kartu...!");
+                    }else{
+                        NoKartu.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),20).toString());
+                    } 
+                }                        
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pasien.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });   
+        
+        pasien.getTable2().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
+        pasien.getTable3().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));  
             link=prop.getProperty("URLAPIPCARE");
@@ -160,16 +242,22 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
         panelGlass6 = new widget.panelisi();
+        jLabel22 = new widget.Label();
+        Tanggal = new widget.Tanggal();
+        jLabel16 = new widget.Label();
+        NoKartu = new widget.TextBox();
+        btnPasien = new widget.Button();
+        BtnCari = new widget.Button();
+        jLabel17 = new widget.Label();
+        BtnPrint = new widget.Button();
+        BtnKeluar = new widget.Button();
+        panelGlass7 = new widget.panelisi();
         jLabel19 = new widget.Label();
         KdSpesialis = new widget.TextBox();
         NmSpesialis = new widget.TextBox();
         BtnPropinsi = new widget.Button();
         jLabel21 = new widget.Label();
         Khusus = new widget.ComboBox();
-        BtnCari = new widget.Button();
-        jLabel17 = new widget.Label();
-        BtnPrint = new widget.Button();
-        BtnKeluar = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -194,44 +282,55 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
-        jLabel19.setText("Subspesialis :");
-        jLabel19.setName("jLabel19"); // NOI18N
-        jLabel19.setPreferredSize(new java.awt.Dimension(72, 23));
-        panelGlass6.add(jLabel19);
+        jLabel22.setText("Tgl.Rujukan :");
+        jLabel22.setName("jLabel22"); // NOI18N
+        jLabel22.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelGlass6.add(jLabel22);
 
-        KdSpesialis.setEditable(false);
-        KdSpesialis.setHighlighter(null);
-        KdSpesialis.setName("KdSpesialis"); // NOI18N
-        KdSpesialis.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass6.add(KdSpesialis);
-
-        NmSpesialis.setEditable(false);
-        NmSpesialis.setName("NmSpesialis"); // NOI18N
-        NmSpesialis.setPreferredSize(new java.awt.Dimension(130, 23));
-        panelGlass6.add(NmSpesialis);
-
-        BtnPropinsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnPropinsi.setMnemonic('3');
-        BtnPropinsi.setToolTipText("ALt+3");
-        BtnPropinsi.setName("BtnPropinsi"); // NOI18N
-        BtnPropinsi.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnPropinsi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPropinsiActionPerformed(evt);
+        Tanggal.setEditable(false);
+        Tanggal.setForeground(new java.awt.Color(50, 70, 50));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2018" }));
+        Tanggal.setDisplayFormat("dd-MM-yyyy");
+        Tanggal.setName("Tanggal"); // NOI18N
+        Tanggal.setOpaque(false);
+        Tanggal.setPreferredSize(new java.awt.Dimension(100, 23));
+        Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TanggalKeyPressed(evt);
             }
         });
-        panelGlass6.add(BtnPropinsi);
+        panelGlass6.add(Tanggal);
 
-        jLabel21.setText("Rujukan Khusus :");
-        jLabel21.setName("jLabel21"); // NOI18N
-        jLabel21.setPreferredSize(new java.awt.Dimension(100, 23));
-        panelGlass6.add(jLabel21);
+        jLabel16.setText("No.Kartu :");
+        jLabel16.setName("jLabel16"); // NOI18N
+        jLabel16.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelGlass6.add(jLabel16);
 
-        Khusus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "THA THALASEMIA", "HEM HEMOFILI" }));
-        Khusus.setName("Khusus"); // NOI18N
-        Khusus.setOpaque(false);
-        Khusus.setPreferredSize(new java.awt.Dimension(150, 23));
-        panelGlass6.add(Khusus);
+        NoKartu.setName("NoKartu"); // NOI18N
+        NoKartu.setPreferredSize(new java.awt.Dimension(150, 23));
+        NoKartu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoKartuKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(NoKartu);
+
+        btnPasien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPasien.setMnemonic('5');
+        btnPasien.setToolTipText("Alt+5");
+        btnPasien.setName("btnPasien"); // NOI18N
+        btnPasien.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnPasien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPasienActionPerformed(evt);
+            }
+        });
+        btnPasien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPasienKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(btnPasien);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('6');
@@ -287,6 +386,51 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
 
+        panelGlass7.setName("panelGlass7"); // NOI18N
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
+
+        jLabel19.setText("Subspesialis :");
+        jLabel19.setName("jLabel19"); // NOI18N
+        jLabel19.setPreferredSize(new java.awt.Dimension(72, 23));
+        panelGlass7.add(jLabel19);
+
+        KdSpesialis.setEditable(false);
+        KdSpesialis.setHighlighter(null);
+        KdSpesialis.setName("KdSpesialis"); // NOI18N
+        KdSpesialis.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass7.add(KdSpesialis);
+
+        NmSpesialis.setEditable(false);
+        NmSpesialis.setName("NmSpesialis"); // NOI18N
+        NmSpesialis.setPreferredSize(new java.awt.Dimension(200, 23));
+        panelGlass7.add(NmSpesialis);
+
+        BtnPropinsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPropinsi.setMnemonic('3');
+        BtnPropinsi.setToolTipText("ALt+3");
+        BtnPropinsi.setName("BtnPropinsi"); // NOI18N
+        BtnPropinsi.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnPropinsi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPropinsiActionPerformed(evt);
+            }
+        });
+        panelGlass7.add(BtnPropinsi);
+
+        jLabel21.setText("Rujukan Khusus :");
+        jLabel21.setName("jLabel21"); // NOI18N
+        jLabel21.setPreferredSize(new java.awt.Dimension(130, 23));
+        panelGlass7.add(jLabel21);
+
+        Khusus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "THA THALASEMIA", "HEM HEMOFILI" }));
+        Khusus.setName("Khusus"); // NOI18N
+        Khusus.setOpaque(false);
+        Khusus.setPreferredSize(new java.awt.Dimension(170, 23));
+        panelGlass7.add(Khusus);
+
+        internalFrame1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
+
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -330,7 +474,8 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
                     tabMode.getValueAt(r,7).toString()+"','"+
                     tabMode.getValueAt(r,8).toString()+"','"+
                     tabMode.getValueAt(r,9).toString()+"','"+
-                    tabMode.getValueAt(r,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs");
+                    tabMode.getValueAt(r,10).toString()+"','"+
+                    tabMode.getValueAt(r,11).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs");
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>();
@@ -352,9 +497,12 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
         if(KdSpesialis.getText().trim().equals("")||NmSpesialis.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Silahkan pilih subspesialis dulu..!!");
             BtnPropinsi.requestFocus();
+        }else if(NoKartu.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Silahkan pilih/masukkan no kartu..!!");
+            NoKartu.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            tampil(KdSpesialis.getText(),Khusus.getSelectedItem().toString().substring(0,3));
+            tampil(Khusus.getSelectedItem().toString().substring(0,3),KdSpesialis.getText(),NoKartu.getText(),Tanggal.getSelectedItem().toString());
             this.setCursor(Cursor.getDefaultCursor());
        }
     }//GEN-LAST:event_BtnCariActionPerformed
@@ -366,6 +514,30 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
             Valid.pindah(evt,Khusus,BtnKeluar);
         }
     }//GEN-LAST:event_BtnCariKeyPressed
+
+    private void NoKartuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKartuKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            BtnCariActionPerformed(null);
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            BtnKeluar.requestFocus();
+        }
+    }//GEN-LAST:event_NoKartuKeyPressed
+
+    private void btnPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPasienActionPerformed
+        pasien.emptTeks();
+        pasien.isCek();
+        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.setLocationRelativeTo(internalFrame1);
+        pasien.setVisible(true);
+    }//GEN-LAST:event_btnPasienActionPerformed
+
+    private void btnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPasienKeyPressed
+        Valid.pindah(evt,NoKartu,BtnPrint);
+    }//GEN-LAST:event_btnPasienKeyPressed
+
+    private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
+        //Valid.pindah(evt, NoRujukan, TanggalSEP);
+    }//GEN-LAST:event_TanggalKeyPressed
 
     /**
     * @param args the command line arguments
@@ -391,19 +563,25 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
     private widget.TextBox KdSpesialis;
     private widget.ComboBox Khusus;
     private widget.TextBox NmSpesialis;
+    private widget.TextBox NoKartu;
     private widget.ScrollPane Scroll;
+    private widget.Tanggal Tanggal;
+    private widget.Button btnPasien;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel16;
     private widget.Label jLabel17;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
+    private widget.Label jLabel22;
     private widget.panelisi panelGlass6;
+    private widget.panelisi panelGlass7;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(String spesialistik,String kode) {        
+    public void tampil(String spesialistik,String kode,String nokartu,String tanggal) {        
         try {
-            URL = link+"/spesialis/rujuk/khusus/"+kode+"/subspesialis/"+spesialistik;	
-
+            URL = link+"/spesialis/rujuk/khusus/"+spesialistik+"/subspesialis/"+kode+"/noKartu/"+nokartu+"/tglEstRujuk/"+tanggal;	
+            System.out.println(""+URL);
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
@@ -428,7 +606,8 @@ public final class PCareCekFaskesThalasemia extends javax.swing.JDialog {
                             list.path("alamatPpk").asText(),list.path("telpPpk").asText(),
                             list.path("kelas").asText(),list.path("nmkc").asText(),
                             list.path("distance").asText(),list.path("jadwal").asText(),
-                            list.path("jmlRujuk").asText(),list.path("kapasitas").asText()
+                            list.path("jmlRujuk").asText(),list.path("kapasitas").asText(),
+                            list.path("persentase").asText()
                         });
                         i++;
                     }
