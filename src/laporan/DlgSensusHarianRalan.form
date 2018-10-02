@@ -49,7 +49,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+              <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -95,9 +95,6 @@
             </Component>
             <Component class="widget.Tanggal" name="Tgl1">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f0" green="fa" red="f5" type="rgb"/>
-                </Property>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="Tgl1" noResource="true"/>
@@ -118,9 +115,6 @@
             </Component>
             <Component class="widget.Tanggal" name="Tgl2">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f0" green="fa" red="f5" type="rgb"/>
-                </Property>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="name" type="java.lang.String" value="Tgl2" noResource="true"/>
@@ -507,12 +501,12 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
-                  <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
+                  <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="50" green="78" red="5a" type="rgb"/>
+              <Color blue="64" green="64" red="82" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>

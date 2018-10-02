@@ -19,8 +19,8 @@ public class editorpane extends JEditorPane{
         setFont(new java.awt.Font("Tahoma", 0, 11));        
         setSelectionColor(new Color(50,51,0));
         setSelectedTextColor(new Color(255,255,0));
-        setForeground(new Color(90,120,80));
-        setBorder(new LineBorder(new Color(234,250,233)));
+        setForeground(new Color(130,100,100));
+        setBorder(new LineBorder(new Color(241,246,236)));
         setBackground(new Color(255,255,255));
     }
 }

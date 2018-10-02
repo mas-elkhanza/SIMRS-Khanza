@@ -1,4 +1,6 @@
 package simrskhanza;
+import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariPetugas;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -7,7 +9,6 @@ import fungsi.validasi;
 import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Window;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -19,7 +20,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -40,7 +40,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
     private ResultSet rsrekening,rs,rs2,rs3;
     private int pilihan=0;
     private double ttljmdokter=0,ttljmpetugas=0,ttlpendapatan=0,ttlbhp=0;
-    private String Suspen_Piutang_Operasi_Ranap="",Operasi_Ranap="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",
+    private String norm="",kamar="",namakamar="",Suspen_Piutang_Operasi_Ranap="",Operasi_Ranap="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",
             Utang_Jasa_Medik_Dokter_Operasi_Ranap="",Beban_Jasa_Medik_Paramedis_Operasi_Ranap="",
             Utang_Jasa_Medik_Paramedis_Operasi_Ranap="",HPP_Obat_Operasi_Ranap="",Persediaan_Obat_Kamar_Operasi_Ranap="",status="";
 
@@ -104,6 +104,14 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
                         kdmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),1).toString());
                         nmmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),2).toString());
                     }   
+                    if(member.getTable2().getSelectedRow()!= -1){                   
+                        kdmem.setText(member.getTable2().getValueAt(member.getTable2().getSelectedRow(),1).toString());
+                        nmmem.setText(member.getTable2().getValueAt(member.getTable2().getSelectedRow(),2).toString());
+                    }  
+                    if(member.getTable3().getSelectedRow()!= -1){                   
+                        kdmem.setText(member.getTable3().getValueAt(member.getTable3().getSelectedRow(),1).toString());
+                        nmmem.setText(member.getTable3().getValueAt(member.getTable3().getSelectedRow(),2).toString());
+                    } 
                     kdmem.requestFocus();
                 }
             }
@@ -118,6 +126,36 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         });
         
         member.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(var.getform().equals("DlgCariTagihanOperasi")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        member.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        member.getTable2().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(var.getform().equals("DlgCariTagihanOperasi")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        member.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        member.getTable3().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
@@ -441,11 +479,11 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
 
         MnHapusObatOperasi.setBackground(new java.awt.Color(255, 255, 255));
         MnHapusObatOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnHapusObatOperasi.setForeground(new java.awt.Color(90, 120, 80));
+        MnHapusObatOperasi.setForeground(new java.awt.Color(130,100,100));
         MnHapusObatOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnHapusObatOperasi.setText("Hapus Obat Operasi");
         MnHapusObatOperasi.setName("MnHapusObatOperasi"); // NOI18N
-        MnHapusObatOperasi.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusObatOperasi.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusObatOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusObatOperasiActionPerformed(evt);
@@ -455,11 +493,11 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
 
         MnHapusTagihanOperasi.setBackground(new java.awt.Color(255, 255, 255));
         MnHapusTagihanOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnHapusTagihanOperasi.setForeground(new java.awt.Color(90, 120, 80));
+        MnHapusTagihanOperasi.setForeground(new java.awt.Color(130,100,100));
         MnHapusTagihanOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnHapusTagihanOperasi.setText("Hapus Tagihan Operasi");
         MnHapusTagihanOperasi.setName("MnHapusTagihanOperasi"); // NOI18N
-        MnHapusTagihanOperasi.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnHapusTagihanOperasi.setPreferredSize(new java.awt.Dimension(220, 26));
         MnHapusTagihanOperasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnHapusTagihanOperasiActionPerformed(evt);
@@ -469,11 +507,11 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
 
         MnUbahOperatorPetugas.setBackground(new java.awt.Color(255, 255, 255));
         MnUbahOperatorPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnUbahOperatorPetugas.setForeground(new java.awt.Color(90, 120, 80));
+        MnUbahOperatorPetugas.setForeground(new java.awt.Color(130,100,100));
         MnUbahOperatorPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnUbahOperatorPetugas.setText("Ubah Operator & Paramedis");
         MnUbahOperatorPetugas.setName("MnUbahOperatorPetugas"); // NOI18N
-        MnUbahOperatorPetugas.setPreferredSize(new java.awt.Dimension(250, 28));
+        MnUbahOperatorPetugas.setPreferredSize(new java.awt.Dimension(220, 26));
         MnUbahOperatorPetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnUbahOperatorPetugasActionPerformed(evt);
@@ -486,7 +524,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
         WindowGantiDokterParamedis.setUndecorated(true);
         WindowGantiDokterParamedis.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Operator & Paramedis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Operator & Paramedis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setWarnaBawah(new java.awt.Color(240, 245, 235));
         internalFrame5.setLayout(new java.awt.BorderLayout());
@@ -1344,7 +1382,7 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Tagihan Operasi/VK ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Tagihan Operasi/VK ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1588,7 +1626,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariTagihanOperasi");
         member.emptTeks();
         member.isCek();
-        member.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         member.setLocationRelativeTo(internalFrame1);
         member.setAlwaysOnTop(false);
         member.setVisible(true);
@@ -1955,7 +1993,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                     } catch (Exception e) {
                         System.out.println("Notifikasi Cari Data : "+e);
                     }
-                    WindowGantiDokterParamedis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                    WindowGantiDokterParamedis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     WindowGantiDokterParamedis.setLocationRelativeTo(internalFrame1);
                     WindowGantiDokterParamedis.setVisible(true);
                 }else{
@@ -2025,7 +2063,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
                         } catch (Exception e) {
                             System.out.println("Notifikasi Cari Data : "+e);
                         }
-                        WindowGantiDokterParamedis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                        WindowGantiDokterParamedis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         WindowGantiDokterParamedis.setLocationRelativeTo(internalFrame1);
                         WindowGantiDokterParamedis.setVisible(true);
                     }
@@ -2240,7 +2278,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=1;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnOperator1ActionPerformed
@@ -2260,7 +2298,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=1;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnAsis1ActionPerformed
@@ -2279,7 +2317,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=2;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnOperator2ActionPerformed
@@ -2298,7 +2336,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=3;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_btnInstrumenActionPerformed
@@ -2317,7 +2355,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=4;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnAnastesiActionPerformed
@@ -2336,7 +2374,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=5;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_btnAnakActionPerformed
@@ -2345,7 +2383,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=2;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnAsis2ActionPerformed
@@ -2364,7 +2402,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=3;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnAsis3ActionPerformed
@@ -2383,7 +2421,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=5;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnPrwResActionPerformed
@@ -2412,7 +2450,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=4;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_BtnAsnesActionPerformed
@@ -2431,7 +2469,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=7;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnBidanActionPerformed
@@ -2450,7 +2488,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=6;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnPrwLuarActionPerformed
@@ -2459,7 +2497,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=8;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnBidan2ActionPerformed
@@ -2488,7 +2526,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=9;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnBidan3ActionPerformed
@@ -2507,7 +2545,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=10;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnOnloop1ActionPerformed
@@ -2516,7 +2554,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=11;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnOnloop2ActionPerformed
@@ -2535,7 +2573,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=12;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnOnloop3ActionPerformed
@@ -2564,7 +2602,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=6;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_btndrpjanakActionPerformed
@@ -2583,7 +2621,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=7;
         dokter.emptTeks();
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_btndrumumActionPerformed
@@ -2596,7 +2634,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=15;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnAsis4ActionPerformed
@@ -2609,7 +2647,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=14;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_BtnAsnes1ActionPerformed
@@ -2622,7 +2660,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=13;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnOnloop4ActionPerformed
@@ -2631,7 +2669,7 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
         pilihan=14;
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setVisible(true);
     }//GEN-LAST:event_btnOnloop5ActionPerformed

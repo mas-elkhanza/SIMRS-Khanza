@@ -12,7 +12,6 @@
 package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import restore.DlgRestoreTarifRanap;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -29,7 +28,6 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -42,7 +40,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
 import simrskhanza.DlgCariBangsal;
 
 /**
@@ -206,6 +203,13 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            URL = prop.getProperty("URLAPIAPLICARE");	
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     
     }
 
@@ -269,7 +273,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Ketersediaan Kamar Aplicare BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Ketersediaan Kamar Aplicare BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -722,7 +726,7 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
 }//GEN-LAST:event_NmKelasKeyPressed
 
     private void btnKelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKelasActionPerformed
-        referensi.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        referensi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         referensi.setLocationRelativeTo(internalFrame1);
         referensi.setVisible(true);
 }//GEN-LAST:event_btnKelasActionPerformed
@@ -748,9 +752,6 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
             Valid.textKosong(TersediaWanita,"Tersedia Wanita");
         }else{
             try {
-                prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                URL = prop.getProperty("URLAPIAPLICARE")+"/rest/bed/create/"+kodeppk;	
-
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
@@ -766,10 +767,9 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
                               "\"tersediapriawanita\":\""+TersediaPW.getText()+"\""+
                               "}";
                 HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                RestTemplate rest = new RestTemplate();
                 //System.out.println(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                JsonNode root = mapper.readTree(api.getRest().exchange(URL+"/rest/bed/create/"+kodeppk, HttpMethod.POST, requestEntity, String.class).getBody());
                 JsonNode nameNode = root.path("metadata");
                 System.out.println("code : "+nameNode.path("code").asText());
                 System.out.println("message : "+nameNode.path("message").asText());
@@ -816,9 +816,6 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
         for(i=0;i<tbJnsPerawatan.getRowCount();i++){ 
             if(tbJnsPerawatan.getValueAt(i,0).toString().equals("true")){
                 try {
-                    prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                    URL = prop.getProperty("URLAPIAPLICARE")+"/rest/bed/delete/"+kodeppk;	
-
                     HttpHeaders headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
@@ -828,10 +825,9 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
                                   "\"koderuang\":\""+tbJnsPerawatan.getValueAt(i,2).toString()+"\""+ 
                                   "}";
                     HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    RestTemplate rest = new RestTemplate();
                     //System.out.println(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                     ObjectMapper mapper = new ObjectMapper();
-                    JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                    JsonNode root = mapper.readTree(api.getRest().exchange(URL+"/rest/bed/delete/"+kodeppk, HttpMethod.POST, requestEntity, String.class).getBody());
                     JsonNode nameNode = root.path("metadata");
                     //System.out.println("code : "+nameNode.path("code").asText());
                     //System.out.println("message : "+nameNode.path("message").asText());
@@ -880,9 +876,6 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
             Valid.textKosong(TersediaWanita,"Tersedia Wanita");
         }else{
             try {                
-                prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                URL = prop.getProperty("URLAPIAPLICARE")+"/rest/bed/update/"+kodeppk;	
-
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIAPLICARE"));
@@ -898,10 +891,9 @@ public final class AplicareKetersediaanKamar extends javax.swing.JDialog {
                               "\"tersediapriawanita\":\""+TersediaPW.getText()+"\""+
                               "}";
                 HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                RestTemplate rest = new RestTemplate();
                 //System.out.println(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                 ObjectMapper mapper = new ObjectMapper();
-                JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                JsonNode root = mapper.readTree(api.getRest().exchange(URL+"/rest/bed/update/"+kodeppk, HttpMethod.POST, requestEntity, String.class).getBody());
                 JsonNode nameNode = root.path("metadata");
                 //System.out.println("code : "+nameNode.path("code").asText());
                 //System.out.println("message : "+nameNode.path("message").asText());
@@ -1059,7 +1051,7 @@ private void KdKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_K
 private void btnKamarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKamarActionPerformed
         bangsal.emptTeks();
         bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         bangsal.setLocationRelativeTo(internalFrame1);
         bangsal.setVisible(true);
 }//GEN-LAST:event_btnKamarActionPerformed

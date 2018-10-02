@@ -27,6 +27,9 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
 import java.net.URI;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,6 +38,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -42,6 +47,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -68,7 +75,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     private BPJSCekReferensiFaskes faskes=new BPJSCekReferensiFaskes(null,false);
     private BPJSCekReferensiPenyakit penyakit=new BPJSCekReferensiPenyakit(null,false);
     private BPJSCekReferensiPoli poli=new BPJSCekReferensiPoli(null,false);
-    private String URL="",requestJson,user="";
+    private String URL="",requestJson,user="",link="";
     private final Properties prop = new Properties();
     /** Creates new form DlgRujuk
      * @param parent
@@ -251,9 +258,10 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
-            System.out.println("SEP XML : "+e);
+            System.out.println("E : "+e);
         }
         
         try {
@@ -338,7 +346,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rujukan Keluar VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Rujukan Keluar VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -381,7 +389,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-03-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -396,7 +404,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-03-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -551,7 +559,6 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
 
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setPreferredSize(new java.awt.Dimension(0, 110));
-        internalFrame6.setWarnaBawah(new java.awt.Color(250, 250, 245));
         internalFrame6.setLayout(null);
 
         jLabel30.setText("Tanggal Rujukan :");
@@ -560,7 +567,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         jLabel30.setBounds(0, 12, 102, 23);
 
         TanggalRujukKeluar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujukKeluar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-03-2018" }));
+        TanggalRujukKeluar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-03-2018" }));
         TanggalRujukKeluar.setDisplayFormat("dd-MM-yyyy");
         TanggalRujukKeluar.setName("TanggalRujukKeluar"); // NOI18N
         TanggalRujukKeluar.setOpaque(false);
@@ -781,7 +788,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                 Valid.textKosong(KdPoli1, "Poli Tujuan");        
             }else{  
                 try {
-                    URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/update";	
+                    URL = link+"/Rujukan/update";	
                     HttpHeaders headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                     headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
@@ -803,9 +810,8 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
                                     "}" +
                                   "}";
                     HttpEntity requestEntity = new HttpEntity(requestJson,headers);
-                    RestTemplate rest = new RestTemplate();
                     ObjectMapper mapper = new ObjectMapper();
-                    JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
+                    JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
                     JsonNode nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
                     System.out.println("message : "+nameNode.path("message").asText());
@@ -975,7 +981,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     }//GEN-LAST:event_MnSuratRujukanActionPerformed
 
     private void btnPPKRujukan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPKRujukan1ActionPerformed
-        faskes.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        faskes.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         faskes.setLocationRelativeTo(internalFrame1);
         faskes.setVisible(true);
     }//GEN-LAST:event_btnPPKRujukan1ActionPerformed
@@ -993,7 +999,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     }//GEN-LAST:event_JenisPelayanan1KeyPressed
 
     private void btnDiagnosa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosa1ActionPerformed
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setVisible(true);
     }//GEN-LAST:event_btnDiagnosa1ActionPerformed
@@ -1003,7 +1009,7 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDiagnosa1KeyPressed
 
     private void btnPoli1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoli1ActionPerformed
-        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setVisible(true);
     }//GEN-LAST:event_btnPoli1ActionPerformed
@@ -1215,7 +1221,6 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
         BtnPrint.setEnabled(var.getbpjs_rujukan_keluar());
     }
     
-    RestTemplate restTemplate = new RestTemplate();
     public static class HttpEntityEnclosingDeleteRequest extends HttpEntityEnclosingRequestBase {
         public HttpEntityEnclosingDeleteRequest(final URI uri) {
             super();
@@ -1230,18 +1235,33 @@ public final class BPJSRujukanKeluar extends javax.swing.JDialog {
 
     @Test
     public void bodyWithDeleteRequest() throws Exception {
-        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory() {
+        RestTemplate restTemplate = new RestTemplate();
+        SSLContext sslContext = SSLContext.getInstance("SSL");
+        javax.net.ssl.TrustManager[] trustManagers= {
+            new X509TrustManager() {
+                public X509Certificate[] getAcceptedIssuers() {return null;}
+                public void checkServerTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
+                public void checkClientTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
+            }
+        };
+        sslContext.init(null,trustManagers , new SecureRandom());
+        SSLSocketFactory sslFactory=new SSLSocketFactory(sslContext,SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        Scheme scheme=new Scheme("https",443,sslFactory);
+    
+        HttpComponentsClientHttpRequestFactory factory=new HttpComponentsClientHttpRequestFactory(){
             @Override
             protected HttpUriRequest createHttpUriRequest(HttpMethod httpMethod, URI uri) {
                 if (HttpMethod.DELETE == httpMethod) {
-                    return new BPJSDataSEP.HttpEntityEnclosingDeleteRequest(uri);
+                    return new BPJSRujukanKeluar.HttpEntityEnclosingDeleteRequest(uri);
                 }
                 return super.createHttpUriRequest(httpMethod, uri);
             }
-        });
+        };
+        factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
+        restTemplate.setRequestFactory(factory);
         
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/delete";	
+            URL = link+"/Rujukan/delete";	
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

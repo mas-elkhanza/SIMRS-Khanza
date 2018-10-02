@@ -16,7 +16,7 @@ public class ButtonBig extends ButtonImageReflection {
 
     public ButtonBig() {
         super();
-        setForeground(new Color(90,120,80));
+        setForeground(new Color(130,100,100));
         setFont(new java.awt.Font("Tahoma", 0, 11));
     }
 }

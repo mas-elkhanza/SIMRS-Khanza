@@ -105,7 +105,7 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Bagian/Unit Berdasarkan Shift Jaga ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Bagian/Unit Berdasarkan Shift Jaga ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -150,7 +150,6 @@ public class DlgPembayaranPerPoli extends javax.swing.JDialog {
         jLabel9.setPreferredSize(new java.awt.Dimension(38, 23));
         panelisi1.add(jLabel9);
 
-        CmbStatus.setForeground(new java.awt.Color(153, 0, 51));
         CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Pagi", "Siang", "Sore", "Malam" }));
         CmbStatus.setName("CmbStatus"); // NOI18N
         CmbStatus.setOpaque(false);

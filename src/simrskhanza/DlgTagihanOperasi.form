@@ -28,7 +28,7 @@
               <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="33" red="66" type="rgb"/>
+              <Color blue="64" green="64" red="82" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/stop_f2.png"/>
@@ -58,9 +58,6 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
-  <Events>
-    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
-  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
@@ -87,7 +84,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+              <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -130,11 +127,11 @@
                     <TitledBorder title=" Tindakan ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
+                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                      <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -250,7 +247,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="eb" green="ff" red="f5" type="rgb"/>
+                          <Color PropertyName="color" blue="fd" green="ff" red="ff" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -286,11 +283,11 @@
                     <TitledBorder title=" Obat &amp; BHP ">
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
+                          <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
                         </LineBorder>
                       </Border>
                       <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-                      <Color PropertyName="color" blue="50" green="78" red="5a" type="rgb"/>
+                      <Color PropertyName="color" blue="64" green="64" red="82" type="rgb"/>
                     </TitledBorder>
                   </Border>
                 </Property>
@@ -406,7 +403,7 @@
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                         <LineBorder>
-                          <Color PropertyName="color" blue="eb" green="ff" red="f5" type="rgb"/>
+                          <Color PropertyName="color" blue="fd" green="ff" red="ff" type="rgb"/>
                         </LineBorder>
                       </Border>
                     </Property>
@@ -1492,9 +1489,6 @@
                     </Component>
                     <Component class="widget.ComboBox" name="Kategori">
                       <Properties>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="33" green="0" red="99" type="rgb"/>
-                        </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="5">
                             <StringItem index="0" value="-"/>

@@ -229,7 +229,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 255));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(60, 80, 50));
+        MnRestore.setForeground(new java.awt.Color(130,100,100));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -253,7 +253,7 @@ public final class DlgBarangIPSRS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -854,7 +854,7 @@ private void kode_satKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuanActionPerformed
     var.setform("DlgBarangIPSRS");
     satuan.isCek();
-    satuan.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    satuan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     satuan.setLocationRelativeTo(internalFrame1);
     satuan.setVisible(true);
 }//GEN-LAST:event_btnSatuanActionPerformed
@@ -886,14 +886,14 @@ private void btnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
         var.setform("DlgBarangIPSRS");
         jenis.isCek();
-        jenis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         jenis.setLocationRelativeTo(internalFrame1);
         jenis.setVisible(true);
     }//GEN-LAST:event_btnJenisActionPerformed
 
     private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
         DlgRestoreIPSRSBarang restore=new DlgRestoreIPSRSBarang(null,true);
-        restore.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        restore.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         restore.setLocationRelativeTo(internalFrame1);
         restore.setVisible(true);
     }//GEN-LAST:event_MnRestoreActionPerformed

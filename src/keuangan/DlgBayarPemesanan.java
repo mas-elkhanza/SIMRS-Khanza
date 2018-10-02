@@ -39,7 +39,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 
 /**
  *
@@ -224,8 +224,6 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Popup = new javax.swing.JPopupMenu();
-        ppSimpan = new javax.swing.JMenuItem();
         Kd2 = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelisi4 = new widget.panelisi();
@@ -274,28 +272,8 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
 
-        Popup.setName("Popup"); // NOI18N
-
-        ppSimpan.setBackground(new java.awt.Color(242, 242, 242));
-        ppSimpan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppSimpan.setForeground(new java.awt.Color(102, 51, 0));
-        ppSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        ppSimpan.setText("Simpan");
-        ppSimpan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppSimpan.setIconTextGap(8);
-        ppSimpan.setName("ppSimpan"); // NOI18N
-        ppSimpan.setPreferredSize(new java.awt.Dimension(150, 25));
-        ppSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpanActionPerformed(evt);
-            }
-        });
-        Popup.add(ppSimpan);
-
         Kd2.setHighlighter(null);
         Kd2.setName("Kd2"); // NOI18N
-        Kd2.setSelectionColor(new java.awt.Color(255, 255, 255));
         Kd2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 Kd2KeyPressed(evt);
@@ -306,7 +284,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Pemesanan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Bayar Pemesanan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -443,7 +421,6 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
         panelisi4.add(jLabel10);
         jLabel10.setBounds(0, 70, 77, 23);
 
-        nama_bayar.setForeground(new java.awt.Color(153, 0, 51));
         nama_bayar.setName("nama_bayar"); // NOI18N
         nama_bayar.setOpaque(false);
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -711,13 +688,11 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
 
         internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
-        Scroll.setComponentPopupMenu(Popup);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbKamar.setComponentPopupMenu(Popup);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -764,7 +739,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
                         koderekening,nama_bayar.getSelectedItem().toString(),"0",besar_bayar.getText()
                     });    
                     jur.simpanJurnal(no_bukti.getText(),Valid.SetTgl(tgl_bayar.getSelectedItem()+""),"U","BAYAR PELUNASAN HUTANG OBAT/BHP/ALKES NO.FAKTUR "+no_faktur.getText());
-                    if(sisahutang==Double.parseDouble(besar_bayar.getText())){
+                    if((sisahutang<=Double.parseDouble(besar_bayar.getText()))||(sisahutang<=-Double.parseDouble(besar_bayar.getText()))){
                         Sequel.mengedit("pemesanan","no_faktur=?","status='Sudah Dibayar'",1,new String[]{no_faktur.getText()});
                     }else{
                         Sequel.mengedit("pemesanan","no_faktur=?","status='Belum Lunas'",1,new String[]{no_faktur.getText()});
@@ -775,7 +750,7 @@ public final class DlgBayarPemesanan extends javax.swing.JDialog {
                         no_bukti.getText()
                     });
                 }else{
-                    Sequel.mengedit("pemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
+                    //Sequel.mengedit("pemesanan","no_faktur=?","status='Belum Dibayar'",1,new String[]{no_faktur.getText()});
                     JOptionPane.showMessageDialog(rootPane,"Maaf sudah dilakukan pembayaran..!!!");
                     TCari.requestFocus();
                 }                   
@@ -1009,7 +984,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -1056,7 +1031,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         suplier.isCek();
-        suplier.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         suplier.setLocationRelativeTo(internalFrame1);
         suplier.setAlwaysOnTop(false);
         suplier.setVisible(true);
@@ -1094,7 +1069,6 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.TextBox Kd2;
     private widget.Label LCount;
     private widget.Label LTotal;
-    private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal TglCari1;
@@ -1128,7 +1102,6 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
     private widget.panelisi panelisi5;
-    private javax.swing.JMenuItem ppSimpan;
     private widget.TextBox sisa_hutang;
     private widget.Table tbKamar;
     private widget.Tanggal tgl_bayar;
@@ -1220,8 +1193,8 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void setData(String nofaktur){
         no_faktur.setText(nofaktur);
         TCari.setText(nofaktur);
-        sisahutang=Sequel.cariIsiAngka("SELECT tagihan FROM pemesanan where no_faktur=?",nofaktur)
-                   -Sequel.cariIsiAngka("SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan where no_faktur=?",nofaktur);
+        sisahutang=Math.round(Sequel.cariIsiAngka("SELECT tagihan FROM pemesanan where no_faktur=?",nofaktur)
+                   -Sequel.cariIsiAngka("SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan where no_faktur=?",nofaktur));
         sisa_hutang.setText(Valid.SetAngka(sisahutang));
         besar_bayar.setText("0");
     }
@@ -1234,7 +1207,7 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             //setData(no_faktur.getText());
             nama_bayar.setSelectedItem(tbKamar.getValueAt(row,6).toString());
             no_bukti.setText(tbKamar.getValueAt(row,7).toString());
-            besar_bayar.setText(tbKamar.getValueAt(row,8).toString());
+            besar_bayar.setText(Valid.SetAngka5(Double.parseDouble(tbKamar.getValueAt(row,8).toString())));
             keterangan.setText(tbKamar.getValueAt(row,9).toString());
         }
     }

@@ -28,7 +28,7 @@ public class panelisi2 extends JPanel{
     //private Color warnaAtas = new Color(245,200,245) ;
     //private Color warnaBawah = new Color(245,150,245) ;
     private Color warnaAtas = new Color(250,255,245) ;
-    private Color warnaBawah = new Color(245,250,240) ;
+    private Color warnaBawah = new Color(241,246,236) ;
 
     //private Color warnaAtas = new Color(255,194,255);
     //private Color warnaBawah = new Color(255,194,255);

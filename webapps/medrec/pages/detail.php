@@ -143,7 +143,7 @@
                       echo "<tr class='isi'>
                                 <td width='70'>
                                     <center>"; ?>
-                                    <a href="?act=Detail&action=HAPUS&tgl_retensi=<?php print $baris[2] ?>&id=<?php echo $id ?>" >[hapus]</a>
+                                    <a href="?act=Detail&action=HAPUS&tgl_retensi=<?php print $baris[2] ?>&id=<?php echo $id ?>&lokasi_pdf=<?php print $baris[3] ?>" >[hapus]</a>
                             <?php
                             echo "</center>
                                 </td>
@@ -167,6 +167,7 @@
         </form>
         <?php
             if ($action=="HAPUS") {
+                unlink($_GET['lokasi_pdf']);
                 Hapus(" retensi_pasien "," no_rkm_medis ='".$_GET['id']."' and tgl_retensi ='".$_GET['tgl_retensi']."' ","?act=Detail&action=TAMBAH&id=$id");
             }
 

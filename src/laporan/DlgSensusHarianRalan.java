@@ -31,7 +31,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import simrskhanza.DlgCariDokter;
+import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgKabupaten;
 import simrskhanza.DlgPenanggungJawab;
@@ -211,10 +211,11 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         LoadHTML2.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#5a7850;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#5a7850;}"
+                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#826464;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
+                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#826464;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -280,7 +281,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Sensus Harian Pasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Sensus Harian Pasien Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -293,7 +294,6 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         label11.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass5.add(label11);
 
-        Tgl1.setBackground(new java.awt.Color(245, 250, 240));
         Tgl1.setEditable(false);
         Tgl1.setDisplayFormat("dd-MM-yyyy");
         Tgl1.setName("Tgl1"); // NOI18N
@@ -306,7 +306,6 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         label18.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass5.add(label18);
 
-        Tgl2.setBackground(new java.awt.Color(245, 250, 240));
         Tgl2.setEditable(false);
         Tgl2.setDisplayFormat("dd-MM-yyyy");
         Tgl2.setName("Tgl2"); // NOI18N
@@ -563,8 +562,8 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 250, 233)));
-        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(130, 100, 100));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -618,10 +617,11 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#5a7850;}"+                    
-                    ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#5a7850;}"
+                    ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
+                    ".head td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#826464;}"+                    
+                    ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#826464;}"
             );
             bg.close();
             
@@ -705,7 +705,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         poli.isCek();
-        poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
         poli.setAlwaysOnTop(false);
         poli.setVisible(true);
@@ -731,7 +731,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
 
     private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
         penjab.isCek();
-        penjab.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setAlwaysOnTop(false);
         penjab.setVisible(true);
@@ -805,7 +805,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
 
     private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek4ActionPerformed
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setAlwaysOnTop(false);
         dokter.setVisible(true);
@@ -816,7 +816,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnSeek4KeyPressed
 
     private void BtnSeek5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek5ActionPerformed
-        kabupaten.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        kabupaten.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kabupaten.setLocationRelativeTo(internalFrame1);
         kabupaten.setAlwaysOnTop(false);
         kabupaten.setVisible(true);
@@ -887,7 +887,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         try {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi'>"+
+                "<tr class='head'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='1%'>No.</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Nomor RM</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Nama Pasien</td>"+
@@ -1065,7 +1065,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
         try {
             htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi'>"+
+                "<tr class='head'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='1%'>No.</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='3%'>Nomor RM</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='8%'>Nama Pasien</td>"+

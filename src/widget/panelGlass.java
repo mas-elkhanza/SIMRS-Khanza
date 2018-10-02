@@ -18,7 +18,7 @@ public class panelGlass extends JPanel {
         super();
         setBackground(new Color(255,255,255));
         this.setForeground(new Color(110,120,100));
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(234,250,233)));
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(241,246,236)));
     }
 
 }
