@@ -86,7 +86,7 @@ public final class var {
             pcare_cek_statuspulang=false,pcare_cek_spesialis=false,pcare_cek_subspesialis=false,pcare_cek_sarana=false,pcare_cek_khusus=false,
             pcare_cek_obat=false,pcare_cek_tindakan=false,pcare_cek_faskessubspesialis=false,pcare_cek_faskesalihrawat=false,
             pcare_cek_faskesthalasemia=false,pcare_mapping_obat=false,pcare_mapping_tindakan=false,pcare_club_prolanis=false,
-            pcare_mapping_poli=false,pcare_kegiatan_kelompok=false,pcare_mapping_tindakan_ranap=false;
+            pcare_mapping_poli=false,pcare_kegiatan_kelompok=false,pcare_mapping_tindakan_ranap=false,pcare_peserta_kegiatan_kelompok=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -503,6 +503,7 @@ public final class var {
                         var.pcare_mapping_poli=true;
                         var.pcare_kegiatan_kelompok=true;
                         var.pcare_mapping_tindakan_ranap=true;
+                        var.pcare_peserta_kegiatan_kelompok=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -903,6 +904,7 @@ public final class var {
                         var.pcare_mapping_poli=rs2.getBoolean("pcare_mapping_poli");
                         var.pcare_kegiatan_kelompok=rs2.getBoolean("pcare_kegiatan_kelompok");
                         var.pcare_mapping_tindakan_ranap=rs2.getBoolean("pcare_mapping_tindakan_ranap");
+                        var.pcare_peserta_kegiatan_kelompok=rs2.getBoolean("pcare_peserta_kegiatan_kelompok");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1301,6 +1303,7 @@ public final class var {
                         var.pcare_mapping_poli=false;
                         var.pcare_kegiatan_kelompok=false;
                         var.pcare_mapping_tindakan_ranap=false;
+                        var.pcare_peserta_kegiatan_kelompok=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1751,4 +1754,5 @@ public final class var {
     public static boolean getpcare_mapping_poli(){return var.pcare_mapping_poli;}
     public static boolean getpcare_kegiatan_kelompok(){return var.pcare_kegiatan_kelompok;}
     public static boolean getpcare_mapping_tindakan_ranap(){return var.pcare_mapping_tindakan_ranap;}
+    public static boolean getpcare_peserta_kegiatan_kelompok(){return var.pcare_peserta_kegiatan_kelompok;}
 }   

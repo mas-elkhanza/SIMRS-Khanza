@@ -963,6 +963,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareMapingPoli = new widget.ButtonBig();
         btnPCareKegiatanKelompok = new widget.ButtonBig();
         btnPCareMapingTindakanRanap = new widget.ButtonBig();
+        btnPCarePesertaKegiatanKelompok = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6001,6 +6002,19 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPCareMapingTindakanRanap);
+
+        btnPCarePesertaKegiatanKelompok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Edit-Male-User.png"))); // NOI18N
+        btnPCarePesertaKegiatanKelompok.setText("Peserta Keg Kelompok PCare");
+        btnPCarePesertaKegiatanKelompok.setToolTipText("");
+        btnPCarePesertaKegiatanKelompok.setIconTextGap(0);
+        btnPCarePesertaKegiatanKelompok.setName("btnPCarePesertaKegiatanKelompok"); // NOI18N
+        btnPCarePesertaKegiatanKelompok.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCarePesertaKegiatanKelompok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCarePesertaKegiatanKelompokActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCarePesertaKegiatanKelompok);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -12403,6 +12417,10 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor()); 
     }//GEN-LAST:event_btnPCareMapingTindakanRanapActionPerformed
 
+    private void btnPCarePesertaKegiatanKelompokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCarePesertaKegiatanKelompokActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPCarePesertaKegiatanKelompokActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12649,6 +12667,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPCareMapingPoli;
     private widget.ButtonBig btnPCareMapingTindakan;
     private widget.ButtonBig btnPCareMapingTindakanRanap;
+    private widget.ButtonBig btnPCarePesertaKegiatanKelompok;
     private widget.ButtonBig btnPCareReferensiDokter;
     private widget.ButtonBig btnPCareReferensiKhusus;
     private widget.ButtonBig btnPCareReferensiObat;
@@ -13153,7 +13172,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         }else if(jmlmenu<=385){
             Panelmenu.setLayout(new GridLayout(0,5));
             Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*73)));
-        }                                              
+        }else if(jmlmenu<=390){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*74)));
+        }else if(jmlmenu<=395){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*75)));
+        }else if(jmlmenu<=400){
+            Panelmenu.setLayout(new GridLayout(0,5));
+            Panelmenu.setPreferredSize(new Dimension(scrollPane2.getWidth()-10,scrollPane2.getHeight()+((scrollPane2.getHeight()/4)*80)));
+        }                                                
         Panelmenu.repaint(); 
         DlgHome.setVisible(true);               
     }
@@ -13510,7 +13538,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
 
-            if(var.getpermintaan_medis()==true){
+            if((var.getpermintaan_medis()==true)||(var.getmutasi_barang()==true)||(var.getpengeluaran_stok_apotek()==true)){
                 Panelmenu.add(btnPermintaanMedis);   
                 jmlmenu++;
             }
@@ -13520,7 +13548,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
-            if(var.getsurat_pemesanan_medis()==true){
+            if((var.getsurat_pemesanan_medis()==true)||(var.getpemesanan_obat()==true)){
                 Panelmenu.add(btnSuratPemesananMedis);   
                 jmlmenu++;
             }
@@ -13530,7 +13558,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
 
-            if(var.getpemesanan_obat()==true){
+            if((var.getpemesanan_obat()==true)||(var.getbayar_pemesanan_obat()==true)){
                 Panelmenu.add(btnPemesanan);
                 jmlmenu++;
             }
@@ -14659,8 +14687,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
-            if(var.getpcare_kegiatan_kelompok()==true){
+            if((var.getpcare_kegiatan_kelompok()==true)||(var.getpcare_peserta_kegiatan_kelompok()==true)){
                 Panelmenu.add(btnPCareKegiatanKelompok);
+                jmlmenu++;
+            }
+            
+            if(var.getpcare_peserta_kegiatan_kelompok()==true){
+                Panelmenu.add(btnPCarePesertaKegiatanKelompok);
                 jmlmenu++;
             }
             
@@ -15493,7 +15526,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
-        if(var.getpermintaan_medis()==true){
+        if((var.getpermintaan_medis()==true)||(var.getmutasi_barang()==true)||(var.getpengeluaran_stok_apotek()==true)){
             Panelmenu.add(btnPermintaanMedis);   
             jmlmenu++;
         }
@@ -15503,7 +15536,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
         
-        if(var.getsurat_pemesanan_medis()==true){
+        if((var.getsurat_pemesanan_medis()==true)||(var.getpemesanan_obat()==true)){
             Panelmenu.add(btnSuratPemesananMedis);   
             jmlmenu++;
         }
@@ -15513,7 +15546,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
-        if(var.getpemesanan_obat()==true){
+        if((var.getpemesanan_obat()==true)||(var.getbayar_pemesanan_obat()==true)){
             Panelmenu.add(btnPemesanan);
             jmlmenu++;
         }
@@ -16629,8 +16662,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
         
-        if(var.getpcare_kegiatan_kelompok()==true){
+        if((var.getpcare_kegiatan_kelompok()==true)||(var.getpcare_peserta_kegiatan_kelompok()==true)){
             Panelmenu.add(btnPCareKegiatanKelompok);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_peserta_kegiatan_kelompok()==true){
+            Panelmenu.add(btnPCarePesertaKegiatanKelompok);
             jmlmenu++;
         }
 
@@ -17578,7 +17616,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
 
-        if(var.getpermintaan_medis()==true){
+        if((var.getpermintaan_medis()==true)||(var.getmutasi_barang()==true)||(var.getpengeluaran_stok_apotek()==true)){
             if(btnPermintaanMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanMedis);   
                 jmlmenu++;
@@ -17592,7 +17630,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
         
-        if(var.getsurat_pemesanan_medis()==true){
+        if((var.getsurat_pemesanan_medis()==true)||(var.getpemesanan_obat()==true)){
             if(btnSuratPemesananMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuratPemesananMedis);   
                 jmlmenu++;
@@ -17606,7 +17644,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
 
-        if(var.getpemesanan_obat()==true){
+        if((var.getpemesanan_obat()==true)||(var.getbayar_pemesanan_obat()==true)){
             if(btnPemesanan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPemesanan);
                 jmlmenu++;
@@ -19167,9 +19205,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
         
-        if(var.getpcare_kegiatan_kelompok()==true){
+        if((var.getpcare_kegiatan_kelompok()==true)||(var.getpcare_peserta_kegiatan_kelompok()==true)){
             if(btnPCareKegiatanKelompok.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareKegiatanKelompok);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_peserta_kegiatan_kelompok()==true){
+            if(btnPCarePesertaKegiatanKelompok.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCarePesertaKegiatanKelompok);
                 jmlmenu++;
             }                
         }
