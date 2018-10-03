@@ -82,7 +82,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(120);
             }else if(i==2){
-                column.setPreferredWidth(400);
+                column.setPreferredWidth(490);
             }else if(i==3){
                 column.setPreferredWidth(90);
             }
@@ -94,11 +94,11 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         if(koneksiDB.cariCepat().equals("aktif")){
             diagnosa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
-                public void insertUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
+                public void insertUpdate(DocumentEvent e) {tampil(Jenis.getSelectedItem().toString().substring(0,2),diagnosa.getText());}
                 @Override
-                public void removeUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
+                public void removeUpdate(DocumentEvent e) {tampil(Jenis.getSelectedItem().toString().substring(0,2),diagnosa.getText());}
                 @Override
-                public void changedUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
+                public void changedUpdate(DocumentEvent e) {tampil(Jenis.getSelectedItem().toString().substring(0,2),diagnosa.getText());}
             });
         } 
         
@@ -125,6 +125,8 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
         panelGlass6 = new widget.panelisi();
+        jLabel21 = new widget.Label();
+        Jenis = new widget.ComboBox();
         jLabel16 = new widget.Label();
         diagnosa = new widget.TextBox();
         BtnCari = new widget.Button();
@@ -156,13 +158,24 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
         panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        jLabel21.setText("TKP :");
+        jLabel21.setName("jLabel21"); // NOI18N
+        jLabel21.setPreferredSize(new java.awt.Dimension(35, 23));
+        panelGlass6.add(jLabel21);
+
+        Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10 RJTP", "20 RITP", "50 Promotif" }));
+        Jenis.setName("Jenis"); // NOI18N
+        Jenis.setOpaque(false);
+        Jenis.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass6.add(Jenis);
+
         jLabel16.setText("Kode/Nama Tindakan :");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setPreferredSize(new java.awt.Dimension(120, 23));
         panelGlass6.add(jLabel16);
 
         diagnosa.setName("diagnosa"); // NOI18N
-        diagnosa.setPreferredSize(new java.awt.Dimension(250, 23));
+        diagnosa.setPreferredSize(new java.awt.Dimension(190, 23));
         diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 diagnosaKeyPressed(evt);
@@ -273,10 +286,10 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
 
     private void diagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_diagnosaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil(diagnosa.getText());
+            tampil(Jenis.getSelectedItem().toString().substring(0,2),diagnosa.getText());
             BtnPrint.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            tampil(diagnosa.getText());
+            tampil(Jenis.getSelectedItem().toString().substring(0,2),diagnosa.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
@@ -286,7 +299,7 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        tampil(diagnosa.getText());
+        tampil(Jenis.getSelectedItem().toString().substring(0,2),diagnosa.getText());
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -318,18 +331,20 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.ComboBox Jenis;
     private widget.ScrollPane Scroll;
     private widget.TextBox diagnosa;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
+    private widget.Label jLabel21;
     private widget.panelisi panelGlass6;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(String diagnosa) {
+    public void tampil(String jenis,String key) {
         try {
-            URL = link+"/tindakan/0/10000";	
+            URL = link+"/tindakan/kdTkp/"+jenis+"/0/10000";	
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
@@ -350,8 +365,8 @@ public final class PCareCekReferensiTindakan extends javax.swing.JDialog {
                 if(response.path("list").isArray()){
                     i=1;
                     for(JsonNode list:response.path("list")){
-                        if(list.path("kdTindakan").asText().toLowerCase().contains(diagnosa.toLowerCase())||
-                                list.path("nmTindakan").asText().toLowerCase().contains(diagnosa.toLowerCase())){
+                        if(list.path("kdTindakan").asText().toLowerCase().contains(key.toLowerCase())||
+                                list.path("nmTindakan").asText().toLowerCase().contains(key.toLowerCase())){
                             tabMode.addRow(new Object[]{
                                 i+".",list.path("kdTindakan").asText(),list.path("nmTindakan").asText(),list.path("maxTarif").asDouble()
                             });

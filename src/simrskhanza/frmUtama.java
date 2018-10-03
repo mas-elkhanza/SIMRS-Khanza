@@ -79,7 +79,8 @@ import bridging.PCareClubProlanis;
 import bridging.PCareKegiatanKelompok;
 import bridging.PCareMapingObat;
 import bridging.PCareMapingPoli;
-import bridging.PCareMapingTindakan;
+import bridging.PCareMapingTindakanRalan;
+import bridging.PCareMapingTindakanRanap;
 import informasi.InformasiAnalisaKamin;
 import laporan.DlgDkkSurveilansRalan;
 import laporan.DlgFrekuensiPenyakitRanap;
@@ -961,6 +962,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareClubProlanis = new widget.ButtonBig();
         btnPCareMapingPoli = new widget.ButtonBig();
         btnPCareKegiatanKelompok = new widget.ButtonBig();
+        btnPCareMapingTindakanRanap = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -5937,7 +5939,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnPCareMapingObat);
 
         btnPCareMapingTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_address-book_111220.png"))); // NOI18N
-        btnPCareMapingTindakan.setText("Mapping Tindakan RS & PCare");
+        btnPCareMapingTindakan.setText("Tarif Ralan RS & PCare");
         btnPCareMapingTindakan.setToolTipText("");
         btnPCareMapingTindakan.setIconTextGap(0);
         btnPCareMapingTindakan.setName("btnPCareMapingTindakan"); // NOI18N
@@ -5988,6 +5990,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPCareKegiatanKelompok);
 
+        btnPCareMapingTindakanRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_book_285636.png"))); // NOI18N
+        btnPCareMapingTindakanRanap.setText("Tarif Ranap RS & PCare");
+        btnPCareMapingTindakanRanap.setIconTextGap(0);
+        btnPCareMapingTindakanRanap.setName("btnPCareMapingTindakanRanap"); // NOI18N
+        btnPCareMapingTindakanRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareMapingTindakanRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareMapingTindakanRanapActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareMapingTindakanRanap);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -5996,7 +6010,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/09/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03/10/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -12338,7 +12352,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         isTutup();
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        PCareMapingTindakan form=new PCareMapingTindakan(this,false);
+        PCareMapingTindakanRalan form=new PCareMapingTindakanRalan(this,false);
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -12377,6 +12391,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor()); 
     }//GEN-LAST:event_btnPCareKegiatanKelompokActionPerformed
+
+    private void btnPCareMapingTindakanRanapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareMapingTindakanRanapActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareMapingTindakanRanap form=new PCareMapingTindakanRanap(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    }//GEN-LAST:event_btnPCareMapingTindakanRanapActionPerformed
 
     /**
     * @param args the command line arguments
@@ -12623,6 +12648,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPCareMapingObat;
     private widget.ButtonBig btnPCareMapingPoli;
     private widget.ButtonBig btnPCareMapingTindakan;
+    private widget.ButtonBig btnPCareMapingTindakanRanap;
     private widget.ButtonBig btnPCareReferensiDokter;
     private widget.ButtonBig btnPCareReferensiKhusus;
     private widget.ButtonBig btnPCareReferensiObat;
@@ -14618,6 +14644,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_mapping_tindakan_ranap()==true){
+                Panelmenu.add(btnPCareMapingTindakanRanap);
+                jmlmenu++;
+            }
+            
             if(var.getpcare_mapping_poli()==true){
                 Panelmenu.add(btnPCareMapingPoli);
                 jmlmenu++;
@@ -16580,6 +16611,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_mapping_tindakan()==true){
             Panelmenu.add(btnPCareMapingTindakan);
+            jmlmenu++;
+        }
+        
+        if(var.getpcare_mapping_tindakan_ranap()==true){
+            Panelmenu.add(btnPCareMapingTindakanRanap);
             jmlmenu++;
         }
         
@@ -19106,6 +19142,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_mapping_tindakan()==true){
             if(btnPCareMapingTindakan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareMapingTindakan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpcare_mapping_tindakan_ranap()==true){
+            if(btnPCareMapingTindakanRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareMapingTindakanRanap);
                 jmlmenu++;
             }                
         }
