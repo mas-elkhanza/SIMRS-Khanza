@@ -850,20 +850,96 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(kdtindakan.getText().trim().equals("")||TTindakan.getText().trim().equals("")){
-            Valid.textKosong(kdtindakan,"Tindakan RS");
-        }else if(KdTindakanPCare.getText().trim().equals("")||NmTindakanPCare.getText().trim().equals("")){
-            Valid.textKosong(KdTindakanPCare,"Tindakan PCare");
+        if(kdClub.getText().trim().equals("")||NmClub.getText().trim().equals("")){
+            Valid.textKosong(kdClub,"Club Prolanis");
+        }else if(Materi.getText().trim().equals("")){
+            Valid.textKosong(Materi,"Materi");
+        }else if(Pembicara.getText().trim().equals("")){
+            Valid.textKosong(Pembicara,"Pembicara");
+        }else if(Lokasi.getText().trim().equals("")){
+            Valid.textKosong(Lokasi,"Lokasi");
+        }else if(Keterangan.getText().trim().equals("")){
+            Valid.textKosong(Keterangan,"Keterangan");
+        }else if(Biaya.getText().trim().equals("")){
+            Valid.textKosong(Biaya,"Biaya");
         }else{
-            if(tbJnsPerawatan.getSelectedRow()>-1){
-                if(Sequel.mengedittf("maping_tindakan_pcare","kd_jenis_prw=?","kd_jenis_prw=?,kd_tindakan_pcare=?,nm_tindakan_pcare=?",4,new String[]{
-                        kdtindakan.getText(),KdTindakanPCare.getText(),NmTindakanPCare.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
-                    })==true){
-                    emptTeks();
-                    tampil();
+            if(tbJnsPerawatan.getSelectedRow()!= -1){
+                try {
+                    URL = link+"/kelompok/kegiatan/"+tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString();
+                    HttpHeaders headers = new HttpHeaders();
+                    headers.setContentType(MediaType.APPLICATION_JSON);
+                    headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                    headers.add("X-Signature",api.getHmac());
+                    String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
+                    headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                    HttpEntity requestEntity = new HttpEntity(headers);
+                    ObjectMapper mapper = new ObjectMapper();
+                    JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.DELETE, requestEntity, String.class).getBody());
+                    JsonNode nameNode = root.path("metaData");
+                    System.out.println("code : "+nameNode.path("code").asText());
+                    System.out.println("message : "+nameNode.path("message").asText());
+                    if(nameNode.path("code").asText().equals("200")){
+                        Sequel.meghapus("pcare_kegiatan_kelompok","eduId",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
+                        emptTeks();
+                        tampil();
+                    }else{
+                        JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
+                    }
+                }catch (Exception ex) {
+                    System.out.println("Notifikasi Bridging : "+ex);
+                    if(ex.toString().contains("UnknownHostException")){
+                        JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                    }
+                }    
+            }
+            try {
+                URL = link+"/kelompok/kegiatan";
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
+                headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
+                headers.add("X-Signature",api.getHmac());
+                String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
+                headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
+                requestJson ="{" +
+                                "\"eduId\":null," +
+                                "\"clubId\":"+kdClub.getText()+"," +
+                                "\"tglPelayanan\":\""+Tanggal.getSelectedItem()+"\"," +
+                                "\"kdKegiatan\":\""+Kegiatan.getSelectedItem().toString().substring(0,2)+"\"," +
+                                "\"kdKelompok\":\""+Kelompok.getSelectedItem().toString().substring(0,2)+"\"," +
+                                "\"materi\":\""+Materi.getText()+"\"," +
+                                "\"pembicara\":\""+Pembicara.getText()+"\"," +
+                                "\"lokasi\":\""+Lokasi.getText()+"\"," +
+                                "\"keterangan\":\""+Keterangan.getText()+"\"," +
+                                "\"biaya\": "+Biaya.getText() +
+                              "}";
+                HttpEntity requestEntity = new HttpEntity(requestJson,headers);
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                JsonNode nameNode = root.path("metaData");
+                System.out.println("code : "+nameNode.path("code").asText());
+                System.out.println("message : "+nameNode.path("message").asText());
+                if(nameNode.path("code").asText().equals("201")){
+                    JsonNode response = root.path("response").path("message");
+                    System.out.println("Edu ID : "+response.asText());
+                    if(Sequel.menyimpantf("pcare_kegiatan_kelompok","?,?,?,?,?,?,?,?,?,?,?","Edu ID",11,new String[]{
+                        response.asText(),kdClub.getText(),NmClub.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Kegiatan.getSelectedItem().toString(),
+                        Kelompok.getSelectedItem().toString(),Materi.getText(),Pembicara.getText(),Lokasi.getText(),Keterangan.getText(),Biaya.getText()
+                    })==true){                                                 
+                        emptTeks();                         
+                        tampil();
+                    }                     
+                }else{
+                    JOptionPane.showMessageDialog(null,nameNode.path("message").asText());
                 }
-            }                
-        }*/
+            }catch (Exception ex) {
+                System.out.println("Notifikasi Bridging : "+ex);
+                if(ex.toString().contains("UnknownHostException")){
+                    JOptionPane.showMessageDialog(null,"Koneksi ke server BPJS terputus...!");
+                }
+            }              
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -875,6 +951,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        barang.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1019,7 +1096,12 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void btnPoliRS1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliRS1ActionPerformed
-        // TODO add your handling code here:
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareCariKegiatanKelompok form=new PCareCariKegiatanKelompok(null,false);
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(internalFrame1);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
     }//GEN-LAST:event_btnPoliRS1ActionPerformed
 
     private void btnPoliRS1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliRS1KeyPressed
