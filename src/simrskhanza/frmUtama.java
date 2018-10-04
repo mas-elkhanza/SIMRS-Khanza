@@ -81,6 +81,7 @@ import bridging.PCareMapingObat;
 import bridging.PCareMapingPoli;
 import bridging.PCareMapingTindakanRalan;
 import bridging.PCareMapingTindakanRanap;
+import bridging.PCarePesertaKegiatanKelompok;
 import informasi.InformasiAnalisaKamin;
 import laporan.DlgDkkSurveilansRalan;
 import laporan.DlgFrekuensiPenyakitRanap;
@@ -12418,7 +12419,14 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     }//GEN-LAST:event_btnPCareMapingTindakanRanapActionPerformed
 
     private void btnPCarePesertaKegiatanKelompokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCarePesertaKegiatanKelompokActionPerformed
-        // TODO add your handling code here:
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCarePesertaKegiatanKelompok form=new PCarePesertaKegiatanKelompok(this,false);
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
     }//GEN-LAST:event_btnPCarePesertaKegiatanKelompokActionPerformed
 
     /**

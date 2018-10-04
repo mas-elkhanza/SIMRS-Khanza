@@ -1,5 +1,4 @@
 package permintaan;
-import keuangan.Jurnal;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -27,7 +26,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int i;
