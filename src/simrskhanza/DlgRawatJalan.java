@@ -2946,7 +2946,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 TNoRw.getText(),TKdPrw.getText(),KdDok.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                                 cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                                 BagianRS.getText(),Bhp.getText(),JmDokter.getText(),KSO.getText(),Menejemen.getText(),
-                                TTnd.getText()
+                                TTnd.getText(),"Belum"
                             });
                             tampilDr();
                             BtnBatalActionPerformed(evt);
@@ -2959,7 +2959,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                     TNoRw.getText(),TKdPrw.getText(),KdDok.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                                     BagianRS.getText(),Bhp.getText(),JmDokter.getText(),KSO.getText(),Menejemen.getText(),
-                                    TTnd.getText()
+                                    TTnd.getText(),"Belum"
                                 });
                                 tampilDr();
                                 BtnBatalActionPerformed(evt);

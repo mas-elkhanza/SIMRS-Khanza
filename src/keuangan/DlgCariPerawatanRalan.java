@@ -786,7 +786,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                 try {                                    
                                     switch (pilihtable) {
                                         case "rawat_jl_dr":
-                                            pssimpandokter=koneksi.prepareStatement("insert into rawat_jl_dr values(?,?,?,?,?,?,?,?,?,?,?)");
+                                            pssimpandokter=koneksi.prepareStatement("insert into rawat_jl_dr values(?,?,?,?,?,?,?,?,?,?,?,'Belum')");
                                             try {
                                                 pssimpandokter.setString(1,TNoRw.getText());
                                                 pssimpandokter.setString(2,tbTindakan.getValueAt(i,1).toString());

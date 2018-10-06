@@ -115,7 +115,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Referensi Provider PCare","[K]Referensi Stts Pulang PCare","[K]Referensi Spesialis PCare","[K]Referensi Subspesialis PCare","[K]Referensi Sarana PCare",
                     "[K]Referensi Khusus PCare","[K]Referensi Obat PCare","[K]Referensi Tindakan PCare","[K]Faskes Subspesialis PCare","[K]Faskes Alih Rawat PCare",
                     "[K]Faskes Thalasemia & Hemofili PCare","[K]Mapping Obat RS & PCare","[K]Tarif Ralan RS & PCare","[K]Club Prolanis PCare","[K]Mapping Poli RS & PCare",
-                    "[K]Kegiatan Kelompok PCare","[K]Tarif Ranap RS & PCare","[K]Peserta Keg Kelompok PCare"
+                    "[K]Kegiatan Kelompok PCare","[K]Tarif Ranap RS & PCare","[K]Peserta Keg Kelompok PCare","[D]Sirkulasi Obat, Alkes & BHP 3"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -240,7 +240,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 397;i++) {
+        for (i = 0; i < 398;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -669,6 +669,8 @@ public class DlgUser extends javax.swing.JDialog {
             }else if(i==395){
                 column.setPreferredWidth(135);
             }else if(i==396){
+                column.setPreferredWidth(158);
+            }else if(i==397){
                 column.setPreferredWidth(158);
             }else{
                 column.setPreferredWidth(130);
@@ -1106,7 +1108,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1545,7 +1547,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "pcare_mapping_poli='"+tbUser.getValueAt(i,393).toString()+"',"+
                     "pcare_kegiatan_kelompok='"+tbUser.getValueAt(i,394).toString()+"',"+
                     "pcare_mapping_tindakan_ranap='"+tbUser.getValueAt(i,395).toString()+"',"+
-                    "pcare_peserta_kegiatan_kelompok='"+tbUser.getValueAt(i,396).toString()+"'");
+                    "pcare_peserta_kegiatan_kelompok='"+tbUser.getValueAt(i,396).toString()+"',"+
+                    "sirkulasi_obat3='"+tbUser.getValueAt(i,397).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1839,7 +1842,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "pcare_cek_subspesialis,pcare_cek_sarana,pcare_cek_khusus,pcare_cek_obat,pcare_cek_tindakan,"+
                         "pcare_cek_faskessubspesialis,pcare_cek_faskesalihrawat,pcare_cek_faskesthalasemia,pcare_mapping_obat,"+
                         "pcare_mapping_tindakan,pcare_club_prolanis,pcare_mapping_poli,pcare_kegiatan_kelompok,pcare_mapping_tindakan_ranap,"+
-                        "pcare_peserta_kegiatan_kelompok from user order by AES_DECRYPT(id_user,'nur')");
+                        "pcare_peserta_kegiatan_kelompok,sirkulasi_obat3 from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2247,7 +2250,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("pcare_mapping_poli"),
                                rs.getBoolean("pcare_kegiatan_kelompok"),
                                rs.getBoolean("pcare_mapping_tindakan_ranap"),
-                               rs.getBoolean("pcare_peserta_kegiatan_kelompok")
+                               rs.getBoolean("pcare_peserta_kegiatan_kelompok"),
+                               rs.getBoolean("sirkulasi_obat3")
                             });
                         }   
                     } catch (Exception e) {
@@ -2645,7 +2649,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("pcare_mapping_poli"),
                            rs.getBoolean("pcare_kegiatan_kelompok"),
                            rs.getBoolean("pcare_mapping_tindakan_ranap"),
-                           rs.getBoolean("pcare_peserta_kegiatan_kelompok")
+                           rs.getBoolean("pcare_peserta_kegiatan_kelompok"),
+                           rs.getBoolean("sirkulasi_obat3")
                         });
                     }                                             
                  }
