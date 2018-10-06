@@ -3,7 +3,6 @@
  session_start();
  require_once('conf/conf.php');
  require_once('updateaplicare.php');
- require_once('./updatesiranap.php');
  header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
  header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT"); 
  header("Cache-Control: no-store, no-cache, must-revalidate"); 
@@ -12,167 +11,136 @@
  date_default_timezone_set("Asia/Bangkok");
  $tanggal= mktime(date("m"),date("d"),date("Y"));
  $jam=date("H:i");
- $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
 ?>
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title><?php echo $setting["nama_instansi"];?></title>
-  <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>Layar Informasi</title>
 
-    <!-- Custom styles for this template -->
-    <link href="assets/css/portfolio-item.css" rel="stylesheet">
+    <!-- Meta START -->
+    <link rel="icon" href="asset/img/rs.png" type="image/x-icon">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link type="text/css" rel="stylesheet" href="asset/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="asset/css/jquery-ui.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="asset/css/marquee.css" />
+    <link rel="stylesheet" href="asset/css/example.css" />
+    <link rel="stylesheet" href="asset/css/ok.css" />
+    <style type="text/css">
+        .bg::before {
+            content: '';
+            background-image: url('./asset/img/background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            position: fixed;
+            z-index: -1;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0.10;
+            filter:alpha(opacity=10);
+        }
+    </style>
+    <!-- Global style END -->
 
-    <!-- Owl carousel -->
-    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/marquee.css" />
-    <link rel="stylesheet" href="assets/example.css" />
-
-    
 </head>
-<body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#"><img src="assets/rs.png" alt="Swimming fish" style="width: 30px; height: 35px;">&nbsp;<?php echo $setting["nama_instansi"];?></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="pull-right"> 
-          <a href="" class="navbar-brand">
-            <?php $date = Date("d-m-Y H:i:s"); echo $date; ?>
-          </a>
+<!-- Body START -->
+<body class="bg">
+
+<!-- Header START -->
+<header>
+
+<nav class="deep-orange accent-3">
+    <div class="nav-wrapper">
+        <ul class="center hide-on-med-and-down" id="nv">
+            <li>
+                <a href="./" class="ams hide-on-med-and-down"><i class="material-icons md-36">local_hospital</i> Informasi</a>
+            </li>
+            <li class="right" style="margin-right: 10px;">
+                <i class="material-icons">perm_contact_calendar</i>
+                <a href="" class="white-text">
+                    <?php
+                      //menentukan hari
+                      $a_hari = array(1=>"Senin","Selasa","Rabu","Kamis","Jumat", "Sabtu","Minggu");
+                      $hari = $a_hari[date("N")];
+
+                      //menentukan tanggal
+                      $tanggal = date ("j");
+
+                      //menentukan bulan
+                      $a_bulan = array(1=>"Januari","Februari","Maret", "April", "Mei", "Juni","Juli","Agustus","September","Oktober", "November","Desember");
+                      $bulan = $a_bulan[date("n")];
+
+                      //menentukan tahun
+                      $tahun = date("Y"); 
+
+                      //dan untuk menampilkan nya dengan format contoh Jumat, 22 Februari 2013
+                      echo $hari . ", " . $tanggal ." ". $bulan ." ". $tahun;
+
+                    ?>
+                </a>
+                <i class="material-icons md-12">query_builder</i>  
+                <a href="" class="white-text" id="jam"></a>
+          </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+
+</header>
+<!-- Header END -->
+
+<!-- Main START -->
+<main>
+
+    <!-- container START -->
+    <div class="container-fluid">
+        <!-- Row START -->
+        <div class="row">
+           <?php $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+            ?>
+            <div class="col s8" id="header-instansi">
+                <div class="card deep-orange accent-3 white-text">
+                    <div class="card-content">
+                        <div class="left">
+                            <img class="logo" src="data:image/jpeg;base64,<?php echo base64_encode($setting['logo']);?>"/>
+                        </div>
+                        <h5 class="ins"><?php echo $setting["nama_instansi"] ?></h5>
+                        <p class="almt"><?php echo $setting["alamat_instansi"] ?>, <?php echo $setting["kabupaten"] ?>, <?php echo $setting["propinsi"] ?>, <?php echo $setting["kontak"] ?>, <?php echo $setting["email"] ?>
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s4">
+                <video autoplay class="player">
+                    <source src="asset/rsia.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
-      </div>
-  </nav>
-
-  <div class="wrapper">
-    <div class="baner" style="padding-top: 6px;"> 
-        <marquee scrollamount="3" direction="left" behavior="alternate">
-          <img src="assets/images/galery.jpg" alt="Swimming fish">
-          <img src="assets/images/galery.jpg" alt="Swimming fish">
-        </marquee>
+        <!-- Row END -->
+    </div>
+    <!-- container END -->
+    <div class="container-fluid" id="data">
+        
     </div>
 
-    <section id="content">
-      <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-7">
-              <div class="text-center">
-                <h2><img src="assets/spesialis.png" alt="Swimming fish" style="width: 30px; height: 28px;">&nbsp;Jadwal Dokter Spesialis</h2>
-              </div>
-              <div class="table-responsive">          
-                <table class="table">
-                  <thead>
-                    <tr style="border-top: solid 3px; border-bottom: solid 3px;">
-                          <td><b>Nama Dokter</b></td>
-                          <td><b>Poliklinik</b></td>
-                          <td><b><center>Mulai</center></b></td>
-                          <td><b><center>Selesai</center></b></td>
-                     </tr>
-                  </thead>
-                  <tbody>
-                    <?php  
-                      $hari=getOne("select DAYNAME(current_date())");
-                        $namahari="";
-                        if($hari=="Sunday"){
-                        $namahari="AKHAD";
-                      }else if($hari=="Monday"){
-                        $namahari="SENIN";
-                      }else if($hari=="Tuesday"){
-                        $namahari="SELASA";
-                      }else if($hari=="Wednesday"){
-                        $namahari="RABU";
-                      }else if($hari=="Thursday"){
-                        $namahari="KAMIS";
-                      }else if($hari=="Friday"){
-                        $namahari="JUMAT";
-                      }else if($hari=="Saturday"){
-                        $namahari="SABTU";
-                      }
-                      $_sql="Select dokter.nm_dokter,poliklinik.nm_poli,jadwal.jam_mulai,jadwal.jam_selesai 
-                          from jadwal inner join dokter inner join poliklinik on dokter.kd_dokter=jadwal.kd_dokter 
-                          and jadwal.kd_poli=poliklinik.kd_poli where jadwal.hari_kerja='$namahari'" ;  
-                      $hasil=bukaquery($_sql);
+</main>
+<!-- Main END -->
 
-                      while ($data = mysqli_fetch_array ($hasil)){
-                        echo "<tr>
-                            <td><b>".$data['nm_dokter']."</b></td>
-                            <td><b>".$data['nm_poli']."</b></td>
-                            <td align='center'><font color='gren'><b>".$data['jam_mulai']."</b></font></td>
-                            <td align='center'><font color='red'><b>".$data['jam_selesai']."</b></font></td>
-                            </tr> ";
-                       }
-                    ?>
-                  </tbody>
-                </table>
-             </div>
-            </div>
-            <div class="col-lg-5">
-              <div class="text-center">
-                <h2><img src="assets/ranap.png" alt="Swimming fish" style="width: 30px; height: 28px;">&nbsp;Informasi Ruang Rawat Inap</h2>
-              </div>
-             <div class="table-responsive">          
-              <table class="table">
-                <thead>
-                  <tr style="border-top: solid 3px; border-bottom: solid 3px;">
-                        <td align='left'><b>Kelas Kamar</b></td>
-                        <td align='center'><b>Jumlah Bed</b></td>
-                        <td align='center'><b>Bed Terisi</b></td>
-                        <td align='center'><b>Bed Kosong</b></td>
-                   </tr>
-                </thead>
-                <?php  
-                  $_sql="Select kelas from kamar where statusdata='1' group by kelas" ;  
-                  $hasil=bukaquery($_sql);
+<!-- Include Footer START -->
 
-                  while ($data = mysqli_fetch_array ($hasil)){
-                    echo "<tr class='isi7' >
-                        <td align='left'><b>".$data['kelas']."</b></td>
-                        <td align='center'>
-                             <font color='gren'>
-                              <b>";
-                               $data2=mysqli_fetch_array(bukaquery("select count(kelas) from kamar where statusdata='1' and kelas='".$data['kelas']."'"));
-                               echo $data2[0];
-                        echo "</b>
-                              </font>
-                        </td>
-                        <td align='center'>
-                             <font color='red'>
-                              <b>";
-                             $data2=mysqli_fetch_array(bukaquery("select count(kelas) from kamar where statusdata='1' and kelas='".$data['kelas']."' and status='ISI'"));
-                             echo $data2[0];
-                        echo "</b>
-                              </font>
-                        </td>
-                        <td align='center'>
-                              <font color='#FF8C00'>
-                              <b>";
-                             $data2=mysqli_fetch_array(bukaquery("select count(kelas) from kamar where statusdata='1' and kelas='".$data['kelas']."' and status='KOSONG'"));
-                             echo $data2[0];
-                        echo "</b>
-                             </font>
-                        </td>
-                      </tr> ";
-                  }
-                  updateAplicare();
-                  //updateSiranap();
-                ?>
-              </table>
-             </div>
-            </div>
-
-          </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="container-fluid">
-          <div class="simple-marquee-container">
+<!-- Footer START -->
+<footer class="page-footer">
+    <div class="footer-copyright deep-orange accent-3 white-text">
+        <div class="container simple-marquee-container" id="footer">
             <div class="marquee-sibling">
               Tarif Kamar Umum
             </div>
@@ -185,26 +153,46 @@
                    <span class="marquee-content-items">| <?= $data['kelas'];?> Rp <?= number_format($data['trf_kamar'], 0, ".",",");?></span>
                   <?php } ?>
             </marquee>
-          </div>
-      </div>
-    </footer>
+        </div>
+    </div>
+</footer>
+<!-- Footer END -->
 
-    
+<!-- Javascript START -->
+<script type="text/javascript" src="asset/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="asset/js/materialize.min.js"></script>
+<script type="text/javascript" src="asset/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
+<script data-pace-options='{ "ajax": false }' src='asset/js/pace.min.js'></script>
+<script type="text/javascript" src="asset/js/marquee.js"></script>
+<script type="text/javascript">
+   window.onload = function() { jam(); }
 
+   function jam() {
+    var e = document.getElementById('jam'),
+    d = new Date(), h, m, s;
+    h = d.getHours();
+    m = set(d.getMinutes());
+    s = set(d.getSeconds());
 
+    e.innerHTML = h +':'+ m +':'+ s;
 
-  
-<script type="text/javascript" src="conf/validator.js"></script>
-<meta http-equiv="refresh" content="32"/>
-<script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
-<script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
-<!-- Footer -->
+    setTimeout('jam()', 1000);
+   }
 
-<!-- Bootstrap core JavaScript -->
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/jquery/jquery.min.js"></script>
+   function set(e) {
+    e = e < 10 ? '0'+ e : e;
+    return e;
+  }
+</script>
 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script> 
+<script type="text/javascript"> 
+    var auto_refresh = setInterval( function() { 
+        $('#data').load('data_jadwal_kamar.php').fadeIn("slow"); }, 5000); 
+</script>
 
- </body>
+</body>
+<!-- Body END -->
 
 </html>

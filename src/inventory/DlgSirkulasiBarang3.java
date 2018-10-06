@@ -59,9 +59,11 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode Barang","Nama Barang","Satuan","Stok","Pengadaan","Penerimaan","Penjualan",
-                      "Ke Pasien","Piutang Jual","Retur Beli","Retur Jual","Retur Piutang","Pengambilan UTD",
-                      "Stok Keluar Medis","Resep Pulang"};
+        Object[] row={"Kode Barang","Nama Barang","Satuan","Stok","Stok(Rp)","Pengadaan","Pengadaan(Rp)",
+                      "Penerimaan","Penerimaan(Rp)","Penjualan","Penjualan(Rp)","Ke Pasien","Ke Pasien(Rp)",
+                      "Piutang Jual","Piutang Jual(Rp)","Retur Beli","Retur Beli(Rp)","Retur Jual","Retur Jual(Rp)",
+                      "Retur Piutang","Retur Piutang(Rp)","Pengambilan UTD","Pengambilan UTD(Rp)",
+                      "Stok Keluar Medis","Stok Keluar Medis(Rp)","Resep Pulang","Resep Pulang(Rp)"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -70,16 +72,62 @@ public class DlgSirkulasiBarang3 extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 27; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
             }else if(i==1){
                 column.setPreferredWidth(250);
             }else if(i==2){
+                column.setPreferredWidth(50);
+            }else if(i==3){
+                column.setPreferredWidth(50);
+            }else if(i==4){
                 column.setPreferredWidth(100);
-            }else{
+            }else if(i==5){
+                column.setPreferredWidth(70);
+            }else if(i==6){
                 column.setPreferredWidth(100);
+            }else if(i==7){
+                column.setPreferredWidth(70);
+            }else if(i==8){
+                column.setPreferredWidth(100);
+            }else if(i==9){
+                column.setPreferredWidth(70);
+            }else if(i==10){
+                column.setPreferredWidth(100);
+            }else if(i==11){
+                column.setPreferredWidth(70);
+            }else if(i==12){
+                column.setPreferredWidth(100);
+            }else if(i==13){
+                column.setPreferredWidth(70);
+            }else if(i==14){
+                column.setPreferredWidth(100);
+            }else if(i==15){
+                column.setPreferredWidth(70);
+            }else if(i==16){
+                column.setPreferredWidth(100);
+            }else if(i==17){
+                column.setPreferredWidth(70);
+            }else if(i==18){
+                column.setPreferredWidth(100);
+            }else if(i==19){
+                column.setPreferredWidth(70);
+            }else if(i==20){
+                column.setPreferredWidth(100);
+            }else if(i==21){
+                column.setPreferredWidth(90);
+            }else if(i==22){
+                column.setPreferredWidth(120);
+            }else if(i==23){
+                column.setPreferredWidth(90);
+            }else if(i==24){
+                column.setPreferredWidth(120);
+            }else if(i==25){
+                column.setPreferredWidth(80);
+            }else if(i==26){
+                column.setPreferredWidth(110);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());         
@@ -598,7 +646,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,11).toString()+"','"+
                                 tabMode.getValueAt(i,12).toString()+"','"+
                                 tabMode.getValueAt(i,13).toString()+"','"+
-                                tabMode.getValueAt(i,14).toString()+"','','','','','','','','','','','','','','','','','','','','','',''","Sirkulasi Barang Keluar Masuk"); 
+                                tabMode.getValueAt(i,14).toString()+"','"+
+                                tabMode.getValueAt(i,15).toString()+"','"+
+                                tabMode.getValueAt(i,16).toString()+"','"+
+                                tabMode.getValueAt(i,17).toString()+"','"+
+                                tabMode.getValueAt(i,18).toString()+"','"+
+                                tabMode.getValueAt(i,19).toString()+"','"+
+                                tabMode.getValueAt(i,20).toString()+"','"+
+                                tabMode.getValueAt(i,21).toString()+"','"+
+                                tabMode.getValueAt(i,22).toString()+"','"+
+                                tabMode.getValueAt(i,23).toString()+"','"+
+                                tabMode.getValueAt(i,24).toString()+"','"+
+                                tabMode.getValueAt(i,25).toString()+"','"+
+                                tabMode.getValueAt(i,26).toString()+"','','','','','','','','','',''","Sirkulasi Barang Keluar Masuk"); 
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>(); 
@@ -611,12 +671,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if(lokasi.equals("")){
-                Valid.MyReport("rptSirkulasi.jrxml","report","::[ Sirkulasi Barang ]::",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp15 from temporary order by no asc",param);
+                Valid.MyReport("rptSirkulasi5.jrxml","report","::[ Sirkulasi Barang ]::",
+                    "select * from temporary order by no asc",param);
             }else if(!lokasi.equals("")){
                 param.put("bangsal",lokasi);  
-                Valid.MyReport("rptSirkulasi3.jrxml","report","::[ Sirkulasi Barang ]::",
-                    "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp15 from temporary order by no asc",param);
+                Valid.MyReport("rptSirkulasi6.jrxml","report","::[ Sirkulasi Barang ]::",
+                    "select * from temporary order by no asc",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
         }        
@@ -762,7 +822,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_ppGrafikPiutangDikitActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        prosesCari();
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void ppGrafikResepPaliingBanyakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppGrafikResepPaliingBanyakActionPerformed
@@ -1170,19 +1230,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     if((aset>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||
                             (jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(jumlahutd>0)||(jumlahkeluar>0)||(jumlahrespulang>0)){
                         tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),
-                                   rs.getString(3),Valid.SetAngka(stok)+" ("+Valid.SetAngka(aset)+")",
-                                   Valid.SetAngka(jumlahbeli)+" ("+Valid.SetAngka(totalbeli)+")",
-                                   Valid.SetAngka(jumlahpesan)+" ("+Valid.SetAngka(totalpesan)+")",
-                                   Valid.SetAngka(jumlahjual)+" ("+Valid.SetAngka(totaljual)+")",
-                                   Valid.SetAngka(jumlahpasin)+" ("+Valid.SetAngka(totalpasien)+")",
-                                   Valid.SetAngka(jumlahpiutang)+" ("+Valid.SetAngka(totalpiutang)+")",
-                                   Valid.SetAngka(jumlahretbeli)+" ("+Valid.SetAngka(totalretbeli)+")",
-                                   Valid.SetAngka(jumlahretjual)+" ("+Valid.SetAngka(totalretjual)+")",
-                                   Valid.SetAngka(jumlahretpiut)+" ("+Valid.SetAngka(totalretpiut)+")",
-                                   Valid.SetAngka(jumlahutd)+" ("+Valid.SetAngka(totalutd)+")",
-                                   Valid.SetAngka(jumlahkeluar)+" ("+Valid.SetAngka(totalkeluar)+")",
-                                   Valid.SetAngka(jumlahrespulang)+" ("+Valid.SetAngka(totalrespulang)+")"
-                                  }); 
+                           rs.getString(3),Valid.SetAngka(stok),Valid.SetAngka(aset),
+                           Valid.SetAngka(jumlahbeli),Valid.SetAngka(totalbeli),
+                           Valid.SetAngka(jumlahpesan),Valid.SetAngka(totalpesan),
+                           Valid.SetAngka(jumlahjual),Valid.SetAngka(totaljual),
+                           Valid.SetAngka(jumlahpasin),Valid.SetAngka(totalpasien),
+                           Valid.SetAngka(jumlahpiutang),Valid.SetAngka(totalpiutang),
+                           Valid.SetAngka(jumlahretbeli),Valid.SetAngka(totalretbeli),
+                           Valid.SetAngka(jumlahretjual),Valid.SetAngka(totalretjual),
+                           Valid.SetAngka(jumlahretpiut),Valid.SetAngka(totalretpiut),
+                           Valid.SetAngka(jumlahutd),Valid.SetAngka(totalutd),
+                           Valid.SetAngka(jumlahkeluar),Valid.SetAngka(totalkeluar),
+                           Valid.SetAngka(jumlahrespulang),Valid.SetAngka(totalrespulang)
+                        }); 
                         ttltotalbeli=ttltotalbeli+totalbeli;
                         ttltotalpesan=ttltotalpesan+totalpesan;
                         ttltotaljual=ttltotaljual+totaljual;
@@ -1196,18 +1256,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ttltotalkeluar=ttltotalkeluar+totalkeluar;
                         ttltotalrespulang=ttltotalrespulang+totalrespulang;
                     }
-
-                        
                 }   
-                tabMode.addRow(new Object[]{"","","","","","","","","","","","","","",""}); 
-                tabMode.addRow(new Object[]{"<>>","Total :","",Valid.SetAngka(ttlaset),
-                                   Valid.SetAngka(ttltotalbeli),Valid.SetAngka(ttltotalpesan),
-                                   Valid.SetAngka(ttltotaljual),Valid.SetAngka(ttltotalpasien),
-                                   Valid.SetAngka(ttltotalpiutang),Valid.SetAngka(ttltotalretbeli),
-                                   Valid.SetAngka(ttltotalretjual),Valid.SetAngka(ttltotalretpiut),
-                                   Valid.SetAngka(ttltotalutd),Valid.SetAngka(ttltotalkeluar),
-                                   Valid.SetAngka(ttltotalrespulang)
-                                  }); 
+                tabMode.addRow(new Object[]{"","","","","","","","","","","","","","","","","","","","","","","","","","",""}); 
+                tabMode.addRow(new Object[]{"<>>","Total :","","",Valid.SetAngka(ttlaset),"",
+                   Valid.SetAngka(ttltotalbeli),"",Valid.SetAngka(ttltotalpesan),"",
+                   Valid.SetAngka(ttltotaljual),"",Valid.SetAngka(ttltotalpasien),"",
+                   Valid.SetAngka(ttltotalpiutang),"",Valid.SetAngka(ttltotalretbeli),"",
+                   Valid.SetAngka(ttltotalretjual),"",Valid.SetAngka(ttltotalretpiut),"",
+                   Valid.SetAngka(ttltotalutd),"",Valid.SetAngka(ttltotalkeluar),"",
+                   Valid.SetAngka(ttltotalrespulang)
+                }); 
             } catch (Exception e) {
                 System.out.println("Notifikasi Data Barang : "+e);
             } finally{
@@ -1568,19 +1626,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     if((aset>0)||(jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||
                             (jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(jumlahutd>0)||(jumlahkeluar>0)||(jumlahrespulang>0)){
                         tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),
-                                   rs.getString(3),Valid.SetAngka(stok)+" ("+Valid.SetAngka(aset)+")",
-                                   Valid.SetAngka(jumlahbeli)+" ("+Valid.SetAngka(totalbeli)+")",
-                                   Valid.SetAngka(jumlahpesan)+" ("+Valid.SetAngka(totalpesan)+")",
-                                   Valid.SetAngka(jumlahjual)+" ("+Valid.SetAngka(totaljual)+")",
-                                   Valid.SetAngka(jumlahpasin)+" ("+Valid.SetAngka(totalpasien)+")",
-                                   Valid.SetAngka(jumlahpiutang)+" ("+Valid.SetAngka(totalpiutang)+")",
-                                   Valid.SetAngka(jumlahretbeli)+" ("+Valid.SetAngka(totalretbeli)+")",
-                                   Valid.SetAngka(jumlahretjual)+" ("+Valid.SetAngka(totalretjual)+")",
-                                   Valid.SetAngka(jumlahretpiut)+" ("+Valid.SetAngka(totalretpiut)+")",
-                                   Valid.SetAngka(jumlahutd)+" ("+Valid.SetAngka(totalutd)+")",
-                                   Valid.SetAngka(jumlahkeluar)+" ("+Valid.SetAngka(totalkeluar)+")",
-                                   Valid.SetAngka(jumlahrespulang)+" ("+Valid.SetAngka(totalrespulang)+")"
-                                  }); 
+                           rs.getString(3),Valid.SetAngka(stok),Valid.SetAngka(aset),
+                           Valid.SetAngka(jumlahbeli),Valid.SetAngka(totalbeli),
+                           Valid.SetAngka(jumlahpesan),Valid.SetAngka(totalpesan),
+                           Valid.SetAngka(jumlahjual),Valid.SetAngka(totaljual),
+                           Valid.SetAngka(jumlahpasin),Valid.SetAngka(totalpasien),
+                           Valid.SetAngka(jumlahpiutang),Valid.SetAngka(totalpiutang),
+                           Valid.SetAngka(jumlahretbeli),Valid.SetAngka(totalretbeli),
+                           Valid.SetAngka(jumlahretjual),Valid.SetAngka(totalretjual),
+                           Valid.SetAngka(jumlahretpiut),Valid.SetAngka(totalretpiut),
+                           Valid.SetAngka(jumlahutd),Valid.SetAngka(totalutd),
+                           Valid.SetAngka(jumlahkeluar),Valid.SetAngka(totalkeluar),
+                           Valid.SetAngka(jumlahrespulang),Valid.SetAngka(totalrespulang)
+                        }); 
                         ttltotalbeli=ttltotalbeli+totalbeli;
                         ttltotalpesan=ttltotalpesan+totalpesan;
                         ttltotaljual=ttltotaljual+totaljual;
@@ -1597,14 +1655,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
                         
                 }   
-                tabMode.addRow(new Object[]{"","","","","","","","","","","","","","",""}); 
-                tabMode.addRow(new Object[]{"<>>","Total :","",Valid.SetAngka(ttlaset),
-                                   Valid.SetAngka(ttltotalbeli),Valid.SetAngka(ttltotalpesan),
-                                   Valid.SetAngka(ttltotaljual),Valid.SetAngka(ttltotalpasien),
-                                   Valid.SetAngka(ttltotalpiutang),Valid.SetAngka(ttltotalretbeli),
-                                   Valid.SetAngka(ttltotalretjual),Valid.SetAngka(ttltotalretpiut),
-                                   Valid.SetAngka(ttltotalutd),Valid.SetAngka(ttltotalkeluar),Valid.SetAngka(ttltotalrespulang)
-                                  }); 
+                tabMode.addRow(new Object[]{"","","","","","","","","","","","","","","","","","","","","","","","","","",""}); 
+                tabMode.addRow(new Object[]{"<>>","Total :","","",Valid.SetAngka(ttlaset),"",
+                   Valid.SetAngka(ttltotalbeli),"",Valid.SetAngka(ttltotalpesan),"",
+                   Valid.SetAngka(ttltotaljual),"",Valid.SetAngka(ttltotalpasien),"",
+                   Valid.SetAngka(ttltotalpiutang),"",Valid.SetAngka(ttltotalretbeli),"",
+                   Valid.SetAngka(ttltotalretjual),"",Valid.SetAngka(ttltotalretpiut),"",
+                   Valid.SetAngka(ttltotalutd),"",Valid.SetAngka(ttltotalkeluar),"",
+                   Valid.SetAngka(ttltotalrespulang)
+                }); 
             } catch (Exception e) {
                 System.out.println("Notifikasi Data Barang : "+e);
             } finally{
