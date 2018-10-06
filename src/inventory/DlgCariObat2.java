@@ -200,7 +200,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==9)||(colIndex==11)||(colIndex==12)||(colIndex==13)) {
+                if ((colIndex==9)||(colIndex==10)||(colIndex==11)||(colIndex==12)||(colIndex==13)) {
                     a=true;
                 }
                 return a;
