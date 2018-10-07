@@ -744,10 +744,10 @@ private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "<td valign='top' bgcolor='#fafff5' align='center' width='6%'>Pelayanan</td>"+
                     "<td valign='top' bgcolor='#fafff5' align='center' width='10%'>Kegiatan</td>"+
                     "<td valign='top' bgcolor='#fafff5' align='center' width='10%'>Kelompok</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='17%'>Materi</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='15%'>Pembicara</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='15%'>Lokasi</td>"+
-                    "<td valign='top' bgcolor='#fafff5' align='center' width='14%'>Keterangan</td>"+
+                    "<td valign='top' bgcolor='#fafff5' align='center' width='21%'>Materi</td>"+
+                    "<td valign='top' bgcolor='#fafff5' align='center' width='14%'>Pembicara</td>"+
+                    "<td valign='top' bgcolor='#fafff5' align='center' width='14%'>Lokasi</td>"+
+                    "<td valign='top' bgcolor='#fafff5' align='center' width='12%'>Keterangan</td>"+
                     "<td valign='top' bgcolor='#fafff5' align='center' width='6%'>Biaya</td>"+
                 "</tr>"); 
             ps=koneksi.prepareStatement(

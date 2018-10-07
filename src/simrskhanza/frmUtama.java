@@ -76,7 +76,9 @@ import bridging.PCareCekReferensiSubspesialis;
 import bridging.PCareCekReferensiTindakan;
 import bridging.PCareCekRujukan;
 import bridging.PCareClubProlanis;
+import bridging.PCareDataPendaftaran;
 import bridging.PCareKegiatanKelompok;
+import bridging.PCareMapingDokter;
 import bridging.PCareMapingObat;
 import bridging.PCareMapingPoli;
 import bridging.PCareMapingTindakanRalan;
@@ -967,6 +969,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnPCareMapingTindakanRanap = new widget.ButtonBig();
         btnPCarePesertaKegiatanKelompok = new widget.ButtonBig();
         btnSirkulasi3 = new widget.ButtonBig();
+        btnPCarePendaftaran = new widget.ButtonBig();
+        btnPCareMapingDokter = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6031,6 +6035,30 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSirkulasi3);
 
+        btnPCarePendaftaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_todo_list_add_17451.png"))); // NOI18N
+        btnPCarePendaftaran.setText("Data Pendafataran PCare");
+        btnPCarePendaftaran.setIconTextGap(0);
+        btnPCarePendaftaran.setName("btnPCarePendaftaran"); // NOI18N
+        btnPCarePendaftaran.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCarePendaftaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCarePendaftaranActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCarePendaftaran);
+
+        btnPCareMapingDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_surgeon_45573.png"))); // NOI18N
+        btnPCareMapingDokter.setText("Mapping Dokter RS & PCare");
+        btnPCareMapingDokter.setIconTextGap(0);
+        btnPCareMapingDokter.setName("btnPCareMapingDokter"); // NOI18N
+        btnPCareMapingDokter.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPCareMapingDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPCareMapingDokterActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPCareMapingDokter);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6039,7 +6067,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04/10/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07/10/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -9860,6 +9888,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         BPJSDataSEP form=new BPJSDataSEP(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -12377,6 +12406,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         PCareMapingObat form=new PCareMapingObat(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -12388,6 +12418,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         PCareMapingTindakanRalan form=new PCareMapingTindakanRalan(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -12410,6 +12441,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         PCareMapingPoli form=new PCareMapingPoli(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -12421,6 +12453,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         PCareKegiatanKelompok form=new PCareKegiatanKelompok(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -12432,6 +12465,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         PCareMapingTindakanRanap form=new PCareMapingTindakanRanap(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -12443,6 +12477,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         PCarePesertaKegiatanKelompok form=new PCarePesertaKegiatanKelompok(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -12460,6 +12495,30 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSirkulasi3ActionPerformed
+
+    private void btnPCarePendaftaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCarePendaftaranActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareDataPendaftaran form=new PCareDataPendaftaran(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPCarePendaftaranActionPerformed
+
+    private void btnPCareMapingDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPCareMapingDokterActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        PCareMapingDokter form=new PCareMapingDokter(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor()); 
+    }//GEN-LAST:event_btnPCareMapingDokterActionPerformed
 
     /**
     * @param args the command line arguments
@@ -12703,10 +12762,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPCareFaskesSubspesialis;
     private widget.ButtonBig btnPCareFaskesThalasemia;
     private widget.ButtonBig btnPCareKegiatanKelompok;
+    private widget.ButtonBig btnPCareMapingDokter;
     private widget.ButtonBig btnPCareMapingObat;
     private widget.ButtonBig btnPCareMapingPoli;
     private widget.ButtonBig btnPCareMapingTindakan;
     private widget.ButtonBig btnPCareMapingTindakanRanap;
+    private widget.ButtonBig btnPCarePendaftaran;
     private widget.ButtonBig btnPCarePesertaKegiatanKelompok;
     private widget.ButtonBig btnPCareReferensiDokter;
     private widget.ButtonBig btnPCareReferensiKhusus;
@@ -14723,6 +14784,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
+            if(var.getpcare_mapping_dokter()==true){
+                Panelmenu.add(btnPCareMapingDokter);
+                jmlmenu++;
+            }
+            
             if(var.getpcare_mapping_poli()==true){
                 Panelmenu.add(btnPCareMapingPoli);
                 jmlmenu++;
@@ -14740,6 +14806,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getpcare_peserta_kegiatan_kelompok()==true){
                 Panelmenu.add(btnPCarePesertaKegiatanKelompok);
+                jmlmenu++;
+            }
+            
+            if(var.getbridging_pcare_daftar()==true){
+                Panelmenu.add(btnPCarePendaftaran);
                 jmlmenu++;
             }
             
@@ -16703,6 +16774,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
         
+        if(var.getpcare_mapping_dokter()==true){
+            Panelmenu.add(btnPCareMapingDokter);
+            jmlmenu++;
+        }
+        
         if(var.getpcare_mapping_poli()==true){
             Panelmenu.add(btnPCareMapingPoli);
             jmlmenu++;
@@ -16720,6 +16796,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpcare_peserta_kegiatan_kelompok()==true){
             Panelmenu.add(btnPCarePesertaKegiatanKelompok);
+            jmlmenu++;
+        }
+        
+        if(var.getbridging_pcare_daftar()==true){
+            Panelmenu.add(btnPCarePendaftaran);
             jmlmenu++;
         }
 
@@ -19249,6 +19330,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
         
+        if(var.getpcare_mapping_dokter()==true){
+            if(btnPCareMapingDokter.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCareMapingDokter);
+                jmlmenu++;
+            }                
+        }
+        
         if(var.getpcare_mapping_poli()==true){
             if(btnPCareMapingPoli.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCareMapingPoli);
@@ -19273,6 +19361,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpcare_peserta_kegiatan_kelompok()==true){
             if(btnPCarePesertaKegiatanKelompok.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPCarePesertaKegiatanKelompok);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getbridging_pcare_daftar()==true){
+            if(btnPCarePendaftaran.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPCarePendaftaran);
                 jmlmenu++;
             }                
         }
