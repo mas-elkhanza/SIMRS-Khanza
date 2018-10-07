@@ -6190,4 +6190,10 @@ public final class BPJSCekNoRujukanPCare extends javax.swing.JDialog {
         empt=true;
     }
     
+    public void isCek(){
+        BtnSimpan.setEnabled(var.getbpjs_sep());
+        ppPengajuan.setEnabled(var.getbpjs_sep());
+        ppPengajuan1.setEnabled(var.getbpjs_sep());
+    }
+    
 }

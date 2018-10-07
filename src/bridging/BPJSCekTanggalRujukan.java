@@ -579,6 +579,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),41).toString().equals("")){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     BPJSCekNoRujukanPCare form=new BPJSCekNoRujukanPCare(null,false);
+                    form.isCek();
                     form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                     form.setLocationRelativeTo(internalFrame1);
                     form.SetRujukan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),4).toString());
@@ -597,6 +598,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(tbBangsal2.getValueAt(tbBangsal2.getSelectedRow(),41).toString().equals("")){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     BPJSCekNoRujukanRS form=new BPJSCekNoRujukanRS(null,false);
+                    form.isCek();
                     form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                     form.setLocationRelativeTo(internalFrame1);
                     form.SetRujukan(tbBangsal2.getValueAt(tbBangsal2.getSelectedRow(),4).toString());

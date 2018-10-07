@@ -6286,4 +6286,10 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
     private void UpdateUmur(){
         Sequel.mengedit("pasien","no_rkm_medis=?","umur=CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '),CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')),CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))",1,new String[]{TNo.getText()});
     }
+    
+    public void isCek(){
+        BtnSimpan.setEnabled(var.getbpjs_sep());
+        ppPengajuan.setEnabled(var.getbpjs_sep());
+        ppPengajuan1.setEnabled(var.getbpjs_sep());
+    }
 }

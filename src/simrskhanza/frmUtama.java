@@ -9495,6 +9495,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         BPJSCekNIK2 form=new BPJSCekNIK2(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -9506,6 +9507,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         BPJSCekKartu form=new BPJSCekKartu(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -9603,6 +9605,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         BPJSCekNoRujukanPCare form=new BPJSCekNoRujukanPCare(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -11301,6 +11304,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         BPJSCekNoRujukanRS form=new BPJSCekNoRujukanRS(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -11312,6 +11316,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         BPJSCekRujukanKartuPCare form=new BPJSCekRujukanKartuPCare(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -11323,6 +11328,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         BPJSCekRujukanKartuRS form=new BPJSCekRujukanKartuRS(this,false);
+        form.isCek();
         form.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
