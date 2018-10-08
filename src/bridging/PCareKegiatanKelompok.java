@@ -61,6 +61,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     private String URL="",link="",requestJson="";
     private PcareApi api=new PcareApi();
     private DlgPasien pasien=new DlgPasien(null,false);
+    private double total=0;
     
 
     /** Creates new form DlgJnsPerawatanRalan
@@ -1547,12 +1548,17 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
                 ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(24,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
+                total=0;
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("eduId"),rs.getString("clubId"),rs.getString("namaClub"),
                         rs.getString("tglPelayanan"),rs.getString("nmKegiatan"),rs.getString("nmKelompok"),
                         rs.getString("materi"),rs.getString("pembicara"),rs.getString("lokasi"),
                         rs.getString("keterangan"),rs.getDouble("biaya")
+                    });
+                    total=total+rs.getDouble("biaya");
+                    tabMode.addRow(new Object[]{
+                        "","","Total",":","","","","","","",total
                     });
                 }
             } catch (Exception e) {
