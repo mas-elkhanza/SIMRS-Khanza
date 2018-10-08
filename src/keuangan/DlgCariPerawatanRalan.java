@@ -835,7 +835,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                             if(Nip2.getText().trim().equals("")||NmPetugas2.getText().trim().equals("")){
                                                 Valid.textKosong(TCariTindakan,"Data Petugas");
                                             }else{
-                                                pssimpandokterperawat=koneksi.prepareStatement("insert into rawat_jl_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                                pssimpandokterperawat=koneksi.prepareStatement("insert into rawat_jl_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum')");
                                                 try {
                                                     pssimpandokterperawat.setString(1,TNoRw.getText());
                                                     pssimpandokterperawat.setString(2,tbTindakan.getValueAt(i,1).toString());
