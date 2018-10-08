@@ -3866,6 +3866,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
             BtnCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            tbKamIn.requestFocus();
         }
 }//GEN-LAST:event_TCariKeyPressed
 
@@ -4358,6 +4360,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         MnDPJPActionPerformed(null);
                     }
                 }
+            }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                TCari.setText("");
+                TCari.requestFocus();
             }
         }
 }//GEN-LAST:event_tbKamInKeyPressed

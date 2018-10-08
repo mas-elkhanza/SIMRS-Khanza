@@ -809,7 +809,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                             }
                                             break;
                                         case "rawat_jl_pr":
-                                            pssimpanperawat=koneksi.prepareStatement("insert into rawat_jl_pr values(?,?,?,?,?,?,?,?,?,?,?)");
+                                            pssimpanperawat=koneksi.prepareStatement("insert into rawat_jl_pr values(?,?,?,?,?,?,?,?,?,?,?,'Belum')");
                                             try {
                                                 pssimpanperawat.setString(1,TNoRw.getText());
                                                 pssimpanperawat.setString(2,tbTindakan.getValueAt(i,1).toString());

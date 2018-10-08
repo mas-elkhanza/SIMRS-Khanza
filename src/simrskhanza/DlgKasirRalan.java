@@ -3936,6 +3936,12 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             BtnCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            if(TabRawat.getSelectedIndex()==0){
+                tbKasirRalan.requestFocus();
+            }else if(TabRawat.getSelectedIndex()==1){
+                tbKasirRalan2.requestFocus();
+            }
         }
 }//GEN-LAST:event_TCariKeyPressed
 
@@ -4033,6 +4039,9 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         tampilkasir();
                     }                    
                 }
+            }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                TCari.setText("");
+                TCari.requestFocus();
             }
         }
 }//GEN-LAST:event_tbKasirRalanKeyPressed
@@ -5360,6 +5369,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         MnKamarInap1ActionPerformed(null);
                     }                    
                 }
+            }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                TCari.setText("");
+                TCari.requestFocus();
             }
         }
     }//GEN-LAST:event_tbKasirRalan2KeyPressed

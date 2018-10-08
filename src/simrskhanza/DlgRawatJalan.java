@@ -2959,7 +2959,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         Valid.textKosong(TKdPrw,"perawatan");
                     }else{
                         if(var.getkode().equals("Admin Utama")){
-                            Sequel.menyimpan("rawat_jl_dr","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
+                            Sequel.menyimpan("rawat_jl_dr","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
                                 TNoRw.getText(),TKdPrw.getText(),KdDok.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                                 cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                                 BagianRS.getText(),Bhp.getText(),JmDokter.getText(),KSO.getText(),Menejemen.getText(),
@@ -2972,7 +2972,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                 TCari.requestFocus();
                             }else{
-                                Sequel.menyimpan("rawat_jl_dr","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
+                                Sequel.menyimpan("rawat_jl_dr","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
                                     TNoRw.getText(),TKdPrw.getText(),KdDok.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                                     BagianRS.getText(),Bhp.getText(),JmDokter.getText(),KSO.getText(),Menejemen.getText(),
@@ -2990,11 +2990,11 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         Valid.textKosong(TKdPrw1,"perawatan");
                     }else{
                         if(var.getkode().equals("Admin Utama")){
-                            Sequel.menyimpan("rawat_jl_pr","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
+                            Sequel.menyimpan("rawat_jl_pr","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
                                 TNoRw.getText(),TKdPrw1.getText(),kdptg.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                                 cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                                 BagianRS.getText(),Bhp.getText(),JmPerawat.getText(),KSO.getText(),Menejemen.getText(),
-                                TTnd.getText()
+                                TTnd.getText(),"Belum"
                             });
                             tampilPr();
                             BtnBatalActionPerformed(evt);
@@ -3003,11 +3003,11 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                                 TCari.requestFocus();
                             }else{
-                                Sequel.menyimpan("rawat_jl_pr","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
+                                Sequel.menyimpan("rawat_jl_pr","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
                                     TNoRw.getText(),TKdPrw1.getText(),kdptg.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                                     BagianRS.getText(),Bhp.getText(),JmPerawat.getText(),KSO.getText(),Menejemen.getText(),
-                                    TTnd.getText()
+                                    TTnd.getText(),"Belum"
                                 });
                                 tampilPr();
                                 BtnBatalActionPerformed(evt);
