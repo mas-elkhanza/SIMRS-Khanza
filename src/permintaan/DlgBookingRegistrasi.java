@@ -29,6 +29,7 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgPasien;
+import simrskhanza.DlgPenanggungJawab;
 
 /**
  *
@@ -47,6 +48,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgPasien pasien=new DlgPasien(null,false);
     private String URUTNOREG="",status="",no_rawat="",umur="",sttsumur="";
+    private DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     
     
 
@@ -355,6 +357,10 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         NoReg = new widget.TextBox();
         jLabel18 = new widget.Label();
         BtnPasien = new widget.Button();
+        jLabel19 = new widget.Label();
+        kdpnj = new widget.TextBox();
+        nmpnj = new widget.TextBox();
+        btnPenjab = new widget.Button();
 
         Popup.setName("Popup"); // NOI18N
 
@@ -627,7 +633,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         panelCari.add(R2);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-08-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -651,7 +657,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         panelCari.add(jLabel22);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-08-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -674,7 +680,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         panelCari.add(R3);
 
         DTPCari3.setEditable(false);
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-08-2018" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -698,7 +704,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         panelCari.add(jLabel25);
 
         DTPCari4.setEditable(false);
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-08-2018" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -721,7 +727,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 126));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 156));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -783,7 +789,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
 
         TanggalBooking.setEditable(false);
         TanggalBooking.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalBooking.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-08-2018" }));
+        TanggalBooking.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
         TanggalBooking.setDisplayFormat("dd-MM-yyyy");
         TanggalBooking.setName("TanggalBooking"); // NOI18N
         TanggalBooking.setOpaque(false);
@@ -864,7 +870,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
 
         TanggalPeriksa.setEditable(false);
         TanggalPeriksa.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-08-2018" }));
+        TanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
         TanggalPeriksa.setDisplayFormat("dd-MM-yyyy");
         TanggalPeriksa.setName("TanggalPeriksa"); // NOI18N
         TanggalPeriksa.setOpaque(false);
@@ -912,6 +918,38 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         });
         FormInput.add(BtnPasien);
         BtnPasien.setBounds(470, 10, 28, 23);
+
+        jLabel19.setText("Cara Bayar :");
+        jLabel19.setName("jLabel19"); // NOI18N
+        FormInput.add(jLabel19);
+        jLabel19.setBounds(10, 100, 100, 23);
+
+        kdpnj.setHighlighter(null);
+        kdpnj.setName("kdpnj"); // NOI18N
+        kdpnj.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                kdpnjKeyPressed(evt);
+            }
+        });
+        FormInput.add(kdpnj);
+        kdpnj.setBounds(120, 100, 70, 23);
+
+        nmpnj.setEditable(false);
+        nmpnj.setName("nmpnj"); // NOI18N
+        FormInput.add(nmpnj);
+        nmpnj.setBounds(190, 100, 279, 23);
+
+        btnPenjab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPenjab.setMnemonic('2');
+        btnPenjab.setToolTipText("ALt+2");
+        btnPenjab.setName("btnPenjab"); // NOI18N
+        btnPenjab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPenjabActionPerformed(evt);
+            }
+        });
+        FormInput.add(btnPenjab);
+        btnPenjab.setBounds(470, 100, 28, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1258,6 +1296,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_ppSemuaActionPerformed
 
+    private void kdpnjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpnjKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            Sequel.cariIsi("select png_jawab from penjab where kd_pj=?",nmpnj,kdpnj.getText());
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            BtnPoli.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            TanggalBooking.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            btnPenjabActionPerformed(null);
+        }
+    }//GEN-LAST:event_kdpnjKeyPressed
+
+    private void btnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPenjabActionPerformed
+        var.setform("DlgReg");
+        pasien.penjab.onCari();
+        pasien.penjab.isCek();
+        pasien.penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasien.penjab.setLocationRelativeTo(internalFrame1);
+        pasien.penjab.setVisible(true);
+    }//GEN-LAST:event_btnPenjabActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1308,12 +1367,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox TPasien;
     private widget.Tanggal TanggalBooking;
     private widget.Tanggal TanggalPeriksa;
+    private widget.Button btnPenjab;
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel14;
     private widget.Label jLabel18;
+    private widget.Label jLabel19;
     private widget.Label jLabel22;
     private widget.Label jLabel25;
     private widget.Label jLabel4;
@@ -1321,6 +1382,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel7;
     private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
+    private widget.TextBox kdpnj;
+    private widget.TextBox nmpnj;
     private widget.panelisi panelCari;
     private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass8;
