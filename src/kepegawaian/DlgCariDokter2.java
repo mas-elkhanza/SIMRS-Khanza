@@ -25,6 +25,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -497,5 +498,10 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     
     public void isCek(){        
         BtnTambah.setEnabled(var.getdokter());
+    }
+    
+    public void SetHari(Date tanggal){
+        cal.setTime(tanggal);
+        day=cal.get(Calendar.DAY_OF_WEEK);
     }
 }
