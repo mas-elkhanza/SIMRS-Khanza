@@ -87,7 +87,7 @@ public final class var {
             pcare_cek_obat=false,pcare_cek_tindakan=false,pcare_cek_faskessubspesialis=false,pcare_cek_faskesalihrawat=false,
             pcare_cek_faskesthalasemia=false,pcare_mapping_obat=false,pcare_mapping_tindakan=false,pcare_club_prolanis=false,
             pcare_mapping_poli=false,pcare_kegiatan_kelompok=false,pcare_mapping_tindakan_ranap=false,pcare_peserta_kegiatan_kelompok=false,
-            sirkulasi_obat3=false,bridging_pcare_daftar=false,pcare_mapping_dokter=false;
+            sirkulasi_obat3=false,bridging_pcare_daftar=false,pcare_mapping_dokter=false,ranap_per_ruang=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -508,6 +508,7 @@ public final class var {
                         var.sirkulasi_obat3=true;
                         var.bridging_pcare_daftar=true;
                         var.pcare_mapping_dokter=true;
+                        var.ranap_per_ruang=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -912,6 +913,7 @@ public final class var {
                         var.sirkulasi_obat3=rs2.getBoolean("sirkulasi_obat3");
                         var.bridging_pcare_daftar=rs2.getBoolean("bridging_pcare_daftar");
                         var.pcare_mapping_dokter=rs2.getBoolean("pcare_mapping_dokter");
+                        var.ranap_per_ruang=rs2.getBoolean("ranap_per_ruang");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1314,6 +1316,7 @@ public final class var {
                         var.sirkulasi_obat3=false;
                         var.bridging_pcare_daftar=false;
                         var.pcare_mapping_dokter=false;
+                        var.ranap_per_ruang=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1768,4 +1771,5 @@ public final class var {
     public static boolean getsirkulasi_obat3(){return var.sirkulasi_obat3;}
     public static boolean getbridging_pcare_daftar(){return var.bridging_pcare_daftar;}
     public static boolean getpcare_mapping_dokter(){return var.pcare_mapping_dokter;}
+    public static boolean getranap_per_ruang(){return var.ranap_per_ruang;}
 }   
