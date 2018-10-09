@@ -81,21 +81,6 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import permintaan.DlgPermintaanLaboratorium;
 import permintaan.DlgPermintaanRadiologi;
-import simrskhanza.DlgCariPoli;
-import simrskhanza.DlgCariPoli2;
-import simrskhanza.DlgCatatan;
-import simrskhanza.DlgHemodialisa;
-import simrskhanza.DlgKamarInap;
-import simrskhanza.DlgPasien;
-import simrskhanza.DlgPasienMati;
-import simrskhanza.DlgPeriksaLaboratorium;
-import simrskhanza.DlgPeriksaRadiologi;
-import simrskhanza.DlgRawatJalan;
-import simrskhanza.DlgResumePerawatan;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRujukMasuk;
-import simrskhanza.DlgRujukanPoliInternal;
-import simrskhanza.DlgTagihanOperasi;
 /**
  *
  * @author dosen
@@ -118,7 +103,7 @@ public final class DlgReg extends javax.swing.JDialog {
     private ResultSet rs;
     private int pilihan=0,i=0;
     private Date cal=new Date();
-    private String URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",
+    private String BASENOREG="",URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",
             validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi"),
             validasicatatan=Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
@@ -739,6 +724,7 @@ public final class DlgReg extends javax.swing.JDialog {
             aktifjadwal=prop.getProperty("JADWALDOKTERDIREGISTRASI");
             IPPRINTERTRACER=prop.getProperty("IPPRINTERTRACER");
             URUTNOREG=prop.getProperty("URUTNOREG");
+            BASENOREG=prop.getProperty("BASENOREG");
             try{    
                 if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
                     com.sun.awt.AWTUtilities.setWindowOpacity(DlgCatatan,0.5f);
@@ -749,6 +735,7 @@ public final class DlgReg extends javax.swing.JDialog {
             aktifjadwal="";            
             IPPRINTERTRACER="";
             URUTNOREG="";
+            BASENOREG="";
         }
         
         ChkInput.setSelected(false);
@@ -8982,21 +8969,38 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPermintaanRadiologi.setEnabled(var.getpermintaan_radiologi());
     }
     
-    private void isNumber(){  
-        switch (URUTNOREG) {
-            case "poli":
-                Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
-                break;
-            case "dokter":
-                Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
-                break;
-            case "dokter & poli":             
-                Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
-                break;
-            default:
-                Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
-                break;
-        }
+    private void isNumber(){         
+        if(BASENOREG.equals("booking")){
+            switch (URUTNOREG) {
+                case "poli":
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"+kdpoli.getText()+"' and tanggal_periksa='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                case "dokter":
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"+kddokter.getText()+"' and tanggal_periksa='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                case "dokter & poli":             
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"+kddokter.getText()+"' and kd_poli='"+kdpoli.getText()+"' and tanggal_periksa='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                default:
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"+kddokter.getText()+"' and tanggal_periksa='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+            }
+        }else{
+            switch (URUTNOREG) {
+                case "poli":
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                case "dokter":
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                case "dokter & poli":             
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                default:
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+            }
+        }            
         
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(rujuk_masuk.no_rawat,4),signed)),0) from reg_periksa inner join rujuk_masuk on reg_periksa.no_rawat=rujuk_masuk.no_rawat where reg_periksa.tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"' ","BR/"+dateformat.format(DTPReg.getDate())+"/",4,NoBalasan); 
         if(Kd2.getText().equals("")){
