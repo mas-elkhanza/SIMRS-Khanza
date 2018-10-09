@@ -53,7 +53,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Kode Unit","Nama Unit","Registrasi Baru","Registrasi Lama"};
+        Object[] row={"Kode Unit","Nama Unit","Registrasi Baru","Registrasi Lama","Kuota"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -62,7 +62,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
@@ -72,6 +72,8 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                 column.setPreferredWidth(120);
             }else if(i==3){
                 column.setPreferredWidth(120);
+            }else if(i==4){
+                column.setPreferredWidth(50);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -350,7 +352,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try {
             ps=koneksi.prepareStatement(
-                    "select poliklinik.kd_poli,poliklinik.nm_poli,poliklinik.registrasi,poliklinik.registrasilama "+
+                    "select poliklinik.kd_poli,poliklinik.nm_poli,poliklinik.registrasi,poliklinik.registrasilama,jadwal.kuota "+
                     "from poliklinik inner join jadwal inner join dokter on poliklinik.kd_poli=jadwal.kd_poli "+
                     "and dokter.kd_dokter=jadwal.kd_dokter "+
                     "where jadwal.hari_kerja=? and poliklinik.kd_poli like ?  or "+
@@ -387,7 +389,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                 ps.setString(4,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery(); 
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});
                 }  
             }catch(Exception ex){
                 System.out.println(ex);
