@@ -44,7 +44,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     private final DefaultTableModel tabModeAkunBayar,TabModeTindakanDr,
             tabModeBilling,TabModeTindakanDrBayar,TabModeTindakanPr,
-            TabModeTindakanPrBayar,TabModeTindakanDrPr,TabModeTindakanDrPrBayar;
+            TabModeTindakanPrBayar,TabModeTindakanDrPr,TabModeTindakanDrPrBayar,
+            TabModeRadiologi;
     private int row2=0,r=0,i=0,countbayar=0,z=0,jml=0,index=0;
     private String[] Nama_Akun_Bayar,Kode_Rek_Bayar,Bayar,PPN_Persen,PPN_Besar;
     private boolean[] pilih; 
@@ -624,6 +625,51 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }
         }
         tbTindakanDrPrBayar.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        TabModeRadiologi=new DefaultTableModel(null,new Object[]{
+            "P","Kode Periksa","Nama Pemeriksaan","Tarif","Bagian RS","BHP","Tarif Perujuk",
+            "Tarif Dokter","Tarif Petugas","Kso","Menejemen","Tanggal","Jam"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, 
+                java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbRadiologi.setModel(TabModeRadiologi);        
+        
+        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
+        tbRadiologi.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbRadiologi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for(i = 0; i < 13; i++) {
+            TableColumn column = tbRadiologi.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(65);
+            }else if(i==2){
+                column.setPreferredWidth(240);
+            }else if(i==3){
+                column.setPreferredWidth(100);
+            }else{
+                //column.setMinWidth(0);
+                //column.setMaxWidth(0);
+            }
+        }
+        tbRadiologi.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeBilling=new DefaultTableModel(null,new Object[]{
             "Keterangan","Tagihan/Tindakan/Terapi","","Biaya","Jml","Total Biaya",""}){
@@ -1861,6 +1907,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         }else if(TabRawat.getSelectedIndex()==2){
             tampilDrPr();
             tampilDrPrBayar();
+        }else if(TabRawat.getSelectedIndex()==3){
+            tampilRadiologi();
         }else if(TabRawat.getSelectedIndex()==6){
             tampilbilling();
         }     
@@ -3105,7 +3153,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     "rawat_jl_drpr.no_rawat=? and rawat_jl_drpr.stts_bayar='Belum' and rawat_jl_drpr.kd_jenis_prw like ? or "+
                     "rawat_jl_drpr.no_rawat=? and rawat_jl_drpr.stts_bayar='Belum' and jns_perawatan.nm_perawatan like ? or "+
                     "rawat_jl_drpr.no_rawat=? and rawat_jl_drpr.stts_bayar='Belum' and kategori_perawatan.nm_kategori like ?");
-            try {
+                try {
                     pstindakan.setString(1,TNoRw.getText());
                     pstindakan.setString(2,"%"+TCariTindakan.getText().trim()+"%");
                     pstindakan.setString(3,TNoRw.getText());
@@ -3285,6 +3333,188 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }           
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    public void tampilRadiologi() {         
+        try{
+            jml=0;
+            for(i=0;i<tbRadiologi.getRowCount();i++){
+                if(tbRadiologi.getValueAt(i,0).toString().equals("true")){
+                    jml++;
+                }
+            }
+
+            pilih=null;
+            pilih=new boolean[jml];
+            kode=null;
+            kode=new String[jml];
+            nama=null;
+            nama=new String[jml];
+            totaltnd=null;
+            totaltnd=new double[jml];
+            bagianrs=null;
+            bagianrs=new double[jml];
+            bhp=null;
+            bhp=new double[jml];
+            tarif_perujuk=null;
+            tarif_perujuk=new double[jml];
+            jmdokter=null;
+            jmdokter=new double[jml];
+            jmperawat=null;
+            jmperawat=new double[jml];
+            kso=null;
+            kso=new double[jml];
+            menejemen=null;
+            menejemen=new double[jml];
+            
+            index=0; 
+            for(i=0;i<tbRadiologi.getRowCount();i++){
+                if(tbRadiologi.getValueAt(i,0).toString().equals("true")){
+                    pilih[index]=true;
+                    kode[index]=tbRadiologi.getValueAt(i,1).toString();
+                    nama[index]=tbRadiologi.getValueAt(i,2).toString();
+                    totaltnd[index]=Double.parseDouble(tbRadiologi.getValueAt(i,3).toString());
+                    bagianrs[index]=Double.parseDouble(tbRadiologi.getValueAt(i,4).toString());
+                    bhp[index]=Double.parseDouble(tbRadiologi.getValueAt(i,5).toString());
+                    tarif_perujuk[index]=Double.parseDouble(tbRadiologi.getValueAt(i,6).toString());
+                    jmdokter[index]=Double.parseDouble(tbRadiologi.getValueAt(i,7).toString());
+                    jmperawat[index]=Double.parseDouble(tbRadiologi.getValueAt(i,8).toString());
+                    kso[index]=Double.parseDouble(tbRadiologi.getValueAt(i,9).toString());
+                    menejemen[index]=Double.parseDouble(tbRadiologi.getValueAt(i,10).toString());
+                    index++;
+                }
+            }
+
+            Valid.tabelKosong(TabModeRadiologi);
+            for(i=0;i<jml;i++){                
+                TabModeRadiologi.addRow(new Object[] {pilih[i],kode[i],nama[i],totaltnd[i],bagianrs[i],bhp[i],tarif_perujuk[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i]});
+            }    
+            if(Sequel.cariInteger("select count(*) from permintaan_pemeriksaan_radiologi inner join permintaan_radiologi "+
+                    "on permintaan_radiologi.noorder=permintaan_pemeriksaan_radiologi.noorder where permintaan_radiologi.no_rawat=? "+
+                    "and permintaan_pemeriksaan_radiologi.stts_bayar='Belum'",TNoRw.getText())>0){
+                
+            }else{
+                if(cara_bayar_radiologi.equals("Yes")&&kelas_radiologi.equals("No")){
+                    pstindakan=koneksi.prepareStatement(
+                        "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
+                        "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
+                        "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,"+
+                        "jns_perawatan_radiologi.kso,jns_perawatan_radiologi.menejemen,penjab.png_jawab "+
+                        "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where "+
+                        " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kd_pj=? or jns_perawatan_radiologi.kd_pj='-') and jns_perawatan_radiologi.kd_jenis_prw like ? or "+
+                        " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kd_pj=? or jns_perawatan_radiologi.kd_pj='-') and jns_perawatan_radiologi.nm_perawatan like ? "+
+                        "order by jns_perawatan_radiologi.kd_jenis_prw");
+                    try {
+                        pstindakan.setString(1,kd_pj.trim());
+                        pstindakan.setString(2,"%"+TCariTindakan.getText().trim()+"%");
+                        pstindakan.setString(3,kd_pj.trim());
+                        pstindakan.setString(4,"%"+TCariTindakan.getText().trim()+"%");
+                        rstindakan=pstindakan.executeQuery();
+                        while(rstindakan.next()){                
+                            TabModeRadiologi.addRow(new Object[]{false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getDouble(3),rstindakan.getDouble(4),rstindakan.getDouble(5),rstindakan.getDouble(6),rstindakan.getDouble(7),rstindakan.getDouble(8),rstindakan.getDouble(9),rstindakan.getDouble(10),"0000-00-00","00:00:00"});
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi 1 : "+e);
+                    } finally{
+                        if(rstindakan!=null){
+                            rstindakan.close();
+                        }
+                        if(pstindakan!=null){
+                            pstindakan.close();
+                        }                
+                    }
+                }else if(cara_bayar_radiologi.equals("No")&&kelas_radiologi.equals("No")){
+                    pstindakan=koneksi.prepareStatement(
+                        "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
+                        "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
+                        "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,"+
+                        "jns_perawatan_radiologi.kso,jns_perawatan_radiologi.menejemen,penjab.png_jawab "+
+                        "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where "+
+                        " jns_perawatan_radiologi.status='1' and jns_perawatan_radiologi.kd_jenis_prw like ? or "+
+                        " jns_perawatan_radiologi.status='1' and jns_perawatan_radiologi.nm_perawatan like ?  "+
+                        "order by jns_perawatan_radiologi.kd_jenis_prw");
+                    try {
+                        pstindakan.setString(1,"%"+TCariTindakan.getText().trim()+"%");                
+                        pstindakan.setString(2,"%"+TCariTindakan.getText().trim()+"%");
+                        rstindakan=pstindakan.executeQuery();            
+                        while(rstindakan.next()){                
+                            TabModeRadiologi.addRow(new Object[]{false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getDouble(3),rstindakan.getDouble(4),rstindakan.getDouble(5),rstindakan.getDouble(6),rstindakan.getDouble(7),rstindakan.getDouble(8),rstindakan.getDouble(9),rstindakan.getDouble(10),"0000-00-00","00:00:00"});
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi 1 : "+e);
+                    } finally{
+                        if(rstindakan!=null){
+                            rstindakan.close();
+                        }
+                        if(pstindakan!=null){
+                            pstindakan.close();
+                        }                
+                    }
+                }else if(cara_bayar_radiologi.equals("Yes")&&kelas_radiologi.equals("Yes")){
+                    pstindakan=koneksi.prepareStatement(
+                        "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
+                        "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
+                        "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,"+
+                        "jns_perawatan_radiologi.kso,jns_perawatan_radiologi.menejemen,penjab.png_jawab "+
+                        "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where "+
+                        " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kd_pj=? or jns_perawatan_radiologi.kd_pj='-') and (jns_perawatan_radiologi.kelas=? or jns_perawatan_radiologi.kelas='-') and jns_perawatan_radiologi.kd_jenis_prw like ? or "+
+                        " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kd_pj=? or jns_perawatan_radiologi.kd_pj='-') and (jns_perawatan_radiologi.kelas=? or jns_perawatan_radiologi.kelas='-') and jns_perawatan_radiologi.nm_perawatan like ? "+
+                        "order by jns_perawatan_radiologi.kd_jenis_prw");
+                    try {
+                        pstindakan.setString(1,kd_pj.trim());
+                        pstindakan.setString(2,"Rawat Jalan");
+                        pstindakan.setString(3,"%"+TCariTindakan.getText().trim()+"%");
+                        pstindakan.setString(4,kd_pj.trim());
+                        pstindakan.setString(5,"Rawat Jalan");
+                        pstindakan.setString(6,"%"+TCariTindakan.getText().trim()+"%");
+                        rstindakan=pstindakan.executeQuery();
+                        while(rstindakan.next()){                
+                            TabModeRadiologi.addRow(new Object[]{false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getDouble(3),rstindakan.getDouble(4),rstindakan.getDouble(5),rstindakan.getDouble(6),rstindakan.getDouble(7),rstindakan.getDouble(8),rstindakan.getDouble(9),rstindakan.getDouble(10),"0000-00-00","00:00:00"});
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi 1 : "+e);
+                    } finally{
+                        if(rstindakan!=null){
+                            rstindakan.close();
+                        }
+                        if(pstindakan!=null){
+                            pstindakan.close();
+                        }                
+                    }
+                }else if(cara_bayar_radiologi.equals("No")&&kelas_radiologi.equals("Yes")){
+                    pstindakan=koneksi.prepareStatement(
+                        "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.total_byr,"+
+                        "jns_perawatan_radiologi.bagian_rs,jns_perawatan_radiologi.bhp,jns_perawatan_radiologi.tarif_perujuk,"+
+                        "jns_perawatan_radiologi.tarif_tindakan_dokter,jns_perawatan_radiologi.tarif_tindakan_petugas,"+
+                        "jns_perawatan_radiologi.kso,jns_perawatan_radiologi.menejemen,penjab.png_jawab "+
+                        "from jns_perawatan_radiologi inner join penjab on penjab.kd_pj=jns_perawatan_radiologi.kd_pj where "+
+                        " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kelas=? or jns_perawatan_radiologi.kelas='-') and jns_perawatan_radiologi.kd_jenis_prw like ? or "+
+                        " jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kelas=? or jns_perawatan_radiologi.kelas='-') and jns_perawatan_radiologi.nm_perawatan like ?  "+
+                        "order by jns_perawatan_radiologi.kd_jenis_prw");
+                    try {
+                        pstindakan.setString(1,"Rawat Jalan");
+                        pstindakan.setString(2,"%"+TCariTindakan.getText().trim()+"%"); 
+                        pstindakan.setString(3,"Rawat Jalan");               
+                        pstindakan.setString(4,"%"+TCariTindakan.getText().trim()+"%");
+                        rstindakan=pstindakan.executeQuery();
+                        while(rstindakan.next()){                
+                            TabModeRadiologi.addRow(new Object[]{false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getDouble(3),rstindakan.getDouble(4),rstindakan.getDouble(5),rstindakan.getDouble(6),rstindakan.getDouble(7),rstindakan.getDouble(8),rstindakan.getDouble(9),rstindakan.getDouble(10),"0000-00-00","00:00:00"});
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi 1 : "+e);
+                    } finally{
+                        if(rstindakan!=null){
+                            rstindakan.close();
+                        }
+                        if(pstindakan!=null){
+                            pstindakan.close();
+                        }                
+                    }
+                }  
+            }          
+        }catch(Exception e){
+            System.out.println("Notifikasi 2 : "+e);
         }
     }
     

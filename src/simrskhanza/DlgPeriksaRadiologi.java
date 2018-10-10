@@ -81,7 +81,7 @@ public final class DlgPeriksaRadiologi extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==3)) {
+                if (colIndex==0) {
                     a=true;
                 }
                 return a;

@@ -85,7 +85,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
                  java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
                  java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
                  java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
-                 java.lang.Object.class,java.lang.Object.class
+                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -270,9 +270,6 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
                 if(poli2.getTable().getSelectedRow()!= -1){                    
                     KdPoli.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),0).toString());
                     NmPoli.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),1).toString());
-                    if(aktifjadwal.equals("aktif")){
-                        kuota=Integer.parseInt(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),4).toString());
-                    }
                     isNomer();
                 }    
             }
@@ -472,6 +469,8 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         kdpnj = new widget.TextBox();
         nmpnj = new widget.TextBox();
         btnPenjab = new widget.Button();
+        jLabel20 = new widget.Label();
+        Kuota = new widget.TextBox();
 
         Popup.setName("Popup"); // NOI18N
 
@@ -744,7 +743,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         panelCari.add(R2);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -768,7 +767,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         panelCari.add(jLabel22);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -791,7 +790,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         panelCari.add(R3);
 
         DTPCari3.setEditable(false);
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2018" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -815,7 +814,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         panelCari.add(jLabel25);
 
         DTPCari4.setEditable(false);
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2018" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -900,7 +899,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
 
         TanggalBooking.setEditable(false);
         TanggalBooking.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalBooking.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
+        TanggalBooking.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2018 05:18:09" }));
         TanggalBooking.setDisplayFormat("dd-MM-yyyy hh:mm:ss");
         TanggalBooking.setName("TanggalBooking"); // NOI18N
         TanggalBooking.setOpaque(false);
@@ -981,7 +980,7 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
 
         TanggalPeriksa.setEditable(false);
         TanggalPeriksa.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2018" }));
+        TanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2018 05:18:09" }));
         TanggalPeriksa.setDisplayFormat("dd-MM-yyyy hh:mm:ss");
         TanggalPeriksa.setName("TanggalPeriksa"); // NOI18N
         TanggalPeriksa.setOpaque(false);
@@ -1068,6 +1067,22 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         FormInput.add(btnPenjab);
         btnPenjab.setBounds(464, 100, 28, 23);
 
+        jLabel20.setText("Kuota :");
+        jLabel20.setName("jLabel20"); // NOI18N
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(526, 100, 100, 23);
+
+        Kuota.setEditable(false);
+        Kuota.setHighlighter(null);
+        Kuota.setName("Kuota"); // NOI18N
+        Kuota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KuotaKeyPressed(evt);
+            }
+        });
+        FormInput.add(Kuota);
+        Kuota.setBounds(630, 100, 90, 23);
+
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
@@ -1098,17 +1113,21 @@ public class DlgBookingRegistrasi extends javax.swing.JDialog {
         }else if(NoReg.getText().trim().equals("")){
             Valid.textKosong(NoReg,"No.Antri");
         }else{
-            if(aktifjadwal.equals("aktif")){
-                System.out.println("Kuota : "+kuota);
-                if(Sequel.cariInteger("select count(no_rkm_medis) from booking_registrasi where kd_dokter='"+KdDokter.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalPeriksa.getSelectedItem()+"")+"' ")>=kuota){
-                    JOptionPane.showMessageDialog(null,"Eiiits, Kuota registrasi penuh..!!!");
-                    TCari.requestFocus();
+            if(var.getkode().equals("Admin Utama")){
+                isBooking();
+            }else{
+                if(aktifjadwal.equals("aktif")){
+                    System.out.println("Kuota : "+kuota);
+                    if(Sequel.cariInteger("select count(no_rkm_medis) from booking_registrasi where kd_dokter='"+KdDokter.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalPeriksa.getSelectedItem()+"")+"' ")>=kuota){
+                        JOptionPane.showMessageDialog(null,"Eiiits, Kuota registrasi penuh..!!!");
+                        TCari.requestFocus();
+                    }else{
+                        isBooking();
+                    }                    
                 }else{
                     isBooking();
-                }                    
-            }else{
-                isBooking();
-            }                        
+                } 
+            }                                       
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1487,6 +1506,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }//GEN-LAST:event_btnPenjabKeyPressed
 
+    private void KuotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KuotaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KuotaKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1523,6 +1546,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.PanelBiasa FormInput;
     private widget.TextBox KdDokter;
     private widget.TextBox KdPoli;
+    private widget.TextBox Kuota;
     private widget.Label LCount;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPoli;
@@ -1545,6 +1569,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel14;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
+    private widget.Label jLabel20;
     private widget.Label jLabel22;
     private widget.Label jLabel25;
     private widget.Label jLabel4;
@@ -1655,14 +1680,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){            
             Valid.SetTgl(TanggalBooking,tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()); 
-            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Valid.SetTgl(TanggalPeriksa,tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            KdPoli.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            NmPoli.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            NoReg.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()); 
+            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            Valid.SetTgl(TanggalPeriksa,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            KdPoli.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            NmPoli.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            NoReg.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
             kdpnj.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
             nmpnj.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
         }

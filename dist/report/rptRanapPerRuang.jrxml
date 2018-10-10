@@ -106,7 +106,7 @@
 	<title>
 		<band height="81" splitType="Stretch">
 			<textField>
-				<reportElement x="20" y="64" width="535" height="11"/>
+				<reportElement x="20" y="65" width="535" height="11"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
@@ -138,7 +138,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{alamatrs}+", "+$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="20" y="49" width="534" height="15"/>
+				<reportElement x="20" y="50" width="534" height="15"/>
 				<textElement textAlignment="Center" lineSpacing="Single" markup="none">
 					<font fontName="Tahoma" size="11" isBold="false"/>
 				</textElement>

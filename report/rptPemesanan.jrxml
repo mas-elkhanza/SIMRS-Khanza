@@ -169,7 +169,7 @@
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
-				<text><![CDATA[Diskon(%)]]></text>
+				<text><![CDATA[Harga Beli]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="0" width="802" height="1"/>

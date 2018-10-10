@@ -552,9 +552,6 @@ public final class DlgReg extends javax.swing.JDialog {
                         if(pilihan==1){
                             kdpoli.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),0).toString());
                             TPoli.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),1).toString());
-                            if(aktifjadwal.equals("aktif")){
-                                kuota=Integer.parseInt(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),4).toString());
-                            }
                             switch (TStatus.getText()) {
                                 case "Baru":
                                     TBiaya.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),2).toString());
@@ -4808,16 +4805,20 @@ public final class DlgReg extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
             TNoRM.requestFocus();
         }else{
-            if(aktifjadwal.equals("aktif")){
-                if(Sequel.cariInteger("select count(no_rawat) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"' ")>=kuota){
-                    JOptionPane.showMessageDialog(null,"Eiiits, Kuota registrasi penuh..!!!");
-                    TCari.requestFocus();
+            if(var.getkode().equals("Admin Utama")){
+                isRegistrasi();
+            }else{
+                if(aktifjadwal.equals("aktif")){
+                    if(Sequel.cariInteger("select count(no_rawat) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(DTPReg.getSelectedItem()+"")+"' ")>=kuota){
+                        JOptionPane.showMessageDialog(null,"Eiiits, Kuota registrasi penuh..!!!");
+                        TCari.requestFocus();
+                    }else{
+                        isRegistrasi();
+                    }                    
                 }else{
                     isRegistrasi();
-                }                    
-            }else{
-                isRegistrasi();
-            }            
+                }  
+            }                          
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
