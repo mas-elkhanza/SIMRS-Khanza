@@ -1,0 +1,103 @@
+.list-group{
+  border-radius: $border-radius-base;
+  background: #fff;
+  &.no-radius {
+    .list-group-item{
+      border-radius: 0 !important;
+    }
+  }
+  &.no-borders {
+    .list-group-item{
+      border: none;
+    }
+  }
+  &.no-border{
+    .list-group-item{
+      border-width: 1px 0;
+    }
+  }
+  &.no-border{
+    .list-group-item{
+      border-width: 1px 0;
+      &:first-child{
+        border-top-width: 0;
+      }
+      &:last-child{
+        border-bottom-width: 0;
+      }
+    }
+  }
+  &.no-bg{
+    .list-group-item{
+      background-color: transparent;
+    }
+  }
+  &.list-group-gap{
+    background: transparent;
+  }
+}
+
+.list-group-item{
+  border-color: $list-group-border;
+  background: transparent;
+  padding: 12px 16px;
+  background-clip: padding-box;
+  &.media {
+    margin-top: 0;
+  }
+  &.active,
+  &.active:hover,
+  &.active:focus{
+    color: inherit;
+    background-color: $min-black;
+    border-color: $list-group-border;
+    border-bottom-color: $list-group-border;
+    a{
+      color: inherit;
+    }
+  }
+  &:first-child{
+    border-top-color: $border-color;
+  }
+  &:last-child{
+    border-bottom-color: $border-color;
+  }
+  .list-group-alt & {
+    &:nth-child(2n+2){
+      background-color: $min-black;
+    }
+    &.active:nth-child(2n+2){
+      background-color: $min-black;
+    }
+  }
+  .list-group-lg & {
+    padding: 16px 24px;
+  }
+  .list-group-md & {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+  .list-group-sm & {
+    padding: 10px 12px;
+  }
+  .list-group-gap & {
+    margin-bottom: 5px;
+    border-radius: 3px;
+    &:first-child{
+      border-top-color: $list-group-border;
+    }
+    &:last-child{
+      border-bottom-color: $list-group-border;
+    }
+  }
+}
+
+a.list-group-item{
+  color: inherit;
+  &:hover,
+  &:focus,
+  &.hover{
+    color: inherit;
+    background-color: $min-black;
+  }
+}

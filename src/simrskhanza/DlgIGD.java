@@ -6156,7 +6156,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             ps3.setString(2,TNoRM.getText());
             rs=ps3.executeQuery();
             while(rs.next()){
-                TPasien.setText(rs.getString("nm_pasien"));
                 TAlmt.setText(rs.getString("asal"));
                 TPngJwb.setText(rs.getString("namakeluarga"));
                 THbngn.setText(rs.getString("keluarga"));
@@ -6165,6 +6164,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 TStatus.setText(rs.getString("daftar"));
                 umur="0";
                 sttsumur="Th";
+                TPasien.setText(rs.getString("nm_pasien")+" ("+umur+" "+sttsumur+")");
                 if(rs.getInt("tahun")>0){
                     umur=rs.getString("tahun");
                     sttsumur="Th";

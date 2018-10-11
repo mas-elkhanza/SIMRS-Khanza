@@ -1,0 +1,22 @@
+.hover-action{
+  display: none;    
+}
+.hover-rotate{
+  @include transition(all .2s ease-in-out .1s)
+}
+.hover-anchor:hover,
+.hover-anchor:focus,
+.hover-anchor:active{
+  .hover-action{
+    display: inherit;
+  }
+  .hover-rotate{
+    @include rotate(45deg)
+  }
+}
+
+.hover-top:hover,
+.hover-top:focus{
+	position: relative;
+	z-index: 1000;
+}
