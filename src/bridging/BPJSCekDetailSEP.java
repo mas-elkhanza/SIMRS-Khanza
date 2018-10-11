@@ -43,6 +43,7 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private BPJSApi api=new BPJSApi();
+    private String URL="";
         
     /** Creates new form DlgKamar
      * @param parent
@@ -75,6 +76,12 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            URL = prop.getProperty("URLAPIBPJS")+"/SEP/";		
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
 
     }
     
@@ -234,10 +241,7 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
 
     public void tampil(String sep) {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIBPJS")+"/SEP/"+sep;	
-
-	    HttpHeaders headers = new HttpHeaders();
+            HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
@@ -245,7 +249,7 @@ public final class BPJSCekDetailSEP extends javax.swing.JDialog {
 	    HttpEntity requestEntity = new HttpEntity(headers);
 	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            JsonNode root = mapper.readTree(api.getRest().exchange(URL+sep, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());

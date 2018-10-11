@@ -145,21 +145,21 @@ public class frmUtama extends javax.swing.JFrame {
             }else{
                 if(Sequel.cariInteger("select count(no_rkm_medis) from pasien where no_rkm_medis=?",TCari.getText().trim())>0){
                      DlgPilihPoli pilih=new DlgPilihPoli(this,true);
-                     pilih.setSize(this.getWidth()-50,this.getHeight()-70);
+                     pilih.setSize(this.getWidth()-20,this.getHeight()-70);
                      pilih.setLocationRelativeTo(this);
                      pilih.setPasien(TCari.getText());
                      pilih.tampil();
                      pilih.setVisible(true);
                 }else if(Sequel.cariInteger("select count(no_ktp) from pasien where no_ktp=?",TCari.getText().trim())>0){
                      DlgPilihPoli pilih=new DlgPilihPoli(this,true);
-                     pilih.setSize(this.getWidth()-50,this.getHeight()-70);
+                     pilih.setSize(this.getWidth()-20,this.getHeight()-70);
                      pilih.setLocationRelativeTo(this);
                      pilih.setPasien(Sequel.cariIsi("select no_rkm_medis from pasien where no_ktp=?",TCari.getText().trim()));
                      pilih.tampil();
                      pilih.setVisible(true);
                 }else if(Sequel.cariInteger("select count(no_peserta) from pasien where no_peserta=?",TCari.getText().trim())>0){
                      DlgPilihPoli pilih=new DlgPilihPoli(this,true);
-                     pilih.setSize(this.getWidth()-50,this.getHeight()-70);
+                     pilih.setSize(this.getWidth()-20,this.getHeight()-70);
                      pilih.setLocationRelativeTo(this);
                      pilih.setPasien(Sequel.cariIsi("select no_rkm_medis from pasien where no_peserta=?",TCari.getText().trim()));
                      pilih.tampil();

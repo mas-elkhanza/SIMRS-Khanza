@@ -45,6 +45,7 @@ public final class BPJSCekReferensiCaraKeluar extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private BPJSApi api=new BPJSApi();
+    private String URL;
         
     /** Creates new form DlgKamar
      * @param parent
@@ -91,7 +92,8 @@ public final class BPJSCekReferensiCaraKeluar extends javax.swing.JDialog {
         } 
            
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));   
+            URL = prop.getProperty("URLAPIBPJS")+"/referensi/carakeluar";
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -269,8 +271,6 @@ public final class BPJSCekReferensiCaraKeluar extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            String URL = prop.getProperty("URLAPIBPJS")+"/referensi/carakeluar";	
-
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));

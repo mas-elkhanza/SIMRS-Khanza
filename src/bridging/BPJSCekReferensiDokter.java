@@ -48,6 +48,7 @@ public final class BPJSCekReferensiDokter extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private BPJSApi api=new BPJSApi();
+    private String URL="",link="";
         
     /** Creates new form DlgKamar
      * @param parent
@@ -94,7 +95,8 @@ public final class BPJSCekReferensiDokter extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -319,7 +321,7 @@ public final class BPJSCekReferensiDokter extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            String URL = prop.getProperty("URLAPIBPJS")+"/referensi/dokter/"+poli;	
+            URL = link+"/referensi/dokter/"+poli;	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

@@ -48,6 +48,7 @@ public final class BPJSCekReferensiPascaPulang extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private BPJSApi api=new BPJSApi();
+    private String link="",URL="";
         
     /** Creates new form DlgKamar
      * @param parent
@@ -94,7 +95,9 @@ public final class BPJSCekReferensiPascaPulang extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
+            URL =link+"/referensi/pascapulang";	
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -273,9 +276,7 @@ public final class BPJSCekReferensiPascaPulang extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            String URL = prop.getProperty("URLAPIBPJS")+"/referensi/pascapulang";	
-
-	    HttpHeaders headers = new HttpHeaders();
+            HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 	    headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
