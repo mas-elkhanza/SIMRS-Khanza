@@ -355,7 +355,7 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
         panelGlass6.setPreferredSize(new java.awt.Dimension(55, 45));
         panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label11.setText("Tanggal Tagihan :");
+        label11.setText("Tanggal Bayar :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass6.add(label11);

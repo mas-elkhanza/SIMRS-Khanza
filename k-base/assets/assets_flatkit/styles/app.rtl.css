@@ -1,0 +1,224 @@
+/* 
+
+*/
+.app-aside {
+  left: auto !important; }
+
+@media (min-width: 992px) {
+  .app-aside.lg:not(.hide) ~ .app-content {
+    margin-right: 13.75rem; }
+  .app-aside.sm:not(.hide) ~ .app-content {
+    margin-right: 11.25rem; }
+  .app-aside.folded:not(.hide) ~ .app-content {
+    margin-right: 4rem; }
+  .app-aside.folded.md:not(.hide) ~ .app-content {
+    margin-right: 5rem; }
+  .app-aside:not(.hide) ~ .app-content {
+    margin-right: 12.5rem; }
+  .app-content {
+    margin-left: auto !important; }
+  .hide-scroll {
+    margin-right: 0;
+    margin-left: -17px; } }
+
+@media (min-width: 992px) {
+  body.container .app-header {
+    margin-left: auto;
+    margin-right: 0; } }
+
+.navside .nav li li a {
+  padding-left: 1rem;
+  padding-right: 3.5rem; }
+
+.navside .nav li li li a {
+  padding-left: 1rem;
+  padding-right: 4.5rem; }
+
+.navside .nav li li li li a {
+  padding-left: 1rem;
+  padding-right: 5.5rem; }
+
+.nav-icon {
+  float: right;
+  margin-left: 1rem;
+  margin-right: inherit; }
+
+.nav-caret,
+.nav-label {
+  float: left;
+  margin-right: 1rem;
+  margin-left: inherit; }
+
+@media (min-width: 992px) {
+  .folded.nav-expand:hover .nav > li > a, .folded.nav-expand:focus .nav > li > a, .folded.nav-expand.active .nav > li > a {
+    text-align: right; }
+    .folded.nav-expand:hover .nav > li > a .nav-icon, .folded.nav-expand:focus .nav > li > a .nav-icon, .folded.nav-expand.active .nav > li > a .nav-icon {
+      float: right;
+      margin-left: 16px;
+      margin-right: 0; }
+  .folded.nav-expand:hover .navbar, .folded.nav-expand:focus .navbar, .folded.nav-expand.active .navbar {
+    text-align: right; }
+  .folded.nav-dropdown .nav > li > ul {
+    left: auto;
+    right: 100%; } }
+
+.navbar-brand > span {
+  margin-left: 0;
+  margin-right: 10px; }
+
+.navbar-item {
+  margin-right: inherit;
+  margin-left: 1rem; }
+
+.m-r {
+  margin-left: 1rem !important;
+  margin-right: auto !important; }
+
+.m-l {
+  margin-right: 1rem !important;
+  margin-left: auto !important; }
+
+.m-r-lg {
+  margin-left: 3rem !important;
+  margin-right: auto !important; }
+
+.m-l-lg {
+  margin-right: 3rem !important;
+  margin-left: auto !important; }
+
+.m-r-md {
+  margin-left: 1.5rem !important;
+  margin-right: auto !important; }
+
+.m-l-md {
+  margin-right: 1.5rem !important;
+  margin-left: auto !important; }
+
+.m-r-sm {
+  margin-left: 0.5rem !important;
+  margin-right: auto !important; }
+
+.m-l-sm {
+  margin-right: 0.5rem !important;
+  margin-left: auto !important; }
+
+.m-r-xs {
+  margin-left: 0.25rem !important;
+  margin-right: auto !important; }
+
+.m-l-xs {
+  margin-right: 0.25rem !important;
+  margin-left: auto !important; }
+
+.box-tool {
+  left: 1rem;
+  right: auto; }
+
+.list-left {
+  float: right;
+  padding-left: 1rem;
+  padding-right: 0; }
+  .list-left + .list-body {
+    margin-left: 0;
+    margin-right: 56px; }
+
+.streamline {
+  border-left-width: 0;
+  border-right-width: 1px;
+  border-right-style: solid; }
+  .streamline:after,
+  .streamline .sl-item:before,
+  .streamline .sl-icon:before {
+    margin-left: 0;
+    margin-right: -4px;
+    top: 6px;
+    left: auto;
+    right: 0; }
+
+.sl-icon {
+  left: auto;
+  right: -10px; }
+
+.sl-left {
+  float: right;
+  margin-right: -20px;
+  margin-left: 0; }
+  .sl-left + .sl-content {
+    margin-right: 36px;
+    margin-left: auto; }
+
+.sl-content {
+  margin-left: 0;
+  margin-right: 24px; }
+
+.tl-wrap {
+  margin-left: 0;
+  margin-right: 6em;
+  border-width: 0 2px 0 0;
+  padding: 15px 20px 15px 0px; }
+  .tl-wrap:before {
+    float: right;
+    margin-right: -26px; }
+
+.timeline-center .tl-item {
+  margin-right: 50%;
+  margin-left: 0; }
+
+.timeline-center .tl-wrap {
+  margin-right: -2px !important; }
+
+.tl-date {
+  text-align: left;
+  float: right;
+  margin-right: -7.5em; }
+
+.ui-check > i {
+  margin-right: -20px;
+  margin-left: 4px; }
+
+.ui-switch input:checked + i:after {
+  margin-right: 15px;
+  margin-left: 0; }
+
+.ui-switch-md input:checked + i:after {
+  margin-right: 17px;
+  margin-left: 0; }
+
+.ui-switch-lg input:checked + i:after {
+  margin-right: 21px;
+  margin-left: 0; }
+
+.md-check {
+  padding-left: 0;
+  padding-right: 20px; }
+  .md-check input[type="checkbox"]:checked + i:after,
+  .md-check input[type="radio"]:checked + i:after {
+    left: auto;
+    right: 6px; }
+  .md-check > i {
+    float: right;
+    margin-left: 28px;
+    margin-right: -20px; }
+
+.md-switch {
+  padding-left: 0;
+  padding-right: 36px; }
+  .md-switch > i {
+    margin-right: 0;
+    margin-left: 8px; }
+
+.md-input ~ label {
+  left: auto;
+  right: 0; }
+
+.switcher {
+  left: -240px;
+  right: auto; }
+  .switcher .sw-btn {
+    left: auto;
+    right: -42px;
+    border-right-width: 1px;
+    border-left-width: 0; }
+  .switcher.active {
+    left: -1px;
+    right: auto; }

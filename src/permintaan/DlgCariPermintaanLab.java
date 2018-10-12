@@ -1,5 +1,4 @@
 package permintaan;
-import keuangan.Jurnal;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -27,7 +26,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int i;
@@ -276,7 +274,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2018 11:45:44" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-09-2018 16:32:19" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);

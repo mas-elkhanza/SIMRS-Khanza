@@ -785,16 +785,12 @@ private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
            NmObatPCare.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
         }
     }
-
-    
-   
-    
     
     public void isCek(){
-        BtnSimpan.setEnabled(var.getmapping_poli_bpjs());
-        BtnHapus.setEnabled(var.getmapping_poli_bpjs());
-        BtnEdit.setEnabled(var.getmapping_poli_bpjs());
-        BtnPrint.setEnabled(var.getmapping_poli_bpjs());
+        BtnSimpan.setEnabled(var.getpcare_mapping_obat());
+        BtnHapus.setEnabled(var.getpcare_mapping_obat());
+        BtnEdit.setEnabled(var.getpcare_mapping_obat());
+        BtnPrint.setEnabled(var.getpcare_mapping_obat());
     }
     
     public JTable getTable(){

@@ -786,7 +786,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                 try {                                    
                                     switch (pilihtable) {
                                         case "rawat_jl_dr":
-                                            pssimpandokter=koneksi.prepareStatement("insert into rawat_jl_dr values(?,?,?,?,?,?,?,?,?,?,?)");
+                                            pssimpandokter=koneksi.prepareStatement("insert into rawat_jl_dr values(?,?,?,?,?,?,?,?,?,?,?,'Belum')");
                                             try {
                                                 pssimpandokter.setString(1,TNoRw.getText());
                                                 pssimpandokter.setString(2,tbTindakan.getValueAt(i,1).toString());
@@ -809,7 +809,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                             }
                                             break;
                                         case "rawat_jl_pr":
-                                            pssimpanperawat=koneksi.prepareStatement("insert into rawat_jl_pr values(?,?,?,?,?,?,?,?,?,?,?)");
+                                            pssimpanperawat=koneksi.prepareStatement("insert into rawat_jl_pr values(?,?,?,?,?,?,?,?,?,?,?,'Belum')");
                                             try {
                                                 pssimpanperawat.setString(1,TNoRw.getText());
                                                 pssimpanperawat.setString(2,tbTindakan.getValueAt(i,1).toString());
@@ -835,7 +835,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                             if(Nip2.getText().trim().equals("")||NmPetugas2.getText().trim().equals("")){
                                                 Valid.textKosong(TCariTindakan,"Data Petugas");
                                             }else{
-                                                pssimpandokterperawat=koneksi.prepareStatement("insert into rawat_jl_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                                pssimpandokterperawat=koneksi.prepareStatement("insert into rawat_jl_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum')");
                                                 try {
                                                     pssimpandokterperawat.setString(1,TNoRw.getText());
                                                     pssimpandokterperawat.setString(2,tbTindakan.getValueAt(i,1).toString());

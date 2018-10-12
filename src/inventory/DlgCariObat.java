@@ -201,7 +201,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==9)||(colIndex==11)||(colIndex==12)||(colIndex==13)) {
+                if ((colIndex==9)||(colIndex==10)||(colIndex==11)||(colIndex==12)||(colIndex==13)) {
                     a=true;
                 }
                 return a;
@@ -1288,9 +1288,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     resep.emptTeks(); 
                     resep.isCek();
                     if(!namadokter.equals("")){
-                        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter);
+                        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter,"ralan");
                     }else{
-                        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
+                        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),"ralan");
                         resep.setDokterRalan();
                     }
                     resep.tampil();
@@ -1371,9 +1371,9 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             resep.emptTeks(); 
             resep.isCek();
             if(!namadokter.equals("")){
-                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter);
+                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter,"ralan");
             }else{
-                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
+                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),"ralan");
                 resep.setDokterRalan();
             }
             resep.tampil();
@@ -1938,10 +1938,8 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }
     
     public void tampilobat2(String no_resep) {     
-        this.noresep=no_resep;
-        ChkNoResep.setSelected(false);        
-        Valid.tabelKosong(tabModeobat);             
-        
+        this.noresep=no_resep;       
+        Valid.tabelKosong(tabModeobat);    
         try {
             psobat=koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,jenis.nama, "+
@@ -2459,7 +2457,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(tbDetailObatRacikan.getSelectedRow()!= -1){
             try {
                 tbDetailObatRacikan.setValueAt(
-                                Math.ceil((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
+                                ((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
                                 *Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString()))
                                 /Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),8).toString()))
                                 ,tbDetailObatRacikan.getSelectedRow(),10);

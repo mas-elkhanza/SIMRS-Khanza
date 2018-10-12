@@ -1004,67 +1004,69 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_nmjenisKeyPressed
 
 private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHapusActionPerformed
-  if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString().trim().equals("")){
-      Valid.textKosong(TCari,"No.Faktur");
-  }else{
-     try {
-         Sequel.AutoComitFalse();
-         pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, kd_bangsal,tgl_faktur,status from pemesanan where no_faktur=?");
-         try {
-            pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            rs=pscaripesan.executeQuery();
-            if(rs.next()){
-                psdetailpesan=koneksi.prepareStatement("select kode_brng,jumlah2,no_batch,no_faktur from detailpesan where no_faktur=? ");
-                try {
-                    psdetailpesan.setString(1,rs.getString(1));
-                    rs2=psdetailpesan.executeQuery();
-                    while(rs2.next()){
-                        Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah2"),"Penerimaan",var.getkode(),rs.getString("kd_bangsal"),"Hapus");
-                        Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jumlah2") +"'", 
-                                         "stok=stok-'"+rs2.getString("jumlah2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
-                        Sequel.queryu3("delete from data_batch where kode_brng=? and no_batch=?",2,new String[]{
-                            rs2.getString("kode_brng"),rs2.getString("no_batch")
-                        });
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif 2 : "+e);
-                } finally{
-                    if(rs2!=null){
-                        rs2.close();
-                    }
-                    if(psdetailpesan!=null){
-                        psdetailpesan.close();
-                    }
-                }
-                    
-                Sequel.queryu("delete from tampjurnal");
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    Sequel.cariIsi("select Pemesanan_Obat from set_akun"),"PERSEDIAAN BARANG","0",rs.getString("tagihan")
-                });    
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    Sequel.cariIsi("select Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA",rs.getString("tagihan"),"0"
-                }); 
-                jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN BARANG DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",rs.getString("kd_bangsal")).toUpperCase());
-                Sequel.queryu2("delete from pemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
-            } 
-         } catch (Exception e) {
-             System.out.println("Notif : "+e);
-         } finally{
-             if(rs!=null){
-                 rs.close();
-             }
-             if(pscaripesan!=null){
-                 pscaripesan.close();
-             }
-         }
-         
-         Sequel.AutoComitTrue();
-         tampil();
-     } catch (SQLException ex) {
-         System.out.println(ex);
-     }      
-  }       
-    
+    if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString().trim().equals("")){
+        Valid.textKosong(TCari,"No.Faktur");
+    }else{
+      int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, yakin mau dihapus...??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+      if (reply == JOptionPane.YES_OPTION) {
+          try {
+              Sequel.AutoComitFalse();
+              pscaripesan=koneksi.prepareStatement("select no_faktur, tagihan, kd_bangsal,tgl_faktur,status from pemesanan where no_faktur=?");
+              try {
+                 pscaripesan.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                 rs=pscaripesan.executeQuery();
+                 if(rs.next()){
+                     psdetailpesan=koneksi.prepareStatement("select kode_brng,jumlah2,no_batch,no_faktur from detailpesan where no_faktur=? ");
+                     try {
+                         psdetailpesan.setString(1,rs.getString(1));
+                         rs2=psdetailpesan.executeQuery();
+                         while(rs2.next()){
+                             Trackobat.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah2"),"Penerimaan",var.getkode(),rs.getString("kd_bangsal"),"Hapus");
+                             Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','-"+rs2.getString("jumlah2") +"'", 
+                                              "stok=stok-'"+rs2.getString("jumlah2") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"'");
+                             Sequel.queryu3("delete from data_batch where kode_brng=? and no_batch=?",2,new String[]{
+                                 rs2.getString("kode_brng"),rs2.getString("no_batch")
+                             });
+                         }
+                     } catch (Exception e) {
+                         System.out.println("Notif 2 : "+e);
+                     } finally{
+                         if(rs2!=null){
+                             rs2.close();
+                         }
+                         if(psdetailpesan!=null){
+                             psdetailpesan.close();
+                         }
+                     }
+
+                     Sequel.queryu("delete from tampjurnal");
+                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                         Sequel.cariIsi("select Pemesanan_Obat from set_akun"),"PERSEDIAAN BARANG","0",rs.getString("tagihan")
+                     });    
+                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                         Sequel.cariIsi("select Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA",rs.getString("tagihan"),"0"
+                     }); 
+                     jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","BATAL TRANSAKSI PENERIMAAN BARANG DI "+Sequel.cariIsi("select nm_bangsal from bangsal where kd_bangsal=?",rs.getString("kd_bangsal")).toUpperCase());
+                     Sequel.queryu2("delete from pemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
+                 } 
+              } catch (Exception e) {
+                  System.out.println("Notif : "+e);
+              } finally{
+                  if(rs!=null){
+                      rs.close();
+                  }
+                  if(pscaripesan!=null){
+                      pscaripesan.close();
+                  }
+              }
+
+              Sequel.AutoComitTrue();
+              tampil();
+          } catch (SQLException ex) {
+              System.out.println(ex);
+          }  
+      }
+    }   
 }//GEN-LAST:event_ppHapusActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

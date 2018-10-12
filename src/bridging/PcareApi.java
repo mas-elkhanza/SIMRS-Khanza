@@ -21,26 +21,27 @@ import org.springframework.web.client.RestTemplate;
 
 public class PcareApi {        
     private static final Properties prop = new Properties();
-    public String getHmac() {
+    private String Key,Consid;
+    
+    public PcareApi(){
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            Key = prop.getProperty("SECRETKEYAPIPCARE");
+            Consid = prop.getProperty("CONSIDAPIPCARE");
         } catch (Exception ex) {
             System.out.println("Notifikasi : "+ex);
-        }
+        }        
+    }
+    public String getHmac() {        
         long GetUTCdatetimeAsString = GetUTCdatetimeAsString();
-        
-	String secretKey = prop.getProperty("SECRETKEYAPIPCARE");
-        String Consid = prop.getProperty("CONSIDAPIPCARE");
-        String salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);	
-
+        String salt = Consid +"&"+String.valueOf(GetUTCdatetimeAsString);
 	String generateHmacSHA256Signature = null;
 	try {
-	    generateHmacSHA256Signature = generateHmacSHA256Signature(salt,secretKey);
+	    generateHmacSHA256Signature = generateHmacSHA256Signature(salt,Key);
 	} catch (GeneralSecurityException e) {
 	    System.out.println("Error Signature : "+e);
 	    e.printStackTrace();
 	}
-
 	return generateHmacSHA256Signature;
     }
 

@@ -55,7 +55,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date date = new Date();
-    private String now=dateFormat.format(date),lembarobat="";
+    private String now=dateFormat.format(date),lembarobat="",status="";
     private double total=0,jumlahtotal=0;
     private Properties prop = new Properties();
     private DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
@@ -1015,11 +1015,11 @@ public final class DlgResepObat extends javax.swing.JDialog {
         }else if(NoResep.getText().trim().equals("")){
             Valid.textKosong(NoResep,"No.Resep");
         }else{
-            if(Sequel.menyimpantf("resep_obat","?,?,?,?,?,?,?","Nomer Resep",7,new String[]{
+            if(Sequel.menyimpantf("resep_obat","?,?,?,?,?,?,?,?","Nomer Resep",8,new String[]{
                     NoResep.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                     TNoRw.getText(),KdDokter.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
-                    cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()
+                    cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),status
                 })==true){
                 tampil();
                 if(lembarobat.equals("yes")){
@@ -1058,10 +1058,10 @@ public final class DlgResepObat extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.Klik data pada table untuk memilih...!!!!");
         }else if(!(TPasien.getText().trim().equals(""))){
            Sequel.meghapus("resep_obat","no_resep",NoResep.getText());
+           Sequel.meghapus("resep_dokter","no_resep",NoResep.getText());
            tampil();
+           emptTeks();
         }
-
-        emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -1860,7 +1860,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
    
-    public void setNoRm(String norwt,Date tgl1,Date tgl2,String jam,String menit,String detik) {
+    public void setNoRm(String norwt,Date tgl1,Date tgl2,String jam,String menit,String detik,String status) {
         TNoRw.setText(norwt);
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRm,TNoRw.getText());
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRm.getText());
@@ -1872,10 +1872,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         cmbMnt.setSelectedItem(menit);
         cmbDtk.setSelectedItem(detik);
         ChkInput.setSelected(true);
+        this.status=status;
         isForm();
     }
     
-    public void setNoRm(String norwt,Date tgl1,Date tgl2,String jam,String menit,String detik,String kodedokter,String namadokter) {
+    public void setNoRm(String norwt,Date tgl1,Date tgl2,String jam,String menit,String detik,String kodedokter,String namadokter,String status) {
         TNoRw.setText(norwt);
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRm,TNoRw.getText());
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRm.getText());
@@ -1890,6 +1891,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         isForm();
         KdDokter.setText(kodedokter);
         NmDokter.setText(namadokter);
+        this.status=status;
     }
     
     public void setDokterRalan(){

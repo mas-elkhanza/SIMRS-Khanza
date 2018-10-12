@@ -84,7 +84,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private BPJSCekReferensiPropinsi propinsi=new BPJSCekReferensiPropinsi(null,false);
     private BPJSCekReferensiKabupaten kabupaten=new BPJSCekReferensiKabupaten(null,false);
     private BPJSCekReferensiKecamatan kecamatan=new BPJSCekReferensiKecamatan(null,false);
-    private String no_peserta="", requestJson,URL="",jkel="",duplikat="",user="",penjamin="",jasaraharja="",BPJS="",Taspen="",Asabri="",kddokter="",tglkkl="0000-00-00";
+    private String no_peserta="",link="", requestJson,URL="",jkel="",duplikat="",user="",penjamin="",jasaraharja="",BPJS="",Taspen="",Asabri="",kddokter="",tglkkl="0000-00-00";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -563,9 +563,10 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         }
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
-            System.out.println("SEP XML : "+e);
+            System.out.println("E : "+e);
         }
     }
 
@@ -630,25 +631,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         NoSEP = new widget.TextBox();
         BtnCari1 = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
-        jPanel3 = new javax.swing.JPanel();
-        panelGlass8 = new widget.panelisi();
-        BtnSimpan = new widget.Button();
-        BtnBatal = new widget.Button();
-        BtnHapus = new widget.Button();
-        BtnPrint = new widget.Button();
-        BtnEdit = new widget.Button();
-        BtnAll = new widget.Button();
-        BtnKeluar = new widget.Button();
-        panelGlass9 = new widget.panelisi();
-        jLabel19 = new widget.Label();
-        DTPCari1 = new widget.Tanggal();
-        jLabel21 = new widget.Label();
-        DTPCari2 = new widget.Tanggal();
-        jLabel6 = new widget.Label();
-        TCari = new widget.TextBox();
-        BtnCari = new widget.Button();
-        jLabel7 = new widget.Label();
-        LCount = new widget.Label();
         TabRawat = new javax.swing.JTabbedPane();
         internalFrame2 = new widget.InternalFrame();
         Scroll1 = new widget.ScrollPane();
@@ -741,6 +723,24 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         internalFrame4 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
+        panelGlass9 = new widget.panelisi();
+        jLabel19 = new widget.Label();
+        DTPCari1 = new widget.Tanggal();
+        jLabel21 = new widget.Label();
+        DTPCari2 = new widget.Tanggal();
+        jLabel6 = new widget.Label();
+        TCari = new widget.TextBox();
+        BtnCari = new widget.Button();
+        jLabel7 = new widget.Label();
+        LCount = new widget.Label();
+        panelGlass8 = new widget.panelisi();
+        BtnSimpan = new widget.Button();
+        BtnBatal = new widget.Button();
+        BtnHapus = new widget.Button();
+        BtnPrint = new widget.Button();
+        BtnEdit = new widget.Button();
+        BtnAll = new widget.Button();
+        BtnKeluar = new widget.Button();
 
         Popup.setName("Popup"); // NOI18N
 
@@ -904,7 +904,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2018 12:30:42" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2018 18:49:06" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -959,7 +959,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         jLabel30.setBounds(0, 25, 102, 23);
 
         TanggalRujukKeluar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujukKeluar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2018" }));
+        TanggalRujukKeluar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2018" }));
         TanggalRujukKeluar.setDisplayFormat("dd-MM-yyyy");
         TanggalRujukKeluar.setName("TanggalRujukKeluar"); // NOI18N
         TanggalRujukKeluar.setOpaque(false);
@@ -1281,222 +1281,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
-        jPanel3.setName("jPanel3"); // NOI18N
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(44, 100));
-        jPanel3.setLayout(new java.awt.BorderLayout(1, 1));
-
-        panelGlass8.setName("panelGlass8"); // NOI18N
-        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
-
-        BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        BtnSimpan.setMnemonic('S');
-        BtnSimpan.setText("Simpan");
-        BtnSimpan.setToolTipText("Alt+S");
-        BtnSimpan.setName("BtnSimpan"); // NOI18N
-        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpanActionPerformed(evt);
-            }
-        });
-        BtnSimpan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSimpanKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnSimpan);
-
-        BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
-        BtnBatal.setMnemonic('B');
-        BtnBatal.setText("Baru");
-        BtnBatal.setToolTipText("Alt+B");
-        BtnBatal.setName("BtnBatal"); // NOI18N
-        BtnBatal.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnBatal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBatalActionPerformed(evt);
-            }
-        });
-        BtnBatal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnBatalKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnBatal);
-
-        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnHapus.setMnemonic('H');
-        BtnHapus.setText("Hapus");
-        BtnHapus.setToolTipText("Alt+H");
-        BtnHapus.setName("BtnHapus"); // NOI18N
-        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnHapus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusActionPerformed(evt);
-            }
-        });
-        BtnHapus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnHapusKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnHapus);
-
-        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        BtnPrint.setMnemonic('T');
-        BtnPrint.setText("Cetak");
-        BtnPrint.setToolTipText("Alt+T");
-        BtnPrint.setName("BtnPrint"); // NOI18N
-        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
-            }
-        });
-        BtnPrint.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnPrintKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnPrint);
-
-        BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
-        BtnEdit.setMnemonic('G');
-        BtnEdit.setText("Ganti");
-        BtnEdit.setToolTipText("Alt+G");
-        BtnEdit.setName("BtnEdit"); // NOI18N
-        BtnEdit.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEditActionPerformed(evt);
-            }
-        });
-        BtnEdit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnEditKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnEdit);
-
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnAll);
-
-        BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
-        BtnKeluar.setMnemonic('K');
-        BtnKeluar.setText("Keluar");
-        BtnKeluar.setToolTipText("Alt+K");
-        BtnKeluar.setName("BtnKeluar"); // NOI18N
-        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnKeluarActionPerformed(evt);
-            }
-        });
-        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnKeluarKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnKeluar);
-
-        jPanel3.add(panelGlass8, java.awt.BorderLayout.CENTER);
-
-        panelGlass9.setName("panelGlass9"); // NOI18N
-        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
-        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
-
-        jLabel19.setText("Tgl. SEP :");
-        jLabel19.setName("jLabel19"); // NOI18N
-        jLabel19.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelGlass9.add(jLabel19);
-
-        DTPCari1.setEditable(false);
-        DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2018" }));
-        DTPCari1.setDisplayFormat("dd-MM-yyyy");
-        DTPCari1.setName("DTPCari1"); // NOI18N
-        DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
-        panelGlass9.add(DTPCari1);
-
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("s.d.");
-        jLabel21.setName("jLabel21"); // NOI18N
-        jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
-        panelGlass9.add(jLabel21);
-
-        DTPCari2.setEditable(false);
-        DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2018" }));
-        DTPCari2.setDisplayFormat("dd-MM-yyyy");
-        DTPCari2.setName("DTPCari2"); // NOI18N
-        DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
-        panelGlass9.add(DTPCari2);
-
-        jLabel6.setText("Key Word :");
-        jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelGlass9.add(jLabel6);
-
-        TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(205, 23));
-        TCari.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TCariKeyPressed(evt);
-            }
-        });
-        panelGlass9.add(TCari);
-
-        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCari.setMnemonic('3');
-        BtnCari.setToolTipText("Alt+3");
-        BtnCari.setName("BtnCari"); // NOI18N
-        BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCariActionPerformed(evt);
-            }
-        });
-        BtnCari.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCariKeyPressed(evt);
-            }
-        });
-        panelGlass9.add(BtnCari);
-
-        jLabel7.setText("Record :");
-        jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelGlass9.add(jLabel7);
-
-        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LCount.setText("0");
-        LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass9.add(LCount);
-
-        jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
-
-        internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
-
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
         TabRawat.setForeground(new java.awt.Color(130, 100, 100));
@@ -1568,7 +1352,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2018" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2018" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setName("TanggalSEP"); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -1589,7 +1373,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2018" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2018" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setName("TanggalRujuk"); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -2006,7 +1790,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2018" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2018" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setName("TanggalKKL"); // NOI18N
         TanggalKKL.setOpaque(false);
@@ -2276,9 +2060,218 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         internalFrame4.add(Scroll, java.awt.BorderLayout.CENTER);
 
+        panelGlass9.setName("panelGlass9"); // NOI18N
+        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        jLabel19.setText("Tgl. SEP :");
+        jLabel19.setName("jLabel19"); // NOI18N
+        jLabel19.setPreferredSize(new java.awt.Dimension(55, 23));
+        panelGlass9.add(jLabel19);
+
+        DTPCari1.setEditable(false);
+        DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2018" }));
+        DTPCari1.setDisplayFormat("dd-MM-yyyy");
+        DTPCari1.setName("DTPCari1"); // NOI18N
+        DTPCari1.setOpaque(false);
+        DTPCari1.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass9.add(DTPCari1);
+
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel21.setText("s.d.");
+        jLabel21.setName("jLabel21"); // NOI18N
+        jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
+        panelGlass9.add(jLabel21);
+
+        DTPCari2.setEditable(false);
+        DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-09-2018" }));
+        DTPCari2.setDisplayFormat("dd-MM-yyyy");
+        DTPCari2.setName("DTPCari2"); // NOI18N
+        DTPCari2.setOpaque(false);
+        DTPCari2.setPreferredSize(new java.awt.Dimension(95, 23));
+        panelGlass9.add(DTPCari2);
+
+        jLabel6.setText("Key Word :");
+        jLabel6.setName("jLabel6"); // NOI18N
+        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelGlass9.add(jLabel6);
+
+        TCari.setName("TCari"); // NOI18N
+        TCari.setPreferredSize(new java.awt.Dimension(205, 23));
+        TCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TCariKeyPressed(evt);
+            }
+        });
+        panelGlass9.add(TCari);
+
+        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari.setMnemonic('3');
+        BtnCari.setToolTipText("Alt+3");
+        BtnCari.setName("BtnCari"); // NOI18N
+        BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariActionPerformed(evt);
+            }
+        });
+        BtnCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCariKeyPressed(evt);
+            }
+        });
+        panelGlass9.add(BtnCari);
+
+        jLabel7.setText("Record :");
+        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(65, 23));
+        panelGlass9.add(jLabel7);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass9.add(LCount);
+
+        internalFrame4.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
+
         TabRawat.addTab("Data SEP", internalFrame4);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
+
+        panelGlass8.setName("panelGlass8"); // NOI18N
+        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 54));
+        panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan.setMnemonic('S');
+        BtnSimpan.setText("Simpan");
+        BtnSimpan.setToolTipText("Alt+S");
+        BtnSimpan.setName("BtnSimpan"); // NOI18N
+        BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpanActionPerformed(evt);
+            }
+        });
+        BtnSimpan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnSimpanKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnSimpan);
+
+        BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
+        BtnBatal.setMnemonic('B');
+        BtnBatal.setText("Baru");
+        BtnBatal.setToolTipText("Alt+B");
+        BtnBatal.setName("BtnBatal"); // NOI18N
+        BtnBatal.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBatalActionPerformed(evt);
+            }
+        });
+        BtnBatal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnBatalKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnBatal);
+
+        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnHapus.setMnemonic('H');
+        BtnHapus.setText("Hapus");
+        BtnHapus.setToolTipText("Alt+H");
+        BtnHapus.setName("BtnHapus"); // NOI18N
+        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHapusActionPerformed(evt);
+            }
+        });
+        BtnHapus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnHapusKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnHapus);
+
+        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
+        BtnPrint.setMnemonic('T');
+        BtnPrint.setText("Cetak");
+        BtnPrint.setToolTipText("Alt+T");
+        BtnPrint.setName("BtnPrint"); // NOI18N
+        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPrintActionPerformed(evt);
+            }
+        });
+        BtnPrint.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPrintKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnPrint);
+
+        BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
+        BtnEdit.setMnemonic('G');
+        BtnEdit.setText("Ganti");
+        BtnEdit.setToolTipText("Alt+G");
+        BtnEdit.setName("BtnEdit"); // NOI18N
+        BtnEdit.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditActionPerformed(evt);
+            }
+        });
+        BtnEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnEditKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnEdit);
+
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setText("Semua");
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnAll);
+
+        BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
+        BtnKeluar.setMnemonic('K');
+        BtnKeluar.setText("Keluar");
+        BtnKeluar.setToolTipText("Alt+K");
+        BtnKeluar.setName("BtnKeluar"); // NOI18N
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKeluarActionPerformed(evt);
+            }
+        });
+        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnKeluarKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(BtnKeluar);
+
+        internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -2321,7 +2314,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 if(NmPoli.getText().toLowerCase().contains("darurat")){
                     if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
                             "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
-                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
+                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"%' and "+
                             "nmpolitujuan like '%darurat%'")>=3){
                         JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
                         TCari.requestFocus();
@@ -2331,7 +2324,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 }else if(!NmPoli.getText().toLowerCase().contains("darurat")){
                     if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
                             "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
-                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
+                            "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"%' and "+
                             "nmpolitujuan not like '%darurat%'")>=1){
                         JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
                         TCari.requestFocus();
@@ -2445,7 +2438,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                         tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
                     }
                     
-                    URL = prop.getProperty("URLAPIBPJS")+"/SEP/1.1/Update";	
+                    URL = link+"/SEP/1.1/Update";	
 
                     HttpHeaders headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -2860,7 +2853,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             Valid.textKosong(Catatan, "Catatan");
         }else{
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Sep/updtglplg";	
+                URL = link+"/Sep/updtglplg";	
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -2953,7 +2946,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         if(!NoKartu.getText().equals("")){
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Sep/pengajuanSEP";	
+                URL = link+"/Sep/pengajuanSEP";	
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -3063,7 +3056,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
         if(!NoKartu.getText().equals("")){
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Sep/aprovalSEP";	
+                URL = link+"/Sep/aprovalSEP";	
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -3143,7 +3136,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             Valid.textKosong(KdPoli1, "Poli Tujuan");        
         }else{  
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/insert";	
+                URL = link+"/Rujukan/insert";	
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                 headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
@@ -3437,7 +3430,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 if(penjamin.endsWith(",")){
                     penjamin = penjamin.substring(0,penjamin.length() - 1);
                 }
-                URL = prop.getProperty("URLAPIBPJS")+"/SEP/1.1/insert";	
+                
+                URL = link+"/SEP/1.1/insert";	
 
                 tglkkl="0000-00-00";
                 if(LakaLantas.getSelectedIndex()==1){
@@ -3468,7 +3462,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
         if(!NoSEP.getText().equals("")){
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/SEP/"+NoSEP.getText();	
+                URL = link+"/SEP/"+NoSEP.getText();	
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -3553,7 +3547,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        if(this.getHeight()<560){   
+        if(this.getHeight()<530){   
             Scroll1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
             FormInput.setPreferredSize(new Dimension(FormInput.WIDTH,410));
             if(this.getWidth()<780){
@@ -3829,7 +3823,6 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
-    private javax.swing.JPanel jPanel3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppAmbilSep;
@@ -4117,7 +4110,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         restTemplate.setRequestFactory(factory);
         
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/SEP/Delete";	
+            URL = link+"/SEP/Delete";	
             
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -4175,7 +4168,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
             }
             
-            URL = prop.getProperty("URLAPIBPJS")+"/SEP/1.1/insert";
+            URL = link+"/SEP/1.1/insert";
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
@@ -4265,7 +4258,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                      });
                      if(JenisPelayanan.getSelectedIndex()==1){
                         try {
-                            URL = prop.getProperty("URLAPIBPJS")+"/Sep/updtglplg";	
+                            URL = link+"/Sep/updtglplg";	
 
                             HttpHeaders headers2 = new HttpHeaders();
                             headers2.setContentType(MediaType.APPLICATION_FORM_URLENCODED);

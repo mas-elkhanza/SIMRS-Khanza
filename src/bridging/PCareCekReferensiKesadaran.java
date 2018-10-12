@@ -36,7 +36,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 
 /**
  *
@@ -49,6 +48,7 @@ public final class PCareCekReferensiKesadaran extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private PcareApi api=new PcareApi();
+    private String URL;
 
     /** Creates new form DlgKamar
      * @param parent
@@ -94,7 +94,8 @@ public final class PCareCekReferensiKesadaran extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            URL = prop.getProperty("URLAPIPCARE")+"/kesadaran";          
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -318,8 +319,6 @@ public final class PCareCekReferensiKesadaran extends javax.swing.JDialog {
 
     public void tampil(String diagnosa) {
         try {
-            String URL = prop.getProperty("URLAPIPCARE")+"/kesadaran";	
-
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            

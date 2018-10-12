@@ -1197,6 +1197,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             ppHapus.setEnabled(false);
         }    
         ppDisetujui.setEnabled(var.getmutasi_barang());
-        ppTidakDisetujui.setEnabled(var.getmutasi_barang());
+        ppDisetujui1.setEnabled(var.getpengeluaran_stok_apotek());
+        if((var.getpengeluaran_stok_apotek()==false)&&(var.getmutasi_barang()==false)){
+            ppTidakDisetujui.setEnabled(false);
+        }else{
+            ppTidakDisetujui.setEnabled(true);
+        }
     }
 }

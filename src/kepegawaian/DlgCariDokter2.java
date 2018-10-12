@@ -25,8 +25,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -54,7 +54,7 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(656,250);
 
-        Object[] row={"Kode Dokter","Nama Dokter","J.K.","Tmp.Lahir","Tgl.Lahir","G.D.","Agama","Alamat Tinggal","No.HP/Telp","Stts.Nikah","Spesialis","Alumni","No.Ijin Praktek"};
+        Object[] row={"Kode Dokter","Nama Dokter","J.K.","Tmp.Lahir","Tgl.Lahir","G.D.","Agama","Alamat Tinggal","No.HP/Telp","Stts.Nikah","Spesialis","Alumni","No.Ijin Praktek","Kuota"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -63,7 +63,7 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 14; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -91,6 +91,8 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             }else if(i==12){
                 column.setPreferredWidth(100);
+            }else if(i==13){
+                column.setPreferredWidth(50);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -375,7 +377,7 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                 "select dokter.kd_dokter,dokter.nm_dokter,dokter.jk,dokter.tmp_lahir, "+
                 "dokter.tgl_lahir,dokter.gol_drh,dokter.agama,dokter.almt_tgl,dokter.no_telp, "+
-                "dokter.stts_nikah,spesialis.nm_sps,dokter.alumni,dokter.no_ijn_praktek "+
+                "dokter.stts_nikah,spesialis.nm_sps,dokter.alumni,dokter.no_ijn_praktek,jadwal.kuota "+
                 "from dokter inner join spesialis inner join jadwal inner join poliklinik "+
                 "on dokter.kd_sps=spesialis.kd_sps and dokter.kd_dokter=jadwal.kd_dokter and poliklinik.kd_poli=jadwal.kd_poli "+
                 "where jadwal.hari_kerja=? and poliklinik.nm_poli like ? and dokter.status='1' and dokter.kd_dokter like ? or "+
@@ -460,7 +462,8 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
                                    rs.getString(10),
                                    rs.getString(11),
                                    rs.getString(12),
-                                   rs.getString(13)};
+                                   rs.getString(13),
+                                   rs.getString(14)};
                     tabMode.addRow(data);
                 }
             }catch(SQLException e){
@@ -495,5 +498,10 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     
     public void isCek(){        
         BtnTambah.setEnabled(var.getdokter());
+    }
+    
+    public void SetHari(Date tanggal){
+        cal.setTime(tanggal);
+        day=cal.get(Calendar.DAY_OF_WEEK);
     }
 }

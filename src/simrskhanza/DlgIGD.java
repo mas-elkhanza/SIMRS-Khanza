@@ -4387,7 +4387,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 resep.setLocationRelativeTo(internalFrame1);
                 resep.emptTeks();
                 resep.isCek();
-                resep.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),CmbJam.getSelectedItem().toString(),CmbMenit.getSelectedItem().toString(),CmbDetik.getSelectedItem().toString());
+                resep.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),CmbJam.getSelectedItem().toString(),CmbMenit.getSelectedItem().toString(),CmbDetik.getSelectedItem().toString(),"ralan");
                 resep.tampil();
                 resep.setVisible(true);
             }                
@@ -5050,9 +5050,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
                 resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 resep.setLocationRelativeTo(internalFrame1);
-                resep.isCek();
                 resep.setNoRm(TNoRw.getText(),DTPCari1.getDate(),CmbJam.getSelectedItem().toString(),CmbMenit.getSelectedItem().toString(),CmbDetik.getSelectedItem().toString(),
-                    kddokter.getText(),TDokter.getText());
+                    kddokter.getText(),TDokter.getText(),"ralan");
+                resep.isCek();
                 resep.tampilobat();
                 resep.setVisible(true);
             }
@@ -6156,7 +6156,6 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             ps3.setString(2,TNoRM.getText());
             rs=ps3.executeQuery();
             while(rs.next()){
-                TPasien.setText(rs.getString("nm_pasien"));
                 TAlmt.setText(rs.getString("asal"));
                 TPngJwb.setText(rs.getString("namakeluarga"));
                 THbngn.setText(rs.getString("keluarga"));
@@ -6165,6 +6164,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                 TStatus.setText(rs.getString("daftar"));
                 umur="0";
                 sttsumur="Th";
+                TPasien.setText(rs.getString("nm_pasien")+" ("+umur+" "+sttsumur+")");
                 if(rs.getInt("tahun")>0){
                     umur=rs.getString("tahun");
                     sttsumur="Th";

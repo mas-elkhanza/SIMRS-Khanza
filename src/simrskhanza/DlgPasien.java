@@ -18,6 +18,8 @@ import bridging.BPJSPeserta;
 import bridging.DUKCAPILAcehCekNIK;
 import bridging.DUKCAPILBatamCekNIK;
 import bridging.DUKCAPILJakartaCekNik;
+import bridging.PCareNIK;
+import bridging.PCarePeserta;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import grafikanalisa.grafikjkel;
@@ -1314,6 +1316,8 @@ public class DlgPasien extends javax.swing.JDialog {
         MenuBPJS = new javax.swing.JMenu();
         MnCekKepesertaan = new javax.swing.JMenuItem();
         MnCekNIK = new javax.swing.JMenuItem();
+        MnCekKepesertaan1 = new javax.swing.JMenuItem();
+        MnCekNIK1 = new javax.swing.JMenuItem();
         ppKelahiranBayi = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         MnLaporanRM = new javax.swing.JMenuItem();
@@ -1855,9 +1859,9 @@ public class DlgPasien extends javax.swing.JDialog {
         MnCekKepesertaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCekKepesertaan.setForeground(new java.awt.Color(130, 100, 100));
         MnCekKepesertaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCekKepesertaan.setText("Pencarian Peserta Berdasarkan Nomor Kepesertaan");
+        MnCekKepesertaan.setText("Pencarian Peserta Berdasarkan Nomor Kepesertaan VClaim");
         MnCekKepesertaan.setName("MnCekKepesertaan"); // NOI18N
-        MnCekKepesertaan.setPreferredSize(new java.awt.Dimension(300, 26));
+        MnCekKepesertaan.setPreferredSize(new java.awt.Dimension(330, 26));
         MnCekKepesertaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekKepesertaanActionPerformed(evt);
@@ -1869,15 +1873,43 @@ public class DlgPasien extends javax.swing.JDialog {
         MnCekNIK.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCekNIK.setForeground(new java.awt.Color(130, 100, 100));
         MnCekNIK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCekNIK.setText("Pencarian Peserta Berdasarkan NIK/No.KTP");
+        MnCekNIK.setText("Pencarian Peserta Berdasarkan NIK/No.KTP VClaim");
         MnCekNIK.setName("MnCekNIK"); // NOI18N
-        MnCekNIK.setPreferredSize(new java.awt.Dimension(300, 26));
+        MnCekNIK.setPreferredSize(new java.awt.Dimension(330, 26));
         MnCekNIK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCekNIKActionPerformed(evt);
             }
         });
         MenuBPJS.add(MnCekNIK);
+
+        MnCekKepesertaan1.setBackground(new java.awt.Color(255, 255, 255));
+        MnCekKepesertaan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCekKepesertaan1.setForeground(new java.awt.Color(130, 100, 100));
+        MnCekKepesertaan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCekKepesertaan1.setText("Pencarian Peserta Berdasarkan Nomor Kepesertaan PCare");
+        MnCekKepesertaan1.setName("MnCekKepesertaan1"); // NOI18N
+        MnCekKepesertaan1.setPreferredSize(new java.awt.Dimension(330, 26));
+        MnCekKepesertaan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCekKepesertaan1ActionPerformed(evt);
+            }
+        });
+        MenuBPJS.add(MnCekKepesertaan1);
+
+        MnCekNIK1.setBackground(new java.awt.Color(255, 255, 255));
+        MnCekNIK1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCekNIK1.setForeground(new java.awt.Color(130, 100, 100));
+        MnCekNIK1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCekNIK1.setText("Pencarian Peserta Berdasarkan NIK/No.KTP PCare");
+        MnCekNIK1.setName("MnCekNIK1"); // NOI18N
+        MnCekNIK1.setPreferredSize(new java.awt.Dimension(330, 26));
+        MnCekNIK1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCekNIK1ActionPerformed(evt);
+            }
+        });
+        MenuBPJS.add(MnCekNIK1);
 
         jPopupMenu1.add(MenuBPJS);
 
@@ -2436,9 +2468,9 @@ public class DlgPasien extends javax.swing.JDialog {
         MnViaBPJSNik.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnViaBPJSNik.setForeground(new java.awt.Color(130, 100, 100));
         MnViaBPJSNik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnViaBPJSNik.setText("Cek Via NIK Web Servis BPJS");
+        MnViaBPJSNik.setText("Cek Via NIK Web Servis BPJS VClaim");
         MnViaBPJSNik.setName("MnViaBPJSNik"); // NOI18N
-        MnViaBPJSNik.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnViaBPJSNik.setPreferredSize(new java.awt.Dimension(280, 25));
         MnViaBPJSNik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaBPJSNikActionPerformed(evt);
@@ -2450,9 +2482,9 @@ public class DlgPasien extends javax.swing.JDialog {
         MnViaBPJSNoKartu.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnViaBPJSNoKartu.setForeground(new java.awt.Color(130, 100, 100));
         MnViaBPJSNoKartu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnViaBPJSNoKartu.setText("Cek Via No Kartu Web Servis BPJS");
+        MnViaBPJSNoKartu.setText("Cek Via No Kartu Web Servis BPJS VClaim");
         MnViaBPJSNoKartu.setName("MnViaBPJSNoKartu"); // NOI18N
-        MnViaBPJSNoKartu.setPreferredSize(new java.awt.Dimension(250, 25));
+        MnViaBPJSNoKartu.setPreferredSize(new java.awt.Dimension(280, 25));
         MnViaBPJSNoKartu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnViaBPJSNoKartuActionPerformed(evt);
@@ -2951,7 +2983,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-07-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3086,7 +3118,7 @@ public class DlgPasien extends javax.swing.JDialog {
         TKtp.setBounds(712, 132, 130, 23);
 
         DTPDaftar.setEditable(false);
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-07-2018" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-10-2018" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -7165,7 +7197,9 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_tbPasien3KeyPressed
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        pilihantampil();
+        if(!TCari.getText().equals("")){
+            pilihantampil();
+        }
     }//GEN-LAST:event_TabRawatMouseClicked
 
     private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
@@ -7287,6 +7321,34 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
         prop.setLocationRelativeTo(internalFrame1);
         prop.setVisible(true); 
     }//GEN-LAST:event_BtnSeek11ActionPerformed
+
+    private void MnCekKepesertaan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCekKepesertaan1ActionPerformed
+        if(!TNoPeserta.getText().equals("")){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            PCarePeserta form=new PCarePeserta(null, true);
+            form.tampil(TNoPeserta.getText());
+            form.setSize(640,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, Nomor kepesertaan kosong...!!!");
+        }
+    }//GEN-LAST:event_MnCekKepesertaan1ActionPerformed
+
+    private void MnCekNIK1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCekNIK1ActionPerformed
+        if(!TKtp.getText().equals("")){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            PCareNIK form=new PCareNIK(null, true);
+            form.tampil(TKtp.getText());
+            form.setSize(640,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, NIK KTP kosong...!!!");
+        }
+    }//GEN-LAST:event_MnCekNIK1ActionPerformed
 
     /**
      * @data args the command line arguments
@@ -7418,7 +7480,9 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
     private javax.swing.JMenuItem MnBarcodeRM8;
     private javax.swing.JMenuItem MnBarcodeRM9;
     private javax.swing.JMenuItem MnCekKepesertaan;
+    private javax.swing.JMenuItem MnCekKepesertaan1;
     private javax.swing.JMenuItem MnCekNIK;
+    private javax.swing.JMenuItem MnCekNIK1;
     private javax.swing.JMenuItem MnCopyResep;
     private javax.swing.JMenuItem MnCover;
     private javax.swing.JMenuItem MnFormulirPendaftaran;

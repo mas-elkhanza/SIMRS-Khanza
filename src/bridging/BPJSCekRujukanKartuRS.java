@@ -118,7 +118,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             p_alamatpj=0,p_kelurahanpj=0,p_kecamatanpj=0,p_kabupatenpj=0,jmlhari=0,
             p_propinsi=0,p_propinsipj=0;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
-    private String klg="SAUDARA",statuspasien="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
+    private String BASENOREG="",URUTNOREG="",link="",klg="SAUDARA",statuspasien="",pengurutan="",tahun="",bulan="",posisitahun="",awalantahun="",awalanbulan="",
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",
@@ -1355,8 +1355,13 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         }
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
+            URUTNOREG=prop.getProperty("URUTNOREG");
+            BASENOREG=prop.getProperty("BASENOREG");
         } catch (Exception e) {
+            URUTNOREG="";
+            BASENOREG="";
             System.out.println("E : "+e);
         }
         
@@ -3862,7 +3867,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(tbKamar.getRowCount()>0){
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Sep/pengajuanSEP";
+                URL = link+"/Sep/pengajuanSEP";
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -3909,7 +3914,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if(tbKamar.getRowCount()>0){
             try {
-                URL = prop.getProperty("URLAPIBPJS")+"/Sep/aprovalSEP";
+                URL = link+"/Sep/aprovalSEP";
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -5279,7 +5284,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
 
     public void tampil(String nomorrujukan) {
         try {
-            String URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/RS/Peserta/"+nomorrujukan;	
+            URL = link+"/Rujukan/RS/Peserta/"+nomorrujukan;	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -5770,7 +5775,37 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
     
     private void isNumber(){    
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(rujuk_masuk.no_rawat,4),signed)),0) from reg_periksa inner join rujuk_masuk on reg_periksa.no_rawat=rujuk_masuk.no_rawat where reg_periksa.tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"' ","BR/"+dateformat.format(TanggalSEP.getDate())+"/",4,NoBalasan); 
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"'","",3,TNoReg); 
+        if(BASENOREG.equals("booking")){
+            switch (URUTNOREG) {
+                case "poli":
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='"+kdpoli.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                case "dokter":
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"+kddokter.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                case "dokter & poli":             
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"+kddokter.getText()+"' and kd_poli='"+kdpoli.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                default:
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='"+kddokter.getText()+"' and tanggal_periksa='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+            }
+        }else{
+            switch (URUTNOREG) {
+                case "poli":
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                case "dokter":
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                case "dokter & poli":             
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and kd_poli='"+kdpoli.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+                default:
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='"+kddokter.getText()+"' and tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"'","",3,TNoReg);
+                    break;
+            }
+        } 
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0) from reg_periksa where tgl_registrasi='"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"' ",dateformat.format(TanggalSEP.getDate())+"/",6,TNoRw);                              
     }
     
@@ -6124,9 +6159,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             if(LakaLantas.getSelectedIndex()==1){
                 tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
             }
-            URL = prop.getProperty("URLAPIBPJS")+"/SEP/insert";	
-
-            URL = prop.getProperty("URLAPIBPJS")+"/SEP/1.1/insert";
+            URL = link+"/SEP/1.1/insert";
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID",prop.getProperty("CONSIDAPIBPJS"));
@@ -6213,7 +6246,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                  })==true){
                     if(JenisPelayanan.getSelectedIndex()==1){
                         try {
-                            URL = prop.getProperty("URLAPIBPJS")+"/Sep/updtglplg";	
+                            URL = link+"/Sep/updtglplg";	
 
                             HttpHeaders headers2 = new HttpHeaders();
                             headers2.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -6297,5 +6330,11 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
     
     private void UpdateUmur(){
         Sequel.mengedit("pasien","no_rkm_medis=?","umur=CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '),CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')),CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))",1,new String[]{TNo.getText()});
+    }
+    
+    public void isCek(){
+        BtnSimpan.setEnabled(var.getbpjs_sep());
+        ppPengajuan.setEnabled(var.getbpjs_sep());
+        ppPengajuan1.setEnabled(var.getbpjs_sep());
     }
 }

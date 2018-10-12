@@ -39,7 +39,6 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 
 /**
  *
@@ -53,6 +52,7 @@ public final class PCareCekReferensiSubspesialis extends javax.swing.JDialog {
     private PCareCekReferensiSpesialis spesialis=new PCareCekReferensiSpesialis(null,false);
     private int i=0;
     private PcareApi api=new PcareApi();
+    private String URL="",link="";
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -134,7 +134,8 @@ public final class PCareCekReferensiSubspesialis extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -405,7 +406,7 @@ public final class PCareCekReferensiSubspesialis extends javax.swing.JDialog {
 
     public void tampil(String diagnosa) {        
         try {
-            String URL = prop.getProperty("URLAPIPCARE")+"/spesialis/"+KdSpesialis.getText()+"/subspesialis";	
+            String URL = link+"/spesialis/"+KdSpesialis.getText()+"/subspesialis";	
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
