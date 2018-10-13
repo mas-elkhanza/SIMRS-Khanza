@@ -20,7 +20,7 @@ public class Table extends JTable {
         //setGridColor(new Color(245,170,245));
         //setForeground(new Color(90,90,90));
         setBackground(new Color(255,255,255));
-        setGridColor(new Color(235,240,230));
+        setGridColor(new Color(233,238,228));
         setForeground(new Color(110,80,80));
         setFont(new java.awt.Font("Tahoma", 0, 11));
         setRowHeight(22);

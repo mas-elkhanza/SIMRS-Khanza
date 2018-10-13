@@ -80,7 +80,7 @@ public class DlgAbout extends javax.swing.JDialog {
         jLabel6.setBounds(10, 18, 90, 20);
 
         panelGlass1.setBackground(new java.awt.Color(235, 255, 235));
-        panelGlass1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        panelGlass1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
         panelGlass1.setOpaqueImage(false);
         panelGlass1.setRound(false);
         panelGlass1.setLayout(null);
@@ -166,7 +166,7 @@ public class DlgAbout extends javax.swing.JDialog {
         jLabel16.setBounds(10, 135, 110, 20);
 
         panelGlass4.setBackground(new java.awt.Color(235, 255, 235));
-        panelGlass4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        panelGlass4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
         panelGlass4.setOpaqueImage(false);
         panelGlass4.setRound(false);
         panelGlass4.setLayout(null);
