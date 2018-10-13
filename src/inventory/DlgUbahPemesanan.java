@@ -237,7 +237,7 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(130,100,100));
+        ppBersihkan.setForeground(new java.awt.Color(110,80,80));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -261,7 +261,7 @@ public class DlgUbahPemesanan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Penerimaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Penerimaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -942,7 +942,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         DlgBarang barang=new DlgBarang(null,false);
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);
@@ -1087,7 +1087,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     if (reply == JOptionPane.YES_OPTION) {
                                         DlgKonversi konv=new DlgKonversi(null,false);
                                         konv.emptTeks();
-                                        konv.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                                        konv.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                                         konv.setLocationRelativeTo(internalFrame1);
                                         konv.setVisible(true);
                                     }
@@ -1121,7 +1121,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     }
                     if(y>0){
                         satuanbarang.isCek();
-                        satuanbarang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight());
+                        satuanbarang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight());
                         satuanbarang.setLocationRelativeTo(internalFrame1);
                         satuanbarang.setVisible(true);
                     }else{
@@ -1639,7 +1639,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 if (reply == JOptionPane.YES_OPTION) {
                                     DlgKonversi konv=new DlgKonversi(null,false);
                                     konv.emptTeks();
-                                    konv.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                                    konv.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                                     konv.setLocationRelativeTo(internalFrame1);
                                     konv.setVisible(true);
                                 }                            
@@ -1722,7 +1722,7 @@ private void kdgudangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     if (reply == JOptionPane.YES_OPTION) {
                                         DlgKonversi konv=new DlgKonversi(null,false);
                                         konv.emptTeks();
-                                        konv.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+                                        konv.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                                         konv.setLocationRelativeTo(internalFrame1);
                                         konv.setVisible(true);
                                     }                            

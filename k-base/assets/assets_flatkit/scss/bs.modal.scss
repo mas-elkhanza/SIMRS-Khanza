@@ -1,0 +1,98 @@
+.modal{
+  .left {
+    @include translate3d(-100%, 0, 0);
+    @include transition-transform(0.4s cubic-bezier(0.25, 0.8, 0.25, 1));
+  }
+  .right {
+    @include translate3d(100%, 0, 0);
+    @include transition-transform(0.4s cubic-bezier(0.25, 0.8, 0.25, 1));
+  }
+  .top {
+    @include translate3d(0, -100%, 0);
+    @include transition-transform(0.4s cubic-bezier(0.25, 0.8, 0.25, 1));
+  }
+  .bottom {
+    @include translate3d(0, 100%, 0);
+    @include transition-transform(0.4s cubic-bezier(0.25, 0.8, 0.25, 1));
+  }
+  &.in,
+  &.show{
+    .left,
+    .right,
+    .top,
+    .bottom { 
+      @include translate3d(0, 0, 0);
+    }
+  }
+  &.inactive{
+    bottom: auto;
+    overflow: visible;
+  }
+}
+
+.modal-open-aside{
+  overflow: visible;
+}
+
+.modal > .left{
+  position: fixed;
+  z-index: 1055;
+  top: 0;
+  left: 0;
+  right: auto;
+  bottom:0;
+}
+
+.modal > .right{
+  position: fixed;
+  z-index: 1055;
+  top: 0;
+  left: auto;
+  right: 0;
+  bottom:0;
+}
+
+.modal > .top{
+  position: fixed;
+  z-index: 1055;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+}
+
+.modal > .bottom{
+  position: fixed;
+  z-index: 1055;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-header,
+.modal-content,
+.modal-footer{
+  border-color: $border-color;
+}
+
+.modal-content{
+  color: $dark-black;
+}
+
+.aside{
+  color: $text-color;
+}
+.aside-header,
+.aside-header .close {
+    color: inherit !important;
+    background-color: transparent !important;
+}
+.aside-header,
+.aside-footer{
+  border-color: $border-color !important;
+}
+.aside-title{
+  font-size: 1.2rem;
+  margin: .45rem 0;
+}
