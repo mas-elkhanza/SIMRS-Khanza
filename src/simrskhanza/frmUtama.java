@@ -373,39 +373,7 @@ import setting.DlgSetHargaObatRalan;
 import setting.DlgSetHargaObatRanap;
 import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
-import simrskhanza.DlgAbout;
-import simrskhanza.DlgBahasa;
-import simrskhanza.DlgCacatFisik;
-import simrskhanza.DlgCariPeriksaLab;
-import simrskhanza.DlgCariPeriksaRadiologi;
-import simrskhanza.DlgCariTagihanOperasi;
-import simrskhanza.DlgDeposit;
-import simrskhanza.DlgDpjp;
-import simrskhanza.DlgGolonganPolri;
-import simrskhanza.DlgGolonganTNI;
-import simrskhanza.DlgIGD;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgJabatanPolri;
-import simrskhanza.DlgJabatanTNI;
-import simrskhanza.DlgJadwal;
-import simrskhanza.DlgKasirRalan;
-import simrskhanza.DlgLhtCatatanPasien;
-import simrskhanza.DlgObatPenyakit;
-import simrskhanza.DlgPangkatPolri;
-import simrskhanza.DlgPangkatTNI;
-import simrskhanza.DlgPasienMati;
-import simrskhanza.DlgPemberianDiet;
-import simrskhanza.DlgPenelusuranLogin;
-import simrskhanza.DlgPerusahaan;
-import simrskhanza.DlgResepPulang;
-import simrskhanza.DlgResumePerawatan;
-import simrskhanza.DlgRujuk;
-import simrskhanza.DlgRujukMasuk;
-import simrskhanza.DlgRunTeks;
-import simrskhanza.DlgSatuanPolri;
-import simrskhanza.DlgSatuanTNI;
-import simrskhanza.DlgSirkulasiBerkas;
-import simrskhanza.DlgSuku;
+import keuangan.DlgDeposit;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
 import surat.SuratBalas;
@@ -1240,7 +1208,7 @@ public class frmUtama extends javax.swing.JFrame {
         DlgHome.setUndecorated(true);
         DlgHome.setResizable(false);
 
-        panelMenu.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Menu Utama ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        panelMenu.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(215, 225, 205)), "::[ Menu Utama ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110, 80, 80))); // NOI18N
         panelMenu.setName("panelMenu"); // NOI18N
         panelMenu.setPreferredSize(new java.awt.Dimension(2412, 3653));
         panelMenu.setWarnaAtas(new java.awt.Color(255, 255, 255));
@@ -6109,7 +6077,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10/10/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/10/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);

@@ -365,7 +365,7 @@
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
             Hapus2("inacbg_grouping_stage1", "no_sep='".$nomor_sep."'");
-            InsertData2("inacbg_grouping_stage1","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','0'");
+            InsertData2("inacbg_grouping_stage1","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".$msg['response']['cbg']['tariff']."'");
             FinalisasiKlaim($nomor_sep,$coder_nik);
         }
     }
@@ -383,7 +383,7 @@
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
             Hapus2("inacbg_grouping_stage12", "no_sep='".$nomor_sep."'");
-            InsertData2("inacbg_grouping_stage12","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','0'");
+            InsertData2("inacbg_grouping_stage12","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".$msg['response']['cbg']['tariff']."'");
             FinalisasiKlaim($nomor_sep,$coder_nik);
         }
     }
