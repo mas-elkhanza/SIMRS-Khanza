@@ -257,7 +257,7 @@ public class DlgDokter extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 255));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(130, 100, 100));
+        MnRestore.setForeground(new java.awt.Color(110, 80, 80));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -281,7 +281,7 @@ public class DlgDokter extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110, 80, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -646,7 +646,7 @@ public class DlgDokter extends javax.swing.JDialog {
         jLabel13.setBounds(2, 102, 105, 23);
 
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-06-2018" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2018" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);

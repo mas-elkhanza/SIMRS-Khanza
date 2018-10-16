@@ -48,6 +48,7 @@ public final class PCareCekReferensiKhusus extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private PcareApi api=new PcareApi();
+    private String URL="";
 
     /** Creates new form DlgKamar
      * @param parent
@@ -93,7 +94,8 @@ public final class PCareCekReferensiKhusus extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            URL = prop.getProperty("URLAPIPCARE")+"/spesialis/khusus";	
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -127,7 +129,7 @@ public final class PCareCekReferensiKhusus extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Khusus PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Khusus PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -317,8 +319,6 @@ public final class PCareCekReferensiKhusus extends javax.swing.JDialog {
 
     public void tampil(String diagnosa) {        
         try {
-            String URL = prop.getProperty("URLAPIPCARE")+"/spesialis/khusus";	
-
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            

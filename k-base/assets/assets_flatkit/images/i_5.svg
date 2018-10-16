@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+	<rect x="30" y="38" width="4" height="4" fill="{{app.setting.color.primary}}"/>
+	<rect x="38" y="14" width="4" height="4" fill="{{app.setting.color.primary}}"/>
+	<path d="M38,6v4h4C42,7.79,40.21,6,38,6z" fill="{{app.setting.color.primary}}"/>
+	<rect x="38" y="30" width="4" height="4" fill="{{app.setting.color.primary}}"/>
+	<rect x="30" y="6" width="4" height="4" fill="{{app.setting.color.primary}}"/>
+	<rect x="38" y="22" width="4" height="4" fill="{{app.setting.color.primary}}"/>
+	<path d="M38,42c2.21,0,4-1.79,4-4h-4V42z" fill="{{app.setting.color.primary}}"/>
+</svg>

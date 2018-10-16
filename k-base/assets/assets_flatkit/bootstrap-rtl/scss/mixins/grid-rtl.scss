@@ -1,0 +1,25 @@
+@mixin make-rtl-col-offset($size, $columns: $grid-columns) {
+  margin-left: 0;
+  margin-right: percentage($size / $columns);
+}
+
+@mixin make-rtl-col-push($size, $columns: $grid-columns) {
+  left: 0;
+  right: if($size > 0, percentage($size / $columns), auto);
+}
+
+@mixin make-rtl-col-pull($size, $columns: $grid-columns) {
+  left: if($size > 0, percentage($size / $columns), auto);
+  right: auto;
+}
+
+@mixin make-rtl-col-modifier($type, $size, $columns) {
+  // Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
+  @if $type == push {
+    @include make-rtl-col-push($size, $columns);
+  } @else if $type == pull {
+    @include make-rtl-col-pull($size, $columns);
+  } @else if $type == offset {
+    @include make-rtl-col-offset($size, $columns);
+  }
+}

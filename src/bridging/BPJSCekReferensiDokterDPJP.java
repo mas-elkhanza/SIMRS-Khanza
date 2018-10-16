@@ -50,7 +50,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private String URL="";
+    private String URL="",link="";
     private BPJSApi api=new BPJSApi();
     private BPJSCekReferensiPoli spesialis=new BPJSCekReferensiPoli(null,false);
         
@@ -135,7 +135,8 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -177,7 +178,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Dokter DPJP VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Dokter DPJP VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -442,7 +443,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     public void tampil(String poli) {
         try {
             Valid.tabelKosong(tabMode);
-            URL = prop.getProperty("URLAPIBPJS")+"/referensi/dokter/pelayanan/1/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
+            URL = link+"/referensi/dokter/pelayanan/1/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -486,7 +487,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     
     public void tampil2(String poli) {
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/referensi/dokter/pelayanan/2/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
+            URL = link+"/referensi/dokter/pelayanan/2/tglPelayanan/"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"/Spesialis/"+KdSep.getText();	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

@@ -49,6 +49,7 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
     private BPJSCekReferensiKabupaten kabupaten=new BPJSCekReferensiKabupaten(null,false);
     private int i=0;
     private BPJSApi api=new BPJSApi();
+    private String URL="",link="";
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -130,7 +131,8 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
         }); 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -168,7 +170,7 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Kecamatan VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Kecamatan VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -355,7 +357,7 @@ public final class BPJSCekReferensiKecamatan extends javax.swing.JDialog {
 
     public void tampil(String poli) {
         try {
-            String URL = prop.getProperty("URLAPIBPJS")+"/referensi/kecamatan/kabupaten/"+KdKab.getText();	
+            URL = link+"/referensi/kecamatan/kabupaten/"+KdKab.getText();	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

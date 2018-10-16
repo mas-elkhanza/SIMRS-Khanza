@@ -1,0 +1,16 @@
+.navbar-brand{
+	float: right;
+	margin-left: 1rem;
+	margin-right: 0;
+}
+
+.navbar-nav{
+	float: right;
+	.nav-item{
+		float: right;
+		+ .nav-item{
+			margin-left: 0;
+			margin-right: 1rem;
+		}
+	}
+}

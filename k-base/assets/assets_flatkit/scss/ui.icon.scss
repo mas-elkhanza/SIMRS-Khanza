@@ -1,0 +1,62 @@
+.ui-icon{
+  display: inline-block;
+  text-align: center;
+  height: 1em;
+  background: transparent !important;
+  &:before{
+    position: relative;
+    z-index: 1;
+  }
+  &:after{
+    content: "";
+    border-width: 1px;
+    border-style: solid;
+    border-color: inherit;
+    border-radius: 2em;
+    width: 2em;
+    height: 2em;
+    top: -1.5em;
+    display: block;
+    position: relative;
+    z-index: 0;
+    background-clip: padding-box;
+  }
+  &.b-2x:after{
+    border-width: 2px;
+  }
+  &.b-3x:after{
+    border-width: 3px;
+  }
+  &.ui-icon-sm:after{
+    width: 1.7em;
+    height: 1.7em;
+    top: -1.35em;
+  }
+  &.primary:after{
+    background-color: $primary;
+  }
+  &.success:after{
+    background-color: $success;
+  }
+  &.info:after{
+    background-color: $info;
+  }
+  &.warning:after{
+    background-color: $warning;
+  }
+  &.danger:after{
+    background-color: $danger;
+  }
+  &.accent:after{
+    background-color: $accent;
+  }
+  &.dark:after{
+    background-color: $dark;
+  }
+  &.light:after{
+    background-color: $light;
+  }
+  &.white:after{
+    background-color: #fff;
+  }
+}

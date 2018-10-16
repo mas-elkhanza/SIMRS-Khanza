@@ -201,7 +201,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==9)||(colIndex==11)||(colIndex==12)||(colIndex==13)) {
+                if ((colIndex==9)||(colIndex==10)||(colIndex==11)||(colIndex==12)||(colIndex==13)) {
                     a=true;
                 }
                 return a;
@@ -435,7 +435,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(130, 100, 100));
+        ppBersihkan.setForeground(new java.awt.Color(110,80,80));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -452,7 +452,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
 
         ppStok.setBackground(new java.awt.Color(255, 255, 255));
         ppStok.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppStok.setForeground(new java.awt.Color(130, 100, 100));
+        ppStok.setForeground(new java.awt.Color(110,80,80));
         ppStok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppStok.setText("Tampilkan Semua Stok");
         ppStok.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -499,7 +499,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -735,7 +735,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-08-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-10-2018" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -876,8 +876,8 @@ public final class DlgCariObat extends javax.swing.JDialog {
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(130, 100, 100));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
+        TabRawat.setForeground(new java.awt.Color(110,80,80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -922,7 +922,6 @@ public final class DlgCariObat extends javax.swing.JDialog {
         Scroll1.setOpaque(true);
         Scroll1.setPreferredSize(new java.awt.Dimension(454, 90));
 
-        tbObatRacikan.setAutoCreateRowSorter(true);
         tbObatRacikan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObatRacikan.setName("tbObatRacikan"); // NOI18N
         tbObatRacikan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1288,9 +1287,9 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     resep.emptTeks(); 
                     resep.isCek();
                     if(!namadokter.equals("")){
-                        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter);
+                        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter,"ralan");
                     }else{
-                        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
+                        resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),"ralan");
                         resep.setDokterRalan();
                     }
                     resep.tampil();
@@ -1371,9 +1370,9 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             resep.emptTeks(); 
             resep.isCek();
             if(!namadokter.equals("")){
-                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter);
+                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),kodedokter,namadokter,"ralan");
             }else{
-                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString());
+                resep.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),"ralan");
                 resep.setDokterRalan();
             }
             resep.tampil();
@@ -1938,10 +1937,8 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }
     
     public void tampilobat2(String no_resep) {     
-        this.noresep=no_resep;
-        ChkNoResep.setSelected(false);        
-        Valid.tabelKosong(tabModeobat);             
-        
+        this.noresep=no_resep;       
+        Valid.tabelKosong(tabModeobat);    
         try {
             psobat=koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,jenis.nama, "+
@@ -2459,7 +2456,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         if(tbDetailObatRacikan.getSelectedRow()!= -1){
             try {
                 tbDetailObatRacikan.setValueAt(
-                                Math.ceil((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
+                                ((Double.parseDouble(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),4).toString())
                                 *Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),9).toString()))
                                 /Double.parseDouble(tbDetailObatRacikan.getValueAt(tbDetailObatRacikan.getSelectedRow(),8).toString()))
                                 ,tbDetailObatRacikan.getSelectedRow(),10);

@@ -245,7 +245,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
 
         MnKamarInap.setBackground(new java.awt.Color(255, 255, 255));
         MnKamarInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKamarInap.setForeground(new java.awt.Color(130, 100, 100));
+        MnKamarInap.setForeground(new java.awt.Color(110,80,80));
         MnKamarInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnKamarInap.setText("Kamar Inap");
         MnKamarInap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -262,7 +262,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
 
         MnOperasi.setBackground(new java.awt.Color(255, 255, 255));
         MnOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnOperasi.setForeground(new java.awt.Color(130, 100, 100));
+        MnOperasi.setForeground(new java.awt.Color(110,80,80));
         MnOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnOperasi.setText("Tagihan Operasi/VK");
         MnOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -279,7 +279,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
 
         ppRiwayat.setBackground(new java.awt.Color(255, 255, 255));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppRiwayat.setForeground(new java.awt.Color(130, 100, 100));
+        ppRiwayat.setForeground(new java.awt.Color(110,80,80));
         ppRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppRiwayat.setText("Riwayat Perawatan");
         ppRiwayat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -303,7 +303,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Jadwal Operasi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Jadwal Operasi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -538,7 +538,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         panelCari.add(R2);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -562,7 +562,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         panelCari.add(jLabel22);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -585,7 +585,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         panelCari.add(R3);
 
         DTPCari3.setEditable(false);
-        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2018" }));
+        DTPCari3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2018" }));
         DTPCari3.setDisplayFormat("dd-MM-yyyy");
         DTPCari3.setName("DTPCari3"); // NOI18N
         DTPCari3.setOpaque(false);
@@ -609,7 +609,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
         panelCari.add(jLabel25);
 
         DTPCari4.setEditable(false);
-        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2018" }));
+        DTPCari4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2018" }));
         DTPCari4.setDisplayFormat("dd-MM-yyyy");
         DTPCari4.setName("DTPCari4"); // NOI18N
         DTPCari4.setOpaque(false);
@@ -693,7 +693,7 @@ public class DlgBookingOperasi extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2018" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);

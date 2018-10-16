@@ -235,7 +235,7 @@ public class DlgDetailJMDokter2 extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail J.M Dokter 2 ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Detail J.M Dokter 2 ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -475,10 +475,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#826464;}"+                    
-                    ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#826464;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#826464;}"
+                    ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#6e5050;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#6e5050;}"+                    
+                    ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#6e5050;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#6e5050;}"
             );
             bg.close();
             

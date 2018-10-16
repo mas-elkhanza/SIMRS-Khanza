@@ -48,6 +48,7 @@ public final class PCareCekReferensiPoli extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private int i=0;
     private PcareApi api=new PcareApi();
+    private String URL="",link="";
 
     /** Creates new form DlgKamar
      * @param parent
@@ -93,7 +94,8 @@ public final class PCareCekReferensiPoli extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -127,7 +129,7 @@ public final class PCareCekReferensiPoli extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Unit/Poliklinik PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Unit/Poliklinik PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -260,15 +262,22 @@ public final class PCareCekReferensiPoli extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void diagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_diagnosaKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            tampil(diagnosa.getText());
-            BtnPrint.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            tampil(diagnosa.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            BtnKeluar.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnCariActionPerformed(null);
+        switch (evt.getKeyCode()) {
+            case KeyEvent.VK_ENTER:
+                tampil(diagnosa.getText());
+                BtnPrint.requestFocus();
+                break;
+            case KeyEvent.VK_PAGE_DOWN:
+                tampil(diagnosa.getText());
+                break;
+            case KeyEvent.VK_PAGE_UP:
+                BtnKeluar.requestFocus();
+                break;
+            case KeyEvent.VK_UP:
+                BtnCariActionPerformed(null);
+                break;
+            default:
+                break;
         }
     }//GEN-LAST:event_diagnosaKeyPressed
 
@@ -317,7 +326,7 @@ public final class PCareCekReferensiPoli extends javax.swing.JDialog {
 
     public void tampil(String diagnosa) {
         try {
-            String URL = prop.getProperty("URLAPIPCARE")+"/poli/fktp/0/500";	
+            URL = link+"/poli/fktp/0/500";	
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
