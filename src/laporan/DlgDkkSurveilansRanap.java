@@ -212,7 +212,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surveilans Rawat Inap Kasus Baru ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surveilans Rawat Inap Kasus Baru ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110, 80, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -303,8 +303,8 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(130,100,100));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
+        TabRawat.setForeground(new java.awt.Color(110, 80, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -480,7 +480,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             dpd.setValue("Meninggal ("+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),19).toString()+")",Integer.parseInt(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),19).toString()));
             JFreeChart freeChart = ChartFactory.createPieChart("Grafik Pie Perbandingan Pasien Hidup & Mati Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
             ChartFrame cf = new ChartFrame("Grafik Pasien Hidup & Mati",freeChart);
-            cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+            cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
             cf.setLocationRelativeTo(internalFrame1);
             cf.setAlwaysOnTop(false);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -497,7 +497,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             dpd.setValue("Perempuan "+Math.round(((Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),16).toString())/Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),17).toString()))*100))+"%("+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),16).toString()+")",Integer.parseInt(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),16).toString()));
             JFreeChart freeChart = ChartFactory.createPieChart("Grafik Pie Perbandingan Pasien Laki-Laki & Perempuan Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
             ChartFrame cf = new ChartFrame("Grafik Pasien Laki-Laki & Perempuan",freeChart);
-            cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+            cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
             cf.setLocationRelativeTo(internalFrame1);
             cf.setAlwaysOnTop(false);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -524,7 +524,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             dpd.setValue("70+ "+Math.round(((Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),14).toString())/Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),17).toString()))*100))+"%("+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),14).toString()+")",Integer.parseInt(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),14).toString()));
             JFreeChart freeChart = ChartFactory.createPieChart("Grafik Pie Perbandingan Per Umur Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
             ChartFrame cf = new ChartFrame("Grafik Per Umur",freeChart);
-            cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+            cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
             cf.setLocationRelativeTo(internalFrame1);
             cf.setAlwaysOnTop(false);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());

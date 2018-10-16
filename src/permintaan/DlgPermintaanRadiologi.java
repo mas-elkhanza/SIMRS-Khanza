@@ -11,7 +11,6 @@
 
 package permintaan;
 
-import simrskhanza.*;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import fungsi.WarnaTable;
@@ -40,7 +39,6 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.Jurnal;
 
 /**
  *
@@ -250,7 +248,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Permintaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Permintaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -767,8 +765,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                             })==true){
                             for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-                                    Sequel.menyimpan2("permintaan_pemeriksaan_radiologi","?,?","pemeriksaan lab",2,new String[]{
-                                        TNoPermintaan.getText(),tbPemeriksaan.getValueAt(i,1).toString()
+                                    Sequel.menyimpan2("permintaan_pemeriksaan_radiologi","?,?,?","pemeriksaan lab",3,new String[]{
+                                        TNoPermintaan.getText(),tbPemeriksaan.getValueAt(i,1).toString(),"Belum"
                                     });
                                 }                        
                             } 
@@ -799,8 +797,8 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                                 })==true){
                                 for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                                     if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-                                        Sequel.menyimpan2("permintaan_pemeriksaan_radiologi","?,?","pemeriksaan lab",2,new String[]{
-                                            TNoPermintaan.getText(),tbPemeriksaan.getValueAt(i,1).toString()
+                                        Sequel.menyimpan2("permintaan_pemeriksaan_radiologi","?,?,?","pemeriksaan lab",3,new String[]{
+                                            TNoPermintaan.getText(),tbPemeriksaan.getValueAt(i,1).toString(),"Belum"
                                         });
                                     }                        
                                 } 

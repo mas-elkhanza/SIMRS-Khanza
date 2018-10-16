@@ -83,7 +83,12 @@ public final class var {
             bpjs_cek_dokterdpjp=false,bpjs_cek_riwayat_rujukanrs=false,bpjs_cek_tanggal_rujukan=false,permintaan_lab=false,permintaan_radiologi=false,
             surat_indeks=false,surat_map=false,surat_almari=false,surat_rak=false,surat_ruang=false,surat_klasifikasi=false,surat_status=false,
             surat_sifat=false,surat_balas=false,surat_masuk=false,pcare_cek_dokter=false,pcare_cek_poli=false,pcare_cek_provider=false,
-            pcare_cek_statuspulang=false;
+            pcare_cek_statuspulang=false,pcare_cek_spesialis=false,pcare_cek_subspesialis=false,pcare_cek_sarana=false,pcare_cek_khusus=false,
+            pcare_cek_obat=false,pcare_cek_tindakan=false,pcare_cek_faskessubspesialis=false,pcare_cek_faskesalihrawat=false,
+            pcare_cek_faskesthalasemia=false,pcare_mapping_obat=false,pcare_mapping_tindakan=false,pcare_club_prolanis=false,
+            pcare_mapping_poli=false,pcare_kegiatan_kelompok=false,pcare_mapping_tindakan_ranap=false,pcare_peserta_kegiatan_kelompok=false,
+            sirkulasi_obat3=false,bridging_pcare_daftar=false,pcare_mapping_dokter=false,ranap_per_ruang=false,penyakit_ranap_cara_bayar=false,
+            anggota_militer_dirawat=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -485,6 +490,28 @@ public final class var {
                         var.pcare_cek_poli=true;
                         var.pcare_cek_provider=true;
                         var.pcare_cek_statuspulang=true;
+                        var.pcare_cek_spesialis=true;
+                        var.pcare_cek_subspesialis=true;
+                        var.pcare_cek_sarana=true;
+                        var.pcare_cek_khusus=true;
+                        var.pcare_cek_obat=true;
+                        var.pcare_cek_tindakan=true;
+                        var.pcare_cek_faskessubspesialis=true;
+                        var.pcare_cek_faskesalihrawat=true;
+                        var.pcare_cek_faskesthalasemia=true;
+                        var.pcare_mapping_obat=true;
+                        var.pcare_mapping_tindakan=true;
+                        var.pcare_club_prolanis=true;
+                        var.pcare_mapping_poli=true;
+                        var.pcare_kegiatan_kelompok=true;
+                        var.pcare_mapping_tindakan_ranap=true;
+                        var.pcare_peserta_kegiatan_kelompok=true;
+                        var.sirkulasi_obat3=true;
+                        var.bridging_pcare_daftar=true;
+                        var.pcare_mapping_dokter=true;
+                        var.ranap_per_ruang=true;
+                        var.penyakit_ranap_cara_bayar=true;
+                        var.anggota_militer_dirawat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -870,6 +897,28 @@ public final class var {
                         var.pcare_cek_poli=rs2.getBoolean("pcare_cek_poli");
                         var.pcare_cek_provider=rs2.getBoolean("pcare_cek_provider");
                         var.pcare_cek_statuspulang=rs2.getBoolean("pcare_cek_statuspulang");
+                        var.pcare_cek_spesialis=rs2.getBoolean("pcare_cek_spesialis");
+                        var.pcare_cek_subspesialis=rs2.getBoolean("pcare_cek_subspesialis");
+                        var.pcare_cek_sarana=rs2.getBoolean("pcare_cek_sarana");
+                        var.pcare_cek_khusus=rs2.getBoolean("pcare_cek_khusus");
+                        var.pcare_cek_obat=rs2.getBoolean("pcare_cek_obat");
+                        var.pcare_cek_tindakan=rs2.getBoolean("pcare_cek_tindakan");
+                        var.pcare_cek_faskessubspesialis=rs2.getBoolean("pcare_cek_faskessubspesialis");
+                        var.pcare_cek_faskesalihrawat=rs2.getBoolean("pcare_cek_faskesalihrawat");
+                        var.pcare_cek_faskesthalasemia=rs2.getBoolean("pcare_cek_faskesthalasemia");
+                        var.pcare_mapping_obat=rs2.getBoolean("pcare_mapping_obat");
+                        var.pcare_mapping_tindakan=rs2.getBoolean("pcare_mapping_tindakan");
+                        var.pcare_club_prolanis=rs2.getBoolean("pcare_club_prolanis");
+                        var.pcare_mapping_poli=rs2.getBoolean("pcare_mapping_poli");
+                        var.pcare_kegiatan_kelompok=rs2.getBoolean("pcare_kegiatan_kelompok");
+                        var.pcare_mapping_tindakan_ranap=rs2.getBoolean("pcare_mapping_tindakan_ranap");
+                        var.pcare_peserta_kegiatan_kelompok=rs2.getBoolean("pcare_peserta_kegiatan_kelompok");
+                        var.sirkulasi_obat3=rs2.getBoolean("sirkulasi_obat3");
+                        var.bridging_pcare_daftar=rs2.getBoolean("bridging_pcare_daftar");
+                        var.pcare_mapping_dokter=rs2.getBoolean("pcare_mapping_dokter");
+                        var.ranap_per_ruang=rs2.getBoolean("ranap_per_ruang");
+                        var.penyakit_ranap_cara_bayar=rs2.getBoolean("penyakit_ranap_cara_bayar");
+                        var.anggota_militer_dirawat=rs2.getBoolean("anggota_militer_dirawat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1253,6 +1302,28 @@ public final class var {
                         var.pcare_cek_poli=false;
                         var.pcare_cek_provider=false;
                         var.pcare_cek_statuspulang=false;
+                        var.pcare_cek_spesialis=false;
+                        var.pcare_cek_subspesialis=false;
+                        var.pcare_cek_sarana=false;
+                        var.pcare_cek_khusus=false;
+                        var.pcare_cek_obat=false;
+                        var.pcare_cek_tindakan=false;
+                        var.pcare_cek_faskessubspesialis=false;
+                        var.pcare_cek_faskesalihrawat=false;
+                        var.pcare_cek_faskesthalasemia=false;
+                        var.pcare_mapping_obat=false;
+                        var.pcare_mapping_tindakan=false;
+                        var.pcare_club_prolanis=false;
+                        var.pcare_mapping_poli=false;
+                        var.pcare_kegiatan_kelompok=false;
+                        var.pcare_mapping_tindakan_ranap=false;
+                        var.pcare_peserta_kegiatan_kelompok=false;
+                        var.sirkulasi_obat3=false;
+                        var.bridging_pcare_daftar=false;
+                        var.pcare_mapping_dokter=false;
+                        var.ranap_per_ruang=false;
+                        var.penyakit_ranap_cara_bayar=false;
+                        var.anggota_militer_dirawat=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1688,4 +1759,26 @@ public final class var {
     public static boolean getpcare_cek_poli(){return var.pcare_cek_poli;}
     public static boolean getpcare_cek_provider(){return var.pcare_cek_provider;}
     public static boolean getpcare_cek_statuspulang(){return var.pcare_cek_statuspulang;}
+    public static boolean getpcare_cek_spesialis(){return var.pcare_cek_spesialis;}
+    public static boolean getpcare_cek_subspesialis(){return var.pcare_cek_subspesialis;}
+    public static boolean getpcare_cek_sarana(){return var.pcare_cek_sarana;}
+    public static boolean getpcare_cek_khusus(){return var.pcare_cek_khusus;}
+    public static boolean getpcare_cek_obat(){return var.pcare_cek_obat;}
+    public static boolean getpcare_cek_tindakan(){return var.pcare_cek_tindakan;}
+    public static boolean getpcare_cek_faskessubspesialis(){return var.pcare_cek_faskessubspesialis;}
+    public static boolean getpcare_cek_faskesalihrawat(){return var.pcare_cek_faskesalihrawat;}
+    public static boolean getpcare_cek_faskesthalasemia(){return var.pcare_cek_faskesthalasemia;}
+    public static boolean getpcare_mapping_obat(){return var.pcare_mapping_obat;}
+    public static boolean getpcare_mapping_tindakan(){return var.pcare_mapping_tindakan;}
+    public static boolean getpcare_club_prolanis(){return var.pcare_club_prolanis;}
+    public static boolean getpcare_mapping_poli(){return var.pcare_mapping_poli;}
+    public static boolean getpcare_kegiatan_kelompok(){return var.pcare_kegiatan_kelompok;}
+    public static boolean getpcare_mapping_tindakan_ranap(){return var.pcare_mapping_tindakan_ranap;}
+    public static boolean getpcare_peserta_kegiatan_kelompok(){return var.pcare_peserta_kegiatan_kelompok;}
+    public static boolean getsirkulasi_obat3(){return var.sirkulasi_obat3;}
+    public static boolean getbridging_pcare_daftar(){return var.bridging_pcare_daftar;}
+    public static boolean getpcare_mapping_dokter(){return var.pcare_mapping_dokter;}
+    public static boolean getranap_per_ruang(){return var.ranap_per_ruang;}
+    public static boolean getpenyakit_ranap_cara_bayar(){return var.penyakit_ranap_cara_bayar;}
+    public static boolean getanggota_militer_dirawat(){return var.anggota_militer_dirawat;}
 }   

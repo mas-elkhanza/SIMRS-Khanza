@@ -1,0 +1,51 @@
+.label{
+  display: inline-block;
+  padding: .25em .5em;
+  font-size: 75%;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  font-weight: bold;
+  background-color: $label-bg;
+  color: #fff;
+  border-radius: .2rem;
+  &.no-bg{
+    background-color: transparent;
+    color: inherit;
+  }
+}
+
+.label{
+  &.up{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    min-width: 4px;
+    min-height: 4px;
+    display: inline-block;
+  }
+}
+
+.label-lg{
+  font-size: 1.33rem;
+  padding: 5px 9px;
+}
+
+.label-sm{
+  padding: 0.15em 0.35em;
+}
+
+.label-xs{
+  padding: 0.1em 0.25em;
+}
+
+.list-group-item.active > .label, 
+.nav-pills > .active > a > .label{
+  color: $dark-black;
+}
+
+.btn .label {
+  position: relative;
+  top: -1px;
+}

@@ -47,7 +47,9 @@ public final class PCareCekReferensiPenyakit extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-
+    private PcareApi api=new PcareApi();
+    private String URL="",link="";
+    
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -92,7 +94,8 @@ public final class PCareCekReferensiPenyakit extends javax.swing.JDialog {
         } 
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            link=prop.getProperty("URLAPIPCARE");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -126,7 +129,7 @@ public final class PCareCekReferensiPenyakit extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Diagnosa PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Diagnosa PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -319,9 +322,8 @@ public final class PCareCekReferensiPenyakit extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String diagnosa) {
-        PcareApi api=new PcareApi();
         try {
-            String URL = prop.getProperty("URLAPIPCARE")+"/diagnosa/"+diagnosa+"/0/500";	
+            URL = link+"/diagnosa/"+diagnosa+"/0/500";	
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));

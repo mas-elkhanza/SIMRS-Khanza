@@ -14,7 +14,6 @@ package keuangan;
 
 import kepegawaian.DlgCariPetugas;
 import kepegawaian.DlgCariDokter;
-import keuangan.DlgJnsPerawatanRalan;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -261,7 +260,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(130, 100, 100));
+        ppBersihkan.setForeground(new java.awt.Color(110,80,80));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppBersihkan.setText("Hilangkan Centang/Tindakan Terpilih");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -278,7 +277,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
 
         ppDokter.setBackground(new java.awt.Color(255, 255, 255));
         ppDokter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDokter.setForeground(new java.awt.Color(130, 100, 100));
+        ppDokter.setForeground(new java.awt.Color(110,80,80));
         ppDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
         ppDokter.setText("Ubah Ke Tindakan Dokter");
         ppDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -295,7 +294,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
 
         ppPetugas.setBackground(new java.awt.Color(255, 255, 255));
         ppPetugas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPetugas.setForeground(new java.awt.Color(130, 100, 100));
+        ppPetugas.setForeground(new java.awt.Color(110,80,80));
         ppPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
         ppPetugas.setText("Ubah Ke Tindakan Petugas");
         ppPetugas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -312,7 +311,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
 
         ppPetugasDokter.setBackground(new java.awt.Color(255, 255, 255));
         ppPetugasDokter.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPetugasDokter.setForeground(new java.awt.Color(130, 100, 100));
+        ppPetugasDokter.setForeground(new java.awt.Color(110,80,80));
         ppPetugasDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
         ppPetugasDokter.setText("Ubah Ke Tindakan Dokter & Petugas");
         ppPetugasDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -405,7 +404,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Tagihan/Perawatan/Tindakan Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Tagihan/Perawatan/Tindakan Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -618,7 +617,7 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2018" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -787,7 +786,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                 try {                                    
                                     switch (pilihtable) {
                                         case "rawat_jl_dr":
-                                            pssimpandokter=koneksi.prepareStatement("insert into rawat_jl_dr values(?,?,?,?,?,?,?,?,?,?,?)");
+                                            pssimpandokter=koneksi.prepareStatement("insert into rawat_jl_dr values(?,?,?,?,?,?,?,?,?,?,?,'Belum')");
                                             try {
                                                 pssimpandokter.setString(1,TNoRw.getText());
                                                 pssimpandokter.setString(2,tbTindakan.getValueAt(i,1).toString());
@@ -810,7 +809,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                             }
                                             break;
                                         case "rawat_jl_pr":
-                                            pssimpanperawat=koneksi.prepareStatement("insert into rawat_jl_pr values(?,?,?,?,?,?,?,?,?,?,?)");
+                                            pssimpanperawat=koneksi.prepareStatement("insert into rawat_jl_pr values(?,?,?,?,?,?,?,?,?,?,?,'Belum')");
                                             try {
                                                 pssimpanperawat.setString(1,TNoRw.getText());
                                                 pssimpanperawat.setString(2,tbTindakan.getValueAt(i,1).toString());
@@ -836,7 +835,7 @@ private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {/
                                             if(Nip2.getText().trim().equals("")||NmPetugas2.getText().trim().equals("")){
                                                 Valid.textKosong(TCariTindakan,"Data Petugas");
                                             }else{
-                                                pssimpandokterperawat=koneksi.prepareStatement("insert into rawat_jl_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                                pssimpandokterperawat=koneksi.prepareStatement("insert into rawat_jl_drpr values(?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum')");
                                                 try {
                                                     pssimpandokterperawat.setString(1,TNoRw.getText());
                                                     pssimpandokterperawat.setString(2,tbTindakan.getValueAt(i,1).toString());

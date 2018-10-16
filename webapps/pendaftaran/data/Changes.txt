@@ -1,0 +1,59 @@
+Fitur-fitur:
+
+Versi 1.8.1
+- Minor bug fixed pada file includes/get-antrian.php
+- Penambahan fitur konfigurasi URUTNOREG berdasarkan DOKTER atau POLI. Lihat file config.php.
+
+Versi 1.8
+- Penambahan fitur auto refresh pada data antrian pasien
+- Penambahan fitur hitung sisa antrian
+- Penambahan fitur PRODUCTION mode untuk menampilkan dan menyembunyikan error pada halaman
+- Cleanup code
+
+Versi 1.7
+- Penambahan fitur upload berkas rujukan FKTP untuk pasien BPJS
+- Pengaturan ukuran upload berkas rujukan
+- Penambahan fitur pengaduan pasien (Chatbox)
+- Bugs fixed pada file signup.php
+- Minor bugs fixed
+- Cleanup code
+
+Versi 1.6
+- Penambahan pembatasan jam daftar di config.php
+- Minor bugs fixed
+- Cleanup code
+
+Versi 1.5
+- Penambahan fitur pendaftaran pasien baru
+- Penambahan configurasi enable/disable pendaftaran pasien baru (file config.php)
+- Penambahan pembatasan hari pendaftaran antrian loket (ex. daftar untuk 3 hari kedepan. file config.php)
+- Minor bugs fixed
+- Cleanup code
+
+Versi 1.4
+- Penambahan fitur dashboard pasien
+- Pasien login dengan No Rekam Medik dan No KTP
+- Penambahan fitur dasbor kunjungan pasien
+- Penambahan fitur grafik kunjungan poliklinik hari ini
+- Fitur antrian poliklinik (jika sudah terdaftar dalam antrin)
+- Fitur antrian elektronik (paperless quewe)
+- Pendaftaran online dengan verifikasi NO. RM, No. KTP, Jadwal Dokter dan Metode Pembayaran
+- Penambahan fitur jadwal praktek dokter
+- Panambahan fitur informasi ketersediaan kamar dan tempat tidur
+
+Versi 1.3
+- Bugs fix
+
+Versi 1.2
+- Change layout
+
+Versi 1.1
+- Login system using no_rkm_medis and tgl_lahir
+
+Versi 1.0
+- Initial version
+
+demo:
+https://demo.rshdbarabai.com/pasien/
+User: 000007
+Pass: 6307060704920001

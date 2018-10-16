@@ -1,0 +1,17 @@
+
+.bootstrap-datetimepicker-widget table thead tr:first-child th:hover,
+.bootstrap-datetimepicker-widget table td.day:hover,
+.bootstrap-datetimepicker-widget table td.hour:hover,
+.bootstrap-datetimepicker-widget table td.minute:hover,
+.bootstrap-datetimepicker-widget table td.second:hover{
+  background: rgba(168,168,168,0.1);
+}
+
+.bootstrap-datetimepicker-widget table td span:hover {
+  background: transparent;
+}
+
+.bootstrap-datetimepicker-widget table td.day:hover{
+  color: inherit;
+  text-shadow: none;
+}

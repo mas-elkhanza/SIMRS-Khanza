@@ -296,7 +296,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(130, 100, 100));
+        ppBersihkan.setForeground(new java.awt.Color(110,80,80));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Pilihan");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -313,7 +313,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
 
         ppSemua.setBackground(new java.awt.Color(255, 255, 255));
         ppSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemua.setForeground(new java.awt.Color(130, 100, 100));
+        ppSemua.setForeground(new java.awt.Color(110,80,80));
         ppSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemua.setText("Pilih Semua");
         ppSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -349,7 +349,7 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Permintaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Permintaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -777,16 +777,16 @@ public final class DlgPermintaanLaboratorium extends javax.swing.JDialog {
                             })==true){
                             for(i=0;i<tbTarif.getRowCount();i++){ 
                                 if(tbTarif.getValueAt(i,0).toString().equals("true")){
-                                    Sequel.menyimpan2("permintaan_pemeriksaan_lab","?,?","pemeriksaan lab",2,new String[]{
-                                        TNoPermintaan.getText(),tbTarif.getValueAt(i,1).toString()
+                                    Sequel.menyimpan2("permintaan_pemeriksaan_lab","?,?,?","pemeriksaan lab",3,new String[]{
+                                        TNoPermintaan.getText(),tbTarif.getValueAt(i,1).toString(),"Belum"
                                     });
                                 }                        
                             } 
                             
                             for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                                 if((!tbPemeriksaan.getValueAt(i,4).toString().equals(""))&&tbPemeriksaan.getValueAt(i,0).toString().equals("true")){                                
-                                    Sequel.menyimpan2("permintaan_detail_permintaan_lab","?,?,?","detail pemeriksaan lab",3,new String[]{
-                                        TNoPermintaan.getText(),Sequel.cariIsi("select kd_jenis_prw from template_laboratorium where id_template=?",tbPemeriksaan.getValueAt(i,4).toString()),tbPemeriksaan.getValueAt(i,4).toString()
+                                    Sequel.menyimpan2("permintaan_detail_permintaan_lab","?,?,?,?","detail pemeriksaan lab",4,new String[]{
+                                        TNoPermintaan.getText(),Sequel.cariIsi("select kd_jenis_prw from template_laboratorium where id_template=?",tbPemeriksaan.getValueAt(i,4).toString()),tbPemeriksaan.getValueAt(i,4).toString(),"Belum"
                                     });
                                 }                        
                             }
@@ -1175,9 +1175,9 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 if(tbPemeriksaan.getValueAt(i2,0).toString().equals("true")){
                     pilih2[index2]=true;
                     pemeriksaan2[index2]=tbPemeriksaan.getValueAt(i2,1).toString();
-                    satuan2[index2]=tbPemeriksaan.getValueAt(i2,3).toString();
-                    nilai_rujukan2[index2]=tbPemeriksaan.getValueAt(i2,4).toString();
-                    idtemplate2[index2]=tbPemeriksaan.getValueAt(i2,6).toString();
+                    satuan2[index2]=tbPemeriksaan.getValueAt(i2,2).toString();
+                    nilai_rujukan2[index2]=tbPemeriksaan.getValueAt(i2,3).toString();
+                    idtemplate2[index2]=tbPemeriksaan.getValueAt(i2,4).toString();
                     index2++;
                 }
             }

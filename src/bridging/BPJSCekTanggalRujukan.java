@@ -51,7 +51,7 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String URL="",norm="",statussep="",statuspasien="";
+    private String URL="",link="",norm="",statussep="",statuspasien="";
     private final Properties prop = new Properties();
     private BPJSApi api=new BPJSApi();
     /** Creates new form DlgLhtBiaya
@@ -291,7 +291,8 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         tbBangsal2.setDefaultRenderer(Object.class, new WarnaTable());
 
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));            
+            prop.loadFromXML(new FileInputStream("setting/database.xml")); 
+            link=prop.getProperty("URLAPIBPJS");
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -329,13 +330,13 @@ public final class BPJSCekTanggalRujukan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Berdasar Tanggal Rujukan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Berdasar Tanggal Rujukan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(130, 100, 100));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
+        TabRawat.setForeground(new java.awt.Color(110,80,80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -578,6 +579,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),41).toString().equals("")){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     BPJSCekNoRujukanPCare form=new BPJSCekNoRujukanPCare(null,false);
+                    form.isCek();
                     form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                     form.setLocationRelativeTo(internalFrame1);
                     form.SetRujukan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),4).toString());
@@ -596,6 +598,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(tbBangsal2.getValueAt(tbBangsal2.getSelectedRow(),41).toString().equals("")){
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     BPJSCekNoRujukanRS form=new BPJSCekNoRujukanRS(null,false);
+                    form.isCek();
                     form.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
                     form.setLocationRelativeTo(internalFrame1);
                     form.SetRujukan(tbBangsal2.getValueAt(tbBangsal2.getSelectedRow(),4).toString());
@@ -673,7 +676,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     public void tampil(){        
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
+            URL = link+"/Rujukan/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -802,7 +805,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     public void tampil2(){        
         try {
-            URL = prop.getProperty("URLAPIBPJS")+"/Rujukan/RS/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
+            URL = link+"/Rujukan/RS/List/TglRujukan/"+Valid.SetTgl(Tanggal.getSelectedItem()+"");	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

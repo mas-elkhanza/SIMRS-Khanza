@@ -55,7 +55,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date date = new Date();
-    private String now=dateFormat.format(date),lembarobat="";
+    private String now=dateFormat.format(date),lembarobat="",status="";
     private double total=0,jumlahtotal=0;
     private Properties prop = new Properties();
     private DlgAturanPakai aturanpakai=new DlgAturanPakai(null,false);
@@ -324,7 +324,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         ppResepObat.setBackground(new java.awt.Color(255, 255, 255));
         ppResepObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppResepObat.setForeground(new java.awt.Color(130, 100, 100));
+        ppResepObat.setForeground(new java.awt.Color(110,80,80));
         ppResepObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppResepObat.setText("Cetak Aturan Pakai Model 1");
         ppResepObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -341,7 +341,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         ppResepObat1.setBackground(new java.awt.Color(255, 255, 255));
         ppResepObat1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppResepObat1.setForeground(new java.awt.Color(130, 100, 100));
+        ppResepObat1.setForeground(new java.awt.Color(110,80,80));
         ppResepObat1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppResepObat1.setText("Cetak Aturan Pakai Model 2");
         ppResepObat1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -358,7 +358,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         ppResepObat2.setBackground(new java.awt.Color(255, 255, 255));
         ppResepObat2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppResepObat2.setForeground(new java.awt.Color(130, 100, 100));
+        ppResepObat2.setForeground(new java.awt.Color(110,80,80));
         ppResepObat2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppResepObat2.setText("Cetak Aturan Pakai Model 3");
         ppResepObat2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -375,7 +375,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         ppLembarObat.setBackground(new java.awt.Color(255, 255, 255));
         ppLembarObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppLembarObat.setForeground(new java.awt.Color(130, 100, 100));
+        ppLembarObat.setForeground(new java.awt.Color(110,80,80));
         ppLembarObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppLembarObat.setText("Lembar Pemberian Obat");
         ppLembarObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -392,7 +392,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         ppUbahAturanPakai.setBackground(new java.awt.Color(255, 255, 255));
         ppUbahAturanPakai.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUbahAturanPakai.setForeground(new java.awt.Color(130, 100, 100));
+        ppUbahAturanPakai.setForeground(new java.awt.Color(110,80,80));
         ppUbahAturanPakai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUbahAturanPakai.setText("Ubah Aturan Pakai Obat Umum");
         ppUbahAturanPakai.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -409,7 +409,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         ppUbahAturanPakai1.setBackground(new java.awt.Color(255, 255, 255));
         ppUbahAturanPakai1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUbahAturanPakai1.setForeground(new java.awt.Color(130, 100, 100));
+        ppUbahAturanPakai1.setForeground(new java.awt.Color(110,80,80));
         ppUbahAturanPakai1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUbahAturanPakai1.setText("Ubah Aturan Pakai Obat Racikan");
         ppUbahAturanPakai1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -429,7 +429,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         WindowInput3.setUndecorated(true);
         WindowInput3.setResizable(false);
 
-        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Aturan Pakai Obat Umum ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Aturan Pakai Obat Umum ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -512,7 +512,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         WindowInput4.setUndecorated(true);
         WindowInput4.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Aturan Pakai Obat Racik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Aturan Pakai Obat Racik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -594,7 +594,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Resep Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Resep Obat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -759,7 +759,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -774,7 +774,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -905,7 +905,7 @@ public final class DlgResepObat extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2018" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-07-2018" }));
         DTPBeri.setDisplayFormat("dd-MM-yyyy");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
@@ -1015,11 +1015,11 @@ public final class DlgResepObat extends javax.swing.JDialog {
         }else if(NoResep.getText().trim().equals("")){
             Valid.textKosong(NoResep,"No.Resep");
         }else{
-            if(Sequel.menyimpantf("resep_obat","?,?,?,?,?,?,?","Nomer Resep",7,new String[]{
+            if(Sequel.menyimpantf("resep_obat","?,?,?,?,?,?,?,?","Nomer Resep",8,new String[]{
                     NoResep.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
                     TNoRw.getText(),KdDokter.getText(),Valid.SetTgl(DTPBeri.getSelectedItem()+""),
-                    cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()
+                    cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),status
                 })==true){
                 tampil();
                 if(lembarobat.equals("yes")){
@@ -1058,10 +1058,10 @@ public final class DlgResepObat extends javax.swing.JDialog {
              JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.Klik data pada table untuk memilih...!!!!");
         }else if(!(TPasien.getText().trim().equals(""))){
            Sequel.meghapus("resep_obat","no_resep",NoResep.getText());
+           Sequel.meghapus("resep_dokter","no_resep",NoResep.getText());
            tampil();
+           emptTeks();
         }
-
-        emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -1201,7 +1201,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_btnDokterKeyPressed
 
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.isCek();
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
@@ -1408,7 +1408,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 i=tbTambahan.getSelectedColumn();
                 if(i==5){
                     pilihan=1;
-                    aturanpakai.setSize(internalFrame4.getWidth()-50,internalFrame4.getHeight()-50);
+                    aturanpakai.setSize(internalFrame4.getWidth()-20,internalFrame4.getHeight()-20);
                     aturanpakai.setLocationRelativeTo(internalFrame4);
                     aturanpakai.setVisible(true);
                 }
@@ -1422,7 +1422,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 i=tbTambahan1.getSelectedColumn();
                 if(i==5){
                     pilihan=2;
-                    aturanpakai.setSize(internalFrame5.getWidth()-50,internalFrame5.getHeight()-50);
+                    aturanpakai.setSize(internalFrame5.getWidth()-20,internalFrame5.getHeight()-20);
                     aturanpakai.setLocationRelativeTo(internalFrame5);
                     aturanpakai.setVisible(true);
                 }
@@ -1860,7 +1860,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
     }
    
-    public void setNoRm(String norwt,Date tgl1,Date tgl2,String jam,String menit,String detik) {
+    public void setNoRm(String norwt,Date tgl1,Date tgl2,String jam,String menit,String detik,String status) {
         TNoRw.setText(norwt);
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRm,TNoRw.getText());
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRm.getText());
@@ -1872,10 +1872,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         cmbMnt.setSelectedItem(menit);
         cmbDtk.setSelectedItem(detik);
         ChkInput.setSelected(true);
+        this.status=status;
         isForm();
     }
     
-    public void setNoRm(String norwt,Date tgl1,Date tgl2,String jam,String menit,String detik,String kodedokter,String namadokter) {
+    public void setNoRm(String norwt,Date tgl1,Date tgl2,String jam,String menit,String detik,String kodedokter,String namadokter,String status) {
         TNoRw.setText(norwt);
         Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRm,TNoRw.getText());
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=? ",TPasien,TNoRm.getText());
@@ -1890,6 +1891,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         isForm();
         KdDokter.setText(kodedokter);
         NmDokter.setText(namadokter);
+        this.status=status;
     }
     
     public void setDokterRalan(){
