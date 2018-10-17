@@ -1319,8 +1319,10 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void tbDokterPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbDokterPropertyChange
         if(this.isVisible()==true){
-            setKonversi(tbDokter.getSelectedRow());
-            getData();
+            if(tbDokter.getSelectedRow()!=-1){
+                setKonversi(tbDokter.getSelectedRow());                
+            }
+            getData();                
         }
     }//GEN-LAST:event_tbDokterPropertyChange
 
@@ -1657,7 +1659,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getDouble("jumlah"),rs.getString(3),rs.getString(1),
-                        rs.getString(2),rs.getString("satbar"),true,rs.getString(5),
+                        rs.getString(2),rs.getString("satbar"),false,rs.getString(5),
                         rs.getDouble(4),rs.getDouble("subtotal"),rs.getDouble("dis"),
                         rs.getDouble("besardis"),rs.getDouble("total"),rs.getDouble("jumlah2"),"",
                         null,null,null,null,null,null,null,null,null,null,null

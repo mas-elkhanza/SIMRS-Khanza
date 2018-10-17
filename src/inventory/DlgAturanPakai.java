@@ -63,7 +63,7 @@ public class DlgAturanPakai extends javax.swing.JDialog {
         for (int i = 0; i < 1; i++) {
             TableColumn column = tbkabupaten.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(500);
+                column.setPreferredWidth(700);
             }
         }
 
