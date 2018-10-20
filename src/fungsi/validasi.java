@@ -1042,13 +1042,18 @@ public final class validasi {
     }
     
     public double SetAngka(String txt){
-        double x;         
+        double x;   
+        try {
             if(txt.equals("")){
                 x=0;
             }else{
                 x=Double.parseDouble(txt);
             }
-            return x;
+        } catch (Exception e) {
+            x=0;
+        }
+            
+        return x;
     }
     
     public double roundUp(double number, int multiple) {
