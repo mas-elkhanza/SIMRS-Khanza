@@ -1767,7 +1767,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             rskonversi=pskonversi.executeQuery();
                                             if(rskonversi.next()){
                                                 try {
-                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
+                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(2)/rskonversi.getDouble(1));
                                                 } catch (Exception e) {
                                                     jmlkonversi=0;
                                                 }
@@ -1861,7 +1861,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             rskonversi=pskonversi.executeQuery();
                                             if(rskonversi.next()){
                                                 try {
-                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
+                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(2)/rskonversi.getDouble(1));
                                                 } catch (Exception e) {
                                                     jmlkonversi=0;
                                                 }
@@ -1955,7 +1955,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             rskonversi=pskonversi.executeQuery();
                                             if(rskonversi.next()){
                                                 try {
-                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
+                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(2)/rskonversi.getDouble(1));
                                                 } catch (Exception e) {
                                                     jmlkonversi=0;
                                                 }
@@ -2049,7 +2049,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             rskonversi=pskonversi.executeQuery();
                             if(rskonversi.next()){
                                 try {
-                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
+                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(2)/rskonversi.getDouble(1));
                                 } catch (Exception e) {
                                     jmlkonversi=0;
                                 }
