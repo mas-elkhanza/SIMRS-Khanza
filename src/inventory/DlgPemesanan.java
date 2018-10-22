@@ -124,7 +124,9 @@ public class DlgPemesanan extends javax.swing.JDialog {
             }else if(i==11){
                 column.setPreferredWidth(85);
             }else if(i==12){
-                column.setPreferredWidth(40);
+                //column.setPreferredWidth(40);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==13){
                 column.setPreferredWidth(80);
             }else if(i==24){
@@ -1767,7 +1769,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             rskonversi=pskonversi.executeQuery();
                                             if(rskonversi.next()){
                                                 try {
-                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(2)/rskonversi.getDouble(1));
+                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
                                                 } catch (Exception e) {
                                                     jmlkonversi=0;
                                                 }
@@ -1779,7 +1781,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     hargappn=0;
                                                 }
 
-                                                hargakonversi=hargappn/jmlkonversi;
+                                                hargakonversi=hargappn/*jmlkonversi*/;
                                                 tbDokter.setValueAt(Math.round(hargakonversi),baris,24);
                                                 tbDokter.setValueAt(Valid.roundUp(hargakonversi+(hargakonversi*(rs.getDouble("ralan")/100)),100),baris,14);
                                                 tbDokter.setValueAt(Valid.roundUp(hargakonversi+(hargakonversi*(rs.getDouble("kelas1")/100)),100),baris,15);
@@ -1861,7 +1863,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             rskonversi=pskonversi.executeQuery();
                                             if(rskonversi.next()){
                                                 try {
-                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(2)/rskonversi.getDouble(1));
+                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
                                                 } catch (Exception e) {
                                                     jmlkonversi=0;
                                                 }
@@ -1873,7 +1875,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     hargappn=0;
                                                 }
 
-                                                hargakonversi=hargappn/jmlkonversi;
+                                                hargakonversi=hargappn/*jmlkonversi*/;
                                                 tbDokter.setValueAt(Math.round(hargakonversi),baris,24);
                                                 tbDokter.setValueAt(Valid.roundUp(hargakonversi+(hargakonversi*(rs.getDouble("ralan")/100)),100),baris,14);
                                                 tbDokter.setValueAt(Valid.roundUp(hargakonversi+(hargakonversi*(rs.getDouble("kelas1")/100)),100),baris,15);
@@ -1955,7 +1957,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                             rskonversi=pskonversi.executeQuery();
                                             if(rskonversi.next()){
                                                 try {
-                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(2)/rskonversi.getDouble(1));
+                                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
                                                 } catch (Exception e) {
                                                     jmlkonversi=0;
                                                 }
@@ -1967,7 +1969,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                                     hargappn=0;
                                                 }
 
-                                                hargakonversi=hargappn/jmlkonversi;
+                                                hargakonversi=hargappn/*jmlkonversi*/;
                                                 tbDokter.setValueAt(Math.round(hargakonversi),baris,24);
                                                 tbDokter.setValueAt(Valid.roundUp(hargakonversi+(hargakonversi*(rs.getDouble("ralan")/100)),100),baris,14);
                                                 tbDokter.setValueAt(Valid.roundUp(hargakonversi+(hargakonversi*(rs.getDouble("kelas1")/100)),100),baris,15);
@@ -2049,7 +2051,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             rskonversi=pskonversi.executeQuery();
                             if(rskonversi.next()){
                                 try {
-                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(2)/rskonversi.getDouble(1));
+                                    jmlkonversi=Double.parseDouble(tbDokter.getValueAt(baris,0).toString())*(rskonversi.getDouble(1)/rskonversi.getDouble(2));
                                 } catch (Exception e) {
                                     jmlkonversi=0;
                                 }
@@ -2061,7 +2063,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     hargappn=0;
                                 }
 
-                                hargakonversi=hargappn/jmlkonversi;
+                                hargakonversi=hargappn/*jmlkonversi*/;
                                 tbDokter.setValueAt(Math.round(hargakonversi),baris,24);
                                 tbDokter.setValueAt(Valid.roundUp(hargakonversi,100),baris,14);
                                 tbDokter.setValueAt(Valid.roundUp(hargakonversi,100),baris,15);
