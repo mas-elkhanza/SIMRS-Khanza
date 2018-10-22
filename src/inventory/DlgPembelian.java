@@ -364,7 +364,7 @@ public class DlgPembelian extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(110,80,80));
+        ppBersihkan.setForeground(new java.awt.Color(110, 80, 80));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -388,7 +388,7 @@ public class DlgPembelian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110, 80, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1099,9 +1099,9 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void tbDokterPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbDokterPropertyChange
         if(this.isVisible()==true){
             if(tbDokter.getSelectedRow()!=-1){
-                setKonversi(tbDokter.getSelectedRow());                
+                setKonversi(tbDokter.getSelectedRow());
             }
-            getData(); 
+            getData();
         }
     }//GEN-LAST:event_tbDokterPropertyChange
 
@@ -1224,7 +1224,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         System.out.println("Notifikasi : "+e);
                     }
                     getData();
-                }else if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==10)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==13)){
+                }else if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==5)||(tbDokter.getSelectedColumn()==6)||(tbDokter.getSelectedColumn()==10)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==13)){
                     getData();
                 }
             }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -1465,13 +1465,13 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         row=tbDokter.getSelectedRow();
         if(row!= -1){              
             try {
-                if(Valid.SetAngka(tbDokter.getValueAt(row,0).toString())>0){   
+                if(Valid.SetAngka(tbDokter.getValueAt(row,0).toString())>0){                        
                     if(tbDokter.getValueAt(row,1).toString().equals(tbDokter.getValueAt(row,4).toString())){
-                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,12).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);                
-                    }else{
-                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);                
-                    }
-                    tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,8).toString())-Double.parseDouble(tbDokter.getValueAt(row,10).toString()), row,11);           
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);  
+                    }else{   
+                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,12).toString())*Double.parseDouble(tbDokter.getValueAt(row,7).toString()), row,8);    
+                    }                   
+                    tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,8).toString())-Double.parseDouble(tbDokter.getValueAt(row,10).toString()), row,11);    
                 } 
             } catch (Exception e) {
                 tbDokter.setValueAt(0, row,8);                
@@ -1481,18 +1481,19 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 
         ttl=0;sbttl=0;ppn=0;ttldisk=0;
         y=0;w=0;
+   
         jml=tbDokter.getRowCount();
-        for(i=0;i<jml;i++){     
+        for(i=0;i<jml;i++){                 
             try {
-                w=Double.parseDouble(tbDokter.getValueAt(i,8).toString());                                        
+                w=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
             } catch (Exception e) {
                 tbDokter.setValueAt(0,tbDokter.getSelectedRow(),8);
-                w=0;
-            }                        
+                w=0;                
+            }
             sbttl=sbttl+w;                
 
             try {
-                y=Double.parseDouble(tbDokter.getValueAt(i,10).toString());                
+                y=Double.parseDouble(tbDokter.getValueAt(i,10).toString()); 
             } catch (Exception e) {
                 tbDokter.setValueAt(0,tbDokter.getSelectedRow(),10);
                 y=0;
@@ -1508,7 +1509,8 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             ppn=(Double.parseDouble(tppn.getText())/100) *(ttl);
             LPpn.setText(Valid.SetAngka(ppn));
             LTagiha.setText(Valid.SetAngka(ttl+ppn));
-        }        
+        }
+        
     }
     
     public void isCek(){
