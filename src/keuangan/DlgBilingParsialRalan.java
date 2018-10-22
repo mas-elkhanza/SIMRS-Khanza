@@ -46,7 +46,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             tabModeBilling,TabModeTindakanDrBayar,TabModeTindakanPr,
             TabModeTindakanPrBayar,TabModeTindakanDrPr,TabModeTindakanDrPrBayar,
             TabModeRadiologi,TabModeRadiologiBayar,TabModeLaborat,TabModeDetailLaborat,
-            TabModeLaboratBayar;
+            TabModeLaboratBayar,TabModeDetailLaboratBayar;
     private int row2=0,r=0,i=0,countbayar=0,z=0,jml=0,jmlradiologi=0,jmllaborat=0,index=0;
     private String[] Nama_Akun_Bayar,Kode_Rek_Bayar,Bayar,PPN_Persen,PPN_Besar;
     private boolean[] pilih; 
@@ -551,6 +551,48 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }
         }
         tbDetailLaborat.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        TabModeDetailLaboratBayar=new DefaultTableModel(null,new Object[]{
+            "P","ID Periksa","Nama Sub Pemeriksaan","Tarif","Bagian RS","BHP","Tarif Perujuk",
+            "Tarif Dokter","Tarif Petugas","Kso","Menejemen","Tanggal","Jam","No.Order","Kode Jenis"
+            }){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbDetailLaboratBayar.setModel(TabModeDetailLaboratBayar);        
+        
+        tbDetailLaboratBayar.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbDetailLaboratBayar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for(i = 0; i < 15; i++) {
+            TableColumn column = tbDetailLaboratBayar.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==2){
+                column.setPreferredWidth(405);
+            }else if(i==3){
+                column.setPreferredWidth(75);
+            }else{
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }
+        }
+        tbDetailLaboratBayar.setDefaultRenderer(Object.class, new WarnaTable());
         
         TabModeTindakanDrBayar=new DefaultTableModel(null,new Object[]{
                 "P","Kode","Nama Perawatan","Kategori","Tarif","Bagian RS","BHP",
@@ -1119,7 +1161,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll15 = new widget.ScrollPane();
         tbLaboratBayar = new widget.Table();
         Scroll16 = new widget.ScrollPane();
-        tbSubLaboratBayar = new widget.Table();
+        tbDetailLaboratBayar = new widget.Table();
         internalFrame9 = new widget.InternalFrame();
         Scroll13 = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -2197,19 +2239,19 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll16.setOpaque(true);
         Scroll16.setPreferredSize(new java.awt.Dimension(540, 500));
 
-        tbSubLaboratBayar.setAutoCreateRowSorter(true);
-        tbSubLaboratBayar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbSubLaboratBayar.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbDetailLaboratBayar.setAutoCreateRowSorter(true);
+        tbDetailLaboratBayar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDetailLaboratBayar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbSubLaboratBayarMouseClicked(evt);
+                tbDetailLaboratBayarMouseClicked(evt);
             }
         });
-        tbSubLaboratBayar.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbDetailLaboratBayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbSubLaboratBayarKeyPressed(evt);
+                tbDetailLaboratBayarKeyPressed(evt);
             }
         });
-        Scroll16.setViewportView(tbSubLaboratBayar);
+        Scroll16.setViewportView(tbDetailLaboratBayar);
 
         TabRawatLaboratBayar.addTab("Sub Pemeriksaan", Scroll16);
 
@@ -2749,13 +2791,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbLaboratBayarKeyPressed
 
-    private void tbSubLaboratBayarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbSubLaboratBayarMouseClicked
+    private void tbDetailLaboratBayarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDetailLaboratBayarMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbSubLaboratBayarMouseClicked
+    }//GEN-LAST:event_tbDetailLaboratBayarMouseClicked
 
-    private void tbSubLaboratBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbSubLaboratBayarKeyPressed
+    private void tbDetailLaboratBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDetailLaboratBayarKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbSubLaboratBayarKeyPressed
+    }//GEN-LAST:event_tbDetailLaboratBayarKeyPressed
 
     private void TabRawatLaboratBayarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatLaboratBayarMouseClicked
         if(TabRawatLaboratBayar.getSelectedIndex()==0){
@@ -3101,13 +3143,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private widget.Table tbAkunBayar;
     private widget.Table tbBilling;
     private widget.Table tbDetailLaborat;
+    private widget.Table tbDetailLaboratBayar;
     private widget.Table tbLaborat;
     private widget.Table tbLaboratBayar;
     private widget.Table tbObat;
     private widget.Table tbRadiologi;
     private widget.Table tbRadiologiBayar;
     private widget.Table tbRawatDrBayar1;
-    private widget.Table tbSubLaboratBayar;
     private widget.Table tbTindakanDr;
     private widget.Table tbTindakanDrBayar;
     private widget.Table tbTindakanDrPr;
@@ -4620,7 +4662,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     
     public void tampilDetailLaboratBayar() {         
         try{  
-            Valid.tabelKosong(TabModeDetailLaborat);
+            Valid.tabelKosong(TabModeDetailLaboratBayar);
             pstindakan=koneksi.prepareStatement(
                 "select template_laboratorium.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.biaya_item,"+
                 "template_laboratorium.bagian_rs,template_laboratorium.bhp,template_laboratorium.bagian_perujuk,"+
@@ -4635,7 +4677,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 pstindakan.setString(1,TNoRw.getText());
                 rstindakan=pstindakan.executeQuery();
                 while(rstindakan.next()){                
-                    TabModeDetailLaborat.addRow(new Object[]{
+                    TabModeDetailLaboratBayar.addRow(new Object[]{
                         false,rstindakan.getString(1),rstindakan.getString(2),rstindakan.getDouble(3),
                         rstindakan.getDouble(4),rstindakan.getDouble(5),rstindakan.getDouble(6),
                         rstindakan.getDouble(7),rstindakan.getDouble(8),rstindakan.getDouble(9),
