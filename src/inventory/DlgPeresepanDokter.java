@@ -655,6 +655,11 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
                     aturanpakai.setLocationRelativeTo(internalFrame1);
                     aturanpakai.setVisible(true);
                 }
+            }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                i=tbObat.getSelectedColumn();
+                if((i==8)||(i==9)){
+                    TCari.requestFocus();
+                } 
             }   
         }
 }//GEN-LAST:event_tbObatKeyPressed
@@ -665,8 +670,6 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        
-        //barang.setModal(true);
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()+40,internalFrame1.getHeight()+40);

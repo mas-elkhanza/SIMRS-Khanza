@@ -1180,6 +1180,16 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         isReset();
     }
     
+    public void setNoRm(String norwt,String posisi,String kddokter,String nmdokter) {
+        TNoRw.setText(norwt);
+        this.status=posisi;
+        isRawat();
+        isPsien();
+        isReset();
+        KodePerujuk.setText(kddokter);
+        NmPerujuk.setText(nmdokter);
+    }
+    
     public void isCek(){        
         BtnSimpan.setEnabled(var.getpermintaan_radiologi());
         BtnPrint.setEnabled(var.getpermintaan_radiologi());

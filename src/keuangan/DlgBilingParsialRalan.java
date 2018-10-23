@@ -1172,7 +1172,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         TBiaya = new widget.TextBox();
         label11 = new widget.Label();
         LabelStatus = new widget.Label();
-        BtnHapusReg = new widget.Button();
         Scroll9 = new widget.ScrollPane();
         tbBilling = new widget.Table();
 
@@ -2315,29 +2314,17 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         TBiaya.setHighlighter(null);
         TBiaya.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass13.add(TBiaya);
-        TBiaya.setBounds(410, 10, 100, 23);
+        TBiaya.setBounds(450, 10, 110, 23);
 
         label11.setText("Biaya Registrasi :");
         label11.setPreferredSize(new java.awt.Dimension(68, 23));
         panelGlass13.add(label11);
-        label11.setBounds(317, 10, 90, 23);
+        label11.setBounds(357, 10, 90, 23);
 
         LabelStatus.setText("Status : Belum Bayar");
         LabelStatus.setPreferredSize(new java.awt.Dimension(68, 23));
         panelGlass13.add(LabelStatus);
-        LabelStatus.setBounds(510, 10, 120, 23);
-
-        BtnHapusReg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnHapusReg.setMnemonic('H');
-        BtnHapusReg.setToolTipText("Alt+H");
-        BtnHapusReg.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnHapusReg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHapusRegActionPerformed(evt);
-            }
-        });
-        panelGlass13.add(BtnHapusReg);
-        BtnHapusReg.setBounds(670, 10, 28, 23);
+        LabelStatus.setBounds(650, 10, 120, 23);
 
         internalFrame9.add(panelGlass13, java.awt.BorderLayout.PAGE_START);
 
@@ -2801,10 +2788,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         tampilbilling();
     }//GEN-LAST:event_chkPoliActionPerformed
 
-    private void BtnHapusRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusRegActionPerformed
-        
-    }//GEN-LAST:event_BtnHapusRegActionPerformed
-
     private void TtlSemuaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TtlSemuaKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_TtlSemuaKeyPressed
@@ -3010,7 +2993,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private widget.Button BtnCariBayar;
     private widget.Button BtnCariTindakan;
     private widget.Button BtnHapus;
-    private widget.Button BtnHapusReg;
     private widget.Button BtnKeluar;
     private widget.Button BtnNota;
     private widget.Button BtnSeekDokter;

@@ -1300,6 +1300,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         isReset();
     }
     
+    public void setNoRm(String norwt,String posisi,String kddokter,String nmdokter) {
+        TNoRw.setText(norwt);
+        this.status=posisi;
+        isRawat();
+        isPsien();
+        isReset();
+        KodePerujuk.setText(kddokter);
+        NmPerujuk.setText(nmdokter);
+    }
+    
     public void isCek(){
         BtnSimpan.setEnabled(var.getpermintaan_lab());
         BtnPrint.setEnabled(var.getpermintaan_lab());
