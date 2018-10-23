@@ -1166,7 +1166,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll13 = new widget.ScrollPane();
         tbObat = new widget.Table();
         Scroll17 = new widget.ScrollPane();
-        tbRawatDrBayar1 = new widget.Table();
+        tbObatBayar = new widget.Table();
         panelGlass13 = new widget.panelisi();
         chkPoli = new widget.CekBox();
         TBiaya = new widget.TextBox();
@@ -1553,7 +1553,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-10-2018 21:40:40" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2018 08:52:14" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setOpaque(false);
         DTPTgl.setPreferredSize(new java.awt.Dimension(135, 23));
@@ -2280,19 +2280,19 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll17.setOpaque(true);
         Scroll17.setPreferredSize(new java.awt.Dimension(400, 404));
 
-        tbRawatDrBayar1.setAutoCreateRowSorter(true);
-        tbRawatDrBayar1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbRawatDrBayar1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbObatBayar.setAutoCreateRowSorter(true);
+        tbObatBayar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObatBayar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbRawatDrBayar1MouseClicked(evt);
+                tbObatBayarMouseClicked(evt);
             }
         });
-        tbRawatDrBayar1.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbObatBayar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbRawatDrBayar1KeyPressed(evt);
+                tbObatBayarKeyPressed(evt);
             }
         });
-        Scroll17.setViewportView(tbRawatDrBayar1);
+        Scroll17.setViewportView(tbObatBayar);
 
         internalFrame9.add(Scroll17, java.awt.BorderLayout.CENTER);
 
@@ -2776,13 +2776,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_Scroll13MouseClicked
 
-    private void tbRawatDrBayar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRawatDrBayar1MouseClicked
+    private void tbObatBayarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatBayarMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRawatDrBayar1MouseClicked
+    }//GEN-LAST:event_tbObatBayarMouseClicked
 
-    private void tbRawatDrBayar1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRawatDrBayar1KeyPressed
+    private void tbObatBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatBayarKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRawatDrBayar1KeyPressed
+    }//GEN-LAST:event_tbObatBayarKeyPressed
 
     private void chkPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPoliActionPerformed
         tampilbilling();
@@ -3113,9 +3113,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private widget.Table tbLaborat;
     private widget.Table tbLaboratBayar;
     private widget.Table tbObat;
+    private widget.Table tbObatBayar;
     private widget.Table tbRadiologi;
     private widget.Table tbRadiologiBayar;
-    private widget.Table tbRawatDrBayar1;
     private widget.Table tbTindakanDr;
     private widget.Table tbTindakanDrBayar;
     private widget.Table tbTindakanDrPr;

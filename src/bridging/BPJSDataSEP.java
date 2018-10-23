@@ -103,7 +103,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 "No.Rujukan","Kode PPK Rujukan","Nama PPK Rujukan","Kode PPK Pelayanan", 
                 "Nama PPK Pelayanan","Jenis Layanan","Catatan", "Kode Diagnosa", 
                 "Nama Diagnosa", "Kode Poli", "Nama Poli", "Kelas Rawat", "Laka Lantas", 
-                "User Input","Tgl.Lahir","Peserta","J.Kel","No.Kartu","Tanggal Pulang",
+                "User Input","Tgl.Lahir","Peserta","J.K","No.Kartu","Tanggal Pulang",
                 "Asal Rujukan","Eksekutif","COB","Penjamin","No.Telp","Katarak",
                 "Tanggal KKL","Keterangan KKL","Suplesi","No.SEP Suplesi","Kd Prop",
                 "Propinsi","Kd Kab","Kabupaten","Kd Kec","Kecamatan","No.SKDP",
@@ -169,14 +169,11 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else if(i==21){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(80);
             }else if(i==22){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(25);
             }else if(i==23){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(90);
             }else if(i==24){
                 column.setPreferredWidth(120);
             }else if(i==25){
@@ -227,7 +224,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         NoRujukan.setDocument(new batasInput((byte)40).getKata(NoRujukan));
-        NoSKDP.setDocument(new batasInput((byte)10).getKata(NoSKDP));
+        NoSKDP.setDocument(new batasInput((byte)6).getKata(NoSKDP));
         NoSEPSuplesi.setDocument(new batasInput((byte)40).getKata(NoSEPSuplesi));
         Catatan.setDocument(new batasInput((byte)50).getKata(Catatan));
         Keterangan.setDocument(new batasInput((byte)50).getKata(Keterangan));
@@ -2557,6 +2554,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         WindowRujukan.dispose();
         WindowUpdatePulang.dispose();
+        WindowCariSEP.dispose();
         faskes.dispose();
         penyakit.dispose();
         skdp.dispose();
@@ -3438,7 +3436,7 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     tglkkl=Valid.SetTgl(TanggalKKL.getSelectedItem()+"");
                 }
                 
-                Sequel.menyimpantf("bridging_sep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","SEP",44,new String[]{
+                if(Sequel.menyimpantf("bridging_sep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","SEP",44,new String[]{
                      NoSEP.getText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),Valid.SetTgl(TanggalRujuk.getSelectedItem()+""), 
                      NoRujukan.getText(),KdPpkRujukan.getText(), NmPpkRujukan.getText(),KdPPK.getText(), NmPPK.getText(), 
                      JenisPelayanan.getSelectedItem().toString().substring(0,1), Catatan.getText(),KdPenyakit.getText(), 
@@ -3450,7 +3448,10 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                      tglkkl,Keterangan.getText(),Suplesi.getSelectedItem().toString().substring(0,1),
                      NoSEPSuplesi.getText(),KdPropinsi.getText(),NmPropinsi.getText(),KdKabupaten.getText(),NmKabupaten.getText(),
                      KdKecamatan.getText(),NmKecamatan.getText(),NoSKDP.getText(),KdDPJP.getText(),NmDPJP.getText()
-                });
+                })==true){
+                    tampil();
+                    WindowCariSEP.dispose();
+                }
             }
         }
     }//GEN-LAST:event_BtnSimpan6ActionPerformed
@@ -3863,6 +3864,13 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                     "bridging_sep.tglsep between ? and ? and bridging_sep.diagawal like ? or "+
                     "bridging_sep.tglsep between ? and ? and bridging_sep.nmdiagnosaawal like ? or "+
                     "bridging_sep.tglsep between ? and ? and bridging_sep.no_rawat like ? or "+
+                    "bridging_sep.tglsep between ? and ? and bridging_sep.no_kartu like ? or "+
+                    "bridging_sep.tglsep between ? and ? and bridging_sep.nmprop like ? or "+
+                    "bridging_sep.tglsep between ? and ? and bridging_sep.nmkab like ? or "+
+                    "bridging_sep.tglsep between ? and ? and bridging_sep.nmkec like ? or "+
+                    "bridging_sep.tglsep between ? and ? and bridging_sep.nmdpdjp like ? or "+
+                    "bridging_sep.tglsep between ? and ? and bridging_sep.asal_rujukan like ? or "+
+                    "bridging_sep.tglsep between ? and ? and bridging_sep.notelep like ? or "+
                     "bridging_sep.tglsep between ? and ? and bridging_sep.nmpolitujuan like ? order by bridging_sep.tglsep");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
@@ -3889,6 +3897,30 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
                 ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                 ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
                 ps.setString(24,"%"+TCari.getText().trim()+"%");
+                ps.setString(22,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(23,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(24,"%"+TCari.getText().trim()+"%");
+                ps.setString(25,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(26,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(27,"%"+TCari.getText().trim()+"%");
+                ps.setString(28,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(29,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(30,"%"+TCari.getText().trim()+"%");
+                ps.setString(31,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(32,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(33,"%"+TCari.getText().trim()+"%");
+                ps.setString(34,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(35,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(36,"%"+TCari.getText().trim()+"%");
+                ps.setString(37,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(38,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(39,"%"+TCari.getText().trim()+"%");
+                ps.setString(40,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(41,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(42,"%"+TCari.getText().trim()+"%");
+                ps.setString(43,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                ps.setString(44,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                ps.setString(45,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
