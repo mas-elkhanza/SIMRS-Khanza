@@ -1022,9 +1022,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }else if(i==5){
                 column.setPreferredWidth(110);
             }else if(i==6){
-                column.setPreferredWidth(70);
-                //column.setMinWidth(0);
-                //column.setMaxWidth(0);
+                //column.setPreferredWidth(70);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
 
