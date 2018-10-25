@@ -46,7 +46,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             tabModeBilling,TabModeTindakanDrBayar,TabModeTindakanPr,
             TabModeTindakanPrBayar,TabModeTindakanDrPr,TabModeTindakanDrPrBayar,
             TabModeRadiologi,TabModeRadiologiBayar,TabModeLaborat,TabModeDetailLaborat,
-            TabModeLaboratBayar,TabModeDetailLaboratBayar;
+            TabModeLaboratBayar,TabModeDetailLaboratBayar,TabModeObat,TabModeObatBayar;
     private int row2=0,r=0,i=0,countbayar=0,z=0,jml=0,jmlradiologi=0,jmllaborat=0,index=0;
     private String[] Nama_Akun_Bayar,Kode_Rek_Bayar,Bayar,PPN_Persen,PPN_Besar;
     private boolean[] pilih; 
@@ -83,9 +83,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             Utang_Kso_Radiologi_Ralan="",HPP_Persediaan_Radiologi_Rawat_Jalan="",
             Persediaan_BHP_Radiologi_Rawat_Jalan="",HPP_Obat_Rawat_Jalan="",
             Persediaan_Obat_Rawat_Jalan="";
-    private double subttl=0,ppnobat=0,ttl=0,y=0,ttlLaborat=0,ttlRadiologi=0,
+    private double ppnobat=0,ttl=0,y=0,ttlLaborat=0,ttlRadiologi=0,
             ttlObat=0,ttlRalan_Dokter=0,ttlRalan_Paramedis=0,ttlRegistrasi=0,
-            ttlRalan_Dokter_Param=0,bayar=0,total=0,ppn=0,besarppn=0,
+            ttlRalan_Dokter_Param=0,bayar=0,total=0,ppn=0,besarppn=0,subttl=0,
             tagihanppn=0,kekurangan=0,Jasa_Medik_Dokter_Tindakan_Ralan=0,
             Jasa_Medik_Paramedis_Tindakan_Ralan=0,KSO_Tindakan_Ralan=0,
             Jasa_Medik_Dokter_Laborat_Ralan=0,Jasa_Medik_Petugas_Laborat_Ralan=0,
@@ -489,7 +489,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         };
         tbLaborat.setModel(TabModeLaborat);        
         
-        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
         tbLaborat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbLaborat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -551,6 +550,102 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }
         }
         tbDetailLaborat.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        TabModeObat=new DefaultTableModel(null,new Object[]{
+                "P","Kode Obat","Nama Obat","Jml","Biaya","HPP","Tanggal","Jam"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class,java.lang.Object.class,  
+                java.lang.Object.class, java.lang.Double.class,java.lang.Double.class,
+                java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbObat.setModel(TabModeObat);
+        tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        for (i = 0; i < 8; i++) {
+            TableColumn column = tbObat.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(70);
+            }else if(i==2){
+                column.setPreferredWidth(295);
+            }else if(i==3){
+                column.setPreferredWidth(35);
+            }else if(i==4){
+                column.setPreferredWidth(80);
+            }else if(i==5){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==6){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==7){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }
+        }
+        tbObat.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        TabModeObatBayar=new DefaultTableModel(null,new Object[]{
+                "P","Kode Obat","Nama Obat","Jml","Biaya","HPP","Tanggal","Jam"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if (colIndex==0) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class,java.lang.Object.class,  
+                java.lang.Object.class, java.lang.Double.class,java.lang.Double.class,
+                java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbObatBayar.setModel(TabModeObatBayar);
+        tbObatBayar.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbObatBayar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        for (i = 0; i < 8; i++) {
+            TableColumn column = tbObatBayar.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(70);
+            }else if(i==2){
+                column.setPreferredWidth(295);
+            }else if(i==3){
+                column.setPreferredWidth(35);
+            }else if(i==4){
+                column.setPreferredWidth(80);
+            }else if(i==5){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==6){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==7){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }
+        }
+        tbObatBayar.setDefaultRenderer(Object.class, new WarnaTable());
         
         TabModeDetailLaboratBayar=new DefaultTableModel(null,new Object[]{
             "P","ID Periksa","Nama Sub Pemeriksaan","Tarif","Bagian RS","BHP","Tarif Perujuk",
@@ -1553,7 +1648,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2018 08:52:14" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-10-2018 08:34:21" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setOpaque(false);
         DTPTgl.setPreferredSize(new java.awt.Dimension(135, 23));
@@ -2237,6 +2332,11 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         tbDetailLaboratBayar.setAutoCreateRowSorter(true);
         tbDetailLaboratBayar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDetailLaboratBayar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDetailLaboratBayarMouseClicked(evt);
+            }
+        });
         Scroll16.setViewportView(tbDetailLaboratBayar);
 
         TabRawatLaboratBayar.addTab("Sub Pemeriksaan", Scroll16);
@@ -2262,16 +2362,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         tbObat.setAutoCreateRowSorter(true);
         tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbObatMouseClicked(evt);
-            }
-        });
-        tbObat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbObatKeyPressed(evt);
-            }
-        });
         Scroll13.setViewportView(tbObat);
 
         internalFrame9.add(Scroll13, java.awt.BorderLayout.WEST);
@@ -2285,11 +2375,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         tbObatBayar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbObatBayarMouseClicked(evt);
-            }
-        });
-        tbObatBayar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbObatBayarKeyPressed(evt);
             }
         });
         Scroll17.setViewportView(tbObatBayar);
@@ -2447,6 +2532,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }else if(TabRawatLaboratBayar.getSelectedIndex()==1){
                 tampilDetailLaboratBayar();
             } 
+        }else if(TabRawat.getSelectedIndex()==5){
+            tampilObat();
+            tampilObatBayar();
         }else if(TabRawat.getSelectedIndex()==6){
             tampilbilling();
         }     
@@ -2764,25 +2852,19 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         tampilhapus();
     }//GEN-LAST:event_TabRawatLaboratBayarMouseClicked
 
-    private void tbObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatMouseClicked
-        
-    }//GEN-LAST:event_tbObatMouseClicked
-
-    private void tbObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbObatKeyPressed
-
     private void Scroll13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Scroll13MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_Scroll13MouseClicked
 
     private void tbObatBayarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatBayarMouseClicked
-        // TODO add your handling code here:
+        if(TabModeObatBayar.getRowCount()!=0){
+            if(evt.getClickCount()==1){
+                if(tbObatBayar.getSelectedColumn()==0){
+                    tampilhapus();
+                }
+            }
+        }
     }//GEN-LAST:event_tbObatBayarMouseClicked
-
-    private void tbObatBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatBayarKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbObatBayarKeyPressed
 
     private void chkPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPoliActionPerformed
         tampilbilling();
@@ -2943,6 +3025,16 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampilAkunBayar();
     }//GEN-LAST:event_formWindowOpened
+
+    private void tbDetailLaboratBayarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDetailLaboratBayarMouseClicked
+        if(TabModeDetailLaboratBayar.getRowCount()!=0){
+            if(evt.getClickCount()==1){
+                if(tbDetailLaboratBayar.getSelectedColumn()==0){
+                    tampilhapus();
+                }
+            }
+        }
+    }//GEN-LAST:event_tbDetailLaboratBayarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -4936,6 +5028,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     Kso_Radiologi_Ralan=0;
                     Persediaan_Radiologi_Rawat_Jalan=0;
                     Obat_Rawat_Jalan=0;
+                    subttl=0;
+                    ppnobat=0;
                     
                     for(i=0;i<tbTindakanDr.getRowCount();i++){
                         if(tbTindakanDr.getValueAt(i,0).toString().equals("true")){
@@ -5089,6 +5183,38 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                 });
                             }                                
                         }
+                    }
+                    
+                    jml=0;
+                    for(i=0;i<tbObat.getRowCount();i++){
+                        if(tbObat.getValueAt(i,0).toString().equals("true")){
+                            jml++;
+                        }
+                    }
+                    
+                    if(jml>0){
+                        tabModeBilling.addRow(new Object[]{"Obat & BHP ",":","",null,null,null,"Obat"});
+                    }
+                    
+                    for(i=0;i<tbObat.getRowCount();i++){
+                        if(tbObat.getValueAt(i,0).toString().equals("true")){
+                            Obat_Rawat_Jalan=Obat_Rawat_Jalan+Double.parseDouble(tbObat.getValueAt(i,5).toString());
+                            subttl=subttl+Double.parseDouble(tbObat.getValueAt(i,4).toString());
+                            tabModeBilling.addRow(new Object[]{
+                                "",tbObat.getValueAt(i,2).toString(),":",
+                                (Double.parseDouble(tbObat.getValueAt(i,4).toString())/Double.parseDouble(tbObat.getValueAt(i,3).toString())),
+                                Double.parseDouble(tbObat.getValueAt(i,3).toString()),Double.parseDouble(tbObat.getValueAt(i,4).toString()),"Obat"
+                            });                          
+                        }
+                    }
+                    
+                    if(subttl>0){
+                        if(tampilkan_ppnobat_ralan.equals("Yes")){
+                            ppnobat=Valid.roundUp(subttl*0.1,100);
+                            tabModeBilling.addRow(new Object[]{
+                                "","PPN Obat",":",ppnobat,1,ppnobat,"Obat"
+                            });   
+                        }                        
                     }
                     
                     isHitung();
@@ -5359,6 +5485,16 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     }
                 }
                 
+                for(i=0;i<tbObat.getRowCount();i++){
+                    if(tbObat.getValueAt(i,0).toString().equals("true")){
+                        if(Sequel.menyimpantf2("permintaan_obat","?,?,?,?","Obat",4,new String[]{
+                            tbObat.getValueAt(i,6).toString(),tbObat.getValueAt(i,7).toString(),TNoRw.getText(),tbObat.getValueAt(i,1).toString(),
+                          })==true){
+                            tbObat.setValueAt(false,i,0);
+                        }                                                    
+                    }
+                }
+            
                 Sequel.menyimpan("nota_jalan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",19,new String[]{
                         TNoRw.getText(),Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,6),signed)),0) from nota_jalan where left(tanggal,7)='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,7).replaceAll("-","/")+"/RJ/",6),
                         Valid.SetTgl(DTPTgl.getSelectedItem()+""),DTPTgl.getSelectedItem().toString().substring(11,19),
@@ -5621,6 +5757,13 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan+Double.parseDouble(tbDetailLaboratBayar.getValueAt(i,6).toString())+Double.parseDouble(tbDetailLaboratBayar.getValueAt(i,7).toString());
             }
         }
+        
+        for(i=0;i<tbObatBayar.getRowCount();i++){
+            if(tbObatBayar.getValueAt(i,0).toString().equals("true")){
+                Obat_Rawat_Jalan=Obat_Rawat_Jalan+Double.parseDouble(tbObatBayar.getValueAt(i,5).toString());
+            }
+        }
+
         isHitungHapus();
     }
     
@@ -5628,6 +5771,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         ttl=0;
         ttlLaborat=0;ttlRadiologi=0;ttlObat=0;ttlRalan_Dokter=0;
         ttlRalan_Paramedis=0;ttlRegistrasi=0;ttlRalan_Dokter_Param=0;
+        ppnobat=0;
         z=tbTindakanDrBayar.getRowCount();
         for(i=0;i<z;i++){ 
             if(tbTindakanDrBayar.getValueAt(i,0).toString().equals("true")){
@@ -5679,8 +5823,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 ttlRadiologi=ttlRadiologi+y;                                  
                 ttl=ttl+y;  
             }                           
-        } 
-        
+        }         
         z=tbLaboratBayar.getRowCount();
         for(i=0;i<z;i++){ 
             if(tbLaboratBayar.getValueAt(i,0).toString().equals("true")){
@@ -5693,8 +5836,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 ttlLaborat=ttlLaborat+y;                                  
                 ttl=ttl+y;  
             }                           
-        } 
-        
+        }         
         z=tbDetailLaboratBayar.getRowCount();
         for(i=0;i<z;i++){ 
             if(tbDetailLaboratBayar.getValueAt(i,0).toString().equals("true")){
@@ -5707,7 +5849,27 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 ttlLaborat=ttlLaborat+y;                                  
                 ttl=ttl+y;  
             }                           
+        }         
+        z=tbObatBayar.getRowCount();
+        for(i=0;i<z;i++){ 
+            if(tbObatBayar.getValueAt(i,0).toString().equals("true")){
+                y=0;
+                try {                
+                    y=Double.parseDouble(tbObatBayar.getValueAt(i,4).toString());  
+                } catch (Exception e) {
+                    y=0; 
+                }
+                ttlObat=ttlObat+y;                                  
+                ttl=ttl+y;  
+            }                           
         } 
+        if(ttlObat>0){
+            if(tampilkan_ppnobat_ralan.equals("Yes")){
+                ppnobat=Valid.roundUp(ttlObat*0.1,100); 
+                ttlObat=ttlObat+ppnobat;
+                ttl=ttl+ppnobat;
+            }                        
+        }
         
         TtlSemua.setText(Valid.SetAngka3(ttl));
         if(ttl<=0){
@@ -6008,6 +6170,94 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     }                        
                 }
                 
+                for(i=0;i<tbObatBayar.getRowCount();i++){
+                    if(tbObatBayar.getValueAt(i,0).toString().equals("true")){
+                        if(Sequel.queryu2tf("delete from permintaan_obat where tanggal=? and jam=? and no_rawat=? and kode_brng=?",4,new String[]{
+                            tbObatBayar.getValueAt(i,6).toString(),tbObatBayar.getValueAt(i,7).toString(),TNoRw.getText(),tbObatBayar.getValueAt(i,1).toString()
+                          })==true){
+                            try {
+                                psbiling=koneksi.prepareStatement(sqlpsbiling);
+                                try {
+                                    psbiling.setInt(1,i);
+                                    psbiling.setString(2,TNoRw.getText());
+                                    psbiling.setString(3,Valid.SetTgl(DTPTgl.getSelectedItem()+""));
+                                    psbiling.setString(4,"Obat");
+                                    psbiling.setString(5,": Pembatalan "+tbObatBayar.getValueAt(i,2).toString().replaceAll("'",""));
+                                    psbiling.setString(6,":");                    
+                                    try {                        
+                                        psbiling.setDouble(7,-(Valid.SetAngka(tbObatBayar.getValueAt(i,4).toString())/Valid.SetAngka(tbObatBayar.getValueAt(i,3).toString())));
+                                    } catch (Exception e) {
+                                        psbiling.setDouble(7,0);
+                                    }
+                                    try {
+                                        psbiling.setDouble(8,Valid.SetAngka(tbObatBayar.getValueAt(i,3).toString()));
+                                    } catch (Exception e) {
+                                        psbiling.setDouble(8,0);
+                                    }
+                                    psbiling.setDouble(9,0); 
+                                    try {
+                                        psbiling.setDouble(10,-Valid.SetAngka(tbObatBayar.getValueAt(i,4).toString())); 
+                                    } catch (Exception e) {
+                                        psbiling.setDouble(10,0);
+                                    }                    
+                                    psbiling.setString(11,"Obat");
+                                    psbiling.executeUpdate();
+                                } catch (Exception e) {
+                                    System.out.println("Notifikasi : "+e);
+                                } finally{
+                                    if(psbiling != null){
+                                        psbiling.close();
+                                    } 
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notif : "+e);
+                            }
+                        }
+                    }                        
+                }
+                
+                if(ppnobat>0){
+                    if(tampilkan_ppnobat_ralan.equals("Yes")){
+                        try {
+                            psbiling=koneksi.prepareStatement(sqlpsbiling);
+                            try {
+                                psbiling.setInt(1,i);
+                                psbiling.setString(2,TNoRw.getText());
+                                psbiling.setString(3,Valid.SetTgl(DTPTgl.getSelectedItem()+""));
+                                psbiling.setString(4,"Obat");
+                                psbiling.setString(5,": Pembatalan PPN Obat");
+                                psbiling.setString(6,":");                    
+                                try {                        
+                                    psbiling.setDouble(7,-ppnobat);
+                                } catch (Exception e) {
+                                    psbiling.setDouble(7,0);
+                                }
+                                try {
+                                    psbiling.setDouble(8,1);
+                                } catch (Exception e) {
+                                    psbiling.setDouble(8,0);
+                                }
+                                psbiling.setDouble(9,0); 
+                                try {
+                                    psbiling.setDouble(10,-ppnobat); 
+                                } catch (Exception e) {
+                                    psbiling.setDouble(10,0);
+                                }                    
+                                psbiling.setString(11,"Obat");
+                                psbiling.executeUpdate();
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(psbiling != null){
+                                    psbiling.close();
+                                } 
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif : "+e);
+                        }
+                    }                        
+                }
+                
                 Sequel.queryu2("update nota_jalan set Jasa_Medik_Dokter_Tindakan_Ralan=Jasa_Medik_Dokter_Tindakan_Ralan-?,"+
                     "Jasa_Medik_Paramedis_Tindakan_Ralan=Jasa_Medik_Paramedis_Tindakan_Ralan-?,KSO_Tindakan_Ralan=KSO_Tindakan_Ralan-?,"+
                     "Jasa_Medik_Dokter_Laborat_Ralan=Jasa_Medik_Dokter_Laborat_Ralan-?,"+
@@ -6163,6 +6413,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 tampilRadiologiBayar();
                 tampilLaboratBayar();
                 tampilDetailLaboratBayar();
+                tampilObatBayar();
                 isHitungHapus();
             }catch (Exception ex) {
                 System.out.println("Notifikasi : "+ex);            
@@ -6249,6 +6500,77 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
+    }
+    
+    private void tampilObat(){
+        try{  
+            Valid.tabelKosong(TabModeObat);
+            pstindakan=koneksi.prepareStatement(
+                    "select detail_pemberian_obat.kode_brng,databarang.nama_brng,detail_pemberian_obat.jml,detail_pemberian_obat.total,"+
+                    "(detail_pemberian_obat.h_beli*detail_pemberian_obat.jml) as hpp,detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam "+
+                    "from detail_pemberian_obat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
+                    "where detail_pemberian_obat.status='Ralan' and detail_pemberian_obat.no_rawat=? and detail_pemberian_obat.kode_brng not in "+
+                    "(select permintaan_obat.kode_brng from permintaan_obat where permintaan_obat.kode_brng=detail_pemberian_obat.kode_brng and "+
+                    "permintaan_obat.tanggal=detail_pemberian_obat.tgl_perawatan and permintaan_obat.jam=detail_pemberian_obat.jam and "+
+                    "permintaan_obat.no_rawat=?)");
+            try {
+                pstindakan.setString(1,TNoRw.getText());
+                pstindakan.setString(2,TNoRw.getText());
+                rstindakan=pstindakan.executeQuery();
+                while(rstindakan.next()){                
+                    TabModeObat.addRow(new Object[]{
+                        false,rstindakan.getString("kode_brng"),rstindakan.getString("nama_brng"),
+                        rstindakan.getString("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("hpp"),
+                        rstindakan.getString("tgl_perawatan"),rstindakan.getString("jam")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rstindakan!=null){
+                    rstindakan.close();
+                }
+                if(pstindakan!=null){
+                    pstindakan.close();
+                }
+            }
+        }catch(Exception ex){
+            System.out.println("Notifikasi : "+ex);
+        }    
+    }
+    
+    private void tampilObatBayar(){
+        try{  
+            Valid.tabelKosong(TabModeObatBayar);
+            pstindakan=koneksi.prepareStatement(
+                    "select detail_pemberian_obat.kode_brng,databarang.nama_brng,detail_pemberian_obat.jml,detail_pemberian_obat.total,"+
+                    "(detail_pemberian_obat.h_beli*detail_pemberian_obat.jml) as hpp,detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam "+
+                    "from detail_pemberian_obat inner join databarang inner join permintaan_obat on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
+                    "and permintaan_obat.kode_brng=detail_pemberian_obat.kode_brng and permintaan_obat.tanggal=detail_pemberian_obat.tgl_perawatan "+
+                    "and permintaan_obat.jam=detail_pemberian_obat.jam where detail_pemberian_obat.status='Ralan' and detail_pemberian_obat.no_rawat=? ");
+            try {
+                pstindakan.setString(1,TNoRw.getText());
+                rstindakan=pstindakan.executeQuery();
+                while(rstindakan.next()){                
+                    TabModeObatBayar.addRow(new Object[]{
+                        false,rstindakan.getString("kode_brng"),rstindakan.getString("nama_brng"),
+                        rstindakan.getString("jml"),rstindakan.getDouble("total"),rstindakan.getDouble("hpp"),
+                        rstindakan.getString("tgl_perawatan"),rstindakan.getString("jam")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rstindakan!=null){
+                    rstindakan.close();
+                }
+                if(pstindakan!=null){
+                    pstindakan.close();
+                }
+            }
+        }catch(Exception ex){
+            System.out.println("Notifikasi : "+ex);
+        }  
     }
     
 }
