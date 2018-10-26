@@ -754,8 +754,13 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
                 Valid.textKosong(TCari,"No.Permintaan");
             }else{
-                Sequel.meghapus("permintaan_lab","noorder",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                tampil();
+                if((Sequel.cariInteger("select count(noorder) from permintaan_pemeriksaan_lab where stts_bayar='Sudah' and noorder=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString())+
+                        Sequel.cariInteger("select count(noorder) from permintaan_detail_permintaan_lab where stts_bayar='Sudah' and noorder=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()))>0){
+                    JOptionPane.showMessageDialog(null,"Maaf, Tidak boleh dihapus karena sudah ada tindakan yang sudah dibayar.\nSilahkan hubungi kasir...!!!!");
+                }else{
+                    Sequel.meghapus("permintaan_lab","noorder",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                    tampil();
+                }   
             }
         }else{            
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");

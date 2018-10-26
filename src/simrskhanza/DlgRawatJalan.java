@@ -2968,10 +2968,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             tampilDr();
                             BtnBatalActionPerformed(evt);
                         }else{
-                            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                                TCari.requestFocus();
-                            }else{
+                            if(Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()))>0){
                                 Sequel.menyimpan("rawat_jl_dr","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
                                     TNoRw.getText(),TKdPrw.getText(),KdDok.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
@@ -2980,7 +2977,21 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 });
                                 tampilDr();
                                 BtnBatalActionPerformed(evt);
-                            }
+                            }else{
+                                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                    TCari.requestFocus();
+                                }else{
+                                    Sequel.menyimpan("rawat_jl_dr","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
+                                        TNoRw.getText(),TKdPrw.getText(),KdDok.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
+                                        cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                                        BagianRS.getText(),Bhp.getText(),JmDokter.getText(),KSO.getText(),Menejemen.getText(),
+                                        TTnd.getText(),"Belum"
+                                    });
+                                    tampilDr();
+                                    BtnBatalActionPerformed(evt);
+                                }
+                            }                                
                         }                            
                     }   break;
                 case 1:
@@ -2999,10 +3010,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             tampilPr();
                             BtnBatalActionPerformed(evt);
                         }else{
-                            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                                TCari.requestFocus();
-                            }else{
+                            if(Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()))>0){
                                 Sequel.menyimpan("rawat_jl_pr","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
                                     TNoRw.getText(),TKdPrw1.getText(),kdptg.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
@@ -3011,7 +3019,21 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 });
                                 tampilPr();
                                 BtnBatalActionPerformed(evt);
-                            }
+                            }else{
+                                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                    TCari.requestFocus();
+                                }else{
+                                    Sequel.menyimpan("rawat_jl_pr","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
+                                        TNoRw.getText(),TKdPrw1.getText(),kdptg.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
+                                        cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                                        BagianRS.getText(),Bhp.getText(),JmPerawat.getText(),KSO.getText(),Menejemen.getText(),
+                                        TTnd.getText(),"Belum"
+                                    });
+                                    tampilPr();
+                                    BtnBatalActionPerformed(evt);
+                                }
+                            }                                
                         }   
                     }   break;
                 case 2:
@@ -3032,10 +3054,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                             tampilDrPr();
                             BtnBatalActionPerformed(evt);
                         }else{
-                            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                                TCari.requestFocus();
-                            }else{
+                            if(Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()))>0){
                                 Sequel.menyimpan("rawat_jl_drpr","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",14,new String[]{
                                     TNoRw.getText(),TKdPrw2.getText(),KdDok2.getText(),kdptg2.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                                     cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
@@ -3044,7 +3063,21 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                                 });
                                 tampilDrPr();
                                 BtnBatalActionPerformed(evt);
-                            }
+                            }else {
+                                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                    TCari.requestFocus();
+                                }else{
+                                    Sequel.menyimpan("rawat_jl_drpr","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",14,new String[]{
+                                        TNoRw.getText(),TKdPrw2.getText(),KdDok2.getText(),kdptg2.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
+                                        cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                                        BagianRS.getText(),Bhp.getText(),JmDokter.getText(),JmPerawat.getText(),KSO.getText(),Menejemen.getText(),
+                                        TTnd.getText(),"Belum"
+                                    });
+                                    tampilDrPr();
+                                    BtnBatalActionPerformed(evt);
+                                }
+                            }                                
                         }                                
                     }   break;
                 case 3:
@@ -3777,10 +3810,7 @@ private void btnTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             perawatan.setLocationRelativeTo(internalFrame1);
             perawatan.setVisible(true);
         }else{
-            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                TCari.requestFocus();
-            }else{                        
+            if(Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()))>0){
                 perawatan.setNoRm(TNoRw.getText(),KdDok.getText(),TDokter.getText(),"rawat_jl_dr",TSuhu.getText(),TTensi.getText(),TKeluhan.getText(),TPemeriksaan.getText(),"","","-","-",
                     TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
                 var.setform("DlgRawatJalan");
@@ -3792,7 +3822,24 @@ private void btnTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 perawatan.setLocationRelativeTo(internalFrame1);
                 perawatan.setVisible(true);
-            }
+            }else{
+                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                    TCari.requestFocus();
+                }else{                        
+                    perawatan.setNoRm(TNoRw.getText(),KdDok.getText(),TDokter.getText(),"rawat_jl_dr",TSuhu.getText(),TTensi.getText(),TKeluhan.getText(),TPemeriksaan.getText(),"","","-","-",
+                        TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
+                    var.setform("DlgRawatJalan");
+                    perawatan.isCek();
+                    if(!kode_poli.equals("")){
+                        perawatan.setPoli(kode_poli);
+                    }
+                    perawatan.tampil();
+                    perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    perawatan.setLocationRelativeTo(internalFrame1);
+                    perawatan.setVisible(true);
+                }                
+            }   
         }
     }    
 }//GEN-LAST:event_btnTindakanActionPerformed
@@ -4419,10 +4466,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 perawatan.setLocationRelativeTo(internalFrame1);
                 perawatan.setVisible(true);
             }else{
-                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                    TCari.requestFocus();
-                }else{ 
+                if(Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()))>0){
                     var.setform("DlgRawatJalan");
                     perawatan.setNoRm(TNoRw.getText(),kdptg.getText(),TPerawat.getText(),"rawat_jl_pr",TSuhu.getText(),TTensi.getText(),TKeluhan.getText(),TPemeriksaan.getText(),"","","-","-",
                     TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
@@ -4434,7 +4478,24 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     perawatan.setLocationRelativeTo(internalFrame1);
                     perawatan.setVisible(true);
-                }
+                }else{
+                    if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                        TCari.requestFocus();
+                    }else{ 
+                        var.setform("DlgRawatJalan");
+                        perawatan.setNoRm(TNoRw.getText(),kdptg.getText(),TPerawat.getText(),"rawat_jl_pr",TSuhu.getText(),TTensi.getText(),TKeluhan.getText(),TPemeriksaan.getText(),"","","-","-",
+                        TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
+                        perawatan.isCek();
+                        if(!kode_poli.equals("")){
+                            perawatan.setPoli(kode_poli);
+                        }
+                        perawatan.tampil();
+                        perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        perawatan.setLocationRelativeTo(internalFrame1);
+                        perawatan.setVisible(true);
+                    }
+                }                    
             }                  
         } 
     }//GEN-LAST:event_btnTindakan1ActionPerformed
@@ -4474,10 +4535,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 perawatan.setLocationRelativeTo(internalFrame1);
                 perawatan.setVisible(true);
             }else{
-                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                    TCari.requestFocus();
-                }else{ 
+                if(Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()))>0){
                     var.setform("DlgRawatJalan");
                     perawatan.setNoRm(TNoRw.getText(),KdDok2.getText(),TDokter2.getText(),"rawat_jl_drpr",TSuhu.getText(),TTensi.getText(),TKeluhan.getText(),TPemeriksaan.getText(),"","",kdptg2.getText(),TPerawat2.getText(),
                         TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
@@ -4489,7 +4547,24 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     perawatan.setLocationRelativeTo(internalFrame1);
                     perawatan.setVisible(true);
-                }
+                }else{
+                    if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                        TCari.requestFocus();
+                    }else{ 
+                        var.setform("DlgRawatJalan");
+                        perawatan.setNoRm(TNoRw.getText(),KdDok2.getText(),TDokter2.getText(),"rawat_jl_drpr",TSuhu.getText(),TTensi.getText(),TKeluhan.getText(),TPemeriksaan.getText(),"","",kdptg2.getText(),TPerawat2.getText(),
+                            TBerat.getText(),TTinggi.getText(),TNadi.getText(),TRespirasi.getText(),TGCS.getText(),TAlergi.getText());                        
+                        perawatan.isCek();
+                        if(!kode_poli.equals("")){
+                            perawatan.setPoli(kode_poli);
+                        }
+                        perawatan.tampil();
+                        perawatan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        perawatan.setLocationRelativeTo(internalFrame1);
+                        perawatan.setVisible(true);
+                    }
+                }                    
             }                                    
         } 
     }//GEN-LAST:event_btnTindakan2ActionPerformed
