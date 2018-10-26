@@ -1165,6 +1165,18 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         PopupDetailLaborat = new javax.swing.JPopupMenu();
         ppBersihkanDetailLaborat = new javax.swing.JMenuItem();
         ppSemuaDetailLaborat = new javax.swing.JMenuItem();
+        PopupLaboratBayar = new javax.swing.JPopupMenu();
+        ppBersihkanLaboratBayar = new javax.swing.JMenuItem();
+        ppSemuaLaboratBayar = new javax.swing.JMenuItem();
+        PopupDetailLaboratBayar = new javax.swing.JPopupMenu();
+        ppBersihkanDetailLaboratBayar = new javax.swing.JMenuItem();
+        ppSemuaDetailLaboratBayar = new javax.swing.JMenuItem();
+        PopupObat = new javax.swing.JPopupMenu();
+        ppBersihkanObat = new javax.swing.JMenuItem();
+        ppSemuaObat = new javax.swing.JMenuItem();
+        PopupObatBayar = new javax.swing.JPopupMenu();
+        ppBersihkanObatBayar = new javax.swing.JMenuItem();
+        ppSemuaObatBayar = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass1 = new widget.panelisi();
         jLabel3 = new widget.Label();
@@ -1590,6 +1602,134 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         });
         PopupDetailLaborat.add(ppSemuaDetailLaborat);
 
+        ppBersihkanLaboratBayar.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkanLaboratBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkanLaboratBayar.setForeground(new java.awt.Color(100, 80, 80));
+        ppBersihkanLaboratBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBersihkanLaboratBayar.setText("Bersihkan Pilihan");
+        ppBersihkanLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBersihkanLaboratBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBersihkanLaboratBayar.setIconTextGap(8);
+        ppBersihkanLaboratBayar.setPreferredSize(new java.awt.Dimension(160, 25));
+        ppBersihkanLaboratBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBersihkanLaboratBayarActionPerformed(evt);
+            }
+        });
+        PopupLaboratBayar.add(ppBersihkanLaboratBayar);
+
+        ppSemuaLaboratBayar.setBackground(new java.awt.Color(255, 255, 255));
+        ppSemuaLaboratBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSemuaLaboratBayar.setForeground(new java.awt.Color(100, 80, 80));
+        ppSemuaLaboratBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppSemuaLaboratBayar.setText("Pilih Semua");
+        ppSemuaLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppSemuaLaboratBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppSemuaLaboratBayar.setIconTextGap(8);
+        ppSemuaLaboratBayar.setPreferredSize(new java.awt.Dimension(160, 25));
+        ppSemuaLaboratBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppSemuaLaboratBayarActionPerformed(evt);
+            }
+        });
+        PopupLaboratBayar.add(ppSemuaLaboratBayar);
+
+        ppBersihkanDetailLaboratBayar.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkanDetailLaboratBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkanDetailLaboratBayar.setForeground(new java.awt.Color(100, 80, 80));
+        ppBersihkanDetailLaboratBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBersihkanDetailLaboratBayar.setText("Bersihkan Pilihan");
+        ppBersihkanDetailLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBersihkanDetailLaboratBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBersihkanDetailLaboratBayar.setIconTextGap(8);
+        ppBersihkanDetailLaboratBayar.setPreferredSize(new java.awt.Dimension(160, 25));
+        ppBersihkanDetailLaboratBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBersihkanDetailLaboratBayarActionPerformed(evt);
+            }
+        });
+        PopupDetailLaboratBayar.add(ppBersihkanDetailLaboratBayar);
+
+        ppSemuaDetailLaboratBayar.setBackground(new java.awt.Color(255, 255, 255));
+        ppSemuaDetailLaboratBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSemuaDetailLaboratBayar.setForeground(new java.awt.Color(100, 80, 80));
+        ppSemuaDetailLaboratBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppSemuaDetailLaboratBayar.setText("Pilih Semua");
+        ppSemuaDetailLaboratBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppSemuaDetailLaboratBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppSemuaDetailLaboratBayar.setIconTextGap(8);
+        ppSemuaDetailLaboratBayar.setPreferredSize(new java.awt.Dimension(160, 25));
+        ppSemuaDetailLaboratBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppSemuaDetailLaboratBayarActionPerformed(evt);
+            }
+        });
+        PopupDetailLaboratBayar.add(ppSemuaDetailLaboratBayar);
+
+        ppBersihkanObat.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkanObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkanObat.setForeground(new java.awt.Color(100, 80, 80));
+        ppBersihkanObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBersihkanObat.setText("Bersihkan Pilihan");
+        ppBersihkanObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBersihkanObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBersihkanObat.setIconTextGap(8);
+        ppBersihkanObat.setPreferredSize(new java.awt.Dimension(160, 25));
+        ppBersihkanObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBersihkanObatActionPerformed(evt);
+            }
+        });
+        PopupObat.add(ppBersihkanObat);
+
+        ppSemuaObat.setBackground(new java.awt.Color(255, 255, 255));
+        ppSemuaObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSemuaObat.setForeground(new java.awt.Color(100, 80, 80));
+        ppSemuaObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppSemuaObat.setText("Pilih Semua");
+        ppSemuaObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppSemuaObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppSemuaObat.setIconTextGap(8);
+        ppSemuaObat.setPreferredSize(new java.awt.Dimension(160, 25));
+        ppSemuaObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppSemuaObatActionPerformed(evt);
+            }
+        });
+        PopupObat.add(ppSemuaObat);
+
+        ppBersihkanObatBayar.setBackground(new java.awt.Color(255, 255, 255));
+        ppBersihkanObatBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkanObatBayar.setForeground(new java.awt.Color(100, 80, 80));
+        ppBersihkanObatBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBersihkanObatBayar.setText("Bersihkan Pilihan");
+        ppBersihkanObatBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBersihkanObatBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBersihkanObatBayar.setIconTextGap(8);
+        ppBersihkanObatBayar.setPreferredSize(new java.awt.Dimension(160, 25));
+        ppBersihkanObatBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBersihkanObatBayarActionPerformed(evt);
+            }
+        });
+        PopupObatBayar.add(ppBersihkanObatBayar);
+
+        ppSemuaObatBayar.setBackground(new java.awt.Color(255, 255, 255));
+        ppSemuaObatBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSemuaObatBayar.setForeground(new java.awt.Color(100, 80, 80));
+        ppSemuaObatBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppSemuaObatBayar.setText("Pilih Semua");
+        ppSemuaObatBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppSemuaObatBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppSemuaObatBayar.setIconTextGap(8);
+        ppSemuaObatBayar.setPreferredSize(new java.awt.Dimension(160, 25));
+        ppSemuaObatBayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppSemuaObatBayarActionPerformed(evt);
+            }
+        });
+        PopupObatBayar.add(ppSemuaObatBayar);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -1648,7 +1788,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-10-2018 22:23:13" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-10-2018 11:04:14" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setOpaque(false);
         DTPTgl.setPreferredSize(new java.awt.Dimension(135, 23));
@@ -1952,7 +2092,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll3.setOpaque(true);
         Scroll3.setPreferredSize(new java.awt.Dimension(540, 500));
 
-        tbTindakanDr.setAutoCreateRowSorter(true);
         tbTindakanDr.setComponentPopupMenu(PopupTindakanDr);
         Scroll3.setViewportView(tbTindakanDr);
 
@@ -1963,7 +2102,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll4.setOpaque(true);
         Scroll4.setPreferredSize(new java.awt.Dimension(400, 404));
 
-        tbTindakanDrBayar.setAutoCreateRowSorter(true);
         tbTindakanDrBayar.setComponentPopupMenu(PopupTindakanDrBayar);
         tbTindakanDrBayar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2020,7 +2158,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll5.setOpaque(true);
         Scroll5.setPreferredSize(new java.awt.Dimension(540, 500));
 
-        tbTindakanPr.setAutoCreateRowSorter(true);
         tbTindakanPr.setComponentPopupMenu(PopupTindakanPr);
         tbTindakanPr.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2041,7 +2178,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll6.setOpaque(true);
         Scroll6.setPreferredSize(new java.awt.Dimension(400, 404));
 
-        tbTindakanPrBayar.setAutoCreateRowSorter(true);
         tbTindakanPrBayar.setComponentPopupMenu(PopupTindakanPrBayar);
         tbTindakanPrBayar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2128,7 +2264,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll7.setOpaque(true);
         Scroll7.setPreferredSize(new java.awt.Dimension(540, 500));
 
-        tbTindakanDrPr.setAutoCreateRowSorter(true);
         tbTindakanDrPr.setComponentPopupMenu(PopupTindakanDrPr);
         Scroll7.setViewportView(tbTindakanDrPr);
 
@@ -2139,7 +2274,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll8.setOpaque(true);
         Scroll8.setPreferredSize(new java.awt.Dimension(400, 404));
 
-        tbTindakanDrPrBayar.setAutoCreateRowSorter(true);
         tbTindakanDrPrBayar.setComponentPopupMenu(PopupTindakanDrPrBayar);
         tbTindakanDrPrBayar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2160,8 +2294,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll10.setOpaque(true);
         Scroll10.setPreferredSize(new java.awt.Dimension(540, 500));
 
-        tbRadiologi.setAutoCreateRowSorter(true);
-        tbRadiologi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRadiologi.setComponentPopupMenu(PopupRadiologi);
         Scroll10.setViewportView(tbRadiologi);
 
@@ -2172,8 +2304,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll11.setOpaque(true);
         Scroll11.setPreferredSize(new java.awt.Dimension(400, 404));
 
-        tbRadiologiBayar.setAutoCreateRowSorter(true);
-        tbRadiologiBayar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRadiologiBayar.setComponentPopupMenu(PopupRadiologiBayar);
         tbRadiologiBayar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2277,8 +2407,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll12.setOpaque(true);
         Scroll12.setPreferredSize(new java.awt.Dimension(540, 500));
 
-        tbLaborat.setAutoCreateRowSorter(true);
-        tbLaborat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbLaborat.setComponentPopupMenu(PopupLaborat);
         Scroll12.setViewportView(tbLaborat);
 
@@ -2288,8 +2416,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll14.setOpaque(true);
         Scroll14.setPreferredSize(new java.awt.Dimension(540, 500));
 
-        tbDetailLaborat.setAutoCreateRowSorter(true);
-        tbDetailLaborat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDetailLaborat.setComponentPopupMenu(PopupDetailLaborat);
         Scroll14.setViewportView(tbDetailLaborat);
 
@@ -2313,11 +2439,11 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }
         });
 
+        Scroll15.setComponentPopupMenu(PopupLaboratBayar);
         Scroll15.setOpaque(true);
         Scroll15.setPreferredSize(new java.awt.Dimension(540, 500));
 
-        tbLaboratBayar.setAutoCreateRowSorter(true);
-        tbLaboratBayar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbLaboratBayar.setComponentPopupMenu(PopupLaboratBayar);
         tbLaboratBayar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbLaboratBayarMouseClicked(evt);
@@ -2327,11 +2453,11 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         TabRawatLaboratBayar.addTab("Pemeriksaan", Scroll15);
 
+        Scroll16.setComponentPopupMenu(PopupDetailLaboratBayar);
         Scroll16.setOpaque(true);
         Scroll16.setPreferredSize(new java.awt.Dimension(540, 500));
 
-        tbDetailLaboratBayar.setAutoCreateRowSorter(true);
-        tbDetailLaboratBayar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDetailLaboratBayar.setComponentPopupMenu(PopupDetailLaboratBayar);
         tbDetailLaboratBayar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbDetailLaboratBayarMouseClicked(evt);
@@ -2352,6 +2478,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         internalFrame9.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Daftar Obat ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
+        Scroll13.setComponentPopupMenu(PopupObat);
         Scroll13.setOpaque(true);
         Scroll13.setPreferredSize(new java.awt.Dimension(540, 500));
         Scroll13.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2360,18 +2487,17 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }
         });
 
-        tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setComponentPopupMenu(PopupObat);
         Scroll13.setViewportView(tbObat);
 
         internalFrame9.add(Scroll13, java.awt.BorderLayout.WEST);
 
         Scroll17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)), " Sudah Dibayar ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
+        Scroll17.setComponentPopupMenu(PopupObatBayar);
         Scroll17.setOpaque(true);
         Scroll17.setPreferredSize(new java.awt.Dimension(400, 404));
 
-        tbObatBayar.setAutoCreateRowSorter(true);
-        tbObatBayar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObatBayar.setComponentPopupMenu(PopupObatBayar);
         tbObatBayar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbObatBayarMouseClicked(evt);
@@ -2419,8 +2545,6 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         Scroll9.setOpaque(true);
         Scroll9.setPreferredSize(new java.awt.Dimension(440, 404));
 
-        tbBilling.setAutoCreateRowSorter(true);
-        tbBilling.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbBilling.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbBillingMouseClicked(evt);
@@ -3044,6 +3168,60 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_chkPoliMouseClicked
 
+    private void ppBersihkanLaboratBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanLaboratBayarActionPerformed
+        for(i=0;i<tbLaboratBayar.getRowCount();i++){
+            tbLaboratBayar.setValueAt(false,i,0);
+        }
+        tampilhapus();
+    }//GEN-LAST:event_ppBersihkanLaboratBayarActionPerformed
+
+    private void ppSemuaLaboratBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSemuaLaboratBayarActionPerformed
+        for(i=0;i<tbLaboratBayar.getRowCount();i++){
+            tbLaboratBayar.setValueAt(true,i,0);
+        }
+        tampilhapus();
+    }//GEN-LAST:event_ppSemuaLaboratBayarActionPerformed
+
+    private void ppBersihkanDetailLaboratBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanDetailLaboratBayarActionPerformed
+        for(i=0;i<tbDetailLaboratBayar.getRowCount();i++){
+            tbDetailLaboratBayar.setValueAt(false,i,0);
+        }
+        tampilhapus();
+    }//GEN-LAST:event_ppBersihkanDetailLaboratBayarActionPerformed
+
+    private void ppSemuaDetailLaboratBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSemuaDetailLaboratBayarActionPerformed
+        for(i=0;i<tbDetailLaboratBayar.getRowCount();i++){
+            tbDetailLaboratBayar.setValueAt(true,i,0);
+        }
+        tampilhapus();
+    }//GEN-LAST:event_ppSemuaDetailLaboratBayarActionPerformed
+
+    private void ppBersihkanObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanObatActionPerformed
+        for(i=0;i<tbObat.getRowCount();i++){
+            tbObat.setValueAt(false,i,0);
+        }
+    }//GEN-LAST:event_ppBersihkanObatActionPerformed
+
+    private void ppSemuaObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSemuaObatActionPerformed
+        for(i=0;i<tbObat.getRowCount();i++){
+            tbObat.setValueAt(true,i,0);
+        }
+    }//GEN-LAST:event_ppSemuaObatActionPerformed
+
+    private void ppBersihkanObatBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanObatBayarActionPerformed
+        for(i=0;i<tbObatBayar.getRowCount();i++){
+            tbObatBayar.setValueAt(false,i,0);
+        }
+        tampilhapus();
+    }//GEN-LAST:event_ppBersihkanObatBayarActionPerformed
+
+    private void ppSemuaObatBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSemuaObatBayarActionPerformed
+        for(i=0;i<tbObatBayar.getRowCount();i++){
+            tbObatBayar.setValueAt(true,i,0);
+        }
+        tampilhapus();
+    }//GEN-LAST:event_ppSemuaObatBayarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3108,7 +3286,11 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private widget.TextBox KdDokPerujukLab;
     private widget.TextBox KdDokPerujukRad;
     private javax.swing.JPopupMenu PopupDetailLaborat;
+    private javax.swing.JPopupMenu PopupDetailLaboratBayar;
     private javax.swing.JPopupMenu PopupLaborat;
+    private javax.swing.JPopupMenu PopupLaboratBayar;
+    private javax.swing.JPopupMenu PopupObat;
+    private javax.swing.JPopupMenu PopupObatBayar;
     private javax.swing.JPopupMenu PopupRadiologi;
     private javax.swing.JPopupMenu PopupRadiologiBayar;
     private javax.swing.JPopupMenu PopupTindakanDr;
@@ -3186,7 +3368,11 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppBersihkanDetailLaborat;
+    private javax.swing.JMenuItem ppBersihkanDetailLaboratBayar;
     private javax.swing.JMenuItem ppBersihkanLaborat;
+    private javax.swing.JMenuItem ppBersihkanLaboratBayar;
+    private javax.swing.JMenuItem ppBersihkanObat;
+    private javax.swing.JMenuItem ppBersihkanObatBayar;
     private javax.swing.JMenuItem ppBersihkanRadiologi;
     private javax.swing.JMenuItem ppBersihkanRadiologiBayar;
     private javax.swing.JMenuItem ppBersihkanTindakanDr;
@@ -3196,7 +3382,11 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private javax.swing.JMenuItem ppBersihkanTindakanPr;
     private javax.swing.JMenuItem ppBersihkanTindakanPrBayar;
     private javax.swing.JMenuItem ppSemuaDetailLaborat;
+    private javax.swing.JMenuItem ppSemuaDetailLaboratBayar;
     private javax.swing.JMenuItem ppSemuaLaborat;
+    private javax.swing.JMenuItem ppSemuaLaboratBayar;
+    private javax.swing.JMenuItem ppSemuaObat;
+    private javax.swing.JMenuItem ppSemuaObatBayar;
     private javax.swing.JMenuItem ppSemuaRadiologi;
     private javax.swing.JMenuItem ppSemuaRadiologiBayar;
     private javax.swing.JMenuItem ppSemuaTindakanDr;

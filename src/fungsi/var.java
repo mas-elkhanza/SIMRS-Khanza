@@ -88,7 +88,7 @@ public final class var {
             pcare_cek_faskesthalasemia=false,pcare_mapping_obat=false,pcare_mapping_tindakan=false,pcare_club_prolanis=false,
             pcare_mapping_poli=false,pcare_kegiatan_kelompok=false,pcare_mapping_tindakan_ranap=false,pcare_peserta_kegiatan_kelompok=false,
             sirkulasi_obat3=false,bridging_pcare_daftar=false,pcare_mapping_dokter=false,ranap_per_ruang=false,penyakit_ranap_cara_bayar=false,
-            anggota_militer_dirawat=false;
+            anggota_militer_dirawat=false,set_input_parsial=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -512,6 +512,7 @@ public final class var {
                         var.ranap_per_ruang=true;
                         var.penyakit_ranap_cara_bayar=true;
                         var.anggota_militer_dirawat=true;
+                        var.set_input_parsial=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -919,6 +920,7 @@ public final class var {
                         var.ranap_per_ruang=rs2.getBoolean("ranap_per_ruang");
                         var.penyakit_ranap_cara_bayar=rs2.getBoolean("penyakit_ranap_cara_bayar");
                         var.anggota_militer_dirawat=rs2.getBoolean("anggota_militer_dirawat");
+                        var.set_input_parsial=rs2.getBoolean("set_input_parsial");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1324,6 +1326,7 @@ public final class var {
                         var.ranap_per_ruang=false;
                         var.penyakit_ranap_cara_bayar=false;
                         var.anggota_militer_dirawat=false;
+                        var.set_input_parsial=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1781,4 +1784,5 @@ public final class var {
     public static boolean getranap_per_ruang(){return var.ranap_per_ruang;}
     public static boolean getpenyakit_ranap_cara_bayar(){return var.penyakit_ranap_cara_bayar;}
     public static boolean getanggota_militer_dirawat(){return var.anggota_militer_dirawat;}
+    public static boolean getset_input_parsial(){return var.set_input_parsial;}
 }   
