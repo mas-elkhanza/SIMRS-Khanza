@@ -63,7 +63,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private final Properties prop = new Properties();
     private Date cal=new Date();
     private DlgRujukanPoliInternal dlgrjk=new DlgRujukanPoliInternal(null,false);
-    private String kamar_inap_kasir_ralan=Sequel.cariIsi("select kamar_inap_kasir_ralan from set_jam_minimal"),caripenjab="",filter="no",bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),nonota="",
+    private String aktifkanparsial="no",kamar_inap_kasir_ralan=Sequel.cariIsi("select kamar_inap_kasir_ralan from set_jam_minimal"),caripenjab="",filter="no",bangsal=Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"),nonota="",
             sqlpsotomatis2="insert into rawat_jl_dr values (?,?,?,?,?,?,?,?,?,?,?,'Belum')",
             sqlpsotomatis2petugas="insert into rawat_jl_pr values (?,?,?,?,?,?,?,?,?,?,?,'Belum')",
             sqlpsotomatis2dokterpetugas="insert into rawat_jl_drpr values (?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum')",
@@ -86,7 +86,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             namadokter="",namapoli="",order="reg_periksa.no_rawat desc",
             validasicatatan=Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
     public DlgBilingRalan billing=new DlgBilingRalan(null,false);
-    private int i=0,pilihan=0,sudah=0;
+    private int i=0,pilihan=0,sudah=0,jmlparsial=0;
     public DlgKamarInap kamarinap=new DlgKamarInap(null,false);
 
     /** Creates new form DlgReg
@@ -350,7 +350,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             namadokter=prop.getProperty("DOKTERAKTIFKASIRRALAN");
             namapoli=prop.getProperty("POLIAKTIFKASIRRALAN");
-            
+            aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
             try{    
                 if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
                     com.sun.awt.AWTUtilities.setWindowOpacity(DlgCatatan,0.5f);
@@ -360,6 +360,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         } catch (Exception ex) {
             namadokter="";
             namapoli="";
+            aktifkanparsial="no";
         }
     }
     
@@ -4197,7 +4198,11 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     billing.dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
                     billing.dlgrwjl.perawatan.setVisible(true);
                 }else{
-                    if(Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString())>0){
+                    jmlparsial=0;
+                    if(aktifkanparsial.equals("yes")){
+                        jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString());
+                    }
+                    if(jmlparsial>0){
                         billing.dlgrwjl.perawatan.setNoRm(TNoRw.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),
                         tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),1).toString(),"rawat_jl_dr","","","","","","","-","-","","","","","","");
                         billing.dlgrwjl.perawatan.isCek();
@@ -4247,7 +4252,11 @@ private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//G
                     billing.dlgobt.setLocationRelativeTo(internalFrame1);
                     billing.dlgobt.setVisible(true);
                 }else{
-                    if(Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString())>0){
+                    jmlparsial=0;
+                    if(aktifkanparsial.equals("yes")){
+                        jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString());
+                    }
+                    if(jmlparsial>0){
                         TKdPny.setText("-");
                         billing.dlgobt.setNoRm(TNoRw.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),2).toString(),
                                         tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),3).toString(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
@@ -6106,7 +6115,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             tbKasirRalan.requestFocus();
         }else{  
             if(tbKasirRalan.getSelectedRow()!= -1){
-                if(Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString())>0){
+                jmlparsial=0;
+                if(aktifkanparsial.equals("yes")){
+                    jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString());
+                }
+                if(jmlparsial>0){
                     DlgBilingParsialRalan parsialralan=new DlgBilingParsialRalan(null,false);
                     parsialralan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     parsialralan.setLocationRelativeTo(internalFrame1);

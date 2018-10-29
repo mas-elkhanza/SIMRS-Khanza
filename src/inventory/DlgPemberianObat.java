@@ -37,10 +37,12 @@ import javax.swing.table.TableColumn;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileInputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import javax.swing.event.DocumentEvent;
 import keuangan.Jurnal;
 import simrskhanza.DlgCariBangsal;
@@ -70,9 +72,11 @@ public class DlgPemberianObat extends javax.swing.JDialog {
     private ResultSet rs,rsrekening;
     private double embalase=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),ttljual,ttlhpp;
     private double tuslah=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase");
-    private String kodedokter="",namadokter="",statusberi="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
+    private String aktifkanparsial="no",kodedokter="",namadokter="",statusberi="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",Persediaan_Obat_Rawat_Inap="";
     private Jurnal jur=new Jurnal();
+    private final Properties prop = new Properties();
     private DlgCariBangsal depo = new DlgCariBangsal(null, false);
+    private int jmlparsial=0;
     
     /** Creates new form DlgPemberianObat
      * @param parent
@@ -412,6 +416,13 @@ public class DlgPemberianObat extends javax.swing.JDialog {
             }            
         } catch (Exception e) {
             System.out.println(e);
+        }
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+        } catch (Exception ex) {            
+            aktifkanparsial="no";
         }
     }
 
@@ -1195,7 +1206,11 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                     JOptionPane.showMessageDialog(rootPane,"Hanya bisa lewat Kasir Ralan atau Kamar Inap");
                 }
             }else{
-                if(Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()))>0){
+                jmlparsial=0;
+                if(aktifkanparsial.equals("yes")){
+                    jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
+                }
+                if(jmlparsial>0){  
                     if(status.equals("ranap")){
                         dlgobt.setNoRm(TNoRw.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
                         dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1319,7 +1334,11 @@ public class DlgPemberianObat extends javax.swing.JDialog {
                 tampilPO();
                 BtnBatalActionPerformed(evt);
             }else{
-                if(Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()))>0){
+                jmlparsial=0;
+                if(aktifkanparsial.equals("yes")){
+                    jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
+                }
+                if(jmlparsial>0){  
                     ttlhpp=0;
                     ttljual=0;
                     Sequel.AutoComitFalse();
