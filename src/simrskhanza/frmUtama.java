@@ -374,6 +374,7 @@ import setting.DlgSetHargaObatRanap;
 import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
 import keuangan.DlgDeposit;
+import laporan.DlgPelayananRadiologi;
 import setting.DlgSetInputParsial;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
@@ -947,6 +948,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPenyakitRanapCaraBayar = new widget.ButtonBig();
         btnAnggotaMiliterDirawat = new widget.ButtonBig();
         btnSetInputParsial = new widget.ButtonBig();
+        btnLamaPelayananRadiologi = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6082,6 +6084,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnSetInputParsial);
+
+        btnLamaPelayananRadiologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPelayananRadiologi.setText("Lama Pelayanan Radiologi");
+        btnLamaPelayananRadiologi.setIconTextGap(0);
+        btnLamaPelayananRadiologi.setName("btnLamaPelayananRadiologi"); // NOI18N
+        btnLamaPelayananRadiologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPelayananRadiologi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamaPelayananRadiologiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnLamaPelayananRadiologi);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -12588,6 +12602,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSetInputParsialActionPerformed
 
+    private void btnLamaPelayananRadiologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamaPelayananRadiologiActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPelayananRadiologi aplikasi=new DlgPelayananRadiologi(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnLamaPelayananRadiologiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12809,6 +12834,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnLaboratorium;
     private widget.ButtonBig btnLahir;
     private widget.ButtonBig btnLamaPelayananApotek;
+    private widget.ButtonBig btnLamaPelayananRadiologi;
     private widget.ButtonBig btnLamaPelayananRalan;
     private widget.ButtonBig btnLihatPiutang;
     private widget.ButtonBig btnMapingPoliBPJS;
@@ -14386,6 +14412,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getlama_pelayanan_apotek()==true){  
                 Panelmenu.add(btnLamaPelayananApotek);                 
+                jmlmenu++;
+            }
+            
+            if(var.getlama_pelayanan_radiologi()==true){  
+                Panelmenu.add(btnLamaPelayananRadiologi);                 
                 jmlmenu++;
             }
             
@@ -16400,6 +16431,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getlama_pelayanan_apotek()==true){  
             Panelmenu.add(btnLamaPelayananApotek);                 
+            jmlmenu++;
+        }
+        
+        if(var.getlama_pelayanan_radiologi()==true){  
+            Panelmenu.add(btnLamaPelayananRadiologi);                 
             jmlmenu++;
         }
         
@@ -18790,6 +18826,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getlama_pelayanan_apotek()==true){  
             if(btnLamaPelayananApotek.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananApotek);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getlama_pelayanan_radiologi()==true){  
+            if(btnLamaPelayananRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLamaPelayananRadiologi);                 
                 jmlmenu++;
             }                
         }
