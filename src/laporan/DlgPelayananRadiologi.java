@@ -530,21 +530,23 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                     
                 }     
-                tabMode.addRow(new Object[]{
-                    "","","Rata-rata (Menit)",": ","","","","",""+Valid.SetAngka6(lamajam/(i-1)),""+Valid.SetAngka6(lamajam2/(i-1)),""+Valid.SetAngka6(lamajam3/(i-1))
-                });
-                tabMode.addRow(new Object[]{
-                    "","","0 - 15 Menit",": ","","","","",""+limabelas,""+limabelas2,""+limabelas3
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">15 - <=30 Menit",": ","","","","",""+tigapuluh,""+tigapuluh2,""+tigapuluh3
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">30 - <=60 Menit",": ","","","","",""+satujam,""+satujam2,""+satujam3
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">60 Menit",": ","","","","",""+lebihsatujam,""+lebihsatujam2,""+lebihsatujam3
-                });
+                if(lamajam>0){
+                    tabMode.addRow(new Object[]{
+                        "","","Rata-rata (Menit)",": ","","","","",""+Valid.SetAngka6(lamajam/(i-1)),""+Valid.SetAngka6(lamajam2/(i-1)),""+Valid.SetAngka6(lamajam3/(i-1))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","","0 - 15 Menit",": ","","","","",""+limabelas,""+limabelas2,""+limabelas3
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">15 - <=30 Menit",": ","","","","",""+tigapuluh,""+tigapuluh2,""+tigapuluh3
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">30 - <=60 Menit",": ","","","","",""+satujam,""+satujam2,""+satujam3
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">60 Menit",": ","","","","",""+lebihsatujam,""+lebihsatujam2,""+lebihsatujam3
+                    });
+                }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{

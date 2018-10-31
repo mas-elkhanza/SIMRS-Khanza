@@ -318,7 +318,6 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
                     KdPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),2).toString());
                     NmPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),3).toString());
                     isNumber();
-                    isPoli();
                     KdPoli.requestFocus();
                 }                  
             }
@@ -6124,6 +6123,7 @@ public final class BPJSCekKartu extends javax.swing.JDialog {
         status=Sequel.cariIsi("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='"+TNo.getText()+"' and kd_poli='"+kdpoli.getText()+"')>0,'Lama','Baru' )");
         if(JenisPelayanan.getSelectedIndex()==1){
             isNumber();
+            isPoli();
             if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                     new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),TanggalSEP.getSelectedItem().toString().substring(11,19),
                     kddokter.getText(),TNo.getText(),kdpoli.getText(),Saudara.getText(),AlamatPj.getText()+", "+KelurahanPj.getText()+", "+KecamatanPj.getText()+", "+KabupatenPj.getText(),

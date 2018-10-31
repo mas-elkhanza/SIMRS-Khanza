@@ -319,7 +319,6 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                     KdPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),2).toString());
                     NmPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),3).toString());
                     isNumber();
-                    isPoli();
                     KdPoli.requestFocus();
                 }                  
             }
@@ -4988,8 +4987,8 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         }else if(Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien inner join reg_periksa inner join kamar_inap "+
             "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=kamar_inap.no_rawat "+
             "where kamar_inap.stts_pulang='-' and pasien.no_rkm_medis=?",TNo.getText())>0){
-        JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
-        NoRujukan.requestFocus();
+            JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
+            NoRujukan.requestFocus();
         }else if(TNik.getText().trim().equals("")){
             Valid.textKosong(TNik, "NIK");
         }else if(NoRujukan.getText().trim().equals("")){
@@ -5010,24 +5009,24 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
                     "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
                     "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
                     "nmpolitujuan like '%darurat%'")>=3){
-                JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
-                TNik.requestFocus();
-            }else{
+                    JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
+                    TNik.requestFocus();
+                }else{
+                    insertPasien();
+                }
+            }else if((JenisPelayanan.getSelectedIndex()==1)&&(!NmPoli.getText().toLowerCase().contains("darurat"))){
+                if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
+                    "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
+                    "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
+                    "nmpolitujuan not like '%darurat%'")>=1){
+                    JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan rawat jalan..!!");
+                    TNik.requestFocus();
+                }else{
+                    insertPasien();
+                }
+            }else if(JenisPelayanan.getSelectedIndex()==0){
                 insertPasien();
             }
-        }else if((JenisPelayanan.getSelectedIndex()==1)&&(!NmPoli.getText().toLowerCase().contains("darurat"))){
-            if(Sequel.cariInteger("select count(no_kartu) from bridging_sep where "+
-                "no_kartu='"+no_peserta+"' and jnspelayanan='"+JenisPelayanan.getSelectedItem().toString().substring(0,1)+"' "+
-                "and tglsep like '%"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"").substring(0,10)+"%' and "+
-                "nmpolitujuan not like '%darurat%'")>=1){
-            JOptionPane.showMessageDialog(null,"Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan rawat jalan..!!");
-            TNik.requestFocus();
-        }else{
-            insertPasien();
-        }
-        }else if(JenisPelayanan.getSelectedIndex()==0){
-            insertPasien();
-        }
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -6117,6 +6116,7 @@ public final class BPJSCekNIK2 extends javax.swing.JDialog {
         status=Sequel.cariIsi("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='"+TNo.getText()+"' and kd_poli='"+kdpoli.getText()+"')>0,'Lama','Baru' )");
         if(JenisPelayanan.getSelectedIndex()==1){
             isNumber();
+            isPoli();
             if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                     new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+""),TanggalSEP.getSelectedItem().toString().substring(11,19),
                     kddokter.getText(),TNo.getText(),kdpoli.getText(),Saudara.getText(),AlamatPj.getText()+", "+KelurahanPj.getText()+", "+KecamatanPj.getText()+", "+KabupatenPj.getText(),

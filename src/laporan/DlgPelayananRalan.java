@@ -485,22 +485,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }else if(rs.getDouble(9)>60){
                         lebihsatujam++;
                     }
-                }                 
-                tabMode.addRow(new Object[]{
-                    "","","Rata-rata (Menit)",": ","","","",""+Valid.SetAngka6(totaljam/(i-1))
-                });
-                tabMode.addRow(new Object[]{
-                    "","","0 - 15 Menit",": ","","","",""+limabelas
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">15 - <=30 Menit",": ","","","",""+tigapuluh
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">30 - <=60 Menit",": ","","","",""+satujam
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">60 Menit",": ","","","",""+lebihsatujam
-                });
+                }               
+                if(totaljam>0){
+                    tabMode.addRow(new Object[]{
+                        "","","Rata-rata (Menit)",": ","","","",""+Valid.SetAngka6(totaljam/(i-1))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","","0 - 15 Menit",": ","","","",""+limabelas
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">15 - <=30 Menit",": ","","","",""+tigapuluh
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">30 - <=60 Menit",": ","","","",""+satujam
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">60 Menit",": ","","","",""+lebihsatujam
+                    });
+                }                    
             } catch (Exception e) {
                 System.out.println("laporan.DlgPelayananRalan.tampil() : "+e);
             } finally{

@@ -374,6 +374,7 @@ import setting.DlgSetHargaObatRanap;
 import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
 import keuangan.DlgDeposit;
+import laporan.DlgPelayananLab;
 import laporan.DlgPelayananRadiologi;
 import setting.DlgSetInputParsial;
 import smsui.frmSmsView;
@@ -949,6 +950,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnAnggotaMiliterDirawat = new widget.ButtonBig();
         btnSetInputParsial = new widget.ButtonBig();
         btnLamaPelayananRadiologi = new widget.ButtonBig();
+        btnLamaPelayananLab = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6014,7 +6016,7 @@ public class frmUtama extends javax.swing.JFrame {
         Panelmenu.add(btnSirkulasi3);
 
         btnPCarePendaftaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_todo_list_add_17451.png"))); // NOI18N
-        btnPCarePendaftaran.setText("Data Pendafataran PCare");
+        btnPCarePendaftaran.setText("Data Pendaftaran PCare");
         btnPCarePendaftaran.setIconTextGap(0);
         btnPCarePendaftaran.setName("btnPCarePendaftaran"); // NOI18N
         btnPCarePendaftaran.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -6097,6 +6099,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnLamaPelayananRadiologi);
 
+        btnLamaPelayananLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); // NOI18N
+        btnLamaPelayananLab.setText("Lama Pelayanan Lab");
+        btnLamaPelayananLab.setIconTextGap(0);
+        btnLamaPelayananLab.setName("btnLamaPelayananLab"); // NOI18N
+        btnLamaPelayananLab.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPelayananLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamaPelayananLabActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnLamaPelayananLab);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6105,7 +6119,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26/10/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31/10/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -12613,6 +12627,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnLamaPelayananRadiologiActionPerformed
 
+    private void btnLamaPelayananLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamaPelayananLabActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPelayananLab aplikasi=new DlgPelayananLab(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnLamaPelayananLabActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12834,6 +12859,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnLaboratorium;
     private widget.ButtonBig btnLahir;
     private widget.ButtonBig btnLamaPelayananApotek;
+    private widget.ButtonBig btnLamaPelayananLab;
     private widget.ButtonBig btnLamaPelayananRadiologi;
     private widget.ButtonBig btnLamaPelayananRalan;
     private widget.ButtonBig btnLihatPiutang;
@@ -14417,6 +14443,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getlama_pelayanan_radiologi()==true){  
                 Panelmenu.add(btnLamaPelayananRadiologi);                 
+                jmlmenu++;
+            }
+            
+            if(var.getlama_pelayanan_lab()==true){  
+                Panelmenu.add(btnLamaPelayananLab);                 
                 jmlmenu++;
             }
             
@@ -16439,6 +16470,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
         
+        if(var.getlama_pelayanan_lab()==true){  
+            Panelmenu.add(btnLamaPelayananLab);                 
+            jmlmenu++;
+        }
+
         if(var.getharian_HAIs()==true){  
             Panelmenu.add(btnHarianHAIs);                 
             jmlmenu++;
@@ -18833,6 +18869,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getlama_pelayanan_radiologi()==true){  
             if(btnLamaPelayananRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaPelayananRadiologi);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getlama_pelayanan_lab()==true){  
+            if(btnLamaPelayananLab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLamaPelayananLab);                 
                 jmlmenu++;
             }                
         }
