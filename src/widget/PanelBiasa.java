@@ -28,7 +28,7 @@ public class PanelBiasa extends JPanel{
     //private Color warnaAtas = new Color(245,200,245) ;
     //private Color warnaBawah = new Color(245,150,245) ;
     private Color warnaAtas = new Color(255,255,255) ;
-    private Color warnaBawah = new Color(255,255,253) ;
+    private Color warnaBawah = new Color(255,255,254) ;
 
     //private Color warnaAtas = new Color(255,194,255);
     //private Color warnaBawah = new Color(255,194,255);

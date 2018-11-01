@@ -11,7 +11,7 @@
             $tersediapria=0;
             $tersediawanita=0;
             $tersediapriawanita=0;
-            $host="http://dvlp.bpjs-kesehatan.go.id:8888";
+            $host="http://dvlp.bpjs-kesehatan.go.id";
             $url = $host."/aplicaresws/rest/bed/update/".getOne("select kode_ppk from setting");				
             $session = curl_init ( $url );			
             $cid = "1000";

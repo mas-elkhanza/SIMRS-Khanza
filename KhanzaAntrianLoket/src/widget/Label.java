@@ -17,7 +17,7 @@ public class Label extends usu.widget.Label {
     public Label() {
         super();
         //setForeground(new Color(90,90,90));
-        setForeground(new Color(110,80,80));
+        setForeground(new Color(100,80,80));
         setFont(new java.awt.Font("Tahoma", 0, 11));
 
         setHorizontalAlignment(RIGHT);
