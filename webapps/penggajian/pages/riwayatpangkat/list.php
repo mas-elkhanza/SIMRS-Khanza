@@ -1,17 +1,4 @@
-
 <?php
-   $_sql         = "SELECT * FROM set_tahun";
-   $hasil        = bukaquery($_sql);
-   $baris        = mysqli_fetch_row($hasil);
-   $tahun         = $baris[0];
-   $bln_leng=strlen($baris[1]);
-   $bulan="0";
-   if ($bln_leng==1){
-    	$bulan="0".$baris[1];
-   }else{
-	$bulan=$baris[1];
-   }
-
     $action      =isset($_GET['action'])?$_GET['action']:NULL;
     $keyword      = str_replace("_"," ",isset($_GET['keyword']))?str_replace("_"," ",$_GET['keyword']):NULL;
     echo "<input type=hidden name=keyword value=$keyword><input type=hidden name=action value=$action>";
@@ -34,20 +21,20 @@
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi' title='$baris[1] $baris[2]'>
-                                <td>
+                                <td valign='top'>
                                     <center>
                                         <a href=?act=InputRiwayatPangkat&action=TAMBAH&id=$baris[0]>[Detail]</a>
                                     </center>
                                </td>
-                                <td><a href=?act=InputRiwayatPangkat&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
-                                <td><a href=?act=InputRiwayatPangkat&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
-                                <td>
-                                   <table width='99.7%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>";
+                                <td valign='top'><a href=?act=InputRiwayatPangkat&action=TAMBAH&id=$baris[0]>$baris[1]</a></td>
+                                <td valign='top'><a href=?act=InputRiwayatPangkat&action=TAMBAH&id=$baris[0]>$baris[2]</a></td>
+                                <td valign='top'>
+                                   <table width='99.8%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>";
                                         $_sql2 = "SELECT jabatan,tmt_pangkat,tmt_pangkat_yad
                                                 from riwayat_jabatan where id='$baris[0]' ORDER BY jabatan ASC ";
                                         $hasil2=bukaquery($_sql2);
                                         if(mysqli_num_rows($hasil2)!=0) {
-                                            echo "<tr class='isi4'>
+                                            echo "<tr class='isi7'>
                                                     <td width='5%'><div align='center'>NO.</div></td>
                                                     <td width='55%'><div align='center'>Jabatan</div></td>
                                                     <td width='20%'><div align='center'>TMT Jabatan</div></td>
@@ -79,6 +66,5 @@
                   </table>";
         
         }
-
     ?>
 </div>

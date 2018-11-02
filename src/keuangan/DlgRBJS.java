@@ -31,10 +31,10 @@ public class DlgRBJS extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,psralanpr,psralandrpr,psralandr,psperiksalab,psranappr,
             psranapdrpr,psranapdr,psbiayaalat,psdetaillab,psperiksaradiologi,psbiayasewaok,
-            psakomodasi,psbagian_rs,psbiayasarpras;
+            psakomodasi,psbiayasarpras;
     private ResultSet rs,rsralanpr,rsralandrpr,rsralandr,rsperiksalab,rsranappr,rsranapdrpr,
             rsranapdr,rsbiayaalat,rsdetaillab,rsperiksaradiologi,rsbiayasewaok,
-            rsakomodasi,rsbagian_rs,rsbiayasarpras;
+            rsakomodasi,rsbiayasarpras;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -153,7 +153,7 @@ public class DlgRBJS extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Bulanan Jasa Sarana Rumah Sakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Bulanan Jasa Sarana Rumah Sakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -485,7 +485,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
 private void btnBangsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBangsalActionPerformed
         penjab.isCek();       
-        penjab.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setAlwaysOnTop(false);
         penjab.setVisible(true);
@@ -813,13 +813,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             "on operasi.no_rawat=reg_periksa.no_rawat and operasi.kode_paket=paket_operasi.kode_paket "+
                             "where operasi.tgl_operasi between ? and ? and reg_periksa.kd_pj=? "+
                             "and operasi.akomodasi>0 group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
-                        psbagian_rs=koneksi.prepareStatement("select paket_operasi.nm_perawatan,operasi.bagian_rs,"+
-                            "count(operasi.kode_paket) as jml, " +
-                            "sum(operasi.bagian_rs) as total "+
-                            "from paket_operasi inner join operasi inner join reg_periksa "+
-                            "on operasi.no_rawat=reg_periksa.no_rawat and operasi.kode_paket=paket_operasi.kode_paket "+
-                            "where operasi.tgl_operasi between ? and ? and reg_periksa.kd_pj=? "+
-                            "and operasi.bagian_rs>0 group by operasi.kode_paket order by paket_operasi.nm_perawatan  ");
                         psbiayasarpras=koneksi.prepareStatement("select paket_operasi.nm_perawatan,operasi.biayasarpras,"+
                             "count(operasi.kode_paket) as jml, " +
                             "sum(operasi.biayasarpras) as total "+
@@ -843,17 +836,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             psakomodasi.setString(3,rs.getString("kd_pj"));
                             rsakomodasi=psakomodasi.executeQuery(); 
                             
-                            psbagian_rs.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
-                            psbagian_rs.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
-                            psbagian_rs.setString(3,rs.getString("kd_pj"));
-                            rsbagian_rs=psbagian_rs.executeQuery();  
-                            
                             psbiayasarpras.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
                             psbiayasarpras.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                             psbiayasarpras.setString(3,rs.getString("kd_pj"));
                             rsbiayasarpras=psbiayasarpras.executeQuery(); 
                             
-                            if((rsbiayaalat.next())||(rsbiayasewaok.next())||(rsakomodasi.next())||(rsbagian_rs.next())||(rsbiayasarpras.next())){
+                            if((rsbiayaalat.next())||(rsbiayasewaok.next())||(rsakomodasi.next())||(rsbiayasarpras.next())){
                                 a++;
                                 tabMode.addRow(new Object[]{"","",a+". Operasi/VK ","","",""});   
                             } 
@@ -885,15 +873,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 jm=jm+rsakomodasi.getDouble("total");
                             }
                             
-                            rsbagian_rs.beforeFirst();
-                            while(rsbagian_rs.next()){
-                                tabMode.addRow(new Object[]{
-                                    "","","     "+rsbagian_rs.getString("nm_perawatan")+" (N.M.S)",
-                                    rsbagian_rs.getString("jml"),Valid.SetAngka(rsbagian_rs.getDouble("total"))
-                                });       
-                                jm=jm+rsbagian_rs.getDouble("total");
-                            }
-                            
                             rsbiayasarpras.beforeFirst();
                             while(rsbiayasarpras.next()){
                                 tabMode.addRow(new Object[]{
@@ -922,13 +901,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             }                            
                             if(psakomodasi!=null){
                                 psakomodasi.close();
-                            }   
-                            if(rsbagian_rs!=null){
-                                rsbagian_rs.close();
-                            }                            
-                            if(psbagian_rs!=null){
-                                psbagian_rs.close();
-                            }   
+                            }    
                             if(rsbiayasarpras!=null){
                                 rsbiayasarpras.close();
                             }                            

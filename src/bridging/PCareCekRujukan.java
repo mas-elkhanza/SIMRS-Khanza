@@ -37,7 +37,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -49,7 +48,8 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private sekuel Sequel=new sekuel();
     private int i=0;
-
+    private String URL="",link="";
+    private PcareApi api=new PcareApi();
     /** Creates new form DlgKamar
      * @param parent
      * @param modal */
@@ -92,6 +92,13 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
                 public void changedUpdate(DocumentEvent e) {tampil(diagnosa.getText());}
             });
         } 
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));  
+            link=prop.getProperty("URLAPIPCARE");
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     }
     
     
@@ -122,7 +129,7 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Rujukan PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Rujukan PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -315,11 +322,8 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String diagnosa) {
-        PcareApi api=new PcareApi();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIPCARE")+"/v1/kunjungan/rujukan/"+diagnosa;	
-
+            URL = link+"/v1/kunjungan/rujukan/"+diagnosa;
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));            
@@ -327,19 +331,11 @@ public final class PCareCekRujukan extends javax.swing.JDialog {
             String otorisasi=prop.getProperty("USERPCARE")+":"+prop.getProperty("PASSPCARE")+":095";
             headers.add("X-Authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
 	    HttpEntity requestEntity = new HttpEntity(headers);
-	    RestTemplate rest = new RestTemplate();	
-            
-            System.out.println("X-cons-id:"+prop.getProperty("CONSIDAPIPCARE"));
-	    System.out.println("X-Timestamp:"+String.valueOf(api.GetUTCdatetimeAsString()));            
-	    System.out.println("X-Signature:"+api.getHmac());
-            System.out.println("X-Authorization:"+"Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
-	    
-            System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+	    ObjectMapper mapper = new ObjectMapper();
+            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metaData");
-            //System.out.println("code : "+nameNode.path("code").asText());
-            //System.out.println("message : "+nameNode.path("message").asText());
+            System.out.println("code : "+nameNode.path("code").asText());
+            System.out.println("message : "+nameNode.path("message").asText());
             if(nameNode.path("message").asText().equals("OK")){
                 Valid.tabelKosong(tabMode);
                 JsonNode response = root.path("response");

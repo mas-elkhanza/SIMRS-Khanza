@@ -2,17 +2,17 @@
     require_once('../conf/conf.php');
 
     function getKey() {
-       $keyRS = "fe1e122d41a4dc5f8dccf9adc68e3570cf59bde0721686294ae06e3acd27efc3";   
+       $keyRS = "1e6a66e38579437e5e5baca466fc35a0bc8e6732bd961ff27e9eebc9998ae5c2";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://192.168.21.200/E-Klaim/ws.php";
+        $UrlWS = "http://192.168.22.246/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "BP";
+        $kelasRS = "CP";
         return $kelasRS;
     }
 
@@ -365,7 +365,7 @@
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
             Hapus2("inacbg_grouping_stage1", "no_sep='".$nomor_sep."'");
-            InsertData2("inacbg_grouping_stage1","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','0'");
+            InsertData2("inacbg_grouping_stage1","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".$msg['response']['cbg']['tariff']."'");
             FinalisasiKlaim($nomor_sep,$coder_nik);
         }
     }
@@ -383,7 +383,7 @@
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
             Hapus2("inacbg_grouping_stage12", "no_sep='".$nomor_sep."'");
-            InsertData2("inacbg_grouping_stage12","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','0'");
+            InsertData2("inacbg_grouping_stage12","'".$nomor_sep."','".$msg['response']['cbg']['code']."','".$msg['response']['cbg']['description']."','".$msg['response']['cbg']['tariff']."'");
             FinalisasiKlaim($nomor_sep,$coder_nik);
         }
     }

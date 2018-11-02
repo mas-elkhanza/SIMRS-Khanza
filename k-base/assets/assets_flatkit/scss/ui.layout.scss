@@ -1,0 +1,173 @@
+/*layout*/
+
+html{
+	height: 100%;
+}
+body{
+	height: auto;
+	min-height: 100%;
+	position: relative;
+}
+
+.app{
+  	
+}
+
+.app-aside{
+  	position: fixed !important;
+  	z-index: 1030;
+  	float: left;
+  	height: 100%;
+}
+
+.app-content{
+	box-shadow: none;
+	@include clearfix();
+}
+
+.app-header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: inherit;
+	z-index: 1020;
+ 	~ .app-body{
+		padding-top: $navbar-height;
+	}
+	&.navbar-md ~ .app-body{
+		padding-top: $navbar-md-height;
+	}
+	&.navbar-sm ~ .app-body{
+		padding-top: $navbar-sm-height;
+	}
+}
+
+.app-body{
+
+}
+
+.app-body-inner{
+	padding-top: inherit !important;
+	padding-bottom: inherit !important;
+	position: absolute;
+	top:0;
+	bottom:0;
+	overflow: auto;
+}
+
+.app-footer{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	margin: inherit;
+	&:not(.hide) ~ .app-body{
+		padding-bottom: $footer-height;
+	}
+}
+
+// fixed layout
+.app-fixed{
+	overflow: hidden;
+	.app{
+		height: 100%;
+	}
+	.app-content{
+		position: relative;
+		min-height: 100%;
+	}
+	.app-footer{
+		margin-left: 0;
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.app-aside {
+		opacity: 1;
+		display: block !important;
+		&,
+		.scroll{
+			width: $aside-width;
+		}
+		&.lg{
+			&:not(.folded),
+			&:not(.folded) .scroll{
+				width: $aside-lg-width;
+			}
+			&:not(.hide) ~ .app-content{
+				margin-left: $aside-lg-width;
+			}
+		}
+		&.sm{
+			&:not(.folded),
+			&:not(.folded) .scroll{
+				width: $aside-sm-width;
+			}
+			&:not(.hide) ~ .app-content{
+				margin-left: $aside-sm-width;
+			}
+		}
+		&.folded{
+			width: $aside-folded-width;
+			&:not(.hide) ~ .app-content{
+				margin-left: $aside-folded-width;
+			}
+			&.md{
+				width: $aside-folded-md-width;
+				&:not(.hide) ~ .app-content{
+					margin-left: $aside-folded-md-width;
+				}
+			}
+		}
+		&:not(.hide) ~ .app-content{
+			margin-left: $aside-width;
+		}
+		.left{
+			position: absolute;
+			right: 0;
+			@include translate3d(0, 0, 0);
+		}
+	}
+	.hide-scroll{
+	  width: auto;
+	  margin-right: -17px;
+	  overflow-y: scroll;
+	  -webkit-overflow-scrolling:touch;
+	}
+}
+
+@include media-breakpoint-down(md) {
+	.app-aside {
+		&.modal{
+			width: 100%;
+			position: fixed;
+			z-index: 1050;
+		}
+		.left{
+			position: fixed;
+			width: 304px;
+		}
+	}
+}
+
+@media print {
+	.app-aside,
+	.app-header,
+	.app-footer,
+	.switcher{
+		display: none;
+	}
+}
+
+/* fix ie9 */
+.ie9{
+	.app-aside{
+		position: static !important;
+		.left{
+			width: inherit;
+			position: absolute;
+		}
+	}
+}

@@ -1,0 +1,97 @@
+.form-control{
+  border-color: $input-border;
+  border-radius: $input-border-radius;
+  &:focus{
+    border-color: $input-border-focus;
+  }
+}
+
+.form-control-label{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-bottom: 0;
+}
+
+.custom-select{
+  border-color: $border-color;
+}
+
+.form-control::-webkit-input-placeholder{
+  color: inherit;
+  opacity: 0.3;
+}
+.form-control::-moz-placeholder{
+  color: inherit;
+  opacity: 0.3;
+}
+.form-control:-ms-input-placeholder{
+  color: inherit;
+  opacity: 0.3;
+}
+
+.form-control-spin{
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  top: 50%;
+  margin-top: -7px;
+}
+
+.input-group-addon{
+  border-color: $input-border !important;
+  background-color: transparent;
+  color: inherit;
+}
+
+.form-group-stack{
+  .form-control{
+    margin-top: -1px;
+    position: relative;
+    border-radius: 0;
+    &:focus,
+    &:active{
+      z-index: 1;
+    }
+  }
+}
+
+.form-validation{
+  .form-control{
+    &.ng-dirty.ng-invalid{
+      border-color: $danger;
+    }
+    &.ng-dirty.ng-valid{
+      &,
+      &:focus{
+        border-color: $success;
+      }
+    }  
+  }
+  .ui-checks{
+    .ng-invalid.ng-dirty + i{
+      border-color: $danger;
+    }
+  }
+}
+
+.form-file{
+  position: relative;
+  input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+}
+
+.input-group-sm > .form-control{
+  min-height: 1.95rem;
+}
+
+.active-checked{
+  opacity: 0;
+}
+
+input:checked + .active-checked{
+  opacity: 1;
+}

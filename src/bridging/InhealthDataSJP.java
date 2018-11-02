@@ -467,7 +467,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         ppSEP.setBackground(new java.awt.Color(242, 242, 242));
         ppSEP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSEP.setForeground(new java.awt.Color(102, 51, 0));
+        ppSEP.setForeground(new java.awt.Color(100,80,80));
         ppSEP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSEP.setText("Print SJP");
         ppSEP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -484,7 +484,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         ppPulang.setBackground(new java.awt.Color(242, 242, 242));
         ppPulang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPulang.setForeground(new java.awt.Color(102, 51, 0));
+        ppPulang.setForeground(new java.awt.Color(100,80,80));
         ppPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPulang.setText("Update Tanggal Pulang");
         ppPulang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -501,7 +501,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         ppMapping.setBackground(new java.awt.Color(242, 242, 242));
         ppMapping.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppMapping.setForeground(new java.awt.Color(102, 51, 0));
+        ppMapping.setForeground(new java.awt.Color(100,80,80));
         ppMapping.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppMapping.setText("Mapping Transaksi SJP");
         ppMapping.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -518,7 +518,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
         ppDetailSEPPeserta.setBackground(new java.awt.Color(242, 242, 242));
         ppDetailSEPPeserta.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppDetailSEPPeserta.setForeground(new java.awt.Color(102, 51, 0));
+        ppDetailSEPPeserta.setForeground(new java.awt.Color(100,80,80));
         ppDetailSEPPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppDetailSEPPeserta.setText("Detail SJP Peserta");
         ppDetailSEPPeserta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -597,7 +597,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bridging SJP Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Bridging SJP Inhealth ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -1634,7 +1634,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()!= -1){
             BPJSCekDetailSEP detail=new BPJSCekDetailSEP(null,true);
             detail.tampil(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            detail.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            detail.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             detail.setLocationRelativeTo(internalFrame1);
             detail.setVisible(true);
         }else{
@@ -1645,7 +1645,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
     }//GEN-LAST:event_ppDetailSEPPesertaBtnPrintActionPerformed
 
     private void btnPPKRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPPKRujukanActionPerformed
-        faskes.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        faskes.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         faskes.setLocationRelativeTo(internalFrame1);
         faskes.setVisible(true);
     }//GEN-LAST:event_btnPPKRujukanActionPerformed
@@ -1676,7 +1676,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
     private void btnDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaActionPerformed
         pilih=1;
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.isCek();
         penyakit.setVisible(true);
@@ -1688,7 +1688,7 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
 
     private void btnDiagnosa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosa1ActionPerformed
         pilih=2;
-        penyakit.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.isCek();
         penyakit.setVisible(true);
@@ -1762,11 +1762,11 @@ public final class InhealthDataSJP extends javax.swing.JDialog {
         if((JenisPelayanan.getSelectedIndex()==1)||(JenisPelayanan.getSelectedIndex()==3)){
             kamar.isCek();
             kamar.emptTeks();
-            kamar.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            kamar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             kamar.setLocationRelativeTo(internalFrame1);
             kamar.setVisible(true);
         }else{
-            poli.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+            poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             poli.setLocationRelativeTo(internalFrame1);
             poli.setVisible(true);
         }

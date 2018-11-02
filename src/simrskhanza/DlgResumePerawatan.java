@@ -43,7 +43,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
     private final Properties prop = new Properties(); 
     private validasi Valid=new validasi();
     private ResultSet rs,rs2,rs3,rs4,rshal;
-    private String sql;
+    private String sql,tanggal="",jam="";
     private StringBuilder htmlContent;
 
     /** Creates new form DlgLhtBiaya
@@ -68,6 +68,14 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
                     KdRw.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
                     TPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),2).toString());
                 }    
+                if(pasien.getTable2().getSelectedRow()!= -1){                   
+                    KdRw.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
+                    TPasien.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),2).toString());
+                } 
+                if(pasien.getTable3().getSelectedRow()!= -1){                   
+                    KdRw.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
+                    TPasien.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),2).toString());
+                } 
                 KdRw.requestFocus();
             }
             @Override
@@ -81,6 +89,32 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         });
         
         pasien.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        pasien.getTable2().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        pasien.getTable3().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
@@ -114,7 +148,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         LoadHTML12.setEditorKit(kit);
         
         StyleSheet styleSheet = kit.getStyleSheet();
-        styleSheet.addRule(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
+        styleSheet.addRule(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         LoadHTML2.setDocument(doc);
@@ -338,7 +372,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume/Rincian Tindakan/Terapi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume/Rincian Tindakan/Terapi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -488,8 +522,8 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(90, 120, 80));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
+        TabRawat.setForeground(new java.awt.Color(100,80,80));
         TabRawat.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -725,7 +759,7 @@ private void KdRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdRw
 private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         pasien.isCek();
         pasien.emptTeks();
-        pasien.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pasien.setLocationRelativeTo(internalFrame1);
         pasien.setVisible(true);
 }//GEN-LAST:event_BtnSeek2ActionPerformed
@@ -751,7 +785,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         try {
             File g = new File("file.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-            bg.write(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#5a7850;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
+            bg.write(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
             bg.close();
             
             File f = new File("resumemedis.html");            
@@ -2403,8 +2437,10 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                      "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
                                      "from periksa_lab inner join jns_perawatan_lab inner join petugas inner join dokter "+
                                      "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
-                                if(rs3.next()){                                    
+                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.kd_jenis_prw").executeQuery();
+                                if(rs3.next()){
+                                    tanggal=rs3.getString("tgl_periksa");
+                                    jam=rs3.getString("jam");
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
@@ -2440,7 +2476,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "where detail_periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' and "+
                                                 "detail_periksa_lab.kd_jenis_prw='"+rs3.getString("kd_jenis_prw")+"' and "+
                                                 "detail_periksa_lab.tgl_periksa='"+rs3.getString("tgl_periksa")+"' and "+
-                                                "detail_periksa_lab.jam='"+rs3.getString("jam")+"'").executeQuery();
+                                                "detail_periksa_lab.jam='"+rs3.getString("jam")+"' order by detail_periksa_lab.kd_jenis_prw,template_laboratorium.urut ").executeQuery();
                                             if(rs4.next()){ 
                                                 htmlContent.append(
                                                     "<tr>"+
@@ -2475,6 +2511,32 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         }
                                         w++;
                                     }
+                                    
+                                    try {
+                                        rs4=koneksi.prepareStatement("select saran,kesan from saran_kesan_lab where no_rawat='"+rs2.getString("no_rawat")+"' and tgl_periksa='"+tanggal+"' and jam='"+jam+"'").executeQuery();
+                                        if(rs4.next()){      
+                                            htmlContent.append(
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Kesan</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("kesan")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Saran</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("saran")+"</td>"+
+                                                    "</tr>");
+                                        } 
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs4!=null){
+                                            rs4.close();
+                                        }
+                                    }
+                                    
                                     htmlContent.append(
                                       "</table>");
                                 }                                
@@ -4704,8 +4766,10 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                      "jns_perawatan_lab.nm_perawatan,petugas.nama,periksa_lab.biaya,periksa_lab.dokter_perujuk,dokter.nm_dokter "+
                                      "from periksa_lab inner join jns_perawatan_lab inner join petugas inner join dokter "+
                                      "on periksa_lab.kd_jenis_prw=jns_perawatan_lab.kd_jenis_prw and periksa_lab.kd_dokter=dokter.kd_dokter "+
-                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
-                                if(rs3.next()){                                    
+                                     "and periksa_lab.nip=petugas.nip  where periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' order by periksa_lab.kd_jenis_prw").executeQuery();
+                                if(rs3.next()){ 
+                                    tanggal=rs3.getString("tgl_periksa");
+                                    jam=rs3.getString("jam");
                                     htmlContent.append(  
                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                         "<tr><td valign='top' colspan='5'>Pemeriksaan Laboratorium</td><td valign='top' colspan='1' align='right'>:</td><td valign='top'></td></tr>"+            
@@ -4741,7 +4805,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                 "where detail_periksa_lab.no_rawat='"+rs2.getString("no_rawat")+"' and "+
                                                 "detail_periksa_lab.kd_jenis_prw='"+rs3.getString("kd_jenis_prw")+"' and "+
                                                 "detail_periksa_lab.tgl_periksa='"+rs3.getString("tgl_periksa")+"' and "+
-                                                "detail_periksa_lab.jam='"+rs3.getString("jam")+"'").executeQuery();
+                                                "detail_periksa_lab.jam='"+rs3.getString("jam")+"' order by detail_periksa_lab.kd_jenis_prw,template_laboratorium.urut").executeQuery();
                                             if(rs4.next()){ 
                                                 htmlContent.append(
                                                     "<tr>"+
@@ -4776,6 +4840,32 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         }
                                         w++;
                                     }
+                                    
+                                    try {
+                                        rs4=koneksi.prepareStatement("select saran,kesan from saran_kesan_lab where no_rawat='"+rs2.getString("no_rawat")+"' and tgl_periksa='"+tanggal+"' and jam='"+jam+"'").executeQuery();
+                                        if(rs4.next()){      
+                                            htmlContent.append(
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Kesan</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("kesan")+"</td>"+
+                                                    "</tr>"+
+                                                    "<tr>"+
+                                                       "<td valign='top' align='center'></td>"+
+                                                       "<td valign='top'></td>"+
+                                                       "<td valign='top'>Saran</td>"+
+                                                       "<td valign='top' colspan='4'>: "+rs4.getString("saran")+"</td>"+
+                                                    "</tr>");
+                                        } 
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs4!=null){
+                                            rs4.close();
+                                        }
+                                    }
+                                    
                                     htmlContent.append(
                                       "</table>");
                                 }                                

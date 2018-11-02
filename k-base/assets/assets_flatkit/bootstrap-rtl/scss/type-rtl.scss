@@ -1,0 +1,22 @@
+//
+// RTL Typography
+// --------------------------------------------------
+
+// Flipped Alignment
+.text-left           { text-align: right; }
+.text-right          { text-align: left; }
+
+// List options
+
+// Unstyled keeps list items block level, just removes default browser padding and list-style
+.list-unstyled {
+  padding-right: 0;
+  padding-left: initial;
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+  @include list-unstyled;
+  margin-right: -5px;
+  margin-left: 0;
+}

@@ -107,7 +107,7 @@
                  <tr class='isi14'>
                        <td colspan=4 height='100%' valign=top>
                             <table width=100% cellpadding='0' cellspacing='0'>
-                               <tr class=isi15>
+                               <tr class=isi>
                                    <td width='5%' align=center><font color='000000' size='2'  face='Tahoma'>No</font></td>
                                    <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Jml</font></td>
                                    <td width='35%' align=center><font color='000000' size='2'  face='Tahoma'>Nama Barang</font></td>
@@ -119,7 +119,7 @@
                                       while($barispesan = mysqli_fetch_array($hasil)) { 
                                           $ttlpesan=$ttlpesan+$barispesan["temp13"];
                                           echo "
-                                            <tr class='isi15'>
+                                            <tr class='isi'>
                                                 <td><font color='000000' size='2'  face='Tahoma'>$i</font></td>
                                                 <td><font color='000000' size='2'  face='Tahoma'>$barispesan[1] $barispesan[5]</font></td>
                                                 <td><font color='000000' size='2'  face='Tahoma'>$barispesan[3] </font></td>

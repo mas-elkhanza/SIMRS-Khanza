@@ -181,7 +181,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(242, 242, 242));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(102, 51, 0));
+        ppHapus.setForeground(new java.awt.Color(100,80,80));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -198,7 +198,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
 
         ppCetak.setBackground(new java.awt.Color(242, 242, 242));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(102, 51, 0));
+        ppCetak.setForeground(new java.awt.Color(100,80,80));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -216,7 +216,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         Kd2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Kd2.setHighlighter(null);
         Kd2.setName("Kd2"); // NOI18N
-        Kd2.setSelectionColor(new java.awt.Color(255, 255, 255));
         Kd2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 Kd2KeyPressed(evt);
@@ -245,7 +244,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         Stok.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Stok.setHighlighter(null);
         Stok.setName("Stok"); // NOI18N
-        Stok.setSelectionColor(new java.awt.Color(255, 255, 255));
         Stok.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 StokKeyPressed(evt);
@@ -285,7 +283,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         Harga.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Harga.setHighlighter(null);
         Harga.setName("Harga"); // NOI18N
-        Harga.setSelectionColor(new java.awt.Color(255, 255, 255));
         panelisi4.add(Harga);
         Harga.setBounds(410, 10, 110, 23);
 
@@ -299,7 +296,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         Real.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Real.setHighlighter(null);
         Real.setName("Real"); // NOI18N
-        Real.setSelectionColor(new java.awt.Color(255, 255, 255));
         Real.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RealKeyPressed(evt);
@@ -312,7 +308,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         Selisih.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Selisih.setHighlighter(null);
         Selisih.setName("Selisih"); // NOI18N
-        Selisih.setSelectionColor(new java.awt.Color(255, 255, 255));
         panelisi4.add(Selisih);
         Selisih.setBounds(284, 40, 55, 23);
 
@@ -334,7 +329,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         Nominal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Nominal.setHighlighter(null);
         Nominal.setName("Nominal"); // NOI18N
-        Nominal.setSelectionColor(new java.awt.Color(255, 255, 255));
         Nominal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NominalKeyPressed(evt);
@@ -346,7 +340,6 @@ public final class DlgStokOpname extends javax.swing.JDialog {
         Keterangan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Keterangan.setHighlighter(null);
         Keterangan.setName("Keterangan"); // NOI18N
-        Keterangan.setSelectionColor(new java.awt.Color(255, 255, 255));
         Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KeteranganKeyPressed(evt);
@@ -391,7 +384,7 @@ public final class DlgStokOpname extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Opname Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Opname Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

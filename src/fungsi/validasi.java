@@ -63,6 +63,7 @@ public final class validasi {
     private final DecimalFormat df5 = new DecimalFormat("###,###,###,###,###,###,###.##");  
     private final DecimalFormat df3 = new DecimalFormat("######"); 
     private final DecimalFormat df6 = new DecimalFormat("######.###"); 
+    private final DecimalFormat df7 = new DecimalFormat("######.#"); 
     private PreparedStatement ps;
     private ResultSet rs;
     private final Calendar now = Calendar.getInstance();
@@ -998,7 +999,11 @@ public final class validasi {
         JOptionPane.showMessageDialog(null,"Maaf, "+pesan+" tidak boleh kosong...!!!");
         teks.requestFocus();
     }
-
+    
+    public void textKosong(JButton teks,String pesan){
+        JOptionPane.showMessageDialog(null,"Maaf, "+pesan+" tidak boleh kosong...!!!");
+        teks.requestFocus();
+    }
 
     public void tabelKosong(DefaultTableModel tabMode) {
         j=tabMode.getRowCount();
@@ -1032,14 +1037,23 @@ public final class validasi {
        return df6.format(nilai);
     }
     
+    public String SetAngka6(double nilai){        
+       return df7.format(nilai);
+    }
+    
     public double SetAngka(String txt){
-        double x;         
+        double x;   
+        try {
             if(txt.equals("")){
                 x=0;
             }else{
                 x=Double.parseDouble(txt);
             }
-            return x;
+        } catch (Exception e) {
+            x=0;
+        }
+            
+        return x;
     }
     
     public double roundUp(double number, int multiple) {

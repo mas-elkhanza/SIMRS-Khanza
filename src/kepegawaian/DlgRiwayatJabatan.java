@@ -11,6 +11,7 @@
 
 package kepegawaian;
 
+import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
 import java.awt.BorderLayout;
@@ -46,12 +47,11 @@ import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
 import simrskhanza.DlgPilihanCetakDokumen;
-import widget.panelisi;
 
 /**
  *
@@ -77,6 +77,18 @@ public class DlgRiwayatJabatan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         initComponents2();
+        
+        TCari.setDocument(new batasInput((byte)100).getKata(TCari));
+        if(koneksiDB.cariCepat().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {BtnCariActionPerformed(null);}
+                @Override
+                public void removeUpdate(DocumentEvent e) {BtnCariActionPerformed(null);}
+                @Override
+                public void changedUpdate(DocumentEvent e) {BtnCariActionPerformed(null);}
+            });
+        }
     }
     
     private void initComponents2() {           
@@ -244,7 +256,7 @@ public class DlgRiwayatJabatan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Jabatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Jabatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 

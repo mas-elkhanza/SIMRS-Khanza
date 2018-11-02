@@ -17,7 +17,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
 
 /**
  *
@@ -30,7 +29,7 @@ public class BPJSCekNIK {
             mrnoMR="",mrnoTelepon="",nama="",nik="",noKartu="",pisa="",
             provUmumkdProvider="",provUmumnmProvider="",sex="",statusPesertaketerangan="",
             statusPesertakode="",tglCetakKartu="",tglLahir="",tglTAT="",
-            tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",informasi="";
+            tglTMT="",umurumurSaatPelayanan="",umurumurSekarang="",informasi="",URL="",link="";
     private final Properties prop = new Properties();
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
@@ -38,12 +37,17 @@ public class BPJSCekNIK {
         
     public BPJSCekNIK(){
         super();
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            link=prop.getProperty("URLAPIBPJS");
+        } catch (Exception e) {
+            System.out.println("E : "+e);
+        }
     }
     
     public void tampil(String nik) {
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            String URL = prop.getProperty("URLAPIBPJS")+"/Peserta/nik/"+nik+"/tglSEP/"+dateFormat.format(date);	
+            URL = link+"/Peserta/nik/"+nik+"/tglSEP/"+dateFormat.format(date);	
 
 	    HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -51,11 +55,9 @@ public class BPJSCekNIK {
 	    headers.add("X-Timestamp",String.valueOf(api.GetUTCdatetimeAsString()));
 	    headers.add("X-Signature",api.getHmac());
 	    HttpEntity requestEntity = new HttpEntity(headers);
-	    RestTemplate rest = new RestTemplate();	
-            
-            //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+	    //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode root = mapper.readTree(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+            JsonNode root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             JsonNode nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
