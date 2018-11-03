@@ -532,7 +532,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-10-2018"/>
+                        <StringItem index="0" value="29-10-2018"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -561,7 +561,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="13-10-2018"/>
+                        <StringItem index="0" value="29-10-2018"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1841,6 +1841,9 @@
               <SubComponents>
                 <Container class="widget.ScrollPane" name="Scroll4">
                   <Properties>
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="jPopupMenu1"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="Scroll4" noResource="true"/>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
@@ -1856,6 +1859,9 @@
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="jPopupMenu1"/>
+                        </Property>
                         <Property name="name" type="java.lang.String" value="tbPemeriksaanObstetri" noResource="true"/>
                       </Properties>
                       <Events>
@@ -2588,6 +2594,9 @@
               <SubComponents>
                 <Container class="widget.ScrollPane" name="Scroll5">
                   <Properties>
+                    <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="jPopupMenu1"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="Scroll5" noResource="true"/>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
@@ -2606,6 +2615,9 @@
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="jPopupMenu1"/>
+                        </Property>
                         <Property name="name" type="java.lang.String" value="tbPemeriksaanGinekologi" noResource="true"/>
                       </Properties>
                       <Events>
@@ -3332,7 +3344,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="13-10-2018"/>
+                    <StringItem index="0" value="29-10-2018"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

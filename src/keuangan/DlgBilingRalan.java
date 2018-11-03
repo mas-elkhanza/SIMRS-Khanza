@@ -106,7 +106,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                     "count(rawat_jl_dr.kd_jenis_prw) as jml, "+
                     "sum(rawat_jl_dr.biaya_rawat) as biaya,"+
                     "sum(rawat_jl_dr.bhp) as totalbhp,"+
-                    "sum(rawat_jl_dr.material) as totalmaterial,"+
+                    "(sum(rawat_jl_dr.material)+sum(rawat_jl_dr.menejemen)+sum(rawat_jl_dr.kso)) as totalmaterial,"+
                     "rawat_jl_dr.tarif_tindakandr,"+
                     "sum(rawat_jl_dr.tarif_tindakandr) as totaltarif_tindakandr "+
                     "from rawat_jl_dr inner join jns_perawatan "+
@@ -116,7 +116,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                     "count(rawat_jl_pr.kd_jenis_prw) as jml, "+
                     "sum(rawat_jl_pr.biaya_rawat) as biaya, "+
                     "sum(rawat_jl_pr.bhp) as totalbhp,"+
-                    "sum(rawat_jl_pr.material) as totalmaterial,"+
+                    "(sum(rawat_jl_pr.material)+sum(rawat_jl_pr.menejemen)+sum(rawat_jl_pr.kso)) as totalmaterial,"+
                     "sum(rawat_jl_pr.tarif_tindakanpr) as totaltarif_tindakanpr "+
                     "from rawat_jl_pr inner join jns_perawatan "+
                     "on rawat_jl_pr.kd_jenis_prw=jns_perawatan.kd_jenis_prw where "+
@@ -125,7 +125,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
                     "count(rawat_jl_drpr.kd_jenis_prw) as jml, "+
                     "sum(rawat_jl_drpr.biaya_rawat) as biaya,"+
                     "sum(rawat_jl_drpr.bhp) as totalbhp,"+
-                    "sum(rawat_jl_drpr.material) as totalmaterial,"+
+                    "(sum(rawat_jl_drpr.material)+sum(rawat_jl_drpr.menejemen)+sum(rawat_jl_drpr.kso)) as totalmaterial,"+
                     "rawat_jl_drpr.tarif_tindakandr,"+
                     "sum(rawat_jl_drpr.tarif_tindakanpr) as totaltarif_tindakanpr, "+
                     "sum(rawat_jl_drpr.tarif_tindakandr) as totaltarif_tindakandr "+
@@ -5451,8 +5451,8 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 }
 
                 if(Obat_Rawat_Jalan>0){
-                    Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Jalan+"','Operasi Ralan','"+Obat_Rawat_Jalan+"','0'","debet=debet+'"+(Obat_Rawat_Jalan)+"'","kd_rek='"+HPP_Obat_Rawat_Jalan+"'");  
-                    Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Jalan+"','Operasi Ralan','0','"+Obat_Rawat_Jalan+"'","kredit=kredit+'"+(Obat_Rawat_Jalan)+"'","kd_rek='"+Persediaan_Obat_Rawat_Jalan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Rawat_Jalan+"','Obat Ralan','"+Obat_Rawat_Jalan+"','0'","debet=debet+'"+(Obat_Rawat_Jalan)+"'","kd_rek='"+HPP_Obat_Rawat_Jalan+"'");  
+                    Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Rawat_Jalan+"','Obat Ralan','0','"+Obat_Rawat_Jalan+"'","kredit=kredit+'"+(Obat_Rawat_Jalan)+"'","kd_rek='"+Persediaan_Obat_Rawat_Jalan+"'");  
                 }
 
                 if(Jasa_Medik_Dokter_Operasi_Ralan>0){
