@@ -1,0 +1,61 @@
+<div class="page" data-page="daftar" data-name="daftar">
+  <div class="navbar">
+    <div class="navbar-inner sliding">
+      <div class="left">
+        <a href="#" class="link back">
+          <i class="icon icon-back"></i>
+          <span class="ios-only">Back</span>
+        </a>
+      </div>
+      <div class="title">Pendaftaran</div>
+      <div class="right md-only">
+        <button class="button button-outline daftar-btn">
+          <i class="icon material-icons color-white">save</i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="page-content" id="daftar-form">
+    <div class="list">
+      <div class="block block-strong no-padding">
+        <div id="calendar-container"></div>
+      </div>
+      <ul>
+        <li>
+          <a class="item-link smart-select smart-select-init" data-close-on-select="true">
+            <select name="nama-pj" class="penjab-list kd_pj"></select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Cara Bayar</div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="block">
+      <input type="hidden" placeholder="Pilih Tanggal Berobat" readonly="readonly" class="tanggal"/>
+      <button class="button button-big button-outline cekjadwal-btn color-red">Cek Jadwal</button>
+    </div>
+    <div class="list">
+      <ul>
+        <div class="klinik">
+          <li>
+            <a class="item-link smart-select smart-select-init" data-close-on-select="true">
+              <select name="nama-klinik" class="klinik-list kd_poli"></select>
+              <div class="item-content">
+                <div class="item-inner">
+                  <div class="item-title">Poliklinik</div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </div>
+        <div class="dokter-list kd_dokter"></div>
+      </ul>
+    </div>
+    <div class="block padding-top ios-only" style="padding-top:20px;">
+      <button class="button button-big button-fill daftar-btn color-blue">Simpan Pendaftaran</button>
+    </div>
+  </div>
+</div>
