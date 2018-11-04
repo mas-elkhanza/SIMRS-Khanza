@@ -11,7 +11,7 @@
 
 package tranfusidarah;
 
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -197,7 +197,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pencekalan Darah Donor ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pencekalan Darah Donor ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -370,7 +370,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-01-2017" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-01-2017" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -385,7 +385,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-01-2017" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-01-2017" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -506,7 +506,7 @@ public final class UTDCekalDarah extends javax.swing.JDialog {
 
         TanggalCekal.setEditable(false);
         TanggalCekal.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalCekal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-01-2017" }));
+        TanggalCekal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-01-2017" }));
         TanggalCekal.setDisplayFormat("dd-MM-yyyy");
         TanggalCekal.setName("TanggalCekal"); // NOI18N
         TanggalCekal.setOpaque(false);
@@ -826,7 +826,7 @@ private void KodePetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
 
 private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
         dokter.isCek();
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
 }//GEN-LAST:event_btnDokterActionPerformed

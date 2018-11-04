@@ -24,7 +24,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 
 public class UTDStokDarah extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -210,7 +210,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
 
         ppCetak.setBackground(new java.awt.Color(242, 242, 242));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(102, 51, 0));
+        ppCetak.setForeground(new java.awt.Color(100,80,80));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -234,7 +234,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Stok Darah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -369,7 +369,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         Resus.setBounds(294, 72, 60, 23);
 
         Aftap.setEditable(false);
-        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2017" }));
+        Aftap.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2017" }));
         Aftap.setDisplayFormat("dd-MM-yyyy");
         Aftap.setName("Aftap"); // NOI18N
         Aftap.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -387,7 +387,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         label32.setBounds(0, 72, 85, 23);
 
         Kadaluarsa.setEditable(false);
-        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-01-2017" }));
+        Kadaluarsa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-01-2017" }));
         Kadaluarsa.setDisplayFormat("dd-MM-yyyy");
         Kadaluarsa.setName("Kadaluarsa"); // NOI18N
         Kadaluarsa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -464,7 +464,7 @@ public class UTDStokDarah extends javax.swing.JDialog {
         jLabel14.setPreferredSize(new java.awt.Dimension(55, 23));
         panelCari.add(jLabel14);
 
-        CmbCrStatus.setForeground(new java.awt.Color(153, 0, 51));
+        CmbCrStatus.setForeground(new java.awt.Color(100,80,80));
         CmbCrStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ada", "Diambil", "Dimusnahkan" }));
         CmbCrStatus.setName("CmbCrStatus"); // NOI18N
         CmbCrStatus.setOpaque(false);
@@ -995,7 +995,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void btnKomponenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKomponenActionPerformed
         komponen.emptTeks();
         komponen.isCek();
-        komponen.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        komponen.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         komponen.setLocationRelativeTo(internalFrame1);        
         komponen.setVisible(true);
     }//GEN-LAST:event_btnKomponenActionPerformed

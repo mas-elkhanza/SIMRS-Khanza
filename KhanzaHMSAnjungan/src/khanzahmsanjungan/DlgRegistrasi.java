@@ -14,6 +14,9 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,6 +36,8 @@ public class DlgRegistrasi extends javax.swing.JDialog {
     private ResultSet rs;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private String umur="0",sttsumur="Th";
+    private DlgPilihBayar pilihbayar=new DlgPilihBayar(null,true);
+    private String status="Baru";
 
     /** Creates new form DlgAdmin
      * @param parent
@@ -55,6 +60,50 @@ public class DlgRegistrasi extends javax.swing.JDialog {
         }catch(Exception ex){
             System.out.println(ex);
         }
+        
+        pilihbayar.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pilihbayar.dispose();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
+        pilihbayar.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+
+            @Override
+            public void windowClosing(WindowEvent e) {}
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pilihbayar.getTable().getSelectedRow()!= -1){
+                    KdBayar.setText(pilihbayar.getTable().getValueAt(pilihbayar.getTable().getSelectedRow(),0).toString());
+                    NmBayar.setText(pilihbayar.getTable().getValueAt(pilihbayar.getTable().getSelectedRow(),1).toString());
+                }  
+                pilihbayar.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {}
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+
+            @Override
+            public void windowActivated(WindowEvent e) {}
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         
     }
 
@@ -113,6 +162,7 @@ public class DlgRegistrasi extends javax.swing.JDialog {
         KdBayar = new component.TextBox();
         jLabel27 = new component.Label();
         NmBayar = new component.TextBox();
+        btnSemua = new component.Button();
         jPanel4 = new component.Panel();
         btnSimpan = new component.Button();
         btnKeluar = new component.Button();
@@ -492,7 +542,26 @@ public class DlgRegistrasi extends javax.swing.JDialog {
             }
         });
         jPanel2.add(NmBayar);
-        NmBayar.setBounds(265, 344, 280, 26);
+        NmBayar.setBounds(265, 344, 248, 26);
+
+        btnSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnSemua.setMnemonic('M');
+        btnSemua.setToolTipText("Alt+M");
+        btnSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnSemua.setMargin(new java.awt.Insets(0, 3, 0, 0));
+        btnSemua.setPreferredSize(new java.awt.Dimension(30, 30));
+        btnSemua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSemuaActionPerformed(evt);
+            }
+        });
+        btnSemua.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnSemuaKeyPressed(evt);
+            }
+        });
+        jPanel2.add(btnSemua);
+        btnSemua.setBounds(515, 344, 30, 26);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -595,11 +664,12 @@ public class DlgRegistrasi extends javax.swing.JDialog {
     }//GEN-LAST:event_NmBayarKeyPressed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,
+        status=Sequel.cariIsi("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='"+LblNoRm.getText()+"' and kd_poli='"+LblKdPoli.getText()+"')>0,'Lama','Baru' )");
+        if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
             new String[]{LblNoReg.getText(),LblNoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),LblJam.getText(),
             LblKdDokter.getText(),LblNoRm.getText(),LblKdPoli.getText(),PngJawab.getText(),
             AlamatPngJawab.getText(),HubunganPngJawab.getText(),Biaya.getText(),"Belum",
-            Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur})==true){
+            Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                 UpdateUmur();
                 DlgCetak cetak=new DlgCetak(null,true);
                 cetak.setSize(this.getWidth(),this.getHeight());
@@ -615,11 +685,11 @@ public class DlgRegistrasi extends javax.swing.JDialog {
             LblNoRawat.setText(NoRawat.getText());
             LblTanggal.setText(Tanggal.getSelectedItem().toString());
             LblJam.setText(Sequel.cariIsi("select current_time()"));
-            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",17,
+            if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                 new String[]{LblNoReg.getText(),LblNoRawat.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),LblJam.getText(),
                 LblKdDokter.getText(),LblNoRm.getText(),LblKdPoli.getText(),PngJawab.getText(),
                 AlamatPngJawab.getText(),HubunganPngJawab.getText(),Biaya.getText(),"Belum",
-                Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur})==true){
+                Status.getText(),"Ralan",KdBayar.getText(),umur,sttsumur,"Belum Bayar",status})==true){
                     UpdateUmur();
                     DlgCetak cetak=new DlgCetak(null,true);
                     cetak.setSize(this.getWidth(),this.getHeight());
@@ -674,6 +744,19 @@ public class DlgRegistrasi extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BiayaKeyPressed
 
+    private void btnSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSemuaActionPerformed
+        pilihbayar.setSize(this.getWidth()-20,this.getHeight()-20);
+        pilihbayar.setLocationRelativeTo(this);
+        pilihbayar.tampil();
+        pilihbayar.setVisible(true);
+    }//GEN-LAST:event_btnSemuaActionPerformed
+
+    private void btnSemuaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSemuaKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            btnSemuaActionPerformed(null);
+        }
+    }//GEN-LAST:event_btnSemuaKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -712,6 +795,7 @@ public class DlgRegistrasi extends javax.swing.JDialog {
     private component.TextBox Status;
     private component.Tanggal Tanggal;
     private component.Button btnKeluar;
+    private component.Button btnSemua;
     private component.Button btnSimpan;
     private component.Label jLabel10;
     private component.Label jLabel11;

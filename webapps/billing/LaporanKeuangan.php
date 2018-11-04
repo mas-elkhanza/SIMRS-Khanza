@@ -6,7 +6,9 @@
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body bgcolor='#ffffff'>
-
+        <script type="text/javascript">
+            window.onload = function() { window.print(); }
+        </script>
     <?php
     reportsqlinjection();      
         $KdKategori   =$_GET['kode']; 
@@ -18,7 +20,7 @@
 		$nominal   =$_GET['nom']; 
        
         
-          $setting=  mysql_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+          $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
           echo "<table width='100%' bgcolor='#ffffff' align='left' border='0' padding='0' class='tbl_form' cellspacing='0' cellpadding='0'>
                  <tr class='isi12'>
                        <td width=50% colspan=4 align=left>

@@ -1,7 +1,7 @@
 
 
 <div id="post">
-	<div class="entry"> 
+<div class="entry"> 
     <div align="center" class="link">
         <a href=?act=InputBidang&action=TAMBAH>| Input Data |</a>
         <a href=?act=ListBidang>| List Data |</a>
@@ -28,16 +28,16 @@
         $keyword=trim(isset($_POST['keyword']))?trim($_POST['keyword']):NULL;
         $_sql = "SELECT nama FROM bidang where nama like '%".$keyword."%' ORDER BY nama ASC ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
         
-        if(mysql_num_rows($hasil)!=0) {            
+        if(mysqli_num_rows($hasil)!=0) {            
             
             echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td width='10%'><div align='center'>Proses</strong></div></td>
                         <td width='90%'><div align='center'>Bidang</strong></div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                         echo "<tr class='isi'>
 								<td>
                                     <center>";?>
@@ -59,7 +59,7 @@
     ?>
     </div>
     <?php
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo("<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                         <td><div align='left'>Data : $jumlah | <a target=_blank href=../penggajian/pages/bidang/LaporanBidang.php?&keyword=$keyword>Laporan</a> | <a target=_blank href=../penggajian/pages/bidang/LaporanBidangExel.php?&keyword=$keyword>Excel</a> |</div></td>                        

@@ -39,7 +39,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+              <Color PropertyName="color" blue="50" green="50" red="64" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -133,7 +133,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="108" y="10" width="100" height="30"/>
+                  <AbsoluteConstraints x="109" y="10" width="100" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>

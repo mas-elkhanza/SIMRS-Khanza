@@ -1,0 +1,9 @@
+.parsley-errors-list{
+	list-style: none;
+	margin: 6px 0;
+	padding: 0;
+	font-size: 85%;
+}
+.form-control.parsley-error{
+	border-color: #ff0000;
+}

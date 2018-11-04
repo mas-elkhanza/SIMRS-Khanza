@@ -25,7 +25,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import keuangan.Jurnal;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 
 public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -238,7 +238,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
             ps=koneksi.prepareStatement("select ipsrspembelian.tgl_beli,ipsrspembelian.no_faktur, "+
                     "ipsrspembelian.kode_suplier,ipsrssuplier.nama_suplier, "+
                     "ipsrspembelian.nip,petugas.nama,ipsrspembelian.subtotal,ipsrspembelian.potongan,ipsrspembelian.total, "+
-                    "ipsrspembelian.ppn,ipsrspembelian.tagihan from ipsrspembelian inner join ipsrssuplier inner join petugas inner join kodesatuan  "+
+                    "ipsrspembelian.ppn,ipsrspembelian.tagihan,ipsrspembelian.meterai from ipsrspembelian inner join ipsrssuplier inner join petugas inner join kodesatuan  "+
                     " inner join ipsrsdetailbeli inner join ipsrsbarang "+
                     " on ipsrsdetailbeli.kode_brng=ipsrsbarang.kode_brng "+
                     " and ipsrsbarang.kode_sat=kodesatuan.kode_sat "+
@@ -266,7 +266,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
                         " ipsrsdetailbeli.no_faktur=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsbarang.nama_brng like ? or "+
                         " ipsrsdetailbeli.no_faktur=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsdetailbeli.kode_sat like ? or "+
                         " ipsrsdetailbeli.no_faktur=? and ipsrsbarang.nama_brng like ? and ipsrsbarang.jenis like ? and ipsrsbarang.jenis like ? order by ipsrsdetailbeli.kode_brng  ");
-            pscaribeli=koneksi.prepareStatement("select no_faktur, total,tgl_beli from ipsrspembelian where no_faktur=?");
+            pscaribeli=koneksi.prepareStatement("select no_faktur, tagihan,tgl_beli from ipsrspembelian where no_faktur=?");
             psipsrsdetailbeli=koneksi.prepareStatement("select kode_brng,jumlah from ipsrsdetailbeli where no_faktur=? ");
         } catch (Exception e) {
             System.out.println(e);
@@ -326,7 +326,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(242, 242, 242));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(102, 51, 0));
+        ppHapus.setForeground(new java.awt.Color(100,80,80));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppHapus.setText("Hapus Data Pengadaan Barang");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -350,7 +350,7 @@ public class DlgCariPembelianIpsrs extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Pengadaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Pengadaan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -711,7 +711,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelianIpsrs");
         suplier.emptTeks();
         suplier.isCek();
-        suplier.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         suplier.setLocationRelativeTo(internalFrame1);
         suplier.setAlwaysOnTop(false);
         suplier.setVisible(true);
@@ -721,7 +721,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelianIpsrs");
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -735,7 +735,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         var.setform("DlgCariPembelianIpsrs");
         barang.emptTeks();
         barang.isCek();
-        barang.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.setLocationRelativeTo(internalFrame1);
         barang.setAlwaysOnTop(false);
         barang.setVisible(true);
@@ -899,10 +899,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
              }
              Sequel.queryu("delete from tampjurnal");
              Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                 Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun"),"PEMBELIAN","0",rs.getString("total")
+                 Sequel.cariIsi("select Pengadaan_Ipsrs from set_akun"),"PEMBELIAN","0",rs.getString("tagihan")
              });    
              Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                 Sequel.cariIsi("select kd_rek from ipsrspembelian where no_faktur =?",rs.getString("no_faktur")),"KAS DI TANGAN",rs.getString("total"),"0"
+                 Sequel.cariIsi("select kd_rek from ipsrspembelian where no_faktur =?",rs.getString("no_faktur")),"KAS DI TANGAN",rs.getString("tagihan"),"0"
              }); 
              jur.simpanJurnal(rs.getString("no_faktur"),Sequel.cariIsi("select current_date()"),"U","PEMBATALAN PENGGUNAAN BARANG NON MEDIS DAN PENUNJANG (LAB & RAD)");
          }          
@@ -934,7 +934,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
         var.setform("DlgCariPembelianIpsrs");
         barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         barang.jenis.setLocationRelativeTo(internalFrame1);
         barang.jenis.setVisible(true);
     }//GEN-LAST:event_btnJenisActionPerformed
@@ -1113,6 +1113,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }
                 tabMode.addRow(new Object[]{"","","","","","Total",":","",Valid.SetAngka(rs.getDouble("subtotal")),"",Valid.SetAngka(rs.getDouble("potongan")),Valid.SetAngka(rs.getDouble("total"))});
                 tabMode.addRow(new Object[]{"","","","","","PPN",":","","","","",Valid.SetAngka(rs.getDouble("ppn"))});
+                tabMode.addRow(new Object[]{"","","","","","Meterai",":","","","","",Valid.SetAngka(rs.getDouble("meterai"))});
                 tabMode.addRow(new Object[]{"","","","","","Tagihan",":","","","","",Valid.SetAngka(rs.getDouble("tagihan"))});
                 tagihan=tagihan+rs.getDouble("total");
             }                

@@ -144,7 +144,7 @@ public final class DlgSetHargaObatRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat, Alkes & BHP Medis di Rawat Jalan Per Jenis Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat, Alkes & BHP Medis di Rawat Jalan Per Cara Bayar ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -322,7 +322,7 @@ public final class DlgSetHargaObatRalan extends javax.swing.JDialog {
         panelGlass2.setPreferredSize(new java.awt.Dimension(711, 77));
         panelGlass2.setLayout(null);
 
-        jLabel3.setText("Jenis Bayar :");
+        jLabel3.setText("Cara Bayar :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass2.add(jLabel3);
         jLabel3.setBounds(0, 12, 80, 23);
@@ -494,7 +494,7 @@ public final class DlgSetHargaObatRalan extends javax.swing.JDialog {
     private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeekActionPerformed
         penjab.isCek();
         penjab.emptTeks();
-        penjab.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setVisible(true);
 }//GEN-LAST:event_BtnSeekActionPerformed

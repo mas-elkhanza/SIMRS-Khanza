@@ -41,7 +41,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     private PreparedStatement psjamshift,pspasienralan,psbilling,pspasienranap,pspemasukan,pspengeluaran;
     private ResultSet rs,rspasien,rsbilling;
     private String tanggal2="",
-            sqlpsjamshift="select * from closing_kasir ",
+            sqlpsjamshift="select * from closing_kasir where shift like ? ",
             sqlpsbilling="select billing.nm_perawatan,billing.totalbiaya,billing.status from billing where billing.no_rawat=? ",
             sqlpspasienranap="select reg_periksa.no_rawat,nota_inap.no_nota,pasien.nm_pasien,nota_inap.tanggal,nota_inap.jam,penjab.png_jawab "+
                         "from reg_periksa inner join pasien inner join penjab inner join nota_inap "+
@@ -77,7 +77,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         setSize(457,249);
         tabModeRalan=new DefaultTableModel(null,new Object[]{
             "Tanggal","No.Nota","Nama Pasien","Jenis Bayar","Perujuk","Registrasi","Obat+Emb+Tsl",
-            "Paket Tindakan","Laborat","Radiologi","Tambahan","Potongan","Total","Dokter"}){
+            "Paket Tindakan","Operasi","Laborat","Radiologi","Tambahan","Potongan","Total","Dokter"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -85,7 +85,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         tbRalan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbRalan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 14; i++) {
+        for (i = 0; i < 15; i++) {
             TableColumn column = tbRalan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -197,6 +197,8 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         panelGlass5 = new widget.panelisi();
         label12 = new widget.Label();
         Tgl1 = new widget.Tanggal();
+        jLabel9 = new widget.Label();
+        CmbStatus = new widget.ComboBox();
         BtnCari1 = new widget.Button();
         label19 = new widget.Label();
         BtnPrint = new widget.Button();
@@ -224,7 +226,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Uang Pershift ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Uang Pershift ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -243,6 +245,17 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         Tgl1.setName("Tgl1"); // NOI18N
         Tgl1.setPreferredSize(new java.awt.Dimension(100, 23));
         panelGlass5.add(Tgl1);
+
+        jLabel9.setText("Shift :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        jLabel9.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelGlass5.add(jLabel9);
+
+        CmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Pagi", "Siang", "Sore", "Malam" }));
+        CmbStatus.setName("CmbStatus"); // NOI18N
+        CmbStatus.setOpaque(false);
+        CmbStatus.setPreferredSize(new java.awt.Dimension(100, 23));
+        panelGlass5.add(CmbStatus);
 
         BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari1.setMnemonic('2');
@@ -305,8 +318,8 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
+        TabRawat.setForeground(new java.awt.Color(100,80,80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -329,7 +342,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Rekap Pendapatan Ralan ", internalFrame2);
+        TabRawat.addTab("Rekap Pendapatan Ralan", internalFrame2);
 
         internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame3.setBorder(null);
@@ -346,7 +359,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         internalFrame3.add(Scroll2, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Rekap Pendapatan Ranap ", internalFrame3);
+        TabRawat.addTab("Rekap Pendapatan Ranap", internalFrame3);
 
         internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame4.setBorder(null);
@@ -373,7 +386,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         internalFrame4.add(Scroll3, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Rekap Pemasukan Lain-Lain ", internalFrame4);
+        TabRawat.addTab("Rekap Pemasukan Lain-Lain", internalFrame4);
 
         internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
         internalFrame5.setBorder(null);
@@ -400,7 +413,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
 
         internalFrame5.add(Scroll4, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab(".: Rekap Pengeluaran Harian ", internalFrame5);
+        TabRawat.addTab("Rekap Pengeluaran Harian", internalFrame5);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -637,6 +650,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.ComboBox CmbStatus;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
@@ -648,6 +662,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
     private widget.InternalFrame internalFrame5;
+    private widget.Label jLabel9;
     private widget.Label label12;
     private widget.Label label19;
     private widget.panelisi panelGlass5;
@@ -663,6 +678,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         try{      
             psjamshift=koneksi.prepareStatement(sqlpsjamshift);
             try {
+                psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
                 while(rs.next()){
                     tabModeRalan.addRow(new Object[]{
@@ -678,11 +694,11 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                             pspasienralan.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rs.getString("jam_pulang"));
                         }
                         rspasien=pspasienralan.executeQuery();
-                        all=0;ttlLaborat=0;ttlRadiologi=0;ttlObat=0;ttlRalan_Dokter=0;
+                        all=0;ttlLaborat=0;ttlRadiologi=0;ttlObat=0;ttlRalan_Dokter=0;ttlOperasi=0;
                         ttlRalan_Paramedis=0;ttlTambahan=0;ttlPotongan=0;ttlRegistrasi=0;                
                         i=1;
                         while(rspasien.next()){
-                            Laborat=0;Radiologi=0;Obat=0;Ralan_Dokter=0;Ralan_Dokter_Paramedis=0;Ralan_Paramedis=0;Tambahan=0;Potongan=0;Registrasi=0;
+                            Operasi=0;Laborat=0;Radiologi=0;Obat=0;Ralan_Dokter=0;Ralan_Dokter_Paramedis=0;Ralan_Paramedis=0;Tambahan=0;Potongan=0;Registrasi=0;
                             psbilling=koneksi.prepareStatement(sqlpsbilling);
                             try {
                                 psbilling.setString(1,rspasien.getString("no_rawat"));
@@ -696,6 +712,10 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                                         case "Radiologi":
                                             ttlRadiologi=ttlRadiologi+rsbilling.getDouble("totalbiaya");
                                             Radiologi=Radiologi+rsbilling.getDouble("totalbiaya");
+                                            break;
+                                        case "Operasi":
+                                            ttlOperasi=ttlOperasi+rsbilling.getDouble("totalbiaya");
+                                            Operasi=Operasi+rsbilling.getDouble("totalbiaya");
                                             break;
                                         case "Obat":
                                             ttlObat=ttlObat+rsbilling.getDouble("totalbiaya");
@@ -727,13 +747,13 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                                             break;
                                     }                        
                                 }
-                                all=all+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis+Tambahan+Potongan+Registrasi;
+                                all=all+Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis+Tambahan+Potongan+Registrasi;
                                 tabModeRalan.addRow(new Object[]{
                                     i+". "+rspasien.getString("tanggal")+" "+rspasien.getString("jam"),rspasien.getString("no_nota"),
                                     rspasien.getString("nm_pasien"),rspasien.getString("png_jawab"),Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rspasien.getString("no_rawat")),
                                     Valid.SetAngka(Registrasi),Valid.SetAngka(Obat),Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_Paramedis),
-                                    Valid.SetAngka(Laborat),Valid.SetAngka(Radiologi),Valid.SetAngka(Tambahan),Valid.SetAngka(Potongan),
-                                    Valid.SetAngka(Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_Paramedis+Tambahan+Potongan+Registrasi),
+                                    Valid.SetAngka(Operasi),Valid.SetAngka(Laborat),Valid.SetAngka(Radiologi),Valid.SetAngka(Tambahan),Valid.SetAngka(Potongan),
+                                    Valid.SetAngka(Operasi+Laborat+Radiologi+Obat+Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_Paramedis+Tambahan+Potongan+Registrasi),
                                     rspasien.getString("nm_dokter")                        
                                 });
                                 i++;
@@ -753,11 +773,12 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
                             Valid.SetAngka(ttlRegistrasi),
                             Valid.SetAngka(ttlObat),
                             Valid.SetAngka(ttlRalan_Dokter+ttlRalan_Paramedis),
+                            Valid.SetAngka(ttlOperasi),
                             Valid.SetAngka(ttlLaborat),
                             Valid.SetAngka(ttlRadiologi),
                             Valid.SetAngka(ttlTambahan),
                             Valid.SetAngka(ttlPotongan),
-                            Valid.SetAngka(ttlLaborat+ttlRadiologi+ttlObat+ttlRalan_Dokter+ttlRalan_Paramedis+
+                            Valid.SetAngka(ttlOperasi+ttlLaborat+ttlRadiologi+ttlObat+ttlRalan_Dokter+ttlRalan_Paramedis+
                                     ttlTambahan+ttlPotongan+ttlRegistrasi),""
                         });
                     } catch (Exception e) {
@@ -793,6 +814,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         try{
             psjamshift=koneksi.prepareStatement(sqlpsjamshift);
             try{
+                psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
                 while(rs.next()){
                     tabModeRanap.addRow(new Object[]{
@@ -959,6 +981,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         try{
             psjamshift=koneksi.prepareStatement(sqlpsjamshift);
             try{
+                psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
                 while(rs.next()){
                     tabModePemasukan.addRow(new Object[]{
@@ -1021,6 +1044,7 @@ public class DlgRekapPerShift extends javax.swing.JDialog {
         try{
             psjamshift=koneksi.prepareStatement(sqlpsjamshift);
             try{
+                psjamshift.setString(1,"%"+CmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 rs=psjamshift.executeQuery();
                 while(rs.next()){
                     tabModePengeluaran.addRow(new Object[]{

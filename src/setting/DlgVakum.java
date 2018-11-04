@@ -63,6 +63,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD17 = new usu.widget.ButtonGlass();
         BtnICD25 = new usu.widget.ButtonGlass();
         BtnICD104 = new usu.widget.ButtonGlass();
+        BtnICD115 = new usu.widget.ButtonGlass();
         BtnICD111 = new usu.widget.ButtonGlass();
         BtnICD35 = new usu.widget.ButtonGlass();
         BtnICD76 = new usu.widget.ButtonGlass();
@@ -79,6 +80,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD80 = new usu.widget.ButtonGlass();
         BtnICD110 = new usu.widget.ButtonGlass();
         BtnICD9 = new usu.widget.ButtonGlass();
+        BtnICD114 = new usu.widget.ButtonGlass();
         BtnICD71 = new usu.widget.ButtonGlass();
         BtnICD42 = new usu.widget.ButtonGlass();
         BtnICD18 = new usu.widget.ButtonGlass();
@@ -96,6 +98,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD106 = new usu.widget.ButtonGlass();
         BtnICD13 = new usu.widget.ButtonGlass();
         BtnICD60 = new usu.widget.ButtonGlass();
+        BtnICD117 = new usu.widget.ButtonGlass();
         BtnICD23 = new usu.widget.ButtonGlass();
         BtnICD61 = new usu.widget.ButtonGlass();
         BtnICD36 = new usu.widget.ButtonGlass();
@@ -147,6 +150,7 @@ public class DlgVakum extends javax.swing.JDialog {
         BtnICD57 = new usu.widget.ButtonGlass();
         BtnICD58 = new usu.widget.ButtonGlass();
         BtnICD52 = new usu.widget.ButtonGlass();
+        BtnICD116 = new usu.widget.ButtonGlass();
         BtnICD89 = new usu.widget.ButtonGlass();
         BtnICD10 = new usu.widget.ButtonGlass();
         BtnICD28 = new usu.widget.ButtonGlass();
@@ -167,7 +171,7 @@ public class DlgVakum extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), ".: Silahkan klik tombol untuk menghapus isi table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), ".: Silahkan klik tombol untuk menghapus isi table", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setToolTipText("");
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -176,7 +180,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.setLayout(new java.awt.GridLayout(0, 7, 2, 2));
 
         BtnICD105.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD105.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD105.setForeground(new java.awt.Color(100,80,80));
         BtnICD105.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD105.setText("Akun Bayar");
         BtnICD105.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -193,7 +197,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD105);
 
         BtnICD112.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD112.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD112.setForeground(new java.awt.Color(100,80,80));
         BtnICD112.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD112.setText("Akun Piutang");
         BtnICD112.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -210,7 +214,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD112);
 
         BtnICD86.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD86.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD86.setForeground(new java.awt.Color(100,80,80));
         BtnICD86.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD86.setText("Akun Rekening");
         BtnICD86.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -227,7 +231,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD86);
 
         BtnICD67.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD67.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD67.setForeground(new java.awt.Color(100,80,80));
         BtnICD67.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD67.setText("Barang Non Medis");
         BtnICD67.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -244,7 +248,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD67);
 
         BtnICD101.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD101.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD101.setForeground(new java.awt.Color(100,80,80));
         BtnICD101.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD101.setText("Barcode Parkir");
         BtnICD101.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -261,7 +265,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD101);
 
         BtnICD26.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD26.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD26.setForeground(new java.awt.Color(100,80,80));
         BtnICD26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD26.setText("Barcode Presensi");
         BtnICD26.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -278,7 +282,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD26);
 
         BtnICD92.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD92.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD92.setForeground(new java.awt.Color(100,80,80));
         BtnICD92.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD92.setText("Biaya Harian");
         BtnICD92.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -295,7 +299,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD92);
 
         BtnICD93.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD93.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD93.setForeground(new java.awt.Color(100,80,80));
         BtnICD93.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD93.setText("Biaya Sekali Masuk");
         BtnICD93.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -312,7 +316,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD93);
 
         BtnICD29.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD29.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD29.setForeground(new java.awt.Color(100,80,80));
         BtnICD29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD29.setText("Bidang Pegawai");
         BtnICD29.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -329,7 +333,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD29);
 
         BtnICD108.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD108.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD108.setForeground(new java.awt.Color(100,80,80));
         BtnICD108.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD108.setText("Bridging SEP");
         BtnICD108.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -346,7 +350,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD108);
 
         BtnICD113.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD113.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD113.setForeground(new java.awt.Color(100,80,80));
         BtnICD113.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD113.setText("Catatan Pasien");
         BtnICD113.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -363,7 +367,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD113);
 
         BtnICD46.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD46.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD46.setForeground(new java.awt.Color(100,80,80));
         BtnICD46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD46.setText("Daftar Kasift");
         BtnICD46.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -380,7 +384,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD46);
 
         BtnICD40.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD40.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD40.setForeground(new java.awt.Color(100,80,80));
         BtnICD40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD40.setText("Data Pegawai");
         BtnICD40.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -397,7 +401,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD40);
 
         BtnICD34.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD34.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD34.setForeground(new java.awt.Color(100,80,80));
         BtnICD34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD34.setText("Departemen Pegawai");
         BtnICD34.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -414,7 +418,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD34);
 
         BtnICD21.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD21.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD21.setForeground(new java.awt.Color(100,80,80));
         BtnICD21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD21.setText("Deposit Pasien");
         BtnICD21.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -431,7 +435,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD21);
 
         BtnICD96.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD96.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD96.setForeground(new java.awt.Color(100,80,80));
         BtnICD96.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD96.setText("Diagnosa Pasien");
         BtnICD96.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -448,7 +452,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD96);
 
         BtnICD17.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD17.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD17.setForeground(new java.awt.Color(100,80,80));
         BtnICD17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD17.setText("Diet Pasien");
         BtnICD17.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -465,7 +469,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD17);
 
         BtnICD25.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD25.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD25.setForeground(new java.awt.Color(100,80,80));
         BtnICD25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD25.setText("Dokter");
         BtnICD25.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -482,7 +486,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD25);
 
         BtnICD104.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD104.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD104.setForeground(new java.awt.Color(100,80,80));
         BtnICD104.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD104.setText("DPJP Ranap");
         BtnICD104.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -498,8 +502,25 @@ public class DlgVakum extends javax.swing.JDialog {
         });
         panelBiasa1.add(BtnICD104);
 
+        BtnICD115.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD115.setForeground(new java.awt.Color(100,80,80));
+        BtnICD115.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD115.setText("Golongan Barang");
+        BtnICD115.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD115.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD115.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD115.setName("BtnICD115"); // NOI18N
+        BtnICD115.setRoundRect(true);
+        BtnICD115.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD115ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD115);
+
         BtnICD111.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD111.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD111.setForeground(new java.awt.Color(100,80,80));
         BtnICD111.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD111.setText("INACBG Klaim Baru");
         BtnICD111.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -516,7 +537,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD111);
 
         BtnICD35.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD35.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD35.setForeground(new java.awt.Color(100,80,80));
         BtnICD35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD35.setText("Insentif Pegawai");
         BtnICD35.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -533,7 +554,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD35);
 
         BtnICD76.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD76.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD76.setForeground(new java.awt.Color(100,80,80));
         BtnICD76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD76.setText("Inventaris");
         BtnICD76.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -550,7 +571,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD76);
 
         BtnICD2.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD2.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD2.setForeground(new java.awt.Color(100,80,80));
         BtnICD2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD2.setText("Jadwal Dokter");
         BtnICD2.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -567,7 +588,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD2);
 
         BtnICD100.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD100.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD100.setForeground(new java.awt.Color(100,80,80));
         BtnICD100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD100.setText("Jadwal Pegawai");
         BtnICD100.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -584,7 +605,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD100);
 
         BtnICD48.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD48.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD48.setForeground(new java.awt.Color(100,80,80));
         BtnICD48.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD48.setText("Jam Jaga Pegawai");
         BtnICD48.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -601,7 +622,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD48);
 
         BtnICD99.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD99.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD99.setForeground(new java.awt.Color(100,80,80));
         BtnICD99.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD99.setText("Jam Presensi");
         BtnICD99.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -618,7 +639,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD99);
 
         BtnICD45.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD45.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD45.setForeground(new java.awt.Color(100,80,80));
         BtnICD45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD45.setText("Jasa Lain Pegawai");
         BtnICD45.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -635,7 +656,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD45);
 
         BtnICD55.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD55.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD55.setForeground(new java.awt.Color(100,80,80));
         BtnICD55.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD55.setText("Jenis Barang");
         BtnICD55.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -652,7 +673,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD55);
 
         BtnICD70.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD70.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD70.setForeground(new java.awt.Color(100,80,80));
         BtnICD70.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD70.setText("Jenis Inventaris");
         BtnICD70.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -669,7 +690,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD70);
 
         BtnICD102.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD102.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD102.setForeground(new java.awt.Color(100,80,80));
         BtnICD102.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD102.setText("Jenis Parkir");
         BtnICD102.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -686,7 +707,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD102);
 
         BtnICD33.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD33.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD33.setForeground(new java.awt.Color(100,80,80));
         BtnICD33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD33.setText("Jenjang Jabatan");
         BtnICD33.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -703,7 +724,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD33);
 
         BtnICD90.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD90.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD90.setForeground(new java.awt.Color(100,80,80));
         BtnICD90.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD90.setText("Jurnal Akuntansi");
         BtnICD90.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -720,7 +741,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD90);
 
         BtnICD80.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD80.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD80.setForeground(new java.awt.Color(100,80,80));
         BtnICD80.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD80.setText("Kamar");
         BtnICD80.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -737,7 +758,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD80);
 
         BtnICD110.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD110.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD110.setForeground(new java.awt.Color(100,80,80));
         BtnICD110.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD110.setText("Kamar Aplicare");
         BtnICD110.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -754,7 +775,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD110);
 
         BtnICD9.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD9.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD9.setForeground(new java.awt.Color(100,80,80));
         BtnICD9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD9.setText("Kamar Inap");
         BtnICD9.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -770,8 +791,25 @@ public class DlgVakum extends javax.swing.JDialog {
         });
         panelBiasa1.add(BtnICD9);
 
+        BtnICD114.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD114.setForeground(new java.awt.Color(100,80,80));
+        BtnICD114.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD114.setText("Kategori Barang");
+        BtnICD114.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD114.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD114.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD114.setName("BtnICD114"); // NOI18N
+        BtnICD114.setRoundRect(true);
+        BtnICD114.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD114ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD114);
+
         BtnICD71.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD71.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD71.setForeground(new java.awt.Color(100,80,80));
         BtnICD71.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD71.setText("Kategori Inventaris");
         BtnICD71.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -788,7 +826,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD71);
 
         BtnICD42.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD42.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD42.setForeground(new java.awt.Color(100,80,80));
         BtnICD42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD42.setText("Keanggotaan Pegawai");
         BtnICD42.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -805,7 +843,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD42);
 
         BtnICD18.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD18.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD18.setForeground(new java.awt.Color(100,80,80));
         BtnICD18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD18.setText("Kelahiran Bayi");
         BtnICD18.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -822,7 +860,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD18);
 
         BtnICD75.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD75.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD75.setForeground(new java.awt.Color(100,80,80));
         BtnICD75.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD75.setText("Koleksi Inventaris");
         BtnICD75.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -839,7 +877,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD75);
 
         BtnICD54.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD54.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD54.setForeground(new java.awt.Color(100,80,80));
         BtnICD54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD54.setText("Konversi Satuan");
         BtnICD54.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -856,7 +894,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD54);
 
         BtnICD47.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD47.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD47.setForeground(new java.awt.Color(100,80,80));
         BtnICD47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD47.setText("Koperasi Pegawai");
         BtnICD47.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -873,7 +911,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD47);
 
         BtnICD41.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD41.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD41.setForeground(new java.awt.Color(100,80,80));
         BtnICD41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD41.setText("Lembur Pegawai");
         BtnICD41.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -890,7 +928,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD41);
 
         BtnICD72.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD72.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD72.setForeground(new java.awt.Color(100,80,80));
         BtnICD72.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD72.setText("Merk Inventaris");
         BtnICD72.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -907,7 +945,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD72);
 
         BtnICD56.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD56.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD56.setForeground(new java.awt.Color(100,80,80));
         BtnICD56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD56.setText("Obat, Alkes & BHP");
         BtnICD56.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -924,7 +962,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD56);
 
         BtnICD107.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD107.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD107.setForeground(new java.awt.Color(100,80,80));
         BtnICD107.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD107.setText("Obat BHP OK");
         BtnICD107.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -941,7 +979,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD107);
 
         BtnICD1.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD1.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD1.setForeground(new java.awt.Color(100,80,80));
         BtnICD1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD1.setText("Obat Penyakit");
         BtnICD1.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -958,7 +996,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD1);
 
         BtnICD94.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD94.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD94.setForeground(new java.awt.Color(100,80,80));
         BtnICD94.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD94.setText("Penyakit PD3I");
         BtnICD94.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -975,7 +1013,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD94);
 
         BtnICD3.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD3.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD3.setForeground(new java.awt.Color(100,80,80));
         BtnICD3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD3.setText("Pasien");
         BtnICD3.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -992,7 +1030,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD3);
 
         BtnICD16.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD16.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD16.setForeground(new java.awt.Color(100,80,80));
         BtnICD16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD16.setText("Pasien Meninggal");
         BtnICD16.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1009,7 +1047,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD16);
 
         BtnICD106.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD106.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD106.setForeground(new java.awt.Color(100,80,80));
         BtnICD106.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD106.setText("Pemasukan Lain-Lain");
         BtnICD106.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1026,7 +1064,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD106);
 
         BtnICD13.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD13.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD13.setForeground(new java.awt.Color(100,80,80));
         BtnICD13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD13.setText("Pemberian Obat");
         BtnICD13.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1043,7 +1081,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD13);
 
         BtnICD60.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD60.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD60.setForeground(new java.awt.Color(100,80,80));
         BtnICD60.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD60.setText("Pemesanan Obat & BHP");
         BtnICD60.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1059,8 +1097,25 @@ public class DlgVakum extends javax.swing.JDialog {
         });
         panelBiasa1.add(BtnICD60);
 
+        BtnICD117.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD117.setForeground(new java.awt.Color(100,80,80));
+        BtnICD117.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD117.setText("Pemesanan Non Medis");
+        BtnICD117.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD117.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD117.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD117.setName("BtnICD117"); // NOI18N
+        BtnICD117.setRoundRect(true);
+        BtnICD117.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD117ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD117);
+
         BtnICD23.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD23.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD23.setForeground(new java.awt.Color(100,80,80));
         BtnICD23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD23.setText("Peminjaman Berkas RM");
         BtnICD23.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1077,7 +1132,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD23);
 
         BtnICD61.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD61.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD61.setForeground(new java.awt.Color(100,80,80));
         BtnICD61.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD61.setText("Penjualan Obat & BHP");
         BtnICD61.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1094,7 +1149,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD61);
 
         BtnICD36.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD36.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD36.setForeground(new java.awt.Color(100,80,80));
         BtnICD36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD36.setText("Pendapatan Akte");
         BtnICD36.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1111,7 +1166,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD36);
 
         BtnICD37.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD37.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD37.setForeground(new java.awt.Color(100,80,80));
         BtnICD37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD37.setText("Pendapatan Resume");
         BtnICD37.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1128,7 +1183,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD37);
 
         BtnICD38.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD38.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD38.setForeground(new java.awt.Color(100,80,80));
         BtnICD38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD38.setText("Pendapatan Tuslah");
         BtnICD38.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1145,7 +1200,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD38);
 
         BtnICD39.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD39.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD39.setForeground(new java.awt.Color(100,80,80));
         BtnICD39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD39.setText("Pendapatan Warung");
         BtnICD39.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1162,7 +1217,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD39);
 
         BtnICD30.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD30.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD30.setForeground(new java.awt.Color(100,80,80));
         BtnICD30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD30.setText("Pendidikan Pegawai");
         BtnICD30.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1179,7 +1234,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD30);
 
         BtnICD68.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD68.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD68.setForeground(new java.awt.Color(100,80,80));
         BtnICD68.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD68.setText("Pengadaan Barang Non Medis");
         BtnICD68.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1196,7 +1251,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD68);
 
         BtnICD59.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD59.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD59.setForeground(new java.awt.Color(100,80,80));
         BtnICD59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD59.setText("Pengadaan Obat & BHP");
         BtnICD59.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1213,7 +1268,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD59);
 
         BtnICD88.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD88.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD88.setForeground(new java.awt.Color(100,80,80));
         BtnICD88.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD88.setText("Pengeluaran Harian");
         BtnICD88.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1230,7 +1285,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD88);
 
         BtnICD.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD.setForeground(new java.awt.Color(100,80,80));
         BtnICD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD.setText("Penyakit");
         BtnICD.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1247,7 +1302,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD);
 
         BtnICD19.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD19.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD19.setForeground(new java.awt.Color(100,80,80));
         BtnICD19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD19.setText("Periksa Lab");
         BtnICD19.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1264,7 +1319,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD19);
 
         BtnICD20.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD20.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD20.setForeground(new java.awt.Color(100,80,80));
         BtnICD20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD20.setText("Periksa Radiologi");
         BtnICD20.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1281,7 +1336,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD20);
 
         BtnICD24.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD24.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD24.setForeground(new java.awt.Color(100,80,80));
         BtnICD24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD24.setText("Petugas");
         BtnICD24.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1298,7 +1353,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD24);
 
         BtnICD62.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD62.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD62.setForeground(new java.awt.Color(100,80,80));
         BtnICD62.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD62.setText("Piutang Obat & BHP");
         BtnICD62.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1315,7 +1370,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD62);
 
         BtnICD22.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD22.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD22.setForeground(new java.awt.Color(100,80,80));
         BtnICD22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD22.setText("Piutang Pasien");
         BtnICD22.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1332,7 +1387,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD22);
 
         BtnICD79.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD79.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD79.setForeground(new java.awt.Color(100,80,80));
         BtnICD79.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD79.setText("Potongan Biaya");
         BtnICD79.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1349,7 +1404,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD79);
 
         BtnICD27.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD27.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD27.setForeground(new java.awt.Color(100,80,80));
         BtnICD27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD27.setText("Presensi Pegawai");
         BtnICD27.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1366,7 +1421,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD27);
 
         BtnICD74.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD74.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD74.setForeground(new java.awt.Color(100,80,80));
         BtnICD74.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD74.setText("Produsen Inventaris");
         BtnICD74.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1383,7 +1438,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD74);
 
         BtnICD103.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD103.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD103.setForeground(new java.awt.Color(100,80,80));
         BtnICD103.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD103.setText("Rekap Parkir");
         BtnICD103.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1400,7 +1455,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD103);
 
         BtnICD4.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD4.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD4.setForeground(new java.awt.Color(100,80,80));
         BtnICD4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD4.setText("Registrasi");
         BtnICD4.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1417,7 +1472,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD4);
 
         BtnICD5.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD5.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD5.setForeground(new java.awt.Color(100,80,80));
         BtnICD5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD5.setText("Ralan Dokter");
         BtnICD5.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1434,7 +1489,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD5);
 
         BtnICD6.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD6.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD6.setForeground(new java.awt.Color(100,80,80));
         BtnICD6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD6.setText("Ralan Paramedis");
         BtnICD6.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1451,7 +1506,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD6);
 
         BtnICD7.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD7.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD7.setForeground(new java.awt.Color(100,80,80));
         BtnICD7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD7.setText("Ranap Dokter");
         BtnICD7.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1468,7 +1523,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD7);
 
         BtnICD8.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD8.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD8.setForeground(new java.awt.Color(100,80,80));
         BtnICD8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD8.setText("Ranap Paramedis");
         BtnICD8.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1485,7 +1540,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD8);
 
         BtnICD43.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD43.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD43.setForeground(new java.awt.Color(100,80,80));
         BtnICD43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD43.setText("Potongan Gaji");
         BtnICD43.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1502,7 +1557,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD43);
 
         BtnICD87.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD87.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD87.setForeground(new java.awt.Color(100,80,80));
         BtnICD87.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD87.setText("Rekening Tahun");
         BtnICD87.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1519,7 +1574,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD87);
 
         BtnICD15.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD15.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD15.setForeground(new java.awt.Color(100,80,80));
         BtnICD15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD15.setText("Resep Obat");
         BtnICD15.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1536,7 +1591,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD15);
 
         BtnICD14.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD14.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD14.setForeground(new java.awt.Color(100,80,80));
         BtnICD14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD14.setText("Resep Pulang");
         BtnICD14.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1553,7 +1608,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD14);
 
         BtnICD64.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD64.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD64.setForeground(new java.awt.Color(100,80,80));
         BtnICD64.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD64.setText("Retur Dari Pembeli");
         BtnICD64.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1570,7 +1625,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD64);
 
         BtnICD63.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD63.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD63.setForeground(new java.awt.Color(100,80,80));
         BtnICD63.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD63.setText("Retur Ke Suplier");
         BtnICD63.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1587,7 +1642,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD63);
 
         BtnICD65.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD65.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD65.setForeground(new java.awt.Color(100,80,80));
         BtnICD65.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD65.setText("Retur Obat Ranap");
         BtnICD65.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1604,7 +1659,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD65);
 
         BtnICD66.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD66.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD66.setForeground(new java.awt.Color(100,80,80));
         BtnICD66.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD66.setText("Retur Piutang Pasien");
         BtnICD66.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1621,7 +1676,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD66);
 
         BtnICD109.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD109.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD109.setForeground(new java.awt.Color(100,80,80));
         BtnICD109.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD109.setText("Riwayat Obat, Alkes & BHP");
         BtnICD109.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1638,7 +1693,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD109);
 
         BtnICD95.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD95.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD95.setForeground(new java.awt.Color(100,80,80));
         BtnICD95.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD95.setText("Riwayat Gaji");
         BtnICD95.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1655,7 +1710,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD95);
 
         BtnICD49.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD49.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD49.setForeground(new java.awt.Color(100,80,80));
         BtnICD49.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD49.setText("Riwayat Jabatan");
         BtnICD49.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1672,7 +1727,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD49);
 
         BtnICD51.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD51.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD51.setForeground(new java.awt.Color(100,80,80));
         BtnICD51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD51.setText("Riwayat Pelatihan & Kgt.Ilmiah");
         BtnICD51.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1689,7 +1744,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD51);
 
         BtnICD50.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD50.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD50.setForeground(new java.awt.Color(100,80,80));
         BtnICD50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD50.setText("Riwayat Pendidikan");
         BtnICD50.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1706,7 +1761,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD50);
 
         BtnICD73.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD73.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD73.setForeground(new java.awt.Color(100,80,80));
         BtnICD73.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD73.setText("Ruang Rumah Sakit");
         BtnICD73.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1723,7 +1778,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD73);
 
         BtnICD11.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD11.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD11.setForeground(new java.awt.Color(100,80,80));
         BtnICD11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD11.setText("Rujukan Keluar");
         BtnICD11.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1740,7 +1795,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD11);
 
         BtnICD12.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD12.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD12.setForeground(new java.awt.Color(100,80,80));
         BtnICD12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD12.setText("Rujukan Masuk");
         BtnICD12.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1757,7 +1812,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD12);
 
         BtnICD53.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD53.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD53.setForeground(new java.awt.Color(100,80,80));
         BtnICD53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD53.setText("Satuan Barang");
         BtnICD53.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1774,7 +1829,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD53);
 
         BtnICD98.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD98.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD98.setForeground(new java.awt.Color(100,80,80));
         BtnICD98.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD98.setText("Sms Masuk");
         BtnICD98.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1791,7 +1846,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD98);
 
         BtnICD97.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD97.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD97.setForeground(new java.awt.Color(100,80,80));
         BtnICD97.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD97.setText("Sidik Jari");
         BtnICD97.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1808,7 +1863,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD97);
 
         BtnICD77.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD77.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD77.setForeground(new java.awt.Color(100,80,80));
         BtnICD77.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD77.setText("Sirkulasi Inventaris");
         BtnICD77.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1825,7 +1880,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD77);
 
         BtnICD31.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD31.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD31.setForeground(new java.awt.Color(100,80,80));
         BtnICD31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD31.setText("Status Kerja");
         BtnICD31.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1842,7 +1897,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD31);
 
         BtnICD32.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD32.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD32.setForeground(new java.awt.Color(100,80,80));
         BtnICD32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD32.setText("Status WP");
         BtnICD32.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1859,7 +1914,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD32);
 
         BtnICD69.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD69.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD69.setForeground(new java.awt.Color(100,80,80));
         BtnICD69.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD69.setText("Stok Keluar Barang Non Medis");
         BtnICD69.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1876,7 +1931,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD69);
 
         BtnICD57.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD57.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD57.setForeground(new java.awt.Color(100,80,80));
         BtnICD57.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD57.setText("Stok Opname Obat & BHP");
         BtnICD57.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1893,7 +1948,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD57);
 
         BtnICD58.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD58.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD58.setForeground(new java.awt.Color(100,80,80));
         BtnICD58.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD58.setText("Stok Obat Pasien");
         BtnICD58.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1910,9 +1965,9 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD58);
 
         BtnICD52.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD52.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD52.setForeground(new java.awt.Color(100,80,80));
         BtnICD52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnICD52.setText("Suplier");
+        BtnICD52.setText("Suplier Medis");
         BtnICD52.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
         BtnICD52.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnICD52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1926,8 +1981,25 @@ public class DlgVakum extends javax.swing.JDialog {
         });
         panelBiasa1.add(BtnICD52);
 
+        BtnICD116.setBackground(new java.awt.Color(195, 205, 185));
+        BtnICD116.setForeground(new java.awt.Color(100,80,80));
+        BtnICD116.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnICD116.setText("Suplier Non Medis");
+        BtnICD116.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
+        BtnICD116.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnICD116.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnICD116.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnICD116.setName("BtnICD116"); // NOI18N
+        BtnICD116.setRoundRect(true);
+        BtnICD116.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnICD116ActionPerformed(evt);
+            }
+        });
+        panelBiasa1.add(BtnICD116);
+
         BtnICD89.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD89.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD89.setForeground(new java.awt.Color(100,80,80));
         BtnICD89.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD89.setText("Tagihan Masuk");
         BtnICD89.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1944,7 +2016,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD89);
 
         BtnICD10.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD10.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD10.setForeground(new java.awt.Color(100,80,80));
         BtnICD10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD10.setText("Tagihan Operasi");
         BtnICD10.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1961,7 +2033,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD10);
 
         BtnICD28.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD28.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD28.setForeground(new java.awt.Color(100,80,80));
         BtnICD28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD28.setText("Tahun & Bulan Gaji");
         BtnICD28.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1978,7 +2050,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD28);
 
         BtnICD78.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD78.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD78.setForeground(new java.awt.Color(100,80,80));
         BtnICD78.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD78.setText("Tambahan Biaya");
         BtnICD78.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -1995,7 +2067,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD78);
 
         BtnICD83.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD83.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD83.setForeground(new java.awt.Color(100,80,80));
         BtnICD83.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD83.setText("Tarif Lab");
         BtnICD83.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -2012,7 +2084,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD83);
 
         BtnICD85.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD85.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD85.setForeground(new java.awt.Color(100,80,80));
         BtnICD85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD85.setText("Tarif Operasi");
         BtnICD85.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -2029,7 +2101,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD85);
 
         BtnICD84.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD84.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD84.setForeground(new java.awt.Color(100,80,80));
         BtnICD84.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD84.setText("Tarif Radiologi");
         BtnICD84.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -2046,7 +2118,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD84);
 
         BtnICD81.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD81.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD81.setForeground(new java.awt.Color(100,80,80));
         BtnICD81.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD81.setText("Tarif Ralan");
         BtnICD81.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -2063,7 +2135,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD81);
 
         BtnICD82.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD82.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD82.setForeground(new java.awt.Color(100,80,80));
         BtnICD82.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD82.setText("Tarif Ranap");
         BtnICD82.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -2080,7 +2152,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD82);
 
         BtnICD44.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD44.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD44.setForeground(new java.awt.Color(100,80,80));
         BtnICD44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD44.setText("Tunjangan");
         BtnICD44.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -2097,7 +2169,7 @@ public class DlgVakum extends javax.swing.JDialog {
         panelBiasa1.add(BtnICD44);
 
         BtnICD91.setBackground(new java.awt.Color(195, 205, 185));
-        BtnICD91.setForeground(new java.awt.Color(153, 0, 51));
+        BtnICD91.setForeground(new java.awt.Color(100,80,80));
         BtnICD91.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnICD91.setText("Tracker Login");
         BtnICD91.setToolTipText("Silahkan hapus terlebih dahulu tabel yang bereferensi !!");
@@ -2131,13 +2203,11 @@ public class DlgVakum extends javax.swing.JDialog {
         panelGlass1.add(button1);
         button1.setBounds(710, 10, 100, 30);
 
-        jLabel12.setForeground(new java.awt.Color(153, 0, 51));
         jLabel12.setText("berelasi juga ikut terhapus. Lakukan backup data terlebih dulu sebelum menghapus isi table");
         jLabel12.setName("jLabel12"); // NOI18N
         panelGlass1.add(jLabel12);
         jLabel12.setBounds(10, 25, 660, 14);
 
-        jLabel11.setForeground(new java.awt.Color(153, 0, 51));
         jLabel11.setText("Berhati-hatilah dalam menghapus isi table. Terdapat relasi antar table, ketika Anda menghapus suatu table maka di table yang");
         jLabel11.setName("jLabel11"); // NOI18N
         panelGlass1.add(jLabel11);
@@ -2168,14 +2238,21 @@ public class DlgVakum extends javax.swing.JDialog {
 
     private void BtnICD3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD3ActionPerformed
         hapus("Catatan Pasien","lain","catatan_pasien"); 
+        hapus("Pasien Meninggal","lain","pasien_mati");  
+        hapus("Peminjaman Berkas","lain","peminjaman_berkas"); 
+        hapus("Piutang Obat Pasien","lain","piutang"); 
+        hapus("Booking Registrasi","lain","booking_registrasi");
+        hapus("SKDP BPJS","lain","skdp_bpjs");
         hapus("Pasien","Registrasi Periksa, Pasien Meninggal, Peminjaman Berkas, Piutang Obat,\nPenjualan Obat, Piutang Pasien, Catatan Pasien","pasien");
     }//GEN-LAST:event_BtnICD3ActionPerformed
 
     private void BtnICD4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD4ActionPerformed
-        hapus("Rujukan Keluar","lain","rujuk");        
+        hapus("Rujukan Keluar","lain","rujuk");   
+        hapus("Booking Operasi","lain","booking_operasi");   
         hapus("Bridging SEP","lain","bridging_sep");   
         hapus("Bridging Inhealth","lain","bridging_inhealth");
         hapus("Rujukan Masuk","lain","rujuk_masuk");
+        hapus("Insiden Keselamatan Pasien","lain ","insiden_keselamatan_pasien");
         hapus("Piutang Pasien","lain","piutang_pasien");
         hapus("Bayar Piutang Pasien","lain","bayar_piutang");
         hapus("DPJP Ranap","lain","dpjp_ranap");
@@ -2183,7 +2260,38 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Nota Rawat Jalan","lain","nota_jalan");
         hapus("Detail Piutang Pasien","lain","detail_piutang_pasien");
         hapus("Detail Nota Rawat Inap","lain","detail_nota_inap");
-        hapus("Nota Rawat Inap","lain","nota_inap");
+        hapus("Nota Rawat Inap","lain","nota_inap");        
+        hapus("Tindakan Rawat Jalan Dokter","lain","rawat_jl_dr");  
+        hapus("Tindakan Rawat Jalan Paramedis","lain","rawat_jl_pr"); 
+        hapus("Tindakan Rawat Jalan Dokter & Paramedis","lain","rawat_jl_drpr"); 
+        hapus("Tindakan Rawat Inap Dokter","lain","rawat_inap_dr");  
+        hapus("Tindakan Rawat Inap Paramedis","lain","rawat_inap_pr"); 
+        hapus("Tindakan Rawat Inap Dokter & Paramedis","lain","rawat_inap_drpr");         
+        hapus("Berkas Digital Perawata","lain","berkas_digital_perawatan");       
+        hapus("Pemeriksaan Radiologi","lain","periksa_radiologi");            
+        hapus("Beri BHP Radiologi","lain","beri_bhp_radiologi");            
+        hapus("Gambar Radiologi","lain","gambar_radiologi");              
+        hapus("Hasil Radiologi","lain","hasil_radiologi");             
+        hapus("Tambahan Biaya","lain","tambahan_biaya");              
+        hapus("Potongan Biaya","lain","pengurangan_biaya");  
+        hapus("Pemeriksaan Laborat","lain","periksa_lab");     
+        hapus("Detail Pemeriksaan Laborat","lain","detail_periksa_lab"); 
+        hapus("Diagnosa Pasien","lain","diagnosa_pasien"); 
+        hapus("Diet Pasien","lain","detail_beri_diet"); 
+        hapus("Ranap Gabung","lain","ranap_gabung"); 
+        hapus("Stok Obat Pasien Ranap","lain","stok_obat_pasien"); 
+        hapus("Resep Pulang Pasien","lain","resep_pulang"); 
+        hapus("Operasi","lain","operasi"); 
+        hapus("Obat Racikan","lain","obat_racikan"); 
+        hapus("Detail Obat Racikan","lain","detail_obat_racikan");  
+        hapus("Resep Obat","lain","resep_obat");         
+        hapus("Billing","lain","billing");             
+        hapus("Pemeriksaan Obstetri Ralan","lain","pemeriksaan_obstetri_ralan"); 
+        hapus("Pemeriksaan Obstetri Ranap","lain","pemeriksaan_obstetri_ranap"); 
+        hapus("Pemeriksaan Ginekologi Ralan","lain","pemeriksaan_ginekologi_ralan"); 
+        hapus("Pemeriksaan Ginekologi Ranap","lain","pemeriksaan_ginekologi_ranap"); 
+        hapus("Booking Operasi","lain","booking_operasi");  
+        hapus("Saran Kesan Lab","lain","saran_kesan_lab");         
         hapus("Registrasi","Rawat Jalan,\nKamar Inap, Diagnosa Pasien, Tagihan Masuk, Pemberian Obat, Resep Obat, Rujukan Masuk,\n"+
                 "Rujukan Keluar, Stok Obat Pasien, Diagnosa Pasien, Resep Pulang, Potongan Biaya, Tambahan Biaya,\nDPJP Ranap, Diet Pasien","reg_periksa");
     }//GEN-LAST:event_BtnICD4ActionPerformed
@@ -2227,6 +2335,8 @@ public class DlgVakum extends javax.swing.JDialog {
     private void BtnICD13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD13ActionPerformed
         hapus("Pemberian Obat","lain","detail_pemberian_obat");
         hapus("Tagihan Obat Langsung","lain","tagihan_obat_langsung");
+        hapus("Obat Racikan","lain","obat_racikan");
+        hapus("Detail Obat Racikan","lain","_detail_obat_racikan");
     }//GEN-LAST:event_BtnICD13ActionPerformed
 
     private void BtnICD14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD14ActionPerformed
@@ -2274,6 +2384,14 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD23ActionPerformed
 
     private void BtnICD24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD24ActionPerformed
+        hapus("Surat Pemesanan Non Medis","lain","surat_pemesanan_non_medis");
+        hapus("Surat Pemesanan Medis","lain","surat_pemesanan_medis");
+        hapus("Pemesanan Barang Non Medis","lain ","ipsrspemesanan");
+        hapus("Insiden Keselamatan Pasien","lain ","insiden_keselamatan_pasien");
+        hapus("Pengadaan Barang Non Medis","lain ","ipsrspembelian");
+        hapus("Bayar Pemesanan Obat/Alkes/BHP","lain ","bayar_pemesanan");
+        hapus("Pemesanan Barang Medis","lain ","pemesanan");
+        hapus("Pengadaan Barang Medis","lain ","pembelian");
         hapus("Petugas","Sirkulasi Inventaris, Ralan Paramedis, Ranap Paramedis,\nPeriksa Radiologi, Periksa Laboratorium, Pengadaan & Stok Keluar Barang Non Medis"+
                 ", Pengadaan Obat & BHP, Pemesanan Obat & BHP,\nPenjualan Obat & BHP, Piutang Obat & BHP,Retur Ke Suplier, Retur Piutang Pasien, Retus Dari Pembeli ","petugas");
     }//GEN-LAST:event_BtnICD24ActionPerformed
@@ -2281,6 +2399,9 @@ public class DlgVakum extends javax.swing.JDialog {
     private void BtnICD25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD25ActionPerformed
         hapus("Resep Obat","lain","resep_obat");
         hapus("Penanggung Jawab Lab & Radiologi","lain","set_pjlab");
+        hapus("Booking Operasi","lain","booking_operasi");
+        hapus("Booking Registrasi","lain","booking_registrasi");
+        hapus("SKDP BPJS","lain","skdp_bpjs");
         hapus("Dokter","Jadwal Praktek, Ranap Dokter, Ralan Dokter\nPeriksa Lab, Periksa Radiologi, Registrasi, DPJP Ranap","dokter");
     }//GEN-LAST:event_BtnICD25ActionPerformed
 
@@ -2357,26 +2478,34 @@ public class DlgVakum extends javax.swing.JDialog {
         hapus("Pendapatan Akte","Lain","set_akte");
         hapus("Pembagian Akte","Lain","pembagian_akte");
         hapus("Resep Obat","lain","resep_obat");
+        hapus("Booking Operasi","lain","booking_operasi");
+        hapus("Booking Registrasi","lain","booking_registrasi");
+        hapus("SKDP BPJS","lain","skdp_bpjs");
         hapus("Penanggung Jawab Lab & Radiologi","lain","set_pjlab");
         hapus("Dokter","Jadwal Praktek, Ranap Dokter, Ralan Dokter\nPeriksa Lab, Periksa Radiologi, Registrasi, DPJP Ranap","dokter");
         hapus("Pendapatan Warung","lain","set_warung");
         hapus("Pembagian Warung","lain","pembagian_warung");
+        hapus("Pembagian Tuslah","lain","pembagian_tuslah");
         hapus("Presensi Pegawai","lain","presensi");
         hapus("Presensi Pegawai","lain","temporary_presensi");
         hapus("Presensi Pegawai","lain","rekap_presensi");
         hapus("Jadwal Pegawai","lain","jadwal_pegawai");
+        hapus("Jadwal Tambahan Pegawai","lain","jadwal_tambahan");
         hapus("Barcode Presensi","lain","barcode");
         hapus("Ketidakhadiran Pegawai","lain","ketidakhadiran");
         hapus("Tambahan Rawat Jalan","lain","rawatjalan");
         hapus("Ambil Dana Kesehatan","lain","ambil_dankes");
         hapus("Tambahan Tindakan","lain","tindakan");
         hapus("Tambahan Jaga","lain","tambahjaga");
+        hapus("Jasa Lain","lain","jasa_lain");
         hapus("Potongan Gaji","lain","potongan");
         hapus("Jaga Malam","lain","jgmlm");
         hapus("Jumlah Pasien Ditangani Dokter","lain","jumpasien");
         hapus("Riwayat Jabatan","lain","riwayat_jabatan");
         hapus("Riwayat Kenaikan Gaji","lain","riwayat_naik_gaji");
         hapus("Riwayat Pendidikan","lain","riwayat_pendidikan");
+        hapus("Riwayat Penghargaan","lain","riwayat_penghargaan");
+        hapus("Riwayat Penelitian","lain","riwayat_penelitian");
         hapus("Angsuran Koperasi","lain","angsuran_koperasi");
         hapus("Riwayat Kegiatan Ilmiah & Pelatihan","lain","riwayat_seminar");
         hapus("Peminjaman Koperasi","lain","peminjaman_koperasi");
@@ -2438,7 +2567,10 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD51ActionPerformed
 
     private void BtnICD52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD52ActionPerformed
-        hapus("Data Suplier","lain","datasuplier");
+        hapus("Surat Pemesanan Medis","lain","surat_pemesanan_medis");
+        hapus("Data Pemesanan Medis","lain","pemesanan");
+        hapus("Data Pengadaan Barang Medis","lain","pembelian");
+        hapus("Data Suplier Medis","lain","datasuplier");
     }//GEN-LAST:event_BtnICD52ActionPerformed
 
     private void BtnICD53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD53ActionPerformed
@@ -2474,6 +2606,7 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD59ActionPerformed
 
     private void BtnICD60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD60ActionPerformed
+        hapus("Bayar Pemesanan Obat/Alkes/BHP","lain ","bayar_pemesanan");
         hapus("Pemesanan Obat & BHP","lain","detailpesan");
         hapus("Pemesanan Obat & BHP","lain","pemesanan");
     }//GEN-LAST:event_BtnICD60ActionPerformed
@@ -2588,8 +2721,11 @@ public class DlgVakum extends javax.swing.JDialog {
 
     private void BtnICD86ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD86ActionPerformed
         hapus("Akun Piutang","Jurnal Akuntansi","akun_piutang");
+        hapus("Akun Bayar","Jurnal Akuntansi","akun_bayar");
         hapus("Rekening Tahun","Jurnal Akuntansi","rekeningtahun");        
         hapus("Subrekening","Lain","subrekening");
+        hapus("Kategori Pemasukan Lain-Lain","Rekening Tahun","kategori_pemasukan_lain");
+        hapus("Kategori Pengeluaran Harian","Rekening Tahun","kategori_pengeluaran_harian");
         hapus("Akun Rekening","Rekening Tahun","rekening");
     }//GEN-LAST:event_BtnICD86ActionPerformed
 
@@ -2670,6 +2806,7 @@ public class DlgVakum extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnICD104ActionPerformed
 
     private void BtnICD105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD105ActionPerformed
+        hapus("Jual Bebas BHP/Obat","lain","penjualan");
         hapus("Akun Bayar","Pengadaan Barang, Billing, Penjualan, Pemesanan, dll","akun_bayar");
     }//GEN-LAST:event_BtnICD105ActionPerformed
 
@@ -2704,6 +2841,27 @@ public class DlgVakum extends javax.swing.JDialog {
     private void BtnICD113ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD113ActionPerformed
         hapus("Catatan Pasien","lain","catatan_pasien"); 
     }//GEN-LAST:event_BtnICD113ActionPerformed
+
+    private void BtnICD114ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD114ActionPerformed
+        hapus("Kategori Barang","Data Obat/Alkes/BHP","kategori_barang");
+    }//GEN-LAST:event_BtnICD114ActionPerformed
+
+    private void BtnICD115ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD115ActionPerformed
+        hapus("Golongan Barang","Data Obat/Alkes/BHP","golongan_barang");
+    }//GEN-LAST:event_BtnICD115ActionPerformed
+
+    private void BtnICD116ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD116ActionPerformed
+        hapus("Surat Pemesanan Non Medis","lain","surat_pemesanan_non_medis");
+        hapus("Data Pemesanan Non Medis","lain","ipsrspemesanan");
+        hapus("Data Pengadaan Barang Non Medis","lain","ipsrspembelian");
+        hapus("Data Suplier Non Medis","lain","ipsrssuplier");
+    }//GEN-LAST:event_BtnICD116ActionPerformed
+
+    private void BtnICD117ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICD117ActionPerformed
+        hapus("Bayar Pemesanan Non Medis","lain ","bayar_pemesanan_non_medis");
+        hapus("Pemesanan Non Medis","lain","ipsrsdetailpesan");
+        hapus("Pemesanan Non Medis","lain","ipsrspemesanan");
+    }//GEN-LAST:event_BtnICD117ActionPerformed
 
     /**
     * @param args the command line arguments
@@ -2740,6 +2898,10 @@ public class DlgVakum extends javax.swing.JDialog {
     private usu.widget.ButtonGlass BtnICD111;
     private usu.widget.ButtonGlass BtnICD112;
     private usu.widget.ButtonGlass BtnICD113;
+    private usu.widget.ButtonGlass BtnICD114;
+    private usu.widget.ButtonGlass BtnICD115;
+    private usu.widget.ButtonGlass BtnICD116;
+    private usu.widget.ButtonGlass BtnICD117;
     private usu.widget.ButtonGlass BtnICD12;
     private usu.widget.ButtonGlass BtnICD13;
     private usu.widget.ButtonGlass BtnICD14;

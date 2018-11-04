@@ -27,6 +27,7 @@ public class DlgBulananHAIs extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0,deku=0,urine=0,sputum=0,darah=0;
+    private StringBuilder htmlContent;
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -43,10 +44,10 @@ public class DlgBulananHAIs extends javax.swing.JDialog {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#3c5032;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"
+                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#645050;}"+
+                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -89,7 +90,7 @@ public class DlgBulananHAIs extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Laporan Bulanan HAIs ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Laporan Bulanan HAIs ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -206,10 +207,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#3c5032;}"+                    
-                    ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#3c5032;}"
+                    ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#645050;}"+                    
+                    ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"
             );
             bg.close();
             
@@ -305,30 +306,30 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     private void prosesCari() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
-            StringBuilder htmlContent = new StringBuilder();
+            htmlContent = new StringBuilder();
             htmlContent.append(                             
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='2%' rowspan='2'>No.</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='7%' rowspan='2'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='7%' rowspan='2'>Jml.Pasien</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='23%' colspan='4'>Hari Pemasangan</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='23%' colspan='4'>Infeksi</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='5%' rowspan='2'>Deku</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='25%' colspan='3'>Hasil Kultur</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center' width='8%' rowspan='2'>Antibiotik</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='2%' rowspan='2'>No.</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' rowspan='2'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' rowspan='2'>Jml.Pasien</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='23%' colspan='4'>Hari Pemasangan</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='23%' colspan='4'>Infeksi</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%' rowspan='2'>Deku</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='25%' colspan='3'>Hasil Kultur</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%' rowspan='2'>Antibiotik</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>ETT</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>CVL</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>IVL</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>UC</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>VAP</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>IAD</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>PLEB</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>ISK</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>Sputum</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>Darah</td>"+
-                    "<td valign='middle' bgcolor='#f8fdf3' align='center'>Urine</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>ETT</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>CVL</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>IVL</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>UC</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>VAP</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>IAD</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>PLEB</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>ISK</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>Sputum</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>Darah</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>Urine</td>"+
                 "</tr>"
             );     
             ps=koneksi.prepareStatement(
@@ -386,7 +387,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(var.getrl4bsebab());
+        BtnPrint.setEnabled(var.getbulanan_HAIs());
     }
     
 }

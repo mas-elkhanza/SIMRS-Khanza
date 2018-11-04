@@ -1,0 +1,34 @@
+.radio,
+.checkbox {
+  label {
+    padding-right: 1.25rem;
+    padding-left: initial;
+  }
+}
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  margin-right: -1.25rem;
+  margin-left: auto;
+}
+
+.radio-inline,
+.checkbox-inline {
+  padding-right: 1.25rem;
+  padding-left: 0;
+}
+.radio-inline + .radio-inline,
+.checkbox-inline + .checkbox-inline {
+  margin-right: .75rem;
+  margin-left: 0;
+}
+
+.form-control-danger, 
+.form-control-success, 
+.form-control-warning{
+  background-position: center left .5625rem;
+  padding-right: 0.75rem;
+  padding-left: 2.25rem;
+}

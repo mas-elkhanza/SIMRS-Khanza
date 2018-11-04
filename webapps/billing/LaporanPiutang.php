@@ -6,7 +6,9 @@
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body bgcolor='#ffffff'>
-
+        <script type="text/javascript">
+            window.onload = function() { window.print(); }
+        </script>
     <?php
         $petugas = str_replace("_"," ",$_GET['petugas']); 
         $tanggal = str_replace("_"," ",$_GET['tanggal']); 
@@ -20,8 +22,8 @@
         $_sql = "select temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary order by no asc";   
         $hasil=bukaquery($_sql);
         
-        if(mysql_num_rows($hasil)!=0) { 
-            $setting=  mysql_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+        if(mysqli_num_rows($hasil)!=0) { 
+            $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
             echo "   
             <table width='".getOne("select notaralan from set_nota")."' bgcolor='#ffffff' align='left' border='0' padding='0' class='tbl_form' cellspacing='0' cellpadding='0'>
             <tr class='isi12' padding='0'>
@@ -47,7 +49,7 @@
 				</td>
             </tr>
             ";  $z=1;
-                while($inapdrpasien = mysql_fetch_array($hasil)) {
+                while($inapdrpasien = mysqli_fetch_array($hasil)) {
                       echo "<tr class='isi12' padding='0'>
                                 <td padding='0' width='30%'><font color='000000' size='1'  face='Tahoma'>".str_replace("  ","&nbsp;&nbsp;",$inapdrpasien[0])."</td> 
                                 <td padding='0' width='40%' colspan='6'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[1]</td>              

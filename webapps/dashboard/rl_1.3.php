@@ -36,7 +36,7 @@ switch($_GET[act]){
 				 WHERE kamar.kd_bangsal = bangsal.kd_bangsal AND kamar.kd_bangsal = aplicare_ketersediaan_kamar.kd_bangsal 
 				 GROUP BY kamar.kd_bangsal ORDER BY bangsal.nm_bangsal ASC";            
         $hasil=bukaquery($_sql);
-                 while($baris = mysql_fetch_array($hasil)) { 
+                 while($baris = mysqli_fetch_array($hasil)) { 
 				 $ppk=$baris['kode_ppk'];
 				 $ruang=$baris['nm_bangsal'];
 				 $jenis=$baris['kode_kelas_aplicare'];

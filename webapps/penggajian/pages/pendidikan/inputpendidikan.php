@@ -12,20 +12,22 @@
                 echo "";
                 $action      =isset($_GET['action'])?$_GET['action']:NULL;
                 $tingkat     =str_replace("_"," ",isset($_GET['tingkat']))?str_replace("_"," ",$_GET['tingkat']):NULL;
+                $tingkatx     ="";
                 if($action == "TAMBAH"){
                     $tingkat      = isset($_GET['tingkat'])?$_GET['tingkat']:NULL;
                     $indek        ="";
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT tingkat,indek,gapok1,kenaikan,maksimal FROM pendidikan WHERE tingkat='$tingkat'";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $tingkat      = $baris[0];
+                    $tingkatx     = $baris[0];
                     $indek        = $baris[1];
                     $gapok1       = $baris[2];
                     $kenaikan       = $baris[3];
                     $maksimal       = $baris[4];
                 }
-                echo"<input type=hidden name=tingkat value=$tingkat><input type=hidden name=action value=$action>";
+                echo"<input type=hidden name=tingkatx value='$tingkatx'><input type=hidden name=action value=$action>";
             ?>
             <table width="100%" align="center">
                 <tr class="head">
@@ -64,6 +66,7 @@
                 $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
                 if (isset($BtnSimpan)) {
                     $tingkat   = trim($_POST['tingkat']);
+                    $tingkatx  = trim($_POST['tingkatx']);
                     $indek     = trim($_POST['indek']);
                     $gapok1       = trim($_POST['gapok1']);
                     $kenaikan       = trim($_POST['kenaikan']);
@@ -76,7 +79,7 @@
                                 break;
                             case "UBAH":
                                 Ubah(" pendidikan "," tingkat='$tingkat',indek='$indek',gapok1='$gapok1',kenaikan='$kenaikan',
-                                        maksimal='$maksimal' WHERE tingkat='$tingkat' ", "Pendidikan");
+                                        maksimal='$maksimal' WHERE tingkat='$tingkatx' ", "Pendidikan");
                                 echo"<html><head><title></title><meta http-equiv='refresh' content='2;URL=?act=ListPendidikan'></head><body></body></html>";
                                 break;
                         }

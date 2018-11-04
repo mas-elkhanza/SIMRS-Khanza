@@ -1,7 +1,7 @@
 <?php
 	function title(){
  		$judul ="Bridging INACBG --)(*!!@#$%";
-		$judul = ereg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);
+		$judul = preg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);
 		$judul = str_replace(array('.','-','/',',')," ",$judul);
 		$judul = trim($judul);
 		echo "$judul";	
@@ -44,7 +44,7 @@
 	function formProtek() {
                 $aksi=isset($_GET['act'])?$_GET['act']:NULL;
 		if (!cekUser()) {
-                    $form = array ('HomeAdmin','KlaimBaruOtomatis','KlaimBaruManual');
+                    $form = array ('HomeAdmin','KlaimBaruOtomatis','KlaimBaruManual','KlaimBaruManual2','DetailKirim');
                         foreach ($form as $page) {
                             if ($aksi==$page) {
                                 echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -63,6 +63,8 @@
                     case 'HomeAdmin'            : include_once('pages/kontak.php'); break;
                     case 'KlaimBaruOtomatis'    : include_once('pages/klaimbaruotomatis.php'); break;
                     case 'KlaimBaruManual'      : include_once('pages/klaimbarumanual.php'); break;
+                    case 'KlaimBaruManual2'     : include_once('pages/klaimbarumanual2.php'); break;
+                    case 'DetailKirim'          : include_once('pages/detailkirim.php'); break;
 
                     default                     : include_once('pages/kontak.php');
 			

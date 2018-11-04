@@ -17,7 +17,7 @@
                 }else if($action == "UBAH"){
                     $_sql         = "SELECT nama FROM bidang WHERE nama='$nama'";
                     $hasil        = bukaquery($_sql);
-                    $baris        = mysql_fetch_row($hasil);
+                    $baris        = mysqli_fetch_row($hasil);
                     $nama      = $baris[0];
                 }
                 echo"<input type=hidden name=nama value=$nama><input type=hidden name=action value=$action>";

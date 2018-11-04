@@ -6,7 +6,9 @@
         <link href="../../style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body bgcolor='#ffffff'>
-
+        <script type="text/javascript">
+            window.onload = function() { window.print(); }
+        </script>
     <?php
         reportsqlinjection();
         
@@ -21,9 +23,9 @@
         $_sql = "select pasien.nm_pasien,pasien.jk,pasien.alamat, pasien.umur
                 from pasien where pasien.no_rkm_medis='$norm' ";   
         $hasil=bukaquery($_sql);
-        $datapasien=  mysql_fetch_array($hasil);
+        $datapasien=  mysqli_fetch_array($hasil);
         
-        if(mysql_num_rows($hasil)!=0) {             
+        if(mysqli_num_rows($hasil)!=0) {             
             echo "   
             <table width='100%' bgcolor='#ffffff' align='left' border='0' class='tbl_form'>
             <tr class='isi12'>
@@ -97,14 +99,14 @@
                            where detail_pemberian_obat.kode_brng=databarang.kode_brng
                            and no_rawat='$norw' group by databarang.nama_brng";
                 $hasilobat=bukaquery($_sqlobat);               
-                while($obat = mysql_fetch_array($hasilobat)) {
+                while($obat = mysqli_fetch_array($hasilobat)) {
                     echo "$obat[0], ";
                 } 
             echo "<br/><br/>Hasil pemeriksaan penunjang :<br/>";
                 $_sqljalandr="select hasil from rawat_jl_dr  where  rawat_jl_dr.no_rawat='$norw' group by hasil";
                 $hasiljalandr=bukaquery($_sqljalandr);
                 $no=1;
-                while($pemeriksaan = mysql_fetch_array($hasiljalandr)) {
+                while($pemeriksaan = mysqli_fetch_array($hasiljalandr)) {
                     if(!empty($pemeriksaan[0])){
                         echo "$no. $pemeriksaan[0]<br/> ";
                        $no++;
@@ -112,7 +114,7 @@
                 } 
                 $_sqlinapdr="select hasil from rawat_inap_dr  where  rawat_inap_dr.no_rawat='$norw' group by hasil ";
                 $hasilinapdr=bukaquery($_sqlinapdr);
-                while($pemeriksaan = mysql_fetch_array($hasilinapdr)) {
+                while($pemeriksaan = mysqli_fetch_array($hasilinapdr)) {
                     if(!empty($pemeriksaan[0])){
                         echo "$no. $pemeriksaan[0]<br/> ";
                         $no++;

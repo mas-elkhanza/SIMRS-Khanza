@@ -2,8 +2,7 @@
 
 package keuangan;
 
-import fungsi.WarnaTable;
-import fungsi.WarnaTable2;
+import fungsi.WarnaTable3;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -26,7 +25,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 
 /**
  *
@@ -45,7 +44,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
     private String koderekening="";
     private double sisahutang=0,cicilan=0;
     private Jurnal jur=new Jurnal();
-    private WarnaTable2 warna=new WarnaTable2();
+    private WarnaTable3 warna=new WarnaTable3();
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -74,7 +73,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
                 java.lang.Object.class,java.lang.Object.class,java.lang.Object.class,
                 java.lang.Object.class,java.lang.Object.class,
                 java.lang.Object.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Object.class,java.lang.Object.class
+                java.lang.Double.class,java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -113,7 +112,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }
         }
-        warna.kolom=9;
+        warna.kolom=11;
         tbBangsal.setDefaultRenderer(Object.class,warna);
 
         no_bukti.setDocument(new batasInput((byte)20).getKata(no_bukti));
@@ -241,7 +240,6 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
-        TKd.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -252,14 +250,14 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Hutang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Hutang Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbBangsal.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbBangsal.setToolTipText("Silahkan centang di depan untuk memilih data hutang yang mau dibayar");
         tbBangsal.setName("tbBangsal"); // NOI18N
         tbBangsal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -374,7 +372,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(153, 0, 51));
+        jLabel10.setForeground(new java.awt.Color(100,80,80));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Total Hutang Ke Supplier :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -382,7 +380,7 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         panelisi1.add(jLabel10);
 
         LCount.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        LCount.setForeground(new java.awt.Color(153, 0, 51));
+        LCount.setForeground(new java.awt.Color(100,80,80));
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
@@ -523,7 +521,6 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         panelisi4.add(jLabel12);
         jLabel12.setBounds(0, 40, 75, 23);
 
-        nama_bayar.setForeground(new java.awt.Color(153, 0, 51));
         nama_bayar.setName("nama_bayar"); // NOI18N
         nama_bayar.setOpaque(false);
         nama_bayar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -635,16 +632,17 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
         if(tabMode.getRowCount()!=0){
             if(evt.getClickCount()==1){
                 if(tbBangsal.getSelectedColumn()==0){
-                    if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString().equals("")){
-                        tbBangsal.setValueAt(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString(), tbBangsal.getSelectedRow(),11);
+                    if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString().equals("0")){
+                        tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()), tbBangsal.getSelectedRow(),11);
                     }
                     if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("true")){
                         tbBangsal.setValueAt(
-                            (Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())-
-                            Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString()))
+                            (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())-
+                            Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString()))
                             ,tbBangsal.getSelectedRow(),10);
                     }else if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("false")){
-                        tbBangsal.setValueAt(Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()),tbBangsal.getSelectedRow(),10);
+                        tbBangsal.setValueAt(0,tbBangsal.getSelectedRow(),11);
+                        tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()),tbBangsal.getSelectedRow(),10);
                     }
                 }                
             }
@@ -656,15 +654,15 @@ public final class DlgHutangObatBelumLunas extends javax.swing.JDialog {
             if(evt.getKeyCode()==KeyEvent.VK_ENTER){
                 if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("true")){
                     tbBangsal.setValueAt(
-                            (Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())-
-                            Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString()))
+                            (Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())-
+                            Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString()))
                             ,tbBangsal.getSelectedRow(),10);
                 }else if(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString().equals("false")){
-                    tbBangsal.setValueAt(Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()),tbBangsal.getSelectedRow(),10);
+                    tbBangsal.setValueAt(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString()),tbBangsal.getSelectedRow(),10);
                 }
             }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
                 if(tbBangsal.getSelectedColumn()==11){
-                   tbBangsal.setValueAt("", tbBangsal.getSelectedRow(),11); 
+                   tbBangsal.setValueAt(0, tbBangsal.getSelectedRow(),11); 
                 }
             }
         }
@@ -713,7 +711,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         suplier.isCek();
-        suplier.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         suplier.setLocationRelativeTo(internalFrame1);
         suplier.setAlwaysOnTop(false);
         suplier.setVisible(true);
@@ -739,13 +737,13 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
                 if(tabMode.getValueAt(i,0).toString().equals("true")){
-                    if(Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString())>0){
+                    if(Double.parseDouble(tbBangsal.getValueAt(i,11).toString())>0){
                         if(Sequel.menyimpantf("bayar_pemesanan","?,?,?,?,?,?,?","Data", 7,new String[]{
                             Valid.SetTgl(tgl_bayar.getSelectedItem()+""),tabMode.getValueAt(i,1).toString(),nip.getText(),
                             tabMode.getValueAt(i,11).toString(),keterangan.getText(),nama_bayar.getSelectedItem().toString(),
                             no_bukti.getText()
                         })==true){
-                            if(Double.parseDouble(tabMode.getValueAt(i,10).toString())<=0){
+                            if((Double.parseDouble(tabMode.getValueAt(i,10).toString())<=0)||(Double.parseDouble(tabMode.getValueAt(i,10).toString())<=-0)){
                                 Sequel.mengedit("pemesanan","no_faktur='"+tabMode.getValueAt(i,1).toString()+"'","status='Sudah Dibayar'");
                             }else{
                                 Sequel.mengedit("pemesanan","no_faktur='"+tabMode.getValueAt(i,1).toString()+"'","status='Belum Lunas'");
@@ -796,7 +794,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         petugas.emptTeks();
         petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         petugas.setLocationRelativeTo(internalFrame1);
         petugas.setAlwaysOnTop(false);
         petugas.setVisible(true);
@@ -901,7 +899,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         rs.getString("nama_suplier"),rs.getString("nama"),rs.getString("tgl_faktur"),
                         rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),rs.getString("nm_bangsal"),
                         rs.getDouble("tagihan"),(rs.getDouble("tagihan")-rs.getDouble("bayar")),
-                        "",(rs.getDouble("tagihan")-rs.getDouble("bayar"))
+                        0,(rs.getDouble("tagihan")-rs.getDouble("bayar"))
                     });
                     sisahutang=sisahutang+rs.getDouble("tagihan");
                     cicilan=cicilan+rs.getDouble("bayar");

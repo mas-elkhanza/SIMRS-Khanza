@@ -8,9 +8,6 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="name" type="java.lang.String" value="TKd" noResource="true"/>
-        <Property name="selectionColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
       </Properties>
     </Component>
   </NonVisualComponents>
@@ -52,7 +49,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="28" green="46" red="32" type="rgb"/>
+              <Color PropertyName="color" blue="50" green="50" red="64" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -84,7 +81,7 @@
           <SubComponents>
             <Component class="widget.Table" name="tbBangsal">
               <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
+                <Property name="toolTipText" type="java.lang.String" value="Silahkan centang di depan untuk memilih data hutang yang mau dibayar"/>
                 <Property name="name" type="java.lang.String" value="tbBangsal" noResource="true"/>
               </Properties>
               <Events>
@@ -255,7 +252,7 @@
                       <Font name="Tahoma" size="11" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="0" red="99" type="rgb"/>
+                      <Color blue="50" green="50" red="64" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="4"/>
                     <Property name="text" type="java.lang.String" value="Total Hutang Ke Supplier :"/>
@@ -271,7 +268,7 @@
                       <Font name="Tahoma" size="15" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="0" red="99" type="rgb"/>
+                      <Color blue="50" green="50" red="64" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="text" type="java.lang.String" value="0"/>
@@ -490,9 +487,6 @@
             </Component>
             <Component class="widget.ComboBox" name="nama_bayar">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="33" green="0" red="99" type="rgb"/>
-                </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>

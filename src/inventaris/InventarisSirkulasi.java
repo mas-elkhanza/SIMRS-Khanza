@@ -25,7 +25,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariPetugas;
+import kepegawaian.DlgCariPetugas;
 
 /**
  *
@@ -446,7 +446,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
 
         tgl.setEditable(false);
         tgl.setForeground(new java.awt.Color(50, 70, 50));
-        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2015" }));
+        tgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2017" }));
         tgl.setDisplayFormat("dd-MM-yyyy");
         tgl.setName("tgl"); // NOI18N
         tgl.setOpaque(false);
@@ -470,7 +470,6 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         TOut.setForeground(new java.awt.Color(255, 255, 255));
         TOut.setHighlighter(null);
         TOut.setName("TOut"); // NOI18N
-        TOut.setSelectionColor(new java.awt.Color(255, 255, 255));
         TOut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TOutKeyPressed(evt);
@@ -481,7 +480,6 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         TIn.setForeground(new java.awt.Color(255, 255, 255));
         TIn.setHighlighter(null);
         TIn.setName("TIn"); // NOI18N
-        TIn.setSelectionColor(new java.awt.Color(255, 255, 255));
         TIn.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TInKeyPressed(evt);
@@ -497,7 +495,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Iventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Sirkulasi Iventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -726,8 +724,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         panelCari.add(jLabel27);
 
         TglPinjam2.setEditable(false);
-        TglPinjam2.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2015" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2017" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);
@@ -751,8 +748,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
         panelCari.add(jLabel22);
 
         TglPinjam1.setEditable(false);
-        TglPinjam1.setForeground(new java.awt.Color(50, 70, 50));
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2015" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2017" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -1119,7 +1115,7 @@ public class InventarisSirkulasi extends javax.swing.JDialog {
 private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
     pilihan=2;
     inventaris.isCek();
-    inventaris.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    inventaris.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     inventaris.setLocationRelativeTo(internalFrame1);
     inventaris.setAlwaysOnTop(false);
     inventaris.setVisible(true);     
@@ -1164,7 +1160,7 @@ private void peminjamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvActionPerformed
     pilihan=1;
     inventaris.isCek();
-    inventaris.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    inventaris.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     inventaris.setLocationRelativeTo(internalFrame1);
     inventaris.setAlwaysOnTop(false);
     inventaris.setVisible(true);        
@@ -1186,7 +1182,7 @@ private void nipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nipKe
 
 private void btnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPtgActionPerformed
     petugas.isCek();
-    petugas.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     petugas.setLocationRelativeTo(internalFrame1);
     petugas.setAlwaysOnTop(false);
     petugas.setVisible(true);

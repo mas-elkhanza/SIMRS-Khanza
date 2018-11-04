@@ -67,32 +67,18 @@
 	<title>
 		<band height="100">
 			<staticText>
-				<reportElement mode="Opaque" x="338" y="83" width="217" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="116" y="83" width="439" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Nama Provider]]></text>
+				<text><![CDATA[Nama Faskes]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="255" y="83" width="83" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="30" y="83" width="86" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Kode Provider]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="100" y="83" width="155" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
-					<font fontName="Tahoma" size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Nama Cabang]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="30" y="83" width="70" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
-					<font fontName="Tahoma" size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Kode Cabang]]></text>
+				<text><![CDATA[Kode Faskes]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="56" width="554" height="23"/>
@@ -173,7 +159,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="30" y="0" width="70" height="14">
+				<reportElement stretchType="RelativeToBandHeight" x="30" y="0" width="86" height="14">
 					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -183,7 +169,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="100" y="0" width="155" height="14">
+				<reportElement stretchType="RelativeToBandHeight" x="116" y="0" width="439" height="14">
 					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
@@ -191,26 +177,6 @@
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp3}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="255" y="0" width="83" height="14">
-					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<textElement lineSpacing="Single">
-					<font fontName="Tahoma" size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp4}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="338" y="0" width="217" height="14">
-					<printWhenExpression><![CDATA[(!$F{temp1}.toLowerCase().equals("No.") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<textElement lineSpacing="Single">
-					<font fontName="Tahoma" size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp5}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

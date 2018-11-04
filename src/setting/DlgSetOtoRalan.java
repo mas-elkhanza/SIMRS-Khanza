@@ -35,8 +35,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgCariDokter;
-import simrskhanza.DlgCariPerawatanRalan;
+import kepegawaian.DlgCariDokter;
+import keuangan.DlgCariPerawatanRalan;
 import keuangan.DlgJnsPerawatanRalan;
 import simrskhanza.DlgPenanggungJawab;
 
@@ -359,7 +359,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Tindakan Otomatis Ralan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Tindakan Otomatis Ralan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -531,9 +531,9 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
 
         internalFrame1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
+        TabRawat.setForeground(new java.awt.Color(100,80,80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1188,7 +1188,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
     private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeekActionPerformed
         dokter.isCek();
         dokter.emptTeks();
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
 }//GEN-LAST:event_BtnSeekActionPerformed
@@ -1199,7 +1199,7 @@ public final class DlgSetOtoRalan extends javax.swing.JDialog {
 
     private void BtnSeek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek1ActionPerformed
         datatindakan.isCek();
-        datatindakan.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        datatindakan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         datatindakan.setLocationRelativeTo(internalFrame1);
         datatindakan.setVisible(true);
 }//GEN-LAST:event_BtnSeek1ActionPerformed
@@ -1265,7 +1265,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjabActionPerformed
         penjab.isCek();
         penjab.emptTeks();
-        penjab.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setVisible(true);
     }//GEN-LAST:event_BtnPenjabActionPerformed
@@ -1306,7 +1306,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
         datatindakan.isCek();
-        datatindakan.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        datatindakan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         datatindakan.setLocationRelativeTo(internalFrame1);
         datatindakan.setVisible(true);
     }//GEN-LAST:event_BtnSeek3ActionPerformed
@@ -1336,7 +1336,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void BtnPenjab1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjab1ActionPerformed
         penjab.isCek();
         penjab.emptTeks();
-        penjab.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setVisible(true);
     }//GEN-LAST:event_BtnPenjab1ActionPerformed
@@ -1352,7 +1352,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         dokter.isCek();
         dokter.emptTeks();
-        dokter.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnSeek2ActionPerformed
@@ -1363,7 +1363,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek4ActionPerformed
         datatindakan.isCek();
-        datatindakan.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        datatindakan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         datatindakan.setLocationRelativeTo(internalFrame1);
         datatindakan.setVisible(true);
     }//GEN-LAST:event_BtnSeek4ActionPerformed
@@ -1405,7 +1405,7 @@ private void kdtindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     private void BtnPenjab2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjab2ActionPerformed
         penjab.isCek();
         penjab.emptTeks();
-        penjab.setSize(internalFrame1.getWidth()-50,internalFrame1.getHeight()-50);
+        penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
         penjab.setVisible(true);
     }//GEN-LAST:event_BtnPenjab2ActionPerformed

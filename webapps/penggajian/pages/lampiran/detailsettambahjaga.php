@@ -28,7 +28,7 @@
                             <?php
                                 $_sql = "SELECT tingkat FROM pendidikan  ORDER BY tingkat";
                                 $hasil=bukaquery($_sql);
-                                while($baris = mysql_fetch_array($hasil)) {
+                                while($baris = mysqli_fetch_array($hasil)) {
                                     echo "<option id='TxtIsi2' value='$baris[0]'>$baris[0]</option>";
                                 }
                             ?>
@@ -59,16 +59,16 @@
             <?php
                 $_sql = "SELECT tnj,pendidikan from set_jgtambah  ORDER BY tnj ASC";
                 $hasil=bukaquery($_sql);
-                $jumlah=mysql_num_rows($hasil);
+                $jumlah=mysqli_num_rows($hasil);
 
-                if(mysql_num_rows($hasil)!=0) {
+                if(mysqli_num_rows($hasil)!=0) {
                     echo "<table width='99.6%' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                             <tr class='head'>
                                 <td width='10%'><div align='center'>Proses</div></td>
                                 <td width='30%'><div align='center'>Besar Tunjangan</div></td>
                                 <td width='60%'><div align='center'>Pendidikan</div></td>
                             </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                       echo "<tr class='isi'>
                                 <td>
                                    <center>";?>

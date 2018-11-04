@@ -50,7 +50,7 @@
                     <td>Status Keluar</td>
                     <td>Jumlah Pasien</td>                    
                 </thead>";
-		while($ppk = mysql_fetch_array($ppk_kode)) { 
+		while($ppk = mysqli_fetch_array($ppk_kode)) { 
                     $k_ppk=$ppk['kode_ppk'];
                     $kd_poli=$ppk['kd_poli'];
                     $jumlahdirawat= getOne("select count(reg_periksa.no_rawat) from reg_periksa inner join kamar_inap 

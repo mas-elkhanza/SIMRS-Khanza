@@ -1,7 +1,7 @@
 <?php
    $_sql         = "SELECT * FROM set_tahun";
    $hasil        = bukaquery($_sql);
-   $baris        = mysql_fetch_row($hasil);
+   $baris        = mysqli_fetch_row($hasil);
    $tahun         = $baris[0];
    $bln_leng=strlen($baris[1]);
    $bulan="0";
@@ -17,7 +17,7 @@
                         from set_hari_libur
                         where tanggal like '%".$tahun."-".$bulan."%' ORDER BY tanggal";
                 $hasillibur=bukaquery($_sqllibur);
-                $jumlahlibur=mysql_num_rows($hasillibur);
+                $jumlahlibur=mysqli_num_rows($hasillibur);
 ?>
 
 
@@ -48,7 +48,7 @@
         if (empty($awal)) $awal=0;
         $_sql = "select id,nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,
                 npwp, pendidikan, gapok,tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,
-                indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak from pegawai
+                indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak,photo from pegawai
                  where
                  nik like '%".$keyword."%' or
                  nama like '%".$keyword."%' or
@@ -74,9 +74,9 @@
                  stts_aktif like '%".$keyword."%'
                  order by nik ASC ";
         $hasil=bukaquery($_sql);
-        $jumlah=mysql_num_rows($hasil);
+        $jumlah=mysqli_num_rows($hasil);
 
-        if(mysql_num_rows($hasil)!=0) {
+        if(mysqli_num_rows($hasil)!=0) {
             echo "<table width='2600px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head'>
                                  <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>NIP</strong></font></div></td>
@@ -102,11 +102,12 @@
                                  <td width='80px'><div align='center'><font size='2' face='Tahoma'><strong>Stts Aktif</strong></font></div></td>
                                  <td width='70px'><div align='center'><font size='2' face='Tahoma'><strong>Wajib Masuk</strong></font></div></td>
                                  <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Mulai Kontrak</strong></font></div></td>
+                                 <td width='100px'><div align='center'><font size='2' face='Tahoma'><strong>Photo</strong></font></div></td>
                     </tr>";
-                    while($baris = mysql_fetch_array($hasil)) {
+                    while($baris = mysqli_fetch_array($hasil)) {
                          $_sql2         = "SELECT normal-$jumlahlibur,jmlhr FROM set_tahun";
 			 $hasil2        = bukaquery($_sql2);
-			 $baris2        = mysql_fetch_row($hasil2);
+			 $baris2        = mysqli_fetch_row($hasil2);
 			 $jmlmsk         = $baris2[0];
 			 if($baris[23]==-1){
 			     $jmlmsk=0;
@@ -117,6 +118,12 @@
 			 }else if(!($baris[23]==0)){
 			     $jmlmsk=$baris2[0];
 			 }
+                         $gb="-";
+                         if($baris["photo"]=="pages/pegawai/photo/"){
+                            $gb="-";                            
+                         }else{
+                            $gb="<img src='".$baris["photo"]."' width='120px' height='120px'>";
+                         }
                         echo "<tr class='isi'>
                                  <td>$baris[1]</td>
                                  <td>$baris[2]</td>
@@ -141,6 +148,7 @@
                                   <td>$baris[22]</td>
                                   <td>$jmlmsk</td>
                                   <td>$baris[24]</td>
+                                  <td>$gb</td>
                               </tr>";
                     }
             echo "</table>";
@@ -155,7 +163,7 @@
 
 
        <?php
-            if(mysql_num_rows($hasil)!=0) {
+            if(mysqli_num_rows($hasil)!=0) {
                 $_sql = "select id,nik,nama,jk,jbtn,jnj_jabatan,departemen,bidang,stts_wp,stts_kerja,
                 npwp, pendidikan, gapok,tmp_lahir,tgl_lahir,alamat,kota,mulai_kerja,ms_kerja,
                 indexins,bpd,rekening,stts_aktif,wajibmasuk,mulai_kontrak from pegawai
@@ -184,7 +192,7 @@
                  stts_aktif like '%".$keyword."%'
                  order by nik ASC ";
                 $hasil2=bukaquery($_sql);
-                $jumladiv=mysql_num_rows($hasil2);
+                $jumladiv=mysqli_num_rows($hasil2);
                 $i=$jumladiv/19;
                 $i=ceil($i);
                 echo("Jumlah Record : $jumladiv ");

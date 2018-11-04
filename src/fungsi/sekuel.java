@@ -130,6 +130,39 @@ public final class sekuel {
         }            
     }
     
+    public boolean menyimpantf(String table,String value,int i,String[] a,String acuan_field,String update,int j,String[] b){
+        bool=false;
+        try{ 
+            ps=connect.prepareStatement("insert into "+table+" values("+value+")");
+            for(angka=1;angka<=i;angka++){
+                ps.setString(angka,a[angka-1]);
+            }            
+            ps.executeUpdate();
+            
+            if(ps != null){
+                ps.close();
+            } 
+            bool=true;
+        }catch(Exception e){
+            try {
+                ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
+                for(angka=1;angka<=j;angka++){
+                    ps.setString(angka,b[angka-1]);
+                } 
+                ps.executeUpdate();   
+                
+                if(ps != null){
+                    ps.close();
+                } 
+                bool=true;
+            } catch (Exception e2) {
+                bool=false;
+                System.out.println("Notifikasi : "+e2);
+            }                         
+        }
+        return bool;
+    }
+    
     public void menyimpan(String table,String value,String sama,int i,String[] a){
         try {
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");
@@ -456,7 +489,24 @@ public final class sekuel {
         }
     }
     
-
+    public void meghapus3(String table,String field,String nilai_field) {
+        try {
+            ps=connect.prepareStatement("delete from "+table+" where "+field+"=?");
+            try{       
+                ps.setString(1,nilai_field);
+                ps.executeUpdate(); 
+             }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
     public void mengedit(String table,String acuan_field,String update){
         try {
             ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
@@ -531,6 +581,26 @@ public final class sekuel {
              }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
                 JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Periksa kembali data...!!!!");
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }    
+    }
+    
+    public void mengedit3(String table,String acuan_field,String update,int i,String[] a){
+        try {
+            ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
+            try{
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                } 
+                ps.executeUpdate();       
+             }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
              }finally{
                 if(ps != null){
                     ps.close();
@@ -743,6 +813,24 @@ public final class sekuel {
             }
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    public void queryu4(String qry,int i,String[] a){
+        try {
+            try{            
+                ps=connect.prepareStatement(qry);
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                } 
+                ps.executeUpdate(); 
+             }catch(Exception e){
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
         }
     }
     

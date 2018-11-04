@@ -11,7 +11,7 @@
             $tersediapria=0;
             $tersediawanita=0;
             $tersediapriawanita=0;
-            $host="http://dvlp.bpjs-kesehatan.go.id:8888";
+            $host="http://dvlp.bpjs-kesehatan.go.id";
             $url = $host."/aplicaresws/rest/bed/update/".getOne("select kode_ppk from setting");				
             $session = curl_init ( $url );			
             $cid = "1000";
@@ -36,7 +36,7 @@
                        aplicare_ketersediaan_kamar.tersediawanita,aplicare_ketersediaan_kamar.tersediapriawanita 
                        from aplicare_ketersediaan_kamar inner join bangsal on aplicare_ketersediaan_kamar.kd_bangsal=bangsal.kd_bangsal" ;  
             $hasil=bukaquery($_sql);
-            while ($data = mysql_fetch_array ($hasil)){
+            while ($data = mysqli_fetch_array ($hasil)){
                 $kodekelas=$data['kode_kelas_aplicare'];
                 $koderuang=$data['kd_bangsal'];
                 $namaruang=$data['nm_bangsal'];
@@ -70,7 +70,6 @@
                 curl_setopt ( $session, CURLOPT_POSTFIELDS, $myvars );
                 curl_setopt ( $session, CURLOPT_RETURNTRANSFER, TRUE );
                 $response = curl_exec ( $session );
-                echo "Response : ".$response;
             }		
 	}
  ?>

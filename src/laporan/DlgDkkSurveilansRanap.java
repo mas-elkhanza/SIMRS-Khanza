@@ -142,16 +142,13 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         TabRawat = new javax.swing.JTabbedPane();
-        internalFrame2 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
-        internalFrame3 = new widget.InternalFrame();
         Scroll1 = new widget.ScrollPane();
         tbBangsal2 = new widget.Table();
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
-        TKd.setSelectionColor(new java.awt.Color(255, 255, 255));
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -215,7 +212,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surveilans Rawat Inap Kasus Baru ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Surveilans Rawat Inap Kasus Baru ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -305,9 +302,9 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(50, 70, 40));
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
+        TabRawat.setForeground(new java.awt.Color(100,80,80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -315,11 +312,6 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
                 TabRawatMouseClicked(evt);
             }
         });
-
-        internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
-        internalFrame2.setBorder(null);
-        internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
@@ -329,14 +321,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         tbBangsal.setName("tbBangsal"); // NOI18N
         Scroll.setViewportView(tbBangsal);
 
-        internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
-
-        TabRawat.addTab("Berdasar Tanggal Masuk", internalFrame2);
-
-        internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
-        internalFrame3.setBorder(null);
-        internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
+        TabRawat.addTab("Berdasar Tanggal Masuk", Scroll);
 
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
@@ -346,9 +331,7 @@ public final class DlgDkkSurveilansRanap extends javax.swing.JDialog {
         tbBangsal2.setName("tbBangsal2"); // NOI18N
         Scroll1.setViewportView(tbBangsal2);
 
-        internalFrame3.add(Scroll1, java.awt.BorderLayout.CENTER);
-
-        TabRawat.addTab("Berdasar Tanggal Keluar", internalFrame3);
+        TabRawat.addTab("Berdasar Tanggal Keluar", Scroll1);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -497,7 +480,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             dpd.setValue("Meninggal ("+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),19).toString()+")",Integer.parseInt(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),19).toString()));
             JFreeChart freeChart = ChartFactory.createPieChart("Grafik Pie Perbandingan Pasien Hidup & Mati Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
             ChartFrame cf = new ChartFrame("Grafik Pasien Hidup & Mati",freeChart);
-            cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+            cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
             cf.setLocationRelativeTo(internalFrame1);
             cf.setAlwaysOnTop(false);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -514,7 +497,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             dpd.setValue("Perempuan "+Math.round(((Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),16).toString())/Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),17).toString()))*100))+"%("+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),16).toString()+")",Integer.parseInt(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),16).toString()));
             JFreeChart freeChart = ChartFactory.createPieChart("Grafik Pie Perbandingan Pasien Laki-Laki & Perempuan Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
             ChartFrame cf = new ChartFrame("Grafik Pasien Laki-Laki & Perempuan",freeChart);
-            cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+            cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
             cf.setLocationRelativeTo(internalFrame1);
             cf.setAlwaysOnTop(false);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -541,7 +524,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             dpd.setValue("70+ "+Math.round(((Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),14).toString())/Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),17).toString()))*100))+"%("+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),14).toString()+")",Integer.parseInt(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),14).toString()));
             JFreeChart freeChart = ChartFactory.createPieChart("Grafik Pie Perbandingan Per Umur Periode "+Valid.SetTgl(Tgl1.getSelectedItem()+"")+" S.D. "+Valid.SetTgl(Tgl2.getSelectedItem()+""),dpd,true,true, false); //String title,PieDatasheet datasheet,boolean legends,boolean tooltips,boolean url 
             ChartFrame cf = new ChartFrame("Grafik Per Umur",freeChart);
-            cf.setSize(internalFrame1.getWidth()-50, internalFrame1.getHeight()-50);
+            cf.setSize(internalFrame1.getWidth()-20, internalFrame1.getHeight()-20);
             cf.setLocationRelativeTo(internalFrame1);
             cf.setAlwaysOnTop(false);
             cf.setIconImage(new ImageIcon(super.getClass().getResource("/picture/addressbook-edit24.png")).getImage());
@@ -586,8 +569,6 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Tanggal Tgl1;
     private widget.Tanggal Tgl2;
     private widget.InternalFrame internalFrame1;
-    private widget.InternalFrame internalFrame2;
-    private widget.InternalFrame internalFrame3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label11;
     private widget.Label label12;

@@ -6,6 +6,9 @@
         <link href="css/default.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+        <script type="text/javascript">
+            window.onload = function() { window.print(); }
+        </script>
 
     <?php
     reportsqlinjection();      
@@ -20,8 +23,8 @@
         $_sql = "SELECT no,temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13 from temporary order by no asc";            
         $hasil=bukaquery($_sql);
         
-        if(mysql_num_rows($hasil)!=0) { 
-          $setting=  mysql_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
+        if(mysqli_num_rows($hasil)!=0) { 
+          $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
           echo "<table width='".getOne("select notaapotek from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
                  <tr class='isi14'>
                        <td width=50% colspan=4 align=left>
@@ -104,7 +107,7 @@
                  <tr class='isi14'>
                        <td colspan=4 height='100%' valign=top>
                             <table width=100% cellpadding='0' cellspacing='0'>
-                               <tr class=isi15>
+                               <tr class=isi>
                                    <td width='5%' align=center><font color='000000' size='2'  face='Tahoma'>No</font></td>
                                    <td width='20%' align=center><font color='000000' size='2'  face='Tahoma'>Jml</font></td>
                                    <td width='35%' align=center><font color='000000' size='2'  face='Tahoma'>Nama Barang</font></td>
@@ -113,10 +116,10 @@
                                </tr>";
                                       $ttlpesan=0;
                                       $i=1;
-                                      while($barispesan = mysql_fetch_array($hasil)) { 
+                                      while($barispesan = mysqli_fetch_array($hasil)) { 
                                           $ttlpesan=$ttlpesan+$barispesan["temp13"];
                                           echo "
-                                            <tr class='isi15'>
+                                            <tr class='isi'>
                                                 <td><font color='000000' size='2'  face='Tahoma'>$i</font></td>
                                                 <td><font color='000000' size='2'  face='Tahoma'>$barispesan[1] $barispesan[5]</font></td>
                                                 <td><font color='000000' size='2'  face='Tahoma'>$barispesan[3] </font></td>

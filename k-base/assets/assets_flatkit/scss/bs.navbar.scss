@@ -1,0 +1,99 @@
+.navbar{
+	background: inherit;
+	min-height: $navbar-height;
+	.up{
+		margin: 0 -0.6em;
+	}
+	.avatar{
+		top: -2px;
+	}
+}
+
+.navbar-md {
+	min-height: $navbar-md-height;
+	padding-top: ($navbar-md-height - $navbar-height)/2 + 0.5;
+	padding-bottom: ($navbar-md-height - $navbar-height)/2 + 0.5;
+	.navbar{
+		min-height: auto;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+
+.navbar-sm {
+	min-height: $navbar-sm-height;
+	padding-top: ($navbar-height - $navbar-sm-height)/2;
+	padding-bottom: ($navbar-height - $navbar-sm-height)/2;
+	.navbar{
+		min-height: auto;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+
+.navbar-brand{
+	font-weight: bold;
+	&:hover{
+		text-decoration: none;
+	}
+	img,
+	svg{
+		max-height: 24px;
+		vertical-align: -4px;
+		display: inline-block;
+	}
+	> span{
+	  display: inline-block;
+	  line-height: 0.8;
+	  margin-left: 10px;
+	}
+	&.md{
+		img,
+		svg{
+			max-height: 32px;
+			vertical-align: -8px;
+		}
+	}
+	&.lg{
+		img,
+		svg{
+			max-height: 48px;
+			vertical-align: -16px;
+		}
+	}
+	.pull-center &{
+		margin-left: -50%;
+		float: left;
+	}
+}
+
+.navbar-collapse.collapsing,
+.navbar-collapse.collapse.show{
+	background: inherit;
+	left: 0;
+	top: 100%;
+	max-height: 100vh;
+	overflow: auto;
+	width: 100%;
+	.nav-active-border{
+		border-color: transparent;
+	}
+}
+
+.navbar-toggleable {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        .navbar-collapse.collapsing,
+		.navbar-collapse.collapse.show{
+			padding: 0 1rem 4rem 1rem;
+			position: absolute;
+			z-index: 1040;
+		}
+      }
+    }
+  }
+}

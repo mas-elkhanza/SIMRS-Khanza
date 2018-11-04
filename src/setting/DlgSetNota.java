@@ -204,6 +204,8 @@ public class DlgSetNota extends javax.swing.JDialog {
         cmbYesCetakPenjualan = new widget.ComboBox();
         cmbYesTombolNotaPenjualan = new widget.ComboBox();
         jLabel41 = new widget.Label();
+        jLabel42 = new widget.Label();
+        cmbYesCentangObatRalan = new widget.ComboBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll1 = new widget.ScrollPane();
         tbAdmin2 = new widget.Table();
@@ -268,7 +270,7 @@ public class DlgSetNota extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Billing ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Billing ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -370,9 +372,9 @@ public class DlgSetNota extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
-        TabSetting.setBackground(new java.awt.Color(250, 255, 245));
-        TabSetting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabSetting.setForeground(new java.awt.Color(50, 70, 40));
+        TabSetting.setBackground(new java.awt.Color(255, 255, 253));
+        TabSetting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
+        TabSetting.setForeground(new java.awt.Color(100,80,80));
         TabSetting.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSetting.setName("TabSetting"); // NOI18N
         TabSetting.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -866,6 +868,23 @@ public class DlgSetNota extends javax.swing.JDialog {
         jLabel41.setName("jLabel41"); // NOI18N
         FormInput.add(jLabel41);
         jLabel41.setBounds(285, 342, 300, 23);
+
+        jLabel42.setText("Centang Obat di Nota Ralan :");
+        jLabel42.setName("jLabel42"); // NOI18N
+        FormInput.add(jLabel42);
+        jLabel42.setBounds(0, 342, 165, 23);
+
+        cmbYesCentangObatRalan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Yes", "No" }));
+        cmbYesCentangObatRalan.setName("cmbYesCentangObatRalan"); // NOI18N
+        cmbYesCentangObatRalan.setOpaque(false);
+        cmbYesCentangObatRalan.setPreferredSize(new java.awt.Dimension(55, 28));
+        cmbYesCentangObatRalan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbYesCentangObatRalanKeyPressed(evt);
+            }
+        });
+        FormInput.add(cmbYesCentangObatRalan);
+        cmbYesCentangObatRalan.setBounds(168, 342, 60, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1506,7 +1525,8 @@ public class DlgSetNota extends javax.swing.JDialog {
                         "'"+cmbYesCentangDokterRanap.getSelectedItem()+"','"+cmbYesAdministrasiRanap.getSelectedItem()+"',"+
                         "'"+cmbYesRincianOperasi.getSelectedItem()+"','"+cmbYesPPNRalan.getSelectedItem()+"','"+cmbYesPPNRanap.getSelectedItem()+"',"+
                         "'"+cmbYesTombolNotaRalan.getSelectedItem()+"','"+cmbYesTombolNotaRanap.getSelectedItem()+"','"+cmbYesTombolPenjualan.getSelectedItem()+"',"+
-                        "'"+cmbYesTombolPenyerahanDarah.getSelectedItem()+"','"+cmbYesCetakPenjualan.getSelectedItem()+"','"+cmbYesTombolNotaPenjualan.getSelectedItem()+"'","Set Nota")==true){
+                        "'"+cmbYesTombolPenyerahanDarah.getSelectedItem()+"','"+cmbYesCetakPenjualan.getSelectedItem()+"','"+cmbYesTombolNotaPenjualan.getSelectedItem()+"',"+
+                        "'"+cmbYesCentangObatRalan.getSelectedItem()+"'","Set Nota")==true){
                     tampil();
                     emptTeks();
                 }                
@@ -1764,7 +1784,7 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_formWindowOpened
 
     private void cmbYesRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbYesRalanKeyPressed
-        Valid.pindah(evt, cmbYesCentangDokterRanap,cmbYesRanap);
+        Valid.pindah(evt, cmbYesCentangObatRalan,cmbYesRanap);
     }//GEN-LAST:event_cmbYesRalanKeyPressed
 
     private void KwitansiRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KwitansiRalanKeyPressed
@@ -1809,7 +1829,8 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         "'"+cmbYesCentangDokterRanap.getSelectedItem()+"','"+cmbYesAdministrasiRanap.getSelectedItem()+"',"+
                         "'"+cmbYesRincianOperasi.getSelectedItem()+"','"+cmbYesPPNRalan.getSelectedItem()+"','"+cmbYesPPNRanap.getSelectedItem()+"',"+
                         "'"+cmbYesTombolNotaRalan.getSelectedItem()+"','"+cmbYesTombolNotaRanap.getSelectedItem()+"','"+cmbYesTombolPenjualan.getSelectedItem()+"',"+
-                        "'"+cmbYesTombolPenyerahanDarah.getSelectedItem()+"','"+cmbYesCetakPenjualan.getSelectedItem()+"','"+cmbYesTombolNotaPenjualan.getSelectedItem()+"'","Setting")==true){
+                        "'"+cmbYesTombolPenyerahanDarah.getSelectedItem()+"','"+cmbYesCetakPenjualan.getSelectedItem()+"','"+cmbYesTombolNotaPenjualan.getSelectedItem()+"',"+
+                        "'"+cmbYesCentangObatRalan.getSelectedItem()+"'","Setting")==true){
                     tampil();
                     emptTeks();
                 }
@@ -1959,7 +1980,7 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_cmbYesCentangDokterRalanKeyPressed
 
     private void cmbYesCentangDokterRanapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbYesCentangDokterRanapKeyPressed
-        Valid.pindah(evt, cmbYesCentangDokterRalan,cmbYesRalan);
+        Valid.pindah(evt, cmbYesCentangDokterRalan,cmbYesCentangObatRalan);
     }//GEN-LAST:event_cmbYesCentangDokterRanapKeyPressed
 
     private void cmbYesAdministrasiRanapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbYesAdministrasiRanapKeyPressed
@@ -2220,6 +2241,10 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbYesTombolNotaPenjualanActionPerformed
 
+    private void cmbYesCentangObatRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbYesCentangObatRalanKeyPressed
+        Valid.pindah(evt, cmbYesCentangDokterRanap,cmbYesRalan);
+    }//GEN-LAST:event_cmbYesCentangObatRalanKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2299,6 +2324,7 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.ComboBox cmbYesAdministrasiRanap;
     private widget.ComboBox cmbYesCentangDokterRalan;
     private widget.ComboBox cmbYesCentangDokterRanap;
+    private widget.ComboBox cmbYesCentangObatRalan;
     private widget.ComboBox cmbYesCetakPenjualan;
     private widget.ComboBox cmbYesPPNRalan;
     private widget.ComboBox cmbYesPPNRanap;
@@ -2349,6 +2375,7 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Label jLabel4;
     private widget.Label jLabel40;
     private widget.Label jLabel41;
+    private widget.Label jLabel42;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -2390,6 +2417,7 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     tabMode.addRow(new Object[]{" Verifikasi Penjualan Darah UTD di Kasir",rs.getString(21)});
                     tabMode.addRow(new Object[]{" Cetak Nota/Kwitansi Saat Menyimpan di Penjualan Obat Bebas",rs.getString(22)});
                     tabMode.addRow(new Object[]{" Tampilkan Tombol Nota di Penjualan Obat Bebas",rs.getString(23)});
+                    tabMode.addRow(new Object[]{" Centang Obat di Nota Ralan",rs.getString(24)});
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -2514,6 +2542,7 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             cmbYesTombolPenyerahanDarah.setSelectedItem(tbAdmin.getValueAt(20,1).toString());
             cmbYesCetakPenjualan.setSelectedItem(tbAdmin.getValueAt(21,1).toString());
             cmbYesTombolNotaPenjualan.setSelectedItem(tbAdmin.getValueAt(22,1).toString());
+            cmbYesCentangObatRalan.setSelectedItem(tbAdmin.getValueAt(23,1).toString());
         }
     }
     
@@ -2706,7 +2735,8 @@ private void NotaRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         cmbYesTombolPenjualan.setSelectedItem("No");
         cmbYesTombolPenyerahanDarah.setSelectedItem("No");
         cmbYesCetakPenjualan.setSelectedItem("No");        
-        cmbYesTombolNotaPenjualan.setSelectedItem("No");
+        cmbYesTombolNotaPenjualan.setSelectedItem("No");   
+        cmbYesCentangObatRalan.setSelectedItem("No");
         NotaRalan.requestFocus();
     }
     
