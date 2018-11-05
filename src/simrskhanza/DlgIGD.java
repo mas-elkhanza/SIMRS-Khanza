@@ -2836,6 +2836,9 @@ public final class DlgIGD extends javax.swing.JDialog {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tbPetugasKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbPetugasKeyReleased(evt);
+            }
         });
         Scroll.setViewportView(tbPetugas);
 
@@ -3834,12 +3837,6 @@ public final class DlgIGD extends javax.swing.JDialog {
 
     private void tbPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPetugasKeyPressed
         if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                try {
-                    getData();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }  
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 i=tbPetugas.getSelectedColumn();
                 if(i==1){
@@ -5837,6 +5834,17 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
 
     }//GEN-LAST:event_MnBillingParsialActionPerformed
+
+    private void tbPetugasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPetugasKeyReleased
+        if(tabMode.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }              
+        }
+    }//GEN-LAST:event_tbPetugasKeyReleased
 
     /**
     * @data args the command line arguments

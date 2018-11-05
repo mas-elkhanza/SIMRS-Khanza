@@ -162,7 +162,7 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         ppSimpan.setBackground(new java.awt.Color(242, 242, 242));
         ppSimpan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppSimpan.setForeground(new java.awt.Color(100,80,80));
+        ppSimpan.setForeground(new java.awt.Color(100, 80, 80));
         ppSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         ppSimpan.setText("Simpan");
         ppSimpan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -179,7 +179,7 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         ppGanti.setBackground(new java.awt.Color(242, 242, 242));
         ppGanti.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppGanti.setForeground(new java.awt.Color(100,80,80));
+        ppGanti.setForeground(new java.awt.Color(100, 80, 80));
         ppGanti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
         ppGanti.setText("Ganti");
         ppGanti.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -196,7 +196,7 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         ppHapus.setBackground(new java.awt.Color(242, 242, 242));
         ppHapus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppHapus.setForeground(new java.awt.Color(100,80,80));
+        ppHapus.setForeground(new java.awt.Color(100, 80, 80));
         ppHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         ppHapus.setText("Hapus");
         ppHapus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -213,7 +213,7 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         ppCetak.setBackground(new java.awt.Color(242, 242, 242));
         ppCetak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppCetak.setForeground(new java.awt.Color(100,80,80));
+        ppCetak.setForeground(new java.awt.Color(100, 80, 80));
         ppCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppCetak.setText("Cetak");
         ppCetak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -229,7 +229,7 @@ public final class DlgPoli extends javax.swing.JDialog {
         Popup.add(ppCetak);
 
         ppOrder.setBackground(new java.awt.Color(242, 242, 242));
-        ppOrder.setForeground(new java.awt.Color(100,80,80));
+        ppOrder.setForeground(new java.awt.Color(100, 80, 80));
         ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrder.setText("Urutkan Berdasar");
         ppOrder.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -238,7 +238,7 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         ppOrderKode.setBackground(new java.awt.Color(242, 242, 242));
         ppOrderKode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrderKode.setForeground(new java.awt.Color(100,80,80));
+        ppOrderKode.setForeground(new java.awt.Color(100, 80, 80));
         ppOrderKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrderKode.setText("Kode Unit");
         ppOrderKode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -255,7 +255,7 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         ppOrderNama.setBackground(new java.awt.Color(242, 242, 242));
         ppOrderNama.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrderNama.setForeground(new java.awt.Color(100,80,80));
+        ppOrderNama.setForeground(new java.awt.Color(100, 80, 80));
         ppOrderNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrderNama.setText("Nama Unit");
         ppOrderNama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -272,7 +272,7 @@ public final class DlgPoli extends javax.swing.JDialog {
 
         ppOrderKtg.setBackground(new java.awt.Color(242, 242, 242));
         ppOrderKtg.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrderKtg.setForeground(new java.awt.Color(100,80,80));
+        ppOrderKtg.setForeground(new java.awt.Color(100, 80, 80));
         ppOrderKtg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrderKtg.setText("Registrasi");
         ppOrderKtg.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -306,7 +306,7 @@ public final class DlgPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Unit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Unit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -324,8 +324,8 @@ public final class DlgPoli extends javax.swing.JDialog {
             }
         });
         tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbKamarKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbKamarKeyReleased(evt);
             }
         });
         Scroll.setViewportView(tbKamar);
@@ -765,17 +765,6 @@ public final class DlgPoli extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbKamarMouseClicked
 
-    private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
-        if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                try {
-                    getData();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }
-        }
-}//GEN-LAST:event_tbKamarKeyPressed
-
 private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyPressed
    Valid.pindah(evt,Kd,By);
 }//GEN-LAST:event_NmKeyPressed
@@ -803,6 +792,17 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
     private void ByLmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ByLmKeyPressed
         Valid.pindah(evt,By,BtnSimpan);
     }//GEN-LAST:event_ByLmKeyPressed
+
+    private void tbKamarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyReleased
+        if(tabMode.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbKamarKeyReleased
 
     /**
     * @param args the command line arguments
