@@ -932,7 +932,7 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
 
 private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||kddokter.getText().trim().equals("")){
-            Valid.textKosong(TCari,"Penyakit & Dokter");
+            Valid.textKosong(TCari,"Pasien & Dokter");
         }else{
             try {          
                 if(pilihtable.equals("rawat_inap_dr")||pilihtable.equals("rawat_inap_pr")||pilihtable.equals("rawat_inap_drpr")){
