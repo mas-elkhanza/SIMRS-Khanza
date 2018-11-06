@@ -1,0 +1,50 @@
+.nav {
+  padding-right: 0;
+  padding-left: initial;
+}
+
+.nav-tabs {
+  .nav-item{
+    float: right;
+  }
+  > li {
+    float: right;
+    > a {
+      margin-left: auto;
+      margin-right: -2px;
+      border-radius: $border-radius $border-radius 0 0;
+    }
+  }
+}
+
+.nav-pills {
+  .nav-item{
+    float: right;
+  }
+  > li {
+    float: right;
+    + li {
+      margin-right: 2px;
+      margin-left: auto;
+    }
+  }
+}
+
+.nav-stacked {
+  .nav-item{
+    float: none;
+  }
+  > li {
+    float: none;
+    + li {
+      margin-right: 0;
+      margin-left: auto;
+    }
+  }
+}
+
+.nav-justified {
+  > .dropdown .dropdown-menu {
+    right: auto;
+  }
+}

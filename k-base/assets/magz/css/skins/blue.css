@@ -1,0 +1,349 @@
+/*
+ * Variable
+ */
+/* Colors */
+.skin-blue a {
+  color: #626EEF;
+}
+.skin-blue a:hover, .skin-blue a:focus {
+  color: #5F72B2;
+}
+.skin-blue .badge-primary {
+  background-color: #626EEF;
+}
+.skin-blue .for-mobile, .skin-blue .for-tablet {
+  display: none !important;
+}
+.skin-blue .breadcrumb li a {
+  color: #626EEF;
+}
+.skin-blue .pagination li.active a {
+  background-color: #626EEF;
+}
+.skin-blue .pagination li.active a:hover, .skin-blue .pagination li.active a:focus {
+  background-color: #626EEF;
+}
+.skin-blue .btn-primary {
+  background-color: #626EEF;
+  color: #fff;
+  border-color: #626EEF;
+}
+.skin-blue .btn-primary:disabled, .skin-blue .btn-primary.disabled, .skin-blue .btn-primary:hover, .skin-blue .btn-primary:active, .skin-blue .btn-primary:active:hover, .skin-blue .btn-primary:active:focus, .skin-blue .btn-primary:focus {
+  color: #fff;
+  background-color: #1626d5;
+  border-color: #1626d5;
+}
+.skin-blue .btn-primary:active:hover {
+  background-color: #1322be;
+}
+.skin-blue .btn-magz {
+  color: #626EEF;
+  border-color: #626EEF;
+}
+.skin-blue .btn-magz:after {
+  background-color: #626EEF;
+}
+.skin-blue .btn-magz.white {
+  color: #fff;
+}
+.skin-blue .btn-magz.white:after {
+  background-color: #fff;
+}
+.skin-blue .btn-magz.white:focus, .skin-blue .btn-magz.white:hover {
+  color: #626EEF !important;
+}
+.skin-blue .firstbar .search .help-block div {
+  color: #626EEF;
+}
+.skin-blue .firstbar .nav-icons li a:hover {
+  color: #626EEF;
+}
+.skin-blue .headline .item a .badge {
+  background-color: #626EEF;
+}
+.skin-blue .article h2 a:hover {
+  color: #626EEF;
+}
+.skin-blue article .category a {
+  color: #626EEF;
+}
+.skin-blue article footer .btn-primary {
+  background-color: transparent;
+  border-color: #626EEF;
+  color: #626EEF;
+}
+.skin-blue article footer .btn-primary:hover {
+  color: #fff;
+}
+.skin-blue article footer .btn-primary:hover:after {
+  background-color: #626EEF;
+}
+.skin-blue .love {
+  color: #989898;
+}
+.skin-blue .love.active {
+  color: #626EEF;
+}
+.skin-blue .best-of-the-week .article h2 a:hover {
+  color: #626EEF;
+}
+.skin-blue .featured {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  height: 550px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.skin-blue .featured .inner {
+  padding: 20px;
+}
+.skin-blue .featured figure {
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.skin-blue .featured .overlay {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-color: transparent;
+  background-image: linear-gradient(transparent 0%, transparent 50%, rgba(0, 0, 0, 0.1) 56%, rgba(0, 0, 0, 0.6) 93%, rgba(0, 0, 0, 0.59) 100%);
+  background-image: -webkit-linear-gradient(transparent 0%, transparent 50%, rgba(0, 0, 0, 0.1) 56%, rgba(0, 0, 0, 0.6) 93%, rgba(0, 0, 0, 0.59) 100%);
+}
+.skin-blue .featured .details {
+  padding: 20px 30px;
+  position: absolute;
+  bottom: 10px;
+}
+.skin-blue .featured .details h1, .skin-blue .featured .details .category, .skin-blue .featured .details .time {
+  color: #fff;
+  margin: 0;
+}
+.skin-blue .featured .details .category {
+  margin-bottom: 10px;
+}
+.skin-blue .featured .details .category a {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 5px 15px;
+  display: inline-block;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+  transition: all .3s;
+  -moz-transition: all .3s;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+}
+.skin-blue .featured .details .category a:hover {
+  opacity: .8;
+}
+.skin-blue .featured .details h1 {
+  margin-bottom: 5px;
+  text-transform: capitalize;
+  line-height: 1.4em;
+  font-size: 28px;
+  font-weight: 700;
+}
+.skin-blue .featured .details h1 a {
+  text-decoration: none;
+  color: #fff;
+}
+.skin-blue .topbar ul li a:hover {
+  color: #626EEF;
+}
+.skin-blue .menu ul > li > a .badge {
+  background-color: #626EEF;
+}
+.skin-blue .menu ul > li > a:after {
+  background-color: #626EEF;
+}
+.skin-blue .menu ul > li .dropdown-menu > li.active a:after {
+  background-color: #626EEF;
+}
+.skin-blue .menu ul > li .dropdown-menu > li > a:after {
+  opacity: 0;
+}
+.skin-blue .menu ul > li .dropdown-menu > li:hover > a:after {
+  background-color: #626EEF;
+  opacity: 1;
+}
+.skin-blue .article-list .badge {
+  background-color: #626EEF;
+}
+.skin-blue .article-list .details h1 a:hover {
+  color: #626EEF;
+}
+.skin-blue .title-col:after {
+  background-color: #626EEF;
+}
+.skin-blue .article-mini .detail .category a {
+  color: #626EEF;
+}
+.skin-blue .tags-list li a:after {
+  background-color: #626EEF;
+}
+.skin-blue aside .aside-title {
+  font-size: 16px;
+  position: relative;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+.skin-blue aside .aside-title .all {
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #383838;
+  top: 5px;
+}
+.skin-blue aside .aside-title .all i {
+  color: #626EEF;
+  margin-left: 5px;
+}
+.skin-blue aside .aside-title:after {
+  content: ' ';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 15px;
+  height: 2px;
+  background-color: #626EEF;
+}
+.skin-blue aside .newsletter .icon.error h1 {
+  color: #626EEF;
+}
+.skin-blue aside .newsletter .icon.error i:before {
+  color: #626EEF;
+}
+.skin-blue aside .nav li.active a {
+  border-top: 2px solid #626EEF !important;
+}
+.skin-blue aside .nav li.active a i {
+  color: #626EEF;
+}
+.skin-blue .article-fw .details h1 a:hover {
+  color: #626EEF;
+}
+.skin-blue .comments .detail .link a {
+  color: #626EEF;
+}
+.skin-blue footer.footer {
+  border-top: 5px solid #626EEF;
+}
+.skin-blue footer.footer .block .block-title:after {
+  background-color: #626EEF;
+}
+.skin-blue footer.footer .footer-nav-horizontal li a:hover {
+  color: #626EEF;
+}
+.skin-blue footer.footer .footer-nav li a:hover {
+  color: #626EEF;
+}
+.skin-blue footer.footer .tags li a:hover {
+  border-color: #626EEF;
+}
+.skin-blue footer.footer .copyright {
+  text-align: center;
+  margin-top: 70px;
+  border-top: 1px solid #222;
+  padding-top: 35px;
+  padding-bottom: 20px;
+  font-size: 12px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.skin-blue footer.footer .copyright a {
+  text-decoration: underline;
+}
+.skin-blue footer.footer .copyright div {
+  margin-top: 7px;
+}
+.skin-blue footer.footer .copyright div i {
+  padding: 0 3px;
+}
+.skin-blue footer.footer .article-mini {
+  margin-bottom: 23px;
+}
+.skin-blue footer.footer .article-mini .inner {
+  border-bottom: 0;
+}
+.skin-blue footer.footer .article-mini h1 {
+  font-size: 14px;
+}
+.skin-blue footer.footer .article-mini h1 a {
+  color: #ddd;
+}
+.skin-blue footer.footer .btn-magz {
+  border-color: #fff;
+  border-radius: 3px;
+  font-size: 14px;
+  padding-left: 13px;
+  padding-right: 13px;
+}
+.skin-blue section.single .line {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.skin-blue section.single article.main-article header .details li a {
+  color: #626EEF;
+}
+.skin-blue section.single article.main-article .main a {
+  color: #626EEF;
+}
+.skin-blue section.single article.main-article footer .col:last-child .love.active {
+  background-color: #626EEF;
+  color: #fff;
+  border-color: #626EEF;
+}
+.skin-blue section.single footer .tags li a:hover {
+  color: #626EEF;
+}
+.skin-blue .sharing ul li.count {
+  color: #626EEF;
+}
+.skin-blue .page .element-block .element-title:after {
+  background-color: #626EEF;
+}
+.skin-blue .page .element-block .colors li.primary {
+  background-color: #626EEF;
+}
+.skin-blue .page .element-block .colors li.secondary {
+  background-color: #5F72B2;
+}
+.skin-blue .carousel-1 .owl-dots .owl-dot.active span {
+  background-color: #626EEF;
+}
+.skin-blue .carousel-1 .owl-nav .owl-prev:hover, .skin-blue .carousel-1 .owl-nav .owl-next:hover {
+  background-color: #626EEF;
+}
+.skin-blue .nav-tabs-group .nav-tabs-list li.active a {
+  border-bottom: 2px solid #626EEF;
+}
+.skin-blue .nav-tabs-group .form-control {
+  height: 30px;
+  padding: 0;
+  margin-top: 3px;
+}
+.skin-blue .nav-tabs-group .nav-tabs-right {
+  float: right;
+  display: inline-block;
+  width: 100px;
+}
+.skin-blue .featured-author .featured-author-body .featured-author-count .item .name {
+  color: #626EEF;
+}
+
+/*# sourceMappingURL=blue.css.map */

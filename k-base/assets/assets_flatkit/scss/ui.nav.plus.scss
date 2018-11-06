@@ -1,0 +1,291 @@
+@include media-breakpoint-up(lg){
+	.folded {
+		&,
+		.scroll{
+			width: $aside-folded-width;
+		}
+		&.md{
+			&,
+			.scroll{
+				width: $aside-folded-md-width;
+			}
+		}
+		.hidden-folded{
+			display: none;
+		}
+		.nav li ul{
+			display: none;
+		}
+		.nav > li > a{
+			text-align: center;
+			padding-left: 4px;
+			padding-right: 4px;
+			.nav-caret,
+			.nav-text{
+				display: none;
+			}
+			.nav-label{
+				position: absolute;
+				top: -6px;
+				right: 6px;
+			}
+			.nav-icon{
+				float: none;
+				line-height: $aside-nav-folded-height;
+				margin-left: 0;
+				margin-right: 0;
+				position: relative;
+			}
+		}
+		&.show-text{
+			.nav > li > a{
+				.nav-text{
+					display:block;
+					margin-top: -18px;
+					font-size: 0.85em;
+				}
+			}
+		}
+		.navbar{
+			text-align: center;
+			padding-left: 4px;
+			padding-right: 4px;
+		}
+		.navbar-brand{
+			float: none;
+			margin: 0;
+		}
+		.nav-stacked{
+			.nav{
+				margin: 0 12px;
+			}
+		}
+		.nav-fold{
+			padding: 8px 16px;
+			.pull-left{
+				float: none !important;
+				margin: 0;
+				img{
+					width: 100%;
+					height: auto;
+				}
+			}
+		}
+	}
+
+	.folded.nav-expand{
+		@include transition(width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1));
+		@include backface-visibility(hidden);
+		overflow-x: hidden;
+		overflow-y: auto;
+		position: absolute;
+		&:hover,
+		&:focus,
+		&.active{
+			&,
+			.scroll{
+				width: $aside-width !important;
+			}
+			> *{
+				width: $aside-width;
+			}
+			.hidden-folded{
+				display: block;
+			}
+			.hidden-folded.inline{
+				display: inline-block;
+			}
+			.nav li ul{
+				display: inherit;
+			}
+			.nav > li > a{
+				text-align: left;
+				padding-left: 16px;
+				padding-right: 16px;
+				.nav-caret,
+				.nav-text{
+					display: block;
+				}
+				.nav-text{
+					font-size: 1em;
+					margin: 0;
+				}
+				.nav-label{
+					position: static;
+				}
+				.nav-icon{
+					float: left;
+					line-height: inherit;
+					margin-right: 16px;
+				}
+			}
+			.navbar{
+				text-align: left;
+				padding-left: 1rem;
+				padding-right: 1rem;
+			}
+			.nav-stacked{
+				.nav{
+					margin: 0 8px;
+					> li {
+						> a{
+							padding: 0 8px;
+						}
+					}
+				}
+			}
+			.nav-fold{
+				padding: 12px 16px;
+				.pull-left{
+					float: left !important;
+					img{
+						height: auto;
+						&.w-40{
+							width: 40px;
+						}
+						&.w-48{
+							width: 48px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.nav-dropup,
+	.folded.nav-dropdown{
+		&.modal,
+		[flex],
+		.row-body{
+			overflow: visible !important;
+		}
+		.nav > li {
+			&:hover,
+			&:focus{
+				> ul {
+					display: block;
+				}
+			}
+			> ul {
+				display: none;
+				overflow: visible;
+				max-height: 999px;
+				color: $dark-white;
+				background-color: $dark-black;
+				border-radius: 2px;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+				position: absolute;
+				left: 100%;
+				top: 0;
+				padding: 6px 0;
+				a {
+					padding-left: 16px !important;
+					padding-right: 16px !important;
+					min-width: 160px;
+				}
+				li.active ul {
+					display: block;
+				}
+				.nav-text{
+					padding: 6px 0 !important;
+				}
+			}
+			.nav-mega{
+				width: 320px;
+				> li{
+					width: 160px;
+					float: left;
+				}
+				&.nav-mega-3{
+					width: 480px;
+				}
+			}
+		}
+	}
+}
+
+.nav-border{
+	.nav > li.active:after{
+		content:'';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		border-left-color: inherit;
+		border-left-width: 3px;
+		border-left-style: solid;
+	}
+}
+
+.nav-stacked{
+	.nav{
+		margin: 0 8px;
+		> li {
+			> a{
+				line-height: $aside-nav-stacked-height;
+				padding: 0 0.5rem;
+				margin: 2px 0;
+				.nav-text{
+					padding: ($aside-nav-stacked-height - 1.125)/2 0;
+				}
+			}
+			li {
+				a {
+					padding-left: 3rem;
+				}
+				li a{
+					padding-left: 4rem;
+				}
+				li li a{
+					padding-left: 5rem;
+				}
+			}
+			&.active{
+			   	> a{
+			   		color: $dark-white;
+					background-color: $primary;
+			   	}
+		    }
+		}
+		li{
+			a{
+				border-radius: 3px;
+			}
+		}
+		.nav-header{
+			padding-left: 8px;
+			padding-right: 8px;
+		}
+	}
+}
+
+.nav-light{
+	.nav{
+		.nav-icon i svg,
+		.nav-icon i img{
+			display:block;
+		}
+	}
+}
+
+.nav-center{
+	text-align: center;
+	.nav-icon{
+		display: none;
+	}
+	.nav-caret{
+		position: absolute;
+		right: 10px;
+	}
+	.nav-label{
+		position: absolute;
+		padding-left: 10px;
+	}
+	.nav a{
+		padding-left: 16px !important;
+	}
+	.nav-fold .pull-left{
+		float: none !important;
+		margin-bottom: 10px;
+		display: inline-block;
+	}
+}
