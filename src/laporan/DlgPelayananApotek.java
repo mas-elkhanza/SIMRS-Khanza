@@ -303,7 +303,7 @@ public final class DlgPelayananApotek extends javax.swing.JDialog {
             param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));   
             param.put("parameter","%"+TCari.getText().trim()+"%");    
             param.put("limabelas",""+limabelas);  
-            param.put("rata",""+Valid.SetAngka6(lamajam/i));  
+            param.put("rata",""+Valid.SetAngka6(lamajam/(i-1)));  
             param.put("tigapuluh",""+tigapuluh);  
             param.put("satujam",""+satujam);  
             param.put("lebihsatujam",""+lebihsatujam);  
@@ -486,21 +486,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         lebihsatujam++;
                     }
                 }                 
-                tabMode.addRow(new Object[]{
-                    "","","Rata-rata (Menit)",": ","","","",""+Valid.SetAngka6(lamajam/i)
-                });
-                tabMode.addRow(new Object[]{
-                    "","","0 - 15 Menit",": ","","","",""+limabelas
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">15 - <=30 Menit",": ","","","",""+tigapuluh
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">30 - <=60 Menit",": ","","","",""+satujam
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">60 Menit",": ","","","",""+lebihsatujam
-                });
+                
+                if(lamajam>0){
+                    tabMode.addRow(new Object[]{
+                        "","","Rata-rata (Menit)",": ","","","",""+Valid.SetAngka6(lamajam/(i-1))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","","0 - 15 Menit",": ","","","",""+limabelas
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">15 - <=30 Menit",": ","","","",""+tigapuluh
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">30 - <=60 Menit",": ","","","",""+satujam
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">60 Menit",": ","","","",""+lebihsatujam
+                    });
+                }                    
             } catch (Exception e) {
                 System.out.println("laporan.DlgPelayananRalan.tampil() : "+e);
             } finally{
