@@ -1,0 +1,203 @@
+// settings
+.switcher{
+  z-index: 1050;
+  position: fixed;
+  top: 78px;
+  right: -240px;
+  width: 240px;
+  @include transition(right 0.2s ease);
+  border: 1px solid rgba(120,120,120,0.1);
+  background-clip: padding-box;
+  &.active{
+    right: -2px;
+    z-index: 1060;
+  }
+}
+.switcher .sw-btn{
+  position: absolute;
+  left: -43px;
+  top: -1px;
+  padding: 10px 15px;
+  z-index:1045;
+  border: 1px solid rgba(120,120,120,0.1);
+  border-right-width: 0;
+  background-clip: padding-box;
+}
+#sw-demo{
+  top: 118px;
+  &.active{
+    top: 78px;
+  }
+}
+
+// icon list
+.list-icon i{
+  margin-right: 16px
+}
+.list-icon div{
+  line-height: 40px; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+}
+
+
+/*Charts*/
+.jqstooltip{
+  background-color: rgba(0,0,0,0.8) !important;
+  border: solid 1px #000 !important;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  padding: 5px 10px !important;
+  @include box-sizing(content-box);
+}
+
+// easypie
+.easyPieChart {
+  position: relative;
+  text-align: center;
+  > div{
+    position: absolute;
+    width: 100%;
+    line-height: 1;
+    top: 40%;
+    img{
+      margin-top: -4px;
+    }
+  }
+  canvas{
+    vertical-align: middle;
+  }
+}
+
+// flot tip
+#flotTip,
+.flotTip {
+  padding: 4px 10px;
+  background-color: rgba(0,0,0,0.8) !important;
+  border: solid 1px #000 !important;
+  z-index: 100;
+  font-size: 12px;
+  color: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+// flot lengend
+.legendColorBox{
+  > div{
+    border: none !important;
+    margin: 5px;
+    > div{
+      border-radius: 10px;
+    }
+  }
+}
+
+// sortable
+.st-sort-ascent:before {
+  content: '\25B2';
+}
+.st-sort-descent:before {
+  content: '\25BC';
+}
+.st-selected td{
+  background: $min-black;
+}
+
+// select
+.dark .btn-default.form-control,
+.black .btn-default.form-control,
+.grey .btn-default.form-control {
+  background: transparent !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: inherit !important;
+}
+.ui-select-bootstrap > .ui-select-choices{
+  overflow-y: scroll;
+}
+
+// datatable
+.box .dataTables_wrapper {
+  padding-top: 10px
+}
+
+.box .dataTables_wrapper > .row {
+  margin: 0;
+  width: 100%;
+}
+
+.box .dataTables_wrapper > .row > .col-sm-12 {
+  padding: 0;
+}
+.dataTables_wrapper.form-inline .form-control{
+  width: auto;
+}
+div.dataTables_length label,
+div.dataTables_filter label{
+  display:inline-block;
+}
+div.dataTables_paginate ul.pagination{
+  display:inline-block;
+}
+.footable-odd{
+  background-color: $table-striped-color !important;
+}
+
+.note-editor{
+  border-width: 0 !important;
+  overflow: visible !important;
+  background-color: inherit;
+}
+.note-toolbar .note-color .dropdown-toggle{
+  padding-left: 2px !important;
+}
+.note-editor .note-editing-area .note-editable,
+.note-editor .note-statusbar{
+  background-color: transparent !important;
+  color: inherit !important;
+}
+.note-toolbar{
+  background-color: rgba(120,130,140,0.1);
+}
+
+.ie .ie-show{
+  display:block
+}
+
+.nav a.waves-effect{
+  -webkit-mask-image: -webkit-radial-gradient(circle, #ffffff 100%, #000000 100%);
+}
+
+.sortable-placeholder{
+  list-style: none;
+  border: 1px dashed #fff;
+  min-height: 40px;
+}
+
+.abn-tree{
+    -webkit-box-orient: vertical!important;
+    -webkit-box-direction: normal!important;
+    -webkit-flex-direction: column!important;
+    -ms-flex-direction: column!important;
+    flex-direction: column!important;
+}
+
+.input-group > .ui-select-bootstrap.dropdown,
+div.input-group > .select2-container{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+}
+.input-group > .ui-select-bootstrap.dropdown .form-control,
+div.input-group > .select2-container > .selection{
+    width: 100%;
+}

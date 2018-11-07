@@ -71,7 +71,7 @@ public final class DlgCariKonversi extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Calculator Konversi Satuan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90,120,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Calculator Konversi Satuan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -254,7 +254,7 @@ private void kdsat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                             DlgKonversi form=new DlgKonversi(null,false);
                             form.emptTeks();
-                            form.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+                            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                             form.setLocationRelativeTo(internalFrame1);
                             form.setAlwaysOnTop(false);
                             form.setVisible(true);

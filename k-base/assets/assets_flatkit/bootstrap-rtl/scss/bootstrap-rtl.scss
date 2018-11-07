@@ -1,0 +1,46 @@
+// --------------------------------------------------
+// Right-to-Left (RTL) Theme for Bootstrap 4.x
+// Flatfull
+// http://flatfull.com
+// --------------------------------------------------
+
+// Core variables and mixins imported from the latest original bootstrap
+@import "../../bootstrap/scss/_variables.scss";
+@import "../../bootstrap/scss/_mixins.scss";
+@import "variables-rtl.scss";
+@import "mixins-rtl.scss";
+
+
+// Reset and dependencies
+@import "normalize-rtl.scss";
+
+// Core CSS
+@import "type-rtl.scss";
+//@import "grid-rtl.scss";
+@import "tables-rtl.scss";
+@import "forms-rtl.scss";
+
+// Components
+@import "dropdowns-rtl.scss";
+@import "button-groups-rtl.scss";
+@import "input-groups-rtl.scss";
+@import "navs-rtl.scss";
+@import "navbar-rtl.scss";
+@import "breadcrumbs-rtl.scss";
+@import "pagination-rtl.scss";
+@import "pager-rtl.scss";
+@import "badges-rtl.scss";
+@import "alerts-rtl.scss";
+@import "progress-rtl.scss";
+@import "media-rtl.scss";
+@import "list-group-rtl.scss";
+@import "responsive-embed-rtl.scss";
+@import "close-rtl.scss";
+
+// Components w/ JavaScript
+@import "modals-rtl.scss";
+@import "popovers-rtl.scss";
+@import "carousel-rtl.scss";
+
+// Utility classes
+@import "utilities-rtl.scss";

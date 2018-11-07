@@ -745,7 +745,7 @@ public class DlgRegistrasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BiayaKeyPressed
 
     private void btnSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSemuaActionPerformed
-        pilihbayar.setSize(this.getWidth()-50,this.getHeight()-50);
+        pilihbayar.setSize(this.getWidth()-20,this.getHeight()-20);
         pilihbayar.setLocationRelativeTo(this);
         pilihbayar.tampil();
         pilihbayar.setVisible(true);

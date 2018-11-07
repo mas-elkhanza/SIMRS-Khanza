@@ -1,0 +1,55 @@
+{
+	"app" : {
+      "name": "Flatkit",
+      "version": "1.2.0",
+      "color": {
+        "primary":      "#0cc2aa",
+        "accent":       "#a88add",
+        "warn":         "#fcc100",
+        "info":         "#6887ff",
+        "success":      "#6cc788",
+        "warning":      "#f77a99",
+        "danger":       "#f44455",
+        "white":        "#ffffff",
+        "light":        "#f1f2f3",
+        "dark":         "#2e3e4e",
+        "black":        "#2a2b3c"
+      },
+      "setting": {
+        "theme": {
+    			"primary": "primary",
+    			"accent": "accent",
+    			"warn": "warn"
+        },
+        "color": {
+	        "primary":      "#0cc2aa",
+	        "accent":       "#a88add",
+	        "warn":         "#fcc100"
+    	},
+        "folded": false,
+        "boxed": false,
+        "container": false,
+        "themeID": 1,
+        "bg": ""
+      }
+    },
+	"p_p_1" :"[{data: 70, label:'Server'}, {data: 30, label: 'Client'}]",
+	"p_p_2" :"[{data: 75, label: 'iPhone'}, {data: 20, label: 'iPad'}]",
+	"p_p_3" :"[{data: 30, label: 'Server'}, {data: 70, label: 'Client'}]",
+	"p_p_4" :"[{data: 10, label: 'Apple'}, {data: 15, label: 'Google'}, {data: 35, label: 'Flatty'}, {data: 45, label: 'Other'}]",
+	"p_l_1" :"[[1, 6.1], [2, 6.3], [3, 6.4], [4, 6.6], [5, 7.0], [6, 7.7], [7, 8.3]]",
+	"p_l_2" :"[[1, 5.5], [2, 5.7], [3, 6.4], [4, 7.0], [5, 7.2], [6, 7.3], [7, 7.5]]",
+	"p_l_3" :"[[1, 2], [2, 1.6], [3, 2.4], [4, 2.1], [5, 1.7], [6, 1.5], [7, 1.7]]",
+	"p_l_4" :"[[1, 3], [2, 2.6], [3, 3.2], [4, 3], [5, 3.5], [6, 3], [7, 3.5]]",
+	"p_l_5" :"[[1, 3.6], [2, 3.5], [3, 6], [4, 4], [5, 4.3], [6, 3.5], [7, 3.6]]",
+	"p_l_6" :"[[1, 10], [2, 8], [3, 27], [4, 25], [5, 50], [6, 30], [7, 25]]",
+
+	"p_b_1" :"[[1, 2], [2, 4], [3, 5], [4, 7], [5, 6], [6, 4], [7, 5], [8, 4]]",
+	"p_b_2" :"[[3, 1], [2, 2], [6, 3], [5, 4], [7, 5]]",
+	"p_b_3" :"[[1, 3], [2, 4], [3, 3], [4, 6], [5, 5], [6, 4], [7, 5], [8, 3]]",
+	"p_b_4" :"[[1, 2], [2, 3], [3, 2], [4, 5], [5, 4], [6, 3], [7, 4], [8, 2]]",
+
+	"world_markers" :"[{latLng: [52.5167, 13.3833], name: 'Berlin'}, {latLng: [48.8567, 2.3508], name: 'Paris'}, {latLng: [35.6833, 139.6833], name: 'Tokyo'}, {latLng: [40.7127, -74.0059], name: 'New York City'},{latLng: [49.2827, -123.1207], name: 'City of Vancouver'},{latLng: [22.2783, 114.1747], name: 'Hong Kong'},{latLng: [55.7500, 37.6167], name: 'Moscow'},{latLng: [37.7833, -122.4167], name: 'San Francisco'},{latLng: [39.9167, 116.3833], name: 'Beijing'}]",
+	"usa_markers" :"[{latLng: [40.71, -74.00], name: 'New York'},{latLng: [34.05, -118.24], name: 'Los Angeles'},{latLng: [41.87, -87.62], name: 'Chicago'},{latLng: [29.76, -95.36], name: 'Houston'},{latLng: [39.95, -75.16], name: 'Philadelphia'},{latLng: [38.90, -77.03], name: 'Washington'},{latLng: [37.36, -122.03], name: 'Silicon Valley'}]",
+	"cityAreaData" :"[ 605.16, 310.69, 405.17, 748.31, 207.35, 217.22, 137.70, 280.71, 210.32, 325.42 ]"
+}

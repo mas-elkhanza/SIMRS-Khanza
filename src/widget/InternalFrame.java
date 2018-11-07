@@ -27,15 +27,15 @@ public class InternalFrame extends JPanel{
     private BufferedImage gradientImage;
     //private Color warnaAtas = new Color(245,170,245) ;
     //private Color warnaBawah = new Color(245,170,245) ;
-    private Color warnaAtas = new Color(255,255,253) ;
-    private Color warnaBawah = new Color(255,255,253) ;
+    private Color warnaAtas = new Color(255,255,254) ;
+    private Color warnaBawah = new Color(255,255,254) ;
 
     //private Color warnaAtas = new Color(255,194,255);
     //private Color warnaBawah = new Color(255,194,255);
     
     public InternalFrame(){
         super();
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(241,246,236)));
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(239,244,234)));
     }
 
     public InternalFrame(LayoutManager layout) {

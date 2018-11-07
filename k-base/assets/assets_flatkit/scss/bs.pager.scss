@@ -1,0 +1,103 @@
+.pagination,
+.pager{
+  .page-item,
+  > li > a,
+  > li > span{
+    color: inherit !important;
+    background-color: transparent !important;
+    border-color: $border-color !important;
+    &:hover,
+    &:focus{
+      border-color: $border-color;
+      background-color: $min-black;
+      color: inherit;
+    }
+  }
+  .page-item.active,
+  > .active > a,
+  > .active > span{
+    color: $full-white !important;
+    background-color: $primary !important;
+    border-color: $primary !important;
+  }
+}
+
+.pagination{
+  > li{
+    display: inline;
+    list-style: none;
+  }
+  > li > a{
+    position: relative;
+    float: left; // Collapse white-space
+    padding: $pagination-padding-y $pagination-padding-x;
+    margin-left: -1px;
+    line-height: $line-height;
+    color: $pagination-color;
+    text-decoration: none;
+    background-color: $pagination-bg;
+    border: $pagination-border-width solid $pagination-border-color;
+
+    @include hover-focus {
+      color: $pagination-hover-color;
+      background-color: $pagination-hover-bg;
+      border-color: $pagination-hover-border;
+    }
+  }
+}
+
+.pager {
+  padding-left: 0;
+  margin-top: $spacer-y;
+  margin-bottom: $spacer-y;
+  text-align: center;
+  list-style: none;
+  @include clearfix();
+
+  li {
+    display: inline;
+
+    > a,
+    > span {
+      display: inline-block;
+      padding: 5px 14px;
+      background-color: $min-black;;
+      border: 1px solid $border-color;
+      border-radius: 500px;
+    }
+
+    > a {
+      @include hover-focus {
+        text-decoration: none;
+        background-color: $min-black;
+      }
+    }
+  }
+
+  .disabled {
+    > a {
+      @include plain-hover-focus {
+        cursor: inherit;
+        background-color: $min-black;
+      }
+    }
+    > span {
+      cursor: inherit;
+      background-color: $min-black;
+    }
+  }
+}
+
+.pager-next {
+  > a,
+  > span {
+    float: right;
+  }
+}
+
+.pager-prev {
+  > a,
+  > span {
+    float: left;
+  }
+}

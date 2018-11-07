@@ -285,7 +285,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
 
         ppBarcode.setBackground(new java.awt.Color(242, 242, 242));
         ppBarcode.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBarcode.setForeground(new java.awt.Color(102, 51, 0));
+        ppBarcode.setForeground(new java.awt.Color(100,80,80));
         ppBarcode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         ppBarcode.setText("Barcode");
         ppBarcode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -309,7 +309,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Aset Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(90, 120, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Aset Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -619,7 +619,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         btnBarang.setBounds(703, 40, 25, 23);
 
         tgl_pengadaan.setEditable(false);
-        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-08-2017" }));
+        tgl_pengadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2017" }));
         tgl_pengadaan.setDisplayFormat("dd-MM-yyyy");
         tgl_pengadaan.setName("tgl_pengadaan"); // NOI18N
         tgl_pengadaan.setOpaque(false);
@@ -710,7 +710,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         FormInput.add(asal_barang);
         asal_barang.setBounds(275, 130, 140, 23);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "Posisi Inventaris Di :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "Posisi Inventaris Di :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
         jPanel1.setLayout(null);
@@ -1050,7 +1050,7 @@ private void kode_barangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
 
 private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
     barang.isCek();
-    barang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     barang.setLocationRelativeTo(internalFrame1);
     barang.setAlwaysOnTop(false);
     barang.setVisible(true);
@@ -1071,7 +1071,7 @@ private void id_ruangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 private void btnRuangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuangActionPerformed
     pilihan=1;
     ruang.isCek();
-    ruang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+    ruang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     ruang.setLocationRelativeTo(internalFrame1);
     ruang.setAlwaysOnTop(false);
     ruang.setVisible(true);
@@ -1148,7 +1148,7 @@ private void ppBarcodeBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {/
     private void btnRuang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuang1ActionPerformed
         pilihan=2;
         ruang.isCek();
-        ruang.setSize(internalFrame1.getWidth()-40,internalFrame1.getHeight()-40);
+        ruang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         ruang.setLocationRelativeTo(internalFrame1);
         ruang.setAlwaysOnTop(false);
         ruang.setVisible(true);

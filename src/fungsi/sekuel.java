@@ -12,8 +12,6 @@
 
 package fungsi;
 
-import fungsi.koneksiDB;
-import fungsi.var;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -130,6 +128,39 @@ public final class sekuel {
             System.out.println("Notifikasi : "+e); 
             return false;
         }            
+    }
+    
+    public boolean menyimpantf(String table,String value,int i,String[] a,String acuan_field,String update,int j,String[] b){
+        bool=false;
+        try{ 
+            ps=connect.prepareStatement("insert into "+table+" values("+value+")");
+            for(angka=1;angka<=i;angka++){
+                ps.setString(angka,a[angka-1]);
+            }            
+            ps.executeUpdate();
+            
+            if(ps != null){
+                ps.close();
+            } 
+            bool=true;
+        }catch(Exception e){
+            try {
+                ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
+                for(angka=1;angka<=j;angka++){
+                    ps.setString(angka,b[angka-1]);
+                } 
+                ps.executeUpdate();   
+                
+                if(ps != null){
+                    ps.close();
+                } 
+                bool=true;
+            } catch (Exception e2) {
+                bool=false;
+                System.out.println("Notifikasi : "+e2);
+            }                         
+        }
+        return bool;
     }
     
     public void menyimpan(String table,String value,String sama,int i,String[] a){
@@ -458,7 +489,24 @@ public final class sekuel {
         }
     }
     
-
+    public void meghapus3(String table,String field,String nilai_field) {
+        try {
+            ps=connect.prepareStatement("delete from "+table+" where "+field+"=?");
+            try{       
+                ps.setString(1,nilai_field);
+                ps.executeUpdate(); 
+             }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+             }finally{
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
     public void mengedit(String table,String acuan_field,String update){
         try {
             ps=connect.prepareStatement("update "+table+" set "+update+" where "+acuan_field);
