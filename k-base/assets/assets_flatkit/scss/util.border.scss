@@ -1,0 +1,158 @@
+@mixin border-wariant($parent, $bg){
+  $color: mix($bg, #fff, 10%);
+  .b-#{$parent}{
+    border-color: $bg;
+  }
+  .b-t-#{$parent}{
+    border-top-color: $bg;
+  }
+  .b-r-#{$color}{
+    border-right-color: $bg;
+  }
+  .b-b-#{$parent}{
+    border-bottom-color: $bg;
+  }
+  .b-l-#{$parent}{
+    border-left-color: $bg;
+  }
+}
+
+.no-border{
+  border-color:
+  transparent;
+  border-width:0;
+}
+.no-borders{
+  border-width:0 !important;
+}
+
+.b{
+  border-color: $border-color;
+  background-clip: padding-box;
+}
+.b-a{
+  border: 1px solid $border-color;
+}
+.b-t{
+  border-top: 1px solid $border-color;
+}
+.b-r{
+  border-right: 1px solid $border-color;
+}
+.b-b{
+  border-bottom: 1px solid $border-color;
+}
+.b-l{
+  border-left: 1px solid $border-color;
+}
+
+.b-2x{
+  border-width: 2px;
+}
+.b-3x{
+  border-width: 3px;
+}
+.b-4x{
+  border-width: 4px;
+}
+.b-5x{
+  border-width: 5px;
+}
+
+.b-t-2x{
+  border-top-width: 2px !important;
+}
+.b-t-3x{
+  border-top-width: 3px !important;
+}
+.b-t-4x{
+  border-top-width: 4px !important;
+}
+.b-t-5x{
+  border-top-width: 5px !important;
+}
+
+.b-r-2x{
+  border-right-width: 2px !important;
+}
+.b-r-3x{
+  border-right-width: 3px !important;
+}
+.b-r-4x{
+  border-right-width: 4px !important;
+}
+.b-r-5x{
+  border-right-width: 5px !important;
+}
+
+.b-b-2x{
+  border-bottom-width: 2px !important;
+}
+.b-b-3x{
+  border-bottom-width: 3px !important;
+}
+.b-b-4x{
+  border-bottom-width: 4px !important;
+}
+.b-b-5x{
+  border-bottom-width: 5px !important;
+}
+
+.b-l-2x{
+  border-left-width: 2px !important;
+}
+.b-l-3x{
+  border-left-width: 3px !important;
+}
+.b-l-4x{
+  border-left-width: 4px !important;
+}
+.b-l-5x{
+  border-left-width: 5px !important;
+}
+
+.b-light{
+  border-color: $light;
+}
+.b-white{
+  border-color: #fff;
+}
+
+@include border-wariant(primary, $primary);
+@include border-wariant(accent, $accent);
+@include border-wariant(warn, $warn);
+@include border-wariant(success, $success);
+@include border-wariant(info, $info);
+@include border-wariant(warning, $warning);
+@include border-wariant(danger, $danger);
+@include border-wariant(light, $light);
+@include border-wariant(grey, $grey);
+@include border-wariant(dark, $dark);
+@include border-wariant(black, $black);
+@include border-wariant(white, $white);
+@include border-wariant(blue, $blue);
+
+.no-b-t{
+  border-top-width: 0;
+}
+.no-b-r{
+  border-right-width: 0;
+}
+.no-b-b{
+  border-bottom-width: 0;
+}
+.no-b-l{
+  border-left-width: 0;
+}
+
+.b-dashed{
+  border-style: dashed !important;
+}
+
+@media (max-width: 991px) {
+  .no-border-sm{border-width: 0;}
+}
+
+@media (max-width: 767px) {
+  .no-border-xs{border-width: 0;}
+}

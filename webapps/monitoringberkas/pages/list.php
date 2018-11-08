@@ -408,7 +408,7 @@
                 while($baris2 = mysqli_fetch_array($hasil2)) {
                     HapusAll("temporary");
                     InsertData2("temporary", "'0','".$baris2["no_rawat"]."','".$baris2["no_rkm_medis"]."','','".$baris2["no_reg"]."','".$baris2["nm_poli"]."','".$baris2["png_jawab"]."', 
-                            '".$baris2["nm_pasien"]."','".$baris2["almt_pj"]."','".$baris2["nm_dokter"]."','".$baris2["p_jawab"]."','".$baris2["tgl_registrasi"]."','ralan','','','','','','','','','','','','','','','','','','','','','','','','',''");                
+                            '".$baris2["nm_dokter"]."','".$baris2["nm_pasien"]."','".$baris2["almt_pj"]."','".$baris2["p_jawab"]."','".$baris2["tgl_registrasi"]."','ralan','','','','','','','','','','','','','','','','','','','','','','','','',''");                
                 }            
             }            
             echo "<meta http-equiv='refresh' content='1;URL=?act=List&keyword=".str_replace(" ","_",$keyword)."&dokter=".str_replace(" ","_",$dokter)."&poli=".str_replace(" ","_",$poli)."&statusdata=".str_replace(" ","_",$statusdata)."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&action=no'>";                 

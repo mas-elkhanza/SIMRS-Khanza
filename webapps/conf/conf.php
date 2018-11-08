@@ -309,10 +309,9 @@
 		return "Rp. ".number_format($duit,0,",",".").",-";
 	}
         
-    function formatDuit2($duit)
-	{
-		return number_format($duit,0,",",".")."";
-	}
+    function formatDuit2($duit){
+		return @number_format($duit,0,",",".")."";
+    }
         
     function formatDec($duit)
 	{

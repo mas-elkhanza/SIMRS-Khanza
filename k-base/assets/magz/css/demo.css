@@ -1,0 +1,96 @@
+.demo-settings {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2002;
+}
+.demo-settings .demo-settings-toggle {
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  -moz-transition: all .5s;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background-color: #F73F52;
+  color: #fff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+}
+.demo-settings .demo-settings-toggle i {
+  font-size: 24px;
+}
+.demo-settings .demo-settings-options {
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  -moz-transition: all .5s;
+  transition-delay: .3s;
+  -webkit-transition-delay: .3s;
+  -o-transition-delay: .3s;
+  -moz-transition-delay: .3s;
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 50px;
+  width: 50px;
+  background-color: #fff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+  border-radius: 30px;
+  visibility: hidden;
+  opacity: 0;
+}
+.demo-settings .demo-settings-options ul {
+  padding: 0;
+  margin: 0;
+  margin-left: 60px;
+  width: 100%;
+  display: inline-block;
+}
+.demo-settings .demo-settings-options ul li {
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  margin-right: 10px;
+  margin-top: 15px;
+  border-radius: 3px;
+  display: inline-block;
+  cursor: pointer;
+  opacity: 0;
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  -moz-transition: all .5s;
+}
+.demo-settings .demo-settings-options ul li:hover {
+  opacity: .8;
+}
+.demo-settings.active .demo-settings-toggle {
+  margin: 5px;
+  box-shadow: none;
+  line-height: 50px;
+  width: 40px;
+  height: 40px;
+  transform: rotate(90deg);
+}
+.demo-settings.active .demo-settings-options {
+  visibility: visible;
+  opacity: 1;
+  width: 190px;
+}
+.demo-settings.active .demo-settings-options ul li {
+  opacity: 1;
+  transition-delay: .3s;
+  -webkit-transition-delay: .3s;
+  -moz-transition-delay: .3s;
+  -o-transition-delay: .3s;
+}
+
+/*# sourceMappingURL=demo.css.map */

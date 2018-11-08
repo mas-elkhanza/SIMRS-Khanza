@@ -1,0 +1,18 @@
+//
+// RTL Pager pagination
+// --------------------------------------------------
+
+
+.pager {
+  padding-right: 0;
+  padding-left: initial;
+
+  .pager-next {
+      float: left;
+  }
+
+  .pager-prev {
+      float: right;
+  }
+
+}

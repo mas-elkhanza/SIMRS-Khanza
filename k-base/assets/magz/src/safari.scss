@@ -1,0 +1,151 @@
+/**
+ * CSS For Safari Browser
+ */
+@import "variable.scss";
+@import "fonts.scss";
+
+.menu {
+	ul {
+		li {
+			ul {
+				-webkit-transition: none;
+				-webkit-transform: none;
+				li {
+					a {
+						&:after {
+							display: none;
+						}
+						&:hover {
+							background-color: color($colors, primary);
+						}
+					}
+				}
+			}
+			&:hover ul {
+				-webkit-transition: none;
+				-webkit-transform: none;				
+			}
+		}
+	}
+}
+
+.social.trp {
+	li {
+    a {
+    	line-height: 36px;
+      border: 2px solid transparent;
+      &:hover {
+        background-color: transparent;
+      }
+			&.search-toggle {
+				&:hover {
+					border-color: color($colors, primary);
+				}
+				&.active {
+					border-color: color($colors, primary);
+					border-left-color: transparent;
+				}
+			}
+      &.facebook:hover {
+        color: color($colors, facebook);
+        border-color: color($colors, facebook);
+      }
+      &.twitter:hover {
+        color: color($colors, twitter);
+        border-color: color($colors, twitter);
+      }
+      &.youtube:hover {
+        color: color($colors, youtube);
+        border-color: color($colors, youtube);
+      }
+      &.googleplus:hover {
+        color: color($colors, googleplus);
+        border-color: color($colors, googleplus);
+      }
+      &.instagram:hover {
+        color: color($colors, instagram);
+        border-color: color($colors, instagram);
+      }
+      &.tumblr:hover {
+        color: color($colors, tumblr);
+        border-color: color($colors, tumblr);
+      }
+      &.dribbble:hover {
+        color: color($colors, dribbble);
+        border-color: color($colors, dribbble);
+      }
+      &.linkedin:hover {
+        color: color($colors, linkedin);
+        border-color: color($colors, linkedin);
+      }
+      &.skype:hover {
+        color: color($colors, skype);
+        border-color: color($colors, skype);
+      }
+      &.rss:hover {
+        color: color($colors, rss);
+        border-color: color($colors, rss);
+      }
+      &.github:hover {
+        color: color($colors, github);
+        border-color: color($colors, github);
+      }
+      &.whatsapp:hover {
+        color: color($colors, whatsapp);
+        border-color: color($colors, whatsapp);
+      }
+      &.snapchat:hover {
+        color: color($colors, snapchat);
+        border-color: color($colors, snapchat);
+      }
+      &.foursquare:hover {
+        color: color($colors, foursquare);
+        border-color: color($colors, foursquare);
+      }
+      &.pinterest:hover {
+        color: color($colors, pinterest);
+        border-color: color($colors, pinterest);
+      }
+      &.wordpress:hover {
+        color: color($colors, wordpress);
+        border-color: color($colors, wordpress);
+      }
+      &.reddit:hover {
+        color: color($colors, reddit);
+        border-color: color($colors, reddit);
+      }
+      &.hackernews:hover {
+        color: color($colors, hackernews);
+        border-color: color($colors, hackernews);
+      }
+      &.designernews:hover {
+        color: color($colors, designernews);
+        border-color: color($colors, designernews);
+      }
+      &.yahoo:hover {
+        color: color($colors, yahoo);
+        border-color: color($colors, yahoo);
+      }
+      &.buffer:hover {
+        color: color($colors, buffer);
+        border-color: color($colors, buffer);
+      }
+      &.vimeo:hover {
+        color: color($colors, vimeo);
+        border-color: color($colors, vimeo);
+      }
+      &.twitch:hover {
+        color: color($colors, twitch);
+        border-color: color($colors, twitch);
+      }
+    }
+  }
+}
+
+.social.sm {
+	li {
+		a {
+			line-height: 24px !important;
+		}
+	}
+}

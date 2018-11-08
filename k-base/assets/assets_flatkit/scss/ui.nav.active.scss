@@ -1,0 +1,42 @@
+@mixin active-variant($parent, $bg, $color) {
+  .nav-active-#{$parent}{
+  	.nav-link.active,
+  	.nav > li.active > a{
+  		color: $color !important;
+		background-color: $bg !important;
+  	}
+  }
+}
+
+@include active-variant(bg, $body-bg, $text-color);
+@include active-variant(dark, $dark, $dark-color);
+@include active-variant(black, $black, $black-color);
+@include active-variant(primary, $primary, $primary-color);
+@include active-variant(accent, $accent, $accent-color);
+@include active-variant(warn, $warn, $warn-color);
+@include active-variant(success, $success, $success-color);
+@include active-variant(info, $info, $info-color);
+@include active-variant(warning, $warning, $warning-color);
+@include active-variant(danger, $danger, $danger-color);
+@include active-variant(light, $light, $light-color);
+@include active-variant(white, $white, $dark-black);
+
+@include active-variant(red, $red, $dark-white);
+@include active-variant(pink, $pink, $dark-white);
+@include active-variant(purple, $purple, $dark-white);
+@include active-variant(deep-purple, $deep-purple, $dark-white);
+@include active-variant(indigo, $indigo, $dark-white);
+@include active-variant(blue, $blue, $dark-white);
+@include active-variant(light-blue, $light-blue, $dark-white);
+@include active-variant(cyan, $cyan, $dark-white);
+@include active-variant(teal, $teal, $dark-white);
+@include active-variant(green, $green, $dark-white);
+@include active-variant(light-green, $light-green, $dark-white);
+@include active-variant(lime, $lime, $dark-white);
+@include active-variant(yellow, $yellow, $dark-black);
+@include active-variant(amber, $amber, $dark-white);
+@include active-variant(orange, $orange, $dark-white);
+@include active-variant(deep-orange, $deep-orange, $dark-white);
+@include active-variant(brown, $brown, $dark-white);
+@include active-variant(blue-grey, $blue-grey, $dark-white);
+@include active-variant(grey, $grey, $dark-white);
