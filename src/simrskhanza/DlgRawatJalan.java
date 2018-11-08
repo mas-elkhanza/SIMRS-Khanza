@@ -1116,6 +1116,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         cmbMnt = new widget.ComboBox();
         cmbDtk = new widget.ComboBox();
         ChkJln = new widget.CekBox();
+        BtnRiwayat = new widget.Button();
 
         BagianRS.setEditable(false);
         BagianRS.setText("0");
@@ -2907,7 +2908,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
         FormInput.add(TPasien);
-        TPasien.setBounds(283, 10, 260, 23);
+        TPasien.setBounds(283, 10, 250, 23);
 
         jLabel23.setText("Tanggal :");
         jLabel23.setName("jLabel23"); // NOI18N
@@ -2979,6 +2980,19 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
         FormInput.add(ChkJln);
         ChkJln.setBounds(865, 10, 23, 23);
+
+        BtnRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/man-24.png"))); // NOI18N
+        BtnRiwayat.setMnemonic('3');
+        BtnRiwayat.setToolTipText("Alt+3");
+        BtnRiwayat.setName("BtnRiwayat"); // NOI18N
+        BtnRiwayat.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnRiwayat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRiwayatActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnRiwayat);
+        BtnRiwayat.setBounds(535, 10, 28, 23);
 
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
@@ -3699,7 +3713,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 BtnEdit.setEnabled(var.gettindakan_ralan());
                 BtnPrint.setEnabled(var.gettindakan_ralan());
                 BtnTambahTindakan.setVisible(true);
-                TCari.setPreferredSize(new Dimension(208,23));
+                TCari.setPreferredSize(new Dimension(207,23));
                 Valid.tabelKosong(TabModeTindakan);            
                 TabRawatTindakanDokterMouseClicked(null);
                 break;
@@ -3709,7 +3723,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 BtnEdit.setEnabled(var.gettindakan_ralan());
                 BtnPrint.setEnabled(var.gettindakan_ralan());
                 BtnTambahTindakan.setVisible(true); 
-                TCari.setPreferredSize(new Dimension(208,23));
+                TCari.setPreferredSize(new Dimension(207,23));
                 Valid.tabelKosong(TabModeTindakan);
                 TabRawatTindakanPetugasMouseClicked(null);
                 break;
@@ -3719,21 +3733,33 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 BtnEdit.setEnabled(var.gettindakan_ralan());
                 BtnPrint.setEnabled(var.gettindakan_ralan());
                 BtnTambahTindakan.setVisible(true); 
-                TCari.setPreferredSize(new Dimension(208,23));
+                TCari.setPreferredSize(new Dimension(207,23));
                 Valid.tabelKosong(TabModeTindakan);
                 TabRawatTindakanDokterPetugasMouseClicked(null);
                 break;
             case 3:
+                BtnSimpan.setEnabled(var.gettindakan_ralan());
+                BtnHapus.setEnabled(var.gettindakan_ralan());
+                BtnEdit.setEnabled(var.gettindakan_ralan());
+                BtnPrint.setEnabled(var.gettindakan_ralan());
                 BtnTambahTindakan.setVisible(false); 
                 TCari.setPreferredSize(new Dimension(240,23));
                 tampilPemeriksaan();
                 break;
             case 4:
+                BtnSimpan.setEnabled(var.gettindakan_ralan());
+                BtnHapus.setEnabled(var.gettindakan_ralan());
+                BtnEdit.setEnabled(var.gettindakan_ralan());
+                BtnPrint.setEnabled(var.gettindakan_ralan());
                 BtnTambahTindakan.setVisible(false); 
                 TCari.setPreferredSize(new Dimension(240,23));
                 tampilPemeriksaanObstetri();
                 break;
             case 5:
+                BtnSimpan.setEnabled(var.gettindakan_ralan());
+                BtnHapus.setEnabled(var.gettindakan_ralan());
+                BtnEdit.setEnabled(var.gettindakan_ralan());
+                BtnPrint.setEnabled(var.gettindakan_ralan());
                 BtnTambahTindakan.setVisible(false); 
                 TCari.setPreferredSize(new Dimension(240,23));
                 tampilPemeriksaanGinekologi();
@@ -4516,6 +4542,22 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnTambahTindakanActionPerformed
 
+    private void BtnRiwayatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRiwayatActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgResumePerawatan resume=new DlgResumePerawatan(null,true);
+            resume.setNoRm(TNoRM.getText(),TPasien.getText());
+            resume.tampil();
+            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            resume.setLocationRelativeTo(internalFrame1);
+            resume.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_BtnRiwayatActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -4542,6 +4584,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.Button BtnRiwayat;
     private widget.Button BtnSeekDokter;
     private widget.Button BtnSeekDokter2;
     private widget.Button BtnSeekPetugas;
@@ -5077,7 +5120,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         MnPermintaanRadiologi.setEnabled(var.getpermintaan_radiologi());  
         BtnTambahTindakan.setEnabled(var.gettarif_ralan());        
         pilihtable="rawat_jl_dr";
-        TCari.setPreferredSize(new Dimension(208,23));
+        TCari.setPreferredSize(new Dimension(207,23));
         Valid.tabelKosong(TabModeTindakan);
         TabRawat.setSelectedIndex(0);    
     }
