@@ -2833,7 +2833,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnResepObat.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnResepObat.setIconTextGap(0);
         BtnResepObat.setName("BtnResepObat"); // NOI18N
-        BtnResepObat.setPreferredSize(new java.awt.Dimension(110, 25));
+        BtnResepObat.setPreferredSize(new java.awt.Dimension(110, 23));
         BtnResepObat.setRoundRect(false);
         BtnResepObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2852,7 +2852,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnObatBhp.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnObatBhp.setIconTextGap(0);
         BtnObatBhp.setName("BtnObatBhp"); // NOI18N
-        BtnObatBhp.setPreferredSize(new java.awt.Dimension(110, 25));
+        BtnObatBhp.setPreferredSize(new java.awt.Dimension(110, 23));
         BtnObatBhp.setRoundRect(false);
         BtnObatBhp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2871,7 +2871,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnDiagnosa.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnDiagnosa.setIconTextGap(0);
         BtnDiagnosa.setName("BtnDiagnosa"); // NOI18N
-        BtnDiagnosa.setPreferredSize(new java.awt.Dimension(110, 25));
+        BtnDiagnosa.setPreferredSize(new java.awt.Dimension(110, 23));
         BtnDiagnosa.setRoundRect(false);
         BtnDiagnosa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2890,7 +2890,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnBerkasDigital.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnBerkasDigital.setIconTextGap(0);
         BtnBerkasDigital.setName("BtnBerkasDigital"); // NOI18N
-        BtnBerkasDigital.setPreferredSize(new java.awt.Dimension(110, 25));
+        BtnBerkasDigital.setPreferredSize(new java.awt.Dimension(110, 23));
         BtnBerkasDigital.setRoundRect(false);
         BtnBerkasDigital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2909,7 +2909,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnPermintaanLab.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnPermintaanLab.setIconTextGap(0);
         BtnPermintaanLab.setName("BtnPermintaanLab"); // NOI18N
-        BtnPermintaanLab.setPreferredSize(new java.awt.Dimension(110, 25));
+        BtnPermintaanLab.setPreferredSize(new java.awt.Dimension(110, 23));
         BtnPermintaanLab.setRoundRect(false);
         BtnPermintaanLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2928,7 +2928,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnPermintaanRad.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnPermintaanRad.setIconTextGap(0);
         BtnPermintaanRad.setName("BtnPermintaanRad"); // NOI18N
-        BtnPermintaanRad.setPreferredSize(new java.awt.Dimension(110, 25));
+        BtnPermintaanRad.setPreferredSize(new java.awt.Dimension(110, 23));
         BtnPermintaanRad.setRoundRect(false);
         BtnPermintaanRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
