@@ -2652,7 +2652,8 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             dlgrwjl.isCek();
             dlgrwjl.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             dlgrwjl.setLocationRelativeTo(internalFrame1);
-        
+            dlgrwjl.SetPoli("-");
+            dlgrwjl.SetPj(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
             dlgrwjl.setNoRm(TNoRw.getText(),DTPTgl.getDate(),new Date());  
             dlgrwjl.setVisible(true);
         }
@@ -3496,7 +3497,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             dlgrwjl.isCek();
             dlgrwjl.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             dlgrwjl.setLocationRelativeTo(internalFrame1);
-
+            dlgrwjl.SetPoli("-");
+            dlgrwjl.SetPj(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
+            
             dlgrwjl.setNoRm(norawatbayi,DTPTgl.getDate(),new Date());
             dlgrwjl.setVisible(true);
         }
