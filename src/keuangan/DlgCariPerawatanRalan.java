@@ -777,7 +777,8 @@ public final class DlgCariPerawatanRalan extends javax.swing.JDialog {
 private void BtnSimpanTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanTindakanActionPerformed
         if(TNoRw.getText().trim().equals("")||kddokter.getText().trim().equals("")||nmdokter.getText().trim().equals("")){
             Valid.textKosong(TCariTindakan,"Dokter/Paramedis");            
-        }else{              
+        }else{   
+            Valid.editTable("reg_periksa","no_rawat",TNoRw,"stts='Sudah'");
             try {                
                 koneksi.setAutoCommit(false);
                 if(pilihtable.equals("rawat_jl_dr")||pilihtable.equals("rawat_jl_pr")||pilihtable.equals("rawat_jl_drpr")){                    

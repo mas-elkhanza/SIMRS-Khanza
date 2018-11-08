@@ -2975,6 +2975,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"No.Rawat");
         }else{
+            Valid.editTable("reg_periksa","no_rawat",TNoRw,"stts='Sudah'");
+                
             switch (TabRawat.getSelectedIndex()) {
                 case 0:
                     if(KdDok.getText().trim().equals("")||TDokter.getText().trim().equals("")){
