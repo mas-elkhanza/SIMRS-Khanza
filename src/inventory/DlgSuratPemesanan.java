@@ -1547,7 +1547,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         if(row!= -1){              
             try {
                 if(Valid.SetAngka(tbDokter.getValueAt(row,0).toString())>0){                        
-                    tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,10).toString())*Double.parseDouble(tbDokter.getValueAt(row,5).toString()), row,6);                
+                    tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,0).toString())*Double.parseDouble(tbDokter.getValueAt(row,5).toString()), row,6);                
                     tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(row,6).toString())-Double.parseDouble(tbDokter.getValueAt(row,8).toString()), row,9);           
                 } 
             } catch (Exception e) {
