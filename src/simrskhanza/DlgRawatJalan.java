@@ -12,7 +12,6 @@
 
 package simrskhanza;
 
-import keuangan.DlgCariPerawatanRalan;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 import inventory.DlgPemberianObat;
@@ -25,7 +24,6 @@ import fungsi.var;
 import inventory.DlgPeresepanDokter;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -36,13 +34,11 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -581,7 +577,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else{
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(90);
             }
         }
         tbTindakan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -618,7 +614,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else{
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(90);
             }
         }
         tbTindakan2.setDefaultRenderer(Object.class, new WarnaTable());
@@ -655,7 +651,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 column.setMinWidth(0);
                 column.setMaxWidth(0);
             }else{
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(90);
             }
         }
         tbTindakan3.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1103,7 +1099,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         cmbMnt = new widget.ComboBox();
         cmbDtk = new widget.ComboBox();
         ChkJln = new widget.CekBox();
-        BtnRiwayat = new widget.Button();
         FormMenu = new widget.PanelBiasa();
         BtnResepObat = new widget.Button();
         BtnObatBhp = new widget.Button();
@@ -1111,6 +1106,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnBerkasDigital = new widget.Button();
         BtnPermintaanLab = new widget.Button();
         BtnPermintaanRad = new widget.Button();
+        BtnRiwayat = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1427,13 +1423,13 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(BtnSeekDokter);
-        BtnSeekDokter.setBounds(849, 10, 28, 23);
+        BtnSeekDokter.setBounds(739, 10, 28, 23);
 
         TDokter.setEditable(false);
         TDokter.setHighlighter(null);
         TDokter.setName("TDokter"); // NOI18N
         panelGlass7.add(TDokter);
-        TDokter.setBounds(206, 10, 640, 23);
+        TDokter.setBounds(206, 10, 530, 23);
 
         internalFrame2.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
 
@@ -1520,14 +1516,14 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         panelGlass10.add(BtnSeekPetugas);
-        BtnSeekPetugas.setBounds(849, 10, 28, 23);
+        BtnSeekPetugas.setBounds(739, 10, 28, 23);
 
         TPerawat.setEditable(false);
         TPerawat.setBackground(new java.awt.Color(202, 202, 202));
         TPerawat.setHighlighter(null);
         TPerawat.setName("TPerawat"); // NOI18N
         panelGlass10.add(TPerawat);
-        TPerawat.setBounds(214, 10, 632, 23);
+        TPerawat.setBounds(214, 10, 522, 23);
 
         internalFrame3.add(panelGlass10, java.awt.BorderLayout.PAGE_START);
 
@@ -1614,14 +1610,14 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         panelGlass11.add(BtnSeekPetugas2);
-        BtnSeekPetugas2.setBounds(849, 40, 28, 23);
+        BtnSeekPetugas2.setBounds(739, 40, 28, 23);
 
         TPerawat2.setEditable(false);
         TPerawat2.setBackground(new java.awt.Color(202, 202, 202));
         TPerawat2.setHighlighter(null);
         TPerawat2.setName("TPerawat2"); // NOI18N
         panelGlass11.add(TPerawat2);
-        TPerawat2.setBounds(240, 40, 606, 23);
+        TPerawat2.setBounds(240, 40, 496, 23);
 
         jLabel12.setText("Dokter :");
         jLabel12.setName("jLabel12"); // NOI18N
@@ -1642,7 +1638,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TDokter2.setHighlighter(null);
         TDokter2.setName("TDokter2"); // NOI18N
         panelGlass11.add(TDokter2);
-        TDokter2.setBounds(240, 10, 606, 23);
+        TDokter2.setBounds(240, 10, 496, 23);
 
         BtnSeekDokter2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSeekDokter2.setMnemonic('4');
@@ -1654,7 +1650,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         panelGlass11.add(BtnSeekDokter2);
-        BtnSeekDokter2.setBounds(849, 10, 28, 23);
+        BtnSeekDokter2.setBounds(739, 10, 28, 23);
 
         internalFrame4.add(panelGlass11, java.awt.BorderLayout.PAGE_START);
 
@@ -2736,7 +2732,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         TPasien.setHighlighter(null);
         TPasien.setName("TPasien"); // NOI18N
         FormInput.add(TPasien);
-        TPasien.setBounds(283, 10, 250, 23);
+        TPasien.setBounds(283, 10, 270, 23);
 
         jLabel23.setText("Tanggal :");
         jLabel23.setName("jLabel23"); // NOI18N
@@ -2809,23 +2805,10 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         FormInput.add(ChkJln);
         ChkJln.setBounds(865, 10, 23, 23);
 
-        BtnRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/man-24.png"))); // NOI18N
-        BtnRiwayat.setMnemonic('3');
-        BtnRiwayat.setToolTipText("Alt+3");
-        BtnRiwayat.setName("BtnRiwayat"); // NOI18N
-        BtnRiwayat.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnRiwayat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRiwayatActionPerformed(evt);
-            }
-        });
-        FormInput.add(BtnRiwayat);
-        BtnRiwayat.setBounds(535, 10, 28, 23);
-
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(110, 43));
+        FormMenu.setPreferredSize(new java.awt.Dimension(125, 43));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         BtnResepObat.setText("Resep Dokter");
@@ -2833,7 +2816,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnResepObat.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnResepObat.setIconTextGap(0);
         BtnResepObat.setName("BtnResepObat"); // NOI18N
-        BtnResepObat.setPreferredSize(new java.awt.Dimension(110, 23));
+        BtnResepObat.setPreferredSize(new java.awt.Dimension(125, 23));
         BtnResepObat.setRoundRect(false);
         BtnResepObat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2852,7 +2835,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnObatBhp.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnObatBhp.setIconTextGap(0);
         BtnObatBhp.setName("BtnObatBhp"); // NOI18N
-        BtnObatBhp.setPreferredSize(new java.awt.Dimension(110, 23));
+        BtnObatBhp.setPreferredSize(new java.awt.Dimension(125, 23));
         BtnObatBhp.setRoundRect(false);
         BtnObatBhp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2871,7 +2854,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnDiagnosa.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnDiagnosa.setIconTextGap(0);
         BtnDiagnosa.setName("BtnDiagnosa"); // NOI18N
-        BtnDiagnosa.setPreferredSize(new java.awt.Dimension(110, 23));
+        BtnDiagnosa.setPreferredSize(new java.awt.Dimension(125, 23));
         BtnDiagnosa.setRoundRect(false);
         BtnDiagnosa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2890,7 +2873,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnBerkasDigital.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnBerkasDigital.setIconTextGap(0);
         BtnBerkasDigital.setName("BtnBerkasDigital"); // NOI18N
-        BtnBerkasDigital.setPreferredSize(new java.awt.Dimension(110, 23));
+        BtnBerkasDigital.setPreferredSize(new java.awt.Dimension(125, 23));
         BtnBerkasDigital.setRoundRect(false);
         BtnBerkasDigital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2909,7 +2892,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnPermintaanLab.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnPermintaanLab.setIconTextGap(0);
         BtnPermintaanLab.setName("BtnPermintaanLab"); // NOI18N
-        BtnPermintaanLab.setPreferredSize(new java.awt.Dimension(110, 23));
+        BtnPermintaanLab.setPreferredSize(new java.awt.Dimension(125, 23));
         BtnPermintaanLab.setRoundRect(false);
         BtnPermintaanLab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2928,7 +2911,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnPermintaanRad.setGlassColor(new java.awt.Color(247, 247, 245));
         BtnPermintaanRad.setIconTextGap(0);
         BtnPermintaanRad.setName("BtnPermintaanRad"); // NOI18N
-        BtnPermintaanRad.setPreferredSize(new java.awt.Dimension(110, 23));
+        BtnPermintaanRad.setPreferredSize(new java.awt.Dimension(125, 23));
         BtnPermintaanRad.setRoundRect(false);
         BtnPermintaanRad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2941,6 +2924,20 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnPermintaanRad);
+
+        BtnRiwayat.setText("Riwayat Perawatan");
+        BtnRiwayat.setToolTipText("");
+        BtnRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnRiwayat.setGlassColor(new java.awt.Color(247, 247, 245));
+        BtnRiwayat.setName("BtnRiwayat"); // NOI18N
+        BtnRiwayat.setPreferredSize(new java.awt.Dimension(125, 23));
+        BtnRiwayat.setRoundRect(false);
+        BtnRiwayat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRiwayatActionPerformed(evt);
+            }
+        });
+        FormMenu.add(BtnRiwayat);
 
         internalFrame1.add(FormMenu, java.awt.BorderLayout.WEST);
 
