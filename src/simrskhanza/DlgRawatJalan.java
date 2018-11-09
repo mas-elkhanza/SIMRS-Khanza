@@ -5544,6 +5544,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
     
     private void tampilTindakan() {
+        System.out.println("simrskhanza.DlgRawatJalan.tampilTindakan()");
         try{     
             jml=0;
             for(i=0;i<tbTindakan.getRowCount();i++){
