@@ -743,7 +743,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }
                 koneksi.setAutoCommit(true); 
             } catch (Exception e) {
-                System.out.println("inventory.DlgPeresepanDokter.BtnSimpanActionPerformed() : "+e);
+                System.out.println("Notif : "+e);
             }                
             ChkJln.setSelected(true);
         }
