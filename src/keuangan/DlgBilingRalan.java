@@ -51,7 +51,7 @@ public class DlgBilingRalan extends javax.swing.JDialog {
     public DlgCariDokter dokter=new DlgCariDokter(null,false);
     public DlgCariPoli poli=new DlgCariPoli(null,false);    
     public DlgCariObat dlgobt=new DlgCariObat(null,false);
-    public DlgRawatJalan dlgrwjl=new DlgRawatJalan(null,false);
+    public DlgCariPerawatanRalan dlgrwjl=new DlgCariPerawatanRalan(null,false);
     public DlgPenanggungJawab penjab=new DlgPenanggungJawab(null,false);
     private double ttl=0,y=0,subttl=0,ralanparamedis=0,piutang=0,itembayar=0,itempiutang=0, 
                    bayar=0,total=0,tamkur=0,detailjs=0,detailbhp=0,ppn=0,besarppn=0,tagihanppn=0,
@@ -2372,14 +2372,14 @@ private void tbBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
                                 if(var.gettindakan_ralan()==true){
                                     kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
                                     nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                    dlgrwjl.perawatan.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
+                                    dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
                                     //perawatan.setModal(true);
-                                    dlgrwjl.perawatan.isCek();
-                                    dlgrwjl.perawatan.tampil();
-                                    dlgrwjl.perawatan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
-                                    dlgrwjl.perawatan.setAlwaysOnTop(false);
-                                    dlgrwjl.perawatan.setVisible(true);
+                                    dlgrwjl.isCek();
+                                    dlgrwjl.tampil();
+                                    dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                                    dlgrwjl.setLocationRelativeTo(internalFrame1);
+                                    dlgrwjl.setAlwaysOnTop(false);
+                                    dlgrwjl.setVisible(true);
                                 }                            
                                 break;
                             case "Obat & BHP":
@@ -2415,14 +2415,14 @@ private void tbBillingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:e
                                 if(var.gettindakan_ralan()==true){
                                     kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
                                     nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                    dlgrwjl.perawatan.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
+                                    dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
                                     //perawatan.setModal(true);
-                                    dlgrwjl.perawatan.isCek();
-                                    dlgrwjl.perawatan.tampil();
-                                    dlgrwjl.perawatan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
-                                    dlgrwjl.perawatan.setAlwaysOnTop(false);
-                                    dlgrwjl.perawatan.setVisible(true);
+                                    dlgrwjl.isCek();
+                                    dlgrwjl.tampil();
+                                    dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                                    dlgrwjl.setLocationRelativeTo(internalFrame1);
+                                    dlgrwjl.setAlwaysOnTop(false);
+                                    dlgrwjl.setVisible(true);
                                 }                            
                                 break;
                             case "Obat & BHP":
@@ -2514,14 +2514,14 @@ private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 if(var.gettindakan_ralan()==true){
                                     kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
                                     nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                    dlgrwjl.perawatan.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
+                                    dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
                                     //perawatan.setModal(true);
-                                    dlgrwjl.perawatan.isCek();
-                                    dlgrwjl.perawatan.tampil();
-                                    dlgrwjl.perawatan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
-                                    dlgrwjl.perawatan.setAlwaysOnTop(false);
-                                    dlgrwjl.perawatan.setVisible(true);
+                                    dlgrwjl.isCek();
+                                    dlgrwjl.tampil();
+                                    dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                                    dlgrwjl.setLocationRelativeTo(internalFrame1);
+                                    dlgrwjl.setAlwaysOnTop(false);
+                                    dlgrwjl.setVisible(true);
                                 }
                                 break;
                             case "Obat & BHP":
@@ -2557,14 +2557,14 @@ private void tbBillingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 if(var.gettindakan_ralan()==true){
                                     kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
                                     nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                                    dlgrwjl.perawatan.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-                                    //perawatan.setModal(true);
-                                    dlgrwjl.perawatan.isCek();
-                                    dlgrwjl.perawatan.tampil();
-                                    dlgrwjl.perawatan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                                    dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
-                                    dlgrwjl.perawatan.setAlwaysOnTop(false);
-                                    dlgrwjl.perawatan.setVisible(true);
+                                    dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
+                                    //setModal(true);
+                                    dlgrwjl.isCek();
+                                    dlgrwjl.tampil();
+                                    dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                                    dlgrwjl.setLocationRelativeTo(internalFrame1);
+                                    dlgrwjl.setAlwaysOnTop(false);
+                                    dlgrwjl.setVisible(true);
                                 }
                                 break;
                             case "Obat & BHP":
@@ -2605,13 +2605,14 @@ private void MnRawatJalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             TNoRw.requestFocus();
         }else{
             var.setform("DlgBilingRalan");
-            dlgrwjl.isCek();
-            dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-            dlgrwjl.setLocationRelativeTo(internalFrame1);
-        
-            dlgrwjl.setNoRm(TNoRw.getText(),DTPTgl.getDate(),new Date());    
-            dlgrwjl.setAlwaysOnTop(false);
-            dlgrwjl.setVisible(true);
+            DlgRawatJalan dlgrwjl2=new DlgRawatJalan(null,false);
+            dlgrwjl2.isCek();
+            dlgrwjl2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dlgrwjl2.setLocationRelativeTo(internalFrame1);
+            dlgrwjl2.SetPoli("-");
+            dlgrwjl2.SetPj(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
+            dlgrwjl2.setNoRm(TNoRw.getText(),DTPTgl.getDate(),DTPTgl.getDate());    
+            dlgrwjl2.setVisible(true);
         }
 }//GEN-LAST:event_MnRawatJalanActionPerformed
 
@@ -3322,13 +3323,13 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 var.setform("DlgBilingRalan");
                 kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
                 nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                dlgrwjl.perawatan.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-                dlgrwjl.perawatan.isCek();
-                dlgrwjl.perawatan.tampil();
-                dlgrwjl.perawatan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
-                dlgrwjl.perawatan.setAlwaysOnTop(false);
-                dlgrwjl.perawatan.setVisible(true);
+                dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
+                dlgrwjl.isCek();
+                dlgrwjl.tampil();
+                dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                dlgrwjl.setLocationRelativeTo(internalFrame1);
+                dlgrwjl.setAlwaysOnTop(false);
+                dlgrwjl.setVisible(true);
             }else{
                 if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                     JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
@@ -3336,13 +3337,13 @@ private void MnPeriksaLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                     var.setform("DlgBilingRalan");
                     kdptg=Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",TNoRw.getText());
                     nmptg=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kdptg);
-                    dlgrwjl.perawatan.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
-                    dlgrwjl.perawatan.isCek();
-                    dlgrwjl.perawatan.tampil();
-                    dlgrwjl.perawatan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                    dlgrwjl.perawatan.setLocationRelativeTo(internalFrame1);
-                    dlgrwjl.perawatan.setAlwaysOnTop(false);
-                    dlgrwjl.perawatan.setVisible(true);                            
+                    dlgrwjl.setNoRm(TNoRw.getText(),kdptg,nmptg,"rawat_jl_dr","","","","","","","-","-","","","","","","");
+                    dlgrwjl.isCek();
+                    dlgrwjl.tampil();
+                    dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+                    dlgrwjl.setLocationRelativeTo(internalFrame1);
+                    dlgrwjl.setAlwaysOnTop(false);
+                    dlgrwjl.setVisible(true);                            
                 }
             }                
         }                            
