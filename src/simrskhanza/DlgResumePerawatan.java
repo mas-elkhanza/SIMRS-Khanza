@@ -1255,7 +1255,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Keluhan</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("keluhan")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -1265,7 +1265,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Pemeriksaan</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("pemeriksaan")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -1285,7 +1285,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Tindak Lanjut</td>"+
-                                                    "<td valign='top' colspan='6'> : "+rs3.getString("rtl")+"</td>"+
+                                                    "<td valign='top' colspan='6'> : "+rs3.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                             
@@ -1581,7 +1581,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Keluhan</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("keluhan")+"</td>"+
+                                                    "<td valign='top' colspan='5'> : "+rs3.getString("keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -1591,7 +1591,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' align='center'></td>"+
                                                     "<td valign='top' colspan='2'>Pemeriksaan</td>"+
-                                                    "<td valign='top' colspan='5'> : "+rs3.getString("pemeriksaan")+"</td>"+
+                                                    "<td valign='top' colspan='5'> : "+rs3.getString("pemeriksaan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                                  "</tr>");
                                         }
                                         
@@ -2380,7 +2380,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("hasil")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("hasil").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>"); 
                                         w++;
                                     }
@@ -4516,7 +4516,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                              "<tr>"+
                                                 "<td valign='top' align='center'>"+w+"</td>"+
                                                 "<td valign='top'>"+rs3.getString("tgl_periksa")+" "+rs3.getString("jam")+"</td>"+
-                                                "<td valign='top'>"+rs3.getString("hasil")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("hasil").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                              "</tr>"); 
                                         w++;
                                     }

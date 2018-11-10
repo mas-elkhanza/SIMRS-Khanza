@@ -670,5 +670,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         BtnPrint.setEnabled(var.getresep_dokter());
     }
     
-    
+    public void setCari(String cari){
+        TCari.setText(cari);
+    }
 }
