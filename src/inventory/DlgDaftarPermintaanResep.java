@@ -157,6 +157,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         panelisi1 = new widget.panelisi();
         BtnTambah = new widget.Button();
+        BtnEdit = new widget.Button();
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         label10 = new widget.Label();
@@ -226,7 +227,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(210, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(310, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -274,6 +275,24 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnTambah);
+
+        BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
+        BtnEdit.setMnemonic('G');
+        BtnEdit.setText("Ubah");
+        BtnEdit.setToolTipText("Alt+G");
+        BtnEdit.setName("BtnEdit"); // NOI18N
+        BtnEdit.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditActionPerformed(evt);
+            }
+        });
+        BtnEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnEditKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnEdit);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
@@ -581,9 +600,9 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
 
     private void BtnTambahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnTambahKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            //BtnSimpanActionPerformed(null);
+            BtnTambahActionPerformed(null);
         }else{
-           // Valid.pindah(evt,Pembatalan,BtnBatal);
+           Valid.pindah(evt,BtnEdit,BtnKeluar);
         }
 }//GEN-LAST:event_BtnTambahKeyPressed
 /*
@@ -612,6 +631,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         // TODO add your handling code here:
     }//GEN-LAST:event_tbDetailResepKeyPressed
 
+    private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
+        
+    }//GEN-LAST:event_BtnEditActionPerformed
+
+    private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnEditActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnTambah, BtnPrint);
+        }
+    }//GEN-LAST:event_BtnEditKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -631,6 +662,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnAll;
     private widget.Button BtnCari;
+    private widget.Button BtnEdit;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnTambah;
