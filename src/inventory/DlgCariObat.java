@@ -2178,8 +2178,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                                 ps2.close();
                             }
                         }
-                    }
-                        
+                    }                        
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 2 : "+e);
