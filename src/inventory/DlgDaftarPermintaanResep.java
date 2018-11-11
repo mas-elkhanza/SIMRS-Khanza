@@ -912,12 +912,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }else{
                 var.setkdbangsal(bangsal);
             }
-            dlgobt2.tampilobat2(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
             dlgobt2.setNoRm(
                 tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString(),
                 Valid.SetTgl2(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),1).toString())
             );
             dlgobt2.isCek();
+            dlgobt2.tampilobat2(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
             dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             dlgobt2.setLocationRelativeTo(internalFrame1);
             dlgobt2.setVisible(true);
