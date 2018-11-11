@@ -26,6 +26,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,6 +34,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -55,10 +57,11 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
     private ResultSet rs,rsset_tarif;
     private boolean[] pilih; 
     private String[] kode,nama;
-    private int jml=0,i=0,index=0;
+    private int jml=0,i=0,index=0,jmlparsial=0;
     private String kelas_radiologi="Yes",kelas="",cara_bayar_radiologi="Yes",pemeriksaan="",kamar,namakamar,status="";
     private double ttl=0,item=0;
-    private String norawatibu="";
+    private String norawatibu="",aktifkanparsial="no";
+    private final Properties prop = new Properties();
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -165,6 +168,13 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println(e);
         } 
+        
+        try {
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+        } catch (Exception ex) {            
+            aktifkanparsial="no";
+        }
     }
 
     /** This method is called from within the constructor to
@@ -248,7 +258,7 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Permintaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Permintaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -753,67 +763,23 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             Valid.textKosong(TCariPeriksa,"Data Permintaan");
         }else{
             if(var.getkode().equals("Admin Utama")){
-                int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                if (reply == JOptionPane.YES_OPTION) {
-                    ChkJln.setSelected(false);
-                    try {                    
-                        koneksi.setAutoCommit(false);
-                        if(Sequel.menyimpantf("permintaan_radiologi","?,?,?,?,?,?,?,?,?","No.Permintaan",9,new String[]{
-                                TNoPermintaan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
-                                CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
-                                "0000-00-00","00:00:00","0000-00-00","00:00:00",KodePerujuk.getText()
-                            })==true){
-                            for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
-                                if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-                                    Sequel.menyimpan2("permintaan_pemeriksaan_radiologi","?,?,?","pemeriksaan lab",3,new String[]{
-                                        TNoPermintaan.getText(),tbPemeriksaan.getValueAt(i,1).toString(),"Belum"
-                                    });
-                                }                        
-                            } 
-                            isReset();
-                            emptTeks();
-                        }   
-                        
-                        koneksi.setAutoCommit(true);                    
-                        JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
-                    } catch (Exception e) {
-                        System.out.println(e);
-                    }                
-                }
+                simpan();
             }else{
-                if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                    JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                    TCariPeriksa.requestFocus();
-                }else{
-                    int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                    if (reply == JOptionPane.YES_OPTION) {
-                        ChkJln.setSelected(false);
-                        try {               
-                            koneksi.setAutoCommit(false);
-                            if(Sequel.menyimpantf("permintaan_radiologi","?,?,?,?,?,?,?,?,?","No.Permintaan",9,new String[]{
-                                    TNoPermintaan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
-                                    CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
-                                    "0000-00-00","00:00:00","0000-00-00","00:00:00",KodePerujuk.getText()
-                                })==true){
-                                for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
-                                    if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
-                                        Sequel.menyimpan2("permintaan_pemeriksaan_radiologi","?,?,?","pemeriksaan lab",3,new String[]{
-                                            TNoPermintaan.getText(),tbPemeriksaan.getValueAt(i,1).toString(),"Belum"
-                                        });
-                                    }                        
-                                } 
-                                isReset();
-                                emptTeks();
-                            } 
-                            
-                            koneksi.setAutoCommit(true);                    
-                            JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
-                        } catch (Exception e) {
-                            System.out.println(e);
-                        }                  
-                    }                
+                jmlparsial=0;
+                if(aktifkanparsial.equals("yes")){
+                    jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Penjab.getText());
                 }
-            } 
+                if(jmlparsial>0){    
+                    simpan(); 
+                }else{
+                    if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                        TCariPeriksa.requestFocus();
+                    }else{
+                        simpan();              
+                    }
+                }   
+            }   
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -1120,7 +1086,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         KodePerujuk.setText("");
         NmPerujuk.setText(""); 
         TCariPeriksa.setText("");
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(noorder,4),signed)),0) from permintaan_radiologi where tgl_permintaan='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ","PR"+Valid.SetTgl(Tanggal.getSelectedItem()+"").replaceAll("-",""),4,TNoPermintaan);           
+        autoNomor();
     }
     
     private void isRawat(){
@@ -1232,6 +1198,16 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         isReset();
     }
     
+    public void setNoRm(String norwt,String posisi,String kddokter,String nmdokter) {
+        TNoRw.setText(norwt);
+        this.status=posisi;
+        isRawat();
+        isPsien();
+        isReset();
+        KodePerujuk.setText(kddokter);
+        NmPerujuk.setText(nmdokter);
+    }
+    
     public void isCek(){        
         BtnSimpan.setEnabled(var.getpermintaan_radiologi());
         BtnPrint.setEnabled(var.getpermintaan_radiologi());
@@ -1254,6 +1230,74 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     public void setDokterPerujuk(String kodeperujuk,String namaperujuk){
         KodePerujuk.setText(kodeperujuk);
         NmPerujuk.setText(namaperujuk);
+    }
+
+    private void autoNomor() {
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(noorder,4),signed)),0) from permintaan_radiologi where tgl_permintaan='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ","PR"+Valid.SetTgl(Tanggal.getSelectedItem()+"").replaceAll("-",""),4,TNoPermintaan);           
+    }
+
+    private void simpan() {
+        int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            ChkJln.setSelected(false);
+            try {                    
+                koneksi.setAutoCommit(false);
+                if(Sequel.menyimpantf("permintaan_radiologi","?,?,?,?,?,?,?,?,?","No.Permintaan",9,new String[]{
+                        TNoPermintaan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
+                        CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
+                        "0000-00-00","00:00:00","0000-00-00","00:00:00",KodePerujuk.getText()
+                    })==true){
+                    for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
+                        if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
+                            Sequel.menyimpan2("permintaan_pemeriksaan_radiologi","?,?,?","pemeriksaan lab",3,new String[]{
+                                TNoPermintaan.getText(),tbPemeriksaan.getValueAt(i,1).toString(),"Belum"
+                            });
+                        }                        
+                    } 
+                    isReset();
+                    emptTeks();
+                }else{
+                    autoNomor();
+                    if(Sequel.menyimpantf("permintaan_radiologi","?,?,?,?,?,?,?,?,?","No.Permintaan",9,new String[]{
+                            TNoPermintaan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
+                            CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
+                            "0000-00-00","00:00:00","0000-00-00","00:00:00",KodePerujuk.getText()
+                        })==true){
+                        for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
+                            if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
+                                Sequel.menyimpan2("permintaan_pemeriksaan_radiologi","?,?,?","pemeriksaan lab",3,new String[]{
+                                    TNoPermintaan.getText(),tbPemeriksaan.getValueAt(i,1).toString(),"Belum"
+                                });
+                            }                        
+                        } 
+                        isReset();
+                        emptTeks();
+                    }else{
+                        autoNomor();
+                        if(Sequel.menyimpantf("permintaan_radiologi","?,?,?,?,?,?,?,?,?","No.Permintaan",9,new String[]{
+                                TNoPermintaan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
+                                CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
+                                "0000-00-00","00:00:00","0000-00-00","00:00:00",KodePerujuk.getText()
+                            })==true){
+                            for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
+                                if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
+                                    Sequel.menyimpan2("permintaan_pemeriksaan_radiologi","?,?,?","pemeriksaan lab",3,new String[]{
+                                        TNoPermintaan.getText(),tbPemeriksaan.getValueAt(i,1).toString(),"Belum"
+                                    });
+                                }                        
+                            } 
+                            isReset();
+                            emptTeks();
+                        } 
+                    } 
+                }   
+
+                koneksi.setAutoCommit(true);                    
+                JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
+            } catch (Exception e) {
+                System.out.println(e);
+            }                
+        }
     }
 
 }

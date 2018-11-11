@@ -139,7 +139,7 @@ public final class DlgPelayananRalan extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Lama Pelayanan Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110, 80, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Lama Pelayanan Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -303,7 +303,7 @@ public final class DlgPelayananRalan extends javax.swing.JDialog {
             param.put("tanggal2",Valid.SetTgl(Tgl2.getSelectedItem()+""));   
             param.put("parameter","%"+TCari.getText().trim()+"%");    
             param.put("limabelas",""+limabelas);  
-            param.put("rata",""+Valid.SetAngka6(totaljam/i));
+            param.put("rata",""+Valid.SetAngka6(totaljam/(i-1)));
             param.put("tigapuluh",""+tigapuluh);  
             param.put("satujam",""+satujam);  
             param.put("lebihsatujam",""+lebihsatujam);  
@@ -485,22 +485,24 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }else if(rs.getDouble(9)>60){
                         lebihsatujam++;
                     }
-                }                 
-                tabMode.addRow(new Object[]{
-                    "","","Rata-rata (Menit)",": ","","","",""+Valid.SetAngka6(totaljam/i)
-                });
-                tabMode.addRow(new Object[]{
-                    "","","0 - 15 Menit",": ","","","",""+limabelas
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">15 - <=30 Menit",": ","","","",""+tigapuluh
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">30 - <=60 Menit",": ","","","",""+satujam
-                });
-                tabMode.addRow(new Object[]{
-                    "","",">60 Menit",": ","","","",""+lebihsatujam
-                });
+                }               
+                if(totaljam>0){
+                    tabMode.addRow(new Object[]{
+                        "","","Rata-rata (Menit)",": ","","","",""+Valid.SetAngka6(totaljam/(i-1))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","","0 - 15 Menit",": ","","","",""+limabelas
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">15 - <=30 Menit",": ","","","",""+tigapuluh
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">30 - <=60 Menit",": ","","","",""+satujam
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">60 Menit",": ","","","",""+lebihsatujam
+                    });
+                }                    
             } catch (Exception e) {
                 System.out.println("laporan.DlgPelayananRalan.tampil() : "+e);
             } finally{

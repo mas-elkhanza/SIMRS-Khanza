@@ -1,0 +1,42 @@
+<div class="page" data-name="signin">
+  <div class="page-content login-screen-content">
+    <div class="block">
+      <img src="img/logo-app.png" alt="logo image" class="logo" align="center" width="120">
+    </div>
+    <div class="login-screen-title nama-instansi" style="font-size:24px !important;"></div>
+    <div class="block-footer">Silahkan isikan nomor kartu berobat dan nomor KTP anda. Jika mengalami kesulitan silahkan hubungi petugas pengaduan di lobby Rumah Sakit.</div>
+    <form class="list" id="signin-form">
+      <ul>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Nomor Rekam Medik</div>
+              <div class="item-input-wrap">
+                <input type="text" class="no_rkm_medis" placeholder="No. Kartu">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Nomor Induk Kependudukan</div>
+              <div class="item-input-wrap">
+                <input type="password" class="no_ktp" placeholder="No. KTP" id="password">
+                <div style="display:inline;float:right;position:relative;top:-25px;" onclick="if (password.type == 'text') { password.type = 'password'; eye.src='img/melek.png'; } else { password.type = 'text'; eye.src='img/merem.png'; }"><img src="img/melek.png" id="eye"></div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </form>
+
+    <div class="block">
+      <p class="row">
+        <a class="col button button-big back" href="#">Batal</a>
+        <button class="col button button-big button-fill signin-btn">Sign in</button>
+      </p>
+    </div>
+
+  </div>
+</div>

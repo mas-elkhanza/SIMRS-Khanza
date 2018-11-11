@@ -358,7 +358,7 @@
                   </Border>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="50" green="50" red="6e" type="rgb"/>
+                  <Color blue="50" green="50" red="64" type="rgb"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Scroll2" noResource="true"/>
               </Properties>

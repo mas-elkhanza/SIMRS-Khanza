@@ -347,7 +347,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         ppPeserta.setBackground(new java.awt.Color(255, 255, 255));
         ppPeserta.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPeserta.setForeground(new java.awt.Color(110,80,80));
+        ppPeserta.setForeground(new java.awt.Color(100, 80, 80));
         ppPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppPeserta.setText("Masukkan Daftar Peserta Kegiatan");
         ppPeserta.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -367,7 +367,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         WindowInputPeserta.setUndecorated(true);
         WindowInputPeserta.setResizable(false);
 
-        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Daftar Peserta Kegiatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
+        internalFrame7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Daftar Peserta Kegiatan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
         internalFrame7.setName("internalFrame7"); // NOI18N
         internalFrame7.setWarnaBawah(new java.awt.Color(245, 250, 240));
         internalFrame7.setLayout(null);
@@ -477,7 +477,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Kegiatan Kelompok PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(110,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Kegiatan Kelompok PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -494,8 +494,8 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
             }
         });
         tbJnsPerawatan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbJnsPerawatanKeyPressed(evt);
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tbJnsPerawatanKeyReleased(evt);
             }
         });
         Scroll.setViewportView(tbJnsPerawatan);
@@ -649,7 +649,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-10-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -664,7 +664,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-10-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -788,7 +788,7 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
 
         Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-10-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2018" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1273,17 +1273,6 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbJnsPerawatanMouseClicked
 
-    private void tbJnsPerawatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbJnsPerawatanKeyPressed
-        if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                try {
-                    getData();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }
-        }
-}//GEN-LAST:event_tbJnsPerawatanKeyPressed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
         emptTeks();
@@ -1429,6 +1418,17 @@ public final class PCareKegiatanKelompok extends javax.swing.JDialog {
     private void NmPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmPasienKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_NmPasienKeyPressed
+
+    private void tbJnsPerawatanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbJnsPerawatanKeyReleased
+        if(tabMode.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbJnsPerawatanKeyReleased
 
     /**
     * @param args the command line arguments
