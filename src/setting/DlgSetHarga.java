@@ -1881,10 +1881,11 @@ public class DlgSetHarga extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data Set Harga tidak boleh kosong ...!!!!");
-            ranapvip.requestFocus();
-        }else if(! (tabMode.getRowCount()==0)) {
+        if(tabModePengaturanUmum.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, pengaturan harga tidak boleh kosong ...!!!!");
+            TabSetting.setSelectedIndex(0);
+            cmbPengaturan.requestFocus();
+        }else if(! (tabModePengaturanUmum.getRowCount()==0)) {
             dispose();
         }
 }//GEN-LAST:event_BtnKeluarActionPerformed
