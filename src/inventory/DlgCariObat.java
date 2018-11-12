@@ -1333,9 +1333,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             tbDetailObatRacikan.setValueAt(0,i,11);
             tbDetailObatRacikan.setValueAt(0,i,12);
         }
-    }
-        
-            
+    }       
     hitungObat();
 }//GEN-LAST:event_ppBersihkanActionPerformed
 
