@@ -1921,7 +1921,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             ps2.setString(1,bangsal);
                             ps2.setString(2,no_resep);
                             ps2.setString(3,rsobat.getString("no_racik"));
-                            rs2=psobat.executeQuery();
+                            rs2=ps2.executeQuery();
                             while(rs2.next()){
                                 if(Jeniskelas.getSelectedItem().equals("Karyawan")){
                                     tabModeDetailObatRacikan.addRow(new Object[] {
@@ -1963,8 +1963,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             if(rs2 != null){
                                 rs2.close();
                             }
-                            if(psobat != null){
-                                psobat.close();
+                            if(ps2 != null){
+                                ps2.close();
                             }
                         }
                     }  

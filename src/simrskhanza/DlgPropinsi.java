@@ -79,10 +79,6 @@ public class DlgPropinsi extends javax.swing.JDialog {
                 @Override
                 public void changedUpdate(DocumentEvent e) {tampil();}
             });
-        } 
-        try {
-            ps=koneksi.prepareStatement("select nm_prop from propinsi where nm_prop like ? ");
-        } catch (Exception e) {
         }
     }
 
@@ -474,12 +470,24 @@ public class DlgPropinsi extends javax.swing.JDialog {
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{            
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new String[]{rs.getString(1)});
-            }
+        try{     
+            ps=koneksi.prepareStatement("select nm_prop from propinsi where nm_prop like ? ");
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new String[]{rs.getString(1)});
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                
         }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
         }

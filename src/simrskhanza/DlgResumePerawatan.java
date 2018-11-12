@@ -11,12 +11,15 @@
 
 package simrskhanza;
 
+import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import fungsi.var;
 import java.awt.Cursor;
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -26,9 +29,17 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.event.HyperlinkEvent;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -39,12 +50,15 @@ import javax.swing.text.html.StyleSheet;
  */
 public final class DlgResumePerawatan extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
+    private DefaultTableModel tabModeRegistrasi;
     private final sekuel Sequel=new sekuel();
     private final Properties prop = new Properties(); 
     private validasi Valid=new validasi();
     private ResultSet rs,rs2,rs3,rs4,rshal;
-    private String sql,tanggal="",jam="";
+    private PreparedStatement ps,ps2;
+    private String sql,tanggal="",jam="",dpjp="",kddpjp="";
     private StringBuilder htmlContent;
+    private int i=0;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -57,7 +71,41 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         
-         pasien.addWindowListener(new WindowListener() {
+        tabModeRegistrasi=new DefaultTableModel(null,new Object[]{
+                "No.","No.Rawat","Tanggal","Jam","Kd.Dokter","Dokter Dituju/DPJP","Umur","Poliklinik/Kamar","Jenis Bayar"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        tbRegistrasi.setModel(tabModeRegistrasi);
+
+        tbRegistrasi.setPreferredScrollableViewportSize(new Dimension(800,800));
+        tbRegistrasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 9; i++) {
+            TableColumn column = tbRegistrasi.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(25);
+            }else if(i==1){
+                column.setPreferredWidth(110);
+            }else if(i==2){
+                column.setPreferredWidth(70);
+            }else if(i==3){
+                column.setPreferredWidth(60);
+            }else if(i==4){
+                column.setPreferredWidth(70);
+            }else if(i==5){
+                column.setPreferredWidth(250);   
+            }else if(i==6){
+                column.setPreferredWidth(40);
+            }else if(i==7){
+                column.setPreferredWidth(200);
+            }else if(i==8){
+                column.setPreferredWidth(110);
+            }
+        }
+        tbRegistrasi.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        pasien.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
@@ -364,6 +412,9 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         internalFrame13 = new widget.InternalFrame();
         Scroll11 = new widget.ScrollPane();
         LoadHTML12 = new widget.editorpane();
+        internalFrame14 = new widget.InternalFrame();
+        Scroll12 = new widget.ScrollPane();
+        tbRegistrasi = new widget.Table();
 
         TKd.setForeground(new java.awt.Color(255, 255, 255));
         TKd.setName("TKd"); // NOI18N
@@ -372,7 +423,7 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume/Rincian Tindakan/Terapi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume/Rincian Tindakan/Terapi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -522,8 +573,8 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
         internalFrame1.add(panelisi4, java.awt.BorderLayout.PAGE_START);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
-        TabRawat.setForeground(new java.awt.Color(100,80,80));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(100, 80, 80));
         TabRawat.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
@@ -725,6 +776,22 @@ public final class DlgResumePerawatan extends javax.swing.JDialog {
 
         TabRawat.addTab("Berkas Digital Perawatan", internalFrame13);
 
+        internalFrame14.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame14.setBorder(null);
+        internalFrame14.setName("internalFrame14"); // NOI18N
+        internalFrame14.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll12.setName("Scroll12"); // NOI18N
+        Scroll12.setOpaque(true);
+
+        tbRegistrasi.setToolTipText("Klik data di table, kemudian klik kanan untuk memilih menu yang diinginkan");
+        tbRegistrasi.setName("tbRegistrasi"); // NOI18N
+        Scroll12.setViewportView(tbRegistrasi);
+
+        internalFrame14.add(Scroll12, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("Riwayat Registrasi", internalFrame14);
+
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -782,79 +849,77 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        try {
-            File g = new File("file.css");            
-            BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-            bg.write(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
-            bg.close();
-            
-            File f = new File("resumemedis.html");            
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
-            switch (TabRawat.getSelectedIndex()) {
-                case 0:
-                    bw.write(LoadHTML.getText().replaceAll(
-                            "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-                    );  bw.close();
-                    break;
-                case 1:
-                    bw.write(LoadHTML2.getText().replaceAll(
-                            "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-                    );  bw.close();
-                    break;
-                case 2:
-                    bw.write(LoadHTML3.getText().replaceAll(
-                            "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-                    );  bw.close();
-                    break;
-                case 3:
-                    bw.write(LoadHTML4.getText().replaceAll(
-                            "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-                    );  bw.close();
-                    break;
-                case 4:
-                    bw.write(LoadHTML5.getText().replaceAll(
-                            "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-                    );  bw.close();
-                    break;
-                case 5:
-                    bw.write(LoadHTML6.getText().replaceAll(
-                            "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-                    );  bw.close();
-                    break;
-                case 6:
-                    bw.write(LoadHTML7.getText().replaceAll(
-                            "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-                    );  bw.close();
-                    break;
-                case 7:
-                    bw.write(LoadHTML8.getText().replaceAll(
-                            "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-                    );  bw.close();
-                    break;
-                case 8:
-                    bw.write(LoadHTML9.getText().replaceAll(
-                            "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-                    );  bw.close();
-                    break;
-                case 9:
-                    bw.write(LoadHTML10.getText().replaceAll(
-                            "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-                    );  bw.close();
-                    break;
-                case 10:
-                    bw.write(LoadHTML11.getText().replaceAll(
-                            "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
-                    );  bw.close();
-                    break;
-                default:
-                    break;
-            }
-                
-            Desktop.getDesktop().browse(f.toURI());
-        } catch (Exception e) {
-            System.out.println("Notifikasi : "+e);
-        }     
-        
+                    
+        switch (TabRawat.getSelectedIndex()) {
+            case 0:
+                panggilLaporam(LoadHTML.getText());                    
+                break;
+            case 1:
+                panggilLaporam(LoadHTML2.getText());
+                break;
+            case 2:
+                panggilLaporam(LoadHTML3.getText());
+                break;
+            case 3:
+                panggilLaporam(LoadHTML4.getText());
+                break;
+            case 4:
+                panggilLaporam(LoadHTML5.getText());
+                break;
+            case 5:
+                panggilLaporam(LoadHTML6.getText());
+                break;
+            case 6:
+                panggilLaporam(LoadHTML7.getText());
+                break;
+            case 7:
+                panggilLaporam(LoadHTML8.getText());
+                break;
+            case 8:
+                panggilLaporam(LoadHTML9.getText());
+                break;
+            case 9:
+                panggilLaporam(LoadHTML10.getText());
+                break;
+            case 10:
+                panggilLaporam(LoadHTML11.getText());
+                break;
+            case 11:
+                panggilLaporam(LoadHTML12.getText());
+                break;
+            case 12:
+                if(tabModeRegistrasi.getRowCount()==0){
+                    JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                    KdRw.requestFocus();
+                }else if(tabModeRegistrasi.getRowCount()!=0){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+                    Sequel.queryu("delete from temporary_resume");
+                    Sequel.AutoComitFalse();
+                    for(int i=0;i<tabModeRegistrasi.getRowCount();i++){  
+                        Sequel.menyimpan("temporary_resume","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
+                            "0",tabModeRegistrasi.getValueAt(i,0).toString(),tabModeRegistrasi.getValueAt(i,1).toString(),tabModeRegistrasi.getValueAt(i,2).toString(),
+                            tabModeRegistrasi.getValueAt(i,3).toString(),tabModeRegistrasi.getValueAt(i,4).toString(),tabModeRegistrasi.getValueAt(i,5).toString(),
+                            tabModeRegistrasi.getValueAt(i,6).toString(),tabModeRegistrasi.getValueAt(i,7).toString(),tabModeRegistrasi.getValueAt(i,8).toString(),
+                            "","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
+                        });
+                    }
+                    Sequel.AutoComitTrue();
+                    Map<String, Object> param = new HashMap<>();  
+                        param.put("namars",var.getnamars());
+                        param.put("alamatrs",var.getalamatrs());
+                        param.put("kotars",var.getkabupatenrs());
+                        param.put("propinsirs",var.getpropinsirs());
+                        param.put("kontakrs",var.getkontakrs());
+                        param.put("emailrs",var.getemailrs());   
+                        param.put("logo",Sequel.cariGambar("select logo from setting")); 
+                    Valid.MyReport2("rptRiwayatRegistrasi.jrxml","report","::[ Riwayat Registrasi ]::",
+                        "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_resume order by no asc",param);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
+                break;
+            default:
+                break;
+        }    
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
@@ -908,6 +973,9 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             case 11:
                 tampil12();
                 break;
+            case 12:
+                tampil13();
+                break;
             default:
                 break;
         }
@@ -952,6 +1020,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll10;
     private widget.ScrollPane Scroll11;
+    private widget.ScrollPane Scroll12;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
@@ -970,6 +1039,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.InternalFrame internalFrame11;
     private widget.InternalFrame internalFrame12;
     private widget.InternalFrame internalFrame13;
+    private widget.InternalFrame internalFrame14;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
@@ -983,9 +1053,10 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Label label19;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelisi4;
+    private widget.Table tbRegistrasi;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){     
+    private void tampil(){     
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try{
             htmlContent = new StringBuilder();
@@ -5904,6 +5975,141 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void setNoRm(String norm,String nama) {
         KdRw.setText(norm);
         TPasien.setText(nama);
+    }
+
+    private void tampil13() {
+        Valid.tabelKosong(tabModeRegistrasi);
+        try{   
+            if(ChkTanggal.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.status_lanjut,"+
+                    "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "poliklinik.kd_poli,poliklinik.nm_poli,penjab.png_jawab from reg_periksa inner join dokter inner join "+
+                    "poliklinik inner join penjab on reg_periksa.kd_dokter=dokter.kd_dokter and "+
+                    "reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
+                    "where stts<>'Batal' and reg_periksa.no_rkm_medis=? and "+
+                    "reg_periksa.tgl_registrasi between ? and ? order by reg_periksa.tgl_registrasi");
+            }else{
+                ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.status_lanjut,"+
+                    "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "poliklinik.kd_poli,poliklinik.nm_poli,penjab.png_jawab from reg_periksa inner join dokter inner join "+
+                    "poliklinik inner join penjab on reg_periksa.kd_dokter=dokter.kd_dokter and "+
+                    "reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli "+
+                    "where stts<>'Batal' and reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi");
+            }
+            
+            try {
+                i=0;
+                if(ChkTanggal.isSelected()==true){
+                    ps.setString(1,KdRw.getText());
+                    ps.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                    ps.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,KdRw.getText());
+                }                    
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    i++;
+                    tabModeRegistrasi.addRow(new String[]{
+                        i+"",rs.getString("no_rawat"),rs.getString("tgl_registrasi"),rs.getString("jam_reg"),
+                        rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                        rs.getString("kd_poli")+" "+rs.getString("nm_poli"),rs.getString("png_jawab")
+                    });
+                    ps2=koneksi.prepareStatement(
+                            "select rujukan_internal_poli.kd_dokter,dokter.nm_dokter,"+
+                            "rujukan_internal_poli.kd_poli,poliklinik.nm_poli from rujukan_internal_poli "+
+                            "inner join dokter inner join poliklinik on rujukan_internal_poli.kd_dokter=dokter.kd_dokter "+
+                            "and rujukan_internal_poli.kd_poli=poliklinik.kd_poli where rujukan_internal_poli.no_rawat=?");
+                    try {
+                        ps2.setString(1,rs.getString("no_rawat"));
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){                            
+                            i++;
+                            tabModeRegistrasi.addRow(new String[]{
+                                i+"",rs.getString("no_rawat"),rs.getString("tgl_registrasi"),"",
+                                rs2.getString("kd_dokter"),rs2.getString("nm_dokter"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                                rs2.getString("kd_poli")+" "+rs2.getString("nm_poli"),rs.getString("png_jawab")
+                            });
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }  
+                    kddpjp="";
+                    dpjp="";
+                    if(rs.getString("status_lanjut").equals("Ranap")){
+                        kddpjp=Sequel.cariIsi("select kd_dokter from dpjp_ranap where no_rawat=?",rs.getString("no_rawat"));
+                        if(!kddpjp.equals("")){
+                            dpjp=Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",kddpjp);
+                        }else{
+                            kddpjp=rs.getString("kd_dokter");
+                            dpjp=rs.getString("nm_dokter");
+                        }
+                    }                        
+                    ps2=koneksi.prepareStatement(
+                            "select kamar_inap.tgl_masuk,kamar_inap.jam_masuk,kamar_inap.kd_kamar,bangsal.nm_bangsal "+
+                            "from kamar_inap inner join kamar inner join bangsal on kamar_inap.kd_kamar=kamar.kd_kamar "+
+                            "and kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat=?");
+                    try {
+                        ps2.setString(1,rs.getString("no_rawat"));
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){                            
+                            i++;                            
+                            tabModeRegistrasi.addRow(new String[]{
+                                i+"",rs.getString("no_rawat"),rs2.getString("tgl_masuk"),rs2.getString("jam_masuk"),
+                                kddpjp,dpjp,rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                                rs2.getString("kd_kamar")+" "+rs2.getString("nm_bangsal"),rs.getString("png_jawab")
+                            });
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    } 
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }                
+        }catch(SQLException e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+
+    private void panggilLaporam(String teks) {
+        try{
+            File g = new File("file.css");            
+            BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+            bg.write(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
+            bg.close();
+
+            File f = new File("resumemedis.html");            
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+            bw.write(teks.replaceAll(
+                    "<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />")
+            );  bw.close();
+            Desktop.getDesktop().browse(f.toURI());
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }   
     }
 
 }
