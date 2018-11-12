@@ -23,7 +23,7 @@ public class DlgCopyResep extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps,ps2,ps3;
     private ResultSet rs,rs2,rs3;
-    private String aktifkanparsial="no",norm="",kddokter="",kode_pj="",norawat="";
+    private String aktifkanparsial="no",norm="",kddokter="",kode_pj="",norawat="",status="";
     private final Properties prop = new Properties();
     private int jmlparsial=0;
     
@@ -487,8 +487,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         BtnTambah.setEnabled(var.getresep_dokter());
     }
     
-    public void setRM(String norawat,String norm,String kodedokter,String kodepj){
+    public void setRM(String norawat,String norm,String kodedokter,String kodepj,String status){
         this.norm=norm;
+        this.status=status;
         this.norawat=norawat;
         this.kddokter=kodedokter;
         this.kode_pj=kodepj;
@@ -502,7 +503,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),6).toString(), 
                 tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),4).toString()+" "+
                 tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),5).toString(), 
-                kode_pj,"ralan");
+                kode_pj,status);
         resep.isCek();
         resep.tampilobat2(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
         resep.setVisible(true);
