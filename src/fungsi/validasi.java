@@ -1049,6 +1049,10 @@ public final class validasi {
        return df7.format(nilai);
     }
     
+    public double SetAngka7(double nilai){        
+       return Double.parseDouble(df7.format(nilai));
+    }
+    
     public double SetAngka(String txt){
         double x;   
         try {
