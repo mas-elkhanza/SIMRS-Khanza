@@ -23,6 +23,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
 import inventory.DlgCariObat;
+import inventory.DlgCopyResep;
 import inventory.DlgDaftarPermintaanResep;
 import inventory.DlgPeresepanDokter;
 import java.awt.Cursor;
@@ -1105,6 +1106,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         FormMenu = new widget.PanelBiasa();
         BtnResepObat = new widget.Button();
         BtnDataResep = new widget.Button();
+        BtnCopyResep = new widget.Button();
         BtnInputObat = new widget.Button();
         BtnObatBhp = new widget.Button();
         BtnDiagnosa = new widget.Button();
@@ -2860,6 +2862,27 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnDataResep);
+
+        BtnCopyResep.setText("Copy Resep");
+        BtnCopyResep.setFocusPainted(false);
+        BtnCopyResep.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnCopyResep.setGlassColor(new java.awt.Color(248, 248, 243));
+        BtnCopyResep.setIconTextGap(0);
+        BtnCopyResep.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnCopyResep.setName("BtnCopyResep"); // NOI18N
+        BtnCopyResep.setPreferredSize(new java.awt.Dimension(125, 23));
+        BtnCopyResep.setRoundRect(false);
+        BtnCopyResep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCopyResepActionPerformed(evt);
+            }
+        });
+        BtnCopyResep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCopyResepKeyPressed(evt);
+            }
+        });
+        FormMenu.add(BtnCopyResep);
 
         BtnInputObat.setText("Input Obat & BHP");
         BtnInputObat.setFocusPainted(false);
@@ -4656,6 +4679,27 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnSKDPActionPerformed
 
+    private void BtnCopyResepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCopyResepActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{ 
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgCopyResep daftar=new DlgCopyResep(null,false);
+            daftar.isCek();
+            daftar.setRM(TNoRw.getText(),TNoRM.getText(),KdDok.getText(),kd_pj);
+            daftar.tampil();
+            daftar.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+            daftar.setLocationRelativeTo(internalFrame1);
+            daftar.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        } 
+    }//GEN-LAST:event_BtnCopyResepActionPerformed
+
+    private void BtnCopyResepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCopyResepKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnCopyResepKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -4677,6 +4721,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnBatal;
     private widget.Button BtnBerkasDigital;
     private widget.Button BtnCari;
+    private widget.Button BtnCopyResep;
     private widget.Button BtnDataResep;
     private widget.Button BtnDiagnosa;
     private widget.Button BtnEdit;
@@ -5205,6 +5250,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnEdit.setEnabled(var.gettindakan_ralan());
         BtnPrint.setEnabled(var.gettindakan_ralan());
         BtnResepObat.setEnabled(var.getresep_dokter());
+        BtnCopyResep.setEnabled(var.getresep_dokter());
         BtnDataResep.setEnabled(var.getresep_dokter()); 
         BtnObatBhp.setEnabled(var.getberi_obat());  
         BtnInputObat.setEnabled(var.getberi_obat());  
