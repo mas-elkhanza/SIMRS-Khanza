@@ -169,11 +169,12 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         label9 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
+        BtnAll = new widget.Button();
         panelisi1 = new widget.panelisi();
         BtnTambah = new widget.Button();
         BtnEdit = new widget.Button();
-        BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
+        BtnRekap = new widget.Button();
         label10 = new widget.Label();
         LCount = new widget.Label();
         BtnKeluar = new widget.Button();
@@ -213,7 +214,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-11-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -228,7 +229,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-11-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -241,7 +242,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(310, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(290, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -265,6 +266,23 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }
         });
         panelisi2.add(BtnCari);
+
+        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
+        BtnAll.setMnemonic('M');
+        BtnAll.setToolTipText("Alt+M");
+        BtnAll.setName("BtnAll"); // NOI18N
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAllActionPerformed(evt);
+            }
+        });
+        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnAllKeyPressed(evt);
+            }
+        });
+        panelisi2.add(BtnAll);
 
         jPanel2.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
@@ -291,9 +309,9 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi1.add(BtnTambah);
 
         BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
-        BtnEdit.setMnemonic('G');
+        BtnEdit.setMnemonic('U');
         BtnEdit.setText("Ubah");
-        BtnEdit.setToolTipText("Alt+G");
+        BtnEdit.setToolTipText("Alt+U");
         BtnEdit.setName("BtnEdit"); // NOI18N
         BtnEdit.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -307,24 +325,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnEdit);
-
-        BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
-        BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
-        BtnAll.setToolTipText("Alt+M");
-        BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAllActionPerformed(evt);
-            }
-        });
-        BtnAll.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnAllKeyPressed(evt);
-            }
-        });
-        panelisi1.add(BtnAll);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -344,9 +344,27 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         });
         panelisi1.add(BtnPrint);
 
+        BtnRekap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/preview-16x16.png"))); // NOI18N
+        BtnRekap.setMnemonic('R');
+        BtnRekap.setText("Rekap");
+        BtnRekap.setToolTipText("Alt+R");
+        BtnRekap.setName("BtnRekap"); // NOI18N
+        BtnRekap.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnRekap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRekapActionPerformed(evt);
+            }
+        });
+        BtnRekap.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnRekapKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnRekap);
+
         label10.setText("Record :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(105, 23));
+        label10.setPreferredSize(new java.awt.Dimension(125, 23));
         panelisi1.add(label10);
 
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -723,6 +741,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnEditKeyPressed
 
+    private void BtnRekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRekapActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgResepObat resep=new DlgResepObat(null,false);
+        resep.tampil();
+        resep.emptTeks();
+        resep.isCek();
+        resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        resep.setLocationRelativeTo(internalFrame1);
+        resep.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_BtnRekapActionPerformed
+
+    private void BtnRekapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnRekapKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnRekapKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -745,6 +779,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Button BtnEdit;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.Button BtnRekap;
     private widget.Button BtnTambah;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
@@ -838,6 +873,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         BtnTambah.setEnabled(var.getberi_obat());
         BtnEdit.setEnabled(var.getresep_dokter());
         BtnPrint.setEnabled(var.getresep_dokter());
+        BtnRekap.setEnabled(var.getresep_obat());
     }
     
     public void setCari(String cari){
