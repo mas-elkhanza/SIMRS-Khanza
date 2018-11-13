@@ -16,7 +16,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.util.Date;
@@ -24,8 +23,6 @@ import javax.swing.JOptionPane;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.event.DocumentEvent;
 import simrskhanza.DlgPasien;
 

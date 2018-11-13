@@ -4514,6 +4514,9 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 kamarinap.setLocationRelativeTo(internalFrame1);
                 kamarinap.emptTeks();
+                if(var.getbilling_ralan()==true){
+                    otomatisRalan();
+                }
                 kamarinap.isCek();
                 kamarinap.setNoRm(TNoRw.getText());  
                 kamarinap.setVisible(true);
@@ -4525,6 +4528,9 @@ private void MnKamarInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     kamarinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     kamarinap.setLocationRelativeTo(internalFrame1);
                     kamarinap.emptTeks();
+                    if(var.getbilling_ralan()==true){
+                        otomatisRalan();
+                    }
                     kamarinap.isCek();
                     kamarinap.setNoRm(TNoRw.getText()); 
                     kamarinap.setVisible(true);                    

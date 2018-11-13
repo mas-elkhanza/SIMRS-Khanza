@@ -24,7 +24,6 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPasien;
 
 /**
  *
@@ -642,20 +641,6 @@ public class panelDiagnosa extends widget.panelisi {
             i=tbTindakanPasien.getRowCount();
         }
         return i;
-    }
-    
-    public void getData() {
-        if(tbDiagnosaPasien.getSelectedRow()!= -1){
-            norawat=tbDiagnosaPasien.getValueAt(tbDiagnosaPasien.getSelectedRow(),2).toString();
-            status=tbDiagnosaPasien.getValueAt(tbDiagnosaPasien.getSelectedRow(),7).toString();
-        }
-    }
-    
-    public void getData2() {
-        if(tbTindakanPasien.getSelectedRow()!= -1){
-            norawat=tbTindakanPasien.getValueAt(tbTindakanPasien.getSelectedRow(),2).toString();
-            status=tbTindakanPasien.getValueAt(tbTindakanPasien.getSelectedRow(),7).toString();
-        }
     }
     
     private void tampildiagnosa() {
