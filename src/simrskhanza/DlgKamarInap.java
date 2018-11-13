@@ -6100,7 +6100,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 diagnosa.setLocationRelativeTo(internalFrame1);
                 diagnosa.isCek();
                 diagnosa.setNoRm(norawat.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"Ranap");
-                diagnosa.tampil();
+                diagnosa.panelDiagnosa1.tampil();
                 diagnosa.setVisible(true);
         }
     }//GEN-LAST:event_btnDiagnosaActionPerformed
@@ -6273,7 +6273,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                             date=DTPCari2.getDate();
                         }
                         diagnosa.setNoRm(rs2.getString("no_rawat2"),date,DTPCari2.getDate(),"Ranap");
-                        diagnosa.tampil();
+                        diagnosa.panelDiagnosa1.tampil();
                         diagnosa.setVisible(true);  
                     }else{
                         JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -6303,7 +6303,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                 date=DTPCari2.getDate();
             }
             diagnosa.setNoRm(norawat.getText(),date,DTPCari2.getDate(),"Ranap");
-            diagnosa.tampil();
+            diagnosa.panelDiagnosa1.tampil();
             diagnosa.setVisible(true);  
         }        
     }//GEN-LAST:event_MnDiagnosaActionPerformed

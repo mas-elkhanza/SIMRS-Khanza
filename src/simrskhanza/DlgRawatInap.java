@@ -4519,7 +4519,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             resep.setLocationRelativeTo(internalFrame1);
             resep.isCek();
             resep.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"Ranap");
-            resep.tampil();
+            resep.panelDiagnosa1.tampil();
             resep.setVisible(true);
         }
     }//GEN-LAST:event_MnDiagnosaActionPerformed

@@ -32,6 +32,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileInputStream;
@@ -857,6 +859,25 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
+        panelDiagnosa1.TabRawat.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                LCount.setText(panelDiagnosa1.getRecord()+"");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {}
+
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
+        
         ChkInput.setSelected(false);
         isForm(); 
         ChkInput1.setSelected(false);
@@ -1093,6 +1114,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel82 = new widget.Label();
         jLabel83 = new widget.Label();
         panelResume1 = new simrskhanza.PanelResume();
+        panelDiagnosa1 = new laporan.panelDiagnosa();
         FormInput = new widget.PanelBiasa();
         jLabel3 = new widget.Label();
         TNoRw = new widget.TextBox();
@@ -1110,7 +1132,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnCopyResep = new widget.Button();
         BtnInputObat = new widget.Button();
         BtnObatBhp = new widget.Button();
-        BtnDiagnosa = new widget.Button();
         BtnBerkasDigital = new widget.Button();
         BtnPermintaanLab = new widget.Button();
         BtnPermintaanRad = new widget.Button();
@@ -1283,7 +1304,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1298,7 +1319,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2713,6 +2734,10 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         panelResume1.setName("panelResume1"); // NOI18N
         TabRawat.addTab("Riwayat Perawatan", panelResume1);
 
+        panelDiagnosa1.setBorder(null);
+        panelDiagnosa1.setName("panelDiagnosa1"); // NOI18N
+        TabRawat.addTab("Diagnosa", panelDiagnosa1);
+
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         FormInput.setName("FormInput"); // NOI18N
@@ -2753,7 +2778,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-11-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-11-2018" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -2929,27 +2954,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnObatBhp);
-
-        BtnDiagnosa.setText("Diagnosa");
-        BtnDiagnosa.setFocusPainted(false);
-        BtnDiagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnDiagnosa.setGlassColor(new java.awt.Color(248, 248, 243));
-        BtnDiagnosa.setIconTextGap(0);
-        BtnDiagnosa.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        BtnDiagnosa.setName("BtnDiagnosa"); // NOI18N
-        BtnDiagnosa.setPreferredSize(new java.awt.Dimension(115, 23));
-        BtnDiagnosa.setRoundRect(false);
-        BtnDiagnosa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDiagnosaActionPerformed(evt);
-            }
-        });
-        BtnDiagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnDiagnosaKeyPressed(evt);
-            }
-        });
-        FormMenu.add(BtnDiagnosa);
 
         BtnBerkasDigital.setText("Berkas Digital");
         BtnBerkasDigital.setFocusPainted(false);
@@ -3196,6 +3200,11 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                         tampilPemeriksaanGinekologi();
                         BtnBatalActionPerformed(evt);
                     } break;
+                case 7:
+                    if(var.getdiagnosa_pasien()==true){
+                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Ralan",TCari.getText().trim());
+                        panelDiagnosa1.simpan();
+                    }                        
                 default:
                     break;
             }
@@ -3413,6 +3422,13 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     }
                     tampilPemeriksaanGinekologi();
                 }   break;
+            case 7:
+                if(var.getdiagnosa_pasien()==true){
+                    panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Ralan",TCari.getText().trim());
+                    panelDiagnosa1.hapus();
+                    LCount.setText(panelDiagnosa1.getRecord()+"");
+                } 
+                break;
             default:
                 break;
         }
@@ -3645,6 +3661,11 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     panelResume1.laporan();
                 }   
                 break;
+            case 7:
+                if(var.getdiagnosa_pasien()==true){
+                    panelDiagnosa1.cetak();
+                } 
+                break;
             default:
                 break;
         }
@@ -3819,6 +3840,20 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                     panelResume1.pilihTab();
                 }                    
                 LCount.setText("0");
+                break;
+            case 7:
+                BtnSimpan.setEnabled(var.getdiagnosa_pasien());
+                BtnHapus.setEnabled(var.getdiagnosa_pasien());
+                BtnEdit.setEnabled(var.getdiagnosa_pasien());
+                BtnPrint.setEnabled(var.getdiagnosa_pasien());
+                BtnTambahTindakan.setVisible(false);
+                TCari.setPreferredSize(new Dimension(240,23));
+                TCari.setText(TNoRw.getText());
+                if(var.getdiagnosa_pasien()==true){
+                    panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""), Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Ralan",TCari.getText().trim());
+                    panelDiagnosa1.pilihTab();
+                    LCount.setText(panelDiagnosa1.getRecord()+"");
+                } 
                 break;
             default:
                 break;
@@ -4528,29 +4563,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnObatBhpKeyPressed
 
-    private void BtnDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiagnosaActionPerformed
-        if(TNoRw.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
-            TCari.requestFocus();
-        }else{
-            if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
-                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Masukkan diagnosa lewat kamar inap..!!!");
-            }else {
-                DlgDiagnosaPenyakit resep=new DlgDiagnosaPenyakit(null,false);
-                resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                resep.setLocationRelativeTo(internalFrame1);
-                resep.isCek();
-                resep.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate(),"Ralan");
-                resep.tampil();
-                resep.setVisible(true);
-            }
-        }
-    }//GEN-LAST:event_BtnDiagnosaActionPerformed
-
-    private void BtnDiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDiagnosaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnDiagnosaKeyPressed
-
     private void BtnBerkasDigitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBerkasDigitalActionPerformed
         if(TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
@@ -4735,7 +4747,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnCari;
     private widget.Button BtnCopyResep;
     private widget.Button BtnDataResep;
-    private widget.Button BtnDiagnosa;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnInputObat;
@@ -4916,6 +4927,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private javax.swing.JSeparator jSeparator5;
     private widget.TextBox kdptg;
     private widget.TextBox kdptg2;
+    private laporan.panelDiagnosa panelDiagnosa1;
     private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass11;
     private widget.panelisi panelGlass12;
@@ -5265,8 +5277,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnCopyResep.setEnabled(var.getresep_dokter());
         BtnDataResep.setEnabled(var.getresep_dokter()); 
         BtnObatBhp.setEnabled(var.getberi_obat());  
-        BtnInputObat.setEnabled(var.getberi_obat());  
-        BtnDiagnosa.setEnabled(var.getdiagnosa_pasien()); 
+        BtnInputObat.setEnabled(var.getberi_obat());   
         BtnPermintaanLab.setEnabled(var.getpermintaan_lab());     
         BtnBerkasDigital.setEnabled(var.getberkas_digital_perawatan());    
         BtnPermintaanRad.setEnabled(var.getpermintaan_radiologi());  
@@ -5909,6 +5920,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     panelResume1.pilihTab();
                 }  
                 LCount.setText("0");
+                break;
+            case 7:
+                if(var.getdiagnosa_pasien()==true){
+                    panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""), Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Ralan",TCari.getText().trim());
+                    panelDiagnosa1.pilihTab();
+                    LCount.setText(panelDiagnosa1.getRecord()+"");
+                }  
                 break;
             default:
                 break;
