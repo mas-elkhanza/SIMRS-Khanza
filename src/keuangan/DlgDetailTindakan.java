@@ -1822,7 +1822,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
-                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(15),
+                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
                         rs.getDouble(17)
                     });
                     i++;
@@ -1914,7 +1914,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
-                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(15),
+                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
                         rs.getDouble(17)
                     });
                     i++;
@@ -2323,7 +2323,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
-                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(15),
+                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
                         rs.getDouble(17)
                     });
                     i++;
@@ -2414,7 +2414,7 @@ public final class DlgDetailTindakan extends javax.swing.JDialog {
                         i,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
                         rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         rs.getString(9),rs.getString(10),rs.getString(11),rs.getDouble(12),
-                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(15),
+                        rs.getDouble(13),rs.getDouble(14),rs.getDouble(15),rs.getDouble(16),
                         rs.getDouble(17)
                     });
                     i++;
