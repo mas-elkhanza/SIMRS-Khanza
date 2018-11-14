@@ -1154,7 +1154,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         jLabel82 = new widget.Label();
         jLabel83 = new widget.Label();
         panelResume1 = new simrskhanza.PanelResume();
-        panelDiagnosa1 = new laporan.panelDiagnosa();
+        panelDiagnosa1 = new laporan.PanelDiagnosa();
         FormInput = new widget.PanelBiasa();
         jLabel3 = new widget.Label();
         TNoRw = new widget.TextBox();
@@ -4967,7 +4967,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private javax.swing.JSeparator jSeparator5;
     private widget.TextBox kdptg;
     private widget.TextBox kdptg2;
-    private laporan.panelDiagnosa panelDiagnosa1;
+    private laporan.PanelDiagnosa panelDiagnosa1;
     private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass11;
     private widget.panelisi panelGlass12;

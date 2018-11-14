@@ -180,7 +180,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         TPasien = new widget.TextBox();
         jLabel17 = new widget.Label();
         Status = new widget.ComboBox();
-        panelDiagnosa1 = new laporan.panelDiagnosa();
+        panelDiagnosa1 = new laporan.PanelDiagnosa();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -694,7 +694,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator5;
-    public laporan.panelDiagnosa panelDiagnosa1;
+    public laporan.PanelDiagnosa panelDiagnosa1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     // End of variables declaration//GEN-END:variables

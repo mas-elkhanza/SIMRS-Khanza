@@ -29,7 +29,7 @@ import javax.swing.table.TableColumn;
  *
  * @author khanzamedia
  */
-public class panelDiagnosa extends widget.panelisi {
+public class PanelDiagnosa extends widget.panelisi {
     private final DefaultTableModel TabModeDiagnosaPasien,tabModeDiagnosa,tabModeProsedur,TabModeTindakanPasien;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -43,7 +43,7 @@ public class panelDiagnosa extends widget.panelisi {
     /**
      * Creates new form panelDiagnosa
      */
-    public panelDiagnosa() {
+    public PanelDiagnosa() {
         initComponents();
         TabModeDiagnosaPasien=new DefaultTableModel(null,new Object[]{
             "P","Tgl.Rawat","No.Rawat","No.R.M.","Nama Pasien","Kode","Nama Penyakit",
