@@ -1032,14 +1032,14 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(80, 120, 40)));
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(100, 140, 60));
-        internalFrame2.setWarnaBawah(new java.awt.Color(100, 140, 60));
+        internalFrame2.setWarnaAtas(new java.awt.Color(140, 180, 100));
+        internalFrame2.setWarnaBawah(new java.awt.Color(140, 180, 100));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 12), new java.awt.Color(90, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setWarnaAtas(new java.awt.Color(215, 225, 190));
-        internalFrame3.setWarnaBawah(new java.awt.Color(255, 255, 230));
+        internalFrame3.setWarnaAtas(new java.awt.Color(245, 255, 225));
+        internalFrame3.setWarnaBawah(new java.awt.Color(255, 255, 250));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.lightGray);
@@ -1139,7 +1139,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Ubah Password ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
         internalFrame6.setName("internalFrame6"); // NOI18N
-        internalFrame6.setWarnaBawah(new java.awt.Color(235, 245, 225));
         internalFrame6.setLayout(null);
 
         PassLama.setHighlighter(null);
@@ -1225,7 +1224,7 @@ public class frmUtama extends javax.swing.JFrame {
         panelisi2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 250, 228)));
         panelisi2.setName("panelisi2"); // NOI18N
         panelisi2.setPreferredSize(new java.awt.Dimension(100, 40));
-        panelisi2.setWarnaBawah(new java.awt.Color(254, 253, 250));
+        panelisi2.setWarnaBawah(new java.awt.Color(255, 254, 253));
         panelisi2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 7));
 
         label36.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -1295,12 +1294,10 @@ public class frmUtama extends javax.swing.JFrame {
 
         panelMenu.add(panelisi2, java.awt.BorderLayout.PAGE_START);
 
-        scrollPane2.setBackground(new java.awt.Color(255, 255, 250));
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(232, 250, 228)));
         scrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane2.setName("scrollPane2"); // NOI18N
 
-        Panelmenu.setBackground(new java.awt.Color(255, 255, 253));
         Panelmenu.setBorder(null);
         Panelmenu.setMinimumSize(new java.awt.Dimension(1975, 2826));
         Panelmenu.setName("Panelmenu"); // NOI18N
@@ -6205,12 +6202,11 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(247, 236, 222)));
+        internalFrame1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 248, 240)));
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaAtas(new java.awt.Color(253, 242, 228));
-        internalFrame1.setWarnaBawah(new java.awt.Color(247, 236, 222));
+        internalFrame1.setWarnaBawah(new java.awt.Color(250, 248, 240));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
 
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
@@ -6482,11 +6478,10 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.PAGE_START);
 
-        internalFrame4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(247, 236, 222)));
+        internalFrame4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(250, 248, 240)));
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(247, 236, 222));
-        internalFrame4.setWarnaBawah(new java.awt.Color(253, 242, 228));
+        internalFrame4.setWarnaAtas(new java.awt.Color(250, 248, 240));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N

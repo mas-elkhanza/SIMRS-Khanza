@@ -23,10 +23,10 @@
             </Property>
             <Property name="name" type="java.lang.String" value="internalFrame2" noResource="true"/>
             <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="3c" green="8c" red="64" type="rgb"/>
+              <Color blue="64" green="b4" red="8c" type="rgb"/>
             </Property>
             <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="3c" green="8c" red="64" type="rgb"/>
+              <Color blue="64" green="b4" red="8c" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -56,10 +56,10 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="internalFrame3" noResource="true"/>
                 <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="be" green="e1" red="d7" type="rgb"/>
+                  <Color blue="e1" green="ff" red="f5" type="rgb"/>
                 </Property>
                 <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e6" green="ff" red="ff" type="rgb"/>
+                  <Color blue="fa" green="ff" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -271,9 +271,6 @@
               </Border>
             </Property>
             <Property name="name" type="java.lang.String" value="internalFrame6" noResource="true"/>
-            <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="e1" green="f5" red="eb" type="rgb"/>
-            </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -463,7 +460,7 @@
                   <Dimension value="[100, 40]"/>
                 </Property>
                 <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fa" green="fd" red="fe" type="rgb"/>
+                  <Color blue="fd" green="fe" red="ff" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -599,9 +596,6 @@
             </Container>
             <Container class="widget.ScrollPane" name="scrollPane2">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="fa" green="ff" red="ff" type="rgb"/>
-                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
@@ -622,9 +616,6 @@
               <SubComponents>
                 <Container class="widget.panelGlass" name="Panelmenu">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="fd" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -7992,7 +7983,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
-              <Color PropertyName="color" blue="de" green="ec" red="f7" type="rgb"/>
+              <Color PropertyName="color" blue="f0" green="f8" red="fa" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
@@ -8001,11 +7992,8 @@
           <Dimension value="[40, 44]"/>
         </Property>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
-        <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e4" green="f2" red="fd" type="rgb"/>
-        </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="de" green="ec" red="f7" type="rgb"/>
+          <Color blue="f0" green="f8" red="fa" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -8398,7 +8386,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
-              <Color PropertyName="color" blue="de" green="ec" red="f7" type="rgb"/>
+              <Color PropertyName="color" blue="f0" green="f8" red="fa" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
@@ -8407,10 +8395,7 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="de" green="ec" red="f7" type="rgb"/>
-        </Property>
-        <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="e4" green="f2" red="fd" type="rgb"/>
+          <Color blue="f0" green="f8" red="fa" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
