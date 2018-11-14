@@ -1032,14 +1032,13 @@ public class frmUtama extends javax.swing.JFrame {
 
         internalFrame2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(80, 120, 40)));
         internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setWarnaAtas(new java.awt.Color(140, 180, 100));
-        internalFrame2.setWarnaBawah(new java.awt.Color(100, 140, 60));
+        internalFrame2.setWarnaAtas(new java.awt.Color(130, 170, 80));
+        internalFrame2.setWarnaBawah(new java.awt.Color(70, 110, 30));
         internalFrame2.setLayout(null);
 
         internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 125, 90), 1, true), ":: Silahkan Anda Login ::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 2, 12), new java.awt.Color(90, 50, 50))); // NOI18N
         internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setWarnaAtas(new java.awt.Color(245, 255, 225));
-        internalFrame3.setWarnaBawah(new java.awt.Color(255, 255, 250));
+        internalFrame3.setWarnaAtas(new java.awt.Color(190, 230, 170));
         internalFrame3.setLayout(null);
 
         panelGlass1.setBackground(java.awt.Color.lightGray);
@@ -6202,11 +6201,11 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 240, 200)));
+        internalFrame1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(220, 245, 210)));
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaBawah(new java.awt.Color(225, 240, 200));
+        internalFrame1.setWarnaBawah(new java.awt.Color(220, 245, 210));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
 
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
@@ -6229,8 +6228,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnMenu);
 
-        jSeparator4.setBackground(new java.awt.Color(170, 180, 135));
-        jSeparator4.setForeground(new java.awt.Color(170, 180, 135));
+        jSeparator4.setBackground(new java.awt.Color(160, 170, 125));
+        jSeparator4.setForeground(new java.awt.Color(160, 170, 125));
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator4.setName("jSeparator4"); // NOI18N
         jSeparator4.setOpaque(true);
@@ -6277,8 +6276,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(btnToolIGD);
 
-        jSeparator5.setBackground(new java.awt.Color(170, 180, 135));
-        jSeparator5.setForeground(new java.awt.Color(170, 180, 135));
+        jSeparator5.setBackground(new java.awt.Color(160, 170, 125));
+        jSeparator5.setForeground(new java.awt.Color(160, 170, 125));
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator5.setName("jSeparator5"); // NOI18N
         jSeparator5.setOpaque(true);
@@ -6382,8 +6381,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolJualObat);
 
-        jSeparator9.setBackground(new java.awt.Color(170, 180, 135));
-        jSeparator9.setForeground(new java.awt.Color(170, 180, 135));
+        jSeparator9.setBackground(new java.awt.Color(160, 170, 125));
+        jSeparator9.setForeground(new java.awt.Color(160, 170, 125));
         jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator9.setName("jSeparator9"); // NOI18N
         jSeparator9.setOpaque(true);
@@ -6430,8 +6429,8 @@ public class frmUtama extends javax.swing.JFrame {
         });
         internalFrame1.add(BtnToolKasir);
 
-        jSeparator7.setBackground(new java.awt.Color(170, 180, 135));
-        jSeparator7.setForeground(new java.awt.Color(170, 180, 135));
+        jSeparator7.setBackground(new java.awt.Color(160, 170, 125));
+        jSeparator7.setForeground(new java.awt.Color(160, 170, 125));
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator7.setName("jSeparator7"); // NOI18N
         jSeparator7.setOpaque(true);
@@ -6478,10 +6477,10 @@ public class frmUtama extends javax.swing.JFrame {
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.PAGE_START);
 
-        internalFrame4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(225, 240, 200)));
+        internalFrame4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(220, 245, 210)));
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(225, 240, 200));
+        internalFrame4.setWarnaAtas(new java.awt.Color(220, 245, 210));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -6493,8 +6492,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblStts.setPreferredSize(new java.awt.Dimension(100, 23));
         internalFrame4.add(lblStts);
 
-        jSeparator1.setBackground(new java.awt.Color(170, 180, 135));
-        jSeparator1.setForeground(new java.awt.Color(170, 180, 135));
+        jSeparator1.setBackground(new java.awt.Color(160, 170, 125));
+        jSeparator1.setForeground(new java.awt.Color(160, 170, 125));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setName("jSeparator1"); // NOI18N
         jSeparator1.setOpaque(true);
@@ -6510,8 +6509,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblUser.setPreferredSize(new java.awt.Dimension(170, 23));
         internalFrame4.add(lblUser);
 
-        jSeparator2.setBackground(new java.awt.Color(170, 180, 135));
-        jSeparator2.setForeground(new java.awt.Color(170, 180, 135));
+        jSeparator2.setBackground(new java.awt.Color(160, 170, 125));
+        jSeparator2.setForeground(new java.awt.Color(160, 170, 125));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator2.setName("jSeparator2"); // NOI18N
         jSeparator2.setOpaque(true);
@@ -6527,8 +6526,8 @@ public class frmUtama extends javax.swing.JFrame {
         lblTgl.setPreferredSize(new java.awt.Dimension(150, 23));
         internalFrame4.add(lblTgl);
 
-        jSeparator3.setBackground(new java.awt.Color(170, 180, 135));
-        jSeparator3.setForeground(new java.awt.Color(170, 180, 135));
+        jSeparator3.setBackground(new java.awt.Color(160, 170, 125));
+        jSeparator3.setForeground(new java.awt.Color(160, 170, 125));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setName("jSeparator3"); // NOI18N
         jSeparator3.setOpaque(true);
@@ -7216,12 +7215,22 @@ public class frmUtama extends javax.swing.JFrame {
                         BtnToolKasir.setEnabled(var.getkasir_ralan());
                     }
                         
+                    if((var.getpermintaan_radiologi()==true)||(var.getperiksa_radiologi()==true)){
+                        btnPermintaanRadiologi.setEnabled(true);
+                    }else{
+                        btnPermintaanRadiologi.setEnabled(var.getpermintaan_radiologi());
+                    }
+                    
+                    if((var.getpermintaan_lab()==true)||(var.getperiksa_lab()==true)){
+                        btnPermintaanLab.setEnabled(true);
+                    }else{
+                        btnPermintaanLab.setEnabled(var.getpermintaan_lab());
+                    }
+                        
                     btnToolIGD.setEnabled(var.getigd());                    
                     btnToolBcdRalan.setEnabled(var.getbarcoderalan());
                     btnToolBcdRanap.setEnabled(var.getbarcoderanap()); 
-                    btnPermintaanLab.setEnabled(var.getpermintaan_lab());
                     btnLaboratorium.setEnabled(var.getperiksa_lab());
-                    btnPermintaanRadiologi.setEnabled(var.getpermintaan_radiologi());
                     btnPeriksaRadiologi.setEnabled(var.getperiksa_radiologi());  
                     Sequel.menyimpan("tracker","'"+edAdmin.getText()+"',current_date(),current_time()","Login");
                 }else if((var.getjml1()==0)&&(var.getjml2()==0)){
@@ -8692,7 +8701,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         FlayMenu.removeAll();        
         FlayMenu.add(btnPermintaanLab);
         FlayMenu.add(btnLaboratorium);
-        btnPermintaanLab.setEnabled(var.getpermintaan_lab());
+        if((var.getpermintaan_lab()==true)||(var.getperiksa_lab()==true)){
+            btnPermintaanLab.setEnabled(true);
+        }else{
+            btnPermintaanLab.setEnabled(var.getpermintaan_lab());
+        }
         btnLaboratorium.setEnabled(var.getperiksa_lab());
         FlayMenu.setVisible(true); 
     }//GEN-LAST:event_btnToolLabActionPerformed
@@ -9043,7 +9056,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         FlayMenu.removeAll();        
         FlayMenu.add(btnPermintaanRadiologi);
         FlayMenu.add(btnPeriksaRadiologi);
-        btnPermintaanRadiologi.setEnabled(var.getpermintaan_radiologi());
+        if((var.getpermintaan_radiologi()==true)||(var.getperiksa_radiologi()==true)){
+            btnPermintaanRadiologi.setEnabled(true);
+        }else{
+            btnPermintaanRadiologi.setEnabled(var.getpermintaan_radiologi());
+        }
         btnPeriksaRadiologi.setEnabled(var.getperiksa_radiologi());
         FlayMenu.setVisible(true); 
     }//GEN-LAST:event_btnToolRadActionPerformed
@@ -13543,12 +13560,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
             
-            if(var.getpermintaan_lab()==true){
+            if((var.getpermintaan_lab()==true)||(var.getperiksa_lab()==true)){
                 Panelmenu.add(btnPermintaanLab);
                 jmlmenu++;
             }
             
-            if(var.getpermintaan_radiologi()==true){
+            if((var.getpermintaan_radiologi()==true)||(var.getperiksa_radiologi()==true)){
                 Panelmenu.add(btnPermintaanRadiologi);
                 jmlmenu++;
             }
@@ -15580,12 +15597,12 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
-        if(var.getpermintaan_lab()==true){
+        if((var.getpermintaan_lab()==true)||(var.getperiksa_lab()==true)){
             Panelmenu.add(btnPermintaanLab);
             jmlmenu++;
         }
         
-        if(var.getpermintaan_radiologi()==true){
+        if((var.getpermintaan_radiologi()==true)||(var.getperiksa_radiologi()==true)){
             Panelmenu.add(btnPermintaanRadiologi);
             jmlmenu++;
         }
@@ -17617,14 +17634,14 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
         
-        if(var.getpermintaan_lab()==true){
+        if((var.getpermintaan_lab()==true)||(var.getperiksa_lab()==true)){
             if(btnPermintaanLab.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanLab);
                 jmlmenu++;
             }                
         }
         
-        if(var.getpermintaan_radiologi()==true){
+        if((var.getpermintaan_radiologi()==true)||(var.getperiksa_radiologi()==true)){
             if(btnPermintaanRadiologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPermintaanRadiologi);
                 jmlmenu++;
