@@ -243,7 +243,7 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Reklasifikasi Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Reklasifikasi Ranap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -308,7 +308,7 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
         panelGlass5.add(BtnPrint);
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(100,80,80));
+        jLabel10.setForeground(new java.awt.Color(70,70,70));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Total Reklasifikasi :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -316,7 +316,7 @@ public final class ReklasifikasiRanap extends javax.swing.JDialog {
         panelGlass5.add(jLabel10);
 
         LCount.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        LCount.setForeground(new java.awt.Color(100,80,80));
+        LCount.setForeground(new java.awt.Color(70,70,70));
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
@@ -1370,7 +1370,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             Sequel.cariIsi("select code_cbg from inacbg_grouping_stage1 inner join bridging_sep on bridging_sep.no_sep=inacbg_grouping_stage1.no_sep where bridging_sep.no_rawat=?",rs.getString("no_rawat")),
                             Valid.SetAngka(Laborat+Radiologi+Operasi+Obat+Ranap_Dokter+Ranap_Dokter_Paramedis+Ranap_Paramedis+
                             Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis+Tambahan+Potongan+Kamar+Registrasi+Harian+Retur_Obat+Resep_Pulang+Service),
-                            Valid.SetAngka(kebidanan),Valid.SetAngka(operasi2),Valid.SetAngka(Ranap_Dokter+Ralan_Dokter),
+                            Valid.SetAngka(kebidanan),Valid.SetAngka(Operasi-kebidanan),Valid.SetAngka(Ranap_Dokter+Ralan_Dokter),
                             Valid.SetAngka(Ranap_Dokter_Paramedis+Ralan_Dokter_Paramedis),Valid.SetAngka(Ranap_Paramedis+Ralan_Paramedis),
                             Valid.SetAngka(Tambahan+Registrasi+Service),0,Valid.SetAngka(Laborat),0,Valid.SetAngka(Radiologi),0,
                             Valid.SetAngka(Kamar+Harian),0,Valid.SetAngka(Obat+Retur_Obat+Resep_Pulang),0,0,0,Valid.SetAngka(Potongan),

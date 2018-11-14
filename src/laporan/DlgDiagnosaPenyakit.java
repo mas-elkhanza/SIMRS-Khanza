@@ -16,7 +16,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.var;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.util.Date;
@@ -24,8 +23,6 @@ import javax.swing.JOptionPane;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.event.DocumentEvent;
 import simrskhanza.DlgPasien;
 
@@ -183,7 +180,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
         TPasien = new widget.TextBox();
         jLabel17 = new widget.Label();
         Status = new widget.ComboBox();
-        panelDiagnosa1 = new laporan.panelDiagnosa();
+        panelDiagnosa1 = new laporan.PanelDiagnosa();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -197,7 +194,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Riwayat Diagnosa & Prosedur Tindakan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -697,7 +694,7 @@ public class DlgDiagnosaPenyakit extends javax.swing.JDialog {
     private widget.Label jLabel6;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator5;
-    public laporan.panelDiagnosa panelDiagnosa1;
+    public laporan.PanelDiagnosa panelDiagnosa1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     // End of variables declaration//GEN-END:variables

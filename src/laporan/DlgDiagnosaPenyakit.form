@@ -493,7 +493,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="laporan.panelDiagnosa" name="panelDiagnosa1">
+        <Component class="laporan.PanelDiagnosa" name="panelDiagnosa1">
           <Properties>
             <Property name="name" type="java.lang.String" value="panelDiagnosa1" noResource="true"/>
           </Properties>

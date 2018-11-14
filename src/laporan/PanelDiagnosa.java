@@ -24,13 +24,12 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import simrskhanza.DlgPasien;
 
 /**
  *
  * @author khanzamedia
  */
-public class panelDiagnosa extends widget.panelisi {
+public class PanelDiagnosa extends widget.panelisi {
     private final DefaultTableModel TabModeDiagnosaPasien,tabModeDiagnosa,tabModeProsedur,TabModeTindakanPasien;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -44,7 +43,7 @@ public class panelDiagnosa extends widget.panelisi {
     /**
      * Creates new form panelDiagnosa
      */
-    public panelDiagnosa() {
+    public PanelDiagnosa() {
         initComponents();
         TabModeDiagnosaPasien=new DefaultTableModel(null,new Object[]{
             "P","Tgl.Rawat","No.Rawat","No.R.M.","Nama Pasien","Kode","Nama Penyakit",
@@ -278,7 +277,7 @@ public class panelDiagnosa extends widget.panelisi {
 
         MnStatusBaru.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusBaru.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusBaru.setForeground(new java.awt.Color(100, 80, 80));
+        MnStatusBaru.setForeground(new java.awt.Color(70,70,70));
         MnStatusBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusBaru.setText("Status Penyakit Baru");
         MnStatusBaru.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -293,7 +292,7 @@ public class panelDiagnosa extends widget.panelisi {
 
         MnStatusLama.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusLama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusLama.setForeground(new java.awt.Color(100, 80, 80));
+        MnStatusLama.setForeground(new java.awt.Color(70,70,70));
         MnStatusLama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusLama.setText("Status Penyakit Lama");
         MnStatusLama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -311,7 +310,7 @@ public class panelDiagnosa extends widget.panelisi {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 250, 233)));
-        TabRawat.setForeground(new java.awt.Color(100, 80, 80));
+        TabRawat.setForeground(new java.awt.Color(70,70,70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -642,20 +641,6 @@ public class panelDiagnosa extends widget.panelisi {
             i=tbTindakanPasien.getRowCount();
         }
         return i;
-    }
-    
-    public void getData() {
-        if(tbDiagnosaPasien.getSelectedRow()!= -1){
-            norawat=tbDiagnosaPasien.getValueAt(tbDiagnosaPasien.getSelectedRow(),2).toString();
-            status=tbDiagnosaPasien.getValueAt(tbDiagnosaPasien.getSelectedRow(),7).toString();
-        }
-    }
-    
-    public void getData2() {
-        if(tbTindakanPasien.getSelectedRow()!= -1){
-            norawat=tbTindakanPasien.getValueAt(tbTindakanPasien.getSelectedRow(),2).toString();
-            status=tbTindakanPasien.getValueAt(tbTindakanPasien.getSelectedRow(),7).toString();
-        }
     }
     
     private void tampildiagnosa() {
