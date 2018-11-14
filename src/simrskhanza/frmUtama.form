@@ -7060,7 +7060,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="14/11/2018"/>
+            <StringItem index="0" value="15/11/2018"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -7980,7 +7980,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
-              <Color PropertyName="color" blue="d2" green="f5" red="dc" type="rgb"/>
+              <Color PropertyName="color" blue="d2" green="f0" red="dc" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
@@ -7990,7 +7990,7 @@
         </Property>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d2" green="f5" red="dc" type="rgb"/>
+          <Color blue="d2" green="f0" red="dc" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -8383,7 +8383,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder>
-              <Color PropertyName="color" blue="d2" green="f5" red="dc" type="rgb"/>
+              <Color PropertyName="color" blue="d2" green="f0" red="dc" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
@@ -8392,7 +8392,7 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d2" green="f5" red="dc" type="rgb"/>
+          <Color blue="d2" green="f0" red="dc" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
