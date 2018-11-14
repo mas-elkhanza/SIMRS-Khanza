@@ -1113,7 +1113,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "permintaan_radiologi.tgl_permintaan between ? and ? and reg_periksa.no_rkm_medis like ? or "+
                     "permintaan_radiologi.tgl_permintaan between ? and ? and pasien.nm_pasien like ? or "+
                     "permintaan_radiologi.tgl_permintaan between ? and ? and dokter.nm_dokter like ? order by "+
-                    "permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan");
+                    "permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -1199,7 +1199,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "permintaan_radiologi.tgl_permintaan between ? and ? and pasien.nm_pasien like ? or "+
                     "permintaan_radiologi.tgl_permintaan between ? and ? and jns_perawatan_radiologi.nm_perawatan like ? or "+
                     "permintaan_radiologi.tgl_permintaan between ? and ? and dokter.nm_dokter like ? order by "+
-                    "permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan");
+                    "permintaan_radiologi.tgl_permintaan,permintaan_radiologi.jam_permintaan desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));

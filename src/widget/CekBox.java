@@ -21,7 +21,7 @@ public class CekBox extends JCheckBox{
         setFont(new java.awt.Font("Tahoma", 0, 11));
         //setBackground(new Color(209,209,209));
         //setForeground(new Color(90,90,90));
-        setBackground(new Color(255,255,253));
+        setBackground(new Color(255,255,255));
         setForeground(new Color(100,80,80));
         setFocusPainted(false);
         

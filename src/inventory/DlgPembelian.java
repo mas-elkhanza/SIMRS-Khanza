@@ -291,13 +291,6 @@ public class DlgPembelian extends javax.swing.JDialog {
         });
         
         Valid.loadCombo(CmbAkun,"nama_bayar","akun_bayar");
-        
-        try{            
-            
-            pskonversi=koneksi.prepareStatement("select nilai,nilai_konversi from konver_sat where kode_sat=? and sat_konversi=?");
-        }catch(SQLException e){
-            System.out.println(e);
-        }
            
     }
 
@@ -364,7 +357,7 @@ public class DlgPembelian extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(100,80,80));
+        ppBersihkan.setForeground(new java.awt.Color(100, 80, 80));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -388,7 +381,7 @@ public class DlgPembelian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1107,98 +1100,110 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDokterKeyPressed
         if(tbDokter.getRowCount()!=0){
-            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                try {
-                    if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==10)){
-                        getData();
-                        TCari.setText("");
-                        TCari.requestFocus();
-                    }else if(tbDokter.getSelectedColumn()==8){
-                        try {
-                            tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())*
-                                (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString())/100),tbDokter.getSelectedRow(),9);
-                        } catch (Exception e) {
-                            tbDokter.setValueAt(0,tbDokter.getSelectedRow(),9);
-                        }
-
-                        getData();
-                    }else if((tbDokter.getSelectedColumn()==10)||(tbDokter.getSelectedColumn()==11)||(tbDokter.getSelectedColumn()==13)){
-                        TCari.setText("");
-                        TCari.requestFocus();
-                    }
-                } catch (Exception e) {
-                }
-            }else if(evt.getKeyCode()==KeyEvent.VK_DELETE){
-                try {
-                    if(tbDokter.getSelectedColumn()==0){
-                        tbDokter.setValueAt(null, tbDokter.getSelectedRow(),0);
-                    }else if(tbDokter.getSelectedColumn()==7){
-                        tbDokter.setValueAt("", tbDokter.getSelectedRow(),7);
-                    }else if(tbDokter.getSelectedColumn()==9){
-                        tbDokter.setValueAt("", tbDokter.getSelectedRow(),9);
-                    }else if(tbDokter.getSelectedColumn()==10){
-                        tbDokter.setValueAt("", tbDokter.getSelectedRow(),10);
-                    }
-                } catch (Exception e) {
-                }
-            }else if(evt.getKeyCode()==KeyEvent.VK_BACK_SPACE){
-                try {
-                    if(tbDokter.getSelectedColumn()==0){
-                        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0,0")){
-                            tbDokter.setValueAt("", tbDokter.getSelectedRow(),0);
-                        }
-                    }else if(tbDokter.getSelectedColumn()==7){
-                        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0,0")){
+            switch (evt.getKeyCode()) {
+                case KeyEvent.VK_DELETE:
+                    try {
+                        if(tbDokter.getSelectedColumn()==0){
+                            tbDokter.setValueAt(null, tbDokter.getSelectedRow(),0);
+                        }else if(tbDokter.getSelectedColumn()==7){
                             tbDokter.setValueAt("", tbDokter.getSelectedRow(),7);
-                        }
-                    }else if(tbDokter.getSelectedColumn()==9){
-                        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0,0")){
+                        }else if(tbDokter.getSelectedColumn()==9){
                             tbDokter.setValueAt("", tbDokter.getSelectedRow(),9);
-                        }
-                    }else if(tbDokter.getSelectedColumn()==10){
-                        if(tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString().equals("0,0")){
+                        }else if(tbDokter.getSelectedColumn()==10){
                             tbDokter.setValueAt("", tbDokter.getSelectedRow(),10);
                         }
-                    }
-                } catch (Exception e) {
-                }
-            }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
-                TCari.setText("");
-                TCari.requestFocus();
-            }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
-                if(tbDokter.getSelectedColumn()==9){
-                    try {
-                        tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString())*
-                            (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString())/100),tbDokter.getSelectedRow(),10);
                     } catch (Exception e) {
-                        tbDokter.setValueAt(0,tbDokter.getSelectedRow(),10);
-                    }
-                    getData();
-                }else if(tbDokter.getSelectedColumn()==1){
-                    setKonversi(tbDokter.getSelectedRow());
-                    getData();
-                }else if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==5)||(tbDokter.getSelectedColumn()==6)||(tbDokter.getSelectedColumn()==10)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==13)){
-                    getData();
-                }
-            }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                if(tbDokter.getSelectedColumn()==1){
-                    y=0;
+                    }   break;
+                case KeyEvent.VK_BACK_SPACE:
                     try {
-                        y=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        if(tbDokter.getSelectedColumn()==0){
+                            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().equals("0,0")){
+                                tbDokter.setValueAt("", tbDokter.getSelectedRow(),0);
+                            }
+                        }else if(tbDokter.getSelectedColumn()==7){
+                            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString().equals("0,0")){
+                                tbDokter.setValueAt("", tbDokter.getSelectedRow(),7);
+                            }
+                        }else if(tbDokter.getSelectedColumn()==9){
+                            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString().equals("0,0")){
+                                tbDokter.setValueAt("", tbDokter.getSelectedRow(),9);
+                            }
+                        }else if(tbDokter.getSelectedColumn()==10){
+                            if(tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString().equals("0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString().equals("0.0")||tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString().equals("0,0")){
+                                tbDokter.setValueAt("", tbDokter.getSelectedRow(),10);
+                            }
+                        }
                     } catch (Exception e) {
+                    }   break;
+                case KeyEvent.VK_SHIFT:
+                    TCari.setText("");
+                    TCari.requestFocus();
+                    break;
+                case KeyEvent.VK_SPACE:
+                    if(tbDokter.getSelectedColumn()==1){
                         y=0;
-                    }
-                    if(y>0){
-                        satuanbarang.isCek();
-                        satuanbarang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight());
-                        satuanbarang.setLocationRelativeTo(internalFrame1);
-                        satuanbarang.setVisible(true);
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Silahkan masukkan jumlah pembelian terelebih dahulu..!!");
-                    }
-                }
+                        try {
+                            y=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        } catch (Exception e) {
+                            y=0;
+                        }
+                        if(y>0){
+                            satuanbarang.isCek();
+                            satuanbarang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight());
+                            satuanbarang.setLocationRelativeTo(internalFrame1);
+                            satuanbarang.setVisible(true);
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Silahkan masukkan jumlah pembelian terelebih dahulu..!!");
+                        }
+                    }   break;
+                case KeyEvent.VK_ENTER:
+                    try {
+                        if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==10)){
+                            getData();
+                            TCari.setText("");
+                            TCari.requestFocus();
+                        }else if(tbDokter.getSelectedColumn()==8){
+                            try {
+                                tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),7).toString())*
+                                    (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString())/100),tbDokter.getSelectedRow(),9);
+                            } catch (Exception e) {
+                                tbDokter.setValueAt(0,tbDokter.getSelectedRow(),9);
+                            }
+
+                            getData();
+                        }else if((tbDokter.getSelectedColumn()==10)||(tbDokter.getSelectedColumn()==11)||(tbDokter.getSelectedColumn()==13)){
+                            TCari.setText("");
+                            TCari.requestFocus();
+                        }else if(tbDokter.getSelectedColumn()==9){
+                            try {
+                                tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString())*
+                                    (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString())/100),tbDokter.getSelectedRow(),10);
+                            } catch (Exception e) {
+                                tbDokter.setValueAt(0,tbDokter.getSelectedRow(),10);
+                            }
+                            getData();
+                        }
+                    } catch (Exception e) {
+                    } break;
+                case KeyEvent.VK_RIGHT:
+                    if(tbDokter.getSelectedColumn()==9){
+                        try {
+                            tbDokter.setValueAt(Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString())*
+                                (Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString())/100),tbDokter.getSelectedRow(),10);
+                        } catch (Exception e) {
+                            tbDokter.setValueAt(0,tbDokter.getSelectedRow(),10);
+                        }
+                        getData();
+                    }else if(tbDokter.getSelectedColumn()==1){
+                        setKonversi(tbDokter.getSelectedRow());
+                        getData();
+                    }else if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==5)||(tbDokter.getSelectedColumn()==6)||(tbDokter.getSelectedColumn()==10)||(tbDokter.getSelectedColumn()==8)||(tbDokter.getSelectedColumn()==7)||(tbDokter.getSelectedColumn()==13)){
+                        getData();
+                    } break;
+                default:
+                    break;
             }
-        }
+        }        
     }//GEN-LAST:event_tbDokterKeyPressed
 
     /**
@@ -1805,6 +1810,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }   break;
                         default:
+                            JOptionPane.showMessageDialog(null,"Pengaturan untuk obat/alkes/bhp belum disetting..!!");
                             break;                    
                     }
                 }else{
