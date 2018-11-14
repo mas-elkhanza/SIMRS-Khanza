@@ -2247,7 +2247,7 @@
                                 <Property name="editable" type="boolean" value="false"/>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="1">
-                                    <StringItem index="0" value="14-11-2018 10:19:49"/>
+                                    <StringItem index="0" value="14-11-2018 15:36:45"/>
                                   </StringArray>
                                 </Property>
                                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2799,6 +2799,7 @@
                                     <StringItem index="1" value="2. Faskes 2(RS)"/>
                                   </StringArray>
                                 </Property>
+                                <Property name="selectedIndex" type="int" value="1"/>
                                 <Property name="name" type="java.lang.String" value="AsalRujukan" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
                               </Properties>

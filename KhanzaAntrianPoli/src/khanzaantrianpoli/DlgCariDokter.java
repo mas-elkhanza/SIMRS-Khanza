@@ -160,7 +160,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         Popup.setName("Popup"); // NOI18N
 
         ppOrder.setBackground(new java.awt.Color(242, 242, 242));
-        ppOrder.setForeground(new java.awt.Color(100,80,80));
+        ppOrder.setForeground(new java.awt.Color(70,70,70));
         ppOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrder.setText("Urutkan Berdasar");
         ppOrder.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -169,7 +169,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
 
         ppOrderKode.setBackground(new java.awt.Color(255, 255, 255));
         ppOrderKode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrderKode.setForeground(new java.awt.Color(100,80,80));
+        ppOrderKode.setForeground(new java.awt.Color(70,70,70));
         ppOrderKode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrderKode.setText("Kode Dokter");
         ppOrderKode.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -186,7 +186,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
 
         ppOrderNama.setBackground(new java.awt.Color(255, 255, 255));
         ppOrderNama.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        ppOrderNama.setForeground(new java.awt.Color(100,80,80));
+        ppOrderNama.setForeground(new java.awt.Color(70,70,70));
         ppOrderNama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         ppOrderNama.setText("Nama Dokter");
         ppOrderNama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
