@@ -44,6 +44,7 @@ public class DlgPembelian extends javax.swing.JDialog {
     private DlgCariSatuan satuanbarang=new DlgCariSatuan(null,false);
     private double hargakonversi=0,saldoawal=0,mutasi=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,tagihan=0,jmlkonversi=0,hargappn=0;
     private int jml=0,i=0,row=0,index=0;
+    private boolean[] ganti;
     private String[] kodebarang,namabarang,satuan,satuanbeli,kadaluwarsa,nobatch;
     private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal,jmlstok,hpp,
                      ralan,kelas1,kelas2,kelas3,utama,vip,vvip,beliluar,jualbebas,karyawan;
@@ -357,7 +358,7 @@ public class DlgPembelian extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(100, 80, 80));
+        ppBersihkan.setForeground(new java.awt.Color(70,70,70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Jumlah");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -381,7 +382,7 @@ public class DlgPembelian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Pengadaan Obat, Alkes & BHP Medis ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1307,6 +1308,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         beliluar=null;
         jualbebas=null;
         karyawan=null;
+        ganti=null;
         
         kodebarang=new String[jml];
         namabarang=new String[jml];
@@ -1332,6 +1334,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         beliluar=new double[jml];
         jualbebas=new double[jml];
         karyawan=new double[jml];
+        ganti=new boolean[jml];
         
         index=0;        
         for(i=0;i<row;i++){
@@ -1342,6 +1345,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     kodebarang[index]=tbDokter.getValueAt(i,2).toString();
                     namabarang[index]=tbDokter.getValueAt(i,3).toString();
                     satuan[index]=tbDokter.getValueAt(i,4).toString();
+                    ganti[index]=Boolean.parseBoolean(tbDokter.getValueAt(i,5).toString());
                     kadaluwarsa[index]=tbDokter.getValueAt(i,6).toString();
                     harga[index]=Double.parseDouble(tbDokter.getValueAt(i,7).toString());
                     subtotal[index]=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
@@ -1369,7 +1373,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         Valid.tabelKosong(tabMode);
         for(i=0;i<jml;i++){
             tabMode.addRow(new Object[]{
-                jumlah[i],satuanbeli[i],kodebarang[i],namabarang[i],satuan[i],true,kadaluwarsa[i],harga[i],subtotal[i],diskon[i],besardiskon[i],jmltotal[i],
+                jumlah[i],satuanbeli[i],kodebarang[i],namabarang[i],satuan[i],ganti[i],kadaluwarsa[i],harga[i],subtotal[i],diskon[i],besardiskon[i],jmltotal[i],
                 jmlstok[i],nobatch[i],ralan[i],kelas1[i],kelas2[i],kelas3[i],utama[i],vip[i],vvip[i],beliluar[i],jualbebas[i],karyawan[i],hpp[i]
             });
         }
@@ -1611,6 +1615,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         }
                                     }
                                 }else{
+                                    tbDokter.setValueAt(false,baris,5);
                                     JOptionPane.showMessageDialog(null,"Pengaturan untuk jenis obat/alkes/bhp ini tidak ditemukan..!!");
                                     TCari.requestFocus();
                                 }
@@ -1705,6 +1710,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         }
                                     }
                                 }else{
+                                    tbDokter.setValueAt(false,baris,5);
                                     JOptionPane.showMessageDialog(null,"Pengaturan harga umum masih kosong..!!");
                                     TCari.requestFocus();
                                 }
@@ -1799,6 +1805,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                         }
                                     }
                                 }else{
+                                    tbDokter.setValueAt(false,baris,5);
                                     JOptionPane.showMessageDialog(null,"Pengaturan untuk obat/alkes/bhp ini tidak ditemukan..!!");
                                     TCari.requestFocus();
                                 }
@@ -1810,6 +1817,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                 }
                             }   break;
                         default:
+                            tbDokter.setValueAt(false,baris,5);
                             JOptionPane.showMessageDialog(null,"Pengaturan untuk obat/alkes/bhp belum disetting..!!");
                             break;                    
                     }

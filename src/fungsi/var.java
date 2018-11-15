@@ -88,7 +88,7 @@ public final class var {
             pcare_cek_faskesthalasemia=false,pcare_mapping_obat=false,pcare_mapping_tindakan=false,pcare_club_prolanis=false,
             pcare_mapping_poli=false,pcare_kegiatan_kelompok=false,pcare_mapping_tindakan_ranap=false,pcare_peserta_kegiatan_kelompok=false,
             sirkulasi_obat3=false,bridging_pcare_daftar=false,pcare_mapping_dokter=false,ranap_per_ruang=false,penyakit_ranap_cara_bayar=false,
-            anggota_militer_dirawat=false,set_input_parsial=false,lama_pelayanan_radiologi=false,lama_pelayanan_lab=false;
+            anggota_militer_dirawat=false,set_input_parsial=false,lama_pelayanan_radiologi=false,lama_pelayanan_lab=false,bpjs_cek_sep=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -515,6 +515,7 @@ public final class var {
                         var.set_input_parsial=true;
                         var.lama_pelayanan_radiologi=true;
                         var.lama_pelayanan_lab=true;
+                        var.bpjs_cek_sep=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -925,6 +926,7 @@ public final class var {
                         var.set_input_parsial=rs2.getBoolean("set_input_parsial");
                         var.lama_pelayanan_radiologi=rs2.getBoolean("lama_pelayanan_radiologi");
                         var.lama_pelayanan_lab=rs2.getBoolean("lama_pelayanan_lab");
+                        var.bpjs_cek_sep=rs2.getBoolean("bpjs_cek_sep");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1333,6 +1335,7 @@ public final class var {
                         var.set_input_parsial=false;
                         var.lama_pelayanan_radiologi=false;
                         var.lama_pelayanan_lab=false;
+                        var.bpjs_cek_sep=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1793,4 +1796,5 @@ public final class var {
     public static boolean getset_input_parsial(){return var.set_input_parsial;}
     public static boolean getlama_pelayanan_radiologi(){return var.lama_pelayanan_radiologi;}
     public static boolean getlama_pelayanan_lab(){return var.lama_pelayanan_lab;}
+    public static boolean getbpjs_cek_sep(){return var.bpjs_cek_sep;}
 }   
