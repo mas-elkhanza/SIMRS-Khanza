@@ -318,7 +318,7 @@ public class DlgRunTeks extends javax.swing.JDialog {
         YesNo.setBounds(242, 160, 70, 23);
 
         Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        Scroll2.setForeground(new java.awt.Color(100,80,80));
+        Scroll2.setForeground(new java.awt.Color(70,70,70));
         Scroll2.setName("Scroll2"); // NOI18N
 
         TTeks.setBorder(null);
