@@ -110,10 +110,10 @@ public class frmPengaduan extends javax.swing.JFrame {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{padding-top:5px;padding-bottom:5px;font: 8.5px tahoma;height:12px;background: #ffffff;color:#645050;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#645050;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"
+                ".isi td{padding-top:5px;padding-bottom:5px;font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);

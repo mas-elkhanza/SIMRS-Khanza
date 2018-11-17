@@ -277,7 +277,7 @@ public class PanelDiagnosa extends widget.panelisi {
 
         MnStatusBaru.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusBaru.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusBaru.setForeground(new java.awt.Color(70,70,70));
+        MnStatusBaru.setForeground(new java.awt.Color(100, 80, 80));
         MnStatusBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusBaru.setText("Status Penyakit Baru");
         MnStatusBaru.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -292,7 +292,7 @@ public class PanelDiagnosa extends widget.panelisi {
 
         MnStatusLama.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusLama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusLama.setForeground(new java.awt.Color(70,70,70));
+        MnStatusLama.setForeground(new java.awt.Color(100, 80, 80));
         MnStatusLama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusLama.setText("Status Penyakit Lama");
         MnStatusLama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -309,8 +309,8 @@ public class PanelDiagnosa extends widget.panelisi {
         setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 250, 233)));
-        TabRawat.setForeground(new java.awt.Color(70,70,70));
+        TabRawat.setBorder(null);
+        TabRawat.setForeground(new java.awt.Color(100, 80, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -318,6 +318,7 @@ public class PanelDiagnosa extends widget.panelisi {
             }
         });
 
+        ScrollInput.setBorder(null);
         ScrollInput.setOpaque(true);
 
         FormData.setBorder(null);
@@ -367,11 +368,11 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll1.setViewportView(tbDiagnosa);
 
         FormData.add(Scroll1);
-        Scroll1.setBounds(11, 35, 810, 165);
+        Scroll1.setBounds(11, 36, 810, 165);
 
         jLabel15.setText("Prosedur :");
         FormData.add(jLabel15);
-        jLabel15.setBounds(0, 210, 68, 23);
+        jLabel15.setBounds(0, 211, 68, 23);
 
         Prosedur.setHighlighter(null);
         Prosedur.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -380,7 +381,7 @@ public class PanelDiagnosa extends widget.panelisi {
             }
         });
         FormData.add(Prosedur);
-        Prosedur.setBounds(71, 210, 687, 23);
+        Prosedur.setBounds(71, 211, 687, 23);
 
         btnTambahProsedur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         btnTambahProsedur.setMnemonic('2');
@@ -391,7 +392,7 @@ public class PanelDiagnosa extends widget.panelisi {
             }
         });
         FormData.add(btnTambahProsedur);
-        btnTambahProsedur.setBounds(792, 210, 28, 23);
+        btnTambahProsedur.setBounds(792, 211, 28, 23);
 
         BtnCariProsedur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCariProsedur.setMnemonic('1');
@@ -403,7 +404,7 @@ public class PanelDiagnosa extends widget.panelisi {
             }
         });
         FormData.add(BtnCariProsedur);
-        BtnCariProsedur.setBounds(761, 210, 28, 23);
+        BtnCariProsedur.setBounds(761, 211, 28, 23);
 
         Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll2.setOpaque(true);
@@ -412,7 +413,7 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll2.setViewportView(tbProsedur);
 
         FormData.add(Scroll2);
-        Scroll2.setBounds(11, 235, 810, 165);
+        Scroll2.setBounds(11, 237, 810, 165);
 
         ScrollInput.setViewportView(FormData);
 
@@ -421,9 +422,11 @@ public class PanelDiagnosa extends widget.panelisi {
         internalFrame2.setBorder(null);
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setBorder(null);
         Scroll.setOpaque(true);
 
         tbDiagnosaPasien.setAutoCreateRowSorter(true);
+        tbDiagnosaPasien.setBorder(null);
         tbDiagnosaPasien.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbDiagnosaPasien.setComponentPopupMenu(jPopupMenu1);
         Scroll.setViewportView(tbDiagnosaPasien);
@@ -435,9 +438,11 @@ public class PanelDiagnosa extends widget.panelisi {
         internalFrame3.setBorder(null);
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll3.setBorder(null);
         Scroll3.setOpaque(true);
 
         tbTindakanPasien.setAutoCreateRowSorter(true);
+        tbTindakanPasien.setBorder(null);
         tbTindakanPasien.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbTindakanPasien.setComponentPopupMenu(jPopupMenu1);
         Scroll3.setViewportView(tbTindakanPasien);

@@ -86,11 +86,7 @@
           <Color blue="fd" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
-            </LineBorder>
-          </Border>
+          <Border info="null"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="50" green="50" red="64" type="rgb"/>
@@ -115,6 +111,9 @@
       <SubComponents>
         <Container class="widget.ScrollPane" name="ScrollInput">
           <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <AuxValues>
@@ -228,7 +227,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="11" y="35" width="810" height="165"/>
+                      <AbsoluteConstraints x="11" y="36" width="810" height="165"/>
                     </Constraint>
                   </Constraints>
 
@@ -250,7 +249,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="0" y="210" width="68" height="23"/>
+                      <AbsoluteConstraints x="0" y="211" width="68" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -265,7 +264,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="71" y="210" width="687" height="23"/>
+                      <AbsoluteConstraints x="71" y="211" width="687" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -285,7 +284,7 @@
                   </AuxValues>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="792" y="210" width="28" height="23"/>
+                      <AbsoluteConstraints x="792" y="211" width="28" height="23"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -305,7 +304,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="761" y="210" width="-1" height="-1"/>
+                      <AbsoluteConstraints x="761" y="211" width="-1" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -322,7 +321,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="11" y="235" width="810" height="165"/>
+                      <AbsoluteConstraints x="11" y="237" width="810" height="165"/>
                     </Constraint>
                   </Constraints>
 
@@ -363,6 +362,9 @@
           <SubComponents>
             <Container class="widget.ScrollPane" name="Scroll">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Constraints>
@@ -376,6 +378,9 @@
                 <Component class="widget.Table" name="tbDiagnosaPasien">
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
                     <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>
@@ -410,6 +415,9 @@
           <SubComponents>
             <Container class="widget.ScrollPane" name="Scroll3">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
               <Constraints>
@@ -423,6 +431,9 @@
                 <Component class="widget.Table" name="tbTindakanPasien">
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
                     <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="jPopupMenu1"/>

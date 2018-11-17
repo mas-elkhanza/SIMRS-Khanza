@@ -109,7 +109,7 @@ public class PanelResume extends widget.panelisi {
         LoadHTML12.setEditorKit(kit);
         
         StyleSheet styleSheet = kit.getStyleSheet();
-        styleSheet.addRule(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
+        styleSheet.addRule(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         LoadHTML2.setDocument(doc);
@@ -314,7 +314,7 @@ public class PanelResume extends widget.panelisi {
         setLayout(new java.awt.BorderLayout());
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setForeground(new java.awt.Color(70,70,70));
+        TabRawat.setForeground(new java.awt.Color(100, 80, 80));
         TabRawat.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         TabRawat.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -324,10 +324,11 @@ public class PanelResume extends widget.panelisi {
             }
         });
 
-        internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame2.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame2.setBorder(null);
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setBorder(null);
         Scroll.setOpaque(true);
 
         LoadHTML.setBorder(null);
@@ -337,10 +338,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Seluruh Riwayat Perawatan", internalFrame2);
 
-        internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame3.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame3.setBorder(null);
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll1.setBorder(null);
         Scroll1.setOpaque(true);
 
         LoadHTML2.setBorder(null);
@@ -350,10 +352,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Riwayat Penyakit/ICD 10", internalFrame3);
 
-        internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame4.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame4.setBorder(null);
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll2.setBorder(null);
         Scroll2.setOpaque(true);
 
         LoadHTML3.setBorder(null);
@@ -363,10 +366,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Riwayat Prosedur/ICD 9", internalFrame4);
 
-        internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame5.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame5.setBorder(null);
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll3.setBorder(null);
         Scroll3.setOpaque(true);
 
         LoadHTML4.setBorder(null);
@@ -376,10 +380,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Riwayat Rawat Jalan", internalFrame5);
 
-        internalFrame6.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame6.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame6.setBorder(null);
         internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll4.setBorder(null);
         Scroll4.setOpaque(true);
 
         LoadHTML5.setBorder(null);
@@ -389,10 +394,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Riwayat Rawat Inap", internalFrame6);
 
-        internalFrame7.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame7.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame7.setBorder(null);
         internalFrame7.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll5.setBorder(null);
         Scroll5.setOpaque(true);
 
         LoadHTML6.setBorder(null);
@@ -402,10 +408,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Riwayat Operasi", internalFrame7);
 
-        internalFrame8.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame8.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame8.setBorder(null);
         internalFrame8.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll6.setBorder(null);
         Scroll6.setOpaque(true);
 
         LoadHTML7.setBorder(null);
@@ -415,10 +422,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Riwayat Radiologi", internalFrame8);
 
-        internalFrame9.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame9.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame9.setBorder(null);
         internalFrame9.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll7.setBorder(null);
         Scroll7.setOpaque(true);
 
         LoadHTML8.setBorder(null);
@@ -428,10 +436,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Riwayat Laborat", internalFrame9);
 
-        internalFrame10.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame10.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame10.setBorder(null);
         internalFrame10.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll8.setBorder(null);
         Scroll8.setOpaque(true);
 
         LoadHTML9.setBorder(null);
@@ -441,10 +450,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Riwayat Pemberian Obat", internalFrame10);
 
-        internalFrame11.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame11.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame11.setBorder(null);
         internalFrame11.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll9.setBorder(null);
         Scroll9.setOpaque(true);
 
         LoadHTML10.setBorder(null);
@@ -454,10 +464,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Riwayat Obat Operasi", internalFrame11);
 
-        internalFrame12.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame12.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame12.setBorder(null);
         internalFrame12.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll10.setBorder(null);
         Scroll10.setOpaque(true);
 
         LoadHTML11.setBorder(null);
@@ -467,10 +478,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Riwayat Resep Pulang", internalFrame12);
 
-        internalFrame13.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame13.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame13.setBorder(null);
         internalFrame13.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll11.setBorder(null);
         Scroll11.setOpaque(true);
 
         LoadHTML12.setBorder(null);
@@ -480,10 +492,11 @@ public class PanelResume extends widget.panelisi {
 
         TabRawat.addTab("Berkas Digital Perawatan", internalFrame13);
 
-        internalFrame14.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame14.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame14.setBorder(null);
         internalFrame14.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll12.setBorder(null);
         Scroll12.setOpaque(true);
 
         tbRegistrasi.setToolTipText("Klik data di table, kemudian klik kanan untuk memilih menu yang diinginkan");
@@ -5576,7 +5589,7 @@ public class PanelResume extends widget.panelisi {
         try{
             File g = new File("file.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-            bg.write(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
+            bg.write(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
             bg.close();
 
             File f = new File("resumemedis.html");            
