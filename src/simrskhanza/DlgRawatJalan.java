@@ -26,6 +26,7 @@ import inventory.DlgCariObat;
 import inventory.DlgCopyResep;
 import inventory.DlgDaftarPermintaanResep;
 import inventory.DlgPeresepanDokter;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -1000,6 +1001,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        internalFrame8 = new widget.InternalFrame();
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
         panelGlass8 = new widget.panelisi();
@@ -1201,7 +1203,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         ChkAccor = new widget.CekBox();
         FormMenu = new widget.PanelBiasa();
         BtnResepObat = new widget.Button();
-        BtnDataResep = new widget.Button();
         BtnCopyResep = new widget.Button();
         BtnInputObat = new widget.Button();
         BtnObatBhp = new widget.Button();
@@ -1211,6 +1212,11 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnSKDP = new widget.Button();
         BtnKamar = new widget.Button();
         BtnRujukInternal = new widget.Button();
+
+        internalFrame8.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame8.setBorder(null);
+        internalFrame8.setName("internalFrame8"); // NOI18N
+        internalFrame8.setLayout(new java.awt.BorderLayout(1, 1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1554,6 +1560,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         Scroll6.setOpaque(true);
 
         tbTindakan.setAutoCreateRowSorter(true);
+        tbTindakan.setBorder(null);
         tbTindakan.setToolTipText("");
         tbTindakan.setName("tbTindakan"); // NOI18N
         tbTindakan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1570,7 +1577,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         tbRawatDr.setAutoCreateRowSorter(true);
-        tbRawatDr.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbRawatDr.setBorder(null);
         tbRawatDr.setName("tbRawatDr"); // NOI18N
         tbRawatDr.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1667,7 +1674,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         Scroll8.setOpaque(true);
 
         tbRawatPr.setAutoCreateRowSorter(true);
-        tbRawatPr.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRawatPr.setName("tbRawatPr"); // NOI18N
         tbRawatPr.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1781,6 +1787,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         Scroll9.setOpaque(true);
 
         tbTindakan3.setAutoCreateRowSorter(true);
+        tbTindakan3.setBorder(null);
         tbTindakan3.setToolTipText("");
         tbTindakan3.setName("tbTindakan3"); // NOI18N
         tbTindakan3.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1797,7 +1804,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         Scroll10.setOpaque(true);
 
         tbRawatDrPr.setAutoCreateRowSorter(true);
-        tbRawatDrPr.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRawatDrPr.setName("tbRawatDrPr"); // NOI18N
         tbRawatDrPr.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2986,27 +2992,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
             }
         });
         FormMenu.add(BtnResepObat);
-
-        BtnDataResep.setText("Data Resep");
-        BtnDataResep.setFocusPainted(false);
-        BtnDataResep.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        BtnDataResep.setGlassColor(new java.awt.Color(245, 255, 240));
-        BtnDataResep.setIconTextGap(0);
-        BtnDataResep.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        BtnDataResep.setName("BtnDataResep"); // NOI18N
-        BtnDataResep.setPreferredSize(new java.awt.Dimension(115, 23));
-        BtnDataResep.setRoundRect(false);
-        BtnDataResep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDataResepActionPerformed(evt);
-            }
-        });
-        BtnDataResep.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnDataResepKeyPressed(evt);
-            }
-        });
-        FormMenu.add(BtnDataResep);
 
         BtnCopyResep.setText("Copy Resep");
         BtnCopyResep.setFocusPainted(false);
@@ -4813,27 +4798,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnInputObatKeyPressed
 
-    private void BtnDataResepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDataResepActionPerformed
-        if(TNoRw.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
-            TCari.requestFocus();
-        }else{ 
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            DlgDaftarPermintaanResep daftar=new DlgDaftarPermintaanResep(null,false);
-            daftar.emptTeks();
-            daftar.isCek();
-            daftar.setCari(TNoRw.getText());
-            daftar.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-            daftar.setLocationRelativeTo(internalFrame1);
-            daftar.setVisible(true);
-            this.setCursor(Cursor.getDefaultCursor());
-        }            
-    }//GEN-LAST:event_BtnDataResepActionPerformed
-
-    private void BtnDataResepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDataResepKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnDataResepKeyPressed
-
     private void BtnSKDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSKDPActionPerformed
         if(TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
@@ -4954,7 +4918,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnBerkasDigital;
     private widget.Button BtnCari;
     private widget.Button BtnCopyResep;
-    private widget.Button BtnDataResep;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnInputObat;
@@ -5072,6 +5035,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.InternalFrame internalFrame5;
     private widget.InternalFrame internalFrame6;
     private widget.InternalFrame internalFrame7;
+    private widget.InternalFrame internalFrame8;
     private widget.Label jLabel10;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
@@ -5501,7 +5465,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnPrint.setEnabled(var.gettindakan_ralan());
         BtnResepObat.setEnabled(var.getresep_dokter());
         BtnCopyResep.setEnabled(var.getresep_dokter());
-        BtnDataResep.setEnabled(var.getresep_dokter()); 
         BtnObatBhp.setEnabled(var.getberi_obat());  
         BtnInputObat.setEnabled(var.getberi_obat());   
         BtnPermintaanLab.setEnabled(var.getpermintaan_lab());     

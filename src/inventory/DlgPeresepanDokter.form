@@ -501,7 +501,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="17-11-2018"/>
+                    <StringItem index="0" value="18-11-2018"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -895,18 +895,18 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="widget.Table" name="tbObat">
+                <Component class="widget.Table" name="tbResep">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                     <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="Popup"/>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="tbObat" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="tbResep" noResource="true"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbObatMouseClicked"/>
-                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tbObatPropertyChange"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbObatKeyPressed"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbResepMouseClicked"/>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tbResepPropertyChange"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbResepKeyPressed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -951,13 +951,13 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="widget.Table" name="tbObatRacikan">
+                    <Component class="widget.Table" name="tbObatResepRacikan">
                       <Properties>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
-                        <Property name="name" type="java.lang.String" value="tbObatRacikan" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="tbObatResepRacikan" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbObatRacikanKeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbObatResepRacikanKeyPressed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -981,18 +981,18 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="widget.Table" name="tbDetailObatRacikan">
+                    <Component class="widget.Table" name="tbDetailResepObatRacikan">
                       <Properties>
                         <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value="Silahkan klik untuk memilih data yang mau diedit ataupun dihapus"/>
                         <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                           <ComponentRef name="Popup"/>
                         </Property>
-                        <Property name="name" type="java.lang.String" value="tbDetailObatRacikan" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="tbDetailResepObatRacikan" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tbDetailObatRacikanPropertyChange"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbDetailObatRacikanKeyPressed"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tbDetailResepObatRacikanPropertyChange"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tbDetailResepObatRacikanKeyPressed"/>
                       </Events>
                     </Component>
                   </SubComponents>
