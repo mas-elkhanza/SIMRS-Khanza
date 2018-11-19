@@ -1226,7 +1226,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perawatan/Tindakan Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
-        internalFrame1.setLayout(new java.awt.BorderLayout(0, 1));
+        internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel3.setName("jPanel3"); // NOI18N
         jPanel3.setOpaque(false);
@@ -2946,9 +2946,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         internalFrame1.add(FormInput, java.awt.BorderLayout.PAGE_START);
 
         PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
-        PanelAccor.setBorder(null);
         PanelAccor.setName("PanelAccor"); // NOI18N
-        PanelAccor.setPreferredSize(new java.awt.Dimension(140, 43));
+        PanelAccor.setPreferredSize(new java.awt.Dimension(135, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout());
 
         ChkAccor.setBorder(null);
@@ -2959,7 +2958,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         ChkAccor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ChkAccor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkAccor.setName("ChkAccor"); // NOI18N
-        ChkAccor.setPreferredSize(new java.awt.Dimension(20, 25));
+        ChkAccor.setPreferredSize(new java.awt.Dimension(15, 20));
         ChkAccor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kanan.png"))); // NOI18N
         ChkAccor.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
@@ -2982,7 +2981,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnResepObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnResepObat.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnResepObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnResepObat.setIconTextGap(3);
         BtnResepObat.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnResepObat.setName("BtnResepObat"); // NOI18N
         BtnResepObat.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -3005,7 +3003,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnCopyResep.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCopyResep.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnCopyResep.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnCopyResep.setIconTextGap(3);
         BtnCopyResep.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnCopyResep.setName("BtnCopyResep"); // NOI18N
         BtnCopyResep.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -3028,7 +3025,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnInputObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnInputObat.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnInputObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnInputObat.setIconTextGap(3);
         BtnInputObat.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnInputObat.setName("BtnInputObat"); // NOI18N
         BtnInputObat.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -3051,7 +3047,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnObatBhp.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnObatBhp.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnObatBhp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnObatBhp.setIconTextGap(3);
         BtnObatBhp.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnObatBhp.setName("BtnObatBhp"); // NOI18N
         BtnObatBhp.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -3074,7 +3069,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnBerkasDigital.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnBerkasDigital.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnBerkasDigital.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnBerkasDigital.setIconTextGap(3);
         BtnBerkasDigital.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnBerkasDigital.setName("BtnBerkasDigital"); // NOI18N
         BtnBerkasDigital.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -3097,7 +3091,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnPermintaanLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPermintaanLab.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnPermintaanLab.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnPermintaanLab.setIconTextGap(3);
         BtnPermintaanLab.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnPermintaanLab.setName("BtnPermintaanLab"); // NOI18N
         BtnPermintaanLab.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -3120,7 +3113,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnPermintaanRad.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnPermintaanRad.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnPermintaanRad.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnPermintaanRad.setIconTextGap(3);
         BtnPermintaanRad.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnPermintaanRad.setName("BtnPermintaanRad"); // NOI18N
         BtnPermintaanRad.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -3144,7 +3136,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnSKDP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnSKDP.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnSKDP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnSKDP.setIconTextGap(3);
         BtnSKDP.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnSKDP.setName("BtnSKDP"); // NOI18N
         BtnSKDP.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -3163,7 +3154,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnKamar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnKamar.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnKamar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnKamar.setIconTextGap(3);
         BtnKamar.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnKamar.setName("BtnKamar"); // NOI18N
         BtnKamar.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -3182,7 +3172,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnRujukInternal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnRujukInternal.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnRujukInternal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnRujukInternal.setIconTextGap(3);
         BtnRujukInternal.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnRujukInternal.setName("BtnRujukInternal"); // NOI18N
         BtnRujukInternal.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -3201,7 +3190,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnRujukKeluar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnRujukKeluar.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnRujukKeluar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnRujukKeluar.setIconTextGap(3);
         BtnRujukKeluar.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnRujukKeluar.setName("BtnRujukKeluar"); // NOI18N
         BtnRujukKeluar.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -3220,7 +3208,6 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnCatatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCatatan.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnCatatan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnCatatan.setIconTextGap(3);
         BtnCatatan.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnCatatan.setName("BtnCatatan"); // NOI18N
         BtnCatatan.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -5556,6 +5543,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     public void setNoRm(String norwt,Date tgl1,Date tgl2) {
         TNoRw.setText(norwt);
+        TCari.setText("");
         KdDok.setText(Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=?",norwt));
         DTPCari1.setDate(tgl1);
         DTPCari2.setDate(tgl2);
@@ -5587,12 +5575,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void isMenu(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(140,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(135,HEIGHT));
             FormMenu.setVisible(true);      
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){           
             ChkAccor.setVisible(false);            
-            PanelAccor.setPreferredSize(new Dimension(20,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
             FormMenu.setVisible(false);      
             ChkAccor.setVisible(true);
         }
