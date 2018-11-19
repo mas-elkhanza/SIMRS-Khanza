@@ -15,17 +15,20 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<parameter name="tanggal1" class="java.lang.String"/>
 	<parameter name="tanggal2" class="java.lang.String"/>
+	<parameter name="dokter" class="java.lang.String"/>
+	<parameter name="poli" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select resep_obat.no_resep,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,
-resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter, 
- if(resep_obat.jam_peresepan=resep_obat.jam,'Belum Terlayani','Sudah Terlayani') as status 
- from resep_obat inner join reg_periksa inner join pasien inner join dokter on resep_obat.no_rawat=reg_periksa.no_rawat
- and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and resep_obat.kd_dokter=dokter.kd_dokter where 
-resep_obat.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and resep_obat.no_resep like $P{parameter} or 
- resep_obat.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and resep_obat.no_rawat like $P{parameter} or
- resep_obat.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and pasien.no_rkm_medis like $P{parameter} or 
- resep_obat.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and pasien.nm_pasien like $P{parameter} or 
-resep_obat.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and dokter.nm_dokter like $P{parameter} order by resep_obat.tgl_perawatan,resep_obat.jam]]>
+                     resep_obat.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,resep_obat.kd_dokter,dokter.nm_dokter, 
+                     if(resep_obat.jam_peresepan=resep_obat.jam,'Belum Terlayani','Sudah Terlayani') as status,poliklinik.nm_poli,  
+                     reg_periksa.kd_poli from resep_obat inner join reg_periksa inner join pasien inner join dokter inner join poliklinik 
+                     on resep_obat.no_rawat=reg_periksa.no_rawat and reg_periksa.kd_poli=poliklinik.kd_poli 
+                     and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and resep_obat.kd_dokter=dokter.kd_dokter where 
+                     resep_obat.status='ralan' and resep_obat.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and dokter.nm_dokter like $P{dokter} and poliklinik.nm_poli like $P{poli} and resep_obat.no_resep like $P{parameter} or 
+                     resep_obat.status='ralan' and resep_obat.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and dokter.nm_dokter like $P{dokter} and poliklinik.nm_poli like $P{poli} and resep_obat.no_rawat like $P{parameter} or 
+                     resep_obat.status='ralan' and resep_obat.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and dokter.nm_dokter like $P{dokter} and poliklinik.nm_poli like $P{poli} and pasien.no_rkm_medis like $P{parameter} or 
+                     resep_obat.status='ralan' and resep_obat.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and dokter.nm_dokter like $P{dokter} and poliklinik.nm_poli like $P{poli} and pasien.nm_pasien like $P{parameter} or 
+                     resep_obat.status='ralan' and resep_obat.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and dokter.nm_dokter like $P{dokter} and poliklinik.nm_poli like $P{poli} and dokter.nm_dokter like $P{parameter} order by resep_obat.tgl_perawatan desc,resep_obat.jam desc]]>
 	</queryString>
 	<field name="no_resep" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -52,6 +55,12 @@ resep_obat.tgl_perawatan between $P{tanggal1} and $P{tanggal2} and dokter.nm_dok
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nm_poli" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kd_poli" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>

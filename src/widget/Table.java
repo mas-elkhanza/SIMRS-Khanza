@@ -20,15 +20,15 @@ public class Table extends JTable {
         //setGridColor(new Color(245,170,245));
         //setForeground(new Color(90,90,90));
         setBackground(new Color(255,255,255));
-        setGridColor(new Color(233,238,228));
-        setForeground(new Color(100,80,80));
+        setGridColor(new Color(226,231,221));
+        setForeground(new Color(70,70,70));
         setFont(new java.awt.Font("Tahoma", 0, 11));
         setRowHeight(22);
         setSelectionBackground(new Color(255,255,255));
         setSelectionForeground(new Color(255,0,0));
-        getTableHeader().setForeground(new Color(100,80,80));
+        getTableHeader().setForeground(new Color(70,70,70));
         getTableHeader().setBackground(new Color(250,255,248));
-        getTableHeader().setBorder(javax.swing.BorderFactory.createLineBorder(new Color(252,252,243)));
+        getTableHeader().setBorder(javax.swing.BorderFactory.createLineBorder(new Color(251,251,242)));
         getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 11));
     }
 }
