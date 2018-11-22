@@ -318,10 +318,10 @@ public class PanelDiagnosa extends widget.panelisi {
             }
         });
 
-        ScrollInput.setBorder(null);
+        ScrollInput.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         ScrollInput.setOpaque(true);
 
-        FormData.setBorder(null);
+        FormData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         FormData.setPreferredSize(new java.awt.Dimension(865, 217));
         FormData.setLayout(null);
 
@@ -422,7 +422,7 @@ public class PanelDiagnosa extends widget.panelisi {
         internalFrame2.setBorder(null);
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setBorder(null);
+        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll.setOpaque(true);
 
         tbDiagnosaPasien.setAutoCreateRowSorter(true);
@@ -438,7 +438,7 @@ public class PanelDiagnosa extends widget.panelisi {
         internalFrame3.setBorder(null);
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll3.setBorder(null);
+        Scroll3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll3.setOpaque(true);
 
         tbTindakanPasien.setAutoCreateRowSorter(true);
