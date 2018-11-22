@@ -1008,10 +1008,10 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         ChkInput2.setSelected(false);
         isForm3(); 
         ChkInput3.setSelected(false);
-        isForm4(); 
-        jam();
+        isForm4();
         ChkAccor.setSelected(false);
-        isMenu();
+        isMenu(); 
+        jam();
         
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
@@ -1449,7 +1449,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1464,7 +1464,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2895,7 +2895,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         panelResume1.setBorder(null);
         panelResume1.setName("panelResume1"); // NOI18N
-        TabRawat.addTab("Riwayat Perawatan", panelResume1);
+        TabRawat.addTab("Riwayat Pasien", panelResume1);
 
         panelDiagnosa1.setBorder(null);
         panelDiagnosa1.setName("panelDiagnosa1"); // NOI18N
@@ -3060,7 +3060,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
         DTPTgl.setEditable(false);
         DTPTgl.setForeground(new java.awt.Color(50, 70, 50));
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2018" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-11-2018" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -4259,7 +4259,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 TCari.setPreferredSize(new Dimension(240,23));
                 TCariPasien.setText(TNoRM.getText());
                 if(var.getresume_pasien()==true){
-                    panelResume1.setRM(TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""), Valid.SetTgl(DTPCari2.getSelectedItem()+""),true);
+                    panelResume1.setRM(TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""), Valid.SetTgl(DTPCari2.getSelectedItem()+""),false);
                     panelResume1.pilihTab();
                 }                    
                 LCount.setText("0");
@@ -6685,7 +6685,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 break;
             case 6:
                 if(var.getresume_pasien()==true){
-                    panelResume1.setRM(TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""), Valid.SetTgl(DTPCari2.getSelectedItem()+""),true);
+                    panelResume1.setRM(TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""), Valid.SetTgl(DTPCari2.getSelectedItem()+""),false);
                     panelResume1.pilihTab();
                 }  
                 LCount.setText("0");
@@ -6796,7 +6796,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         DlgCariObat dlgobt=new DlgCariObat(null,false);
         dlgobt.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem());
         dlgobt.isCek();
-        dlgobt.setDokter("","");
+        dlgobt.setDokter(KdDok.getText(),TDokter.getText());
         dlgobt.tampilobat();
         dlgobt.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         dlgobt.setLocationRelativeTo(internalFrame1);
