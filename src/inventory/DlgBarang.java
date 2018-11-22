@@ -1600,10 +1600,10 @@ public class DlgBarang extends javax.swing.JDialog {
             }
             Valid.editTable(tabMode, "databarang", "kode_brng", "?", "nama_brng=?,kode_brng=?,kapasitas=?,kode_sat=?,letak_barang=?,"
                     + "h_beli=?,ralan=?,kelas1=?,kelas2=?,stokminimal=?,kdjns=?,kelas3=?,utama=?,vip=?,vvip=?,beliluar=?,jualbebas=?,karyawan=?,expire=?,kode_industri=?,kode_kategori=?,kode_golongan=?", 23, new String[]{
-                        Nm.getText(), Kd.getText(), Kapasitas.getText(), kdsat.getText(), Letak.getText(), beli.getText(), ralan.getText().replaceAll(",", ""),
-                        kelas1.getText().replaceAll(",", ""), kelas2.getText().replaceAll(",", ""), stok_minimal.getText(), kdjns.getText(), 
-                        kelas3.getText().replaceAll(",", ""), utama.getText().replaceAll(",", ""), kelasvip.getText().replaceAll(",", ""), kelasvvip.getText().replaceAll(",", ""),
-                        beliluar.getText().replaceAll(",", ""), jualbebas.getText().replaceAll(",", ""), karyawan.getText().replaceAll(",", ""), 
+                        Nm.getText(), Kd.getText(), Kapasitas.getText(), kdsat.getText(), Letak.getText(), beli.getText(), ralan.getText(),
+                        kelas1.getText(), kelas2.getText(), stok_minimal.getText(), kdjns.getText(), 
+                        kelas3.getText(), utama.getText(), kelasvip.getText(), kelasvvip.getText(),
+                        beliluar.getText(), jualbebas.getText(), karyawan.getText(), 
                         tanggal,KdIF.getText(),kdkategori.getText(),kdgolongan.getText(),
                         tbDokter.getValueAt(tbDokter.getSelectedRow(), 1).toString(),
                     });
@@ -1751,10 +1751,10 @@ public class DlgBarang extends javax.swing.JDialog {
                 tanggal = "0000-00-00";
             }
             Sequel.menyimpan("databarang", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Kode Barang", 23, new String[]{
-                Kd.getText(), Nm.getText(), kdsat.getText(), Letak.getText(), beli.getText(), ralan.getText().replaceAll(",", ""),
-                kelas1.getText().replaceAll(",", ""), kelas2.getText().replaceAll(",", ""), kelas3.getText().replaceAll(",", ""),
-                utama.getText().replaceAll(",", ""), kelasvip.getText().replaceAll(",", ""), kelasvvip.getText().replaceAll(",", ""),
-                beliluar.getText().replaceAll(",", ""), jualbebas.getText().replaceAll(",", ""), karyawan.getText().replaceAll(",", ""),
+                Kd.getText(), Nm.getText(), kdsat.getText(), Letak.getText(), beli.getText(), ralan.getText(),
+                kelas1.getText(), kelas2.getText(), kelas3.getText(),
+                utama.getText(), kelasvip.getText(), kelasvvip.getText(),
+                beliluar.getText(), jualbebas.getText(), karyawan.getText(),
                 stok_minimal.getText(), kdjns.getText(), Kapasitas.getText(), tanggal,"1",KdIF.getText(),kdkategori.getText(),kdgolongan.getText()
             });
             tampil();
@@ -2899,7 +2899,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             nmkategori.setText(tbDokter.getValueAt(row, 25).toString());
             kdgolongan.setText(tbDokter.getValueAt(row, 26).toString());
             nmgolongan.setText(tbDokter.getValueAt(row, 27).toString());
-            Kapasitas.setText(Valid.SetAngka2(Double.parseDouble(tbDokter.getValueAt(row, 20).toString())));
+            Kapasitas.setText(tbDokter.getValueAt(row, 20).toString());
             ChkKadaluarsa.setSelected(false);
             DTPExpired.setDate(new Date());
             if(tbDokter.getValueAt(row, 21).toString().equals("")||(tbDokter.getValueAt(row, 21).toString().length()==0)){
