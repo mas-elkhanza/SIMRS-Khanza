@@ -1263,12 +1263,17 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void tbDetailResepObatRacikanPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbDetailResepObatRacikanPropertyChange
         if(this.isVisible()==true){
-            if(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),12).toString().contains("%")){
-                getDatadetailresepracikan2();
-            }else{
-                getDatadetailresepracikan();
-            }  
-            hitungResep();
+            try {
+                if(tbDetailResepObatRacikan.getSelectedRow()!= -1){
+                    if(tbDetailResepObatRacikan.getValueAt(tbDetailResepObatRacikan.getSelectedRow(),12).toString().contains("%")){
+                        getDatadetailresepracikan2();
+                    }
+                }else{
+                    getDatadetailresepracikan();
+                }  
+                hitungResep();
+            } catch (Exception e) {
+            }   
         }
     }//GEN-LAST:event_tbDetailResepObatRacikanPropertyChange
 
