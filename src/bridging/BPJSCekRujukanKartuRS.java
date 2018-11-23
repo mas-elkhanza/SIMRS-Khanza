@@ -122,7 +122,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",tglkkl="0000-00-00",
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",sttsumur="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",
-            kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",
+            kabupatenpj="",hariawal="",requestJson,URL="",nosep="",user="",prb="",
             penjamin="",jasaraharja="",BPJS="",Taspen="",Asabri="",status="Baru",propinsi="",propinsipj="",
             tampilkantni=Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
     private PreparedStatement ps,pskelengkapan,pscariumur,pssetalamat,pstni,pspolri;
@@ -5349,6 +5349,7 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                 tabMode.addRow(new Object[]{
                     "              Prolanis PRB",": "+response.path("peserta").path("informasi").path("prolanisPRB").asText()
                 }); 
+                prb=response.path("peserta").path("informasi").path("prolanisPRB").asText().replaceAll("null","");
                 tabMode.addRow(new Object[]{
                     "       Jenis Peserta",": "+response.path("peserta").path("jenisPeserta").path("kode").asText()+". "+response.path("peserta").path("jenisPeserta").path("keterangan").asText()
                 });
@@ -6307,6 +6308,11 @@ public final class BPJSCekRujukanKartuRS extends javax.swing.JDialog {
                     Sequel.queryu2("delete from booking_registrasi where no_rkm_medis=? and tanggal_periksa=?",2,new String[]{
                         TNo.getText(),Valid.SetTgl(TanggalSEP.getSelectedItem()+"")
                     });
+                    if(!prb.equals("")){
+                        if(Sequel.menyimpantf("bpjs_prb","?,?","PRB",2,new String[]{response.asText(),prb})==true){
+                            prb="";
+                        } 
+                    }
                 }                     
             }else{
                 Sequel.meghapus3("kamar_inap","no_rawat",TNoRw.getText());
