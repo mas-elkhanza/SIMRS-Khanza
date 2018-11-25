@@ -7056,7 +7056,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="22/11/2018"/>
+            <StringItem index="0" value="25/11/2018"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -7982,7 +7982,7 @@
         </Property>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="da" green="f5" red="da" type="rgb"/>
+          <Color blue="d2" green="f2" red="d7" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -8380,7 +8380,7 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="da" green="f5" red="da" type="rgb"/>
+          <Color blue="d2" green="f2" red="d7" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
