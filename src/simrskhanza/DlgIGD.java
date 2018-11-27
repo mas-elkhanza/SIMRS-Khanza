@@ -3813,7 +3813,7 @@ public final class DlgIGD extends javax.swing.JDialog {
             }else if(evt.getClickCount()==2){
                 i=tbPetugas.getSelectedColumn();
                 if(i==1){
-                    if(var.getkamar_inap()==true){
+                    if(MnKamarInap.isEnabled()==true){
                         MnKamarInapActionPerformed(null);
                     }                    
                 }else if(i==2){
@@ -3844,7 +3844,7 @@ public final class DlgIGD extends javax.swing.JDialog {
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 i=tbPetugas.getSelectedColumn();
                 if(i==1){
-                    if(var.getkamar_inap()==true){
+                    if(MnKamarInap.isEnabled()==true){
                         MnKamarInapActionPerformed(null);
                     }                    
                 }else if(i==2){

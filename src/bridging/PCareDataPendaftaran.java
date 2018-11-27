@@ -726,14 +726,14 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pendaftaran PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pendaftaran PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(70,70,70));
+        TabRawat.setBorder(null);
+        TabRawat.setForeground(new java.awt.Color(100, 80, 80));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -746,9 +746,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
+        FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
         FormInput.setPreferredSize(new java.awt.Dimension(100, 257));
         FormInput.setLayout(null);
@@ -801,7 +803,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalDaftar.setEditable(false);
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -1094,6 +1096,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel41.setBounds(464, 192, 110, 23);
 
         chkSubspesialis.setText("Subspesilias :");
+        chkSubspesialis.setEnabled(false);
         chkSubspesialis.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkSubspesialis.setName("chkSubspesialis"); // NOI18N
         chkSubspesialis.setOpaque(false);
@@ -1113,8 +1116,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalKunjungan.setEditable(false);
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
+        TanggalKunjungan.setEnabled(false);
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
         TanggalKunjungan.setOpaque(false);
         TanggalKunjungan.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -1148,6 +1152,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnKesadaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnKesadaran.setMnemonic('X');
         BtnKesadaran.setToolTipText("Alt+X");
+        BtnKesadaran.setEnabled(false);
         BtnKesadaran.setName("BtnKesadaran"); // NOI18N
         BtnKesadaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1167,6 +1172,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(jLabel30);
         jLabel30.setBounds(30, 330, 97, 23);
 
+        Terapi.setEnabled(false);
         Terapi.setHighlighter(null);
         Terapi.setName("Terapi"); // NOI18N
         Terapi.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1199,6 +1205,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnStatusPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnStatusPulang.setMnemonic('X');
         BtnStatusPulang.setToolTipText("Alt+X");
+        BtnStatusPulang.setEnabled(false);
         BtnStatusPulang.setName("BtnStatusPulang"); // NOI18N
         BtnStatusPulang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1215,8 +1222,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalPulang.setEditable(false);
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
+        TanggalPulang.setEnabled(false);
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
         TanggalPulang.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -1256,6 +1264,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnTenagaMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnTenagaMedis.setMnemonic('X');
         BtnTenagaMedis.setToolTipText("Alt+X");
+        BtnTenagaMedis.setEnabled(false);
         BtnTenagaMedis.setName("BtnTenagaMedis"); // NOI18N
         BtnTenagaMedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1292,6 +1301,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnDiganosa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDiganosa1.setMnemonic('X');
         BtnDiganosa1.setToolTipText("Alt+X");
+        BtnDiganosa1.setEnabled(false);
         BtnDiganosa1.setName("BtnDiganosa1"); // NOI18N
         BtnDiganosa1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1328,6 +1338,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnDiagnosa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDiagnosa2.setMnemonic('X');
         BtnDiagnosa2.setToolTipText("Alt+X");
+        BtnDiagnosa2.setEnabled(false);
         BtnDiagnosa2.setName("BtnDiagnosa2"); // NOI18N
         BtnDiagnosa2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1364,6 +1375,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnDiganosa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDiganosa3.setMnemonic('X');
         BtnDiganosa3.setToolTipText("Alt+X");
+        BtnDiganosa3.setEnabled(false);
         BtnDiganosa3.setName("BtnDiganosa3"); // NOI18N
         BtnDiganosa3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1395,6 +1407,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnPoliInternal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPoliInternal.setMnemonic('X');
         BtnPoliInternal.setToolTipText("Alt+X");
+        BtnPoliInternal.setEnabled(false);
         BtnPoliInternal.setName("BtnPoliInternal"); // NOI18N
         BtnPoliInternal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1417,8 +1430,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalEstRujuk.setEditable(false);
         TanggalEstRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         TanggalEstRujuk.setDisplayFormat("dd-MM-yyyy");
+        TanggalEstRujuk.setEnabled(false);
         TanggalEstRujuk.setName("TanggalEstRujuk"); // NOI18N
         TanggalEstRujuk.setOpaque(false);
         TanggalEstRujuk.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -1462,6 +1476,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnPPKRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPPKRujukan.setMnemonic('X');
         BtnPPKRujukan.setToolTipText("Alt+X");
+        BtnPPKRujukan.setEnabled(false);
         BtnPPKRujukan.setName("BtnPPKRujukan"); // NOI18N
         BtnPPKRujukan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1489,6 +1504,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         chkKunjungan.setBounds(0, 250, 90, 23);
 
         ChkInternal.setText("Internal :");
+        ChkInternal.setEnabled(false);
         ChkInternal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkInternal.setName("ChkInternal"); // NOI18N
         ChkInternal.setOpaque(false);
@@ -1501,6 +1517,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         ChkInternal.setBounds(7, 500, 120, 23);
 
         ChkRujukLanjut.setText("Rujuk Lanjut :");
+        ChkRujukLanjut.setEnabled(false);
         ChkRujukLanjut.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkRujukLanjut.setName("ChkRujukLanjut"); // NOI18N
         ChkRujukLanjut.setOpaque(false);
@@ -1529,6 +1546,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnSubSpesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSubSpesialis.setMnemonic('X');
         BtnSubSpesialis.setToolTipText("Alt+X");
+        BtnSubSpesialis.setEnabled(false);
         BtnSubSpesialis.setName("BtnSubSpesialis"); // NOI18N
         BtnSubSpesialis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1565,6 +1583,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnSarana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSarana.setMnemonic('X');
         BtnSarana.setToolTipText("Alt+X");
+        BtnSarana.setEnabled(false);
         BtnSarana.setName("BtnSarana"); // NOI18N
         BtnSarana.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1580,6 +1599,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnSarana.setBounds(354, 470, 28, 23);
 
         chkKhusus.setText("Khusus :");
+        chkKhusus.setEnabled(false);
         chkKhusus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkKhusus.setName("chkKhusus"); // NOI18N
         chkKhusus.setOpaque(false);
@@ -1608,6 +1628,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         btnKhusus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnKhusus.setMnemonic('X');
         btnKhusus.setToolTipText("Alt+X");
+        btnKhusus.setEnabled(false);
         btnKhusus.setName("btnKhusus"); // NOI18N
         btnKhusus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1625,6 +1646,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnSubKhusus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSubKhusus.setMnemonic('X');
         BtnSubKhusus.setToolTipText("Alt+X");
+        BtnSubKhusus.setEnabled(false);
         BtnSubKhusus.setName("BtnSubKhusus"); // NOI18N
         BtnSubKhusus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1663,6 +1685,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(jLabel33);
         jLabel33.setBounds(380, 500, 94, 23);
 
+        CatatanKhusus.setEnabled(false);
         CatatanKhusus.setHighlighter(null);
         CatatanKhusus.setName("CatatanKhusus"); // NOI18N
         CatatanKhusus.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1679,6 +1702,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel34.setBounds(0, 530, 99, 23);
 
         TACC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0 Tanpa TACC", "1 Time", "2 Age", "3 Complication", "4 Comorbidity" }));
+        TACC.setEnabled(false);
         TACC.setName("TACC"); // NOI18N
         TACC.setOpaque(false);
         TACC.addItemListener(new java.awt.event.ItemListener() {
@@ -1699,6 +1723,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(jLabel35);
         jLabel35.setBounds(290, 530, 80, 23);
 
+        AlasanTACC.setEnabled(false);
         AlasanTACC.setName("AlasanTACC"); // NOI18N
         AlasanTACC.setOpaque(false);
         AlasanTACC.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1719,6 +1744,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
@@ -1739,6 +1765,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         internalFrame4.add(Scroll, java.awt.BorderLayout.CENTER);
 
+        panelGlass9.setBorder(null);
         panelGlass9.setName("panelGlass9"); // NOI18N
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
@@ -1750,7 +1777,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1765,7 +1792,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);

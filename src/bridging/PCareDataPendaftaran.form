@@ -66,11 +66,7 @@
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder>
-                  <Color PropertyName="color" blue="e1" green="eb" red="e6" type="rgb"/>
-                </LineBorder>
-              </Border>
+              <Border info="null"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="50" green="50" red="64" type="rgb"/>
@@ -113,6 +109,13 @@
               <SubComponents>
                 <Container class="widget.ScrollPane" name="Scroll1">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="Scroll1" noResource="true"/>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
@@ -126,6 +129,9 @@
                   <SubComponents>
                     <Container class="widget.PanelBiasa" name="FormInput">
                       <Properties>
+                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                          <Border info="null"/>
+                        </Property>
                         <Property name="name" type="java.lang.String" value="FormInput" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 257]"/>
@@ -246,7 +252,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="03-11-2018"/>
+                                <StringItem index="0" value="27-11-2018"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -802,6 +808,7 @@
                         <Component class="widget.CekBox" name="chkSubspesialis">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Subspesilias :"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="horizontalAlignment" type="int" value="4"/>
                             <Property name="name" type="java.lang.String" value="chkSubspesialis" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -837,10 +844,11 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="03-11-2018"/>
+                                <StringItem index="0" value="27-11-2018"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="TanggalKunjungan" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -908,6 +916,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="BtnKesadaran" noResource="true"/>
                           </Properties>
                           <Events>
@@ -933,6 +942,7 @@
                         </Component>
                         <Component class="widget.TextBox" name="Terapi">
                           <Properties>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -999,6 +1009,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="BtnStatusPulang" noResource="true"/>
                           </Properties>
                           <Events>
@@ -1019,10 +1030,11 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="03-11-2018"/>
+                                <StringItem index="0" value="27-11-2018"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="TanggalPulang" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1104,6 +1116,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="BtnTenagaMedis" noResource="true"/>
                           </Properties>
                           <Events>
@@ -1168,6 +1181,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="BtnDiganosa1" noResource="true"/>
                           </Properties>
                           <Events>
@@ -1232,6 +1246,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="BtnDiagnosa2" noResource="true"/>
                           </Properties>
                           <Events>
@@ -1296,6 +1311,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="BtnDiganosa3" noResource="true"/>
                           </Properties>
                           <Events>
@@ -1349,6 +1365,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="BtnPoliInternal" noResource="true"/>
                           </Properties>
                           <Events>
@@ -1383,10 +1400,11 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="03-11-2018"/>
+                                <StringItem index="0" value="27-11-2018"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="TanggalEstRujuk" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1460,6 +1478,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="BtnPPKRujukan" noResource="true"/>
                           </Properties>
                           <Events>
@@ -1491,6 +1510,7 @@
                         <Component class="widget.CekBox" name="ChkInternal">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Internal :"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="horizontalAlignment" type="int" value="4"/>
                             <Property name="name" type="java.lang.String" value="ChkInternal" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -1507,6 +1527,7 @@
                         <Component class="widget.CekBox" name="ChkRujukLanjut">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Rujuk Lanjut :"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="horizontalAlignment" type="int" value="4"/>
                             <Property name="name" type="java.lang.String" value="ChkRujukLanjut" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -1561,6 +1582,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="BtnSubSpesialis" noResource="true"/>
                           </Properties>
                           <Events>
@@ -1625,6 +1647,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="BtnSarana" noResource="true"/>
                           </Properties>
                           <Events>
@@ -1640,6 +1663,7 @@
                         <Component class="widget.CekBox" name="chkKhusus">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Khusus :"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="horizontalAlignment" type="int" value="4"/>
                             <Property name="name" type="java.lang.String" value="chkKhusus" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -1694,6 +1718,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="btnKhusus" noResource="true"/>
                           </Properties>
                           <Events>
@@ -1713,6 +1738,7 @@
                             </Property>
                             <Property name="mnemonic" type="int" value="88"/>
                             <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="BtnSubKhusus" noResource="true"/>
                           </Properties>
                           <Events>
@@ -1783,6 +1809,7 @@
                         </Component>
                         <Component class="widget.TextBox" name="CatatanKhusus">
                           <Properties>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -1819,6 +1846,7 @@
                                 <StringItem index="4" value="4 Comorbidity"/>
                               </StringArray>
                             </Property>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="TACC" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
@@ -1848,6 +1876,7 @@
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
                             </Property>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="name" type="java.lang.String" value="AlasanTACC" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
@@ -1888,6 +1917,13 @@
               <SubComponents>
                 <Container class="widget.ScrollPane" name="Scroll">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="Scroll" noResource="true"/>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
@@ -1914,6 +1950,9 @@
                 </Container>
                 <Container class="widget.panelisi" name="panelGlass9">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="panelGlass9" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[44, 44]"/>
@@ -1947,7 +1986,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="03-11-2018"/>
+                            <StringItem index="0" value="27-11-2018"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1976,7 +2015,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="03-11-2018"/>
+                            <StringItem index="0" value="27-11-2018"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

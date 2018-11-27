@@ -4127,7 +4127,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         MnBillingActionPerformed(null);
                     //}                    
                 }else if(i==3){
-                    if(var.getkamar_inap()==true){
+                    if(MnKamarInap.isEnabled()==true){
                         MnKamarInapActionPerformed(null);
                     }                    
                 }else if(i==4){
@@ -4163,7 +4163,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                         MnBillingActionPerformed(null);
                     //}                    
                 }else if(i==3){
-                    if(var.getkamar_inap()==true){
+                    if(MnKamarInap.isEnabled()==true){
                         MnKamarInapActionPerformed(null);
                     }                    
                 }else if(i==4){
@@ -5427,7 +5427,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         MnBilling1ActionPerformed(null);
                     //}                    
                 }else if(i==3){
-                    if(var.getkamar_inap()==true){
+                    if(MnKamarInap1.isEnabled()==true){
                         MnKamarInap1ActionPerformed(null);
                     }                    
                 }
@@ -5458,7 +5458,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                         MnBilling1ActionPerformed(null);
                     //}                    
                 }else if(i==3){
-                    if(var.getkamar_inap()==true){
+                    if(MnKamarInap1.isEnabled()==true){
                         MnKamarInap1ActionPerformed(null);
                     }                    
                 }

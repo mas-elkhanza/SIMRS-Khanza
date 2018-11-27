@@ -5212,7 +5212,7 @@ public final class DlgReg extends javax.swing.JDialog {
             }else if(evt.getClickCount()==2){
                 i=tbPetugas.getSelectedColumn();
                 if(i==1){
-                    if(var.getkamar_inap()==true){
+                    if(MnKamarInap.isEnabled()==true){
                         MnKamarInapActionPerformed(null);
                     }                    
                 }else if(i==2){
@@ -5249,7 +5249,7 @@ public final class DlgReg extends javax.swing.JDialog {
                 }
                 i=tbPetugas.getSelectedColumn();
                 if(i==1){
-                    if(var.getkamar_inap()==true){
+                    if(MnKamarInap.isEnabled()==true){
                         MnKamarInapActionPerformed(null);
                     }                    
                 }else if(i==2){
@@ -7354,7 +7354,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }else if(evt.getClickCount()==2){
                 i=tbPetugas2.getSelectedColumn();
                 if(i==1){
-                    if(var.getkamar_inap()==true){
+                    if(MnKamarInap1.isEnabled()==true){
                         MnKamarInap1ActionPerformed(null);
                     }                    
                 }else if(i==2){
@@ -7380,7 +7380,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             if(evt.getKeyCode()==KeyEvent.VK_SPACE){
                 i=tbPetugas2.getSelectedColumn();
                 if(i==1){
-                    if(var.getkamar_inap()==true){
+                    if(MnKamarInap1.isEnabled()==true){
                         MnKamarInap1ActionPerformed(null);
                     }                    
                 }else if(i==2){

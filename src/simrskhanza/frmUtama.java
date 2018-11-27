@@ -5417,7 +5417,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnSatuanPolri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_17_2959846.png"))); // NOI18N
         btnSatuanPolri.setText("Satuan POLRI");
-        btnSatuanPolri.setToolTipText("");
         btnSatuanPolri.setIconTextGap(0);
         btnSatuanPolri.setName("btnSatuanPolri"); // NOI18N
         btnSatuanPolri.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5814,7 +5813,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareReferensiStatusPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/edit-female-user.png"))); // NOI18N
         btnPCareReferensiStatusPulang.setText("Referensi Stts Pulang PCare");
-        btnPCareReferensiStatusPulang.setToolTipText("");
         btnPCareReferensiStatusPulang.setIconTextGap(0);
         btnPCareReferensiStatusPulang.setName("btnPCareReferensiStatusPulang"); // NOI18N
         btnPCareReferensiStatusPulang.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5827,7 +5825,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareReferensiSpesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_surgeon_63160.png"))); // NOI18N
         btnPCareReferensiSpesialis.setText("Referensi Spesialis PCare");
-        btnPCareReferensiSpesialis.setToolTipText("");
         btnPCareReferensiSpesialis.setIconTextGap(0);
         btnPCareReferensiSpesialis.setName("btnPCareReferensiSpesialis"); // NOI18N
         btnPCareReferensiSpesialis.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5840,7 +5837,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareReferensiSubspesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Users_131982.png"))); // NOI18N
         btnPCareReferensiSubspesialis.setText("Referensi Subspesialis PCare");
-        btnPCareReferensiSubspesialis.setToolTipText("");
         btnPCareReferensiSubspesialis.setIconTextGap(0);
         btnPCareReferensiSubspesialis.setName("btnPCareReferensiSubspesialis"); // NOI18N
         btnPCareReferensiSubspesialis.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5853,7 +5849,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareReferensiSarana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Workstation_by_Artdesigner_60887.png"))); // NOI18N
         btnPCareReferensiSarana.setText("Referensi Sarana PCare");
-        btnPCareReferensiSarana.setToolTipText("");
         btnPCareReferensiSarana.setIconTextGap(0);
         btnPCareReferensiSarana.setName("btnPCareReferensiSarana"); // NOI18N
         btnPCareReferensiSarana.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5866,7 +5861,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareReferensiKhusus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_status_63159.png"))); // NOI18N
         btnPCareReferensiKhusus.setText("Referensi Khusus PCare");
-        btnPCareReferensiKhusus.setToolTipText("");
         btnPCareReferensiKhusus.setIconTextGap(0);
         btnPCareReferensiKhusus.setName("btnPCareReferensiKhusus"); // NOI18N
         btnPCareReferensiKhusus.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5879,7 +5873,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareReferensiObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815676_pill.png"))); // NOI18N
         btnPCareReferensiObat.setText("Referensi Obat PCare");
-        btnPCareReferensiObat.setToolTipText("");
         btnPCareReferensiObat.setIconTextGap(0);
         btnPCareReferensiObat.setName("btnPCareReferensiObat"); // NOI18N
         btnPCareReferensiObat.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5892,7 +5885,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareReferensiTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Documents_Black_63760.png"))); // NOI18N
         btnPCareReferensiTindakan.setText("Referensi Tindakan PCare");
-        btnPCareReferensiTindakan.setToolTipText("");
         btnPCareReferensiTindakan.setIconTextGap(0);
         btnPCareReferensiTindakan.setName("btnPCareReferensiTindakan"); // NOI18N
         btnPCareReferensiTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5905,7 +5897,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareFaskesSubspesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Office-Building_88869.png"))); // NOI18N
         btnPCareFaskesSubspesialis.setText("Faskes Subspesialis PCare");
-        btnPCareFaskesSubspesialis.setToolTipText("");
         btnPCareFaskesSubspesialis.setIconTextGap(0);
         btnPCareFaskesSubspesialis.setName("btnPCareFaskesSubspesialis"); // NOI18N
         btnPCareFaskesSubspesialis.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5918,7 +5909,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareFaskesAlihRawat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Two-storied_house_SH_131526.png"))); // NOI18N
         btnPCareFaskesAlihRawat.setText("Faskes Alih Rawat PCare");
-        btnPCareFaskesAlihRawat.setToolTipText("");
         btnPCareFaskesAlihRawat.setIconTextGap(0);
         btnPCareFaskesAlihRawat.setName("btnPCareFaskesAlihRawat"); // NOI18N
         btnPCareFaskesAlihRawat.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5931,7 +5921,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareFaskesThalasemia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Home_131971.png"))); // NOI18N
         btnPCareFaskesThalasemia.setText("Faskes Thalasemia & Hemofili PCare");
-        btnPCareFaskesThalasemia.setToolTipText("");
         btnPCareFaskesThalasemia.setIconTextGap(0);
         btnPCareFaskesThalasemia.setName("btnPCareFaskesThalasemia"); // NOI18N
         btnPCareFaskesThalasemia.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5944,7 +5933,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareMapingObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360815295_medical_case.png"))); // NOI18N
         btnPCareMapingObat.setText("Mapping Obat RS & PCare");
-        btnPCareMapingObat.setToolTipText("");
         btnPCareMapingObat.setIconTextGap(0);
         btnPCareMapingObat.setName("btnPCareMapingObat"); // NOI18N
         btnPCareMapingObat.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5957,7 +5945,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareMapingTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_address-book_111220.png"))); // NOI18N
         btnPCareMapingTindakan.setText("Tarif Ralan RS & PCare");
-        btnPCareMapingTindakan.setToolTipText("");
         btnPCareMapingTindakan.setIconTextGap(0);
         btnPCareMapingTindakan.setName("btnPCareMapingTindakan"); // NOI18N
         btnPCareMapingTindakan.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5970,7 +5957,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareClubProlanis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Teachers-24_103847.png"))); // NOI18N
         btnPCareClubProlanis.setText("Club Prolanis PCare");
-        btnPCareClubProlanis.setToolTipText("");
         btnPCareClubProlanis.setIconTextGap(0);
         btnPCareClubProlanis.setName("btnPCareClubProlanis"); // NOI18N
         btnPCareClubProlanis.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5983,7 +5969,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareMapingPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_house_home_61629.png"))); // NOI18N
         btnPCareMapingPoli.setText("Mapping Poli RS & PCare");
-        btnPCareMapingPoli.setToolTipText("");
         btnPCareMapingPoli.setIconTextGap(0);
         btnPCareMapingPoli.setName("btnPCareMapingPoli"); // NOI18N
         btnPCareMapingPoli.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -5996,7 +5981,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCareKegiatanKelompok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Group_Meeting_Light_80844.png"))); // NOI18N
         btnPCareKegiatanKelompok.setText("Kegiatan Kelompok PCare");
-        btnPCareKegiatanKelompok.setToolTipText("");
         btnPCareKegiatanKelompok.setIconTextGap(0);
         btnPCareKegiatanKelompok.setName("btnPCareKegiatanKelompok"); // NOI18N
         btnPCareKegiatanKelompok.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -6021,7 +6005,6 @@ public class frmUtama extends javax.swing.JFrame {
 
         btnPCarePesertaKegiatanKelompok.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Edit-Male-User.png"))); // NOI18N
         btnPCarePesertaKegiatanKelompok.setText("Peserta Keg Kelompok PCare");
-        btnPCarePesertaKegiatanKelompok.setToolTipText("");
         btnPCarePesertaKegiatanKelompok.setIconTextGap(0);
         btnPCarePesertaKegiatanKelompok.setName("btnPCarePesertaKegiatanKelompok"); // NOI18N
         btnPCarePesertaKegiatanKelompok.setPreferredSize(new java.awt.Dimension(200, 90));
