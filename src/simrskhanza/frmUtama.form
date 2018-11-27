@@ -52,7 +52,7 @@
                 </Property>
                 <Property name="name" type="java.lang.String" value="internalFrame3" noResource="true"/>
                 <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="96" green="e1" red="aa" type="rgb"/>
+                  <Color blue="a5" green="eb" red="b9" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>

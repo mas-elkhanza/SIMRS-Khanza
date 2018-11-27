@@ -92,12 +92,12 @@ public final class DlgIGD extends javax.swing.JDialog {
                     
     private PreparedStatement ps,ps2,ps3,pscaripiutang;
     private ResultSet rs;
-    private int pilihan=0,i=0;
+    private int pilihan=0,i=0,jmlparsial=0;
     private Date cal=new Date();
     private Properties prop = new Properties();
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private double biaya=0;
-    private String URUTNOREG="",kamar_inap_kasir_ralan=Sequel.cariIsi("select kamar_inap_kasir_ralan from set_jam_minimal"),
+    private String aktifkanparsial="no",URUTNOREG="",kamar_inap_kasir_ralan=Sequel.cariIsi("select kamar_inap_kasir_ralan from set_jam_minimal"),
             status="Baru",alamatperujuk="-",umur="0",sttsumur="Th",IPPRINTERTRACER="",
             validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi"),
             validasicatatan=Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
@@ -542,8 +542,8 @@ public final class DlgIGD extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             IPPRINTERTRACER=prop.getProperty("IPPRINTERTRACER");
-            URUTNOREG=prop.getProperty("URUTNOREG");
-            
+            URUTNOREG=prop.getProperty("URUTNOREG");            
+            aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
             try{    
                 if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
                     com.sun.awt.AWTUtilities.setWindowOpacity(DlgCatatan,0.5f);
@@ -3502,7 +3502,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                         biaya=Sequel.cariIsiAngka("select registrasi from poliklinik where kd_poli='IGDK'");
                         break;
             }
-            Sequel.menyimpan("poliklinik","?,?,?,?",4,new String[]{"IGDK","Unit IGD","0","0"});
+            Sequel.menyimpan2("poliklinik","?,?,?,?",4,new String[]{"IGDK","Unit IGD","0","0"});
             status=Sequel.cariIsi("select if((select count(no_rkm_medis) from reg_periksa where no_rkm_medis='"+TNoRM.getText()+"' and kd_poli='IGDK')>0,'Lama','Baru' )");
             if(Sequel.menyimpantf2("reg_periksa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",19,
                     new String[]{TNoReg.getText(),TNoRw.getText(),Valid.SetTgl(DTPReg.getSelectedItem()+""),CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),
@@ -5802,26 +5802,10 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                 piutang.setVisible(true);
                                 this.setCursor(Cursor.getDefaultCursor());
                             }else{
-                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                DlgBilingParsialRalan parsialralan=new DlgBilingParsialRalan(null,false);
-                                parsialralan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                parsialralan.setLocationRelativeTo(internalFrame1);
-                                //parsialralan.emptTeks();
-                                parsialralan.isCek();
-                                parsialralan.setNoRm(TNoRw.getText(),kddokter.getText(),TDokter.getText(),"IGDK");
-                                parsialralan.setVisible(true);
-                                this.setCursor(Cursor.getDefaultCursor());
+                                billingprasial();
                             }
                         }else{
-                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            DlgBilingParsialRalan parsialralan=new DlgBilingParsialRalan(null,false);
-                            parsialralan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                            parsialralan.setLocationRelativeTo(internalFrame1);
-                            //parsialralan.emptTeks();
-                            parsialralan.isCek();
-                            parsialralan.setNoRm(TNoRw.getText(),kddokter.getText(),TDokter.getText(),"IGDK");
-                            parsialralan.setVisible(true);
-                            this.setCursor(Cursor.getDefaultCursor());
+                            billingprasial();
                         }
                     } catch (Exception e) {
                         System.out.println(e);
@@ -6500,5 +6484,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     
     private void UpdateUmur(){
         Sequel.mengedit("pasien","no_rkm_medis=?","umur=CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '),CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')),CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))",1,new String[]{TNoRM.getText()});
+    }
+    
+    private void billingprasial() {
+        if(tbPetugas.getSelectedRow()!= -1){
+            jmlparsial=0;
+            if(aktifkanparsial.equals("yes")){
+                jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbPetugas.getValueAt(tbPetugas.getSelectedRow(),19).toString());
+            }
+            if(jmlparsial>0){
+                DlgBilingParsialRalan parsialralan=new DlgBilingParsialRalan(null,false);
+                parsialralan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                parsialralan.setLocationRelativeTo(internalFrame1);
+                //parsialralan.emptTeks();
+                parsialralan.isCek();
+                parsialralan.setNoRm(TNoRw.getText(),kddokter.getText(),TDokter.getText(),"IGDK");
+                parsialralan.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Cara bayar "+tbPetugas.getValueAt(tbPetugas.getSelectedRow(),17).toString()+" tidak diijinkan menggunakan Billing Parsial...!!!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        } 
     }
 }

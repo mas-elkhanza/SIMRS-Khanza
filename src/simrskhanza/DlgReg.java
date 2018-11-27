@@ -105,9 +105,9 @@ public final class DlgReg extends javax.swing.JDialog {
     private PreparedStatement ps,ps2,ps3,pscaripiutang;
     private Properties prop = new Properties();
     private ResultSet rs;
-    private int pilihan=0,i=0,kuota=0;
+    private int pilihan=0,i=0,kuota=0,jmlparsial=0;
     private Date cal=new Date();
-    private String BASENOREG="",kamar_inap_kasir_ralan=Sequel.cariIsi("select kamar_inap_kasir_ralan from set_jam_minimal"),
+    private String aktifkanparsial="no",BASENOREG="",kamar_inap_kasir_ralan=Sequel.cariIsi("select kamar_inap_kasir_ralan from set_jam_minimal"),
             URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",
             validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi"),
             validasicatatan=Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
@@ -744,6 +744,13 @@ public final class DlgReg extends javax.swing.JDialog {
             IPPRINTERTRACER=prop.getProperty("IPPRINTERTRACER");
             URUTNOREG=prop.getProperty("URUTNOREG");
             BASENOREG=prop.getProperty("BASENOREG");
+            aktifkanparsial=prop.getProperty("AKTIFKANBILLINGPARSIAL");
+            try{    
+                if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
+                    com.sun.awt.AWTUtilities.setWindowOpacity(DlgCatatan,0.5f);
+                }     
+            }catch(Exception e){    
+            }
             try{    
                 if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
                     com.sun.awt.AWTUtilities.setWindowOpacity(DlgCatatan,0.5f);
@@ -8385,26 +8392,10 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                  piutang.setVisible(true);
                                  this.setCursor(Cursor.getDefaultCursor());
                             }else{
-                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                DlgBilingParsialRalan parsialralan=new DlgBilingParsialRalan(null,false);
-                                parsialralan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                                parsialralan.setLocationRelativeTo(internalFrame1);
-                                //parsialralan.emptTeks();
-                                parsialralan.isCek();
-                                parsialralan.setNoRm(TNoRw.getText(),kddokter.getText(),TDokter.getText(),kdpoli.getText());
-                                parsialralan.setVisible(true);
-                                this.setCursor(Cursor.getDefaultCursor());
+                                billingprasial();
                             }
                         }else{ 
-                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                            DlgBilingParsialRalan parsialralan=new DlgBilingParsialRalan(null,false);
-                            parsialralan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                            parsialralan.setLocationRelativeTo(internalFrame1);
-                            //parsialralan.emptTeks();
-                            parsialralan.isCek();
-                            parsialralan.setNoRm(TNoRw.getText(),kddokter.getText(),TDokter.getText(),kdpoli.getText());
-                            parsialralan.setVisible(true);
-                            this.setCursor(Cursor.getDefaultCursor());
+                            billingprasial();
                         }
                     } catch (Exception e) {
                         System.out.println(e);
@@ -9548,5 +9539,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }                
         } 
         Sequel.AutoComitTrue();
+    }
+
+    private void billingprasial() {
+        if(tbPetugas.getSelectedRow()!= -1){
+            jmlparsial=0;
+            if(aktifkanparsial.equals("yes")){
+                jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbPetugas.getValueAt(tbPetugas.getSelectedRow(),22).toString());
+            }
+            if(jmlparsial>0){
+                DlgBilingParsialRalan parsialralan=new DlgBilingParsialRalan(null,false);
+                parsialralan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                parsialralan.setLocationRelativeTo(internalFrame1);
+                //parsialralan.emptTeks();
+                parsialralan.isCek();
+                parsialralan.setNoRm(TNoRw.getText(),kddokter.getText(),TDokter.getText(),kdpoli.getText());
+                parsialralan.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Cara bayar "+tbPetugas.getValueAt(tbPetugas.getSelectedRow(),12).toString()+" tidak diijinkan menggunakan Billing Parsial...!!!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        } 
     }
 }

@@ -989,7 +989,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="26-10-2018 11:04:14"/>
+                    <StringItem index="0" value="27-11-2018 14:57:06"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1417,8 +1417,11 @@
               <SubComponents>
                 <Container class="widget.panelisi" name="panelGlass7">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[44, 44]"/>
+                      <Dimension value="[44, 40]"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -1595,8 +1598,11 @@
               <SubComponents>
                 <Container class="widget.panelisi" name="panelGlass10">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[44, 44]"/>
+                      <Dimension value="[44, 40]"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -1780,8 +1786,11 @@
               <SubComponents>
                 <Container class="widget.panelisi" name="panelGlass11">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[44, 44]"/>
+                      <Dimension value="[44, 40]"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -2100,8 +2109,11 @@
                 </Container>
                 <Container class="widget.panelisi" name="panelGlass9">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[44, 44]"/>
+                      <Dimension value="[44, 40]"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -2195,8 +2207,11 @@
               <SubComponents>
                 <Container class="widget.panelisi" name="panelGlass12">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[44, 44]"/>
+                      <Dimension value="[44, 40]"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -2300,11 +2315,7 @@
                           <Color blue="fd" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                            <LineBorder>
-                              <Color PropertyName="color" blue="e9" green="fa" red="ea" type="rgb"/>
-                            </LineBorder>
-                          </Border>
+                          <Border info="null"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="50" green="50" red="64" type="rgb"/>
@@ -2329,6 +2340,13 @@
                       <SubComponents>
                         <Container class="widget.ScrollPane" name="Scroll12">
                           <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                <LineBorder>
+                                  <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                                </LineBorder>
+                              </Border>
+                            </Property>
                             <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="PopupLaborat"/>
                             </Property>
@@ -2358,6 +2376,13 @@
                         </Container>
                         <Container class="widget.ScrollPane" name="Scroll14">
                           <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                <LineBorder>
+                                  <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                                </LineBorder>
+                              </Border>
+                            </Property>
                             <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="PopupDetailLaborat"/>
                             </Property>
@@ -2422,11 +2447,7 @@
                           <Color blue="fd" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                            <LineBorder>
-                              <Color PropertyName="color" blue="ec" green="f6" red="f1" type="rgb"/>
-                            </LineBorder>
-                          </Border>
+                          <Border info="null"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="50" green="50" red="64" type="rgb"/>
@@ -2451,6 +2472,13 @@
                       <SubComponents>
                         <Container class="widget.ScrollPane" name="Scroll15">
                           <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                <LineBorder>
+                                  <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                                </LineBorder>
+                              </Border>
+                            </Property>
                             <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="PopupLaboratBayar"/>
                             </Property>
@@ -2483,6 +2511,13 @@
                         </Container>
                         <Container class="widget.ScrollPane" name="Scroll16">
                           <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                <LineBorder>
+                                  <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                                </LineBorder>
+                              </Border>
+                            </Property>
                             <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="PopupDetailLaboratBayar"/>
                             </Property>
@@ -2629,8 +2664,11 @@
                 </Container>
                 <Container class="widget.panelisi" name="panelGlass13">
                   <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[44, 44]"/>
+                      <Dimension value="[44, 40]"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -2707,6 +2745,13 @@
             </Container>
             <Container class="widget.ScrollPane" name="Scroll9">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder>
+                      <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+                    </LineBorder>
+                  </Border>
+                </Property>
                 <Property name="opaque" type="boolean" value="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[440, 404]"/>

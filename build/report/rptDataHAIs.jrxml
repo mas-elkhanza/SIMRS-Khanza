@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="832"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
@@ -16,7 +16,7 @@
 	<queryString>
 		<![CDATA[select data_HAIs.tanggal,data_HAIs.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,
 data_HAIs.ETT,data_HAIs.CVL,data_HAIs.IVL,data_HAIs.UC,data_HAIs.VAP,data_HAIs.IAD,
-data_HAIs.PLEB,data_HAIs.ISK,data_HAIs.DEKU,data_HAIs.SPUTUM,data_HAIs.DARAH,data_HAIs.URINE,
+data_HAIs.PLEB,data_HAIs.ISK,data_HAIs.ILO,data_HAIs.DEKU,data_HAIs.SPUTUM,data_HAIs.DARAH,data_HAIs.URINE,
 data_HAIs.ANTIBIOTIK from data_HAIs inner join reg_periksa inner join pasien on 
 data_HAIs.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where 
 data_HAIs.tanggal between $P{tanggal1} and $P{tanggal2} and data_HAIs.no_rawat like $P{parameter} or 
@@ -57,6 +57,9 @@ data_HAIs.tanggal between $P{tanggal1} and $P{tanggal2} and pasien.nm_pasien lik
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="ISK" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ILO" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="DEKU" class="java.lang.String">
@@ -132,35 +135,42 @@ data_HAIs.tanggal between $P{tanggal1} and $P{tanggal2} and pasien.nm_pasien lik
 	<columnHeader>
 		<band height="18" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="437" y="0" width="36" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="437" y="0" width="17" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ILO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="454" y="0" width="36" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Deku]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="473" y="0" width="78" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="490" y="0" width="78" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Sputum]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="551" y="0" width="78" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="568" y="0" width="78" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Darah]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="629" y="0" width="78" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="646" y="0" width="78" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Urine]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="707" y="0" width="95" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement mode="Opaque" x="724" y="0" width="78" height="16" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 				</textElement>
@@ -351,39 +361,46 @@ data_HAIs.tanggal between $P{tanggal1} and $P{tanggal2} and pasien.nm_pasien lik
 				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{ISK}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="437" y="0" width="36" height="10"/>
+				<reportElement x="454" y="0" width="36" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{DEKU}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="473" y="0" width="78" height="10"/>
+				<reportElement x="490" y="0" width="78" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{SPUTUM}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="551" y="0" width="78" height="10"/>
+				<reportElement x="568" y="0" width="78" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{DARAH}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="629" y="0" width="78" height="10"/>
+				<reportElement x="646" y="0" width="78" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{URINE}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="707" y="0" width="95" height="10"/>
+				<reportElement x="724" y="0" width="78" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{ANTIBIOTIK}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="437" y="0" width="17" height="10"/>
+				<textElement lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{ILO}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -6055,31 +6055,55 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private void MnBillingParsialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBillingParsialActionPerformed
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
-            TCari.requestFocus();
+            //TNoReg.requestFocus();
         }else if(TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
             tbKasirRalan.requestFocus();
-        }else{  
-            if(tbKasirRalan.getSelectedRow()!= -1){
-                jmlparsial=0;
-                if(aktifkanparsial.equals("yes")){
-                    jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString());
+        }else{          
+            if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+            }else {
+                try {
+                    sudah=Sequel.cariInteger("select count(billing.no_rawat) from billing where billing.no_rawat=?",TNoRw.getText());
+                    pscaripiutang=koneksi.prepareStatement("select tgl_piutang from piutang_pasien where no_rkm_medis=? and status='Belum Lunas' order by tgl_piutang asc limit 1");
+                    try{                                                
+                        pscaripiutang.setString(1,tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),2).toString());
+                        rskasir=pscaripiutang.executeQuery();
+                        if(rskasir.next()){
+                            i=JOptionPane.showConfirmDialog(null, "Masih ada tunggakan pembayaran, apa mau bayar sekarang ?","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                            if(i==JOptionPane.YES_OPTION){
+                                 DlgLhtPiutang piutang=new DlgLhtPiutang(null,false);
+                                 piutang.setNoRm(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),2).toString(),rskasir.getDate(1));
+                                 piutang.tampil();
+                                 piutang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                 piutang.setLocationRelativeTo(internalFrame1);
+                                 piutang.setVisible(true);
+                            }else{
+                                if(var.getbilling_ralan()==true){
+                                    otomatisRalan();
+                                }
+                                billingparsial();
+                            }
+                        }else{
+                            if(var.getbilling_ralan()==true){
+                                otomatisRalan();
+                            }
+                            billingparsial();
+                        }
+                    }catch(Exception ex){
+                        System.out.println("Notifikasi : "+ex);
+                    } finally{
+                        if(rskasir!=null){
+                            rskasir.close();
+                        }
+                        if(pscaripiutang!=null){
+                            pscaripiutang.close();
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
                 }
-                if(jmlparsial>0){
-                    DlgBilingParsialRalan parsialralan=new DlgBilingParsialRalan(null,false);
-                    parsialralan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    parsialralan.setLocationRelativeTo(internalFrame1);
-                    //parsialralan.emptTeks();
-                    parsialralan.isCek();
-                    parsialralan.setNoRm(TNoRw.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),1).toString(),Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()));   
-                    parsialralan.setVisible(true);
-                }else{
-                    JOptionPane.showMessageDialog(null,"Maaf, Cara bayar "+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),9).toString()+" tidak diijinkan menggunakan Billing Parsial...!!!");
-                }
-            }else{
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
-                tbKasirRalan.requestFocus();
-            }                                        
+            }            
         }
     }//GEN-LAST:event_MnBillingParsialActionPerformed
 
@@ -7820,6 +7844,29 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         billing.dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         billing.dlgobt.setLocationRelativeTo(internalFrame1);
         billing.dlgobt.setVisible(true);
+    }
+
+    private void billingparsial() {
+        if(tbKasirRalan.getSelectedRow()!= -1){
+            jmlparsial=0;
+            if(aktifkanparsial.equals("yes")){
+                jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString());
+            }
+            if(jmlparsial>0){
+                DlgBilingParsialRalan parsialralan=new DlgBilingParsialRalan(null,false);
+                parsialralan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                parsialralan.setLocationRelativeTo(internalFrame1);
+                //parsialralan.emptTeks();
+                parsialralan.isCek();
+                parsialralan.setNoRm(TNoRw.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),0).toString(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),1).toString(),Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",TNoRw.getText()));   
+                parsialralan.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"Maaf, Cara bayar "+tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),9).toString()+" tidak diijinkan menggunakan Billing Parsial...!!!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        } 
     }
     
 }

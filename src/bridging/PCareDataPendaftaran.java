@@ -1100,9 +1100,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         chkSubspesialis.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkSubspesialis.setName("chkSubspesialis"); // NOI18N
         chkSubspesialis.setOpaque(false);
-        chkSubspesialis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkSubspesialisActionPerformed(evt);
+        chkSubspesialis.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkSubspesialisItemStateChanged(evt);
             }
         });
         FormInput.add(chkSubspesialis);
@@ -1495,9 +1495,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         chkKunjungan.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkKunjungan.setName("chkKunjungan"); // NOI18N
         chkKunjungan.setOpaque(false);
-        chkKunjungan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkKunjunganActionPerformed(evt);
+        chkKunjungan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkKunjunganItemStateChanged(evt);
             }
         });
         FormInput.add(chkKunjungan);
@@ -1508,9 +1508,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         ChkInternal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkInternal.setName("ChkInternal"); // NOI18N
         ChkInternal.setOpaque(false);
-        ChkInternal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkInternalActionPerformed(evt);
+        ChkInternal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkInternalItemStateChanged(evt);
             }
         });
         FormInput.add(ChkInternal);
@@ -1521,9 +1521,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         ChkRujukLanjut.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkRujukLanjut.setName("ChkRujukLanjut"); // NOI18N
         ChkRujukLanjut.setOpaque(false);
-        ChkRujukLanjut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkRujukLanjutActionPerformed(evt);
+        ChkRujukLanjut.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkRujukLanjutItemStateChanged(evt);
             }
         });
         FormInput.add(ChkRujukLanjut);
@@ -1603,9 +1603,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         chkKhusus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkKhusus.setName("chkKhusus"); // NOI18N
         chkKhusus.setOpaque(false);
-        chkKhusus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkKhususActionPerformed(evt);
+        chkKhusus.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkKhususItemStateChanged(evt);
             }
         });
         FormInput.add(chkKhusus);
@@ -2220,12 +2220,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_HeartrateKeyPressed
 
-    private void chkSubspesialisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSubspesialisActionPerformed
-        if(chkSubspesialis.isSelected()==true){
-            
-        }
-    }//GEN-LAST:event_chkSubspesialisActionPerformed
-
     private void TanggalKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKunjunganKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_TanggalKunjunganKeyPressed
@@ -2326,74 +2320,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnPPKRujukanKeyPressed
 
-    private void chkKunjunganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkKunjunganActionPerformed
-        if(chkKunjungan.isSelected()==true){
-            TanggalKunjungan.setEnabled(true);
-            TanggalPulang.setEnabled(true);
-            BtnKesadaran.setEnabled(true);
-            Terapi.setEnabled(true);
-            BtnStatusPulang.setEnabled(true);
-            BtnTenagaMedis.setEnabled(true);
-            BtnDiagnosa1.setEnabled(true);
-            BtnDiagnosa2.setEnabled(true);
-            BtnDiagnosa3.setEnabled(true);
-            ChkRujukLanjut.setEnabled(true);
-            ChkRujukLanjut.setSelected(false);
-            ChkRujukLanjutActionPerformed(null);
-        }else{
-            TanggalKunjungan.setEnabled(false);
-            TanggalPulang.setEnabled(false);
-            BtnKesadaran.setEnabled(false);
-            Terapi.setEnabled(false);
-            BtnStatusPulang.setEnabled(false);
-            BtnTenagaMedis.setEnabled(false);
-            BtnDiagnosa1.setEnabled(false);
-            BtnDiagnosa2.setEnabled(false);
-            BtnDiagnosa3.setEnabled(false);            
-            ChkRujukLanjut.setEnabled(false);
-            ChkRujukLanjut.setSelected(false);
-            ChkRujukLanjutActionPerformed(null);
-        }
-    }//GEN-LAST:event_chkKunjunganActionPerformed
-
-    private void ChkInternalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInternalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ChkInternalActionPerformed
-
-    private void ChkRujukLanjutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkRujukLanjutActionPerformed
-        if(ChkRujukLanjut.isSelected()==true){
-            TanggalEstRujuk.setEnabled(true);
-            BtnPPKRujukan.setEnabled(true);
-            chkSubspesialis.setEnabled(true);
-            chkSubspesialis.setSelected(false);
-            chkSubspesialisActionPerformed(null);
-            chkKhusus.setEnabled(true);
-            chkKhusus.setSelected(false);
-            chkKhususActionPerformed(null);
-            ChkInternal.setEnabled(true);
-            ChkInternal.setSelected(false);
-            ChkInternalActionPerformed(null);
-            CatatanKhusus.setEnabled(true);
-            TACC.setEnabled(true);
-            AlasanTACC.setEnabled(true);
-        }else{            
-            TanggalEstRujuk.setEnabled(false);
-            BtnPPKRujukan.setEnabled(false);
-            chkSubspesialis.setEnabled(false);
-            chkSubspesialis.setSelected(false);
-            chkSubspesialisActionPerformed(null);
-            chkKhusus.setEnabled(false);
-            chkKhusus.setSelected(false);
-            chkKhususActionPerformed(null);
-            ChkInternal.setEnabled(false);
-            ChkInternal.setSelected(false);
-            ChkInternalActionPerformed(null);
-            CatatanKhusus.setEnabled(false);
-            TACC.setEnabled(false);
-            AlasanTACC.setEnabled(false);
-        }
-    }//GEN-LAST:event_ChkRujukLanjutActionPerformed
-
     private void BtnSubSpesialisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSubSpesialisActionPerformed
         pilihan=1;
         subspesialis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -2414,10 +2340,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private void BtnSaranaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSaranaKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnSaranaKeyPressed
-
-    private void chkKhususActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkKhususActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkKhususActionPerformed
 
     private void btnKhususActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhususActionPerformed
         khusus.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -2488,6 +2410,111 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private void KdPoliTujuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KdPoliTujuanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_KdPoliTujuanActionPerformed
+
+    private void chkKunjunganItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkKunjunganItemStateChanged
+        if(chkKunjungan.isSelected()==true){
+            TanggalKunjungan.setEnabled(true);
+            TanggalPulang.setEnabled(true);
+            BtnKesadaran.setEnabled(true);
+            Terapi.setEnabled(true);
+            BtnStatusPulang.setEnabled(true);
+            BtnTenagaMedis.setEnabled(true);
+            BtnDiagnosa1.setEnabled(true);
+            BtnDiagnosa2.setEnabled(true);
+            BtnDiagnosa3.setEnabled(true);
+            ChkRujukLanjut.setEnabled(true);
+            ChkRujukLanjut.setSelected(false);
+            ChkRujukLanjutItemStateChanged(null);
+        }else{
+            TanggalKunjungan.setEnabled(false);
+            TanggalPulang.setEnabled(false);
+            BtnKesadaran.setEnabled(false);
+            Terapi.setEnabled(false);
+            BtnStatusPulang.setEnabled(false);
+            BtnTenagaMedis.setEnabled(false);
+            BtnDiagnosa1.setEnabled(false);
+            BtnDiagnosa2.setEnabled(false);
+            BtnDiagnosa3.setEnabled(false);            
+            ChkRujukLanjut.setEnabled(false);
+            ChkRujukLanjut.setSelected(false);
+            ChkRujukLanjutItemStateChanged(null);
+        }
+    }//GEN-LAST:event_chkKunjunganItemStateChanged
+
+    private void ChkRujukLanjutItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkRujukLanjutItemStateChanged
+        if(ChkRujukLanjut.isSelected()==true){
+            TanggalEstRujuk.setEnabled(true);
+            BtnPPKRujukan.setEnabled(true);
+            chkSubspesialis.setEnabled(true);
+            chkSubspesialis.setSelected(false);
+            chkSubspesialisItemStateChanged(null);
+            chkKhusus.setEnabled(true);
+            chkKhusus.setSelected(false);
+            chkKhususItemStateChanged(null);
+            ChkInternal.setEnabled(true);
+            ChkInternal.setSelected(false);
+            ChkInternalItemStateChanged(null);
+            CatatanKhusus.setEnabled(true);
+            TACC.setEnabled(true);
+            AlasanTACC.setEnabled(true);
+        }else{            
+            TanggalEstRujuk.setEnabled(false);
+            BtnPPKRujukan.setEnabled(false);
+            chkSubspesialis.setEnabled(false);
+            chkSubspesialis.setSelected(false);
+            chkSubspesialisItemStateChanged(null);
+            chkKhusus.setEnabled(false);
+            chkKhusus.setSelected(false);
+            chkKhususItemStateChanged(null);
+            ChkInternal.setEnabled(false);
+            ChkInternal.setSelected(false);
+            ChkInternalItemStateChanged(null);
+            CatatanKhusus.setEnabled(false);
+            TACC.setEnabled(false);
+            AlasanTACC.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkRujukLanjutItemStateChanged
+
+    private void chkSubspesialisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkSubspesialisItemStateChanged
+        if(chkSubspesialis.isSelected()==true){
+            BtnSubSpesialis.setEnabled(true);
+            BtnSarana.setEnabled(true);            
+        }else{
+            BtnSubSpesialis.setEnabled(false);
+            BtnSarana.setEnabled(false);
+            KdSubSpesialis.setText("");
+            NmSubSpesialis.setText("");
+            KdSarana.setText("");
+            NmSarana.setText("");
+        }
+    }//GEN-LAST:event_chkSubspesialisItemStateChanged
+
+    private void ChkInternalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkInternalItemStateChanged
+        if(ChkInternal.isSelected()==true){
+            BtnPoliInternal.setEnabled(true);            
+        }else{
+            BtnPoliInternal.setEnabled(false);
+            KdPoliInternal.setText("");
+            NmPoliInternal.setText("");
+        }
+    }//GEN-LAST:event_ChkInternalItemStateChanged
+
+    private void chkKhususItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkKhususItemStateChanged
+        if(chkKhusus.isSelected()==true){
+            btnKhusus.setEnabled(true);
+            BtnSubKhusus.setEnabled(true);      
+            CatatanKhusus.setEnabled(true);
+        }else{
+            btnKhusus.setEnabled(false);
+            BtnSubKhusus.setEnabled(false);      
+            CatatanKhusus.setEnabled(false);
+            KdKhusus.setText("");
+            NmKhusus.setText("");
+            KdSubKhusus.setText("");
+            NmSubKhusus.setText("");
+            CatatanKhusus.setText("");
+        }        
+    }//GEN-LAST:event_chkKhususItemStateChanged
 
     /**
     * @param args the command line arguments
