@@ -650,7 +650,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         LabelPoli7 = new widget.Label();
         KdDiagnosa1 = new widget.TextBox();
         NmDiagnosa1 = new widget.TextBox();
-        BtnDiganosa1 = new widget.Button();
+        BtnDiagnosa1 = new widget.Button();
         LabelPoli8 = new widget.Label();
         KdDiagnosa2 = new widget.TextBox();
         NmDiagnosa2 = new widget.TextBox();
@@ -658,7 +658,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         LabelPoli9 = new widget.Label();
         KdDiagnosa3 = new widget.TextBox();
         NmDiagnosa3 = new widget.TextBox();
-        BtnDiganosa3 = new widget.Button();
+        BtnDiagnosa3 = new widget.Button();
         KdPoliInternal = new widget.TextBox();
         NmPoliInternal = new widget.TextBox();
         BtnPoliInternal = new widget.Button();
@@ -1298,23 +1298,23 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(NmDiagnosa1);
         NmDiagnosa1.setBounds(528, 300, 170, 23);
 
-        BtnDiganosa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnDiganosa1.setMnemonic('X');
-        BtnDiganosa1.setToolTipText("Alt+X");
-        BtnDiganosa1.setEnabled(false);
-        BtnDiganosa1.setName("BtnDiganosa1"); // NOI18N
-        BtnDiganosa1.addActionListener(new java.awt.event.ActionListener() {
+        BtnDiagnosa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDiagnosa1.setMnemonic('X');
+        BtnDiagnosa1.setToolTipText("Alt+X");
+        BtnDiagnosa1.setEnabled(false);
+        BtnDiagnosa1.setName("BtnDiagnosa1"); // NOI18N
+        BtnDiagnosa1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDiganosa1ActionPerformed(evt);
+                BtnDiagnosa1ActionPerformed(evt);
             }
         });
-        BtnDiganosa1.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnDiagnosa1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnDiganosa1KeyPressed(evt);
+                BtnDiagnosa1KeyPressed(evt);
             }
         });
-        FormInput.add(BtnDiganosa1);
-        BtnDiganosa1.setBounds(700, 300, 28, 23);
+        FormInput.add(BtnDiagnosa1);
+        BtnDiagnosa1.setBounds(700, 300, 28, 23);
 
         LabelPoli8.setText("Diganosa 2 :");
         LabelPoli8.setName("LabelPoli8"); // NOI18N
@@ -1372,23 +1372,23 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(NmDiagnosa3);
         NmDiagnosa3.setBounds(528, 360, 170, 23);
 
-        BtnDiganosa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnDiganosa3.setMnemonic('X');
-        BtnDiganosa3.setToolTipText("Alt+X");
-        BtnDiganosa3.setEnabled(false);
-        BtnDiganosa3.setName("BtnDiganosa3"); // NOI18N
-        BtnDiganosa3.addActionListener(new java.awt.event.ActionListener() {
+        BtnDiagnosa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDiagnosa3.setMnemonic('X');
+        BtnDiagnosa3.setToolTipText("Alt+X");
+        BtnDiagnosa3.setEnabled(false);
+        BtnDiagnosa3.setName("BtnDiagnosa3"); // NOI18N
+        BtnDiagnosa3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDiganosa3ActionPerformed(evt);
+                BtnDiagnosa3ActionPerformed(evt);
             }
         });
-        BtnDiganosa3.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnDiagnosa3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnDiganosa3KeyPressed(evt);
+                BtnDiagnosa3KeyPressed(evt);
             }
         });
-        FormInput.add(BtnDiganosa3);
-        BtnDiganosa3.setBounds(700, 360, 28, 23);
+        FormInput.add(BtnDiagnosa3);
+        BtnDiagnosa3.setBounds(700, 360, 28, 23);
 
         KdPoliInternal.setEditable(false);
         KdPoliInternal.setBackground(new java.awt.Color(245, 250, 240));
@@ -2221,7 +2221,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_HeartrateKeyPressed
 
     private void chkSubspesialisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSubspesialisActionPerformed
-        
+        if(chkSubspesialis.isSelected()==true){
+            
+        }
     }//GEN-LAST:event_chkSubspesialisActionPerformed
 
     private void TanggalKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKunjunganKeyPressed
@@ -2266,16 +2268,16 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnTenagaMedisKeyPressed
 
-    private void BtnDiganosa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiganosa1ActionPerformed
+    private void BtnDiagnosa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiagnosa1ActionPerformed
         pilihan=1;
         penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setVisible(true);
-    }//GEN-LAST:event_BtnDiganosa1ActionPerformed
+    }//GEN-LAST:event_BtnDiagnosa1ActionPerformed
 
-    private void BtnDiganosa1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDiganosa1KeyPressed
+    private void BtnDiagnosa1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDiagnosa1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnDiganosa1KeyPressed
+    }//GEN-LAST:event_BtnDiagnosa1KeyPressed
 
     private void BtnDiagnosa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiagnosa2ActionPerformed
         pilihan=2;
@@ -2288,16 +2290,16 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnDiagnosa2KeyPressed
 
-    private void BtnDiganosa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiganosa3ActionPerformed
+    private void BtnDiagnosa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiagnosa3ActionPerformed
         pilihan=3;
         penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setVisible(true);
-    }//GEN-LAST:event_BtnDiganosa3ActionPerformed
+    }//GEN-LAST:event_BtnDiagnosa3ActionPerformed
 
-    private void BtnDiganosa3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDiganosa3KeyPressed
+    private void BtnDiagnosa3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDiagnosa3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnDiganosa3KeyPressed
+    }//GEN-LAST:event_BtnDiagnosa3KeyPressed
 
     private void BtnPoliInternalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliInternalActionPerformed
         pilihan=2;
@@ -2325,7 +2327,33 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPPKRujukanKeyPressed
 
     private void chkKunjunganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkKunjunganActionPerformed
-        // TODO add your handling code here:
+        if(chkKunjungan.isSelected()==true){
+            TanggalKunjungan.setEnabled(true);
+            TanggalPulang.setEnabled(true);
+            BtnKesadaran.setEnabled(true);
+            Terapi.setEnabled(true);
+            BtnStatusPulang.setEnabled(true);
+            BtnTenagaMedis.setEnabled(true);
+            BtnDiagnosa1.setEnabled(true);
+            BtnDiagnosa2.setEnabled(true);
+            BtnDiagnosa3.setEnabled(true);
+            ChkRujukLanjut.setEnabled(true);
+            ChkRujukLanjut.setSelected(false);
+            ChkRujukLanjutActionPerformed(null);
+        }else{
+            TanggalKunjungan.setEnabled(false);
+            TanggalPulang.setEnabled(false);
+            BtnKesadaran.setEnabled(false);
+            Terapi.setEnabled(false);
+            BtnStatusPulang.setEnabled(false);
+            BtnTenagaMedis.setEnabled(false);
+            BtnDiagnosa1.setEnabled(false);
+            BtnDiagnosa2.setEnabled(false);
+            BtnDiagnosa3.setEnabled(false);            
+            ChkRujukLanjut.setEnabled(false);
+            ChkRujukLanjut.setSelected(false);
+            ChkRujukLanjutActionPerformed(null);
+        }
     }//GEN-LAST:event_chkKunjunganActionPerformed
 
     private void ChkInternalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInternalActionPerformed
@@ -2333,7 +2361,37 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInternalActionPerformed
 
     private void ChkRujukLanjutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkRujukLanjutActionPerformed
-        // TODO add your handling code here:
+        if(ChkRujukLanjut.isSelected()==true){
+            TanggalEstRujuk.setEnabled(true);
+            BtnPPKRujukan.setEnabled(true);
+            chkSubspesialis.setEnabled(true);
+            chkSubspesialis.setSelected(false);
+            chkSubspesialisActionPerformed(null);
+            chkKhusus.setEnabled(true);
+            chkKhusus.setSelected(false);
+            chkKhususActionPerformed(null);
+            ChkInternal.setEnabled(true);
+            ChkInternal.setSelected(false);
+            ChkInternalActionPerformed(null);
+            CatatanKhusus.setEnabled(true);
+            TACC.setEnabled(true);
+            AlasanTACC.setEnabled(true);
+        }else{            
+            TanggalEstRujuk.setEnabled(false);
+            BtnPPKRujukan.setEnabled(false);
+            chkSubspesialis.setEnabled(false);
+            chkSubspesialis.setSelected(false);
+            chkSubspesialisActionPerformed(null);
+            chkKhusus.setEnabled(false);
+            chkKhusus.setSelected(false);
+            chkKhususActionPerformed(null);
+            ChkInternal.setEnabled(false);
+            ChkInternal.setSelected(false);
+            ChkInternalActionPerformed(null);
+            CatatanKhusus.setEnabled(false);
+            TACC.setEnabled(false);
+            AlasanTACC.setEnabled(false);
+        }
     }//GEN-LAST:event_ChkRujukLanjutActionPerformed
 
     private void BtnSubSpesialisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSubSpesialisActionPerformed
@@ -2453,9 +2511,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnDiagnosa1;
     private widget.Button BtnDiagnosa2;
-    private widget.Button BtnDiganosa1;
-    private widget.Button BtnDiganosa3;
+    private widget.Button BtnDiagnosa3;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
