@@ -13,6 +13,7 @@ import fungsi.validasi;
 import fungsi.var;
 import inventory.DlgPenjualan;
 import inventory.DlgPeresepanDokter;
+import inventory.DlgPiutang;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Window;
@@ -408,6 +409,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnObatLangsung = new javax.swing.JMenuItem();
         MnDataPemberianObat = new javax.swing.JMenuItem();
         MnPenjualan = new javax.swing.JMenuItem();
+        MnPiutangObat = new javax.swing.JMenuItem();
         MnPilihBilling = new javax.swing.JMenu();
         MnBillingParsial = new javax.swing.JMenuItem();
         MnBilling = new javax.swing.JMenuItem();
@@ -930,6 +932,23 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         MnObatRalan.add(MnPenjualan);
+
+        MnPiutangObat.setBackground(new java.awt.Color(255, 255, 255));
+        MnPiutangObat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPiutangObat.setForeground(new java.awt.Color(100, 80, 80));
+        MnPiutangObat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPiutangObat.setText("Piutang Obat/Alkes/Barang");
+        MnPiutangObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPiutangObat.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPiutangObat.setIconTextGap(5);
+        MnPiutangObat.setName("MnPiutangObat"); // NOI18N
+        MnPiutangObat.setPreferredSize(new java.awt.Dimension(190, 26));
+        MnPiutangObat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnPiutangObatActionPerformed(evt);
+            }
+        });
+        MnObatRalan.add(MnPiutangObat);
 
         jPopupMenu1.add(MnObatRalan);
 
@@ -6794,6 +6813,24 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }//GEN-LAST:event_ppBerkasRanapBtnPrintActionPerformed
 
+    private void MnPiutangObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPiutangObatActionPerformed
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{  
+            if(Sequel.cariInteger("select count(no_rawat) from kamar_inap where no_rawat=?",TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+            }else {
+                DlgPiutang penjualan=new DlgPiutang(null,false);
+                penjualan.isCek();
+                penjualan.setPasien(TNoRw1.getText(),TNoRM.getText(),TPasien.getText());  
+                penjualan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                penjualan.setLocationRelativeTo(internalFrame1);
+                penjualan.setVisible(true);
+            }                
+        }
+    }//GEN-LAST:event_MnPiutangObatActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6932,6 +6969,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem MnPermintaanRadiologi;
     private javax.swing.JMenuItem MnPermintaanRadiologi1;
     private javax.swing.JMenu MnPilihBilling;
+    private javax.swing.JMenuItem MnPiutangObat;
     private javax.swing.JMenuItem MnPoli;
     private javax.swing.JMenuItem MnPoliInternal;
     private javax.swing.JMenuItem MnPulangPaksa;
@@ -7393,6 +7431,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnPenjab.setEnabled(var.getkasir_ralan());
         MnPoli.setEnabled(var.getkasir_ralan());
         MnPenjualan.setEnabled(var.getpenjualan_obat());
+        MnPiutangObat.setEnabled(var.getpiutang_obat());
         MnRekapHarianDokter.setEnabled(var.getharian_dokter());
         MnRekapHarianParamedis.setEnabled(var.getharian_paramedis());
         MnRekapBulananDokter.setEnabled(var.getbulanan_dokter());
