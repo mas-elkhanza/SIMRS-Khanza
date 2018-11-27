@@ -97,7 +97,8 @@ public final class DlgIGD extends javax.swing.JDialog {
     private Properties prop = new Properties();
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private double biaya=0;
-    private String URUTNOREG="",status="Baru",alamatperujuk="-",umur="0",sttsumur="Th",IPPRINTERTRACER="",
+    private String URUTNOREG="",kamar_inap_kasir_ralan=Sequel.cariIsi("select kamar_inap_kasir_ralan from set_jam_minimal"),
+            status="Baru",alamatperujuk="-",umur="0",sttsumur="Th",IPPRINTERTRACER="",
             validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi"),
             validasicatatan=Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
     private char ESC = 27;
@@ -6334,7 +6335,17 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         BtnHapus.setEnabled(var.getigd());
         BtnEdit.setEnabled(var.getigd());
         BtnPrint.setEnabled(var.getigd());
-        MnKamarInap.setEnabled(var.getkamar_inap());
+        
+        if(var.getkode().equals("Admin Utama")){
+            MnKamarInap.setEnabled(true);
+        }else{
+            if(kamar_inap_kasir_ralan.equals("Yes")){
+                MnKamarInap.setEnabled(var.getkamar_inap());
+            }else{
+                MnKamarInap.setEnabled(false);
+            }
+        }
+        
         MnRawatJalan.setEnabled(var.gettindakan_ralan());
         MnPemberianObat.setEnabled(var.getberi_obat());
         MnBilling.setEnabled(var.getbilling_ralan());

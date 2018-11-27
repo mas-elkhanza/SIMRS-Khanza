@@ -107,7 +107,8 @@ public final class DlgReg extends javax.swing.JDialog {
     private ResultSet rs;
     private int pilihan=0,i=0,kuota=0;
     private Date cal=new Date();
-    private String BASENOREG="",URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",
+    private String BASENOREG="",kamar_inap_kasir_ralan=Sequel.cariIsi("select kamar_inap_kasir_ralan from set_jam_minimal"),
+            URUTNOREG="",status="Baru",order="reg_periksa.tgl_registrasi,reg_periksa.jam_reg desc",alamatperujuk="-",aktifjadwal="",IPPRINTERTRACER="",umur="0",sttsumur="Th",
             validasiregistrasi=Sequel.cariIsi("select wajib_closing_kasir from set_validasi_registrasi"),
             validasicatatan=Sequel.cariIsi("select tampilkan_catatan from set_validasi_catatan");
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
@@ -9241,8 +9242,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         BtnPrint.setEnabled(var.getregistrasi());
         MnOperasi.setEnabled(var.getoperasi());
         MnOperasi1.setEnabled(var.getoperasi());
-        MnKamarInap.setEnabled(var.getkamar_inap());
-        MnKamarInap1.setEnabled(var.getkamar_inap());
+        if(var.getkode().equals("Admin Utama")){
+            MnKamarInap.setEnabled(true);
+            MnKamarInap1.setEnabled(true); 
+        }else{
+            if(kamar_inap_kasir_ralan.equals("Yes")){
+                MnKamarInap.setEnabled(var.getkamar_inap());
+                MnKamarInap1.setEnabled(var.getkamar_inap());
+            }else{
+                MnKamarInap.setEnabled(false);
+                MnKamarInap1.setEnabled(false);
+            }
+        }
         MnRawatJalan.setEnabled(var.gettindakan_ralan());
         MnRawatJalan1.setEnabled(var.gettindakan_ralan());
         MnPemberianObat.setEnabled(var.getberi_obat());
