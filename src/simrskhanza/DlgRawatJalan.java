@@ -3489,20 +3489,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 if(var.getkode().equals("Admin Utama")){
                     SimpanPenangananDokter();
                 }else{
-                    jmlparsial=0;
-                    if(aktifkanparsial.equals("yes")){
-                        jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
-                    }
-                    if(jmlparsial>0){    
-                        SimpanPenangananDokter();
-                    }else{
-                        if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                            TCari.requestFocus();
-                        }else{
-                            SimpanPenangananDokter();
+                    try {
+                        jmlparsial=0;
+                        if(aktifkanparsial.equals("yes")){
+                            jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
                         }
-                    }                                
+                        if(jmlparsial>0){    
+                            SimpanPenangananDokter();
+                        }else{
+                            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                TCari.requestFocus();
+                            }else{
+                                SimpanPenangananDokter();
+                            }
+                        } 
+                    } catch (Exception e) {
+                    }                               
                 }                            
             }  
 
@@ -3510,20 +3513,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 if(var.getkode().equals("Admin Utama")){
                     SimpanPenangananPetugas();
                 }else{
-                    jmlparsial=0;
-                    if(aktifkanparsial.equals("yes")){
-                        jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
-                    }
-                    if(jmlparsial>0){ 
-                        SimpanPenangananPetugas();
-                    }else{
-                        if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                            TCari.requestFocus();
-                        }else{
-                            SimpanPenangananPetugas();
+                    try {
+                        jmlparsial=0;
+                        if(aktifkanparsial.equals("yes")){
+                            jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
                         }
-                    }                                
+                        if(jmlparsial>0){ 
+                            SimpanPenangananPetugas();
+                        }else{
+                            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                TCari.requestFocus();
+                            }else{
+                                SimpanPenangananPetugas();
+                            }
+                        } 
+                    } catch (Exception e) {
+                    }                                                       
                 }   
             }  
 
@@ -3532,20 +3538,23 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 if(var.getkode().equals("Admin Utama")){
                     SimpanPenangananDokterPetugas();
                 }else{
-                    jmlparsial=0;
-                    if(aktifkanparsial.equals("yes")){
-                        jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
-                    }
-                    if(jmlparsial>0){ 
-                        SimpanPenangananDokterPetugas();
-                    }else {
-                        if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                            TCari.requestFocus();
-                        }else{
-                            SimpanPenangananDokterPetugas();
+                    try {
+                        jmlparsial=0;
+                        if(aktifkanparsial.equals("yes")){
+                            jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
                         }
-                    }                                
+                        if(jmlparsial>0){ 
+                            SimpanPenangananDokterPetugas();
+                        }else {
+                            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                TCari.requestFocus();
+                            }else{
+                                SimpanPenangananDokterPetugas();
+                            }
+                        } 
+                    } catch (Exception e) {
+                    }                                                       
                 }                                
             }   
 
@@ -5942,6 +5951,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         isForm3(); 
         ChkInput3.setSelected(true);
         isForm4();
+        TabRawat.setSelectedIndex(0);
+        TabRawatTindakanDokter.setSelectedIndex(0);
     }
     
     private void isForm(){
@@ -7023,6 +7034,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     private void SimpanPenangananDokter(){        
         try {
+            koneksi.setAutoCommit(false);
             for(i=0;i<tbTindakan.getRowCount();i++){ 
                 if(tbTindakan.getValueAt(i,0).toString().equals("true")){  
                     if(Sequel.menyimpantf("rawat_jl_dr","?,?,?,?,?,?,?,?,?,?,?,'Belum'","Tindakan",11,new String[]{
@@ -7031,11 +7043,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         tbTindakan.getValueAt(i,6).toString(),tbTindakan.getValueAt(i,7).toString(),tbTindakan.getValueAt(i,9).toString(),
                         tbTindakan.getValueAt(i,10).toString(),tbTindakan.getValueAt(i,4).toString()
                     })==true){
-                        System.out.println("simrskhanza.DlgRawatJalan.SimpanPenangananDokter()");
                         tbTindakan.setValueAt(false,i,0);
                     }
                 }                           
             }
+            koneksi.setAutoCommit(true);
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
@@ -7043,6 +7055,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     private void SimpanPenangananPetugas(){
         try {
+            koneksi.setAutoCommit(false);
             for(i=0;i<tbTindakan2.getRowCount();i++){ 
                 if(tbTindakan2.getValueAt(i,0).toString().equals("true")){  
                     if(Sequel.menyimpantf("rawat_jl_pr","?,?,?,?,?,?,?,?,?,?,?,'Belum'","Tindakan",11,new String[]{
@@ -7055,6 +7068,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }
                 }                           
             }
+            koneksi.setAutoCommit(true);
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
@@ -7062,6 +7076,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     
     private void SimpanPenangananDokterPetugas(){        
         try {
+            koneksi.setAutoCommit(false);
             for(i=0;i<tbTindakan3.getRowCount();i++){ 
                 if(tbTindakan3.getValueAt(i,0).toString().equals("true")){  
                     if(Sequel.menyimpantf("rawat_jl_drpr","?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum'","Tindakan",13,new String[]{
@@ -7072,10 +7087,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         tbTindakan3.getValueAt(i,4).toString()
                     })==true){
                         tbTindakan3.setValueAt(false,i,0);
-                        System.out.println("simrskhanza.DlgRawatJalan.SimpanPenangananDokterPetugas()");
                     }
                 }                           
             }
+            koneksi.setAutoCommit(true);
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }
