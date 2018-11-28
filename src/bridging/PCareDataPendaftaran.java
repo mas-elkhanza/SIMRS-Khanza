@@ -2478,7 +2478,20 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private void chkSubspesialisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkSubspesialisItemStateChanged
         if(chkSubspesialis.isSelected()==true){
             BtnSubSpesialis.setEnabled(true);
-            BtnSarana.setEnabled(true);            
+            BtnSarana.setEnabled(true);   
+            ChkInternal.setSelected(false);
+            KdPoliInternal.setText("");
+            NmPoliInternal.setText("");
+            BtnPoliInternal.setEnabled(false);
+            chkKhusus.setSelected(false);
+            KdKhusus.setText("");
+            NmKhusus.setText("");
+            btnKhusus.setSelected(false);
+            KdSubKhusus.setText("");
+            NmSubKhusus.setText("");
+            BtnSubKhusus.setEnabled(false);
+            CatatanKhusus.setText("");
+            CatatanKhusus.setEnabled(false);
         }else{
             BtnSubSpesialis.setEnabled(false);
             BtnSarana.setEnabled(false);
@@ -2491,7 +2504,23 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
     private void ChkInternalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkInternalItemStateChanged
         if(ChkInternal.isSelected()==true){
-            BtnPoliInternal.setEnabled(true);            
+            BtnPoliInternal.setEnabled(true);
+            chkSubspesialis.setSelected(false);
+            KdSubSpesialis.setText("");
+            NmSubSpesialis.setText("");
+            BtnSubSpesialis.setEnabled(false);
+            KdSarana.setText("");
+            NmSarana.setText("");
+            BtnSarana.setEnabled(false);
+            chkKhusus.setSelected(false);
+            KdKhusus.setText("");
+            NmKhusus.setText("");
+            btnKhusus.setSelected(false);
+            KdSubKhusus.setText("");
+            NmSubKhusus.setText("");
+            BtnSubKhusus.setEnabled(false);
+            CatatanKhusus.setText("");
+            CatatanKhusus.setEnabled(false);
         }else{
             BtnPoliInternal.setEnabled(false);
             KdPoliInternal.setText("");
@@ -2504,6 +2533,17 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             btnKhusus.setEnabled(true);
             BtnSubKhusus.setEnabled(true);      
             CatatanKhusus.setEnabled(true);
+            chkSubspesialis.setSelected(false);
+            KdSubSpesialis.setText("");
+            NmSubSpesialis.setText("");
+            BtnSubSpesialis.setEnabled(false);
+            KdSarana.setText("");
+            NmSarana.setText("");
+            BtnSarana.setEnabled(false);
+            ChkInternal.setSelected(false);
+            KdPoliInternal.setText("");
+            NmPoliInternal.setText("");
+            BtnPoliInternal.setEnabled(false);
         }else{
             btnKhusus.setEnabled(false);
             BtnSubKhusus.setEnabled(false);      
