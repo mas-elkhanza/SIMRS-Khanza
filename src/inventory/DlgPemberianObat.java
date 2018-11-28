@@ -1185,80 +1185,20 @@ public class DlgPemberianObat extends javax.swing.JDialog {
         }else {
             var.setform("DlgPemberianObat");
             if(var.getkode().equals("Admin Utama")){
-                if(status.equals("ranap")){
-                    dlgobt.setNoRm(TNoRw.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
-                    dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    dlgobt.isCek();
-                    dlgobt.tampil();
-                    dlgobt.setLocationRelativeTo(internalFrame1);
-                    dlgobt.setVisible(true);
-                }else if(status.equals("ralan")){
-                    dlgobtjalan.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
-                                        Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
-                    dlgobtjalan.isCek();
-                    if(!namadokter.equals("")){
-                        dlgobtjalan.setDokter(kodedokter, namadokter);
-                    }
-                    dlgobtjalan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                    dlgobtjalan.tampilobat();
-                    dlgobtjalan.setLocationRelativeTo(internalFrame1);
-                    dlgobtjalan.setVisible(true);
-                }else{
-                    JOptionPane.showMessageDialog(rootPane,"Hanya bisa lewat Kasir Ralan atau Kamar Inap");
-                }
+                panggilform();
             }else{
                 jmlparsial=0;
                 if(aktifkanparsial.equals("yes")){
                     jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
                 }
                 if(jmlparsial>0){  
-                    if(status.equals("ranap")){
-                        dlgobt.setNoRm(TNoRw.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
-                        dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        dlgobt.isCek();
-                        dlgobt.tampil();
-                        dlgobt.setLocationRelativeTo(internalFrame1);
-                        dlgobt.setVisible(true);
-                    }else if(status.equals("ralan")){
-                        dlgobtjalan.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
-                                            Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
-                        dlgobtjalan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                        dlgobtjalan.isCek();
-                        if(!namadokter.equals("")){
-                            dlgobtjalan.setDokter(kodedokter, namadokter);
-                        }
-                        dlgobtjalan.tampilobat();
-                        dlgobtjalan.setLocationRelativeTo(internalFrame1);
-                        dlgobtjalan.setVisible(true);
-                    }else{
-                        JOptionPane.showMessageDialog(rootPane,"Hanya bisa lewat Kasir Ralan atau Kamar Inap");
-                    } 
+                    panggilform();
                 }else{
                     if(Sequel.cariRegistrasi(TNoRw.getText())>0){
                         JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                         TCari.requestFocus();
                     }else{ 
-                        if(status.equals("ranap")){
-                            dlgobt.setNoRm(TNoRw.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
-                            dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                            dlgobt.isCek();
-                            dlgobt.tampil();
-                            dlgobt.setLocationRelativeTo(internalFrame1);
-                            dlgobt.setVisible(true);
-                        }else if(status.equals("ralan")){
-                            dlgobtjalan.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
-                                                Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
-                            dlgobtjalan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                            dlgobtjalan.isCek();
-                            if(!namadokter.equals("")){
-                                dlgobtjalan.setDokter(kodedokter, namadokter);
-                            }
-                            dlgobtjalan.tampilobat();
-                            dlgobtjalan.setLocationRelativeTo(internalFrame1);
-                            dlgobtjalan.setVisible(true);
-                        }else{
-                            JOptionPane.showMessageDialog(rootPane,"Hanya bisa lewat Kasir Ralan atau Kamar Inap");
-                        }        
+                        panggilform();      
                     }
                 }                    
             }
@@ -2364,6 +2304,30 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         Sequel.AutoComitTrue();
         tampilPO();
         BtnBatalActionPerformed(null);
+    }
+
+    private void panggilform() {
+        if(status.equals("ranap")){
+            dlgobt.setNoRm(TNoRw.getText(),DTPBeri.getDate(),cmbJam.getSelectedItem().toString(),cmbMnt.getSelectedItem().toString(),cmbDtk.getSelectedItem().toString(),false);
+            dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dlgobt.isCek();
+            dlgobt.tampil();
+            dlgobt.setLocationRelativeTo(internalFrame1);
+            dlgobt.setVisible(true);
+        }else if(status.equals("ralan")){
+            dlgobtjalan.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
+                                Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
+            dlgobtjalan.isCek();
+            if(!namadokter.equals("")){
+                dlgobtjalan.setDokter(kodedokter, namadokter);
+            }
+            dlgobtjalan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dlgobtjalan.tampilobat();
+            dlgobtjalan.setLocationRelativeTo(internalFrame1);
+            dlgobtjalan.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Hanya bisa lewat Kasir Ralan atau Kamar Inap");
+        }
     }
 
 }

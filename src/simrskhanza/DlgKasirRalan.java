@@ -7833,17 +7833,19 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     }
 
     private void panggilformobat() {
-        TKdPny.setText("-");
-        billing.dlgobt.setNoRm(TNoRw.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),2).toString(),
-                            tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),3).toString(),
-                            Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
-                            Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
-        billing.dlgobt.isCek();
-        billing.dlgobt.setDokter("","");
-        billing.dlgobt.tampilobat();
-        billing.dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        billing.dlgobt.setLocationRelativeTo(internalFrame1);
-        billing.dlgobt.setVisible(true);
+        if(tbKasirRalan.getSelectedRow()!= -1){
+            TKdPny.setText("-");
+            billing.dlgobt.setNoRm(TNoRw.getText(),tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),2).toString(),
+                                tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),3).toString(),
+                                Sequel.cariIsi("select tgl_registrasi from reg_periksa where no_rawat='"+TNoRw.getText()+"'"),
+                                Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+TNoRw.getText()+"'"));
+            billing.dlgobt.isCek();
+            billing.dlgobt.setDokter("","");
+            billing.dlgobt.tampilobat();
+            billing.dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            billing.dlgobt.setLocationRelativeTo(internalFrame1);
+            billing.dlgobt.setVisible(true);
+        }            
     }
 
     private void billingparsial() {
