@@ -522,7 +522,13 @@ public class DlgInputStok extends javax.swing.JDialog {
                 } catch (Exception e) {
                 } 
             }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                TCari.setText("");
                 TCari.requestFocus();
+            }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                if(tbDokter.getSelectedColumn()==1){
+                    TCari.setText("");
+                    TCari.requestFocus();
+                }
             }
         }
 }//GEN-LAST:event_tbDokterKeyPressed
@@ -698,14 +704,6 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void tbDokterKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDokterKeyReleased
         if(tabMode.getRowCount()!=0){
-            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                try {                                     
-                    getData();                     
-                    TCari.setText("");
-                    TCari.requestFocus();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }
             if((evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)||(evt.getKeyCode()==KeyEvent.VK_RIGHT)){
                 try {                                     
                     getData();           

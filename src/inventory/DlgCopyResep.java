@@ -324,7 +324,7 @@ public class DlgCopyResep extends javax.swing.JDialog {
                     if(jmlparsial>0){
                         panggilform();
                     }else{
-                        if(Sequel.cariRegistrasi(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString())>0){
+                        if(Sequel.cariRegistrasi(norawat)>0){
                             JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
                         }else{ 
                             panggilform();                             
