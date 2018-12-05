@@ -6919,7 +6919,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         dlgrwjl.isCek();
                         dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                         dlgrwjl.setLocationRelativeTo(internalFrame1);
-                        dlgrwjl.SetPoli("-");
+                        dlgrwjl.SetPoli(Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",rs2.getString("no_rawat2")));
                         dlgrwjl.SetPj(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",rs2.getString("no_rawat2")));
                         dlgrwjl.setNoRm(rs2.getString("no_rawat2"),DTPCari1.getDate(),new Date());
                         dlgrwjl.setVisible(true);
@@ -6945,7 +6945,7 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             dlgrwjl.isCek();
             dlgrwjl.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
             dlgrwjl.setLocationRelativeTo(internalFrame1);
-            dlgrwjl.SetPoli("-");
+            dlgrwjl.SetPoli(Sequel.cariIsi("select kd_poli from reg_periksa where no_rawat=?",norawat.getText()));
             dlgrwjl.SetPj(Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",norawat.getText()));
             dlgrwjl.setNoRm(norawat.getText(),DTPCari1.getDate(),new Date());
             dlgrwjl.setVisible(true);

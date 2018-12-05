@@ -3485,155 +3485,178 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"No.Rawat");
         }else{
-            if((!KdDok.getText().trim().equals(""))&&(!TDokter.getText().trim().equals(""))){
-                if(var.getkode().equals("Admin Utama")){
-                    SimpanPenangananDokter();
-                }else{
-                    try {
-                        jmlparsial=0;
-                        if(aktifkanparsial.equals("yes")){
-                            jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
-                        }
-                        if(jmlparsial>0){    
+            switch (TabRawat.getSelectedIndex()) {
+                case 0:
+                    if(KdDok.getText().trim().equals("")||TDokter.getText().trim().equals("")){
+                        Valid.textKosong(KdDok,"Dokter");
+                    }else{
+                        if(var.getkode().equals("Admin Utama")){
                             SimpanPenangananDokter();
                         }else{
-                            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                                TCari.requestFocus();
-                            }else{
-                                SimpanPenangananDokter();
-                            }
-                        } 
-                    } catch (Exception e) {
-                    }                               
-                }                            
-            }  
-
-            if((!kdptg.getText().trim().equals(""))&&(!TPerawat.getText().trim().equals(""))){
-                if(var.getkode().equals("Admin Utama")){
-                    SimpanPenangananPetugas();
-                }else{
-                    try {
-                        jmlparsial=0;
-                        if(aktifkanparsial.equals("yes")){
-                            jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
-                        }
-                        if(jmlparsial>0){ 
+                            try {
+                                jmlparsial=0;
+                                if(aktifkanparsial.equals("yes")){
+                                    jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
+                                }
+                                if(jmlparsial>0){    
+                                    SimpanPenangananDokter();
+                                }else{
+                                    if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                        TCari.requestFocus();
+                                    }else{
+                                        SimpanPenangananDokter();
+                                    }
+                                } 
+                            } catch (Exception e) {
+                            }                               
+                        }                            
+                    } 
+                    break;
+                case 1:
+                    if(kdptg.getText().trim().equals("")||TPerawat.getText().trim().equals("")){
+                        Valid.textKosong(kdptg,"Petugas");
+                    }else{
+                        if(var.getkode().equals("Admin Utama")){
                             SimpanPenangananPetugas();
                         }else{
-                            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                                TCari.requestFocus();
-                            }else{
-                                SimpanPenangananPetugas();
-                            }
-                        } 
-                    } catch (Exception e) {
-                    }                                                       
-                }   
-            }  
-
-            if((!KdDok2.getText().trim().equals(""))&&(!TDokter2.getText().trim().equals(""))&&
-              (!kdptg2.getText().trim().equals(""))&&(!TPerawat2.getText().trim().equals(""))){                
-                if(var.getkode().equals("Admin Utama")){
-                    SimpanPenangananDokterPetugas();
-                }else{
-                    try {
-                        jmlparsial=0;
-                        if(aktifkanparsial.equals("yes")){
-                            jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
+                            try {
+                                jmlparsial=0;
+                                if(aktifkanparsial.equals("yes")){
+                                    jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
+                                }
+                                if(jmlparsial>0){ 
+                                    SimpanPenangananPetugas();
+                                }else{
+                                    if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                                        JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                        TCari.requestFocus();
+                                    }else{
+                                        SimpanPenangananPetugas();
+                                    }
+                                } 
+                            } catch (Exception e) {
+                            }                                                       
+                        }   
+                    }  
+                    break;
+                case 2:
+                    if(KdDok2.getText().trim().equals("")||TDokter2.getText().trim().equals("")){
+                        Valid.textKosong(KdDok2,"Dokter");
+                    }else if(kdptg2.getText().trim().equals("")||TPerawat2.getText().trim().equals("")){
+                        Valid.textKosong(kdptg2,"Petugas");
+                    }else{                
+                          if(var.getkode().equals("Admin Utama")){
+                              SimpanPenangananDokterPetugas();
+                          }else{
+                              try {
+                                  jmlparsial=0;
+                                  if(aktifkanparsial.equals("yes")){
+                                      jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=?",TNoRw.getText()));
+                                  }
+                                  if(jmlparsial>0){ 
+                                      SimpanPenangananDokterPetugas();
+                                  }else {
+                                      if(Sequel.cariRegistrasi(TNoRw.getText())>0){
+                                          JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
+                                          TCari.requestFocus();
+                                      }else{
+                                          SimpanPenangananDokterPetugas();
+                                      }
+                                  } 
+                              } catch (Exception e) {
+                              }                                                       
+                          }                                
+                      }  
+                    break;
+                case 3:
+                    if((!TKeluhan.getText().trim().equals(""))||(!TPemeriksaan.getText().trim().equals(""))||
+                            (!TSuhu.getText().trim().equals(""))||(!TTensi.getText().trim().equals(""))||
+                            (!TAlergi.getText().trim().equals(""))||(!TTinggi.getText().trim().equals(""))||
+                            (!TBerat.getText().trim().equals(""))||(!TRespirasi.getText().trim().equals(""))||
+                            (!TNadi.getText().trim().equals(""))||(!TGCS.getText().trim().equals(""))||
+                            (!TindakLanjut.getText().trim().equals(""))){
+                        if(Sequel.menyimpantf("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
+                            TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                            TSuhu.getText(),TTensi.getText(),TNadi.getText(),TRespirasi.getText(),TTinggi.getText(),
+                            TBerat.getText(),TGCS.getText(),TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText(),
+                            cmbImun.getSelectedItem().toString(),TindakLanjut.getText()})==true){
+                                TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
+                                TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
+                                TPemeriksaan.setText("");TAlergi.setText("");cmbImun.setSelectedIndex(0);TindakLanjut.setText("");
+                                tampilPemeriksaan();
                         }
-                        if(jmlparsial>0){ 
-                            SimpanPenangananDokterPetugas();
-                        }else {
-                            if(Sequel.cariRegistrasi(TNoRw.getText())>0){
-                                JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi.\nSilahkan hubungi bagian kasir/keuangan ..!!");
-                                TCari.requestFocus();
-                            }else{
-                                SimpanPenangananDokterPetugas();
-                            }
-                        } 
-                    } catch (Exception e) {
-                    }                                                       
-                }                                
-            }   
-
-            if((!TKeluhan.getText().trim().equals(""))||(!TPemeriksaan.getText().trim().equals(""))||
-                    (!TSuhu.getText().trim().equals(""))||(!TTensi.getText().trim().equals(""))||
-                    (!TAlergi.getText().trim().equals(""))||(!TTinggi.getText().trim().equals(""))||
-                    (!TBerat.getText().trim().equals(""))||(!TRespirasi.getText().trim().equals(""))||
-                    (!TNadi.getText().trim().equals(""))||(!TGCS.getText().trim().equals(""))||
-                    (!TindakLanjut.getText().trim().equals(""))){
-                if(Sequel.menyimpantf("pemeriksaan_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
-                    TSuhu.getText(),TTensi.getText(),TNadi.getText(),TRespirasi.getText(),TTinggi.getText(),
-                    TBerat.getText(),TGCS.getText(),TKeluhan.getText(),TPemeriksaan.getText(),TAlergi.getText(),
-                    cmbImun.getSelectedItem().toString(),TindakLanjut.getText()})==true){
-                        TSuhu.setText("");TTensi.setText("");TNadi.setText("");TRespirasi.setText("");
-                        TTinggi.setText("");TBerat.setText("");TGCS.setText("");TKeluhan.setText("");
-                        TPemeriksaan.setText("");TAlergi.setText("");cmbImun.setSelectedIndex(0);TindakLanjut.setText("");
-                }
-            }  
-
-            if((!TTinggi_uteri.getText().trim().equals(""))||(!TLetak.getText().trim().equals(""))||
-                    (!TDenyut.getText().trim().equals(""))||(!TKualitas_mnt.getText().trim().equals(""))||
-                    (!TKualitas_dtk.getText().trim().equals(""))||(!TVulva.getText().trim().equals(""))||
-                    (!TPortio.getText().trim().equals(""))||(!TTebal.getText().trim().equals(""))||
-                    (!TPembukaan.getText().trim().equals(""))||(!TPenurunan.getText().trim().equals(""))||
-                    (!TDenominator.getText().trim().equals(""))){
-                if(Sequel.menyimpantf("pemeriksaan_obstetri_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",23,new String[]{
-                    TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
-                    TTinggi_uteri.getText(),cmbJanin.getSelectedItem().toString(),TLetak.getText(),cmbPanggul.getSelectedItem().toString(),TDenyut.getText(),
-                    cmbKontraksi.getSelectedItem().toString(),TKualitas_mnt.getText(),TKualitas_dtk.getText(),cmbFluksus.getSelectedItem().toString(),
-                    cmbAlbus.getSelectedItem().toString(),TVulva.getText(),TPortio.getText(),cmbDalam.getSelectedItem().toString(),TTebal.getText(),
-                    cmbArah.getSelectedItem().toString(),TPembukaan.getText(),TPenurunan.getText(),TDenominator.getText(),cmbKetuban.getSelectedItem().toString(),
-                        cmbFeto.getSelectedItem().toString()})==true){
-                        TTinggi_uteri.setText("");cmbJanin.setSelectedIndex(0);TLetak.setText("");cmbPanggul.setSelectedIndex(0);TDenyut.setText("");
-                        cmbKontraksi.setSelectedIndex(0);TKualitas_mnt.setText("");TKualitas_dtk.setText("");cmbFluksus.setSelectedIndex(0);
-                        cmbAlbus.setSelectedIndex(0);TVulva.setText("");TPortio.setText("");cmbDalam.setSelectedIndex(0);TTebal.setText("");
-                        cmbArah.setSelectedIndex(0);TPembukaan.setText("");TPenurunan.setText("");TDenominator.setText("");cmbKetuban.setSelectedIndex(0);
-                        cmbFeto.getSelectedItem().toString();
-                }
-            }  
-
-            if ((!TInspeksi.getText().trim().equals(""))||(!TInspeksiVulva.getText().trim().equals(""))||
-                    (!TInspekuloGine.getText().trim().equals(""))||(!TUkuran.getText().trim().equals(""))||
-                    (!TPortioInspekulo.getText().trim().equals(""))||(!TSondage.getText().trim().equals(""))||
-                    (!TPortioDalam.getText().trim().equals(""))||(!TBentuk.getText().trim().equals(""))||
-                    (!TCavumUteri.getText().trim().equals(""))||(!TUkuran.getText().trim().equals(""))||
-                    (!TAdnexaKanan.getText().trim().equals(""))||(!TAdnexaKiri.getText().trim().equals(""))||
-                    (!TCavumDouglas.getText().trim().equals(""))) {
-                if(Sequel.menyimpantf("pemeriksaan_ginekologi_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",20, new String[] {
-                    TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
-                    TInspeksi.getText(),TInspeksiVulva.getText(),TInspekuloGine.getText(),
-                    cmbFluxusGine.getSelectedItem().toString(),cmbFluorGine.getSelectedItem().toString(), TVulvaInspekulo.getText(),
-                    TPortioInspekulo.getText(), TSondage.getText(), TPortioDalam.getText(),
-                    TBentuk.getText(), TCavumUteri.getText(), cmbMobilitas.getSelectedItem().toString(),
-                    TUkuran.getText(), cmbNyeriTekan.getSelectedItem().toString(),
-                    TAdnexaKanan.getText(), TAdnexaKiri.getText(), TCavumDouglas.getText()})==true){
-                        TInspeksi.setText("");TInspeksiVulva.setText("");TInspekuloGine.setText("");
-                        cmbFluxusGine.setSelectedIndex(0);cmbFluorGine.setSelectedIndex(0); TVulvaInspekulo.setText("");
-                        TPortioInspekulo.setText(""); TSondage.setText(""); TPortioDalam.setText("");
-                        TBentuk.setText(""); TCavumUteri.setText(""); cmbMobilitas.setSelectedIndex(0);
-                        TUkuran.setText(""); cmbNyeriTekan.setSelectedIndex(0);
-                        TAdnexaKanan.setText(""); TAdnexaKiri.setText(""); TCavumDouglas.getText();
-                }
-            } 
-
-            if(var.getdiagnosa_pasien()==true){
-                panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Ralan",TCari.getText().trim());
-                panelDiagnosa1.simpan();
-            } 
-
-            if((!KdDok3.getText().trim().equals(""))&&(!TDokter3.getText().trim().equals(""))&&(!Catatan.getText().trim().equals(""))){
-                if(Sequel.menyimpantf("catatan_perawatan","?,?,?,?,?","Data",5,new String[]{
-                    Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
-                    TNoRw.getText(),KdDok3.getText(),Catatan.getText()
-                })==true){
-                    Catatan.setText("");
-                }
-            }
-            TampilkanData();
+                    }
+                    break;
+                case 4:
+                    if((!TTinggi_uteri.getText().trim().equals(""))||(!TLetak.getText().trim().equals(""))||
+                            (!TDenyut.getText().trim().equals(""))||(!TKualitas_mnt.getText().trim().equals(""))||
+                            (!TKualitas_dtk.getText().trim().equals(""))||(!TVulva.getText().trim().equals(""))||
+                            (!TPortio.getText().trim().equals(""))||(!TTebal.getText().trim().equals(""))||
+                            (!TPembukaan.getText().trim().equals(""))||(!TPenurunan.getText().trim().equals(""))||
+                            (!TDenominator.getText().trim().equals(""))){
+                        if(Sequel.menyimpantf("pemeriksaan_obstetri_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",23,new String[]{
+                            TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                            TTinggi_uteri.getText(),cmbJanin.getSelectedItem().toString(),TLetak.getText(),cmbPanggul.getSelectedItem().toString(),TDenyut.getText(),
+                            cmbKontraksi.getSelectedItem().toString(),TKualitas_mnt.getText(),TKualitas_dtk.getText(),cmbFluksus.getSelectedItem().toString(),
+                            cmbAlbus.getSelectedItem().toString(),TVulva.getText(),TPortio.getText(),cmbDalam.getSelectedItem().toString(),TTebal.getText(),
+                            cmbArah.getSelectedItem().toString(),TPembukaan.getText(),TPenurunan.getText(),TDenominator.getText(),cmbKetuban.getSelectedItem().toString(),
+                                cmbFeto.getSelectedItem().toString()})==true){
+                                TTinggi_uteri.setText("");cmbJanin.setSelectedIndex(0);TLetak.setText("");cmbPanggul.setSelectedIndex(0);TDenyut.setText("");
+                                cmbKontraksi.setSelectedIndex(0);TKualitas_mnt.setText("");TKualitas_dtk.setText("");cmbFluksus.setSelectedIndex(0);
+                                cmbAlbus.setSelectedIndex(0);TVulva.setText("");TPortio.setText("");cmbDalam.setSelectedIndex(0);TTebal.setText("");
+                                cmbArah.setSelectedIndex(0);TPembukaan.setText("");TPenurunan.setText("");TDenominator.setText("");cmbKetuban.setSelectedIndex(0);
+                                cmbFeto.getSelectedItem().toString();
+                                tampilPemeriksaanObstetri();
+                        }
+                    }  
+                    break;
+                case 5:
+                    if ((!TInspeksi.getText().trim().equals(""))||(!TInspeksiVulva.getText().trim().equals(""))||
+                            (!TInspekuloGine.getText().trim().equals(""))||(!TUkuran.getText().trim().equals(""))||
+                            (!TPortioInspekulo.getText().trim().equals(""))||(!TSondage.getText().trim().equals(""))||
+                            (!TPortioDalam.getText().trim().equals(""))||(!TBentuk.getText().trim().equals(""))||
+                            (!TCavumUteri.getText().trim().equals(""))||(!TUkuran.getText().trim().equals(""))||
+                            (!TAdnexaKanan.getText().trim().equals(""))||(!TAdnexaKiri.getText().trim().equals(""))||
+                            (!TCavumDouglas.getText().trim().equals(""))) {
+                        if(Sequel.menyimpantf("pemeriksaan_ginekologi_ralan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",20, new String[] {
+                            TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                            TInspeksi.getText(),TInspeksiVulva.getText(),TInspekuloGine.getText(),
+                            cmbFluxusGine.getSelectedItem().toString(),cmbFluorGine.getSelectedItem().toString(), TVulvaInspekulo.getText(),
+                            TPortioInspekulo.getText(), TSondage.getText(), TPortioDalam.getText(),
+                            TBentuk.getText(), TCavumUteri.getText(), cmbMobilitas.getSelectedItem().toString(),
+                            TUkuran.getText(), cmbNyeriTekan.getSelectedItem().toString(),
+                            TAdnexaKanan.getText(), TAdnexaKiri.getText(), TCavumDouglas.getText()})==true){
+                                TInspeksi.setText("");TInspeksiVulva.setText("");TInspekuloGine.setText("");
+                                cmbFluxusGine.setSelectedIndex(0);cmbFluorGine.setSelectedIndex(0); TVulvaInspekulo.setText("");
+                                TPortioInspekulo.setText(""); TSondage.setText(""); TPortioDalam.setText("");
+                                TBentuk.setText(""); TCavumUteri.setText(""); cmbMobilitas.setSelectedIndex(0);
+                                TUkuran.setText(""); cmbNyeriTekan.setSelectedIndex(0);
+                                TAdnexaKanan.setText(""); TAdnexaKiri.setText(""); TCavumDouglas.getText();
+                                tampilPemeriksaanGinekologi();
+                        }
+                    }
+                    break;
+                case 7:
+                    if(var.getdiagnosa_pasien()==true){
+                        panelDiagnosa1.setRM(TNoRw.getText(),TNoRM.getText(),Valid.SetTgl(DTPCari1.getSelectedItem()+""),Valid.SetTgl(DTPCari2.getSelectedItem()+""),"Ralan",TCari.getText().trim());
+                        panelDiagnosa1.simpan();
+                    }
+                    break;
+                case 8:
+                    if((!KdDok3.getText().trim().equals(""))&&(!TDokter3.getText().trim().equals(""))&&(!Catatan.getText().trim().equals(""))){
+                        if(Sequel.menyimpantf("catatan_perawatan","?,?,?,?,?","Data",5,new String[]{
+                            Valid.SetTgl(DTPTgl.getSelectedItem()+""),cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem(),
+                            TNoRw.getText(),KdDok3.getText(),Catatan.getText()
+                        })==true){
+                            Catatan.setText("");
+                            tampilCatatan();
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }            
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 

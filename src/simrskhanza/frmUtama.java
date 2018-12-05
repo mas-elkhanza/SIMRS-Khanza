@@ -7188,7 +7188,7 @@ public class frmUtama extends javax.swing.JFrame {
                     lblUser.setText(var.getkode());
                     MnGantiPassword.setEnabled(true);
                     BtnToolReg.setEnabled(var.getregistrasi());
-                    if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)){
+                    if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)||(var.gettindakan_ranap()==true)){
                         BtnToolKamnap.setEnabled(true);
                     }else{
                         BtnToolKamnap.setEnabled(var.getkamar_inap());
@@ -13542,7 +13542,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
                 jmlmenu++;
             }
 
-            if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)){
+            if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)||(var.gettindakan_ranap()==true)){
                 Panelmenu.add(btnKamarInap);
                 jmlmenu++;
             }
@@ -15579,7 +15579,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             jmlmenu++;
         }
 
-        if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)){
+        if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)||(var.gettindakan_ranap()==true)){
             Panelmenu.add(btnKamarInap);
             jmlmenu++;
         }
@@ -17612,7 +17612,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             }                
         }
 
-        if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)){
+        if((var.getkamar_inap()==true)||(var.getbilling_ranap()==true)||(var.gettindakan_ranap()==true)){
             if(btnKamarInap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKamarInap);
                 jmlmenu++;

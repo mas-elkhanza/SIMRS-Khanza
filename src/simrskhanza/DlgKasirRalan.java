@@ -5290,10 +5290,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
             }else {
                 Valid.editTable(tabModekasir,"reg_periksa","no_rawat",TNoRw,"stts='Dirawat'"); 
-                MnKamarInapActionPerformed(evt);
-                if(tabModekasir.getRowCount()!=0){tampilkasir();}
-            }
-            
+                if(MnKamarInap.isSelected()==true){
+                    MnKamarInapActionPerformed(evt);
+                    if(tabModekasir.getRowCount()!=0){tampilkasir();}
+                }                    
+            }            
         }
     }//GEN-LAST:event_MnDIrawatActionPerformed
 

@@ -525,11 +525,11 @@ public final class SuratMasuk extends javax.swing.JDialog {
 
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setOpaque(false);
-        jPanel2.setLayout(new java.awt.BorderLayout(1, 1));
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
         panelGlass7.setBorder(null);
         panelGlass7.setName("panelGlass7"); // NOI18N
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 36));
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 37));
         panelGlass7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 4));
 
         jLabel15.setText("Terima :");
@@ -538,7 +538,7 @@ public final class SuratMasuk extends javax.swing.JDialog {
         panelGlass7.add(jLabel15);
 
         DTPCari1.setEditable(false);
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-12-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -552,7 +552,7 @@ public final class SuratMasuk extends javax.swing.JDialog {
         panelGlass7.add(jLabel17);
 
         DTPCari2.setEditable(false);
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-12-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-12-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -747,7 +747,7 @@ public final class SuratMasuk extends javax.swing.JDialog {
                 break;
             case 1:
                 try {
-                    loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login.php?act=login&usere=admin&passwordte=akusayangsamakamu");  
+                    loadURL("http://"+koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"surat/login.php?act=login&usere=admin&passwordte=akusayangsamakamu&tgl1="+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"&tgl2="+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"&ruang="+Ruang.getText().replaceAll(" ","_")+"&sttssurat="+StatusSurat.getText().replaceAll(" ","_")+"&sttsbalas="+StatusBalas.getText().replaceAll(" ","_")+"&keyword="+TCari.getText().replaceAll(" ","_"));  
                 } catch (Exception ex) {
                     System.out.println("Notifikasi : "+ex);
                 }
