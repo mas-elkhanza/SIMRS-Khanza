@@ -272,6 +272,25 @@ public final class sekuel {
         }            
     }
     
+    public void menyimpan2(String table,String value,int i,String[] a){
+        try {
+            ps=connect.prepareStatement("insert into "+table+" values("+value+")");
+            try{                 
+                for(angka=1;angka<=i;angka++){
+                    ps.setString(angka,a[angka-1]);
+                }            
+                ps.executeUpdate();
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);            
+            }finally{
+                if(ps != null){
+                    ps.close();
+                }                
+            }
+        } catch (Exception e) { 
+        }            
+    }
+    
     public void menyimpan(String table,String value,int i,String[] a,String acuan_field,String update,int j,String[] b){
         try{ 
             ps=connect.prepareStatement("insert into "+table+" values("+value+")");

@@ -530,7 +530,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
         TabSetting.setBackground(new java.awt.Color(255, 255, 253));
-        TabSetting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
+        TabSetting.setBorder(null);
         TabSetting.setForeground(new java.awt.Color(70,70,70));
         TabSetting.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSetting.setName("TabSetting"); // NOI18N
@@ -540,7 +540,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
 
-        internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame3.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
@@ -590,7 +590,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         TabSetting.addTab("Pegaturan Harga", internalFrame3);
 
-        internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame4.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
@@ -887,7 +887,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         TabSetting.addTab("Pegaturan Harga Umum", internalFrame4);
 
-        internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame2.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
@@ -1284,7 +1284,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         TabSetting.addTab("Pegaturan Harga Per Jenis Barang", internalFrame2);
 
-        internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame5.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame5.setBorder(null);
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));

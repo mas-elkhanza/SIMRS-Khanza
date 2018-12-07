@@ -42,7 +42,7 @@ public class DlgReturJual extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private riwayatobat Trackobat=new riwayatobat();
     private String formvalid="";
-    private String aktifkanbatch="no";
+    private String aktifkanbatch="no",norawat="";
     private final Properties prop = new Properties();
 
     /** Creates new form DlgProgramStudi
@@ -1222,7 +1222,9 @@ private void BtnBrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         }
         form.barang.emptTeks();
         form.barang.isCek();
-        form.barang.tampil4(NoRetur.getText());
+        if(!norawat.equals("")){
+            form.barang.tampil4(norawat);
+        }            
         form.barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.barang.setLocationRelativeTo(internalFrame1);
         form.barang.setAlwaysOnTop(false);
@@ -1520,7 +1522,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     
     public void setPasien(String norm,String norawat){
         kdmem.setText(norm);
-        NoRetur.setText(norawat);
+        this.norawat=norawat;
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_retur_jual,2),signed)),0) from returjual where no_retur_jual like '%"+norawat+"%' ",norawat,2,NoRetur); 
         formvalid="No";
         Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?",nmmem,kdmem.getText());
         kdgudang.setText(Sequel.cariIsi("select kd_bangsal from set_lokasi limit 1"));

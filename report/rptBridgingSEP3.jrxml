@@ -13,6 +13,7 @@
 	<parameter name="kontakrs" class="java.lang.String"/>
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="prb" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select bridging_sep.no_sep, bridging_sep.no_rawat,bridging_sep.nomr,bridging_sep.nama_pasien,bridging_sep.tglsep,
 bridging_sep.tglrujukan,bridging_sep.no_rujukan,bridging_sep.kdppkrujukan,
@@ -320,77 +321,77 @@ bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.p
 				<text><![CDATA[Catatan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="341" y="76" width="50" height="11"/>
+				<reportElement x="341" y="86" width="50" height="11"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Peserta]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="392" y="76" width="7" height="11"/>
+				<reportElement x="392" y="86" width="7" height="11"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement mode="Transparent" x="400" y="76" width="132" height="11"/>
+				<reportElement mode="Transparent" x="400" y="86" width="132" height="11"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{peserta}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="392" y="89" width="7" height="11"/>
+				<reportElement x="392" y="99" width="7" height="11"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="341" y="89" width="50" height="11"/>
+				<reportElement x="341" y="99" width="50" height="11"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[COB]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="392" y="102" width="7" height="11"/>
+				<reportElement x="392" y="112" width="7" height="11"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement mode="Transparent" x="400" y="102" width="132" height="11"/>
+				<reportElement mode="Transparent" x="400" y="112" width="132" height="11"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{if(bridging_sep.jnspelayanan='1','Rawat Inap','Rawat Jalan')}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="341" y="102" width="50" height="11"/>
+				<reportElement x="341" y="112" width="50" height="11"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Jns. Rawat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="392" y="115" width="7" height="11"/>
+				<reportElement x="392" y="125" width="7" height="11"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement mode="Transparent" x="400" y="115" width="132" height="11"/>
+				<reportElement mode="Transparent" x="400" y="125" width="132" height="11"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{if(bridging_sep.klsrawat='1','Kelas 1',if(bridging_sep.klsrawat='2','Kelas 2','Kelas 3'))}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="341" y="115" width="50" height="11"/>
+				<reportElement x="341" y="125" width="50" height="11"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 				</textElement>
@@ -444,28 +445,28 @@ bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.p
 				<textFieldExpression class="java.util.Date"><![CDATA[new Date()]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement mode="Transparent" x="400" y="89" width="132" height="11"/>
+				<reportElement mode="Transparent" x="400" y="99" width="132" height="11"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{cob}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement mode="Transparent" x="400" y="128" width="132" height="11"/>
+				<reportElement mode="Transparent" x="400" y="138" width="132" height="11"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="9"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{penjamin}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="392" y="128" width="7" height="11"/>
+				<reportElement x="392" y="138" width="7" height="11"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="341" y="128" width="50" height="11"/>
+				<reportElement x="341" y="138" width="50" height="11"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 				</textElement>
@@ -697,6 +698,13 @@ bridging_sep.asal_rujukan,bridging_sep.eksekutif,bridging_sep.cob,bridging_sep.p
 					<jr:codeExpression><![CDATA[$F{no_sep}]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
+			<textField isStretchWithOverflow="true" pattern="">
+				<reportElement mode="Transparent" x="341" y="73" width="190" height="11"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{prb}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>

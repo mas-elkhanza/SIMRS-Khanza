@@ -13,6 +13,8 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -1051,6 +1053,10 @@ public final class validasi {
     
     public double SetAngka7(double nilai){        
        return Double.parseDouble(df7.format(nilai));
+    }
+    
+    public double SetAngka8(double value,int places){      
+        return new BigDecimal(value).setScale(places, RoundingMode.HALF_UP).doubleValue();
     }
     
     public double SetAngka(String txt){

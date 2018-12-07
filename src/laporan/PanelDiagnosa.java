@@ -277,7 +277,7 @@ public class PanelDiagnosa extends widget.panelisi {
 
         MnStatusBaru.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusBaru.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusBaru.setForeground(new java.awt.Color(100, 80, 80));
+        MnStatusBaru.setForeground(new java.awt.Color(70,70,70));
         MnStatusBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusBaru.setText("Status Penyakit Baru");
         MnStatusBaru.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -292,7 +292,7 @@ public class PanelDiagnosa extends widget.panelisi {
 
         MnStatusLama.setBackground(new java.awt.Color(255, 255, 255));
         MnStatusLama.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnStatusLama.setForeground(new java.awt.Color(100, 80, 80));
+        MnStatusLama.setForeground(new java.awt.Color(70,70,70));
         MnStatusLama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnStatusLama.setText("Status Penyakit Lama");
         MnStatusLama.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -310,7 +310,7 @@ public class PanelDiagnosa extends widget.panelisi {
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
         TabRawat.setBorder(null);
-        TabRawat.setForeground(new java.awt.Color(100, 80, 80));
+        TabRawat.setForeground(new java.awt.Color(70,70,70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -318,10 +318,10 @@ public class PanelDiagnosa extends widget.panelisi {
             }
         });
 
-        ScrollInput.setBorder(null);
+        ScrollInput.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         ScrollInput.setOpaque(true);
 
-        FormData.setBorder(null);
+        FormData.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         FormData.setPreferredSize(new java.awt.Dimension(865, 217));
         FormData.setLayout(null);
 
@@ -422,7 +422,7 @@ public class PanelDiagnosa extends widget.panelisi {
         internalFrame2.setBorder(null);
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll.setBorder(null);
+        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll.setOpaque(true);
 
         tbDiagnosaPasien.setAutoCreateRowSorter(true);
@@ -438,7 +438,7 @@ public class PanelDiagnosa extends widget.panelisi {
         internalFrame3.setBorder(null);
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
-        Scroll3.setBorder(null);
+        Scroll3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll3.setOpaque(true);
 
         tbTindakanPasien.setAutoCreateRowSorter(true);

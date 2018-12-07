@@ -1788,7 +1788,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-10-2018 11:04:14" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018 14:47:16" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setOpaque(false);
         DTPTgl.setPreferredSize(new java.awt.Dimension(135, 23));
@@ -2052,7 +2052,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         internalFrame2.setForeground(new java.awt.Color(70,70,70));
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
-        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass7.setBorder(null);
+        panelGlass7.setPreferredSize(new java.awt.Dimension(44, 40));
         panelGlass7.setLayout(null);
 
         jLabel5.setText("Dokter :");
@@ -2117,7 +2118,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         internalFrame3.setBorder(null);
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
-        panelGlass10.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass10.setBorder(null);
+        panelGlass10.setPreferredSize(new java.awt.Dimension(44, 40));
         panelGlass10.setLayout(null);
 
         jLabel13.setText("Petugas :");
@@ -2193,7 +2195,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         internalFrame4.setBorder(null);
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
 
-        panelGlass11.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass11.setBorder(null);
+        panelGlass11.setPreferredSize(new java.awt.Dimension(44, 40));
         panelGlass11.setLayout(null);
 
         jLabel14.setText("Petugas :");
@@ -2314,7 +2317,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame5.add(Scroll11, java.awt.BorderLayout.CENTER);
 
-        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass9.setBorder(null);
+        panelGlass9.setPreferredSize(new java.awt.Dimension(44, 40));
         panelGlass9.setLayout(null);
 
         jLabel8.setText("Perujuk :");
@@ -2354,7 +2358,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         internalFrame6.setBorder(null);
         internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
 
-        panelGlass12.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass12.setBorder(null);
+        panelGlass12.setPreferredSize(new java.awt.Dimension(44, 40));
         panelGlass12.setLayout(null);
 
         jLabel10.setText("Perujuk :");
@@ -2393,7 +2398,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         internalFrame7.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawatLaborat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatLaborat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(234, 250, 233)));
+        TabRawatLaborat.setBorder(null);
         TabRawatLaborat.setForeground(new java.awt.Color(70,70,70));
         TabRawatLaborat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatLaborat.setPreferredSize(new java.awt.Dimension(540, 500));
@@ -2403,6 +2408,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }
         });
 
+        Scroll12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll12.setComponentPopupMenu(PopupLaborat);
         Scroll12.setOpaque(true);
         Scroll12.setPreferredSize(new java.awt.Dimension(540, 500));
@@ -2412,6 +2418,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         TabRawatLaborat.addTab("Pemeriksaan", Scroll12);
 
+        Scroll14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll14.setComponentPopupMenu(PopupDetailLaborat);
         Scroll14.setOpaque(true);
         Scroll14.setPreferredSize(new java.awt.Dimension(540, 500));
@@ -2429,7 +2436,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         internalFrame8.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawatLaboratBayar.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawatLaboratBayar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawatLaboratBayar.setBorder(null);
         TabRawatLaboratBayar.setForeground(new java.awt.Color(70,70,70));
         TabRawatLaboratBayar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawatLaboratBayar.setPreferredSize(new java.awt.Dimension(540, 500));
@@ -2439,6 +2446,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             }
         });
 
+        Scroll15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll15.setComponentPopupMenu(PopupLaboratBayar);
         Scroll15.setOpaque(true);
         Scroll15.setPreferredSize(new java.awt.Dimension(540, 500));
@@ -2453,6 +2461,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         TabRawatLaboratBayar.addTab("Pemeriksaan", Scroll15);
 
+        Scroll16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll16.setComponentPopupMenu(PopupDetailLaboratBayar);
         Scroll16.setOpaque(true);
         Scroll16.setPreferredSize(new java.awt.Dimension(540, 500));
@@ -2507,7 +2516,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         internalFrame9.add(Scroll17, java.awt.BorderLayout.CENTER);
 
-        panelGlass13.setPreferredSize(new java.awt.Dimension(44, 44));
+        panelGlass13.setBorder(null);
+        panelGlass13.setPreferredSize(new java.awt.Dimension(44, 40));
         panelGlass13.setLayout(null);
 
         chkPoli.setText("Poliklinik :");
@@ -2542,6 +2552,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
 
         TabRawat.addTab("Obat & Registrasi", internalFrame9);
 
+        Scroll9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll9.setOpaque(true);
         Scroll9.setPreferredSize(new java.awt.Dimension(440, 404));
 
@@ -5523,11 +5534,11 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         TagihanPPN.setText(Valid.SetAngka3(tagihanppn));
         
         kekurangan=(bayar+besarppn)-tagihanppn;
-        jLabel5.setText("Bayar : Rp.");
+        jLabel6.setText("Bayar : Rp.");
         if(kekurangan<0){
-            jLabel6.setText("Kekurangan : Rp.");
+            jLabel7.setText("Kekurangan : Rp.");
         }else{
-            jLabel6.setText("Kembali : Rp.");
+            jLabel7.setText("Kembali : Rp.");
         }
 
         TKembali.setText(Valid.SetAngka3(kekurangan));  
