@@ -853,8 +853,7 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                                     "<td valign='top' align='center'></td>"+
                                     "<td valign='top' align='center'></td>"+
                                 "</tr>"
-                            );    
-                            
+                            ); 
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi Poli : "+e);
@@ -869,26 +868,26 @@ public final class DlgSensusHarianPoli extends javax.swing.JDialog {
                 }
                 if((jmlbaru+jmllama)>0){
                     htmlContent.append(
-                                "<tr class='isi3'>"+
-                                    "<td valign='top' align='left' colspan='2'>Baru</td>"+
-                                    "<td valign='top' align='left' colspan='10'>: "+jmlbaru+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi3'>"+
-                                    "<td valign='top' align='left' colspan='2'>Lama</td>"+
-                                    "<td valign='top' align='left' colspan='10'>: "+jmllama+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi3'>"+
-                                    "<td valign='top' align='left' colspan='2'>Laki-Laki</td>"+
-                                    "<td valign='top' align='left' colspan='10'>: "+jmllaki+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi3'>"+
-                                    "<td valign='top' align='left' colspan='2'>Perempuan</td>"+
-                                    "<td valign='top' align='left' colspan='10'>: "+jmlper+"</td>"+
-                                "</tr>"+
-                                "<tr class='isi3'>"+
-                                    "<td valign='top' align='left' colspan='2'>Total</td>"+
-                                    "<td valign='top' align='left' colspan='10'>: "+(jmllama+jmlbaru)+"</td>"+
-                                "</tr>"
+                        "<tr class='isi3'>"+
+                            "<td valign='top' align='left' colspan='2'>Baru</td>"+
+                            "<td valign='top' align='left' colspan='10'>: "+jmlbaru+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi3'>"+
+                            "<td valign='top' align='left' colspan='2'>Lama</td>"+
+                            "<td valign='top' align='left' colspan='10'>: "+jmllama+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi3'>"+
+                            "<td valign='top' align='left' colspan='2'>Laki-Laki</td>"+
+                            "<td valign='top' align='left' colspan='10'>: "+jmllaki+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi3'>"+
+                            "<td valign='top' align='left' colspan='2'>Perempuan</td>"+
+                            "<td valign='top' align='left' colspan='10'>: "+jmlper+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi3'>"+
+                            "<td valign='top' align='left' colspan='2'>Total</td>"+
+                            "<td valign='top' align='left' colspan='10'>: "+(jmllama+jmlbaru)+"</td>"+
+                        "</tr>"
                      );
                 }
             } catch (Exception e) {

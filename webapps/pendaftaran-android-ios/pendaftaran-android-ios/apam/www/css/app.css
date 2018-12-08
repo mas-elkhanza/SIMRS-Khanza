@@ -1,0 +1,100 @@
+body {
+  font-family: Sans-Serif !important;
+}
+/* Landing page */
+.view .page {
+  background: #efeff4;
+}
+
+.logo {
+  display: block;
+  max-width: 140px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.page[data-name="landing"] .button-wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 40px;
+  margin: auto !important;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 100px;
+}
+
+/*Home page*/
+.top-logo {
+  max-height: 44px;
+}
+
+/*Data sources*/
+.icon-img {
+  width: 40px;
+  height: 40px;
+}
+
+/*Stream approve*/
+.stream-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.stream-title .item-link {
+  display: block;
+}
+
+.stream-title .item-after {
+  -background: #ffffff;
+  max-width: 100%;
+  -text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  height: 44px;
+  line-height: 44px;
+  -border-top: 1px solid #c8c7cc;
+  -border-bottom: 1px solid #c8c7cc;
+}
+
+.stream-sub-title span {
+  line-height: 32px;
+}
+
+.home-swiper {
+  margin: 0px 0 35px;
+  font-size: 18px;
+  height: 35%;
+}
+.home-swiper .swiper-slide {
+  font-size: 25px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #000;
+}
+.home-swiper .swiper-slide {
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  background: #fff;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  background-size:cover;
+}
+.home div[class*="col"] {
+  background: #fff;
+  text-align: center;
+  color: #000;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 0px;
+  font-size: 12px;
+}
+.size-22 { font-size: 22px }
+.size-25 { font-size: 25px }
+.size-29 { font-size: 29px }
+.size-50 { font-size: 50px }
+.klinik { display: none; }
