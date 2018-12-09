@@ -39,7 +39,7 @@
             echo "<table width='2500px' border='0' align='center' cellpadding='0' cellspacing='0' class='tbl_form'>
                     <tr class='head2'>
                         <td width='100px'><div align='center'>Proses</div></td>
-                        <td width='90px'><div align='center'>No.Urut</div></td>
+                        <td width='90px'><div align='center'>No.Masuk</div></td>
                         <td width='100px'><div align='center'>No.Surat</div></td>
                         <td width='160px'><div align='center'>Asal</div></td>
                         <td width='160px'><div align='center'>Tujuan</div></td>

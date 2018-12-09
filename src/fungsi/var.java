@@ -89,7 +89,7 @@ public final class var {
             pcare_mapping_poli=false,pcare_kegiatan_kelompok=false,pcare_mapping_tindakan_ranap=false,pcare_peserta_kegiatan_kelompok=false,
             sirkulasi_obat3=false,bridging_pcare_daftar=false,pcare_mapping_dokter=false,ranap_per_ruang=false,penyakit_ranap_cara_bayar=false,
             anggota_militer_dirawat=false,set_input_parsial=false,lama_pelayanan_radiologi=false,lama_pelayanan_lab=false,bpjs_cek_sep=false,
-            catatan_perawatan=false;
+            catatan_perawatan=false,surat_keluar=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -518,6 +518,7 @@ public final class var {
                         var.lama_pelayanan_lab=true;
                         var.bpjs_cek_sep=true;
                         var.catatan_perawatan=true;
+                        var.surat_keluar=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -930,6 +931,7 @@ public final class var {
                         var.lama_pelayanan_lab=rs2.getBoolean("lama_pelayanan_lab");
                         var.bpjs_cek_sep=rs2.getBoolean("bpjs_cek_sep");
                         var.catatan_perawatan=rs2.getBoolean("catatan_perawatan");
+                        var.surat_keluar=rs2.getBoolean("surat_keluar");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1340,6 +1342,7 @@ public final class var {
                         var.lama_pelayanan_lab=false;
                         var.bpjs_cek_sep=false;
                         var.catatan_perawatan=false;
+                        var.surat_keluar=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1802,4 +1805,5 @@ public final class var {
     public static boolean getlama_pelayanan_lab(){return var.lama_pelayanan_lab;}
     public static boolean getbpjs_cek_sep(){return var.bpjs_cek_sep;}
     public static boolean getcatatan_perawatan(){return var.catatan_perawatan;}
+    public static boolean getsurat_keluar(){return var.surat_keluar;}
 }   

@@ -11,7 +11,7 @@
                 <div style="width: 835px; height: 100%; overflow: auto;">
                 <table width="100%" align="center">
                     <tr class="isi2">
-                        <td width="15%" >Nomor Urut Surat</td>
+                        <td width="15%" >Nomor Masuk</td>
                         <td width="35%">
                             :&nbsp;<input name="no_urut" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" class="inputbox" value="<?php echo $no_urut;?>" size="20" maxlength="15">
                             <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
