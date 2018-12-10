@@ -6330,8 +6330,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                     nmpnj.setText(rs.getString("png_jawab"));
                     TStatus.setText(rs.getString("daftar"));
                     umur="0";
-                    sttsumur="Th";
-                    TPasien.setText(rs.getString("nm_pasien")+" ("+umur+" "+sttsumur+")");
+                    sttsumur="Th";                    
                     if(rs.getInt("tahun")>0){
                         umur=rs.getString("tahun");
                         sttsumur="Th";
@@ -6344,6 +6343,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                             sttsumur="Hr";
                         }
                     }
+                    TPasien.setText(rs.getString("nm_pasien")+" ("+umur+" "+sttsumur+")");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
