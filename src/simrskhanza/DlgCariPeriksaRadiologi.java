@@ -1932,6 +1932,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     public void isCek(){
         MnCetakNota.setEnabled(var.getperiksa_radiologi());
         BtnHapus.setEnabled(var.getperiksa_radiologi());
+        MnUbahDokterPetugas.setEnabled(var.getperiksa_radiologi());
+        MnLihatGambar.setEnabled(var.getperiksa_radiologi());
+        MnLihatHasil.setEnabled(var.getperiksa_radiologi());
         BtnPrint.setEnabled(var.getperiksa_radiologi());
     }
  
