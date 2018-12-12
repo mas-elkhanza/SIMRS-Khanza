@@ -269,7 +269,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2018 15:39:03" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2018 01:04:14" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -303,6 +303,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
             }
         });
 
+        scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
@@ -334,6 +335,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         TabRawat.addTab("Data Permintaan", scrollPane1);
 
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         scrollPane2.setName("scrollPane2"); // NOI18N
         scrollPane2.setOpaque(true);
 
