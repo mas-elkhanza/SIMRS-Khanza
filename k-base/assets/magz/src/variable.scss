@@ -1,0 +1,58 @@
+/*
+ * Variable
+ */
+
+/* Colors */
+$colors: (
+	firstbar: #FFFFFF,
+	footer: #252e38,
+	footerText: #848f9a,
+	dark: #191E21,
+
+	primary: #F73F52,
+	secondary: #C8081C,
+	warning: #F39C12,
+	danger: #E74C3C,
+	success: #1ABC9C,
+	info: #3498db,
+	grey: #E7E7E7,
+	mostpopular: #FAFAFA,
+	navbg: #FFFFFF,
+	navborder: #DDDDDD,
+	navtext: #191E21,
+
+	facebook: #3b5998,
+	twitter: #4099FF,
+	youtube: #C4302B,
+	googleplus: #DE5245,
+	instagram: #885343,
+	tumblr: #36465D,
+	dribbble: #E14C86,
+	linkedin: #007BB6,
+	skype: #00AFF0,
+	rss: #ee802f,
+	github: #000,
+	whatsapp: #25D366,
+	snapchat: #FFFC01,
+	foursquare: #EF4B78,
+	pinterest: #B82B38,
+	wordpress: #21759A,
+	reddit: #1288DF,
+	hackernews: #FF6600,
+	designernews: #3275D6,
+	yahoo: #420297,
+	buffer: #000000,
+	vimeo: #1AB7EA,
+	twitch: #6441A4,
+);
+
+$general-transition: all .5s;
+
+$nav_height: 55px;
+$dropdown_menu_width: 230px;
+$mobile_nav_width: 320px;
+$sidebar: 250px;
+
+@function color($var, $key) {
+	@return map-get($var, $key);
+}

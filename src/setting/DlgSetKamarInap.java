@@ -52,7 +52,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             "Jam Minimal Dihitung di Kamar","Hitung Hari dari Awal Masuk",
             "Fee Perujuk Ranap","Aktifkan Diagnosa Akhir",
             "Biaya Ranap Gabung Bayi","Aktifkan Hapus Data Salah",
-            "Aktifkan Kamar Inap di Kasir Ralan"
+            "Aktifkan Kamar Inap di Ralan"
         };
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -121,7 +121,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130,100,100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Kamar Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -270,7 +270,7 @@ public class DlgSetKamarInap extends javax.swing.JDialog {
         panelGlass7.add(cmbYes4);
         cmbYes4.setBounds(455, 72, 60, 23);
 
-        jLabel12.setText("Aktifkan Kamar Inap di Kasir Ralan :");
+        jLabel12.setText("Aktifkan Kamar Inap di Ralan :");
         jLabel12.setName("jLabel12"); // NOI18N
         panelGlass7.add(jLabel12);
         jLabel12.setBounds(242, 72, 210, 23);

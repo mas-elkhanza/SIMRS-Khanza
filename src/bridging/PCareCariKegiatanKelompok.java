@@ -63,6 +63,19 @@ public final class PCareCariKegiatanKelompok extends javax.swing.JDialog {
                 "Lokasi","Keterangan","Biaya"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+              Class[] types = new Class[] {
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                 java.lang.Double.class
+             };  
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             } 
         };
         tbKamar.setModel(tabMode);
 
@@ -151,7 +164,7 @@ public final class PCareCariKegiatanKelompok extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Kegiatan Kelompok PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Kegiatan Kelompok PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -280,7 +293,19 @@ public final class PCareCariKegiatanKelompok extends javax.swing.JDialog {
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        
+        if(tbKamar.getRowCount()>0){
+            for(i=0;i<tbKamar.getRowCount();i++){ 
+                Sequel.menyimpan2("pcare_kegiatan_kelompok","?,?,?,?,?,?,?,?,?,?,?","Edu ID",11,new String[]{
+                    tbKamar.getValueAt(i,10).toString(),tbKamar.getValueAt(i,1).toString(),tbKamar.getValueAt(i,7).toString(),
+                    Valid.SetTgl(tbKamar.getValueAt(i,11)+""),tbKamar.getValueAt(i,12).toString(),
+                    tbKamar.getValueAt(i,13).toString(),tbKamar.getValueAt(i,14).toString(),
+                    tbKamar.getValueAt(i,15).toString(),tbKamar.getValueAt(i,16).toString(),
+                    tbKamar.getValueAt(i,17).toString(),tbKamar.getValueAt(i,18).toString()
+                });
+            }
+            JOptionPane.showMessageDialog(rootPane,"Proses simpan selesai...!");
+            dispose();
+        }            
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -318,9 +343,9 @@ public final class PCareCariKegiatanKelompok extends javax.swing.JDialog {
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(String kode) {        
+    public void tampil(String tanggal) {        
         try {
-            URL = link+"/kelompok/kegiatan/"+kode;	
+            URL = link+"/kelompok/kegiatan/"+tanggal;	
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("X-cons-id",prop.getProperty("CONSIDAPIPCARE"));
@@ -342,10 +367,23 @@ public final class PCareCariKegiatanKelompok extends javax.swing.JDialog {
                     i=1;
                     for(JsonNode list:response.path("list")){
                         tabMode.addRow(new Object[]{
-                            i+".",list.path("clubId").asText(),list.path("jnsKelompok").path("kdProgram").asText(),
-                            list.path("jnsKelompok").path("nmProgram").asText(),list.path("tglMulai").asText(),
-                            list.path("tglAkhir").asText(),list.path("alamat").asText(),list.path("nama").asText(),
-                            list.path("ketua_noHP").asText(),list.path("ketua_nama").asText()
+                            i+".",list.path("clubProl").path("clubId").asText(),
+                            list.path("clubProl").path("jnsKelompok").path("kdProgram").asText(),
+                            list.path("clubProl").path("jnsKelompok").path("nmProgram").asText(),
+                            list.path("clubProl").path("tglMulai").asText(),
+                            list.path("clubProl").path("tglAkhir").asText(),
+                            list.path("clubProl").path("alamat").asText(),
+                            list.path("clubProl").path("nama").asText(),
+                            list.path("clubProl").path("ketua_noHP").asText(),
+                            list.path("clubProl").path("ketua_nama").asText(),
+                            list.path("eduId").asText(),list.path("tglPelayanan").asText(),
+                            list.path("kegiatan").path("kode").asText()+" "+
+                            list.path("kegiatan").path("nama").asText(),
+                            list.path("kelompok").path("kode").asText()+" "+
+                            list.path("kelompok").path("nama").asText(),
+                            list.path("materi").asText(),list.path("pembicara").asText(),
+                            list.path("lokasi").asText(),list.path("keterangan").asText(),
+                            list.path("biaya").asDouble()
                         });
                         i++;
                     }

@@ -13,6 +13,8 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -354,6 +356,14 @@ public final class validasi {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             nilai_field.requestFocus();
         }else if(nilai_field.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
+        }else if(! nilai_field.getText().trim().equals("")){            
+            sek.mengedit(table,field_acuan+"='"+nilai_field.getText()+"'", update);                 
+        }
+    }
+    
+    public void editTable(String table,String field_acuan,JTextField nilai_field,String update) {
+        if(nilai_field.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
         }else if(! nilai_field.getText().trim().equals("")){            
             sek.mengedit(table,field_acuan+"='"+nilai_field.getText()+"'", update);                 
@@ -1041,14 +1051,27 @@ public final class validasi {
        return df7.format(nilai);
     }
     
+    public double SetAngka7(double nilai){        
+       return Double.parseDouble(df7.format(nilai));
+    }
+    
+    public double SetAngka8(double value,int places){      
+        return new BigDecimal(value).setScale(places, RoundingMode.HALF_UP).doubleValue();
+    }
+    
     public double SetAngka(String txt){
-        double x;         
+        double x;   
+        try {
             if(txt.equals("")){
                 x=0;
             }else{
                 x=Double.parseDouble(txt);
             }
-            return x;
+        } catch (Exception e) {
+            x=0;
+        }
+            
+        return x;
     }
     
     public double roundUp(double number, int multiple) {

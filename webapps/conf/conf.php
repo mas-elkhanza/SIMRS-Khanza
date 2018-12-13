@@ -173,7 +173,7 @@
      function bukainput($sql){
         bukakoneksi();
         $result=mysqli_query(bukakoneksi(),$sql)
-        or die("<font color=red><b>Gagal</b>, Ada data dengan primary key yang sama !");
+        or die(mysqli_error()."<br/><font color=red><b>Gagal</b> menjalankan perintah query !");
         mysqli_close(bukakoneksi());
         return $result;
      }
@@ -309,10 +309,9 @@
 		return "Rp. ".number_format($duit,0,",",".").",-";
 	}
         
-    function formatDuit2($duit)
-	{
-		return number_format($duit,0,",",".")."";
-	}
+    function formatDuit2($duit){
+		return @number_format($duit,0,",",".")."";
+    }
         
     function formatDec($duit)
 	{
@@ -329,12 +328,12 @@
 	}
 
      function getOne($sql) {
-     $hasil=bukaquery($sql);
-     list($result) =mysqli_fetch_array($hasil);
-     return $result;
+        $hasil=bukaquery($sql);
+        list($result) =mysqli_fetch_array($hasil);
+        return $result;
      }
 
-     function cekKosong($sql) {
+        function cekKosong($sql) {
 		$jum = mysqli_num_rows($sql);
 		if ($jum==0) return true;
 		else return false;

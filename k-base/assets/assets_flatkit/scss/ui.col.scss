@@ -1,0 +1,116 @@
+.row-col{
+  display: table;
+  table-layout: fixed;
+  border-spacing: 0;
+  width: 100%;
+  height: 100%;
+
+  > [class*="col-"],
+  > [class*=" col-"]{
+    vertical-align: top;
+    float: none;
+    padding: 0;
+    position: static;
+  }
+}
+
+.row-row {
+  display: table-row;
+  height: 100%;
+}
+
+.row-cell{
+  display: table-cell;
+  vertical-align: top;
+}
+
+.row-body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  .ie & {
+    display: table-cell;
+    overflow: auto;
+    .row-inner{
+      overflow: visible !important;
+    }
+  }
+}
+
+.row-inner {
+  position: absolute;  
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.v-m{
+  vertical-align: middle !important;
+}
+.v-t{
+  vertical-align: top !important;
+}
+.v-b{
+  vertical-align: bottom !important;
+}
+.v-c{
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+}
+
+@include media-breakpoint-up(lg) {
+  .row-col{
+    > [class*="col-lg"],
+    > [class*=" col-lg"]{
+      display: table-cell;
+      height: 100%;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .row-col{
+    > [class*="col-md"],
+    > [class*=" col-md"]{
+      display: table-cell;
+      height: 100%;
+    }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .row-col{
+    > [class*="col-sm"],
+    > [class*=" col-sm"]{
+      display: table-cell;
+      height: 100%;
+    }
+  }
+}
+
+@include media-breakpoint-up(xs) {
+  .row-col{
+    > [class*="col-xs"],
+    > [class*=" col-xs"]{
+      display: table-cell;
+      height: 100%;
+    }
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .row-col-xs{
+    display: block;
+    .row-body{
+      overflow: visible !important;
+    }
+    .row-inner{
+      position: static;
+    }
+  }
+}

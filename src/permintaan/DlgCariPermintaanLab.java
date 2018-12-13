@@ -1,5 +1,4 @@
 package permintaan;
-import keuangan.Jurnal;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -27,7 +26,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int i;
@@ -182,8 +180,8 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         LCount = new widget.Label();
         panelisi1 = new widget.panelisi();
         BtnHapus = new widget.Button();
-        BtnHasil = new widget.Button();
         BtnSampel = new widget.Button();
+        BtnHasil = new widget.Button();
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
@@ -195,7 +193,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         MnCetakHasilLab.setBackground(new java.awt.Color(255, 255, 255));
         MnCetakHasilLab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakHasilLab.setForeground(new java.awt.Color(130, 100, 100));
+        MnCetakHasilLab.setForeground(new java.awt.Color(70, 70, 70));
         MnCetakHasilLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnCetakHasilLab.setText("Cetak Permintaan Lab");
         MnCetakHasilLab.setName("MnCetakHasilLab"); // NOI18N
@@ -209,7 +207,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         MnBarcodePermintaan.setBackground(new java.awt.Color(255, 255, 255));
         MnBarcodePermintaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnBarcodePermintaan.setForeground(new java.awt.Color(130, 100, 100));
+        MnBarcodePermintaan.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodePermintaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodePermintaan.setText("Barcode No.Permintaan");
         MnBarcodePermintaan.setName("MnBarcodePermintaan"); // NOI18N
@@ -223,7 +221,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         MnBarcodePermintaan1.setBackground(new java.awt.Color(255, 255, 255));
         MnBarcodePermintaan1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnBarcodePermintaan1.setForeground(new java.awt.Color(130, 100, 100));
+        MnBarcodePermintaan1.setForeground(new java.awt.Color(70, 70, 70));
         MnBarcodePermintaan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnBarcodePermintaan1.setText("Barcode No.Permintaan 2");
         MnBarcodePermintaan1.setName("MnBarcodePermintaan1"); // NOI18N
@@ -240,7 +238,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         WindowAmbilSampel.setUndecorated(true);
         WindowAmbilSampel.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Waktu Pengambilan Sampel ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Waktu Pengambilan Sampel ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setWarnaBawah(new java.awt.Color(245, 250, 240));
         internalFrame5.setLayout(null);
@@ -276,7 +274,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-09-2018 16:32:19" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-12-2018 08:40:01" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -295,13 +293,13 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Permintaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(130, 100, 100))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Permintaan Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
-        TabRawat.setForeground(new java.awt.Color(130, 100, 100));
+        TabRawat.setBorder(null);
+        TabRawat.setForeground(new java.awt.Color(70, 70, 70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -310,6 +308,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
             }
         });
 
+        scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
@@ -341,6 +340,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         TabRawat.addTab("Data Permintaan", scrollPane1);
 
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         scrollPane2.setName("scrollPane2"); // NOI18N
         scrollPane2.setOpaque(true);
 
@@ -480,28 +480,10 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         });
         panelisi1.add(BtnHapus);
 
-        BtnHasil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/file-edit-16x16.png"))); // NOI18N
-        BtnHasil.setMnemonic('P');
-        BtnHasil.setText("Sampel");
-        BtnHasil.setToolTipText("Alt+P");
-        BtnHasil.setName("BtnHasil"); // NOI18N
-        BtnHasil.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnHasil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHasilActionPerformed(evt);
-            }
-        });
-        BtnHasil.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnHasilKeyPressed(evt);
-            }
-        });
-        panelisi1.add(BtnHasil);
-
-        BtnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
-        BtnSampel.setMnemonic('I');
-        BtnSampel.setText("Hasil");
-        BtnSampel.setToolTipText("Alt+I");
+        BtnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/file-edit-16x16.png"))); // NOI18N
+        BtnSampel.setMnemonic('P');
+        BtnSampel.setText("Sampel");
+        BtnSampel.setToolTipText("Alt+P");
         BtnSampel.setName("BtnSampel"); // NOI18N
         BtnSampel.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSampel.addActionListener(new java.awt.event.ActionListener() {
@@ -515,6 +497,24 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnSampel);
+
+        BtnHasil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
+        BtnHasil.setMnemonic('I');
+        BtnHasil.setText("Hasil");
+        BtnHasil.setToolTipText("Alt+I");
+        BtnHasil.setName("BtnHasil"); // NOI18N
+        BtnHasil.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHasil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHasilActionPerformed(evt);
+            }
+        });
+        BtnHasil.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnHasilKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnHasil);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
@@ -756,8 +756,13 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
                 Valid.textKosong(TCari,"No.Permintaan");
             }else{
-                Sequel.meghapus("permintaan_lab","noorder",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                tampil();
+                if((Sequel.cariInteger("select count(noorder) from permintaan_pemeriksaan_lab where stts_bayar='Sudah' and noorder=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString())+
+                        Sequel.cariInteger("select count(noorder) from permintaan_detail_permintaan_lab where stts_bayar='Sudah' and noorder=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()))>0){
+                    JOptionPane.showMessageDialog(null,"Maaf, Tidak boleh dihapus karena sudah ada tindakan yang sudah dibayar.\nSilahkan hubungi kasir...!!!!");
+                }else{
+                    Sequel.meghapus("permintaan_lab","noorder",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                    tampil();
+                }   
             }
         }else{            
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data permintaan...!!!!");
@@ -938,7 +943,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         // TODO add your handling code here:
     }//GEN-LAST:event_tbDokter2KeyPressed
 
-    private void BtnSampelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSampelActionPerformed
+    private void BtnHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHasilActionPerformed
         if(TabRawat.getSelectedIndex()==0){
             if(tbDokter.getSelectedRow()!= -1){
                 if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
@@ -950,9 +955,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgro.setLocationRelativeTo(internalFrame1);
                         dlgro.emptTeks();
-                        dlgro.isCek();
-                        dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ranap"); 
-                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        dlgro.isCek(); 
+                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ranap");
+                        dlgro.setDokterPerujuk(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString());
                         dlgro.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }else {
@@ -961,9 +966,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgro.setLocationRelativeTo(internalFrame1);
                         dlgro.emptTeks();
-                        dlgro.isCek();
-                        dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ralan"); 
-                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        dlgro.isCek(); 
+                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ralan");
+                        dlgro.setDokterPerujuk(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString());
                         dlgro.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }
@@ -977,13 +982,13 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             TabRawat.setSelectedIndex(0);
             TCari.requestFocus();
         }
-    }//GEN-LAST:event_BtnSampelActionPerformed
+    }//GEN-LAST:event_BtnHasilActionPerformed
 
-    private void BtnSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSampelKeyPressed
+    private void BtnHasilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHasilKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnSampelKeyPressed
+    }//GEN-LAST:event_BtnHasilKeyPressed
 
-    private void BtnHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHasilActionPerformed
+    private void BtnSampelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSampelActionPerformed
         if(TabRawat.getSelectedIndex()==0){
             if(tbDokter.getSelectedRow()!= -1){
                 if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
@@ -1004,11 +1009,11 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             TabRawat.setSelectedIndex(0);
             TCari.requestFocus();
         }            
-    }//GEN-LAST:event_BtnHasilActionPerformed
+    }//GEN-LAST:event_BtnSampelActionPerformed
 
-    private void BtnHasilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHasilKeyPressed
+    private void BtnSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSampelKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnHasilKeyPressed
+    }//GEN-LAST:event_BtnSampelKeyPressed
 
     private void MnBarcodePermintaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBarcodePermintaanActionPerformed
         if(tbDokter.getSelectedRow()!= -1){
@@ -1157,7 +1162,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "permintaan_lab.tgl_permintaan between ? and ? and reg_periksa.no_rkm_medis like ? or "+
                     "permintaan_lab.tgl_permintaan between ? and ? and pasien.nm_pasien like ? or "+
                     "permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? order by "+
-                    "permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan");
+                    "permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -1275,7 +1280,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     "permintaan_lab.tgl_permintaan between ? and ? and jns_perawatan_lab.nm_perawatan like ? or "+
                     "permintaan_lab.tgl_permintaan between ? and ? and template_laboratorium.Pemeriksaan like ? or "+
                     "permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? order by "+
-                    "permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan");
+                    "permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -1347,8 +1352,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     
     public void isCek(){
         MnCetakHasilLab.setEnabled(var.getpermintaan_lab());
-        BtnSampel.setEnabled(var.getpermintaan_lab());
-        BtnHasil.setEnabled(var.getperiksa_lab());
+        BtnHasil.setEnabled(var.getpermintaan_lab());
+        BtnSampel.setEnabled(var.getperiksa_lab());
         BtnHapus.setEnabled(var.getpermintaan_lab());
         BtnPrint.setEnabled(var.getpermintaan_lab());
     }

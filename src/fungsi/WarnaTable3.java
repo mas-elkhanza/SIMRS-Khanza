@@ -32,7 +32,7 @@ public class WarnaTable3 extends DefaultTableCellRenderer {
                 component.setForeground(new Color(55,55,175));
             }
         }else{
-            component.setForeground(new Color(130,100,100));
+            component.setForeground(new Color(70,70,70));
         }
         return component;
     }

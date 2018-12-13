@@ -28,14 +28,14 @@ public class panelisi extends JPanel{
     //private Color warnaAtas = new Color(245,200,245) ;
     //private Color warnaBawah = new Color(245,150,245) ;
     private Color warnaAtas = new Color(255,255,255) ;
-    private Color warnaBawah = new Color(255,255,253) ;
+    private Color warnaBawah = new Color(255,255,255) ;
 
     //private Color warnaAtas = new Color(255,194,255);
     //private Color warnaBawah = new Color(255,194,255);
 
     public panelisi(){
         super();
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(241,246,236)));
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(239,244,234)));
     }
 
     public panelisi(LayoutManager layout) {
