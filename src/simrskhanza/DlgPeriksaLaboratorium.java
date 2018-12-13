@@ -426,7 +426,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 255));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppBersihkan.setForeground(new java.awt.Color(70,70,70));
+        ppBersihkan.setForeground(new java.awt.Color(70, 70, 70));
         ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppBersihkan.setText("Bersihkan Pilihan");
         ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -443,7 +443,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
 
         ppSemua.setBackground(new java.awt.Color(255, 255, 255));
         ppSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppSemua.setForeground(new java.awt.Color(70,70,70));
+        ppSemua.setForeground(new java.awt.Color(70, 70, 70));
         ppSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppSemua.setText("Pilih Semua");
         ppSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -467,7 +467,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Hasil Periksa Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Input Data Hasil Periksa Laboratorium ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -719,7 +719,7 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
 
         Tanggal.setEditable(false);
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-09-2018" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2018" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -920,7 +920,6 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbPemeriksaan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPemeriksaan.setComponentPopupMenu(Popup);
         tbPemeriksaan.setName("tbPemeriksaan"); // NOI18N
         Scroll.setViewportView(tbPemeriksaan);
@@ -978,6 +977,13 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                 jml++;
             }
         }
+        
+        for(i=0;i<tbPemeriksaan.getRowCount();i++){
+            if(!tbPemeriksaan.getValueAt(i,2).toString().equals("")){
+                tbPemeriksaan.setValueAt(true,i,0);
+            }
+        }
+        
         for(i=0;i<tbPemeriksaan.getRowCount();i++){
             if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
                 jml++;
@@ -1043,6 +1049,13 @@ public final class DlgPeriksaLaboratorium extends javax.swing.JDialog {
                 jml++;
             }
         }
+        
+        for(i=0;i<tbPemeriksaan.getRowCount();i++){
+            if(!tbPemeriksaan.getValueAt(i,2).toString().equals("")){
+                tbPemeriksaan.setValueAt(true,i,0);
+            }
+        }
+        
         for(i=0;i<tbPemeriksaan.getRowCount();i++){
             if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
                 jml++;
@@ -1702,76 +1715,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     
     private void tampil(String order) { 
         try {
-            jml2=0;
-            for(i2=0;i2<tbPemeriksaan.getRowCount();i2++){
-                if(tbPemeriksaan.getValueAt(i2,0).toString().equals("true")){
-                    jml2++;
-                }
-            }
-            
-            pilih2=null;
-            pilih2=new boolean[jml2];
-            pemeriksaan2=null;
-            pemeriksaan2=new String[jml2];
-            hasil2=null;
-            hasil2=new String[jml2];
-            satuan2=null;
-            satuan2=new String[jml2];
-            nilai_rujukan2=null;
-            nilai_rujukan2=new String[jml2];
-            keterangan2=null;
-            keterangan2=new String[jml2];
-            idtemplate2=null;
-            idtemplate2=new String[jml2];
-            biaya_item2=null;
-            biaya_item2=new double[jml2];
-            bagian_rs2=null;
-            bagian_rs2=new double[jml2];
-            bhp2=null;
-            bhp2=new double[jml2];
-            bagian_perujuk2=null;
-            bagian_perujuk2=new double[jml2];
-            bagian_dokter2=null;
-            bagian_dokter2=new double[jml2];
-            bagian_laborat2=null;
-            bagian_laborat2=new double[jml2];
-            kso2=null;
-            kso2=new double[jml2];
-            menejemen2=null;
-            menejemen2=new double[jml2];
-            
-            index2=0; 
-            for(i2=0;i2<tbPemeriksaan.getRowCount();i2++){
-                if(tbPemeriksaan.getValueAt(i2,0).toString().equals("true")){
-                    pilih2[index2]=true;
-                    pemeriksaan2[index2]=tbPemeriksaan.getValueAt(i2,1).toString();
-                    hasil2[index2]=tbPemeriksaan.getValueAt(i2,2).toString();
-                    satuan2[index2]=tbPemeriksaan.getValueAt(i2,3).toString();
-                    nilai_rujukan2[index2]=tbPemeriksaan.getValueAt(i2,4).toString();
-                    keterangan2[index2]=tbPemeriksaan.getValueAt(i2,5).toString();
-                    idtemplate2[index2]=tbPemeriksaan.getValueAt(i2,6).toString();
-                    biaya_item2[index2]=Valid.SetAngka(tbPemeriksaan.getValueAt(i2,7).toString());
-                    bagian_rs2[index2]=Valid.SetAngka(tbPemeriksaan.getValueAt(i2,8).toString());
-                    bhp2[index2]=Valid.SetAngka(tbPemeriksaan.getValueAt(i2,9).toString());
-                    bagian_perujuk2[index2]=Valid.SetAngka(tbPemeriksaan.getValueAt(i2,10).toString());
-                    bagian_dokter2[index2]=Valid.SetAngka(tbPemeriksaan.getValueAt(i2,11).toString());
-                    bagian_laborat2[index2]=Valid.SetAngka(tbPemeriksaan.getValueAt(i2,12).toString());
-                    kso2[index2]=Valid.SetAngka(tbPemeriksaan.getValueAt(i2,13).toString());
-                    menejemen2[index2]=Valid.SetAngka(tbPemeriksaan.getValueAt(i2,14).toString());                
-                    index2++;
-                }
-            }
-            
             Valid.tabelKosong(tabMode);
-            
-            for(i2=0;i2<jml2;i2++){ 
-                tabMode.addRow(new Object[] {
-                    pilih2[i2],pemeriksaan2[i2],hasil2[i2],satuan2[i2],
-                    nilai_rujukan2[i2],keterangan2[i2],idtemplate2[i2],
-                    biaya_item2[i2],bagian_rs2[i2],bhp2[i2],bagian_perujuk2[i2],
-                    bagian_dokter2[i2],bagian_laborat2[i2],kso2[i2],menejemen2[i2]
-                });
-            }  
             
             for(i2=0;i2<tbTarif.getRowCount();i2++){ 
                 if(tbTarif.getValueAt(i2,0).toString().equals("true")){
@@ -1977,6 +1921,43 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=? ",Penjab,TNoRw.getText());
         Sequel.cariIsi("select kd_dokter from reg_periksa where no_rawat=? ",KodePerujuk,TNoRw.getText());
         Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=? ",NmPerujuk,KodePerujuk.getText());
+        diagnosa=Sequel.cariIsi("select diagnosa_awal from kamar_inap where no_rawat=?",TNoRw.getText());
+        norawatibu=Sequel.cariIsi("select no_rawat from ranap_gabung where no_rawat2=?",TNoRw.getText());
+        if(!norawatibu.equals("")){
+            kamar=Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat=? order by tgl_masuk desc limit 1",norawatibu);
+        }else{
+            kamar=Sequel.cariIsi("select ifnull(kd_kamar,'') from kamar_inap where no_rawat=? order by tgl_masuk desc limit 1",TNoRw.getText());
+        }
+        if(!kamar.equals("")){
+            namakamar=kamar+", "+Sequel.cariIsi("select nm_bangsal from bangsal inner join kamar on bangsal.kd_bangsal=kamar.kd_bangsal "+
+                    " where kamar.kd_kamar=? ",kamar);            
+            kamar="Kamar";  
+        }else if(kamar.equals("")){
+            kamar="Poli";
+            namakamar=Sequel.cariIsi("select nm_poli from poliklinik inner join reg_periksa on poliklinik.kd_poli=reg_periksa.kd_poli "+
+                    "where reg_periksa.no_rawat=?",TNoRw.getText());
+        }
+        
+        if(status.equals("Ranap")){
+            if(!norawatibu.equals("")){
+                kelas=Sequel.cariIsi(
+                    "select kamar.kelas from kamar inner join kamar_inap "+
+                    "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
+                    "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norawatibu);
+            }else{
+                kelas=Sequel.cariIsi(
+                    "select kamar.kelas from kamar inner join kamar_inap "+
+                    "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
+                    "and stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
+            }                
+        }else if(status.equals("Ralan")){
+            kelas="Rawat Jalan";
+        }
+    }
+    
+    private void isRawat2(){
+        Sequel.cariIsi("select no_rkm_medis from reg_periksa where no_rawat=? ",TNoRM,TNoRw.getText());
+        Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat=? ",Penjab,TNoRw.getText());
         diagnosa=Sequel.cariIsi("select diagnosa_awal from kamar_inap where no_rawat=?",TNoRw.getText());
         norawatibu=Sequel.cariIsi("select no_rawat from ranap_gabung where no_rawat2=?",TNoRw.getText());
         if(!norawatibu.equals("")){
@@ -2296,60 +2277,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     
     private void tampiltarif(String order) {     
         try{
-            jml=0;
-            for(i=0;i<tbTarif.getRowCount();i++){
-                if(tbTarif.getValueAt(i,0).toString().equals("true")){
-                    jml++;
-                }
-            }
-
-            pilih=null;
-            pilih=new boolean[jml];
-            kode=null;
-            kode=new String[jml];
-            nama=null;
-            nama=new String[jml];
-            total=null;
-            total=new double[jml];
-            bagian_rs=null;
-            bagian_rs=new double[jml];
-            bhp=null;
-            bhp=new double[jml];
-            tarif_perujuk=null;
-            tarif_perujuk=new double[jml];
-            tarif_tindakan_dokter=null;
-            tarif_tindakan_dokter=new double[jml];
-            tarif_tindakan_petugas=null;
-            tarif_tindakan_petugas=new double[jml];
-            kso=null;
-            kso=new double[jml];
-            menejemen=null;
-            menejemen=new double[jml];
-
-            index=0; 
-            for(i=0;i<tbTarif.getRowCount();i++){
-                if(tbTarif.getValueAt(i,0).toString().equals("true")){
-                    pilih[index]=true;
-                    kode[index]=tbTarif.getValueAt(i,1).toString();
-                    nama[index]=tbTarif.getValueAt(i,2).toString();
-                    total[index]=Double.parseDouble(tbTarif.getValueAt(i,3).toString());
-                    bagian_rs[index]=Double.parseDouble(tbTarif.getValueAt(i,4).toString());
-                    bhp[index]=Double.parseDouble(tbTarif.getValueAt(i,5).toString());
-                    tarif_perujuk[index]=Double.parseDouble(tbTarif.getValueAt(i,6).toString());
-                    tarif_tindakan_dokter[index]=Double.parseDouble(tbTarif.getValueAt(i,7).toString());
-                    tarif_tindakan_petugas[index]=Double.parseDouble(tbTarif.getValueAt(i,8).toString());
-                    kso[index]=Double.parseDouble(tbTarif.getValueAt(i,9).toString());
-                    menejemen[index]=Double.parseDouble(tbTarif.getValueAt(i,10).toString());
-                    index++;
-                }
-            }
-
             Valid.tabelKosong(tabMode2);
-            
-            for(i=0;i<jml;i++){
-                tabMode2.addRow(new Object[] {pilih[i],kode[i],nama[i],total[i],bagian_rs[i],bhp[i],tarif_perujuk[i],tarif_tindakan_dokter[i],tarif_tindakan_petugas[i],kso[i],menejemen[i]});
-            }       
-            
             if(cara_bayar_lab.equals("Yes")&&kelas_lab.equals("No")){
                 pstindakan=koneksi.prepareStatement(
                     "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,jns_perawatan_lab.total_byr,"+
@@ -2458,8 +2386,33 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         NmPerujuk.setText(namaperujuk);
     }
     
-    public void setOrder(String order){
+    public void setOrder(String order,String norawat,String posisi){
         noorder=order;
+        TNoRw.setText(norawat);
+        isRawat2();
+        this.status=posisi;
+        try {
+            pssetpj=koneksi.prepareStatement("select * from set_pjlab");
+            try {                              
+                rssetpj=pssetpj.executeQuery();
+                while(rssetpj.next()){
+                    KodePj.setText(rssetpj.getString(1));
+                    NmDokterPj.setText(Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?",rssetpj.getString(1)));
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            } finally{
+                if(rssetpj!=null){
+                    rssetpj.close();
+                }
+                if(pssetpj!=null){
+                    pssetpj.close();
+                }
+            }              
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        isPsien();
         tampiltarif(order);
         tampil(order);
     }

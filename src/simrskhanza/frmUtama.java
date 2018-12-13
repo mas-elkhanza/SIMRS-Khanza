@@ -957,6 +957,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnLamaPelayananLab = new widget.ButtonBig();
         btnCekSEP = new widget.ButtonBig();
         btnSuratKeluar = new widget.ButtonBig();
+        btnKegiatanFarmasi = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6117,6 +6118,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSuratKeluar);
 
+        btnKegiatanFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_website_-_address_book_3440827.png"))); // NOI18N
+        btnKegiatanFarmasi.setText("Kegiatan Farmasi");
+        btnKegiatanFarmasi.setIconTextGap(0);
+        btnKegiatanFarmasi.setName("btnKegiatanFarmasi"); // NOI18N
+        btnKegiatanFarmasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKegiatanFarmasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKegiatanFarmasiActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnKegiatanFarmasi);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6125,7 +6138,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10/12/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/12/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7186,6 +7199,11 @@ public class frmUtama extends javax.swing.JFrame {
                     btnLaboratorium.setEnabled(true);
                     btnPermintaanRadiologi.setEnabled(true);
                     btnPeriksaRadiologi.setEnabled(true);
+                    btnInputPenjualan.setEnabled(true);
+                    btnDataPenjualan.setEnabled(true);
+                    btnDataPenyerahanDarah.setEnabled(true);
+                    btnDaftarPermintaanResep.setEnabled(true);
+                    btnResepObatDepan.setEnabled(true);
                     MnGantiPassword.setEnabled(false);
 
                     DlgLogin.dispose();
@@ -7231,6 +7249,11 @@ public class frmUtama extends javax.swing.JFrame {
                     btnToolBcdRanap.setEnabled(var.getbarcoderanap()); 
                     btnLaboratorium.setEnabled(var.getperiksa_lab());
                     btnPeriksaRadiologi.setEnabled(var.getperiksa_radiologi());  
+                    btnInputPenjualan.setEnabled(var.getpenjualan_obat());
+                    btnDataPenjualan.setEnabled(var.getpenjualan_obat());
+                    btnDataPenyerahanDarah.setEnabled(var.getutd_penyerahan_darah());
+                    btnDaftarPermintaanResep.setEnabled(var.getresep_dokter());
+                    btnResepObatDepan.setEnabled(var.getresep_obat());
                     Sequel.menyimpan("tracker","'"+edAdmin.getText()+"',current_date(),current_time()","Login");
                 }else if((var.getjml1()==0)&&(var.getjml2()==0)){
                     JOptionPane.showMessageDialog(null,"Maaf, Gagal login. ID User atau password ada yang salah ...!");
@@ -7245,6 +7268,11 @@ public class frmUtama extends javax.swing.JFrame {
                     btnLaboratorium.setEnabled(false);
                     btnPermintaanRadiologi.setEnabled(false);
                     btnPeriksaRadiologi.setEnabled(false);    
+                    btnInputPenjualan.setEnabled(false);
+                    btnDataPenjualan.setEnabled(false);
+                    btnDataPenyerahanDarah.setEnabled(false);
+                    btnDaftarPermintaanResep.setEnabled(false);
+                    btnResepObatDepan.setEnabled(false);
                     edAdmin.setText("");
                     edPwd.setText("");           
                      
@@ -12694,6 +12722,10 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSuratKeluarActionPerformed
 
+    private void btnKegiatanFarmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKegiatanFarmasiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKegiatanFarmasiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12904,6 +12936,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnKasir;
     private widget.ButtonBig btnKategoriBarang;
     private widget.ButtonBig btnKategoriInventaris;
+    private widget.ButtonBig btnKegiatanFarmasi;
     private widget.ButtonBig btnKegiatanIlmiah;
     private widget.ButtonBig btnKeterlambatanPresensi;
     private widget.ButtonBig btnKeuntungan;
@@ -13959,6 +13992,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getriwayat_data_batch()==true){
                 Panelmenu.add(btnRiwayatBatch);
+                jmlmenu++;
+            }
+            
+            if(var.getkegiatan_farmasi()==true){
+                Panelmenu.add(btnKegiatanFarmasi);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==4){  
@@ -16004,6 +16042,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getriwayat_data_batch()==true){
             Panelmenu.add(btnRiwayatBatch);
+            jmlmenu++;
+        }
+        
+        if(var.getkegiatan_farmasi()==true){
+            Panelmenu.add(btnKegiatanFarmasi);
             jmlmenu++;
         }
 
@@ -18204,6 +18247,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getriwayat_data_batch()==true){
             if(btnRiwayatBatch.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRiwayatBatch);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getkegiatan_farmasi()==true){
+            if(btnKegiatanFarmasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKegiatanFarmasi);
                 jmlmenu++;
             }                
         }

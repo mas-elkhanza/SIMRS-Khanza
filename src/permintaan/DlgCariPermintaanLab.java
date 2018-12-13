@@ -180,8 +180,8 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         LCount = new widget.Label();
         panelisi1 = new widget.panelisi();
         BtnHapus = new widget.Button();
-        BtnHasil = new widget.Button();
         BtnSampel = new widget.Button();
+        BtnHasil = new widget.Button();
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
@@ -274,7 +274,7 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2018 16:54:41" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-12-2018 08:40:01" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -480,28 +480,10 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
         });
         panelisi1.add(BtnHapus);
 
-        BtnHasil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/file-edit-16x16.png"))); // NOI18N
-        BtnHasil.setMnemonic('P');
-        BtnHasil.setText("Sampel");
-        BtnHasil.setToolTipText("Alt+P");
-        BtnHasil.setName("BtnHasil"); // NOI18N
-        BtnHasil.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnHasil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnHasilActionPerformed(evt);
-            }
-        });
-        BtnHasil.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnHasilKeyPressed(evt);
-            }
-        });
-        panelisi1.add(BtnHasil);
-
-        BtnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
-        BtnSampel.setMnemonic('I');
-        BtnSampel.setText("Hasil");
-        BtnSampel.setToolTipText("Alt+I");
+        BtnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/file-edit-16x16.png"))); // NOI18N
+        BtnSampel.setMnemonic('P');
+        BtnSampel.setText("Sampel");
+        BtnSampel.setToolTipText("Alt+P");
         BtnSampel.setName("BtnSampel"); // NOI18N
         BtnSampel.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnSampel.addActionListener(new java.awt.event.ActionListener() {
@@ -515,6 +497,24 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnSampel);
+
+        BtnHasil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
+        BtnHasil.setMnemonic('I');
+        BtnHasil.setText("Hasil");
+        BtnHasil.setToolTipText("Alt+I");
+        BtnHasil.setName("BtnHasil"); // NOI18N
+        BtnHasil.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHasil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHasilActionPerformed(evt);
+            }
+        });
+        BtnHasil.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnHasilKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnHasil);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
@@ -943,7 +943,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         // TODO add your handling code here:
     }//GEN-LAST:event_tbDokter2KeyPressed
 
-    private void BtnSampelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSampelActionPerformed
+    private void BtnHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHasilActionPerformed
         if(TabRawat.getSelectedIndex()==0){
             if(tbDokter.getSelectedRow()!= -1){
                 if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
@@ -955,9 +955,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgro.setLocationRelativeTo(internalFrame1);
                         dlgro.emptTeks();
-                        dlgro.isCek();
-                        dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ranap"); 
-                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        dlgro.isCek(); 
+                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ranap");
+                        dlgro.setDokterPerujuk(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString());
                         dlgro.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }else {
@@ -966,9 +966,9 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         dlgro.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                         dlgro.setLocationRelativeTo(internalFrame1);
                         dlgro.emptTeks();
-                        dlgro.isCek();
-                        dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ralan"); 
-                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        dlgro.isCek(); 
+                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ralan");
+                        dlgro.setDokterPerujuk(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString());
                         dlgro.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }
@@ -982,13 +982,13 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             TabRawat.setSelectedIndex(0);
             TCari.requestFocus();
         }
-    }//GEN-LAST:event_BtnSampelActionPerformed
+    }//GEN-LAST:event_BtnHasilActionPerformed
 
-    private void BtnSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSampelKeyPressed
+    private void BtnHasilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHasilKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnSampelKeyPressed
+    }//GEN-LAST:event_BtnHasilKeyPressed
 
-    private void BtnHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHasilActionPerformed
+    private void BtnSampelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSampelActionPerformed
         if(TabRawat.getSelectedIndex()==0){
             if(tbDokter.getSelectedRow()!= -1){
                 if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
@@ -1009,11 +1009,11 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             TabRawat.setSelectedIndex(0);
             TCari.requestFocus();
         }            
-    }//GEN-LAST:event_BtnHasilActionPerformed
+    }//GEN-LAST:event_BtnSampelActionPerformed
 
-    private void BtnHasilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHasilKeyPressed
+    private void BtnSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSampelKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnHasilKeyPressed
+    }//GEN-LAST:event_BtnSampelKeyPressed
 
     private void MnBarcodePermintaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBarcodePermintaanActionPerformed
         if(tbDokter.getSelectedRow()!= -1){
@@ -1352,8 +1352,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     
     public void isCek(){
         MnCetakHasilLab.setEnabled(var.getpermintaan_lab());
-        BtnSampel.setEnabled(var.getpermintaan_lab());
-        BtnHasil.setEnabled(var.getperiksa_lab());
+        BtnHasil.setEnabled(var.getpermintaan_lab());
+        BtnSampel.setEnabled(var.getperiksa_lab());
         BtnHapus.setEnabled(var.getpermintaan_lab());
         BtnPrint.setEnabled(var.getpermintaan_lab());
     }
