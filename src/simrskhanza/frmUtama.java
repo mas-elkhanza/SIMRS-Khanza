@@ -281,6 +281,7 @@ import inventory.DlgRiwayatBarangMedis;
 import inventory.DlgRiwayatBatch;
 import inventory.DlgSirkulasiBarang3;
 import inventory.DlgSuratPemesanan;
+import ipsrs.DlgInputStokIPSRS;
 import ipsrs.DlgPemesananIPSRS;
 import ipsrs.DlgPengadaanIPSRSPerTanggal;
 import ipsrs.DlgPermintaanNonMedis;
@@ -959,6 +960,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnCekSEP = new widget.ButtonBig();
         btnSuratKeluar = new widget.ButtonBig();
         btnKegiatanFarmasi = new widget.ButtonBig();
+        btnOpnameIPSRS = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6131,6 +6133,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnKegiatanFarmasi);
 
+        btnOpnameIPSRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/ark2.png"))); // NOI18N
+        btnOpnameIPSRS.setText("Stok Opname Non Medis");
+        btnOpnameIPSRS.setIconTextGap(0);
+        btnOpnameIPSRS.setName("btnOpnameIPSRS"); // NOI18N
+        btnOpnameIPSRS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnOpnameIPSRS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpnameIPSRSActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnOpnameIPSRS);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6139,7 +6153,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12/12/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/12/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -12735,6 +12749,19 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnKegiatanFarmasiActionPerformed
 
+    private void btnOpnameIPSRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpnameIPSRSActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgInputStokIPSRS opname=new DlgInputStokIPSRS(this,false);
+        opname.tampil();
+        opname.isCek();
+        opname.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        opname.setLocationRelativeTo(PanelUtama);
+        opname.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnOpnameIPSRSActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -12977,6 +13004,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnObatPerCaraBayar;
     private widget.ButtonBig btnObatPerTanggal;
     private widget.ButtonBig btnOpname;
+    private widget.ButtonBig btnOpnameIPSRS;
     private widget.ButtonBig btnPCareClubProlanis;
     private widget.ButtonBig btnPCareFaskesAlihRawat;
     private widget.ButtonBig btnPCareFaskesSubspesialis;
@@ -14092,6 +14120,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getrekap_pemesanan_non_medis()==true){
                 Panelmenu.add(btnRekapPenerimaanNonMedis);
+                jmlmenu++;
+            }
+            
+            if(var.getstok_opname_logistik()==true){
+                Panelmenu.add(btnOpnameIPSRS);
                 jmlmenu++;
             }
 
@@ -16141,6 +16174,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getrekap_pemesanan_non_medis()==true){
             Panelmenu.add(btnRekapPenerimaanNonMedis);
+            jmlmenu++;
+        }
+        
+        if(var.getstok_opname_logistik()==true){
+            Panelmenu.add(btnOpnameIPSRS);
             jmlmenu++;
         }
 
@@ -18382,6 +18420,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getrekap_pemesanan_non_medis()==true){
             if(btnRekapPenerimaanNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPenerimaanNonMedis);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(var.getstok_opname_logistik()==true){
+            if(btnOpnameIPSRS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnOpnameIPSRS);
                 jmlmenu++;
             }                
         } 
