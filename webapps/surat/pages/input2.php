@@ -82,7 +82,7 @@
                             </select>
                             <span id="MsgIsi4" style="color:#CC0000; font-size:10px;"></span>
                         </td>                        
-                        <td width="15%" >tembusan</td>
+                        <td width="15%" >Tembusan</td>
                         <td width="35%">
                             :&nbsp;<input name="tembusan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi13'));" type=text id="TxtIsi13" class="inputbox" value="" size="35" maxlength="300">
                             <span id="MsgIsi13" style="color:#CC0000; font-size:10px;"></span>
@@ -162,7 +162,7 @@
                             </select>
                             <span id="MsgIsi7" style="color:#CC0000; font-size:10px;"></span>
                         </td>
-                        <td width="15%" >keterangan</td>
+                        <td width="15%" >Keterangan</td>
                         <td width="35%">
                             :&nbsp;<input name="keterangan" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi16'));" type=text id="TxtIsi16" class="inputbox" value="" size="35" maxlength="300">
                             <span id="MsgIsi16" style="color:#CC0000; font-size:10px;"></span>
