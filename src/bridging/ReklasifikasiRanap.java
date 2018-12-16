@@ -649,8 +649,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }else{
             DlgBilingRanap billing=new DlgBilingRanap(null,false);
             billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());            
-            billing.isRawat();
             billing.isCek();
+            billing.isRawat();
             billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             billing.setLocationRelativeTo(internalFrame1);
             billing.setVisible(true); 

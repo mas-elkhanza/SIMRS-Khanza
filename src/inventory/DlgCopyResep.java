@@ -95,6 +95,7 @@ public class DlgCopyResep extends javax.swing.JDialog {
         BtnCari = new widget.Button();
         jLabel7 = new widget.Label();
         BtnTambah = new widget.Button();
+        BtnEdit = new widget.Button();
         BtnKeluar = new widget.Button();
         scrollPane1 = new widget.ScrollPane();
         tbPemisahan = new widget.Table();
@@ -129,7 +130,7 @@ public class DlgCopyResep extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -144,7 +145,7 @@ public class DlgCopyResep extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-11-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -189,6 +190,24 @@ public class DlgCopyResep extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnTambah);
+
+        BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
+        BtnEdit.setMnemonic('U');
+        BtnEdit.setText("Ubah");
+        BtnEdit.setToolTipText("Alt+U");
+        BtnEdit.setName("BtnEdit"); // NOI18N
+        BtnEdit.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditActionPerformed(evt);
+            }
+        });
+        BtnEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnEditKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnEdit);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -305,7 +324,7 @@ public class DlgCopyResep extends javax.swing.JDialog {
                     if(jmlparsial>0){
                         panggilform();
                     }else{
-                        if(Sequel.cariRegistrasi(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString())>0){
+                        if(Sequel.cariRegistrasi(norawat)>0){
                             JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
                         }else{ 
                             panggilform();                             
@@ -333,6 +352,44 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         tampil();
     }//GEN-LAST:event_ChkTanggalItemStateChanged
 
+    private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+        }else if(tbPemisahan.getSelectedRow()<= -1){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data resep dokter yang mau divalidasi..!!");
+        }else{
+            if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
+                JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep yang mau dicopy ..!!");
+            }else {
+                if(var.getkode().equals("Admin Utama")){
+                    panggilform2();                        
+                }else{
+                    jmlparsial=0;
+                    if(aktifkanparsial.equals("yes")){
+                        jmlparsial=Sequel.cariInteger("select count(kd_pj) from set_input_parsial where kd_pj=?",kode_pj);
+                    }
+                    if(jmlparsial>0){
+                        panggilform2();
+                    }else{
+                        if(Sequel.cariRegistrasi(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString())>0){
+                            JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi ..!!");
+                        }else{ 
+                            panggilform2();                             
+                        }
+                    }                            
+                }                    
+            }
+        }
+    }//GEN-LAST:event_BtnEditActionPerformed
+
+    private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnEditActionPerformed(null);
+        }else{
+            Valid.pindah(evt, BtnTambah, BtnKeluar);
+        }
+    }//GEN-LAST:event_BtnEditKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -351,6 +408,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnCari;
+    private widget.Button BtnEdit;
     private widget.Button BtnKeluar;
     private widget.Button BtnTambah;
     private widget.CekBox ChkTanggal;
@@ -507,5 +565,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         resep.isCek();
         resep.tampilobat2(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
         resep.setVisible(true);
+    }
+    
+    private void panggilform2() {
+        DlgPeresepanDokter resep=new DlgPeresepanDokter(null,false);
+        resep.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
+        resep.setLocationRelativeTo(internalFrame1);
+        resep.MatikanJam();
+        resep.setNoRm(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),3).toString(),
+                Valid.SetTgl2(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),1).toString()),
+                tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),2).toString().substring(0,2),
+                tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),2).toString().substring(3,5),
+                tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),2).toString().substring(6,8),
+                tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),7).toString(),
+                tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),6).toString(),status);
+        resep.isCek();
+        resep.tampilobat(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString());
+        resep.setVisible(true);   
     }
 }

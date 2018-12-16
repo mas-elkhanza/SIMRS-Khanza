@@ -15,12 +15,12 @@
         $petugas = str_replace("_"," ",$_GET['petugas']); 
         $tanggal = str_replace("_"," ",$_GET['tanggal']);
         
-        $nonota= str_replace(": ","",getOne("select temp2 from temporary_bayar_ralan where temp1='No.Nota'"));
+        $nonota= str_replace(": ","",getOne("select temp2 from temporary_bayar_ralan where temp9='$petugas' and temp1='No.Nota'"));
         $norawat=getOne("select no_rawat from nota_inap where no_nota='$nonota'");
         $kodecarabayar=getOne("select kd_pj from reg_periksa where no_rawat='$norawat'");
         $carabayar=getOne("select png_jawab from penjab where kd_pj='$kodecarabayar'");
          
-        $_sql = "select temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_bayar_ralan order by no asc";   
+        $_sql = "select temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_bayar_ralan where temp9='$petugas' order by no asc";   
         $hasil=bukaquery($_sql);
         
         if(mysqli_num_rows($hasil)!=0) { 

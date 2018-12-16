@@ -1904,4 +1904,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             System.out.println("Notif : "+e);
         }
     }
+
+    public void setPasien(String norawat,String norm,String pasien) {
+        NoNota.setText(norawat);
+        kdpasien.setText(norm);
+        nmpasien.setText(pasien);
+    }
 }

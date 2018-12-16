@@ -529,9 +529,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         tbDokter.setValueAt("",i,0);
                     }
                 }
-                    
-                Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,4),signed)),0) from ipsrspengeluaran ",
-                        TglKeluar.getSelectedItem().toString().substring(8,10)+TglKeluar.getSelectedItem().toString().substring(3,5),4,NoKeluar); 
+                autoNomor();                    
             }
         }        
     }//GEN-LAST:event_BtnSimpanActionPerformed

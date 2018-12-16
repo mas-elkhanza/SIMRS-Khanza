@@ -99,7 +99,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
                     "sum(detreturjual.jml_retur * -1) as jml, "+
                     "sum(detreturjual.subtotal * -1) as ttl from detreturjual inner join databarang inner join returjual "+
                     "on detreturjual.kode_brng=databarang.kode_brng "+
-                    "and returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual=? group by databarang.kode_brng",
+                    "and returjual.no_retur_jual=detreturjual.no_retur_jual where returjual.no_retur_jual like ? group by databarang.kode_brng",
             sqlpsobatlangsung="select besar_tagihan from tagihan_obat_langsung where no_rawat=? ",
             sqlpskamarin="select kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,"+
                     "kamar_inap.lama,kamar_inap.ttl_biaya as total,kamar_inap.tgl_masuk, "+
@@ -1891,7 +1891,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         jLabel4.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass1.add(jLabel4);
 
-        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2018 12:58:34" }));
+        DTPTgl.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018 08:56:51" }));
         DTPTgl.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         DTPTgl.setName("DTPTgl"); // NOI18N
         DTPTgl.setOpaque(false);
@@ -1992,11 +1992,12 @@ public class DlgBilingRanap extends javax.swing.JDialog {
         internalFrame1.add(panelGlass2, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
         TabRawat.setForeground(new java.awt.Color(70,70,70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
 
+        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll.setComponentPopupMenu(jPopupMenu1);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
@@ -2026,6 +2027,7 @@ public class DlgBilingRanap extends javax.swing.JDialog {
 
         TabRawat.addTab("Data Tagihan", Scroll);
 
+        panelBayar.setBorder(null);
         panelBayar.setForeground(new java.awt.Color(70,70,70));
         panelBayar.setName("panelBayar"); // NOI18N
         panelBayar.setPreferredSize(new java.awt.Dimension(100, 137));
@@ -4333,7 +4335,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try{   
             psreturobat=koneksi.prepareStatement(sqlpsreturobat);
             try {
-                psreturobat.setString(1,norawat);
+                psreturobat.setString(1,"%"+norawat+"%");
                 rsreturobat=psreturobat.executeQuery();
                 if(rsreturobat.next()){                
                     tabModeRwJlDr.addRow(new Object[]{true,"","Retur Obat :","",null,null,null,null,"Retur Obat"});          

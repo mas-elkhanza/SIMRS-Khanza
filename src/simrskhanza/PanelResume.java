@@ -107,9 +107,10 @@ public class PanelResume extends widget.panelisi {
         LoadHTML10.setEditorKit(kit);
         LoadHTML11.setEditorKit(kit);
         LoadHTML12.setEditorKit(kit);
+        LoadHTML13.setEditorKit(kit);
         
         StyleSheet styleSheet = kit.getStyleSheet();
-        styleSheet.addRule(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
+        styleSheet.addRule(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         LoadHTML2.setDocument(doc);
@@ -123,6 +124,7 @@ public class PanelResume extends widget.panelisi {
         LoadHTML10.setDocument(doc);
         LoadHTML11.setDocument(doc);
         LoadHTML12.setDocument(doc);
+        LoadHTML13.setDocument(doc);
         LoadHTML.setEditable(false);
         LoadHTML2.setEditable(false);
         LoadHTML3.setEditable(false);
@@ -135,6 +137,7 @@ public class PanelResume extends widget.panelisi {
         LoadHTML10.setEditable(false);
         LoadHTML11.setEditable(false);
         LoadHTML12.setEditable(false);
+        LoadHTML13.setEditable(false);
         
         LoadHTML.addHyperlinkListener(e -> {
             if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
@@ -258,6 +261,17 @@ public class PanelResume extends widget.panelisi {
               }
             }
         }); 
+        
+        LoadHTML13.addHyperlinkListener(e -> {
+            if (HyperlinkEvent.EventType.ACTIVATED.equals(e.getEventType())) {
+              Desktop desktop = Desktop.getDesktop();
+              try {
+                desktop.browse(e.getURL().toURI());
+              } catch (Exception ex) {
+                ex.printStackTrace();
+              }
+            }
+        });
     }
 
     /**
@@ -309,12 +323,15 @@ public class PanelResume extends widget.panelisi {
         internalFrame14 = new widget.InternalFrame();
         Scroll12 = new widget.ScrollPane();
         tbRegistrasi = new widget.Table();
+        internalFrame15 = new widget.InternalFrame();
+        Scroll13 = new widget.ScrollPane();
+        LoadHTML13 = new widget.editorpane();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setForeground(new java.awt.Color(70,70,70));
+        TabRawat.setBorder(null);
         TabRawat.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         TabRawat.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -324,10 +341,11 @@ public class PanelResume extends widget.panelisi {
             }
         });
 
-        internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame2.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame2.setBorder(null);
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll.setOpaque(true);
 
         LoadHTML.setBorder(null);
@@ -335,12 +353,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Seluruh Riwayat Perawatan", internalFrame2);
+        TabRawat.addTab("Seluruh Riwayat", internalFrame2);
 
-        internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame3.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame3.setBorder(null);
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll1.setOpaque(true);
 
         LoadHTML2.setBorder(null);
@@ -348,12 +367,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame3.add(Scroll1, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Penyakit/ICD 10", internalFrame3);
+        TabRawat.addTab("Penyakit/ICD 10", internalFrame3);
 
-        internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame4.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame4.setBorder(null);
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll2.setOpaque(true);
 
         LoadHTML3.setBorder(null);
@@ -361,12 +381,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame4.add(Scroll2, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Prosedur/ICD 9", internalFrame4);
+        TabRawat.addTab("Prosedur/ICD 9", internalFrame4);
 
-        internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame5.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame5.setBorder(null);
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll3.setOpaque(true);
 
         LoadHTML4.setBorder(null);
@@ -374,12 +395,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame5.add(Scroll3, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Rawat Jalan", internalFrame5);
+        TabRawat.addTab("Tindakan Ralan", internalFrame5);
 
-        internalFrame6.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame6.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame6.setBorder(null);
         internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll4.setOpaque(true);
 
         LoadHTML5.setBorder(null);
@@ -387,12 +409,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame6.add(Scroll4, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Rawat Inap", internalFrame6);
+        TabRawat.addTab("Tindakan Ranap", internalFrame6);
 
-        internalFrame7.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame7.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame7.setBorder(null);
         internalFrame7.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll5.setOpaque(true);
 
         LoadHTML6.setBorder(null);
@@ -400,12 +423,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame7.add(Scroll5, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Operasi", internalFrame7);
+        TabRawat.addTab("Tindakan Operasi", internalFrame7);
 
-        internalFrame8.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame8.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame8.setBorder(null);
         internalFrame8.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll6.setOpaque(true);
 
         LoadHTML7.setBorder(null);
@@ -413,12 +437,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame8.add(Scroll6, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Radiologi", internalFrame8);
+        TabRawat.addTab("Radiologi", internalFrame8);
 
-        internalFrame9.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame9.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame9.setBorder(null);
         internalFrame9.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll7.setOpaque(true);
 
         LoadHTML8.setBorder(null);
@@ -426,12 +451,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame9.add(Scroll7, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Laborat", internalFrame9);
+        TabRawat.addTab("Laborat", internalFrame9);
 
-        internalFrame10.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame10.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame10.setBorder(null);
         internalFrame10.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll8.setOpaque(true);
 
         LoadHTML9.setBorder(null);
@@ -439,12 +465,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame10.add(Scroll8, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Pemberian Obat", internalFrame10);
+        TabRawat.addTab("Pemberian Obat", internalFrame10);
 
-        internalFrame11.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame11.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame11.setBorder(null);
         internalFrame11.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll9.setOpaque(true);
 
         LoadHTML10.setBorder(null);
@@ -452,12 +479,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame11.add(Scroll9, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Obat Operasi", internalFrame11);
+        TabRawat.addTab("Obat Operasi", internalFrame11);
 
-        internalFrame12.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame12.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame12.setBorder(null);
         internalFrame12.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll10.setOpaque(true);
 
         LoadHTML11.setBorder(null);
@@ -465,12 +493,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame12.add(Scroll10, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Riwayat Resep Pulang", internalFrame12);
+        TabRawat.addTab("Resep Pulang", internalFrame12);
 
-        internalFrame13.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame13.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame13.setBorder(null);
         internalFrame13.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll11.setOpaque(true);
 
         LoadHTML12.setBorder(null);
@@ -478,12 +507,13 @@ public class PanelResume extends widget.panelisi {
 
         internalFrame13.add(Scroll11, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Berkas Digital Perawatan", internalFrame13);
+        TabRawat.addTab("Berkas Digital", internalFrame13);
 
-        internalFrame14.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame14.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame14.setBorder(null);
         internalFrame14.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll12.setOpaque(true);
 
         tbRegistrasi.setToolTipText("Klik data di table, kemudian klik kanan untuk memilih menu yang diinginkan");
@@ -492,6 +522,20 @@ public class PanelResume extends widget.panelisi {
         internalFrame14.add(Scroll12, java.awt.BorderLayout.CENTER);
 
         TabRawat.addTab("Riwayat Registrasi", internalFrame14);
+
+        internalFrame15.setBackground(new java.awt.Color(255, 255, 255));
+        internalFrame15.setBorder(null);
+        internalFrame15.setLayout(new java.awt.BorderLayout(1, 1));
+
+        Scroll13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll13.setOpaque(true);
+
+        LoadHTML13.setBorder(null);
+        Scroll13.setViewportView(LoadHTML13);
+
+        internalFrame15.add(Scroll13, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("Catatan Dokter", internalFrame15);
 
         add(TabRawat, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -506,6 +550,7 @@ public class PanelResume extends widget.panelisi {
     private widget.editorpane LoadHTML10;
     private widget.editorpane LoadHTML11;
     private widget.editorpane LoadHTML12;
+    private widget.editorpane LoadHTML13;
     private widget.editorpane LoadHTML2;
     private widget.editorpane LoadHTML3;
     private widget.editorpane LoadHTML4;
@@ -519,6 +564,7 @@ public class PanelResume extends widget.panelisi {
     private widget.ScrollPane Scroll10;
     private widget.ScrollPane Scroll11;
     private widget.ScrollPane Scroll12;
+    private widget.ScrollPane Scroll13;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
@@ -533,6 +579,7 @@ public class PanelResume extends widget.panelisi {
     private widget.InternalFrame internalFrame12;
     private widget.InternalFrame internalFrame13;
     private widget.InternalFrame internalFrame14;
+    private widget.InternalFrame internalFrame15;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
     private widget.InternalFrame internalFrame4;
@@ -749,6 +796,56 @@ public class PanelResume extends widget.panelisi {
                                     w=1;
                                     while(rs3.next()){
                                         htmlContent.append("<tr><td valign='top' align='center'>"+w+"</td><td valign='top'>"+rs3.getString("kode")+"</td><td valign='top'>"+rs3.getString("deskripsi_panjang")+"</td><td valign='top'>"+rs3.getString("status")+"</td></tr>");                                        
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            //menampilkan catatan dokter
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select catatan_perawatan.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                        "catatan_perawatan.tanggal,catatan_perawatan.jam,catatan_perawatan.kd_dokter,dokter.nm_dokter,"+
+                                        "catatan_perawatan.catatan from pasien inner join reg_periksa inner join catatan_perawatan inner join dokter "+
+                                        "on catatan_perawatan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                        "and catatan_perawatan.kd_dokter=dokter.kd_dokter "+
+                                        "where catatan_perawatan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Catatan Dokter</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                             "<tr align='center'>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Kode Dokter</td>"+
+                                                "<td valign='top' width='20%' bgcolor='#fafff5'>Nama Dokter</td>"+
+                                                "<td valign='top' width='50%' bgcolor='#fafff5'>Catatan</td>"+
+                                             "</tr>"
+                                    );
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tanggal")+" "+rs3.getString("jam")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kd_dokter")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("catatan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>");                                        
                                         w++;
                                     }
                                     htmlContent.append(
@@ -5576,7 +5673,7 @@ public class PanelResume extends widget.panelisi {
         try{
             File g = new File("file.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-            bg.write(".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
+            bg.write(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}");
             bg.close();
 
             File f = new File("resumemedis.html");            
@@ -5589,6 +5686,243 @@ public class PanelResume extends widget.panelisi {
             System.out.println("Notifikasi : "+e);
         }   
     }
+    
+    public void tampil14(){     
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try{
+            htmlContent = new StringBuilder();
+            try {
+                rs=koneksi.prepareStatement("select pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.umur, "+
+                   "tmp_lahir,tgl_lahir,nm_ibu,gol_darah,stts_nikah,agama,pnd,tgl_daftar from pasien inner join kelurahan inner join kecamatan inner join kabupaten "+
+                   "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_kec=kecamatan.kd_kec and "+
+                   "pasien.kd_kab=kabupaten.kd_kab where pasien.no_rkm_medis='"+norm+"' order by pasien.no_rkm_medis desc ").executeQuery();
+                y=1;
+                while(rs.next()){   
+                    htmlContent.append(
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>No.RM</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("no_rkm_medis")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Nama Pasien</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("nm_pasien")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Alamat</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("alamat")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Umur</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("umur")+" ("+rs.getString("jk").replaceAll("L","Laki-Laki").replaceAll("P","Perempuan")+")</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Tempat & Tanggal Lahir</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("tmp_lahir")+" "+rs.getString("tgl_lahir")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Ibu Kandung</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("nm_ibu")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Golongan Darah</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("gol_darah")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Status Nikah</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("stts_nikah")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Agama</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("agama")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Pendidikan Terakhir</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("pnd")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Pertama Daftar</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'>"+rs.getString("tgl_daftar")+"</td>"+
+                        "</tr>"+
+                        "<tr class='isi'>"+ 
+                          "<td valign='top' width='20%'>Riwayat Perawatan</td>"+
+                          "<td valign='top' width='1%' align='center'>:</td>"+
+                          "<td valign='top' width='79%'></td>"+
+                        "</tr>"
+                    );
+                    try {
+                        if(caritanggal==true){
+                            rs2=koneksi.prepareStatement(
+                                   "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                                   "reg_periksa.kd_dokter,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.p_jawab,reg_periksa.almt_pj,"+
+                                   "reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.status_lanjut,penjab.png_jawab "+
+                                   "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
+                                   "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' and "+
+                                   "reg_periksa.tgl_registrasi between '"+tanggal1+"' and '"+tanggal2+"'").executeQuery();
+                        }else{
+                            rs2=koneksi.prepareStatement(
+                                   "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                                   "reg_periksa.kd_dokter,dokter.nm_dokter,poliklinik.nm_poli,reg_periksa.p_jawab,reg_periksa.almt_pj,"+
+                                   "reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.status_lanjut,penjab.png_jawab "+
+                                   "from reg_periksa inner join dokter inner join poliklinik inner join penjab "+
+                                   "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.kd_pj=penjab.kd_pj "+
+                                   "and reg_periksa.kd_poli=poliklinik.kd_poli where stts<>'Batal' and "+
+                                   "reg_periksa.no_rkm_medis='"+rs.getString("no_rkm_medis")+"' ").executeQuery();
+                        }
+                            
+                        urut=1;
+                        while(rs2.next()){      
+                            htmlContent.append(
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;"+urut+". No.Rawat</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("no_rawat")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No.Registrasi</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("no_reg")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tanggal Registrasi</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("tgl_registrasi")+" "+rs2.getString("jam_reg")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unit/Poliklinik</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("nm_poli")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dokter</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("nm_dokter")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cara Bayar</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("png_jawab")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Penanggung Jawab</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("p_jawab")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alamat P.J.</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("almt_pj")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hubungan P.J.</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("hubunganpj")+"</td>"+
+                              "</tr>"+
+                              "<tr class='isi'>"+ 
+                                "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Status</td>"+
+                                "<td valign='top' width='1%' align='center'>:</td>"+
+                                "<td valign='top' width='79%'>"+rs2.getString("status_lanjut")+"</td>"+
+                              "</tr>"
+                            );                            
+                            urut++;
+                            
+                            //menampilkan catatan dokter
+                            try {
+                                rs3=koneksi.prepareStatement(
+                                        "select catatan_perawatan.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                                        "catatan_perawatan.tanggal,catatan_perawatan.jam,catatan_perawatan.kd_dokter,dokter.nm_dokter,"+
+                                        "catatan_perawatan.catatan from pasien inner join reg_periksa inner join catatan_perawatan inner join dokter "+
+                                        "on catatan_perawatan.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                                        "and catatan_perawatan.kd_dokter=dokter.kd_dokter "+
+                                        "where catatan_perawatan.no_rawat='"+rs2.getString("no_rawat")+"'").executeQuery();
+                                if(rs3.next()){
+                                    htmlContent.append(
+                                      "<tr class='isi'>"+ 
+                                        "<td valign='top' width='20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Catatan Dokter</td>"+
+                                        "<td valign='top' width='1%' align='center'>:</td>"+
+                                        "<td valign='top' width='79%'>"+
+                                          "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                             "<tr align='center'>"+
+                                                "<td valign='top' width='5%' bgcolor='#fafff5'>No.</td>"+
+                                                "<td valign='top' width='15%' bgcolor='#fafff5'>Tanggal</td>"+
+                                                "<td valign='top' width='10%' bgcolor='#fafff5'>Kode Dokter</td>"+
+                                                "<td valign='top' width='20%' bgcolor='#fafff5'>Nama Dokter</td>"+
+                                                "<td valign='top' width='50%' bgcolor='#fafff5'>Catatan</td>"+
+                                             "</tr>"
+                                    );
+                                    rs3.beforeFirst();
+                                    w=1;
+                                    while(rs3.next()){
+                                        htmlContent.append(
+                                             "<tr>"+
+                                                "<td valign='top' align='center'>"+w+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("tanggal")+" "+rs3.getString("jam")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("kd_dokter")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("nm_dokter")+"</td>"+
+                                                "<td valign='top'>"+rs3.getString("catatan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                             "</tr>");                                        
+                                        w++;
+                                    }
+                                    htmlContent.append(
+                                          "</table>"+
+                                        "</td>"+
+                                      "</tr>");
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Notifikasi : "+e);
+                            } finally{
+                                if(rs3!=null){
+                                    rs3.close();
+                                }
+                            }
+                            
+                            htmlContent.append(                                    
+                                 "</td>"+
+                               "</tr>"                               
+                            );
+                            htmlContent.append("<tr class='isi'><td colspan='3'>&nbsp;</td></tr>");
+                        }    
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                    y++;
+                }
+                LoadHTML13.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+            }
+            
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+
     
     public void setRM(String norm,String tanggal1,String tanggal2,boolean caritanggal){
         this.norm=norm;
@@ -5637,6 +5971,9 @@ public class PanelResume extends widget.panelisi {
                 break;
             case 12:
                 tampil13();
+                break;
+            case 13:
+                tampil14();
                 break;
             default:
                 break;
@@ -5711,6 +6048,9 @@ public class PanelResume extends widget.panelisi {
                         "select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14 from temporary_resume order by no asc",param);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
+                break;
+            case 13:
+                panggilLaporan(LoadHTML13.getText());
                 break;
             default:
                 break;

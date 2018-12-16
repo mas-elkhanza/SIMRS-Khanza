@@ -269,7 +269,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-09-2018 15:39:03" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-11-2018 01:04:14" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -303,6 +303,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
             }
         });
 
+        scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         scrollPane1.setName("scrollPane1"); // NOI18N
         scrollPane1.setOpaque(true);
 
@@ -334,6 +335,7 @@ public class DlgCariPermintaanRadiologi extends javax.swing.JDialog {
 
         TabRawat.addTab("Data Permintaan", scrollPane1);
 
+        scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         scrollPane2.setName("scrollPane2"); // NOI18N
         scrollPane2.setOpaque(true);
 
@@ -907,8 +909,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         dlgro.setLocationRelativeTo(internalFrame1);
                         dlgro.emptTeks();
                         dlgro.isCek();
-                        dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ranap"); 
-                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ranap");
+                        dlgro.setDokterPerujuk(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString());
                         dlgro.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }else {
@@ -918,8 +920,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         dlgro.setLocationRelativeTo(internalFrame1);
                         dlgro.emptTeks();
                         dlgro.isCek();
-                        dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ralan"); 
-                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ralan");
+                        dlgro.setDokterPerujuk(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString());
                         dlgro.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }
