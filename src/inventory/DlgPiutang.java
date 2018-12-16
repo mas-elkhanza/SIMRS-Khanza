@@ -1191,7 +1191,7 @@ public class DlgPiutang extends javax.swing.JDialog {
             Valid.textKosong(Jmljual,"jumlah barang");
         }else{            
             Sequel.menyimpan("tamppiutang","'"+kdbar.getText()+"','"+nmbar.getText()+"','"+satuanbar.getText()+"','"+HrgJual.getText()+"','"+HrgBeli.getText()+"','"+
-                             Jmljual.getText()+"','"+subtotal.getText()+"','"+Disc.getText()+"','"+Bsrdisc.getText()+"','"+Total.getText()+"','"+NoBatch.getText()+"','"+Kadaluwarsa.getText()+"'",
+                             Jmljual.getText()+"','"+subtotal.getText()+"','"+Disc.getText()+"','"+Bsrdisc.getText()+"','"+Total.getText()+"','"+NoBatch.getText()+"','"+Kadaluwarsa.getText()+"','"+var.getkode()+"'",
                              "nama_brng='"+nmbar.getText()+"',satuan='"+satuanbar.getText()+"',h_jual='"+HrgJual.getText()+"',h_beli='"+HrgBeli.getText()+
                              "',jumlah='"+Jmljual.getText()+"',subtotal='"+subtotal.getText()+"',dis='"+Disc.getText()+"',bsr_dis='"+Bsrdisc.getText()+
                              "',total='"+Total.getText()+"'","kode_brng='"+kdbar.getText()+"'");
@@ -1684,8 +1684,9 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select kode_brng,nama_brng,satuan,h_jual,jumlah,subtotal,dis,bsr_dis,total,no_batch,kadaluarsa from tamppiutang");
+            ps=koneksi.prepareStatement("select kode_brng,nama_brng,satuan,h_jual,jumlah,subtotal,dis,bsr_dis,total,no_batch,kadaluarsa from tamppiutang where petugas=?");
             try {
+                ps.setString(1,var.getkode());
                 rs=ps.executeQuery();
                 ttljual=0;
                 while(rs.next()){
