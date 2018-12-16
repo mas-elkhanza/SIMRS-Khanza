@@ -287,6 +287,7 @@ import ipsrs.DlgPengadaanIPSRSPerTanggal;
 import ipsrs.DlgPermintaanNonMedis;
 import ipsrs.DlgRekapPenerimaanNonMedis;
 import ipsrs.DlgRekapPermintaanNonMedis;
+import ipsrs.DlgSirkulasiNonMedis;
 import ipsrs.DlgStokKeluarIPSRSPerTanggal;
 import ipsrs.DlgSuratPemesananNonMedis;
 import java.awt.event.KeyListener;
@@ -961,6 +962,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnSuratKeluar = new widget.ButtonBig();
         btnKegiatanFarmasi = new widget.ButtonBig();
         btnOpnameIPSRS = new widget.ButtonBig();
+        btnSirkulasiNonMedis = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6144,6 +6146,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnOpnameIPSRS);
+
+        btnSirkulasiNonMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); // NOI18N
+        btnSirkulasiNonMedis.setText("Sirkulasi Non Medis");
+        btnSirkulasiNonMedis.setIconTextGap(0);
+        btnSirkulasiNonMedis.setName("btnSirkulasiNonMedis"); // NOI18N
+        btnSirkulasiNonMedis.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasiNonMedis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSirkulasiNonMedisActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnSirkulasiNonMedis);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -12762,6 +12776,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnOpnameIPSRSActionPerformed
 
+    private void btnSirkulasiNonMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSirkulasiNonMedisActionPerformed
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSirkulasiNonMedis sirkulasi=new DlgSirkulasiNonMedis(this,false);
+        sirkulasi.isCek();
+        sirkulasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        sirkulasi.setLocationRelativeTo(PanelUtama);
+        sirkulasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnSirkulasiNonMedisActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13174,6 +13200,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnSirkulasi3;
     private widget.ButtonBig btnSirkulasiBerkas;
     private widget.ButtonBig btnSirkulasiInventaris;
+    private widget.ButtonBig btnSirkulasiNonMedis;
     private widget.ButtonBig btnStokKeluarIPSRSPerTanggal;
     private widget.ButtonBig btnStokKeluarMedis;
     private widget.ButtonBig btnStokObatPasien;
@@ -14125,6 +14152,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getstok_opname_logistik()==true){
                 Panelmenu.add(btnOpnameIPSRS);
+                jmlmenu++;
+            }
+            
+            if(var.getsirkulasi_non_medis()==true){
+                Panelmenu.add(btnSirkulasiNonMedis);
                 jmlmenu++;
             }
 
@@ -16179,6 +16211,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getstok_opname_logistik()==true){
             Panelmenu.add(btnOpnameIPSRS);
+            jmlmenu++;
+        }
+        
+        if(var.getsirkulasi_non_medis()==true){
+            Panelmenu.add(btnSirkulasiNonMedis);
             jmlmenu++;
         }
 
@@ -18427,6 +18464,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getstok_opname_logistik()==true){
             if(btnOpnameIPSRS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnOpnameIPSRS);
+                jmlmenu++;
+            }                
+        } 
+        
+        if(var.getsirkulasi_non_medis()==true){
+            if(btnSirkulasiNonMedis.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSirkulasiNonMedis);
                 jmlmenu++;
             }                
         } 
