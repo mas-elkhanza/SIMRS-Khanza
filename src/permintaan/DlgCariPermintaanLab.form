@@ -186,7 +186,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="08-12-2018 08:40:01"/>
+                    <StringItem index="0" value="12-12-2018 13:24:43"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -548,7 +548,7 @@
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnHapusKeyPressed"/>
                   </Events>
                 </Component>
-                <Component class="widget.Button" name="BtnHasil">
+                <Component class="widget.Button" name="BtnSampel">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/picture/file-edit-16x16.png"/>
@@ -556,24 +556,6 @@
                     <Property name="mnemonic" type="int" value="80"/>
                     <Property name="text" type="java.lang.String" value="Sampel"/>
                     <Property name="toolTipText" type="java.lang.String" value="Alt+P"/>
-                    <Property name="name" type="java.lang.String" value="BtnHasil" noResource="true"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[100, 30]"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnHasilActionPerformed"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnHasilKeyPressed"/>
-                  </Events>
-                </Component>
-                <Component class="widget.Button" name="BtnSampel">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/picture/Agenda-1-16x16.png"/>
-                    </Property>
-                    <Property name="mnemonic" type="int" value="73"/>
-                    <Property name="text" type="java.lang.String" value="Hasil"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Alt+I"/>
                     <Property name="name" type="java.lang.String" value="BtnSampel" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 30]"/>
@@ -582,6 +564,24 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnSampelActionPerformed"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnSampelKeyPressed"/>
+                  </Events>
+                </Component>
+                <Component class="widget.Button" name="BtnHasil">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/picture/Agenda-1-16x16.png"/>
+                    </Property>
+                    <Property name="mnemonic" type="int" value="73"/>
+                    <Property name="text" type="java.lang.String" value="Hasil"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Alt+I"/>
+                    <Property name="name" type="java.lang.String" value="BtnHasil" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[100, 30]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnHasilActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnHasilKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="widget.Button" name="BtnAll">

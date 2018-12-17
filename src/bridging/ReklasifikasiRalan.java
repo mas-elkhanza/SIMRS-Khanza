@@ -646,8 +646,8 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
         }else{
             DlgBilingRalan billing=new DlgBilingRalan(null,false);
             billing.TNoRw.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
-            billing.isRawat();
             billing.isCek();
+            billing.isRawat();
             if(Sequel.cariInteger("select count(no_rawat) from piutang_pasien where no_rawat=?",billing.TNoRw.getText())>0){
                 billing.setPiutang();
             }

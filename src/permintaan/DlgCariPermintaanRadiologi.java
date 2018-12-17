@@ -909,8 +909,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         dlgro.setLocationRelativeTo(internalFrame1);
                         dlgro.emptTeks();
                         dlgro.isCek();
-                        dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ranap"); 
-                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ranap");
+                        dlgro.setDokterPerujuk(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString());
                         dlgro.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }else {
@@ -920,8 +920,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         dlgro.setLocationRelativeTo(internalFrame1);
                         dlgro.emptTeks();
                         dlgro.isCek();
-                        dlgro.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ralan"); 
-                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                        dlgro.setOrder(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),"Ralan");
+                        dlgro.setDokterPerujuk(tbDokter.getValueAt(tbDokter.getSelectedRow(),9).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),10).toString());
                         dlgro.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                     }
