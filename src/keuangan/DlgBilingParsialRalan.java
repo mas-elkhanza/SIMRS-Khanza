@@ -3173,9 +3173,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private void chkPoliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkPoliMouseClicked
         jmlreg=Sequel.cariInteger("select count(no_rawat) from permintaan_registrasi where no_rawat=?",TNoRw.getText());
         if(jmlreg==1){
-            if(chkPoli.isSelected()==true){
-                tampilhapus();
-            }                            
+            tampilhapus();           
         }
     }//GEN-LAST:event_chkPoliMouseClicked
 
@@ -5252,6 +5250,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                 "Registrasi",":","",Double.parseDouble(TBiaya.getText()),1,Double.parseDouble(TBiaya.getText()),"Registrasi"
                             });
                         }                            
+                    }else{
+                        chkPoli.setSelected(false);
                     }
                     
                     if(jml>0){
@@ -6013,6 +6013,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             if(chkPoli.isSelected()==true){
                 ttlRegistrasi=ttlRegistrasi+Valid.SetAngka(TBiaya.getText());                                  
                 ttl=ttl+Valid.SetAngka(TBiaya.getText()); 
+            }else{
+                ttlRegistrasi=ttlRegistrasi+0;                                  
+                ttl=ttl+0; 
             }                            
         }
         z=tbTindakanDrBayar.getRowCount();
