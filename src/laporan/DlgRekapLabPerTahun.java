@@ -40,8 +40,8 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps,ps2,ps3;
-    private ResultSet rs,rs2,rs3;
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;
     private int i=0;   
     /** Creates new form DlgLhtBiaya
      * @param parent
