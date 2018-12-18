@@ -68,7 +68,7 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(35);
             }else if(i==1){
-                column.setPreferredWidth(270);
+                column.setPreferredWidth(300);
             }else{
                 column.setPreferredWidth(40);
             }
@@ -391,7 +391,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     nov=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-11%");
                     des=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-12%");
                     tabMode.addRow(new String[]{
-                        i+"",rs.getString("nm_perawatan"),jan+"",feb+"",mar+"",apr+"",mei+"",jun+"",jul+"",agu+"",
+                        i+"",rs.getString("kd_jenis_prw")+" "+rs.getString("nm_perawatan"),jan+"",feb+"",mar+"",apr+"",mei+"",jun+"",jul+"",agu+"",
                         sep+"",okt+"",nov+"",des+"",(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+""
                     });
                     ps2=koneksi.prepareStatement("select id_template,Pemeriksaan from template_laboratorium where kd_jenis_prw=? order by urut");
@@ -412,7 +412,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                             nov=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-11%");
                             des=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-12%");
                             tabMode.addRow(new String[]{
-                                "","   "+rs2.getString("Pemeriksaan"),jan+"",feb+"",mar+"",apr+"",mei+"",jun+"",jul+"",agu+"",
+                                "","    "+rs2.getString("Pemeriksaan"),jan+"",feb+"",mar+"",apr+"",mei+"",jun+"",jul+"",agu+"",
                                 sep+"",okt+"",nov+"",des+"",(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+""
                             });
                         }

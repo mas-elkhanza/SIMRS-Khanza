@@ -382,7 +382,9 @@ import keuangan.DlgJnsPerawatanRalan;
 import laporan.DlgPelayananLab;
 import laporan.DlgPelayananRadiologi;
 import laporan.DlgPerujukLabPerTahun;
+import laporan.DlgPerujukRadiologiPerTahun;
 import laporan.DlgRekapLabPerTahun;
+import laporan.DlgRekapRadiologiPerTahun;
 import setting.DlgSetInputParsial;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
@@ -967,6 +969,8 @@ public class frmUtama extends javax.swing.JFrame {
         btnSirkulasiNonMedis = new widget.ButtonBig();
         btnRekapLabPerTahun = new widget.ButtonBig();
         btnPerujukLabPerTahun = new widget.ButtonBig();
+        btnRekapRadiologiPerTahun = new widget.ButtonBig();
+        btnPerujukRadiologiPerTahun = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6186,6 +6190,30 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnPerujukLabPerTahun);
+
+        btnRekapRadiologiPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_Thorax_X-Ray_Black_63791.png"))); // NOI18N
+        btnRekapRadiologiPerTahun.setText("Rekap Radiologi Per Tahun");
+        btnRekapRadiologiPerTahun.setIconTextGap(0);
+        btnRekapRadiologiPerTahun.setName("btnRekapRadiologiPerTahun"); // NOI18N
+        btnRekapRadiologiPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapRadiologiPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapRadiologiPerTahunActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRekapRadiologiPerTahun);
+
+        btnPerujukRadiologiPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/doctor_assistant.png"))); // NOI18N
+        btnPerujukRadiologiPerTahun.setText("Perujuk Radiologi Per Tahun");
+        btnPerujukRadiologiPerTahun.setIconTextGap(0);
+        btnPerujukRadiologiPerTahun.setName("btnPerujukRadiologiPerTahun"); // NOI18N
+        btnPerujukRadiologiPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPerujukRadiologiPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerujukRadiologiPerTahunActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPerujukRadiologiPerTahun);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -12838,6 +12866,28 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPerujukLabPerTahunActionPerformed
 
+    private void btnRekapRadiologiPerTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekapRadiologiPerTahunActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRekapRadiologiPerTahun aplikasi=new DlgRekapRadiologiPerTahun(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRekapRadiologiPerTahunActionPerformed
+
+    private void btnPerujukRadiologiPerTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerujukRadiologiPerTahunActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPerujukRadiologiPerTahun aplikasi=new DlgPerujukRadiologiPerTahun(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPerujukRadiologiPerTahunActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13140,6 +13190,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPermintaanNonMedis;
     private widget.ButtonBig btnPermintaanRadiologi;
     private widget.ButtonBig btnPerujukLabPerTahun;
+    private widget.ButtonBig btnPerujukRadiologiPerTahun;
     private widget.ButtonBig btnPerusahaan;
     private widget.ButtonBig btnPiutang;
     private widget.ButtonBig btnPiutangBelumLunas;
@@ -13188,6 +13239,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRekapPoliAnak;
     private widget.ButtonBig btnRekapPresensi;
     private widget.ButtonBig btnRekapPresensi2;
+    private widget.ButtonBig btnRekapRadiologiPerTahun;
     private widget.ButtonBig btnRekening;
     private widget.ButtonBig btnRekeningTahun;
     private widget.ButtonBig btnReklasifikasiRalan;
@@ -14719,6 +14771,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getperujuk_lab_pertahun()==true){  
                 Panelmenu.add(btnPerujukLabPerTahun);                 
+                jmlmenu++;
+            }
+            
+            if(var.getrekap_radiologi_pertahun()==true){  
+                Panelmenu.add(btnRekapRadiologiPerTahun);                 
+                jmlmenu++;
+            }
+
+            if(var.getperujuk_radiologi_pertahun()==true){  
+                Panelmenu.add(btnPerujukRadiologiPerTahun);                 
                 jmlmenu++;
             }
             
@@ -16778,6 +16840,16 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getperujuk_lab_pertahun()==true){  
             Panelmenu.add(btnPerujukLabPerTahun);                 
+            jmlmenu++;
+        }
+        
+        if(var.getrekap_radiologi_pertahun()==true){  
+            Panelmenu.add(btnRekapRadiologiPerTahun);                 
+            jmlmenu++;
+        }
+        
+        if(var.getperujuk_radiologi_pertahun()==true){  
+            Panelmenu.add(btnPerujukRadiologiPerTahun);                 
             jmlmenu++;
         }
         
@@ -19243,6 +19315,20 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getperujuk_lab_pertahun()==true){  
             if(btnPerujukLabPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPerujukLabPerTahun);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getrekap_radiologi_pertahun()==true){  
+            if(btnRekapRadiologiPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapRadiologiPerTahun);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getperujuk_radiologi_pertahun()==true){  
+            if(btnPerujukRadiologiPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPerujukRadiologiPerTahun);                 
                 jmlmenu++;
             }                
         }
