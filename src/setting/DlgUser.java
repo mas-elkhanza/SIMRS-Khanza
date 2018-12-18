@@ -118,7 +118,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Kegiatan Kelompok PCare","[K]Tarif Ranap RS & PCare","[K]Peserta Keg Kelompok PCare","[D]Sirkulasi Obat, Alkes & BHP 3","[K]Data Pendafataran PCare",
                     "[K]Mapping Dokter RS & PCare","[I]Ranap Per Ruang","[I]Penyakit Ranap Per Cara Bayar","[I]Anggota Militer Dirawat","[P]Set Input Parsial",
                     "[I]Lama Pelayanan Radiologi","[I]Lama Pelayanan Lab","[K]Cek Nomor SEP","[A]Catatan Dokter","[O]Surat Keluar","[D]Kegiatan Farmasi",
-                    "[E]Stok Opname Non Medis","[E]Sirkulasi Non Medis"
+                    "[E]Stok Opname Non Medis","[E]Sirkulasi Non Medis","[I]Rekap Lab Per Tahun"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -248,7 +248,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 412;i++) {
+        for (i = 0; i < 413;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -708,6 +708,8 @@ public class DlgUser extends javax.swing.JDialog {
                 column.setPreferredWidth(137);
             }else if(i==411){
                 column.setPreferredWidth(110);
+            }else if(i==412){
+                column.setPreferredWidth(120);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1144,7 +1146,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1598,7 +1600,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "surat_keluar='"+tbUser.getValueAt(i,408).toString()+"',"+
                     "kegiatan_farmasi='"+tbUser.getValueAt(i,409).toString()+"',"+
                     "stok_opname_logistik='"+tbUser.getValueAt(i,410).toString()+"',"+
-                    "sirkulasi_non_medis='"+tbUser.getValueAt(i,411).toString()+"'");
+                    "sirkulasi_non_medis='"+tbUser.getValueAt(i,411).toString()+"',"+
+                    "rekap_lab_pertahun='"+tbUser.getValueAt(i,412).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1895,7 +1898,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "pcare_peserta_kegiatan_kelompok,sirkulasi_obat3,bridging_pcare_daftar,pcare_mapping_dokter,"+
                         "ranap_per_ruang,penyakit_ranap_cara_bayar,anggota_militer_dirawat,set_input_parsial,lama_pelayanan_radiologi, "+
                         "lama_pelayanan_lab,bpjs_cek_sep,catatan_perawatan,surat_keluar,kegiatan_farmasi,stok_opname_logistik,"+
-                        "sirkulasi_non_medis from user order by AES_DECRYPT(id_user,'nur')");
+                        "sirkulasi_non_medis,rekap_lab_pertahun from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2318,7 +2321,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("surat_keluar"),
                                rs.getBoolean("kegiatan_farmasi"),
                                rs.getBoolean("stok_opname_logistik"),
-                               rs.getBoolean("sirkulasi_non_medis")
+                               rs.getBoolean("sirkulasi_non_medis"),
+                               rs.getBoolean("rekap_lab_pertahun")
                             });
                         }   
                     } catch (Exception e) {
@@ -2731,7 +2735,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("surat_keluar"),
                            rs.getBoolean("kegiatan_farmasi"),
                            rs.getBoolean("stok_opname_logistik"),
-                           rs.getBoolean("sirkulasi_non_medis")
+                           rs.getBoolean("sirkulasi_non_medis"),
+                           rs.getBoolean("rekap_lab_pertahun")
                         });
                     }                                             
                  }

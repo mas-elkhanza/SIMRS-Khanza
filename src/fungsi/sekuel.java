@@ -1261,6 +1261,38 @@ public final class sekuel {
         return angka;
     }
     
+    public Integer cariInteger(String sql,String data,String data2){
+        angka=0;
+        try {
+            ps=connect.prepareStatement(sql);
+            try{
+                ps.setString(1,data);
+                ps.setString(2,data2);
+                rs=ps.executeQuery();            
+                if(rs.next()){
+                    angka=rs.getInt(1);
+                }else{
+                    angka=0;
+                }  
+            }catch(Exception e){
+                angka=0;
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rs != null){
+                    rs.close();
+                }
+                
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+            
+        return angka;
+    }
+    
     public Integer cariInteger2(String sql){
         angka=0;
         try {

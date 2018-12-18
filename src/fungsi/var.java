@@ -89,7 +89,8 @@ public final class var {
             pcare_mapping_poli=false,pcare_kegiatan_kelompok=false,pcare_mapping_tindakan_ranap=false,pcare_peserta_kegiatan_kelompok=false,
             sirkulasi_obat3=false,bridging_pcare_daftar=false,pcare_mapping_dokter=false,ranap_per_ruang=false,penyakit_ranap_cara_bayar=false,
             anggota_militer_dirawat=false,set_input_parsial=false,lama_pelayanan_radiologi=false,lama_pelayanan_lab=false,bpjs_cek_sep=false,
-            catatan_perawatan=false,surat_keluar=false,kegiatan_farmasi=false,stok_opname_logistik=false,sirkulasi_non_medis=false;
+            catatan_perawatan=false,surat_keluar=false,kegiatan_farmasi=false,stok_opname_logistik=false,sirkulasi_non_medis=false,
+            rekap_lab_pertahun=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -522,6 +523,7 @@ public final class var {
                         var.kegiatan_farmasi=true;
                         var.stok_opname_logistik=true;
                         var.sirkulasi_non_medis=true;
+                        var.rekap_lab_pertahun=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -938,6 +940,7 @@ public final class var {
                         var.kegiatan_farmasi=rs2.getBoolean("kegiatan_farmasi");
                         var.stok_opname_logistik=rs2.getBoolean("stok_opname_logistik");
                         var.sirkulasi_non_medis=rs2.getBoolean("sirkulasi_non_medis");
+                        var.rekap_lab_pertahun=rs2.getBoolean("rekap_lab_pertahun");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1352,6 +1355,7 @@ public final class var {
                         var.kegiatan_farmasi=false;
                         var.stok_opname_logistik=false;
                         var.sirkulasi_non_medis=false;
+                        var.rekap_lab_pertahun=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1818,4 +1822,5 @@ public final class var {
     public static boolean getkegiatan_farmasi(){return var.kegiatan_farmasi;}
     public static boolean getstok_opname_logistik(){return var.stok_opname_logistik;}
     public static boolean getsirkulasi_non_medis(){return var.sirkulasi_non_medis;} 
+    public static boolean getrekap_lab_pertahun(){return var.rekap_lab_pertahun;} 
 }   

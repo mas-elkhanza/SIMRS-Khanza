@@ -381,6 +381,7 @@ import keuangan.DlgDeposit;
 import keuangan.DlgJnsPerawatanRalan;
 import laporan.DlgPelayananLab;
 import laporan.DlgPelayananRadiologi;
+import laporan.DlgRekapLabPerTahun;
 import setting.DlgSetInputParsial;
 import smsui.frmSmsView;
 import surat.SuratAlmari;
@@ -963,6 +964,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnKegiatanFarmasi = new widget.ButtonBig();
         btnOpnameIPSRS = new widget.ButtonBig();
         btnSirkulasiNonMedis = new widget.ButtonBig();
+        btnRekapLabPerTahun = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6159,6 +6161,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnSirkulasiNonMedis);
 
+        btnRekapLabPerTahun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_projects_63140.png"))); // NOI18N
+        btnRekapLabPerTahun.setText("Rekap Lab Per Tahun");
+        btnRekapLabPerTahun.setIconTextGap(0);
+        btnRekapLabPerTahun.setName("btnRekapLabPerTahun"); // NOI18N
+        btnRekapLabPerTahun.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRekapLabPerTahun.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRekapLabPerTahunActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnRekapLabPerTahun);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6167,7 +6181,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/12/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17/12/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6245,7 +6259,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaBawah(new java.awt.Color(213, 243, 211));
+        internalFrame1.setWarnaBawah(new java.awt.Color(217, 247, 215));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
 
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
@@ -6520,7 +6534,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(213, 243, 211));
+        internalFrame4.setWarnaAtas(new java.awt.Color(217, 247, 215));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -12788,6 +12802,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSirkulasiNonMedisActionPerformed
 
+    private void btnRekapLabPerTahunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRekapLabPerTahunActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgRekapLabPerTahun aplikasi=new DlgRekapLabPerTahun(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnRekapLabPerTahunActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13127,6 +13152,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnRegistrasi;
     private widget.ButtonBig btnRekapBulanan;
     private widget.ButtonBig btnRekapHarian;
+    private widget.ButtonBig btnRekapLabPerTahun;
     private widget.ButtonBig btnRekapPembayaranPerUnit;
     private widget.ButtonBig btnRekapPenerimaanNonMedis;
     private widget.ButtonBig btnRekapPenerimaanObat;
@@ -14657,6 +14683,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getpenyakit_ranap_cara_bayar()==true){  
                 Panelmenu.add(btnPenyakitRanapCaraBayar);                 
+                jmlmenu++;
+            }
+            
+            if(var.getrekap_lab_pertahun()==true){  
+                Panelmenu.add(btnRekapLabPerTahun);                 
                 jmlmenu++;
             }
             
@@ -16706,6 +16737,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpenyakit_ranap_cara_bayar()==true){  
             Panelmenu.add(btnPenyakitRanapCaraBayar);                 
+            jmlmenu++;
+        }
+        
+        if(var.getrekap_lab_pertahun()==true){  
+            Panelmenu.add(btnRekapLabPerTahun);                 
             jmlmenu++;
         }
         
@@ -19157,6 +19193,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpenyakit_ranap_cara_bayar()==true){  
             if(btnPenyakitRanapCaraBayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenyakitRanapCaraBayar);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getrekap_lab_pertahun()==true){  
+            if(btnRekapLabPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRekapLabPerTahun);                 
                 jmlmenu++;
             }                
         }
