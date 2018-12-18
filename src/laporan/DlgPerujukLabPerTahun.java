@@ -415,7 +415,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 }
                 if(i>1){
                     tabMode.addRow(new String[]{
-                        "","Total :",ttljan+"",ttlfeb+"",ttlmar+"",ttlapr+"",ttlmei+"",
+                        "","Jumlah :",ttljan+"",ttlfeb+"",ttlmar+"",ttlapr+"",ttlmei+"",
                         ttljun+"",ttljul+"",ttlagu+"",ttlsep+"",ttlokt+"",ttlnov+"",ttldes+"",
                         (ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes)+""
                     });
