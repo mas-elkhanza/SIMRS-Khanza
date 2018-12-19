@@ -380,6 +380,7 @@ import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
 import keuangan.DlgDeposit;
 import keuangan.DlgJnsPerawatanRalan;
+import laporan.DlgJumlahMacamDiet;
 import laporan.DlgJumlahPorsiDiet;
 import laporan.DlgPelayananLab;
 import laporan.DlgPelayananRadiologi;
@@ -974,6 +975,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnRekapRadiologiPerTahun = new widget.ButtonBig();
         btnPerujukRadiologiPerTahun = new widget.ButtonBig();
         btnJumlahPorsiDiet = new widget.ButtonBig();
+        btnJumlahMacamDiet = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6229,6 +6231,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnJumlahPorsiDiet);
+
+        btnJumlahMacamDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_ramen_3377055.png"))); // NOI18N
+        btnJumlahMacamDiet.setText("Rekap Bulanan Macam Diet");
+        btnJumlahMacamDiet.setIconTextGap(0);
+        btnJumlahMacamDiet.setName("btnJumlahMacamDiet"); // NOI18N
+        btnJumlahMacamDiet.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJumlahMacamDiet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJumlahMacamDietActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnJumlahMacamDiet);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -12914,6 +12928,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnJumlahPorsiDietActionPerformed
 
+    private void btnJumlahMacamDietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJumlahMacamDietActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgJumlahMacamDiet aplikasi=new DlgJumlahMacamDiet(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnJumlahMacamDietActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13118,6 +13143,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnJenisIpsrs;
     private widget.ButtonBig btnJenisParkir;
     private widget.ButtonBig btnJnsBarang;
+    private widget.ButtonBig btnJumlahMacamDiet;
     private widget.ButtonBig btnJumlahPorsiDiet;
     private widget.ButtonBig btnJurnalHarian;
     private widget.ButtonBig btnKamar;
@@ -14813,6 +14839,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getjumlah_porsi_diet()==true){  
                 Panelmenu.add(btnJumlahPorsiDiet);                 
+                jmlmenu++;
+            }
+            
+            if(var.getjumlah_macam_diet()==true){  
+                Panelmenu.add(btnJumlahMacamDiet);                 
                 jmlmenu++;
             }
             
@@ -16887,6 +16918,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getjumlah_porsi_diet()==true){  
             Panelmenu.add(btnJumlahPorsiDiet);                 
+            jmlmenu++;
+        }
+        
+        if(var.getjumlah_macam_diet()==true){  
+            Panelmenu.add(btnJumlahMacamDiet);                 
             jmlmenu++;
         }
         
@@ -19373,6 +19409,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getjumlah_porsi_diet()==true){  
             if(btnJumlahPorsiDiet.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJumlahPorsiDiet);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getjumlah_macam_diet()==true){  
+            if(btnJumlahMacamDiet.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnJumlahMacamDiet);                 
                 jmlmenu++;
             }                
         }
