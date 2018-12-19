@@ -12,6 +12,7 @@
 
 package simrskhanza;
 
+import laporan.DlgSirkulasiBerkas;
 import permintaan.DlgCariPermintaanLab;
 import permintaan.DlgBookingRegistrasi;
 import permintaan.DlgBookingOperasi;
@@ -379,6 +380,7 @@ import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
 import keuangan.DlgDeposit;
 import keuangan.DlgJnsPerawatanRalan;
+import laporan.DlgJumlahPorsiDiet;
 import laporan.DlgPelayananLab;
 import laporan.DlgPelayananRadiologi;
 import laporan.DlgPerujukLabPerTahun;
@@ -971,6 +973,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPerujukLabPerTahun = new widget.ButtonBig();
         btnRekapRadiologiPerTahun = new widget.ButtonBig();
         btnPerujukRadiologiPerTahun = new widget.ButtonBig();
+        btnJumlahPorsiDiet = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6215,6 +6218,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPerujukRadiologiPerTahun);
 
+        btnJumlahPorsiDiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_bibimbub_3377053.png"))); // NOI18N
+        btnJumlahPorsiDiet.setText("Rekap Bulanan Porsi Diet");
+        btnJumlahPorsiDiet.setIconTextGap(0);
+        btnJumlahPorsiDiet.setName("btnJumlahPorsiDiet"); // NOI18N
+        btnJumlahPorsiDiet.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnJumlahPorsiDiet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJumlahPorsiDietActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnJumlahPorsiDiet);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6223,7 +6238,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18/12/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/12/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6301,7 +6316,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaBawah(new java.awt.Color(220, 245, 210));
+        internalFrame1.setWarnaBawah(new java.awt.Color(215, 240, 205));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
 
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
@@ -6576,7 +6591,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(220, 245, 210));
+        internalFrame4.setWarnaAtas(new java.awt.Color(215, 240, 205));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -12888,6 +12903,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPerujukRadiologiPerTahunActionPerformed
 
+    private void btnJumlahPorsiDietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJumlahPorsiDietActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgJumlahPorsiDiet aplikasi=new DlgJumlahPorsiDiet(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnJumlahPorsiDietActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13092,6 +13118,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnJenisIpsrs;
     private widget.ButtonBig btnJenisParkir;
     private widget.ButtonBig btnJnsBarang;
+    private widget.ButtonBig btnJumlahPorsiDiet;
     private widget.ButtonBig btnJurnalHarian;
     private widget.ButtonBig btnKamar;
     private widget.ButtonBig btnKamarInap;
@@ -14781,6 +14808,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getperujuk_radiologi_pertahun()==true){  
                 Panelmenu.add(btnPerujukRadiologiPerTahun);                 
+                jmlmenu++;
+            }
+            
+            if(var.getjumlah_porsi_diet()==true){  
+                Panelmenu.add(btnJumlahPorsiDiet);                 
                 jmlmenu++;
             }
             
@@ -16850,6 +16882,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getperujuk_radiologi_pertahun()==true){  
             Panelmenu.add(btnPerujukRadiologiPerTahun);                 
+            jmlmenu++;
+        }
+        
+        if(var.getjumlah_porsi_diet()==true){  
+            Panelmenu.add(btnJumlahPorsiDiet);                 
             jmlmenu++;
         }
         
@@ -19329,6 +19366,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getperujuk_radiologi_pertahun()==true){  
             if(btnPerujukRadiologiPerTahun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPerujukRadiologiPerTahun);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getjumlah_porsi_diet()==true){  
+            if(btnJumlahPorsiDiet.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnJumlahPorsiDiet);                 
                 jmlmenu++;
             }                
         }
