@@ -400,13 +400,12 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
             Sequel.AutoComitFalse();
             Sequel.queryu("truncate table temporary_payment");
             for(int r=0;r<tabMode.getRowCount();r++){  
-                    Sequel.menyimpan("temporary_payment","'0','"+
-                                    tabMode.getValueAt(r,0).toString().replaceAll("'","`") +"','"+
-                                    tabMode.getValueAt(r,1).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,2).toString().replaceAll("'","`")+"','"+
-                                    tabMode.getValueAt(r,3).toString().replaceAll("'","`")+"','"+
-                                    Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(r,4).toString()))+"','"+
-                                    tabMode.getValueAt(r,5).toString().replaceAll("'","`")+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","data");
+                Sequel.menyimpan("temporary_payment","'0',?,?,?,?,?,?,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''",6,new String[]{
+                    tabMode.getValueAt(r,0).toString(),tabMode.getValueAt(r,1).toString(),
+                    tabMode.getValueAt(r,2).toString(),tabMode.getValueAt(r,3).toString(),
+                    Valid.SetAngka(Double.parseDouble(tabMode.getValueAt(r,4).toString())),
+                    tabMode.getValueAt(r,5).toString()                    
+                });
             }
             Sequel.AutoComitTrue();
             Map<String, Object> param = new HashMap<>();                 
