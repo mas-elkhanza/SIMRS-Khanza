@@ -448,6 +448,7 @@ public final class DlgPaymentPoint2 extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        User.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 

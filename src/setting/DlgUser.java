@@ -119,7 +119,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "[K]Mapping Dokter RS & PCare","[I]Ranap Per Ruang","[I]Penyakit Ranap Per Cara Bayar","[I]Anggota Militer Dirawat","[P]Set Input Parsial",
                     "[I]Lama Pelayanan Radiologi","[I]Lama Pelayanan Lab","[K]Cek Nomor SEP","[A]Catatan Dokter","[O]Surat Keluar","[D]Kegiatan Farmasi",
                     "[E]Stok Opname Non Medis","[E]Sirkulasi Non Medis","[I]Rekap Lab Per Tahun","[I]Perujuk Lab Per Tahun","[I]Rekap Radiologi Per Tahun",
-                    "[I]Perujuk Radiologi Per Tahun","[I]Rekap Bulanan Porsi Diet","[I]Rekap Bulanan Macam Diet","[H]Payment Point 2"
+                    "[I]Perujuk Radiologi Per Tahun","[I]Rekap Bulanan Porsi Diet","[I]Rekap Bulanan Macam Diet","[H]Payment Point 2","[H]Pembayaran Per Akun Bayar 2"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -251,7 +251,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 419;i++) {
+        for (i = 0; i < 420;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(130);
@@ -724,7 +724,9 @@ public class DlgUser extends javax.swing.JDialog {
             }else if(i==417){
                 column.setPreferredWidth(146);
             }else if(i==418){
-                column.setPreferredWidth(126);
+                column.setPreferredWidth(98);
+            }else if(i==419){
+                column.setPreferredWidth(166);
             }else{
                 column.setPreferredWidth(130);
             }
@@ -1162,7 +1164,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tampil();
                 emptTeks();
             }            
@@ -1623,7 +1625,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "perujuk_radiologi_pertahun='"+tbUser.getValueAt(i,415).toString()+"',"+
                     "jumlah_porsi_diet='"+tbUser.getValueAt(i,416).toString()+"',"+
                     "jumlah_macam_diet='"+tbUser.getValueAt(i,417).toString()+"',"+
-                    "payment_point2='"+tbUser.getValueAt(i,418).toString()+"'");
+                    "payment_point2='"+tbUser.getValueAt(i,418).toString()+"',"+
+                    "pembayaran_akun_bayar2='"+tbUser.getValueAt(i,419).toString()+"'");
             }            
             tampil();
             emptTeks();
@@ -1921,7 +1924,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         "ranap_per_ruang,penyakit_ranap_cara_bayar,anggota_militer_dirawat,set_input_parsial,lama_pelayanan_radiologi, "+
                         "lama_pelayanan_lab,bpjs_cek_sep,catatan_perawatan,surat_keluar,kegiatan_farmasi,stok_opname_logistik,"+
                         "sirkulasi_non_medis,rekap_lab_pertahun,perujuk_lab_pertahun,rekap_radiologi_pertahun,perujuk_radiologi_pertahun,"+
-                        "jumlah_porsi_diet,jumlah_macam_diet,payment_point2 from user order by AES_DECRYPT(id_user,'nur')");
+                        "jumlah_porsi_diet,jumlah_macam_diet,payment_point2,pembayaran_akun_bayar2 from user order by AES_DECRYPT(id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2351,7 +2354,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("perujuk_radiologi_pertahun"),
                                rs.getBoolean("jumlah_porsi_diet"),
                                rs.getBoolean("jumlah_macam_diet"),
-                               rs.getBoolean("payment_point2")
+                               rs.getBoolean("payment_point2"),
+                               rs.getBoolean("pembayaran_akun_bayar2")
                             });
                         }   
                     } catch (Exception e) {
@@ -2771,7 +2775,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("perujuk_radiologi_pertahun"),
                            rs.getBoolean("jumlah_porsi_diet"),
                            rs.getBoolean("jumlah_macam_diet"),
-                           rs.getBoolean("payment_point2")
+                           rs.getBoolean("payment_point2"),
+                           rs.getBoolean("pembayaran_akun_bayar2")
                         });
                     }                                             
                  }

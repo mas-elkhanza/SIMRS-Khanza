@@ -381,6 +381,7 @@ import setting.DlgSetNota;
 import keuangan.DlgDeposit;
 import keuangan.DlgJnsPerawatanRalan;
 import keuangan.DlgPaymentPoint2;
+import keuangan.DlgPembayaranPerAKunBayar2;
 import laporan.DlgJumlahMacamDiet;
 import laporan.DlgJumlahPorsiDiet;
 import laporan.DlgPelayananLab;
@@ -978,6 +979,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnJumlahPorsiDiet = new widget.ButtonBig();
         btnJumlahMacamDiet = new widget.ButtonBig();
         btnPaymentPoint2 = new widget.ButtonBig();
+        btnPembayaranAkunBayar2 = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6258,6 +6260,18 @@ public class frmUtama extends javax.swing.JFrame {
         });
         Panelmenu.add(btnPaymentPoint2);
 
+        btnPembayaranAkunBayar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); // NOI18N
+        btnPembayaranAkunBayar2.setText("Pembayaran Per Akun Bayar 2");
+        btnPembayaranAkunBayar2.setIconTextGap(0);
+        btnPembayaranAkunBayar2.setName("btnPembayaranAkunBayar2"); // NOI18N
+        btnPembayaranAkunBayar2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPembayaranAkunBayar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPembayaranAkunBayar2ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPembayaranAkunBayar2);
+
         scrollPane2.setViewportView(Panelmenu);
 
         panelMenu.add(scrollPane2, java.awt.BorderLayout.CENTER);
@@ -6266,7 +6280,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19/12/2018" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20/12/2018" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -6344,7 +6358,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 44));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaBawah(new java.awt.Color(215, 240, 205));
+        internalFrame1.setWarnaBawah(new java.awt.Color(210, 237, 200));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 1));
 
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
@@ -6619,7 +6633,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setPreferredSize(new java.awt.Dimension(330, 25));
-        internalFrame4.setWarnaAtas(new java.awt.Color(215, 240, 205));
+        internalFrame4.setWarnaAtas(new java.awt.Color(210, 237, 200));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -11721,7 +11735,6 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         DlgHome.dispose();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgPembayaranPerAKunBayar aplikasi=new DlgPembayaranPerAKunBayar(this,false);
-        aplikasi.tampil();
         aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -12965,6 +12978,17 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPaymentPoint2ActionPerformed
 
+    private void btnPembayaranAkunBayar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPembayaranAkunBayar2ActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPembayaranPerAKunBayar2 aplikasi=new DlgPembayaranPerAKunBayar2(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPembayaranAkunBayar2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13244,6 +13268,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPemasukanLain;
     private widget.ButtonBig btnPembatalanPeriksaDokter;
     private widget.ButtonBig btnPembayaranAkunBayar;
+    private widget.ButtonBig btnPembayaranAkunBayar2;
     private widget.ButtonBig btnPembayaranPerUnit;
     private widget.ButtonBig btnPembelian;
     private widget.ButtonBig btnPembelianIpsrs;
@@ -14645,6 +14670,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
             
             if(var.getpembayaran_akun_bayar()==true){
                 Panelmenu.add(btnPembayaranAkunBayar);
+                jmlmenu++;
+            }
+            
+            if(var.getpembayaran_akun_bayar2()==true){
+                Panelmenu.add(btnPembayaranAkunBayar2);
                 jmlmenu++;
             }
             
@@ -16730,6 +16760,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         
         if(var.getpembayaran_akun_bayar()==true){
             Panelmenu.add(btnPembayaranAkunBayar);
+            jmlmenu++;
+        }
+        
+        if(var.getpembayaran_akun_bayar2()==true){
+            Panelmenu.add(btnPembayaranAkunBayar2);
             jmlmenu++;
         }
 
@@ -19138,6 +19173,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpembayaran_akun_bayar()==true){
             if(btnPembayaranAkunBayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPembayaranAkunBayar);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpembayaran_akun_bayar2()==true){
+            if(btnPembayaranAkunBayar2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPembayaranAkunBayar2);
                 jmlmenu++;
             }                
         }
