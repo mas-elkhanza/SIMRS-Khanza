@@ -380,6 +380,7 @@ import setting.DlgSetKeterlambatan;
 import setting.DlgSetNota;
 import keuangan.DlgDeposit;
 import keuangan.DlgJnsPerawatanRalan;
+import keuangan.DlgPaymentPoint2;
 import laporan.DlgJumlahMacamDiet;
 import laporan.DlgJumlahPorsiDiet;
 import laporan.DlgPelayananLab;
@@ -976,6 +977,7 @@ public class frmUtama extends javax.swing.JFrame {
         btnPerujukRadiologiPerTahun = new widget.ButtonBig();
         btnJumlahPorsiDiet = new widget.ButtonBig();
         btnJumlahMacamDiet = new widget.ButtonBig();
+        btnPaymentPoint2 = new widget.ButtonBig();
         tanggal = new widget.Tanggal();
         btnDataPenjualan = new widget.ButtonBig();
         btnInputPenjualan = new widget.ButtonBig();
@@ -6243,6 +6245,18 @@ public class frmUtama extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(btnJumlahMacamDiet);
+
+        btnPaymentPoint2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/coins.png"))); // NOI18N
+        btnPaymentPoint2.setText("Payment Point 2");
+        btnPaymentPoint2.setIconTextGap(0);
+        btnPaymentPoint2.setName("btnPaymentPoint2"); // NOI18N
+        btnPaymentPoint2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPaymentPoint2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPaymentPoint2ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(btnPaymentPoint2);
 
         scrollPane2.setViewportView(Panelmenu);
 
@@ -12939,6 +12953,18 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnJumlahMacamDietActionPerformed
 
+    private void btnPaymentPoint2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentPoint2ActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPaymentPoint2 aplikasi=new DlgPaymentPoint2(this,false);
+        aplikasi.tampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnPaymentPoint2ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -13213,6 +13239,7 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
     private widget.ButtonBig btnPasien;
     private widget.ButtonBig btnPasienMati;
     private widget.ButtonBig btnPaymentPoint;
+    private widget.ButtonBig btnPaymentPoint2;
     private widget.ButtonBig btnPegawai;
     private widget.ButtonBig btnPemasukanLain;
     private widget.ButtonBig btnPembatalanPeriksaDokter;
@@ -14608,6 +14635,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
             if(var.getpayment_point()==true){
                 Panelmenu.add(btnPaymentPoint);
+                jmlmenu++;
+            }
+            
+            if(var.getpayment_point2()==true){
+                Panelmenu.add(btnPaymentPoint2);
                 jmlmenu++;
             }
             
@@ -16688,6 +16720,11 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
 
         if(var.getpayment_point()==true){
             Panelmenu.add(btnPaymentPoint);
+            jmlmenu++;
+        }
+        
+        if(var.getpayment_point2()==true){
+            Panelmenu.add(btnPaymentPoint2);
             jmlmenu++;
         }
         
@@ -19087,6 +19124,13 @@ private void BtnSimpanPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:e
         if(var.getpayment_point()==true){
             if(btnPaymentPoint.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPaymentPoint);
+                jmlmenu++;
+            }                
+        }
+        
+        if(var.getpayment_point2()==true){
+            if(btnPaymentPoint2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPaymentPoint2);
                 jmlmenu++;
             }                
         }
