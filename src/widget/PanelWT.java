@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 public class PanelWT extends JPanel{
     private static final long serialVersionUID = -1;
     private BufferedImage gradientImage;
-    private Color warnaAtas = new Color(255,255,250);
+    private Color warnaAtas = new Color(255,255,255);
     private Color warnaBawah = new Color(0,0,0);
 
     public PanelWT(){

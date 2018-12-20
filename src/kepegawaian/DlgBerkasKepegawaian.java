@@ -108,6 +108,12 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
                 if(pegawai.getTable().getSelectedRow()!= -1){                   
                     TKd.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
                     TNm.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
+                    JK.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),2).toString());
+                    Pendidikan.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),10).toString());
+                    Bidang.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),6).toString());
+                    Departemen.setText(Sequel.cariIsi("select nama from departemen where dep_id=?",pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),5).toString()));
+                    Jabatan.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),3).toString());
+                    JenjangJabatan.setText(Sequel.cariIsi("select nama from jnj_jabatan where kode=?",pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),4).toString()));
  
                     try {
                         loadURL("http://" +koneksiDB.HOST()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/"+"penggajian/loginberkaspegawai.php?act=login&usere=admin&passwordte=akusayangsamakamu&nik="+TKd.getText().replaceAll(" ","_")+"&kategori="+CmbKategori.getSelectedItem().toString().replaceAll(" ","_")+"");
@@ -140,12 +146,12 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         LoadHTML5.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
                 ".isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#645050;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML1.setDocument(doc);
@@ -368,6 +374,18 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         TNm = new widget.TextBox();
         CmbKategori = new widget.ComboBox();
         jLabel9 = new widget.Label();
+        jLabel4 = new widget.Label();
+        JK = new widget.TextBox();
+        jLabel5 = new widget.Label();
+        Jabatan = new widget.TextBox();
+        jLabel8 = new widget.Label();
+        Bidang = new widget.TextBox();
+        jLabel10 = new widget.Label();
+        JenjangJabatan = new widget.TextBox();
+        Departemen = new widget.TextBox();
+        jLabel11 = new widget.Label();
+        Pendidikan = new widget.TextBox();
+        jLabel12 = new widget.Label();
         PanelContent = new widget.panelisi();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -394,7 +412,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Berkas Kepegawaian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Berkas Kepegawaian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -454,7 +472,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         panelGlass5.add(BtnAll);
 
         jLabel7.setName("jLabel7"); // NOI18N
-        jLabel7.setPreferredSize(new java.awt.Dimension(30, 23));
+        jLabel7.setPreferredSize(new java.awt.Dimension(50, 23));
         panelGlass5.add(jLabel7);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
@@ -478,8 +496,8 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
-        TabRawat.setForeground(new java.awt.Color(100,80,80));
+        TabRawat.setBorder(null);
+        TabRawat.setForeground(new java.awt.Color(70,70,70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -492,8 +510,9 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
+        panelGlass6.setBorder(null);
         panelGlass6.setName("panelGlass6"); // NOI18N
-        panelGlass6.setPreferredSize(new java.awt.Dimension(55, 44));
+        panelGlass6.setPreferredSize(new java.awt.Dimension(55, 95));
         panelGlass6.setLayout(null);
 
         jLabel3.setText("Pegawai :");
@@ -551,15 +570,118 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
             }
         });
         panelGlass6.add(CmbKategori);
-        CmbKategori.setBounds(538, 10, 200, 23);
+        CmbKategori.setBounds(558, 10, 200, 23);
 
         jLabel9.setText("Kategori Berkas :");
         jLabel9.setName("jLabel9"); // NOI18N
         panelGlass6.add(jLabel9);
-        jLabel9.setBounds(435, 10, 100, 23);
+        jLabel9.setBounds(454, 10, 100, 23);
+
+        jLabel4.setText("J.K. :");
+        jLabel4.setName("jLabel4"); // NOI18N
+        panelGlass6.add(jLabel4);
+        jLabel4.setBounds(0, 40, 60, 23);
+
+        JK.setEditable(false);
+        JK.setBackground(new java.awt.Color(245, 250, 240));
+        JK.setHighlighter(null);
+        JK.setName("JK"); // NOI18N
+        JK.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JKKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(JK);
+        JK.setBounds(64, 40, 60, 23);
+
+        jLabel5.setText("Jabatan :");
+        jLabel5.setName("jLabel5"); // NOI18N
+        panelGlass6.add(jLabel5);
+        jLabel5.setBounds(454, 40, 100, 23);
+
+        Jabatan.setEditable(false);
+        Jabatan.setBackground(new java.awt.Color(245, 250, 240));
+        Jabatan.setHighlighter(null);
+        Jabatan.setName("Jabatan"); // NOI18N
+        Jabatan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JabatanKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(Jabatan);
+        Jabatan.setBounds(558, 40, 200, 23);
+
+        jLabel8.setText("Bidang :");
+        jLabel8.setName("jLabel8"); // NOI18N
+        panelGlass6.add(jLabel8);
+        jLabel8.setBounds(0, 70, 60, 23);
+
+        Bidang.setEditable(false);
+        Bidang.setBackground(new java.awt.Color(245, 250, 240));
+        Bidang.setHighlighter(null);
+        Bidang.setName("Bidang"); // NOI18N
+        Bidang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BidangKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(Bidang);
+        Bidang.setBounds(64, 70, 130, 23);
+
+        jLabel10.setText("Jenjang Jabatan :");
+        jLabel10.setName("jLabel10"); // NOI18N
+        panelGlass6.add(jLabel10);
+        jLabel10.setBounds(454, 70, 100, 23);
+
+        JenjangJabatan.setEditable(false);
+        JenjangJabatan.setBackground(new java.awt.Color(245, 250, 240));
+        JenjangJabatan.setHighlighter(null);
+        JenjangJabatan.setName("JenjangJabatan"); // NOI18N
+        JenjangJabatan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JenjangJabatanKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(JenjangJabatan);
+        JenjangJabatan.setBounds(558, 70, 200, 23);
+
+        Departemen.setEditable(false);
+        Departemen.setBackground(new java.awt.Color(245, 250, 240));
+        Departemen.setHighlighter(null);
+        Departemen.setName("Departemen"); // NOI18N
+        Departemen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DepartemenKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(Departemen);
+        Departemen.setBounds(304, 70, 132, 23);
+
+        jLabel11.setText("Departemen :");
+        jLabel11.setName("jLabel11"); // NOI18N
+        panelGlass6.add(jLabel11);
+        jLabel11.setBounds(200, 70, 100, 23);
+
+        Pendidikan.setEditable(false);
+        Pendidikan.setBackground(new java.awt.Color(245, 250, 240));
+        Pendidikan.setHighlighter(null);
+        Pendidikan.setName("Pendidikan"); // NOI18N
+        Pendidikan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PendidikanKeyPressed(evt);
+            }
+        });
+        panelGlass6.add(Pendidikan);
+        Pendidikan.setBounds(240, 40, 196, 23);
+
+        jLabel12.setText("Pendidikan :");
+        jLabel12.setName("jLabel12"); // NOI18N
+        panelGlass6.add(jLabel12);
+        jLabel12.setBounds(152, 40, 85, 23);
 
         internalFrame2.add(panelGlass6, java.awt.BorderLayout.PAGE_START);
 
+        PanelContent.setBorder(null);
         PanelContent.setName("PanelContent"); // NOI18N
         PanelContent.setPreferredSize(new java.awt.Dimension(55, 55));
         PanelContent.setLayout(new java.awt.BorderLayout());
@@ -572,6 +694,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
@@ -588,6 +711,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
@@ -604,6 +728,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
@@ -620,6 +745,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         internalFrame6.setName("internalFrame6"); // NOI18N
         internalFrame6.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll3.setName("Scroll3"); // NOI18N
         Scroll3.setOpaque(true);
 
@@ -636,6 +762,7 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         internalFrame7.setName("internalFrame7"); // NOI18N
         internalFrame7.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll4.setName("Scroll4"); // NOI18N
         Scroll4.setOpaque(true);
 
@@ -778,6 +905,30 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
         }            
     }//GEN-LAST:event_CmbKategoriItemStateChanged
 
+    private void JKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JKKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JKKeyPressed
+
+    private void JabatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JabatanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JabatanKeyPressed
+
+    private void BidangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BidangKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BidangKeyPressed
+
+    private void JenjangJabatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenjangJabatanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JenjangJabatanKeyPressed
+
+    private void DepartemenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DepartemenKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DepartemenKeyPressed
+
+    private void PendidikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendidikanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PendidikanKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -795,17 +946,23 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox Bidang;
     private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnCariPegawai;
     private widget.Button BtnKeluar;
     private widget.ComboBox CmbKategori;
+    private widget.TextBox Departemen;
+    private widget.TextBox JK;
+    private widget.TextBox Jabatan;
+    private widget.TextBox JenjangJabatan;
     private widget.editorpane LoadHTML1;
     private widget.editorpane LoadHTML2;
     private widget.editorpane LoadHTML3;
     private widget.editorpane LoadHTML4;
     private widget.editorpane LoadHTML5;
     private widget.panelisi PanelContent;
+    private widget.TextBox Pendidikan;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
@@ -822,9 +979,15 @@ public final class DlgBerkasKepegawaian extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame5;
     private widget.InternalFrame internalFrame6;
     private widget.InternalFrame internalFrame7;
+    private widget.Label jLabel10;
+    private widget.Label jLabel11;
+    private widget.Label jLabel12;
     private widget.Label jLabel3;
+    private widget.Label jLabel4;
+    private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
+    private widget.Label jLabel8;
     private widget.Label jLabel9;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelGlass6;

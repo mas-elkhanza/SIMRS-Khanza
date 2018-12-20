@@ -26,7 +26,8 @@ public class DlgBulananHAIs extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0,deku=0,urine=0,sputum=0,darah=0;
+    private int i=0,deku=0,urine=0,sputum=0,darah=0,antibiotik=0,pasien=0,jmlpasien=0,ETT=0,CVL=0,IVL=0,UC=0,VAP=0,IAD=0,PLEB=0,
+                ISK=0,ILO=0,ANTIBIOTIK=0,jmlETT,jmlCVL,jmlIVL,jmlUC,jmlVAP,jmlIAD,jmlPLEB,jmlISK,jmlILO,jmldeku,jmlsputum,jmldarah,jmlurine,jmlANTIBIOTIK;
     private StringBuilder htmlContent;
     
     /** Creates new form DlgProgramStudi
@@ -44,10 +45,10 @@ public class DlgBulananHAIs extends javax.swing.JDialog {
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#645050;}"+
-                ".isi3 td{border-right: 1px solid #edf2e8;font: 8.5px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#464646;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
@@ -90,7 +91,7 @@ public class DlgBulananHAIs extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Laporan Bulanan HAIs ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Laporan Bulanan HAIs ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -207,10 +208,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             File g = new File("file2.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
-                    ".isi td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-bottom: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#645050;}"+                    
-                    ".isi3 td{border-right: 1px solid #edf2e8;font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #edf2e8;background: #ffffff;color:#645050;}"
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                    ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#464646;}"+                    
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#464646;}"
             );
             bg.close();
             
@@ -313,10 +314,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' rowspan='2'>Tanggal</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='7%' rowspan='2'>Jml.Pasien</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='23%' colspan='4'>Hari Pemasangan</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='23%' colspan='4'>Infeksi</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='26%' colspan='5'>Infeksi</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='5%' rowspan='2'>Deku</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center' width='25%' colspan='3'>Hasil Kultur</td>"+
-                    "<td valign='middle' bgcolor='#fafff5' align='center' width='8%' rowspan='2'>Antibiotik</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center' width='5%' rowspan='2'>Antibiotik</td>"+
                 "</tr>"+
                 "<tr class='isi'>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center'>ETT</td>"+
@@ -327,6 +328,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#fafff5' align='center'>IAD</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center'>PLEB</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center'>ISK</td>"+
+                    "<td valign='middle' bgcolor='#fafff5' align='center'>ILO</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center'>Sputum</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center'>Darah</td>"+
                     "<td valign='middle' bgcolor='#fafff5' align='center'>Urine</td>"+
@@ -336,32 +338,85 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "select tanggal from data_HAIs where tanggal between ? and ? group by tanggal order by tanggal");
             try {
                 i=1;
+                jmlETT=0;jmlCVL=0;jmlIVL=0;jmlUC=0;jmlVAP=0;jmlIAD=0;jmlPLEB=0;jmlpasien=0;
+                jmlISK=0;jmlILO=0;jmldeku=0;jmlsputum=0;jmldarah=0;jmlurine=0;jmlANTIBIOTIK=0;                        
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 rs=ps.executeQuery();
                 while(rs.next()){
+                    pasien=Sequel.cariInteger("select count(no_rawat) from data_HAIs where tanggal=?",rs.getString("tanggal"));
+                    jmlpasien=jmlpasien+pasien;
+                    ETT=Sequel.cariInteger("select sum(ETT) from data_HAIs where tanggal=?",rs.getString("tanggal"));
+                    jmlETT=jmlETT+ETT;
+                    CVL=Sequel.cariInteger("select sum(CVL) from data_HAIs where tanggal=?",rs.getString("tanggal"));
+                    jmlCVL=jmlCVL+CVL;
+                    IVL=Sequel.cariInteger("select sum(IVL) from data_HAIs where tanggal=?",rs.getString("tanggal"));
+                    jmlIVL=jmlIVL+IVL;
+                    UC=Sequel.cariInteger("select sum(UC) from data_HAIs where tanggal=?",rs.getString("tanggal"));
+                    jmlUC=jmlUC+UC;
+                    VAP=Sequel.cariInteger("select sum(VAP) from data_HAIs where tanggal=?",rs.getString("tanggal"));
+                    jmlVAP=jmlVAP+VAP;
+                    IAD=Sequel.cariInteger("select sum(IAD) from data_HAIs where tanggal=?",rs.getString("tanggal"));
+                    jmlIAD=jmlIAD+IAD;
+                    PLEB=Sequel.cariInteger("select sum(PLEB) from data_HAIs where tanggal=?",rs.getString("tanggal"));
+                    jmlPLEB=jmlPLEB+PLEB;
+                    ISK=Sequel.cariInteger("select sum(ISK) from data_HAIs where tanggal=?",rs.getString("tanggal"));
+                    jmlISK=jmlISK+ISK;
+                    ILO=Sequel.cariInteger("select sum(ILO) from data_HAIs where tanggal=?",rs.getString("tanggal"));
+                    jmlILO=jmlILO+ILO;
+                    deku=Sequel.cariInteger("select count(no_rawat) from data_HAIs where tanggal=? and DEKU='IYA'",rs.getString("tanggal"));
+                    jmldeku=jmldeku+deku;
+                    sputum=Sequel.cariInteger("select count(no_rawat) from data_HAIs where tanggal=? and SPUTUM<>''",rs.getString("tanggal"));
+                    jmlsputum=jmlsputum+sputum;
+                    darah=Sequel.cariInteger("select count(no_rawat) from data_HAIs where tanggal=? and DARAH<>''",rs.getString("tanggal"));
+                    jmldarah=jmldarah+darah;
+                    urine=Sequel.cariInteger("select count(no_rawat) from data_HAIs where tanggal=? and URINE<>''",rs.getString("tanggal"));
+                    jmlurine=jmlurine+urine;
+                    ANTIBIOTIK=Sequel.cariInteger("select count(no_rawat) from data_HAIs where tanggal=? and ANTIBIOTIK<>''",rs.getString("tanggal"));  
+                    jmlANTIBIOTIK=jmlANTIBIOTIK+ANTIBIOTIK;
                     htmlContent.append(                             
                         "<tr class='isi'>"+
                             "<td valign='middle' align='center'>"+i+"</td>"+
                             "<td valign='middle' align='center'>"+rs.getString("tanggal")+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(ETT) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(CVL) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(IVL) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(UC) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(VAP) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(IAD) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(PLEB) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select sum(ISK) from data_HAIs where tanggal=?",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=? and DEKU='IYA'",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=? and SPUTUM<>''",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=? and DARAH<>''",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=? and URINE<>''",rs.getString("tanggal"))+"</td>"+
-                            "<td valign='middle' align='center'>"+Sequel.cariIsi("select count(no_rawat) from data_HAIs where tanggal=? and ANTIBIOTIK<>''",rs.getString("tanggal"))+"</td>"+
+                            "<td valign='middle' align='center'>"+pasien+"</td>"+
+                            "<td valign='middle' align='center'>"+ETT+"</td>"+
+                            "<td valign='middle' align='center'>"+CVL+"</td>"+
+                            "<td valign='middle' align='center'>"+IVL+"</td>"+
+                            "<td valign='middle' align='center'>"+UC+"</td>"+
+                            "<td valign='middle' align='center'>"+VAP+"</td>"+
+                            "<td valign='middle' align='center'>"+IAD+"</td>"+
+                            "<td valign='middle' align='center'>"+PLEB+"</td>"+
+                            "<td valign='middle' align='center'>"+ISK+"</td>"+
+                            "<td valign='middle' align='center'>"+ILO+"</td>"+
+                            "<td valign='middle' align='center'>"+deku+"</td>"+
+                            "<td valign='middle' align='center'>"+sputum+"</td>"+
+                            "<td valign='middle' align='center'>"+darah+"</td>"+
+                            "<td valign='middle' align='center'>"+urine+"</td>"+
+                            "<td valign='middle' align='center'>"+ANTIBIOTIK+"</td>"+
                         "</tr>"
                     ); 
                     i++;
                 }
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' align='right' colspan='2'>Total :</td>"+
+                        "<td valign='middle' align='center'>"+jmlpasien+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlETT+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlCVL+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlIVL+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlUC+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlVAP+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlIAD+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlPLEB+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlISK+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlILO+"</td>"+
+                        "<td valign='middle' align='center'>"+jmldeku+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlsputum+"</td>"+
+                        "<td valign='middle' align='center'>"+jmldarah+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlurine+"</td>"+
+                        "<td valign='middle' align='center'>"+jmlANTIBIOTIK+"</td>"+
+                    "</tr>"
+                ); 
             } catch (Exception e) {
                 System.out.println("laporan.DlgHarianHAIs.prosesCari() : "+e);
             } finally{

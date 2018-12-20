@@ -88,7 +88,10 @@ public final class var {
             pcare_cek_faskesthalasemia=false,pcare_mapping_obat=false,pcare_mapping_tindakan=false,pcare_club_prolanis=false,
             pcare_mapping_poli=false,pcare_kegiatan_kelompok=false,pcare_mapping_tindakan_ranap=false,pcare_peserta_kegiatan_kelompok=false,
             sirkulasi_obat3=false,bridging_pcare_daftar=false,pcare_mapping_dokter=false,ranap_per_ruang=false,penyakit_ranap_cara_bayar=false,
-            anggota_militer_dirawat=false,set_input_parsial=false,lama_pelayanan_radiologi=false,lama_pelayanan_lab=false;
+            anggota_militer_dirawat=false,set_input_parsial=false,lama_pelayanan_radiologi=false,lama_pelayanan_lab=false,bpjs_cek_sep=false,
+            catatan_perawatan=false,surat_keluar=false,kegiatan_farmasi=false,stok_opname_logistik=false,sirkulasi_non_medis=false,
+            rekap_lab_pertahun=false,perujuk_lab_pertahun=false,rekap_radiologi_pertahun=false,perujuk_radiologi_pertahun=false,
+            jumlah_porsi_diet=false,jumlah_macam_diet=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -515,6 +518,18 @@ public final class var {
                         var.set_input_parsial=true;
                         var.lama_pelayanan_radiologi=true;
                         var.lama_pelayanan_lab=true;
+                        var.bpjs_cek_sep=true;
+                        var.catatan_perawatan=true;
+                        var.surat_keluar=true;
+                        var.kegiatan_farmasi=true;
+                        var.stok_opname_logistik=true;
+                        var.sirkulasi_non_medis=true;
+                        var.rekap_lab_pertahun=true;
+                        var.perujuk_lab_pertahun=true;
+                        var.rekap_radiologi_pertahun=true;
+                        var.perujuk_radiologi_pertahun=true;
+                        var.jumlah_porsi_diet=true;
+                        var.jumlah_macam_diet=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -925,6 +940,18 @@ public final class var {
                         var.set_input_parsial=rs2.getBoolean("set_input_parsial");
                         var.lama_pelayanan_radiologi=rs2.getBoolean("lama_pelayanan_radiologi");
                         var.lama_pelayanan_lab=rs2.getBoolean("lama_pelayanan_lab");
+                        var.bpjs_cek_sep=rs2.getBoolean("bpjs_cek_sep");
+                        var.catatan_perawatan=rs2.getBoolean("catatan_perawatan");
+                        var.surat_keluar=rs2.getBoolean("surat_keluar");
+                        var.kegiatan_farmasi=rs2.getBoolean("kegiatan_farmasi");
+                        var.stok_opname_logistik=rs2.getBoolean("stok_opname_logistik");
+                        var.sirkulasi_non_medis=rs2.getBoolean("sirkulasi_non_medis");
+                        var.rekap_lab_pertahun=rs2.getBoolean("rekap_lab_pertahun");
+                        var.perujuk_lab_pertahun=rs2.getBoolean("perujuk_lab_pertahun");
+                        var.rekap_radiologi_pertahun=rs2.getBoolean("rekap_radiologi_pertahun");
+                        var.perujuk_radiologi_pertahun=rs2.getBoolean("perujuk_radiologi_pertahun");
+                        var.jumlah_porsi_diet=rs2.getBoolean("jumlah_porsi_diet");
+                        var.jumlah_macam_diet=rs2.getBoolean("jumlah_macam_diet");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         var.kode="";                  
                         var.penyakit= false;
@@ -1333,6 +1360,18 @@ public final class var {
                         var.set_input_parsial=false;
                         var.lama_pelayanan_radiologi=false;
                         var.lama_pelayanan_lab=false;
+                        var.bpjs_cek_sep=false;
+                        var.catatan_perawatan=false;
+                        var.surat_keluar=false;
+                        var.kegiatan_farmasi=false;
+                        var.stok_opname_logistik=false;
+                        var.sirkulasi_non_medis=false;
+                        var.rekap_lab_pertahun=false;
+                        var.perujuk_lab_pertahun=false;
+                        var.rekap_radiologi_pertahun=false;
+                        var.perujuk_radiologi_pertahun=false;
+                        var.jumlah_porsi_diet=false;
+                        var.jumlah_macam_diet=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -1793,4 +1832,16 @@ public final class var {
     public static boolean getset_input_parsial(){return var.set_input_parsial;}
     public static boolean getlama_pelayanan_radiologi(){return var.lama_pelayanan_radiologi;}
     public static boolean getlama_pelayanan_lab(){return var.lama_pelayanan_lab;}
+    public static boolean getbpjs_cek_sep(){return var.bpjs_cek_sep;}
+    public static boolean getcatatan_perawatan(){return var.catatan_perawatan;}
+    public static boolean getsurat_keluar(){return var.surat_keluar;}
+    public static boolean getkegiatan_farmasi(){return var.kegiatan_farmasi;}
+    public static boolean getstok_opname_logistik(){return var.stok_opname_logistik;}
+    public static boolean getsirkulasi_non_medis(){return var.sirkulasi_non_medis;} 
+    public static boolean getrekap_lab_pertahun(){return var.rekap_lab_pertahun;} 
+    public static boolean getperujuk_lab_pertahun(){return var.perujuk_lab_pertahun;}
+    public static boolean getrekap_radiologi_pertahun(){return var.rekap_radiologi_pertahun;}
+    public static boolean getperujuk_radiologi_pertahun(){return var.perujuk_radiologi_pertahun;}
+    public static boolean getjumlah_porsi_diet(){return var.jumlah_porsi_diet;}
+    public static boolean getjumlah_macam_diet(){return var.jumlah_macam_diet;}
 }   

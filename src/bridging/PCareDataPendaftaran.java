@@ -650,7 +650,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         LabelPoli7 = new widget.Label();
         KdDiagnosa1 = new widget.TextBox();
         NmDiagnosa1 = new widget.TextBox();
-        BtnDiganosa1 = new widget.Button();
+        BtnDiagnosa1 = new widget.Button();
         LabelPoli8 = new widget.Label();
         KdDiagnosa2 = new widget.TextBox();
         NmDiagnosa2 = new widget.TextBox();
@@ -658,7 +658,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         LabelPoli9 = new widget.Label();
         KdDiagnosa3 = new widget.TextBox();
         NmDiagnosa3 = new widget.TextBox();
-        BtnDiganosa3 = new widget.Button();
+        BtnDiagnosa3 = new widget.Button();
         KdPoliInternal = new widget.TextBox();
         NmPoliInternal = new widget.TextBox();
         BtnPoliInternal = new widget.Button();
@@ -726,14 +726,14 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pendaftaran PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100, 80, 80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Pendaftaran PCare ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 254));
-        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)));
-        TabRawat.setForeground(new java.awt.Color(100, 80, 80));
+        TabRawat.setBorder(null);
+        TabRawat.setForeground(new java.awt.Color(70,70,70));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -746,9 +746,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
+        FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
         FormInput.setPreferredSize(new java.awt.Dimension(100, 257));
         FormInput.setLayout(null);
@@ -801,7 +803,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalDaftar.setEditable(false);
         TanggalDaftar.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        TanggalDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         TanggalDaftar.setDisplayFormat("dd-MM-yyyy");
         TanggalDaftar.setName("TanggalDaftar"); // NOI18N
         TanggalDaftar.setOpaque(false);
@@ -1094,12 +1096,13 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel41.setBounds(464, 192, 110, 23);
 
         chkSubspesialis.setText("Subspesilias :");
+        chkSubspesialis.setEnabled(false);
         chkSubspesialis.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkSubspesialis.setName("chkSubspesialis"); // NOI18N
         chkSubspesialis.setOpaque(false);
-        chkSubspesialis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkSubspesialisActionPerformed(evt);
+        chkSubspesialis.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkSubspesialisItemStateChanged(evt);
             }
         });
         FormInput.add(chkSubspesialis);
@@ -1113,8 +1116,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalKunjungan.setEditable(false);
         TanggalKunjungan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        TanggalKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         TanggalKunjungan.setDisplayFormat("dd-MM-yyyy");
+        TanggalKunjungan.setEnabled(false);
         TanggalKunjungan.setName("TanggalKunjungan"); // NOI18N
         TanggalKunjungan.setOpaque(false);
         TanggalKunjungan.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -1148,6 +1152,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnKesadaran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnKesadaran.setMnemonic('X');
         BtnKesadaran.setToolTipText("Alt+X");
+        BtnKesadaran.setEnabled(false);
         BtnKesadaran.setName("BtnKesadaran"); // NOI18N
         BtnKesadaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1167,6 +1172,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(jLabel30);
         jLabel30.setBounds(30, 330, 97, 23);
 
+        Terapi.setEnabled(false);
         Terapi.setHighlighter(null);
         Terapi.setName("Terapi"); // NOI18N
         Terapi.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1199,6 +1205,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnStatusPulang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnStatusPulang.setMnemonic('X');
         BtnStatusPulang.setToolTipText("Alt+X");
+        BtnStatusPulang.setEnabled(false);
         BtnStatusPulang.setName("BtnStatusPulang"); // NOI18N
         BtnStatusPulang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1215,8 +1222,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalPulang.setEditable(false);
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
+        TanggalPulang.setEnabled(false);
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
         TanggalPulang.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -1256,6 +1264,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnTenagaMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnTenagaMedis.setMnemonic('X');
         BtnTenagaMedis.setToolTipText("Alt+X");
+        BtnTenagaMedis.setEnabled(false);
         BtnTenagaMedis.setName("BtnTenagaMedis"); // NOI18N
         BtnTenagaMedis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1289,22 +1298,23 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(NmDiagnosa1);
         NmDiagnosa1.setBounds(528, 300, 170, 23);
 
-        BtnDiganosa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnDiganosa1.setMnemonic('X');
-        BtnDiganosa1.setToolTipText("Alt+X");
-        BtnDiganosa1.setName("BtnDiganosa1"); // NOI18N
-        BtnDiganosa1.addActionListener(new java.awt.event.ActionListener() {
+        BtnDiagnosa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDiagnosa1.setMnemonic('X');
+        BtnDiagnosa1.setToolTipText("Alt+X");
+        BtnDiagnosa1.setEnabled(false);
+        BtnDiagnosa1.setName("BtnDiagnosa1"); // NOI18N
+        BtnDiagnosa1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDiganosa1ActionPerformed(evt);
+                BtnDiagnosa1ActionPerformed(evt);
             }
         });
-        BtnDiganosa1.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnDiagnosa1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnDiganosa1KeyPressed(evt);
+                BtnDiagnosa1KeyPressed(evt);
             }
         });
-        FormInput.add(BtnDiganosa1);
-        BtnDiganosa1.setBounds(700, 300, 28, 23);
+        FormInput.add(BtnDiagnosa1);
+        BtnDiagnosa1.setBounds(700, 300, 28, 23);
 
         LabelPoli8.setText("Diganosa 2 :");
         LabelPoli8.setName("LabelPoli8"); // NOI18N
@@ -1328,6 +1338,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnDiagnosa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDiagnosa2.setMnemonic('X');
         BtnDiagnosa2.setToolTipText("Alt+X");
+        BtnDiagnosa2.setEnabled(false);
         BtnDiagnosa2.setName("BtnDiagnosa2"); // NOI18N
         BtnDiagnosa2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1361,22 +1372,23 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(NmDiagnosa3);
         NmDiagnosa3.setBounds(528, 360, 170, 23);
 
-        BtnDiganosa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnDiganosa3.setMnemonic('X');
-        BtnDiganosa3.setToolTipText("Alt+X");
-        BtnDiganosa3.setName("BtnDiganosa3"); // NOI18N
-        BtnDiganosa3.addActionListener(new java.awt.event.ActionListener() {
+        BtnDiagnosa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDiagnosa3.setMnemonic('X');
+        BtnDiagnosa3.setToolTipText("Alt+X");
+        BtnDiagnosa3.setEnabled(false);
+        BtnDiagnosa3.setName("BtnDiagnosa3"); // NOI18N
+        BtnDiagnosa3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnDiganosa3ActionPerformed(evt);
+                BtnDiagnosa3ActionPerformed(evt);
             }
         });
-        BtnDiganosa3.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnDiagnosa3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnDiganosa3KeyPressed(evt);
+                BtnDiagnosa3KeyPressed(evt);
             }
         });
-        FormInput.add(BtnDiganosa3);
-        BtnDiganosa3.setBounds(700, 360, 28, 23);
+        FormInput.add(BtnDiagnosa3);
+        BtnDiagnosa3.setBounds(700, 360, 28, 23);
 
         KdPoliInternal.setEditable(false);
         KdPoliInternal.setBackground(new java.awt.Color(245, 250, 240));
@@ -1395,6 +1407,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnPoliInternal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPoliInternal.setMnemonic('X');
         BtnPoliInternal.setToolTipText("Alt+X");
+        BtnPoliInternal.setEnabled(false);
         BtnPoliInternal.setName("BtnPoliInternal"); // NOI18N
         BtnPoliInternal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1417,8 +1430,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         TanggalEstRujuk.setEditable(false);
         TanggalEstRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        TanggalEstRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         TanggalEstRujuk.setDisplayFormat("dd-MM-yyyy");
+        TanggalEstRujuk.setEnabled(false);
         TanggalEstRujuk.setName("TanggalEstRujuk"); // NOI18N
         TanggalEstRujuk.setOpaque(false);
         TanggalEstRujuk.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -1462,6 +1476,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnPPKRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPPKRujukan.setMnemonic('X');
         BtnPPKRujukan.setToolTipText("Alt+X");
+        BtnPPKRujukan.setEnabled(false);
         BtnPPKRujukan.setName("BtnPPKRujukan"); // NOI18N
         BtnPPKRujukan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1480,33 +1495,35 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         chkKunjungan.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkKunjungan.setName("chkKunjungan"); // NOI18N
         chkKunjungan.setOpaque(false);
-        chkKunjungan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkKunjunganActionPerformed(evt);
+        chkKunjungan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkKunjunganItemStateChanged(evt);
             }
         });
         FormInput.add(chkKunjungan);
         chkKunjungan.setBounds(0, 250, 90, 23);
 
         ChkInternal.setText("Internal :");
+        ChkInternal.setEnabled(false);
         ChkInternal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkInternal.setName("ChkInternal"); // NOI18N
         ChkInternal.setOpaque(false);
-        ChkInternal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkInternalActionPerformed(evt);
+        ChkInternal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkInternalItemStateChanged(evt);
             }
         });
         FormInput.add(ChkInternal);
         ChkInternal.setBounds(7, 500, 120, 23);
 
         ChkRujukLanjut.setText("Rujuk Lanjut :");
+        ChkRujukLanjut.setEnabled(false);
         ChkRujukLanjut.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkRujukLanjut.setName("ChkRujukLanjut"); // NOI18N
         ChkRujukLanjut.setOpaque(false);
-        ChkRujukLanjut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChkRujukLanjutActionPerformed(evt);
+        ChkRujukLanjut.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChkRujukLanjutItemStateChanged(evt);
             }
         });
         FormInput.add(ChkRujukLanjut);
@@ -1529,6 +1546,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnSubSpesialis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSubSpesialis.setMnemonic('X');
         BtnSubSpesialis.setToolTipText("Alt+X");
+        BtnSubSpesialis.setEnabled(false);
         BtnSubSpesialis.setName("BtnSubSpesialis"); // NOI18N
         BtnSubSpesialis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1565,6 +1583,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnSarana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSarana.setMnemonic('X');
         BtnSarana.setToolTipText("Alt+X");
+        BtnSarana.setEnabled(false);
         BtnSarana.setName("BtnSarana"); // NOI18N
         BtnSarana.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1580,12 +1599,13 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnSarana.setBounds(354, 470, 28, 23);
 
         chkKhusus.setText("Khusus :");
+        chkKhusus.setEnabled(false);
         chkKhusus.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         chkKhusus.setName("chkKhusus"); // NOI18N
         chkKhusus.setOpaque(false);
-        chkKhusus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkKhususActionPerformed(evt);
+        chkKhusus.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkKhususItemStateChanged(evt);
             }
         });
         FormInput.add(chkKhusus);
@@ -1608,6 +1628,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         btnKhusus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnKhusus.setMnemonic('X');
         btnKhusus.setToolTipText("Alt+X");
+        btnKhusus.setEnabled(false);
         btnKhusus.setName("btnKhusus"); // NOI18N
         btnKhusus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1625,6 +1646,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         BtnSubKhusus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnSubKhusus.setMnemonic('X');
         BtnSubKhusus.setToolTipText("Alt+X");
+        BtnSubKhusus.setEnabled(false);
         BtnSubKhusus.setName("BtnSubKhusus"); // NOI18N
         BtnSubKhusus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1663,6 +1685,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(jLabel33);
         jLabel33.setBounds(380, 500, 94, 23);
 
+        CatatanKhusus.setEnabled(false);
         CatatanKhusus.setHighlighter(null);
         CatatanKhusus.setName("CatatanKhusus"); // NOI18N
         CatatanKhusus.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1679,6 +1702,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         jLabel34.setBounds(0, 530, 99, 23);
 
         TACC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0 Tanpa TACC", "1 Time", "2 Age", "3 Complication", "4 Comorbidity" }));
+        TACC.setEnabled(false);
         TACC.setName("TACC"); // NOI18N
         TACC.setOpaque(false);
         TACC.addItemListener(new java.awt.event.ItemListener() {
@@ -1699,6 +1723,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         FormInput.add(jLabel35);
         jLabel35.setBounds(290, 530, 80, 23);
 
+        AlasanTACC.setEnabled(false);
         AlasanTACC.setName("AlasanTACC"); // NOI18N
         AlasanTACC.setOpaque(false);
         AlasanTACC.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1719,6 +1744,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
@@ -1739,6 +1765,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         internalFrame4.add(Scroll, java.awt.BorderLayout.CENTER);
 
+        panelGlass9.setBorder(null);
         panelGlass9.setName("panelGlass9"); // NOI18N
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
@@ -1750,7 +1777,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari1.setEditable(false);
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1765,7 +1792,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
 
         DTPCari2.setEditable(false);
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2018" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-11-2018" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2193,10 +2220,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_HeartrateKeyPressed
 
-    private void chkSubspesialisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSubspesialisActionPerformed
-        
-    }//GEN-LAST:event_chkSubspesialisActionPerformed
-
     private void TanggalKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKunjunganKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_TanggalKunjunganKeyPressed
@@ -2239,16 +2262,16 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnTenagaMedisKeyPressed
 
-    private void BtnDiganosa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiganosa1ActionPerformed
+    private void BtnDiagnosa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiagnosa1ActionPerformed
         pilihan=1;
         penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setVisible(true);
-    }//GEN-LAST:event_BtnDiganosa1ActionPerformed
+    }//GEN-LAST:event_BtnDiagnosa1ActionPerformed
 
-    private void BtnDiganosa1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDiganosa1KeyPressed
+    private void BtnDiagnosa1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDiagnosa1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnDiganosa1KeyPressed
+    }//GEN-LAST:event_BtnDiagnosa1KeyPressed
 
     private void BtnDiagnosa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiagnosa2ActionPerformed
         pilihan=2;
@@ -2261,16 +2284,16 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnDiagnosa2KeyPressed
 
-    private void BtnDiganosa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiganosa3ActionPerformed
+    private void BtnDiagnosa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDiagnosa3ActionPerformed
         pilihan=3;
         penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penyakit.setLocationRelativeTo(internalFrame1);
         penyakit.setVisible(true);
-    }//GEN-LAST:event_BtnDiganosa3ActionPerformed
+    }//GEN-LAST:event_BtnDiagnosa3ActionPerformed
 
-    private void BtnDiganosa3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDiganosa3KeyPressed
+    private void BtnDiagnosa3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDiagnosa3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnDiganosa3KeyPressed
+    }//GEN-LAST:event_BtnDiagnosa3KeyPressed
 
     private void BtnPoliInternalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliInternalActionPerformed
         pilihan=2;
@@ -2297,18 +2320,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnPPKRujukanKeyPressed
 
-    private void chkKunjunganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkKunjunganActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkKunjunganActionPerformed
-
-    private void ChkInternalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInternalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ChkInternalActionPerformed
-
-    private void ChkRujukLanjutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkRujukLanjutActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ChkRujukLanjutActionPerformed
-
     private void BtnSubSpesialisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSubSpesialisActionPerformed
         pilihan=1;
         subspesialis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -2329,10 +2340,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private void BtnSaranaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSaranaKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnSaranaKeyPressed
-
-    private void chkKhususActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkKhususActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkKhususActionPerformed
 
     private void btnKhususActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhususActionPerformed
         khusus.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -2404,6 +2411,151 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_KdPoliTujuanActionPerformed
 
+    private void chkKunjunganItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkKunjunganItemStateChanged
+        if(chkKunjungan.isSelected()==true){
+            TanggalKunjungan.setEnabled(true);
+            TanggalPulang.setEnabled(true);
+            BtnKesadaran.setEnabled(true);
+            Terapi.setEnabled(true);
+            BtnStatusPulang.setEnabled(true);
+            BtnTenagaMedis.setEnabled(true);
+            BtnDiagnosa1.setEnabled(true);
+            BtnDiagnosa2.setEnabled(true);
+            BtnDiagnosa3.setEnabled(true);
+            ChkRujukLanjut.setEnabled(true);
+            ChkRujukLanjut.setSelected(false);
+            ChkRujukLanjutItemStateChanged(null);
+        }else{
+            TanggalKunjungan.setEnabled(false);
+            TanggalPulang.setEnabled(false);
+            BtnKesadaran.setEnabled(false);
+            Terapi.setEnabled(false);
+            BtnStatusPulang.setEnabled(false);
+            BtnTenagaMedis.setEnabled(false);
+            BtnDiagnosa1.setEnabled(false);
+            BtnDiagnosa2.setEnabled(false);
+            BtnDiagnosa3.setEnabled(false);            
+            ChkRujukLanjut.setEnabled(false);
+            ChkRujukLanjut.setSelected(false);
+            ChkRujukLanjutItemStateChanged(null);
+        }
+    }//GEN-LAST:event_chkKunjunganItemStateChanged
+
+    private void ChkRujukLanjutItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkRujukLanjutItemStateChanged
+        if(ChkRujukLanjut.isSelected()==true){
+            TanggalEstRujuk.setEnabled(true);
+            BtnPPKRujukan.setEnabled(true);
+            chkSubspesialis.setEnabled(true);
+            chkSubspesialis.setSelected(false);
+            chkSubspesialisItemStateChanged(null);
+            chkKhusus.setEnabled(true);
+            chkKhusus.setSelected(false);
+            chkKhususItemStateChanged(null);
+            ChkInternal.setEnabled(true);
+            ChkInternal.setSelected(false);
+            ChkInternalItemStateChanged(null);
+            CatatanKhusus.setEnabled(true);
+            TACC.setEnabled(true);
+            AlasanTACC.setEnabled(true);
+        }else{            
+            TanggalEstRujuk.setEnabled(false);
+            BtnPPKRujukan.setEnabled(false);
+            chkSubspesialis.setEnabled(false);
+            chkSubspesialis.setSelected(false);
+            chkSubspesialisItemStateChanged(null);
+            chkKhusus.setEnabled(false);
+            chkKhusus.setSelected(false);
+            chkKhususItemStateChanged(null);
+            ChkInternal.setEnabled(false);
+            ChkInternal.setSelected(false);
+            ChkInternalItemStateChanged(null);
+            CatatanKhusus.setEnabled(false);
+            TACC.setEnabled(false);
+            AlasanTACC.setEnabled(false);
+        }
+    }//GEN-LAST:event_ChkRujukLanjutItemStateChanged
+
+    private void chkSubspesialisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkSubspesialisItemStateChanged
+        if(chkSubspesialis.isSelected()==true){
+            BtnSubSpesialis.setEnabled(true);
+            BtnSarana.setEnabled(true);   
+            ChkInternal.setSelected(false);
+            KdPoliInternal.setText("");
+            NmPoliInternal.setText("");
+            BtnPoliInternal.setEnabled(false);
+            chkKhusus.setSelected(false);
+            KdKhusus.setText("");
+            NmKhusus.setText("");
+            btnKhusus.setSelected(false);
+            KdSubKhusus.setText("");
+            NmSubKhusus.setText("");
+            BtnSubKhusus.setEnabled(false);
+            CatatanKhusus.setText("");
+            CatatanKhusus.setEnabled(false);
+        }else{
+            BtnSubSpesialis.setEnabled(false);
+            BtnSarana.setEnabled(false);
+            KdSubSpesialis.setText("");
+            NmSubSpesialis.setText("");
+            KdSarana.setText("");
+            NmSarana.setText("");
+        }
+    }//GEN-LAST:event_chkSubspesialisItemStateChanged
+
+    private void ChkInternalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChkInternalItemStateChanged
+        if(ChkInternal.isSelected()==true){
+            BtnPoliInternal.setEnabled(true);
+            chkSubspesialis.setSelected(false);
+            KdSubSpesialis.setText("");
+            NmSubSpesialis.setText("");
+            BtnSubSpesialis.setEnabled(false);
+            KdSarana.setText("");
+            NmSarana.setText("");
+            BtnSarana.setEnabled(false);
+            chkKhusus.setSelected(false);
+            KdKhusus.setText("");
+            NmKhusus.setText("");
+            btnKhusus.setSelected(false);
+            KdSubKhusus.setText("");
+            NmSubKhusus.setText("");
+            BtnSubKhusus.setEnabled(false);
+            CatatanKhusus.setText("");
+            CatatanKhusus.setEnabled(false);
+        }else{
+            BtnPoliInternal.setEnabled(false);
+            KdPoliInternal.setText("");
+            NmPoliInternal.setText("");
+        }
+    }//GEN-LAST:event_ChkInternalItemStateChanged
+
+    private void chkKhususItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkKhususItemStateChanged
+        if(chkKhusus.isSelected()==true){
+            btnKhusus.setEnabled(true);
+            BtnSubKhusus.setEnabled(true);      
+            CatatanKhusus.setEnabled(true);
+            chkSubspesialis.setSelected(false);
+            KdSubSpesialis.setText("");
+            NmSubSpesialis.setText("");
+            BtnSubSpesialis.setEnabled(false);
+            KdSarana.setText("");
+            NmSarana.setText("");
+            BtnSarana.setEnabled(false);
+            ChkInternal.setSelected(false);
+            KdPoliInternal.setText("");
+            NmPoliInternal.setText("");
+            BtnPoliInternal.setEnabled(false);
+        }else{
+            btnKhusus.setEnabled(false);
+            BtnSubKhusus.setEnabled(false);      
+            CatatanKhusus.setEnabled(false);
+            KdKhusus.setText("");
+            NmKhusus.setText("");
+            KdSubKhusus.setText("");
+            NmSubKhusus.setText("");
+            CatatanKhusus.setText("");
+        }        
+    }//GEN-LAST:event_chkKhususItemStateChanged
+
     /**
     * @param args the command line arguments
     */
@@ -2426,9 +2578,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
+    private widget.Button BtnDiagnosa1;
     private widget.Button BtnDiagnosa2;
-    private widget.Button BtnDiganosa1;
-    private widget.Button BtnDiganosa3;
+    private widget.Button BtnDiagnosa3;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;

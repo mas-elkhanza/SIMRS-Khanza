@@ -39,7 +39,7 @@
                 </LineBorder>
               </Border>
               <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
-              <Color PropertyName="color" blue="50" green="50" red="64" type="rgb"/>
+              <Color PropertyName="color" blue="46" green="46" red="46" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -337,7 +337,7 @@
             </Component>
             <Component class="widget.Label" name="jLabel12">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Aktifkan Kamar Inap di Kasir Ralan :"/>
+                <Property name="text" type="java.lang.String" value="Aktifkan Kamar Inap di Ralan :"/>
                 <Property name="name" type="java.lang.String" value="jLabel12" noResource="true"/>
               </Properties>
               <Constraints>

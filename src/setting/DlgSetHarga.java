@@ -17,7 +17,6 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.WarnaTable;
-import fungsi.var;
 import inventory.DlgBarang;
 import inventory.DlgCariJenis;
 import java.awt.Cursor;
@@ -78,7 +77,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         tbAdmin.setDefaultRenderer(Object.class, new WarnaTable());
 
         tabModePengaturanUmum=new DefaultTableModel(null,new Object[]{
-              "Pengaturan harga obat yang digunakan"
+              "Pengaturan harga obat yang digunakan","Penggunaan harga dasar obat"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -87,10 +86,12 @@ public class DlgSetHarga extends javax.swing.JDialog {
         tbPengaturanUmum.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPengaturanUmum.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 2; i++) {
             TableColumn column = tbPengaturanUmum.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(400);
+                column.setPreferredWidth(300);
+            }else if(i==1){
+                column.setPreferredWidth(250);
             }
         }
 
@@ -267,6 +268,8 @@ public class DlgSetHarga extends javax.swing.JDialog {
         panelGlass8 = new widget.panelisi();
         jLabel5 = new widget.Label();
         cmbPengaturan = new widget.ComboBox();
+        jLabel6 = new widget.Label();
+        cmbHargaDasar = new widget.ComboBox();
         internalFrame4 = new widget.InternalFrame();
         panelisi3 = new widget.panelisi();
         label44 = new widget.Label();
@@ -366,7 +369,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         ppUPdate.setBackground(new java.awt.Color(255, 255, 255));
         ppUPdate.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUPdate.setForeground(new java.awt.Color(100,80,80));
+        ppUPdate.setForeground(new java.awt.Color(70, 70, 70));
         ppUPdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUPdate.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -385,7 +388,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         ppUPdate1.setBackground(new java.awt.Color(255, 255, 255));
         ppUPdate1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUPdate1.setForeground(new java.awt.Color(100,80,80));
+        ppUPdate1.setForeground(new java.awt.Color(70, 70, 70));
         ppUPdate1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUPdate1.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -404,7 +407,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         ppUPdate2.setBackground(new java.awt.Color(255, 255, 255));
         ppUPdate2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppUPdate2.setForeground(new java.awt.Color(100,80,80));
+        ppUPdate2.setForeground(new java.awt.Color(70, 70, 70));
         ppUPdate2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         ppUPdate2.setText("Update Seluruh Harga Data Obat/Barang/Alkes");
         ppUPdate2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -428,7 +431,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat/Barang/Alkes ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(100,80,80))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Setup Harga Obat/Barang/Alkes ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -530,8 +533,8 @@ public class DlgSetHarga extends javax.swing.JDialog {
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
         TabSetting.setBackground(new java.awt.Color(255, 255, 253));
-        TabSetting.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239,244,234)));
-        TabSetting.setForeground(new java.awt.Color(100,80,80));
+        TabSetting.setBorder(null);
+        TabSetting.setForeground(new java.awt.Color(70, 70, 70));
         TabSetting.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabSetting.setName("TabSetting"); // NOI18N
         TabSetting.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -540,7 +543,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
             }
         });
 
-        internalFrame3.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame3.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
         internalFrame3.setLayout(new java.awt.BorderLayout(1, 1));
@@ -566,7 +569,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         internalFrame3.add(Scroll2, java.awt.BorderLayout.CENTER);
 
         panelGlass8.setName("panelGlass8"); // NOI18N
-        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 47));
+        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 77));
         panelGlass8.setLayout(null);
 
         jLabel5.setText("Pengaturan harga obat yang digunakan :");
@@ -586,11 +589,28 @@ public class DlgSetHarga extends javax.swing.JDialog {
         panelGlass8.add(cmbPengaturan);
         cmbPengaturan.setBounds(233, 12, 220, 23);
 
+        jLabel6.setText("Penggunaan harga dasar obat :");
+        jLabel6.setName("jLabel6"); // NOI18N
+        panelGlass8.add(jLabel6);
+        jLabel6.setBounds(0, 42, 230, 23);
+
+        cmbHargaDasar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Harga Beli", "Harga Diskon" }));
+        cmbHargaDasar.setName("cmbHargaDasar"); // NOI18N
+        cmbHargaDasar.setOpaque(false);
+        cmbHargaDasar.setPreferredSize(new java.awt.Dimension(55, 28));
+        cmbHargaDasar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbHargaDasarKeyPressed(evt);
+            }
+        });
+        panelGlass8.add(cmbHargaDasar);
+        cmbHargaDasar.setBounds(233, 42, 220, 23);
+
         internalFrame3.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
 
         TabSetting.addTab("Pegaturan Harga", internalFrame3);
 
-        internalFrame4.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame4.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame4.setBorder(null);
         internalFrame4.setName("internalFrame4"); // NOI18N
         internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
@@ -887,7 +907,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         TabSetting.addTab("Pegaturan Harga Umum", internalFrame4);
 
-        internalFrame2.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame2.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(new java.awt.BorderLayout(1, 1));
@@ -1284,7 +1304,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
 
         TabSetting.addTab("Pegaturan Harga Per Jenis Barang", internalFrame2);
 
-        internalFrame5.setBackground(new java.awt.Color(235, 255, 235));
+        internalFrame5.setBackground(new java.awt.Color(255, 255, 255));
         internalFrame5.setBorder(null);
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
@@ -1702,8 +1722,9 @@ public class DlgSetHarga extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null,"Maaf, Hanya diijinkan satu pengaturan ...!!!!");
                 cmbPengaturan.requestFocus();
             }else{
-                Sequel.menyimpan("set_harga_obat","?",1,new String[]{
-                    cmbPengaturan.getSelectedItem().toString()
+                Sequel.menyimpan("set_harga_obat","?,?",2,new String[]{
+                    cmbPengaturan.getSelectedItem().toString(),
+                    cmbHargaDasar.getSelectedItem().toString()
                 });
                 tampilpengaturanumum();
                 emptTeks();
@@ -1812,11 +1833,13 @@ public class DlgSetHarga extends javax.swing.JDialog {
             BtnSimpanActionPerformed(null);
         }else{
             if(TabSetting.getSelectedIndex()==0){
-                Valid.pindah(evt,cmbPengaturan,BtnBatal);
+                Valid.pindah(evt,cmbHargaDasar,BtnBatal);
             }else if(TabSetting.getSelectedIndex()==1){
                 Valid.pindah(evt,karyawanumum,BtnBatal);
             }else if(TabSetting.getSelectedIndex()==2){
                 Valid.pindah(evt,karyawan,BtnBatal);
+            }else if(TabSetting.getSelectedIndex()==3){
+                Valid.pindah(evt,ralanperbarang,BtnBatal);
             }                
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
@@ -1881,10 +1904,11 @@ public class DlgSetHarga extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data Set Harga tidak boleh kosong ...!!!!");
-            ranapvip.requestFocus();
-        }else if(! (tabMode.getRowCount()==0)) {
+        if(tabModePengaturanUmum.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, pengaturan harga tidak boleh kosong ...!!!!");
+            TabSetting.setSelectedIndex(0);
+            cmbPengaturan.requestFocus();
+        }else if(! (tabModePengaturanUmum.getRowCount()==0)) {
             dispose();
         }
 }//GEN-LAST:event_BtnKeluarActionPerformed
@@ -1962,8 +1986,9 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TabSetting.getSelectedIndex()==0){
             Sequel.queryu("delete from set_harga_obat");
-            Sequel.menyimpan("set_harga_obat","?",1,new String[]{
-                cmbPengaturan.getSelectedItem().toString()
+            Sequel.menyimpan("set_harga_obat","?,?",2,new String[]{
+                cmbPengaturan.getSelectedItem().toString(),
+                cmbHargaDasar.getSelectedItem().toString()
             });
             tampilpengaturanumum();
             emptTeks();
@@ -2257,7 +2282,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
     }//GEN-LAST:event_tbPengaturanUmumKeyPressed
 
     private void cmbPengaturanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbPengaturanKeyPressed
-        
+        Valid.pindah(evt,BtnSimpan,cmbHargaDasar);
     }//GEN-LAST:event_cmbPengaturanKeyPressed
 
     private void ranapvipumumMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ranapvipumumMouseMoved
@@ -2748,6 +2773,10 @@ public class DlgSetHarga extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppUPdate2ActionPerformed
 
+    private void cmbHargaDasarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbHargaDasarKeyPressed
+        Valid.pindah(evt,cmbPengaturan,BtnSimpan);
+    }//GEN-LAST:event_cmbHargaDasarKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2791,6 +2820,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.TextBox beliluar;
     private widget.TextBox beliluarperbarang;
     private widget.TextBox beliluarumum;
+    private widget.ComboBox cmbHargaDasar;
     private widget.ComboBox cmbPengaturan;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
@@ -2798,6 +2828,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame4;
     private widget.InternalFrame internalFrame5;
     private widget.Label jLabel5;
+    private widget.Label jLabel6;
     private widget.TextBox jualbebas;
     private widget.TextBox jualbebasperbarang;
     private widget.TextBox jualbebasumum;
@@ -2925,7 +2956,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabModePengaturanUmum.addRow(new Object[]{
-                        rs.getString(1)
+                        rs.getString(1),rs.getString(2)
                     });
                 }
             } catch (Exception e) {
@@ -3046,6 +3077,7 @@ public class DlgSetHarga extends javax.swing.JDialog {
         int row=tbPengaturanUmum.getSelectedRow();
         if(row!= -1){
             cmbPengaturan.setSelectedItem(tabModePengaturanUmum.getValueAt(row,0).toString());
+            cmbHargaDasar.setSelectedItem(tabModePengaturanUmum.getValueAt(row,1).toString());
         }
     }
 
