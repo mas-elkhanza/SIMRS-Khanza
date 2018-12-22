@@ -4799,7 +4799,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         MnUbahLamaInap.setEnabled(var.getkamar_inap());
         MnObatLangsung.setEnabled(var.getberi_obat());
         MnReturJual.setEnabled(var.getretur_dari_pembeli());
-        MnHapusTagihan.setEnabled(var.getbilling_ranap());
+        MnHapusTagihan.setEnabled(var.gethapus_nota_salah());
         MnPenjab.setEnabled(var.getbilling_ranap());
         MnTagihanOperasi.setEnabled(var.getoperasi());
         MnDataObat.setEnabled(var.getberi_obat());
