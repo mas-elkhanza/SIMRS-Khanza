@@ -8157,10 +8157,10 @@
         </Property>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="fc" green="ff" red="fe" type="rgb"/>
+          <Color blue="fd" green="ff" red="fe" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cf" green="f2" red="d9" type="rgb"/>
+          <Color blue="cf" green="f3" red="d9" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
@@ -8558,10 +8558,10 @@
           <Dimension value="[330, 25]"/>
         </Property>
         <Property name="warnaAtas" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="cf" green="f2" red="d9" type="rgb"/>
+          <Color blue="cf" green="f3" red="d9" type="rgb"/>
         </Property>
         <Property name="warnaBawah" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="fc" green="ff" red="fe" type="rgb"/>
+          <Color blue="fd" green="ff" red="fe" type="rgb"/>
         </Property>
       </Properties>
       <Constraints>
