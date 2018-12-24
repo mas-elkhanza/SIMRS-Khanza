@@ -40,9 +40,9 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps,ps2,ps3;
-    private ResultSet rs,rs2,rs3;
-    private int i=0;   
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;
+    private int i=0,jan=0,feb=0,mar=0,apr=0,mei=0,jun=0,jul=0,agu=0,sep=0,okt=0,nov=0,des=0;   
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -54,7 +54,7 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.","Jenis Pemeriksaan","Jan","Feb","Mar","Apr",
-                "Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"
+                "Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des","Total"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -63,12 +63,12 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 14; i++) {
+        for (i = 0; i < 15; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(35);
             }else if(i==1){
-                column.setPreferredWidth(270);
+                column.setPreferredWidth(300);
             }else{
                 column.setPreferredWidth(40);
             }
@@ -268,7 +268,8 @@ public final class DlgRekapLabPerTahun extends javax.swing.JDialog {
                                     tabMode.getValueAt(r,10).toString()+"','"+
                                     tabMode.getValueAt(r,11).toString()+"','"+
                                     tabMode.getValueAt(r,12).toString()+"','"+
-                                    tabMode.getValueAt(r,13).toString()+"','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
+                                    tabMode.getValueAt(r,13).toString()+"','"+
+                                    tabMode.getValueAt(r,14).toString()+"','','','','','','','','','','','','','','','','','','','','','',''","Rekap Nota Pembayaran");
                 }                    
             }
             Sequel.AutoComitTrue();   
@@ -377,40 +378,42 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
+                    jan=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-01%");
+                    feb=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-02%");
+                    mar=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-03%");
+                    apr=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-04%");
+                    mei=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-05%");
+                    jun=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-06%");
+                    jul=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-07%");
+                    agu=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-08%");
+                    sep=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-09%");
+                    okt=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-10%");
+                    nov=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-11%");
+                    des=Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-12%");
                     tabMode.addRow(new String[]{
-                        i+"",rs.getString("nm_perawatan"),
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-01%")+"",
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-02%")+"",
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-03%")+"",
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-04%")+"",
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-05%")+"",
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-06%")+"",
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-07%")+"",
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-08%")+"",
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-09%")+"",
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-10%")+"",
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-11%")+"",
-                        Sequel.cariInteger("select count(kd_jenis_prw) from periksa_lab where kd_jenis_prw=? and tgl_periksa like ?",rs.getString("kd_jenis_prw"),"%"+ThnCari.getSelectedItem()+"-12%")+""
+                        i+"",rs.getString("kd_jenis_prw")+" "+rs.getString("nm_perawatan"),jan+"",feb+"",mar+"",apr+"",mei+"",jun+"",jul+"",agu+"",
+                        sep+"",okt+"",nov+"",des+"",(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+""
                     });
                     ps2=koneksi.prepareStatement("select id_template,Pemeriksaan from template_laboratorium where kd_jenis_prw=? order by urut");
                     try {
                         ps2.setString(1,rs.getString("kd_jenis_prw"));
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
+                            jan=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-01%");
+                            feb=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-02%");
+                            mar=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-03%");
+                            apr=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-04%");
+                            mei=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-05%");
+                            jun=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-06%");
+                            jul=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-07%");
+                            agu=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-08%");
+                            sep=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-09%");
+                            okt=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-10%");
+                            nov=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-11%");
+                            des=Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-12%");
                             tabMode.addRow(new String[]{
-                                "","   "+rs2.getString("Pemeriksaan"),
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-01%")+"",
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-02%")+"",
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-03%")+"",
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-04%")+"",
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-05%")+"",
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-06%")+"",
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-07%")+"",
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-08%")+"",
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-09%")+"",
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-10%")+"",
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-11%")+"",
-                                Sequel.cariInteger("select count(id_template) from detail_periksa_lab where id_template=? and tgl_periksa like ?",rs2.getString("id_template"),"%"+ThnCari.getSelectedItem()+"-12%")+""
+                                "","    "+rs2.getString("Pemeriksaan"),jan+"",feb+"",mar+"",apr+"",mei+"",jun+"",jul+"",agu+"",
+                                sep+"",okt+"",nov+"",des+"",(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+""
                             });
                         }
                     } catch (Exception e) {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="792" pageHeight="1224" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="36"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
@@ -122,77 +122,84 @@
 	<columnHeader>
 		<band height="18" splitType="Stretch">
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="402" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="712" y="0" width="40" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="362" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<text><![CDATA[Mar]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="437" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="397" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<text><![CDATA[Apr]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="472" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="432" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<text><![CDATA[Mei]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="507" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="467" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<text><![CDATA[Jun]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="542" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="502" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<text><![CDATA[Jul]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="577" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="537" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<text><![CDATA[Agu]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="612" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="572" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<text><![CDATA[Sep]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="647" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="607" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<text><![CDATA[Okt]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="682" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="642" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<text><![CDATA[Nov]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="717" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="677" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<text><![CDATA[Des]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="367" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="327" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
@@ -206,14 +213,14 @@
 				<text><![CDATA[No.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="26" y="0" width="306" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="26" y="0" width="266" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<text><![CDATA[Jenis Pemeriksaan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="332" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="292" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
@@ -243,95 +250,102 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="26" y="0" width="306" height="10"/>
+				<reportElement x="26" y="0" width="266" height="10"/>
 				<textElement lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="332" y="0" width="35" height="10"/>
+				<reportElement x="292" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="367" y="0" width="35" height="10"/>
+				<reportElement x="327" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="402" y="0" width="35" height="10"/>
+				<reportElement x="362" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp5}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="437" y="0" width="35" height="10"/>
+				<reportElement x="397" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp6}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="472" y="0" width="35" height="10"/>
+				<reportElement x="432" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp7}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="507" y="0" width="35" height="10"/>
+				<reportElement x="467" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp8}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="542" y="0" width="35" height="10"/>
+				<reportElement x="502" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp9}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="577" y="0" width="35" height="10"/>
+				<reportElement x="537" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp10}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="612" y="0" width="35" height="10"/>
+				<reportElement x="572" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp11}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="647" y="0" width="35" height="10"/>
+				<reportElement x="607" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp12}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="682" y="0" width="35" height="10"/>
+				<reportElement x="642" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp13}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="717" y="0" width="35" height="10"/>
+				<reportElement x="677" y="0" width="35" height="10"/>
 				<textElement textAlignment="Center" lineSpacing="Single">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp14}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="712" y="0" width="40" height="10"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{temp15}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

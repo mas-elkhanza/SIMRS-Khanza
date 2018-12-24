@@ -440,7 +440,6 @@ public class DlgCariPermintaanLab extends javax.swing.JDialog {
 
         internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Update Waktu Pengambilan Sampel ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
-        internalFrame5.setWarnaBawah(new java.awt.Color(245, 250, 240));
         internalFrame5.setLayout(null);
 
         BtnCloseIn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
@@ -1022,7 +1021,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             CrDokter.setText("");
             CrPoli.setText("");
             pilihRalan();
-        }else if(TabPilihRawat.getSelectedIndex()==0){
+        }else if(TabPilihRawat.getSelectedIndex()==1){
             CrDokter2.setText("");
             Kamar.setText("");
             pilihRanap();
@@ -1569,7 +1568,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_MnCetakHasilLabActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        pilihTab();
     }//GEN-LAST:event_formWindowOpened
 
     private void TabRawatJalanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatJalanMouseClicked
@@ -1994,7 +1993,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     "permintaan_lab.status='ralan' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and reg_periksa.no_rkm_medis like ? or "+
                     "permintaan_lab.status='ralan' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and pasien.nm_pasien like ? or "+
                     "permintaan_lab.status='ralan' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? order by "+
-                    "permintaan_lab.status='ralan' and permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan desc");
+                    "permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
@@ -2259,33 +2258,33 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     "permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and permintaan_lab.no_rawat like ? or "+
                     "permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and reg_periksa.no_rkm_medis like ? or "+
                     "permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and pasien.nm_pasien like ? or "+
-                    "permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and dokter.nm_dokter like ? order by "+
-                    "permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan desc");
+                    "permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and dokter.nm_dokter like ? "+
+                    "group by permintaan_lab.noorder order by permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(4,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(3,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(4,"%"+Kamar.getText().trim()+"%");
                 ps.setString(5,"%"+TCari.getText()+"%");
                 ps.setString(6,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(7,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(8,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(9,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(8,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(9,"%"+Kamar.getText().trim()+"%");
                 ps.setString(10,"%"+TCari.getText()+"%");
                 ps.setString(11,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(12,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(13,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(14,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(13,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(14,"%"+Kamar.getText().trim()+"%");
                 ps.setString(15,"%"+TCari.getText()+"%");
                 ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(18,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(19,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(18,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(19,"%"+Kamar.getText().trim()+"%");
                 ps.setString(20,"%"+TCari.getText()+"%");
                 ps.setString(21,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(22,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(23,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(24,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(23,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(24,"%"+Kamar.getText().trim()+"%");
                 ps.setString(25,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -2388,43 +2387,43 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     "permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and pasien.nm_pasien like ? or "+
                     "permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and jns_perawatan_lab.nm_perawatan like ? or "+
                     "permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and template_laboratorium.Pemeriksaan like ? or "+
-                    "permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and dokter.nm_dokter like ? order by "+
-                    "permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan desc");
+                    "permintaan_lab.status='ranap' and permintaan_lab.tgl_permintaan between ? and ? and dokter.nm_dokter like ? and bangsal.nm_bangsal like ? and dokter.nm_dokter like ? "+
+                    "group by permintaan_lab.noorder order by permintaan_lab.tgl_permintaan,permintaan_lab.jam_permintaan desc");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(4,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(3,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(4,"%"+Kamar.getText().trim()+"%");
                 ps.setString(5,"%"+TCari.getText()+"%");
                 ps.setString(6,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(7,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(8,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(9,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(8,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(9,"%"+Kamar.getText().trim()+"%");
                 ps.setString(10,"%"+TCari.getText()+"%");
                 ps.setString(11,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(12,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(13,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(14,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(13,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(14,"%"+Kamar.getText().trim()+"%");
                 ps.setString(15,"%"+TCari.getText()+"%");
                 ps.setString(16,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(17,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(18,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(19,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(18,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(19,"%"+Kamar.getText().trim()+"%");
                 ps.setString(20,"%"+TCari.getText()+"%");
                 ps.setString(21,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(22,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(23,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(24,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(23,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(24,"%"+Kamar.getText().trim()+"%");
                 ps.setString(25,"%"+TCari.getText()+"%");
                 ps.setString(26,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(27,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(28,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(29,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(28,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(29,"%"+Kamar.getText().trim()+"%");
                 ps.setString(30,"%"+TCari.getText()+"%");
                 ps.setString(31,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(32,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(33,"%"+CrDokter.getText().trim()+"%");
-                ps.setString(34,"%"+CrPoli.getText().trim()+"%");
+                ps.setString(33,"%"+CrDokter2.getText().trim()+"%");
+                ps.setString(34,"%"+Kamar.getText().trim()+"%");
                 ps.setString(35,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){

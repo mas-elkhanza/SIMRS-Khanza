@@ -4799,7 +4799,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         MnUbahLamaInap.setEnabled(var.getkamar_inap());
         MnObatLangsung.setEnabled(var.getberi_obat());
         MnReturJual.setEnabled(var.getretur_dari_pembeli());
-        MnHapusTagihan.setEnabled(var.getbilling_ranap());
+        MnHapusTagihan.setEnabled(var.gethapus_nota_salah());
         MnPenjab.setEnabled(var.getbilling_ranap());
         MnTagihanOperasi.setEnabled(var.getoperasi());
         MnDataObat.setEnabled(var.getberi_obat());
@@ -6092,12 +6092,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 
             if(piutang>0){
                 jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PIUTANG PASIEN RAWAT JALAN, DIPOSTING OLEH "+var.getkode());
-                if(bayar>0){
+                if((bayar+uangdeposit)>0){
                     Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText()+"','"+alamat+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+
-                            "',' ',CURTIME()),'Uang Muka','"+total+"','"+bayar+"','Belum','"+var.getkode()+"'","No.Rawat");
+                            "',' ',CURTIME()),'Uang Muka','"+total+"','"+(bayar+uangdeposit)+"','Belum','"+var.getkode()+"'","No.Rawat");
                 }
                 Sequel.queryu2("insert into piutang_pasien values ('"+TNoRw.getText()+"','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"','"+
-                        TNoRM.getText()+"','Belum Lunas','"+total+"','"+bayar+"','"+piutang+"','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"')");
+                        TNoRM.getText()+"','Belum Lunas','"+total+"','"+(bayar+uangdeposit)+"','"+piutang+"','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"')");
             }else if(piutang<=0){
                 jur.simpanJurnal(TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),"U","PEMBAYARAN PASIEN RAWAT JALAN, DIPOSTING OLEH "+var.getkode());
                 Sequel.menyimpan2("tagihan_sadewa","'"+TNoRw.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText()+"','"+alamat+"',concat('"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+

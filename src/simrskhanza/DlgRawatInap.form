@@ -333,7 +333,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="27-11-2018"/>
+                        <StringItem index="0" value="20-12-2018"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -362,7 +362,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="27-11-2018"/>
+                        <StringItem index="0" value="20-12-2018"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3106,7 +3106,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="27-11-2018"/>
+                    <StringItem index="0" value="20-12-2018"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3650,7 +3650,6 @@
                       <Image iconType="3" name="/picture/item.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Data SKDP"/>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="11" style="0"/>
@@ -3678,7 +3677,6 @@
                       <Image iconType="3" name="/picture/item.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Rujuk Keluar"/>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="11" style="0"/>
@@ -3706,7 +3704,6 @@
                       <Image iconType="3" name="/picture/item.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Catatan Pasien"/>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="11" style="0"/>
@@ -3734,7 +3731,6 @@
                       <Image iconType="3" name="/picture/item.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Diagnosa"/>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="11" style="0"/>
@@ -3762,7 +3758,6 @@
                       <Image iconType="3" name="/picture/item.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Riwayat Pasien"/>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="11" style="0"/>

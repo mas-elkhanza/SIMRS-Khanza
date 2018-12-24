@@ -1152,7 +1152,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perawatan/Tindakan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70,70,70))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Perawatan/Tindakan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(70, 70, 70))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -3085,7 +3085,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         BtnSKDP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnSKDP.setText("Data SKDP");
-        BtnSKDP.setToolTipText("");
         BtnSKDP.setFocusPainted(false);
         BtnSKDP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnSKDP.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3103,7 +3102,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         BtnRujukKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnRujukKeluar.setText("Rujuk Keluar");
-        BtnRujukKeluar.setToolTipText("");
         BtnRujukKeluar.setFocusPainted(false);
         BtnRujukKeluar.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnRujukKeluar.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3121,7 +3119,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         BtnCatatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnCatatan.setText("Catatan Pasien");
-        BtnCatatan.setToolTipText("");
         BtnCatatan.setFocusPainted(false);
         BtnCatatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnCatatan.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3139,7 +3136,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         BtnDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnDiagnosa.setText("Diagnosa");
-        BtnDiagnosa.setToolTipText("");
         BtnDiagnosa.setFocusPainted(false);
         BtnDiagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnDiagnosa.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -3157,7 +3153,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 
         BtnRiwayat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnRiwayat.setText("Riwayat Pasien");
-        BtnRiwayat.setToolTipText("");
         BtnRiwayat.setFocusPainted(false);
         BtnRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnRiwayat.setGlassColor(new java.awt.Color(255, 255, 255));
