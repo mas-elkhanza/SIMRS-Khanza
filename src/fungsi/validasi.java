@@ -6,6 +6,8 @@
 package fungsi;
 
 
+import fungsi.koneksiDB;
+import fungsi.sekuel;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Dimension;
 import java.awt.Toolkit;
