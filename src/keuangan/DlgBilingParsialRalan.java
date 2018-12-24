@@ -3173,9 +3173,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     private void chkPoliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkPoliMouseClicked
         jmlreg=Sequel.cariInteger("select count(no_rawat) from permintaan_registrasi where no_rawat=?",TNoRw.getText());
         if(jmlreg==1){
-            if(chkPoli.isSelected()==true){
-                tampilhapus();
-            }                            
+            tampilhapus();           
         }
     }//GEN-LAST:event_chkPoliMouseClicked
 
@@ -5089,7 +5087,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
     
     public void isCek(){
         BtnSimpan.setEnabled(var.getbilling_parsial());
-        BtnHapus.setEnabled(var.getbilling_parsial());
+        BtnHapus.setEnabled(var.gethapus_nota_salah());
         BtnNota.setEnabled(var.getbilling_parsial());
         if(Sequel.cariIsi("select tampilkan_tombol_nota_ralan from set_nota").equals("Yes")){
             BtnNota.setVisible(true);
@@ -5252,6 +5250,8 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                                 "Registrasi",":","",Double.parseDouble(TBiaya.getText()),1,Double.parseDouble(TBiaya.getText()),"Registrasi"
                             });
                         }                            
+                    }else{
+                        chkPoli.setSelected(false);
                     }
                     
                     if(jml>0){
@@ -5630,7 +5630,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 if(jmlradiologi>0){
                     noorderradiologi=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(noorder,4),signed)),0) from permintaan_radiologi where tgl_permintaan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"' ","PR"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").replaceAll("-",""),4);
                     if((!KdDokPerujukRad.getText().equals(""))&&(!TDokterPerujukRad.getText().equals(""))){
-                        Sequel.menyimpan("permintaan_radiologi","?,?,?,?,?,?,?,?,?","No.Permintaan",9,new String[]{
+                        Sequel.menyimpan("permintaan_radiologi","?,?,?,?,?,?,?,?,?,'ralan'","No.Permintaan",9,new String[]{
                             noorderradiologi,TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                             DTPTgl.getSelectedItem().toString().substring(11,19), 
                             "0000-00-00","00:00:00","0000-00-00","00:00:00",KdDokPerujukRad.getText()
@@ -5662,7 +5662,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 if(jmllaborat>0){
                     noorderlaborat=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(noorder,4),signed)),0) from permintaan_lab where tgl_permintaan='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"' ","PR"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").replaceAll("-",""),4);
                     if((!KdDokPerujukLab.getText().equals(""))&&(!TDokterPerujukLab.getText().equals(""))){
-                        Sequel.menyimpan("permintaan_lab","?,?,?,?,?,?,?,?,?","No.Permintaan",9,new String[]{
+                        Sequel.menyimpan("permintaan_lab","?,?,?,?,?,?,?,?,?,'ralan'","No.Permintaan",9,new String[]{
                             noorderlaborat,TNoRw.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),
                             DTPTgl.getSelectedItem().toString().substring(11,19), 
                             "0000-00-00","00:00:00","0000-00-00","00:00:00",KdDokPerujukLab.getText()
@@ -6013,6 +6013,9 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
             if(chkPoli.isSelected()==true){
                 ttlRegistrasi=ttlRegistrasi+Valid.SetAngka(TBiaya.getText());                                  
                 ttl=ttl+Valid.SetAngka(TBiaya.getText()); 
+            }else{
+                ttlRegistrasi=ttlRegistrasi+0;                                  
+                ttl=ttl+0; 
             }                            
         }
         z=tbTindakanDrBayar.getRowCount();
