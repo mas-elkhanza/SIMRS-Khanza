@@ -5029,8 +5029,8 @@ private void CmbJkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Cmb
 private void TNmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNmKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             TCari.setText(TNm.getText());
-            tampil();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            TCari.setText(TNm.getText());
             if(TNm.getText().toLowerCase().contains("tn.")){
                 CmbJk.setSelectedItem("LAKI-LAKI");
             }else if(TNm.getText().toLowerCase().contains("sdr.")){

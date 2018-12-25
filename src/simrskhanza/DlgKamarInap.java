@@ -98,7 +98,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","Nomer RM","Nama Pasien","Alamat Pasien","Penanggung Jawab","Hubungan P.J.","Jenis Bayar","Kamar","Tarif Kamar",
             "Diagnosa Awal","Diagnosa Akhir","Tgl.Masuk","Jam Masuk","Tgl.Keluar","Jam Keluar",
-            "Ttl.Biaya","Stts.Pulang","Lama","Dokter P.J.","Kamar"
+            "Ttl.Biaya","Stts.Pulang","Lama","Dokter P.J.","Kamar","Status Bayar"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -108,7 +108,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         tbKamIn.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamIn.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 20; i++) {
+        for (i = 0; i < 21; i++) {
             TableColumn column = tbKamIn.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -8337,29 +8337,29 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
         key=kmr+" ";
         if(!TCari.getText().equals("")){
             key= kmr+"and kamar_inap.no_rawat like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and kamar_inap.kd_kamar like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and kamar_inap.diagnosa_awal like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and kamar_inap.diagnosa_akhir like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and kamar_inap.trf_kamar like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and kamar_inap.tgl_masuk like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and kamar_inap.stts_pulang like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and kamar_inap.tgl_keluar like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
-                   kmr+"and kamar_inap.ttl_biaya like '%"+TCari.getText().trim()+"%' ";
+               kmr+"and reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and kamar_inap.kd_kamar like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and bangsal.nm_bangsal like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and kamar_inap.diagnosa_awal like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and kamar_inap.diagnosa_akhir like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and kamar_inap.trf_kamar like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and kamar_inap.tgl_masuk like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and dokter.nm_dokter like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and kamar_inap.stts_pulang like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and kamar_inap.tgl_keluar like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and penjab.png_jawab like '%"+TCari.getText().trim()+"%' or "+
+               kmr+"and kamar_inap.ttl_biaya like '%"+TCari.getText().trim()+"%' ";
         }
         
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-               "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab),reg_periksa.p_jawab,reg_periksa.hubunganpj,"+
-               "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal),kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir," +
-               "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar),if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar),"+
-               "kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur "+
+               "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,reg_periksa.p_jawab,reg_periksa.hubunganpj,"+
+               "penjab.png_jawab,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir," +
+               "kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,"+
+               "kamar_inap.ttl_biaya,kamar_inap.stts_pulang,kamar_inap.lama,dokter.nm_dokter,kamar_inap.kd_kamar,reg_periksa.kd_pj,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.status_bayar "+
                "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal inner join kelurahan inner join kecamatan inner join kabupaten inner join dokter inner join penjab " +
                "on kamar_inap.no_rawat=reg_periksa.no_rawat " +
                "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
@@ -8372,27 +8372,14 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),
-                                   rs.getString(2),
-                                   rs.getString(3)+" ("+rs.getString("umur")+")",
-                                   rs.getString(4),
-                                   rs.getString(5),
-                                   rs.getString(6),
-                                   rs.getString(7),
-                                   rs.getString(8),
-                                   Valid.SetAngka(rs.getDouble(9)),
-                                   rs.getString(10),
-                                   rs.getString(11),
-                                   rs.getString(12),
-                                   rs.getString(13),
-                                   rs.getString(14),
-                                   rs.getString(15),
-                                   Valid.SetAngka(rs.getDouble(16)),
-                                   rs.getString(17),
-                                   rs.getString(18),
-                                   rs.getString(19),
-                                   rs.getString(20),
-                                   rs.getString(21)});
+                    tabMode.addRow(new String[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien")+" ("+rs.getString("umur")+")",
+                        rs.getString("alamat"),rs.getString("p_jawab"),rs.getString("hubunganpj"),rs.getString("png_jawab"),
+                        rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")),rs.getString("diagnosa_awal"),
+                        rs.getString("diagnosa_akhir"),rs.getString("tgl_masuk"),rs.getString("jam_masuk"),rs.getString("tgl_keluar"),
+                        rs.getString("jam_keluar"),Valid.SetAngka(rs.getDouble("ttl_biaya")),rs.getString("stts_pulang"),
+                        rs.getString("lama"),rs.getString("nm_dokter"),rs.getString("kd_kamar"),rs.getString("status_bayar")
+                    });
                     psanak=koneksi.prepareStatement(
                         "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
                         "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
@@ -8402,25 +8389,17 @@ private void MnRujukMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
                         psanak.setString(1,rs.getString(1));
                         rs2=psanak.executeQuery();
                         if(rs2.next()){
-                            tabMode.addRow(new String[]{"",
-                                            rs2.getString("no_rkm_medis"),
-                                            rs2.getString("nm_pasien")+" ("+rs.getString("umur")+")",
-                                            rs.getString(4),
-                                            rs.getString(5),
-                                            rs.getString(6),
-                                            rs.getString(7),
-                                            rs.getString(8),
-                                            Valid.SetAngka(rs.getDouble(9)*(persenbayi/100)),"-","-",
-                                            rs.getString(12),
-                                            rs.getString(13),
-                                            rs.getString(14),
-                                            rs.getString(15),
-                                            Valid.SetAngka(rs.getDouble(16)*(persenbayi/100)),
-                                            rs.getString(17),
-                                            rs.getString(18),
-                                            rs.getString(19),
-                                            rs.getString(20),
-                                            rs.getString(21)});
+                            /*"No.Rawat","Nomer RM","Nama Pasien","Alamat Pasien","Penanggung Jawab","Hubungan P.J.","Jenis Bayar","Kamar","Tarif Kamar",
+                            "Diagnosa Awal","Diagnosa Akhir","Tgl.Masuk","Jam Masuk","Tgl.Keluar","Jam Keluar",
+                            "Ttl.Biaya","Stts.Pulang","Lama","Dokter P.J.","Kamar","Status Bayar"*/
+                            tabMode.addRow(new String[]{
+                                "",rs2.getString("no_rkm_medis"),rs2.getString("nm_pasien")+" ("+rs2.getString("umur")+")",
+                                rs.getString("alamat"),rs.getString("p_jawab"),rs.getString("hubunganpj"),rs.getString("png_jawab"),
+                                rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")*(persenbayi/100)),"",
+                                "",rs.getString("tgl_masuk"),rs.getString("jam_masuk"),rs.getString("tgl_keluar"),
+                                rs.getString("jam_keluar"),Valid.SetAngka(rs.getDouble("ttl_biaya")*(persenbayi/100)),rs.getString("stts_pulang"),
+                                rs.getString("lama"),rs.getString("nm_dokter"),rs.getString("kd_kamar"),rs.getString("status_bayar")
+                            });
                         }
                     }catch(Exception ex){
                         System.out.println("Notifikasi : "+ex);
